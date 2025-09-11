@@ -1,5 +1,5 @@
 # Name of your application. Used to uniquely configure containers.
-service: moab
+service: pricing
 
 # Name of the container image.
 image: moab/pricing
@@ -22,9 +22,7 @@ servers:
 #
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
-  ssl:
-    certificate_pem: <%= ENV['CLOUDFLARE_SSL_CERT_PEM'] %>
-    private_key_pem: <%= ENV['CLOUDFLARE_SSL_KEY_PEM'] %>
+  ssl: true
   host: pricing.moab.jp
   forward_headers: true
 
@@ -40,8 +38,6 @@ env:
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
-    - CLOUDFLARE_SSL_CERT_PEM
-    - CLOUDFLARE_SSL_KEY_PEM
   clear:
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
     # When you start using multiple servers, you should split out job processing to a dedicated machine.
@@ -104,7 +100,7 @@ accessories:
   db:
     image: postgres:16
     host: 5.223.51.74
-    port: "127.0.0.1:5432:5432"
+    port: "127.0.0.1:5434:5432"
     env:
       clear:
         POSTGRES_DB: pricing_production
