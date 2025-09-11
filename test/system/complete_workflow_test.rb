@@ -1,0 +1,155 @@
+require "application_system_test_case"
+
+class CompleteWorkflowTest < ApplicationSystemTestCase
+  def setup
+    @user = User.create!(
+      email: "workflow@example.com",
+      password: "password123",
+      default_currency: "USD",
+      default_energy_cost_per_kwh: 0.12
+    )
+  end
+
+  test "complete user journey from signup to pricing calculation" do
+    # Sign up
+    visit new_user_registration_path
+    fill_in "Email", with: "newworkflow@example.com"
+    fill_in "Password", with: "password123"
+    fill_in "Password confirmation", with: "password123"
+    click_button "Sign up"
+
+    assert_text "Welcome! You have signed up successfully."
+
+    # Add a printer
+    click_link "Printers" rescue visit "/printers"
+    click_link "New Printer" rescue click_button "Add Printer"
+    
+    fill_in "Name", with: "My Test Printer"
+    select "Prusa", from: "Manufacturer"
+    fill_in "Power consumption", with: "250"
+    fill_in "Cost", with: "800"
+    fill_in "Payoff goal years", with: "3"
+    fill_in "Daily usage hours", with: "6"
+    fill_in "Repair cost percentage", with: "5"
+    
+    click_button "Create Printer"
+    assert_text "Printer was successfully created."
+
+    # Create a pricing calculation
+    click_link "Print Pricings" rescue visit "/print_pricings"
+    click_link "New Print Pricing" rescue click_button "New Pricing"
+    
+    fill_in "Job name", with: "Test Print Job"
+    select "My Test Printer", from: "Printer"
+    fill_in "Printing time hours", with: "3"
+    fill_in "Printing time minutes", with: "45"
+    fill_in "Filament weight", with: "75"
+    fill_in "Filament type", with: "PLA+"
+    fill_in "Spool price", with: "28"
+    fill_in "Spool weight", with: "1000"
+    fill_in "Markup percentage", with: "25"
+    
+    click_button "Create Print pricing"
+    assert_text "Print pricing was successfully created."
+    
+    # Verify calculation results are displayed
+    assert_text "Test Print Job"
+    assert_text "$" # Should show currency symbols
+  end
+
+  test "user can update profile settings" do
+    sign_in @user
+    visit root_path
+    
+    click_link "Profile" rescue visit "/user_profile"
+    
+    select "Euro (EUR)", from: "Default currency"
+    fill_in "Default energy cost per kwh", with: "0.15"
+    
+    click_button "Update Profile"
+    assert_text "Profile was successfully updated."
+    
+    # Verify changes persisted
+    @user.reload
+    assert_equal "EUR", @user.default_currency
+    assert_equal 0.15, @user.default_energy_cost_per_kwh.to_f
+  end
+
+  test "user can manage multiple printers" do
+    sign_in @user
+    
+    # Create first printer
+    visit "/printers"
+    click_link "New Printer"
+    
+    fill_in "Name", with: "Printer One"
+    select "Bambu Lab", from: "Manufacturer"
+    fill_in "Power consumption", with: "200"
+    fill_in "Cost", with: "600"
+    fill_in "Payoff goal years", with: "2"
+    
+    click_button "Create Printer"
+    assert_text "Printer was successfully created."
+    
+    # Create second printer
+    click_link "New Printer"
+    
+    fill_in "Name", with: "Printer Two"
+    select "Creality", from: "Manufacturer"
+    fill_in "Power consumption", with: "300"
+    fill_in "Cost", with: "400"
+    fill_in "Payoff goal years", with: "4"
+    
+    click_button "Create Printer"
+    assert_text "Printer was successfully created."
+    
+    # Verify both printers are listed
+    visit "/printers"
+    assert_text "Printer One"
+    assert_text "Printer Two"
+    assert_text "Bambu Lab"
+    assert_text "Creality"
+  end
+
+  test "pricing calculation shows all cost components" do
+    sign_in @user
+    
+    # Create a printer first
+    printer = @user.printers.create!(
+      name: "Cost Test Printer",
+      manufacturer: "Prusa",
+      power_consumption: 250,
+      cost: 1000,
+      payoff_goal_years: 3,
+      daily_usage_hours: 8,
+      repair_cost_percentage: 5.0
+    )
+    
+    visit "/print_pricings/new"
+    
+    fill_in "Job name", with: "Detailed Cost Test"
+    select "Cost Test Printer", from: "Printer"
+    fill_in "Printing time hours", with: "4"
+    fill_in "Printing time minutes", with: "0"
+    fill_in "Filament weight", with: "100"
+    fill_in "Filament type", with: "PETG"
+    fill_in "Spool price", with: "35"
+    fill_in "Spool weight", with: "1000"
+    fill_in "Markup percentage", with: "30"
+    fill_in "Prep time minutes", with: "20"
+    fill_in "Prep cost per hour", with: "25"
+    fill_in "Postprocessing time minutes", with: "15"
+    fill_in "Postprocessing cost per hour", with: "30"
+    fill_in "Vat percentage", with: "8"
+    
+    click_button "Create Print pricing"
+    assert_text "Print pricing was successfully created."
+    
+    # Should display all cost breakdowns
+    assert_text "Filament Cost"
+    assert_text "Electricity Cost" 
+    assert_text "Labor Cost"
+    assert_text "Machine Upkeep"
+    assert_text "Final Price"
+  end
+end

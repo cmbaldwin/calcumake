@@ -85,6 +85,12 @@ builder:
   arch: amd64
   # remote: ssh://deepslate-deploy
 
+# Pre-build hook to run tests before anything else
+hooks:
+  pre-build:
+    - path: bin/rails
+      args: test
+
 # # Build image via remote server (useful for faster amd64 builds on arm64 computers)
 # remote: ssh://docker@docker-builder-server
 #
