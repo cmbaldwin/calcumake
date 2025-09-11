@@ -1,0 +1,283 @@
+<div class="pricing-header" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 3rem 2rem; margin: -2rem -2rem 3rem -2rem; border-radius: 12px 12px 0 0; text-align: center; box-shadow: 0 8px 32px rgba(200, 16, 46, 0.3);">
+  <h1 style="margin: 0; font-size: 2.5rem; font-weight: 800; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+    <%= @print_pricing.job_name %>
+  </h1>
+  <p style="margin: 1rem 0 0 0; opacity: 0.9; font-size: 1.1rem;">
+    Created on <%= @print_pricing.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+  </p>
+  <div style="margin-top: 2rem;">
+    <%= link_to "Edit Calculation", edit_print_pricing_path(@print_pricing), 
+        class: "button", 
+        style: "background: rgba(255,255,255,0.2); border: 2px solid white; color: white; margin-right: 1rem;" %>
+    <%= link_to "Delete", @print_pricing, method: :delete, 
+        class: "button", 
+        style: "background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.5); color: rgba(255,255,255,0.9);",
+        data: { 
+          confirm: "Are you sure you want to delete '#{@print_pricing.job_name}'?",
+          turbo_method: :delete
+        } %>
+  </div>
+</div>
+
+<!-- Cost Summary - Moved to top -->
+<div class="row">
+  <div class="column">
+    <div class="info-card summary-card">
+      <h3>Cost Summary</h3>
+      <table>
+        <tr>
+          <td><strong>Filament Cost:</strong></td>
+          <td><%= @print_pricing.default_currency %> <%= number_with_precision(@print_pricing.total_filament_cost, precision: 2) %></td>
+        </tr>
+        <% if @print_pricing.total_electricity_cost > 0 %>
+        <tr>
+          <td><strong>Electricity Cost:</strong></td>
+          <td><%= @print_pricing.default_currency %> <%= number_with_precision(@print_pricing.total_electricity_cost, precision: 2) %></td>
+        </tr>
+        <% end %>
+        <% if @print_pricing.total_labor_cost > 0 %>
+        <tr>
+          <td><strong>Labor Cost:</strong></td>
+          <td><%= @print_pricing.default_currency %> <%= number_with_precision(@print_pricing.total_labor_cost, precision: 2) %></td>
+        </tr>
+        <% end %>
+        <% if @print_pricing.total_machine_upkeep_cost > 0 %>
+        <tr>
+          <td><strong>Machine Cost:</strong></td>
+          <td><%= currency_symbol(@print_pricing.default_currency) %><%= number_with_precision(@print_pricing.total_machine_upkeep_cost, precision: 2) %></td>
+        </tr>
+        <% end %>
+        <% if @print_pricing.other_costs && @print_pricing.other_costs > 0 %>
+        <tr>
+          <td><strong>Other Costs:</strong></td>
+          <td><%= @print_pricing.default_currency %> <%= number_with_precision(@print_pricing.other_costs, precision: 2) %></td>
+        </tr>
+        <% end %>
+        <tr>
+          <td><strong>Subtotal:</strong></td>
+          <td><%= @print_pricing.default_currency %> <%= number_with_precision(@print_pricing.calculate_subtotal, precision: 2) %></td>
+        </tr>
+        <% if @print_pricing.vat_percentage && @print_pricing.vat_percentage > 0 %>
+        <tr>
+          <td><strong>VAT (<%= @print_pricing.vat_percentage %>%):</strong></td>
+          <td><%= @print_pricing.default_currency %> <%= number_with_precision(@print_pricing.calculate_subtotal * @print_pricing.vat_percentage / 100, precision: 2) %></td>
+        </tr>
+        <% end %>
+        <tr class="final-price-row">
+          <td><strong>Final Price:</strong></td>
+          <td><strong><%= @print_pricing.default_currency %> <%= format_currency(@print_pricing.final_price, @print_pricing.default_currency) %></strong></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="column column-50">
+    <div class="info-card" style="background: linear-gradient(145deg, #ffffff 0%, var(--moab-cream) 100%); border: 2px solid var(--accent);">
+      <h3 style="color: var(--primary);">
+        Print Information
+      </h3>
+      <table>
+        <tr>
+          <td><strong>Currency:</strong></td>
+          <td>
+            <span style="background: var(--moab-cream); padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 600;">
+              <%= @print_pricing.default_currency %>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Printing Time:</strong></td>
+          <td><%= @print_pricing.printing_time_hours %>h <%= @print_pricing.printing_time_minutes %>m</td>
+        </tr>
+        <tr>
+          <td><strong>Filament Weight:</strong></td>
+          <td><%= @print_pricing.filament_weight %>g</td>
+        </tr>
+        <tr>
+          <td><strong>Filament Type:</strong></td>
+          <td>
+            <span style="background: linear-gradient(135deg, var(--accent) 0%, var(--moab-sage) 100%); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-weight: 600;">
+              <%= @print_pricing.filament_type %>
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="column column-50">
+    <div class="info-card" style="background: linear-gradient(145deg, #fff8f0 0%, #ffffff 100%); border: 2px solid var(--secondary);">
+      <h3 style="color: var(--secondary);">
+        Filament Details
+      </h3>
+      <table>
+        <tr>
+          <td><strong>Spool Price:</strong></td>
+          <td><%= @print_pricing.default_currency %> <%= number_with_precision(@print_pricing.spool_price, precision: 2) %></td>
+        </tr>
+        <tr>
+          <td><strong>Spool Weight:</strong></td>
+          <td><%= @print_pricing.spool_weight %>g</td>
+        </tr>
+        <tr>
+          <td><strong>Markup:</strong></td>
+          <td><%= @print_pricing.markup_percentage %>%</td>
+        </tr>
+        <tr>
+          <td><strong>Filament Cost:</strong></td>
+          <td>
+            <span style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 0.4rem 0.8rem; border-radius: 8px; font-weight: 600;">
+              <%= @print_pricing.default_currency %> <%= number_with_precision(@print_pricing.total_filament_cost, precision: 2) %>
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<% if @print_pricing.printer&.power_consumption && @print_pricing.default_energy_cost_per_kwh %>
+<div class="row">
+  <div class="column">
+    <div class="info-card" style="background: linear-gradient(145deg, #f0f8f0 0%, #ffffff 100%); border: 2px solid var(--accent);">
+      <h3 style="color: var(--moab-shadow);">
+        Electricity Cost
+      </h3>
+      <table>
+        <tr>
+          <td><strong>Power Consumption:</strong></td>
+          <td><%= @print_pricing.printer.power_consumption %>W</td>
+        </tr>
+        <tr>
+          <td><strong>Energy Cost per kWh:</strong></td>
+          <td><%= currency_symbol(@print_pricing.default_currency) %><%= number_with_precision(@print_pricing.default_energy_cost_per_kwh, precision: 3) %></td>
+        </tr>
+        <tr>
+          <td><strong>Total Electricity Cost:</strong></td>
+          <td><%= currency_symbol(@print_pricing.default_currency) %><%= number_with_precision(@print_pricing.total_electricity_cost, precision: 2) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% if (@print_pricing.prep_time_minutes && @print_pricing.prep_cost_per_hour) || 
+      (@print_pricing.postprocessing_time_minutes && @print_pricing.postprocessing_cost_per_hour) %>
+<div class="row">
+  <div class="column">
+    <div class="info-card">
+      <h3>Labor Cost</h3>
+      <table>
+        <% if @print_pricing.prep_time_minutes && @print_pricing.prep_cost_per_hour %>
+        <tr>
+          <td><strong>Prep Time:</strong></td>
+          <td><%= @print_pricing.prep_time_minutes %> min @ <%= @print_pricing.default_currency %><%= number_with_precision(@print_pricing.prep_cost_per_hour, precision: 2) %>/hour</td>
+        </tr>
+        <% end %>
+        <% if @print_pricing.postprocessing_time_minutes && @print_pricing.postprocessing_cost_per_hour %>
+        <tr>
+          <td><strong>Postprocessing Time:</strong></td>
+          <td><%= @print_pricing.postprocessing_time_minutes %> min @ <%= @print_pricing.default_currency %><%= number_with_precision(@print_pricing.postprocessing_cost_per_hour, precision: 2) %>/hour</td>
+        </tr>
+        <% end %>
+        <tr>
+          <td><strong>Total Labor Cost:</strong></td>
+          <td><%= @print_pricing.default_currency %> <%= number_with_precision(@print_pricing.total_labor_cost, precision: 2) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% if @print_pricing.printer&.cost && @print_pricing.printer&.payoff_goal_years && @print_pricing.printer&.daily_usage_hours %>
+<div class="row">
+  <div class="column">
+    <div class="info-card">
+      <h3>Machine & Upkeep Cost</h3>
+      <table>
+        <tr>
+          <td><strong>Printer Cost:</strong></td>
+          <td><%= currency_symbol(@print_pricing.default_currency) %><%= number_with_precision(@print_pricing.printer.cost, precision: 2) %></td>
+        </tr>
+        <tr>
+          <td><strong>Payoff Goal:</strong></td>
+          <td><%= @print_pricing.printer.payoff_goal_years %> years</td>
+        </tr>
+        <tr>
+          <td><strong>Daily Usage:</strong></td>
+          <td><%= @print_pricing.printer.daily_usage_hours %> hours</td>
+        </tr>
+        <tr>
+          <td><strong>Repair Cost:</strong></td>
+          <td><%= @print_pricing.printer&.repair_cost_percentage || 0 %>%</td>
+        </tr>
+        <tr>
+          <td><strong>Total Machine Cost:</strong></td>
+          <td><%= currency_symbol(@print_pricing.default_currency) %><%= number_with_precision(@print_pricing.total_machine_upkeep_cost, precision: 2) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<div class="row">
+  <div class="column">
+    <%= link_to "← Back to All Pricings", print_pricings_path, class: "button button-outline" %>
+    <%= link_to "Create New Pricing", new_print_pricing_path, class: "button" %>
+  </div>
+</div>
+
+<style>
+.info-card {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.info-card h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #495057;
+}
+
+.info-card table {
+  margin-bottom: 0;
+}
+
+.info-card table td {
+  padding: 0.5rem 0;
+  border: none;
+}
+
+.summary-card {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.summary-card h3 {
+  color: #155724;
+}
+
+.final-price-row {
+  font-size: 1.2em;
+  border-top: 2px solid #28a745 !important;
+  padding-top: 1rem !important;
+}
+
+.final-price-row td {
+  color: #155724;
+  padding-top: 1rem !important;
+}
+
+.text-muted {
+  color: #6c757d;
+  font-size: 0.9em;
+}
+</style>

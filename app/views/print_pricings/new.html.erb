@@ -1,0 +1,704 @@
+<% content_for :body_class, "pricing-form-page" %>
+
+<div class="calculator-header">
+  <h1>3D Print Calculator</h1>
+  <p>Calculate your 3D printing costs with precision</p>
+</div>
+
+<%= form_with model: @print_pricing, local: true, html: { 
+  id: "pricing-form", 
+  class: "compact-form",
+  data: { 
+    controller: "currency",
+    currency_currencies_value: CurrencyHelper::CURRENCY_CONFIGS.to_json,
+    currency_current_currency_value: current_user.default_currency
+  }
+} do |form| %>
+  <% if @print_pricing.errors.any? %>
+    <div class="error-messages">
+      <h3><%= pluralize(@print_pricing.errors.count, "error") %> prohibited this pricing from being saved:</h3>
+      <ul>
+        <% @print_pricing.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-grid">
+    <!-- Basic Information -->
+    <div class="form-card basic-info">
+      <h3>Basic Information</h3>
+      <div class="field-group">
+        <label for="job_name">Job Name</label>
+        <%= form.text_field :job_name, placeholder: "e.g., Miniature Model" %>
+      </div>
+      <div class="field-group">
+        <label for="printer">Select Printer</label>
+        <%= form.select :printer_id,
+            options_from_collection_for_select(current_user.printers, :id, :name, @print_pricing.printer_id),
+            { prompt: "Select a printer" },
+            { id: "printer-select" } %>
+        <small>
+          Don't have a printer registered? 
+          <%= link_to "Add a new printer", new_printer_path, target: "_blank", class: "inline-link" %>
+        </small>
+      </div>
+    </div>
+
+    <!-- Print Time & Material -->
+    <div class="form-card material-info">
+      <h3>Print Time & Material</h3>
+      <div class="time-fields">
+        <div class="field-group">
+          <label>Hours</label>
+          <%= form.number_field :printing_time_hours, min: 0, step: 1, value: @print_pricing.printing_time_hours || 0 %>
+        </div>
+        <div class="field-group">
+          <label>Minutes</label>
+          <%= form.number_field :printing_time_minutes, min: 0, max: 59, step: 1, value: @print_pricing.printing_time_minutes || 0 %>
+        </div>
+      </div>
+      <div class="field-group">
+        <label>Filament Weight (g)</label>
+        <%= form.number_field :filament_weight, step: 0.1, placeholder: "36" %>
+      </div>
+      <div class="field-group">
+        <label>Filament Type</label>
+        <%= form.select :filament_type, 
+            options_for_select([
+              ['PLA', 'PLA'],
+              ['ABS', 'ABS'],
+              ['PETG', 'PETG'],
+              ['TPU', 'TPU'],
+              ['ASA', 'ASA'],
+              ['Other', 'Other']
+            ], @print_pricing.filament_type), 
+            { prompt: "Select type" } %>
+      </div>
+    </div>
+
+    <!-- Filament Costs -->
+    <div class="form-card filament-cost">
+      <h3>Filament Details</h3>
+      <div class="field-group currency-field">
+        <label>Spool Price</label>
+        <div class="currency-input">
+          <span class="currency-symbol" data-currency-symbol><%= currency_symbol(current_user.default_currency) %></span>
+          <%= form.number_field :spool_price, step: 0.01, placeholder: "25.00", 
+              data: { currency_target: "spoolPrice" } %>
+        </div>
+      </div>
+      <div class="field-group">
+        <label>Spool Weight (g)</label>
+        <%= form.number_field :spool_weight, step: 0.1, placeholder: "1000" %>
+      </div>
+      <div class="field-group">
+        <label>Markup (%)</label>
+        <%= form.number_field :markup_percentage, step: 0.1, placeholder: "20" %>
+      </div>
+      <div class="calculation-display">
+        <strong>Filament cost: <span class="currency"></span><span class="amount">0.00</span></strong>
+      </div>
+    </div>
+
+    <!-- Electricity Cost (Calculated from Printer) -->
+    <div class="form-card electricity-cost">
+      <h3>Electricity</h3>
+      <div class="info-display">
+        <p>Electricity cost will be automatically calculated based on:</p>
+        <ul>
+          <li>Selected printer's power consumption</li>
+          <li>Print time duration</li>
+          <li>Your default energy cost: <strong><%= currency_symbol(current_user.default_currency) %><%= current_user.default_energy_cost_per_kwh %>/kWh</strong></li>
+        </ul>
+        <small>You can update your default energy cost in your <a href="<%= user_profile_path %>" class="inline-link">profile settings</a>.</small>
+      </div>
+      <div class="calculation-display">
+        <strong>Electricity cost: <span class="currency"></span><span class="amount">0.00</span></strong>
+      </div>
+    </div>
+
+    <!-- Labor Cost -->
+    <div class="form-card labor-cost">
+      <h3>Labor</h3>
+      <div class="field-group">
+        <label>Prep Time (min)</label>
+        <%= form.number_field :prep_time_minutes, min: 0, step: 1, placeholder: "30" %>
+      </div>
+      <div class="field-group currency-field">
+        <label>Prep Cost/Hour</label>
+        <div class="currency-input">
+          <span class="currency-symbol" data-currency-symbol><%= currency_symbol(current_user.default_currency) %></span>
+          <%= form.number_field :prep_cost_per_hour, step: 0.01, placeholder: "20.00",
+              data: { currency_target: "prepCost" } %>
+        </div>
+      </div>
+      <div class="field-group">
+        <label>Post-Process Time (min)</label>
+        <%= form.number_field :postprocessing_time_minutes, min: 0, step: 1, placeholder: "30" %>
+      </div>
+      <div class="field-group currency-field">
+        <label>Post-Process Cost/Hour</label>
+        <div class="currency-input">
+          <span class="currency-symbol" data-currency-symbol><%= currency_symbol(current_user.default_currency) %></span>
+          <%= form.number_field :postprocessing_cost_per_hour, step: 0.01, placeholder: "20.00",
+              data: { currency_target: "postCost" } %>
+        </div>
+      </div>
+      <div class="calculation-display">
+        <strong>Labor cost: <span class="currency"></span><span class="amount">0.00</span></strong>
+      </div>
+    </div>
+
+    <!-- Machine & Upkeep (Calculated from Printer) -->
+    <div class="form-card machine-cost">
+      <h3>Machine & Upkeep</h3>
+      <div class="info-display">
+        <p>Machine depreciation and upkeep cost will be calculated from your selected printer's specifications:</p>
+        <ul>
+          <li>Printer cost and usage hours</li>
+          <li>Investment return period</li>
+          <li>Repair cost factor</li>
+        </ul>
+        <small>These values are configured when you <a href="<%= new_printer_path %>" class="inline-link">add or edit a printer</a>.</small>
+      </div>
+      <div class="calculation-display">
+        <strong>Machine cost: <span class="currency"></span><span class="amount">0.00</span></strong>
+      </div>
+    </div>
+
+    <!-- Other Costs -->
+    <div class="form-card other-costs">
+      <h3>Other Costs & Tax</h3>
+      <div class="field-group currency-field">
+        <label>Other Costs</label>
+        <div class="currency-input">
+          <span class="currency-symbol" data-currency-symbol><%= currency_symbol(current_user.default_currency) %></span>
+          <%= form.number_field :other_costs, step: 0.01, placeholder: "0.00",
+              data: { currency_target: "otherCosts" } %>
+        </div>
+      </div>
+      <div class="field-group">
+        <label>VAT (%)</label>
+        <%= form.number_field :vat_percentage, step: 0.1, placeholder: "10" %>
+      </div>
+    </div>
+
+    <!-- Final Price Display -->
+    <div class="form-card final-price-card">
+      <div class="final-price-display">
+        <h3>Final Price</h3>
+        <div class="price">
+          <span class="currency"></span><span class="amount">0.00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit "Calculate & Save", class: "primary-button" %>
+    <%= link_to "Cancel", print_pricings_path, class: "secondary-button" %>
+  </div>
+<% end %>
+
+<!-- Sticky Floating Price Calculator -->
+<div id="sticky-calculator" class="sticky-calculator">
+  <div class="sticky-calculator-content">
+    <span class="sticky-price-label">Estimated Price:</span>
+    <span class="sticky-price">
+      <span class="currency"><%= currency_symbol(current_user.default_currency) %></span><span class="amount">0.00</span>
+    </span>
+  </div>
+  <div class="sticky-calculator-toggle">
+    <button type="button" id="calculator-toggle" aria-label="Toggle calculator">
+      <span class="toggle-icon">▲</span>
+    </button>
+  </div>
+</div>
+
+<style>
+.calculator-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.calculator-header h1 {
+  background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.compact-form {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+/* Mobile-first responsive grid */
+@media (min-width: 768px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .basic-info {
+    grid-column: 1 / -1;
+  }
+  
+  .final-price-card {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .form-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .basic-info {
+    grid-column: 1 / -1;
+  }
+  
+  .final-price-card {
+    grid-column: 1 / -1;
+  }
+}
+
+.form-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.form-card h3 {
+  margin: 0 0 1rem 0;
+  color: #c8102e;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-bottom: 2px solid #9caf88;
+  padding-bottom: 0.5rem;
+}
+
+.field-group {
+  margin-bottom: 1rem;
+}
+
+.field-group:last-of-type {
+  margin-bottom: 0;
+}
+
+.field-group label {
+  display: block;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.field-group input, .field-group select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.time-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.currency-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.currency-symbol {
+  padding: 0.6rem 0.75rem;
+  background: #f8f9fa;
+  border-right: 1px solid #ddd;
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.currency-input input {
+  border: none;
+  border-radius: 0 6px 6px 0;
+  flex: 1;
+}
+
+.calculation-display {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 4px solid #9caf88;
+  font-size: 0.9rem;
+}
+
+.final-price-card {
+  background: linear-gradient(135deg, #9caf88 0%, #7d9167 100%);
+  color: white;
+  text-align: center;
+}
+
+.final-price-card h3 {
+  color: white;
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+.final-price-display .price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-top: 0.5rem;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px dashed #9caf88;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-right: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
+  transition: all 0.3s ease;
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 16, 46, 0.4);
+  color: white;
+}
+
+.secondary-button {
+  background: transparent;
+  color: #666;
+  border: 2px solid #ddd;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.secondary-button:hover {
+  background: rgba(200, 16, 46, 0.1);
+  color: #c8102e;
+  border-color: #c8102e;
+}
+
+.error-messages {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  color: #721c24;
+}
+
+.error-messages h3 {
+  margin-top: 0;
+}
+
+/* Mobile optimization */
+@media (max-width: 767px) {
+  .calculator-header h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+  
+  .form-card {
+    padding: 1rem;
+    margin: 0;
+  }
+  
+  .form-grid {
+    gap: 1rem;
+  }
+  
+  .time-fields {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .final-price-display .price {
+    font-size: 1.8rem;
+  }
+  
+  .form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .primary-button, .secondary-button {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .field-group input, .field-group select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .currency-input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.info-display {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.info-display p {
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+  color: #495057;
+}
+
+.info-display ul {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.5rem;
+}
+
+.info-display li {
+  margin-bottom: 0.25rem;
+  color: #6c757d;
+}
+
+.inline-link {
+  color: #c8102e;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.inline-link:hover {
+  color: #a80e26;
+  text-decoration: underline;
+}
+
+/* Sticky Floating Calculator */
+.sticky-calculator {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  min-width: 280px;
+  max-width: 400px;
+  backdrop-filter: blur(10px);
+}
+
+.sticky-calculator.collapsed {
+  transform: translateX(-50%) translateY(60px);
+}
+
+.sticky-calculator-content {
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sticky-price-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.sticky-price {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.sticky-calculator-toggle {
+  position: absolute;
+  top: -12px;
+  right: 15px;
+}
+
+#calculator-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+#calculator-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.toggle-icon {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.sticky-calculator.collapsed .toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* Mobile responsive for sticky calculator */
+@media (max-width: 768px) {
+  .sticky-calculator {
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+    min-width: auto;
+    max-width: none;
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .sticky-calculator.collapsed {
+    transform: translateY(60px);
+  }
+  
+  .sticky-calculator-content {
+    padding: 0.8rem 1rem;
+  }
+  
+  .sticky-price {
+    font-size: 1.5rem;
+  }
+}
+
+/* Initially hide sticky calculator - JavaScript will control visibility */
+.sticky-calculator {
+  display: none;
+}
+</style>
+
+<script>
+console.log('JavaScript loading...');
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM loaded, initializing calculator...');
+  
+  // Check if we're on the right page
+  const form = document.getElementById('pricing-form');
+  if (!form) {
+    console.log('No pricing form found, exiting...');
+    return;
+  }
+  
+  console.log('Form found:', form);
+  
+  // Initialize sticky calculator
+  const stickyCalculator = document.getElementById('sticky-calculator');
+  const calculatorToggle = document.getElementById('calculator-toggle');
+  
+  console.log('Sticky calculator elements:', {
+    calculator: stickyCalculator,
+    toggle: calculatorToggle
+  });
+  
+  // Make sticky calculator visible for testing
+  if (stickyCalculator) {
+    stickyCalculator.style.display = 'block';
+    stickyCalculator.style.bottom = '0';
+    console.log('Sticky calculator made visible');
+  }
+  
+  // Add toggle functionality
+  if (calculatorToggle && stickyCalculator) {
+    calculatorToggle.addEventListener('click', function() {
+      console.log('Toggle clicked');
+      stickyCalculator.classList.toggle('collapsed');
+    });
+  }
+  
+  // Test basic calculation
+  function testCalculation() {
+    console.log('Testing calculation...');
+    
+    // Update currency displays
+    const currencyElements = document.querySelectorAll('.currency, [data-currency-symbol]');
+    console.log('Currency elements found:', currencyElements.length);
+    
+    currencyElements.forEach(el => {
+      el.textContent = '$';
+    });
+    
+    // Update amount displays with test values
+    const amountElements = document.querySelectorAll('.amount');
+    console.log('Amount elements found:', amountElements.length);
+    
+    amountElements.forEach((el, index) => {
+      el.textContent = (index + 1) * 10 + '.00';
+    });
+    
+    console.log('Test calculation complete');
+  }
+  
+  // Run test calculation
+  testCalculation();
+  
+  console.log('Calculator initialization complete');
+});
+
+console.log('JavaScript loaded');
+</script>
