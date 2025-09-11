@@ -1,0 +1,83 @@
+<div class="calculator-header" style="text-align: center; margin-bottom: 3rem;">
+  <h1 style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.8rem; font-weight: 700;">
+    User Profile
+  </h1>
+  <p style="color: var(--text-secondary); font-size: 1.1rem;">
+    Your account settings and preferences
+  </p>
+</div>
+
+<% if notice %>
+  <div class="alert alert-success" style="background: var(--success-bg); color: var(--success-text); padding: 1rem; border-radius: 8px; margin-bottom: 2rem; text-align: center;">
+    <%= notice %>
+  </div>
+<% end %>
+
+<div class="form-section" style="background: white; border-radius: 16px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 20px var(--shadow);">
+  <h3 style="color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--accent); padding-bottom: 1rem;">
+    Account Information
+  </h3>
+  <div class="row">
+    <div class="column column-50">
+      <strong>Email:</strong><br>
+      <%= @user.email %>
+    </div>
+    <div class="column column-50">
+      <strong>Member since:</strong><br>
+      <%= @user.created_at.strftime("%B %d, %Y") %>
+    </div>
+  </div>
+</div>
+
+<%= form_with model: @user, url: user_profile_path, method: :patch, local: true, html: { style: "margin-bottom: 2rem;" } do |form| %>
+  <div class="form-section" style="background: linear-gradient(145deg, #ffffff 0%, var(--moab-cream) 100%); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 20px var(--shadow); border: 2px solid var(--accent);">
+    <h3 style="color: var(--secondary); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 1rem;">
+      Default Preferences
+    </h3>
+    <% if @user.errors.any? %>
+      <div style="background-color: #f8d7da; border: 1px solid #f5c6cb; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; color: #721c24;">
+        <strong><%= pluralize(@user.errors.count, "error") %> prohibited this profile from being saved:</strong>
+        <ul style="margin: 0.5rem 0 0 1.5rem;">
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="column column-50">
+        <label for="user_default_currency" style="font-weight: 600; color: #333; margin-bottom: 0.5rem; display: block;">Default Currency</label>
+        <%= form.select :default_currency, 
+            options_for_select(currency_options, @user.default_currency), 
+            { prompt: "Select currency" },
+            { style: "width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;" } %>
+        <small style="color: #666; font-size: 0.85rem; margin-top: 0.25rem; display: block;">
+          Used as default for new pricing calculations
+        </small>
+      </div>
+      <div class="column column-50">
+        <label for="user_default_energy_cost_per_kwh" style="font-weight: 600; color: #333; margin-bottom: 0.5rem; display: block;">Energy Cost per kWh</label>
+        <%= form.number_field :default_energy_cost_per_kwh, step: 0.001, min: 0.001, 
+            placeholder: "0.120",
+            style: "width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; text-align: right;" %>
+        <small style="color: #666; font-size: 0.85rem; margin-top: 0.25rem; display: block;">
+          Your local electricity cost per kilowatt-hour
+        </small>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <%= form.submit "Update Settings", 
+          style: "background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); 
+                 color: white; border: none; padding: 0.75rem 1.5rem; font-size: 1rem; 
+                 border-radius: 8px; cursor: pointer; font-weight: 600;" %>
+    </div>
+  </div>
+<% end %>
+
+<div class="form-actions" style="text-align: center; margin-top: 2rem;">
+  <%= link_to "Back to Calculations", root_path, 
+      class: "button button-clear",
+      style: "background: transparent; color: #666; border: 2px solid #ddd; 
+             padding: 1rem 2rem; font-size: 1.1rem; text-decoration: none; 
+             border-radius: 8px; transition: all 0.2s ease;" %>
+</div>

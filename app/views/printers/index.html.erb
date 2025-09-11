@@ -1,0 +1,286 @@
+<div class="page-header">
+  <h1>My Printers</h1>
+  <p>Manage your 3D printers and their specifications</p>
+</div>
+
+<div class="actions-bar">
+  <%= link_to "Add New Printer", new_printer_path, class: "primary-button" %>
+</div>
+
+<% if @printers.any? %>
+  <div class="printers-grid">
+    <% @printers.each do |printer| %>
+      <div class="printer-card">
+        <div class="printer-header">
+          <h3><%= printer.name %></h3>
+          <span class="manufacturer-badge"><%= printer.manufacturer %></span>
+        </div>
+        
+        <div class="printer-specs">
+          <div class="spec-item">
+            <label>Power Consumption:</label>
+            <span><%= printer.power_consumption %>W</span>
+          </div>
+          <div class="spec-item">
+            <label>Cost:</label>
+            <span><%= currency_symbol(current_user.default_currency) %><%= printer.cost %></span>
+          </div>
+          <div class="spec-item">
+            <label>Daily Usage:</label>
+            <span><%= printer.daily_usage_hours %> hours</span>
+          </div>
+          <div class="spec-item">
+            <label>Payoff Goal:</label>
+            <span><%= printer.payoff_goal_years %> years</span>
+          </div>
+        </div>
+
+        <div class="printer-status">
+          <% if printer.paid_off? %>
+            <div class="status paid-off">✓ Paid Off</div>
+          <% else %>
+            <div class="status in-progress">
+              <%= printer.months_to_payoff %> months to payoff
+            </div>
+          <% end %>
+        </div>
+
+        <div class="printer-actions">
+          <%= link_to "View", printer, class: "secondary-button" %>
+          <%= link_to "Edit", edit_printer_path(printer), class: "secondary-button" %>
+          <%= link_to "Delete", printer, method: :delete, 
+              confirm: "Are you sure?", 
+              class: "danger-button" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="empty-state">
+    <h2>No printers registered yet</h2>
+    <p>Add your first 3D printer to start calculating printing costs accurately.</p>
+    <%= link_to "Add Your First Printer", new_printer_path, class: "primary-button" %>
+  </div>
+<% end %>
+
+<style>
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.actions-bar {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.printers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .printers-grid {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .printers-grid {
+    padding: 0 2rem;
+  }
+}
+
+.printer-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.printer-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.printer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.printer-header h3 {
+  margin: 0;
+  color: #c8102e;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.manufacturer-badge {
+  background: #9caf88;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.printer-specs {
+  margin-bottom: 1.5rem;
+}
+
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.spec-item:last-child {
+  border-bottom: none;
+}
+
+.spec-item label {
+  font-weight: 500;
+  color: #666;
+}
+
+.spec-item span {
+  font-weight: 600;
+  color: #333;
+}
+
+.printer-status {
+  margin-bottom: 1.5rem;
+}
+
+.status {
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.status.paid-off {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status.in-progress {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
+.printer-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.empty-state h2 {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.primary-button:hover {
+  background: linear-gradient(135deg, #a80e26 0%, #b85a1a 100%);
+  text-decoration: none;
+  color: white;
+}
+
+.secondary-button {
+  background: transparent;
+  color: #666;
+  border: 2px solid #ddd;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.secondary-button:hover {
+  background-color: #f8f9fa;
+  border-color: #ccc;
+  text-decoration: none;
+  color: #555;
+}
+
+.danger-button {
+  background: transparent;
+  color: #dc3545;
+  border: 2px solid #dc3545;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.danger-button:hover {
+  background-color: #dc3545;
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .printers-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .printer-card {
+    padding: 1.5rem;
+  }
+  
+  .printer-actions {
+    flex-direction: column;
+  }
+}
+</style>
