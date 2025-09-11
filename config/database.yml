@@ -81,18 +81,20 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: print_calc_production
-    username: print_calc
-    password: <%= ENV["PRINT_CALC_DATABASE_PASSWORD"] %>
+    database: <%= ENV.fetch("POSTGRES_DB") { "pricing_production" } %>
+    username: <%= ENV.fetch("POSTGRES_USER") { "pricing" } %>
+    password: <%= ENV["POSTGRES_PASSWORD"] %>
+    host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
+    port: <%= ENV.fetch("DB_PORT") { "5432" } %>
   cache:
     <<: *primary_production
-    database: print_calc_production_cache
+    database: pricing_production_cache
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    database: print_calc_production_queue
+    database: pricing_production_queue
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    database: print_calc_production_cable
+    database: pricing_production_cable
     migrations_paths: db/cable_migrate
