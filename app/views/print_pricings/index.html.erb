@@ -1,0 +1,135 @@
+<div class="hero-section" style="text-align: center; margin-bottom: 3rem;">
+  <h1>My 3D Print Pricings</h1>
+  <p class="hero-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem;">
+    Manage your 3D printing cost calculations
+  </p>
+  <%= link_to "Create New Pricing", new_print_pricing_path, class: "button", style: "font-size: 1.1rem; padding: 1rem 2rem;" %>
+</div>
+
+<% if @print_pricings.any? %>
+  <div class="stats-row" style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+    <div class="stat-card" style="flex: 1; min-width: 200px; background: linear-gradient(135deg, var(--moab-sage) 0%, var(--accent) 100%); color: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
+      <div style="font-size: 2rem; font-weight: bold;"><%= @print_pricings.count %></div>
+      <div>Total Calculations</div>
+    </div>
+    <div class="stat-card" style="flex: 1; min-width: 200px; background: linear-gradient(135deg, var(--secondary) 0%, var(--moab-terracotta) 100%); color: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
+      <div style="font-size: 2rem; font-weight: bold;">
+        <%= @print_pricings.sum { |p| p.total_printing_time_minutes } / 60 %>h
+      </div>
+      <div>Total Print Time</div>
+    </div>
+  </div>
+
+  <div class="table-container" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px var(--shadow);">
+    <table style="margin: 0;">
+      <thead style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);">
+        <tr>
+          <th style="padding: 1.2rem;">Job Name</th>
+          <th style="padding: 1.2rem;">Currency</th>
+          <th style="padding: 1.2rem;">Print Time</th>
+          <th style="padding: 1.2rem;">Final Price</th>
+          <th style="padding: 1.2rem;">Created</th>
+          <th style="padding: 1.2rem;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @print_pricings.each_with_index do |pricing, index| %>
+          <tr style="<%= 'background: rgba(200, 16, 46, 0.02);' if index.even? %>">
+            <td style="padding: 1rem;">
+              <%= link_to pricing.job_name, pricing, 
+                  style: "color: var(--primary); font-weight: 600; text-decoration: none;" %>
+            </td>
+            <td style="padding: 1rem;">
+              <span style="background: var(--moab-cream); padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 600;">
+                <%= pricing.default_currency %>
+              </span>
+            </td>
+            <td style="padding: 1rem;">
+              <span style="color: var(--text-secondary);">
+                <%= pricing.printing_time_hours %>h <%= pricing.printing_time_minutes %>m
+              </span>
+            </td>
+            <td style="padding: 1rem; white-space: nowrap;">
+              <span style="background: linear-gradient(135deg, var(--accent) 0%, var(--moab-sage) 100%); color: white; padding: 0.4rem 0.8rem; border-radius: 8px; font-weight: 600; white-space: nowrap;">
+                <%= pricing.default_currency %> <%= format_currency(pricing.final_price, pricing.default_currency) %>
+              </span>
+            </td>
+            <td style="padding: 1rem; color: var(--text-muted);">
+              <%= pricing.created_at.strftime("%b %d, %Y") %>
+            </td>
+            <td style="padding: 1rem;">
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <%= link_to "View", pricing, 
+                    class: "button button-small", 
+                    style: "padding: 0.4rem 0.8rem;" %>
+                <%= link_to "Edit", edit_print_pricing_path(pricing), 
+                    class: "button button-small button-outline",
+                    style: "padding: 0.4rem 0.8rem;" %>
+                <%= link_to "Delete", pricing, method: :delete,
+                    class: "button button-small button-clear",
+                    style: "padding: 0.4rem 0.8rem;",
+                    data: { 
+                      confirm: "Are you sure you want to delete '#{pricing.job_name}'?",
+                      turbo_method: :delete
+                    } %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="empty-state" style="text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, #f8f9fa 0%, white 100%); border-radius: 16px; margin-top: 2rem;">
+    <h3 style="color: var(--secondary); margin-bottom: 1rem;">No pricing calculations yet</h3>
+    <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+      Create your first 3D print pricing calculation to get started!
+    </p>
+    <%= link_to "Create New Pricing", new_print_pricing_path, 
+        class: "button", 
+        style: "font-size: 1.1rem; padding: 1rem 2rem;" %>
+  </div>
+<% end %>
+
+<style>
+.hero-section h1 {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 3rem;
+  font-weight: 800;
+  text-shadow: none;
+}
+
+.stat-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+  .stats-row {
+    flex-direction: column;
+  }
+  
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  
+  .empty-state {
+    padding: 2rem 1rem;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  table {
+    min-width: 800px;
+  }
+}
+</style>

@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  name: Test Printer 1
+  manufacturer: Prusa
+  power_consumption: 200.0
+  cost: 500.0
+  payoff_goal_years: 3
+  daily_usage_hours: 8
+  repair_cost_percentage: 5.0
+  date_added: 2025-09-08 13:19:42
+
+two:
+  user: two
+  name: Test Printer 2
+  manufacturer: Bambu Lab
+  power_consumption: 250.0
+  cost: 800.0
+  payoff_goal_years: 2
+  daily_usage_hours: 6
+  repair_cost_percentage: 3.0
+  date_added: 2025-09-08 13:19:42

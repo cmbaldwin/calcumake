@@ -1,0 +1,133 @@
+require "test_helper"
+
+class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
+  def setup
+    @user = users(:one)
+    @print_pricing = print_pricings(:one)
+    sign_in @user
+  end
+
+  test "should redirect to login when not authenticated" do
+    sign_out @user
+    get print_pricings_url
+    assert_redirected_to new_user_session_url
+  end
+
+  test "should get index" do
+    get print_pricings_url
+    assert_response :success
+    assert_select "h1", /My 3D Print Pricings/
+  end
+
+  test "should get new" do
+    get new_print_pricing_url
+    assert_response :success
+  end
+
+  test "should create print_pricing" do
+    assert_difference("PrintPricing.count") do
+      post print_pricings_url, params: { 
+        print_pricing: { 
+          job_name: "New Test Job",
+          currency: "EUR",
+          printing_time_hours: 3,
+          printing_time_minutes: 45,
+          filament_weight: 75.0,
+          filament_type: "ABS",
+          spool_price: 30.0,
+          spool_weight: 1000.0,
+          markup_percentage: 25.0
+        }
+      }
+    end
+
+    assert_redirected_to print_pricing_url(PrintPricing.last)
+  end
+
+  test "should not create print_pricing with invalid params" do
+    assert_no_difference("PrintPricing.count") do
+      post print_pricings_url, params: { 
+        print_pricing: { 
+          job_name: "",
+          currency: "",
+          filament_type: ""
+        }
+      }
+    end
+
+    assert_response :unprocessable_entity
+  end
+
+  test "should show print_pricing" do
+    get print_pricing_url(@print_pricing)
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get edit_print_pricing_url(@print_pricing)
+    assert_response :success
+  end
+
+  test "should update print_pricing" do
+    patch print_pricing_url(@print_pricing), params: { 
+      print_pricing: { 
+        job_name: "Updated Job Name",
+        currency: "GBP"
+      }
+    }
+    assert_redirected_to print_pricing_url(@print_pricing)
+  end
+
+  test "should not update print_pricing with invalid params" do
+    patch print_pricing_url(@print_pricing), params: { 
+      print_pricing: { 
+        job_name: "",
+        filament_weight: -1
+      }
+    }
+    assert_response :unprocessable_entity
+  end
+
+  test "should destroy print_pricing" do
+    assert_difference("PrintPricing.count", -1) do
+      delete print_pricing_url(@print_pricing)
+    end
+
+    assert_redirected_to print_pricings_url
+  end
+
+  test "should not access other user's print_pricing" do
+    other_user = User.create!(
+      email: "other@example.com", 
+      password: "password123",
+      default_currency: "USD",
+      default_energy_cost_per_kwh: 0.12
+    )
+    other_printer = other_user.printers.create!(
+      name: "Other Printer",
+      manufacturer: "Prusa",
+      power_consumption: 200,
+      cost: 500,
+      payoff_goal_years: 3,
+      daily_usage_hours: 8,
+      repair_cost_percentage: 5.0
+    )
+    other_pricing = other_user.print_pricings.create!(
+      job_name: "Other User's Print",
+      printer: other_printer,
+      printing_time_hours: 1,
+      printing_time_minutes: 0,
+      filament_weight: 30.0,
+      filament_type: "PLA",
+      spool_price: 20.0,
+      spool_weight: 1000.0,
+      markup_percentage: 15.0
+    )
+    
+    # Should return 404 because current_user.print_pricings.find won't find it
+    get print_pricing_url(other_pricing)
+    assert_response :not_found
+  end
+end

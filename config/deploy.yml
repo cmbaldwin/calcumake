@@ -1,0 +1,117 @@
+# Name of your application. Used to uniquely configure containers.
+service: moab
+
+# Name of the container image.
+image: moab/pricing
+
+# SSH
+ssh:
+  user: root
+
+# Deploy to these servers.
+servers:
+  web:
+    - 0.0.0.0
+  job:
+    hosts:
+      - 0.0.0.0
+    cmd: bin/rails solid_queue:start
+
+# Enable SSL auto certification via Let's Encrypt and allow for multiple apps on a single web server.
+# Remove this section when using multiple web servers and ensure you terminate SSL at your load balancer.
+#
+# Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
+proxy:
+  ssl:
+    certificate_pem: <%= ENV['CLOUDFLARE_SSL_CERT_PEM'] %>
+    private_key_pem: <%= ENV['CLOUDFLARE_SSL_KEY_PEM'] %>
+  host: pricing.moab.jp
+  forward_headers: true
+
+# Registry credentials for AWS.
+registry:
+  username: AWS
+  password:
+    - AWS_ECR_PASSWORD
+  server: 000000000000.dkr.ecr.ap-southeast-2.amazonaws.com
+
+# Inject ENV variables into containers (secrets come from .kamal/secrets).
+env:
+  secret:
+    - RAILS_MASTER_KEY
+    - POSTGRES_PASSWORD
+    - CLOUDFLARE_SSL_CERT_PEM
+    - CLOUDFLARE_SSL_KEY_PEM
+  clear:
+    # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
+    # When you start using multiple servers, you should split out job processing to a dedicated machine.
+    SOLID_QUEUE_IN_PUMA: true
+
+    # Set number of processes dedicated to Solid Queue (default: 1)
+    # JOB_CONCURRENCY: 3
+
+    # Set number of cores available to the application on each server (default: 1).
+    # WEB_CONCURRENCY: 2
+
+    # Database configuration
+    DB_HOST: pricing-db
+    DB_PORT: 5432
+    POSTGRES_USER: pricing
+    POSTGRES_DB: pricing_production
+
+    # Log everything from Rails
+    # RAILS_LOG_LEVEL: debug
+
+# Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
+# "bin/kamal logs -r job" will tail logs from the first server in the job section.
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"
+
+# Use a persistent storage volume for sqlite database files and local Active Storage files.
+# Recommended to change this to a mounted volume path that is backed up off server.
+volumes:
+  - "pricing_storage:/rails/storage"
+
+# Bridge fingerprinted assets, like JS and CSS, between versions to avoid
+# hitting 404 on in-flight requests. Combines all files from new and old
+# version inside the asset_path.
+asset_path: /rails/public/assets
+
+# Configure the image builder.
+builder:
+  arch: amd64
+  # remote: ssh://deepslate-deploy
+
+# # Build image via remote server (useful for faster amd64 builds on arm64 computers)
+# remote: ssh://docker@docker-builder-server
+#
+# # Pass arguments and secrets to the Docker build process
+# args:
+#   RUBY_VERSION: 3.4.5
+# secrets:
+#   - GITHUB_TOKEN
+#   - RAILS_MASTER_KEY
+
+# Use a different ssh user than root
+# ssh:
+#   user: app
+
+# Use accessory services (secrets come from .kamal/secrets).
+accessories:
+  db:
+    image: postgres:16
+    host: 0.0.0.0
+    port: "127.0.0.1:5432:5432"
+    env:
+      clear:
+        POSTGRES_DB: pricing_production
+        POSTGRES_USER: pricing
+      secret:
+        - POSTGRES_PASSWORD
+    volumes:
+      - pricing_postgres_data:/var/lib/postgresql/data
+    files:
+      - db/production_setup.sql:/docker-entrypoint-initdb.d/setup.sql

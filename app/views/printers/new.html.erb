@@ -1,0 +1,282 @@
+<div class="page-header">
+  <h1>Add New Printer</h1>
+  <p>Register your 3D printer specifications for accurate cost calculations</p>
+</div>
+
+<%= form_with model: @printer, local: true, html: { class: "printer-form" } do |form| %>
+  <% if @printer.errors.any? %>
+    <div class="error-messages">
+      <h3><%= pluralize(@printer.errors.count, "error") %> prohibited this printer from being saved:</h3>
+      <ul>
+        <% @printer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-grid">
+    <!-- Basic Information -->
+    <div class="form-card">
+      <h3>Basic Information</h3>
+      <div class="field-group">
+        <label>Printer Name</label>
+        <%= form.text_field :name, placeholder: "e.g., My Prusa i3 MK3S+" %>
+      </div>
+      <div class="field-group">
+        <label>Manufacturer</label>
+        <%= form.select :manufacturer, 
+            options_for_select(Printer::MANUFACTURERS.map { |m| [m, m] }, @printer.manufacturer),
+            { prompt: "Select manufacturer" } %>
+      </div>
+    </div>
+
+    <!-- Technical Specifications -->
+    <div class="form-card">
+      <h3>Technical Specifications</h3>
+      <div class="field-group">
+        <label>Power Consumption (Watts)</label>
+        <%= form.number_field :power_consumption, step: 1, placeholder: "200" %>
+        <small>Typical range: 50W (small printers) to 500W (large printers)</small>
+      </div>
+    </div>
+
+    <!-- Financial Information -->
+    <div class="form-card">
+      <h3>Financial Information</h3>
+      <div class="field-group currency-field">
+        <label>Printer Cost</label>
+        <div class="currency-input">
+          <span class="currency-symbol"><%= currency_symbol(current_user.default_currency) %></span>
+          <%= form.number_field :cost, step: 0.01, placeholder: "500.00" %>
+        </div>
+      </div>
+      <div class="field-group">
+        <label>Payoff Goal (Years)</label>
+        <%= form.number_field :payoff_goal_years, min: 1, step: 1, placeholder: "3" %>
+        <small>How many years do you want to recoup the printer cost?</small>
+      </div>
+    </div>
+
+    <!-- Usage Information -->
+    <div class="form-card">
+      <h3>Usage Information</h3>
+      <div class="field-group">
+        <label>Daily Usage (Hours)</label>
+        <%= form.number_field :daily_usage_hours, min: 1, step: 1, placeholder: "8" %>
+        <small>Average hours per day you plan to use this printer</small>
+      </div>
+      <div class="field-group">
+        <label>Repair Cost Factor (%)</label>
+        <%= form.number_field :repair_cost_percentage, step: 0.1, placeholder: "5.0" %>
+        <small>Additional cost factor for maintenance and repairs</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit "Add Printer", class: "primary-button" %>
+    <%= link_to "Cancel", printers_path, class: "secondary-button" %>
+  </div>
+<% end %>
+
+<style>
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.printer-form {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.form-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.form-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.form-card h3 {
+  margin: 0 0 1.5rem 0;
+  color: #c8102e;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-bottom: 2px solid #9caf88;
+  padding-bottom: 0.5rem;
+}
+
+.field-group {
+  margin-bottom: 1.5rem;
+}
+
+.field-group:last-child {
+  margin-bottom: 0;
+}
+
+.field-group label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.field-group input, .field-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.field-group input:focus, .field-group select:focus {
+  border-color: #c8102e;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
+}
+
+.field-group small {
+  display: block;
+  color: #666;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+.currency-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  transition: border-color 0.2s ease;
+}
+
+.currency-input:focus-within {
+  border-color: #c8102e;
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
+}
+
+.currency-symbol {
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-right: 1px solid #ddd;
+  font-weight: 600;
+  color: #666;
+  min-width: 60px;
+  text-align: center;
+}
+
+.currency-input input {
+  border: none;
+  border-radius: 0 8px 8px 0;
+  flex: 1;
+}
+
+.currency-input input:focus {
+  box-shadow: none;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px dashed #9caf88;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-right: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.primary-button:hover {
+  background: linear-gradient(135deg, #a80e26 0%, #b85a1a 100%);
+  text-decoration: none;
+  color: white;
+}
+
+.secondary-button {
+  background: transparent;
+  color: #666;
+  border: 2px solid #ddd;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.secondary-button:hover {
+  background-color: #f8f9fa;
+  border-color: #ccc;
+  text-decoration: none;
+  color: #555;
+}
+
+.error-messages {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  color: #721c24;
+}
+
+.error-messages h3 {
+  margin-top: 0;
+  color: #721c24;
+}
+
+.error-messages ul {
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .primary-button, .secondary-button {
+    width: 100%;
+    margin: 0;
+  }
+}
+</style>
