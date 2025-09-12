@@ -2526,3 +2526,81 @@ Completed 200 OK in 58ms (Views: 17.5ms | ActiveRecord: 1.5ms (4 queries, 0 cach
 
   [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+Started GET "/" for ::1 at 2025-09-11 20:38:49 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.5ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 33.8ms | GC: 7.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 45.3ms | GC: 8.5ms)
+Completed 200 OK in 149ms (Views: 45.9ms | ActiveRecord: 37.8ms (4 queries, 0 cached) | GC: 8.5ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-11 20:38:59 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 22.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 26.7ms | GC: 0.5ms)
+Completed 200 OK in 68ms (Views: 26.0ms | ActiveRecord: 1.6ms (4 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/print_pricings/new" for ::1 at 2025-09-11 20:39:01 +0900
+Processing by PrintPricingsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/new.html.erb within layouts/application
+  [1m[36mPrinter Load (1.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 /*action='new',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/new.html.erb:39
+  Rendered print_pricings/new.html.erb within layouts/application (Duration: 40.8ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 41.8ms | GC: 0.5ms)
+Completed 200 OK in 88ms (Views: 37.4ms | ActiveRecord: 5.1ms (2 queries, 0 cached) | GC: 0.5ms)
+
+
+Started POST "/print_pricings" for ::1 at 2025-09-11 20:39:43 +0900
+Processing by PrintPricingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "print_pricing" => {"job_name" => "10x Oreo Fidgets", "printer_id" => "1", "printing_time_hours" => "7", "printing_time_minutes" => "10", "filament_weight" => "170", "filament_type" => "PLA", "spool_price" => "3000", "spool_weight" => "1000", "markup_percentage" => "20", "prep_time_minutes" => "15", "prep_cost_per_hour" => "1500", "postprocessing_time_minutes" => "15", "postprocessing_cost_per_hour" => "1500", "other_costs" => "", "vat_percentage" => "10"}, "commit" => "Calculate & Save"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='PrintCalc',controller='print_pricings'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:27:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrinter Load (2.8ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = 1 LIMIT 1 /*action='create',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:27:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrintPricing Create (1.3ms)[0m  [1m[32mINSERT INTO "print_pricings" ("user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES (1, '10x Oreo Fidgets', 7, 10, 170.0, 'PLA', 3000.0, 1000.0, 20.0, 15, 1500.0, 15, 1500.0, NULL, 10.0, 1784.46118721461187214611872146118719, '2025-09-11 11:39:43.592756', '2025-09-11 11:39:43.592756', 1) RETURNING "id" /*action='create',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:19:in 'PrintPricingsController#create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*action='create',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:19:in 'PrintPricingsController#create'
+Redirected to http://localhost:3000/print_pricings/5
+Completed 302 Found in 62ms (ActiveRecord: 6.5ms (3 queries, 0 cached) | GC: 8.5ms)
+
+
+Started GET "/print_pricings/5" for ::1 at 2025-09-11 20:39:43 +0900
+Processing by PrintPricingsController#show as TURBO_STREAM
+  Parameters: {"id" => "5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:45:in 'PrintPricingsController#set_print_pricing'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/show.html.erb within layouts/application
+  [1m[36mPrinter Load (0.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = 1 LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:27:in 'PrintPricing#total_electricity_cost'
+  Rendered print_pricings/show.html.erb within layouts/application (Duration: 13.6ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | GC: 0.3ms)
+Completed 200 OK in 41ms (Views: 16.3ms | ActiveRecord: 1.1ms (3 queries, 0 cached) | GC: 5.2ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
