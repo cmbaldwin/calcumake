@@ -74,6 +74,13 @@ Multi-currency support via `CurrencyHelper`:
 - **Docker** containerization support
 - **Thruster** for production HTTP acceleration
 
+### Kamal Hooks
+Kamal automatically executes hooks during deployment stages. To customize deployment behavior:
+- Create bash scripts in `.kamal/hooks/` directory (no file extensions)
+- Hook files are named after deployment stages: `pre-build`, `post-build`, `pre-deploy`, `post-deploy`
+- **Important**: Do NOT add `hooks:` section to `config/deploy.yml` - Kamal automatically finds and executes hook files
+- Example: `.kamal/hooks/pre-build` runs before Docker image build
+
 ## Testing
 Uses Rails default testing framework (Minitest) with:
 - Model tests for business logic validation
