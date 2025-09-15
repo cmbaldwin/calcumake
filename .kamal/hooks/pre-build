@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Run tests first - ensure they pass before proceeding
+echo "Running tests..."
+bin/rails test
+
+# Only proceed if tests passed
+if [ $? -eq 0 ]; then
+    echo "Tests passed. Checking for uncommitted changes..."
+    
+    # Check if there are any changes to commit
+    if ! git diff-index --quiet HEAD --; then
+        echo "Found uncommitted changes. Adding and committing..."
+        
+        # Stage all files
+        git add .
+        
+        # Create commit with Claude attribution
+        git commit -m "Automated commit before deploy
+
+🤖 Generated with Claude Code
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
+        
+        # Push to current branch
+        echo "Pushing changes..."
+        git push origin HEAD
+        
+        echo "Changes committed and pushed successfully."
+    else
+        echo "No uncommitted changes found."
+    fi
+else
+    echo "Tests failed. Aborting deployment."
+    exit 1
+fi

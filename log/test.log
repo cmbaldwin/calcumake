@@ -29278,3 +29278,1455 @@ Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.7ms (4 queries, 0 cache
   [1m[36mTRANSACTION (1.3ms)[0m  [1m[31mROLLBACK[0m
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Load (4.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Load (4.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Load (3.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Load (1.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTruncate Tables (7.4ms)[0m  [1m[35mTRUNCATE TABLE "print_pricings", "printers", "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTruncate Tables (8.5ms)[0m  [1m[35mTRUNCATE TABLE "print_pricings", "printers", "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTruncate Tables (9.2ms)[0m  [1m[35mTRUNCATE TABLE "print_pricings", "printers", "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTruncate Tables (8.8ms)[0m  [1m[35mTRUNCATE TABLE "print_pricings", "printers", "users"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (6.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTruncate Tables (6.6ms)[0m  [1m[35mTRUNCATE TABLE "print_pricings", "printers", "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTruncate Tables (9.4ms)[0m  [1m[35mTRUNCATE TABLE "print_pricings", "printers", "users"[0m
+  [1m[36mTruncate Tables (10.0ms)[0m  [1m[35mTRUNCATE TABLE "print_pricings", "printers", "users"[0m
+  [1m[36mTruncate Tables (8.3ms)[0m  [1m[35mTRUNCATE TABLE "print_pricings", "printers", "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTruncate Tables (5.4ms)[0m  [1m[35mTRUNCATE TABLE "print_pricings", "printers", "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTruncate Tables (4.5ms)[0m  [1m[35mTRUNCATE TABLE "print_pricings", "printers", "users"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mFixtures Load (9.8ms)[0m  [1m[31mDELETE FROM "print_pricings";
+DELETE FROM "printers";
+DELETE FROM "users";
+INSERT INTO "print_pricings" ("id", "user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES (980190962, 980190962, 'Test Print 1', 2, 30, 50.0, 'PLA', 25.0, 1000.0, 20.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 10.0, DEFAULT, '2025-09-15 01:32:57.364560', '2025-09-15 01:32:57.364560', 980190962), (298486374, 298486374, 'Test Print 2', 1, 45, 35.0, 'PETG', 3000.0, 1000.0, 15.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 8.0, DEFAULT, '2025-09-15 01:32:57.364560', '2025-09-15 01:32:57.364560', 298486374);
+INSERT INTO "printers" ("id", "user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES (980190962, 980190962, 'Test Printer 1', 'Prusa', 200.0, 500.0, 3, '2025-09-08 13:19:42', '2025-09-15 01:32:57.399967', '2025-09-15 01:32:57.399967', 8, 5.0), (298486374, 298486374, 'Test Printer 2', 'Bambu Lab', 250.0, 800.0, 2, '2025-09-08 13:19:42', '2025-09-15 01:32:57.399967', '2025-09-15 01:32:57.399967', 6, 3.0);
+INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES (980190962, 'user1@example.com', '$2a$04$..2PayRzWM57bDelhkS.0etNwXlz5QrzaCFrVh93YanBEB3xWH2Gi', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.405832', '2025-09-15 01:32:57.405832', 'USD', 0.12), (298486374, 'user2@example.com', '$2a$04$AeYHywRy74E8wvXOMgGxF.L1yULK4I0kZMlPF91A/rcOhg29HWfmO', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.405832', '2025-09-15 01:32:57.405832', 'EUR', 0.1)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mFixtures Load (11.0ms)[0m  [1m[31mDELETE FROM "print_pricings";
+DELETE FROM "printers";
+DELETE FROM "users";
+INSERT INTO "print_pricings" ("id", "user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES (980190962, 980190962, 'Test Print 1', 2, 30, 50.0, 'PLA', 25.0, 1000.0, 20.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 10.0, DEFAULT, '2025-09-15 01:32:57.363965', '2025-09-15 01:32:57.363965', 980190962), (298486374, 298486374, 'Test Print 2', 1, 45, 35.0, 'PETG', 3000.0, 1000.0, 15.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 8.0, DEFAULT, '2025-09-15 01:32:57.363965', '2025-09-15 01:32:57.363965', 298486374);
+INSERT INTO "printers" ("id", "user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES (980190962, 980190962, 'Test Printer 1', 'Prusa', 200.0, 500.0, 3, '2025-09-08 13:19:42', '2025-09-15 01:32:57.401984', '2025-09-15 01:32:57.401984', 8, 5.0), (298486374, 298486374, 'Test Printer 2', 'Bambu Lab', 250.0, 800.0, 2, '2025-09-08 13:19:42', '2025-09-15 01:32:57.401984', '2025-09-15 01:32:57.401984', 6, 3.0);
+INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES (980190962, 'user1@example.com', '$2a$04$XX5GIwWxhCO3kWXG5r3o0OXvtzPiLTQL3BDlE2fbNvueI1DkIAj4i', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.408219', '2025-09-15 01:32:57.408219', 'USD', 0.12), (298486374, 'user2@example.com', '$2a$04$6EoSqa/Z/p5I/cmvHZ92OeWMSsXyqyJmRDeEjFJ8sDE7MnEEOHrPK', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.408219', '2025-09-15 01:32:57.408219', 'EUR', 0.1)[0m
+  [1m[36mFixtures Load (10.0ms)[0m  [1m[31mDELETE FROM "print_pricings";
+DELETE FROM "printers";
+DELETE FROM "users";
+INSERT INTO "print_pricings" ("id", "user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES (980190962, 980190962, 'Test Print 1', 2, 30, 50.0, 'PLA', 25.0, 1000.0, 20.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 10.0, DEFAULT, '2025-09-15 01:32:57.366783', '2025-09-15 01:32:57.366783', 980190962), (298486374, 298486374, 'Test Print 2', 1, 45, 35.0, 'PETG', 3000.0, 1000.0, 15.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 8.0, DEFAULT, '2025-09-15 01:32:57.366783', '2025-09-15 01:32:57.366783', 298486374);
+INSERT INTO "printers" ("id", "user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES (980190962, 980190962, 'Test Printer 1', 'Prusa', 200.0, 500.0, 3, '2025-09-08 13:19:42', '2025-09-15 01:32:57.397864', '2025-09-15 01:32:57.397864', 8, 5.0), (298486374, 298486374, 'Test Printer 2', 'Bambu Lab', 250.0, 800.0, 2, '2025-09-08 13:19:42', '2025-09-15 01:32:57.397864', '2025-09-15 01:32:57.397864', 6, 3.0);
+INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES (980190962, 'user1@example.com', '$2a$04$RcYPf7PmNedSonorvJQNxufJXYI5P4HnPcoQHlIHsr0CejoE0eKP6', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.402485', '2025-09-15 01:32:57.402485', 'USD', 0.12), (298486374, 'user2@example.com', '$2a$04$sqD1YH57k/ktT/FLTnbNkOVpK1qimqWekO4/ps6uflM6Np4zCinra', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.402485', '2025-09-15 01:32:57.402485', 'EUR', 0.1)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mFixtures Load (12.0ms)[0m  [1m[31mDELETE FROM "print_pricings";
+DELETE FROM "printers";
+DELETE FROM "users";
+INSERT INTO "print_pricings" ("id", "user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES (980190962, 980190962, 'Test Print 1', 2, 30, 50.0, 'PLA', 25.0, 1000.0, 20.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 10.0, DEFAULT, '2025-09-15 01:32:57.360195', '2025-09-15 01:32:57.360195', 980190962), (298486374, 298486374, 'Test Print 2', 1, 45, 35.0, 'PETG', 3000.0, 1000.0, 15.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 8.0, DEFAULT, '2025-09-15 01:32:57.360195', '2025-09-15 01:32:57.360195', 298486374);
+INSERT INTO "printers" ("id", "user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES (980190962, 980190962, 'Test Printer 1', 'Prusa', 200.0, 500.0, 3, '2025-09-08 13:19:42', '2025-09-15 01:32:57.396323', '2025-09-15 01:32:57.396323', 8, 5.0), (298486374, 298486374, 'Test Printer 2', 'Bambu Lab', 250.0, 800.0, 2, '2025-09-08 13:19:42', '2025-09-15 01:32:57.396323', '2025-09-15 01:32:57.396323', 6, 3.0);
+INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES (980190962, 'user1@example.com', '$2a$04$2FR9WOFHu9Ybcr7YfIGt7.onp2GRAIXB6olS32EgmaVQaul4DYxRK', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.401143', '2025-09-15 01:32:57.401143', 'USD', 0.12), (298486374, 'user2@example.com', '$2a$04$VbglT96R54xbY0L1v7gQhuntbkEVNJJd3IMHOmq2CEJk6475eQinG', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.401143', '2025-09-15 01:32:57.401143', 'EUR', 0.1)[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (3.6ms)[0m  [1m[31mDELETE FROM "print_pricings";
+DELETE FROM "printers";
+DELETE FROM "users";
+INSERT INTO "print_pricings" ("id", "user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES (980190962, 980190962, 'Test Print 1', 2, 30, 50.0, 'PLA', 25.0, 1000.0, 20.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 10.0, DEFAULT, '2025-09-15 01:32:57.371903', '2025-09-15 01:32:57.371903', 980190962), (298486374, 298486374, 'Test Print 2', 1, 45, 35.0, 'PETG', 3000.0, 1000.0, 15.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 8.0, DEFAULT, '2025-09-15 01:32:57.371903', '2025-09-15 01:32:57.371903', 298486374);
+INSERT INTO "printers" ("id", "user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES (980190962, 980190962, 'Test Printer 1', 'Prusa', 200.0, 500.0, 3, '2025-09-08 13:19:42', '2025-09-15 01:32:57.413387', '2025-09-15 01:32:57.413387', 8, 5.0), (298486374, 298486374, 'Test Printer 2', 'Bambu Lab', 250.0, 800.0, 2, '2025-09-08 13:19:42', '2025-09-15 01:32:57.413387', '2025-09-15 01:32:57.413387', 6, 3.0);
+INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES (980190962, 'user1@example.com', '$2a$04$W4olO8y8zLTFMNl1ZSIT7.FCe7TP3aIfOF9DLr0TGim6LM1XFx.ja', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.418746', '2025-09-15 01:32:57.418746', 'USD', 0.12), (298486374, 'user2@example.com', '$2a$04$vWgMiYFkrtzArl3RE9pRwObaQ1im.V6egHVYkfURAXvOShKYFv.RK', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.418746', '2025-09-15 01:32:57.418746', 'EUR', 0.1)[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFixtures Load (3.5ms)[0m  [1m[31mDELETE FROM "print_pricings";
+DELETE FROM "printers";
+DELETE FROM "users";
+INSERT INTO "print_pricings" ("id", "user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES (980190962, 980190962, 'Test Print 1', 2, 30, 50.0, 'PLA', 25.0, 1000.0, 20.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 10.0, DEFAULT, '2025-09-15 01:32:57.372277', '2025-09-15 01:32:57.372277', 980190962), (298486374, 298486374, 'Test Print 2', 1, 45, 35.0, 'PETG', 3000.0, 1000.0, 15.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 8.0, DEFAULT, '2025-09-15 01:32:57.372277', '2025-09-15 01:32:57.372277', 298486374);
+INSERT INTO "printers" ("id", "user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES (980190962, 980190962, 'Test Printer 1', 'Prusa', 200.0, 500.0, 3, '2025-09-08 13:19:42', '2025-09-15 01:32:57.414276', '2025-09-15 01:32:57.414276', 8, 5.0), (298486374, 298486374, 'Test Printer 2', 'Bambu Lab', 250.0, 800.0, 2, '2025-09-08 13:19:42', '2025-09-15 01:32:57.414276', '2025-09-15 01:32:57.414276', 6, 3.0);
+INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES (980190962, 'user1@example.com', '$2a$04$4y/RMQMlXkvk37KvLSF7IuDv/bBJHaOUrxl7wDtvjHDT7lx0AlCNq', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.418538', '2025-09-15 01:32:57.418538', 'USD', 0.12), (298486374, 'user2@example.com', '$2a$04$rG5jXmBtxi2FMzYDuAcBQO272da7vH7I.Xe0JpIaFiMD.YmEPG6HK', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.418538', '2025-09-15 01:32:57.418538', 'EUR', 0.1)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mFixtures Load (5.3ms)[0m  [1m[31mDELETE FROM "print_pricings";
+DELETE FROM "printers";
+DELETE FROM "users";
+INSERT INTO "print_pricings" ("id", "user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES (980190962, 980190962, 'Test Print 1', 2, 30, 50.0, 'PLA', 25.0, 1000.0, 20.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 10.0, DEFAULT, '2025-09-15 01:32:57.374367', '2025-09-15 01:32:57.374367', 980190962), (298486374, 298486374, 'Test Print 2', 1, 45, 35.0, 'PETG', 3000.0, 1000.0, 15.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 8.0, DEFAULT, '2025-09-15 01:32:57.374367', '2025-09-15 01:32:57.374367', 298486374);
+INSERT INTO "printers" ("id", "user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES (980190962, 980190962, 'Test Printer 1', 'Prusa', 200.0, 500.0, 3, '2025-09-08 13:19:42', '2025-09-15 01:32:57.413174', '2025-09-15 01:32:57.413174', 8, 5.0), (298486374, 298486374, 'Test Printer 2', 'Bambu Lab', 250.0, 800.0, 2, '2025-09-08 13:19:42', '2025-09-15 01:32:57.413174', '2025-09-15 01:32:57.413174', 6, 3.0);
+INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES (980190962, 'user1@example.com', '$2a$04$I9lwg1uvObEPFyau/ZGSZOkTseJ5gJCSh6CP3CO0cmKJwM1ydXq7S', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.418235', '2025-09-15 01:32:57.418235', 'USD', 0.12), (298486374, 'user2@example.com', '$2a$04$qi7uLBD06hYH9wASR1cH5.Y50GsgHC.4MCcA.iAt5R7WWVIL3KfVa', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.418235', '2025-09-15 01:32:57.418235', 'EUR', 0.1)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mFixtures Load (1.4ms)[0m  [1m[31mDELETE FROM "print_pricings";
+DELETE FROM "printers";
+DELETE FROM "users";
+INSERT INTO "print_pricings" ("id", "user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES (980190962, 980190962, 'Test Print 1', 2, 30, 50.0, 'PLA', 25.0, 1000.0, 20.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 10.0, DEFAULT, '2025-09-15 01:32:57.374664', '2025-09-15 01:32:57.374664', 980190962), (298486374, 298486374, 'Test Print 2', 1, 45, 35.0, 'PETG', 3000.0, 1000.0, 15.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 8.0, DEFAULT, '2025-09-15 01:32:57.374664', '2025-09-15 01:32:57.374664', 298486374);
+INSERT INTO "printers" ("id", "user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES (980190962, 980190962, 'Test Printer 1', 'Prusa', 200.0, 500.0, 3, '2025-09-08 13:19:42', '2025-09-15 01:32:57.423622', '2025-09-15 01:32:57.423622', 8, 5.0), (298486374, 298486374, 'Test Printer 2', 'Bambu Lab', 250.0, 800.0, 2, '2025-09-08 13:19:42', '2025-09-15 01:32:57.423622', '2025-09-15 01:32:57.423622', 6, 3.0);
+INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES (980190962, 'user1@example.com', '$2a$04$YVu2VgaihRFdupgLZD4cAO7tV.USFIG/o3zq6ynai1w7c3yJlBkBS', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.428164', '2025-09-15 01:32:57.428164', 'USD', 0.12), (298486374, 'user2@example.com', '$2a$04$FDcAjaHI43QW.7zBWaJIDO7RGlrn8AwAErNiN0tZ95fA24Wq4NOTK', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.428164', '2025-09-15 01:32:57.428164', 'EUR', 0.1)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mFixtures Load (0.9ms)[0m  [1m[31mDELETE FROM "print_pricings";
+DELETE FROM "printers";
+DELETE FROM "users";
+INSERT INTO "print_pricings" ("id", "user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES (980190962, 980190962, 'Test Print 1', 2, 30, 50.0, 'PLA', 25.0, 1000.0, 20.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 10.0, DEFAULT, '2025-09-15 01:32:57.375480', '2025-09-15 01:32:57.375480', 980190962), (298486374, 298486374, 'Test Print 2', 1, 45, 35.0, 'PETG', 3000.0, 1000.0, 15.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 8.0, DEFAULT, '2025-09-15 01:32:57.375480', '2025-09-15 01:32:57.375480', 298486374);
+INSERT INTO "printers" ("id", "user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES (980190962, 980190962, 'Test Printer 1', 'Prusa', 200.0, 500.0, 3, '2025-09-08 13:19:42', '2025-09-15 01:32:57.429069', '2025-09-15 01:32:57.429069', 8, 5.0), (298486374, 298486374, 'Test Printer 2', 'Bambu Lab', 250.0, 800.0, 2, '2025-09-08 13:19:42', '2025-09-15 01:32:57.429069', '2025-09-15 01:32:57.429069', 6, 3.0);
+INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES (980190962, 'user1@example.com', '$2a$04$6r2Septa0s1Aohbp9Vio6ef1NivpYJV70dolxKunYMCIGNvUbBUeq', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.434488', '2025-09-15 01:32:57.434488', 'USD', 0.12), (298486374, 'user2@example.com', '$2a$04$whPKuaMwWRnk.GmI7Urs3udhc4E1wA3nCELvx0YSF0Unr93DTTXMK', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.434488', '2025-09-15 01:32:57.434488', 'EUR', 0.1)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.1ms)[0m  [1m[35mdo $$
+  declare r record;
+BEGIN
+FOR r IN (
+  SELECT FORMAT(
+    'UPDATE pg_catalog.pg_constraint SET convalidated=false WHERE conname = ''%1$I'' AND connamespace::regnamespace = ''%2$I''::regnamespace; ALTER TABLE %2$I.%3$I VALIDATE CONSTRAINT %1$I;',
+    constraint_name,
+    table_schema,
+    table_name
+  ) AS constraint_check
+  FROM information_schema.table_constraints WHERE constraint_type = 'FOREIGN KEY'
+)
+  LOOP
+    EXECUTE (r.constraint_check);
+  END LOOP;
+END;
+$$;
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mdo $$
+  declare r record;
+BEGIN
+FOR r IN (
+  SELECT FORMAT(
+    'UPDATE pg_catalog.pg_constraint SET convalidated=false WHERE conname = ''%1$I'' AND connamespace::regnamespace = ''%2$I''::regnamespace; ALTER TABLE %2$I.%3$I VALIDATE CONSTRAINT %1$I;',
+    constraint_name,
+    table_schema,
+    table_name
+  ) AS constraint_check
+  FROM information_schema.table_constraints WHERE constraint_type = 'FOREIGN KEY'
+)
+  LOOP
+    EXECUTE (r.constraint_check);
+  END LOOP;
+END;
+$$;
+[0m
+  [1m[35m (18.2ms)[0m  [1m[35mdo $$
+  declare r record;
+BEGIN
+FOR r IN (
+  SELECT FORMAT(
+    'UPDATE pg_catalog.pg_constraint SET convalidated=false WHERE conname = ''%1$I'' AND connamespace::regnamespace = ''%2$I''::regnamespace; ALTER TABLE %2$I.%3$I VALIDATE CONSTRAINT %1$I;',
+    constraint_name,
+    table_schema,
+    table_name
+  ) AS constraint_check
+  FROM information_schema.table_constraints WHERE constraint_type = 'FOREIGN KEY'
+)
+  LOOP
+    EXECUTE (r.constraint_check);
+  END LOOP;
+END;
+$$;
+[0m
+  [1m[35m (6.9ms)[0m  [1m[35mdo $$
+  declare r record;
+BEGIN
+FOR r IN (
+  SELECT FORMAT(
+    'UPDATE pg_catalog.pg_constraint SET convalidated=false WHERE conname = ''%1$I'' AND connamespace::regnamespace = ''%2$I''::regnamespace; ALTER TABLE %2$I.%3$I VALIDATE CONSTRAINT %1$I;',
+    constraint_name,
+    table_schema,
+    table_name
+  ) AS constraint_check
+  FROM information_schema.table_constraints WHERE constraint_type = 'FOREIGN KEY'
+)
+  LOOP
+    EXECUTE (r.constraint_check);
+  END LOOP;
+END;
+$$;
+[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (21.2ms)[0m  [1m[35mdo $$
+  declare r record;
+BEGIN
+FOR r IN (
+  SELECT FORMAT(
+    'UPDATE pg_catalog.pg_constraint SET convalidated=false WHERE conname = ''%1$I'' AND connamespace::regnamespace = ''%2$I''::regnamespace; ALTER TABLE %2$I.%3$I VALIDATE CONSTRAINT %1$I;',
+    constraint_name,
+    table_schema,
+    table_name
+  ) AS constraint_check
+  FROM information_schema.table_constraints WHERE constraint_type = 'FOREIGN KEY'
+)
+  LOOP
+    EXECUTE (r.constraint_check);
+  END LOOP;
+END;
+$$;
+[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "print_pricings" DISABLE TRIGGER ALL;ALTER TABLE "printers" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (20.5ms)[0m  [1m[35mdo $$
+  declare r record;
+BEGIN
+FOR r IN (
+  SELECT FORMAT(
+    'UPDATE pg_catalog.pg_constraint SET convalidated=false WHERE conname = ''%1$I'' AND connamespace::regnamespace = ''%2$I''::regnamespace; ALTER TABLE %2$I.%3$I VALIDATE CONSTRAINT %1$I;',
+    constraint_name,
+    table_schema,
+    table_name
+  ) AS constraint_check
+  FROM information_schema.table_constraints WHERE constraint_type = 'FOREIGN KEY'
+)
+  LOOP
+    EXECUTE (r.constraint_check);
+  END LOOP;
+END;
+$$;
+[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mFixtures Load (1.1ms)[0m  [1m[31mDELETE FROM "print_pricings";
+DELETE FROM "printers";
+DELETE FROM "users";
+INSERT INTO "print_pricings" ("id", "user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES (980190962, 980190962, 'Test Print 1', 2, 30, 50.0, 'PLA', 25.0, 1000.0, 20.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 10.0, DEFAULT, '2025-09-15 01:32:57.380727', '2025-09-15 01:32:57.380727', 980190962), (298486374, 298486374, 'Test Print 2', 1, 45, 35.0, 'PETG', 3000.0, 1000.0, 15.0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 8.0, DEFAULT, '2025-09-15 01:32:57.380727', '2025-09-15 01:32:57.380727', 298486374);
+INSERT INTO "printers" ("id", "user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES (980190962, 980190962, 'Test Printer 1', 'Prusa', 200.0, 500.0, 3, '2025-09-08 13:19:42', '2025-09-15 01:32:57.441703', '2025-09-15 01:32:57.441703', 8, 5.0), (298486374, 298486374, 'Test Printer 2', 'Bambu Lab', 250.0, 800.0, 2, '2025-09-08 13:19:42', '2025-09-15 01:32:57.441703', '2025-09-15 01:32:57.441703', 6, 3.0);
+INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES (980190962, 'user1@example.com', '$2a$04$xg7umNxAcpCYet1wT7QK1uC9gt7UDtKu4KVBF7X7ehZAIcdUoAAS2', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.444862', '2025-09-15 01:32:57.444862', 'USD', 0.12), (298486374, 'user2@example.com', '$2a$04$yHnxnie3g2YgJyK5.uqneu9lbYW8GR8zeGmjdyqfNdvGzTbQz8StO', DEFAULT, DEFAULT, DEFAULT, '2025-09-15 01:32:57.444862', '2025-09-15 01:32:57.444862', 'EUR', 0.1)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (24.6ms)[0m  [1m[35mdo $$
+  declare r record;
+BEGIN
+FOR r IN (
+  SELECT FORMAT(
+    'UPDATE pg_catalog.pg_constraint SET convalidated=false WHERE conname = ''%1$I'' AND connamespace::regnamespace = ''%2$I''::regnamespace; ALTER TABLE %2$I.%3$I VALIDATE CONSTRAINT %1$I;',
+    constraint_name,
+    table_schema,
+    table_name
+  ) AS constraint_check
+  FROM information_schema.table_constraints WHERE constraint_type = 'FOREIGN KEY'
+)
+  LOOP
+    EXECUTE (r.constraint_check);
+  END LOOP;
+END;
+$$;
+[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------
+CurrencyHelperTest: test_format_currency_handles_different_currencies_correctly
+-------------------------------------------------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "print_pricings" ENABLE TRIGGER ALL;ALTER TABLE "printers" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+----------------------------------------------------------------
+CurrencyHelperTest: test_currency_symbol_returns_correct_symbols
+----------------------------------------------------------------
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------------------
+UserTest: test_should_destroy_associated_print_pricings_when_user_is_destroyed
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------
+CurrencyHelperTest: test_currency_sample_values_returns_appropriate_values
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.2ms)[0m  [1m[35mdo $$
+  declare r record;
+BEGIN
+FOR r IN (
+  SELECT FORMAT(
+    'UPDATE pg_catalog.pg_constraint SET convalidated=false WHERE conname = ''%1$I'' AND connamespace::regnamespace = ''%2$I''::regnamespace; ALTER TABLE %2$I.%3$I VALIDATE CONSTRAINT %1$I;',
+    constraint_name,
+    table_schema,
+    table_name
+  ) AS constraint_check
+  FROM information_schema.table_constraints WHERE constraint_type = 'FOREIGN KEY'
+)
+  LOOP
+    EXECUTE (r.constraint_check);
+  END LOOP;
+END;
+$$;
+[0m
+---------------------------------------------------------
+UserTest: test_should_require_default_energy_cost_per_kwh
+---------------------------------------------------------
+--------------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (24.7ms)[0m  [1m[35mdo $$
+  declare r record;
+BEGIN
+FOR r IN (
+  SELECT FORMAT(
+    'UPDATE pg_catalog.pg_constraint SET convalidated=false WHERE conname = ''%1$I'' AND connamespace::regnamespace = ''%2$I''::regnamespace; ALTER TABLE %2$I.%3$I VALIDATE CONSTRAINT %1$I;',
+    constraint_name,
+    table_schema,
+    table_name
+  ) AS constraint_check
+  FROM information_schema.table_constraints WHERE constraint_type = 'FOREIGN KEY'
+)
+  LOOP
+    EXECUTE (r.constraint_check);
+  END LOOP;
+END;
+$$;
+[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.9ms)[0m  [1m[35mdo $$
+  declare r record;
+BEGIN
+FOR r IN (
+  SELECT FORMAT(
+    'UPDATE pg_catalog.pg_constraint SET convalidated=false WHERE conname = ''%1$I'' AND connamespace::regnamespace = ''%2$I''::regnamespace; ALTER TABLE %2$I.%3$I VALIDATE CONSTRAINT %1$I;',
+    constraint_name,
+    table_schema,
+    table_name
+  ) AS constraint_check
+  FROM information_schema.table_constraints WHERE constraint_type = 'FOREIGN KEY'
+)
+  LOOP
+    EXECUTE (r.constraint_check);
+  END LOOP;
+END;
+$$;
+[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------
+PrintersHelperTest: test_has_access_to_standard_helper_methods
+--------------------------------------------------------------
+--------------------------------------------------
+PrintersHelperTest: test_printers_helper_is_loaded
+--------------------------------------------------
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------
+UserTest: test_should_be_valid_with_valid_attributes
+----------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------
+CurrencyHelperTest: test_currency_options_returns_correct_format
+----------------------------------------------------------------
+------------------------------------------------------------
+CurrencyHelperTest: test_zero_decimal_currencies_returns_JPY
+------------------------------------------------------------
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------
+CurrencyHelperTest: test_currency_decimals_returns_correct_decimal_places
+-------------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------
+UserTest: test_should_require_positive_default_energy_cost_per_kwh
+------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_should_require_password
+--------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------
+UserTest: test_should_require_default_currency
+----------------------------------------------
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+UserTest: test_should_require_email
+-----------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------
+UserTest: test_should_have_many_print_pricings
+----------------------------------------------
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------
+UserTest: test_should_have_default_values_for_new_users
+-------------------------------------------------------
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+-----------------------------------------------------------
+UserProfilesHelperTest: test_user_profiles_helper_is_loaded
+-----------------------------------------------------------
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.470623"], ["updated_at", "2025-09-15 01:32:57.470623"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+--------------------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+UserProfilesHelperTest: test_has_access_to_currency_helper_methods_when_included
+--------------------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mPrinter Create (1.0ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190963], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.479617"], ["created_at", "2025-09-15 01:32:57.479646"], ["updated_at", "2025-09-15 01:32:57.479646"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+-------------------------------------------------------------
+PrintPricingsHelperTest: test_print_pricings_helper_is_loaded
+-------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+---------------------------------------------------------------------------------
+PrintPricingsHelperTest: test_has_access_to_currency_helper_methods_when_included
+---------------------------------------------------------------------------------
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.483194"], ["updated_at", "2025-09-15 01:32:57.483194"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+-----------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+PrinterTest: test_months_to_payoff_should_return_correct_months_remaining
+-------------------------------------------------------------------------
+---------------------------------------
+PrinterTest: test_should_belong_to_user
+---------------------------------------
+PrinterTest: test_months_to_payoff_should_return_0_for_paid_off_printer
+-----------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------
+PrinterTest: test_should_require_positive_cost
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+----------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+--------------------------------------------------------
+PrinterTest: test_should_have_valid_manufacturer_options
+--------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+-----------------------------------------------------
+PrinterTest: test_should_set_date_added_automatically
+-----------------------------------------------------
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------
+PrinterTest: test_paid_off?_should_return_true_for_old_printer_past_payoff_goal
+-------------------------------------------------------------------------------
+-----------------------------------------------------------
+PrinterTest: test_should_require_positive_payoff_goal_years
+-----------------------------------------------------------
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------------
+PrinterTest: test_should_require_positive_power_consumption
+-----------------------------------------------------------
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mPrintPricing Create (2.7ms)[0m  [1m[32mINSERT INTO "print_pricings" ("user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"[0m  [["user_id", 980190963], ["job_name", "Test Print"], ["printing_time_hours", 2], ["printing_time_minutes", 30], ["filament_weight", "50.0"], ["filament_type", "PLA"], ["spool_price", "25.0"], ["spool_weight", "1000.0"], ["markup_percentage", "20.0"], ["prep_time_minutes", nil], ["prep_cost_per_hour", nil], ["postprocessing_time_minutes", nil], ["postprocessing_cost_per_hour", nil], ["other_costs", nil], ["vat_percentage", nil], ["final_price", "1.6798630136986301369863013698630125"], ["created_at", "2025-09-15 01:32:57.489217"], ["updated_at", "2025-09-15 01:32:57.489217"], ["printer_id", 980190963]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mPrintPricing Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings"[0m
+  [1m[36mPrinter Create (2.0ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190962], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2024-09-15 01:32:57.494562"], ["created_at", "2025-09-15 01:32:57.495354"], ["updated_at", "2025-09-15 01:32:57.495354"], ["daily_usage_hours", 8], ["repair_cost_percentage", "0.0"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrinter Create (2.4ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190962], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2020-09-15 01:32:57.495099"], ["created_at", "2025-09-15 01:32:57.495908"], ["updated_at", "2025-09-15 01:32:57.495908"], ["daily_usage_hours", 8], ["repair_cost_percentage", "0.0"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mPrinter Create (0.5ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190962], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.498693"], ["created_at", "2025-09-15 01:32:57.498754"], ["updated_at", "2025-09-15 01:32:57.498754"], ["daily_usage_hours", 8], ["repair_cost_percentage", "0.0"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrinter Create (0.7ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190962], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2020-09-15 01:32:57.498326"], ["created_at", "2025-09-15 01:32:57.498854"], ["updated_at", "2025-09-15 01:32:57.498854"], ["daily_usage_hours", 8], ["repair_cost_percentage", "0.0"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------
+PrinterTest: test_should_be_valid_with_valid_attributes
+-------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrintPricing Load (0.7ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1[0m  [["user_id", 980190963]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+PrinterTest: test_should_require_name
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+-------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+---------------------------------------------------------------
+PrinterTest: test_paid_off?_should_return_false_for_new_printer
+---------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrinter Create (0.6ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190962], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.505209"], ["created_at", "2025-09-15 01:32:57.505939"], ["updated_at", "2025-09-15 01:32:57.505939"], ["daily_usage_hours", 8], ["repair_cost_percentage", "0.0"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------
+PrintPricingsControllerTest: test_should_not_create_print_pricing_with_invalid_params
+-------------------------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------
+PrintPricingsControllerTest: test_should_update_print_pricing
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------
+-------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+PrintPricingsControllerTest: test_should_destroy_print_pricing
+--------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------------------
+PrintPricingsControllerTest: test_should_not_access_other_user's_print_pricing
+------------------------------------------------------------------------------
+  [1m[36mPrintPricing Destroy (0.2ms)[0m  [1m[31mDELETE FROM "print_pricings" WHERE "print_pricings"."id" = $1[0m  [["id", 980190963]]
+-------------------------------------------------------------
+PrintPricingsControllerTest: test_should_create_print_pricing
+-------------------------------------------------------------
+  [1m[36mPrinter Load (0.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = $1[0m  [["user_id", 980190963]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------------
+PrintPricingsControllerTest: test_should_redirect_to_login_when_not_authenticated
+---------------------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."printer_id" = $1[0m  [["printer_id", 980190963]]
+-----------------------------------------------------------
+PrintPricingsControllerTest: test_should_show_print_pricing
+-----------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------
+PrintPricingsControllerTest: test_should_get_index
+--------------------------------------------------
+  [1m[36mPrinter Destroy (0.3ms)[0m  [1m[31mDELETE FROM "printers" WHERE "printers"."id" = $1[0m  [["id", 980190963]]
+  [1m[36mUser Destroy (2.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 980190963]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings"[0m
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+PrintPricingsControllerTest: test_should_get_new
+------------------------------------------------
+-------------------------------------------------------------------------------------
+PrintPricingsControllerTest: test_should_not_update_print_pricing_with_invalid_params
+-------------------------------------------------------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings"[0m
+Started POST "/print_pricings" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Load (0.6ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Load (0.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Load (1.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings"[0m
+Processing by PrintPricingsController#create as HTML
+  Parameters: {"print_pricing" => {"job_name" => "", "currency" => "", "filament_type" => ""}}
+Started PATCH "/print_pricings/980190962" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/print_pricings" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Started POST "/print_pricings" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.569516"], ["updated_at", "2025-09-15 01:32:57.569516"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrintPricing Load (2.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/print_pricings/980190962" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Started GET "/print_pricings" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+[31mUnpermitted parameter: :currency. Context: { controller: PrintPricingsController, action: create, request: #<ActionDispatch::Request:0x000000011d98d2a8>, params: {"print_pricing" => {"job_name" => "", "currency" => "", "filament_type" => ""}, "controller" => "print_pricings", "action" => "create"} }[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/new.html.erb within layouts/application
+  [1m[36mPrinter Create (1.0ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190963], ["name", "Other Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.578164"], ["created_at", "2025-09-15 01:32:57.578186"], ["updated_at", "2025-09-15 01:32:57.578186"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/print_pricings/new" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings"[0m
+Started PATCH "/print_pricings/980190962" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Started DELETE "/print_pricings/980190962" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrintPricing Create (0.6ms)[0m  [1m[32mINSERT INTO "print_pricings" ("user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"[0m  [["user_id", 980190963], ["job_name", "Other User's Print"], ["printing_time_hours", 1], ["printing_time_minutes", 0], ["filament_weight", "30.0"], ["filament_type", "PLA"], ["spool_price", "20.0"], ["spool_weight", "1000.0"], ["markup_percentage", "15.0"], ["prep_time_minutes", nil], ["prep_cost_per_hour", nil], ["postprocessing_time_minutes", nil], ["postprocessing_cost_per_hour", nil], ["other_costs", nil], ["vat_percentage", nil], ["final_price", "0.77393150684931506849315068493150625"], ["created_at", "2025-09-15 01:32:57.587036"], ["updated_at", "2025-09-15 01:32:57.587036"], ["printer_id", 980190963]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/print_pricings/980190963" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mPrinter Load (0.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = $1[0m  [["user_id", 980190962]]
+Processing by PrintPricingsController#index as HTML
+Processing by PrintPricingsController#index as HTML
+Processing by PrintPricingsController#show as HTML
+  Parameters: {"id" => "980190962"}
+Processing by PrintPricingsController#update as HTML
+  Parameters: {"print_pricing" => {"job_name" => "Updated Job Name", "currency" => "GBP"}, "id" => "980190962"}
+  Rendered print_pricings/new.html.erb within layouts/application (Duration: 17.9ms | GC: 0.0ms)
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+Processing by PrintPricingsController#create as HTML
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Parameters: {"print_pricing" => {"job_name" => "New Test Job", "currency" => "EUR", "printing_time_hours" => "3", "printing_time_minutes" => "45", "filament_weight" => "75.0", "filament_type" => "ABS", "spool_price" => "30.0", "spool_weight" => "1000.0", "markup_percentage" => "25.0"}}
+  Rendered layout layouts/application.html.erb (Duration: 25.2ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 37ms (Views: 28.8ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Load (0.6ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 AND "print_pricings"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------
+PrintPricingsControllerTest: test_should_get_edit
+-------------------------------------------------
+  [1m[36mCACHE PrintPricing Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings"[0m
+[31mUnpermitted parameter: :currency. Context: { controller: PrintPricingsController, action: update, request: #<ActionDispatch::Request:0x000000011dd31cd8>, params: {"print_pricing" => {"job_name" => "Updated Job Name", "currency" => "GBP"}, "controller" => "print_pricings", "action" => "update", "id" => "980190962"} }[0m
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 LIMIT $2[0m  [["user_id", 980190962], ["LIMIT", 1]]
+[31mUnpermitted parameter: :currency. Context: { controller: PrintPricingsController, action: create, request: #<ActionDispatch::Request:0x000000011dd71cc0>, params: {"print_pricing" => {"job_name" => "New Test Job", "currency" => "EUR", "printing_time_hours" => "3", "printing_time_minutes" => "45", "filament_weight" => "75.0", "filament_type" => "ABS", "spool_price" => "30.0", "spool_weight" => "1000.0", "markup_percentage" => "25.0"}, "controller" => "print_pricings", "action" => "create"} }[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = $1[0m  [["user_id", 980190962]]
+Processing by PrintPricingsController#destroy as HTML
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  Parameters: {"id" => "980190962"}
+  [1m[36mPrinter Load (0.5ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Processing by PrintPricingsController#show as HTML
+Processing by PrintPricingsController#update as HTML
+  Parameters: {"id" => "980190963"}
+  Parameters: {"print_pricing" => {"job_name" => "", "filament_weight" => "-1"}, "id" => "980190962"}
+Processing by PrintPricingsController#new as HTML
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 AND "print_pricings"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Load (1.9ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 AND "print_pricings"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Update (0.3ms)[0m  [1m[33mUPDATE "print_pricings" SET "job_name" = $1, "final_price" = $2, "updated_at" = $3 WHERE "print_pricings"."id" = $4[0m  [["job_name", "Updated Job Name"], ["final_price", "1.84784931506849315068493150684931375"], ["updated_at", "2025-09-15 01:32:57.612349"], ["id", 980190962]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrintPricing Load (0.5ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 ORDER BY "print_pricings"."created_at" DESC[0m  [["user_id", 980190962]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrintPricing Create (0.9ms)[0m  [1m[32mINSERT INTO "print_pricings" ("user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"[0m  [["user_id", 980190962], ["job_name", "New Test Job"], ["printing_time_hours", 3], ["printing_time_minutes", 45], ["filament_weight", "75.0"], ["filament_type", "ABS"], ["spool_price", "30.0"], ["spool_weight", "1000.0"], ["markup_percentage", "25.0"], ["prep_time_minutes", nil], ["prep_cost_per_hour", nil], ["postprocessing_time_minutes", nil], ["postprocessing_cost_per_hour", nil], ["other_costs", nil], ["vat_percentage", nil], ["final_price", "2.8125"], ["created_at", "2025-09-15 01:32:57.614199"], ["updated_at", "2025-09-15 01:32:57.614199"], ["printer_id", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 AND "print_pricings"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190962], ["LIMIT", 1]]
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 10.3ms | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+------------------------------------------------
+UserProfilesControllerTest: test_should_get_show
+------------------------------------------------
+Redirected to http://www.example.com/print_pricings/980190962
+Completed 302 Found in 22ms (ActiveRecord: 1.6ms (3 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mPrintPricing Load (1.6ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 AND "print_pricings"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190963], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+Started GET "/print_pricings/980190962/edit" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  Rendering print_pricings/edit.html.erb within layouts/application
+Redirected to http://www.example.com/print_pricings/980190963
+Processing by PrintPricingsController#edit as HTML
+  Parameters: {"id" => "980190962"}
+Completed 302 Found in 18ms (ActiveRecord: 1.5ms (1 query, 0 cached) | GC: 0.0ms)
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/show.html.erb within layouts/application
+Started GET "/profile" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  Rendered layout layouts/application.html.erb (Duration: 14.9ms | GC: 0.0ms)
+Completed 200 OK in 27ms (Views: 16.6ms | ActiveRecord: 1.0ms (3 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+Completed 404 Not Found in 11ms (ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+  
+ActiveRecord::RecordNotFound (Couldn't find PrintPricing with 'id'="980190963" [WHERE "print_pricings"."user_id" = $1]):
+  
+app/controllers/print_pricings_controller.rb:45:in 'PrintPricingsController#set_print_pricing'
+test/controllers/print_pricings_controller_test.rb:130:in 'block in <class:PrintPricingsControllerTest>'
+Processing by UserProfilesController#show as HTML
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 AND "print_pricings"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering user_profiles/show.html.erb within layouts/application
+  [1m[36mPrinter Load (0.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+------------------------------------------------
+UserProfilesControllerTest: test_should_get_edit
+------------------------------------------------
+  Rendered print_pricings/show.html.erb within layouts/application (Duration: 4.8ms | GC: 0.0ms)
+  Rendered print_pricings/edit.html.erb within layouts/application (Duration: 6.0ms | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  Rendered user_profiles/show.html.erb within layouts/application (Duration: 3.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/edit.html.erb within layouts/application
+  [1m[36mPrintPricing Destroy (1.7ms)[0m  [1m[31mDELETE FROM "print_pricings" WHERE "print_pricings"."id" = $1[0m  [["id", 980190962]]
+  [1m[36mPrintPricing Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering print_pricings/new.html.erb within layouts/application
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 20ms (Views: 14.2ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/profile/edit" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+-----------------------------------------------------------
+UserProfilesControllerTest: test_should_update_user_profile
+-----------------------------------------------------------
+Redirected to http://www.example.com/print_pricings
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 11.9ms | ActiveRecord: 2.0ms (2 queries, 0 cached) | GC: 0.0ms)
+Completed 302 Found in 22ms (ActiveRecord: 2.2ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------
+UserProfilesControllerTest: test_should_require_authentication
+--------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mPrintPricing Load (0.5ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" ORDER BY "print_pricings"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Processing by UserProfilesController#edit as HTML
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendered print_pricings/edit.html.erb within layouts/application (Duration: 5.5ms | GC: 0.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPrinter Load (0.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = $1[0m  [["user_id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------------
+PrintPricingFlowsTest: test_authenticated_user_can_manage_print_pricings
+------------------------------------------------------------------------
+-----------------------------------------------------------------
+PrintPricingFlowsTest: test_complete_pricing_calculation_workflow
+-----------------------------------------------------------------
+Started PATCH "/profile" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering user_profiles/edit.html.erb within layouts/application
+  [1m[36mPrintPricing Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+--------------------------------------------------------------------
+PrintPricingFlowsTest: test_user_cannot_access_other_user's_pricings
+--------------------------------------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendered user_profiles/edit.html.erb within layouts/application (Duration: 2.5ms | GC: 0.0ms)
+  Rendered print_pricings/new.html.erb within layouts/application (Duration: 8.2ms | GC: 0.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Processing by UserProfilesController#update as HTML
+  Parameters: {"user" => {"default_currency" => "EUR", "default_energy_cost_per_kwh" => "0.15"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------------------------
+PrintPricingFlowsTest: test_user_can_sign_up_and_create_a_print_pricing
+-----------------------------------------------------------------------
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | GC: 0.0ms)
+Completed 200 OK in 20ms (Views: 13.4ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/profile" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "default_currency" = $2, "default_energy_cost_per_kwh" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2025-09-15 01:32:57.640342"], ["default_currency", "EUR"], ["default_energy_cost_per_kwh", "0.15"], ["id", 980190962]]
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+Processing by UserProfilesController#show as HTML
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 14.9ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+PrintersControllerTest: test_should_destroy_printer
+---------------------------------------------------
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "default_currency" = $2, "default_energy_cost_per_kwh" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2025-09-15 01:32:57.643843"], ["default_currency", "EUR"], ["default_energy_cost_per_kwh", "0.15"], ["id", 980190962]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.645369"], ["updated_at", "2025-09-15 01:32:57.645369"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+PrintPricingFlowsTest: test_unauthenticated_user_is_redirected_to_login
+-----------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "default_currency" = $2, "default_energy_cost_per_kwh" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2025-09-15 01:32:57.648419"], ["default_currency", "JPY"], ["default_energy_cost_per_kwh", "35.0"], ["id", 980190962]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+PrintersControllerTest: test_should_require_authentication
+----------------------------------------------------------
+  Rendered /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/shared/_error_messages.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrinter Create (0.5ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190962], ["name", "Flow Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "150.0"], ["cost", "800.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.647791"], ["created_at", "2025-09-15 01:32:57.647811"], ["updated_at", "2025-09-15 01:32:57.647811"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendered /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 4.2ms | GC: 0.0ms)
+  [1m[36mPrinter Load (0.7ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrinter Create (0.7ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190963], ["name", "Other Integration Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.652658"], ["created_at", "2025-09-15 01:32:57.652686"], ["updated_at", "2025-09-15 01:32:57.652686"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/profile
+Completed 302 Found in 14ms (ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+Started GET "/printers" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrinter Load (0.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------
+PrintersControllerTest: test_should_create_printer
+--------------------------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | GC: 0.0ms)
+Started GET "/print_pricings" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Completed 200 OK in 12ms (Views: 11.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Processing by PrintPricingsController#index as HTML
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrinter Create (3.1ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190962], ["name", "Complete Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "250.0"], ["cost", "300000.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.651565"], ["created_at", "2025-09-15 01:32:57.651592"], ["updated_at", "2025-09-15 01:32:57.651592"], ["daily_usage_hours", 10], ["repair_cost_percentage", "8.0"]]
+Started POST "/users" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Processing by PrintersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Processing by PrintPricingsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mPrintPricing Create (0.8ms)[0m  [1m[32mINSERT INTO "print_pricings" ("user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"[0m  [["user_id", 980190963], ["job_name", "Other User's Print"], ["printing_time_hours", 1], ["printing_time_minutes", 0], ["filament_weight", "30.0"], ["filament_type", "PLA"], ["spool_price", "20.0"], ["spool_weight", "1000.0"], ["markup_percentage", "15.0"], ["prep_time_minutes", nil], ["prep_cost_per_hour", nil], ["postprocessing_time_minutes", nil], ["postprocessing_cost_per_hour", nil], ["other_costs", nil], ["vat_percentage", nil], ["final_price", "0.77393150684931506849315068493150625"], ["created_at", "2025-09-15 01:32:57.657677"], ["updated_at", "2025-09-15 01:32:57.657677"], ["printer_id", 980190964]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrinter Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "printers"[0m
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendering layout layouts/application.html.erb
+Started DELETE "/printers/980190962" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/print_pricings" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/print_pricings/new" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Processing by PrintPricingsController#create as HTML
+  Parameters: {"print_pricing" => {"job_name" => "Complete Test", "printer_id" => "980190964", "printing_time_hours" => "3", "printing_time_minutes" => "45", "filament_weight" => "60.0", "filament_type" => "ABS", "spool_price" => "4500.0", "spool_weight" => "1000.0", "markup_percentage" => "25.0", "prep_time_minutes" => "45", "prep_cost_per_hour" => "2500.0", "postprocessing_time_minutes" => "30", "postprocessing_cost_per_hour" => "3000.0", "other_costs" => "500.0", "vat_percentage" => "10.0"}}
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 LIMIT $2[0m  [["user_id", 980190962], ["LIMIT", 1]]
+Processing by PrintersController#destroy as HTML
+  Parameters: {"id" => "980190962"}
+Started GET "/print_pricings/980190964" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------
+PrintersControllerTest: test_should_update_printer
+--------------------------------------------------
+  [1m[36mPrinter Load (0.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Processing by PrintPricingsController#new as HTML
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = $1[0m  [["user_id", 980190962]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+------------------------------------------------
+PrintersControllerTest: test_should_show_printer
+------------------------------------------------
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mPrinter Load (0.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = $1 AND "printers"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Load (0.7ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 ORDER BY "print_pricings"."created_at" DESC[0m  [["user_id", 980190962]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+Processing by PrintPricingsController#show as HTML
+  Parameters: {"id" => "980190964"}
+  [1m[36mPrinter Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "printers"[0m
+  [1m[36mPrinter Load (0.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started POST "/printers" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mPrintPricing Load (0.7ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 AND "print_pricings"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190964], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.670672"], ["updated_at", "2025-09-15 01:32:57.670672"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrintPricing Load (0.5ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."printer_id" = $1[0m  [["printer_id", 980190962]]
+  
+ActiveRecord::RecordNotFound (Couldn't find PrintPricing with 'id'="980190964" [WHERE "print_pricings"."user_id" = $1]):
+  
+app/controllers/print_pricings_controller.rb:45:in 'PrintPricingsController#set_print_pricing'
+test/integration/print_pricing_flows_test.rb:178:in 'block in <class:PrintPricingFlowsTest>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrinter Load (0.4ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190964], ["LIMIT", 1]]
+Processing by PrintersController#create as HTML
+  Parameters: {"printer" => {"name" => "Test Printer", "manufacturer" => "Prusa", "power_consumption" => "200", "cost" => "500", "payoff_goal_years" => "3"}}
+Started GET "/printers/980190962" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mPrinter Load (0.9ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Destroy (0.2ms)[0m  [1m[31mDELETE FROM "print_pricings" WHERE "print_pricings"."id" = $1[0m  [["id", 980190962]]
+Started PATCH "/printers/980190962" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mPrinter Destroy (0.3ms)[0m  [1m[31mDELETE FROM "printers" WHERE "printers"."id" = $1[0m  [["id", 980190962]]
+Processing by PrintersController#show as HTML
+  Parameters: {"id" => "980190962"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PrintersController#update as HTML
+  Parameters: {"printer" => {"name" => "Updated Printer Name", "power_consumption" => "250"}, "id" => "980190962"}
+  [1m[36mPrinter Load (0.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = $1 AND "printers"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrinter Load (1.1ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = $1 AND "printers"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190962], ["LIMIT", 1]]
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 18.5ms | GC: 0.0ms)
+  Rendering layout layouts/application.html.erb
+  Rendering printers/show.html.erb within layouts/application
+Redirected to http://www.example.com/
+  Rendered printers/show.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+Completed 303 See Other in 22ms (ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 21.1ms | GC: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | GC: 0.0ms)
+Processing by PrintPricingsController#index as HTML
+Completed 200 OK in 24ms (Views: 20.1ms | ActiveRecord: 1.5ms (3 queries, 0 cached) | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 3.6ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 980190963], ["LIMIT", 1]]
+Redirected to http://www.example.com/printers
+Started POST "/print_pricings" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mPrintPricing Create (1.7ms)[0m  [1m[32mINSERT INTO "print_pricings" ("user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"[0m  [["user_id", 980190962], ["job_name", "Complete Test"], ["printing_time_hours", 3], ["printing_time_minutes", 45], ["filament_weight", "60.0"], ["filament_type", "ABS"], ["spool_price", "4500.0"], ["spool_weight", "1000.0"], ["markup_percentage", "25.0"], ["prep_time_minutes", 45], ["prep_cost_per_hour", "2500.0"], ["postprocessing_time_minutes", 30], ["postprocessing_cost_per_hour", "3000.0"], ["other_costs", "500.0"], ["vat_percentage", "10.0"], ["final_price", "4767.48758561643835616438356164383464"], ["created_at", "2025-09-15 01:32:57.677277"], ["updated_at", "2025-09-15 01:32:57.677277"], ["printer_id", 980190964]]
+Processing by PrintPricingsController#create as HTML
+  Parameters: {"print_pricing" => {"job_name" => "Test"}}
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+Completed 302 Found in 26ms (ActiveRecord: 1.9ms (4 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mPrinter Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "printers"[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mPrintPricing Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 LIMIT $2[0m  [["user_id", 980190963], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 3.1ms | GC: 0.0ms)
+-------------------------------------------
+PrintersControllerTest: test_should_get_new
+-------------------------------------------
+Started GET "/print_pricings/new" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Processing by PrintPricingsController#new as HTML
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrinter Update (0.6ms)[0m  [1m[33mUPDATE "printers" SET "name" = $1, "power_consumption" = $2, "updated_at" = $3 WHERE "printers"."id" = $4[0m  [["name", "Updated Printer Name"], ["power_consumption", "250.0"], ["updated_at", "2025-09-15 01:32:57.696895"], ["id", 980190962]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+PrintersControllerTest: test_should_get_index
+---------------------------------------------
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | GC: 0.0ms)
+Completed 200 OK in 17ms (Views: 7.5ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrinter Create (1.3ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190962], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.683372"], ["created_at", "2025-09-15 01:32:57.683513"], ["updated_at", "2025-09-15 01:32:57.683513"], ["daily_usage_hours", 8], ["repair_cost_percentage", "0.0"]]
+  [1m[36mPrinter Load (0.6ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/new.html.erb within layouts/application
+  [1m[36mPrinter Load (0.8ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+Started GET "/printers" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Started GET "/printers/new" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Processing by PrintersController#new as HTML
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+PrintersControllerTest: test_should_get_edit
+--------------------------------------------
+  Rendering layout layouts/application.html.erb
+  Rendering printers/new.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Redirected to http://www.example.com/printers/980190962
+Processing by PrintersController#index as HTML
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrinter Load (0.4ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Completed 302 Found in 34ms (ActiveRecord: 1.8ms (2 queries, 0 cached) | GC: 0.0ms)
+Redirected to http://www.example.com/print_pricings/980190964
+  Rendering layout layouts/application.html.erb
+  Rendering printers/index.html.erb within layouts/application
+  [1m[36mPrinter Create (0.7ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190963], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.707855"], ["created_at", "2025-09-15 01:32:57.707904"], ["updated_at", "2025-09-15 01:32:57.707904"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+Started GET "/printers/980190962/edit" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mPrinter Load (2.9ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = $1[0m  [["user_id", 980190962]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrinter Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "printers" WHERE "printers"."user_id" = $1 LIMIT $2[0m  [["user_id", 980190962], ["LIMIT", 1]]
+Completed 302 Found in 47ms (ActiveRecord: 2.3ms (2 queries, 0 cached) | GC: 0.0ms)
+  Rendered printers/new.html.erb within layouts/application (Duration: 4.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | GC: 0.0ms)
+Processing by PrintersController#edit as HTML
+  Parameters: {"id" => "980190962"}
+Started GET "/print_pricings/new" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mPrinter Load (1.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = $1 ORDER BY "printers"."name" ASC[0m  [["user_id", 980190962]]
+  [1m[36mPrinter Load (0.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = $1 AND "printers"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190962], ["LIMIT", 1]]
+Completed 200 OK in 9ms (Views: 6.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mPrinter Load (0.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering printers/edit.html.erb within layouts/application
+Processing by PrintPricingsController#new as HTML
+  Rendered printers/edit.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  [1m[36mPrintPricing Load (1.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" ORDER BY "print_pricings"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered printers/index.html.erb within layouts/application (Duration: 6.5ms | GC: 0.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 980190963], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 6.8ms | ActiveRecord: 1.4ms (2 queries, 0 cached) | GC: 0.0ms)
+  Rendered print_pricings/new.html.erb within layouts/application (Duration: 16.2ms | GC: 0.0ms)
+  Rendering layout layouts/application.html.erb
+  Rendered layout layouts/application.html.erb (Duration: 17.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | GC: 0.0ms)
+  Rendering print_pricings/new.html.erb within layouts/application
+Completed 200 OK in 22ms (Views: 14.6ms | ActiveRecord: 3.2ms (2 queries, 0 cached) | GC: 0.0ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mPrinter Load (0.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190964], ["LIMIT", 1]]
+Redirected to http://www.example.com/printers/980190963
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings"[0m
+Completed 302 Found in 49ms (ActiveRecord: 1.5ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------
+PrintPricingTest: test_should_be_valid_with_valid_attributes
+------------------------------------------------------------
+Started POST "/print_pricings" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+Processing by PrintPricingsController#create as HTML
+  Parameters: {"print_pricing" => {"job_name" => "Flow Test Print", "printer_id" => "980190965", "printing_time_hours" => "2", "printing_time_minutes" => "15", "filament_weight" => "40.0", "filament_type" => "PETG", "spool_price" => "35.0", "spool_weight" => "1000.0", "markup_percentage" => "20.0", "vat_percentage" => "21.0"}}
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+PrintPricingTest: test_should_belong_to_user
+--------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mPrinter Load (0.6ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = $1[0m  [["user_id", 980190963]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+Started GET "/print_pricings/980190964" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrinter Load (0.4ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190965], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+Processing by PrintPricingsController#show as HTML
+  Parameters: {"id" => "980190964"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.731654"], ["updated_at", "2025-09-15 01:32:57.731654"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------
+PrintPricingTest: test_should_calculate_total_labor_cost_correctly
+------------------------------------------------------------------
+  [1m[36mPrinter Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "printers"[0m
+  Rendered print_pricings/new.html.erb within layouts/application (Duration: 22.4ms | GC: 0.0ms)
+  [1m[36mPrinter Load (0.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" ORDER BY "printers"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.734548"], ["updated_at", "2025-09-15 01:32:57.734548"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  Rendered layout layouts/application.html.erb (Duration: 24.4ms | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 200 OK in 28ms (Views: 24.1ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------
+PrintPricingTest: test_should_handle_nil_time_values
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+----------------------------------------------------
+  [1m[36mPrintPricing Create (1.6ms)[0m  [1m[32mINSERT INTO "print_pricings" ("user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"[0m  [["user_id", 980190962], ["job_name", "Flow Test Print"], ["printing_time_hours", 2], ["printing_time_minutes", 15], ["filament_weight", "40.0"], ["filament_type", "PETG"], ["spool_price", "35.0"], ["spool_weight", "1000.0"], ["markup_percentage", "20.0"], ["prep_time_minutes", nil], ["prep_cost_per_hour", nil], ["postprocessing_time_minutes", nil], ["postprocessing_cost_per_hour", nil], ["other_costs", nil], ["vat_percentage", "21.0"], ["final_price", "2.32611104452054794520547945205479537625"], ["created_at", "2025-09-15 01:32:57.736180"], ["updated_at", "2025-09-15 01:32:57.736180"], ["printer_id", 980190965]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+PrintPricingTest: test_should_calculate_total_machine_upkeep_cost_correctly
+---------------------------------------------------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrinter Create (1.3ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190963], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.747200"], ["created_at", "2025-09-15 01:32:57.747285"], ["updated_at", "2025-09-15 01:32:57.747285"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrinter Create (2.5ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190964], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.752073"], ["created_at", "2025-09-15 01:32:57.752110"], ["updated_at", "2025-09-15 01:32:57.752110"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mUser Exists? (5.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 AND "print_pricings"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190964], ["LIMIT", 1]]
+  [1m[36mUser Exists? (3.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.749203"], ["updated_at", "2025-09-15 01:32:57.749203"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+Redirected to http://www.example.com/print_pricings/980190963
+Completed 302 Found in 36ms (ActiveRecord: 1.2ms (3 queries, 1 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+PrintPricingTest: test_should_require_filament_type
+---------------------------------------------------
+Started POST "/print_pricings" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Processing by PrintPricingsController#create as HTML
+  Parameters: {"print_pricing" => {"job_name" => "Integration Test Print", "printer_id" => "980190964", "printing_time_hours" => "1", "printing_time_minutes" => "30", "filament_weight" => "25.0", "filament_type" => "PLA", "spool_price" => "20.0", "spool_weight" => "1000.0", "markup_percentage" => "15.0", "vat_percentage" => "8.0"}}
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.761129"], ["updated_at", "2025-09-15 01:32:57.761129"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  [1m[36mPrintPricing Load (0.5ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" ORDER BY "print_pricings"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/show.html.erb within layouts/application
+Started GET "/print_pricings/980190963" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Processing by PrintPricingsController#show as HTML
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 980190963], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Parameters: {"id" => "980190963"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrinter Create (1.1ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190963], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.768141"], ["created_at", "2025-09-15 01:32:57.768160"], ["updated_at", "2025-09-15 01:32:57.768160"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mPrinter Create (1.3ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190963], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.765732"], ["created_at", "2025-09-15 01:32:57.765760"], ["updated_at", "2025-09-15 01:32:57.765760"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrintPricing Load (0.4ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 AND "print_pricings"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190963], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/show.html.erb within layouts/application
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.760752"], ["updated_at", "2025-09-15 01:32:57.760752"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+-------------------------------------------------------------------------------------
+PrintPricingTest: test_should_return_zero_for_machine_upkeep_cost_with_missing_values
+-------------------------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrinter Load (1.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190964], ["LIMIT", 1]]
+  [1m[36mPrinter Load (0.7ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190965], ["LIMIT", 1]]
+  [1m[36mCACHE Printer Load (0.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190964], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (2.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.769298"], ["updated_at", "2025-09-15 01:32:57.769298"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  Rendered print_pricings/show.html.erb within layouts/application (Duration: 18.5ms | GC: 0.0ms)
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPrinter Update (6.2ms)[0m  [1m[33mUPDATE "printers" SET "cost" = $1, "updated_at" = $2 WHERE "printers"."id" = $3[0m  [["cost", "1000.0"], ["updated_at", "2025-09-15 01:32:57.772466"], ["id", 980190964]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrintPricing Create (0.8ms)[0m  [1m[32mINSERT INTO "print_pricings" ("user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"[0m  [["user_id", 980190963], ["job_name", "Integration Test Print"], ["printing_time_hours", 1], ["printing_time_minutes", 30], ["filament_weight", "25.0"], ["filament_type", "PLA"], ["spool_price", "20.0"], ["spool_weight", "1000.0"], ["markup_percentage", "15.0"], ["prep_time_minutes", nil], ["prep_cost_per_hour", nil], ["postprocessing_time_minutes", nil], ["postprocessing_cost_per_hour", nil], ["other_costs", nil], ["vat_percentage", "8.0"], ["final_price", "0.72460602739726027397260273972602675"], ["created_at", "2025-09-15 01:32:57.778905"], ["updated_at", "2025-09-15 01:32:57.778905"], ["printer_id", 980190964]]
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | GC: 0.0ms)
+------------------------------------------------------------------------
+PrintPricingTest: test_should_calculate_total_electricity_cost_correctly
+------------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 44ms (Views: 20.1ms | ActiveRecord: 0.8ms (3 queries, 1 cached) | GC: 0.0ms)
+  [1m[36mPrinter Create (1.2ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190963], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.781417"], ["created_at", "2025-09-15 01:32:57.781493"], ["updated_at", "2025-09-15 01:32:57.781493"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendered print_pricings/show.html.erb within layouts/application (Duration: 13.4ms | GC: 0.0ms)
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  Rendered layout layouts/application.html.erb (Duration: 13.8ms | GC: 0.0ms)
+Completed 200 OK in 20ms (Views: 13.3ms | ActiveRecord: 1.2ms (3 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrinter Create (0.9ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190964], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.785988"], ["created_at", "2025-09-15 01:32:57.786026"], ["updated_at", "2025-09-15 01:32:57.786026"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.785115"], ["updated_at", "2025-09-15 01:32:57.785115"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.788534"], ["updated_at", "2025-09-15 01:32:57.788534"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------
+PrintPricingTest: test_should_calculate_total_filament_cost_correctly
+----------------------------------------------
+PrintPricingTest: test_should_require_job_name
+----------------------------------------------
+Started GET "/print_pricings/980190963/edit" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Redirected to http://www.example.com/print_pricings/980190963
+Completed 302 Found in 29ms (ActiveRecord: 2.2ms (3 queries, 1 cached) | GC: 0.0ms)
+Processing by PrintPricingsController#edit as HTML
+  Parameters: {"id" => "980190963"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+---------------------------------------------------------------------
+  [1m[36mPrinter Create (1.0ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190964], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.792078"], ["created_at", "2025-09-15 01:32:57.792106"], ["updated_at", "2025-09-15 01:32:57.792106"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mCACHE User Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrinter Create (4.5ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190965], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.790558"], ["created_at", "2025-09-15 01:32:57.790590"], ["updated_at", "2025-09-15 01:32:57.790590"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+-----------------------------------------------------------------------------
+PrintPricingTest: test_should_calculate_total_printing_time_minutes_correctly
+-----------------------------------------------------------------------------
+  [1m[36mCACHE PrintPricing Load (0.0ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 AND "print_pricings"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190963], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/edit.html.erb within layouts/application
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPrintPricing Load (0.8ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" ORDER BY "print_pricings"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+--------------------------------------------------------------
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+PrintPricingTest: test_should_require_positive_filament_weight
+--------------------------------------------------------------
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.801312"], ["updated_at", "2025-09-15 01:32:57.801312"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/print_pricings/980190963" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Processing by PrintPricingsController#show as HTML
+  Parameters: {"id" => "980190963"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  Rendered print_pricings/edit.html.erb within layouts/application (Duration: 4.2ms | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+------------------------------------------------------------------------
+PrintPricingTest: test_should_calculate_final_price_with_VAT_before_save
+------------------------------------------------------------------------
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+Completed 200 OK in 10ms (Views: 4.9ms | ActiveRecord: 0.0ms (2 queries, 2 cached) | GC: 0.0ms)
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.802008"], ["updated_at", "2025-09-15 01:32:57.802008"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+Started PATCH "/print_pricings/980190963" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.804666"], ["updated_at", "2025-09-15 01:32:57.804666"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 980190963], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPrinter Create (0.9ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190964], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.803615"], ["created_at", "2025-09-15 01:32:57.803667"], ["updated_at", "2025-09-15 01:32:57.803667"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+Processing by PrintPricingsController#update as HTML
+  Parameters: {"print_pricing" => {"job_name" => "Updated Flow Test Print", "currency" => "GBP"}, "id" => "980190963"}
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.798896"], ["updated_at", "2025-09-15 01:32:57.798896"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrinter Create (0.5ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190965], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.806452"], ["created_at", "2025-09-15 01:32:57.806468"], ["updated_at", "2025-09-15 01:32:57.806468"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mPrintPricing Load (0.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 AND "print_pricings"."id" = $2 LIMIT $3[0m  [["user_id", 980190963], ["id", 980190963], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mPrinter Create (0.3ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190965], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.806919"], ["created_at", "2025-09-15 01:32:57.806951"], ["updated_at", "2025-09-15 01:32:57.806951"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-09-15 01:32:57.807968"], ["updated_at", "2025-09-15 01:32:57.807968"], ["default_currency", "USD"], ["default_energy_cost_per_kwh", "0.12"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE PrintPricing Load (0.0ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 AND "print_pricings"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190963], ["LIMIT", 1]]
+-----------------------------------------------------------
+ApplicationHelperTest: test_can_access_Rails_helper_methods
+-----------------------------------------------------------
+[31mUnpermitted parameter: :currency. Context: { controller: PrintPricingsController, action: update, request: #<ActionDispatch::Request:0x0000000100cbd030>, params: {"print_pricing" => {"job_name" => "Updated Flow Test Print", "currency" => "GBP"}, "controller" => "print_pricings", "action" => "update", "id" => "980190963"} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------
+ApplicationHelperTest: test_application_helper_is_loaded
+--------------------------------------------------------
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/show.html.erb within layouts/application
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mCACHE Printer Load (0.0ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190965], ["LIMIT", 1]]
+  [1m[36mPrinter Create (3.1ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190964], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.807725"], ["created_at", "2025-09-15 01:32:57.807740"], ["updated_at", "2025-09-15 01:32:57.807740"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------
+ApplicationControllerTest: test_blocks_unsupported_browsers_with_406_status
+---------------------------------------------------------------------------
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+------------------------------------------------------------------------
+ApplicationControllerTest: test_redirects_unauthenticated_users_to_login
+------------------------------------------------------------------------
+  [1m[36mPrinter Create (0.5ms)[0m  [1m[32mINSERT INTO "printers" ("user_id", "name", "manufacturer", "power_consumption", "cost", "payoff_goal_years", "date_added", "created_at", "updated_at", "daily_usage_hours", "repair_cost_percentage") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id", "date_added"[0m  [["user_id", 980190966], ["name", "Test Printer"], ["manufacturer", "Prusa"], ["power_consumption", "200.0"], ["cost", "500.0"], ["payoff_goal_years", 3], ["date_added", "2025-09-15 01:32:57.811157"], ["created_at", "2025-09-15 01:32:57.811185"], ["updated_at", "2025-09-15 01:32:57.811185"], ["daily_usage_hours", 8], ["repair_cost_percentage", "5.0"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+-----------------------------------------------------------
+ApplicationControllerTest: test_sets_basic_security_headers
+-----------------------------------------------------------
+Processing by PrintPricingsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+  [1m[36mPrinter Load (0.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190964], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+Processing by Devise::SessionsController#new as HTML
+Processing by PrintPricingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered print_pricings/show.html.erb within layouts/application (Duration: 8.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | GC: 0.0ms)
+  Rendering public/406-unsupported-browser.html
+Completed 200 OK in 17ms (Views: 10.6ms | ActiveRecord: 0.6ms (3 queries, 0 cached) | GC: 0.0ms)
+  Rendered public/406-unsupported-browser.html (Duration: 0.3ms | GC: 0.0ms)
+Filter chain halted as #<Proc:0x0000000121c995d8 /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2.1/lib/action_controller/metal/allow_browser.rb:58 (lambda)> rendered or redirected
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 406 Not Acceptable in 3ms (Views: 1.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrintPricing Update (0.6ms)[0m  [1m[33mUPDATE "print_pricings" SET "job_name" = $1, "updated_at" = $2 WHERE "print_pricings"."id" = $3[0m  [["job_name", "Updated Flow Test Print"], ["updated_at", "2025-09-15 01:32:57.812632"], ["id", 980190963]]
+  [1m[36mPrintPricing Create (0.7ms)[0m  [1m[32mINSERT INTO "print_pricings" ("user_id", "job_name", "printing_time_hours", "printing_time_minutes", "filament_weight", "filament_type", "spool_price", "spool_weight", "markup_percentage", "prep_time_minutes", "prep_cost_per_hour", "postprocessing_time_minutes", "postprocessing_cost_per_hour", "other_costs", "vat_percentage", "final_price", "created_at", "updated_at", "printer_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"[0m  [["user_id", 980190966], ["job_name", "Test Print"], ["printing_time_hours", 2], ["printing_time_minutes", 30], ["filament_weight", "50.0"], ["filament_type", "PLA"], ["spool_price", "25.0"], ["spool_weight", "1000.0"], ["markup_percentage", "20.0"], ["prep_time_minutes", nil], ["prep_cost_per_hour", nil], ["postprocessing_time_minutes", nil], ["postprocessing_cost_per_hour", nil], ["other_costs", nil], ["vat_percentage", "10.0"], ["final_price", "1.84784931506849315068493150684931375"], ["created_at", "2025-09-15 01:32:57.817269"], ["updated_at", "2025-09-15 01:32:57.817269"], ["printer_id", 980190966]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+Redirected to http://www.example.com/print_pricings/980190963
+Completed 302 Found in 21ms (ActiveRecord: 0.8ms (4 queries, 3 cached) | GC: 0.0ms)
+  Rendered /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 9.0ms | GC: 0.0ms)
+Started GET "/print_pricings/980190963" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Processing by PrintPricingsController#show as HTML
+  Parameters: {"id" => "980190963"}
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | GC: 0.0ms)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Load (1.0ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 AND "print_pricings"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190963], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/show.html.erb within layouts/application
+  [1m[36mPrinter Load (0.4ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = $1 LIMIT $2[0m  [["id", 980190965], ["LIMIT", 1]]
+  Rendered print_pricings/show.html.erb within layouts/application (Duration: 12.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 13.6ms | ActiveRecord: 2.0ms (3 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings"[0m
+Started DELETE "/print_pricings/980190963" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Processing by PrintPricingsController#destroy as HTML
+  Parameters: {"id" => "980190963"}
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mCACHE PrintPricing Load (0.0ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 AND "print_pricings"."id" = $2 LIMIT $3[0m  [["user_id", 980190962], ["id", 980190963], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPrintPricing Destroy (0.8ms)[0m  [1m[31mDELETE FROM "print_pricings" WHERE "print_pricings"."id" = $1[0m  [["id", 980190963]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/print_pricings
+Completed 302 Found in 5ms (ActiveRecord: 1.2ms (3 queries, 2 cached) | GC: 0.0ms)
+  [1m[36mPrintPricing Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings"[0m
+Started GET "/print_pricings" for 127.0.0.1 at 2025-09-15 10:32:57 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 LIMIT $2[0m  [["user_id", 980190962], ["LIMIT", 1]]
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = $1[0m  [["user_id", 980190962]]
+  [1m[36mPrintPricing Load (0.1ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = $1 ORDER BY "print_pricings"."created_at" DESC[0m  [["user_id", 980190962]]
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 2.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.9ms (4 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
