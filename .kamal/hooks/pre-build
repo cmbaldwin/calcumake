@@ -15,12 +15,39 @@ if [ $? -eq 0 ]; then
         # Stage all files
         git add .
         
-        # Create commit with Claude attribution
-        git commit -m "Automated commit before deploy
+        # Generate commit message using Claude
+        echo "Generating descriptive commit message using Claude..."
+        
+        # Get git status and diff for Claude to analyze
+        git_status=$(git status --porcelain)
+        git_diff=$(git diff --staged --stat)
+        
+        # Use Claude to generate commit message
+        commit_message=$(claude --prompt "Based on the following git changes, write a concise commit message (1-2 lines) describing what was changed:
+
+Git status:
+$git_status
+
+Git diff summary:
+$git_diff
+
+Format: Start with a verb in imperative mood (add, update, fix, etc.) and be specific about what changed." 2>/dev/null || echo "Update files for deployment")
+        
+        # Log the generated commit message
+        echo "Claude generated commit message: $commit_message"
+        
+        # Create commit with Claude-generated message and attribution
+        full_commit_message="$commit_message
 
 🤖 Generated with Claude Code
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
+        
+        echo "Creating commit with full message:"
+        echo "$full_commit_message"
+        echo "---"
+        
+        git commit -m "$full_commit_message"
         
         # Push to current branch
         echo "Pushing changes..."
