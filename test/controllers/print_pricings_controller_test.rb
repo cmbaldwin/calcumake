@@ -5,6 +5,7 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:one)
+    @printer = printers(:one)
     @print_pricing = print_pricings(:one)
     sign_in @user
   end
@@ -18,7 +19,7 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get print_pricings_url
     assert_response :success
-    assert_select "h1", /My 3D Print Pricings/
+    assert_select "h1", /My Print Calculations/
   end
 
   test "should get new" do
@@ -129,5 +130,100 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
     # Should return 404 because current_user.print_pricings.find won't find it
     get print_pricing_url(other_pricing)
     assert_response :not_found
+  end
+
+  test "should increment times_printed" do
+    initial_count = @print_pricing.times_printed || 0
+    patch increment_times_printed_print_pricing_url(@print_pricing)
+    assert_redirected_to print_pricings_path
+    @print_pricing.reload
+    assert_equal initial_count + 1, @print_pricing.times_printed
+  end
+
+  test "should increment times_printed via turbo stream" do
+    initial_count = @print_pricing.times_printed || 0
+    patch increment_times_printed_print_pricing_url(@print_pricing), headers: { "Accept": "text/vnd.turbo-stream.html" }
+    assert_response :success
+    assert_match "turbo-stream", response.body
+    assert_match "times_printed_#{@print_pricing.id}", response.body
+    @print_pricing.reload
+    assert_equal initial_count + 1, @print_pricing.times_printed
+  end
+
+  test "should decrement times_printed" do
+    @print_pricing.update!(times_printed: 5)
+    patch decrement_times_printed_print_pricing_url(@print_pricing)
+    assert_redirected_to print_pricings_path
+    @print_pricing.reload
+    assert_equal 4, @print_pricing.times_printed
+  end
+
+  test "should decrement times_printed via turbo stream" do
+    @print_pricing.update!(times_printed: 5)
+    patch decrement_times_printed_print_pricing_url(@print_pricing), headers: { "Accept": "text/vnd.turbo-stream.html" }
+    assert_response :success
+    assert_match "turbo-stream", response.body
+    assert_match "times_printed_#{@print_pricing.id}", response.body
+    @print_pricing.reload
+    assert_equal 4, @print_pricing.times_printed
+  end
+
+  test "should not decrement times_printed below zero" do
+    @print_pricing.update!(times_printed: 0)
+    patch decrement_times_printed_print_pricing_url(@print_pricing)
+    assert_redirected_to print_pricings_path
+    @print_pricing.reload
+    assert_equal 0, @print_pricing.times_printed
+  end
+
+  test "should not decrement times_printed below zero via turbo stream" do
+    @print_pricing.update!(times_printed: 0)
+    patch decrement_times_printed_print_pricing_url(@print_pricing), headers: { "Accept": "text/vnd.turbo-stream.html" }
+    assert_response :success
+    assert_match "turbo-stream", response.body
+    @print_pricing.reload
+    assert_equal 0, @print_pricing.times_printed
+  end
+
+  test "should create print_pricing with start_with_one_print toggle" do
+    assert_difference("PrintPricing.count") do
+      post print_pricings_url, params: {
+        print_pricing: {
+          job_name: "Test Print Job",
+          printer_id: @printer.id,
+          printing_time_hours: 2,
+          printing_time_minutes: 30,
+          filament_weight: 35.0,
+          filament_type: "PLA",
+          spool_price: 25.0,
+          spool_weight: 1000.0,
+          markup_percentage: 20.0,
+          start_with_one_print: "1"
+        }
+      }
+    end
+    assert_redirected_to print_pricing_url(PrintPricing.last)
+    assert_equal 1, PrintPricing.last.times_printed
+  end
+
+  test "should create print_pricing without start_with_one_print toggle" do
+    assert_difference("PrintPricing.count") do
+      post print_pricings_url, params: {
+        print_pricing: {
+          job_name: "Test Print Job",
+          printer_id: @printer.id,
+          printing_time_hours: 2,
+          printing_time_minutes: 30,
+          filament_weight: 35.0,
+          filament_type: "PLA",
+          spool_price: 25.0,
+          spool_weight: 1000.0,
+          markup_percentage: 20.0,
+          start_with_one_print: "0"
+        }
+      }
+    end
+    assert_redirected_to print_pricing_url(PrintPricing.last)
+    assert_equal 0, PrintPricing.last.times_printed
   end
 end

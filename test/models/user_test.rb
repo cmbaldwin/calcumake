@@ -2,7 +2,12 @@ require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(email: "test@example.com", password: "password123")
+    @user = User.new(
+      email: "test@example.com", 
+      password: "password123",
+      default_currency: "USD",
+      default_energy_cost_per_kwh: 0.12
+    )
   end
 
   test "should be valid with valid attributes" do
@@ -76,5 +81,45 @@ class UserTest < ActiveSupport::TestCase
     new_user.save!
     assert_equal "USD", new_user.default_currency
     assert_equal 0.12, new_user.default_energy_cost_per_kwh.to_f
+  end
+
+  # Locale-specific tests
+  test "should have default locale of 'en'" do
+    @user.save!
+    assert_equal "en", @user.locale
+  end
+
+  test "should accept valid locale" do
+    @user.locale = "ja"
+    assert @user.valid?
+  end
+
+  test "should accept all available locales" do
+    I18n.available_locales.each do |locale|
+      @user.locale = locale.to_s
+      assert @user.valid?, "Locale #{locale} should be valid"
+    end
+  end
+
+  test "should reject invalid locale" do
+    @user.locale = "invalid"
+    assert_not @user.valid?
+    assert_includes @user.errors[:locale], "is not included in the list"
+  end
+
+  test "should allow blank locale" do
+    @user.locale = ""
+    assert @user.valid?
+    
+    @user.locale = nil
+    assert @user.valid?
+  end
+
+  test "should save and retrieve locale correctly" do
+    @user.locale = "es"
+    @user.save!
+    
+    reloaded_user = User.find(@user.id)
+    assert_equal "es", reloaded_user.locale
   end
 end

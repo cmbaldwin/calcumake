@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Print Calc" %></title>
+    <title><%= content_for(:title) || "3DP - 3D Print Project Management" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -69,7 +69,7 @@
     <% if notice %>
       <div class="toast-notification toast-success" data-auto-dismiss="5000">
         <div class="toast-header">
-          <div class="toast-title">Success</div>
+          <div class="toast-title"><%= t('flash.success') %></div>
           <button class="toast-close" onclick="this.parentElement.parentElement.remove()">&times;</button>
         </div>
         <div class="toast-content">
@@ -80,7 +80,7 @@
     <% if alert %>
       <div class="toast-notification toast-error" data-auto-dismiss="5000">
         <div class="toast-header">
-          <div class="toast-title">Alert</div>
+          <div class="toast-title"><%= t('flash.alert') %></div>
           <button class="toast-close" onclick="this.parentElement.parentElement.remove()">&times;</button>
         </div>
         <div class="toast-content">
@@ -92,18 +92,40 @@
     <div class="container">
       <header class="main-header">
         <nav class="main-nav">
-          <%= link_to "3D Print Calculator", root_path, class: "nav-brand" %>
+          <%= link_to t('nav.brand'), root_path, class: "nav-brand" %>
           <div class="nav-links">
             <% if user_signed_in? %>
-              <%= link_to "My Pricings", print_pricings_path, class: "nav-link" %>
-              <%= link_to "New Pricing", new_print_pricing_path, class: "nav-link" %>
-              <%= link_to "My Printers", printers_path, class: "nav-link" %>
-              <%= link_to "Profile", user_profile_path, class: "nav-link" %>
-              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link nav-link-secondary" %>
+              <%= link_to t('nav.my_pricings'), print_pricings_path, class: "nav-link" %>
+              <%= link_to t('nav.new_pricing'), new_print_pricing_path, class: "nav-link" %>
+              <%= link_to t('nav.my_printers'), printers_path, class: "nav-link" %>
+              <%= link_to t('nav.profile'), user_profile_path, class: "nav-link" %>
+              <%= link_to t('nav.sign_out'), destroy_user_session_path, method: :delete, class: "nav-link nav-link-secondary" %>
             <% else %>
-              <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
-              <%= link_to "Sign up", new_user_registration_path, class: "nav-link nav-link-primary" %>
+              <%= link_to t('nav.sign_in'), new_user_session_path, class: "nav-link" %>
+              <%= link_to t('nav.sign_up'), new_user_registration_path, class: "nav-link nav-link-primary" %>
             <% end %>
+            
+            <!-- Language Selector -->
+            <div class="language-selector">
+              <%= form_with url: switch_locale_path, method: :post, local: true, class: "language-form" do |form| %>
+                <%= form.select :locale, 
+                    options_for_select([
+                      [t('language_name', locale: :en), 'en'],
+                      [t('language_name', locale: :ja), 'ja'],
+                      [t('language_name', locale: :'zh-CN'), 'zh-CN'],
+                      [t('language_name', locale: :hi), 'hi'],
+                      [t('language_name', locale: :es), 'es'],
+                      [t('language_name', locale: :fr), 'fr'],
+                      [t('language_name', locale: :ar), 'ar']
+                    ], I18n.locale.to_s),
+                    {},
+                    { 
+                      class: "language-select",
+                      onchange: "this.form.submit();",
+                      title: t('nav.language')
+                    } %>
+              <% end %>
+            </div>
           </div>
         </nav>
       </header>

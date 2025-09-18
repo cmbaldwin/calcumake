@@ -1,0 +1,363 @@
+es:
+  language_name: "Español"
+  
+  # Navigation
+  nav:
+    brand: "3DP - Gestión de Proyectos"
+    my_pricings: "Mis Precios"
+    new_pricing: "Nuevo Precio"
+    my_printers: "Mis Impresoras"
+    profile: "Perfil"
+    sign_out: "Cerrar sesión"
+    sign_in: "Iniciar sesión"
+    sign_up: "Registrarse"
+    language: "Idioma"
+  
+  # Common actions
+  actions:
+    save: "Guardar"
+    cancel: "Cancelar"
+    edit: "Editar"
+    delete: "Eliminar"
+    create: "Crear"
+    update: "Actualizar"
+    new: "Nuevo"
+    show: "Mostrar"
+    back: "Atrás"
+    submit: "Enviar"
+    view: "Ver"
+    actions: "Acciones"
+  
+  # Flash messages
+  flash:
+    success: "Éxito"
+    error: "Error"
+    alert: "Alerta"
+    notice: "Aviso"
+    created: "%{model} creado exitosamente"
+    updated: "%{model} actualizado exitosamente"
+    deleted: "%{model} eliminado exitosamente"
+  
+  # Models
+  models:
+    user: "Usuario"
+    printer: "Impresora"
+    print_pricing: "Precio de Impresión"
+  
+  # Common terms
+  common:
+    created: "Creado"
+    currency: "Moneda"
+    hours: "Horas"
+    minutes: "Minutos"
+    grams: "g"
+    watts: "W"
+    kwh: "kWh"
+    percentage: "%"
+    years: "años"
+    "yes": "Sí"
+    "no": "No"
+    are_you_sure: "¿Está seguro?"
+    errors_prohibited: "%{count} %{errors} impidieron que se guardara este %{model}:"
+    error_count:
+      one: "error"
+      other: "errores"
+  
+  # Print Pricing Module
+  print_pricing:
+    # Index page
+    index:
+      title: "Mis Cálculos de Impresión"
+      subtitle: "Seguimiento y gestión de cálculos de costos de impresión 3D"
+      create_new: "Calcular Nueva Impresión"
+      total_calculations: "Total de Cálculos"
+      total_print_time: "Tiempo Total de Impresión"
+      empty_state:
+        title: "No hay cálculos aún"
+        description: "Comience creando su primer cálculo de costo de impresión para rastrear gastos y precios de sus proyectos de impresión 3D."
+    
+    # Form fields
+    job_name: "Nombre del Trabajo"
+    print_time: "Tiempo de Impresión"
+    times_printed: "Veces Impreso"
+    final_price: "Precio Final"
+    confirm_delete: "¿Está seguro de que desea eliminar '%{name}'?"
+    times_printed_incremented: "Veces impreso aumentado exitosamente"
+    times_printed_decremented: "Veces impreso disminuido exitosamente"
+    
+    # New/Edit forms
+    calculator:
+      title: "Calculadora de Impresión 3D"
+      subtitle: "Calcule sus costos de impresión 3D con precisión"
+      edit_title: "Editar Precio de Impresión"
+      edit_subtitle: "Actualizar cálculo de costo de impresión 3D"
+      
+    # Form sections
+    sections:
+      basic_info: "Información Básica"
+      print_time_material: "Tiempo de Impresión y Material"
+      filament_details: "Detalles del Filamento"
+      electricity: "Electricidad"
+      labor: "Mano de Obra"
+      machine_upkeep: "Máquina y Mantenimiento"
+      other_costs_tax: "Otros Costos e Impuestos"
+      final_price: "Precio Final"
+    
+    # Form fields
+    fields:
+      job_name: "Nombre del Trabajo"
+      job_name_placeholder: "ej., Modelo en Miniatura"
+      select_printer: "Seleccionar Impresora"
+      select_printer_prompt: "Seleccione una impresora"
+      no_printer_help: "¿No tiene una impresora registrada?"
+      add_printer_link: "Agregar una nueva impresora"
+      print_time_hours: "Horas"
+      print_time_minutes: "Minutos"
+      filament_weight: "Peso del Filamento (g)"
+      filament_weight_placeholder: "36"
+      filament_type: "Tipo de Filamento"
+      filament_type_prompt: "Seleccionar tipo"
+      spool_price: "Precio del Carrete"
+      spool_price_placeholder: "25.00"
+      spool_weight: "Peso del Carrete (g)"
+      spool_weight_placeholder: "1000"
+      markup: "Margen (%)"
+      markup_placeholder: "20"
+      prep_time: "Tiempo de Preparación (min)"
+      prep_time_placeholder: "30"
+      prep_cost_hour: "Costo de Prep./Hora"
+      prep_cost_placeholder: "20.00"
+      post_time: "Tiempo de Post-proceso (min)"
+      post_time_placeholder: "30"
+      post_cost_hour: "Costo de Post-proceso/Hora"
+      post_cost_placeholder: "20.00"
+      other_costs: "Otros Costos"
+      other_costs_placeholder: "0.00"
+      vat: "IVA (%)"
+      vat_placeholder: "10"
+      power_consumption: "Consumo de Energía (W)"
+      power_consumption_placeholder: "200"
+      energy_cost_kwh: "Costo de Energía por kWh"
+      energy_cost_placeholder: "0.12"
+      printer_cost: "Costo de la Impresora"
+      printer_cost_placeholder: "500.00"
+      payoff_goal: "Meta de Amortización (Años)"
+      payoff_goal_placeholder: "3"
+      daily_usage: "Uso Diario (Horas)"
+      daily_usage_placeholder: "8"
+      repair_cost: "Costo de Reparación (%)"
+      repair_cost_placeholder: "5"
+      currency: "Moneda"
+      currency_prompt: "Seleccionar moneda"
+    
+    # Filament types
+    filament_types:
+      pla: "PLA"
+      abs: "ABS"
+      petg: "PETG"
+      tpu: "TPU"
+      asa: "ASA"
+      other: "Otro"
+    
+    # Calculations display
+    calculations:
+      filament_cost: "Costo del filamento"
+      electricity_cost: "Costo de electricidad"
+      labor_cost: "Costo de mano de obra"
+      machine_cost: "Costo de máquina"
+      estimated_price: "Precio Estimado"
+    
+    # Info messages
+    info:
+      electricity_auto: "El costo de electricidad se calculará automáticamente basado en:"
+      printer_power: "Consumo de energía de la impresora seleccionada"
+      print_duration: "Duración del tiempo de impresión"
+      energy_cost_setting: "Su costo de energía predeterminado: %{cost}/kWh"
+      update_energy_cost: "Puede actualizar su costo de energía predeterminado en su"
+      profile_settings: "configuración de perfil"
+      machine_auto: "El costo de depreciación y mantenimiento de la máquina se calculará a partir de las especificaciones de su impresora seleccionada:"
+      printer_cost_usage: "Costo de la impresora y horas de uso"
+      investment_return: "Período de retorno de inversión"
+      repair_factor: "Factor de costo de reparación"
+      configure_printer: "Estos valores se configuran cuando"
+      add_edit_printer: "agrega o edita una impresora"
+    
+    # Buttons
+    buttons:
+      calculate_save: "Calcular y Guardar"
+      update_pricing: "Actualizar Precio"
+      cancel: "Cancelar"
+    
+    # Show page
+    show:
+      created_on: "Creado el %{date}"
+      edit_calculation: "Editar Cálculo"
+      delete: "Eliminar"
+      cost_summary: "Resumen de Costos"
+      print_information: "Información de Impresión"
+      filament_details: "Detalles del Filamento"
+      electricity_cost: "Costo de Electricidad"
+      labor_cost: "Costo de Mano de Obra"
+      machine_upkeep_cost: "Costo de Máquina y Mantenimiento"
+      
+      # Cost breakdown
+      costs:
+        filament: "Costo del Filamento"
+        electricity: "Costo de Electricidad"
+        labor: "Costo de Mano de Obra"
+        machine: "Costo de Máquina"
+        other: "Otros Costos"
+        subtotal: "Subtotal"
+        vat: "IVA (%{rate}%)"
+        final_price: "Precio Final"
+      
+      # Details
+      details:
+        currency: "Moneda"
+        printing_time: "Tiempo de Impresión"
+        filament_weight: "Peso del Filamento"
+        filament_type: "Tipo de Filamento"
+        spool_price: "Precio del Carrete"
+        spool_weight: "Peso del Carrete"
+        markup: "Margen"
+        power_consumption: "Consumo de Energía"
+        energy_cost_kwh: "Costo de Energía por kWh"
+        total_electricity_cost: "Costo Total de Electricidad"
+        prep_time: "Tiempo de Preparación"
+        postprocessing_time: "Tiempo de Post-procesamiento"
+        total_labor_cost: "Costo Total de Mano de Obra"
+        printer_cost: "Costo de la Impresora"
+        payoff_goal: "Meta de Amortización"
+        daily_usage: "Uso Diario"
+        repair_cost: "Costo de Reparación"
+        total_machine_cost: "Costo Total de Máquina"
+      
+      # Actions
+      actions:
+        back_to_all: "← Volver a Todos los Precios"
+        create_new: "Crear Nuevo Precio"
+        confirm_delete: "¿Está seguro de que desea eliminar '%{name}'?"
+  
+  # Printers Module
+  printers:
+    # Index page
+    index:
+      title: "Mis Impresoras"
+      subtitle: "Administre sus impresoras 3D y sus especificaciones"
+      add_new: "Agregar Nueva Impresora"
+      empty_state:
+        title: "No hay impresoras registradas aún"
+        description: "Agregue su primera impresora 3D para comenzar a calcular costos de impresión con precisión."
+        add_first: "Agregar Su Primera Impresora"
+    
+    # Printer card
+    card:
+      power_consumption: "Consumo de Energía"
+      cost: "Costo"
+      daily_usage: "Uso Diario"
+      payoff_goal: "Meta de Amortización"
+      paid_off: "✓ Amortizada"
+      months_to_payoff: "%{months} meses para amortizar"
+      hours: "horas"
+      years: "años"
+    
+    # New/Edit forms
+    new:
+      title: "Agregar Nueva Impresora"
+      subtitle: "Registre las especificaciones de su impresora 3D para cálculos de costo precisos"
+    
+    edit:
+      title: "Editar Impresora"
+      subtitle: "Actualizar las especificaciones de su impresora 3D"
+    
+    # Form sections
+    sections:
+      basic_info: "Información Básica"
+      technical_specs: "Especificaciones Técnicas"
+      financial_info: "Información Financiera"
+      usage_info: "Información de Uso"
+    
+    # Form fields
+    fields:
+      name: "Nombre de la Impresora"
+      name_placeholder: "ej., Mi Prusa i3 MK3S+"
+      manufacturer: "Fabricante"
+      manufacturer_prompt: "Seleccionar fabricante"
+      power_consumption: "Consumo de Energía (Vatios)"
+      power_consumption_placeholder: "200"
+      power_consumption_help: "Rango típico: 50W (impresoras pequeñas) a 500W (impresoras grandes)"
+      cost: "Costo de la Impresora"
+      cost_placeholder: "500.00"
+      payoff_goal: "Meta de Amortización (Años)"
+      payoff_goal_placeholder: "3"
+      payoff_goal_help: "¿En cuántos años desea recuperar el costo de la impresora?"
+      daily_usage: "Uso Diario (Horas)"
+      daily_usage_placeholder: "8"
+      daily_usage_help: "Promedio de horas por día que planea usar esta impresora"
+      repair_factor: "Factor de Costo de Reparación (%)"
+      repair_factor_placeholder: "5.0"
+      repair_factor_help: "Factor de costo adicional para mantenimiento y reparaciones"
+    
+    # Buttons
+    buttons:
+      add_printer: "Agregar Impresora"
+      update_printer: "Actualizar Impresora"
+      cancel: "Cancelar"
+  
+  # User Profile Module
+  profile:
+    # Show page
+    show:
+      title: "Perfil de Usuario"
+      subtitle: "Configuración y preferencias de su cuenta"
+      account_info: "Información de la Cuenta"
+      email: "Correo Electrónico"
+      member_since: "Miembro desde"
+      default_preferences: "Preferencias Predeterminadas"
+      back_to_calculations: "Volver a Cálculos"
+    
+    # Edit page
+    edit:
+      title: "Configuración del Perfil de Usuario"
+      subtitle: "Configure sus preferencias predeterminadas"
+      default_settings: "Configuración Predeterminada"
+    
+    # Form fields
+    fields:
+      default_currency: "Moneda Predeterminada"
+      default_currency_help: "Utilizada como predeterminada para nuevos cálculos de precios"
+      energy_cost: "Costo de Energía por kWh"
+      energy_cost_placeholder: "0.120"
+      energy_cost_help: "Su costo local de electricidad por kilovatio-hora"
+      energy_cost_help_extended: "Su costo local de electricidad por kilovatio-hora. Se utilizará como predeterminado para nuevos cálculos."
+    
+    # Buttons
+    buttons:
+      update_settings: "Actualizar Configuración"
+      update_profile: "Actualizar Perfil"
+      cancel: "Cancelar"
+  
+  # Currency
+  currency:
+    usd: "Dólar Estadounidense"
+    eur: "Euro"
+    gbp: "Libra Esterlina"
+    jpy: "Yen Japonés"
+    cad: "Dólar Canadiense"
+    aud: "Dólar Australiano"
+  
+  # Energy costs
+  energy:
+    cost_per_kwh: "Costo por kWh"
+  
+  # Date and time formats
+  time:
+    at: "a las"
+    formats:
+      month_day_year: "%d de %B de %Y"
+      month_day_year_time: "%d de %B de %Y a las %H:%M"
+  
+  # Application title
+  app:
+    title: "3DP - Gestión de Proyectos de Impresión 3D"
+    title_default: "3DP - Gestión de Proyectos de Impresión 3D"

@@ -1,22 +1,22 @@
 <div class="hero-section" style="text-align: center; margin-bottom: 3rem;">
-  <h1>My 3D Print Pricings</h1>
+  <h1><%= t('print_pricing.index.title') %></h1>
   <p class="hero-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem;">
-    Manage your 3D printing cost calculations
+    <%= t('print_pricing.index.subtitle') %>
   </p>
-  <%= link_to "Create New Pricing", new_print_pricing_path, class: "button", style: "font-size: 1.1rem; padding: 1rem 2rem;" %>
+  <%= link_to t('print_pricing.index.create_new'), new_print_pricing_path, class: "button", style: "font-size: 1.1rem; padding: 1rem 2rem;" %>
 </div>
 
 <% if @print_pricings.any? %>
   <div class="stats-row" style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
     <div class="stat-card" style="flex: 1; min-width: 200px; background: linear-gradient(135deg, var(--moab-sage) 0%, var(--accent) 100%); color: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
       <div style="font-size: 2rem; font-weight: bold;"><%= @print_pricings.count %></div>
-      <div>Total Calculations</div>
+      <div><%= t('print_pricing.index.total_calculations') %></div>
     </div>
     <div class="stat-card" style="flex: 1; min-width: 200px; background: linear-gradient(135deg, var(--secondary) 0%, var(--moab-terracotta) 100%); color: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
       <div style="font-size: 2rem; font-weight: bold;">
-        <%= @print_pricings.sum { |p| p.total_printing_time_minutes } / 60 %>h
+        <%= @print_pricings.sum { |p| p.total_actual_print_time_minutes } / 60 %>h
       </div>
-      <div>Total Print Time</div>
+      <div><%= t('print_pricing.index.total_print_time') %></div>
     </div>
   </div>
 
@@ -24,12 +24,13 @@
     <table style="margin: 0;">
       <thead style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);">
         <tr>
-          <th style="padding: 1.2rem;">Job Name</th>
-          <th style="padding: 1.2rem;">Currency</th>
-          <th style="padding: 1.2rem;">Print Time</th>
-          <th style="padding: 1.2rem;">Final Price</th>
-          <th style="padding: 1.2rem;">Created</th>
-          <th style="padding: 1.2rem;">Actions</th>
+          <th style="padding: 1.2rem;"><%= t('print_pricing.job_name') %></th>
+          <th style="padding: 1.2rem;"><%= t('currency.currency') %></th>
+          <th style="padding: 1.2rem;"><%= t('print_pricing.print_time') %></th>
+          <th style="padding: 1.2rem;"><%= t('print_pricing.times_printed') %></th>
+          <th style="padding: 1.2rem;"><%= t('print_pricing.final_price') %></th>
+          <th style="padding: 1.2rem;"><%= t('common.created') %></th>
+          <th style="padding: 1.2rem;"><%= t('actions.actions') %></th>
         </tr>
       </thead>
       <tbody>
@@ -49,6 +50,9 @@
                 <%= pricing.printing_time_hours %>h <%= pricing.printing_time_minutes %>m
               </span>
             </td>
+            <td style="padding: 1rem;">
+              <%= render "times_printed_control", pricing: pricing %>
+            </td>
             <td style="padding: 1rem; white-space: nowrap;">
               <span style="background: linear-gradient(135deg, var(--accent) 0%, var(--moab-sage) 100%); color: white; padding: 0.4rem 0.8rem; border-radius: 8px; font-weight: 600; white-space: nowrap;">
                 <%= pricing.default_currency %> <%= format_currency(pricing.final_price, pricing.default_currency) %>
@@ -59,17 +63,17 @@
             </td>
             <td style="padding: 1rem;">
               <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                <%= link_to "View", pricing, 
+                <%= link_to t('actions.show'), pricing, 
                     class: "button button-small", 
                     style: "padding: 0.4rem 0.8rem;" %>
-                <%= link_to "Edit", edit_print_pricing_path(pricing), 
+                <%= link_to t('actions.edit'), edit_print_pricing_path(pricing), 
                     class: "button button-small button-outline",
                     style: "padding: 0.4rem 0.8rem;" %>
-                <%= link_to "Delete", pricing, method: :delete,
+                <%= link_to t('actions.delete'), pricing, method: :delete,
                     class: "button button-small button-clear",
                     style: "padding: 0.4rem 0.8rem;",
                     data: { 
-                      confirm: "Are you sure you want to delete '#{pricing.job_name}'?",
+                      confirm: t('print_pricing.confirm_delete', name: pricing.job_name),
                       turbo_method: :delete
                     } %>
               </div>
@@ -81,11 +85,11 @@
   </div>
 <% else %>
   <div class="empty-state" style="text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, #f8f9fa 0%, white 100%); border-radius: 16px; margin-top: 2rem;">
-    <h3 style="color: var(--secondary); margin-bottom: 1rem;">No pricing calculations yet</h3>
+    <h3 style="color: var(--secondary); margin-bottom: 1rem;"><%= t('print_pricing.index.empty_state.title') %></h3>
     <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
-      Create your first 3D print pricing calculation to get started!
+      <%= t('print_pricing.index.empty_state.description') %>
     </p>
-    <%= link_to "Create New Pricing", new_print_pricing_path, 
+    <%= link_to t('print_pricing.index.create_new'), new_print_pricing_path, 
         class: "button", 
         style: "font-size: 1.1rem; padding: 1rem 2rem;" %>
   </div>
@@ -93,13 +97,9 @@
 
 <style>
 .hero-section h1 {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary);
   font-size: 3rem;
   font-weight: 800;
-  text-shadow: none;
 }
 
 .stat-card {
@@ -130,6 +130,83 @@
   
   table {
     min-width: 800px;
+  }
+}
+
+/* Times Printed Control Styles */
+.times-printed-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.inline-form {
+  display: inline;
+  margin: 0;
+}
+
+.increment-btn {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  text-decoration: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(200, 16, 46, 0.2);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.increment-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(200, 16, 46, 0.3);
+  color: white;
+  text-decoration: none;
+}
+
+.increment-btn:active {
+  transform: translateY(0);
+}
+
+.decrement-btn {
+  background: linear-gradient(135deg, var(--text-muted) 0%, var(--text-secondary) 100%);
+}
+
+.decrement-btn:hover {
+  box-shadow: 0 4px 8px rgba(139, 115, 85, 0.3);
+}
+
+.times-printed-value {
+  font-weight: 600;
+  color: var(--primary);
+  min-width: 20px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* Mobile responsive for increment controls */
+@media (max-width: 768px) {
+  .times-printed-control {
+    gap: 0.3rem;
+  }
+  
+  .increment-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+  }
+  
+  .times-printed-value {
+    font-size: 1rem;
+    min-width: 18px;
   }
 }
 </style>

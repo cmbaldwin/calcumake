@@ -1,10 +1,10 @@
 <div class="page-header">
-  <h1>My Printers</h1>
-  <p>Manage your 3D printers and their specifications</p>
+  <h1><%= t('printers.index.title') %></h1>
+  <p><%= t('printers.index.subtitle') %></p>
 </div>
 
 <div class="actions-bar">
-  <%= link_to "Add New Printer", new_printer_path, class: "primary-button" %>
+  <%= link_to t('printers.index.add_new'), new_printer_path, class: "primary-button" %>
 </div>
 
 <% if @printers.any? %>
@@ -18,38 +18,38 @@
         
         <div class="printer-specs">
           <div class="spec-item">
-            <label>Power Consumption:</label>
+            <label><%= t('printers.card.power_consumption') %>:</label>
             <span><%= printer.power_consumption %>W</span>
           </div>
           <div class="spec-item">
-            <label>Cost:</label>
+            <label><%= t('printers.card.cost') %>:</label>
             <span><%= currency_symbol(current_user.default_currency) %><%= printer.cost %></span>
           </div>
           <div class="spec-item">
-            <label>Daily Usage:</label>
-            <span><%= printer.daily_usage_hours %> hours</span>
+            <label><%= t('printers.card.daily_usage') %>:</label>
+            <span><%= printer.daily_usage_hours %> <%= t('printers.card.hours') %></span>
           </div>
           <div class="spec-item">
-            <label>Payoff Goal:</label>
-            <span><%= printer.payoff_goal_years %> years</span>
+            <label><%= t('printers.card.payoff_goal') %>:</label>
+            <span><%= printer.payoff_goal_years %> <%= t('printers.card.years') %></span>
           </div>
         </div>
 
         <div class="printer-status">
           <% if printer.paid_off? %>
-            <div class="status paid-off">✓ Paid Off</div>
+            <div class="status paid-off"><%= t('printers.card.paid_off') %></div>
           <% else %>
             <div class="status in-progress">
-              <%= printer.months_to_payoff %> months to payoff
+              <%= t('printers.card.months_to_payoff', months: printer.months_to_payoff) %>
             </div>
           <% end %>
         </div>
 
         <div class="printer-actions">
-          <%= link_to "View", printer, class: "secondary-button" %>
-          <%= link_to "Edit", edit_printer_path(printer), class: "secondary-button" %>
-          <%= link_to "Delete", printer, method: :delete, 
-              confirm: "Are you sure?", 
+          <%= link_to t('actions.view'), printer, class: "secondary-button" %>
+          <%= link_to t('actions.edit'), edit_printer_path(printer), class: "secondary-button" %>
+          <%= link_to t('actions.delete'), printer, method: :delete, 
+              confirm: t('common.are_you_sure'), 
               class: "danger-button" %>
         </div>
       </div>
@@ -57,9 +57,9 @@
   </div>
 <% else %>
   <div class="empty-state">
-    <h2>No printers registered yet</h2>
-    <p>Add your first 3D printer to start calculating printing costs accurately.</p>
-    <%= link_to "Add Your First Printer", new_printer_path, class: "primary-button" %>
+    <h2><%= t('printers.index.empty_state.title') %></h2>
+    <p><%= t('printers.index.empty_state.description') %></p>
+    <%= link_to t('printers.index.empty_state.add_first'), new_printer_path, class: "primary-button" %>
   </div>
 <% end %>
 
@@ -70,10 +70,7 @@
 }
 
 .page-header h1 {
-  background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #c8102e;
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 0.5rem;

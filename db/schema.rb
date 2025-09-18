@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_09_001105) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_15_023417) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -34,7 +34,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_09_001105) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "printer_id"
+    t.integer "times_printed", default: 0, null: false
     t.index ["printer_id"], name: "index_print_pricings_on_printer_id"
+    t.index ["times_printed"], name: "index_print_pricings_on_times_printed"
     t.index ["user_id"], name: "index_print_pricings_on_user_id"
   end
 
@@ -63,6 +65,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_09_001105) do
     t.datetime "updated_at", null: false
     t.string "default_currency", default: "USD"
     t.decimal "default_energy_cost_per_kwh", precision: 8, scale: 4, default: "0.12"
+    t.string "locale"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
