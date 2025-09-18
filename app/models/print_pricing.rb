@@ -7,6 +7,7 @@ class PrintPricing < ApplicationRecord
   validates :printing_time_hours, :printing_time_minutes, numericality: { greater_than_or_equal_to: 0 }
   validates :filament_weight, :spool_price, :spool_weight, :markup_percentage,
             numericality: { greater_than: 0 }
+  validates :times_printed, numericality: { greater_than_or_equal_to: 0, only_integer: true }
 
   before_save :calculate_final_price
 
@@ -52,6 +53,19 @@ class PrintPricing < ApplicationRecord
   def calculate_subtotal
     total_filament_cost + total_electricity_cost + total_labor_cost + 
     total_machine_upkeep_cost + (other_costs || 0)
+  end
+
+  def total_actual_print_time_minutes
+    (times_printed || 0) * total_printing_time_minutes
+  end
+
+  def increment_times_printed!
+    update!(times_printed: (times_printed || 0) + 1)
+  end
+
+  def decrement_times_printed!
+    new_count = [(times_printed || 0) - 1, 0].max
+    update!(times_printed: new_count)
   end
 
   private

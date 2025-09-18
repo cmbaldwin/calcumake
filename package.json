@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "rails_admin": "3.3.0"
+  }
+}

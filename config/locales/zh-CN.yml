@@ -1,0 +1,196 @@
+"zh-CN":
+  language_name: "中文（简体）"
+  
+  # Navigation
+  nav:
+    brand: "3DP - 项目管理"
+    my_pricings: "我的定价"
+    new_pricing: "新建定价"
+    my_printers: "我的打印机"
+    profile: "个人资料"
+    sign_out: "退出登录"
+    sign_in: "登录"
+    sign_up: "注册"
+    language: "语言"
+  
+  # Common actions
+  actions:
+    save: "保存"
+    cancel: "取消"
+    edit: "编辑"
+    delete: "删除"
+    create: "创建"
+    update: "更新"
+    new: "新建"
+    show: "显示"
+    back: "返回"
+    submit: "提交"
+    view: "查看"
+    actions: "操作"
+  
+  # Flash messages
+  flash:
+    success: "成功"
+    error: "错误"
+    alert: "警告"
+    notice: "通知"
+    created: "成功创建%{model}"
+    updated: "成功更新%{model}"
+    deleted: "成功删除%{model}"
+  
+  # Models
+  models:
+    user: "用户"
+    printer: "打印机"
+    print_pricing: "打印定价"
+  
+  # Common terms
+  common:
+    created: "创建于"
+    currency: "货币"
+    hours: "小时"
+    minutes: "分钟"
+    grams: "克"
+    watts: "瓦"
+    kwh: "千瓦时"
+    percentage: "%"
+    years: "年"
+    "yes": "是"
+    "no": "否"
+    are_you_sure: "您确定吗？"
+    errors_prohibited: "%{count}个%{errors}阻止了%{model}保存："
+    error_count:
+      one: "错误"
+      other: "错误"
+  
+  # Print Pricing Module
+  print_pricing:
+    # Index page
+    index:
+      title: "我的打印计算"
+      subtitle: "跟踪和管理3D打印成本计算"
+      create_new: "计算新打印"
+      total_calculations: "总计算数"
+      total_print_time: "总打印时间"
+      empty_state:
+        title: "暂无计算记录"
+        description: "开始创建您的第一个打印成本计算，跟踪3D打印项目的费用和定价。"
+    
+    job_name: "作业名称"
+    print_time: "打印时间"
+    times_printed: "打印次数"
+    final_price: "最终价格"
+    confirm_delete: "您确定要删除'%{name}'吗？"
+    times_printed_incremented: "打印次数增加成功"
+    times_printed_decremented: "打印次数减少成功"
+    
+    calculator:
+      title: "3D打印计算器"
+      subtitle: "精确计算您的3D打印成本"
+      edit_title: "编辑打印定价"
+      edit_subtitle: "更新3D打印成本计算"
+    
+    sections:
+      basic_info: "基本信息"
+      print_time_material: "打印时间与材料"
+      filament_details: "耗材详情"
+      electricity: "电力"
+      labor: "人工"
+      machine_upkeep: "机器与维护"
+      other_costs_tax: "其他费用与税费"
+      final_price: "最终价格"
+    
+    show:
+      created_on: "创建于%{date}"
+      edit_calculation: "编辑计算"
+      delete: "删除"
+      cost_summary: "成本摘要"
+      print_information: "打印信息"
+      filament_details: "耗材详情"
+      
+      costs:
+        filament: "耗材成本"
+        electricity: "电力成本"
+        labor: "人工成本"
+        machine: "机器成本"
+        other: "其他成本"
+        subtotal: "小计"
+        vat: "增值税（%{rate}%）"
+        final_price: "最终价格"
+  
+  # Printers Module
+  printers:
+    index:
+      title: "我的打印机"
+      subtitle: "管理您的3D打印机及其规格"
+      add_new: "添加新打印机"
+      empty_state:
+        title: "尚未注册打印机"
+        description: "添加您的第一台3D打印机，开始精确计算打印成本。"
+        add_first: "添加您的第一台打印机"
+    
+    card:
+      power_consumption: "功耗"
+      cost: "成本"
+      daily_usage: "日使用时间"
+      payoff_goal: "回本目标"
+      paid_off: "✓ 已回本"
+      months_to_payoff: "%{months}个月回本"
+      hours: "小时"
+      years: "年"
+    
+    new:
+      title: "添加新打印机"
+      subtitle: "注册您的3D打印机规格以进行精确成本计算"
+    
+    edit:
+      title: "编辑打印机"
+      subtitle: "更新您的3D打印机规格"
+  
+  # User Profile Module
+  profile:
+    show:
+      title: "用户资料"
+      subtitle: "您的账户设置和偏好"
+      account_info: "账户信息"
+      email: "邮箱"
+      member_since: "注册于"
+      default_preferences: "默认偏好"
+      back_to_calculations: "返回计算"
+    
+    edit:
+      title: "用户资料设置"
+      subtitle: "配置您的默认偏好"
+      default_settings: "默认设置"
+    
+    fields:
+      default_currency: "默认货币"
+      default_currency_help: "用作新定价计算的默认货币"
+      energy_cost: "电价/千瓦时"
+      energy_cost_placeholder: "0.120"
+      energy_cost_help: "您当地的每千瓦时电价"
+  
+  # Currency
+  currency:
+    usd: "美元"
+    eur: "欧元"
+    gbp: "英镑"
+    jpy: "日元"
+    cad: "加元"
+    aud: "澳元"
+  
+  # Energy costs
+  energy:
+    cost_per_kwh: "每千瓦时电价"
+  
+  # Date and time formats
+  time:
+    at: "于"
+    formats:
+      month_day_year: "%Y年%m月%d日"
+      month_day_year_time: "%Y年%m月%d日 %H:%M"
+  
+  # Application title
+  app:
+    title: "3DP - 3D打印项目管理"
+    title_default: "3DP - 3D打印项目管理"

@@ -2604,3 +2604,1951 @@ Completed 200 OK in 41ms (Views: 16.3ms | ActiveRecord: 1.1ms (3 queries, 0 cach
 
   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+Started GET "/" for ::1 at 2025-09-15 10:38:30 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.5ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 42.9ms | GC: 8.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 54.0ms | GC: 9.7ms)
+Completed 200 OK in 152ms (Views: 54.6ms | ActiveRecord: 36.6ms (4 queries, 0 cached) | GC: 9.7ms)
+
+
+Started GET "/print_pricings/5" for ::1 at 2025-09-15 10:38:36 +0900
+Processing by PrintPricingsController#show as HTML
+  Parameters: {"id" => "5"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  [1m[36mPrintPricing Load (0.5ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:45:in 'PrintPricingsController#set_print_pricing'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/show.html.erb within layouts/application
+  [1m[36mPrinter Load (2.1ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = 1 LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:27:in 'PrintPricing#total_electricity_cost'
+  Rendered print_pricings/show.html.erb within layouts/application (Duration: 49.6ms | GC: 0.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 53.8ms | GC: 0.8ms)
+Completed 200 OK in 95ms (Views: 48.7ms | ActiveRecord: 6.6ms (3 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/" for ::1 at 2025-09-15 10:50:51 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in 'ApplicationController#set_locale'
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 6.3ms (1 query, 0 cached) | GC: 1.2ms)
+
+
+  
+NoMethodError (undefined method 'locale' for an instance of User):
+  
+app/controllers/application_controller.rb:13:in 'ApplicationController#set_locale'
+Started GET "/favicon.ico" for ::1 at 2025-09-15 10:50:52 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+  [1m[36mCACHE ActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8370807757114078185) /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='PrintCalc'*/[0m
+Migrating to AddLocaleToUsers (20250915015123)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='PrintCalc'*/[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "users" ADD "locale" character varying /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250915015123') RETURNING "version" /*application='PrintCalc'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='PrintCalc'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8370807757114078185) /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8370807757114078185) /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='PrintCalc'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8370807757114078185) /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8370807757114078185) /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='PrintCalc'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8370807757114078185) /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='PrintCalc'*/[0m
+  ↳ test_locale.rb:1:in '<main>'
+  [1m[36mUser Exists? (4.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1 /*application='PrintCalc'*/[0m
+  ↳ test_locale.rb:1:in '<main>'
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "default_currency", "default_energy_cost_per_kwh", "locale") VALUES ('test@example.com', '$2a$12$mHDhTcFL3NJo.nq9yJ4deuHQRepqAtMpwIHG0qxCWk36TP6chT8zK', NULL, NULL, NULL, '2025-09-15 01:54:21.061452', '2025-09-15 01:54:21.061452', 'USD', 0.12, 'en') RETURNING "id" /*application='PrintCalc'*/[0m
+  ↳ test_locale.rb:1:in '<main>'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*application='PrintCalc'*/[0m
+  ↳ test_locale.rb:1:in '<main>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='PrintCalc'*/[0m
+  ↳ test_locale.rb:11:in '<main>'
+  [1m[36mUser Update (1.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-09-15 01:54:21.068219', "locale" = 'ja' WHERE "users"."id" = 2 /*application='PrintCalc'*/[0m
+  ↳ test_locale.rb:11:in '<main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='PrintCalc'*/[0m
+  ↳ test_locale.rb:11:in '<main>'
+Started GET "/" for ::1 at 2025-09-15 10:55:08 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 17.4ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 26.6ms | GC: 0.7ms)
+Completed 200 OK in 76ms (Views: 26.7ms | ActiveRecord: 12.9ms (4 queries, 0 cached) | GC: 2.0ms)
+
+
+Started GET "/assets/moab_theme-1f56cca1.css" for ::1 at 2025-09-15 10:55:08 +0900
+Started GET "/" for ::1 at 2025-09-15 10:55:11 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 14.1ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.9ms | GC: 0.1ms)
+Completed 200 OK in 57ms (Views: 17.4ms | ActiveRecord: 1.4ms (4 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/print_pricings/5/edit" for ::1 at 2025-09-15 10:55:19 +0900
+Processing by PrintPricingsController#edit as HTML
+  Parameters: {"id" => "5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  [1m[36mPrintPricing Load (0.4ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='edit',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:45:in 'PrintPricingsController#set_print_pricing'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/edit.html.erb within layouts/application
+  Rendered print_pricings/edit.html.erb within layouts/application (Duration: 7.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | GC: 0.0ms)
+Completed 200 OK in 54ms (Views: 11.9ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings/5" for ::1 at 2025-09-15 10:55:19 +0900
+Processing by PrintPricingsController#show as HTML
+  Parameters: {"id" => "5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:45:in 'PrintPricingsController#set_print_pricing'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/show.html.erb within layouts/application
+  [1m[36mPrinter Load (0.6ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = 1 LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:27:in 'PrintPricing#total_electricity_cost'
+  Rendered print_pricings/show.html.erb within layouts/application (Duration: 20.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 20.9ms | GC: 0.0ms)
+Completed 200 OK in 62ms (Views: 18.4ms | ActiveRecord: 4.3ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings/5/edit" for ::1 at 2025-09-15 10:55:21 +0900
+Processing by PrintPricingsController#edit as HTML
+  Parameters: {"id" => "5"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  [1m[36mPrintPricing Load (0.4ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='edit',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:45:in 'PrintPricingsController#set_print_pricing'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/edit.html.erb within layouts/application
+  Rendered print_pricings/edit.html.erb within layouts/application (Duration: 11.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.8ms | GC: 0.0ms)
+Completed 200 OK in 53ms (Views: 14.2ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-09-15 10:55:24 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 6.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | GC: 0.0ms)
+Completed 200 OK in 44ms (Views: 8.3ms | ActiveRecord: 1.3ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings/new" for ::1 at 2025-09-15 10:55:25 +0900
+Processing by PrintPricingsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/new.html.erb within layouts/application
+  [1m[36mPrinter Load (0.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 /*action='new',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/new.html.erb:39
+  Rendered print_pricings/new.html.erb within layouts/application (Duration: 19.2ms | GC: 6.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 20.0ms | GC: 6.5ms)
+Completed 200 OK in 60ms (Views: 20.2ms | ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 6.5ms)
+
+
+Started GET "/printers" for ::1 at 2025-09-15 10:55:27 +0900
+Processing by PrintersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering printers/index.html.erb within layouts/application
+  [1m[36mPrinter Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "printers" WHERE "printers"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:10
+  [1m[36mPrinter Load (0.6ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 ORDER BY "printers"."name" ASC /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:12
+  Rendered printers/index.html.erb within layouts/application (Duration: 6.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | GC: 0.3ms)
+Completed 200 OK in 51ms (Views: 15.0ms | ActiveRecord: 1.2ms (3 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/print_pricings/new" for ::1 at 2025-09-15 10:55:27 +0900
+Processing by PrintPricingsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/new.html.erb within layouts/application
+  [1m[36mPrinter Load (0.5ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 /*action='new',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/new.html.erb:39
+  Rendered print_pricings/new.html.erb within layouts/application (Duration: 6.2ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | GC: 0.4ms)
+Completed 200 OK in 47ms (Views: 8.4ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/printers" for ::1 at 2025-09-15 10:55:28 +0900
+Processing by PrintersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering printers/index.html.erb within layouts/application
+  [1m[36mPrinter Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "printers" WHERE "printers"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:10
+  [1m[36mPrinter Load (0.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 ORDER BY "printers"."name" ASC /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:12
+  Rendered printers/index.html.erb within layouts/application (Duration: 3.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | GC: 0.0ms)
+Completed 200 OK in 39ms (Views: 5.0ms | ActiveRecord: 0.8ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/printers" for ::1 at 2025-09-15 10:55:29 +0900
+Processing by PrintersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering printers/index.html.erb within layouts/application
+  [1m[36mPrinter Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "printers" WHERE "printers"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:10
+  [1m[36mPrinter Load (0.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 ORDER BY "printers"."name" ASC /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:12
+  Rendered printers/index.html.erb within layouts/application (Duration: 1.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | GC: 0.0ms)
+Completed 200 OK in 39ms (Views: 2.8ms | ActiveRecord: 1.0ms (3 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/printers" for ::1 at 2025-09-15 10:57:28 +0900
+Processing by PrintersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering printers/index.html.erb within layouts/application
+  [1m[36mPrinter Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "printers" WHERE "printers"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:10
+  [1m[36mPrinter Load (0.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 ORDER BY "printers"."name" ASC /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:12
+  Rendered printers/index.html.erb within layouts/application (Duration: 2.7ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | GC: 0.1ms)
+Completed 200 OK in 46ms (Views: 10.4ms | ActiveRecord: 0.7ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/assets/moab_theme-2f45e01e.css" for ::1 at 2025-09-15 10:57:28 +0900
+Started GET "/" for ::1 at 2025-09-15 10:57:29 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 5.0ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | GC: 0.3ms)
+Completed 200 OK in 55ms (Views: 10.2ms | ActiveRecord: 0.9ms (4 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/" for ::1 at 2025-09-15 10:57:30 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 4.1ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | GC: 0.2ms)
+Completed 200 OK in 44ms (Views: 5.7ms | ActiveRecord: 1.1ms (4 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/printers" for ::1 at 2025-09-15 11:16:34 +0900
+Processing by PrintersController#index as HTML
+  [1m[36mUser Load (13.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering printers/index.html.erb within layouts/application
+  [1m[36mPrinter Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "printers" WHERE "printers"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:10
+  [1m[36mPrinter Load (0.4ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 ORDER BY "printers"."name" ASC /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:12
+  Rendered printers/index.html.erb within layouts/application (Duration: 2.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | GC: 0.0ms)
+Completed 200 OK in 45ms (Views: 4.0ms | ActiveRecord: 20.7ms (3 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/assets/moab_theme-4e66c36e.css" for ::1 at 2025-09-15 11:16:34 +0900
+Started GET "/" for ::1 at 2025-09-15 11:16:35 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 7.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | GC: 0.0ms)
+Completed 200 OK in 45ms (Views: 5.8ms | ActiveRecord: 2.7ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/profile" for ::1 at 2025-09-15 11:16:38 +0900
+Processing by UserProfilesController#show as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='PrintCalc',controller='user_profiles'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering user_profiles/show.html.erb within layouts/application
+  Rendered user_profiles/show.html.erb within layouts/application (Duration: 3.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | GC: 0.0ms)
+Completed 200 OK in 34ms (Views: 6.4ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/printers" for ::1 at 2025-09-15 11:17:25 +0900
+Processing by PrintersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering printers/index.html.erb within layouts/application
+  [1m[36mPrinter Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "printers" WHERE "printers"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:10
+  [1m[36mPrinter Load (0.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 ORDER BY "printers"."name" ASC /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:12
+  Rendered printers/index.html.erb within layouts/application (Duration: 9.6ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | GC: 0.3ms)
+Completed 200 OK in 65ms (Views: 16.8ms | ActiveRecord: 13.3ms (3 queries, 0 cached) | GC: 0.6ms)
+
+
+Started POST "/switch_locale" for ::1 at 2025-09-15 11:17:28 +0900
+Processing by ApplicationController#switch_locale as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "locale" => "ja"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mUser Update (1.6ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-09-15 02:17:28.625304', "locale" = 'ja' WHERE "users"."id" = 1 /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+Redirected to http://localhost:3000/printers
+Completed 302 Found in 51ms (ActiveRecord: 3.6ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/printers" for ::1 at 2025-09-15 11:17:28 +0900
+Processing by PrintersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering printers/index.html.erb within layouts/application
+  [1m[36mPrinter Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "printers" WHERE "printers"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:10
+  [1m[36mPrinter Load (0.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 ORDER BY "printers"."name" ASC /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:12
+  Rendered printers/index.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | GC: 0.0ms)
+Completed 200 OK in 21ms (Views: 4.2ms | ActiveRecord: 0.6ms (3 queries, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/switch_locale" for ::1 at 2025-09-15 11:17:32 +0900
+Processing by ApplicationController#switch_locale as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "locale" => "es"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-09-15 02:17:32.554969', "locale" = 'es' WHERE "users"."id" = 1 /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+Redirected to http://localhost:3000/printers
+Completed 302 Found in 45ms (ActiveRecord: 5.0ms (2 queries, 0 cached) | GC: 5.0ms)
+
+
+Started GET "/printers" for ::1 at 2025-09-15 11:17:32 +0900
+Processing by PrintersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering printers/index.html.erb within layouts/application
+  [1m[36mPrinter Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "printers" WHERE "printers"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:10
+  [1m[36mPrinter Load (0.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 ORDER BY "printers"."name" ASC /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:12
+  Rendered printers/index.html.erb within layouts/application (Duration: 8.2ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.4ms | GC: 0.8ms)
+Completed 200 OK in 41ms (Views: 15.4ms | ActiveRecord: 2.4ms (3 queries, 0 cached) | GC: 1.0ms)
+
+
+Started POST "/switch_locale" for ::1 at 2025-09-15 11:17:33 +0900
+Processing by ApplicationController#switch_locale as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "locale" => "en"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-09-15 02:17:33.960715', "locale" = 'en' WHERE "users"."id" = 1 /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+Redirected to http://localhost:3000/printers
+Completed 302 Found in 30ms (ActiveRecord: 1.3ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/printers" for ::1 at 2025-09-15 11:17:33 +0900
+Processing by PrintersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering printers/index.html.erb within layouts/application
+  [1m[36mPrinter Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "printers" WHERE "printers"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:10
+  [1m[36mPrinter Load (0.1ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 ORDER BY "printers"."name" ASC /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:12
+  Rendered printers/index.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | GC: 0.2ms)
+Completed 200 OK in 24ms (Views: 5.6ms | ActiveRecord: 0.7ms (3 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/printers" for ::1 at 2025-09-15 11:22:56 +0900
+Processing by PrintersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+Started GET "/printers" for ::1 at 2025-09-15 11:22:56 +0900
+  Rendering layout layouts/application.html.erb
+  Rendering printers/index.html.erb within layouts/application
+  [1m[36mPrinter Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "printers" WHERE "printers"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:10
+  [1m[36mPrinter Load (0.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 ORDER BY "printers"."name" ASC /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:12
+  Rendered printers/index.html.erb within layouts/application (Duration: 11.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | GC: 0.0ms)
+Completed 200 OK in 67ms (Views: 18.8ms | ActiveRecord: 7.1ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by PrintersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering printers/index.html.erb within layouts/application
+  [1m[36mPrinter Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "printers" WHERE "printers"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:10
+  [1m[36mPrinter Load (0.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 ORDER BY "printers"."name" ASC /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:12
+  Rendered printers/index.html.erb within layouts/application (Duration: 10.0ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | GC: 0.5ms)
+Completed 200 OK in 80ms (Views: 18.0ms | ActiveRecord: 7.9ms (3 queries, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/" for ::1 at 2025-09-15 11:22:57 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 17.1ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 19.9ms | GC: 0.3ms)
+Completed 200 OK in 75ms (Views: 22.4ms | ActiveRecord: 4.2ms (4 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/" for ::1 at 2025-09-15 11:22:58 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 3.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.3ms | GC: 0.2ms)
+Completed 200 OK in 64ms (Views: 23.0ms | ActiveRecord: 0.9ms (4 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/" for ::1 at 2025-09-15 11:28:35 +0900
+Processing by PrintPricingsController#index as HTML
+Completed 401 Unauthorized in 29ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-15 11:28:35 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 2.3ms | GC: 0.0ms)
+  Rendered /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 30.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 38.2ms | GC: 0.5ms)
+Completed 200 OK in 73ms (Views: 43.6ms | ActiveRecord: 4.4ms (0 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/assets/moab_theme-4e66c36e.css" for ::1 at 2025-09-15 11:28:35 +0900
+Started GET "/" for ::1 at 2025-09-15 11:30:30 +0900
+Processing by PrintPricingsController#index as HTML
+Completed 401 Unauthorized in 25ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-15 11:30:30 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 10.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 18.1ms | GC: 0.0ms)
+Completed 200 OK in 48ms (Views: 22.0ms | ActiveRecord: 2.6ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/application-65b8d17b.css" for ::1 at 2025-09-15 11:30:30 +0900
+Started GET "/printers" for ::1 at 2025-09-15 11:30:40 +0900
+Processing by PrintersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering printers/index.html.erb within layouts/application
+  [1m[36mPrinter Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "printers" WHERE "printers"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:10
+  [1m[36mPrinter Load (0.4ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 ORDER BY "printers"."name" ASC /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:12
+  Rendered printers/index.html.erb within layouts/application (Duration: 11.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 23.2ms | GC: 0.0ms)
+Completed 200 OK in 80ms (Views: 30.0ms | ActiveRecord: 5.2ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/application-65b8d17b.css" for ::1 at 2025-09-15 11:30:40 +0900
+Started GET "/print_pricings/new" for ::1 at 2025-09-15 11:30:45 +0900
+Processing by PrintPricingsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/new.html.erb within layouts/application
+  [1m[36mPrinter Load (0.5ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 /*action='new',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/new.html.erb:39
+  Rendered print_pricings/new.html.erb within layouts/application (Duration: 21.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 23.1ms | GC: 0.0ms)
+Completed 200 OK in 82ms (Views: 26.8ms | ActiveRecord: 3.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-15 11:30:46 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 8.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | GC: 0.0ms)
+Completed 200 OK in 51ms (Views: 11.6ms | ActiveRecord: 1.3ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings/new" for ::1 at 2025-09-15 11:30:46 +0900
+Processing by PrintPricingsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/new.html.erb within layouts/application
+  [1m[36mPrinter Load (0.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 /*action='new',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/new.html.erb:39
+  Rendered print_pricings/new.html.erb within layouts/application (Duration: 4.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | GC: 0.0ms)
+Completed 200 OK in 40ms (Views: 5.2ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-15 11:30:47 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 3.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | GC: 0.0ms)
+Completed 200 OK in 40ms (Views: 5.0ms | ActiveRecord: 1.1ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings/new" for ::1 at 2025-09-15 11:30:48 +0900
+Processing by PrintPricingsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/new.html.erb within layouts/application
+  [1m[36mPrinter Load (0.3ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 /*action='new',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/new.html.erb:39
+  Rendered print_pricings/new.html.erb within layouts/application (Duration: 3.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.0ms)
+Completed 200 OK in 39ms (Views: 4.0ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-15 11:30:49 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 3.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | GC: 0.0ms)
+Completed 200 OK in 40ms (Views: 3.6ms | ActiveRecord: 1.1ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings/3" for ::1 at 2025-09-15 11:30:51 +0900
+Processing by PrintPricingsController#show as HTML
+  Parameters: {"id" => "3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 3 LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:45:in 'PrintPricingsController#set_print_pricing'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/show.html.erb within layouts/application
+  Rendered print_pricings/show.html.erb within layouts/application (Duration: 2.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | GC: 0.0ms)
+Completed 200 OK in 41ms (Views: 4.0ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/switch_locale" for ::1 at 2025-09-15 11:30:54 +0900
+Processing by ApplicationController#switch_locale as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "locale" => "ja"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-09-15 02:30:54.237920', "locale" = 'ja' WHERE "users"."id" = 1 /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+Redirected to http://localhost:3000/print_pricings
+Completed 302 Found in 37ms (ActiveRecord: 1.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-15 11:30:54 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 2.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | GC: 0.0ms)
+Completed 200 OK in 22ms (Views: 3.1ms | ActiveRecord: 0.8ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/switch_locale" for ::1 at 2025-09-15 11:32:23 +0900
+Processing by ApplicationController#switch_locale as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "locale" => "en"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-09-15 02:32:23.399719', "locale" = 'en' WHERE "users"."id" = 1 /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+Redirected to http://localhost:3000/print_pricings
+Completed 302 Found in 40ms (ActiveRecord: 1.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-15 11:32:23 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 2.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 2.3ms | ActiveRecord: 0.9ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/switch_locale" for ::1 at 2025-09-15 11:32:26 +0900
+Processing by ApplicationController#switch_locale as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "locale" => "ja"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-09-15 02:32:26.167795', "locale" = 'ja' WHERE "users"."id" = 1 /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+Redirected to http://localhost:3000/print_pricings
+Completed 302 Found in 43ms (ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-15 11:32:26 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 7.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | GC: 0.0ms)
+Completed 200 OK in 28ms (Views: 7.6ms | ActiveRecord: 1.0ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/switch_locale" for ::1 at 2025-09-15 11:32:27 +0900
+Processing by ApplicationController#switch_locale as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "locale" => "en"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-09-15 02:32:27.998365', "locale" = 'en' WHERE "users"."id" = 1 /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*action='switch_locale',application='PrintCalc',controller='application'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#switch_locale'
+Redirected to http://localhost:3000/print_pricings
+Completed 302 Found in 37ms (ActiveRecord: 1.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-15 11:32:28 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 2.9ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | GC: 0.3ms)
+Completed 200 OK in 22ms (Views: 2.9ms | ActiveRecord: 0.9ms (4 queries, 0 cached) | GC: 0.3ms)
+
+
+  [1m[36mCACHE ActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8370807757114078185) /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='PrintCalc'*/[0m
+Migrating to AddTimesPrintedToPrintPricings (20250915023417)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='PrintCalc'*/[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "print_pricings" ADD "times_printed" integer DEFAULT 0 NOT NULL /*application='PrintCalc'*/[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE INDEX "index_print_pricings_on_times_printed" ON "print_pricings" ("times_printed") /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250915023417') RETURNING "version" /*application='PrintCalc'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='PrintCalc'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8370807757114078185) /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+Started GET "/" for ::1 at 2025-09-15 12:00:39 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+Processing by PrintPricingsController#index as HTML
+Completed 401 Unauthorized in 22ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-15 12:00:39 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.7ms | GC: 0.2ms)
+  Rendered /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 5.6ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | GC: 0.2ms)
+Completed 200 OK in 45ms (Views: 15.5ms | ActiveRecord: 4.1ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/" for ::1 at 2025-09-15 12:00:47 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.6ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 14.2ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 21.3ms | GC: 0.5ms)
+Completed 200 OK in 71ms (Views: 25.3ms | ActiveRecord: 3.2ms (4 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/printers" for ::1 at 2025-09-15 12:01:00 +0900
+Processing by PrintersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering printers/index.html.erb within layouts/application
+  [1m[36mPrinter Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "printers" WHERE "printers"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:10
+  [1m[36mPrinter Load (0.4ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 ORDER BY "printers"."name" ASC /*action='index',application='PrintCalc',controller='printers'*/[0m
+  ↳ app/views/printers/index.html.erb:12
+  Rendered printers/index.html.erb within layouts/application (Duration: 11.4ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | GC: 0.2ms)
+Completed 200 OK in 65ms (Views: 16.1ms | ActiveRecord: 1.8ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/print_pricings/new" for ::1 at 2025-09-15 12:01:01 +0900
+Processing by PrintPricingsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/new.html.erb within layouts/application
+  [1m[36mPrinter Load (0.5ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."user_id" = 1 /*action='new',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/new.html.erb:39
+  Rendered print_pricings/new.html.erb within layouts/application (Duration: 15.4ms | GC: 2.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.7ms | GC: 3.3ms)
+Completed 200 OK in 58ms (Views: 18.1ms | ActiveRecord: 1.0ms (2 queries, 0 cached) | GC: 5.1ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8370807757114078185) /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='PrintCalc'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8370807757114078185) /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+Started GET "/" for ::1 at 2025-09-16 07:23:53 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+Processing by PrintPricingsController#index as HTML
+Completed 401 Unauthorized in 73ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-16 07:23:53 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 3.2ms | GC: 0.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 8.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 47.9ms | GC: 12.1ms)
+Completed 200 OK in 121ms (Views: 56.5ms | ActiveRecord: 11.0ms (0 queries, 0 cached) | GC: 12.1ms)
+
+
+Started GET "/assets/application-c5dad228.css" for ::1 at 2025-09-16 07:23:53 +0900
+Started GET "/assets/@hotwired--turbo-rails-ca34b626.js" for ::1 at 2025-09-16 07:23:53 +0900
+Started GET "/assets/rails_admin-0736be6b.js" for ::1 at 2025-09-16 07:23:53 +0900
+Started GET "/assets/@hotwired--turbo-b3e32253.js" for ::1 at 2025-09-16 07:23:53 +0900
+Started GET "/assets/@popperjs--core-7f8b886d.js" for ::1 at 2025-09-16 07:23:53 +0900
+Started GET "/assets/@rails--actioncable--src-1d92931e.js" for ::1 at 2025-09-16 07:23:53 +0900
+Started GET "/assets/@rails--ujs-c1871b2f.js" for ::1 at 2025-09-16 07:23:54 +0900
+Started GET "/assets/bootstrap-cc7eb806.js" for ::1 at 2025-09-16 07:23:54 +0900
+Started GET "/assets/flatpickr-bc43d5e1.js" for ::1 at 2025-09-16 07:23:54 +0900
+Started GET "/assets/jquery-15a62848.js" for ::1 at 2025-09-16 07:23:54 +0900
+Started GET "/posts/new" for ::1 at 2025-09-16 07:23:55 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/posts/new"):
+  
+Started GET "/" for ::1 at 2025-09-16 08:16:58 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.6ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 50.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 85.0ms | GC: 10.4ms)
+Completed 200 OK in 221ms (Views: 85.3ms | ActiveRecord: 33.6ms (4 queries, 0 cached) | GC: 10.4ms)
+
+
+Started GET "/assets/application-c5dad228.css" for ::1 at 2025-09-16 08:16:59 +0900
+Started GET "/assets/@hotwired--turbo-rails-ca34b626.js" for ::1 at 2025-09-16 08:16:59 +0900
+Started GET "/assets/@hotwired--turbo-b3e32253.js" for ::1 at 2025-09-16 08:16:59 +0900
+Started GET "/assets/rails_admin-0736be6b.js" for ::1 at 2025-09-16 08:16:59 +0900
+Started GET "/assets/@popperjs--core-7f8b886d.js" for ::1 at 2025-09-16 08:16:59 +0900
+Started GET "/assets/@rails--actioncable--src-1d92931e.js" for ::1 at 2025-09-16 08:16:59 +0900
+Started GET "/assets/@rails--ujs-c1871b2f.js" for ::1 at 2025-09-16 08:16:59 +0900
+Started GET "/assets/bootstrap-cc7eb806.js" for ::1 at 2025-09-16 08:16:59 +0900
+Started GET "/assets/flatpickr-bc43d5e1.js" for ::1 at 2025-09-16 08:16:59 +0900
+Started GET "/assets/jquery-15a62848.js" for ::1 at 2025-09-16 08:16:59 +0900
+Started GET "/print_pricings/5" for ::1 at 2025-09-16 08:17:15 +0900
+Processing by PrintPricingsController#show as HTML
+  Parameters: {"id" => "5"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:59:in 'PrintPricingsController#set_print_pricing'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/show.html.erb within layouts/application
+  [1m[36mPrinter Load (0.8ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = 1 LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  Rendered print_pricings/show.html.erb within layouts/application (Duration: 44.3ms | GC: 7.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 46.9ms | GC: 7.8ms)
+Completed 200 OK in 98ms (Views: 42.8ms | ActiveRecord: 5.0ms (3 queries, 0 cached) | GC: 7.8ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-16 08:17:21 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 9.7ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | GC: 0.1ms)
+Completed 200 OK in 50ms (Views: 12.0ms | ActiveRecord: 1.1ms (4 queries, 0 cached) | GC: 0.3ms)
+
+
+Started PATCH "/print_pricings/5/decrement_times_printed" for ::1 at 2025-09-16 08:17:26 +0900
+Processing by PrintPricingsController#decrement_times_printed as TURBO_STREAM
+  Parameters: {"id" => "5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  [1m[36mPrintPricing Load (0.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:59:in 'PrintPricingsController#set_print_pricing'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrinter Load (1.5ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = 1 LIMIT 1 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:68:in 'PrintPricing#decrement_times_printed!'
+Redirected to http://localhost:3000/print_pricings
+Completed 302 Found in 58ms (ActiveRecord: 2.2ms (3 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-16 08:17:26 +0900
+Processing by PrintPricingsController#index as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 8.3ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | GC: 0.1ms)
+Completed 200 OK in 48ms (Views: 8.8ms | ActiveRecord: 1.0ms (4 queries, 0 cached) | GC: 0.1ms)
+
+
+Started PATCH "/print_pricings/5/increment_times_printed" for ::1 at 2025-09-16 08:17:28 +0900
+Processing by PrintPricingsController#increment_times_printed as TURBO_STREAM
+  Parameters: {"id" => "5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:59:in 'PrintPricingsController#set_print_pricing'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrinter Load (0.5ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = 1 LIMIT 1 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrintPricing Update (1.4ms)[0m  [1m[33mUPDATE "print_pricings" SET "updated_at" = '2025-09-15 23:17:28.892572', "times_printed" = 1 WHERE "print_pricings"."id" = 5 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:63:in 'PrintPricing#increment_times_printed!'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:63:in 'PrintPricing#increment_times_printed!'
+Redirected to http://localhost:3000/print_pricings
+Completed 302 Found in 56ms (ActiveRecord: 2.9ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-16 08:17:28 +0900
+Processing by PrintPricingsController#index as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 5.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | GC: 0.0ms)
+Completed 200 OK in 46ms (Views: 6.8ms | ActiveRecord: 1.0ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-09-16 08:31:08 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (14.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.8ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 6.5ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | GC: 0.4ms)
+Completed 200 OK in 91ms (Views: 5.7ms | ActiveRecord: 22.9ms (4 queries, 0 cached) | GC: 16.0ms)
+
+
+Started GET "/admin" for ::1 at 2025-09-16 08:31:13 +0900
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='dashboard',application='PrintCalc',controller='main'*/[0m
+  ↳ config/initializers/rails_admin.rb:8:in 'block (2 levels) in <main>'
+  [1m[36mPrintPricing Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" /*action='dashboard',application='PrintCalc',controller='main'*/[0m
+  [1m[36mPrintPricing Load (0.4ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" ORDER BY "print_pricings"."id" DESC LIMIT 1 /*action='dashboard',application='PrintCalc',controller='main'*/[0m
+  [1m[36mPrinter Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "printers" /*action='dashboard',application='PrintCalc',controller='main'*/[0m
+  [1m[36mPrinter Load (0.2ms)[0m  [1m[34mSELECT "printers".* FROM "printers" ORDER BY "printers"."id" DESC LIMIT 1 /*action='dashboard',application='PrintCalc',controller='main'*/[0m
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" /*action='dashboard',application='PrintCalc',controller='main'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1 /*action='dashboard',application='PrintCalc',controller='main'*/[0m
+  Rendering layout /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/rails_admin-3.3.0/app/views/layouts/rails_admin/application.html.erb
+  Rendering /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/rails_admin-3.3.0/app/views/rails_admin/main/dashboard.html.erb within layouts/rails_admin/application
+  Rendered /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/rails_admin-3.3.0/app/views/rails_admin/main/dashboard.html.erb within layouts/rails_admin/application (Duration: 17.0ms | GC: 0.5ms)
+  Rendered /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/rails_admin-3.3.0/app/views/layouts/rails_admin/_head.html.erb (Duration: 2.4ms | GC: 0.5ms)
+  Rendered layout /Users/cody/.rbenv/versions/3.4.5/lib/ruby/gems/3.4.0/gems/rails_admin-3.3.0/app/views/layouts/rails_admin/application.html.erb (Duration: 21.0ms | GC: 1.0ms)
+Completed 500 Internal Server Error in 194ms (ActiveRecord: 11.3ms (7 queries, 0 cached) | GC: 7.7ms)
+
+
+  
+ActionView::Template::Error (The asset 'rails_admin.css' was not found in the load path.)
+Caused by: Propshaft::MissingAssetError (The asset 'rails_admin.css' was not found in the load path.)
+
+Information for: ActionView::Template::Error (The asset 'rails_admin.css' was not found in the load path.):
+    19:   <%= stylesheet_link_tag "rails_admin.css", media: :all, data: {'turbo-track': 'reload'} %>
+    20:   <%= javascript_include_tag "rails_admin.js", defer: true, data: {'turbo-track': 'reload'} %>
+    21: <% when :importmap %>
+    22:   <%= stylesheet_link_tag "rails_admin.css", media: :all, data: {'turbo-track': 'reload'} %>
+    23:   <%= javascript_inline_importmap_tag(RailsAdmin::Engine.importmap.to_json(resolver: self)) %>
+    24:   <%= javascript_importmap_module_preload_tags(RailsAdmin::Engine.importmap) %>
+    25:   <%= javascript_importmap_shim_nonce_configuration_tag if respond_to? :javascript_importmap_shim_nonce_configuration_tag %>
+  
+propshaft (1.2.1) lib/propshaft/helper.rb:50:in 'Propshaft::Helper#compute_asset_path'
+actionview (8.0.2.1) lib/action_view/helpers/asset_url_helper.rb:204:in 'ActionView::Helpers::AssetUrlHelper#asset_path'
+actionview (8.0.2.1) lib/action_view/helpers/asset_url_helper.rb:349:in 'ActionView::Helpers::AssetUrlHelper#stylesheet_path'
+actionview (8.0.2.1) lib/action_view/helpers/asset_tag_helper.rb:213:in 'block in ActionView::Helpers::AssetTagHelper#stylesheet_link_tag'
+actionview (8.0.2.1) lib/action_view/helpers/asset_tag_helper.rb:212:in 'Array#map'
+actionview (8.0.2.1) lib/action_view/helpers/asset_tag_helper.rb:212:in 'ActionView::Helpers::AssetTagHelper#stylesheet_link_tag'
+propshaft (1.2.1) lib/propshaft/helper.rb:83:in 'block in Propshaft::Helper#stylesheet_link_tag'
+propshaft (1.2.1) lib/propshaft/helper.rb:127:in 'block in Propshaft::Helper#_build_asset_tags'
+propshaft (1.2.1) lib/propshaft/helper.rb:125:in 'Array#map'
+propshaft (1.2.1) lib/propshaft/helper.rb:125:in 'Propshaft::Helper#_build_asset_tags'
+propshaft (1.2.1) lib/propshaft/helper.rb:83:in 'Propshaft::Helper#stylesheet_link_tag'
+rails_admin (3.3.0) app/views/layouts/rails_admin/_head.html.erb:22
+actionview (8.0.2.1) lib/action_view/base.rb:278:in 'Kernel#public_send'
+actionview (8.0.2.1) lib/action_view/base.rb:278:in 'ActionView::Base#_run'
+actionview (8.0.2.1) lib/action_view/template.rb:284:in 'block in ActionView::Template#render'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:212:in 'ActiveSupport::Notifications.instrument'
+actionview (8.0.2.1) lib/action_view/template.rb:583:in 'ActionView::Template#instrument_render_template'
+actionview (8.0.2.1) lib/action_view/template.rb:272:in 'ActionView::Template#render'
+actionview (8.0.2.1) lib/action_view/renderer/partial_renderer.rb:252:in 'block in ActionView::PartialRenderer#render_partial_template'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.0.2.1) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionview (8.0.2.1) lib/action_view/renderer/partial_renderer.rb:246:in 'ActionView::PartialRenderer#render_partial_template'
+actionview (8.0.2.1) lib/action_view/renderer/partial_renderer.rb:237:in 'ActionView::PartialRenderer#render'
+actionview (8.0.2.1) lib/action_view/renderer/renderer.rb:78:in 'ActionView::Renderer#render_partial_to_object'
+actionview (8.0.2.1) lib/action_view/renderer/renderer.rb:49:in 'ActionView::Renderer#render_partial'
+actionview (8.0.2.1) lib/action_view/helpers/rendering_helper.rb:152:in 'ActionView::Helpers::RenderingHelper#render'
+rails_admin (3.3.0) app/views/layouts/rails_admin/application.html.erb:4
+actionview (8.0.2.1) lib/action_view/base.rb:278:in 'Kernel#public_send'
+actionview (8.0.2.1) lib/action_view/base.rb:278:in 'ActionView::Base#_run'
+actionview (8.0.2.1) lib/action_view/template.rb:284:in 'block in ActionView::Template#render'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:212:in 'ActiveSupport::Notifications.instrument'
+actionview (8.0.2.1) lib/action_view/template.rb:583:in 'ActionView::Template#instrument_render_template'
+actionview (8.0.2.1) lib/action_view/template.rb:272:in 'ActionView::Template#render'
+actionview (8.0.2.1) lib/action_view/renderer/template_renderer.rb:77:in 'block in ActionView::TemplateRenderer#render_with_layout'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.0.2.1) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionview (8.0.2.1) lib/action_view/renderer/template_renderer.rb:75:in 'ActionView::TemplateRenderer#render_with_layout'
+actionview (8.0.2.1) lib/action_view/renderer/template_renderer.rb:59:in 'ActionView::TemplateRenderer#render_template'
+actionview (8.0.2.1) lib/action_view/renderer/template_renderer.rb:11:in 'ActionView::TemplateRenderer#render'
+actionview (8.0.2.1) lib/action_view/renderer/renderer.rb:58:in 'ActionView::Renderer#render_template_to_object'
+actionview (8.0.2.1) lib/action_view/renderer/renderer.rb:31:in 'ActionView::Renderer#render_to_object'
+actionview (8.0.2.1) lib/action_view/rendering.rb:136:in 'block in ActionView::Rendering#_render_template'
+actionview (8.0.2.1) lib/action_view/base.rb:305:in 'ActionView::Base#in_rendering_context'
+actionview (8.0.2.1) lib/action_view/rendering.rb:135:in 'ActionView::Rendering#_render_template'
+actionpack (8.0.2.1) lib/action_controller/metal/streaming.rb:179:in 'ActionController::Streaming#_render_template'
+actionview (8.0.2.1) lib/action_view/rendering.rb:122:in 'ActionView::Rendering#render_to_body'
+actionpack (8.0.2.1) lib/action_controller/metal/rendering.rb:186:in 'ActionController::Rendering#render_to_body'
+actionpack (8.0.2.1) lib/action_controller/metal/renderers.rb:140:in 'ActionController::Renderers#render_to_body'
+actionpack (8.0.2.1) lib/abstract_controller/rendering.rb:28:in 'AbstractController::Rendering#render'
+actionpack (8.0.2.1) lib/action_controller/metal/rendering.rb:167:in 'ActionController::Rendering#render'
+actionpack (8.0.2.1) lib/action_controller/metal/instrumentation.rb:31:in 'block (2 levels) in ActionController::Instrumentation#render'
+activesupport (8.0.2.1) lib/active_support/benchmark.rb:17:in 'ActiveSupport::Benchmark.realtime'
+actionpack (8.0.2.1) lib/action_controller/metal/instrumentation.rb:31:in 'block in ActionController::Instrumentation#render'
+actionpack (8.0.2.1) lib/action_controller/metal/instrumentation.rb:100:in 'ActionController::Instrumentation#cleanup_view_runtime'
+activerecord (8.0.2.1) lib/active_record/railties/controller_runtime.rb:46:in 'ActiveRecord::Railties::ControllerRuntime#cleanup_view_runtime'
+actionpack (8.0.2.1) lib/action_controller/metal/instrumentation.rb:30:in 'ActionController::Instrumentation#render'
+rails_admin (3.3.0) lib/rails_admin/config/actions/dashboard.rb:40:in 'block (2 levels) in <class:Dashboard>'
+rails_admin (3.3.0) app/controllers/rails_admin/main_controller.rb:38:in 'BasicObject#instance_eval'
+rails_admin (3.3.0) app/controllers/rails_admin/main_controller.rb:38:in 'RailsAdmin::MainController#action_missing'
+actionpack (8.0.2.1) lib/abstract_controller/base.rb:239:in 'AbstractController::Base#_handle_action_missing'
+actionpack (8.0.2.1) lib/action_controller/metal/basic_implicit_render.rb:8:in 'ActionController::BasicImplicitRender#send_action'
+actionpack (8.0.2.1) lib/abstract_controller/base.rb:226:in 'AbstractController::Base#process_action'
+actionpack (8.0.2.1) lib/action_controller/metal/rendering.rb:193:in 'ActionController::Rendering#process_action'
+actionpack (8.0.2.1) lib/abstract_controller/callbacks.rb:261:in 'block in AbstractController::Callbacks#process_action'
+activesupport (8.0.2.1) lib/active_support/callbacks.rb:120:in 'block in ActiveSupport::Callbacks#run_callbacks'
+turbo-rails (2.0.16) lib/turbo-rails.rb:24:in 'Turbo.with_request_id'
+turbo-rails (2.0.16) app/controllers/concerns/turbo/request_id_tracking.rb:10:in 'Turbo::RequestIdTracking#turbo_tracking_request_id'
+activesupport (8.0.2.1) lib/active_support/callbacks.rb:129:in 'block in ActiveSupport::Callbacks#run_callbacks'
+actiontext (8.0.2.1) lib/action_text/rendering.rb:25:in 'ActionText::Rendering::ClassMethods#with_renderer'
+actiontext (8.0.2.1) lib/action_text/engine.rb:71:in 'block (4 levels) in <class:Engine>'
+activesupport (8.0.2.1) lib/active_support/callbacks.rb:129:in 'BasicObject#instance_exec'
+activesupport (8.0.2.1) lib/active_support/callbacks.rb:129:in 'block in ActiveSupport::Callbacks#run_callbacks'
+activesupport (8.0.2.1) lib/active_support/callbacks.rb:140:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.0.2.1) lib/abstract_controller/callbacks.rb:260:in 'AbstractController::Callbacks#process_action'
+actionpack (8.0.2.1) lib/action_controller/metal/rescue.rb:27:in 'ActionController::Rescue#process_action'
+actionpack (8.0.2.1) lib/action_controller/metal/instrumentation.rb:76:in 'block in ActionController::Instrumentation#process_action'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.0.2.1) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionpack (8.0.2.1) lib/action_controller/metal/instrumentation.rb:75:in 'ActionController::Instrumentation#process_action'
+actionpack (8.0.2.1) lib/action_controller/metal/params_wrapper.rb:259:in 'ActionController::ParamsWrapper#process_action'
+activerecord (8.0.2.1) lib/active_record/railties/controller_runtime.rb:39:in 'ActiveRecord::Railties::ControllerRuntime#process_action'
+actionpack (8.0.2.1) lib/abstract_controller/base.rb:163:in 'AbstractController::Base#process'
+actionview (8.0.2.1) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (8.0.2.1) lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+actionpack (8.0.2.1) lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+actionpack (8.0.2.1) lib/action_dispatch/routing/route_set.rb:67:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (8.0.2.1) lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:53:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:133:in 'block in ActionDispatch::Journey::Router#find_routes'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:126:in 'Array#each'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:126:in 'ActionDispatch::Journey::Router#find_routes'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:34:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.0.2.1) lib/action_dispatch/routing/route_set.rb:908:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.0.2.1) lib/rails/engine/lazy_route_set.rb:68:in 'Rails::Engine::LazyRouteSet#call'
+railties (8.0.2.1) lib/rails/engine.rb:535:in 'Rails::Engine#call'
+railties (8.0.2.1) lib/rails/railtie.rb:226:in 'Kernel#public_send'
+railties (8.0.2.1) lib/rails/railtie.rb:226:in 'Rails::Railtie.method_missing'
+actionpack (8.0.2.1) lib/action_dispatch/routing/mapper.rb:33:in 'block in <class:Constraints>'
+actionpack (8.0.2.1) lib/action_dispatch/routing/mapper.rb:62:in 'ActionDispatch::Routing::Mapper::Constraints#serve'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:53:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:133:in 'block in ActionDispatch::Journey::Router#find_routes'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:126:in 'Array#each'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:126:in 'ActionDispatch::Journey::Router#find_routes'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:34:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.0.2.1) lib/action_dispatch/routing/route_set.rb:908:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.0.2.1) lib/rails/engine/lazy_route_set.rb:68:in 'Rails::Engine::LazyRouteSet#call'
+warden (1.2.9) lib/warden/manager.rb:36:in 'block in Warden::Manager#call'
+warden (1.2.9) lib/warden/manager.rb:34:in 'Kernel#catch'
+warden (1.2.9) lib/warden/manager.rb:34:in 'Warden::Manager#call'
+rack (3.2.1) lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+rack (3.2.1) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.1) lib/rack/conditional_get.rb:31:in 'Rack::ConditionalGet#call'
+rack (3.2.1) lib/rack/head.rb:15:in 'Rack::Head#call'
+actionpack (8.0.2.1) lib/action_dispatch/http/permissions_policy.rb:38:in 'ActionDispatch::PermissionsPolicy::Middleware#call'
+actionpack (8.0.2.1) lib/action_dispatch/http/content_security_policy.rb:38:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/cookies.rb:706:in 'ActionDispatch::Cookies#call'
+activerecord (8.0.2.1) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.0.2.1) lib/active_support/callbacks.rb:100:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.0.2.1) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.0.2.1) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:96:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.1) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.1) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.1) lib/rack/sendfile.rb:114:in 'Rack::Sendfile#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+railties (8.0.2.1) lib/rails/engine.rb:535:in 'Rails::Engine#call'
+puma (7.0.1) lib/puma/configuration.rb:297:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (7.0.1) lib/puma/request.rb:101:in 'block in Puma::Request#handle_request'
+puma (7.0.1) lib/puma/thread_pool.rb:336:in 'Puma::ThreadPool#with_force_shutdown'
+puma (7.0.1) lib/puma/request.rb:100:in 'Puma::Request#handle_request'
+puma (7.0.1) lib/puma/server.rb:497:in 'Puma::Server#process_client'
+puma (7.0.1) lib/puma/server.rb:266:in 'block in Puma::Server#run'
+puma (7.0.1) lib/puma/thread_pool.rb:172:in 'block in Puma::ThreadPool#spawn_thread'
+
+Information for cause: Propshaft::MissingAssetError (The asset 'rails_admin.css' was not found in the load path.):
+  
+propshaft (1.2.1) lib/propshaft/helper.rb:50:in 'Propshaft::Helper#compute_asset_path'
+actionview (8.0.2.1) lib/action_view/helpers/asset_url_helper.rb:204:in 'ActionView::Helpers::AssetUrlHelper#asset_path'
+actionview (8.0.2.1) lib/action_view/helpers/asset_url_helper.rb:349:in 'ActionView::Helpers::AssetUrlHelper#stylesheet_path'
+actionview (8.0.2.1) lib/action_view/helpers/asset_tag_helper.rb:213:in 'block in ActionView::Helpers::AssetTagHelper#stylesheet_link_tag'
+actionview (8.0.2.1) lib/action_view/helpers/asset_tag_helper.rb:212:in 'Array#map'
+actionview (8.0.2.1) lib/action_view/helpers/asset_tag_helper.rb:212:in 'ActionView::Helpers::AssetTagHelper#stylesheet_link_tag'
+propshaft (1.2.1) lib/propshaft/helper.rb:83:in 'block in Propshaft::Helper#stylesheet_link_tag'
+propshaft (1.2.1) lib/propshaft/helper.rb:127:in 'block in Propshaft::Helper#_build_asset_tags'
+propshaft (1.2.1) lib/propshaft/helper.rb:125:in 'Array#map'
+propshaft (1.2.1) lib/propshaft/helper.rb:125:in 'Propshaft::Helper#_build_asset_tags'
+propshaft (1.2.1) lib/propshaft/helper.rb:83:in 'Propshaft::Helper#stylesheet_link_tag'
+rails_admin (3.3.0) app/views/layouts/rails_admin/_head.html.erb:22
+actionview (8.0.2.1) lib/action_view/base.rb:278:in 'Kernel#public_send'
+actionview (8.0.2.1) lib/action_view/base.rb:278:in 'ActionView::Base#_run'
+actionview (8.0.2.1) lib/action_view/template.rb:284:in 'block in ActionView::Template#render'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:212:in 'ActiveSupport::Notifications.instrument'
+actionview (8.0.2.1) lib/action_view/template.rb:583:in 'ActionView::Template#instrument_render_template'
+actionview (8.0.2.1) lib/action_view/template.rb:272:in 'ActionView::Template#render'
+actionview (8.0.2.1) lib/action_view/renderer/partial_renderer.rb:252:in 'block in ActionView::PartialRenderer#render_partial_template'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.0.2.1) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionview (8.0.2.1) lib/action_view/renderer/partial_renderer.rb:246:in 'ActionView::PartialRenderer#render_partial_template'
+actionview (8.0.2.1) lib/action_view/renderer/partial_renderer.rb:237:in 'ActionView::PartialRenderer#render'
+actionview (8.0.2.1) lib/action_view/renderer/renderer.rb:78:in 'ActionView::Renderer#render_partial_to_object'
+actionview (8.0.2.1) lib/action_view/renderer/renderer.rb:49:in 'ActionView::Renderer#render_partial'
+actionview (8.0.2.1) lib/action_view/helpers/rendering_helper.rb:152:in 'ActionView::Helpers::RenderingHelper#render'
+rails_admin (3.3.0) app/views/layouts/rails_admin/application.html.erb:4
+actionview (8.0.2.1) lib/action_view/base.rb:278:in 'Kernel#public_send'
+actionview (8.0.2.1) lib/action_view/base.rb:278:in 'ActionView::Base#_run'
+actionview (8.0.2.1) lib/action_view/template.rb:284:in 'block in ActionView::Template#render'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:212:in 'ActiveSupport::Notifications.instrument'
+actionview (8.0.2.1) lib/action_view/template.rb:583:in 'ActionView::Template#instrument_render_template'
+actionview (8.0.2.1) lib/action_view/template.rb:272:in 'ActionView::Template#render'
+actionview (8.0.2.1) lib/action_view/renderer/template_renderer.rb:77:in 'block in ActionView::TemplateRenderer#render_with_layout'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.0.2.1) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionview (8.0.2.1) lib/action_view/renderer/template_renderer.rb:75:in 'ActionView::TemplateRenderer#render_with_layout'
+actionview (8.0.2.1) lib/action_view/renderer/template_renderer.rb:59:in 'ActionView::TemplateRenderer#render_template'
+actionview (8.0.2.1) lib/action_view/renderer/template_renderer.rb:11:in 'ActionView::TemplateRenderer#render'
+actionview (8.0.2.1) lib/action_view/renderer/renderer.rb:58:in 'ActionView::Renderer#render_template_to_object'
+actionview (8.0.2.1) lib/action_view/renderer/renderer.rb:31:in 'ActionView::Renderer#render_to_object'
+actionview (8.0.2.1) lib/action_view/rendering.rb:136:in 'block in ActionView::Rendering#_render_template'
+actionview (8.0.2.1) lib/action_view/base.rb:305:in 'ActionView::Base#in_rendering_context'
+actionview (8.0.2.1) lib/action_view/rendering.rb:135:in 'ActionView::Rendering#_render_template'
+actionpack (8.0.2.1) lib/action_controller/metal/streaming.rb:179:in 'ActionController::Streaming#_render_template'
+actionview (8.0.2.1) lib/action_view/rendering.rb:122:in 'ActionView::Rendering#render_to_body'
+actionpack (8.0.2.1) lib/action_controller/metal/rendering.rb:186:in 'ActionController::Rendering#render_to_body'
+actionpack (8.0.2.1) lib/action_controller/metal/renderers.rb:140:in 'ActionController::Renderers#render_to_body'
+actionpack (8.0.2.1) lib/abstract_controller/rendering.rb:28:in 'AbstractController::Rendering#render'
+actionpack (8.0.2.1) lib/action_controller/metal/rendering.rb:167:in 'ActionController::Rendering#render'
+actionpack (8.0.2.1) lib/action_controller/metal/instrumentation.rb:31:in 'block (2 levels) in ActionController::Instrumentation#render'
+activesupport (8.0.2.1) lib/active_support/benchmark.rb:17:in 'ActiveSupport::Benchmark.realtime'
+actionpack (8.0.2.1) lib/action_controller/metal/instrumentation.rb:31:in 'block in ActionController::Instrumentation#render'
+actionpack (8.0.2.1) lib/action_controller/metal/instrumentation.rb:100:in 'ActionController::Instrumentation#cleanup_view_runtime'
+activerecord (8.0.2.1) lib/active_record/railties/controller_runtime.rb:46:in 'ActiveRecord::Railties::ControllerRuntime#cleanup_view_runtime'
+actionpack (8.0.2.1) lib/action_controller/metal/instrumentation.rb:30:in 'ActionController::Instrumentation#render'
+rails_admin (3.3.0) lib/rails_admin/config/actions/dashboard.rb:40:in 'block (2 levels) in <class:Dashboard>'
+rails_admin (3.3.0) app/controllers/rails_admin/main_controller.rb:38:in 'BasicObject#instance_eval'
+rails_admin (3.3.0) app/controllers/rails_admin/main_controller.rb:38:in 'RailsAdmin::MainController#action_missing'
+actionpack (8.0.2.1) lib/abstract_controller/base.rb:239:in 'AbstractController::Base#_handle_action_missing'
+actionpack (8.0.2.1) lib/action_controller/metal/basic_implicit_render.rb:8:in 'ActionController::BasicImplicitRender#send_action'
+actionpack (8.0.2.1) lib/abstract_controller/base.rb:226:in 'AbstractController::Base#process_action'
+actionpack (8.0.2.1) lib/action_controller/metal/rendering.rb:193:in 'ActionController::Rendering#process_action'
+actionpack (8.0.2.1) lib/abstract_controller/callbacks.rb:261:in 'block in AbstractController::Callbacks#process_action'
+activesupport (8.0.2.1) lib/active_support/callbacks.rb:120:in 'block in ActiveSupport::Callbacks#run_callbacks'
+turbo-rails (2.0.16) lib/turbo-rails.rb:24:in 'Turbo.with_request_id'
+turbo-rails (2.0.16) app/controllers/concerns/turbo/request_id_tracking.rb:10:in 'Turbo::RequestIdTracking#turbo_tracking_request_id'
+activesupport (8.0.2.1) lib/active_support/callbacks.rb:129:in 'block in ActiveSupport::Callbacks#run_callbacks'
+actiontext (8.0.2.1) lib/action_text/rendering.rb:25:in 'ActionText::Rendering::ClassMethods#with_renderer'
+actiontext (8.0.2.1) lib/action_text/engine.rb:71:in 'block (4 levels) in <class:Engine>'
+activesupport (8.0.2.1) lib/active_support/callbacks.rb:129:in 'BasicObject#instance_exec'
+activesupport (8.0.2.1) lib/active_support/callbacks.rb:129:in 'block in ActiveSupport::Callbacks#run_callbacks'
+activesupport (8.0.2.1) lib/active_support/callbacks.rb:140:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.0.2.1) lib/abstract_controller/callbacks.rb:260:in 'AbstractController::Callbacks#process_action'
+actionpack (8.0.2.1) lib/action_controller/metal/rescue.rb:27:in 'ActionController::Rescue#process_action'
+actionpack (8.0.2.1) lib/action_controller/metal/instrumentation.rb:76:in 'block in ActionController::Instrumentation#process_action'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.0.2.1) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.0.2.1) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionpack (8.0.2.1) lib/action_controller/metal/instrumentation.rb:75:in 'ActionController::Instrumentation#process_action'
+actionpack (8.0.2.1) lib/action_controller/metal/params_wrapper.rb:259:in 'ActionController::ParamsWrapper#process_action'
+activerecord (8.0.2.1) lib/active_record/railties/controller_runtime.rb:39:in 'ActiveRecord::Railties::ControllerRuntime#process_action'
+actionpack (8.0.2.1) lib/abstract_controller/base.rb:163:in 'AbstractController::Base#process'
+actionview (8.0.2.1) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (8.0.2.1) lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+actionpack (8.0.2.1) lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+actionpack (8.0.2.1) lib/action_dispatch/routing/route_set.rb:67:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (8.0.2.1) lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:53:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:133:in 'block in ActionDispatch::Journey::Router#find_routes'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:126:in 'Array#each'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:126:in 'ActionDispatch::Journey::Router#find_routes'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:34:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.0.2.1) lib/action_dispatch/routing/route_set.rb:908:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.0.2.1) lib/rails/engine/lazy_route_set.rb:68:in 'Rails::Engine::LazyRouteSet#call'
+railties (8.0.2.1) lib/rails/engine.rb:535:in 'Rails::Engine#call'
+railties (8.0.2.1) lib/rails/railtie.rb:226:in 'Kernel#public_send'
+railties (8.0.2.1) lib/rails/railtie.rb:226:in 'Rails::Railtie.method_missing'
+actionpack (8.0.2.1) lib/action_dispatch/routing/mapper.rb:33:in 'block in <class:Constraints>'
+actionpack (8.0.2.1) lib/action_dispatch/routing/mapper.rb:62:in 'ActionDispatch::Routing::Mapper::Constraints#serve'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:53:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:133:in 'block in ActionDispatch::Journey::Router#find_routes'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:126:in 'Array#each'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:126:in 'ActionDispatch::Journey::Router#find_routes'
+actionpack (8.0.2.1) lib/action_dispatch/journey/router.rb:34:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.0.2.1) lib/action_dispatch/routing/route_set.rb:908:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.0.2.1) lib/rails/engine/lazy_route_set.rb:68:in 'Rails::Engine::LazyRouteSet#call'
+warden (1.2.9) lib/warden/manager.rb:36:in 'block in Warden::Manager#call'
+warden (1.2.9) lib/warden/manager.rb:34:in 'Kernel#catch'
+warden (1.2.9) lib/warden/manager.rb:34:in 'Warden::Manager#call'
+rack (3.2.1) lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+rack (3.2.1) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.1) lib/rack/conditional_get.rb:31:in 'Rack::ConditionalGet#call'
+rack (3.2.1) lib/rack/head.rb:15:in 'Rack::Head#call'
+actionpack (8.0.2.1) lib/action_dispatch/http/permissions_policy.rb:38:in 'ActionDispatch::PermissionsPolicy::Middleware#call'
+actionpack (8.0.2.1) lib/action_dispatch/http/content_security_policy.rb:38:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/cookies.rb:706:in 'ActionDispatch::Cookies#call'
+activerecord (8.0.2.1) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.0.2.1) lib/active_support/callbacks.rb:100:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.0.2.1) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.0.2.1) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:96:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.1) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.1) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.1) lib/rack/sendfile.rb:114:in 'Rack::Sendfile#call'
+actionpack (8.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+railties (8.0.2.1) lib/rails/engine.rb:535:in 'Rails::Engine#call'
+puma (7.0.1) lib/puma/configuration.rb:297:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (7.0.1) lib/puma/request.rb:101:in 'block in Puma::Request#handle_request'
+puma (7.0.1) lib/puma/thread_pool.rb:336:in 'Puma::ThreadPool#with_force_shutdown'
+puma (7.0.1) lib/puma/request.rb:100:in 'Puma::Request#handle_request'
+puma (7.0.1) lib/puma/server.rb:497:in 'Puma::Server#process_client'
+puma (7.0.1) lib/puma/server.rb:266:in 'block in Puma::Server#run'
+puma (7.0.1) lib/puma/thread_pool.rb:172:in 'block in Puma::ThreadPool#spawn_thread'
+Started GET "/favicon.ico" for ::1 at 2025-09-16 08:31:13 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/admin" for ::1 at 2025-09-16 08:32:49 +0900
+Processing by RailsAdmin::MainController#dashboard as */*
+Completed 401 Unauthorized in 54ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/admin" for ::1 at 2025-09-16 08:35:16 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+Processing by RailsAdmin::MainController#dashboard as */*
+Completed 401 Unauthorized in 73ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/admin" for ::1 at 2025-09-16 08:35:27 +0900
+Processing by RailsAdmin::MainController#dashboard as */*
+Completed 401 Unauthorized in 36ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+Started GET "/" for ::1 at 2025-09-18 08:06:01 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+Processing by PrintPricingsController#index as HTML
+Completed 401 Unauthorized in 73ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-18 08:06:01 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 3.5ms | GC: 0.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 9.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 46.1ms | GC: 9.5ms)
+Completed 200 OK in 124ms (Views: 54.4ms | ActiveRecord: 13.8ms (0 queries, 0 cached) | GC: 9.5ms)
+
+
+Started GET "/assets/bootstrap.min-2d5c1157.css" for ::1 at 2025-09-18 08:06:01 +0900
+Started GET "/assets/rails_admin-8bf03376.css" for ::1 at 2025-09-18 08:06:01 +0900
+Started GET "/assets/application-b3fb2d8e.js" for ::1 at 2025-09-18 08:06:01 +0900
+Removed sourceMappingURL comment for missing asset 'bootstrap.min.css.map' from bootstrap.min.css
+Started POST "/users/sign_in" for ::1 at 2025-09-18 08:06:13 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "Log in"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'codybaldwin@gmail.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='PrintCalc',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+Completed 401 Unauthorized in 243ms (ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | GC: 0.0ms)
+Completed 200 OK in 236ms (Views: 9.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2025-09-18 08:06:22 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'cody@moab.jp' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='PrintCalc',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+Completed 401 Unauthorized in 58ms (ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | GC: 0.1ms)
+Completed 200 OK in 238ms (Views: 4.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2025-09-18 08:06:35 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'codybaldwin@gmail.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='PrintCalc',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+Redirected to http://localhost:3000/
+Completed 303 See Other in 254ms (ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/" for ::1 at 2025-09-18 08:06:35 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.8ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 50.6ms | GC: 8.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 52.7ms | GC: 8.1ms)
+Completed 200 OK in 112ms (Views: 51.4ms | ActiveRecord: 6.1ms (4 queries, 0 cached) | GC: 8.1ms)
+
+
+Started GET "/print_pricings/4/increment_times_printed" for ::1 at 2025-09-18 08:06:49 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/print_pricings/4/increment_times_printed"):
+  
+Started GET "/print_pricings/4/decrement_times_printed" for ::1 at 2025-09-18 08:06:55 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/print_pricings/4/decrement_times_printed"):
+  
+Started GET "/" for ::1 at 2025-09-18 08:29:58 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.5ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 21.4ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 27.1ms | GC: 0.3ms)
+Completed 200 OK in 106ms (Views: 26.8ms | ActiveRecord: 10.1ms (4 queries, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/print_pricings/5/increment_times_printed" for ::1 at 2025-09-18 08:30:00 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/print_pricings/5/increment_times_printed"):
+  
+Started GET "/print_pricings/5" for ::1 at 2025-09-18 08:30:14 +0900
+Processing by PrintPricingsController#show as HTML
+  Parameters: {"id" => "5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:65:in 'PrintPricingsController#set_print_pricing'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/show.html.erb within layouts/application
+  [1m[36mPrinter Load (1.5ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = 1 LIMIT 1 /*action='show',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  Rendered print_pricings/show.html.erb within layouts/application (Duration: 36.2ms | GC: 1.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 41.7ms | GC: 1.4ms)
+Completed 200 OK in 95ms (Views: 33.8ms | ActiveRecord: 8.8ms (3 queries, 0 cached) | GC: 3.6ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-18 08:30:16 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 10.8ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.7ms | GC: 0.3ms)
+Completed 200 OK in 58ms (Views: 12.0ms | ActiveRecord: 1.0ms (4 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-18 08:30:17 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.2ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 5.3ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | GC: 0.5ms)
+Completed 200 OK in 70ms (Views: 7.1ms | ActiveRecord: 0.9ms (4 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/print_pricings/5/edit" for ::1 at 2025-09-18 08:30:19 +0900
+Processing by PrintPricingsController#edit as HTML
+  Parameters: {"id" => "5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='edit',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:65:in 'PrintPricingsController#set_print_pricing'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/edit.html.erb within layouts/application
+  Rendered print_pricings/edit.html.erb within layouts/application (Duration: 15.1ms | GC: 3.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | GC: 5.0ms)
+Completed 200 OK in 66ms (Views: 18.2ms | ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 5.8ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-18 08:30:22 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 9.7ms | GC: 5.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | GC: 6.7ms)
+Completed 200 OK in 54ms (Views: 11.1ms | ActiveRecord: 1.1ms (4 queries, 0 cached) | GC: 8.6ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-18 09:26:09 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.7ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 18.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 23.2ms | GC: 0.0ms)
+Completed 200 OK in 107ms (Views: 23.3ms | ActiveRecord: 7.6ms (4 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/print_pricings/5/increment_times_printed" for ::1 at 2025-09-18 09:26:11 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/print_pricings/5/increment_times_printed"):
+  
+Started GET "/print_pricings" for ::1 at 2025-09-18 09:26:18 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PrintCalc'*/[0m
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.8ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 1.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 55.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 93.9ms | GC: 11.5ms)
+Completed 200 OK in 230ms (Views: 94.3ms | ActiveRecord: 33.0ms (4 queries, 0 cached) | GC: 11.5ms)
+
+
+Started GET "/print_pricings/5/increment_times_printed" for ::1 at 2025-09-18 09:26:20 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/print_pricings/5/increment_times_printed"):
+  
+Started GET "/print_pricings" for ::1 at 2025-09-18 09:37:34 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (15.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.6ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 1.4ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 14.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 18.2ms | GC: 0.0ms)
+Completed 200 OK in 82ms (Views: 17.3ms | ActiveRecord: 23.5ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings/5/increment_times_printed" for ::1 at 2025-09-18 09:38:01 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/print_pricings/5/increment_times_printed"):
+  
+Started GET "/print_pricings" for ::1 at 2025-09-18 09:45:05 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 4.9ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 59.9ms | GC: 7.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 66.5ms | GC: 8.3ms)
+Completed 200 OK in 162ms (Views: 67.6ms | ActiveRecord: 12.1ms (4 queries, 0 cached) | GC: 8.3ms)
+
+
+Started PATCH "/print_pricings/5/increment_times_printed" for ::1 at 2025-09-18 09:45:06 +0900
+Processing by PrintPricingsController#increment_times_printed as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "id" => "5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:65:in 'PrintPricingsController#set_print_pricing'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrinter Load (1.6ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = 1 LIMIT 1 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrintPricing Update (0.8ms)[0m  [1m[33mUPDATE "print_pricings" SET "updated_at" = '2025-09-18 00:45:06.792727', "times_printed" = 2 WHERE "print_pricings"."id" = 5 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:63:in 'PrintPricing#increment_times_printed!'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:63:in 'PrintPricing#increment_times_printed!'
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 1.2ms | GC: 0.0ms)
+Completed 200 OK in 97ms (Views: 0.0ms | ActiveRecord: 7.4ms (4 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-18 09:55:36 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.7ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.9ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 15.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 28.8ms | GC: 0.0ms)
+Completed 200 OK in 103ms (Views: 28.0ms | ActiveRecord: 8.7ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/controllers/times_printed_controller-7a026343.js" for ::1 at 2025-09-18 09:55:36 +0900
+Started PATCH "/print_pricings/5/decrement_times_printed" for ::1 at 2025-09-18 09:55:38 +0900
+Processing by PrintPricingsController#decrement_times_printed as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "id" => "5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  [1m[36mPrintPricing Load (0.4ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:65:in 'PrintPricingsController#set_print_pricing'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrinter Load (1.1ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = 1 LIMIT 1 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrintPricing Update (0.7ms)[0m  [1m[33mUPDATE "print_pricings" SET "updated_at" = '2025-09-18 00:55:38.736777', "times_printed" = 1 WHERE "print_pricings"."id" = 5 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:68:in 'PrintPricing#decrement_times_printed!'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:68:in 'PrintPricing#decrement_times_printed!'
+Redirected to http://localhost:3000/print_pricings
+Completed 302 Found in 78ms (ActiveRecord: 3.3ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-18 09:55:38 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 1.5ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 2.0ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 9.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | GC: 0.0ms)
+Completed 200 OK in 55ms (Views: 17.1ms | ActiveRecord: 1.0ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started PATCH "/print_pricings/5/increment_times_printed" for ::1 at 2025-09-18 09:55:40 +0900
+Processing by PrintPricingsController#increment_times_printed as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "id" => "5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:65:in 'PrintPricingsController#set_print_pricing'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrinter Load (0.8ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = 1 LIMIT 1 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrintPricing Update (0.3ms)[0m  [1m[33mUPDATE "print_pricings" SET "updated_at" = '2025-09-18 00:55:40.216259', "times_printed" = 2 WHERE "print_pricings"."id" = 5 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:63:in 'PrintPricing#increment_times_printed!'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:63:in 'PrintPricing#increment_times_printed!'
+Redirected to http://localhost:3000/print_pricings
+Completed 302 Found in 53ms (ActiveRecord: 2.1ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-18 09:55:40 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 7.6ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | GC: 0.6ms)
+Completed 200 OK in 52ms (Views: 12.4ms | ActiveRecord: 1.1ms (4 queries, 0 cached) | GC: 0.6ms)
+
+
+Started PATCH "/print_pricings/5/increment_times_printed" for ::1 at 2025-09-18 09:55:41 +0900
+Processing by PrintPricingsController#increment_times_printed as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "id" => "5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:65:in 'PrintPricingsController#set_print_pricing'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrinter Load (0.6ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = 1 LIMIT 1 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrintPricing Update (0.3ms)[0m  [1m[33mUPDATE "print_pricings" SET "updated_at" = '2025-09-18 00:55:41.649274', "times_printed" = 3 WHERE "print_pricings"."id" = 5 /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:63:in 'PrintPricing#increment_times_printed!'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*action='increment_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:63:in 'PrintPricing#increment_times_printed!'
+Redirected to http://localhost:3000/print_pricings
+Completed 302 Found in 62ms (ActiveRecord: 2.1ms (4 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-18 09:55:41 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 2.5ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | GC: 0.5ms)
+Completed 200 OK in 43ms (Views: 3.2ms | ActiveRecord: 0.9ms (4 queries, 0 cached) | GC: 0.7ms)
+
+
+Started PATCH "/print_pricings/5/decrement_times_printed" for ::1 at 2025-09-18 09:55:42 +0900
+Processing by PrintPricingsController#decrement_times_printed as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "id" => "5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:65:in 'PrintPricingsController#set_print_pricing'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrinter Load (0.6ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = 1 LIMIT 1 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrintPricing Update (0.3ms)[0m  [1m[33mUPDATE "print_pricings" SET "updated_at" = '2025-09-18 00:55:42.363663', "times_printed" = 2 WHERE "print_pricings"."id" = 5 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:68:in 'PrintPricing#decrement_times_printed!'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:68:in 'PrintPricing#decrement_times_printed!'
+Redirected to http://localhost:3000/print_pricings
+Completed 302 Found in 41ms (ActiveRecord: 1.9ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-18 09:55:42 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 3.2ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | GC: 0.4ms)
+Completed 200 OK in 42ms (Views: 3.7ms | ActiveRecord: 1.0ms (4 queries, 0 cached) | GC: 0.4ms)
+
+
+Started PATCH "/print_pricings/5/decrement_times_printed" for ::1 at 2025-09-18 09:55:42 +0900
+Processing by PrintPricingsController#decrement_times_printed as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "id" => "5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 AND "print_pricings"."id" = 5 LIMIT 1 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/print_pricings_controller.rb:65:in 'PrintPricingsController#set_print_pricing'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrinter Load (0.4ms)[0m  [1m[34mSELECT "printers".* FROM "printers" WHERE "printers"."id" = 1 LIMIT 1 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:28:in 'PrintPricing#total_electricity_cost'
+  [1m[36mPrintPricing Update (0.2ms)[0m  [1m[33mUPDATE "print_pricings" SET "updated_at" = '2025-09-18 00:55:42.892745', "times_printed" = 1 WHERE "print_pricings"."id" = 5 /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:68:in 'PrintPricing#decrement_times_printed!'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*action='decrement_times_printed',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/models/print_pricing.rb:68:in 'PrintPricing#decrement_times_printed!'
+Redirected to http://localhost:3000/print_pricings
+Completed 302 Found in 49ms (ActiveRecord: 2.2ms (4 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/print_pricings" for ::1 at 2025-09-18 09:55:42 +0900
+Processing by PrintPricingsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/controllers/application_controller.rb:23:in 'ApplicationController#set_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering print_pricings/index.html.erb within layouts/application
+  [1m[36mPrintPricing Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 LIMIT 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:9
+  [1m[36mPrintPricing Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:12
+  [1m[36mPrintPricing Load (0.3ms)[0m  [1m[34mSELECT "print_pricings".* FROM "print_pricings" WHERE "print_pricings"."user_id" = 1 ORDER BY "print_pricings"."created_at" DESC /*action='index',application='PrintCalc',controller='print_pricings'*/[0m
+  ↳ app/views/print_pricings/index.html.erb:17
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.2ms | GC: 0.1ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered print_pricings/_times_printed_control.html.erb (Duration: 1.3ms | GC: 0.0ms)
+  Rendered print_pricings/index.html.erb within layouts/application (Duration: 7.1ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | GC: 0.1ms)
+Completed 200 OK in 44ms (Views: 7.8ms | ActiveRecord: 1.0ms (4 queries, 0 cached) | GC: 0.2ms)
+
+

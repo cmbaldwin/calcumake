@@ -1,0 +1,158 @@
+fr:
+  language_name: "Français"
+  
+  # Navigation
+  nav:
+    brand: "3DP - Gestion de Projets"
+    my_pricings: "Mes Tarifs"
+    new_pricing: "Nouveau Tarif"
+    my_printers: "Mes Imprimantes"
+    profile: "Profil"
+    sign_out: "Se déconnecter"
+    sign_in: "Se connecter"
+    sign_up: "S'inscrire"
+    language: "Langue"
+  
+  # Common actions
+  actions:
+    save: "Enregistrer"
+    cancel: "Annuler"
+    edit: "Modifier"
+    delete: "Supprimer"
+    create: "Créer"
+    update: "Mettre à jour"
+    new: "Nouveau"
+    show: "Afficher"
+    back: "Retour"
+    submit: "Soumettre"
+    view: "Voir"
+    actions: "Actions"
+  
+  # Flash messages
+  flash:
+    success: "Succès"
+    error: "Erreur"
+    alert: "Alerte"
+    notice: "Avis"
+    created: "%{model} créé avec succès"
+    updated: "%{model} mis à jour avec succès"
+    deleted: "%{model} supprimé avec succès"
+  
+  # Models
+  models:
+    user: "Utilisateur"
+    printer: "Imprimante"
+    print_pricing: "Tarification d'Impression"
+  
+  # Printer related
+  printer:
+    name: "Nom de l'Imprimante"
+    manufacturer: "Fabricant"
+    model: "Modèle"
+    purchase_price: "Prix d'Achat"
+    purchase_date: "Date d'Achat"
+    power_consumption: "Consommation Électrique (Watts)"
+    hourly_cost: "Coût Horaire"
+    depreciation_years: "Période d'Amortissement (Années)"
+    repair_factor: "Facteur de Réparation (%)"
+    paid_off: "Amorti"
+    months_to_payoff: "Mois pour Amortir"
+  
+  # Print pricing related
+  print_pricing:
+    name: "Nom du Travail d'Impression"
+    print_time_hours: "Temps d'Impression (Heures)"
+    filament_weight: "Poids du Filament (g)"
+    spool_price: "Prix de la Bobine"
+    spool_weight: "Poids de la Bobine (g)"
+    markup_percentage: "Pourcentage de Marge"
+    prep_time_minutes: "Temps de Préparation (Minutes)"
+    post_time_minutes: "Temps de Post-traitement (Minutes)"
+    vat_rate: "Taux de TVA (%)"
+    total_cost: "Coût Total"
+    profit_margin: "Marge Bénéficiaire"
+  
+  # Currency
+  currency:
+    usd: "Dollar Américain"
+    eur: "Euro"
+    gbp: "Livre Sterling"
+    jpy: "Yen Japonais"
+    cad: "Dollar Canadien"
+    aud: "Dollar Australien"
+  
+  # Energy costs
+  energy:
+    cost_per_kwh: "Coût par kWh"
+    
+  # Print Pricing Module
+  print_pricing:
+    index:
+      title: "Mes Calculs d'Impression"
+      subtitle: "Suivre et gérer les calculs de coûts d'impression 3D"
+      create_new: "Calculer Nouvelle Impression"
+      empty_state:
+        title: "Aucun calcul pour le moment"
+        description: "Commencez par créer votre premier calcul de coût d'impression pour suivre les dépenses et la tarification de vos projets d'impression 3D."
+    
+    job_name: "Nom du Travail"
+    print_time: "Temps d'Impression"
+    times_printed: "Fois Imprimé"
+    final_price: "Prix Final"
+    confirm_delete: "Êtes-vous sûr de vouloir supprimer '%{name}' ?"
+    times_printed_incremented: "Nombre d'impressions augmenté avec succès"
+    times_printed_decremented: "Nombre d'impressions diminué avec succès"
+    
+    calculator:
+      title: "Calculatrice d'Impression 3D"
+      subtitle: "Calculez vos coûts d'impression 3D avec précision"
+    
+    show:
+      cost_summary: "Résumé des Coûts"
+      print_information: "Informations d'Impression"
+      costs:
+        filament: "Coût du Filament"
+        electricity: "Coût de l'Électricité"
+        labor: "Coût de la Main-d'œuvre"
+        machine: "Coût de la Machine"
+        other: "Autres Coûts"
+        subtotal: "Sous-total"
+        final_price: "Prix Final"
+  
+  # Printers Module
+  printers:
+    index:
+      title: "Mes Imprimantes"
+      subtitle: "Gérez vos imprimantes 3D et leurs spécifications"
+      add_new: "Ajouter Nouvelle Imprimante"
+      empty_state:
+        title: "Aucune imprimante enregistrée"
+        description: "Ajoutez votre première imprimante 3D pour commencer à calculer les coûts d'impression avec précision."
+    
+    new:
+      title: "Ajouter Nouvelle Imprimante"
+      subtitle: "Enregistrez les spécifications de votre imprimante 3D pour des calculs de coût précis"
+  
+  # User profile
+  profile:
+    show:
+      title: "Profil Utilisateur"
+      subtitle: "Paramètres et préférences de votre compte"
+      account_info: "Informations du Compte"
+      email: "Email"
+      member_since: "Membre depuis"
+      default_preferences: "Préférences par Défaut"
+    
+    fields:
+      default_currency: "Devise par Défaut"
+      energy_cost: "Coût de l'Énergie par kWh"
+      energy_cost_help: "Votre coût local d'électricité par kilowatt-heure"
+    
+    default_currency: "Devise par Défaut"
+    default_energy_cost: "Coût Énergétique par Défaut"
+    settings: "Paramètres"
+  
+  # Application title
+  app:
+    title: "3DP - Gestion de Projets d'Impression 3D"
+    title_default: "3DP - Gestion de Projets d'Impression 3D"

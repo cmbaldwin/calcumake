@@ -1,0 +1,101 @@
+/*
+ * Rails Admin Basic Styles
+ * This provides basic styling for Rails Admin interface
+ */
+
+@import url("bootstrap.min.css");
+
+/* Rails Admin specific styles */
+.rails-admin {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Basic layout fixes */
+.main-header,
+.main-nav {
+  display: none !important;
+}
+
+/* Admin specific navigation styling */
+.navbar-brand {
+  font-weight: bold;
+}
+
+/* Sidebar styling */
+.sidebar {
+  background-color: #f8f9fa;
+  border-right: 1px solid #dee2e6;
+}
+
+/* Content area */
+.content {
+  padding: 20px;
+}
+
+/* Table styling */
+.table th {
+  background-color: #f8f9fa;
+  border-top: none;
+}
+
+/* Form styling */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+/* Modal styling */
+.modal-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Filters */
+.filters_box {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+/* Pagination */
+.pagination {
+  justify-content: center;
+}
+
+/* Flash messages */
+.alert {
+  border-radius: 4px;
+}
+
+/* Icon adjustments */
+.fas, .far, .fab {
+  font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands";
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+  }
+
+  .content {
+    padding: 10px;
+  }
+}

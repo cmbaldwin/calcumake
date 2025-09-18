@@ -1,0 +1,158 @@
+hi:
+  language_name: "हिंदी"
+  
+  # Navigation
+  nav:
+    brand: "3DP - प्रोजेक्ट प्रबंधन"
+    my_pricings: "मेरी कीमतें"
+    new_pricing: "नई कीमत"
+    my_printers: "मेरे प्रिंटर"
+    profile: "प्रोफ़ाइल"
+    sign_out: "साइन आउट"
+    sign_in: "साइन इन"
+    sign_up: "साइन अप"
+    language: "भाषा"
+  
+  # Common actions
+  actions:
+    save: "सेव करें"
+    cancel: "रद्द करें"
+    edit: "संपादित करें"
+    delete: "हटाएं"
+    create: "बनाएं"
+    update: "अपडेट करें"
+    new: "नया"
+    show: "दिखाएं"
+    back: "वापस"
+    submit: "सबमिट करें"
+    view: "देखें"
+    actions: "कार्य"
+  
+  # Flash messages
+  flash:
+    success: "सफलता"
+    error: "त्रुटि"
+    alert: "चेतावनी"
+    notice: "सूचना"
+    created: "%{model} सफलतापूर्वक बनाया गया"
+    updated: "%{model} सफलतापूर्वक अपडेट किया गया"
+    deleted: "%{model} सफलतापूर्वक हटाया गया"
+  
+  # Models
+  models:
+    user: "उपयोगकर्ता"
+    printer: "प्रिंटर"
+    print_pricing: "प्रिंट मूल्य निर्धारण"
+  
+  # Printer related
+  printer:
+    name: "प्रिंटर का नाम"
+    manufacturer: "निर्माता"
+    model: "मॉडल"
+    purchase_price: "खरीद मूल्य"
+    purchase_date: "खरीद की तारीख"
+    power_consumption: "बिजली की खपत (वाट)"
+    hourly_cost: "घंटे की लागत"
+    depreciation_years: "मूल्यह्रास अवधि (वर्ष)"
+    repair_factor: "मरम्मत कारक (%)"
+    paid_off: "पेड ऑफ"
+    months_to_payoff: "पेऑफ तक महीने"
+  
+  # Print pricing related
+  print_pricing:
+    name: "प्रिंट जॉब का नाम"
+    print_time_hours: "प्रिंट समय (घंटे)"
+    filament_weight: "फिलामेंट वजन (ग्राम)"
+    spool_price: "स्पूल की कीमत"
+    spool_weight: "स्पूल का वजन (ग्राम)"
+    markup_percentage: "मार्कअप प्रतिशत"
+    prep_time_minutes: "तैयारी का समय (मिनट)"
+    post_time_minutes: "पोस्ट-प्रोसेसिंग समय (मिनट)"
+    vat_rate: "वैट दर (%)"
+    total_cost: "कुल लागत"
+    profit_margin: "लाभ मार्जिन"
+  
+  # Currency
+  currency:
+    usd: "अमेरिकी डॉलर"
+    eur: "यूरो"
+    gbp: "ब्रिटिश पाउंड"
+    jpy: "जापानी येन"
+    cad: "कनाडाई डॉलर"
+    aud: "ऑस्ट्रेलियाई डॉलर"
+  
+  # Energy costs
+  energy:
+    cost_per_kwh: "प्रति किलोवाट घंटे की लागत"
+    
+  # Print Pricing Module
+  print_pricing:
+    index:
+      title: "मेरी प्रिंट गणनाएं"
+      subtitle: "3D प्रिंटिंग लागत गणनाओं को ट्रैक और प्रबंधित करें"
+      create_new: "नई प्रिंट गणना"
+      empty_state:
+        title: "अभी तक कोई गणना नहीं"
+        description: "अपने 3D प्रिंटिंग प्रोजेक्ट्स के लिए खर्च और मूल्य निर्धारण को ट्रैक करने के लिए अपनी पहली प्रिंट लागत गणना बनाना शुरू करें।"
+    
+    job_name: "जॉब का नाम"
+    print_time: "प्रिंट समय"
+    times_printed: "प्रिंट की संख्या"
+    final_price: "अंतिम कीमत"
+    confirm_delete: "क्या आप वाकई '%{name}' को हटाना चाहते हैं?"
+    times_printed_incremented: "प्रिंट संख्या सफलतापूर्वक बढ़ाई गई"
+    times_printed_decremented: "प्रिंट संख्या सफलतापूर्वक घटाई गई"
+    
+    calculator:
+      title: "3D प्रिंट कैलकुलेटर"
+      subtitle: "अपनी 3D प्रिंटिंग लागतों की सटीक गणना करें"
+    
+    show:
+      cost_summary: "लागत सारांश"
+      print_information: "प्रिंट जानकारी"
+      costs:
+        filament: "फिलामेंट लागत"
+        electricity: "बिजली की लागत"
+        labor: "श्रम लागत"
+        machine: "मशीन लागत"
+        other: "अन्य लागतें"
+        subtotal: "उप-योग"
+        final_price: "अंतिम कीमत"
+  
+  # Printers Module  
+  printers:
+    index:
+      title: "मेरे प्रिंटर"
+      subtitle: "अपने 3D प्रिंटर और उनकी विशिष्टताओं का प्रबंधन करें"
+      add_new: "नया प्रिंटर जोड़ें"
+      empty_state:
+        title: "अभी तक कोई प्रिंटर पंजीकृत नहीं"
+        description: "प्रिंटिंग लागतों की सटीक गणना शुरू करने के लिए अपना पहला 3D प्रिंटर जोड़ें।"
+    
+    new:
+      title: "नया प्रिंटर जोड़ें"
+      subtitle: "सटीक लागत गणना के लिए अपने 3D प्रिंटर की विशिष्टताओं को पंजीकृत करें"
+  
+  # User profile
+  profile:
+    show:
+      title: "उपयोगकर्ता प्रोफ़ाइल"
+      subtitle: "आपकी खाता सेटिंग्स और प्राथमिकताएं"
+      account_info: "खाता जानकारी"
+      email: "ईमेल"
+      member_since: "सदस्य बने"
+      default_preferences: "डिफ़ॉल्ट प्राथमिकताएं"
+    
+    fields:
+      default_currency: "डिफ़ॉल्ट मुद्रा"
+      energy_cost: "ऊर्जा लागत प्रति kWh"
+      energy_cost_help: "आपकी स्थानीय प्रति किलोवाट-घंटा बिजली लागत"
+    
+    default_currency: "डिफ़ॉल्ट मुद्रा"
+    default_energy_cost: "डिफ़ॉल्ट ऊर्जा लागत"
+    settings: "सेटिंग्स"
+  
+  # Application title
+  app:
+    title: "3DP - 3D प्रिंट प्रोजेक्ट प्रबंधन"
+    title_default: "3DP - 3D प्रिंट प्रोजेक्ट प्रबंधन"

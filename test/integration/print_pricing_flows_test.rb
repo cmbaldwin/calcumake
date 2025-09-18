@@ -85,7 +85,7 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
     # Test accessing index page
     get root_path
     assert_response :success
-    assert_select "h1", /My 3D Print Pricings/
+    assert_select "h1", /My Print Calculations/
     
     # Test creating a new pricing
     get new_print_pricing_path
