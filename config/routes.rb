@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   
-  resources :print_pricings
+  resources :print_pricings do
+    member do
+      patch :increment_times_printed
+      patch :decrement_times_printed
+    end
+  end
   resources :printers
   
   resource :user_profile, only: [:show, :edit, :update], path: 'profile'
+  
+  # Locale switching
+  post 'switch_locale', to: 'application#switch_locale'
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "print_pricings#index"

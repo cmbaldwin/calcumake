@@ -1,9 +1,9 @@
 <div class="calculator-header" style="text-align: center; margin-bottom: 3rem;">
-  <h1 style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.8rem; font-weight: 700;">
-    User Profile
+  <h1 style="color: var(--primary); font-size: 1.8rem; font-weight: 700;">
+    <%= t('profile.show.title') %>
   </h1>
   <p style="color: var(--text-secondary); font-size: 1.1rem;">
-    Your account settings and preferences
+    <%= t('profile.show.subtitle') %>
   </p>
 </div>
 
@@ -15,16 +15,16 @@
 
 <div class="form-section" style="background: white; border-radius: 16px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 20px var(--shadow);">
   <h3 style="color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--accent); padding-bottom: 1rem;">
-    Account Information
+    <%= t('profile.show.account_info') %>
   </h3>
   <div class="row">
     <div class="column column-50">
-      <strong>Email:</strong><br>
+      <strong><%= t('profile.show.email') %>:</strong><br>
       <%= @user.email %>
     </div>
     <div class="column column-50">
-      <strong>Member since:</strong><br>
-      <%= @user.created_at.strftime("%B %d, %Y") %>
+      <strong><%= t('profile.show.member_since') %>:</strong><br>
+      <%= @user.created_at.strftime(t('time.formats.month_day_year')) %>
     </div>
   </div>
 </div>
@@ -32,7 +32,7 @@
 <%= form_with model: @user, url: user_profile_path, method: :patch, local: true, html: { style: "margin-bottom: 2rem;" } do |form| %>
   <div class="form-section" style="background: linear-gradient(145deg, #ffffff 0%, var(--moab-cream) 100%); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 20px var(--shadow); border: 2px solid var(--accent);">
     <h3 style="color: var(--secondary); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 1rem;">
-      Default Preferences
+      <%= t('profile.show.default_preferences') %>
     </h3>
     <% if @user.errors.any? %>
       <div style="background-color: #f8d7da; border: 1px solid #f5c6cb; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; color: #721c24;">

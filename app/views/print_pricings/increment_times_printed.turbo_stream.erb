@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "times_printed_#{@print_pricing.id}" do %>
+  <%= render "times_printed_control", pricing: @print_pricing %>
+<% end %>

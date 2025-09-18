@@ -1,8 +1,8 @@
 <% content_for :body_class, "pricing-form-page" %>
 
 <div class="calculator-header">
-  <h1>3D Print Calculator</h1>
-  <p>Calculate your 3D printing costs with precision</p>
+  <h1><%= t('print_pricing.calculator.title') %></h1>
+  <p><%= t('print_pricing.calculator.subtitle') %></p>
 </div>
 
 <%= form_with model: @print_pricing, local: true, html: { 
@@ -16,7 +16,7 @@
 } do |form| %>
   <% if @print_pricing.errors.any? %>
     <div class="error-messages">
-      <h3><%= pluralize(@print_pricing.errors.count, "error") %> prohibited this pricing from being saved:</h3>
+      <h3><%= t('common.errors_prohibited', count: @print_pricing.errors.count, errors: t('common.error_count', count: @print_pricing.errors.count), model: t('models.print_pricing')) %></h3>
       <ul>
         <% @print_pricing.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -28,53 +28,69 @@
   <div class="form-grid">
     <!-- Basic Information -->
     <div class="form-card basic-info">
-      <h3>Basic Information</h3>
+      <h3><%= t('print_pricing.sections.basic_info') %></h3>
       <div class="field-group">
-        <label for="job_name">Job Name</label>
-        <%= form.text_field :job_name, placeholder: "e.g., Miniature Model" %>
+        <label for="job_name"><%= t('print_pricing.fields.job_name') %></label>
+        <%= form.text_field :job_name, placeholder: t('print_pricing.fields.job_name_placeholder') %>
       </div>
       <div class="field-group">
-        <label for="printer">Select Printer</label>
+        <label for="printer"><%= t('print_pricing.fields.select_printer') %></label>
         <%= form.select :printer_id,
             options_from_collection_for_select(current_user.printers, :id, :name, @print_pricing.printer_id),
-            { prompt: "Select a printer" },
+            { prompt: t('print_pricing.fields.select_printer_prompt') },
             { id: "printer-select" } %>
         <small>
-          Don't have a printer registered? 
-          <%= link_to "Add a new printer", new_printer_path, target: "_blank", class: "inline-link" %>
+          <%= t('print_pricing.fields.no_printer_help') %>
+          <%= link_to t('print_pricing.fields.add_printer_link'), new_printer_path,
+              class: "inline-link",
+              data: {
+                confirm: "Warning: You will lose any unsaved progress on this form. Continue?"
+              } %>
         </small>
+      </div>
+      <div class="field-group">
+        <div class="toggle-field">
+          <label class="toggle-label">
+            <span class="toggle-text"><%= t('print_pricing.fields.start_with_one_print') %></span>
+            <%= form.check_box :start_with_one_print, 
+                { checked: false, class: "toggle-checkbox" }, 
+                "1", "0" %>
+            <span class="toggle-slider"></span>
+          </label>
+          <small class="toggle-help"><%= t('print_pricing.fields.start_with_one_print_help') %></small>
+        </div>
       </div>
     </div>
 
     <!-- Print Time & Material -->
     <div class="form-card material-info">
-      <h3>Print Time & Material</h3>
+      <h3><%= t('print_pricing.sections.print_time_material') %></h3>
       <div class="time-fields">
         <div class="field-group">
-          <label>Hours</label>
+          <label><%= t('print_pricing.fields.print_time_hours') %></label>
           <%= form.number_field :printing_time_hours, min: 0, step: 1, value: @print_pricing.printing_time_hours || 0 %>
         </div>
         <div class="field-group">
-          <label>Minutes</label>
+          <label><%= t('print_pricing.fields.print_time_minutes') %></label>
           <%= form.number_field :printing_time_minutes, min: 0, max: 59, step: 1, value: @print_pricing.printing_time_minutes || 0 %>
         </div>
       </div>
       <div class="field-group">
-        <label>Filament Weight (g)</label>
-        <%= form.number_field :filament_weight, step: 0.1, placeholder: "36" %>
+        <label><%= t('print_pricing.fields.filament_weight') %></label>
+        <%= form.number_field :filament_weight, step: 0.1, placeholder: t('print_pricing.fields.filament_weight_placeholder') %>
       </div>
       <div class="field-group">
-        <label>Filament Type</label>
+        <label><%= t('print_pricing.fields.filament_type') %></label>
         <%= form.select :filament_type, 
             options_for_select([
-              ['PLA', 'PLA'],
-              ['ABS', 'ABS'],
-              ['PETG', 'PETG'],
-              ['TPU', 'TPU'],
-              ['ASA', 'ASA'],
-              ['Other', 'Other']
+              [t('print_pricing.filament_types.pla'), 'PLA'],
+              [t('print_pricing.filament_types.abs'), 'ABS'],
+              [t('print_pricing.filament_types.petg'), 'PETG'],
+              [t('print_pricing.filament_types.tpu'), 'TPU'],
+              [t('print_pricing.filament_types.asa'), 'ASA'],
+              [t('print_pricing.filament_types.other'), 'Other']
             ], @print_pricing.filament_type), 
-            { prompt: "Select type" } %>
+            { prompt: t('print_pricing.fields.filament_type_prompt') } %>
       </div>
     </div>
 
@@ -161,7 +177,11 @@
           <li>Investment return period</li>
           <li>Repair cost factor</li>
         </ul>
-        <small>These values are configured when you <a href="<%= new_printer_path %>" class="inline-link">add or edit a printer</a>.</small>
+        <small>These values are configured when you <%= link_to "add or edit a printer", new_printer_path,
+            class: "inline-link",
+            data: {
+              confirm: "Warning: You will lose any unsaved progress on this form. Continue?"
+            } %>.</small>
       </div>
       <div class="calculation-display">
         <strong>Machine cost: <span class="currency"></span><span class="amount">0.00</span></strong>
@@ -197,15 +217,15 @@
   </div>
 
   <div class="form-actions">
-    <%= form.submit "Calculate & Save", class: "primary-button" %>
-    <%= link_to "Cancel", print_pricings_path, class: "secondary-button" %>
+    <%= form.submit t('print_pricing.buttons.calculate_save'), class: "primary-button" %>
+    <%= link_to t('print_pricing.buttons.cancel'), print_pricings_path, class: "secondary-button" %>
   </div>
 <% end %>
 
 <!-- Sticky Floating Price Calculator -->
 <div id="sticky-calculator" class="sticky-calculator">
   <div class="sticky-calculator-content">
-    <span class="sticky-price-label">Estimated Price:</span>
+    <span class="sticky-price-label"><%= t('print_pricing.calculations.estimated_price') %>:</span>
     <span class="sticky-price">
       <span class="currency"><%= currency_symbol(current_user.default_currency) %></span><span class="amount">0.00</span>
     </span>
@@ -224,10 +244,7 @@
 }
 
 .calculator-header h1 {
-  background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #c8102e;
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
@@ -294,6 +311,7 @@
   font-weight: 600;
   border-bottom: 2px solid #9caf88;
   padding-bottom: 0.5rem;
+  text-align: center;
 }
 
 .field-group {

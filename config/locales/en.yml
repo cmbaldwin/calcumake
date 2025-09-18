@@ -28,4 +28,367 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  language_name: "English"
+  
+  # Navigation
+  nav:
+    brand: "3DP - Project Management"
+    my_pricings: "My Pricings"
+    new_pricing: "New Pricing"
+    my_printers: "My Printers"
+    profile: "Profile"
+    sign_out: "Sign out"
+    sign_in: "Sign in"
+    sign_up: "Sign up"
+    language: "Language"
+  
+  # Common actions
+  actions:
+    save: "Save"
+    cancel: "Cancel"
+    edit: "Edit"
+    delete: "Delete"
+    create: "Create"
+    update: "Update"
+    new: "New"
+    show: "Show"
+    back: "Back"
+    submit: "Submit"
+    view: "View"
+    actions: "Actions"
+  
+  # Flash messages
+  flash:
+    success: "Success"
+    error: "Error"
+    alert: "Alert"
+    notice: "Notice"
+    created: "Successfully created %{model}"
+    updated: "Successfully updated %{model}"
+    deleted: "Successfully deleted %{model}"
+  
+  # Models
+  models:
+    user: "User"
+    printer: "Printer"
+    print_pricing: "Print Pricing"
+  
+  # Common terms
+  common:
+    created: "Created"
+    currency: "Currency"
+    hours: "Hours"
+    minutes: "Minutes"
+    grams: "g"
+    watts: "W"
+    kwh: "kWh"
+    percentage: "%"
+    years: "years"
+    "yes": "Yes"
+    "no": "No"
+    are_you_sure: "Are you sure?"
+    errors_prohibited: "%{count} %{errors} prohibited this %{model} from being saved:"
+    error_count:
+      one: "error"
+      other: "errors"
+  
+  # Print Pricing Module
+  print_pricing:
+    # Index page
+    index:
+      title: "My Print Calculations"
+      subtitle: "Track and manage your 3D printing cost calculations"
+      create_new: "Calculate New Print"
+      total_calculations: "Total Calculations"
+      total_print_time: "Total Print Time"
+      empty_state:
+        title: "No calculations yet"
+        description: "Start by creating your first print cost calculation to track expenses and pricing for your 3D printing projects."
+    
+    # Form fields
+    job_name: "Job Name"
+    print_time: "Print Time"
+    times_printed: "Times Printed"
+    final_price: "Final Price"
+    confirm_delete: "Are you sure you want to delete '%{name}'?"
+    times_printed_incremented: "Times printed increased successfully"
+    times_printed_decremented: "Times printed decreased successfully"
+    
+    # New/Edit forms
+    calculator:
+      title: "3D Print Calculator"
+      subtitle: "Calculate your 3D printing costs with precision"
+      edit_title: "Edit Print Pricing"
+      edit_subtitle: "Update your 3D printing cost calculation"
+      
+    # Form sections
+    sections:
+      basic_info: "Basic Information"
+      print_time_material: "Print Time & Material"
+      filament_details: "Filament Details"
+      electricity: "Electricity"
+      labor: "Labor"
+      machine_upkeep: "Machine & Upkeep"
+      other_costs_tax: "Other Costs & Tax"
+      final_price: "Final Price"
+    
+    # Form fields
+    fields:
+      job_name: "Job Name"
+      job_name_placeholder: "e.g., Miniature Model"
+      select_printer: "Select Printer"
+      select_printer_prompt: "Select a printer"
+      no_printer_help: "Don't have a printer registered?"
+      add_printer_link: "Add a new printer"
+      print_time_hours: "Hours"
+      print_time_minutes: "Minutes"
+      filament_weight: "Filament Weight (g)"
+      filament_weight_placeholder: "36"
+      filament_type: "Filament Type"
+      filament_type_prompt: "Select type"
+      spool_price: "Spool Price"
+      spool_price_placeholder: "25.00"
+      spool_weight: "Spool Weight (g)"
+      spool_weight_placeholder: "1000"
+      markup: "Markup (%)"
+      markup_placeholder: "20"
+      prep_time: "Prep Time (min)"
+      prep_time_placeholder: "30"
+      prep_cost_hour: "Prep Cost/Hour"
+      prep_cost_placeholder: "20.00"
+      post_time: "Post-Process Time (min)"
+      post_time_placeholder: "30"
+      post_cost_hour: "Post-Process Cost/Hour"
+      post_cost_placeholder: "20.00"
+      other_costs: "Other Costs"
+      other_costs_placeholder: "0.00"
+      vat: "VAT (%)"
+      vat_placeholder: "10"
+      power_consumption: "Power Consumption (W)"
+      power_consumption_placeholder: "200"
+      energy_cost_kwh: "Energy Cost per kWh"
+      energy_cost_placeholder: "0.12"
+      printer_cost: "Printer Cost"
+      printer_cost_placeholder: "500.00"
+      payoff_goal: "Payoff Goal (Years)"
+      payoff_goal_placeholder: "3"
+      daily_usage: "Daily Usage (Hours)"
+      daily_usage_placeholder: "8"
+      repair_cost: "Repair Cost (%)"
+      repair_cost_placeholder: "5"
+      currency: "Currency"
+      currency_prompt: "Select currency"
+      start_with_one_print: "Start with 1 times printed"
+      start_with_one_print_help: "Enable this to automatically set this pricing as printed once"
+    
+    # Filament types
+    filament_types:
+      pla: "PLA"
+      abs: "ABS"
+      petg: "PETG"
+      tpu: "TPU"
+      asa: "ASA"
+      other: "Other"
+    
+    # Calculations display
+    calculations:
+      filament_cost: "Filament cost"
+      electricity_cost: "Electricity cost"
+      labor_cost: "Labor cost"
+      machine_cost: "Machine cost"
+      estimated_price: "Estimated Price"
+    
+    # Info messages
+    info:
+      electricity_auto: "Electricity cost will be automatically calculated based on:"
+      printer_power: "Selected printer's power consumption"
+      print_duration: "Print time duration"
+      energy_cost_setting: "Your default energy cost: %{cost}/kWh"
+      update_energy_cost: "You can update your default energy cost in your"
+      profile_settings: "profile settings"
+      machine_auto: "Machine depreciation and upkeep cost will be calculated from your selected printer's specifications:"
+      printer_cost_usage: "Printer cost and usage hours"
+      investment_return: "Investment return period"
+      repair_factor: "Repair cost factor"
+      configure_printer: "These values are configured when you"
+      add_edit_printer: "add or edit a printer"
+    
+    # Buttons
+    buttons:
+      calculate_save: "Calculate & Save"
+      update_pricing: "Update Pricing"
+      cancel: "Cancel"
+    
+    # Show page
+    show:
+      created_on: "Created on %{date}"
+      edit_calculation: "Edit Calculation"
+      delete: "Delete"
+      cost_summary: "Cost Summary"
+      print_information: "Print Information"
+      filament_details: "Filament Details"
+      electricity_cost: "Electricity Cost"
+      labor_cost: "Labor Cost"
+      machine_upkeep_cost: "Machine & Upkeep Cost"
+      
+      # Cost breakdown
+      costs:
+        filament: "Filament Cost"
+        electricity: "Electricity Cost"
+        labor: "Labor Cost"
+        machine: "Machine Cost"
+        other: "Other Costs"
+        subtotal: "Subtotal"
+        vat: "VAT (%{rate}%)"
+        final_price: "Final Price"
+      
+      # Details
+      details:
+        currency: "Currency"
+        printing_time: "Printing Time"
+        filament_weight: "Filament Weight"
+        filament_type: "Filament Type"
+        spool_price: "Spool Price"
+        spool_weight: "Spool Weight"
+        markup: "Markup"
+        power_consumption: "Power Consumption"
+        energy_cost_kwh: "Energy Cost per kWh"
+        total_electricity_cost: "Total Electricity Cost"
+        prep_time: "Prep Time"
+        postprocessing_time: "Postprocessing Time"
+        total_labor_cost: "Total Labor Cost"
+        printer_cost: "Printer Cost"
+        payoff_goal: "Payoff Goal"
+        daily_usage: "Daily Usage"
+        repair_cost: "Repair Cost"
+        total_machine_cost: "Total Machine Cost"
+      
+      # Actions
+      actions:
+        back_to_all: "← Back to All Pricings"
+        create_new: "Create New Pricing"
+        confirm_delete: "Are you sure you want to delete '%{name}'?"
+  
+  # Printers Module
+  printers:
+    # Index page
+    index:
+      title: "My Printers"
+      subtitle: "Manage your 3D printers and their specifications"
+      add_new: "Add New Printer"
+      empty_state:
+        title: "No printers registered yet"
+        description: "Add your first 3D printer to start calculating printing costs accurately."
+        add_first: "Add Your First Printer"
+    
+    # Printer card
+    card:
+      power_consumption: "Power Consumption"
+      cost: "Cost"
+      daily_usage: "Daily Usage"
+      payoff_goal: "Payoff Goal"
+      paid_off: "✓ Paid Off"
+      months_to_payoff: "%{months} months to payoff"
+      hours: "hours"
+      years: "years"
+    
+    # New/Edit forms
+    new:
+      title: "Add New Printer"
+      subtitle: "Register your 3D printer specifications for accurate cost calculations"
+    
+    edit:
+      title: "Edit Printer"
+      subtitle: "Update your 3D printer specifications"
+    
+    # Form sections
+    sections:
+      basic_info: "Basic Information"
+      technical_specs: "Technical Specifications"
+      financial_info: "Financial Information"
+      usage_info: "Usage Information"
+    
+    # Form fields
+    fields:
+      name: "Printer Name"
+      name_placeholder: "e.g., My Prusa i3 MK3S+"
+      manufacturer: "Manufacturer"
+      manufacturer_prompt: "Select manufacturer"
+      power_consumption: "Power Consumption (Watts)"
+      power_consumption_placeholder: "200"
+      power_consumption_help: "Typical range: 50W (small printers) to 500W (large printers)"
+      cost: "Printer Cost"
+      cost_placeholder: "500.00"
+      payoff_goal: "Payoff Goal (Years)"
+      payoff_goal_placeholder: "3"
+      payoff_goal_help: "How many years do you want to recoup the printer cost?"
+      daily_usage: "Daily Usage (Hours)"
+      daily_usage_placeholder: "8"
+      daily_usage_help: "Average hours per day you plan to use this printer"
+      repair_factor: "Repair Cost Factor (%)"
+      repair_factor_placeholder: "5.0"
+      repair_factor_help: "Additional cost factor for maintenance and repairs"
+    
+    # Buttons
+    buttons:
+      add_printer: "Add Printer"
+      update_printer: "Update Printer"
+      cancel: "Cancel"
+  
+  # User Profile Module
+  profile:
+    # Show page
+    show:
+      title: "User Profile"
+      subtitle: "Your account settings and preferences"
+      account_info: "Account Information"
+      email: "Email"
+      member_since: "Member since"
+      default_preferences: "Default Preferences"
+      back_to_calculations: "Back to Calculations"
+    
+    # Edit page
+    edit:
+      title: "User Profile Settings"
+      subtitle: "Configure your default preferences"
+      default_settings: "Default Settings"
+    
+    # Form fields
+    fields:
+      default_currency: "Default Currency"
+      default_currency_help: "Used as default for new pricing calculations"
+      energy_cost: "Energy Cost per kWh"
+      energy_cost_placeholder: "0.120"
+      energy_cost_help: "Your local electricity cost per kilowatt-hour"
+      energy_cost_help_extended: "Your local electricity cost per kilowatt-hour. This will be used as the default for new calculations."
+    
+    # Buttons
+    buttons:
+      update_settings: "Update Settings"
+      update_profile: "Update Profile"
+      cancel: "Cancel"
+  
+  # Currency
+  currency:
+    usd: "US Dollar"
+    eur: "Euro"
+    gbp: "British Pound"
+    jpy: "Japanese Yen"
+    cad: "Canadian Dollar"
+    aud: "Australian Dollar"
+  
+  # Energy costs
+  energy:
+    cost_per_kwh: "Energy Cost per kWh"
+  
+  # Date and time formats
+  time:
+    at: "at"
+    formats:
+      month_day_year: "%B %d, %Y"
+      month_day_year_time: "%B %d, %Y at %I:%M %p"
+  
+  # Application title
+  app:
+    title: "3DP - 3D Print Project Management"
+    title_default: "3DP - 3D Print Project Management"

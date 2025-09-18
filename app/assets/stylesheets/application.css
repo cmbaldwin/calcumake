@@ -31,10 +31,7 @@
 .nav-brand {
   font-size: 1.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #c8102e;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -276,4 +273,31 @@
       opacity: 0;
     }
   }
+}
+
+/* Center headlines and subtitles by default */
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+/* Override for navigation and specific elements where centering is not desired */
+.main-nav h1, .main-nav h2, .main-nav h3, .main-nav h4, .main-nav h5, .main-nav h6,
+.nav-brand {
+  text-align: inherit;
+}
+
+/* Spacing for checkbox fields in forms */
+.checkbox-field {
+  margin: 1.5rem 0 !important;
+  padding: 1rem 0;
+}
+
+.checkbox-field input[type="checkbox"] {
+  margin-right: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.checkbox-field label {
+  display: inline-block;
+  margin-left: 0.5rem;
 }

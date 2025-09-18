@@ -1,0 +1,158 @@
+ar:
+  language_name: "العربية"
+  
+  # Navigation
+  nav:
+    brand: "3DP - إدارة المشاريع"
+    my_pricings: "أسعاري"
+    new_pricing: "سعر جديد"
+    my_printers: "طابعاتي"
+    profile: "الملف الشخصي"
+    sign_out: "تسجيل الخروج"
+    sign_in: "تسجيل الدخول"
+    sign_up: "إنشاء حساب"
+    language: "اللغة"
+  
+  # Common actions
+  actions:
+    save: "حفظ"
+    cancel: "إلغاء"
+    edit: "تعديل"
+    delete: "حذف"
+    create: "إنشاء"
+    update: "تحديث"
+    new: "جديد"
+    show: "عرض"
+    back: "رجوع"
+    submit: "إرسال"
+    view: "عرض"
+    actions: "الإجراءات"
+  
+  # Flash messages
+  flash:
+    success: "نجح"
+    error: "خطأ"
+    alert: "تنبيه"
+    notice: "إشعار"
+    created: "تم إنشاء %{model} بنجاح"
+    updated: "تم تحديث %{model} بنجاح"
+    deleted: "تم حذف %{model} بنجاح"
+  
+  # Models
+  models:
+    user: "المستخدم"
+    printer: "الطابعة"
+    print_pricing: "تسعير الطباعة"
+  
+  # Printer related
+  printer:
+    name: "اسم الطابعة"
+    manufacturer: "الشركة المصنعة"
+    model: "الطراز"
+    purchase_price: "سعر الشراء"
+    purchase_date: "تاريخ الشراء"
+    power_consumption: "استهلاك الطاقة (واط)"
+    hourly_cost: "التكلفة بالساعة"
+    depreciation_years: "فترة الاستهلاك (سنوات)"
+    repair_factor: "عامل الإصلاح (%)"
+    paid_off: "مسدد"
+    months_to_payoff: "أشهر للسداد"
+  
+  # Print pricing related
+  print_pricing:
+    name: "اسم مهمة الطباعة"
+    print_time_hours: "وقت الطباعة (ساعات)"
+    filament_weight: "وزن الخيط (جرام)"
+    spool_price: "سعر البكرة"
+    spool_weight: "وزن البكرة (جرام)"
+    markup_percentage: "نسبة الهامش"
+    prep_time_minutes: "وقت التحضير (دقائق)"
+    post_time_minutes: "وقت المعالجة اللاحقة (دقائق)"
+    vat_rate: "معدل ضريبة القيمة المضافة (%)"
+    total_cost: "التكلفة الإجمالية"
+    profit_margin: "هامش الربح"
+  
+  # Currency
+  currency:
+    usd: "الدولار الأمريكي"
+    eur: "اليورو"
+    gbp: "الجنيه الإسترليني"
+    jpy: "الين الياباني"
+    cad: "الدولار الكندي"
+    aud: "الدولار الأسترالي"
+  
+  # Energy costs
+  energy:
+    cost_per_kwh: "تكلفة الكيلوواط/ساعة"
+    
+  # Print Pricing Module
+  print_pricing:
+    index:
+      title: "حسابات الطباعة الخاصة بي"
+      subtitle: "تتبع وإدارة حسابات تكلفة الطباعة ثلاثية الأبعاد"
+      create_new: "حساب طباعة جديدة"
+      empty_state:
+        title: "لا توجد حسابات بعد"
+        description: "ابدأ بإنشاء أول حساب تكلفة طباعة لتتبع النفقات والتسعير لمشاريع الطباعة ثلاثية الأبعاد الخاصة بك."
+    
+    job_name: "اسم المهمة"
+    print_time: "وقت الطباعة"
+    times_printed: "عدد مرات الطباعة"
+    final_price: "السعر النهائي"
+    confirm_delete: "هل أنت متأكد من أنك تريد حذف '%{name}'؟"
+    times_printed_incremented: "تم زيادة عدد مرات الطباعة بنجاح"
+    times_printed_decremented: "تم تقليل عدد مرات الطباعة بنجاح"
+    
+    calculator:
+      title: "آلة حاسبة الطباعة ثلاثية الأبعاد"
+      subtitle: "احسب تكاليف الطباعة ثلاثية الأبعاد بدقة"
+    
+    show:
+      cost_summary: "ملخص التكلفة"
+      print_information: "معلومات الطباعة"
+      costs:
+        filament: "تكلفة الخيط"
+        electricity: "تكلفة الكهرباء"
+        labor: "تكلفة العمل"
+        machine: "تكلفة الآلة"
+        other: "تكاليف أخرى"
+        subtotal: "المجموع الفرعي"
+        final_price: "السعر النهائي"
+  
+  # Printers Module
+  printers:
+    index:
+      title: "طابعاتي"
+      subtitle: "إدارة طابعاتك ثلاثية الأبعاد ومواصفاتها"
+      add_new: "إضافة طابعة جديدة"
+      empty_state:
+        title: "لا توجد طابعات مسجلة بعد"
+        description: "أضف أول طابعة ثلاثية الأبعاد لبدء حساب تكاليف الطباعة بدقة."
+    
+    new:
+      title: "إضافة طابعة جديدة"
+      subtitle: "سجل مواصفات طابعتك ثلاثية الأبعاد لحسابات تكلفة دقيقة"
+  
+  # User profile
+  profile:
+    show:
+      title: "ملف المستخدم"
+      subtitle: "إعدادات حسابك وتفضيلاتك"
+      account_info: "معلومات الحساب"
+      email: "البريد الإلكتروني"
+      member_since: "عضو منذ"
+      default_preferences: "التفضيلات الافتراضية"
+    
+    fields:
+      default_currency: "العملة الافتراضية"
+      energy_cost: "تكلفة الطاقة لكل كيلوواط ساعة"
+      energy_cost_help: "تكلفة الكهرباء المحلية لكل كيلوواط ساعة"
+    
+    default_currency: "العملة الافتراضية"
+    default_energy_cost: "تكلفة الطاقة الافتراضية"
+    settings: "الإعدادات"
+  
+  # Application title
+  app:
+    title: "3DP - إدارة مشاريع الطباعة ثلاثية الأبعاد"
+    title_default: "3DP - إدارة مشاريع الطباعة ثلاثية الأبعاد"
