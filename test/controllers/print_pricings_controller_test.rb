@@ -58,7 +58,7 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
   end
 
   test "should show print_pricing" do
@@ -88,7 +88,7 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
         filament_weight: -1
       }
     }
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
   end
 
   test "should destroy print_pricing" do

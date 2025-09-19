@@ -15,9 +15,15 @@ class PrintersController < ApplicationController
 
   def create
     @printer = current_user.printers.build(printer_params)
-    
+
     if @printer.save
-      redirect_to @printer, notice: 'Printer was successfully created.'
+      respond_to do |format|
+        format.html { redirect_to @printer, notice: 'Printer was successfully created.' }
+        format.turbo_stream {
+          flash.now[:notice] = 'Printer was successfully created.'
+          render "layouts/flash"
+        }
+      end
     else
       render :new, status: :unprocessable_content
     end
@@ -28,7 +34,13 @@ class PrintersController < ApplicationController
 
   def update
     if @printer.update(printer_params)
-      redirect_to @printer, notice: 'Printer was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to @printer, notice: 'Printer was successfully updated.' }
+        format.turbo_stream {
+          flash.now[:notice] = 'Printer was successfully updated.'
+          render "layouts/flash"
+        }
+      end
     else
       render :edit, status: :unprocessable_content
     end
@@ -36,13 +48,19 @@ class PrintersController < ApplicationController
 
   def destroy
     @printer.destroy
-    redirect_to printers_url, notice: 'Printer was successfully deleted.'
+    respond_to do |format|
+      format.html { redirect_to printers_url, notice: 'Printer was successfully deleted.' }
+      format.turbo_stream {
+        flash.now[:notice] = 'Printer was successfully deleted.'
+        render "layouts/flash"
+      }
+    end
   end
 
   private
 
   def set_printer
-    @printer = current_user.printers.find(params[:id])
+    @printer = current_user.printers.includes(:print_pricings).find(params[:id])
   end
 
   def printer_params

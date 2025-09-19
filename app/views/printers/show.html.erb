@@ -1,2 +1,509 @@
-<h1>Printers#show</h1>
-<p>Find me in app/views/printers/show.html.erb</p>
+<div class="printer-show-container">
+  <div class="printer-header">
+    <div class="printer-title">
+      <h1><%= @printer.name %></h1>
+      <span class="manufacturer-badge"><%= @printer.manufacturer %></span>
+    </div>
+    <div class="printer-actions">
+      <%= link_to t('actions.edit'), edit_printer_path(@printer), class: "primary-button" %>
+      <%= link_to t('actions.back'), printers_path, class: "secondary-button" %>
+    </div>
+  </div>
+
+  <div class="printer-content">
+    <!-- Printer Specifications -->
+    <div class="specs-section">
+      <h2><%= t('printers.show.specifications') %></h2>
+      <div class="specs-grid">
+        <div class="spec-card">
+          <div class="spec-icon">⚡</div>
+          <div class="spec-details">
+            <label><%= t('printers.card.power_consumption') %></label>
+            <span><%= @printer.power_consumption %>W</span>
+          </div>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-icon">💰</div>
+          <div class="spec-details">
+            <label><%= t('printers.card.cost') %></label>
+            <span><%= currency_symbol(current_user.default_currency) %><%= number_with_delimiter(@printer.cost) %></span>
+          </div>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-icon">⏰</div>
+          <div class="spec-details">
+            <label><%= t('printers.card.daily_usage') %></label>
+            <span><%= @printer.daily_usage_hours %> <%= t('printers.card.hours') %></span>
+          </div>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-icon">🎯</div>
+          <div class="spec-details">
+            <label><%= t('printers.card.payoff_goal') %></label>
+            <span><%= @printer.payoff_goal_years %> <%= t('printers.card.years') %></span>
+          </div>
+        </div>
+
+        <% if @printer.repair_cost_percentage && @printer.repair_cost_percentage > 0 %>
+        <div class="spec-card">
+          <div class="spec-icon">🔧</div>
+          <div class="spec-details">
+            <label><%= t('printers.show.repair_cost') %></label>
+            <span><%= @printer.repair_cost_percentage %>%</span>
+          </div>
+        </div>
+        <% end %>
+
+        <div class="spec-card">
+          <div class="spec-icon">📅</div>
+          <div class="spec-details">
+            <label><%= t('printers.show.date_added') %></label>
+            <span><%= @printer.date_added&.strftime('%B %d, %Y') || t('printers.show.not_set') %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial Status -->
+    <div class="financial-section">
+      <h2><%= t('printers.show.financial_status') %></h2>
+      <div class="status-cards">
+        <div class="status-card <%= @printer.paid_off? ? 'paid-off' : 'in-progress' %>">
+          <div class="status-icon">
+            <%= @printer.paid_off? ? '✅' : '⏳' %>
+          </div>
+          <div class="status-content">
+            <% if @printer.paid_off? %>
+              <h3><%= t('printers.card.paid_off') %></h3>
+              <p><%= t('printers.show.fully_paid_off') %></p>
+            <% else %>
+              <h3><%= t('printers.show.payoff_progress') %></h3>
+              <p><%= t('printers.card.months_to_payoff', months: @printer.months_to_payoff) %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Print Jobs -->
+    <div class="print-jobs-section">
+      <div class="section-header">
+        <h2><%= t('printers.show.print_jobs') %></h2>
+        <%= link_to t('printers.show.new_print_job'), new_print_pricing_path(printer_id: @printer.id), class: "primary-button" %>
+      </div>
+
+      <% if @printer.print_pricings.any? %>
+        <div class="print-jobs-list">
+          <% @printer.print_pricings.order(created_at: :desc).limit(10).each do |print_pricing| %>
+            <div class="print-job-card">
+              <div class="job-info">
+                <h4><%= print_pricing.job_name %></h4>
+                <div class="job-details">
+                  <span class="detail-item">
+                    <strong><%= t('print_pricings.form.filament_weight') %>:</strong> <%= print_pricing.filament_weight %>g
+                  </span>
+                  <span class="detail-item">
+                    <strong><%= t('print_pricings.form.print_time_hours') %>:</strong> <%= print_pricing.printing_time_hours %>h <%= print_pricing.printing_time_minutes %>m
+                  </span>
+                  <% if print_pricing.times_printed && print_pricing.times_printed > 1 %>
+                    <span class="detail-item">
+                      <strong><%= t('print_pricings.form.times_printed') %>:</strong> <%= print_pricing.times_printed %>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+              <div class="job-pricing">
+                <div class="total-price">
+                  <%= currency_symbol(current_user.default_currency) %><%= print_pricing.final_price %>
+                </div>
+                <div class="job-actions">
+                  <%= link_to t('actions.view'), print_pricing, class: "secondary-button small" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <% if @printer.print_pricings.count > 10 %>
+            <div class="show-more">
+              <%= link_to t('printers.show.view_all_jobs', count: @printer.print_pricings.count),
+                  print_pricings_path(printer_id: @printer.id), class: "secondary-button" %>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="empty-jobs">
+          <div class="empty-icon">📄</div>
+          <h3><%= t('printers.show.no_print_jobs') %></h3>
+          <p><%= t('printers.show.no_print_jobs_description') %></p>
+          <%= link_to t('printers.show.create_first_job'), new_print_pricing_path(printer_id: @printer.id), class: "primary-button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<style>
+.printer-show-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.printer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.printer-title h1 {
+  color: #c8102e;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+}
+
+.manufacturer-badge {
+  background: #9caf88;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.printer-actions {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.printer-content {
+  display: grid;
+  gap: 2rem;
+}
+
+/* Specifications Section */
+.specs-section h2,
+.financial-section h2,
+.print-jobs-section h2 {
+  color: #c8102e;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.spec-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.spec-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.spec-icon {
+  font-size: 2rem;
+  min-width: 3rem;
+  text-align: center;
+}
+
+.spec-details {
+  flex: 1;
+}
+
+.spec-details label {
+  display: block;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.spec-details span {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Financial Status Section */
+.status-cards {
+  display: grid;
+  gap: 1rem;
+}
+
+.status-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.status-card.paid-off {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  border-color: #b6d7a8;
+}
+
+.status-card.in-progress {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+  border-color: #f0d000;
+}
+
+.status-icon {
+  font-size: 3rem;
+}
+
+.status-content h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.status-content p {
+  margin: 0;
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Print Jobs Section */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.print-jobs-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.print-job-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.print-job-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-info h4 {
+  margin: 0 0 0.5rem 0;
+  color: #c8102e;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.job-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.detail-item {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.job-pricing {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.total-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #9caf88;
+  margin-bottom: 0.5rem;
+}
+
+.job-actions .small {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+.show-more {
+  text-align: center;
+  padding: 1rem;
+}
+
+.empty-jobs {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+.empty-jobs h3 {
+  color: #666;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.empty-jobs p {
+  color: #888;
+  margin-bottom: 2rem;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Button Styles */
+.primary-button {
+  background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.primary-button:hover {
+  background: linear-gradient(135deg, #a80e26 0%, #b85a1a 100%);
+  text-decoration: none;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.secondary-button {
+  background: transparent;
+  color: #666;
+  border: 2px solid #ddd;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.secondary-button:hover {
+  background-color: #f8f9fa;
+  border-color: #ccc;
+  text-decoration: none;
+  color: #555;
+}
+
+.secondary-button.small {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .printer-show-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .printer-header {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .printer-title h1 {
+    font-size: 2rem;
+  }
+
+  .printer-actions {
+    justify-content: center;
+  }
+
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spec-card {
+    padding: 1rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .print-job-card {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .job-pricing {
+    text-align: center;
+  }
+
+  .job-details {
+    justify-content: center;
+  }
+
+  .status-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .printer-title h1 {
+    font-size: 1.5rem;
+  }
+
+  .job-details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .detail-item {
+    text-align: center;
+  }
+}
+</style>
