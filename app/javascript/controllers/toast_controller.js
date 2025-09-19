@@ -6,9 +6,13 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("Toast connected")
+    console.log("🍞 Toast controller connected!")
+    console.log("Toast element:", this.element)
+    console.log("Auto dismiss value:", this.autoDismissValue)
+    console.log("Has auto dismiss value:", this.hasAutoDismissValue)
 
     if (this.hasAutoDismissValue && this.autoDismissValue > 0) {
+      console.log("Scheduling auto dismiss in", this.autoDismissValue, "ms")
       this.scheduleAutoDismiss()
     }
   }

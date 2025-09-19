@@ -269,7 +269,23 @@ ja:
     edit:
       title: "プリンター編集"
       subtitle: "3Dプリンターの仕様を更新"
-    
+
+    # Show page
+    show:
+      specifications: "仕様"
+      financial_status: "財務状況"
+      print_jobs: "印刷ジョブ"
+      new_print_job: "新しい印刷ジョブ"
+      repair_cost: "修理費用"
+      date_added: "追加日"
+      not_set: "未設定"
+      fully_paid_off: "このプリンターは投資回収目標に基づき完全に償還済みです。"
+      payoff_progress: "償還進捗"
+      no_print_jobs: "まだ印刷ジョブがありません"
+      no_print_jobs_description: "このプリンターの最初の印刷料金計算を作成してください。"
+      create_first_job: "最初の印刷ジョブを作成"
+      view_all_jobs: "全%{count}件のジョブを表示"
+
     # Form sections
     sections:
       basic_info: "基本情報"
