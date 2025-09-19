@@ -1,10 +1,9 @@
-<div class="times-printed-control" id="times_printed_<%= pricing.id %>" data-controller="times-printed">
+<div class="times-printed-control" id="times_printed_<%= pricing.id %>">
   <%= button_to decrement_times_printed_print_pricing_path(pricing),
       method: :patch,
       class: "increment-btn decrement-btn",
       title: "Decrease times printed",
-      form_class: "inline-form",
-      data: { action: "click->times-printed#submit" } do %>
+      form_class: "inline-form" do %>
     ▼
   <% end %>
   <span class="times-printed-value"><%= pricing.times_printed || 0 %></span>
@@ -12,8 +11,7 @@
       method: :patch,
       class: "increment-btn increment-btn-up",
       title: "Increase times printed",
-      form_class: "inline-form",
-      data: { action: "click->times-printed#submit" } do %>
+      form_class: "inline-form" do %>
     ▲
   <% end %>
 </div>

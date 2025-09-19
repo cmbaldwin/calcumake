@@ -29,7 +29,7 @@
 
 en:
   language_name: "English"
-  
+
   # Navigation
   nav:
     brand: "3DP - Project Management"
@@ -41,7 +41,7 @@ en:
     sign_in: "Sign in"
     sign_up: "Sign up"
     language: "Language"
-  
+
   # Common actions
   actions:
     save: "Save"
@@ -56,7 +56,7 @@ en:
     submit: "Submit"
     view: "View"
     actions: "Actions"
-  
+
   # Flash messages
   flash:
     success: "Success"
@@ -66,13 +66,13 @@ en:
     created: "Successfully created %{model}"
     updated: "Successfully updated %{model}"
     deleted: "Successfully deleted %{model}"
-  
+
   # Models
   models:
     user: "User"
     printer: "Printer"
     print_pricing: "Print Pricing"
-  
+
   # Common terms
   common:
     created: "Created"
@@ -91,7 +91,7 @@ en:
     error_count:
       one: "error"
       other: "errors"
-  
+
   # Print Pricing Module
   print_pricing:
     # Index page
@@ -104,7 +104,7 @@ en:
       empty_state:
         title: "No calculations yet"
         description: "Start by creating your first print cost calculation to track expenses and pricing for your 3D printing projects."
-    
+
     # Form fields
     job_name: "Job Name"
     print_time: "Print Time"
@@ -113,14 +113,14 @@ en:
     confirm_delete: "Are you sure you want to delete '%{name}'?"
     times_printed_incremented: "Times printed increased successfully"
     times_printed_decremented: "Times printed decreased successfully"
-    
+
     # New/Edit forms
     calculator:
       title: "3D Print Calculator"
       subtitle: "Calculate your 3D printing costs with precision"
       edit_title: "Edit Print Pricing"
       edit_subtitle: "Update your 3D printing cost calculation"
-      
+
     # Form sections
     sections:
       basic_info: "Basic Information"
@@ -131,7 +131,7 @@ en:
       machine_upkeep: "Machine & Upkeep"
       other_costs_tax: "Other Costs & Tax"
       final_price: "Final Price"
-    
+
     # Form fields
     fields:
       job_name: "Job Name"
@@ -180,7 +180,7 @@ en:
       currency_prompt: "Select currency"
       start_with_one_print: "Start with 1 times printed"
       start_with_one_print_help: "Enable this to automatically set this pricing as printed once"
-    
+
     # Filament types
     filament_types:
       pla: "PLA"
@@ -189,7 +189,7 @@ en:
       tpu: "TPU"
       asa: "ASA"
       other: "Other"
-    
+
     # Calculations display
     calculations:
       filament_cost: "Filament cost"
@@ -197,7 +197,7 @@ en:
       labor_cost: "Labor cost"
       machine_cost: "Machine cost"
       estimated_price: "Estimated Price"
-    
+
     # Info messages
     info:
       electricity_auto: "Electricity cost will be automatically calculated based on:"
@@ -212,13 +212,13 @@ en:
       repair_factor: "Repair cost factor"
       configure_printer: "These values are configured when you"
       add_edit_printer: "add or edit a printer"
-    
+
     # Buttons
     buttons:
-      calculate_save: "Calculate & Save"
+      calculate_save: "Calculate"
       update_pricing: "Update Pricing"
       cancel: "Cancel"
-    
+
     # Show page
     show:
       created_on: "Created on %{date}"
@@ -230,7 +230,7 @@ en:
       electricity_cost: "Electricity Cost"
       labor_cost: "Labor Cost"
       machine_upkeep_cost: "Machine & Upkeep Cost"
-      
+
       # Cost breakdown
       costs:
         filament: "Filament Cost"
@@ -241,7 +241,7 @@ en:
         subtotal: "Subtotal"
         vat: "VAT (%{rate}%)"
         final_price: "Final Price"
-      
+
       # Details
       details:
         currency: "Currency"
@@ -262,13 +262,13 @@ en:
         daily_usage: "Daily Usage"
         repair_cost: "Repair Cost"
         total_machine_cost: "Total Machine Cost"
-      
+
       # Actions
       actions:
         back_to_all: "← Back to All Pricings"
         create_new: "Create New Pricing"
         confirm_delete: "Are you sure you want to delete '%{name}'?"
-  
+
   # Printers Module
   printers:
     # Index page
@@ -280,7 +280,7 @@ en:
         title: "No printers registered yet"
         description: "Add your first 3D printer to start calculating printing costs accurately."
         add_first: "Add Your First Printer"
-    
+
     # Printer card
     card:
       power_consumption: "Power Consumption"
@@ -291,23 +291,39 @@ en:
       months_to_payoff: "%{months} months to payoff"
       hours: "hours"
       years: "years"
-    
+
     # New/Edit forms
     new:
       title: "Add New Printer"
       subtitle: "Register your 3D printer specifications for accurate cost calculations"
-    
+
     edit:
       title: "Edit Printer"
       subtitle: "Update your 3D printer specifications"
-    
+
+    # Show page
+    show:
+      specifications: "Specifications"
+      financial_status: "Financial Status"
+      print_jobs: "Print Jobs"
+      new_print_job: "New Print Job"
+      repair_cost: "Repair Cost"
+      date_added: "Date Added"
+      not_set: "Not set"
+      fully_paid_off: "This printer has been fully paid off based on your payoff goals."
+      payoff_progress: "Payoff Progress"
+      no_print_jobs: "No print jobs yet"
+      no_print_jobs_description: "Create your first print pricing calculation for this printer."
+      create_first_job: "Create First Print Job"
+      view_all_jobs: "View All %{count} Jobs"
+
     # Form sections
     sections:
       basic_info: "Basic Information"
       technical_specs: "Technical Specifications"
       financial_info: "Financial Information"
       usage_info: "Usage Information"
-    
+
     # Form fields
     fields:
       name: "Printer Name"
@@ -328,13 +344,13 @@ en:
       repair_factor: "Repair Cost Factor (%)"
       repair_factor_placeholder: "5.0"
       repair_factor_help: "Additional cost factor for maintenance and repairs"
-    
+
     # Buttons
     buttons:
       add_printer: "Add Printer"
       update_printer: "Update Printer"
       cancel: "Cancel"
-  
+
   # User Profile Module
   profile:
     # Show page
@@ -346,13 +362,13 @@ en:
       member_since: "Member since"
       default_preferences: "Default Preferences"
       back_to_calculations: "Back to Calculations"
-    
+
     # Edit page
     edit:
       title: "User Profile Settings"
       subtitle: "Configure your default preferences"
       default_settings: "Default Settings"
-    
+
     # Form fields
     fields:
       default_currency: "Default Currency"
@@ -361,13 +377,13 @@ en:
       energy_cost_placeholder: "0.120"
       energy_cost_help: "Your local electricity cost per kilowatt-hour"
       energy_cost_help_extended: "Your local electricity cost per kilowatt-hour. This will be used as the default for new calculations."
-    
+
     # Buttons
     buttons:
       update_settings: "Update Settings"
       update_profile: "Update Profile"
       cancel: "Cancel"
-  
+
   # Currency
   currency:
     usd: "US Dollar"
@@ -376,18 +392,18 @@ en:
     jpy: "Japanese Yen"
     cad: "Canadian Dollar"
     aud: "Australian Dollar"
-  
+
   # Energy costs
   energy:
     cost_per_kwh: "Energy Cost per kWh"
-  
+
   # Date and time formats
   time:
     at: "at"
     formats:
       month_day_year: "%B %d, %Y"
       month_day_year_time: "%B %d, %Y at %I:%M %p"
-  
+
   # Application title
   app:
     title: "3DP - 3D Print Project Management"
