@@ -3,39 +3,40 @@
 /* Hero Section */
 .hero-section {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .hero-section h1 {
   color: var(--primary);
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 800;
   width: 100%;
   left: 0;
+  margin-bottom: 1rem;
 }
 
 .hero-subtitle {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--text-secondary);
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 /* Stats Section */
 .stats-row {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
 }
 
 .stat-card {
   flex: 1;
-  min-width: 200px;
+  min-width: 160px;
   color: white;
-  padding: 1.5rem;
-  border-radius: 12px;
+  padding: 0.75rem;
+  border-radius: 6px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .stat-card.total-calculations {
@@ -51,21 +52,22 @@
 }
 
 .stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .stat-number {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
+  margin-bottom: 0.25rem;
 }
 
 /* Table Styles */
 .table-container {
   background: white;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 32px var(--shadow);
+  box-shadow: 0 6px 24px var(--shadow);
 }
 
 .table-container table {
@@ -77,11 +79,11 @@
 }
 
 .table-container th {
-  padding: 1.2rem;
+  padding: 1rem;
 }
 
 .table-container td {
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .table-row-even {
@@ -96,8 +98,8 @@
 
 .currency-badge {
   background: var(--moab-cream);
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 16px;
   font-weight: 600;
 }
 
@@ -108,8 +110,8 @@
 .final-price-badge {
   background: linear-gradient(135deg, var(--accent) 0%, var(--moab-sage) 100%);
   color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
   font-weight: 600;
   white-space: nowrap;
 }
@@ -124,12 +126,12 @@
 
 .actions-cell {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
   flex-wrap: wrap;
 }
 
 .button-small {
-  padding: 0.4rem 0.8rem;
+  padding: 0.3rem 0.6rem;
 }
 
 /* Times Printed Control Styles */
@@ -137,7 +139,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .inline-form {
@@ -149,16 +151,16 @@
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   color: white;
   text-decoration: none;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(200, 16, 46, 0.2);
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(200, 16, 46, 0.2);
   cursor: pointer;
   border: none;
   padding: 0;
@@ -166,7 +168,7 @@
 
 .increment-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(200, 16, 46, 0.3);
+  box-shadow: 0 3px 6px rgba(200, 16, 46, 0.25);
   color: white;
   text-decoration: none;
 }
@@ -184,62 +186,63 @@
 }
 
 .decrement-btn:hover {
-  box-shadow: 0 4px 8px rgba(139, 115, 85, 0.3);
+  box-shadow: 0 3px 6px rgba(139, 115, 85, 0.25);
 }
 
 .times-printed-value {
   font-weight: 600;
   color: var(--primary);
-  min-width: 20px;
+  min-width: 18px;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 /* Empty State */
 .empty-state {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 3rem 1.5rem;
   background: linear-gradient(135deg, #f8f9fa 0%, white 100%);
-  border-radius: 16px;
-  margin-top: 2rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
 }
 
 .empty-state h3 {
   color: var(--secondary);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .empty-state p {
   color: var(--text-muted);
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  max-width: 500px;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  max-width: 450px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .empty-state .button {
-  font-size: 1.1rem;
-  padding: 1rem 2rem;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
 }
 
 .hero-section .button {
-  font-size: 1.1rem;
-  padding: 1rem 2rem;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .stats-row {
     flex-direction: column;
+    gap: 0.5rem;
   }
 
   .hero-section h1 {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   .empty-state {
-    padding: 2rem 1rem;
+    padding: 1.25rem 0.5rem;
   }
 
   .table-container {
@@ -247,21 +250,30 @@
   }
 
   .table-container table {
-    min-width: 800px;
+    min-width: 650px;
   }
 
   .times-printed-control {
-    gap: 0.3rem;
+    gap: 0.2rem;
   }
 
   .increment-btn {
-    width: 20px;
-    height: 20px;
-    font-size: 0.7rem;
+    width: 16px;
+    height: 16px;
+    font-size: 0.6rem;
   }
 
   .times-printed-value {
-    font-size: 1rem;
-    min-width: 18px;
+    font-size: 0.8rem;
+    min-width: 14px;
+  }
+
+  .stat-card {
+    min-width: 140px;
+    padding: 0.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.3rem;
   }
 }

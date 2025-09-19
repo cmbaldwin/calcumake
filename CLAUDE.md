@@ -454,3 +454,165 @@ export default class extends Controller {
 - Real-time notifications with Action Cable
 - Progressive enhancement with Stimulus
 - Optimistic UI updates with proper fallbacks
+
+## Design Standards & UI Guidelines
+
+### Compact Design System
+The application follows a **compact design approach** optimized for maximizing screen real estate while maintaining excellent usability and visual hierarchy.
+
+### Typography Scale
+**Primary Headings:**
+- H1: `2rem` (down from 2.5rem standard)
+- H2: `1.8rem`
+- H3: `1.5rem` with `0.4rem` padding-bottom
+- Subtitle text: `1rem` (down from 1.2rem standard)
+
+**Body Text:**
+- Standard: `0.85rem` (down from 1rem standard)
+- Small text: `0.75rem`
+- Table cells: `0.85rem`
+
+### Spacing System
+**Button Padding Standards:**
+- Primary buttons: `0.5rem 1rem` (37% reduction from 0.8rem 1.5rem)
+- Small buttons: `0.3rem 0.6rem` (40% reduction from 0.5rem 1rem)
+- Button font-size: `0.85rem` for primary, `0.75rem` for small
+
+**Container & Layout Spacing:**
+- Section margins: `1rem - 1.5rem` (25-33% reduction from 2-3rem)
+- Card padding: `0.75rem - 1rem` (25-33% reduction from 1.5-2rem)
+- Form field spacing: `0.75rem` margins (25% reduction from 1rem)
+
+**Table Cell Spacing:**
+- Header cells: `0.6rem` padding (40% reduction from 1rem)
+- Body cells: `0.6rem` padding (40% reduction from 1rem)
+
+### Component Standards
+
+**Navigation:**
+- Nav gap: `0.75rem` (25% reduction)
+- Nav link padding: `0.5rem 0.8rem`
+- Nav link font-size: `0.85rem`
+- Brand font-size: `1.3rem` (13% reduction from 1.5rem)
+
+**Stats Cards:**
+- Padding: `0.75rem` (25% reduction from 1rem)
+- Gap between cards: `0.5rem` (33% reduction from 0.75rem)
+- Stat numbers: `1.5rem` (17% reduction from 1.8rem)
+- Min-width: `160px` desktop, `140px` mobile
+
+**Interactive Elements:**
+- Border radius: `6px` primary (25% reduction from 8px)
+- Border radius: `3-4px` small elements
+- Box shadows: Reduced opacity (0.15-0.25 vs 0.3-0.4)
+- Hover transforms: `-1px` (50% reduction from -2px)
+
+**Times Printed Controls:**
+- Button size: `22px` desktop, `16px` mobile (8-11% reduction)
+- Font-size: `0.75rem` desktop, `0.6rem` mobile
+- Gap: `0.4rem` desktop, `0.2rem` mobile
+
+### Form Components
+**Input Fields:**
+- Padding: `0.6rem` (20% reduction from 0.75rem)
+- Font-size: `0.9rem` (10% reduction from 1rem)
+- Border radius: `6px` (25% reduction from 8px)
+
+**Form Sections:**
+- Border radius: `12px` (25% reduction from 16px)
+- Padding: `1.5rem` (25% reduction from 2rem)
+- Margin between sections: `1.5rem` (25% reduction from 2rem)
+
+### Mobile Responsive Standards
+**Breakpoint Adjustments:**
+- Hero titles: Additional 10-15% size reduction on mobile
+- Table min-width: `650px` (reduced from 700-800px)
+- Stat cards: Further 25% padding reduction on mobile
+- Button sizes: Additional 10-15% reduction for touch targets
+
+### CSS File Organization
+**Modular Architecture:**
+- `application.css`: Global styles, navigation, flash messages, containers
+- `moab_theme.css`: Theme colors, base components, typography
+- `print_pricings.css`: Index pages, tables, stat cards
+- `user_profiles.css`: Profile pages, form sections
+- `forms.css`: Reusable form components
+
+### Implementation Guidelines
+**When Adding New Components:**
+1. **Start with base sizing** then reduce by 25-40% for padding/margins
+2. **Use consistent spacing scale**: 0.5rem, 0.75rem, 1rem, 1.5rem
+3. **Font-size reductions**: 10-15% smaller than standard sizing
+4. **Border radius**: Prefer 6px for primary, 3-4px for small elements
+5. **Box shadows**: Use lighter opacity values (0.15-0.25 range)
+
+**Responsive Design Approach:**
+- Mobile-first with progressive enhancement
+- Additional 10-25% spacing reduction on small screens
+- Maintain minimum touch target sizes (44px minimum)
+- Stack elements vertically with reduced gaps on mobile
+
+**Testing Standards:**
+- Verify layouts work on 1200px+ screens without excessive whitespace
+- Ensure mobile layouts remain usable with tighter spacing
+- Test across different zoom levels (90%, 100%, 110%)
+- Validate touch targets meet accessibility guidelines
+
+### Button Standardization
+**Universal Button Dimensions:**
+All buttons (primary, secondary, outline, clear) must have identical dimensions to ensure visual consistency and professional appearance.
+
+**Standard Button Specifications:**
+- **Padding**: `0.6rem 1.2rem` (consistent across all button types)
+- **Border**: `2px solid` (transparent for primary, visible for others)
+- **Border radius**: `6px`
+- **Font size**: `0.9rem`
+- **Font weight**: `600`
+- **Min-width**: `120px` (ensures consistent button sizing)
+- **Text alignment**: `center`
+- **Transition**: `all 0.2s ease`
+
+**Button Types:**
+- **Primary**: Gradient background, transparent border
+- **Secondary**: Transparent background, solid border
+- **Outline**: Transparent background, primary color border
+- **Clear**: Transparent background, muted border
+
+**Box Shadow Standards:**
+- **Primary**: `0 2px 8px rgba(200, 16, 46, 0.25)`
+- **Secondary/Others**: `0 1px 4px rgba(0, 0, 0, 0.08)`
+- **Hover states**: Slight increase in shadow intensity
+
+**Hover Effects:**
+- **Transform**: `translateY(-1px)` (subtle lift effect)
+- **Shadow enhancement**: Darker/more prominent shadows
+- **Color transitions**: Smooth background/border color changes
+
+**Implementation Rule:**
+ALL buttons throughout the application MUST use these exact specifications. This ensures:
+1. **Visual consistency** across all forms and pages
+2. **Professional appearance** with uniform button sizing
+3. **Predictable user experience** with consistent interaction patterns
+4. **Accessibility compliance** with adequate touch targets
+
+**Code Example:**
+```css
+.button, .primary-button, .secondary-button {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-width: 120px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+```
+
+### Design Principles
+1. **Maximize screen real estate** while maintaining visual hierarchy
+2. **Consistent spacing ratios** across all components (25-40% reductions)
+3. **Progressive density** - more compact on larger screens
+4. **Preserve usability** - never sacrifice accessibility for compactness
+5. **Visual coherence** - maintain design language despite tighter spacing
+6. **Button uniformity** - all buttons must have identical dimensions regardless of type
