@@ -89,22 +89,21 @@
     padding: 1rem 0;
     text-align: center;
   }
-  
+
   .nav-brand {
     font-size: 1.3rem;
   }
-  
+
   .nav-links {
     justify-content: center;
     gap: 0.3rem;
   }
-  
+
   .nav-link {
     padding: 0.5rem 0.8rem;
     font-size: 0.85rem;
   }
 }
-
 
 @media (max-width: 480px) {
   .nav-links {
@@ -112,7 +111,7 @@
     width: 100%;
     gap: 0.5rem;
   }
-  
+
   .nav-link {
     width: 100%;
     text-align: center;
@@ -173,6 +172,7 @@
 }
 
 .toast-title {
+  margin-left: 1rem;
   font-weight: 600;
   font-size: 1rem;
   color: inherit;
@@ -251,7 +251,7 @@
     min-width: 280px;
     animation: toastFadeIn 0.3s ease-out;
   }
-  
+
   @keyframes toastFadeIn {
     from {
       transform: translate(-50%, -50%) scale(0.8);
@@ -262,7 +262,7 @@
       opacity: 1;
     }
   }
-  
+
   @keyframes toastFadeOut {
     from {
       transform: translate(-50%, -50%) scale(1);
@@ -276,12 +276,22 @@
 }
 
 /* Center headlines and subtitles by default */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-align: center;
 }
 
 /* Override for navigation and specific elements where centering is not desired */
-.main-nav h1, .main-nav h2, .main-nav h3, .main-nav h4, .main-nav h5, .main-nav h6,
+.main-nav h1,
+.main-nav h2,
+.main-nav h3,
+.main-nav h4,
+.main-nav h5,
+.main-nav h6,
 .nav-brand {
   text-align: inherit;
 }

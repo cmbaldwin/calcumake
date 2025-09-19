@@ -60,12 +60,27 @@ Multi-currency support via `CurrencyHelper`:
 - **Import Maps** for JavaScript module management
 - **Propshaft** for asset pipeline
 
+### CSS Architecture
+The application uses a modular CSS approach with dedicated stylesheets:
+- **application.css**: Global styles, navigation, toast notifications, containers
+- **print_pricings.css**: Print pricing index, table styles, times printed controls
+- **user_profiles.css**: User profile pages, form sections, calculator headers
+- **forms.css**: Reusable form components and input styles
+- **Minimal inline CSS**: All major styling moved to dedicated CSS files for better maintainability
+
 ### Turbo Streams Implementation
 The application uses Turbo Streams for seamless real-time updates:
 - **Print Times Tracking**: Increment/decrement buttons update values without page reload
 - **Controller Actions**: Both `increment_times_printed` and `decrement_times_printed` respond to Turbo Stream requests
 - **Partial Updates**: Uses `_times_printed_control.html.erb` partial for targeted DOM updates
 - **Fallback Support**: HTML format responses for non-JavaScript clients
+
+### Stimulus Controllers
+The application uses Stimulus controllers for interactive functionality:
+- **Toast Controller** (`toast_controller.js`): Handles auto-dismissing flash notifications with configurable delays
+- **Times Printed Controller** (`times_printed_controller.js`): Manages increment/decrement functionality with proper Turbo stream handling
+- **Data Values**: Controllers use Stimulus values API for configuration (e.g., `data-toast-auto-dismiss-value`)
+- **Actions**: Interactive elements use `data-action` attributes to connect to controller methods
 
 ## Database
 - **PostgreSQL** as primary database
@@ -76,6 +91,15 @@ The application uses Turbo Streams for seamless real-time updates:
 - **Devise** handles user authentication
 - All main features require authenticated users
 - User-specific data isolation (users can only access their own printers/pricings)
+- **Rails Admin** provides admin interface at `/admin` (requires admin privileges)
+
+### Rails Admin Configuration
+The application includes a properly configured Rails Admin interface:
+- **JSPM CDN Integration**: Uses separate importmap file (`config/importmap.rails_admin.rb`) with JSPM CDN dependencies
+- **Complete CSS**: Full Rails Admin styles in `app/assets/stylesheets/rails_admin.css`
+- **Propshaft Compatible**: No manifest.js required, assets auto-discovered
+- **Admin Authentication**: Users need `admin: true` field to access Rails Admin
+- **Access Control**: Redirects non-admin users to root, unauthenticated users to sign in
 
 ## Deployment
 - **Kamal** deployment configuration available

@@ -20,57 +20,17 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    
-    <script>
-      // Auto-dismiss toast notifications
-      document.addEventListener('DOMContentLoaded', function() {
-        const toasts = document.querySelectorAll('.toast-notification[data-auto-dismiss]');
-        
-        toasts.forEach(function(toast) {
-          const delay = parseInt(toast.getAttribute('data-auto-dismiss')) || 5000;
-          
-          setTimeout(function() {
-            if (toast.parentElement) {
-              toast.style.animation = window.innerWidth <= 768 ? 'toastFadeOut 0.3s ease-out forwards' : 'toastSlideOut 0.3s ease-out forwards';
-              setTimeout(function() {
-                if (toast.parentElement) {
-                  toast.remove();
-                }
-              }, 300);
-            }
-          }, delay);
-        });
-      });
-      
-      // Handle Turbo navigation
-      document.addEventListener('turbo:load', function() {
-        const toasts = document.querySelectorAll('.toast-notification[data-auto-dismiss]');
-        
-        toasts.forEach(function(toast) {
-          const delay = parseInt(toast.getAttribute('data-auto-dismiss')) || 5000;
-          
-          setTimeout(function() {
-            if (toast.parentElement) {
-              toast.style.animation = window.innerWidth <= 768 ? 'toastFadeOut 0.3s ease-out forwards' : 'toastSlideOut 0.3s ease-out forwards';
-              setTimeout(function() {
-                if (toast.parentElement) {
-                  toast.remove();
-                }
-              }, 300);
-            }
-          }, delay);
-        });
-      });
-    </script>
   </head>
 
   <body class="<%= content_for(:body_class) %>">
     <!-- Fixed position notifications -->
     <% if notice %>
-      <div class="toast-notification toast-success" data-auto-dismiss="5000">
+      <div class="toast-notification toast-success"
+           data-controller="toast"
+           data-toast-auto-dismiss-value="5000">
         <div class="toast-header">
           <div class="toast-title"><%= t('flash.success') %></div>
-          <button class="toast-close" onclick="this.parentElement.parentElement.remove()">&times;</button>
+          <button class="toast-close" data-action="click->toast#close">&times;</button>
         </div>
         <div class="toast-content">
           <%= notice %>
@@ -78,10 +38,12 @@
       </div>
     <% end %>
     <% if alert %>
-      <div class="toast-notification toast-error" data-auto-dismiss="5000">
+      <div class="toast-notification toast-error"
+           data-controller="toast"
+           data-toast-auto-dismiss-value="5000">
         <div class="toast-header">
           <div class="toast-title"><%= t('flash.alert') %></div>
-          <button class="toast-close" onclick="this.parentElement.parentElement.remove()">&times;</button>
+          <button class="toast-close" data-action="click->toast#close">&times;</button>
         </div>
         <div class="toast-content">
           <%= alert %>
