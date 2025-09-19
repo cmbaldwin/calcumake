@@ -5,8 +5,17 @@ RailsAdmin.config do |config|
 
   ## == Devise ==
   config.authenticate_with do
-    warden.authenticate! scope: :user
+    # Redirect to sign in if not authenticated
+    redirect_to main_app.new_user_session_path unless current_user
   end
+
+  config.authorize_with do
+    # Redirect to root if user is not admin
+    unless current_user&.admin?
+      redirect_to main_app.root_path
+    end
+  end
+
   config.current_user_method(&:current_user)
 
   ## == CancanCan ==
@@ -39,4 +48,5 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
 end

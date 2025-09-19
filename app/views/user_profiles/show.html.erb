@@ -1,20 +1,20 @@
-<div class="calculator-header" style="text-align: center; margin-bottom: 3rem;">
-  <h1 style="color: var(--primary); font-size: 1.8rem; font-weight: 700;">
+<div class="calculator-header">
+  <h1>
     <%= t('profile.show.title') %>
   </h1>
-  <p style="color: var(--text-secondary); font-size: 1.1rem;">
+  <p>
     <%= t('profile.show.subtitle') %>
   </p>
 </div>
 
 <% if notice %>
-  <div class="alert alert-success" style="background: var(--success-bg); color: var(--success-text); padding: 1rem; border-radius: 8px; margin-bottom: 2rem; text-align: center;">
+  <div class="profile-success-alert">
     <%= notice %>
   </div>
 <% end %>
 
-<div class="form-section" style="background: white; border-radius: 16px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 20px var(--shadow);">
-  <h3 style="color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--accent); padding-bottom: 1rem;">
+<div class="form-section">
+  <h3>
     <%= t('profile.show.account_info') %>
   </h3>
   <div class="row">
@@ -29,15 +29,15 @@
   </div>
 </div>
 
-<%= form_with model: @user, url: user_profile_path, method: :patch, local: true, html: { style: "margin-bottom: 2rem;" } do |form| %>
-  <div class="form-section" style="background: linear-gradient(145deg, #ffffff 0%, var(--moab-cream) 100%); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 20px var(--shadow); border: 2px solid var(--accent);">
-    <h3 style="color: var(--secondary); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 1rem;">
+<%= form_with model: @user, url: user_profile_path, method: :patch, local: true, html: { class: "calculator-form" } do |form| %>
+  <div class="form-section highlight">
+    <h3>
       <%= t('profile.show.default_preferences') %>
     </h3>
     <% if @user.errors.any? %>
-      <div style="background-color: #f8d7da; border: 1px solid #f5c6cb; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; color: #721c24;">
+      <div class="validation-errors">
         <strong><%= pluralize(@user.errors.count, "error") %> prohibited this profile from being saved:</strong>
-        <ul style="margin: 0.5rem 0 0 1.5rem;">
+        <ul>
           <% @user.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
@@ -46,20 +46,20 @@
     <% end %>
     <div class="row">
       <div class="column column-50">
-        <label for="user_default_currency" style="font-weight: 600; color: #333; margin-bottom: 0.5rem; display: block;">Default Currency</label>
+        <label for="user_default_currency" class="form-label">Default Currency</label>
         <%= form.select :default_currency, 
             options_for_select(currency_options, @user.default_currency), 
             { prompt: "Select currency" },
-            { style: "width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;" } %>
+            { class: "form-input" } %>
         <small style="color: #666; font-size: 0.85rem; margin-top: 0.25rem; display: block;">
           Used as default for new pricing calculations
         </small>
       </div>
       <div class="column column-50">
-        <label for="user_default_energy_cost_per_kwh" style="font-weight: 600; color: #333; margin-bottom: 0.5rem; display: block;">Energy Cost per kWh</label>
-        <%= form.number_field :default_energy_cost_per_kwh, step: 0.001, min: 0.001, 
+        <label for="user_default_energy_cost_per_kwh" class="form-label">Energy Cost per kWh</label>
+        <%= form.number_field :default_energy_cost_per_kwh, step: 0.001, min: 0.001,
             placeholder: "0.120",
-            style: "width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; text-align: right;" %>
+            class: "form-input text-right" %>
         <small style="color: #666; font-size: 0.85rem; margin-top: 0.25rem; display: block;">
           Your local electricity cost per kilowatt-hour
         </small>
