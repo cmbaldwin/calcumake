@@ -29,8 +29,8 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 
-# Ignore assets.
-/public/assets/
+# Assets are compiled during Docker build
+# /public/assets/
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
