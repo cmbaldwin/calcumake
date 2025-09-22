@@ -25,8 +25,8 @@ module PrintCalc
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Internationalization configuration
-    config.i18n.available_locales = [:en, :ja, :'zh-CN', :hi, :es, :fr, :ar]
+    config.i18n.available_locales = [ :en, :ja, :'zh-CN', :hi, :es, :fr, :ar ]
     config.i18n.default_locale = :en
-    config.i18n.fallbacks = [I18n.default_locale]
+    config.i18n.fallbacks = [ I18n.default_locale ]
   end
 end

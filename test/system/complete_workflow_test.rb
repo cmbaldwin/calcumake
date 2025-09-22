@@ -23,7 +23,7 @@ class CompleteWorkflowTest < ApplicationSystemTestCase
     # Add a printer
     click_link "Printers" rescue visit "/printers"
     click_link "New Printer" rescue click_button "Add Printer"
-    
+
     fill_in "Name", with: "My Test Printer"
     select "Prusa", from: "Manufacturer"
     fill_in "Power consumption", with: "250"
@@ -31,14 +31,14 @@ class CompleteWorkflowTest < ApplicationSystemTestCase
     fill_in "Payoff goal years", with: "3"
     fill_in "Daily usage hours", with: "6"
     fill_in "Repair cost percentage", with: "5"
-    
+
     click_button "Create Printer"
     assert_text "Printer was successfully created."
 
     # Create a pricing calculation
     click_link "Print Pricings" rescue visit "/print_pricings"
     click_link "New Print Pricing" rescue click_button "New Pricing"
-    
+
     fill_in "Job name", with: "Test Print Job"
     select "My Test Printer", from: "Printer"
     fill_in "Printing time hours", with: "3"
@@ -48,10 +48,10 @@ class CompleteWorkflowTest < ApplicationSystemTestCase
     fill_in "Spool price", with: "28"
     fill_in "Spool weight", with: "1000"
     fill_in "Markup percentage", with: "25"
-    
+
     click_button "Create Print pricing"
     assert_text "Print pricing was successfully created."
-    
+
     # Verify calculation results are displayed
     assert_text "Test Print Job"
     assert_text "$" # Should show currency symbols
@@ -60,15 +60,15 @@ class CompleteWorkflowTest < ApplicationSystemTestCase
   test "user can update profile settings" do
     sign_in @user
     visit root_path
-    
+
     click_link "Profile" rescue visit "/user_profile"
-    
+
     select "Euro (EUR)", from: "Default currency"
     fill_in "Default energy cost per kwh", with: "0.15"
-    
+
     click_button "Update Profile"
     assert_text "Profile was successfully updated."
-    
+
     # Verify changes persisted
     @user.reload
     assert_equal "EUR", @user.default_currency
@@ -77,32 +77,32 @@ class CompleteWorkflowTest < ApplicationSystemTestCase
 
   test "user can manage multiple printers" do
     sign_in @user
-    
+
     # Create first printer
     visit "/printers"
     click_link "New Printer"
-    
+
     fill_in "Name", with: "Printer One"
     select "Bambu Lab", from: "Manufacturer"
     fill_in "Power consumption", with: "200"
     fill_in "Cost", with: "600"
     fill_in "Payoff goal years", with: "2"
-    
+
     click_button "Create Printer"
     assert_text "Printer was successfully created."
-    
+
     # Create second printer
     click_link "New Printer"
-    
+
     fill_in "Name", with: "Printer Two"
     select "Creality", from: "Manufacturer"
     fill_in "Power consumption", with: "300"
     fill_in "Cost", with: "400"
     fill_in "Payoff goal years", with: "4"
-    
+
     click_button "Create Printer"
     assert_text "Printer was successfully created."
-    
+
     # Verify both printers are listed
     visit "/printers"
     assert_text "Printer One"
@@ -113,7 +113,7 @@ class CompleteWorkflowTest < ApplicationSystemTestCase
 
   test "pricing calculation shows all cost components" do
     sign_in @user
-    
+
     # Create a printer first
     printer = @user.printers.create!(
       name: "Cost Test Printer",
@@ -124,9 +124,9 @@ class CompleteWorkflowTest < ApplicationSystemTestCase
       daily_usage_hours: 8,
       repair_cost_percentage: 5.0
     )
-    
+
     visit "/print_pricings/new"
-    
+
     fill_in "Job name", with: "Detailed Cost Test"
     select "Cost Test Printer", from: "Printer"
     fill_in "Printing time hours", with: "4"
@@ -141,13 +141,13 @@ class CompleteWorkflowTest < ApplicationSystemTestCase
     fill_in "Postprocessing time minutes", with: "15"
     fill_in "Postprocessing cost per hour", with: "30"
     fill_in "Vat percentage", with: "8"
-    
+
     click_button "Create Print pricing"
     assert_text "Print pricing was successfully created."
-    
+
     # Should display all cost breakdowns
     assert_text "Filament Cost"
-    assert_text "Electricity Cost" 
+    assert_text "Electricity Cost"
     assert_text "Labor Cost"
     assert_text "Machine Upkeep"
     assert_text "Final Price"

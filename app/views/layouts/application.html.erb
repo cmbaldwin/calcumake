@@ -40,7 +40,6 @@
                 <%= link_to t('nav.brand'), root_path, class: "nav-brand" %>
                 <div class="nav-links">
                     <% if user_signed_in? %>
-                    <%= link_to t('nav.my_pricings'), print_pricings_path, class: "nav-link" %>
                     <%= link_to t('nav.new_pricing'), new_print_pricing_path, class: "nav-link" %>
                     <%= link_to t('nav.my_printers'), printers_path, class: "nav-link" %>
                     <%= link_to t('nav.profile'), user_profile_path, class: "nav-link" %>
@@ -53,7 +52,7 @@
                     <!-- Language Selector -->
                     <div class="language-selector">
                         <%= form_with url: switch_locale_path, method: :post, local: true, class: "language-form" do |form| %>
-                        <%= form.select :locale, 
+                        <%= form.select :locale,
                     options_for_select([
                       [t('language_name', locale: :en), 'en'],
                       [t('language_name', locale: :ja), 'ja'],
@@ -64,7 +63,7 @@
                       [t('language_name', locale: :ar), 'ar']
                     ], I18n.locale.to_s),
                     {},
-                    { 
+                    {
                       class: "language-select",
                       onchange: "this.form.submit();",
                       title: t('nav.language')

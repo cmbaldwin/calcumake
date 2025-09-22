@@ -3,8 +3,8 @@ require "test_helper"
 class PrintPricingTest < ActiveSupport::TestCase
   def setup
     @user = User.create!(
-      email: "test@example.com", 
-      password: "password123", 
+      email: "test@example.com",
+      password: "password123",
       default_currency: "USD",
       default_energy_cost_per_kwh: 0.12
     )
@@ -81,7 +81,7 @@ class PrintPricingTest < ActiveSupport::TestCase
     @print_pricing.prep_cost_per_hour = 20.0
     @print_pricing.postprocessing_time_minutes = 45
     @print_pricing.postprocessing_cost_per_hour = 25.0
-    
+
     expected_cost = (30 * 20.0 / 60) + (45 * 25.0 / 60)
     assert_in_delta expected_cost, @print_pricing.total_labor_cost, 0.01
   end
@@ -93,13 +93,13 @@ class PrintPricingTest < ActiveSupport::TestCase
       daily_usage_hours: 8,
       repair_cost_percentage: 5.0
     )
-    
+
     total_days = 3 * 365
     daily_depreciation = 1000.0 / total_days
     hourly_depreciation = daily_depreciation / 8
     repair_factor = 1.05
     expected_cost = hourly_depreciation * (150 / 60) * repair_factor
-    
+
     assert_in_delta expected_cost, @print_pricing.total_machine_upkeep_cost, 0.01
   end
 

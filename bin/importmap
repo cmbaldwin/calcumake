@@ -1,2 +1,4 @@
 #!/usr/bin/env ruby
-exec "./bin/rails", "server", *ARGV
+
+require_relative "../config/application"
+require "importmap/commands"

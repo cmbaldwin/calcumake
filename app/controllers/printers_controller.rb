@@ -1,6 +1,6 @@
 class PrintersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_printer, only: [:show, :edit, :update, :destroy]
+  before_action :set_printer, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @printers = current_user.printers.order(:name)
@@ -18,9 +18,9 @@ class PrintersController < ApplicationController
 
     if @printer.save
       respond_to do |format|
-        format.html { redirect_to @printer, notice: 'Printer was successfully created.' }
+        format.html { redirect_to @printer, notice: "Printer was successfully created." }
         format.turbo_stream {
-          flash.now[:notice] = 'Printer was successfully created.'
+          flash.now[:notice] = "Printer was successfully created."
           render "layouts/flash"
         }
       end
@@ -35,9 +35,9 @@ class PrintersController < ApplicationController
   def update
     if @printer.update(printer_params)
       respond_to do |format|
-        format.html { redirect_to @printer, notice: 'Printer was successfully updated.' }
+        format.html { redirect_to @printer, notice: "Printer was successfully updated." }
         format.turbo_stream {
-          flash.now[:notice] = 'Printer was successfully updated.'
+          flash.now[:notice] = "Printer was successfully updated."
           render "layouts/flash"
         }
       end
@@ -49,9 +49,9 @@ class PrintersController < ApplicationController
   def destroy
     @printer.destroy
     respond_to do |format|
-      format.html { redirect_to printers_url, notice: 'Printer was successfully deleted.' }
+      format.html { redirect_to printers_url, notice: "Printer was successfully deleted." }
       format.turbo_stream {
-        flash.now[:notice] = 'Printer was successfully deleted.'
+        flash.now[:notice] = "Printer was successfully deleted."
         render "layouts/flash"
       }
     end

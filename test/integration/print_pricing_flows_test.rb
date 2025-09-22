@@ -11,7 +11,7 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
     # Test user registration
     get new_user_registration_path
     assert_response :success
-    
+
     post user_registration_path, params: {
       user: {
         email: "newuser@example.com",
@@ -19,11 +19,11 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
         password_confirmation: "password123"
       }
     }
-    
+
     assert_redirected_to root_path
     follow_redirect!
     assert_response :success
-    
+
     # First create a printer for the user
     current_user = User.find_by(email: "newuser@example.com")
     printer = current_user.printers.create!(
@@ -35,12 +35,12 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
       daily_usage_hours: 8,
       repair_cost_percentage: 5.0
     )
-    
+
     # Test creating a new print pricing
     get new_print_pricing_path
     assert_response :success
     assert_select "form#pricing-form"
-    
+
     post print_pricings_path, params: {
       print_pricing: {
         job_name: "Integration Test Print",
@@ -55,7 +55,7 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
         vat_percentage: 8.0
       }
     }
-    
+
     assert_redirected_to print_pricing_path(PrintPricing.last)
     follow_redirect!
     assert_response :success
@@ -64,33 +64,33 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
 
   test "authenticated user can manage print pricings" do
     sign_in @user
-    
+
     # Update user settings for EUR
     @user.update!(
       default_currency: "EUR",
       default_energy_cost_per_kwh: 0.15
     )
-    
+
     # Create a printer for the test
     printer = @user.printers.create!(
       name: "Flow Test Printer",
-      manufacturer: "Prusa", 
+      manufacturer: "Prusa",
       power_consumption: 150,
       cost: 800.0,
       payoff_goal_years: 3,
       daily_usage_hours: 8,
       repair_cost_percentage: 5.0
     )
-    
+
     # Test accessing index page
     get root_path
     assert_response :success
     assert_select "h1", /My Print Calculations/
-    
+
     # Test creating a new pricing
     get new_print_pricing_path
     assert_response :success
-    
+
     assert_difference("PrintPricing.count") do
       post print_pricings_path, params: {
         print_pricing: {
@@ -107,37 +107,37 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
         }
       }
     end
-    
+
     pricing = PrintPricing.last
     assert_redirected_to print_pricing_path(pricing)
-    
+
     # Test viewing the created pricing
     follow_redirect!
     assert_response :success
     assert_select "h1", /Flow Test Print/
     assert_select "td", "EUR"
     assert_select "td", "2h 15m"
-    
+
     # Test editing the pricing
     get edit_print_pricing_path(pricing)
     assert_response :success
-    
+
     patch print_pricing_path(pricing), params: {
       print_pricing: {
         job_name: "Updated Flow Test Print",
         currency: "GBP"
       }
     }
-    
+
     assert_redirected_to print_pricing_path(pricing)
     follow_redirect!
     assert_select "h1", /Updated Flow Test Print/
-    
+
     # Test deleting the pricing
     assert_difference("PrintPricing.count", -1) do
       delete print_pricing_path(pricing)
     end
-    
+
     assert_redirected_to print_pricings_path
     follow_redirect!
     assert_response :success
@@ -145,10 +145,10 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
 
   test "user cannot access other user's pricings" do
     sign_in @user
-    
+
     # Create a completely separate user and pricing
     other_user = User.create!(
-      email: "otherintegration@example.com", 
+      email: "otherintegration@example.com",
       password: "password123",
       default_currency: "USD",
       default_energy_cost_per_kwh: 0.12
@@ -173,33 +173,33 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
       spool_weight: 1000.0,
       markup_percentage: 15.0
     )
-    
+
     # The security check should either return 404 or redirect to login
     get print_pricing_path(other_pricing)
-    assert_includes [404, 302], response.status
+    assert_includes [ 404, 302 ], response.status
   end
 
   test "unauthenticated user is redirected to login" do
     # Test accessing protected pages without authentication
     get print_pricings_path
     assert_redirected_to new_user_session_path
-    
+
     get new_print_pricing_path
     assert_redirected_to new_user_session_path
-    
+
     post print_pricings_path, params: { print_pricing: { job_name: "Test" } }
     assert_redirected_to new_user_session_path
   end
 
   test "complete pricing calculation workflow" do
     sign_in @user
-    
+
     # Update user currency settings for this test
     @user.update!(
       default_currency: "JPY",
       default_energy_cost_per_kwh: 35.0
     )
-    
+
     # Create a printer for the comprehensive test
     printer = @user.printers.create!(
       name: "Complete Test Printer",
@@ -210,7 +210,7 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
       daily_usage_hours: 10,
       repair_cost_percentage: 8.0
     )
-    
+
     # Create a comprehensive pricing with all optional fields
     post print_pricings_path, params: {
       print_pricing: {
@@ -231,17 +231,17 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
         vat_percentage: 10.0
       }
     }
-    
+
     pricing = PrintPricing.last
     assert_redirected_to print_pricing_path(pricing)
-    
+
     # Verify calculations are working
     assert pricing.final_price > 0
     assert pricing.total_filament_cost > 0
     assert pricing.total_electricity_cost > 0
     assert pricing.total_labor_cost > 0
     assert pricing.total_machine_upkeep_cost > 0
-    
+
     # Check the show page displays all components
     follow_redirect!
     assert_response :success

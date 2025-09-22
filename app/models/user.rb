@@ -16,6 +16,6 @@ class User < ApplicationRecord
   private
 
   def set_default_locale
-    self.locale ||= 'en'
+    self.locale ||= "en"
   end
 end
