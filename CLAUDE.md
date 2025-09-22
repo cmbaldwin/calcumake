@@ -72,7 +72,7 @@ The application uses a modular CSS approach with dedicated stylesheets:
 The application uses Turbo Streams for seamless real-time updates:
 - **Print Times Tracking**: Increment/decrement buttons update values without page reload
 - **Controller Actions**: Both `increment_times_printed` and `decrement_times_printed` respond to Turbo Stream requests
-- **Partial Updates**: Uses `_times_printed_control.html.erb` partial for targeted DOM updates
+- **Partial Updates**: Uses `shared/components/_times_printed_control.html.erb` partial for targeted DOM updates
 - **Fallback Support**: HTML format responses for non-JavaScript clients
 
 ### Stimulus Controllers
@@ -81,6 +81,35 @@ The application uses Stimulus controllers for interactive functionality:
 - **Times Printed Controller** (`times_printed_controller.js`): Manages increment/decrement functionality with proper Turbo stream handling
 - **Data Values**: Controllers use Stimulus values API for configuration (e.g., `data-toast-auto-dismiss-value`)
 - **Actions**: Interactive elements use `data-action` attributes to connect to controller methods
+
+### Component Architecture & Helper Organization
+The application follows a well-organized component-based architecture:
+
+**Helper Organization:**
+- **PrintPricingsHelper**: Contains view-specific formatting and display logic
+  - `format_print_time(pricing)`: Formats printing time display
+  - `format_creation_date(pricing)`: Formats creation date display
+  - `total_print_time_hours(print_pricings)`: Calculates total print time across multiple pricings
+  - `pricing_card_metadata_badges(pricing)`: Generates metadata badges for pricing cards
+  - `pricing_card_actions(pricing)`: Generates action buttons for pricing cards
+- **ApplicationHelper**: General-purpose helpers for common UI patterns
+- **CurrencyHelper**: Currency formatting and multi-currency support utilities
+
+**Shared Components:**
+- **`shared/components/_pricing_card.html.erb`**: Reusable pricing card component with responsive Bootstrap grid
+- **`shared/components/_stats_cards.html.erb`**: Statistics display component for index pages
+- **`shared/components/_times_printed_control.html.erb`**: Interactive increment/decrement control with Turbo Stream support
+
+**View Organization:**
+- Eliminated unused auto-generated view files (create.html.erb, update.html.erb, destroy.html.erb)
+- Removed backup/original files from development process
+- Consolidated logic into helpers and shared components for better maintainability
+- All partials moved to logical shared/components structure when used across multiple views
+
+**Testing Coverage:**
+- Comprehensive helper method tests in `test/helpers/print_pricings_helper_test.rb`
+- Integration tests for Turbo Stream functionality
+- All shared components tested through controller and integration tests
 
 ## Database
 - **PostgreSQL** as primary database

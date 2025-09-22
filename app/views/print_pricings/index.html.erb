@@ -7,89 +7,13 @@
 </div>
 
 <% if @print_pricings.any? %>
-<div class="stats-row">
-    <div class="stat-card total-calculations">
-        <div class="stat-number"><%= @print_pricings.count %></div>
-        <div><%= t('print_pricing.index.total_calculations') %></div>
-    </div>
-    <div class="stat-card total-print-time">
-        <div class="stat-number">
-            <%= @print_pricings.sum { |p| p.total_actual_print_time_minutes } / 60 %>h
-        </div>
-        <div><%= t('print_pricing.index.total_print_time') %></div>
-    </div>
-</div>
+  <%= render "shared/components/stats_cards", print_pricings: @print_pricings %>
 
-<div class="row g-3">
+  <div class="row g-3">
     <% @print_pricings.each do |pricing| %>
-    <div class="col-12">
-        <div class="card h-100">
-            <div class="card-body">
-                <div class="row align-items-center gy-3 gy-lg-0">
-                    <div class="col-lg-3">
-                        <div class="d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
-                            <h5 class="card-title mb-1">
-                                <%= link_to pricing.job_name, pricing, class: "job-name-link" %>
-                            </h5>
-                            <small class="created-date d-block mb-2 text-center text-lg-start">
-                                <%= pricing.created_at.strftime("%b %d, %Y") %>
-                            </small>
-                        </div>
-                        <div class="d-flex gap-2 flex-wrap d-lg-none justify-content-center">
-                            <span class="currency-badge">
-                                <%= pricing.default_currency %>
-                            </span>
-                            <span class="print-time">
-                                <%= pricing.printing_time_hours %>h <%= pricing.printing_time_minutes %>m
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-1 d-none d-lg-block text-center">
-                        <span class="currency-badge">
-                            <%= pricing.default_currency %>
-                        </span>
-                    </div>
-
-                    <div class="col-lg-2 d-none d-lg-block text-center">
-                        <span class="print-time">
-                            <%= pricing.printing_time_hours %>h <%= pricing.printing_time_minutes %>m
-                        </span>
-                    </div>
-
-                    <div class="col-lg-2 text-center">
-                        <div class="d-flex flex-column align-items-center">
-                            <small class="times-printed-label d-lg-none mb-1"><%= t('print_pricing.times_printed') %></small>
-                            <%= render "times_printed_control", pricing: pricing %>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2 text-center">
-                        <span class="final-price-badge">
-                            <%= pricing.default_currency %> <%= format_currency(pricing.final_price, pricing.default_currency) %>
-                        </span>
-                    </div>
-
-                    <div class="col-lg-2">
-                        <div class="d-flex gap-1 justify-content-center justify-content-lg-end">
-                            <%= link_to t('actions.show'), pricing,
-                      class: "button button-small" %>
-                            <%= link_to t('actions.edit'), edit_print_pricing_path(pricing),
-                      class: "button button-small button-outline" %>
-                            <%= link_to t('actions.delete'), pricing, method: :delete,
-                      class: "button button-small button-clear",
-                      data: {
-                        confirm: t('print_pricing.confirm_delete', name: pricing.job_name),
-                        turbo_method: :delete
-                      } %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+      <%= render "shared/components/pricing_card", pricing: pricing %>
     <% end %>
-</div>
+  </div>
 <% else %>
 <div class="empty-state">
     <h3><%= t('print_pricing.index.empty_state.title') %></h3>
