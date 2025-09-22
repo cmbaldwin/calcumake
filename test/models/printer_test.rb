@@ -62,7 +62,7 @@ class PrinterTest < ActiveSupport::TestCase
     @printer.date_added = 1.year.ago
     @printer.payoff_goal_years = 3
     @printer.save!
-    
+
     months_remaining = @printer.months_to_payoff
     # Should be approximately 24 months (2 years remaining)
     assert months_remaining > 20
@@ -78,10 +78,10 @@ class PrinterTest < ActiveSupport::TestCase
 
   test "should have valid manufacturer options" do
     valid_manufacturers = Printer::MANUFACTURERS
-    assert_includes valid_manufacturers, 'Prusa'
-    assert_includes valid_manufacturers, 'Bambu Lab'
-    assert_includes valid_manufacturers, 'Creality'
-    assert_includes valid_manufacturers, 'Other'
+    assert_includes valid_manufacturers, "Prusa"
+    assert_includes valid_manufacturers, "Bambu Lab"
+    assert_includes valid_manufacturers, "Creality"
+    assert_includes valid_manufacturers, "Other"
   end
 
   test "should belong to user" do

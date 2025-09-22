@@ -29,8 +29,8 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create print_pricing" do
     assert_difference("PrintPricing.count") do
-      post print_pricings_url, params: { 
-        print_pricing: { 
+      post print_pricings_url, params: {
+        print_pricing: {
           job_name: "New Test Job",
           currency: "EUR",
           printing_time_hours: 3,
@@ -49,8 +49,8 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should not create print_pricing with invalid params" do
     assert_no_difference("PrintPricing.count") do
-      post print_pricings_url, params: { 
-        print_pricing: { 
+      post print_pricings_url, params: {
+        print_pricing: {
           job_name: "",
           currency: "",
           filament_type: ""
@@ -72,8 +72,8 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update print_pricing" do
-    patch print_pricing_url(@print_pricing), params: { 
-      print_pricing: { 
+    patch print_pricing_url(@print_pricing), params: {
+      print_pricing: {
         job_name: "Updated Job Name",
         currency: "GBP"
       }
@@ -82,8 +82,8 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not update print_pricing with invalid params" do
-    patch print_pricing_url(@print_pricing), params: { 
-      print_pricing: { 
+    patch print_pricing_url(@print_pricing), params: {
+      print_pricing: {
         job_name: "",
         filament_weight: -1
       }
@@ -101,7 +101,7 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should not access other user's print_pricing" do
     other_user = User.create!(
-      email: "other@example.com", 
+      email: "other@example.com",
       password: "password123",
       default_currency: "USD",
       default_energy_cost_per_kwh: 0.12
@@ -126,7 +126,7 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
       spool_weight: 1000.0,
       markup_percentage: 15.0
     )
-    
+
     # Should return 404 because current_user.print_pricings.find won't find it
     get print_pricing_url(other_pricing)
     assert_response :not_found

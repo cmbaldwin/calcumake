@@ -3,7 +3,7 @@ require "test_helper"
 class UserTest < ActiveSupport::TestCase
   def setup
     @user = User.new(
-      email: "test@example.com", 
+      email: "test@example.com",
       password: "password123",
       default_currency: "USD",
       default_energy_cost_per_kwh: 0.12
@@ -110,7 +110,7 @@ class UserTest < ActiveSupport::TestCase
   test "should allow blank locale" do
     @user.locale = ""
     assert @user.valid?
-    
+
     @user.locale = nil
     assert @user.valid?
   end
@@ -118,7 +118,7 @@ class UserTest < ActiveSupport::TestCase
   test "should save and retrieve locale correctly" do
     @user.locale = "es"
     @user.save!
-    
+
     reloaded_user = User.find(@user.id)
     assert_equal "es", reloaded_user.locale
   end

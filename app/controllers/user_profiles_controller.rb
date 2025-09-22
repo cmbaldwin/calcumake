@@ -11,9 +11,9 @@ class UserProfilesController < ApplicationController
 
   def update
     @user = current_user
-    
+
     if @user.update(user_params)
-      redirect_to user_profile_path, notice: 'Profile updated successfully.'
+      redirect_to user_profile_path, notice: "Profile updated successfully."
     else
       render :show, status: :unprocessable_content
     end

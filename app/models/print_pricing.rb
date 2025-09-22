@@ -30,28 +30,28 @@ class PrintPricing < ApplicationRecord
   end
 
   def total_labor_cost
-    prep_cost = prep_time_minutes && prep_cost_per_hour ? 
+    prep_cost = prep_time_minutes && prep_cost_per_hour ?
                 (prep_time_minutes * prep_cost_per_hour / 60) : 0
-    post_cost = postprocessing_time_minutes && postprocessing_cost_per_hour ? 
+    post_cost = postprocessing_time_minutes && postprocessing_cost_per_hour ?
                 (postprocessing_time_minutes * postprocessing_cost_per_hour / 60) : 0
     prep_cost + post_cost
   end
 
   def total_machine_upkeep_cost
     return 0 unless printer&.cost && printer&.payoff_goal_years && printer&.daily_usage_hours
-    
+
     total_days = printer.payoff_goal_years * 365
     daily_depreciation = printer.cost / total_days
     hourly_depreciation = daily_depreciation / printer.daily_usage_hours
-    
+
     repair_cost_factor = 1 + (printer.repair_cost_percentage || 0) / 100
     depreciation_cost = hourly_depreciation * (total_printing_time_minutes / 60) * repair_cost_factor
-    
+
     depreciation_cost
   end
 
   def calculate_subtotal
-    total_filament_cost + total_electricity_cost + total_labor_cost + 
+    total_filament_cost + total_electricity_cost + total_labor_cost +
     total_machine_upkeep_cost + (other_costs || 0)
   end
 
@@ -64,7 +64,7 @@ class PrintPricing < ApplicationRecord
   end
 
   def decrement_times_printed!
-    new_count = [(times_printed || 0) - 1, 0].max
+    new_count = [ (times_printed || 0) - 1, 0 ].max
     update!(times_printed: new_count)
   end
 

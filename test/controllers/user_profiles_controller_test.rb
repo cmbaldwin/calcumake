@@ -19,15 +19,15 @@ class UserProfilesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user profile" do
-    patch user_profile_url, params: { 
-      user: { 
-        default_currency: 'EUR', 
-        default_energy_cost_per_kwh: 0.15 
-      } 
+    patch user_profile_url, params: {
+      user: {
+        default_currency: "EUR",
+        default_energy_cost_per_kwh: 0.15
+      }
     }
     assert_redirected_to user_profile_url
     @user.reload
-    assert_equal 'EUR', @user.default_currency
+    assert_equal "EUR", @user.default_currency
     assert_equal 0.15, @user.default_energy_cost_per_kwh.to_f
   end
 

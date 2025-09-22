@@ -3,25 +3,25 @@ class Printer < ApplicationRecord
   has_many :print_pricings, dependent: :destroy
 
   MANUFACTURERS = [
-    'Prusa',
-    'Bambu Lab',
-    'Creality',
-    'Ender',
-    'Ultimaker',
-    'MakerBot',
-    'Formlabs',
-    'Anycubic',
-    'Qidi Tech',
-    'Artillery',
-    'Elegoo',
-    'Flashforge',
-    'Raise3D',
-    'Zortrax',
-    'Lulzbot',
-    'Markforged',
-    'Stratasys',
-    'XYZprinting',
-    'Other'
+    "Prusa",
+    "Bambu Lab",
+    "Creality",
+    "Ender",
+    "Ultimaker",
+    "MakerBot",
+    "Formlabs",
+    "Anycubic",
+    "Qidi Tech",
+    "Artillery",
+    "Elegoo",
+    "Flashforge",
+    "Raise3D",
+    "Zortrax",
+    "Lulzbot",
+    "Markforged",
+    "Stratasys",
+    "XYZprinting",
+    "Other"
   ].freeze
 
   validates :name, presence: true
@@ -40,7 +40,7 @@ class Printer < ApplicationRecord
   def months_to_payoff
     return 0 if paid_off?
     return nil unless date_added && payoff_goal_years
-    
+
     target_date = date_added.to_date + payoff_goal_years.years
     ((target_date - Date.current) / 30.44).ceil
   end

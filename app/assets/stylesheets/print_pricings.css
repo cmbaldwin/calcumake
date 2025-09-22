@@ -62,32 +62,99 @@
   margin-bottom: 0.25rem;
 }
 
-/* Table Styles */
-.table-container {
+/* Pricing Grid Layout */
+.pricing-grid {
   background: white;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 6px 24px var(--shadow);
 }
 
-.table-container table {
-  margin: 0;
-}
-
-.table-container thead {
+.pricing-header {
+  display: none; /* Hidden on mobile, shows on desktop */
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-}
-
-.table-container th {
+  color: white;
+  font-weight: 600;
   padding: 1rem;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 1fr 2fr;
+  gap: 1rem;
+  align-items: center;
 }
 
-.table-container td {
-  padding: 0.75rem;
+.pricing-row {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.table-row-even {
+.pricing-row:last-child {
+  border-bottom: none;
+}
+
+.pricing-row.even {
   background: rgba(200, 16, 46, 0.02);
+}
+
+.pricing-card {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.job-info {
+  flex: 1;
+  min-width: 200px;
+}
+
+.job-meta {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.pricing-controls {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.times-printed-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.times-printed-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.final-price-section {
+  display: flex;
+  align-items: center;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  padding: 0.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.01);
 }
 
 .job-name-link {
@@ -132,6 +199,7 @@
 
 .button-small {
   padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
 }
 
 /* Times Printed Control Styles */
@@ -140,19 +208,27 @@
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .inline-form {
-  display: inline;
+  display: inline-block;
   margin: 0;
+  flex-shrink: 0;
+  width: auto;
+  max-width: fit-content;
 }
 
 .increment-btn {
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   color: white;
   text-decoration: none;
-  width: 22px;
-  height: 22px;
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  max-width: 22px !important;
+  min-height: 22px !important;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -163,7 +239,8 @@
   box-shadow: 0 1px 3px rgba(200, 16, 46, 0.2);
   cursor: pointer;
   border: none;
-  padding: 0;
+  padding: 0 !important;
+  flex-shrink: 0;
 }
 
 .increment-btn:hover {
@@ -230,6 +307,68 @@
   padding: 0.5rem 1rem;
 }
 
+/* Desktop Layout */
+@media (min-width: 769px) {
+  .pricing-header {
+    display: grid;
+  }
+
+  .pricing-card {
+    padding: 0;
+  }
+
+  .card-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 1fr 2fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.75rem 1rem;
+  }
+
+  .job-info {
+    min-width: auto;
+  }
+
+  .job-meta {
+    display: none; /* Metadata is in separate columns on desktop */
+  }
+
+  .desktop-only {
+    display: block;
+    text-align: center;
+  }
+
+  .pricing-controls {
+    display: contents; /* Children become direct grid items */
+  }
+
+  .times-printed-section {
+    justify-self: center;
+  }
+
+  .times-printed-label {
+    display: none; /* Label is in header on desktop */
+  }
+
+  .final-price-section {
+    justify-self: center;
+  }
+
+  .card-actions {
+    border-top: none;
+    padding: 0;
+    background: none;
+    justify-self: end;
+  }
+}
+
+/* Hide desktop-only elements on mobile */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .stats-row {
@@ -243,14 +382,6 @@
 
   .empty-state {
     padding: 1.25rem 0.5rem;
-  }
-
-  .table-container {
-    overflow-x: auto;
-  }
-
-  .table-container table {
-    min-width: 650px;
   }
 
   .times-printed-control {
@@ -275,5 +406,25 @@
 
   .stat-number {
     font-size: 1.3rem;
+  }
+
+  .pricing-card {
+    padding: 0.75rem;
+  }
+
+  .card-main {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .pricing-controls {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .times-printed-section {
+    flex-direction: row;
+    gap: 0.5rem;
   }
 }
