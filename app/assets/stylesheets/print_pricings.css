@@ -428,3 +428,242 @@
     gap: 0.5rem;
   }
 }
+
+/* Pricing Show Page Styles */
+.pricing-show-header {
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.pricing-title {
+  color: var(--primary);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.pricing-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.creation-date {
+  color: var(--text-muted);
+}
+
+.times-printed-info {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.pricing-actions {
+  flex-shrink: 0;
+}
+
+/* Cost Summary Card */
+.cost-summary-card {
+  background: linear-gradient(145deg, #f8f9fa 0%, white 100%);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cost-summary-card h3 {
+  color: var(--primary);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.final-price-display {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.final-price-currency {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.final-price-amount {
+  font-size: 1.4rem;
+}
+
+.cost-breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cost-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+}
+
+.cost-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.cost-value {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Details Grid */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-section {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  color: var(--secondary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--moab-cream);
+}
+
+.detail-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.detail-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.detail-value {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+/* Badges for show page */
+.badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-currency {
+  background: var(--moab-cream);
+  color: var(--primary);
+}
+
+.badge-filament {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--moab-sage) 100%);
+  color: white;
+}
+
+/* Navigation Actions */
+.navigation-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-light);
+}
+
+/* Mobile Responsive for Show Page */
+@media (max-width: 768px) {
+  .pricing-show-header {
+    padding: 0.75rem 0;
+  }
+
+  .pricing-title {
+    font-size: 1.5rem;
+  }
+
+  .pricing-meta {
+    font-size: 0.8rem;
+    gap: 0.75rem;
+  }
+
+  .cost-summary-card {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .final-price-display {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .final-price-amount {
+    font-size: 1.2rem;
+  }
+
+  .cost-breakdown-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .cost-item {
+    padding: 0.6rem;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .detail-section {
+    padding: 1rem;
+  }
+
+  .navigation-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .navigation-actions .button {
+    text-align: center;
+  }
+}

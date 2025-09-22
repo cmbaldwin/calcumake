@@ -1,0 +1,12 @@
+<div class="stats-row">
+  <div class="stat-card total-calculations">
+    <div class="stat-number"><%= print_pricings.count %></div>
+    <div><%= t('print_pricing.index.total_calculations') %></div>
+  </div>
+  <div class="stat-card total-print-time">
+    <div class="stat-number">
+      <%= total_print_time_hours(print_pricings) %>h
+    </div>
+    <div><%= t('print_pricing.index.total_print_time') %></div>
+  </div>
+</div>

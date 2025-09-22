@@ -115,8 +115,8 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_response :success
     assert_select "h1", /Flow Test Print/
-    assert_select "td", "EUR"
-    assert_select "td", "2h 15m"
+    assert_select ".detail-value", "EUR"
+    assert_select ".detail-value", "2h 15m"
 
     # Test editing the pricing
     get edit_print_pricing_path(pricing)
@@ -245,9 +245,9 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
     # Check the show page displays all components
     follow_redirect!
     assert_response :success
-    assert_select "h3", /Electricity Cost/
-    assert_select "h3", /Labor Cost/
-    assert_select "h3", /Machine & Upkeep Cost/
+    assert_select "h4", /Electricity/
+    assert_select "h4", /Labor/
+    assert_select "h4", /Machine & Upkeep/
     assert_select "h3", /Cost Summary/
   end
 end
