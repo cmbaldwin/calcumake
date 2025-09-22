@@ -20,11 +20,11 @@ class PrintersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create printer" do
-    assert_difference('Printer.count') do
-      post printers_url, params: { 
-        printer: { 
-          name: 'Test Printer',
-          manufacturer: 'Prusa',
+    assert_difference("Printer.count") do
+      post printers_url, params: {
+        printer: {
+          name: "Test Printer",
+          manufacturer: "Prusa",
           power_consumption: 200,
           cost: 500,
           payoff_goal_years: 3
@@ -45,19 +45,19 @@ class PrintersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update printer" do
-    patch printer_url(@printer), params: { 
-      printer: { 
-        name: 'Updated Printer Name',
+    patch printer_url(@printer), params: {
+      printer: {
+        name: "Updated Printer Name",
         power_consumption: 250
       }
     }
     assert_redirected_to printer_url(@printer)
     @printer.reload
-    assert_equal 'Updated Printer Name', @printer.name
+    assert_equal "Updated Printer Name", @printer.name
   end
 
   test "should destroy printer" do
-    assert_difference('Printer.count', -1) do
+    assert_difference("Printer.count", -1) do
       delete printer_url(@printer)
     end
     assert_redirected_to printers_url
