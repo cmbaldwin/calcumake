@@ -3,7 +3,7 @@ ar:
   
   # Navigation
   nav:
-    brand: "3DP - إدارة المشاريع"
+    brand: "CalcuMake"
     my_pricings: "أسعاري"
     new_pricing: "سعر جديد"
     my_printers: "طابعاتي"
@@ -155,10 +155,11 @@ ar:
   
   # Application title
   app:
-    title: "3DP - إدارة مشاريع الطباعة ثلاثية الأبعاد"
-    title_default: "3DP - إدارة مشاريع الطباعة ثلاثية الأبعاد"
+    title: "CalcuMake"
+    title_default: "CalcuMake"
   # Footer
   footer:
+    copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
     description: "Professional 3D printing cost calculation and project management"
 
   # Legal pages (Basic navigation - full content in English)
@@ -176,6 +177,6 @@ ar:
     title: "Support"
     nav_title: "Support"
     contact_us: "Contact Us"
-    description: "Need help with 3DP? Have a question or suggestion? We're here to help!"
+    description: "Need help with CalcuMake? Have a question or suggestion? We're here to help!"
     email_label: "Email Support"
     response_time: "We typically respond within 24-48 hours"

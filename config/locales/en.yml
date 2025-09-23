@@ -32,7 +32,7 @@ en:
 
   # Navigation
   nav:
-    brand: "3DP - Project Management"
+    brand: "CalcuMake"
     my_pricings: "My Pricings"
     new_pricing: "New Pricing"
     my_printers: "My Printers"
@@ -447,19 +447,20 @@ en:
 
   # Application title
   app:
-    title: "3DP - 3D Print Project Management"
-    title_default: "3DP - 3D Print Project Management"
+    title: "CalcuMake - 3D Print Cost Calculator"
+    title_default: "CalcuMake - 3D Print Cost Calculator"
 
   # Footer
   footer:
     description: "Professional 3D printing cost calculation and project management"
+    copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
 
   # Support page
   support:
     title: "Support"
     nav_title: "Support"
     contact_us: "Contact Us"
-    description: "Need help with 3DP? Have a question or suggestion? We're here to help!"
+    description: "Need help with CalcuMake? Have a question or suggestion? We're here to help!"
     email_label: "Email Support"
     response_time: "We typically respond within 24-48 hours"
 
@@ -537,11 +538,11 @@ en:
 
       acceptance:
         title: "Acceptance of Terms"
-        content: "By accessing and using 3DP (3D Print Project Management), you accept and agree to be bound by the terms and provision of this agreement."
+        content: "By accessing and using CalcuMake, you accept and agree to be bound by the terms and provision of this agreement."
 
       description:
         title: "Service Description"
-        content: "3DP is a web-based application that provides 3D printing cost calculation and project management tools. Our service includes:"
+        content: "CalcuMake is a web-based application that provides 3D printing cost calculation and project management tools. Our service includes:"
         cost_calculations: "Comprehensive cost calculations for 3D printing projects"
         project_management: "Project tracking and management features"
         invoice_generation: "Invoice generation and PDF export capabilities"

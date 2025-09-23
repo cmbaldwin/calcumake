@@ -19,7 +19,7 @@ class LegalControllerTest < ActionDispatch::IntegrationTest
     get support_path
     assert_response :success
     assert_includes response.body, I18n.t("support.title")
-    assert_includes response.body, "cody@moab.jp"
+    assert_includes response.body, "support@calcumake.com"
   end
 
   test "privacy policy should have correct meta title" do
@@ -57,6 +57,6 @@ class LegalControllerTest < ActionDispatch::IntegrationTest
   test "support page should have mailto link" do
     get support_path
     assert_response :success
-    assert_select "a[href='mailto:cody@moab.jp']"
+    assert_select "a[href='mailto:support@calcumake.com']"
   end
 end
