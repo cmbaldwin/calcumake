@@ -1,0 +1,141 @@
+<% content_for :title, t('legal.user_agreement.title') %>
+
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="h2 mb-0"><%= t('legal.user_agreement.title') %></h1>
+        <small class="text-muted"><%= t('legal.last_updated') %>: <%= Date.current.strftime("%B %d, %Y") %></small>
+      </div>
+      <div class="card-body">
+        <div class="legal-content">
+          <section class="mb-4">
+            <h3><%= t('legal.user_agreement.acceptance.title') %></h3>
+            <p><%= t('legal.user_agreement.acceptance.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.user_agreement.description.title') %></h3>
+            <p><%= t('legal.user_agreement.description.content') %></p>
+            <ul>
+              <li><%= t('legal.user_agreement.description.cost_calculations') %></li>
+              <li><%= t('legal.user_agreement.description.project_management') %></li>
+              <li><%= t('legal.user_agreement.description.invoice_generation') %></li>
+              <li><%= t('legal.user_agreement.description.printer_tracking') %></li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.user_agreement.user_accounts.title') %></h3>
+            <p><%= t('legal.user_agreement.user_accounts.content') %></p>
+            <ul>
+              <li><%= t('legal.user_agreement.user_accounts.accurate_info') %></li>
+              <li><%= t('legal.user_agreement.user_accounts.secure_credentials') %></li>
+              <li><%= t('legal.user_agreement.user_accounts.responsible_use') %></li>
+              <li><%= t('legal.user_agreement.user_accounts.notify_breaches') %></li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.user_agreement.acceptable_use.title') %></h3>
+            <p><%= t('legal.user_agreement.acceptable_use.content') %></p>
+            <ul>
+              <li><%= t('legal.user_agreement.acceptable_use.lawful_purposes') %></li>
+              <li><%= t('legal.user_agreement.acceptable_use.respect_rights') %></li>
+              <li><%= t('legal.user_agreement.acceptable_use.no_harmful_content') %></li>
+              <li><%= t('legal.user_agreement.acceptable_use.no_interference') %></li>
+              <li><%= t('legal.user_agreement.acceptable_use.no_unauthorized_access') %></li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.user_agreement.data_accuracy.title') %></h3>
+            <p><%= t('legal.user_agreement.data_accuracy.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.user_agreement.intellectual_property.title') %></h3>
+            <p><%= t('legal.user_agreement.intellectual_property.our_content') %></p>
+            <p><%= t('legal.user_agreement.intellectual_property.your_content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.user_agreement.disclaimers.title') %></h3>
+            <div class="alert alert-warning">
+              <h5><%= t('legal.user_agreement.disclaimers.important') %></h5>
+              <ul class="mb-0">
+                <li><%= t('legal.user_agreement.disclaimers.calculations_estimates') %></li>
+                <li><%= t('legal.user_agreement.disclaimers.verify_accuracy') %></li>
+                <li><%= t('legal.user_agreement.disclaimers.no_guarantee') %></li>
+                <li><%= t('legal.user_agreement.disclaimers.as_is_basis') %></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.user_agreement.limitation_liability.title') %></h3>
+            <p><%= t('legal.user_agreement.limitation_liability.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.user_agreement.termination.title') %></h3>
+            <p><%= t('legal.user_agreement.termination.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.user_agreement.governing_law.title') %></h3>
+            <p><%= t('legal.user_agreement.governing_law.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.user_agreement.changes.title') %></h3>
+            <p><%= t('legal.user_agreement.changes.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.user_agreement.contact.title') %></h3>
+            <p><%= t('legal.user_agreement.contact.content') %></p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .legal-content h3 {
+    color: var(--bs-primary);
+    border-bottom: 2px solid var(--bs-primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .legal-content h4 {
+    color: var(--bs-secondary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-content ul {
+    margin-bottom: 1rem;
+  }
+
+  .legal-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-content section {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .legal-content section:last-child {
+    border-bottom: none;
+  }
+
+  .alert h5 {
+    color: inherit;
+    border: none;
+    margin-bottom: 0.75rem;
+  }
+</style>

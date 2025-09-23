@@ -8,6 +8,7 @@ es:
     new_pricing: "Nuevo Precio"
     my_printers: "Mis Impresoras"
     profile: "Perfil"
+    help: "Ayuda"
     sign_out: "Cerrar sesión"
     sign_in: "Iniciar sesión"
     sign_up: "Registrarse"
@@ -361,3 +362,26 @@ es:
   app:
     title: "3DP - Gestión de Proyectos de Impresión 3D"
     title_default: "3DP - Gestión de Proyectos de Impresión 3D"
+
+  # Footer
+  footer:
+    description: "Cálculo profesional de costos de impresión 3D y gestión de proyectos"
+
+  # Support page
+  support:
+    title: "Soporte"
+    nav_title: "Soporte"
+    contact_us: "Contáctanos"
+    description: "¿Necesitas ayuda con 3DP? ¿Tienes una pregunta o sugerencia? ¡Estamos aquí para ayudarte!"
+    email_label: "Soporte por Email"
+    response_time: "Normalmente respondemos en 24-48 horas"
+
+  # Legal pages (Basic navigation - full content in English)
+  legal:
+    last_updated: "Última actualización"
+    privacy_policy:
+      title: "Política de Privacidad"
+      nav_title: "Política de Privacidad"
+    user_agreement:
+      title: "Acuerdo de Usuario"
+      nav_title: "Términos de Servicio"

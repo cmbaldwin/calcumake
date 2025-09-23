@@ -1,3 +1,7 @@
 <%= turbo_stream.replace "times_printed_#{@print_pricing.id}" do %>
   <%= render "shared/components/times_printed_control", pricing: @print_pricing %>
 <% end %>
+
+<%= turbo_stream.replace "stats_cards_content" do %>
+  <%= render "shared/components/stats_cards", print_pricings: @print_pricings %>
+<% end %>

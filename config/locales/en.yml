@@ -37,6 +37,7 @@ en:
     new_pricing: "New Pricing"
     my_printers: "My Printers"
     profile: "Profile"
+    help: "Help"
     sign_out: "Sign out"
     sign_in: "Sign in"
     sign_up: "Sign up"
@@ -56,6 +57,7 @@ en:
     submit: "Submit"
     view: "View"
     actions: "Actions"
+    print: "Print"
 
   # Flash messages
   flash:
@@ -92,6 +94,15 @@ en:
       one: "error"
       other: "errors"
 
+  # Time units
+  time:
+    hour:
+      one: "hour"
+      other: "hours"
+    minute:
+      one: "minute"
+      other: "minutes"
+
   # Print Pricing Module
   print_pricing:
     # Index page
@@ -113,6 +124,36 @@ en:
     confirm_delete: "Are you sure you want to delete '%{name}'?"
     times_printed_incremented: "Times printed increased successfully"
     times_printed_decremented: "Times printed decreased successfully"
+
+    # Invoice specific
+    invoice: "Invoice"
+    invoice_number: "Invoice Number"
+    invoice_date: "Invoice Date"
+    from: "From"
+    3d_printing_services: "3D Printing Services"
+    job_details: "Job Details"
+    filament_type: "Filament Type"
+    weight: "Weight"
+    cost_breakdown: "Cost Breakdown"
+    description: "Description"
+    amount: "Amount"
+    filament_cost: "Filament Cost"
+    markup: "markup"
+    electricity_cost: "Electricity Cost"
+    labor_cost: "Labor Cost"
+    prep_time: "Prep time"
+    postprocessing_time: "Post-processing time"
+    machine_upkeep: "Machine Upkeep"
+    depreciation_and_maintenance: "Depreciation and maintenance"
+    other_costs: "Other Costs"
+    subtotal: "Subtotal"
+    vat: "VAT"
+    total: "Total"
+    notes: "Notes"
+    invoice_notes_text: "Thank you for your business. Please keep this invoice for your records."
+    payment_info: "Payment Information"
+    payment_info_text: "Payment terms and details will be communicated separately."
+    download_pdf: "Download PDF"
 
     # New/Edit forms
     calculator:
@@ -408,3 +449,154 @@ en:
   app:
     title: "3DP - 3D Print Project Management"
     title_default: "3DP - 3D Print Project Management"
+
+  # Footer
+  footer:
+    description: "Professional 3D printing cost calculation and project management"
+
+  # Support page
+  support:
+    title: "Support"
+    nav_title: "Support"
+    contact_us: "Contact Us"
+    description: "Need help with 3DP? Have a question or suggestion? We're here to help!"
+    email_label: "Email Support"
+    response_time: "We typically respond within 24-48 hours"
+
+  # Legal pages
+  legal:
+    last_updated: "Last updated"
+
+    privacy_policy:
+      title: "Privacy Policy"
+      nav_title: "Privacy Policy"
+
+      information_we_collect:
+        title: "Information We Collect"
+        content: "We collect information you provide directly to us and information we may collect automatically when you use our service."
+
+        account_info:
+          title: "Account Information"
+          email: "Email address for account authentication"
+          preferences: "User preferences such as default currency and language"
+          usage_data: "Usage patterns and feature preferences"
+
+        project_data:
+          title: "Project Data"
+          pricing_calculations: "3D printing cost calculations and project data"
+          printer_specifications: "Printer specifications and settings"
+          project_metadata: "Project names, dates, and metadata"
+
+      how_we_use_info:
+        title: "How We Use Your Information"
+        provide_service: "Provide, maintain, and improve our 3D printing calculation service"
+        improve_features: "Develop new features and enhance existing functionality"
+        customer_support: "Provide customer support and respond to your inquiries"
+        security: "Protect against fraud, abuse, and security threats"
+
+      data_sharing:
+        title: "Information Sharing"
+        content: "We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:"
+        legal_requirements: "When required by law or to protect our legal rights"
+        service_providers: "With trusted service providers who assist in operating our service"
+        business_transfer: "In connection with a business transfer or acquisition"
+
+      advertising:
+        title: "Advertising"
+        content: "Our website displays advertisements through Google AdSense. These ads may be based on your interests and browsing behavior."
+        google_adsense: "Google AdSense may use cookies and other tracking technologies to serve relevant advertisements."
+        opt_out: "You can control ad personalization and opt out of personalized advertising by visiting"
+        google_ad_settings: "Google Ad Settings"
+
+      data_security:
+        title: "Data Security"
+        content: "We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction."
+
+      your_rights:
+        title: "Your Rights"
+        access: "Access and review your personal information"
+        correction: "Correct inaccurate or incomplete information"
+        deletion: "Request deletion of your personal information"
+        portability: "Export your data in a portable format"
+
+      cookies:
+        title: "Cookies and Tracking"
+        content: "We use cookies and similar technologies to enhance your experience, remember your preferences, and provide personalized content and advertisements."
+
+      changes:
+        title: "Changes to This Policy"
+        content: "We may update this privacy policy from time to time. We will notify you of any material changes by posting the new policy on this page with an updated effective date."
+
+      contact:
+        title: "Contact Us"
+        content: "If you have any questions about this privacy policy, please contact us through the support channels available in the application."
+
+    user_agreement:
+      title: "User Agreement"
+      nav_title: "Terms of Service"
+
+      acceptance:
+        title: "Acceptance of Terms"
+        content: "By accessing and using 3DP (3D Print Project Management), you accept and agree to be bound by the terms and provision of this agreement."
+
+      description:
+        title: "Service Description"
+        content: "3DP is a web-based application that provides 3D printing cost calculation and project management tools. Our service includes:"
+        cost_calculations: "Comprehensive cost calculations for 3D printing projects"
+        project_management: "Project tracking and management features"
+        invoice_generation: "Invoice generation and PDF export capabilities"
+        printer_tracking: "Printer specifications and usage tracking"
+
+      user_accounts:
+        title: "User Accounts"
+        content: "To use our service, you must create an account. You are responsible for:"
+        accurate_info: "Providing accurate and complete account information"
+        secure_credentials: "Maintaining the security of your account credentials"
+        responsible_use: "All activities that occur under your account"
+        notify_breaches: "Notifying us immediately of any suspected security breaches"
+
+      acceptable_use:
+        title: "Acceptable Use"
+        content: "You agree to use our service only for lawful purposes and in accordance with this agreement. You agree not to:"
+        lawful_purposes: "Use the service for any unlawful or prohibited purposes"
+        respect_rights: "Violate any applicable laws or regulations"
+        no_harmful_content: "Upload or transmit harmful, offensive, or inappropriate content"
+        no_interference: "Interfere with or disrupt the service or servers"
+        no_unauthorized_access: "Attempt to gain unauthorized access to any part of the service"
+
+      data_accuracy:
+        title: "Data Accuracy and Calculations"
+        content: "While we strive to provide accurate calculation tools, you are responsible for verifying the accuracy of all calculations and data. Our calculations are estimates and should be validated against your specific requirements and local conditions."
+
+      intellectual_property:
+        title: "Intellectual Property"
+        our_content: "The service and its original content, features, and functionality are owned by us and are protected by international copyright, trademark, and other intellectual property laws."
+        your_content: "You retain ownership of any data, calculations, or content you create using our service. You grant us a limited license to use this content solely to provide the service to you."
+
+      disclaimers:
+        title: "Disclaimers"
+        important: "Important Notice"
+        calculations_estimates: "All cost calculations and estimates are for informational purposes only"
+        verify_accuracy: "You must verify all calculations and data for accuracy"
+        no_guarantee: "We do not guarantee the accuracy, completeness, or reliability of any calculations"
+        as_is_basis: "The service is provided on an 'as is' and 'as available' basis"
+
+      limitation_liability:
+        title: "Limitation of Liability"
+        content: "To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses."
+
+      termination:
+        title: "Termination"
+        content: "We may terminate or suspend your account and access to the service immediately, without prior notice, for conduct that we believe violates this agreement or is harmful to other users, us, or third parties."
+
+      governing_law:
+        title: "Governing Law"
+        content: "This agreement shall be governed by and construed in accordance with the laws of the jurisdiction in which our service operates, without regard to its conflict of law provisions."
+
+      changes:
+        title: "Changes to Agreement"
+        content: "We reserve the right to modify this agreement at any time. We will notify users of any material changes by posting the updated agreement on our website with a new effective date."
+
+      contact:
+        title: "Contact Information"
+        content: "If you have any questions about this agreement, please contact us through the support channels available in the application."

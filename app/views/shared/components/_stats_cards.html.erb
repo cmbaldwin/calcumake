@@ -1,12 +1,20 @@
-<div class="stats-row">
-  <div class="stat-card total-calculations">
-    <div class="stat-number"><%= print_pricings.count %></div>
-    <div><%= t('print_pricing.index.total_calculations') %></div>
-  </div>
-  <div class="stat-card total-print-time">
-    <div class="stat-number">
-      <%= total_print_time_hours(print_pricings) %>h
+<div id="stats_cards_content" class="row g-3 mb-4">
+  <div class="col-md-6">
+    <div class="card bg-success text-white">
+      <div class="card-body text-center">
+        <h2 class="display-6 fw-bold mb-2"><%= print_pricings.count %></h2>
+        <p class="mb-0"><%= t('print_pricing.index.total_calculations') %></p>
+      </div>
     </div>
-    <div><%= t('print_pricing.index.total_print_time') %></div>
+  </div>
+  <div class="col-md-6">
+    <div class="card bg-warning text-white">
+      <div class="card-body text-center">
+        <h2 class="display-6 fw-bold mb-2">
+          <%= total_print_time_hours(print_pricings) %>h
+        </h2>
+        <p class="mb-0"><%= t('print_pricing.index.total_print_time') %></p>
+      </div>
+    </div>
   </div>
 </div>

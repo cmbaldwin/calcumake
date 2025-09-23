@@ -8,6 +8,7 @@ ja:
     new_pricing: "新しい料金設定"
     my_printers: "プリンター"
     profile: "プロフィール"
+    help: "ヘルプ"
     sign_out: "サインアウト"
     sign_in: "サインイン"
     sign_up: "サインアップ"
@@ -322,7 +323,6 @@ ja:
   
   # User Profile Module
   profile:
-    # Show page
     show:
       title: "ユーザープロフィール"
       subtitle: "アカウント設定と設定"
@@ -351,7 +351,6 @@ ja:
     buttons:
       update_settings: "設定更新"
       update_profile: "プロフィール更新"
-      cancel: "キャンセル"
   
   # Currency
   currency:
@@ -377,3 +376,25 @@ ja:
   app:
     title: "3DP - 3D印刷プロジェクト管理"
     title_default: "3DP - 3D印刷プロジェクト管理"
+  # Footer
+  footer:
+    description: "Professional 3D printing cost calculation and project management"
+
+  # Legal pages (Basic navigation - full content in English)
+  legal:
+    last_updated: "Last updated"
+    privacy_policy:
+      title: "Privacy Policy"
+      nav_title: "Privacy Policy"
+    user_agreement:
+      title: "User Agreement"
+      nav_title: "Terms of Service"
+
+  # Support page
+  support:
+    title: "Support"
+    nav_title: "Support"
+    contact_us: "Contact Us"
+    description: "Need help with 3DP? Have a question or suggestion? We're here to help!"
+    email_label: "Email Support"
+    response_time: "We typically respond within 24-48 hours"

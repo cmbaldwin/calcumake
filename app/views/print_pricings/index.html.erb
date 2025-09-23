@@ -1,13 +1,16 @@
-<div class="hero-section">
-    <h1><%= t('print_pricing.index.title') %></h1>
-    <p class="hero-subtitle">
+<!-- Hero Section -->
+<div class="text-center mb-5">
+    <h1 class="display-4 fw-bold text-primary mb-3"><%= t('print_pricing.index.title') %></h1>
+    <p class="lead text-muted mb-4">
         <%= t('print_pricing.index.subtitle') %>
     </p>
-    <%= link_to t('print_pricing.index.create_new'), new_print_pricing_path, class: "button" %>
+    <%= link_to t('print_pricing.index.create_new'), new_print_pricing_path, class: "btn btn-primary btn-lg" %>
 </div>
 
 <% if @print_pricings.any? %>
-  <%= render "shared/components/stats_cards", print_pricings: @print_pricings %>
+  <%= turbo_frame_tag "stats_cards" do %>
+    <%= render "shared/components/stats_cards", print_pricings: @print_pricings %>
+  <% end %>
 
   <div class="row g-3">
     <% @print_pricings.each do |pricing| %>
@@ -15,11 +18,16 @@
     <% end %>
   </div>
 <% else %>
-<div class="empty-state">
-    <h3><%= t('print_pricing.index.empty_state.title') %></h3>
-    <p>
-        <%= t('print_pricing.index.empty_state.description') %>
-    </p>
-    <%= link_to t('print_pricing.index.create_new'), new_print_pricing_path, class: "button" %>
+<!-- Empty State -->
+<div class="text-center py-5">
+    <div class="card border-0 bg-light">
+        <div class="card-body py-5">
+            <h3 class="text-muted mb-3"><%= t('print_pricing.index.empty_state.title') %></h3>
+            <p class="text-muted mb-4">
+                <%= t('print_pricing.index.empty_state.description') %>
+            </p>
+            <%= link_to t('print_pricing.index.create_new'), new_print_pricing_path, class: "btn btn-primary" %>
+        </div>
+    </div>
 </div>
 <% end %>

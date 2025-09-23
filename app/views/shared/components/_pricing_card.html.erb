@@ -5,7 +5,7 @@
         <div class="col-lg-3">
           <div class="d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
             <h5 class="card-title mb-1">
-              <%= link_to pricing.job_name, pricing, class: "job-name-link" %>
+              <%= link_to pricing.job_name, pricing, class: "text-decoration-none text-primary fw-bold" %>
             </h5>
             <small class="created-date d-block mb-2 text-center text-lg-start">
               <%= format_creation_date(pricing) %>
@@ -15,13 +15,13 @@
         </div>
 
         <div class="col-lg-1 d-none d-lg-block text-center">
-          <span class="currency-badge">
+          <span class="badge bg-secondary">
             <%= pricing.default_currency %>
           </span>
         </div>
 
         <div class="col-lg-2 d-none d-lg-block text-center">
-          <span class="print-time">
+          <span class="text-muted">
             <%= format_print_time(pricing) %>
           </span>
         </div>
@@ -34,7 +34,7 @@
         </div>
 
         <div class="col-lg-2 text-center">
-          <span class="final-price-badge">
+          <span class="badge bg-success fs-6">
             <%= pricing.default_currency %> <%= format_currency(pricing.final_price, pricing.default_currency) %>
           </span>
         </div>
