@@ -3,7 +3,7 @@ es:
   
   # Navigation
   nav:
-    brand: "3DP - Gestión de Proyectos"
+    brand: "CalcuMake"
     my_pricings: "Mis Precios"
     new_pricing: "Nuevo Precio"
     my_printers: "Mis Impresoras"
@@ -360,11 +360,12 @@ es:
   
   # Application title
   app:
-    title: "3DP - Gestión de Proyectos de Impresión 3D"
-    title_default: "3DP - Gestión de Proyectos de Impresión 3D"
+    title: "CalcuMake"
+    title_default: "CalcuMake"
 
   # Footer
   footer:
+    copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
     description: "Cálculo profesional de costos de impresión 3D y gestión de proyectos"
 
   # Support page
