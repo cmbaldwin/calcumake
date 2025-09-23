@@ -60,13 +60,68 @@ Multi-currency support via `CurrencyHelper`:
 - **Import Maps** for JavaScript module management
 - **Propshaft** for asset pipeline
 
+### JavaScript Module Management
+**Importmap Configuration Patterns:**
+
+**UMD vs ES Module Imports:**
+When using CDN libraries with importmaps, ensure proper module format:
+
+```ruby
+# CORRECT - UMD version for importmaps compatibility
+pin "jspdf", to: "https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.3/jspdf.umd.min.js"
+
+# Usage in JavaScript
+import "jspdf"
+const pdf = new window.jsPDF({...})  # Access as global variable
+```
+
+**Rails Admin Importmap Separation:**
+Rails Admin uses its own importmap system to avoid conflicts:
+- Main app: `config/importmap.rb`
+- Rails Admin: `config/importmap.rails_admin.rb` (uses JSPM.io CDN)
+- NEVER pin `rails_admin` in main importmap - let Rails Admin manage its own dependencies
+
+### CSS Z-Index Management
+**Bootstrap Dropdown Issues:**
+Dropdown menus in cards may appear behind content due to Bootstrap/Popper.js positioning. Fix with:
+
+```css
+/* Dropdown menu z-index fixes */
+.dropdown-menu { z-index: 1050 !important; }
+.card .dropdown-menu { z-index: 1060 !important; }
+.card { overflow: visible !important; }
+.card-body { overflow: visible !important; }
+```
+
+**Popper.js Configuration:**
+For dropdowns in constrained containers, add boundary and container attributes:
+
+```erb
+<button data-bs-toggle="dropdown"
+        data-bs-boundary="viewport"
+        data-bs-container="body">
+```
+
 ### CSS Architecture
-The application uses a modular CSS approach with dedicated stylesheets:
-- **application.css**: Global styles, navigation, toast notifications, containers
-- **print_pricings.css**: Print pricing index, table styles, times printed controls
-- **user_profiles.css**: User profile pages, form sections, calculator headers
-- **forms.css**: Reusable form components and input styles
-- **Minimal inline CSS**: All major styling moved to dedicated CSS files for better maintainability
+**Bootstrap 5 Pure Implementation** - The application uses Bootstrap 5 exclusively with custom color theming:
+
+- **application.css**: Bootstrap 5 import with custom CSS variables for color theming using Bootstrap's recommended approach:
+  ```css
+  :root {
+    --bs-primary: #c8102e;       /* Deep red rock */
+    --bs-secondary: #d2691e;     /* Sandstone orange */
+    --bs-success: #9caf88;       /* Desert sage */
+    --bs-info: #87ceeb;          /* Desert sky blue */
+    --bs-warning: #f4a460;       /* Sandy brown */
+    --bs-danger: #cd853f;        /* Terracotta */
+  }
+  ```
+- **Rails Admin styles**: Consolidated into application.css under a commented section to avoid duplicate Bootstrap imports
+- **Zero custom CSS**: All components use pure Bootstrap 5 classes for maintainability and consistency
+- **Responsive Design**: Bootstrap's built-in grid system and responsive utilities
+- **Component System**: Cards, forms, navigation, buttons all use Bootstrap component classes
+
+**Migration Note**: Previously used custom CSS files (moab_theme.css, forms.css, print_pricings.css, user_profiles.css) but migrated to pure Bootstrap 5 approach in 2024. This change dramatically improved maintainability, reduced code complexity, and ensured responsive design consistency.
 
 ### Turbo Streams Implementation
 The application uses Turbo Streams for seamless real-time updates:
@@ -134,6 +189,44 @@ The application includes a properly configured Rails Admin interface:
 - **Kamal** deployment configuration available
 - **Docker** containerization support
 - **Thruster** for production HTTP acceleration
+
+## Monetization
+**Google AdSense Integration:**
+- AdSense script loaded in application layout head section
+- Responsive ad unit displayed at bottom of main content area
+- Publisher ID: `ca-pub-5257142454834240`
+- Ad slot: `9779716586`
+- Configured for auto format with full-width responsive design
+
+## Legal & Support Pages
+**Comprehensive Legal Framework:**
+- **Privacy Policy** (`/privacy-policy`): Complete GDPR-compliant privacy policy including AdSense disclosure, data collection, usage, and user rights
+- **User Agreement** (`/user-agreement`): Terms of service with calculation disclaimers, acceptable use, intellectual property, and liability limitations
+- **Support Page** (`/support`): Contact information with direct email link to cody@moab.jp
+
+**Navigation Integration:**
+- **Authenticated Users**: Help dropdown in navbar containing Support, Privacy Policy, and Terms of Service
+- **Non-authenticated Users**: Direct Support link in navbar
+- **Footer**: All three legal pages accessible from footer on every page
+
+**Testing Coverage:**
+- Complete controller tests for all legal pages
+- Integration tests for navbar functionality (authenticated vs non-authenticated states)
+- Footer integration tests across all pages
+- All tests pass rubocop style checks
+
+## Component Architecture Updates
+**Navbar Modularization:**
+- Navbar extracted to `app/views/shared/_navbar.html.erb` partial
+- Responsive Bootstrap dropdown implementation for help menu
+- Language selector integrated with proper form submission
+- Authentication-aware navigation (different links for signed-in vs guest users)
+
+**Legal Page Styling:**
+- Professional card-based layout with clear section headers
+- Responsive design optimized for readability
+- Important disclaimers highlighted with Bootstrap alert components
+- Consistent typography and spacing following design system
 
 ### Kamal Hooks
 Kamal automatically executes hooks during deployment stages. To customize deployment behavior:
@@ -409,6 +502,37 @@ respond_to do |format|
   }
 end
 ```
+
+**Critical Turbo Frame Pattern - Avoiding Connection Loss:**
+When updating content within Turbo Frames that need to remain reactive for subsequent operations, NEVER replace the frame itself. Instead, wrap the dynamic content in a separate container:
+
+```erb
+<!-- WRONG - This breaks subsequent updates -->
+<%= turbo_frame_tag "stats_cards" do %>
+  <div class="content">...</div>
+<% end %>
+
+<!-- Turbo Stream that breaks connection -->
+<%= turbo_stream.replace "stats_cards" do %>
+  <%= render "component" %>
+<% end %>
+```
+
+```erb
+<!-- CORRECT - Frame stays intact -->
+<%= turbo_frame_tag "stats_cards" do %>
+  <div id="stats_cards_content">
+    <%= render "shared/components/stats_cards", print_pricings: @print_pricings %>
+  </div>
+<% end %>
+
+<!-- Turbo Stream that preserves connection -->
+<%= turbo_stream.replace "stats_cards_content" do %>
+  <%= render "shared/components/stats_cards", print_pricings: @print_pricings %>
+<% end %>
+```
+
+This pattern ensures the Turbo Frame container remains in the DOM and maintains its JavaScript connections for subsequent updates.
 
 ### Stimulus Controllers
 Follow these patterns for Stimulus controller implementation:

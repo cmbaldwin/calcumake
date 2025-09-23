@@ -1,6 +1,6 @@
 class PrintPricingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_print_pricing, only: [ :show, :edit, :update, :destroy, :increment_times_printed, :decrement_times_printed ]
+  before_action :set_print_pricing, only: [ :show, :edit, :update, :destroy, :increment_times_printed, :decrement_times_printed, :invoice ]
 
   def index
     @print_pricings = current_user.print_pricings.order(created_at: :desc)
@@ -63,6 +63,7 @@ class PrintPricingsController < ApplicationController
 
   def increment_times_printed
     @print_pricing.increment_times_printed!
+    @print_pricings = current_user.print_pricings.order(created_at: :desc)
     respond_to do |format|
       format.turbo_stream # Will render increment_times_printed.turbo_stream.erb
       format.html { redirect_to print_pricings_path, notice: t("print_pricing.times_printed_incremented") }
@@ -71,10 +72,14 @@ class PrintPricingsController < ApplicationController
 
   def decrement_times_printed
     @print_pricing.decrement_times_printed!
+    @print_pricings = current_user.print_pricings.order(created_at: :desc)
     respond_to do |format|
       format.turbo_stream # Will render decrement_times_printed.turbo_stream.erb
       format.html { redirect_to print_pricings_path, notice: t("print_pricing.times_printed_decremented") }
     end
+  end
+
+  def invoice
   end
 
   private

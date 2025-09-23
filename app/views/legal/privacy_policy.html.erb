@@ -1,0 +1,128 @@
+<% content_for :title, t('legal.privacy_policy.title') %>
+
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="h2 mb-0"><%= t('legal.privacy_policy.title') %></h1>
+        <small class="text-muted"><%= t('legal.last_updated') %>: <%= Date.current.strftime("%B %d, %Y") %></small>
+      </div>
+      <div class="card-body">
+        <div class="legal-content">
+          <section class="mb-4">
+            <h3><%= t('legal.privacy_policy.information_we_collect.title') %></h3>
+            <p><%= t('legal.privacy_policy.information_we_collect.content') %></p>
+
+            <h4><%= t('legal.privacy_policy.information_we_collect.account_info.title') %></h4>
+            <ul>
+              <li><%= t('legal.privacy_policy.information_we_collect.account_info.email') %></li>
+              <li><%= t('legal.privacy_policy.information_we_collect.account_info.preferences') %></li>
+              <li><%= t('legal.privacy_policy.information_we_collect.account_info.usage_data') %></li>
+            </ul>
+
+            <h4><%= t('legal.privacy_policy.information_we_collect.project_data.title') %></h4>
+            <ul>
+              <li><%= t('legal.privacy_policy.information_we_collect.project_data.pricing_calculations') %></li>
+              <li><%= t('legal.privacy_policy.information_we_collect.project_data.printer_specifications') %></li>
+              <li><%= t('legal.privacy_policy.information_we_collect.project_data.project_metadata') %></li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.privacy_policy.how_we_use_info.title') %></h3>
+            <ul>
+              <li><%= t('legal.privacy_policy.how_we_use_info.provide_service') %></li>
+              <li><%= t('legal.privacy_policy.how_we_use_info.improve_features') %></li>
+              <li><%= t('legal.privacy_policy.how_we_use_info.customer_support') %></li>
+              <li><%= t('legal.privacy_policy.how_we_use_info.security') %></li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.privacy_policy.data_sharing.title') %></h3>
+            <p><%= t('legal.privacy_policy.data_sharing.content') %></p>
+            <ul>
+              <li><%= t('legal.privacy_policy.data_sharing.legal_requirements') %></li>
+              <li><%= t('legal.privacy_policy.data_sharing.service_providers') %></li>
+              <li><%= t('legal.privacy_policy.data_sharing.business_transfer') %></li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.privacy_policy.advertising.title') %></h3>
+            <p><%= t('legal.privacy_policy.advertising.content') %></p>
+            <p><%= t('legal.privacy_policy.advertising.google_adsense') %></p>
+            <p>
+              <%= t('legal.privacy_policy.advertising.opt_out') %>
+              <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">
+                <%= t('legal.privacy_policy.advertising.google_ad_settings') %>
+              </a>
+            </p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.privacy_policy.data_security.title') %></h3>
+            <p><%= t('legal.privacy_policy.data_security.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.privacy_policy.your_rights.title') %></h3>
+            <ul>
+              <li><%= t('legal.privacy_policy.your_rights.access') %></li>
+              <li><%= t('legal.privacy_policy.your_rights.correction') %></li>
+              <li><%= t('legal.privacy_policy.your_rights.deletion') %></li>
+              <li><%= t('legal.privacy_policy.your_rights.portability') %></li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.privacy_policy.cookies.title') %></h3>
+            <p><%= t('legal.privacy_policy.cookies.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.privacy_policy.changes.title') %></h3>
+            <p><%= t('legal.privacy_policy.changes.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.privacy_policy.contact.title') %></h3>
+            <p><%= t('legal.privacy_policy.contact.content') %></p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .legal-content h3 {
+    color: var(--bs-primary);
+    border-bottom: 2px solid var(--bs-primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .legal-content h4 {
+    color: var(--bs-secondary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-content ul {
+    margin-bottom: 1rem;
+  }
+
+  .legal-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-content section {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .legal-content section:last-child {
+    border-bottom: none;
+  }
+</style>

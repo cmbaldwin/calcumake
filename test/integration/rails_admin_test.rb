@@ -41,10 +41,12 @@ class RailsAdminTest < ActionDispatch::IntegrationTest
   #   assert_includes response.body, "Dashboard"
   # end
 
-  test "rails admin css is accessible via asset pipeline" do
-    css_path = ActionController::Base.helpers.asset_path("rails_admin.css")
+  test "rails admin styles are included in application css" do
+    css_path = ActionController::Base.helpers.asset_path("application.css")
     get css_path
     assert_response :success
     assert_match /text\/css/, response.content_type
+    # Verify Rails Admin specific styles are included
+    assert_includes response.body, "body.rails_admin"
   end
 end

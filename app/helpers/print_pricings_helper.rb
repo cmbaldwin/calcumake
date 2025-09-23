@@ -13,33 +13,51 @@ module PrintPricingsHelper
 
   def pricing_card_metadata_badges(pricing)
     content_tag :div, class: "d-flex gap-2 flex-wrap d-lg-none justify-content-center" do
-      concat content_tag(:span, pricing.default_currency, class: "currency-badge")
-      concat content_tag(:span, format_print_time(pricing), class: "print-time")
+      concat content_tag(:span, pricing.default_currency, class: "badge bg-secondary")
+      concat content_tag(:span, format_print_time(pricing), class: "text-muted")
     end
   end
 
   def pricing_card_actions(pricing)
-    content_tag :div, class: "d-flex gap-1 justify-content-center justify-content-lg-end" do
-      concat link_to(t("actions.show"), pricing, class: "button button-small")
-      concat link_to(t("actions.edit"), edit_print_pricing_path(pricing), class: "button button-small button-outline")
-      concat link_to(t("actions.delete"), pricing, method: :delete,
-                     class: "button button-small button-clear",
-                     data: {
-                       confirm: t("print_pricing.confirm_delete", name: pricing.job_name),
-                       turbo_method: :delete
-                     })
+    content_tag :div, class: "dropdown" do
+      button = content_tag(:button, t("actions.actions"), class: "btn btn-outline-secondary btn-sm dropdown-toggle", type: "button", data: { "bs-toggle": "dropdown", "bs-boundary": "viewport", "bs-container": "body" }, "aria-expanded": "false")
+
+      menu_items = []
+      menu_items << content_tag(:li, link_to(t("actions.show"), pricing, class: "dropdown-item"))
+      menu_items << content_tag(:li, link_to(t("print_pricing.invoice"), invoice_print_pricing_path(pricing), class: "dropdown-item"))
+      menu_items << content_tag(:li, link_to(t("actions.edit"), edit_print_pricing_path(pricing), class: "dropdown-item"))
+      menu_items << content_tag(:li, content_tag(:hr, "", class: "dropdown-divider"))
+      menu_items << content_tag(:li, link_to(t("actions.delete"), pricing, method: :delete,
+                                           class: "dropdown-item text-danger",
+                                           data: {
+                                             confirm: t("print_pricing.confirm_delete", name: pricing.job_name),
+                                             turbo_method: :delete
+                                           }))
+
+      menu = content_tag(:ul, menu_items.join.html_safe, class: "dropdown-menu")
+
+      button + menu
     end
   end
 
   def pricing_show_actions(pricing)
-    content_tag :div, class: "d-flex gap-2 align-items-center" do
-      concat link_to(t("actions.edit"), edit_print_pricing_path(pricing), class: "button button-small")
-      concat link_to(t("actions.delete"), pricing, method: :delete,
-                     class: "button button-small button-clear",
-                     data: {
-                       confirm: t("print_pricing.confirm_delete", name: pricing.job_name),
-                       turbo_method: :delete
-                     })
+    content_tag :div, class: "dropdown" do
+      button = content_tag(:button, t("actions.actions"), class: "btn btn-primary btn-sm dropdown-toggle", type: "button", data: { "bs-toggle": "dropdown" }, "aria-expanded": "false")
+
+      menu_items = []
+      menu_items << content_tag(:li, link_to(t("print_pricing.invoice"), invoice_print_pricing_path(pricing), class: "dropdown-item"))
+      menu_items << content_tag(:li, link_to(t("actions.edit"), edit_print_pricing_path(pricing), class: "dropdown-item"))
+      menu_items << content_tag(:li, content_tag(:hr, "", class: "dropdown-divider"))
+      menu_items << content_tag(:li, link_to(t("actions.delete"), pricing, method: :delete,
+                                           class: "dropdown-item text-danger",
+                                           data: {
+                                             confirm: t("print_pricing.confirm_delete", name: pricing.job_name),
+                                             turbo_method: :delete
+                                           }))
+
+      menu = content_tag(:ul, menu_items.join.html_safe, class: "dropdown-menu")
+
+      button + menu
     end
   end
 

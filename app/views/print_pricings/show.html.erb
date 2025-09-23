@@ -1,99 +1,120 @@
-<!-- Compact Header -->
-<div class="pricing-show-header">
-  <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
-    <div class="flex-grow-1">
-      <h1 class="pricing-title mb-2"><%= @print_pricing.job_name %></h1>
-      <div class="pricing-meta">
-        <span class="creation-date"><%= format_detailed_creation_date(@print_pricing) %></span>
-        <span class="times-printed-info ms-3">
-          Printed <%= @print_pricing.times_printed %> time<%= @print_pricing.times_printed == 1 ? '' : 's' %>
-        </span>
+<!-- Header -->
+<div class="card mb-4">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+      <div class="flex-grow-1">
+        <h1 class="h2 text-primary mb-2"><%= @print_pricing.job_name %></h1>
+        <div class="text-muted">
+          <span class="me-3"><%= format_detailed_creation_date(@print_pricing) %></span>
+          <span class="badge bg-secondary">
+            <%= t('print_pricing.printed_times', count: @print_pricing.times_printed) %>
+          </span>
+        </div>
       </div>
-    </div>
-    <div class="pricing-actions">
-      <%= pricing_show_actions(@print_pricing) %>
+      <div>
+        <%= pricing_show_actions(@print_pricing) %>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Cost Summary Card -->
-<div class="cost-summary-card">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h3 class="mb-0">Cost Summary</h3>
-    <div class="final-price-display">
-      <span class="final-price-currency"><%= @print_pricing.default_currency %></span>
-      <span class="final-price-amount"><%= format_currency(@print_pricing.final_price, @print_pricing.default_currency) %></span>
+<div class="card mb-4">
+  <div class="card-header">
+    <div class="d-flex justify-content-between align-items-center">
+      <h3 class="mb-0 h5"><%= t('print_pricing.cost_summary') %></h3>
+      <span class="badge bg-success fs-5">
+        <%= @print_pricing.default_currency %> <%= format_currency(@print_pricing.final_price, @print_pricing.default_currency) %>
+      </span>
     </div>
   </div>
+  <div class="card-body">
 
-  <div class="cost-breakdown-grid">
-    <% if @print_pricing.total_filament_cost > 0 %>
-    <div class="cost-item">
-      <span class="cost-label">Filament</span>
-      <span class="cost-value"><%= format_currency_with_symbol(@print_pricing.total_filament_cost, @print_pricing.default_currency) %></span>
-    </div>
-    <% end %>
+    <div class="row g-3">
+      <% if @print_pricing.total_filament_cost > 0 %>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-between p-2 border rounded">
+          <span class="fw-medium"><%= t('print_pricing.cost_breakdown.filament') %></span>
+          <span class="text-end"><%= format_currency_with_symbol(@print_pricing.total_filament_cost, @print_pricing.default_currency) %></span>
+        </div>
+      </div>
+      <% end %>
 
-    <% if @print_pricing.total_electricity_cost > 0 %>
-    <div class="cost-item">
-      <span class="cost-label">Electricity</span>
-      <span class="cost-value"><%= format_currency_with_symbol(@print_pricing.total_electricity_cost, @print_pricing.default_currency) %></span>
-    </div>
-    <% end %>
+      <% if @print_pricing.total_electricity_cost > 0 %>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-between p-2 border rounded">
+          <span class="fw-medium"><%= t('print_pricing.cost_breakdown.electricity') %></span>
+          <span class="text-end"><%= format_currency_with_symbol(@print_pricing.total_electricity_cost, @print_pricing.default_currency) %></span>
+        </div>
+      </div>
+      <% end %>
 
-    <% if @print_pricing.total_labor_cost > 0 %>
-    <div class="cost-item">
-      <span class="cost-label">Labor</span>
-      <span class="cost-value"><%= format_currency_with_symbol(@print_pricing.total_labor_cost, @print_pricing.default_currency) %></span>
-    </div>
-    <% end %>
+      <% if @print_pricing.total_labor_cost > 0 %>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-between p-2 border rounded">
+          <span class="fw-medium"><%= t('print_pricing.cost_breakdown.labor') %></span>
+          <span class="text-end"><%= format_currency_with_symbol(@print_pricing.total_labor_cost, @print_pricing.default_currency) %></span>
+        </div>
+      </div>
+      <% end %>
 
-    <% if @print_pricing.total_machine_upkeep_cost > 0 %>
-    <div class="cost-item">
-      <span class="cost-label">Machine</span>
-      <span class="cost-value"><%= format_currency_with_symbol(@print_pricing.total_machine_upkeep_cost, @print_pricing.default_currency) %></span>
-    </div>
-    <% end %>
+      <% if @print_pricing.total_machine_upkeep_cost > 0 %>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-between p-2 border rounded">
+          <span class="fw-medium"><%= t('print_pricing.cost_breakdown.machine') %></span>
+          <span class="text-end"><%= format_currency_with_symbol(@print_pricing.total_machine_upkeep_cost, @print_pricing.default_currency) %></span>
+        </div>
+      </div>
+      <% end %>
 
-    <% if @print_pricing.other_costs && @print_pricing.other_costs > 0 %>
-    <div class="cost-item">
-      <span class="cost-label">Other</span>
-      <span class="cost-value"><%= format_currency_with_symbol(@print_pricing.other_costs, @print_pricing.default_currency) %></span>
-    </div>
-    <% end %>
+      <% if @print_pricing.other_costs && @print_pricing.other_costs > 0 %>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-between p-2 border rounded">
+          <span class="fw-medium"><%= t('print_pricing.cost_breakdown.other') %></span>
+          <span class="text-end"><%= format_currency_with_symbol(@print_pricing.other_costs, @print_pricing.default_currency) %></span>
+        </div>
+      </div>
+      <% end %>
 
-    <% if @print_pricing.vat_percentage && @print_pricing.vat_percentage > 0 %>
-    <div class="cost-item">
-      <span class="cost-label">VAT (<%= @print_pricing.vat_percentage %>%)</span>
-      <span class="cost-value"><%= format_currency_with_symbol(@print_pricing.calculate_subtotal * @print_pricing.vat_percentage / 100, @print_pricing.default_currency) %></span>
+      <% if @print_pricing.vat_percentage && @print_pricing.vat_percentage > 0 %>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-between p-2 border rounded">
+          <span class="fw-medium"><%= t('print_pricing.cost_breakdown.vat', percentage: @print_pricing.vat_percentage) %></span>
+          <span class="text-end"><%= format_currency_with_symbol(@print_pricing.calculate_subtotal * @print_pricing.vat_percentage / 100, @print_pricing.default_currency) %></span>
+        </div>
+      </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
 
 <!-- Details Sections -->
-<div class="details-grid">
+<div class="row g-4">
   <% cost_breakdown_sections(@print_pricing).each do |section| %>
-  <div class="detail-section">
-    <h4 class="section-title"><%= section[:title] %></h4>
-    <div class="detail-items">
-      <% section[:items].each do |label, value| %>
-      <div class="detail-item">
-        <span class="detail-label"><%= label %></span>
-        <span class="detail-value"><%= value %></span>
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-header">
+        <h5 class="mb-0"><%= section[:title] %></h5>
       </div>
-      <% end %>
+      <div class="card-body">
+        <% section[:items].each do |label, value| %>
+        <div class="d-flex justify-content-between mb-2">
+          <span class="text-muted"><%= label %></span>
+          <span class="fw-medium"><%= value %></span>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
   <% end %>
 </div>
 
 <!-- Navigation Actions -->
-<div class="navigation-actions">
-  <%= link_to print_pricings_path, class: "button button-outline" do %>
-    <span>← Back to All Pricings</span>
+<div class="d-flex gap-3 justify-content-center mt-4">
+  <%= link_to print_pricings_path, class: "btn btn-outline-secondary" do %>
+    <span>← <%= t('print_pricing.back_to_all') %></span>
   <% end %>
-  <%= link_to new_print_pricing_path, class: "button" do %>
-    <span>Create New Pricing</span>
+  <%= link_to new_print_pricing_path, class: "btn btn-primary" do %>
+    <span><%= t('print_pricing.create_new') %></span>
   <% end %>
 </div>

@@ -3,7 +3,7 @@ module ApplicationHelper
     if title.present?
       "#{title} | #{t('nav.brand')}"
     else
-      t('nav.brand')
+      t("nav.brand")
     end
   end
 

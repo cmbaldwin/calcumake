@@ -5,7 +5,7 @@ class PrintPricingsHelperTest < ActionView::TestCase
 
   setup do
     @pricing = print_pricings(:one)
-    @print_pricings = [print_pricings(:one), print_pricings(:two)]
+    @print_pricings = [ print_pricings(:one), print_pricings(:two) ]
   end
 
   test "format_print_time returns formatted string" do
@@ -29,13 +29,15 @@ class PrintPricingsHelperTest < ActionView::TestCase
   test "pricing_card_metadata_badges returns HTML with badges" do
     result = pricing_card_metadata_badges(@pricing)
     assert_includes result, @pricing.default_currency
-    assert_includes result, "currency-badge"
-    assert_includes result, "print-time"
+    assert_includes result, "badge bg-secondary"
+    assert_includes result, "text-muted"
   end
 
-  test "pricing_card_actions returns HTML with action buttons" do
+  test "pricing_card_actions returns HTML with dropdown actions" do
     result = pricing_card_actions(@pricing)
-    assert_includes result, "button button-small"
+    assert_includes result, "dropdown"
+    assert_includes result, "dropdown-toggle"
+    assert_includes result, I18n.t("actions.actions")
     assert_includes result, I18n.t("actions.show")
     assert_includes result, I18n.t("actions.edit")
     assert_includes result, I18n.t("actions.delete")
@@ -71,9 +73,11 @@ class PrintPricingsHelperTest < ActionView::TestCase
     end
   end
 
-  test "pricing_show_actions returns HTML with show page action buttons" do
+  test "pricing_show_actions returns HTML with show page dropdown actions" do
     result = pricing_show_actions(@pricing)
-    assert_includes result, "button button-small"
+    assert_includes result, "dropdown"
+    assert_includes result, "dropdown-toggle"
+    assert_includes result, I18n.t("actions.actions")
     assert_includes result, I18n.t("actions.edit")
     assert_includes result, I18n.t("actions.delete")
     refute_includes result, I18n.t("actions.show") # Show action not needed on show page

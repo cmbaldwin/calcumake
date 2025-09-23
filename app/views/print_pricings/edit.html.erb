@@ -1,400 +1,188 @@
 <% content_for :body_class, "pricing-form-page" %>
 
-<div class="calculator-header">
-  <h1>Edit Print Pricing</h1>
-  <p>Update your 3D printing cost calculation</p>
+<!-- Calculator Header -->
+<div class="text-center mb-4">
+  <h1 class="display-5 fw-bold text-primary mb-2"><%= t('print_pricing.edit.title') %></h1>
+  <p class="lead text-muted"><%= t('print_pricing.edit.subtitle') %></p>
 </div>
 
-<%= form_with model: @print_pricing, local: true, html: {
-  id: "pricing-form",
-  class: "compact-form"
-} do |form| %>
+<%= form_with model: @print_pricing, local: true, html: { id: "pricing-form", class: "row g-3" } do |form| %>
   <% if @print_pricing.errors.any? %>
-    <div class="error-messages">
-      <h3><%= pluralize(@print_pricing.errors.count, "error") %> prohibited this pricing from being saved:</h3>
-      <ul>
-        <% @print_pricing.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <div class="col-12">
+      <div class="alert alert-danger">
+        <h4><%= t('common.errors_prohibited', count: @print_pricing.errors.count, errors: t('common.error_count', count: @print_pricing.errors.count), model: t('models.print_pricing')) %></h4>
+        <ul class="mb-0">
+          <% @print_pricing.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="form-grid">
-    <!-- Basic Information -->
-    <div class="form-card basic-info">
-      <h3>Basic Information</h3>
-      <div class="field-group">
-        <label for="job_name">Job Name</label>
-        <%= form.text_field :job_name, placeholder: "e.g., Miniature Model" %>
+  <!-- Basic Information -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('print_pricing.sections.basic_info') %></h5>
       </div>
-      <div class="field-group">
-        <label for="printer"><%= t('print_pricing.fields.select_printer') %></label>
-        <%= form.select :printer_id,
-            options_from_collection_for_select(current_user.printers, :id, :name, @print_pricing.printer_id),
-            { prompt: t('print_pricing.fields.select_printer_prompt') },
-            { id: "printer-select" } %>
-        <small>
-          <%= t('print_pricing.fields.no_printer_help') %>
-          <%= link_to t('print_pricing.fields.add_printer_link'), new_printer_path,
-              class: "inline-link",
-              data: {
-                confirm: "Warning: You will lose any unsaved progress on this form. Continue?"
-              } %>
-        </small>
-      </div>
-    </div>
-
-    <!-- Print Time & Material -->
-    <div class="form-card material-info">
-      <h3>Print Time & Material</h3>
-      <div class="time-fields">
-        <div class="field-group">
-          <label>Hours</label>
-          <%= form.number_field :printing_time_hours, min: 0, step: 1, value: @print_pricing.printing_time_hours || 0 %>
-        </div>
-        <div class="field-group">
-          <label>Minutes</label>
-          <%= form.number_field :printing_time_minutes, min: 0, max: 59, step: 1, value: @print_pricing.printing_time_minutes || 0 %>
-        </div>
-      </div>
-      <div class="field-group">
-        <label>Filament Weight (g)</label>
-        <%= form.number_field :filament_weight, step: 0.1, placeholder: "36" %>
-      </div>
-      <div class="field-group">
-        <label>Filament Type</label>
-        <%= form.select :filament_type,
-            options_for_select([
-              ['PLA', 'PLA'],
-              ['ABS', 'ABS'],
-              ['PETG', 'PETG'],
-              ['TPU', 'TPU'],
-              ['ASA', 'ASA'],
-              ['Other', 'Other']
-            ], @print_pricing.filament_type),
-            { prompt: "Select type" } %>
-      </div>
-    </div>
-
-    <!-- Filament Costs -->
-    <div class="form-card filament-cost">
-      <h3>Filament Details</h3>
-      <div class="field-group currency-field">
-        <label>Spool Price</label>
-        <div class="currency-input">
-          <span class="currency-symbol"><%= currency_symbol(current_user.default_currency) %></span>
-          <%= form.number_field :spool_price, step: 0.01, placeholder: "25.00" %>
-        </div>
-      </div>
-      <div class="field-group">
-        <label>Spool Weight (g)</label>
-        <%= form.number_field :spool_weight, step: 0.1, placeholder: "1000" %>
-      </div>
-      <div class="field-group">
-        <label>Markup (%)</label>
-        <%= form.number_field :markup_percentage, step: 0.1, placeholder: "20" %>
-      </div>
-    </div>
-
-    <!-- Labor Cost -->
-    <div class="form-card labor-cost">
-      <h3>Labor</h3>
-      <div class="field-group">
-        <label>Prep Time (min)</label>
-        <%= form.number_field :prep_time_minutes, min: 0, step: 1, placeholder: "30" %>
-      </div>
-      <div class="field-group currency-field">
-        <label>Prep Cost/Hour</label>
-        <div class="currency-input">
-          <span class="currency-symbol"><%= currency_symbol(current_user.default_currency) %></span>
-          <%= form.number_field :prep_cost_per_hour, step: 0.01, placeholder: "20.00" %>
-        </div>
-      </div>
-      <div class="field-group">
-        <label>Post-Process Time (min)</label>
-        <%= form.number_field :postprocessing_time_minutes, min: 0, step: 1, placeholder: "30" %>
-      </div>
-      <div class="field-group currency-field">
-        <label>Post-Process Cost/Hour</label>
-        <div class="currency-input">
-          <span class="currency-symbol"><%= currency_symbol(current_user.default_currency) %></span>
-          <%= form.number_field :postprocessing_cost_per_hour, step: 0.01, placeholder: "20.00" %>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <%= form.label :job_name, class: "form-label" %>
+            <%= form.text_field :job_name, class: "form-control", placeholder: t('print_pricing.fields.job_name_placeholder') %>
+          </div>
+          <div class="col-md-6">
+            <%= form.label :printer_id, t('print_pricing.fields.select_printer'), class: "form-label" %>
+            <%= form.select :printer_id,
+                options_from_collection_for_select(current_user.printers, :id, :name, @print_pricing.printer_id),
+                { prompt: t('print_pricing.fields.select_printer_prompt') },
+                { class: "form-select" } %>
+            <div class="form-text">
+              <%= t('print_pricing.fields.no_printer_help') %>
+              <%= link_to t('print_pricing.fields.add_printer_link'), new_printer_path,
+                  class: "text-primary",
+                  data: {
+                    confirm: "Warning: You will lose any unsaved progress on this form. Continue?"
+                  } %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- Other Costs -->
-    <div class="form-card other-costs">
-      <h3>Other Costs & Tax</h3>
-      <div class="field-group currency-field">
-        <label>Other Costs</label>
-        <div class="currency-input">
-          <span class="currency-symbol"><%= currency_symbol(current_user.default_currency) %></span>
-          <%= form.number_field :other_costs, step: 0.01, placeholder: "0.00" %>
-        </div>
-      </div>
-      <div class="field-group">
-        <label>VAT (%)</label>
-        <%= form.number_field :vat_percentage, step: 0.1, placeholder: "10" %>
-      </div>
-    </div>
-
   </div>
 
-  <div class="form-actions">
-    <%= form.submit "Update Pricing", class: "primary-button" %>
-    <%= link_to "Cancel", print_pricings_path, class: "secondary-button" %>
+  <!-- Print Time & Material -->
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('print_pricing.sections.print_time_material') %></h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-6">
+            <%= form.label :printing_time_hours, t('print_pricing.fields.print_time_hours'), class: "form-label" %>
+            <%= form.number_field :printing_time_hours, min: 0, step: 1, value: @print_pricing.printing_time_hours || 0, class: "form-control" %>
+          </div>
+          <div class="col-6">
+            <%= form.label :printing_time_minutes, t('print_pricing.fields.print_time_minutes'), class: "form-label" %>
+            <%= form.number_field :printing_time_minutes, min: 0, max: 59, step: 1, value: @print_pricing.printing_time_minutes || 0, class: "form-control" %>
+          </div>
+          <div class="col-12">
+            <%= form.label :filament_weight, t('print_pricing.fields.filament_weight'), class: "form-label" %>
+            <%= form.number_field :filament_weight, step: 0.1, placeholder: t('print_pricing.fields.filament_weight_placeholder'), class: "form-control" %>
+          </div>
+          <div class="col-12">
+            <%= form.label :filament_type, t('print_pricing.fields.filament_type'), class: "form-label" %>
+            <%= form.select :filament_type,
+                options_for_select([
+                  [t('print_pricing.filament_types.pla'), 'PLA'],
+                  [t('print_pricing.filament_types.abs'), 'ABS'],
+                  [t('print_pricing.filament_types.petg'), 'PETG'],
+                  [t('print_pricing.filament_types.tpu'), 'TPU'],
+                  [t('print_pricing.filament_types.asa'), 'ASA'],
+                  [t('print_pricing.filament_types.other'), 'Other']
+                ], @print_pricing.filament_type),
+                { prompt: t('print_pricing.fields.filament_type_prompt') },
+                { class: "form-select" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filament Costs -->
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('print_pricing.sections.filament_details') %></h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-12">
+            <%= form.label :spool_price, t('print_pricing.fields.spool_price'), class: "form-label" %>
+            <div class="input-group">
+              <span class="input-group-text"><%= currency_symbol(current_user.default_currency) %></span>
+              <%= form.number_field :spool_price, step: 0.01, placeholder: t('print_pricing.fields.spool_price_placeholder'), class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-12">
+            <%= form.label :spool_weight, t('print_pricing.fields.spool_weight'), class: "form-label" %>
+            <%= form.number_field :spool_weight, step: 0.1, placeholder: t('print_pricing.fields.spool_weight_placeholder'), class: "form-control" %>
+          </div>
+          <div class="col-12">
+            <%= form.label :markup_percentage, t('print_pricing.fields.markup_percentage'), class: "form-label" %>
+            <%= form.number_field :markup_percentage, step: 0.1, placeholder: t('print_pricing.fields.markup_placeholder'), class: "form-control" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Labor Cost -->
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('print_pricing.sections.labor') %></h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-6">
+            <%= form.label :prep_time_minutes, t('print_pricing.fields.prep_time_minutes'), class: "form-label" %>
+            <%= form.number_field :prep_time_minutes, min: 0, step: 1, placeholder: t('print_pricing.fields.prep_time_placeholder'), class: "form-control" %>
+          </div>
+          <div class="col-6">
+            <%= form.label :prep_cost_per_hour, t('print_pricing.fields.prep_cost_per_hour'), class: "form-label" %>
+            <div class="input-group">
+              <span class="input-group-text"><%= currency_symbol(current_user.default_currency) %></span>
+              <%= form.number_field :prep_cost_per_hour, step: 0.01, placeholder: t('print_pricing.fields.prep_cost_placeholder'), class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-6">
+            <%= form.label :postprocessing_time_minutes, t('print_pricing.fields.postprocessing_time_minutes'), class: "form-label" %>
+            <%= form.number_field :postprocessing_time_minutes, min: 0, step: 1, placeholder: t('print_pricing.fields.postprocessing_time_placeholder'), class: "form-control" %>
+          </div>
+          <div class="col-6">
+            <%= form.label :postprocessing_cost_per_hour, t('print_pricing.fields.postprocessing_cost_per_hour'), class: "form-label" %>
+            <div class="input-group">
+              <span class="input-group-text"><%= currency_symbol(current_user.default_currency) %></span>
+              <%= form.number_field :postprocessing_cost_per_hour, step: 0.01, placeholder: t('print_pricing.fields.postprocessing_cost_placeholder'), class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Other Costs -->
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('print_pricing.sections.other_costs_tax') %></h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-12">
+            <%= form.label :other_costs, t('print_pricing.fields.other_costs'), class: "form-label" %>
+            <div class="input-group">
+              <span class="input-group-text"><%= currency_symbol(current_user.default_currency) %></span>
+              <%= form.number_field :other_costs, step: 0.01, placeholder: t('print_pricing.fields.other_costs_placeholder'), class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-12">
+            <%= form.label :vat_percentage, t('print_pricing.fields.vat_percentage'), class: "form-label" %>
+            <%= form.number_field :vat_percentage, step: 0.1, placeholder: t('print_pricing.fields.vat_placeholder'), class: "form-control" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Actions -->
+  <div class="col-12">
+    <div class="d-flex gap-3 justify-content-center pt-3 border-top">
+      <%= form.submit t('print_pricing.buttons.update'), class: "btn btn-primary btn-lg" %>
+      <%= link_to t('print_pricing.buttons.cancel'), print_pricings_path, class: "btn btn-outline-secondary btn-lg" %>
+    </div>
   </div>
 <% end %>
-
-<style>
-.calculator-header {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.calculator-header h1 {
-  color: #c8102e;
-  font-size: 2rem;
-  font-weight: 800;
-  margin-bottom: 0.25rem;
-}
-
-.compact-form {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.form-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
-}
-
-/* Mobile-first responsive grid */
-@media (min-width: 768px) {
-  .form-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .basic-info {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (min-width: 1024px) {
-  .form-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .basic-info {
-    grid-column: 1 / -1;
-  }
-}
-
-.form-card {
-  background: white;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e0e0e0;
-  width: 100%;
-  box-sizing: border-box;
-  min-width: 0;
-}
-
-.form-card h3 {
-  margin: 0 0 0.75rem 0;
-  color: #c8102e;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-bottom: 2px solid #9caf88;
-  padding-bottom: 0.35rem;
-  text-align: center;
-}
-
-.field-group {
-  margin-bottom: 0.75rem;
-}
-
-.field-group:last-of-type {
-  margin-bottom: 0;
-}
-
-.field-group label {
-  display: block;
-  font-weight: 500;
-  color: #333;
-  margin-bottom: 0.25rem;
-  font-size: 0.9rem;
-}
-
-.field-group input, .field-group select {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  box-sizing: border-box;
-  max-width: 100%;
-}
-
-.time-fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.currency-input {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: white;
-  width: 100%;
-  box-sizing: border-box;
-  max-width: 100%;
-}
-
-.currency-symbol {
-  padding: 0.5rem 0.6rem;
-  background: #f8f9fa;
-  border-right: 1px solid #ddd;
-  font-weight: 600;
-  color: #666;
-  font-size: 0.85rem;
-}
-
-.currency-input input {
-  border: none;
-  border-radius: 0 4px 4px 0;
-  flex: 1;
-}
-
-.form-actions {
-  text-align: center;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 2px dashed #9caf88;
-}
-
-.primary-button {
-  background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
-  color: white;
-  border: 2px solid transparent;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-right: 1rem;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  box-shadow: 0 2px 8px rgba(200, 16, 46, 0.25);
-  transition: all 0.2s ease;
-  min-width: 120px;
-  text-align: center;
-}
-
-.primary-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
-  color: white;
-}
-
-.secondary-button {
-  background: transparent;
-  color: #666;
-  border: 2px solid #ddd;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-  min-width: 120px;
-  text-align: center;
-}
-
-.secondary-button:hover {
-  background: rgba(200, 16, 46, 0.1);
-  color: #c8102e;
-  border-color: #c8102e;
-}
-
-.error-messages {
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  color: #721c24;
-}
-
-.error-messages h3 {
-  margin-top: 0;
-}
-
-/* Mobile optimization */
-@media (max-width: 767px) {
-  .calculator-header h1 {
-    font-size: 1.8rem;
-    line-height: 1.2;
-  }
-
-  .form-card {
-    padding: 1rem;
-    margin: 0;
-  }
-
-  .form-grid {
-    gap: 1rem;
-  }
-
-  .time-fields {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-
-  .form-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .primary-button, .secondary-button {
-    display: block;
-    width: 100%;
-    margin: 0;
-  }
-
-  .field-group input, .field-group select {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .currency-input {
-    width: 100%;
-    box-sizing: border-box;
-  }
-}
-
-.inline-link {
-  color: #c8102e;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.inline-link:hover {
-  color: #a80e26;
-  text-decoration: underline;
-}
-
-</style>

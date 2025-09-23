@@ -6,11 +6,17 @@ Rails.application.routes.draw do
     member do
       patch :increment_times_printed
       patch :decrement_times_printed
+      get :invoice
     end
   end
   resources :printers
 
   resource :user_profile, only: [ :show, :edit, :update ], path: "profile"
+
+  # Legal pages
+  get "privacy-policy", to: "legal#privacy_policy", as: :privacy_policy
+  get "user-agreement", to: "legal#user_agreement", as: :user_agreement
+  get "support", to: "legal#support", as: :support
 
   # Locale switching
   post "switch_locale", to: "application#switch_locale"
