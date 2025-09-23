@@ -1,8 +1,8 @@
 # Name of your application. Used to uniquely configure containers.
-service: pricing
+service: calcumake
 
 # Name of the container image.
-image: moab/pricing
+image: moab/calcumake
 
 # SSH
 ssh:
@@ -30,7 +30,7 @@ proxy:
   ssl:
     certificate_pem: <%= ENV['CLOUDFLARE_SSL_CERT_PEM'] %>
     private_key_pem: <%= ENV['CLOUDFLARE_SSL_KEY_PEM'] %>
-  host: pricing.moab.jp
+  host: calcumake.com
   forward_headers: true
 
 # Registry credentials for AWS.
@@ -60,10 +60,10 @@ env:
     WEB_CONCURRENCY: 1
 
     # Database configuration
-    DB_HOST: pricing-db
+    DB_HOST: calcumake-db
     DB_PORT: 5432
-    POSTGRES_USER: pricing
-    POSTGRES_DB: pricing_production
+    POSTGRES_USER: calcumake
+    POSTGRES_DB: calcumake_production
 
     # Log everything from Rails
     # RAILS_LOG_LEVEL: debug
@@ -113,11 +113,11 @@ accessories:
     port: "127.0.0.1:5434:5432"
     env:
       clear:
-        POSTGRES_DB: pricing_production
-        POSTGRES_USER: pricing
+        POSTGRES_DB: calcumake_production
+        POSTGRES_USER: calcumake
       secret:
         - POSTGRES_PASSWORD
     volumes:
-      - pricing_postgres_data:/var/lib/postgresql/data
+      - calcumake_postgres_data:/var/lib/postgresql/data
     files:
       - db/production_setup.sql:/docker-entrypoint-initdb.d/setup.sql

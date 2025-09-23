@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Application Overview
 
-**3DP** is a comprehensive Rails 8.0 3D print project management software that includes invoicing, manual cost tracking, and pricing calculations for 3D print jobs. The application provides complete project lifecycle management from initial pricing through delivery, with user authentication via Devise and multi-currency support with configurable energy costs.
+**CalcuMake** (calcumake.com) is a comprehensive Rails 8.0 3D print project management software that includes invoicing, manual cost tracking, and pricing calculations for 3D print jobs. The application provides complete project lifecycle management from initial pricing through delivery, with user authentication via Devise and multi-currency support with configurable energy costs.
+
+**Copyright**: © 2025 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved.
 
 ## Development Commands
 
@@ -202,7 +204,7 @@ The application includes a properly configured Rails Admin interface:
 **Comprehensive Legal Framework:**
 - **Privacy Policy** (`/privacy-policy`): Complete GDPR-compliant privacy policy including AdSense disclosure, data collection, usage, and user rights
 - **User Agreement** (`/user-agreement`): Terms of service with calculation disclaimers, acceptable use, intellectual property, and liability limitations
-- **Support Page** (`/support`): Contact information with direct email link to cody@moab.jp
+- **Support Page** (`/support`): Contact information with direct email link to support@calcumake.com
 
 **Navigation Integration:**
 - **Authenticated Users**: Help dropdown in navbar containing Support, Privacy Policy, and Terms of Service
