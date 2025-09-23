@@ -86,16 +86,9 @@
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-  --bs-gradient: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.15),
-    rgba(255, 255, 255, 0)
-  );
+  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
   --bs-body-font-size: 0.85rem;
   --bs-body-font-weight: 400;
@@ -147,18 +140,7 @@ hr:not([size]) {
 }
 
 /* line 88, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
-h6,
-.h6,
-h5,
-.h5,
-h4,
-.h4,
-h3,
-.h3,
-h2,
-.h2,
-h1,
-.h1 {
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: 500;
@@ -166,70 +148,60 @@ h1,
 }
 
 /* line 98, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
-h1,
-.h1 {
+h1, .h1 {
   font-size: calc(1.3375rem + 1.05vw);
 }
 
 @media (min-width: 1200px) {
   /* line 98, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
-  h1,
-  .h1 {
+  h1, .h1 {
     font-size: 2.125rem;
   }
 }
 
 /* line 103, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
-h2,
-.h2 {
+h2, .h2 {
   font-size: calc(1.295rem + 0.54vw);
 }
 
 @media (min-width: 1200px) {
   /* line 103, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
-  h2,
-  .h2 {
+  h2, .h2 {
     font-size: 1.7rem;
   }
 }
 
 /* line 108, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
-h3,
-.h3 {
+h3, .h3 {
   font-size: calc(1.27375rem + 0.285vw);
 }
 
 @media (min-width: 1200px) {
   /* line 108, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
-  h3,
-  .h3 {
+  h3, .h3 {
     font-size: 1.4875rem;
   }
 }
 
 /* line 113, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
-h4,
-.h4 {
+h4, .h4 {
   font-size: calc(1.2525rem + 0.03vw);
 }
 
 @media (min-width: 1200px) {
   /* line 113, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
-  h4,
-  .h4 {
+  h4, .h4 {
     font-size: 1.275rem;
   }
 }
 
 /* line 118, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
-h5,
-.h5 {
+h5, .h5 {
   font-size: 1.0625rem;
 }
 
 /* line 123, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
-h6,
-.h6 {
+h6, .h6 {
   font-size: 0.85rem;
 }
 
@@ -283,7 +255,7 @@ dt {
 
 /* line 191, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
 dd {
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
   margin-left: 0;
 }
 
@@ -299,14 +271,12 @@ strong {
 }
 
 /* line 218, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
-small,
-.small {
+small, .small {
   font-size: 0.875em;
 }
 
 /* line 225, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
-mark,
-.mark {
+mark, .mark {
   padding: 0.2em;
   background-color: #fcf8e3;
 }
@@ -322,12 +292,12 @@ sup {
 
 /* line 244, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
 sub {
-  bottom: -0.25em;
+  bottom: -.25em;
 }
 
 /* line 245, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
 sup {
-  top: -0.5em;
+  top: -.5em;
 }
 
 /* line 250, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
@@ -342,8 +312,7 @@ a:hover {
 }
 
 /* line 266, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_reboot.scss */
-a:not([href]):not([class]),
-a:not([href]):not([class]):hover {
+a:not([href]):not([class]), a:not([href]):not([class]):hover {
   color: inherit;
   text-decoration: none;
 }
@@ -825,50 +794,35 @@ progress {
 
 @media (min-width: 576px) {
   /* line 20, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_containers.scss */
-  .container-sm,
-  .container {
+  .container-sm, .container {
     max-width: 540px;
   }
 }
 
 @media (min-width: 768px) {
   /* line 20, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_containers.scss */
-  .container-md,
-  .container-sm,
-  .container {
+  .container-md, .container-sm, .container {
     max-width: 720px;
   }
 }
 
 @media (min-width: 992px) {
   /* line 20, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_containers.scss */
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container {
+  .container-lg, .container-md, .container-sm, .container {
     max-width: 960px;
   }
 }
 
 @media (min-width: 1200px) {
   /* line 20, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_containers.scss */
-  .container-xl,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
     max-width: 1140px;
   }
 }
 
 @media (min-width: 1400px) {
   /* line 20, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_containers.scss */
-  .container-xxl,
-  .container-xl,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
     max-width: 1320px;
   }
 }
@@ -880,8 +834,8 @@ progress {
   display: flex;
   flex-wrap: wrap;
   margin-top: calc(-1 * var(--bs-gutter-y));
-  margin-right: calc(-0.5 * var(--bs-gutter-x));
-  margin-left: calc(-0.5 * var(--bs-gutter-x));
+  margin-right: calc(-.5 * var(--bs-gutter-x));
+  margin-left: calc(-.5 * var(--bs-gutter-x));
 }
 
 /* line 9, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_grid.scss */
@@ -889,8 +843,8 @@ progress {
   flex-shrink: 0;
   width: 100%;
   max-width: 100%;
-  padding-right: calc(var(--bs-gutter-x) * 0.5);
-  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
   margin-top: var(--bs-gutter-y);
 }
 
@@ -1301,62 +1255,62 @@ progress {
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-sm-0,
-  .gx-sm-0 {
+.gx-sm-0 {
     --bs-gutter-x: 0;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-sm-0,
-  .gy-sm-0 {
+.gy-sm-0 {
     --bs-gutter-y: 0;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-sm-1,
-  .gx-sm-1 {
+.gx-sm-1 {
     --bs-gutter-x: 0.25rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-sm-1,
-  .gy-sm-1 {
+.gy-sm-1 {
     --bs-gutter-y: 0.25rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-sm-2,
-  .gx-sm-2 {
+.gx-sm-2 {
     --bs-gutter-x: 0.5rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-sm-2,
-  .gy-sm-2 {
+.gy-sm-2 {
     --bs-gutter-y: 0.5rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-sm-3,
-  .gx-sm-3 {
+.gx-sm-3 {
     --bs-gutter-x: 1rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-sm-3,
-  .gy-sm-3 {
+.gy-sm-3 {
     --bs-gutter-y: 1rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-sm-4,
-  .gx-sm-4 {
+.gx-sm-4 {
     --bs-gutter-x: 1.5rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-sm-4,
-  .gy-sm-4 {
+.gy-sm-4 {
     --bs-gutter-y: 1.5rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-sm-5,
-  .gx-sm-5 {
+.gx-sm-5 {
     --bs-gutter-x: 3rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-sm-5,
-  .gy-sm-5 {
+.gy-sm-5 {
     --bs-gutter-y: 3rem;
   }
 }
@@ -1516,62 +1470,62 @@ progress {
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-md-0,
-  .gx-md-0 {
+.gx-md-0 {
     --bs-gutter-x: 0;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-md-0,
-  .gy-md-0 {
+.gy-md-0 {
     --bs-gutter-y: 0;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-md-1,
-  .gx-md-1 {
+.gx-md-1 {
     --bs-gutter-x: 0.25rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-md-1,
-  .gy-md-1 {
+.gy-md-1 {
     --bs-gutter-y: 0.25rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-md-2,
-  .gx-md-2 {
+.gx-md-2 {
     --bs-gutter-x: 0.5rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-md-2,
-  .gy-md-2 {
+.gy-md-2 {
     --bs-gutter-y: 0.5rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-md-3,
-  .gx-md-3 {
+.gx-md-3 {
     --bs-gutter-x: 1rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-md-3,
-  .gy-md-3 {
+.gy-md-3 {
     --bs-gutter-y: 1rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-md-4,
-  .gx-md-4 {
+.gx-md-4 {
     --bs-gutter-x: 1.5rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-md-4,
-  .gy-md-4 {
+.gy-md-4 {
     --bs-gutter-y: 1.5rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-md-5,
-  .gx-md-5 {
+.gx-md-5 {
     --bs-gutter-x: 3rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-md-5,
-  .gy-md-5 {
+.gy-md-5 {
     --bs-gutter-y: 3rem;
   }
 }
@@ -1731,62 +1685,62 @@ progress {
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-lg-0,
-  .gx-lg-0 {
+.gx-lg-0 {
     --bs-gutter-x: 0;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-lg-0,
-  .gy-lg-0 {
+.gy-lg-0 {
     --bs-gutter-y: 0;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-lg-1,
-  .gx-lg-1 {
+.gx-lg-1 {
     --bs-gutter-x: 0.25rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-lg-1,
-  .gy-lg-1 {
+.gy-lg-1 {
     --bs-gutter-y: 0.25rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-lg-2,
-  .gx-lg-2 {
+.gx-lg-2 {
     --bs-gutter-x: 0.5rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-lg-2,
-  .gy-lg-2 {
+.gy-lg-2 {
     --bs-gutter-y: 0.5rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-lg-3,
-  .gx-lg-3 {
+.gx-lg-3 {
     --bs-gutter-x: 1rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-lg-3,
-  .gy-lg-3 {
+.gy-lg-3 {
     --bs-gutter-y: 1rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-lg-4,
-  .gx-lg-4 {
+.gx-lg-4 {
     --bs-gutter-x: 1.5rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-lg-4,
-  .gy-lg-4 {
+.gy-lg-4 {
     --bs-gutter-y: 1.5rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-lg-5,
-  .gx-lg-5 {
+.gx-lg-5 {
     --bs-gutter-x: 3rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-lg-5,
-  .gy-lg-5 {
+.gy-lg-5 {
     --bs-gutter-y: 3rem;
   }
 }
@@ -1946,62 +1900,62 @@ progress {
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xl-0,
-  .gx-xl-0 {
+.gx-xl-0 {
     --bs-gutter-x: 0;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xl-0,
-  .gy-xl-0 {
+.gy-xl-0 {
     --bs-gutter-y: 0;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xl-1,
-  .gx-xl-1 {
+.gx-xl-1 {
     --bs-gutter-x: 0.25rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xl-1,
-  .gy-xl-1 {
+.gy-xl-1 {
     --bs-gutter-y: 0.25rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xl-2,
-  .gx-xl-2 {
+.gx-xl-2 {
     --bs-gutter-x: 0.5rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xl-2,
-  .gy-xl-2 {
+.gy-xl-2 {
     --bs-gutter-y: 0.5rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xl-3,
-  .gx-xl-3 {
+.gx-xl-3 {
     --bs-gutter-x: 1rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xl-3,
-  .gy-xl-3 {
+.gy-xl-3 {
     --bs-gutter-y: 1rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xl-4,
-  .gx-xl-4 {
+.gx-xl-4 {
     --bs-gutter-x: 1.5rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xl-4,
-  .gy-xl-4 {
+.gy-xl-4 {
     --bs-gutter-y: 1.5rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xl-5,
-  .gx-xl-5 {
+.gx-xl-5 {
     --bs-gutter-x: 3rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xl-5,
-  .gy-xl-5 {
+.gy-xl-5 {
     --bs-gutter-y: 3rem;
   }
 }
@@ -2161,62 +2115,62 @@ progress {
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xxl-0,
-  .gx-xxl-0 {
+.gx-xxl-0 {
     --bs-gutter-x: 0;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xxl-0,
-  .gy-xxl-0 {
+.gy-xxl-0 {
     --bs-gutter-y: 0;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xxl-1,
-  .gx-xxl-1 {
+.gx-xxl-1 {
     --bs-gutter-x: 0.25rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xxl-1,
-  .gy-xxl-1 {
+.gy-xxl-1 {
     --bs-gutter-y: 0.25rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xxl-2,
-  .gx-xxl-2 {
+.gx-xxl-2 {
     --bs-gutter-x: 0.5rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xxl-2,
-  .gy-xxl-2 {
+.gy-xxl-2 {
     --bs-gutter-y: 0.5rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xxl-3,
-  .gx-xxl-3 {
+.gx-xxl-3 {
     --bs-gutter-x: 1rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xxl-3,
-  .gy-xxl-3 {
+.gy-xxl-3 {
     --bs-gutter-y: 1rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xxl-4,
-  .gx-xxl-4 {
+.gx-xxl-4 {
     --bs-gutter-x: 1.5rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xxl-4,
-  .gy-xxl-4 {
+.gy-xxl-4 {
     --bs-gutter-y: 1.5rem;
   }
   /* line 115, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xxl-5,
-  .gx-xxl-5 {
+.gx-xxl-5 {
     --bs-gutter-x: 3rem;
   }
   /* line 119, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_grid.scss */
   .g-xxl-5,
-  .gy-xxl-5 {
+.gy-xxl-5 {
     --bs-gutter-y: 3rem;
   }
 }
@@ -2549,8 +2503,7 @@ progress {
 }
 
 /* line 67, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/forms/_form-control.scss */
-.form-control:disabled,
-.form-control[readonly] {
+.form-control:disabled, .form-control[readonly] {
   background-color: #e9ecef;
   opacity: 1;
 }
@@ -2568,8 +2521,7 @@ progress {
   border-width: 0;
   border-inline-end-width: 1px;
   border-radius: 0;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2597,8 +2549,7 @@ progress {
   border-width: 0;
   border-inline-end-width: 1px;
   border-radius: 0;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2627,8 +2578,7 @@ progress {
 }
 
 /* line 131, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/forms/_form-control.scss */
-.form-control-plaintext.form-control-sm,
-.form-control-plaintext.form-control-lg {
+.form-control-plaintext.form-control-sm, .form-control-plaintext.form-control-lg {
   padding-right: 0;
   padding-left: 0;
 }
@@ -2752,8 +2702,7 @@ textarea.form-control-lg {
 }
 
 /* line 39, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/forms/_form-select.scss */
-.form-select[multiple],
-.form-select[size]:not([size="1"]) {
+.form-select[multiple], .form-select[size]:not([size="1"]) {
   padding-right: 0.75rem;
   background-image: none;
 }
@@ -2869,8 +2818,7 @@ textarea.form-control-lg {
 }
 
 /* line 92, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/forms/_form-check.scss */
-.form-check-input[disabled] ~ .form-check-label,
-.form-check-input:disabled ~ .form-check-label {
+.form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
   opacity: 0.5;
 }
 
@@ -2921,8 +2869,7 @@ textarea.form-control-lg {
 }
 
 /* line 146, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/forms/_form-check.scss */
-.btn-check[disabled] + .btn,
-.btn-check:disabled + .btn {
+.btn-check[disabled] + .btn, .btn-check:disabled + .btn {
   pointer-events: none;
   filter: none;
   opacity: 0.65;
@@ -2965,8 +2912,7 @@ textarea.form-control-lg {
   background-color: #0d6efd;
   border: 0;
   border-radius: 1rem;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   appearance: none;
 }
 
@@ -3000,8 +2946,7 @@ textarea.form-control-lg {
   background-color: #0d6efd;
   border: 0;
   border-radius: 1rem;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   appearance: none;
 }
 
@@ -3086,8 +3031,7 @@ textarea.form-control-lg {
 }
 
 /* line 30, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/forms/_floating-labels.scss */
-.form-floating > .form-control:focus,
-.form-floating > .form-control:not(:placeholder-shown) {
+.form-floating > .form-control:focus, .form-floating > .form-control:not(:placeholder-shown) {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
 }
@@ -3196,26 +3140,21 @@ textarea.form-control-lg {
 }
 
 /* line 99, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/forms/_input-group.scss */
-.input-group:not(.has-validation)
-  > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
+.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
 .input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n + 3) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 /* line 106, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/forms/_input-group.scss */
-.input-group.has-validation
-  > :nth-last-child(n + 3):not(.dropdown-toggle):not(.dropdown-menu),
+.input-group.has-validation > :nth-last-child(n + 3):not(.dropdown-toggle):not(.dropdown-menu),
 .input-group.has-validation > .dropdown-toggle:nth-last-child(n + 4) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 /* line 117, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/forms/_input-group.scss */
-.input-group
-  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(
-    .valid-feedback
-  ):not(.invalid-tooltip):not(.invalid-feedback) {
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
   margin-left: -1px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -3238,7 +3177,7 @@ textarea.form-control-lg {
   display: none;
   max-width: 100%;
   padding: 0.25rem 0.5rem;
-  margin-top: 0.1rem;
+  margin-top: .1rem;
   font-size: 0.74375rem;
   color: #fff;
   background-color: rgba(25, 135, 84, 0.9);
@@ -3254,8 +3193,7 @@ textarea.form-control-lg {
 }
 
 /* line 7, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-control:valid,
-.form-control.is-valid {
+.was-validated .form-control:valid, .form-control.is-valid {
   border-color: #198754;
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
@@ -3265,86 +3203,69 @@ textarea.form-control-lg {
 }
 
 /* line 67, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-control:valid:focus,
-.form-control.is-valid:focus {
+.was-validated .form-control:valid:focus, .form-control.is-valid:focus {
   border-color: #198754;
   box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
 }
 
 /* line 7, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated textarea.form-control:valid,
-textarea.form-control.is-valid {
+.was-validated textarea.form-control:valid, textarea.form-control.is-valid {
   padding-right: calc(1.5em + 0.75rem);
-  background-position: top calc(0.375em + 0.1875rem) right
-    calc(0.375em + 0.1875rem);
+  background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 
 /* line 7, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-select:valid,
-.form-select.is-valid {
+.was-validated .form-select:valid, .form-select.is-valid {
   border-color: #198754;
 }
 
 /* line 89, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-select:valid:not([multiple]):not([size]),
-.was-validated .form-select[size="1"]:valid:not([multiple]),
-.form-select.is-valid:not([multiple]):not([size]),
-.form-select.is-valid[size="1"]:not([multiple]) {
+.was-validated .form-select:valid:not([multiple]):not([size]), .was-validated .form-select[size="1"]:valid:not([multiple]), .form-select.is-valid:not([multiple]):not([size]), .form-select.is-valid[size="1"]:not([multiple]) {
   padding-right: 4.125rem;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"),
-    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
   background-position: right 0.75rem center, center right 2.25rem;
   background-size: 16px 12px, calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 
 /* line 98, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-select:valid:focus,
-.form-select.is-valid:focus {
+.was-validated .form-select:valid:focus, .form-select.is-valid:focus {
   border-color: #198754;
   box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
 }
 
 /* line 7, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-check-input:valid,
-.form-check-input.is-valid {
+.was-validated .form-check-input:valid, .form-check-input.is-valid {
   border-color: #198754;
 }
 
 /* line 109, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-check-input:valid:checked,
-.form-check-input.is-valid:checked {
+.was-validated .form-check-input:valid:checked, .form-check-input.is-valid:checked {
   background-color: #198754;
 }
 
 /* line 113, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-check-input:valid:focus,
-.form-check-input.is-valid:focus {
+.was-validated .form-check-input:valid:focus, .form-check-input.is-valid:focus {
   box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
 }
 
 /* line 117, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-check-input:valid ~ .form-check-label,
-.form-check-input.is-valid ~ .form-check-label {
+.was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
   color: #198754;
 }
 
 /* line 123, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
 .form-check-inline .form-check-input ~ .valid-feedback {
-  margin-left: 0.5em;
+  margin-left: .5em;
 }
 
 /* line 7, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .input-group .form-control:valid,
-.input-group .form-control.is-valid,
-.was-validated .input-group .form-select:valid,
+.was-validated .input-group .form-control:valid, .input-group .form-control.is-valid, .was-validated .input-group .form-select:valid,
 .input-group .form-select.is-valid {
   z-index: 1;
 }
 
 /* line 136, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .input-group .form-control:valid:focus,
-.input-group .form-control.is-valid:focus,
-.was-validated .input-group .form-select:valid:focus,
+.was-validated .input-group .form-control:valid:focus, .input-group .form-control.is-valid:focus, .was-validated .input-group .form-select:valid:focus,
 .input-group .form-select.is-valid:focus {
   z-index: 3;
 }
@@ -3366,7 +3287,7 @@ textarea.form-control.is-valid {
   display: none;
   max-width: 100%;
   padding: 0.25rem 0.5rem;
-  margin-top: 0.1rem;
+  margin-top: .1rem;
   font-size: 0.74375rem;
   color: #fff;
   background-color: rgba(220, 53, 69, 0.9);
@@ -3382,8 +3303,7 @@ textarea.form-control.is-valid {
 }
 
 /* line 7, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-control:invalid,
-.form-control.is-invalid {
+.was-validated .form-control:invalid, .form-control.is-invalid {
   border-color: #dc3545;
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
@@ -3393,86 +3313,69 @@ textarea.form-control.is-valid {
 }
 
 /* line 67, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-control:invalid:focus,
-.form-control.is-invalid:focus {
+.was-validated .form-control:invalid:focus, .form-control.is-invalid:focus {
   border-color: #dc3545;
   box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
 }
 
 /* line 7, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated textarea.form-control:invalid,
-textarea.form-control.is-invalid {
+.was-validated textarea.form-control:invalid, textarea.form-control.is-invalid {
   padding-right: calc(1.5em + 0.75rem);
-  background-position: top calc(0.375em + 0.1875rem) right
-    calc(0.375em + 0.1875rem);
+  background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 
 /* line 7, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-select:invalid,
-.form-select.is-invalid {
+.was-validated .form-select:invalid, .form-select.is-invalid {
   border-color: #dc3545;
 }
 
 /* line 89, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-select:invalid:not([multiple]):not([size]),
-.was-validated .form-select[size="1"]:invalid:not([multiple]),
-.form-select.is-invalid:not([multiple]):not([size]),
-.form-select.is-invalid[size="1"]:not([multiple]) {
+.was-validated .form-select:invalid:not([multiple]):not([size]), .was-validated .form-select[size="1"]:invalid:not([multiple]), .form-select.is-invalid:not([multiple]):not([size]), .form-select.is-invalid[size="1"]:not([multiple]) {
   padding-right: 4.125rem;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"),
-    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
   background-position: right 0.75rem center, center right 2.25rem;
   background-size: 16px 12px, calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 
 /* line 98, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-select:invalid:focus,
-.form-select.is-invalid:focus {
+.was-validated .form-select:invalid:focus, .form-select.is-invalid:focus {
   border-color: #dc3545;
   box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
 }
 
 /* line 7, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-check-input:invalid,
-.form-check-input.is-invalid {
+.was-validated .form-check-input:invalid, .form-check-input.is-invalid {
   border-color: #dc3545;
 }
 
 /* line 109, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-check-input:invalid:checked,
-.form-check-input.is-invalid:checked {
+.was-validated .form-check-input:invalid:checked, .form-check-input.is-invalid:checked {
   background-color: #dc3545;
 }
 
 /* line 113, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-check-input:invalid:focus,
-.form-check-input.is-invalid:focus {
+.was-validated .form-check-input:invalid:focus, .form-check-input.is-invalid:focus {
   box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
 }
 
 /* line 117, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .form-check-input:invalid ~ .form-check-label,
-.form-check-input.is-invalid ~ .form-check-label {
+.was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label {
   color: #dc3545;
 }
 
 /* line 123, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
 .form-check-inline .form-check-input ~ .invalid-feedback {
-  margin-left: 0.5em;
+  margin-left: .5em;
 }
 
 /* line 7, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .input-group .form-control:invalid,
-.input-group .form-control.is-invalid,
-.was-validated .input-group .form-select:invalid,
+.was-validated .input-group .form-control:invalid, .input-group .form-control.is-invalid, .was-validated .input-group .form-select:invalid,
 .input-group .form-select.is-invalid {
   z-index: 2;
 }
 
 /* line 136, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_forms.scss */
-.was-validated .input-group .form-control:invalid:focus,
-.input-group .form-control.is-invalid:focus,
-.was-validated .input-group .form-select:invalid:focus,
+.was-validated .input-group .form-control:invalid:focus, .input-group .form-control.is-invalid:focus, .was-validated .input-group .form-select:invalid:focus,
 .input-group .form-select.is-invalid:focus {
   z-index: 3;
 }
@@ -3493,8 +3396,7 @@ textarea.form-control.is-invalid {
   padding: 0.375rem 0.75rem;
   font-size: 0.85rem;
   border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3510,16 +3412,13 @@ textarea.form-control.is-invalid {
 }
 
 /* line 27, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_buttons.scss */
-.btn-check:focus + .btn,
-.btn:focus {
+.btn-check:focus + .btn, .btn:focus {
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
 /* line 44, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_buttons.scss */
-.btn:disabled,
-.btn.disabled,
-fieldset:disabled .btn {
+.btn:disabled, .btn.disabled, fieldset:disabled .btn {
   pointer-events: none;
   opacity: 0.65;
 }
@@ -3539,8 +3438,7 @@ fieldset:disabled .btn {
 }
 
 /* line 32, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-primary,
-.btn-primary:focus {
+.btn-check:focus + .btn-primary, .btn-primary:focus {
   color: #fff;
   background-color: #0b5ed7;
   border-color: #0a58ca;
@@ -3548,28 +3446,19 @@ fieldset:disabled .btn {
 }
 
 /* line 45, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-primary,
-.btn-check:active + .btn-primary,
-.btn-primary:active,
-.btn-primary.active,
-.show > .btn-primary.dropdown-toggle {
+.btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: #0a58ca;
   border-color: #0a53be;
 }
 
 /* line 56, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-primary:focus,
-.btn-check:active + .btn-primary:focus,
-.btn-primary:active:focus,
-.btn-primary.active:focus,
-.show > .btn-primary.dropdown-toggle:focus {
+.btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
 }
 
 /* line 66, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-primary:disabled,
-.btn-primary.disabled {
+.btn-primary:disabled, .btn-primary.disabled {
   color: #fff;
   background-color: #0d6efd;
   border-color: #0d6efd;
@@ -3590,8 +3479,7 @@ fieldset:disabled .btn {
 }
 
 /* line 32, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-secondary,
-.btn-secondary:focus {
+.btn-check:focus + .btn-secondary, .btn-secondary:focus {
   color: #fff;
   background-color: #5c636a;
   border-color: #565e64;
@@ -3599,28 +3487,19 @@ fieldset:disabled .btn {
 }
 
 /* line 45, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-secondary,
-.btn-check:active + .btn-secondary,
-.btn-secondary:active,
-.btn-secondary.active,
-.show > .btn-secondary.dropdown-toggle {
+.btn-check:checked + .btn-secondary, .btn-check:active + .btn-secondary, .btn-secondary:active, .btn-secondary.active, .show > .btn-secondary.dropdown-toggle {
   color: #fff;
   background-color: #565e64;
   border-color: #51585e;
 }
 
 /* line 56, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-secondary:focus,
-.btn-check:active + .btn-secondary:focus,
-.btn-secondary:active:focus,
-.btn-secondary.active:focus,
-.show > .btn-secondary.dropdown-toggle:focus {
+.btn-check:checked + .btn-secondary:focus, .btn-check:active + .btn-secondary:focus, .btn-secondary:active:focus, .btn-secondary.active:focus, .show > .btn-secondary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem rgba(130, 138, 145, 0.5);
 }
 
 /* line 66, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-secondary:disabled,
-.btn-secondary.disabled {
+.btn-secondary:disabled, .btn-secondary.disabled {
   color: #fff;
   background-color: #6c757d;
   border-color: #6c757d;
@@ -3641,8 +3520,7 @@ fieldset:disabled .btn {
 }
 
 /* line 32, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-success,
-.btn-success:focus {
+.btn-check:focus + .btn-success, .btn-success:focus {
   color: #fff;
   background-color: #157347;
   border-color: #146c43;
@@ -3650,28 +3528,19 @@ fieldset:disabled .btn {
 }
 
 /* line 45, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-success,
-.btn-check:active + .btn-success,
-.btn-success:active,
-.btn-success.active,
-.show > .btn-success.dropdown-toggle {
+.btn-check:checked + .btn-success, .btn-check:active + .btn-success, .btn-success:active, .btn-success.active, .show > .btn-success.dropdown-toggle {
   color: #fff;
   background-color: #146c43;
   border-color: #13653f;
 }
 
 /* line 56, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-success:focus,
-.btn-check:active + .btn-success:focus,
-.btn-success:active:focus,
-.btn-success.active:focus,
-.show > .btn-success.dropdown-toggle:focus {
+.btn-check:checked + .btn-success:focus, .btn-check:active + .btn-success:focus, .btn-success:active:focus, .btn-success.active:focus, .show > .btn-success.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem rgba(60, 153, 110, 0.5);
 }
 
 /* line 66, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-success:disabled,
-.btn-success.disabled {
+.btn-success:disabled, .btn-success.disabled {
   color: #fff;
   background-color: #198754;
   border-color: #198754;
@@ -3692,8 +3561,7 @@ fieldset:disabled .btn {
 }
 
 /* line 32, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-info,
-.btn-info:focus {
+.btn-check:focus + .btn-info, .btn-info:focus {
   color: #000;
   background-color: #31d2f2;
   border-color: #25cff2;
@@ -3701,28 +3569,19 @@ fieldset:disabled .btn {
 }
 
 /* line 45, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-info,
-.btn-check:active + .btn-info,
-.btn-info:active,
-.btn-info.active,
-.show > .btn-info.dropdown-toggle {
+.btn-check:checked + .btn-info, .btn-check:active + .btn-info, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
   color: #000;
   background-color: #3dd5f3;
   border-color: #25cff2;
 }
 
 /* line 56, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-info:focus,
-.btn-check:active + .btn-info:focus,
-.btn-info:active:focus,
-.btn-info.active:focus,
-.show > .btn-info.dropdown-toggle:focus {
+.btn-check:checked + .btn-info:focus, .btn-check:active + .btn-info:focus, .btn-info:active:focus, .btn-info.active:focus, .show > .btn-info.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem rgba(11, 172, 204, 0.5);
 }
 
 /* line 66, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-info:disabled,
-.btn-info.disabled {
+.btn-info:disabled, .btn-info.disabled {
   color: #000;
   background-color: #0dcaf0;
   border-color: #0dcaf0;
@@ -3743,8 +3602,7 @@ fieldset:disabled .btn {
 }
 
 /* line 32, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-warning,
-.btn-warning:focus {
+.btn-check:focus + .btn-warning, .btn-warning:focus {
   color: #000;
   background-color: #ffca2c;
   border-color: #ffc720;
@@ -3752,28 +3610,19 @@ fieldset:disabled .btn {
 }
 
 /* line 45, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-warning,
-.btn-check:active + .btn-warning,
-.btn-warning:active,
-.btn-warning.active,
-.show > .btn-warning.dropdown-toggle {
+.btn-check:checked + .btn-warning, .btn-check:active + .btn-warning, .btn-warning:active, .btn-warning.active, .show > .btn-warning.dropdown-toggle {
   color: #000;
   background-color: #ffcd39;
   border-color: #ffc720;
 }
 
 /* line 56, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-warning:focus,
-.btn-check:active + .btn-warning:focus,
-.btn-warning:active:focus,
-.btn-warning.active:focus,
-.show > .btn-warning.dropdown-toggle:focus {
+.btn-check:checked + .btn-warning:focus, .btn-check:active + .btn-warning:focus, .btn-warning:active:focus, .btn-warning.active:focus, .show > .btn-warning.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem rgba(217, 164, 6, 0.5);
 }
 
 /* line 66, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-warning:disabled,
-.btn-warning.disabled {
+.btn-warning:disabled, .btn-warning.disabled {
   color: #000;
   background-color: #ffc107;
   border-color: #ffc107;
@@ -3794,8 +3643,7 @@ fieldset:disabled .btn {
 }
 
 /* line 32, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-danger,
-.btn-danger:focus {
+.btn-check:focus + .btn-danger, .btn-danger:focus {
   color: #fff;
   background-color: #bb2d3b;
   border-color: #b02a37;
@@ -3803,28 +3651,19 @@ fieldset:disabled .btn {
 }
 
 /* line 45, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-danger,
-.btn-check:active + .btn-danger,
-.btn-danger:active,
-.btn-danger.active,
-.show > .btn-danger.dropdown-toggle {
+.btn-check:checked + .btn-danger, .btn-check:active + .btn-danger, .btn-danger:active, .btn-danger.active, .show > .btn-danger.dropdown-toggle {
   color: #fff;
   background-color: #b02a37;
   border-color: #a52834;
 }
 
 /* line 56, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-danger:focus,
-.btn-check:active + .btn-danger:focus,
-.btn-danger:active:focus,
-.btn-danger.active:focus,
-.show > .btn-danger.dropdown-toggle:focus {
+.btn-check:checked + .btn-danger:focus, .btn-check:active + .btn-danger:focus, .btn-danger:active:focus, .btn-danger.active:focus, .show > .btn-danger.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem rgba(225, 83, 97, 0.5);
 }
 
 /* line 66, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-danger:disabled,
-.btn-danger.disabled {
+.btn-danger:disabled, .btn-danger.disabled {
   color: #fff;
   background-color: #dc3545;
   border-color: #dc3545;
@@ -3845,8 +3684,7 @@ fieldset:disabled .btn {
 }
 
 /* line 32, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-light,
-.btn-light:focus {
+.btn-check:focus + .btn-light, .btn-light:focus {
   color: #000;
   background-color: #f9fafb;
   border-color: #f9fafb;
@@ -3854,28 +3692,19 @@ fieldset:disabled .btn {
 }
 
 /* line 45, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-light,
-.btn-check:active + .btn-light,
-.btn-light:active,
-.btn-light.active,
-.show > .btn-light.dropdown-toggle {
+.btn-check:checked + .btn-light, .btn-check:active + .btn-light, .btn-light:active, .btn-light.active, .show > .btn-light.dropdown-toggle {
   color: #000;
   background-color: #f9fafb;
   border-color: #f9fafb;
 }
 
 /* line 56, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-light:focus,
-.btn-check:active + .btn-light:focus,
-.btn-light:active:focus,
-.btn-light.active:focus,
-.show > .btn-light.dropdown-toggle:focus {
+.btn-check:checked + .btn-light:focus, .btn-check:active + .btn-light:focus, .btn-light:active:focus, .btn-light.active:focus, .show > .btn-light.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem rgba(211, 212, 213, 0.5);
 }
 
 /* line 66, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-light:disabled,
-.btn-light.disabled {
+.btn-light:disabled, .btn-light.disabled {
   color: #000;
   background-color: #f8f9fa;
   border-color: #f8f9fa;
@@ -3896,8 +3725,7 @@ fieldset:disabled .btn {
 }
 
 /* line 32, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-dark,
-.btn-dark:focus {
+.btn-check:focus + .btn-dark, .btn-dark:focus {
   color: #fff;
   background-color: #1c1f23;
   border-color: #1a1e21;
@@ -3905,28 +3733,19 @@ fieldset:disabled .btn {
 }
 
 /* line 45, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-dark,
-.btn-check:active + .btn-dark,
-.btn-dark:active,
-.btn-dark.active,
-.show > .btn-dark.dropdown-toggle {
+.btn-check:checked + .btn-dark, .btn-check:active + .btn-dark, .btn-dark:active, .btn-dark.active, .show > .btn-dark.dropdown-toggle {
   color: #fff;
   background-color: #1a1e21;
   border-color: #191c1f;
 }
 
 /* line 56, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-dark:focus,
-.btn-check:active + .btn-dark:focus,
-.btn-dark:active:focus,
-.btn-dark.active:focus,
-.show > .btn-dark.dropdown-toggle:focus {
+.btn-check:checked + .btn-dark:focus, .btn-check:active + .btn-dark:focus, .btn-dark:active:focus, .btn-dark.active:focus, .show > .btn-dark.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem rgba(66, 70, 73, 0.5);
 }
 
 /* line 66, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-dark:disabled,
-.btn-dark.disabled {
+.btn-dark:disabled, .btn-dark.disabled {
   color: #fff;
   background-color: #212529;
   border-color: #212529;
@@ -3946,34 +3765,24 @@ fieldset:disabled .btn {
 }
 
 /* line 94, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-outline-primary,
-.btn-outline-primary:focus {
+.btn-check:focus + .btn-outline-primary, .btn-outline-primary:focus {
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
 }
 
 /* line 99, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-primary,
-.btn-check:active + .btn-outline-primary,
-.btn-outline-primary:active,
-.btn-outline-primary.active,
-.btn-outline-primary.dropdown-toggle.show {
+.btn-check:checked + .btn-outline-primary, .btn-check:active + .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show {
   color: #fff;
   background-color: #0d6efd;
   border-color: #0d6efd;
 }
 
 /* line 108, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-primary:focus,
-.btn-check:active + .btn-outline-primary:focus,
-.btn-outline-primary:active:focus,
-.btn-outline-primary.active:focus,
-.btn-outline-primary.dropdown-toggle.show:focus {
+.btn-check:checked + .btn-outline-primary:focus, .btn-check:active + .btn-outline-primary:focus, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus {
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
 }
 
 /* line 118, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-outline-primary:disabled,
-.btn-outline-primary.disabled {
+.btn-outline-primary:disabled, .btn-outline-primary.disabled {
   color: #0d6efd;
   background-color: transparent;
 }
@@ -3992,34 +3801,24 @@ fieldset:disabled .btn {
 }
 
 /* line 94, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-outline-secondary,
-.btn-outline-secondary:focus {
+.btn-check:focus + .btn-outline-secondary, .btn-outline-secondary:focus {
   box-shadow: 0 0 0 0.25rem rgba(108, 117, 125, 0.5);
 }
 
 /* line 99, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-secondary,
-.btn-check:active + .btn-outline-secondary,
-.btn-outline-secondary:active,
-.btn-outline-secondary.active,
-.btn-outline-secondary.dropdown-toggle.show {
+.btn-check:checked + .btn-outline-secondary, .btn-check:active + .btn-outline-secondary, .btn-outline-secondary:active, .btn-outline-secondary.active, .btn-outline-secondary.dropdown-toggle.show {
   color: #fff;
   background-color: #6c757d;
   border-color: #6c757d;
 }
 
 /* line 108, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-secondary:focus,
-.btn-check:active + .btn-outline-secondary:focus,
-.btn-outline-secondary:active:focus,
-.btn-outline-secondary.active:focus,
-.btn-outline-secondary.dropdown-toggle.show:focus {
+.btn-check:checked + .btn-outline-secondary:focus, .btn-check:active + .btn-outline-secondary:focus, .btn-outline-secondary:active:focus, .btn-outline-secondary.active:focus, .btn-outline-secondary.dropdown-toggle.show:focus {
   box-shadow: 0 0 0 0.25rem rgba(108, 117, 125, 0.5);
 }
 
 /* line 118, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-outline-secondary:disabled,
-.btn-outline-secondary.disabled {
+.btn-outline-secondary:disabled, .btn-outline-secondary.disabled {
   color: #6c757d;
   background-color: transparent;
 }
@@ -4038,34 +3837,24 @@ fieldset:disabled .btn {
 }
 
 /* line 94, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-outline-success,
-.btn-outline-success:focus {
+.btn-check:focus + .btn-outline-success, .btn-outline-success:focus {
   box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
 }
 
 /* line 99, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-success,
-.btn-check:active + .btn-outline-success,
-.btn-outline-success:active,
-.btn-outline-success.active,
-.btn-outline-success.dropdown-toggle.show {
+.btn-check:checked + .btn-outline-success, .btn-check:active + .btn-outline-success, .btn-outline-success:active, .btn-outline-success.active, .btn-outline-success.dropdown-toggle.show {
   color: #fff;
   background-color: #198754;
   border-color: #198754;
 }
 
 /* line 108, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-success:focus,
-.btn-check:active + .btn-outline-success:focus,
-.btn-outline-success:active:focus,
-.btn-outline-success.active:focus,
-.btn-outline-success.dropdown-toggle.show:focus {
+.btn-check:checked + .btn-outline-success:focus, .btn-check:active + .btn-outline-success:focus, .btn-outline-success:active:focus, .btn-outline-success.active:focus, .btn-outline-success.dropdown-toggle.show:focus {
   box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
 }
 
 /* line 118, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-outline-success:disabled,
-.btn-outline-success.disabled {
+.btn-outline-success:disabled, .btn-outline-success.disabled {
   color: #198754;
   background-color: transparent;
 }
@@ -4084,34 +3873,24 @@ fieldset:disabled .btn {
 }
 
 /* line 94, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-outline-info,
-.btn-outline-info:focus {
+.btn-check:focus + .btn-outline-info, .btn-outline-info:focus {
   box-shadow: 0 0 0 0.25rem rgba(13, 202, 240, 0.5);
 }
 
 /* line 99, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-info,
-.btn-check:active + .btn-outline-info,
-.btn-outline-info:active,
-.btn-outline-info.active,
-.btn-outline-info.dropdown-toggle.show {
+.btn-check:checked + .btn-outline-info, .btn-check:active + .btn-outline-info, .btn-outline-info:active, .btn-outline-info.active, .btn-outline-info.dropdown-toggle.show {
   color: #000;
   background-color: #0dcaf0;
   border-color: #0dcaf0;
 }
 
 /* line 108, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-info:focus,
-.btn-check:active + .btn-outline-info:focus,
-.btn-outline-info:active:focus,
-.btn-outline-info.active:focus,
-.btn-outline-info.dropdown-toggle.show:focus {
+.btn-check:checked + .btn-outline-info:focus, .btn-check:active + .btn-outline-info:focus, .btn-outline-info:active:focus, .btn-outline-info.active:focus, .btn-outline-info.dropdown-toggle.show:focus {
   box-shadow: 0 0 0 0.25rem rgba(13, 202, 240, 0.5);
 }
 
 /* line 118, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-outline-info:disabled,
-.btn-outline-info.disabled {
+.btn-outline-info:disabled, .btn-outline-info.disabled {
   color: #0dcaf0;
   background-color: transparent;
 }
@@ -4130,34 +3909,24 @@ fieldset:disabled .btn {
 }
 
 /* line 94, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-outline-warning,
-.btn-outline-warning:focus {
+.btn-check:focus + .btn-outline-warning, .btn-outline-warning:focus {
   box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.5);
 }
 
 /* line 99, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-warning,
-.btn-check:active + .btn-outline-warning,
-.btn-outline-warning:active,
-.btn-outline-warning.active,
-.btn-outline-warning.dropdown-toggle.show {
+.btn-check:checked + .btn-outline-warning, .btn-check:active + .btn-outline-warning, .btn-outline-warning:active, .btn-outline-warning.active, .btn-outline-warning.dropdown-toggle.show {
   color: #000;
   background-color: #ffc107;
   border-color: #ffc107;
 }
 
 /* line 108, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-warning:focus,
-.btn-check:active + .btn-outline-warning:focus,
-.btn-outline-warning:active:focus,
-.btn-outline-warning.active:focus,
-.btn-outline-warning.dropdown-toggle.show:focus {
+.btn-check:checked + .btn-outline-warning:focus, .btn-check:active + .btn-outline-warning:focus, .btn-outline-warning:active:focus, .btn-outline-warning.active:focus, .btn-outline-warning.dropdown-toggle.show:focus {
   box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.5);
 }
 
 /* line 118, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-outline-warning:disabled,
-.btn-outline-warning.disabled {
+.btn-outline-warning:disabled, .btn-outline-warning.disabled {
   color: #ffc107;
   background-color: transparent;
 }
@@ -4176,34 +3945,24 @@ fieldset:disabled .btn {
 }
 
 /* line 94, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-outline-danger,
-.btn-outline-danger:focus {
+.btn-check:focus + .btn-outline-danger, .btn-outline-danger:focus {
   box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.5);
 }
 
 /* line 99, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-danger,
-.btn-check:active + .btn-outline-danger,
-.btn-outline-danger:active,
-.btn-outline-danger.active,
-.btn-outline-danger.dropdown-toggle.show {
+.btn-check:checked + .btn-outline-danger, .btn-check:active + .btn-outline-danger, .btn-outline-danger:active, .btn-outline-danger.active, .btn-outline-danger.dropdown-toggle.show {
   color: #fff;
   background-color: #dc3545;
   border-color: #dc3545;
 }
 
 /* line 108, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-danger:focus,
-.btn-check:active + .btn-outline-danger:focus,
-.btn-outline-danger:active:focus,
-.btn-outline-danger.active:focus,
-.btn-outline-danger.dropdown-toggle.show:focus {
+.btn-check:checked + .btn-outline-danger:focus, .btn-check:active + .btn-outline-danger:focus, .btn-outline-danger:active:focus, .btn-outline-danger.active:focus, .btn-outline-danger.dropdown-toggle.show:focus {
   box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.5);
 }
 
 /* line 118, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-outline-danger:disabled,
-.btn-outline-danger.disabled {
+.btn-outline-danger:disabled, .btn-outline-danger.disabled {
   color: #dc3545;
   background-color: transparent;
 }
@@ -4222,34 +3981,24 @@ fieldset:disabled .btn {
 }
 
 /* line 94, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-outline-light,
-.btn-outline-light:focus {
+.btn-check:focus + .btn-outline-light, .btn-outline-light:focus {
   box-shadow: 0 0 0 0.25rem rgba(248, 249, 250, 0.5);
 }
 
 /* line 99, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-light,
-.btn-check:active + .btn-outline-light,
-.btn-outline-light:active,
-.btn-outline-light.active,
-.btn-outline-light.dropdown-toggle.show {
+.btn-check:checked + .btn-outline-light, .btn-check:active + .btn-outline-light, .btn-outline-light:active, .btn-outline-light.active, .btn-outline-light.dropdown-toggle.show {
   color: #000;
   background-color: #f8f9fa;
   border-color: #f8f9fa;
 }
 
 /* line 108, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-light:focus,
-.btn-check:active + .btn-outline-light:focus,
-.btn-outline-light:active:focus,
-.btn-outline-light.active:focus,
-.btn-outline-light.dropdown-toggle.show:focus {
+.btn-check:checked + .btn-outline-light:focus, .btn-check:active + .btn-outline-light:focus, .btn-outline-light:active:focus, .btn-outline-light.active:focus, .btn-outline-light.dropdown-toggle.show:focus {
   box-shadow: 0 0 0 0.25rem rgba(248, 249, 250, 0.5);
 }
 
 /* line 118, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-outline-light:disabled,
-.btn-outline-light.disabled {
+.btn-outline-light:disabled, .btn-outline-light.disabled {
   color: #f8f9fa;
   background-color: transparent;
 }
@@ -4268,34 +4017,24 @@ fieldset:disabled .btn {
 }
 
 /* line 94, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:focus + .btn-outline-dark,
-.btn-outline-dark:focus {
+.btn-check:focus + .btn-outline-dark, .btn-outline-dark:focus {
   box-shadow: 0 0 0 0.25rem rgba(33, 37, 41, 0.5);
 }
 
 /* line 99, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-dark,
-.btn-check:active + .btn-outline-dark,
-.btn-outline-dark:active,
-.btn-outline-dark.active,
-.btn-outline-dark.dropdown-toggle.show {
+.btn-check:checked + .btn-outline-dark, .btn-check:active + .btn-outline-dark, .btn-outline-dark:active, .btn-outline-dark.active, .btn-outline-dark.dropdown-toggle.show {
   color: #fff;
   background-color: #212529;
   border-color: #212529;
 }
 
 /* line 108, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-check:checked + .btn-outline-dark:focus,
-.btn-check:active + .btn-outline-dark:focus,
-.btn-outline-dark:active:focus,
-.btn-outline-dark.active:focus,
-.btn-outline-dark.dropdown-toggle.show:focus {
+.btn-check:checked + .btn-outline-dark:focus, .btn-check:active + .btn-outline-dark:focus, .btn-outline-dark:active:focus, .btn-outline-dark.active:focus, .btn-outline-dark.dropdown-toggle.show:focus {
   box-shadow: 0 0 0 0.25rem rgba(33, 37, 41, 0.5);
 }
 
 /* line 118, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_buttons.scss */
-.btn-outline-dark:disabled,
-.btn-outline-dark.disabled {
+.btn-outline-dark:disabled, .btn-outline-dark.disabled {
   color: #212529;
   background-color: transparent;
 }
@@ -4313,22 +4052,19 @@ fieldset:disabled .btn {
 }
 
 /* line 92, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_buttons.scss */
-.btn-link:disabled,
-.btn-link.disabled {
+.btn-link:disabled, .btn-link.disabled {
   color: #6c757d;
 }
 
 /* line 105, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_buttons.scss */
-.btn-lg,
-.btn-group-lg > .btn {
+.btn-lg, .btn-group-lg > .btn {
   padding: 0.5rem 1rem;
   font-size: 1.0625rem;
   border-radius: 0.3rem;
 }
 
 /* line 109, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_buttons.scss */
-.btn-sm,
-.btn-group-sm > .btn {
+.btn-sm, .btn-group-sm > .btn {
   padding: 0.25rem 0.5rem;
   font-size: 0.74375rem;
   border-radius: 0.2rem;
@@ -4689,23 +4425,20 @@ fieldset:disabled .btn {
 }
 
 /* line 156, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_dropdown.scss */
-.dropdown-item:hover,
-.dropdown-item:focus {
+.dropdown-item:hover, .dropdown-item:focus {
   color: #1e2125;
   background-color: #e9ecef;
 }
 
 /* line 163, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_dropdown.scss */
-.dropdown-item.active,
-.dropdown-item:active {
+.dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
   background-color: #0d6efd;
 }
 
 /* line 170, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_dropdown.scss */
-.dropdown-item.disabled,
-.dropdown-item:disabled {
+.dropdown-item.disabled, .dropdown-item:disabled {
   color: #adb5bd;
   pointer-events: none;
   background-color: transparent;
@@ -4746,22 +4479,19 @@ fieldset:disabled .btn {
 }
 
 /* line 211, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_dropdown.scss */
-.dropdown-menu-dark .dropdown-item:hover,
-.dropdown-menu-dark .dropdown-item:focus {
+.dropdown-menu-dark .dropdown-item:hover, .dropdown-menu-dark .dropdown-item:focus {
   color: #fff;
   background-color: rgba(255, 255, 255, 0.15);
 }
 
 /* line 217, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_dropdown.scss */
-.dropdown-menu-dark .dropdown-item.active,
-.dropdown-menu-dark .dropdown-item:active {
+.dropdown-menu-dark .dropdown-item.active, .dropdown-menu-dark .dropdown-item:active {
   color: #fff;
   background-color: #0d6efd;
 }
 
 /* line 223, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_dropdown.scss */
-.dropdown-menu-dark .dropdown-item.disabled,
-.dropdown-menu-dark .dropdown-item:disabled {
+.dropdown-menu-dark .dropdown-item.disabled, .dropdown-menu-dark .dropdown-item:disabled {
   color: #adb5bd;
 }
 
@@ -4851,9 +4581,7 @@ fieldset:disabled .btn {
 }
 
 /* line 76, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_button-group.scss */
-.dropdown-toggle-split::after,
-.dropup .dropdown-toggle-split::after,
-.dropend .dropdown-toggle-split::after {
+.dropdown-toggle-split::after, .dropup .dropdown-toggle-split::after, .dropend .dropdown-toggle-split::after {
   margin-left: 0;
 }
 
@@ -4863,15 +4591,13 @@ fieldset:disabled .btn {
 }
 
 /* line 87, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_button-group.scss */
-.btn-sm + .dropdown-toggle-split,
-.btn-group-sm > .btn + .dropdown-toggle-split {
+.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split {
   padding-right: 0.375rem;
   padding-left: 0.375rem;
 }
 
 /* line 92, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_button-group.scss */
-.btn-lg + .dropdown-toggle-split,
-.btn-group-lg > .btn + .dropdown-toggle-split {
+.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split {
   padding-right: 0.75rem;
   padding-left: 0.75rem;
 }
@@ -4924,8 +4650,7 @@ fieldset:disabled .btn {
   padding: 0.5rem 1rem;
   color: #0d6efd;
   text-decoration: none;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4936,8 +4661,7 @@ fieldset:disabled .btn {
 }
 
 /* line 23, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_nav.scss */
-.nav-link:hover,
-.nav-link:focus {
+.nav-link:hover, .nav-link:focus {
   color: #0a58ca;
 }
 
@@ -4963,8 +4687,7 @@ fieldset:disabled .btn {
 }
 
 /* line 50, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_nav.scss */
-.nav-tabs .nav-link:hover,
-.nav-tabs .nav-link:focus {
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
   border-color: #e9ecef #e9ecef #dee2e6;
   isolation: isolate;
 }
@@ -5202,7 +4925,7 @@ fieldset:disabled .btn {
   }
   /* line 213, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_navbar.scss */
   .navbar-expand-sm .offcanvas-top,
-  .navbar-expand-sm .offcanvas-bottom {
+.navbar-expand-sm .offcanvas-bottom {
     height: auto;
     border-top: 0;
     border-bottom: 0;
@@ -5267,7 +4990,7 @@ fieldset:disabled .btn {
   }
   /* line 213, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_navbar.scss */
   .navbar-expand-md .offcanvas-top,
-  .navbar-expand-md .offcanvas-bottom {
+.navbar-expand-md .offcanvas-bottom {
     height: auto;
     border-top: 0;
     border-bottom: 0;
@@ -5332,7 +5055,7 @@ fieldset:disabled .btn {
   }
   /* line 213, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_navbar.scss */
   .navbar-expand-lg .offcanvas-top,
-  .navbar-expand-lg .offcanvas-bottom {
+.navbar-expand-lg .offcanvas-bottom {
     height: auto;
     border-top: 0;
     border-bottom: 0;
@@ -5397,7 +5120,7 @@ fieldset:disabled .btn {
   }
   /* line 213, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_navbar.scss */
   .navbar-expand-xl .offcanvas-top,
-  .navbar-expand-xl .offcanvas-bottom {
+.navbar-expand-xl .offcanvas-bottom {
     height: auto;
     border-top: 0;
     border-bottom: 0;
@@ -5462,7 +5185,7 @@ fieldset:disabled .btn {
   }
   /* line 213, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_navbar.scss */
   .navbar-expand-xxl .offcanvas-top,
-  .navbar-expand-xxl .offcanvas-bottom {
+.navbar-expand-xxl .offcanvas-bottom {
     height: auto;
     border-top: 0;
     border-bottom: 0;
@@ -5555,8 +5278,7 @@ fieldset:disabled .btn {
 }
 
 /* line 241, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_navbar.scss */
-.navbar-light .navbar-brand:hover,
-.navbar-light .navbar-brand:focus {
+.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
   color: rgba(0, 0, 0, 0.9);
 }
 
@@ -5566,8 +5288,7 @@ fieldset:disabled .btn {
 }
 
 /* line 251, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_navbar.scss */
-.navbar-light .navbar-nav .nav-link:hover,
-.navbar-light .navbar-nav .nav-link:focus {
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
   color: rgba(0, 0, 0, 0.7);
 }
 
@@ -5611,8 +5332,7 @@ fieldset:disabled .btn {
 }
 
 /* line 292, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_navbar.scss */
-.navbar-dark .navbar-brand:hover,
-.navbar-dark .navbar-brand:focus {
+.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
   color: #fff;
 }
 
@@ -5622,8 +5342,7 @@ fieldset:disabled .btn {
 }
 
 /* line 302, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_navbar.scss */
-.navbar-dark .navbar-nav .nav-link:hover,
-.navbar-dark .navbar-nav .nav-link:focus {
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
   color: rgba(255, 255, 255, 0.75);
 }
 
@@ -5832,12 +5551,12 @@ fieldset:disabled .btn {
   }
   /* line 187, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_card.scss */
   .card-group > .card:not(:last-child) .card-img-top,
-  .card-group > .card:not(:last-child) .card-header {
+.card-group > .card:not(:last-child) .card-header {
     border-top-right-radius: 0;
   }
   /* line 192, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_card.scss */
   .card-group > .card:not(:last-child) .card-img-bottom,
-  .card-group > .card:not(:last-child) .card-footer {
+.card-group > .card:not(:last-child) .card-footer {
     border-bottom-right-radius: 0;
   }
   /* line 199, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_card.scss */
@@ -5847,12 +5566,12 @@ fieldset:disabled .btn {
   }
   /* line 202, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_card.scss */
   .card-group > .card:not(:first-child) .card-img-top,
-  .card-group > .card:not(:first-child) .card-header {
+.card-group > .card:not(:first-child) .card-header {
     border-top-left-radius: 0;
   }
   /* line 207, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_card.scss */
   .card-group > .card:not(:first-child) .card-img-bottom,
-  .card-group > .card:not(:first-child) .card-footer {
+.card-group > .card:not(:first-child) .card-footer {
     border-bottom-left-radius: 0;
   }
 }
@@ -5871,9 +5590,7 @@ fieldset:disabled .btn {
   border: 0;
   border-radius: 0;
   overflow-anchor: none;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
-    border-radius 0.15s ease;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -6026,8 +5743,7 @@ fieldset:disabled .btn {
   float: left;
   padding-right: 0.5rem;
   color: #6c757d;
-  content: var(--bs-breadcrumb-divider, "/")
-    /* rtl: var(--bs-breadcrumb-divider, "/") */;
+  content: var(--bs-breadcrumb-divider, "/") /* rtl: var(--bs-breadcrumb-divider, "/") */;
 }
 
 /* line 25, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_breadcrumb.scss */
@@ -6050,8 +5766,7 @@ fieldset:disabled .btn {
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #dee2e6;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -6344,16 +6059,7 @@ fieldset:disabled .btn {
 
 /* line 33, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_progress.scss */
 .progress-bar-striped {
-  background-image: linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.15) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(255, 255, 255, 0.15) 50%,
-    rgba(255, 255, 255, 0.15) 75%,
-    transparent 75%,
-    transparent
-  );
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-size: 1rem 1rem;
 }
 
@@ -6398,8 +6104,7 @@ fieldset:disabled .btn {
 }
 
 /* line 38, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_list-group.scss */
-.list-group-item-action:hover,
-.list-group-item-action:focus {
+.list-group-item-action:hover, .list-group-item-action:focus {
   z-index: 1;
   color: #495057;
   text-decoration: none;
@@ -6436,8 +6141,7 @@ fieldset:disabled .btn {
 }
 
 /* line 74, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_list-group.scss */
-.list-group-item.disabled,
-.list-group-item:disabled {
+.list-group-item.disabled, .list-group-item:disabled {
   color: #6c757d;
   pointer-events: none;
   background-color: #fff;
@@ -6673,8 +6377,7 @@ fieldset:disabled .btn {
 }
 
 /* line 10, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_list-group.scss */
-.list-group-item-primary.list-group-item-action:hover,
-.list-group-item-primary.list-group-item-action:focus {
+.list-group-item-primary.list-group-item-action:hover, .list-group-item-primary.list-group-item-action:focus {
   color: #084298;
   background-color: #bacbe6;
 }
@@ -6693,8 +6396,7 @@ fieldset:disabled .btn {
 }
 
 /* line 10, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_list-group.scss */
-.list-group-item-secondary.list-group-item-action:hover,
-.list-group-item-secondary.list-group-item-action:focus {
+.list-group-item-secondary.list-group-item-action:hover, .list-group-item-secondary.list-group-item-action:focus {
   color: #41464b;
   background-color: #cbccce;
 }
@@ -6713,8 +6415,7 @@ fieldset:disabled .btn {
 }
 
 /* line 10, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_list-group.scss */
-.list-group-item-success.list-group-item-action:hover,
-.list-group-item-success.list-group-item-action:focus {
+.list-group-item-success.list-group-item-action:hover, .list-group-item-success.list-group-item-action:focus {
   color: #0f5132;
   background-color: #bcd0c7;
 }
@@ -6733,8 +6434,7 @@ fieldset:disabled .btn {
 }
 
 /* line 10, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_list-group.scss */
-.list-group-item-info.list-group-item-action:hover,
-.list-group-item-info.list-group-item-action:focus {
+.list-group-item-info.list-group-item-action:hover, .list-group-item-info.list-group-item-action:focus {
   color: #055160;
   background-color: #badce3;
 }
@@ -6753,8 +6453,7 @@ fieldset:disabled .btn {
 }
 
 /* line 10, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_list-group.scss */
-.list-group-item-warning.list-group-item-action:hover,
-.list-group-item-warning.list-group-item-action:focus {
+.list-group-item-warning.list-group-item-action:hover, .list-group-item-warning.list-group-item-action:focus {
   color: #664d03;
   background-color: #e6dbb9;
 }
@@ -6773,8 +6472,7 @@ fieldset:disabled .btn {
 }
 
 /* line 10, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_list-group.scss */
-.list-group-item-danger.list-group-item-action:hover,
-.list-group-item-danger.list-group-item-action:focus {
+.list-group-item-danger.list-group-item-action:hover, .list-group-item-danger.list-group-item-action:focus {
   color: #842029;
   background-color: #dfc2c4;
 }
@@ -6793,8 +6491,7 @@ fieldset:disabled .btn {
 }
 
 /* line 10, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_list-group.scss */
-.list-group-item-light.list-group-item-action:hover,
-.list-group-item-light.list-group-item-action:focus {
+.list-group-item-light.list-group-item-action:hover, .list-group-item-light.list-group-item-action:focus {
   color: #636464;
   background-color: #e5e5e5;
 }
@@ -6813,8 +6510,7 @@ fieldset:disabled .btn {
 }
 
 /* line 10, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_list-group.scss */
-.list-group-item-dark.list-group-item-action:hover,
-.list-group-item-dark.list-group-item-action:focus {
+.list-group-item-dark.list-group-item-action:hover, .list-group-item-dark.list-group-item-action:focus {
   color: #141619;
   background-color: #bebebf;
 }
@@ -6833,9 +6529,7 @@ fieldset:disabled .btn {
   height: 1em;
   padding: 0.25em 0.25em;
   color: #000;
-  background: transparent
-    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e")
-    center/1em auto no-repeat;
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
   border: 0;
   border-radius: 0.25rem;
   opacity: 0.5;
@@ -6856,8 +6550,7 @@ fieldset:disabled .btn {
 }
 
 /* line 30, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_close.scss */
-.btn-close:disabled,
-.btn-close.disabled {
+.btn-close:disabled, .btn-close.disabled {
   pointer-events: none;
   user-select: none;
   opacity: 0.25;
@@ -7103,7 +6796,7 @@ fieldset:disabled .btn {
 @media (min-width: 992px) {
   /* line 167, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_modal.scss */
   .modal-lg,
-  .modal-xl {
+.modal-xl {
     max-width: 800px;
   }
 }
@@ -7332,84 +7025,72 @@ fieldset:disabled .btn {
 }
 
 /* line 32, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_tooltip.scss */
-.bs-tooltip-top,
-.bs-tooltip-auto[data-popper-placement^="top"] {
+.bs-tooltip-top, .bs-tooltip-auto[data-popper-placement^="top"] {
   padding: 0.4rem 0;
 }
 
 /* line 35, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_tooltip.scss */
-.bs-tooltip-top .tooltip-arrow,
-.bs-tooltip-auto[data-popper-placement^="top"] .tooltip-arrow {
+.bs-tooltip-top .tooltip-arrow, .bs-tooltip-auto[data-popper-placement^="top"] .tooltip-arrow {
   bottom: 0;
 }
 
 /* line 38, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_tooltip.scss */
-.bs-tooltip-top .tooltip-arrow::before,
-.bs-tooltip-auto[data-popper-placement^="top"] .tooltip-arrow::before {
+.bs-tooltip-top .tooltip-arrow::before, .bs-tooltip-auto[data-popper-placement^="top"] .tooltip-arrow::before {
   top: -1px;
   border-width: 0.4rem 0.4rem 0;
   border-top-color: #000;
 }
 
 /* line 46, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_tooltip.scss */
-.bs-tooltip-end,
-.bs-tooltip-auto[data-popper-placement^="right"] {
+.bs-tooltip-end, .bs-tooltip-auto[data-popper-placement^="right"] {
   padding: 0 0.4rem;
 }
 
 /* line 49, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_tooltip.scss */
-.bs-tooltip-end .tooltip-arrow,
-.bs-tooltip-auto[data-popper-placement^="right"] .tooltip-arrow {
+.bs-tooltip-end .tooltip-arrow, .bs-tooltip-auto[data-popper-placement^="right"] .tooltip-arrow {
   left: 0;
   width: 0.4rem;
   height: 0.8rem;
 }
 
 /* line 54, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_tooltip.scss */
-.bs-tooltip-end .tooltip-arrow::before,
-.bs-tooltip-auto[data-popper-placement^="right"] .tooltip-arrow::before {
+.bs-tooltip-end .tooltip-arrow::before, .bs-tooltip-auto[data-popper-placement^="right"] .tooltip-arrow::before {
   right: -1px;
   border-width: 0.4rem 0.4rem 0.4rem 0;
   border-right-color: #000;
 }
 
 /* line 62, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_tooltip.scss */
-.bs-tooltip-bottom,
-.bs-tooltip-auto[data-popper-placement^="bottom"] {
+.bs-tooltip-bottom, .bs-tooltip-auto[data-popper-placement^="bottom"] {
   padding: 0.4rem 0;
 }
 
 /* line 65, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_tooltip.scss */
-.bs-tooltip-bottom .tooltip-arrow,
-.bs-tooltip-auto[data-popper-placement^="bottom"] .tooltip-arrow {
+.bs-tooltip-bottom .tooltip-arrow, .bs-tooltip-auto[data-popper-placement^="bottom"] .tooltip-arrow {
   top: 0;
 }
 
 /* line 68, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_tooltip.scss */
-.bs-tooltip-bottom .tooltip-arrow::before,
-.bs-tooltip-auto[data-popper-placement^="bottom"] .tooltip-arrow::before {
+.bs-tooltip-bottom .tooltip-arrow::before, .bs-tooltip-auto[data-popper-placement^="bottom"] .tooltip-arrow::before {
   bottom: -1px;
   border-width: 0 0.4rem 0.4rem;
   border-bottom-color: #000;
 }
 
 /* line 76, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_tooltip.scss */
-.bs-tooltip-start,
-.bs-tooltip-auto[data-popper-placement^="left"] {
+.bs-tooltip-start, .bs-tooltip-auto[data-popper-placement^="left"] {
   padding: 0 0.4rem;
 }
 
 /* line 79, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_tooltip.scss */
-.bs-tooltip-start .tooltip-arrow,
-.bs-tooltip-auto[data-popper-placement^="left"] .tooltip-arrow {
+.bs-tooltip-start .tooltip-arrow, .bs-tooltip-auto[data-popper-placement^="left"] .tooltip-arrow {
   right: 0;
   width: 0.4rem;
   height: 0.8rem;
 }
 
 /* line 84, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_tooltip.scss */
-.bs-tooltip-start .tooltip-arrow::before,
-.bs-tooltip-auto[data-popper-placement^="left"] .tooltip-arrow::before {
+.bs-tooltip-start .tooltip-arrow::before, .bs-tooltip-auto[data-popper-placement^="left"] .tooltip-arrow::before {
   left: -1px;
   border-width: 0.4rem 0 0.4rem 0.4rem;
   border-left-color: #000;
@@ -7464,8 +7145,7 @@ fieldset:disabled .btn {
 }
 
 /* line 26, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_popover.scss */
-.popover .popover-arrow::before,
-.popover .popover-arrow::after {
+.popover .popover-arrow::before, .popover .popover-arrow::after {
   position: absolute;
   display: block;
   content: "";
@@ -7474,76 +7154,66 @@ fieldset:disabled .btn {
 }
 
 /* line 38, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_popover.scss */
-.bs-popover-top > .popover-arrow,
-.bs-popover-auto[data-popper-placement^="top"] > .popover-arrow {
+.bs-popover-top > .popover-arrow, .bs-popover-auto[data-popper-placement^="top"] > .popover-arrow {
   bottom: calc(-0.5rem - 1px);
 }
 
 /* line 41, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_popover.scss */
-.bs-popover-top > .popover-arrow::before,
-.bs-popover-auto[data-popper-placement^="top"] > .popover-arrow::before {
+.bs-popover-top > .popover-arrow::before, .bs-popover-auto[data-popper-placement^="top"] > .popover-arrow::before {
   bottom: 0;
   border-width: 0.5rem 0.5rem 0;
   border-top-color: rgba(0, 0, 0, 0.25);
 }
 
 /* line 47, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_popover.scss */
-.bs-popover-top > .popover-arrow::after,
-.bs-popover-auto[data-popper-placement^="top"] > .popover-arrow::after {
+.bs-popover-top > .popover-arrow::after, .bs-popover-auto[data-popper-placement^="top"] > .popover-arrow::after {
   bottom: 1px;
   border-width: 0.5rem 0.5rem 0;
   border-top-color: #fff;
 }
 
 /* line 56, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_popover.scss */
-.bs-popover-end > .popover-arrow,
-.bs-popover-auto[data-popper-placement^="right"] > .popover-arrow {
+.bs-popover-end > .popover-arrow, .bs-popover-auto[data-popper-placement^="right"] > .popover-arrow {
   left: calc(-0.5rem - 1px);
   width: 0.5rem;
   height: 1rem;
 }
 
 /* line 61, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_popover.scss */
-.bs-popover-end > .popover-arrow::before,
-.bs-popover-auto[data-popper-placement^="right"] > .popover-arrow::before {
+.bs-popover-end > .popover-arrow::before, .bs-popover-auto[data-popper-placement^="right"] > .popover-arrow::before {
   left: 0;
   border-width: 0.5rem 0.5rem 0.5rem 0;
   border-right-color: rgba(0, 0, 0, 0.25);
 }
 
 /* line 67, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_popover.scss */
-.bs-popover-end > .popover-arrow::after,
-.bs-popover-auto[data-popper-placement^="right"] > .popover-arrow::after {
+.bs-popover-end > .popover-arrow::after, .bs-popover-auto[data-popper-placement^="right"] > .popover-arrow::after {
   left: 1px;
   border-width: 0.5rem 0.5rem 0.5rem 0;
   border-right-color: #fff;
 }
 
 /* line 76, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_popover.scss */
-.bs-popover-bottom > .popover-arrow,
-.bs-popover-auto[data-popper-placement^="bottom"] > .popover-arrow {
+.bs-popover-bottom > .popover-arrow, .bs-popover-auto[data-popper-placement^="bottom"] > .popover-arrow {
   top: calc(-0.5rem - 1px);
 }
 
 /* line 79, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_popover.scss */
-.bs-popover-bottom > .popover-arrow::before,
-.bs-popover-auto[data-popper-placement^="bottom"] > .popover-arrow::before {
+.bs-popover-bottom > .popover-arrow::before, .bs-popover-auto[data-popper-placement^="bottom"] > .popover-arrow::before {
   top: 0;
   border-width: 0 0.5rem 0.5rem 0.5rem;
   border-bottom-color: rgba(0, 0, 0, 0.25);
 }
 
 /* line 85, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_popover.scss */
-.bs-popover-bottom > .popover-arrow::after,
-.bs-popover-auto[data-popper-placement^="bottom"] > .popover-arrow::after {
+.bs-popover-bottom > .popover-arrow::after, .bs-popover-auto[data-popper-placement^="bottom"] > .popover-arrow::after {
   top: 1px;
   border-width: 0 0.5rem 0.5rem 0.5rem;
   border-bottom-color: #fff;
 }
 
 /* line 93, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_popover.scss */
-.bs-popover-bottom .popover-header::before,
-.bs-popover-auto[data-popper-placement^="bottom"] .popover-header::before {
+.bs-popover-bottom .popover-header::before, .bs-popover-auto[data-popper-placement^="bottom"] .popover-header::before {
   position: absolute;
   top: 0;
   left: 50%;
@@ -7555,24 +7225,21 @@ fieldset:disabled .btn {
 }
 
 /* line 106, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_popover.scss */
-.bs-popover-start > .popover-arrow,
-.bs-popover-auto[data-popper-placement^="left"] > .popover-arrow {
+.bs-popover-start > .popover-arrow, .bs-popover-auto[data-popper-placement^="left"] > .popover-arrow {
   right: calc(-0.5rem - 1px);
   width: 0.5rem;
   height: 1rem;
 }
 
 /* line 111, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_popover.scss */
-.bs-popover-start > .popover-arrow::before,
-.bs-popover-auto[data-popper-placement^="left"] > .popover-arrow::before {
+.bs-popover-start > .popover-arrow::before, .bs-popover-auto[data-popper-placement^="left"] > .popover-arrow::before {
   right: 0;
   border-width: 0.5rem 0 0.5rem 0.5rem;
   border-left-color: rgba(0, 0, 0, 0.25);
 }
 
 /* line 117, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_popover.scss */
-.bs-popover-start > .popover-arrow::after,
-.bs-popover-auto[data-popper-placement^="left"] > .popover-arrow::after {
+.bs-popover-start > .popover-arrow::after, .bs-popover-auto[data-popper-placement^="left"] > .popover-arrow::after {
   right: 1px;
   border-width: 0.5rem 0 0.5rem 0.5rem;
   border-left-color: #fff;
@@ -7689,7 +7356,7 @@ fieldset:disabled .btn {
 @media (prefers-reduced-motion: reduce) {
   /* line 77, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_carousel.scss */
   .carousel-fade .active.carousel-item-start,
-  .carousel-fade .active.carousel-item-end {
+.carousel-fade .active.carousel-item-end {
     transition: none;
   }
 }
@@ -7717,14 +7384,13 @@ fieldset:disabled .btn {
 @media (prefers-reduced-motion: reduce) {
   /* line 90, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_carousel.scss */
   .carousel-control-prev,
-  .carousel-control-next {
+.carousel-control-next {
     transition: none;
   }
 }
 
 /* line 110, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_carousel.scss */
-.carousel-control-prev:hover,
-.carousel-control-prev:focus,
+.carousel-control-prev:hover, .carousel-control-prev:focus,
 .carousel-control-next:hover,
 .carousel-control-next:focus {
   color: #fff;
@@ -7904,7 +7570,7 @@ fieldset:disabled .btn {
 @media (prefers-reduced-motion: reduce) {
   /* line 64, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_spinners.scss */
   .spinner-border,
-  .spinner-grow {
+.spinner-grow {
     animation-duration: 1.5s;
   }
 }
@@ -8043,12 +7709,12 @@ fieldset:disabled .btn {
 
 /* line 16, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_placeholders.scss */
 .placeholder-xs {
-  min-height: 0.6em;
+  min-height: .6em;
 }
 
 /* line 20, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_placeholders.scss */
 .placeholder-sm {
-  min-height: 0.8em;
+  min-height: .8em;
 }
 
 /* line 24, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_placeholders.scss */
@@ -8069,12 +7735,7 @@ fieldset:disabled .btn {
 
 /* line 41, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/_placeholders.scss */
 .placeholder-wave {
-  mask-image: linear-gradient(
-    130deg,
-    #000 55%,
-    rgba(0, 0, 0, 0.8) 75%,
-    #000 95%
-  );
+  mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);
   mask-size: 200% 100%;
   animation: placeholder-wave 2s linear infinite;
 }
@@ -8098,8 +7759,7 @@ fieldset:disabled .btn {
 }
 
 /* line 6, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/helpers/_colored-links.scss */
-.link-primary:hover,
-.link-primary:focus {
+.link-primary:hover, .link-primary:focus {
   color: #0a58ca;
 }
 
@@ -8109,8 +7769,7 @@ fieldset:disabled .btn {
 }
 
 /* line 6, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/helpers/_colored-links.scss */
-.link-secondary:hover,
-.link-secondary:focus {
+.link-secondary:hover, .link-secondary:focus {
   color: #565e64;
 }
 
@@ -8120,8 +7779,7 @@ fieldset:disabled .btn {
 }
 
 /* line 6, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/helpers/_colored-links.scss */
-.link-success:hover,
-.link-success:focus {
+.link-success:hover, .link-success:focus {
   color: #146c43;
 }
 
@@ -8131,8 +7789,7 @@ fieldset:disabled .btn {
 }
 
 /* line 6, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/helpers/_colored-links.scss */
-.link-info:hover,
-.link-info:focus {
+.link-info:hover, .link-info:focus {
   color: #3dd5f3;
 }
 
@@ -8142,8 +7799,7 @@ fieldset:disabled .btn {
 }
 
 /* line 6, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/helpers/_colored-links.scss */
-.link-warning:hover,
-.link-warning:focus {
+.link-warning:hover, .link-warning:focus {
   color: #ffcd39;
 }
 
@@ -8153,8 +7809,7 @@ fieldset:disabled .btn {
 }
 
 /* line 6, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/helpers/_colored-links.scss */
-.link-danger:hover,
-.link-danger:focus {
+.link-danger:hover, .link-danger:focus {
   color: #b02a37;
 }
 
@@ -8164,8 +7819,7 @@ fieldset:disabled .btn {
 }
 
 /* line 6, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/helpers/_colored-links.scss */
-.link-light:hover,
-.link-light:focus {
+.link-light:hover, .link-light:focus {
   color: #f9fafb;
 }
 
@@ -8175,8 +7829,7 @@ fieldset:disabled .btn {
 }
 
 /* line 6, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/helpers/_colored-links.scss */
-.link-dark:hover,
-.link-dark:focus {
+.link-dark:hover, .link-dark:focus {
   color: #1a1e21;
 }
 
@@ -9802,28 +9455,19 @@ fieldset:disabled .btn {
 /* line 64, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_utilities.scss */
 .bg-primary {
   --bs-bg-opacity: 1;
-  background-color: rgba(
-    var(--bs-primary-rgb),
-    var(--bs-bg-opacity)
-  ) !important;
+  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
 
 /* line 64, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_utilities.scss */
 .bg-secondary {
   --bs-bg-opacity: 1;
-  background-color: rgba(
-    var(--bs-secondary-rgb),
-    var(--bs-bg-opacity)
-  ) !important;
+  background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
 }
 
 /* line 64, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_utilities.scss */
 .bg-success {
   --bs-bg-opacity: 1;
-  background-color: rgba(
-    var(--bs-success-rgb),
-    var(--bs-bg-opacity)
-  ) !important;
+  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
 }
 
 /* line 64, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_utilities.scss */
@@ -9835,10 +9479,7 @@ fieldset:disabled .btn {
 /* line 64, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_utilities.scss */
 .bg-warning {
   --bs-bg-opacity: 1;
-  background-color: rgba(
-    var(--bs-warning-rgb),
-    var(--bs-bg-opacity)
-  ) !important;
+  background-color: rgba(var(--bs-warning-rgb), var(--bs-bg-opacity)) !important;
 }
 
 /* line 64, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_utilities.scss */
@@ -9874,10 +9515,7 @@ fieldset:disabled .btn {
 /* line 64, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_utilities.scss */
 .bg-body {
   --bs-bg-opacity: 1;
-  background-color: rgba(
-    var(--bs-body-bg-rgb),
-    var(--bs-bg-opacity)
-  ) !important;
+  background-color: rgba(var(--bs-body-bg-rgb), var(--bs-bg-opacity)) !important;
 }
 
 /* line 64, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/bootstrap/mixins/_utilities.scss */
@@ -13360,10 +12998,8 @@ fieldset:disabled .btn {
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   background: #fff;
-  -webkit-box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6,
-    0 -1px 0 #e6e6e6, 0 3px 13px rgba(0, 0, 0, 0.08);
-  box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6,
-    0 -1px 0 #e6e6e6, 0 3px 13px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6, 0 -1px 0 #e6e6e6, 0 3px 13px rgba(0, 0, 0, 0.08);
+  box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6, 0 -1px 0 #e6e6e6, 0 3px 13px rgba(0, 0, 0, 0.08);
 }
 
 /* line 25, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/flatpickr.css */
@@ -13406,19 +13042,13 @@ fieldset:disabled .btn {
 }
 
 /* line 52, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/flatpickr.css */
-.flatpickr-calendar.multiMonth
-  .flatpickr-days
-  .dayContainer:nth-child(n + 1)
-  .flatpickr-day.inRange:nth-child(7n + 7) {
+.flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+1) .flatpickr-day.inRange:nth-child(7n+7) {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
 
 /* line 56, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/flatpickr.css */
-.flatpickr-calendar.multiMonth
-  .flatpickr-days
-  .dayContainer:nth-child(n + 2)
-  .flatpickr-day.inRange:nth-child(7n + 1) {
+.flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+2) .flatpickr-day.inRange:nth-child(7n+1) {
   -webkit-box-shadow: -2px 0 0 #e6e6e6, 5px 0 0 #e6e6e6;
   box-shadow: -2px 0 0 #e6e6e6, 5px 0 0 #e6e6e6;
 }
@@ -13454,7 +13084,7 @@ fieldset:disabled .btn {
   display: block;
   pointer-events: none;
   border: solid transparent;
-  content: "";
+  content: '';
   height: 0;
   width: 0;
   left: 22px;
@@ -13881,9 +13511,7 @@ fieldset:disabled .btn {
 }
 
 /* line 403, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/flatpickr.css */
-.flatpickr-current-month
-  .flatpickr-monthDropdown-months
-  .flatpickr-monthDropdown-month {
+.flatpickr-current-month .flatpickr-monthDropdown-months .flatpickr-monthDropdown-month {
   background-color: transparent;
   outline: none;
   padding: 0;
@@ -14093,9 +13721,9 @@ span.flatpickr-weekday {
 }
 
 /* line 581, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/flatpickr.css */
-.flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n + 1)),
-.flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n + 1)),
-.flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n + 1)) {
+.flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),
+.flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)),
+.flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {
   -webkit-box-shadow: -10px 0 0 #569ff7;
   box-shadow: -10px 0 0 #569ff7;
 }
@@ -14563,12 +14191,11 @@ iframe.wysihtml5-sandbox,
  * Copyright 2022 Fonticons, Inc.
  */
 @font-face {
-  font-family: "Font Awesome 6 Free";
+  font-family: 'Font Awesome 6 Free';
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url("/rails_admin/fa-solid-900.woff2") format("woff2"),
-    url("/rails_admin/fa-solid-900.ttf") format("truetype");
+  src: url("/rails_admin/fa-solid-900.woff2") format("woff2"), url("/rails_admin/fa-solid-900.ttf") format("truetype");
 }
 
 /* line 17, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/font-awesome.scss */
@@ -14752,10 +14379,7 @@ iframe.wysihtml5-sandbox,
   animation-direction: var(--fa-animation-direction, normal);
   -webkit-animation-duration: var(--fa-animation-duration, 1s);
   animation-duration: var(--fa-animation-duration, 1s);
-  -webkit-animation-iteration-count: var(
-    --fa-animation-iteration-count,
-    infinite
-  );
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
   animation-iteration-count: var(--fa-animation-iteration-count, infinite);
   -webkit-animation-timing-function: var(--fa-animation-timing, ease-in-out);
   animation-timing-function: var(--fa-animation-timing, ease-in-out);
@@ -14771,19 +14395,10 @@ iframe.wysihtml5-sandbox,
   animation-direction: var(--fa-animation-direction, normal);
   -webkit-animation-duration: var(--fa-animation-duration, 1s);
   animation-duration: var(--fa-animation-duration, 1s);
-  -webkit-animation-iteration-count: var(
-    --fa-animation-iteration-count,
-    infinite
-  );
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
   animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-  -webkit-animation-timing-function: var(
-    --fa-animation-timing,
-    cubic-bezier(0.28, 0.84, 0.42, 1)
-  );
-  animation-timing-function: var(
-    --fa-animation-timing,
-    cubic-bezier(0.28, 0.84, 0.42, 1)
-  );
+  -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
 }
 
 /* line 165, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/font-awesome.scss */
@@ -14796,19 +14411,10 @@ iframe.wysihtml5-sandbox,
   animation-direction: var(--fa-animation-direction, normal);
   -webkit-animation-duration: var(--fa-animation-duration, 1s);
   animation-duration: var(--fa-animation-duration, 1s);
-  -webkit-animation-iteration-count: var(
-    --fa-animation-iteration-count,
-    infinite
-  );
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
   animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-  -webkit-animation-timing-function: var(
-    --fa-animation-timing,
-    cubic-bezier(0.4, 0, 0.6, 1)
-  );
-  animation-timing-function: var(
-    --fa-animation-timing,
-    cubic-bezier(0.4, 0, 0.6, 1)
-  );
+  -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
 }
 
 /* line 179, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/font-awesome.scss */
@@ -14821,19 +14427,10 @@ iframe.wysihtml5-sandbox,
   animation-direction: var(--fa-animation-direction, normal);
   -webkit-animation-duration: var(--fa-animation-duration, 1s);
   animation-duration: var(--fa-animation-duration, 1s);
-  -webkit-animation-iteration-count: var(
-    --fa-animation-iteration-count,
-    infinite
-  );
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
   animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-  -webkit-animation-timing-function: var(
-    --fa-animation-timing,
-    cubic-bezier(0.4, 0, 0.6, 1)
-  );
-  animation-timing-function: var(
-    --fa-animation-timing,
-    cubic-bezier(0.4, 0, 0.6, 1)
-  );
+  -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
 }
 
 /* line 193, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/font-awesome.scss */
@@ -14846,10 +14443,7 @@ iframe.wysihtml5-sandbox,
   animation-direction: var(--fa-animation-direction, normal);
   -webkit-animation-duration: var(--fa-animation-duration, 1s);
   animation-duration: var(--fa-animation-duration, 1s);
-  -webkit-animation-iteration-count: var(
-    --fa-animation-iteration-count,
-    infinite
-  );
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
   animation-iteration-count: var(--fa-animation-iteration-count, infinite);
   -webkit-animation-timing-function: var(--fa-animation-timing, ease-in-out);
   animation-timing-function: var(--fa-animation-timing, ease-in-out);
@@ -14865,10 +14459,7 @@ iframe.wysihtml5-sandbox,
   animation-direction: var(--fa-animation-direction, normal);
   -webkit-animation-duration: var(--fa-animation-duration, 1s);
   animation-duration: var(--fa-animation-duration, 1s);
-  -webkit-animation-iteration-count: var(
-    --fa-animation-iteration-count,
-    infinite
-  );
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
   animation-iteration-count: var(--fa-animation-iteration-count, infinite);
   -webkit-animation-timing-function: var(--fa-animation-timing, linear);
   animation-timing-function: var(--fa-animation-timing, linear);
@@ -14884,10 +14475,7 @@ iframe.wysihtml5-sandbox,
   animation-direction: var(--fa-animation-direction, normal);
   -webkit-animation-duration: var(--fa-animation-duration, 2s);
   animation-duration: var(--fa-animation-duration, 2s);
-  -webkit-animation-iteration-count: var(
-    --fa-animation-iteration-count,
-    infinite
-  );
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
   animation-iteration-count: var(--fa-animation-iteration-count, infinite);
   -webkit-animation-timing-function: var(--fa-animation-timing, linear);
   animation-timing-function: var(--fa-animation-timing, linear);
@@ -14907,10 +14495,7 @@ iframe.wysihtml5-sandbox,
   animation-direction: var(--fa-animation-direction, normal);
   -webkit-animation-duration: var(--fa-animation-duration, 1s);
   animation-duration: var(--fa-animation-duration, 1s);
-  -webkit-animation-iteration-count: var(
-    --fa-animation-iteration-count,
-    infinite
-  );
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
   animation-iteration-count: var(--fa-animation-iteration-count, infinite);
   -webkit-animation-timing-function: var(--fa-animation-timing, steps(8));
   animation-timing-function: var(--fa-animation-timing, steps(8));
@@ -14919,14 +14504,14 @@ iframe.wysihtml5-sandbox,
 @media (prefers-reduced-motion: reduce) {
   /* line 252, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/vendor/assets/stylesheets/rails_admin/font-awesome.scss */
   .fa-beat,
-  .fa-bounce,
-  .fa-fade,
-  .fa-beat-fade,
-  .fa-flip,
-  .fa-pulse,
-  .fa-shake,
-  .fa-spin,
-  .fa-spin-pulse {
+.fa-bounce,
+.fa-fade,
+.fa-beat-fade,
+.fa-flip,
+.fa-pulse,
+.fa-shake,
+.fa-spin,
+.fa-spin-pulse {
     -webkit-animation-delay: -1ms;
     animation-delay: -1ms;
     -webkit-animation-duration: 1ms;
@@ -14939,8 +14524,7 @@ iframe.wysihtml5-sandbox,
 }
 
 @-webkit-keyframes fa-beat {
-  0%,
-  90% {
+  0%, 90% {
     -webkit-transform: scale(1);
     transform: scale(1);
   }
@@ -14951,8 +14535,7 @@ iframe.wysihtml5-sandbox,
 }
 
 @keyframes fa-beat {
-  0%,
-  90% {
+  0%, 90% {
     -webkit-transform: scale(1);
     transform: scale(1);
   }
@@ -14968,44 +14551,19 @@ iframe.wysihtml5-sandbox,
     transform: scale(1, 1) translateY(0);
   }
   10% {
-    -webkit-transform: scale(
-        var(--fa-bounce-start-scale-x, 1.1),
-        var(--fa-bounce-start-scale-y, 0.9)
-      )
-      translateY(0);
-    transform: scale(
-        var(--fa-bounce-start-scale-x, 1.1),
-        var(--fa-bounce-start-scale-y, 0.9)
-      )
-      translateY(0);
+    -webkit-transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+    transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
   }
   30% {
-    -webkit-transform: scale(
-        var(--fa-bounce-jump-scale-x, 0.9),
-        var(--fa-bounce-jump-scale-y, 1.1)
-      )
-      translateY(var(--fa-bounce-height, -0.5em));
-    transform: scale(
-        var(--fa-bounce-jump-scale-x, 0.9),
-        var(--fa-bounce-jump-scale-y, 1.1)
-      )
-      translateY(var(--fa-bounce-height, -0.5em));
+    -webkit-transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+    transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
   }
   50% {
-    -webkit-transform: scale(
-        var(--fa-bounce-land-scale-x, 1.05),
-        var(--fa-bounce-land-scale-y, 0.95)
-      )
-      translateY(0);
-    transform: scale(
-        var(--fa-bounce-land-scale-x, 1.05),
-        var(--fa-bounce-land-scale-y, 0.95)
-      )
-      translateY(0);
+    -webkit-transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+    transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
   }
   57% {
-    -webkit-transform: scale(1, 1)
-      translateY(var(--fa-bounce-rebound, -0.125em));
+    -webkit-transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
     transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
   }
   64% {
@@ -15024,44 +14582,19 @@ iframe.wysihtml5-sandbox,
     transform: scale(1, 1) translateY(0);
   }
   10% {
-    -webkit-transform: scale(
-        var(--fa-bounce-start-scale-x, 1.1),
-        var(--fa-bounce-start-scale-y, 0.9)
-      )
-      translateY(0);
-    transform: scale(
-        var(--fa-bounce-start-scale-x, 1.1),
-        var(--fa-bounce-start-scale-y, 0.9)
-      )
-      translateY(0);
+    -webkit-transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+    transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
   }
   30% {
-    -webkit-transform: scale(
-        var(--fa-bounce-jump-scale-x, 0.9),
-        var(--fa-bounce-jump-scale-y, 1.1)
-      )
-      translateY(var(--fa-bounce-height, -0.5em));
-    transform: scale(
-        var(--fa-bounce-jump-scale-x, 0.9),
-        var(--fa-bounce-jump-scale-y, 1.1)
-      )
-      translateY(var(--fa-bounce-height, -0.5em));
+    -webkit-transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+    transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
   }
   50% {
-    -webkit-transform: scale(
-        var(--fa-bounce-land-scale-x, 1.05),
-        var(--fa-bounce-land-scale-y, 0.95)
-      )
-      translateY(0);
-    transform: scale(
-        var(--fa-bounce-land-scale-x, 1.05),
-        var(--fa-bounce-land-scale-y, 0.95)
-      )
-      translateY(0);
+    -webkit-transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+    transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
   }
   57% {
-    -webkit-transform: scale(1, 1)
-      translateY(var(--fa-bounce-rebound, -0.125em));
+    -webkit-transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
     transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
   }
   64% {
@@ -15087,8 +14620,7 @@ iframe.wysihtml5-sandbox,
 }
 
 @-webkit-keyframes fa-beat-fade {
-  0%,
-  100% {
+  0%, 100% {
     opacity: var(--fa-beat-fade-opacity, 0.4);
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -15101,8 +14633,7 @@ iframe.wysihtml5-sandbox,
 }
 
 @keyframes fa-beat-fade {
-  0%,
-  100% {
+  0%, 100% {
     opacity: var(--fa-beat-fade-opacity, 0.4);
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -15116,35 +14647,15 @@ iframe.wysihtml5-sandbox,
 
 @-webkit-keyframes fa-flip {
   50% {
-    -webkit-transform: rotate3d(
-      var(--fa-flip-x, 0),
-      var(--fa-flip-y, 1),
-      var(--fa-flip-z, 0),
-      var(--fa-flip-angle, -180deg)
-    );
-    transform: rotate3d(
-      var(--fa-flip-x, 0),
-      var(--fa-flip-y, 1),
-      var(--fa-flip-z, 0),
-      var(--fa-flip-angle, -180deg)
-    );
+    -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
   }
 }
 
 @keyframes fa-flip {
   50% {
-    -webkit-transform: rotate3d(
-      var(--fa-flip-x, 0),
-      var(--fa-flip-y, 1),
-      var(--fa-flip-z, 0),
-      var(--fa-flip-angle, -180deg)
-    );
-    transform: rotate3d(
-      var(--fa-flip-x, 0),
-      var(--fa-flip-y, 1),
-      var(--fa-flip-z, 0),
-      var(--fa-flip-angle, -180deg)
-    );
+    -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
   }
 }
 
@@ -15157,13 +14668,11 @@ iframe.wysihtml5-sandbox,
     -webkit-transform: rotate(15deg);
     transform: rotate(15deg);
   }
-  8%,
-  24% {
+  8%, 24% {
     -webkit-transform: rotate(-18deg);
     transform: rotate(-18deg);
   }
-  12%,
-  28% {
+  12%, 28% {
     -webkit-transform: rotate(18deg);
     transform: rotate(18deg);
   }
@@ -15183,8 +14692,7 @@ iframe.wysihtml5-sandbox,
     -webkit-transform: rotate(12deg);
     transform: rotate(12deg);
   }
-  40%,
-  100% {
+  40%, 100% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
@@ -15199,13 +14707,11 @@ iframe.wysihtml5-sandbox,
     -webkit-transform: rotate(15deg);
     transform: rotate(15deg);
   }
-  8%,
-  24% {
+  8%, 24% {
     -webkit-transform: rotate(-18deg);
     transform: rotate(-18deg);
   }
-  12%,
-  28% {
+  12%, 28% {
     -webkit-transform: rotate(18deg);
     transform: rotate(18deg);
   }
@@ -15225,8 +14731,7 @@ iframe.wysihtml5-sandbox,
     -webkit-transform: rotate(12deg);
     transform: rotate(12deg);
   }
-  40%,
-  100% {
+  40%, 100% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
@@ -25198,8 +24703,7 @@ body.rails_admin form.main .tab-content .tab-pane .form-group {
 }
 
 /* line 95, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
-body.rails_admin form.main .tab-content .tab-pane > .remove_nested_fields,
-body.rails_admin form.main .tab-content .tab-pane > .remove_nested_one_fields {
+body.rails_admin form.main .tab-content .tab-pane > .remove_nested_fields, body.rails_admin form.main .tab-content .tab-pane > .remove_nested_one_fields {
   display: block;
   opacity: 0;
   position: absolute;
@@ -25209,17 +24713,7 @@ body.rails_admin form.main .tab-content .tab-pane > .remove_nested_one_fields {
 }
 
 /* line 104, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
-body.rails_admin form.main .tab-content .tab-pane:hover > .remove_nested_fields,
-body.rails_admin
-  form.main
-  .tab-content
-  .tab-pane:hover
-  > .remove_nested_one_fields,
-body.rails_admin
-  form.main
-  .tab-content
-  .tab-pane
-  > .remove_nested_one_fields.active {
+body.rails_admin form.main .tab-content .tab-pane:hover > .remove_nested_fields, body.rails_admin form.main .tab-content .tab-pane:hover > .remove_nested_one_fields, body.rails_admin form.main .tab-content .tab-pane > .remove_nested_one_fields.active {
   opacity: 1;
 }
 
@@ -25242,38 +24736,19 @@ body.rails_admin form.main .tab-content .tab-content .tab-content .tab-pane {
 }
 
 /* line 127, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
-body.rails_admin
-  form.main
-  .tab-content
-  .tab-content
-  .tab-content
-  .tab-pane
-  .form-group {
+body.rails_admin form.main .tab-content .tab-content .tab-content .tab-pane .form-group {
   margin-left: -25px;
   /* Balance border-left */
 }
 
 /* line 133, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
-body.rails_admin
-  form.main
-  .tab-content
-  .tab-content
-  .tab-content
-  .tab-content
-  .tab-pane {
+body.rails_admin form.main .tab-content .tab-content .tab-content .tab-content .tab-pane {
   border-color: #84e8ba;
   margin-left: 30px;
 }
 
 /* line 137, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
-body.rails_admin
-  form.main
-  .tab-content
-  .tab-content
-  .tab-content
-  .tab-content
-  .tab-pane
-  .form-group {
+body.rails_admin form.main .tab-content .tab-content .tab-content .tab-content .tab-pane .form-group {
   margin-left: -35px;
   /* Balance border-left */
 }
@@ -25471,8 +24946,7 @@ body.rails_admin #sidescroll .table-striped > thead > tr > th {
 }
 
 /* line 314, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
-body.rails_admin #sidescroll .table .sticky.headerSortUp,
-body.rails_admin #sidescroll .table .sticky.headerSortDown,
+body.rails_admin #sidescroll .table .sticky.headerSortUp, body.rails_admin #sidescroll .table .sticky.headerSortDown,
 body.rails_admin #sidescroll .table .last.headerSortUp,
 body.rails_admin #sidescroll .table .last.headerSortDown {
   background-color: #e2eff6;
@@ -25786,7 +25260,7 @@ trix-toolbar .trix-input--dialog {
 
 /* line 189, ../../../.rvm/gems/ruby-3.4.4/gems/actiontext-8.0.2/app/assets/stylesheets/trix.css */
 trix-toolbar .trix-input--dialog.validate:invalid {
-  box-shadow: #f00 0px 0px 1.5px 1px;
+  box-shadow: #F00 0px 0px 1.5px 1px;
 }
 
 /* line 192, ../../../.rvm/gems/ruby-3.4.4/gems/actiontext-8.0.2/app/assets/stylesheets/trix.css */
@@ -25827,22 +25301,19 @@ trix-editor [data-trix-mutable]:not(.attachment__caption-editor) {
 }
 
 /* line 219, ../../../.rvm/gems/ruby-3.4.4/gems/actiontext-8.0.2/app/assets/stylesheets/trix.css */
-trix-editor [data-trix-mutable] ::-moz-selection,
-trix-editor [data-trix-mutable]::-moz-selection,
+trix-editor [data-trix-mutable] ::-moz-selection, trix-editor [data-trix-mutable]::-moz-selection,
 trix-editor [data-trix-cursor-target]::-moz-selection {
   background: none;
 }
 
 /* line 223, ../../../.rvm/gems/ruby-3.4.4/gems/actiontext-8.0.2/app/assets/stylesheets/trix.css */
-trix-editor [data-trix-mutable] ::selection,
-trix-editor [data-trix-mutable]::selection,
+trix-editor [data-trix-mutable] ::selection, trix-editor [data-trix-mutable]::selection,
 trix-editor [data-trix-cursor-target]::selection {
   background: none;
 }
 
 /* line 228, ../../../.rvm/gems/ruby-3.4.4/gems/actiontext-8.0.2/app/assets/stylesheets/trix.css */
-trix-editor
-  .attachment__caption-editor[data-trix-mutable]:focus::-moz-selection {
+trix-editor .attachment__caption-editor[data-trix-mutable]:focus::-moz-selection {
   background: highlight;
 }
 
@@ -26048,8 +25519,7 @@ trix-editor .attachment__metadata .attachment__size {
 }
 
 /* line 384, ../../../.rvm/gems/ruby-3.4.4/gems/actiontext-8.0.2/app/assets/stylesheets/trix.css */
-.trix-content h1,
-.trix-content .h1 {
+.trix-content h1, .trix-content .h1 {
   font-size: 1.2em;
   line-height: 1.2;
 }
@@ -26063,8 +25533,8 @@ trix-editor .attachment__metadata .attachment__size {
 }
 
 /* line 394, ../../../.rvm/gems/ruby-3.4.4/gems/actiontext-8.0.2/app/assets/stylesheets/trix.css */
-.trix-content [dir="rtl"] blockquote,
-.trix-content blockquote[dir="rtl"] {
+.trix-content [dir=rtl] blockquote,
+.trix-content blockquote[dir=rtl] {
   border-width: 0;
   border-right-width: 0.3em;
   margin-right: 0.3em;
@@ -26077,7 +25547,7 @@ trix-editor .attachment__metadata .attachment__size {
 }
 
 /* line 404, ../../../.rvm/gems/ruby-3.4.4/gems/actiontext-8.0.2/app/assets/stylesheets/trix.css */
-.trix-content [dir="rtl"] li {
+.trix-content [dir=rtl] li {
   margin-right: 1em;
 }
 
@@ -26114,8 +25584,7 @@ trix-editor .attachment__metadata .attachment__size {
 }
 
 /* line 431, ../../../.rvm/gems/ruby-3.4.4/gems/actiontext-8.0.2/app/assets/stylesheets/trix.css */
-.trix-content .attachment a:hover,
-.trix-content .attachment a:visited:hover {
+.trix-content .attachment a:hover, .trix-content .attachment a:visited:hover {
   color: inherit;
 }
 
@@ -26125,10 +25594,7 @@ trix-editor .attachment__metadata .attachment__size {
 }
 
 /* line 437, ../../../.rvm/gems/ruby-3.4.4/gems/actiontext-8.0.2/app/assets/stylesheets/trix.css */
-.trix-content
-  .attachment__caption
-  .attachment__name
-  + .attachment__size::before {
+.trix-content .attachment__caption .attachment__name + .attachment__size::before {
   content: " •";
 }
 
@@ -26170,8 +25636,7 @@ trix-editor .attachment__metadata .attachment__size {
 }
 
 /* line 467, ../../../.rvm/gems/ruby-3.4.4/gems/actiontext-8.0.2/app/assets/stylesheets/trix.css */
-.trix-content .attachment-gallery.attachment-gallery--2 .attachment,
-.trix-content .attachment-gallery.attachment-gallery--4 .attachment {
+.trix-content .attachment-gallery.attachment-gallery--2 .attachment, .trix-content .attachment-gallery.attachment-gallery--4 .attachment {
   flex-basis: 50%;
   max-width: 50%;
 }

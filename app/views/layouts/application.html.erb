@@ -18,14 +18,13 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag "bootstrap.min", "data-turbo-track": "reload" %>
+    <%# Bootstrap 5 with custom styling %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "forms", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "print_pricings", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "user_profiles", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "moab_theme", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <%# Google AdSense %>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5257142454834240"
+            crossorigin="anonymous"></script>
 </head>
 
 <body class="<%= content_for(:body_class) %>">
@@ -34,50 +33,54 @@
         <%= render "layouts/flash" %>
     </div>
 
-    <div class="container">
-        <header class="main-header">
-            <nav class="main-nav">
-                <%= link_to t('nav.brand'), root_path, class: "nav-brand" %>
-                <div class="nav-links">
-                    <% if user_signed_in? %>
-                    <%= link_to t('nav.new_pricing'), new_print_pricing_path, class: "nav-link" %>
-                    <%= link_to t('nav.my_printers'), printers_path, class: "nav-link" %>
-                    <%= link_to t('nav.profile'), user_profile_path, class: "nav-link" %>
-                    <%= link_to t('nav.sign_out'), destroy_user_session_path, method: :delete, class: "nav-link nav-link-secondary" %>
-                    <% else %>
-                    <%= link_to t('nav.sign_in'), new_user_session_path, class: "nav-link" %>
-                    <%= link_to t('nav.sign_up'), new_user_registration_path, class: "nav-link nav-link-primary" %>
-                    <% end %>
+    <%= render "shared/navbar" %>
 
-                    <!-- Language Selector -->
-                    <div class="language-selector">
-                        <%= form_with url: switch_locale_path, method: :post, local: true, class: "language-form" do |form| %>
-                        <%= form.select :locale,
-                    options_for_select([
-                      [t('language_name', locale: :en), 'en'],
-                      [t('language_name', locale: :ja), 'ja'],
-                      [t('language_name', locale: :'zh-CN'), 'zh-CN'],
-                      [t('language_name', locale: :hi), 'hi'],
-                      [t('language_name', locale: :es), 'es'],
-                      [t('language_name', locale: :fr), 'fr'],
-                      [t('language_name', locale: :ar), 'ar']
-                    ], I18n.locale.to_s),
-                    {},
-                    {
-                      class: "language-select",
-                      onchange: "this.form.submit();",
-                      title: t('nav.language')
-                    } %>
-                        <% end %>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
+    <!-- Main Content Container -->
+    <div class="container my-4">
         <main>
             <%= yield %>
         </main>
+
+        <!-- Google AdSense Ad Unit -->
+        <div class="mt-5">
+            <!-- 3dp -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5257142454834240"
+                 data-ad-slot="9779716586"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-light mt-5 py-4 border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-1 text-muted">
+                        © <%= Date.current.year %> <%= t('nav.brand') %>
+                    </p>
+                    <p class="mb-0 small text-muted">
+                        <%= t('footer.description') %>
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex flex-column flex-md-row justify-content-md-end gap-3">
+                        <%= link_to t('support.nav_title'), support_path,
+                            class: "text-decoration-none small" %>
+                        <%= link_to t('legal.privacy_policy.nav_title'), privacy_policy_path,
+                            class: "text-decoration-none small" %>
+                        <%= link_to t('legal.user_agreement.nav_title'), user_agreement_path,
+                            class: "text-decoration-none small" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

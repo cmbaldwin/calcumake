@@ -8,6 +8,7 @@ fr:
     new_pricing: "Nouveau Tarif"
     my_printers: "Mes Imprimantes"
     profile: "Profil"
+    help: "Aide"
     sign_out: "Se déconnecter"
     sign_in: "Se connecter"
     sign_up: "S'inscrire"
@@ -156,3 +157,25 @@ fr:
   app:
     title: "3DP - Gestion de Projets d'Impression 3D"
     title_default: "3DP - Gestion de Projets d'Impression 3D"
+  # Footer
+  footer:
+    description: "Professional 3D printing cost calculation and project management"
+
+  # Legal pages (Basic navigation - full content in English)
+  legal:
+    last_updated: "Last updated"
+    privacy_policy:
+      title: "Privacy Policy"
+      nav_title: "Privacy Policy"
+    user_agreement:
+      title: "User Agreement"
+      nav_title: "Terms of Service"
+
+  # Support page
+  support:
+    title: "Support"
+    nav_title: "Support"
+    contact_us: "Contact Us"
+    description: "Need help with 3DP? Have a question or suggestion? We're here to help!"
+    email_label: "Email Support"
+    response_time: "We typically respond within 24-48 hours"

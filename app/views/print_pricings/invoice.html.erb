@@ -1,0 +1,198 @@
+<% content_for :title, "#{t('print_pricing.invoice')} - #{@print_pricing.job_name}" %>
+
+<div class="invoice-container" data-controller="pdf-generator" data-pdf-generator-filename-value="<%= "#{@print_pricing.job_name.parameterize}-invoice" %>">
+
+    <!-- Print/Download Actions -->
+    <div class="invoice-actions d-print-none mb-3">
+        <div class="d-flex gap-2">
+            <%= link_to print_pricing_path(@print_pricing), class: "btn btn-outline-secondary" do %>
+            <i class="bi bi-arrow-left"></i> <%= t('actions.back') %>
+            <% end %>
+
+            <button type="button" class="btn btn-primary" data-action="click->pdf-generator#generatePDF">
+                <i class="bi bi-download"></i> <%= t('print_pricing.download_pdf') %>
+            </button>
+
+            <button type="button" class="btn btn-outline-secondary" onclick="window.print()">
+                <i class="bi bi-printer"></i> <%= t('actions.print') %>
+            </button>
+        </div>
+    </div>
+
+    <!-- Invoice Content -->
+    <div class="invoice-content">
+        <!-- Header -->
+        <div class="invoice-header mb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="invoice-title"><%= t('print_pricing.invoice') %></h1>
+                    <p class="invoice-number mb-1">
+                        <strong><%= t('print_pricing.invoice_number') %>:</strong>
+                        INV-<%= @print_pricing.id.to_s.rjust(6, '0') %>
+                    </p>
+                    <p class="invoice-date mb-0">
+                        <strong><%= t('print_pricing.invoice_date') %>:</strong>
+                        <%= l(Date.current, format: :long) %>
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="company-info">
+                        <h4><%= t('print_pricing.from') %></h4>
+                        <p class="mb-1"><%= current_user.email %></p>
+                        <p class="mb-0"><%= t('print_pricing.3d_printing_services') %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Details -->
+        <div class="job-details mb-4">
+            <h3><%= t('print_pricing.job_details') %></h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong><%= t('print_pricing.job_name') %>:</strong> <%= @print_pricing.job_name %></p>
+                    <p><strong><%= t('print_pricing.filament_type') %>:</strong> <%= @print_pricing.filament_type %></p>
+                    <p><strong><%= t('print_pricing.weight') %>:</strong> <%= number_with_precision(@print_pricing.filament_weight, precision: 1) %>g</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong><%= t('print_pricing.print_time') %>:</strong>
+                        <%= @print_pricing.printing_time_hours %> <%= t('time.hour', count: @print_pricing.printing_time_hours) %>
+                        <%= @print_pricing.printing_time_minutes %> <%= t('time.minute', count: @print_pricing.printing_time_minutes) %>
+                    </p>
+                    <% if @print_pricing.printer %>
+                    <p><strong><%= t('models.printer') %>:</strong>
+                        <%= @print_pricing.printer.manufacturer %> <%= @print_pricing.printer.name %>
+                    </p>
+                    <% end %>
+                    <p><strong><%= t('print_pricing.times_printed') %>:</strong> <%= @print_pricing.times_printed || 0 %></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cost Breakdown -->
+        <div class="cost-breakdown mb-4">
+            <h3><%= t('print_pricing.cost_breakdown') %></h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th><%= t('print_pricing.description') %></th>
+                            <th class="text-end"><%= t('print_pricing.amount') %></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Filament Cost -->
+                        <tr>
+                            <td>
+                                <%= t('print_pricing.filament_cost') %>
+                                <small class="text-muted d-block">
+                                    <%= number_with_precision(@print_pricing.filament_weight, precision: 1) %>g ×
+                                    <%= format_currency(@print_pricing.spool_price, @print_pricing.default_currency) %>/<%= @print_pricing.spool_weight %>g
+                                    <% if @print_pricing.markup_percentage && @print_pricing.markup_percentage > 0 %>
+                                    + <%= number_with_precision(@print_pricing.markup_percentage, precision: 1) %>% <%= t('print_pricing.markup') %>
+                                    <% end %>
+                                </small>
+                            </td>
+                            <td class="text-end"><%= currency_symbol(@print_pricing.default_currency) %><%= format_currency(@print_pricing.total_filament_cost, @print_pricing.default_currency) %></td>
+                        </tr>
+
+                        <!-- Electricity Cost -->
+                        <% if @print_pricing.total_electricity_cost > 0 %>
+                        <tr>
+                            <td>
+                                <%= t('print_pricing.electricity_cost') %>
+                                <% if @print_pricing.printer %>
+                                <small class="text-muted d-block">
+                                    <%= @print_pricing.printer.power_consumption %>W × <%= number_with_precision(@print_pricing.total_printing_time_minutes / 60.0, precision: 1) %>h ×
+                                    <%= format_currency(@print_pricing.default_energy_cost_per_kwh, @print_pricing.default_currency) %>/kWh
+                                </small>
+                                <% end %>
+                            </td>
+                            <td class="text-end"><%= currency_symbol(@print_pricing.default_currency) %><%= format_currency(@print_pricing.total_electricity_cost, @print_pricing.default_currency) %></td>
+                        </tr>
+                        <% end %>
+
+                        <!-- Labor Costs -->
+                        <% if @print_pricing.total_labor_cost > 0 %>
+                        <tr>
+                            <td>
+                                <%= t('print_pricing.labor_cost') %>
+                                <small class="text-muted d-block">
+                                    <% if @print_pricing.prep_time_minutes && @print_pricing.prep_time_minutes > 0 %>
+                                    <%= t('print_pricing.prep_time') %>: <%= @print_pricing.prep_time_minutes %> min<br>
+                                    <% end %>
+                                    <% if @print_pricing.postprocessing_time_minutes && @print_pricing.postprocessing_time_minutes > 0 %>
+                                    <%= t('print_pricing.postprocessing_time') %>: <%= @print_pricing.postprocessing_time_minutes %> min
+                                    <% end %>
+                                </small>
+                            </td>
+                            <td class="text-end"><%= currency_symbol(@print_pricing.default_currency) %><%= format_currency(@print_pricing.total_labor_cost, @print_pricing.default_currency) %></td>
+                        </tr>
+                        <% end %>
+
+                        <!-- Machine Upkeep -->
+                        <% if @print_pricing.total_machine_upkeep_cost > 0 %>
+                        <tr>
+                            <td>
+                                <%= t('print_pricing.machine_upkeep') %>
+                                <small class="text-muted d-block"><%= t('print_pricing.depreciation_and_maintenance') %></small>
+                            </td>
+                            <td class="text-end"><%= currency_symbol(@print_pricing.default_currency) %><%= format_currency(@print_pricing.total_machine_upkeep_cost, @print_pricing.default_currency) %></td>
+                        </tr>
+                        <% end %>
+
+                        <!-- Other Costs -->
+                        <% if @print_pricing.other_costs && @print_pricing.other_costs > 0 %>
+                        <tr>
+                            <td><%= t('print_pricing.other_costs') %></td>
+                            <td class="text-end"><%= currency_symbol(@print_pricing.default_currency) %><%= format_currency(@print_pricing.other_costs, @print_pricing.default_currency) %></td>
+                        </tr>
+                        <% end %>
+
+                        <!-- Subtotal -->
+                        <tr class="table-secondary">
+                            <td><strong><%= t('print_pricing.subtotal') %></strong></td>
+                            <td class="text-end"><strong><%= currency_symbol(@print_pricing.default_currency) %><%= format_currency(@print_pricing.calculate_subtotal, @print_pricing.default_currency) %></strong></td>
+                        </tr>
+
+                        <!-- VAT -->
+                        <% if @print_pricing.vat_percentage && @print_pricing.vat_percentage > 0 %>
+                        <tr>
+                            <td>
+                                <%= t('print_pricing.vat') %> (<%= number_with_precision(@print_pricing.vat_percentage, precision: 1) %>%)
+                            </td>
+                            <td class="text-end">
+                                <%= currency_symbol(@print_pricing.default_currency) %><%= format_currency(@print_pricing.calculate_subtotal * @print_pricing.vat_percentage / 100, @print_pricing.default_currency) %>
+                            </td>
+                        </tr>
+                        <% end %>
+
+                        <!-- Total -->
+                        <tr class="table-dark">
+                            <td><strong><%= t('print_pricing.total') %></strong></td>
+                            <td class="text-end"><strong><%= currency_symbol(@print_pricing.default_currency) %><%= format_currency(@print_pricing.final_price, @print_pricing.default_currency) %></strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="invoice-footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><%= t('print_pricing.notes') %></h5>
+                    <p class="small text-muted">
+                        <%= t('print_pricing.invoice_notes_text') %>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h5><%= t('print_pricing.payment_info') %></h5>
+                    <p class="small text-muted">
+                        <%= t('print_pricing.payment_info_text') %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

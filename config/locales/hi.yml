@@ -8,6 +8,7 @@ hi:
     new_pricing: "नई कीमत"
     my_printers: "मेरे प्रिंटर"
     profile: "प्रोफ़ाइल"
+    help: "सहायता"
     sign_out: "साइन आउट"
     sign_in: "साइन इन"
     sign_up: "साइन अप"
@@ -156,3 +157,25 @@ hi:
   app:
     title: "3DP - 3D प्रिंट प्रोजेक्ट प्रबंधन"
     title_default: "3DP - 3D प्रिंट प्रोजेक्ट प्रबंधन"
+  # Footer
+  footer:
+    description: "Professional 3D printing cost calculation and project management"
+
+  # Legal pages (Basic navigation - full content in English)
+  legal:
+    last_updated: "Last updated"
+    privacy_policy:
+      title: "Privacy Policy"
+      nav_title: "Privacy Policy"
+    user_agreement:
+      title: "User Agreement"
+      nav_title: "Terms of Service"
+
+  # Support page
+  support:
+    title: "Support"
+    nav_title: "Support"
+    contact_us: "Contact Us"
+    description: "Need help with 3DP? Have a question or suggestion? We're here to help!"
+    email_label: "Email Support"
+    response_time: "We typically respond within 24-48 hours"

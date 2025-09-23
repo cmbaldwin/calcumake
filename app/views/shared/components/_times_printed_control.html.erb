@@ -1,17 +1,17 @@
-<div class="times-printed-control" id="times_printed_<%= pricing.id %>">
+<div class="d-flex align-items-center gap-2" id="times_printed_<%= pricing.id %>">
     <%= button_to decrement_times_printed_print_pricing_path(pricing),
       method: :patch,
-      class: "increment-btn decrement-btn",
-      title: "Decrease times printed",
-      form_class: "inline-form" do %>
-    ▼
+      class: "btn btn-outline-secondary btn-sm",
+      title: t('print_pricing.times_printed_decrease'),
+      form_class: "d-inline" do %>
+    <span class="fw-bold">−</span>
     <% end %>
-    <span class="times-printed-value"><%= pricing.times_printed || 0 %></span>
+    <span class="badge bg-primary fs-6 px-3"><%= pricing.times_printed || 0 %></span>
     <%= button_to increment_times_printed_print_pricing_path(pricing),
       method: :patch,
-      class: "increment-btn increment-btn-up",
-      title: "Increase times printed",
-      form_class: "inline-form" do %>
-    ▲
+      class: "btn btn-outline-secondary btn-sm",
+      title: t('print_pricing.times_printed_increase'),
+      form_class: "d-inline" do %>
+    <span class="fw-bold">+</span>
     <% end %>
 </div>

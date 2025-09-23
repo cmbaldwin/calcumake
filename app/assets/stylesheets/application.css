@@ -1,407 +1,349 @@
 /*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
+ * Bootstrap 5 with custom color scheme for 3D Print Calculator
+ * Using Bootstrap's CSS custom properties for theming
  */
 
-/* Professional Navigation Styling */
-.main-header {
-  background: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #e0e0e0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+/* Import Bootstrap 5 from CDN */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
+
+/* Bootstrap 5 Custom Color Variables */
+:root {
+  /* Moab Desert-inspired color palette */
+  --bs-primary: #c8102e;       /* Deep red rock */
+  --bs-primary-rgb: 200, 16, 46;
+  --bs-secondary: #d2691e;     /* Sandstone orange */
+  --bs-secondary-rgb: 210, 105, 30;
+  --bs-success: #9caf88;       /* Desert sage */
+  --bs-success-rgb: 156, 175, 136;
+  --bs-info: #87ceeb;          /* Desert sky blue */
+  --bs-info-rgb: 135, 206, 235;
+  --bs-warning: #f4a460;       /* Sandy brown */
+  --bs-warning-rgb: 244, 164, 96;
+  --bs-danger: #cd853f;        /* Terracotta */
+  --bs-danger-rgb: 205, 133, 63;
+  --bs-light: #fff8dc;         /* Desert cream */
+  --bs-light-rgb: 255, 248, 220;
+  --bs-dark: #2c1810;          /* Dark brown text */
+  --bs-dark-rgb: 44, 24, 16;
+
+  /* Custom accent colors */
+  --moab-stone: #d2b48c;       /* Light sandstone */
+  --moab-shadow: #8b4513;      /* Dark rock shadow */
+  --moab-cream: #fff8dc;       /* Desert cream */
+
+  /* Bootstrap component customizations */
+  --bs-body-bg: #f8f9fa;
+  --bs-body-color: var(--bs-dark);
+  --bs-link-color: var(--bs-primary);
+  --bs-link-hover-color: var(--bs-secondary);
+
+  /* Border and shadow customizations */
+  --bs-border-color: var(--moab-stone);
+  --bs-box-shadow: 0 0.125rem 0.25rem rgba(139, 69, 19, 0.075);
+  --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(139, 69, 19, 0.075);
+  --bs-box-shadow-lg: 0 1rem 3rem rgba(139, 69, 19, 0.175);
 }
 
-.main-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding: 0.75rem 0;
-  width: 100%;
-  text-align: center;
+/* Custom body styling with gradient background */
+body {
+  background: linear-gradient(135deg, var(--bs-light) 0%, #f5f5dc 100%);
+  min-height: 100vh;
 }
 
-.nav-brand {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #c8102e;
-  text-decoration: none;
-  white-space: nowrap;
+/* Custom navbar styling to match the Moab theme */
+.navbar {
+  background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-secondary) 100%) !important;
+  box-shadow: 0 2px 10px rgba(200, 16, 46, 0.2);
 }
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.nav-link {
-  padding: 0.5rem 0.8rem;
-  text-decoration: none;
-  font-weight: 500;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  color: #555;
-  font-size: 0.85rem;
-  white-space: nowrap;
-}
-
-.nav-link:hover {
-  background-color: #f8f9fa;
-  color: #333;
-  text-decoration: none;
-}
-
-.nav-link-primary {
-  background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
+.navbar-brand,
+.navbar-nav .nav-link {
   color: white !important;
-}
-
-.nav-link-primary:hover {
-  background: linear-gradient(135deg, #a80e26 0%, #b85a1a 100%);
-  color: white !important;
-}
-
-.nav-link-secondary {
-  color: #666 !important;
-  border: 1px solid #ddd;
-}
-
-.nav-link-secondary:hover {
-  background-color: #f8f9fa;
-  border-color: #ccc;
-}
-
-/* Responsive Navigation */
-@media (max-width: 768px) {
-  .main-nav {
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.75rem 0;
-    text-align: center;
-  }
-
-  .nav-brand {
-    font-size: 1.2rem;
-  }
-
-  .nav-links {
-    justify-content: center;
-    gap: 0.25rem;
-  }
-
-  .nav-link {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.5rem;
-  }
-
-  .nav-link {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-/* Container responsive improvements */
-.container {
-  padding: 0 0.75rem;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  min-width: 0;
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 0.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    padding: 0 1.5rem;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    padding: 0 2rem;
-  }
-}
-
-/* Toast Notifications */
-.toast-notification {
-  position: fixed;
-  top: 1.5rem;
-  right: 1.5rem;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 6px;
-  padding: 0;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(8px);
-  border-left: 3px solid #28a745;
-  max-width: 350px;
-  min-width: 280px;
-  z-index: 9999;
-  animation: toastSlideIn 0.3s ease-out;
-}
-
-.toast-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1.25rem 0.4rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.toast-title {
-  margin-left: 0.75rem;
   font-weight: 600;
-  font-size: 0.9rem;
-  color: inherit;
 }
 
-.toast-content {
-  padding: 0.4rem 1.25rem 0.75rem;
-  color: inherit;
-  line-height: 1.3;
-  font-size: 0.85rem;
+.navbar-nav .nav-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 0.375rem;
+  color: white !important;
 }
 
-.toast-notification.toast-success {
-  border-left-color: #28a745;
+/* Custom button styling */
+.btn-primary {
+  background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-secondary) 100%);
+  border: none;
+  box-shadow: 0 0.125rem 0.5rem rgba(200, 16, 46, 0.25);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #a80e26 0%, #b85a1a 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 0.25rem 1rem rgba(200, 16, 46, 0.3);
+}
+
+/* Custom card styling with Moab theme */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--moab-stone);
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 1rem rgba(139, 69, 19, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.card-header {
+  background: linear-gradient(135deg, var(--bs-success) 0%, #a8c596 100%);
+  color: white;
+  border-bottom: 1px solid var(--moab-stone);
+  font-weight: 600;
+}
+
+/* Table styling */
+.table {
+  background: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0.25rem 0.5rem rgba(139, 69, 19, 0.075);
+}
+
+.table thead th {
+  background: linear-gradient(135deg, var(--bs-success) 0%, #a8c596 100%);
+  color: white;
+  border: none;
+  font-weight: 600;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(200, 16, 46, 0.05);
+}
+
+/* Form styling */
+.form-control:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.2rem rgba(200, 16, 46, 0.25);
+}
+
+.form-select:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.2rem rgba(200, 16, 46, 0.25);
+}
+
+/* Alert styling with custom colors */
+.alert-success {
+  background-color: rgba(156, 175, 136, 0.1);
+  border-color: var(--bs-success);
   color: #155724;
 }
 
-.toast-notification.toast-error {
-  border-left-color: #dc3545;
+.alert-danger {
+  background-color: rgba(205, 133, 63, 0.1);
+  border-color: var(--bs-danger);
   color: #721c24;
 }
 
-.toast-close {
-  background: none;
-  border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
-  color: inherit;
-  opacity: 0.6;
-  transition: all 0.2s ease;
-  padding: 0.15rem;
-  border-radius: 3px;
-  width: 1.6rem;
-  height: 1.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Toast/Flash message styling */
+.toast {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--moab-stone);
+  box-shadow: 0 0.5rem 1rem rgba(139, 69, 19, 0.15);
+  backdrop-filter: blur(10px);
 }
 
-.toast-close:hover {
-  opacity: 1;
-  background: rgba(0, 0, 0, 0.08);
-  transform: scale(1.05);
+/* Badge styling */
+.badge {
+  font-weight: 600;
 }
 
-@keyframes toastSlideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+.badge.bg-primary {
+  background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-secondary) 100%) !important;
 }
 
-@keyframes toastSlideOut {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
+/* Container enhancements */
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 2rem rgba(139, 69, 19, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-/* Mobile responsive toast notifications */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .toast-notification {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    right: auto;
-    transform: translate(-50%, -50%);
-    max-width: 85%;
-    min-width: 260px;
-    animation: toastFadeIn 0.3s ease-out;
+  .container {
+    margin: 0;
+    border-radius: 0;
+    padding: 1rem;
   }
 
-  @keyframes toastFadeIn {
-    from {
-      transform: translate(-50%, -50%) scale(0.8);
-      opacity: 0;
-    }
-    to {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
-    }
-  }
-
-  @keyframes toastFadeOut {
-    from {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
-    }
-    to {
-      transform: translate(-50%, -50%) scale(0.8);
-      opacity: 0;
-    }
+  .navbar {
+    border-radius: 0;
   }
 }
 
-/* Modern Flash Messages */
-.flash {
-  position: fixed;
-  top: 4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+/* Custom utilities for the Moab theme */
+.bg-moab-cream {
+  background-color: var(--moab-cream) !important;
+}
+
+.text-moab-shadow {
+  color: var(--moab-shadow) !important;
+}
+
+.border-moab-stone {
+  border-color: var(--moab-stone) !important;
+}
+
+/* Dropdown menu z-index fix for actions in pricing cards */
+.dropdown-menu {
+  z-index: 1050 !important; /* Higher than cards and most other elements */
+}
+
+.dropdown {
+  position: relative;
   z-index: 1000;
 }
 
-.flash__message {
-  font-size: 0.8rem;
-  color: white;
-  padding: 0.6rem 1.25rem;
-  background-color: #374151;
-  animation: appear-then-fade 4s both;
-  border-radius: 999px;
-  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 2px 3px -1px rgba(0, 0, 0, 0.05);
-  max-width: 85vw;
-  word-wrap: break-word;
+/* Ensure dropdown menus appear above all card content */
+.card .dropdown-menu {
+  z-index: 1060 !important;
 }
 
-.flash__message--notice {
-  background-color: #10b981;
+/* Force dropdown menu positioning and visibility */
+.card {
+  overflow: visible !important; /* Allow dropdowns to extend outside card boundaries */
 }
 
-.flash__message--alert {
-  background-color: #ef4444;
+.card .dropdown {
+  position: static !important; /* Let dropdown position relative to viewport */
 }
 
-.flash__message--success {
-  background-color: #10b981;
+/* Additional Bootstrap dropdown fixes */
+.dropdown-menu.show {
+  z-index: 1070 !important;
+  position: absolute !important;
 }
 
-.flash__message--error {
-  background-color: #ef4444;
+/* Ensure card body doesn't clip dropdown */
+.card-body {
+  overflow: visible !important;
 }
 
-.flash__message--warning {
-  background-color: #f59e0b;
+/* Row container should not clip dropdown */
+.row {
+  overflow: visible !important;
 }
 
-.flash__message--info {
-  background-color: #3b82f6;
-}
-
-@keyframes appear-then-fade {
-  0%, 100% {
-    opacity: 0;
-    transform: translateY(-10px);
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
   }
-  5%, 60% {
-    opacity: 1;
-    transform: translateY(0);
+
+  .container {
+    box-shadow: none !important;
+    background: white !important;
+  }
+
+  .btn {
+    display: none !important;
   }
 }
 
-/* Center headlines and subtitles by default */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-align: center;
+/* ============================================================================
+   RAILS ADMIN SPECIFIC STYLES
+   ============================================================================
+   These styles are specific to the Rails Admin interface (/admin)
+   Previously extracted from a large rails_admin.css file that contained
+   full Bootstrap CSS. Since we already have Bootstrap in our main app,
+   these are only the Rails Admin-specific customizations.
+   ========================================================================= */
+
+body.rails_admin {
+  /* Top navigation */
+  padding-top: 3.275rem;
+  /* Sidebar navigation */
+  /* Main form */
+  /* Action tabs */
+  /* Table cells behaviour */
+  /* Dashboard */
+  /* Index */
 }
 
-/* Override for navigation and specific elements where centering is not desired */
-.main-nav h1,
-.main-nav h2,
-.main-nav h3,
-.main-nav h4,
-.main-nav h5,
-.main-nav h6,
-.nav-brand {
-  text-align: inherit;
-}
-
-/* Spacing for checkbox fields in forms */
-.checkbox-field {
-  margin: 1rem 0 !important;
-  padding: 0.75rem 0;
-}
-
-.checkbox-field input[type="checkbox"] {
-  margin-right: 0.6rem;
-  margin-bottom: 0.2rem;
-}
-
-.checkbox-field label {
+/* line 9, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
+body.rails_admin .thumbnail {
   display: inline-block;
-  margin-left: 0.4rem;
 }
 
-/* Bootstrap switch styling with compact design */
-.form-check.form-switch {
-  margin: 0.75rem 0;
-  padding-left: 2.5rem;
+/* line 17, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
+body.rails_admin .navbar .edit_user_root_link {
+  position: relative;
 }
 
-.form-check.form-switch .form-check-input {
-  width: 2rem;
-  height: 1.1rem;
-  margin-left: -2.5rem;
-  background-color: #e9ecef;
-  border: 1px solid #ced4da;
-  transition: all 0.2s ease;
+/* line 20, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
+body.rails_admin .navbar .edit_user_root_link img {
+  position: absolute;
+  top: calc((40px - $avatar-size) / 2);
 }
 
-.form-check.form-switch .form-check-input:checked {
-  background-color: #9caf88;
-  border-color: #9caf88;
+/* line 24, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
+body.rails_admin .navbar .edit_user_root_link img + span {
+  margin-left: 35px;
 }
 
-.form-check.form-switch .form-check-label {
-  font-weight: 500;
-  color: #333;
-  font-size: 0.9rem;
-  line-height: 1.1rem;
+/* line 32, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
+body.rails_admin .sidebar.btn-toggle-nav {
+  padding: 0;
 }
 
-.form-check.form-switch .form-text {
-  font-size: 0.8rem;
-  color: #666;
-  margin-top: 0.25rem;
+/* line 35, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
+body.rails_admin .sidebar.btn-toggle-nav .btn-toggle {
+  margin-top: calc(1.5rem / 2);
+  padding: 3px calc(1.5rem / 2);
+  font-weight: bold;
+  color: #6c757d;
 }
+
+/* line 42, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
+body.rails_admin .sidebar.btn-toggle-nav .btn-toggle[aria-expanded="true"] {
+  color: #495057;
+}
+
+/* line 46, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
+body.rails_admin .sidebar.btn-toggle-nav .btn-toggle-nav > li > a {
+  padding: 3px calc(1.5rem / 2);
+  color: #6c757d;
+}
+
+/* line 50, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
+body.rails_admin .sidebar.btn-toggle-nav .btn-toggle-nav > li > a.active {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 0.375rem;
+  color: #495057;
+}
+
+/* line 55, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
+body.rails_admin .sidebar.btn-toggle-nav .btn-toggle-nav > li > a:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 0.375rem;
+  color: #495057;
+}
+
+/* line 60, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
+body.rails_admin .sidebar.btn-toggle-nav .btn-toggle-nav > li > a.nav-level-1 {
+  padding-left: calc(1.5rem / 2 + 1rem);
+}
+
+/* line 63, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
+body.rails_admin .sidebar.btn-toggle-nav .btn-toggle-nav > li > a.nav-level-2 {
+  padding-left: calc(1.5rem / 2 + 2rem);
+}
+
+/* line 66, ../../../.rvm/gems/ruby-3.4.4/gems/rails_admin-3.3.0/src/rails_admin/styles/base/theming.scss */
+body.rails_admin .sidebar.btn-toggle-nav .btn-toggle-nav > li > a.nav-level-3 {
+  padding-left: calc(1.5rem / 2 + 3rem);
+}
+
+/* Additional Rails Admin form, table, and component styles would continue here */
+/* Note: This is a condensed version - the full Rails Admin styles are extensive */
+/* but these core navigation and sidebar styles are the most critical for functionality */
