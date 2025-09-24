@@ -19,7 +19,7 @@ module PrintPricingsHelper
   end
 
   def pricing_card_actions(pricing)
-    content_tag :div, class: "dropdown" do
+    content_tag :div, class: "dropdown text-center" do
       button = content_tag(:button, t("actions.actions"), class: "btn btn-outline-secondary btn-sm dropdown-toggle", type: "button", data: { "bs-toggle": "dropdown", "bs-boundary": "viewport", "bs-container": "body" }, "aria-expanded": "false")
 
       menu_items = []

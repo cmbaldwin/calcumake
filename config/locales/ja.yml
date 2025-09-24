@@ -383,19 +383,19 @@ ja:
 
   # Legal pages (Basic navigation - full content in English)
   legal:
-    last_updated: "Last updated"
+    last_updated: "最終更新"
     privacy_policy:
-      title: "Privacy Policy"
-      nav_title: "Privacy Policy"
+      title: "プライバシーポリシー"
+      nav_title: "プライバシーポリシー"
     user_agreement:
-      title: "User Agreement"
-      nav_title: "Terms of Service"
+      title: "利用規約"
+      nav_title: "利用規約"
 
   # Support page
   support:
-    title: "Support"
-    nav_title: "Support"
-    contact_us: "Contact Us"
-    description: "Need help with CalcuMake? Have a question or suggestion? We're here to help!"
-    email_label: "Email Support"
-    response_time: "We typically respond within 24-48 hours"
+    title: "サポート"
+    nav_title: "サポート"
+    contact_us: "お問い合わせ"
+    description: "CalcuMakeについてのご質問やご提案がありますか？お気軽にお問い合わせください。"
+    email_label: "メールサポート"
+    response_time: "通常24〜48時間以内に返信いたします"

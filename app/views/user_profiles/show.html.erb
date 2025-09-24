@@ -1,83 +1,81 @@
-<div class="calculator-header">
-  <h1>
-    <%= t('profile.show.title') %>
-  </h1>
-  <p>
-    <%= t('profile.show.subtitle') %>
-  </p>
+<% content_for :body_class, "profile-page" %>
+
+<!-- Header -->
+<div class="text-center mb-4">
+  <h1 class="display-5 fw-bold text-primary mb-2"><%= t('profile.show.title') %></h1>
+  <p class="lead text-muted"><%= t('profile.show.subtitle') %></p>
 </div>
 
-<% if notice %>
-  <div class="profile-success-alert">
-    <%= notice %>
-  </div>
-<% end %>
-
-<div class="form-section">
-  <h3>
-    <%= t('profile.show.account_info') %>
-  </h3>
-  <div class="row">
-    <div class="column column-50">
-      <strong><%= t('profile.show.email') %>:</strong><br>
-      <%= @user.email %>
-    </div>
-    <div class="column column-50">
-      <strong><%= t('profile.show.member_since') %>:</strong><br>
-      <%= @user.created_at.strftime(t('time.formats.month_day_year')) %>
-    </div>
-  </div>
-</div>
-
-<%= form_with model: @user, url: user_profile_path, method: :patch, local: true, html: { class: "calculator-form" } do |form| %>
-  <div class="form-section highlight">
-    <h3>
-      <%= t('profile.show.default_preferences') %>
-    </h3>
-    <% if @user.errors.any? %>
-      <div class="validation-errors">
-        <strong><%= pluralize(@user.errors.count, "error") %> prohibited this profile from being saved:</strong>
-        <ul>
+<%= form_with model: @user, url: user_profile_path, method: :patch, local: true, html: { class: "row g-3" } do |form| %>
+  <% if @user.errors.any? %>
+    <div class="col-12">
+      <div class="alert alert-danger">
+        <h4><%= pluralize(@user.errors.count, "error") %> prohibited this profile from being saved:</h4>
+        <ul class="mb-0">
           <% @user.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
       </div>
-    <% end %>
-    <div class="row">
-      <div class="column column-50">
-        <label for="user_default_currency" class="form-label">Default Currency</label>
-        <%= form.select :default_currency, 
-            options_for_select(currency_options, @user.default_currency), 
-            { prompt: "Select currency" },
-            { class: "form-input" } %>
-        <small style="color: #666; font-size: 0.85rem; margin-top: 0.25rem; display: block;">
-          Used as default for new pricing calculations
-        </small>
+    </div>
+  <% end %>
+
+  <!-- Account Information -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('profile.show.account_info') %></h5>
       </div>
-      <div class="column column-50">
-        <label for="user_default_energy_cost_per_kwh" class="form-label">Energy Cost per kWh</label>
-        <%= form.number_field :default_energy_cost_per_kwh, step: 0.001, min: 0.001,
-            placeholder: "0.120",
-            class: "form-input text-right" %>
-        <small style="color: #666; font-size: 0.85rem; margin-top: 0.25rem; display: block;">
-          Your local electricity cost per kilowatt-hour
-        </small>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <strong><%= t('profile.show.email') %>:</strong>
+            <p class="mb-0"><%= @user.email %></p>
+          </div>
+          <div class="col-md-6">
+            <strong><%= t('profile.show.member_since') %>:</strong>
+            <p class="mb-0"><%= @user.created_at.strftime(t('time.formats.month_day_year')) %></p>
+          </div>
+        </div>
       </div>
     </div>
-    <div style="text-align: center; margin-top: 1.5rem;">
-      <%= form.submit "Update Settings", 
-          style: "background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); 
-                 color: white; border: none; padding: 0.75rem 1.5rem; font-size: 1rem; 
-                 border-radius: 8px; cursor: pointer; font-weight: 600;" %>
+  </div>
+
+  <!-- Default Preferences -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('profile.show.default_preferences') %></h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <%= form.label :default_currency, t('profile.fields.default_currency'), class: "form-label" %>
+            <%= form.select :default_currency,
+                options_for_select(currency_options, @user.default_currency),
+                { prompt: t('print_pricing.fields.currency_prompt') },
+                { class: "form-select" } %>
+            <div class="form-text"><%= t('profile.fields.default_currency_help') %></div>
+          </div>
+          <div class="col-md-6">
+            <%= form.label :default_energy_cost_per_kwh, t('profile.fields.energy_cost'), class: "form-label" %>
+            <%= form.number_field :default_energy_cost_per_kwh,
+                step: 0.001,
+                min: 0.001,
+                placeholder: t('profile.fields.energy_cost_placeholder'),
+                class: "form-control" %>
+            <div class="form-text"><%= t('profile.fields.energy_cost_help_extended') %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Actions -->
+  <div class="col-12">
+    <div class="d-flex gap-3 justify-content-center pt-3 border-top">
+      <%= form.submit t('profile.buttons.update_settings'), class: "btn btn-primary btn-lg" %>
+      <%= link_to t('actions.back'), print_pricings_path, class: "btn btn-outline-secondary btn-lg" %>
     </div>
   </div>
 <% end %>
-
-<div class="form-actions" style="text-align: center; margin-top: 2rem;">
-  <%= link_to "Back to Calculations", root_path, 
-      class: "btn button-clear",
-      style: "background: transparent; color: #666; border: 2px solid #ddd; 
-             padding: 1rem 2rem; font-size: 1.1rem; text-decoration: none; 
-             border-radius: 8px; transition: all 0.2s ease;" %>
-</div>

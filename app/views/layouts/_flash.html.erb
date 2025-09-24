@@ -1,9 +1,25 @@
 <% flash.each do |flash_type, message| %>
   <div
-    class="flash__message flash__message--<%= flash_type %>"
-    data-controller="removals"
-    data-action="animationend->removals#remove"
+    class="toast-message toast-<%= flash_type %>"
+    data-controller="toast"
+    data-toast-auto-dismiss-value="5000"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
   >
-    <%= message %>
+    <div class="toast-content">
+      <span class="toast-icon">
+        <% case flash_type %>
+        <% when 'notice', 'success' %>
+          ✓
+        <% when 'alert', 'error' %>
+          ⚠
+        <% else %>
+          ℹ
+        <% end %>
+      </span>
+      <span class="toast-text"><%= message %></span>
+      <button type="button" class="toast-close" data-action="click->toast#close" aria-label="Close">×</button>
+    </div>
   </div>
 <% end %>
