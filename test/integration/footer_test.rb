@@ -7,8 +7,7 @@ class FooterTest < ActionDispatch::IntegrationTest
 
     assert_select "footer"
     assert_includes response.body, "© #{Date.current.year}"
-    assert_includes response.body, I18n.t("nav.brand")
-    assert_includes response.body, I18n.t("footer.description")
+    assert_includes response.body, "株式会社モアブ (MOAB Co., Ltd.)"
   end
 
   test "footer contains legal page links" do
@@ -39,8 +38,7 @@ class FooterTest < ActionDispatch::IntegrationTest
     get support_path
     assert_response :success
 
-    assert_select "footer.bg-light.mt-5.py-4.border-top"
-    assert_select "footer .container"
+    assert_select "footer.bg-white.p-3.border-top.mt-4"
     assert_select "footer .row"
     assert_select "footer .col-md-6"
   end

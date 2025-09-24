@@ -19,7 +19,7 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get print_pricings_url
     assert_response :success
-    assert_select "h1", /My Print Calculations/
+    assert_select "h3.display-5", text: /My Print Calculations/
   end
 
   test "should get new" do

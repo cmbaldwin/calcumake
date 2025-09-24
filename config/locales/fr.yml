@@ -164,18 +164,18 @@ fr:
 
   # Legal pages (Basic navigation - full content in English)
   legal:
-    last_updated: "Last updated"
+    last_updated: "Dernière mise à jour"
     privacy_policy:
-      title: "Privacy Policy"
-      nav_title: "Privacy Policy"
+      title: "Politique de confidentialité"
+      nav_title: "Politique de confidentialité"
     user_agreement:
-      title: "User Agreement"
-      nav_title: "Terms of Service"
+      title: "Accord d'utilisateur"
+      nav_title: "Conditions d'utilisation"
 
   # Support page
   support:
-    title: "Support"
-    nav_title: "Support"
+    title: "Assistance"
+    nav_title: "Assistance"
     contact_us: "Contact Us"
     description: "Need help with CalcuMake? Have a question or suggestion? We're here to help!"
     email_label: "Email Support"

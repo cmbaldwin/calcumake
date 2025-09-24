@@ -164,18 +164,18 @@ hi:
 
   # Legal pages (Basic navigation - full content in English)
   legal:
-    last_updated: "Last updated"
+    last_updated: "अंतिम अद्यतन"
     privacy_policy:
-      title: "Privacy Policy"
-      nav_title: "Privacy Policy"
+      title: "गोपनीयता नीति"
+      nav_title: "गोपनीयता नीति"
     user_agreement:
-      title: "User Agreement"
-      nav_title: "Terms of Service"
+      title: "उपयोगकर्ता समझौता"
+      nav_title: "सेवा की शर्तें"
 
   # Support page
   support:
-    title: "Support"
-    nav_title: "Support"
+    title: "सहायता"
+    nav_title: "सहायता"
     contact_us: "Contact Us"
     description: "Need help with CalcuMake? Have a question or suggestion? We're here to help!"
     email_label: "Email Support"

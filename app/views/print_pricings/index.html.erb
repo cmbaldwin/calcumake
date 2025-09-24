@@ -1,6 +1,6 @@
 <!-- Hero Section -->
 <div class="text-center mb-5">
-    <h1 class="display-4 fw-bold text-primary mb-3"><%= t('print_pricing.index.title') %></h1>
+    <h3 class="display-5 fw-bold text-primary mb-3"><%= t('print_pricing.index.title') %></h3>
     <p class="lead text-muted mb-4">
         <%= t('print_pricing.index.subtitle') %>
     </p>
@@ -8,15 +8,15 @@
 </div>
 
 <% if @print_pricings.any? %>
-  <%= turbo_frame_tag "stats_cards" do %>
-    <%= render "shared/components/stats_cards", print_pricings: @print_pricings %>
-  <% end %>
+<%= turbo_frame_tag "stats_cards" do %>
+<%= render "shared/components/stats_cards", print_pricings: @print_pricings %>
+<% end %>
 
-  <div class="row g-3">
+<div class="row g-3">
     <% @print_pricings.each do |pricing| %>
-      <%= render "shared/components/pricing_card", pricing: pricing %>
+    <%= render "shared/components/pricing_card", pricing: pricing %>
     <% end %>
-  </div>
+</div>
 <% else %>
 <!-- Empty State -->
 <div class="text-center py-5">
