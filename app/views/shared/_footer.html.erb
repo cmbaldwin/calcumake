@@ -1,0 +1,21 @@
+<footer class="bg-white p-3 border-top mt-4">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <p class="mb-0 text-muted small">
+                © <%= Date.current.year %> 株式会社モアブ (MOAB Co., Ltd.)
+            </p>
+        </div>
+        <div class="col-md-6 text-md-end">
+            <div class="d-flex flex-wrap justify-content-md-end gap-2">
+                <%= link_to t('support.nav_title'), support_path,
+                        class: "text-decoration-none small text-muted" %>
+                <span class="text-muted">|</span>
+                <%= link_to t('legal.privacy_policy.nav_title'), privacy_policy_path,
+                        class: "text-decoration-none small text-muted" %>
+                <span class="text-muted">|</span>
+                <%= link_to t('legal.user_agreement.nav_title'), user_agreement_path,
+                        class: "text-decoration-none small text-muted" %>
+            </div>
+        </div>
+    </div>
+</footer>

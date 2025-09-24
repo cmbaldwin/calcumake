@@ -27,7 +27,7 @@
 
 <body class="<%= content_for(:body_class) %>">
     <!-- Flash Messages -->
-    <div id="flash" class="flash">
+    <div id="flash">
         <%= render "layouts/flash" %>
     </div>
 
@@ -40,31 +40,7 @@
         </main>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-light mt-5 py-4 border-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="mb-1 text-muted">
-                        © <%= Date.current.year %> 株式会社モアブ (MOAB Co., Ltd.)
-                    </p>
-                    <p class="mb-0 small text-muted">
-                        <%= t('footer.description') %>
-                    </p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <div class="d-flex flex-column flex-md-row justify-content-md-end gap-3">
-                        <%= link_to t('support.nav_title'), support_path,
-                            class: "text-decoration-none small" %>
-                        <%= link_to t('legal.privacy_policy.nav_title'), privacy_policy_path,
-                            class: "text-decoration-none small" %>
-                        <%= link_to t('legal.user_agreement.nav_title'), user_agreement_path,
-                            class: "text-decoration-none small" %>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <%= render "shared/footer" %>
 </body>
 
 </html>
