@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <%# Google AdSense %>
+    <meta name="google-adsense-account" content="ca-pub-5257142454834240">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -21,10 +23,6 @@
     <%# Bootstrap 5 with custom styling %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-
-    <%# Google AdSense %>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5257142454834240"
-            crossorigin="anonymous"></script>
 </head>
 
 <body class="<%= content_for(:body_class) %>">
@@ -40,20 +38,6 @@
         <main>
             <%= yield %>
         </main>
-
-        <!-- Google AdSense Ad Unit -->
-        <div class="mt-5">
-            <!-- 3dp -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-5257142454834240"
-                 data-ad-slot="9779716586"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
     </div>
 
     <!-- Footer -->
