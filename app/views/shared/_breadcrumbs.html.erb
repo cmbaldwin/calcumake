@@ -1,0 +1,21 @@
+<% if local_assigns[:items].present? %>
+<nav aria-label="breadcrumb" class="mb-3">
+  <ol class="breadcrumb">
+    <% items.each_with_index do |item, index| %>
+      <% if index == items.length - 1 %>
+        <li class="breadcrumb-item active" aria-current="page"><%= item[:name] %></li>
+      <% else %>
+        <li class="breadcrumb-item">
+          <%= link_to item[:name], item[:url] %>
+        </li>
+      <% end %>
+    <% end %>
+  </ol>
+</nav>
+
+<% content_for :structured_data do %>
+  <script type="application/ld+json">
+    <%= breadcrumb_structured_data(items).html_safe %>
+  </script>
+<% end %>
+<% end %>
