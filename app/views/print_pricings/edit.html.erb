@@ -1,5 +1,11 @@
 <% content_for :body_class, "pricing-form-page" %>
 
+<%= render "shared/breadcrumbs", items: [
+  { name: t('print_pricing.title'), url: print_pricings_path },
+  { name: @print_pricing.job_name, url: print_pricing_path(@print_pricing) },
+  { name: t('actions.edit'), url: edit_print_pricing_path(@print_pricing) }
+] %>
+
 <!-- Calculator Header -->
 <div class="text-center mb-4">
   <h1 class="display-5 fw-bold text-primary mb-2"><%= t('print_pricing.edit.title') %></h1>

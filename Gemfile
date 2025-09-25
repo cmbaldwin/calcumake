@@ -26,6 +26,9 @@ gem "devise"
 # Admin interface
 gem "rails_admin"
 
+# SEO and sitemap
+gem "sitemap_generator"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
