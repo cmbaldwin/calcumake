@@ -1,1 +1,24 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+# Robots.txt for CalcuMake - 3D Print Cost Calculator
+
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Disallow admin and user-specific pages
+Disallow: /admin/
+Disallow: /users/
+Disallow: /user_profiles/
+
+# Disallow authentication pages
+Disallow: /users/sign_in
+Disallow: /users/sign_up
+Disallow: /users/password
+
+# Allow specific important pages
+Allow: /
+Allow: /support
+Allow: /privacy-policy
+Allow: /user-agreement
+
+# Sitemap location
+Sitemap: https://calcumake.com/sitemap.xml
