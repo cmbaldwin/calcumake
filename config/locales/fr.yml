@@ -67,8 +67,16 @@ fr:
     spool_price: "Prix de la Bobine"
     spool_weight: "Poids de la Bobine (g)"
     markup_percentage: "Pourcentage de Marge"
+
+    fields:
+      markup_percentage: "Pourcentage de Marge"
+      prep_time_minutes: "Temps de Préparation (minutes)"
+      prep_cost_per_hour: "Coût de Préparation par Heure"
     prep_time_minutes: "Temps de Préparation (Minutes)"
     post_time_minutes: "Temps de Post-traitement (Minutes)"
+    postprocessing_time_minutes: "Temps de Post-traitement (minutes)"
+    postprocessing_time_placeholder: "30"
+    postprocessing_cost_per_hour: "Coût de Post-traitement par Heure"
     vat_rate: "Taux de TVA (%)"
     total_cost: "Coût Total"
     profit_margin: "Marge Bénéficiaire"
@@ -103,11 +111,42 @@ fr:
     confirm_delete: "Êtes-vous sûr de vouloir supprimer '%{name}' ?"
     times_printed_incremented: "Nombre d'impressions augmenté avec succès"
     times_printed_decremented: "Nombre d'impressions diminué avec succès"
+    times_printed_decrease: "Diminuer le nombre d'impressions"
+    times_printed_increase: "Augmenter le nombre d'impressions"
+    printed_times: "Fois Imprimé"
+    title: "Tarification d'Impression"
+    cost_summary: "Résumé des Coûts"
+
+    # Cost breakdown
+    cost_breakdown:
+      filament: "Coût du Filament"
     
     calculator:
       title: "Calculatrice d'Impression 3D"
       subtitle: "Calculez vos coûts d'impression 3D avec précision"
+
+    # Edit forms
+    edit:
+      title: "Modifier la Tarification d'Impression"
+      subtitle: "Mettez à jour votre calcul de coût d'impression 3D"
     
+    # Form sections
+    sections:
+      basic_info: "Informations de Base"
+      print_time_material: "Temps d'Impression et Matériau"
+      filament_details: "Détails du Filament"
+      electricity: "Électricité"
+      electricity_auto_calculated: "Électricité (Calculée automatiquement)"
+      electricity_power_consumption: "Électricité et Consommation d'Énergie"
+      electricity_print_time: "Électricité et Temps d'Impression"
+      electricity_energy_cost: "Électricité et Coût Énergétique"
+      electricity_settings_link_html: "Configurez les paramètres d'électricité dans votre %{link}"
+      profile_settings: "Paramètres du Profil"
+      labor: "Main-d'œuvre"
+      machine_upkeep: "Entretien de la Machine"
+      other_costs_tax: "Autres Coûts et Taxes"
+      final_price: "Prix Final"
+
     show:
       cost_summary: "Résumé des Coûts"
       print_information: "Informations d'Impression"
@@ -180,3 +219,9 @@ fr:
     description: "Need help with CalcuMake? Have a question or suggestion? We're here to help!"
     email_label: "Email Support"
     response_time: "We typically respond within 24-48 hours"
+
+# Print Pricings (plural) Module
+print_pricings:
+  form:
+    filament_weight: "Poids du Filament"
+    print_time_hours: "Heures de Temps d'Impression"

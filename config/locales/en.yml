@@ -120,10 +120,26 @@ en:
     job_name: "Job Name"
     print_time: "Print Time"
     times_printed: "Times Printed"
+    times_printed_decrease: "Decrease times printed"
+    times_printed_increase: "Increase times printed"
+    printed_times: "Printed Times"
     final_price: "Final Price"
     confirm_delete: "Are you sure you want to delete '%{name}'?"
     times_printed_incremented: "Times printed increased successfully"
     times_printed_decremented: "Times printed decreased successfully"
+    title: "Print Pricing"
+    cost_summary: "Cost Summary"
+    back_to_all: "← Back to All Pricings"
+    create_new: "Create New Pricing"
+
+    # Cost breakdown
+    cost_breakdown:
+      filament: "Filament Cost"
+      electricity: "Electricity Cost"
+      labor: "Labor Cost"
+      machine: "Machine Cost"
+      other: "Other Costs"
+      vat: "VAT"
 
     # Invoice specific
     invoice: "Invoice"
@@ -134,7 +150,7 @@ en:
     job_details: "Job Details"
     filament_type: "Filament Type"
     weight: "Weight"
-    cost_breakdown: "Cost Breakdown"
+    cost_breakdown_label: "Cost Breakdown"
     description: "Description"
     amount: "Amount"
     filament_cost: "Filament Cost"
@@ -162,14 +178,32 @@ en:
       edit_title: "Edit Print Pricing"
       edit_subtitle: "Update your 3D printing cost calculation"
 
+    # Edit forms
+    edit:
+      title: "Edit Print Pricing"
+      subtitle: "Update your 3D printing cost calculation"
+
     # Form sections
     sections:
       basic_info: "Basic Information"
       print_time_material: "Print Time & Material"
       filament_details: "Filament Details"
       electricity: "Electricity"
+      electricity_auto_calculated: "Electricity (Auto-calculated)"
+      electricity_power_consumption: "Electricity & Power Consumption"
+      electricity_print_time: "Electricity & Print Time"
+      electricity_energy_cost: "Electricity & Energy Cost"
+      electricity_settings_link_html: "Configure electricity settings in your %{link}"
+      profile_settings: "Profile Settings"
       labor: "Labor"
       machine_upkeep: "Machine & Upkeep"
+      machine_auto_calculated: "Machine (Auto-calculated)"
+      machine_cost_usage: "Machine Cost & Usage"
+      machine_return_period: "Machine Return Period"
+      machine_repair_factor: "Machine Repair Factor"
+      add_edit_printer: "add or edit a printer"
+      machine_printer_config_html: "Configure printer specifications when you %{link}"
+      unsaved_progress_warning: "Unsaved Progress Warning"
       other_costs_tax: "Other Costs & Tax"
       final_price: "Final Price"
 
@@ -193,18 +227,26 @@ en:
       spool_weight_placeholder: "1000"
       markup: "Markup (%)"
       markup_placeholder: "20"
+      markup_percentage: "Markup Percentage"
       prep_time: "Prep Time (min)"
       prep_time_placeholder: "30"
+      prep_time_minutes: "Prep Time (minutes)"
       prep_cost_hour: "Prep Cost/Hour"
       prep_cost_placeholder: "20.00"
+      prep_cost_per_hour: "Prep Cost per Hour"
       post_time: "Post-Process Time (min)"
       post_time_placeholder: "30"
+      postprocessing_time_minutes: "Post-processing Time (minutes)"
+      postprocessing_time_placeholder: "30"
+      postprocessing_cost_per_hour: "Post-processing Cost per Hour"
+      postprocessing_cost_placeholder: "20.00"
       post_cost_hour: "Post-Process Cost/Hour"
       post_cost_placeholder: "20.00"
       other_costs: "Other Costs"
       other_costs_placeholder: "0.00"
       vat: "VAT (%)"
       vat_placeholder: "10"
+      vat_percentage: "VAT Percentage"
       power_consumption: "Power Consumption (W)"
       power_consumption_placeholder: "200"
       energy_cost_kwh: "Energy Cost per kWh"
@@ -258,6 +300,7 @@ en:
     buttons:
       calculate_save: "Calculate"
       update_pricing: "Update Pricing"
+      update: "Update"
       cancel: "Cancel"
 
     # Show page
@@ -601,3 +644,9 @@ en:
       contact:
         title: "Contact Information"
         content: "If you have any questions about this agreement, please contact us through the support channels available in the application."
+
+  # Print Pricings (plural) Module
+  print_pricings:
+    form:
+      filament_weight: "Filament Weight"
+      print_time_hours: "Print Time Hours"

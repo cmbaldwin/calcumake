@@ -85,6 +85,15 @@ es:
     confirm_delete: "¿Está seguro de que desea eliminar '%{name}'?"
     times_printed_incremented: "Veces impreso aumentado exitosamente"
     times_printed_decremented: "Veces impreso disminuido exitosamente"
+    times_printed_decrease: "Disminuir veces impreso"
+    times_printed_increase: "Aumentar veces impreso"
+    printed_times: "Veces Impreso"
+    title: "Precio de Impresión"
+    cost_summary: "Resumen de Costos"
+
+    # Cost breakdown
+    cost_breakdown:
+      filament: "Costo del Filamento"
     
     # New/Edit forms
     calculator:
@@ -92,6 +101,11 @@ es:
       subtitle: "Calcule sus costos de impresión 3D con precisión"
       edit_title: "Editar Precio de Impresión"
       edit_subtitle: "Actualizar cálculo de costo de impresión 3D"
+
+    # Edit forms
+    edit:
+      title: "Editar Precio de Impresión"
+      subtitle: "Actualice su cálculo de costo de impresión 3D"
       
     # Form sections
     sections:
@@ -99,6 +113,12 @@ es:
       print_time_material: "Tiempo de Impresión y Material"
       filament_details: "Detalles del Filamento"
       electricity: "Electricidad"
+      electricity_auto_calculated: "Electricidad (Auto-calculada)"
+      electricity_power_consumption: "Electricidad y Consumo de Energía"
+      electricity_print_time: "Electricidad y Tiempo de Impresión"
+      electricity_energy_cost: "Electricidad y Costo de Energía"
+      electricity_settings_link_html: "Configure la configuración de electricidad en su %{link}"
+      profile_settings: "Configuración del Perfil"
       labor: "Mano de Obra"
       machine_upkeep: "Máquina y Mantenimiento"
       other_costs_tax: "Otros Costos e Impuestos"
@@ -124,12 +144,18 @@ es:
       spool_weight_placeholder: "1000"
       markup: "Margen (%)"
       markup_placeholder: "20"
+      markup_percentage: "Porcentaje de Margen"
       prep_time: "Tiempo de Preparación (min)"
       prep_time_placeholder: "30"
+      prep_time_minutes: "Tiempo de Preparación (minutos)"
       prep_cost_hour: "Costo de Prep./Hora"
       prep_cost_placeholder: "20.00"
+      prep_cost_per_hour: "Costo de Preparación por Hora"
       post_time: "Tiempo de Post-proceso (min)"
       post_time_placeholder: "30"
+      postprocessing_time_minutes: "Tiempo de Post-procesamiento (minutos)"
+      postprocessing_time_placeholder: "30"
+      postprocessing_cost_per_hour: "Costo de Post-procesamiento por Hora"
       post_cost_hour: "Costo de Post-proceso/Hora"
       post_cost_placeholder: "20.00"
       other_costs: "Otros Costos"
@@ -386,3 +412,9 @@ es:
     user_agreement:
       title: "Acuerdo de Usuario"
       nav_title: "Términos de Servicio"
+
+# Print Pricings (plural) Module
+print_pricings:
+  form:
+    filament_weight: "Peso del Filamento"
+    print_time_hours: "Horas de Tiempo de Impresión"
