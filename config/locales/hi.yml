@@ -67,8 +67,16 @@ hi:
     spool_price: "स्पूल की कीमत"
     spool_weight: "स्पूल का वजन (ग्राम)"
     markup_percentage: "मार्कअप प्रतिशत"
+
+    fields:
+      markup_percentage: "मार्कअप प्रतिशत"
+      prep_time_minutes: "तैयारी का समय (मिनट)"
+      prep_cost_per_hour: "प्रति घंटा तैयारी लागत"
     prep_time_minutes: "तैयारी का समय (मिनट)"
     post_time_minutes: "पोस्ट-प्रोसेसिंग समय (मिनट)"
+    postprocessing_time_minutes: "पोस्ट-प्रोसेसिंग समय (मिनट)"
+    postprocessing_time_placeholder: "30"
+    postprocessing_cost_per_hour: "प्रति घंटा पोस्ट-प्रोसेसिंग लागत"
     vat_rate: "वैट दर (%)"
     total_cost: "कुल लागत"
     profit_margin: "लाभ मार्जिन"
@@ -103,17 +111,48 @@ hi:
     confirm_delete: "क्या आप वाकई '%{name}' को हटाना चाहते हैं?"
     times_printed_incremented: "प्रिंट संख्या सफलतापूर्वक बढ़ाई गई"
     times_printed_decremented: "प्रिंट संख्या सफलतापूर्वक घटाई गई"
+    times_printed_decrease: "प्रिंट संख्या कम करें"
+    times_printed_increase: "प्रिंट संख्या बढ़ाएं"
+    printed_times: "प्रिंट की गई बार"
+    title: "प्रिंट मूल्य निर्धारण"
+    cost_summary: "लागत सारांश"
+
+    # Cost breakdown
+    cost_breakdown:
+      filament: "फिलामेंट लागत"
     
     calculator:
       title: "3D प्रिंट कैलकुलेटर"
       subtitle: "अपनी 3D प्रिंटिंग लागतों की सटीक गणना करें"
-    
+
+    # Edit forms
+    edit:
+      title: "प्रिंट मूल्य निर्धारण संपादित करें"
+      subtitle: "अपनी 3D प्रिंटिंग लागत गणना अपडेट करें"
+
+    sections:
+      basic_info: "बुनियादी जानकारी"
+      print_time_material: "प्रिंट समय और सामग्री"
+      filament_details: "फिलामेंट विवरण"
+      electricity: "बिजली"
+      electricity_auto_calculated: "बिजली (स्वचालित गणना)"
+      electricity_power_consumption: "बिजली और पावर खपत"
+      electricity_print_time: "बिजली और प्रिंट समय"
+      electricity_energy_cost: "बिजली और ऊर्जा लागत"
+      electricity_settings_link_html: "अपने %{link} में बिजली सेटिंग्स कॉन्फ़िगर करें"
+      profile_settings: "प्रोफाइल सेटिंग्स"
+      labor: "श्रम"
+      machine_upkeep: "मशीन और रखरखाव"
+      other_costs_tax: "अन्य लागत और कर"
+      final_price: "अंतिम कीमत"
+
     show:
       cost_summary: "लागत सारांश"
       print_information: "प्रिंट जानकारी"
       costs:
         filament: "फिलामेंट लागत"
         electricity: "बिजली की लागत"
+        electricity_auto_calculated: "बिजली (स्वचालित रूप से गणना की गई)"
         labor: "श्रम लागत"
         machine: "मशीन लागत"
         other: "अन्य लागतें"
@@ -180,3 +219,9 @@ hi:
     description: "Need help with CalcuMake? Have a question or suggestion? We're here to help!"
     email_label: "Email Support"
     response_time: "We typically respond within 24-48 hours"
+
+# Print Pricings (plural) Module
+print_pricings:
+  form:
+    filament_weight: "फिलामेंट वजन"
+    print_time_hours: "प्रिंट समय (घंटे)"

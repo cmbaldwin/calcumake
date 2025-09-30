@@ -84,18 +84,38 @@
     confirm_delete: "您确定要删除'%{name}'吗？"
     times_printed_incremented: "打印次数增加成功"
     times_printed_decremented: "打印次数减少成功"
+    times_printed_decrease: "打印次数减少"
+    times_printed_increase: "增加打印次数"
+    printed_times: "打印次数"
+    title: "打印定价"
+    cost_summary: "成本摘要"
+
+    # Cost breakdown
+    cost_breakdown:
+      filament: "耗材成本"
     
     calculator:
       title: "3D打印计算器"
       subtitle: "精确计算您的3D打印成本"
       edit_title: "编辑打印定价"
       edit_subtitle: "更新3D打印成本计算"
+
+    # Edit forms
+    edit:
+      title: "编辑打印定价"
+      subtitle: "更新您的3D打印成本计算"
     
     sections:
       basic_info: "基本信息"
       print_time_material: "打印时间与材料"
       filament_details: "耗材详情"
       electricity: "电力"
+      electricity_auto_calculated: "电力（自动计算）"
+      electricity_power_consumption: "电力与功耗"
+      electricity_print_time: "电力与打印时间"
+      electricity_energy_cost: "电力与能源成本"
+      electricity_settings_link_html: "在您的%{link}中配置电力设置"
+      profile_settings: "配置文件设置"
       labor: "人工"
       machine_upkeep: "机器与维护"
       other_costs_tax: "其他费用与税费"
@@ -170,6 +190,14 @@
       energy_cost: "电价/千瓦时"
       energy_cost_placeholder: "0.120"
       energy_cost_help: "您当地的每千瓦时电价"
+
+    fields:
+      markup_percentage: "加价百分比"
+      prep_time_minutes: "准备时间（分钟）"
+      prep_cost_per_hour: "每小时准备成本"
+      postprocessing_time_minutes: "后处理时间（分钟）"
+      postprocessing_time_placeholder: "30"
+      postprocessing_cost_per_hour: "每小时后处理费用"
   
   # Currency
   currency:
@@ -218,3 +246,9 @@
     description: "Need help with CalcuMake? Have a question or suggestion? We're here to help!"
     email_label: "Email Support"
     response_time: "We typically respond within 24-48 hours"
+
+# Print Pricings (plural) Module
+print_pricings:
+  form:
+    filament_weight: "耗材重量"
+    print_time_hours: "打印时间（小时）"

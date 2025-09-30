@@ -81,10 +81,19 @@ ja:
     job_name: "ジョブ名"
     print_time: "印刷時間"
     times_printed: "印刷回数"
+    times_printed_decrease: "印刷回数を減らす"
+    times_printed_increase: "印刷回数を増やす"
+    printed_times: "印刷回数"
     final_price: "最終価格"
     confirm_delete: "'%{name}'を削除してもよろしいですか？"
     times_printed_incremented: "印刷回数が正常に増加しました"
     times_printed_decremented: "印刷回数が正常に減少しました"
+    title: "印刷料金"
+    cost_summary: "費用概要"
+
+    # Cost breakdown
+    cost_breakdown:
+      filament: "フィラメント費用"
     
     # New/Edit forms
     calculator:
@@ -92,6 +101,11 @@ ja:
       subtitle: "3D印刷コストを正確に計算"
       edit_title: "印刷料金の編集"
       edit_subtitle: "3D印刷コスト計算を更新"
+
+    # Edit forms
+    edit:
+      title: "印刷料金の編集"
+      subtitle: "3D印刷コスト計算を更新"
       
     # Form sections
     sections:
@@ -99,6 +113,12 @@ ja:
       print_time_material: "印刷時間・材料"
       filament_details: "フィラメント詳細"
       electricity: "電気代"
+      electricity_auto_calculated: "電気代（自動計算）"
+      electricity_power_consumption: "電気代・消費電力"
+      electricity_print_time: "電気代・印刷時間"
+      electricity_energy_cost: "電気代・エネルギー費用"
+      electricity_settings_link_html: "%{link}で電気設定を構成する"
+      profile_settings: "プロフィール設定"
       labor: "労働費"
       machine_upkeep: "機械・保守費"
       other_costs_tax: "その他費用・税金"
@@ -124,12 +144,18 @@ ja:
       spool_weight_placeholder: "1000"
       markup: "マークアップ（%）"
       markup_placeholder: "20"
+      markup_percentage: "マークアップ率"
       prep_time: "準備時間（分）"
       prep_time_placeholder: "30"
+      prep_time_minutes: "準備時間（分）"
       prep_cost_hour: "準備費/時間"
       prep_cost_placeholder: "20.00"
+      prep_cost_per_hour: "時間あたり準備費"
       post_time: "後処理時間（分）"
       post_time_placeholder: "30"
+      postprocessing_time_minutes: "後処理時間（分）"
+      postprocessing_time_placeholder: "30"
+      postprocessing_cost_per_hour: "時間あたり後処理費"
       post_cost_hour: "後処理費/時間"
       post_cost_placeholder: "20.00"
       other_costs: "その他費用"
@@ -399,3 +425,9 @@ ja:
     description: "CalcuMakeについてのご質問やご提案がありますか？お気軽にお問い合わせください。"
     email_label: "メールサポート"
     response_time: "通常24〜48時間以内に返信いたします"
+
+  # Print Pricings (plural) Module
+  print_pricings:
+    form:
+      filament_weight: "フィラメント重量"
+      print_time_hours: "印刷時間（時間）"
