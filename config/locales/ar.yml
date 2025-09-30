@@ -67,8 +67,16 @@ ar:
     spool_price: "سعر البكرة"
     spool_weight: "وزن البكرة (جرام)"
     markup_percentage: "نسبة الهامش"
+
+    fields:
+      markup_percentage: "نسبة الهامش"
+      prep_time_minutes: "وقت التحضير (دقائق)"
+      prep_cost_per_hour: "تكلفة التحضير في الساعة"
     prep_time_minutes: "وقت التحضير (دقائق)"
     post_time_minutes: "وقت المعالجة اللاحقة (دقائق)"
+    postprocessing_time_minutes: "وقت المعالجة اللاحقة (دقائق)"
+    postprocessing_time_placeholder: "30"
+    postprocessing_cost_per_hour: "تكلفة المعالجة اللاحقة في الساعة"
     vat_rate: "معدل ضريبة القيمة المضافة (%)"
     total_cost: "التكلفة الإجمالية"
     profit_margin: "هامش الربح"
@@ -103,11 +111,42 @@ ar:
     confirm_delete: "هل أنت متأكد من أنك تريد حذف '%{name}'؟"
     times_printed_incremented: "تم زيادة عدد مرات الطباعة بنجاح"
     times_printed_decremented: "تم تقليل عدد مرات الطباعة بنجاح"
+    times_printed_decrease: "تقليل عدد مرات الطباعة"
+    times_printed_increase: "زيادة عدد مرات الطباعة"
+    printed_times: "عدد مرات الطباعة"
+    title: "تسعير الطباعة"
+    cost_summary: "ملخص التكلفة"
+
+    # Cost breakdown
+    cost_breakdown:
+      filament: "تكلفة الخيط"
     
     calculator:
       title: "آلة حاسبة الطباعة ثلاثية الأبعاد"
       subtitle: "احسب تكاليف الطباعة ثلاثية الأبعاد بدقة"
+
+    # Edit forms
+    edit:
+      title: "تعديل تسعير الطباعة"
+      subtitle: "حدِّث حساب تكلفة الطباعة ثلاثية الأبعاد"
     
+    # Form sections
+    sections:
+      basic_info: "المعلومات الأساسية"
+      print_time_material: "وقت الطباعة والمواد"
+      filament_details: "تفاصيل الخيط"
+      electricity: "الكهرباء"
+      electricity_auto_calculated: "الكهرباء (حساب تلقائي)"
+      electricity_power_consumption: "الكهرباء واستهلاك الطاقة"
+      electricity_print_time: "الكهرباء ووقت الطباعة"
+      electricity_energy_cost: "الكهرباء وتكلفة الطاقة"
+      electricity_settings_link_html: "قم بتكوين إعدادات الكهرباء في %{link} الخاص بك"
+      profile_settings: "إعدادات الملف الشخصي"
+      labor: "العمل"
+      machine_upkeep: "صيانة الآلة"
+      other_costs_tax: "تكاليف أخرى والضرائب"
+      final_price: "السعر النهائي"
+
     show:
       cost_summary: "ملخص التكلفة"
       print_information: "معلومات الطباعة"
@@ -180,3 +219,9 @@ ar:
     description: "Need help with CalcuMake? Have a question or suggestion? We're here to help!"
     email_label: "Email Support"
     response_time: "We typically respond within 24-48 hours"
+
+# Print Pricings (plural) Module
+print_pricings:
+  form:
+    filament_weight: "وزن الخيط"
+    print_time_hours: "ساعات وقت الطباعة"
