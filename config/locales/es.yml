@@ -84,6 +84,37 @@ es:
     cost_summary: Resumen de Costos
     cost_breakdown:
       filament: Costo del Filamento
+    invoice: Factura
+    invoice_number: Número de Factura
+    invoice_date: Fecha de Factura
+    from: De
+    3d_printing_services: Servicios de Impresión 3D
+    job_details: Detalles del Trabajo
+    filament_type: Tipo de Filamento
+    filament_types: Tipos de Filamento
+    weight: Peso
+    total_weight: Peso Total
+    total_print_time: Tiempo Total de Impresión
+    cost_breakdown_label: Desglose de Costos
+    description: Descripción
+    amount: Monto
+    filament_cost: Costo de Filamento
+    markup: margen
+    electricity_cost: Costo de Electricidad
+    labor_cost: Costo Laboral
+    prep_time: Tiempo de preparación
+    postprocessing_time: Tiempo de postprocesamiento
+    machine_upkeep: Mantenimiento de Máquina
+    depreciation_and_maintenance: Depreciación y mantenimiento
+    other_costs: Otros Costos
+    subtotal: Subtotal
+    vat: IVA
+    total: Total
+    notes: Notas
+    invoice_notes_text: Gracias por su negocio. Por favor conserve esta factura para sus registros.
+    payment_info: Información de Pago
+    payment_info_text: Los términos y detalles de pago se comunicarán por separado.
+    download_pdf: Descargar PDF
     calculator:
       title: Calculadora de Impresión 3D
       subtitle: Calcule sus costos de impresión 3D con precisión

@@ -82,6 +82,37 @@ ja:
     cost_summary: 費用概要
     cost_breakdown:
       filament: フィラメント費用
+    invoice: 請求書
+    invoice_number: 請求書番号
+    invoice_date: 請求日
+    from: 差出人
+    3d_printing_services: 3D印刷サービス
+    job_details: ジョブ詳細
+    filament_type: フィラメントタイプ
+    filament_types: フィラメントタイプ
+    weight: 重量
+    total_weight: 総重量
+    total_print_time: 総印刷時間
+    cost_breakdown_label: コスト内訳
+    description: 説明
+    amount: 金額
+    filament_cost: フィラメント費用
+    markup: マークアップ
+    electricity_cost: 電気代
+    labor_cost: 労働費
+    prep_time: 準備時間
+    postprocessing_time: 後処理時間
+    machine_upkeep: 機械維持費
+    depreciation_and_maintenance: 減価償却と保守
+    other_costs: その他費用
+    subtotal: 小計
+    vat: VAT
+    total: 合計
+    notes: 備考
+    invoice_notes_text: ご利用ありがとうございます。この請求書を記録として保管してください。
+    payment_info: 支払い情報
+    payment_info_text: 支払い条件と詳細は別途お知らせいたします。
+    download_pdf: PDFをダウンロード
     calculator:
       title: 3D印刷計算機
       subtitle: 3D印刷コストを正確に計算

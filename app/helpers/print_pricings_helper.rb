@@ -10,6 +10,11 @@ module PrintPricingsHelper
     pricing.created_at.strftime("%b %d, %Y")
   end
 
+  def translate_filament_type(filament_type)
+    return "" if filament_type.blank?
+    t("print_pricing.filament_types.#{filament_type.downcase}")
+  end
+
   def total_print_time_hours(print_pricings)
     print_pricings.sum { |p| p.total_actual_print_time_minutes } / 60
   end
@@ -18,7 +23,7 @@ module PrintPricingsHelper
     content_tag :div, class: "d-flex gap-2 flex-wrap d-lg-none justify-content-center" do
       concat content_tag(:span, "#{pricing.plates.count} plate#{'s' unless pricing.plates.count == 1}", class: "badge bg-info")
       pricing.plates.map(&:filament_type).uniq.each do |type|
-        concat content_tag(:span, type, class: "badge bg-secondary")
+        concat content_tag(:span, translate_filament_type(type), class: "badge bg-secondary")
       end
       concat content_tag(:small, "#{pricing.plates.sum(&:filament_weight).round(1)}g | #{format_print_time(pricing)}", class: "text-muted")
     end
@@ -93,7 +98,7 @@ module PrintPricingsHelper
         items: [
           [ "Print Time", "#{plate.printing_time_hours}h #{plate.printing_time_minutes}m" ],
           [ "Filament Weight", "#{plate.filament_weight}g" ],
-          [ "Filament Type", content_tag(:span, plate.filament_type, class: "badge badge-filament") ],
+          [ "Filament Type", content_tag(:span, translate_filament_type(plate.filament_type), class: "badge badge-filament") ],
           [ "Spool Price", format_currency_with_symbol(plate.spool_price, pricing.default_currency) ],
           [ "Spool Weight", "#{plate.spool_weight}g" ],
           [ "Markup", "#{plate.markup_percentage}%" ]

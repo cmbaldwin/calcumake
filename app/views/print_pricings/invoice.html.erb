@@ -51,14 +51,12 @@
             <div class="row">
                 <div class="col-md-6">
                     <p><strong><%= t('print_pricing.job_name') %>:</strong> <%= @print_pricing.job_name %></p>
-                    <p><strong><%= t('print_pricing.filament_type') %>:</strong> <%= @print_pricing.filament_type %></p>
-                    <p><strong><%= t('print_pricing.weight') %>:</strong> <%= number_with_precision(@print_pricing.filament_weight, precision: 1) %>g</p>
+                    <p><strong><%= t('print_pricing.sections.plates') %>:</strong> <%= @print_pricing.plates.count %></p>
+                    <p><strong><%= t('print_pricing.filament_types_label') %>:</strong> <%= @print_pricing.plates.map(&:filament_type).uniq.map { |type| translate_filament_type(type) }.join(', ') %></p>
+                    <p><strong><%= t('print_pricing.total_weight') %>:</strong> <%= number_with_precision(@print_pricing.plates.sum(&:filament_weight), precision: 1) %>g</p>
                 </div>
                 <div class="col-md-6">
-                    <p><strong><%= t('print_pricing.print_time') %>:</strong>
-                        <%= @print_pricing.printing_time_hours %> <%= t('time.hour', count: @print_pricing.printing_time_hours) %>
-                        <%= @print_pricing.printing_time_minutes %> <%= t('time.minute', count: @print_pricing.printing_time_minutes) %>
-                    </p>
+                    <p><strong><%= t('print_pricing.total_print_time') %>:</strong> <%= format_print_time(@print_pricing) %></p>
                     <% if @print_pricing.printer %>
                     <p><strong><%= t('models.printer') %>:</strong>
                         <%= @print_pricing.printer.manufacturer %> <%= @print_pricing.printer.name %>
@@ -71,7 +69,7 @@
 
         <!-- Cost Breakdown -->
         <div class="cost-breakdown mb-4">
-            <h3><%= t('print_pricing.cost_breakdown') %></h3>
+            <h3><%= t('print_pricing.cost_breakdown_label') %></h3>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -86,10 +84,16 @@
                             <td>
                                 <%= t('print_pricing.filament_cost') %>
                                 <small class="text-muted d-block">
-                                    <%= number_with_precision(@print_pricing.filament_weight, precision: 1) %>g ×
-                                    <%= format_currency(@print_pricing.spool_price, @print_pricing.default_currency) %>/<%= @print_pricing.spool_weight %>g
-                                    <% if @print_pricing.markup_percentage && @print_pricing.markup_percentage > 0 %>
-                                    + <%= number_with_precision(@print_pricing.markup_percentage, precision: 1) %>% <%= t('print_pricing.markup') %>
+                                    <% @print_pricing.plates.each_with_index do |plate, index| %>
+                                    <%= t('print_pricing.sections.plate') %> <%= index + 1 %>:
+                                    <%= number_with_precision(plate.filament_weight, precision: 1) %>g
+                                    <%= translate_filament_type(plate.filament_type) %>
+                                    × <%= format_currency(plate.spool_price, @print_pricing.default_currency) %>/<%= plate.spool_weight %>g
+                                    <% if plate.markup_percentage && plate.markup_percentage > 0 %>
+                                    + <%= number_with_precision(plate.markup_percentage, precision: 1) %>% <%= t('print_pricing.markup') %>
+                                    <% end %>
+                                    = <%= currency_symbol(@print_pricing.default_currency) %><%= format_currency(plate.total_filament_cost, @print_pricing.default_currency) %>
+                                    <br>
                                     <% end %>
                                 </small>
                             </td>

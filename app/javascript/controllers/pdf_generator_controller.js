@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import "jspdf"
+import { jsPDF } from "jspdf";
 
 // Connects to data-controller="pdf-generator"
 export default class extends Controller {
@@ -12,7 +12,7 @@ export default class extends Controller {
   async generatePDF() {
     try {
       // Create new PDF document
-      const pdf = new window.jsPDF({
+      const pdf = new jsPDF({
         orientation: 'portrait',
         unit: 'mm',
         format: 'a4'

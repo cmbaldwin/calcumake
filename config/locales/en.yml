@@ -48,8 +48,8 @@ en:
     kwh: kWh
     percentage: "%"
     years: years
-    'yes': 'Yes'
-    'no': 'No'
+    "yes": "Yes"
+    "no": "No"
     are_you_sure: Are you sure?
     errors_prohibited: "%{count} %{errors} prohibited this %{model} from being saved:"
     error_count:
@@ -70,11 +70,13 @@ en:
       search_placeholder: Search by job name or filament type...
       empty_state:
         title: No calculations yet
-        description: Start by creating your first print cost calculation to track
+        description:
+          Start by creating your first print cost calculation to track
           expenses and pricing for your 3D printing projects.
       no_results:
         title: No results found
-        description: No print calculations match '%{query}'. Try a different search
+        description:
+          No print calculations match '%{query}'. Try a different search
           term.
     job_name: Job Name
     print_time: Print Time
@@ -104,7 +106,10 @@ en:
     3d_printing_services: 3D Printing Services
     job_details: Job Details
     filament_type: Filament Type
+    filament_types_label: Filament Types
     weight: Weight
+    total_weight: Total Weight
+    total_print_time: Total Print Time
     cost_breakdown_label: Cost Breakdown
     description: Description
     amount: Amount
@@ -121,7 +126,8 @@ en:
     vat: VAT
     total: Total
     notes: Notes
-    invoice_notes_text: Thank you for your business. Please keep this invoice for
+    invoice_notes_text:
+      Thank you for your business. Please keep this invoice for
       your records.
     payment_info: Payment Information
     payment_info_text: Payment terms and details will be communicated separately.
@@ -168,51 +174,52 @@ en:
       print_time_hours: Hours
       print_time_minutes: Minutes
       filament_weight: Filament Weight (g)
-      filament_weight_placeholder: '36'
+      filament_weight_placeholder: "36"
       filament_type: Filament Type
       filament_type_prompt: Select type
       spool_price: Spool Price
-      spool_price_placeholder: '25.00'
+      spool_price_placeholder: "25.00"
       spool_weight: Spool Weight (g)
-      spool_weight_placeholder: '1000'
+      spool_weight_placeholder: "1000"
       markup: Markup (%)
-      markup_placeholder: '20'
+      markup_placeholder: "20"
       markup_percentage: Markup Percentage
       prep_time: Prep Time (min)
-      prep_time_placeholder: '30'
+      prep_time_placeholder: "30"
       prep_time_minutes: Prep Time (minutes)
       prep_cost_hour: Prep Cost/Hour
-      prep_cost_placeholder: '20.00'
+      prep_cost_placeholder: "20.00"
       prep_cost_per_hour: Prep Cost per Hour
       post_time: Post-Process Time (min)
-      post_time_placeholder: '30'
+      post_time_placeholder: "30"
       postprocessing_time_minutes: Post-processing Time (minutes)
-      postprocessing_time_placeholder: '30'
+      postprocessing_time_placeholder: "30"
       postprocessing_cost_per_hour: Post-processing Cost per Hour
-      postprocessing_cost_placeholder: '20.00'
+      postprocessing_cost_placeholder: "20.00"
       post_cost_hour: Post-Process Cost/Hour
-      post_cost_placeholder: '20.00'
+      post_cost_placeholder: "20.00"
       other_costs: Other Costs
-      other_costs_placeholder: '0.00'
+      other_costs_placeholder: "0.00"
       vat: VAT (%)
-      vat_placeholder: '10'
+      vat_placeholder: "10"
       vat_percentage: VAT Percentage
       power_consumption: Power Consumption (W)
-      power_consumption_placeholder: '200'
+      power_consumption_placeholder: "200"
       energy_cost_kwh: Energy Cost per kWh
-      energy_cost_placeholder: '0.12'
+      energy_cost_placeholder: "0.12"
       printer_cost: Printer Cost
-      printer_cost_placeholder: '500.00'
+      printer_cost_placeholder: "500.00"
       payoff_goal: Payoff Goal (Years)
-      payoff_goal_placeholder: '3'
+      payoff_goal_placeholder: "3"
       daily_usage: Daily Usage (Hours)
-      daily_usage_placeholder: '8'
+      daily_usage_placeholder: "8"
       repair_cost: Repair Cost (%)
-      repair_cost_placeholder: '5'
+      repair_cost_placeholder: "5"
       currency: Currency
       currency_prompt: Select currency
       start_with_one_print: Start with 1 times printed
-      start_with_one_print_help: Enable this to automatically set this pricing as
+      start_with_one_print_help:
+        Enable this to automatically set this pricing as
         printed once
     filament_types:
       pla: PLA
@@ -228,14 +235,15 @@ en:
       machine_cost: Machine cost
       estimated_price: Estimated Price
     info:
-      electricity_auto: 'Electricity cost will be automatically calculated based on:'
+      electricity_auto: "Electricity cost will be automatically calculated based on:"
       printer_power: Selected printer's power consumption
       print_duration: Print time duration
-      energy_cost_setting: 'Your default energy cost: %{cost}/kWh'
+      energy_cost_setting: "Your default energy cost: %{cost}/kWh"
       update_energy_cost: You can update your default energy cost in your
       profile_settings: profile settings
-      machine_auto: 'Machine depreciation and upkeep cost will be calculated from
-        your selected printer''s specifications:'
+      machine_auto:
+        "Machine depreciation and upkeep cost will be calculated from
+        your selected printer's specifications:"
       printer_cost_usage: Printer cost and usage hours
       investment_return: Investment return period
       repair_factor: Repair cost factor
@@ -298,7 +306,8 @@ en:
       add_new: Add New Printer
       empty_state:
         title: No printers registered yet
-        description: Add your first 3D printer to start calculating printing costs
+        description:
+          Add your first 3D printer to start calculating printing costs
           accurately.
         add_first: Add Your First Printer
     card:
@@ -327,7 +336,8 @@ en:
       fully_paid_off: This printer has been fully paid off based on your payoff goals.
       payoff_progress: Payoff Progress
       no_print_jobs: No print jobs yet
-      no_print_jobs_description: Create your first print pricing calculation for this
+      no_print_jobs_description:
+        Create your first print pricing calculation for this
         printer.
       create_first_job: Create First Print Job
       view_all_jobs: View All %{count} Jobs
@@ -342,19 +352,20 @@ en:
       manufacturer: Manufacturer
       manufacturer_prompt: Select manufacturer
       power_consumption: Power Consumption (Watts)
-      power_consumption_placeholder: '200'
-      power_consumption_help: 'Typical range: 50W (small printers) to 500W (large
-        printers)'
+      power_consumption_placeholder: "200"
+      power_consumption_help:
+        "Typical range: 50W (small printers) to 500W (large
+        printers)"
       cost: Printer Cost
-      cost_placeholder: '500.00'
+      cost_placeholder: "500.00"
       payoff_goal: Payoff Goal (Years)
-      payoff_goal_placeholder: '3'
+      payoff_goal_placeholder: "3"
       payoff_goal_help: How many years do you want to recoup the printer cost?
       daily_usage: Daily Usage (Hours)
-      daily_usage_placeholder: '8'
+      daily_usage_placeholder: "8"
       daily_usage_help: Average hours per day you plan to use this printer
       repair_factor: Repair Cost Factor (%)
-      repair_factor_placeholder: '5.0'
+      repair_factor_placeholder: "5.0"
       repair_factor_help: Additional cost factor for maintenance and repairs
     buttons:
       add_printer: Add Printer
@@ -377,9 +388,10 @@ en:
       default_currency: Default Currency
       default_currency_help: Used as default for new pricing calculations
       energy_cost: Energy Cost per kWh
-      energy_cost_placeholder: '0.120'
+      energy_cost_placeholder: "0.120"
       energy_cost_help: Your local electricity cost per kilowatt-hour
-      energy_cost_help_extended: Your local electricity cost per kilowatt-hour. This
+      energy_cost_help_extended:
+        Your local electricity cost per kilowatt-hour. This
         will be used as the default for new calculations.
     buttons:
       update_settings: Update Settings
@@ -404,7 +416,8 @@ en:
     title: Support
     nav_title: Support
     contact_us: Contact Us
-    description: Need help with CalcuMake? Have a question or suggestion? We're here
+    description:
+      Need help with CalcuMake? Have a question or suggestion? We're here
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
@@ -415,7 +428,8 @@ en:
       nav_title: Privacy Policy
       information_we_collect:
         title: Information We Collect
-        content: We collect information you provide directly to us and information
+        content:
+          We collect information you provide directly to us and information
           we may collect automatically when you use our service.
         account_info:
           title: Account Information
@@ -429,31 +443,38 @@ en:
           project_metadata: Project names, dates, and metadata
       how_we_use_info:
         title: How We Use Your Information
-        provide_service: Provide, maintain, and improve our 3D printing calculation
+        provide_service:
+          Provide, maintain, and improve our 3D printing calculation
           service
         improve_features: Develop new features and enhance existing functionality
         customer_support: Provide customer support and respond to your inquiries
         security: Protect against fraud, abuse, and security threats
       data_sharing:
         title: Information Sharing
-        content: 'We do not sell, trade, or rent your personal information to third
-          parties. We may share your information only in the following circumstances:'
+        content:
+          "We do not sell, trade, or rent your personal information to third
+          parties. We may share your information only in the following circumstances:"
         legal_requirements: When required by law or to protect our legal rights
-        service_providers: With trusted service providers who assist in operating
+        service_providers:
+          With trusted service providers who assist in operating
           our service
         business_transfer: In connection with a business transfer or acquisition
       advertising:
         title: Advertising
-        content: Our website displays advertisements through Google AdSense. These
+        content:
+          Our website displays advertisements through Google AdSense. These
           ads may be based on your interests and browsing behavior.
-        google_adsense: Google AdSense may use cookies and other tracking technologies
+        google_adsense:
+          Google AdSense may use cookies and other tracking technologies
           to serve relevant advertisements.
-        opt_out: You can control ad personalization and opt out of personalized advertising
+        opt_out:
+          You can control ad personalization and opt out of personalized advertising
           by visiting
         google_ad_settings: Google Ad Settings
       data_security:
         title: Data Security
-        content: We implement appropriate technical and organizational security measures
+        content:
+          We implement appropriate technical and organizational security measures
           to protect your personal information against unauthorized access, alteration,
           disclosure, or destruction.
       your_rights:
@@ -464,98 +485,117 @@ en:
         portability: Export your data in a portable format
       cookies:
         title: Cookies and Tracking
-        content: We use cookies and similar technologies to enhance your experience,
+        content:
+          We use cookies and similar technologies to enhance your experience,
           remember your preferences, and provide personalized content and advertisements.
       changes:
         title: Changes to This Policy
-        content: We may update this privacy policy from time to time. We will notify
+        content:
+          We may update this privacy policy from time to time. We will notify
           you of any material changes by posting the new policy on this page with
           an updated effective date.
       contact:
         title: Contact Us
-        content: If you have any questions about this privacy policy, please contact
+        content:
+          If you have any questions about this privacy policy, please contact
           us through the support channels available in the application.
     user_agreement:
       title: User Agreement
       nav_title: Terms of Service
       acceptance:
         title: Acceptance of Terms
-        content: By accessing and using CalcuMake, you accept and agree to be bound
+        content:
+          By accessing and using CalcuMake, you accept and agree to be bound
           by the terms and provision of this agreement.
       description:
         title: Service Description
-        content: 'CalcuMake is a web-based application that provides 3D printing cost
-          calculation and project management tools. Our service includes:'
+        content:
+          "CalcuMake is a web-based application that provides 3D printing cost
+          calculation and project management tools. Our service includes:"
         cost_calculations: Comprehensive cost calculations for 3D printing projects
         project_management: Project tracking and management features
         invoice_generation: Invoice generation and PDF export capabilities
         printer_tracking: Printer specifications and usage tracking
       user_accounts:
         title: User Accounts
-        content: 'To use our service, you must create an account. You are responsible
-          for:'
+        content:
+          "To use our service, you must create an account. You are responsible
+          for:"
         accurate_info: Providing accurate and complete account information
         secure_credentials: Maintaining the security of your account credentials
         responsible_use: All activities that occur under your account
         notify_breaches: Notifying us immediately of any suspected security breaches
       acceptable_use:
         title: Acceptable Use
-        content: 'You agree to use our service only for lawful purposes and in accordance
-          with this agreement. You agree not to:'
+        content:
+          "You agree to use our service only for lawful purposes and in accordance
+          with this agreement. You agree not to:"
         lawful_purposes: Use the service for any unlawful or prohibited purposes
         respect_rights: Violate any applicable laws or regulations
-        no_harmful_content: Upload or transmit harmful, offensive, or inappropriate
+        no_harmful_content:
+          Upload or transmit harmful, offensive, or inappropriate
           content
         no_interference: Interfere with or disrupt the service or servers
-        no_unauthorized_access: Attempt to gain unauthorized access to any part of
+        no_unauthorized_access:
+          Attempt to gain unauthorized access to any part of
           the service
       data_accuracy:
         title: Data Accuracy and Calculations
-        content: While we strive to provide accurate calculation tools, you are responsible
+        content:
+          While we strive to provide accurate calculation tools, you are responsible
           for verifying the accuracy of all calculations and data. Our calculations
           are estimates and should be validated against your specific requirements
           and local conditions.
       intellectual_property:
         title: Intellectual Property
-        our_content: The service and its original content, features, and functionality
+        our_content:
+          The service and its original content, features, and functionality
           are owned by us and are protected by international copyright, trademark,
           and other intellectual property laws.
-        your_content: You retain ownership of any data, calculations, or content you
+        your_content:
+          You retain ownership of any data, calculations, or content you
           create using our service. You grant us a limited license to use this content
           solely to provide the service to you.
       disclaimers:
         title: Disclaimers
         important: Important Notice
-        calculations_estimates: All cost calculations and estimates are for informational
+        calculations_estimates:
+          All cost calculations and estimates are for informational
           purposes only
         verify_accuracy: You must verify all calculations and data for accuracy
-        no_guarantee: We do not guarantee the accuracy, completeness, or reliability
+        no_guarantee:
+          We do not guarantee the accuracy, completeness, or reliability
           of any calculations
         as_is_basis: The service is provided on an 'as is' and 'as available' basis
       limitation_liability:
         title: Limitation of Liability
-        content: To the maximum extent permitted by law, we shall not be liable for
+        content:
+          To the maximum extent permitted by law, we shall not be liable for
           any indirect, incidental, special, consequential, or punitive damages, including
           without limitation, loss of profits, data, use, goodwill, or other intangible
           losses.
       termination:
         title: Termination
-        content: We may terminate or suspend your account and access to the service
+        content:
+          We may terminate or suspend your account and access to the service
           immediately, without prior notice, for conduct that we believe violates
           this agreement or is harmful to other users, us, or third parties.
       governing_law:
         title: Governing Law
-        content: This agreement shall be governed by and construed in accordance with
+        content:
+          This agreement shall be governed by and construed in accordance with
           the laws of the jurisdiction in which our service operates, without regard
           to its conflict of law provisions.
       changes:
         title: Changes to Agreement
-        content: We reserve the right to modify this agreement at any time. We will
+        content:
+          We reserve the right to modify this agreement at any time. We will
           notify users of any material changes by posting the updated agreement on
           our website with a new effective date.
       contact:
         title: Contact Information
-        content: If you have any questions about this agreement, please contact us
+        content:
+          If you have any questions about this agreement, please contact us
           through the support channels available in the application.
   print_pricings:
     form:

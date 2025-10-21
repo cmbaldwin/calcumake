@@ -78,6 +78,37 @@ ar:
     cost_summary: ملخص التكلفة
     cost_breakdown:
       filament: تكلفة الخيط
+    invoice: فاتورة
+    invoice_number: رقم الفاتورة
+    invoice_date: تاريخ الفاتورة
+    from: من
+    3d_printing_services: خدمات الطباعة ثلاثية الأبعاد
+    job_details: تفاصيل العمل
+    filament_type: نوع الخيط
+    filament_types: أنواع الخيوط
+    weight: الوزن
+    total_weight: الوزن الإجمالي
+    total_print_time: وقت الطباعة الإجمالي
+    cost_breakdown_label: تفصيل التكلفة
+    description: الوصف
+    amount: المبلغ
+    filament_cost: تكلفة الخيط
+    markup: هامش الربح
+    electricity_cost: تكلفة الكهرباء
+    labor_cost: تكلفة العمالة
+    prep_time: وقت التحضير
+    postprocessing_time: وقت المعالجة اللاحقة
+    machine_upkeep: صيانة الآلة
+    depreciation_and_maintenance: الاستهلاك والصيانة
+    other_costs: تكاليف أخرى
+    subtotal: المجموع الفرعي
+    vat: ضريبة القيمة المضافة
+    total: الإجمالي
+    notes: ملاحظات
+    invoice_notes_text: شكراً لك على عملك. يرجى الاحتفاظ بهذه الفاتورة لسجلاتك.
+    payment_info: معلومات الدفع
+    payment_info_text: سيتم إبلاغك بشروط وتفاصيل الدفع بشكل منفصل.
+    download_pdf: تنزيل PDF
     calculator:
       title: آلة حاسبة الطباعة ثلاثية الأبعاد
       subtitle: احسب تكاليف الطباعة ثلاثية الأبعاد بدقة

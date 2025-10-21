@@ -82,6 +82,37 @@ zh-CN:
     cost_summary: 成本摘要
     cost_breakdown:
       filament: 耗材成本
+    invoice: 发票
+    invoice_number: 发票号码
+    invoice_date: 发票日期
+    from: 发票人
+    3d_printing_services: 3D打印服务
+    job_details: 作业详情
+    filament_type: 耗材类型
+    filament_types: 耗材类型
+    weight: 重量
+    total_weight: 总重量
+    total_print_time: 总打印时间
+    cost_breakdown_label: 成本明细
+    description: 描述
+    amount: 金额
+    filament_cost: 耗材成本
+    markup: 加价
+    electricity_cost: 电费
+    labor_cost: 人工成本
+    prep_time: 准备时间
+    postprocessing_time: 后处理时间
+    machine_upkeep: 机器维护
+    depreciation_and_maintenance: 折旧和维护
+    other_costs: 其他费用
+    subtotal: 小计
+    vat: 增值税
+    total: 总计
+    notes: 备注
+    invoice_notes_text: 感谢您的惠顾。请保留此发票作为记录。
+    payment_info: 付款信息
+    payment_info_text: 付款条款和详细信息将另行通知。
+    download_pdf: 下载PDF
     calculator:
       title: 3D打印计算器
       subtitle: 精确计算您的3D打印成本

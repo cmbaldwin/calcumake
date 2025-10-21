@@ -79,6 +79,37 @@ hi:
     cost_summary: लागत सारांश
     cost_breakdown:
       filament: फिलामेंट लागत
+    invoice: चालान
+    invoice_number: चालान संख्या
+    invoice_date: चालान दिनांक
+    from: से
+    3d_printing_services: 3D प्रिंटिंग सेवाएं
+    job_details: कार्य विवरण
+    filament_type: फिलामेंट प्रकार
+    filament_types: फिलामेंट प्रकार
+    weight: वजन
+    total_weight: कुल वजन
+    total_print_time: कुल प्रिंट समय
+    cost_breakdown_label: लागत विवरण
+    description: विवरण
+    amount: राशि
+    filament_cost: फिलामेंट लागत
+    markup: मार्कअप
+    electricity_cost: बिजली लागत
+    labor_cost: श्रम लागत
+    prep_time: तैयारी समय
+    postprocessing_time: पोस्ट-प्रोसेसिंग समय
+    machine_upkeep: मशीन रखरखाव
+    depreciation_and_maintenance: मूल्यह्रास और रखरखाव
+    other_costs: अन्य लागत
+    subtotal: उपयोग
+    vat: वैट
+    total: कुल
+    notes: टिप्पणियां
+    invoice_notes_text: आपके व्यवसाय के लिए धन्यवाद। कृपया इस चालान को अपने रिकॉर्ड के लिए रखें।
+    payment_info: भुगतान जानकारी
+    payment_info_text: भुगतान शर्तें और विवरण अलग से सूचित किए जाएंगे।
+    download_pdf: PDF डाउनलोड करें
     calculator:
       title: 3D प्रिंट कैलकुलेटर
       subtitle: अपनी 3D प्रिंटिंग लागतों की सटीक गणना करें
