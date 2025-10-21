@@ -1,0 +1,75 @@
+<div class="nested-form-item card mb-3" data-nested-form-target="item">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h6 class="mb-0">
+      <%= t('print_pricing.sections.plate') %>
+      <span class="plate-number badge bg-secondary"></span>
+    </h6>
+    <button type="button"
+            class="btn btn-sm btn-outline-danger"
+            data-action="nested-form#remove">
+      <%= t('actions.delete') %>
+    </button>
+  </div>
+  <div class="card-body">
+    <%= f.hidden_field :_destroy %>
+
+    <div class="row g-3">
+      <!-- Print Time -->
+      <div class="col-md-6">
+        <div class="row g-2">
+          <div class="col-6">
+            <%= f.label :printing_time_hours, t('print_pricing.fields.print_time_hours'), class: "form-label" %>
+            <%= f.number_field :printing_time_hours, min: 0, step: 1, value: f.object.printing_time_hours || 0, class: "form-control" %>
+          </div>
+          <div class="col-6">
+            <%= f.label :printing_time_minutes, t('print_pricing.fields.print_time_minutes'), class: "form-label" %>
+            <%= f.number_field :printing_time_minutes, min: 0, max: 59, step: 1, value: f.object.printing_time_minutes || 0, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filament Weight -->
+      <div class="col-md-6">
+        <%= f.label :filament_weight, t('print_pricing.fields.filament_weight'), class: "form-label" %>
+        <%= f.number_field :filament_weight, step: 0.1, placeholder: t('print_pricing.fields.filament_weight_placeholder'), class: "form-control" %>
+      </div>
+
+      <!-- Filament Type -->
+      <div class="col-md-6">
+        <%= f.label :filament_type, t('print_pricing.fields.filament_type'), class: "form-label" %>
+        <%= f.select :filament_type,
+            options_for_select([
+              [t('print_pricing.filament_types.pla'), 'PLA'],
+              [t('print_pricing.filament_types.abs'), 'ABS'],
+              [t('print_pricing.filament_types.petg'), 'PETG'],
+              [t('print_pricing.filament_types.tpu'), 'TPU'],
+              [t('print_pricing.filament_types.asa'), 'ASA'],
+              [t('print_pricing.filament_types.other'), 'Other']
+            ], f.object.filament_type),
+            { prompt: t('print_pricing.fields.filament_type_prompt') },
+            { class: "form-select" } %>
+      </div>
+
+      <!-- Spool Price -->
+      <div class="col-md-6">
+        <%= f.label :spool_price, t('print_pricing.fields.spool_price'), class: "form-label" %>
+        <div class="input-group">
+          <span class="input-group-text"><%= currency_symbol(current_user.default_currency) %></span>
+          <%= f.number_field :spool_price, step: 0.01, placeholder: t('print_pricing.fields.spool_price_placeholder'), class: "form-control" %>
+        </div>
+      </div>
+
+      <!-- Spool Weight -->
+      <div class="col-md-6">
+        <%= f.label :spool_weight, t('print_pricing.fields.spool_weight'), class: "form-label" %>
+        <%= f.number_field :spool_weight, step: 0.1, placeholder: t('print_pricing.fields.spool_weight_placeholder'), class: "form-control" %>
+      </div>
+
+      <!-- Markup Percentage -->
+      <div class="col-md-6">
+        <%= f.label :markup_percentage, t('print_pricing.fields.markup_percentage'), class: "form-label" %>
+        <%= f.number_field :markup_percentage, step: 0.1, placeholder: t('print_pricing.fields.markup_placeholder'), class: "form-control" %>
+      </div>
+    </div>
+  </div>
+</div>

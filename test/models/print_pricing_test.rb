@@ -22,14 +22,16 @@ class PrintPricingTest < ActiveSupport::TestCase
       user: @user,
       printer: @printer,
       job_name: "Test Print",
+      vat_percentage: 10.0
+    )
+    @print_pricing.plates.build(
       printing_time_hours: 2,
       printing_time_minutes: 30,
       filament_weight: 50.0,
       filament_type: "PLA",
       spool_price: 25.0,
       spool_weight: 1000.0,
-      markup_percentage: 20.0,
-      vat_percentage: 10.0
+      markup_percentage: 20.0
     )
   end
 
@@ -44,26 +46,27 @@ class PrintPricingTest < ActiveSupport::TestCase
   end
 
 
-  test "should require filament_type" do
-    @print_pricing.filament_type = nil
+  test "should require at least one plate" do
+    @print_pricing.plates.clear
     assert_not @print_pricing.valid?
-    assert_includes @print_pricing.errors[:filament_type], "can't be blank"
-  end
-
-  test "should require positive filament_weight" do
-    @print_pricing.filament_weight = 0
-    assert_not @print_pricing.valid?
-    assert_includes @print_pricing.errors[:filament_weight], "must be greater than 0"
+    assert_includes @print_pricing.errors[:base], "Must have at least one plate"
   end
 
   test "should calculate total_printing_time_minutes correctly" do
     assert_equal 150, @print_pricing.total_printing_time_minutes
   end
 
-  test "should handle nil time values" do
-    @print_pricing.printing_time_hours = nil
-    @print_pricing.printing_time_minutes = 45
-    assert_equal 45, @print_pricing.total_printing_time_minutes
+  test "should sum printing time across all plates" do
+    @print_pricing.plates.build(
+      printing_time_hours: 1,
+      printing_time_minutes: 15,
+      filament_weight: 30.0,
+      filament_type: "PETG",
+      spool_price: 30.0,
+      spool_weight: 1000.0,
+      markup_percentage: 15.0
+    )
+    assert_equal 225, @print_pricing.total_printing_time_minutes # 150 + 75
   end
 
   test "should calculate total_filament_cost correctly" do

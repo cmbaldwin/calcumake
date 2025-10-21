@@ -45,14 +45,18 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
       print_pricing: {
         job_name: "Integration Test Print",
         printer_id: printer.id,
-        printing_time_hours: 1,
-        printing_time_minutes: 30,
-        filament_weight: 25.0,
-        filament_type: "PLA",
-        spool_price: 20.0,
-        spool_weight: 1000.0,
-        markup_percentage: 15.0,
-        vat_percentage: 8.0
+        vat_percentage: 8.0,
+        plates_attributes: {
+          "0" => {
+            printing_time_hours: 1,
+            printing_time_minutes: 30,
+            filament_weight: 25.0,
+            filament_type: "PLA",
+            spool_price: 20.0,
+            spool_weight: 1000.0,
+            markup_percentage: 15.0
+          }
+        }
       }
     }
 
@@ -96,14 +100,18 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
         print_pricing: {
           job_name: "Flow Test Print",
           printer_id: printer.id,
-          printing_time_hours: 2,
-          printing_time_minutes: 15,
-          filament_weight: 40.0,
-          filament_type: "PETG",
-          spool_price: 35.0,
-          spool_weight: 1000.0,
-          markup_percentage: 20.0,
-          vat_percentage: 21.0
+          vat_percentage: 21.0,
+          plates_attributes: {
+            "0" => {
+              printing_time_hours: 2,
+              printing_time_minutes: 15,
+              filament_weight: 40.0,
+              filament_type: "PETG",
+              spool_price: 35.0,
+              spool_weight: 1000.0,
+              markup_percentage: 20.0
+            }
+          }
         }
       }
     end
@@ -162,9 +170,11 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
       daily_usage_hours: 8,
       repair_cost_percentage: 5.0
     )
-    other_pricing = other_user.print_pricings.create!(
+    other_pricing = other_user.print_pricings.build(
       job_name: "Other User's Print",
-      printer: other_printer,
+      printer: other_printer
+    )
+    other_pricing.plates.build(
       printing_time_hours: 1,
       printing_time_minutes: 0,
       filament_weight: 30.0,
@@ -173,6 +183,7 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
       spool_weight: 1000.0,
       markup_percentage: 15.0
     )
+    other_pricing.save!
 
     # The security check should either return 404 or redirect to login
     get print_pricing_path(other_pricing)
@@ -216,19 +227,23 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
       print_pricing: {
         job_name: "Complete Test",
         printer_id: printer.id,
-        printing_time_hours: 3,
-        printing_time_minutes: 45,
-        filament_weight: 60.0,
-        filament_type: "ABS",
-        spool_price: 4500.0,
-        spool_weight: 1000.0,
-        markup_percentage: 25.0,
         prep_time_minutes: 45,
         prep_cost_per_hour: 2500.0,
         postprocessing_time_minutes: 30,
         postprocessing_cost_per_hour: 3000.0,
         other_costs: 500.0,
-        vat_percentage: 10.0
+        vat_percentage: 10.0,
+        plates_attributes: {
+          "0" => {
+            printing_time_hours: 3,
+            printing_time_minutes: 45,
+            filament_weight: 60.0,
+            filament_type: "ABS",
+            spool_price: 4500.0,
+            spool_weight: 1000.0,
+            markup_percentage: 25.0
+          }
+        }
       }
     }
 

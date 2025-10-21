@@ -3,7 +3,7 @@ class PrintPricingsController < ApplicationController
   before_action :set_print_pricing, only: [ :show, :edit, :update, :destroy, :increment_times_printed, :decrement_times_printed, :invoice ]
 
   def index
-    @print_pricings = current_user.print_pricings.order(created_at: :desc)
+    @print_pricings = current_user.print_pricings.search(params[:query]).order(created_at: :desc)
   end
 
   def show
@@ -11,6 +11,7 @@ class PrintPricingsController < ApplicationController
 
   def new
     @print_pricing = current_user.print_pricings.build
+    @print_pricing.plates.build # Build one plate by default
   end
 
   def create
@@ -24,8 +25,7 @@ class PrintPricingsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @print_pricing, notice: "Print pricing was successfully created." }
         format.turbo_stream {
-          flash.now[:notice] = "Print pricing was successfully created."
-          render "layouts/flash"
+          redirect_to @print_pricing, notice: "Print pricing was successfully created."
         }
       end
     else
@@ -34,6 +34,8 @@ class PrintPricingsController < ApplicationController
   end
 
   def edit
+    # Ensure at least one plate exists for editing
+    @print_pricing.plates.build if @print_pricing.plates.empty?
   end
 
   def update
@@ -41,8 +43,7 @@ class PrintPricingsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @print_pricing, notice: "Print pricing was successfully updated." }
         format.turbo_stream {
-          flash.now[:notice] = "Print pricing was successfully updated."
-          render "layouts/flash"
+          redirect_to @print_pricing, notice: "Print pricing was successfully updated."
         }
       end
     else
@@ -90,11 +91,14 @@ class PrintPricingsController < ApplicationController
 
   def print_pricing_params
     params.require(:print_pricing).permit(
-      :job_name, :printing_time_hours, :printing_time_minutes,
-      :filament_weight, :filament_type, :spool_price, :spool_weight,
-      :markup_percentage, :prep_time_minutes, :prep_cost_per_hour,
+      :job_name, :prep_time_minutes, :prep_cost_per_hour,
       :postprocessing_time_minutes, :postprocessing_cost_per_hour,
-      :other_costs, :vat_percentage, :printer_id, :times_printed
+      :other_costs, :vat_percentage, :printer_id, :times_printed,
+      plates_attributes: [
+        :id, :printing_time_hours, :printing_time_minutes,
+        :filament_weight, :filament_type, :spool_price, :spool_weight,
+        :markup_percentage, :_destroy
+      ]
     )
   end
 end

@@ -1,433 +1,363 @@
+---
 ja:
-  language_name: "日本語"
-  
-  # Navigation
+  language_name: 日本語
   nav:
-    brand: "CalcuMake"
-    my_pricings: "料金設定"
-    new_pricing: "新しい料金設定"
-    my_printers: "プリンター"
-    profile: "プロフィール"
-    help: "ヘルプ"
-    sign_out: "サインアウト"
-    sign_in: "サインイン"
-    sign_up: "サインアップ"
-    language: "言語"
-  
-  # Common actions
+    brand: CalcuMake
+    my_pricings: 料金設定
+    new_pricing: 新しい料金設定
+    my_printers: プリンター
+    profile: プロフィール
+    help: ヘルプ
+    sign_out: サインアウト
+    sign_in: サインイン
+    sign_up: サインアップ
+    language: 言語
   actions:
-    save: "保存"
-    cancel: "キャンセル"
-    edit: "編集"
-    delete: "削除"
-    create: "作成"
-    update: "更新"
-    new: "新規"
-    show: "表示"
-    back: "戻る"
-    submit: "送信"
-    view: "表示"
-    actions: "操作"
-  
-  # Flash messages
+    save: 保存
+    cancel: キャンセル
+    edit: 編集
+    delete: 削除
+    create: 作成
+    update: 更新
+    new: 新規
+    show: 表示
+    back: 戻る
+    submit: 送信
+    view: 表示
+    actions: 操作
   flash:
-    success: "成功"
-    error: "エラー"
-    alert: "警告"
-    notice: "お知らせ"
+    success: 成功
+    error: エラー
+    alert: 警告
+    notice: お知らせ
     created: "%{model}を正常に作成しました"
     updated: "%{model}を正常に更新しました"
     deleted: "%{model}を正常に削除しました"
-  
-  # Models
   models:
-    user: "ユーザー"
-    printer: "プリンター"
-    print_pricing: "印刷料金"
-  
-  # Common terms
+    user: ユーザー
+    printer: プリンター
+    print_pricing: 印刷料金
   common:
-    created: "作成日"
-    currency: "通貨"
-    hours: "時間"
-    minutes: "分"
-    grams: "g"
-    watts: "W"
-    kwh: "kWh"
+    created: 作成日
+    currency: 通貨
+    hours: 時間
+    minutes: 分
+    grams: g
+    watts: W
+    kwh: kWh
     percentage: "%"
-    years: "年"
-    "yes": "はい"
-    "no": "いいえ"
-    are_you_sure: "本当によろしいですか？"
+    years: 年
+    'yes': はい
+    'no': いいえ
+    are_you_sure: 本当によろしいですか？
     errors_prohibited: "%{count}個の%{errors}により、この%{model}の保存が失敗しました："
     error_count:
-      one: "エラー"
-      other: "エラー"
-  
-  # Print Pricing Module
+      one: エラー
+      other: エラー
   print_pricing:
-    # Index page
     index:
-      title: "印刷計算一覧"
-      subtitle: "3D印刷のコスト計算を追跡・管理"
-      create_new: "新しい印刷計算"
-      total_calculations: "総計算数"
-      total_print_time: "総印刷時間"
+      title: 印刷計算一覧
+      subtitle: 3D印刷のコスト計算を追跡・管理
+      create_new: 新しい印刷計算
+      total_calculations: 総計算数
+      total_print_time: 総印刷時間
+      search_placeholder: ジョブ名またはフィラメントタイプで検索...
       empty_state:
-        title: "まだ計算がありません"
-        description: "最初の印刷コスト計算を作成して、3D印刷プロジェクトの費用と価格を追跡しましょう。"
-    
-    # Form fields
-    job_name: "ジョブ名"
-    print_time: "印刷時間"
-    times_printed: "印刷回数"
-    times_printed_decrease: "印刷回数を減らす"
-    times_printed_increase: "印刷回数を増やす"
-    printed_times: "印刷回数"
-    final_price: "最終価格"
+        title: まだ計算がありません
+        description: 最初の印刷コスト計算を作成して、3D印刷プロジェクトの費用と価格を追跡しましょう。
+      no_results:
+        title: 結果が見つかりません
+        description: "'%{query}'に一致する印刷計算はありません。別の検索語句をお試しください。"
+    job_name: ジョブ名
+    print_time: 印刷時間
+    times_printed: 印刷回数
+    times_printed_decrease: 印刷回数を減らす
+    times_printed_increase: 印刷回数を増やす
+    printed_times: 印刷回数
+    final_price: 最終価格
     confirm_delete: "'%{name}'を削除してもよろしいですか？"
-    times_printed_incremented: "印刷回数が正常に増加しました"
-    times_printed_decremented: "印刷回数が正常に減少しました"
-    title: "印刷料金"
-    cost_summary: "費用概要"
-
-    # Cost breakdown
+    times_printed_incremented: 印刷回数が正常に増加しました
+    times_printed_decremented: 印刷回数が正常に減少しました
+    title: 印刷料金
+    cost_summary: 費用概要
     cost_breakdown:
-      filament: "フィラメント費用"
-    
-    # New/Edit forms
+      filament: フィラメント費用
     calculator:
-      title: "3D印刷計算機"
-      subtitle: "3D印刷コストを正確に計算"
-      edit_title: "印刷料金の編集"
-      edit_subtitle: "3D印刷コスト計算を更新"
-
-    # Edit forms
+      title: 3D印刷計算機
+      subtitle: 3D印刷コストを正確に計算
+      edit_title: 印刷計算を編集
+      edit_subtitle: 3D印刷のコスト計算を更新
     edit:
-      title: "印刷料金の編集"
-      subtitle: "3D印刷コスト計算を更新"
-      
-    # Form sections
+      title: 印刷料金の編集
+      subtitle: 3D印刷コスト計算を更新
     sections:
-      basic_info: "基本情報"
-      print_time_material: "印刷時間・材料"
-      filament_details: "フィラメント詳細"
-      electricity: "電気代"
-      electricity_auto_calculated: "電気代（自動計算）"
-      electricity_power_consumption: "電気代・消費電力"
-      electricity_print_time: "電気代・印刷時間"
-      electricity_energy_cost: "電気代・エネルギー費用"
+      basic_info: 基本情報
+      print_time_material: 印刷時間・材料
+      filament_details: フィラメント詳細
+      electricity: 電気代
+      electricity_auto_calculated: 電気代（自動計算）
+      electricity_power_consumption: 電気代・消費電力
+      electricity_print_time: 電気代・印刷時間
+      electricity_energy_cost: 電気代・エネルギー費用
       electricity_settings_link_html: "%{link}で電気設定を構成する"
-      profile_settings: "プロフィール設定"
-      labor: "労働費"
-      machine_upkeep: "機械・保守費"
-      other_costs_tax: "その他費用・税金"
-      final_price: "最終価格"
-    
-    # Form fields
+      profile_settings: プロフィール設定
+      labor: 労働費
+      machine_upkeep: 機械・保守費
+      other_costs_tax: その他費用・税金
+      final_price: 最終価格
+      plates: プレート
+      plate: プレート
     fields:
-      job_name: "ジョブ名"
-      job_name_placeholder: "例：ミニチュアモデル"
-      select_printer: "プリンター選択"
-      select_printer_prompt: "プリンターを選択"
-      no_printer_help: "プリンターが登録されていませんか？"
-      add_printer_link: "新しいプリンターを追加"
-      print_time_hours: "時間"
-      print_time_minutes: "分"
-      filament_weight: "フィラメント重量（g）"
-      filament_weight_placeholder: "36"
-      filament_type: "フィラメントタイプ"
-      filament_type_prompt: "タイプを選択"
-      spool_price: "スプール価格"
-      spool_price_placeholder: "25.00"
-      spool_weight: "スプール重量（g）"
-      spool_weight_placeholder: "1000"
-      markup: "マークアップ（%）"
-      markup_placeholder: "20"
-      markup_percentage: "マークアップ率"
-      prep_time: "準備時間（分）"
-      prep_time_placeholder: "30"
-      prep_time_minutes: "準備時間（分）"
-      prep_cost_hour: "準備費/時間"
-      prep_cost_placeholder: "20.00"
-      prep_cost_per_hour: "時間あたり準備費"
-      post_time: "後処理時間（分）"
-      post_time_placeholder: "30"
-      postprocessing_time_minutes: "後処理時間（分）"
-      postprocessing_time_placeholder: "30"
-      postprocessing_cost_per_hour: "時間あたり後処理費"
-      post_cost_hour: "後処理費/時間"
-      post_cost_placeholder: "20.00"
-      other_costs: "その他費用"
-      other_costs_placeholder: "0.00"
-      vat: "消費税（%）"
-      vat_placeholder: "10"
-      power_consumption: "消費電力（W）"
-      power_consumption_placeholder: "200"
-      energy_cost_kwh: "電気代/kWh"
-      energy_cost_placeholder: "0.12"
-      printer_cost: "プリンター価格"
-      printer_cost_placeholder: "500.00"
-      payoff_goal: "償却目標（年）"
-      payoff_goal_placeholder: "3"
-      daily_usage: "日次使用時間"
-      daily_usage_placeholder: "8"
-      repair_cost: "修理費（%）"
-      repair_cost_placeholder: "5"
-      currency: "通貨"
-      currency_prompt: "通貨を選択"
-    
-    # Filament types
+      job_name: ジョブ名
+      job_name_placeholder: 例：ミニチュアモデル
+      select_printer: プリンター選択
+      select_printer_prompt: プリンターを選択
+      no_printer_help: プリンターが登録されていませんか？
+      add_printer_link: 新しいプリンターを追加
+      print_time_hours: 時間
+      print_time_minutes: 分
+      filament_weight: フィラメント重量（g）
+      filament_weight_placeholder: '36'
+      filament_type: フィラメントタイプ
+      filament_type_prompt: タイプを選択
+      spool_price: スプール価格
+      spool_price_placeholder: '25.00'
+      spool_weight: スプール重量（g）
+      spool_weight_placeholder: '1000'
+      markup: マークアップ（%）
+      markup_placeholder: '20'
+      markup_percentage: マークアップ率
+      prep_time: 準備時間（分）
+      prep_time_placeholder: '30'
+      prep_time_minutes: 準備時間（分）
+      prep_cost_hour: 準備費/時間
+      prep_cost_placeholder: '20.00'
+      prep_cost_per_hour: 時間あたり準備費
+      post_time: 後処理時間（分）
+      post_time_placeholder: '30'
+      postprocessing_time_minutes: 後処理時間（分）
+      postprocessing_time_placeholder: '30'
+      postprocessing_cost_per_hour: 時間あたり後処理費
+      post_cost_hour: 後処理費/時間
+      post_cost_placeholder: '20.00'
+      other_costs: その他費用
+      other_costs_placeholder: '0.00'
+      vat: 消費税（%）
+      vat_placeholder: '10'
+      power_consumption: 消費電力（W）
+      power_consumption_placeholder: '200'
+      energy_cost_kwh: 電気代/kWh
+      energy_cost_placeholder: '0.12'
+      printer_cost: プリンター価格
+      printer_cost_placeholder: '500.00'
+      payoff_goal: 償却目標（年）
+      payoff_goal_placeholder: '3'
+      daily_usage: 日次使用時間
+      daily_usage_placeholder: '8'
+      repair_cost: 修理費（%）
+      repair_cost_placeholder: '5'
+      currency: 通貨
+      currency_prompt: 通貨を選択
     filament_types:
-      pla: "PLA"
-      abs: "ABS"
-      petg: "PETG"
-      tpu: "TPU"
-      asa: "ASA"
-      other: "その他"
-    
-    # Calculations display
+      pla: PLA
+      abs: ABS
+      petg: PETG
+      tpu: TPU
+      asa: ASA
+      other: その他
     calculations:
-      filament_cost: "フィラメント費用"
-      electricity_cost: "電気代"
-      labor_cost: "労働費"
-      machine_cost: "機械費"
-      estimated_price: "予想価格"
-    
-    # Info messages
+      filament_cost: フィラメント費用
+      electricity_cost: 電気代
+      labor_cost: 労働費
+      machine_cost: 機械費
+      estimated_price: 予想価格
     info:
-      electricity_auto: "電気代は以下に基づいて自動計算されます："
-      printer_power: "選択したプリンターの消費電力"
-      print_duration: "印刷時間"
-      energy_cost_setting: "デフォルト電気代：%{cost}/kWh"
-      update_energy_cost: "デフォルト電気代は"
-      profile_settings: "プロフィール設定"
-      machine_auto: "機械の減価償却・保守費用は選択したプリンターの仕様から計算されます："
-      printer_cost_usage: "プリンター価格と使用時間"
-      investment_return: "投資回収期間"
-      repair_factor: "修理費係数"
-      configure_printer: "これらの値は"
-      add_edit_printer: "プリンターの追加・編集"
-    
-    # Buttons
+      electricity_auto: 電気代は以下に基づいて自動計算されます：
+      printer_power: 選択したプリンターの消費電力
+      print_duration: 印刷時間
+      energy_cost_setting: デフォルト電気代：%{cost}/kWh
+      update_energy_cost: デフォルト電気代は
+      profile_settings: プロフィール設定
+      machine_auto: 機械の減価償却・保守費用は選択したプリンターの仕様から計算されます：
+      printer_cost_usage: プリンター価格と使用時間
+      investment_return: 投資回収期間
+      repair_factor: 修理費係数
+      configure_printer: これらの値は
+      add_edit_printer: プリンターの追加・編集
     buttons:
-      calculate_save: "計算・保存"
-      update_pricing: "料金更新"
-      cancel: "キャンセル"
-    
-    # Show page
+      calculate_save: 計算・保存
+      update_pricing: 料金更新
+      cancel: キャンセル
+      add_plate: プレートを追加
     show:
       created_on: "%{date}に作成"
-      edit_calculation: "計算編集"
-      delete: "削除"
-      cost_summary: "費用概要"
-      print_information: "印刷情報"
-      filament_details: "フィラメント詳細"
-      electricity_cost: "電気代"
-      labor_cost: "労働費"
-      machine_upkeep_cost: "機械・保守費"
-      
-      # Cost breakdown
+      edit_calculation: 計算編集
+      delete: 削除
+      cost_summary: 費用概要
+      print_information: 印刷情報
+      filament_details: フィラメント詳細
+      electricity_cost: 電気代
+      labor_cost: 労働費
+      machine_upkeep_cost: 機械・保守費
       costs:
-        filament: "フィラメント費用"
-        electricity: "電気代"
-        labor: "労働費"
-        machine: "機械費"
-        other: "その他費用"
-        subtotal: "小計"
-        vat: "消費税（%{rate}%）"
-        final_price: "最終価格"
-      
-      # Details
+        filament: フィラメント費用
+        electricity: 電気代
+        labor: 労働費
+        machine: 機械費
+        other: その他費用
+        subtotal: 小計
+        vat: 消費税（%{rate}%）
+        final_price: 最終価格
       details:
-        currency: "通貨"
-        printing_time: "印刷時間"
-        filament_weight: "フィラメント重量"
-        filament_type: "フィラメントタイプ"
-        spool_price: "スプール価格"
-        spool_weight: "スプール重量"
-        markup: "マークアップ"
-        power_consumption: "消費電力"
-        energy_cost_kwh: "電気代/kWh"
-        total_electricity_cost: "総電気代"
-        prep_time: "準備時間"
-        postprocessing_time: "後処理時間"
-        total_labor_cost: "総労働費"
-        printer_cost: "プリンター価格"
-        payoff_goal: "償却目標"
-        daily_usage: "日次使用時間"
-        repair_cost: "修理費"
-        total_machine_cost: "総機械費"
-      
-      # Actions
+        currency: 通貨
+        printing_time: 印刷時間
+        filament_weight: フィラメント重量
+        filament_type: フィラメントタイプ
+        spool_price: スプール価格
+        spool_weight: スプール重量
+        markup: マークアップ
+        power_consumption: 消費電力
+        energy_cost_kwh: 電気代/kWh
+        total_electricity_cost: 総電気代
+        prep_time: 準備時間
+        postprocessing_time: 後処理時間
+        total_labor_cost: 総労働費
+        printer_cost: プリンター価格
+        payoff_goal: 償却目標
+        daily_usage: 日次使用時間
+        repair_cost: 修理費
+        total_machine_cost: 総機械費
       actions:
         back_to_all: "← 全ての料金設定に戻る"
-        create_new: "新しい料金設定を作成"
+        create_new: 新しい料金設定を作成
         confirm_delete: "'%{name}'を削除してもよろしいですか？"
-  
-  # Printers Module
+    help:
+      plates_limit: 1つの印刷ジョブに最大10個のプレートを追加できます。
   printers:
-    # Index page
     index:
-      title: "マイプリンター"
-      subtitle: "3Dプリンターとその仕様を管理"
-      add_new: "新しいプリンターを追加"
+      title: マイプリンター
+      subtitle: 3Dプリンターとその仕様を管理
+      add_new: 新しいプリンターを追加
       empty_state:
-        title: "まだプリンターが登録されていません"
-        description: "最初の3Dプリンターを追加して、印刷コストを正確に計算しましょう。"
-        add_first: "最初のプリンターを追加"
-    
-    # Printer card
+        title: まだプリンターが登録されていません
+        description: 最初の3Dプリンターを追加して、印刷コストを正確に計算しましょう。
+        add_first: 最初のプリンターを追加
     card:
-      power_consumption: "消費電力"
-      cost: "価格"
-      daily_usage: "日次使用時間"
-      payoff_goal: "償却目標"
+      power_consumption: 消費電力
+      cost: 価格
+      daily_usage: 日次使用時間
+      payoff_goal: 償却目標
       paid_off: "✓ 償却済み"
-      months_to_payoff: "あと%{months}ヶ月で償却"
-      hours: "時間"
-      years: "年"
-    
-    # New/Edit forms
+      months_to_payoff: あと%{months}ヶ月で償却
+      hours: 時間
+      years: 年
     new:
-      title: "新しいプリンターを追加"
-      subtitle: "正確なコスト計算のため3Dプリンターの仕様を登録"
-    
+      title: 新しいプリンターを追加
+      subtitle: 正確なコスト計算のため3Dプリンターの仕様を登録
     edit:
-      title: "プリンター編集"
-      subtitle: "3Dプリンターの仕様を更新"
-
-    # Show page
+      title: プリンター編集
+      subtitle: 3Dプリンターの仕様を更新
     show:
-      specifications: "仕様"
-      financial_status: "財務状況"
-      print_jobs: "印刷ジョブ"
-      new_print_job: "新しい印刷ジョブ"
-      repair_cost: "修理費用"
-      date_added: "追加日"
-      not_set: "未設定"
-      fully_paid_off: "このプリンターは投資回収目標に基づき完全に償還済みです。"
-      payoff_progress: "償還進捗"
-      no_print_jobs: "まだ印刷ジョブがありません"
-      no_print_jobs_description: "このプリンターの最初の印刷料金計算を作成してください。"
-      create_first_job: "最初の印刷ジョブを作成"
-      view_all_jobs: "全%{count}件のジョブを表示"
-
-    # Form sections
+      specifications: 仕様
+      financial_status: 財務状況
+      print_jobs: 印刷ジョブ
+      new_print_job: 新しい印刷ジョブ
+      repair_cost: 修理費用
+      date_added: 追加日
+      not_set: 未設定
+      fully_paid_off: このプリンターは投資回収目標に基づき完全に償還済みです。
+      payoff_progress: 償還進捗
+      no_print_jobs: まだ印刷ジョブがありません
+      no_print_jobs_description: このプリンターの最初の印刷料金計算を作成してください。
+      create_first_job: 最初の印刷ジョブを作成
+      view_all_jobs: 全%{count}件のジョブを表示
     sections:
-      basic_info: "基本情報"
-      technical_specs: "技術仕様"
-      financial_info: "財務情報"
-      usage_info: "使用情報"
-    
-    # Form fields
+      basic_info: 基本情報
+      technical_specs: 技術仕様
+      financial_info: 財務情報
+      usage_info: 使用情報
     fields:
-      name: "プリンター名"
-      name_placeholder: "例：My Prusa i3 MK3S+"
-      manufacturer: "メーカー"
-      manufacturer_prompt: "メーカーを選択"
-      power_consumption: "消費電力（ワット）"
-      power_consumption_placeholder: "200"
-      power_consumption_help: "一般的な範囲：50W（小型プリンター）〜 500W（大型プリンター）"
-      cost: "プリンター価格"
-      cost_placeholder: "500.00"
-      payoff_goal: "償却目標（年）"
-      payoff_goal_placeholder: "3"
-      payoff_goal_help: "プリンター価格の回収に何年かけますか？"
-      daily_usage: "日次使用時間"
-      daily_usage_placeholder: "8"
-      daily_usage_help: "このプリンターを1日平均何時間使用する予定ですか"
-      repair_factor: "修理費係数（%）"
-      repair_factor_placeholder: "5.0"
-      repair_factor_help: "メンテナンスと修理の追加費用係数"
-    
-    # Buttons
+      name: プリンター名
+      name_placeholder: 例：My Prusa i3 MK3S+
+      manufacturer: メーカー
+      manufacturer_prompt: メーカーを選択
+      power_consumption: 消費電力（ワット）
+      power_consumption_placeholder: '200'
+      power_consumption_help: 一般的な範囲：50W（小型プリンター）〜 500W（大型プリンター）
+      cost: プリンター価格
+      cost_placeholder: '500.00'
+      payoff_goal: 償却目標（年）
+      payoff_goal_placeholder: '3'
+      payoff_goal_help: プリンター価格の回収に何年かけますか？
+      daily_usage: 日次使用時間
+      daily_usage_placeholder: '8'
+      daily_usage_help: このプリンターを1日平均何時間使用する予定ですか
+      repair_factor: 修理費係数（%）
+      repair_factor_placeholder: '5.0'
+      repair_factor_help: メンテナンスと修理の追加費用係数
     buttons:
-      add_printer: "プリンター追加"
-      update_printer: "プリンター更新"
-      cancel: "キャンセル"
-  
-  # User Profile Module
+      add_printer: プリンター追加
+      update_printer: プリンター更新
+      cancel: キャンセル
   profile:
     show:
-      title: "ユーザープロフィール"
-      subtitle: "アカウント設定と設定"
-      account_info: "アカウント情報"
-      email: "メールアドレス"
-      member_since: "登録日"
-      default_preferences: "デフォルト設定"
-      back_to_calculations: "計算に戻る"
-    
-    # Edit page
+      title: ユーザープロフィール
+      subtitle: アカウント設定と設定
+      account_info: アカウント情報
+      email: メールアドレス
+      member_since: 登録日
+      default_preferences: デフォルト設定
+      back_to_calculations: 計算に戻る
     edit:
-      title: "ユーザープロフィール設定"
-      subtitle: "デフォルト設定を構成"
-      default_settings: "デフォルト設定"
-    
-    # Form fields
+      title: ユーザープロフィール設定
+      subtitle: デフォルト設定を構成
+      default_settings: デフォルト設定
     fields:
-      default_currency: "デフォルト通貨"
-      default_currency_help: "新しい料金計算のデフォルトとして使用"
-      energy_cost: "電気代/kWh"
-      energy_cost_placeholder: "0.120"
-      energy_cost_help: "現地の1キロワット時あたりの電気代"
-      energy_cost_help_extended: "現地の1キロワット時あたりの電気代。新しい計算のデフォルトとして使用されます。"
-    
-    # Buttons
+      default_currency: デフォルト通貨
+      default_currency_help: 新しい料金計算のデフォルトとして使用
+      energy_cost: 電気代/kWh
+      energy_cost_placeholder: '0.120'
+      energy_cost_help: 現地の1キロワット時あたりの電気代
+      energy_cost_help_extended: 現地の1キロワット時あたりの電気代。新しい計算のデフォルトとして使用されます。
     buttons:
-      update_settings: "設定更新"
-      update_profile: "プロフィール更新"
-  
-  # Currency
+      update_settings: 設定更新
+      update_profile: プロフィール更新
   currency:
-    usd: "米ドル"
-    eur: "ユーロ"
-    gbp: "英ポンド"
-    jpy: "日本円"
-    cad: "カナダドル"
-    aud: "豪ドル"
-  
-  # Energy costs
+    usd: 米ドル
+    eur: ユーロ
+    gbp: 英ポンド
+    jpy: 日本円
+    cad: カナダドル
+    aud: 豪ドル
   energy:
-    cost_per_kwh: "電力単価（円/kWh）"
-  
-  # Date and time formats
+    cost_per_kwh: 電力単価（円/kWh）
   time:
-    at: "に"
+    at: に
     formats:
       month_day_year: "%Y年%m月%d日"
       month_day_year_time: "%Y年%m月%d日 %H:%M"
-  
-  # Application title
   app:
-    title: "CalcuMake"
-    title_default: "CalcuMake"
-  # Footer
+    title: CalcuMake
+    title_default: CalcuMake
   footer:
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
-    description: "Professional 3D printing cost calculation and project management"
-
-  # Legal pages (Basic navigation - full content in English)
+    description: Professional 3D printing cost calculation and project management
   legal:
-    last_updated: "最終更新"
+    last_updated: 最終更新
     privacy_policy:
-      title: "プライバシーポリシー"
-      nav_title: "プライバシーポリシー"
+      title: プライバシーポリシー
+      nav_title: プライバシーポリシー
     user_agreement:
-      title: "利用規約"
-      nav_title: "利用規約"
-
-  # Support page
+      title: 利用規約
+      nav_title: 利用規約
   support:
-    title: "サポート"
-    nav_title: "サポート"
-    contact_us: "お問い合わせ"
-    description: "CalcuMakeについてのご質問やご提案がありますか？お気軽にお問い合わせください。"
-    email_label: "メールサポート"
-    response_time: "通常24〜48時間以内に返信いたします"
-
-  # Print Pricings (plural) Module
+    title: サポート
+    nav_title: サポート
+    contact_us: お問い合わせ
+    description: CalcuMakeについてのご質問やご提案がありますか？お気軽にお問い合わせください。
+    email_label: メールサポート
+    response_time: 通常24〜48時間以内に返信いたします
   print_pricings:
     form:
-      filament_weight: "フィラメント重量"
-      print_time_hours: "印刷時間（時間）"
+      filament_weight: フィラメント重量
+      print_time_hours: 印刷時間（時間）

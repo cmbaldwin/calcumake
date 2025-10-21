@@ -1,0 +1,44 @@
+<div class="col-md-6">
+  <div class="card h-100">
+    <div class="card-header">
+      <h5 class="mb-0"><%= t('print_pricing.sections.labor') %></h5>
+    </div>
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-6">
+          <%= f.label :prep_time_minutes, t('print_pricing.fields.prep_time_minutes'), class: "form-label" %>
+          <%= f.number_field :prep_time_minutes, min: 0, step: 1,
+              placeholder: t('print_pricing.fields.prep_time_placeholder'),
+              class: "form-control" %>
+        </div>
+
+        <div class="col-6">
+          <%= f.label :prep_cost_per_hour, t('print_pricing.fields.prep_cost_per_hour'), class: "form-label" %>
+          <div class="input-group">
+            <span class="input-group-text"><%= currency_symbol(current_user.default_currency) %></span>
+            <%= f.number_field :prep_cost_per_hour, step: 0.01,
+                placeholder: t('print_pricing.fields.prep_cost_placeholder'),
+                class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <%= f.label :postprocessing_time_minutes, t('print_pricing.fields.postprocessing_time_minutes'), class: "form-label" %>
+          <%= f.number_field :postprocessing_time_minutes, min: 0, step: 1,
+              placeholder: t('print_pricing.fields.postprocessing_time_placeholder'),
+              class: "form-control" %>
+        </div>
+
+        <div class="col-6">
+          <%= f.label :postprocessing_cost_per_hour, t('print_pricing.fields.postprocessing_cost_per_hour'), class: "form-label" %>
+          <div class="input-group">
+            <span class="input-group-text"><%= currency_symbol(current_user.default_currency) %></span>
+            <%= f.number_field :postprocessing_cost_per_hour, step: 0.01,
+                placeholder: t('print_pricing.fields.postprocessing_cost_placeholder'),
+                class: "form-control" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

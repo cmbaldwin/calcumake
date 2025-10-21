@@ -1,0 +1,39 @@
+<%= form_with model: print_pricing, local: true, html: { id: "pricing-form", class: "row g-3" } do |form| %>
+  <!-- Error Messages -->
+  <% if print_pricing.errors.any? %>
+    <div class="col-12">
+      <div class="alert alert-danger">
+        <h4><%= t('common.errors_prohibited',
+                  count: print_pricing.errors.count,
+                  errors: t('common.error_count', count: print_pricing.errors.count),
+                  model: t('models.print_pricing')) %></h4>
+        <ul class="mb-0">
+          <% print_pricing.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Basic Information Section -->
+  <%= render 'print_pricings/form_sections/basic_information', f: form %>
+
+  <!-- Plates Section -->
+  <%= render 'print_pricings/form_sections/plates', f: form %>
+
+  <!-- Info Sections Row (Electricity & Machine) -->
+  <%= render 'print_pricings/form_sections/info_sections' %>
+
+  <!-- Labor & Other Costs Row -->
+  <%= render 'print_pricings/form_sections/labor_costs', f: form %>
+  <%= render 'print_pricings/form_sections/other_costs', f: form %>
+
+  <!-- Form Actions -->
+  <div class="col-12">
+    <div class="d-flex gap-3 justify-content-center pt-3 border-top">
+      <%= form.submit t('print_pricing.buttons.calculate_save'), class: "btn btn-primary btn-lg" %>
+      <%= link_to t('print_pricing.buttons.cancel'), print_pricings_path, class: "btn btn-outline-secondary btn-lg" %>
+    </div>
+  </div>
+<% end %>

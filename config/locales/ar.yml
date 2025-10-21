@@ -1,227 +1,182 @@
+---
 ar:
-  language_name: "العربية"
-  
-  # Navigation
+  language_name: العربية
   nav:
-    brand: "CalcuMake"
-    my_pricings: "أسعاري"
-    new_pricing: "سعر جديد"
-    my_printers: "طابعاتي"
-    profile: "الملف الشخصي"
-    help: "مساعدة"
-    sign_out: "تسجيل الخروج"
-    sign_in: "تسجيل الدخول"
-    sign_up: "إنشاء حساب"
-    language: "اللغة"
-  
-  # Common actions
+    brand: CalcuMake
+    my_pricings: أسعاري
+    new_pricing: سعر جديد
+    my_printers: طابعاتي
+    profile: الملف الشخصي
+    help: مساعدة
+    sign_out: تسجيل الخروج
+    sign_in: تسجيل الدخول
+    sign_up: إنشاء حساب
+    language: اللغة
   actions:
-    save: "حفظ"
-    cancel: "إلغاء"
-    edit: "تعديل"
-    delete: "حذف"
-    create: "إنشاء"
-    update: "تحديث"
-    new: "جديد"
-    show: "عرض"
-    back: "رجوع"
-    submit: "إرسال"
-    view: "عرض"
-    actions: "الإجراءات"
-  
-  # Flash messages
+    save: حفظ
+    cancel: إلغاء
+    edit: تعديل
+    delete: حذف
+    create: إنشاء
+    update: تحديث
+    new: جديد
+    show: عرض
+    back: رجوع
+    submit: إرسال
+    view: عرض
+    actions: الإجراءات
   flash:
-    success: "نجح"
-    error: "خطأ"
-    alert: "تنبيه"
-    notice: "إشعار"
-    created: "تم إنشاء %{model} بنجاح"
-    updated: "تم تحديث %{model} بنجاح"
-    deleted: "تم حذف %{model} بنجاح"
-  
-  # Models
+    success: نجح
+    error: خطأ
+    alert: تنبيه
+    notice: إشعار
+    created: تم إنشاء %{model} بنجاح
+    updated: تم تحديث %{model} بنجاح
+    deleted: تم حذف %{model} بنجاح
   models:
-    user: "المستخدم"
-    printer: "الطابعة"
-    print_pricing: "تسعير الطباعة"
-  
-  # Printer related
+    user: المستخدم
+    printer: الطابعة
+    print_pricing: تسعير الطباعة
   printer:
-    name: "اسم الطابعة"
-    manufacturer: "الشركة المصنعة"
-    model: "الطراز"
-    purchase_price: "سعر الشراء"
-    purchase_date: "تاريخ الشراء"
-    power_consumption: "استهلاك الطاقة (واط)"
-    hourly_cost: "التكلفة بالساعة"
-    depreciation_years: "فترة الاستهلاك (سنوات)"
-    repair_factor: "عامل الإصلاح (%)"
-    paid_off: "مسدد"
-    months_to_payoff: "أشهر للسداد"
-  
-  # Print pricing related
-  print_pricing:
-    name: "اسم مهمة الطباعة"
-    print_time_hours: "وقت الطباعة (ساعات)"
-    filament_weight: "وزن الخيط (جرام)"
-    spool_price: "سعر البكرة"
-    spool_weight: "وزن البكرة (جرام)"
-    markup_percentage: "نسبة الهامش"
-
-    fields:
-      markup_percentage: "نسبة الهامش"
-      prep_time_minutes: "وقت التحضير (دقائق)"
-      prep_cost_per_hour: "تكلفة التحضير في الساعة"
-    prep_time_minutes: "وقت التحضير (دقائق)"
-    post_time_minutes: "وقت المعالجة اللاحقة (دقائق)"
-    postprocessing_time_minutes: "وقت المعالجة اللاحقة (دقائق)"
-    postprocessing_time_placeholder: "30"
-    postprocessing_cost_per_hour: "تكلفة المعالجة اللاحقة في الساعة"
-    vat_rate: "معدل ضريبة القيمة المضافة (%)"
-    total_cost: "التكلفة الإجمالية"
-    profit_margin: "هامش الربح"
-  
-  # Currency
-  currency:
-    usd: "الدولار الأمريكي"
-    eur: "اليورو"
-    gbp: "الجنيه الإسترليني"
-    jpy: "الين الياباني"
-    cad: "الدولار الكندي"
-    aud: "الدولار الأسترالي"
-  
-  # Energy costs
-  energy:
-    cost_per_kwh: "تكلفة الكيلوواط/ساعة"
-    
-  # Print Pricing Module
+    name: اسم الطابعة
+    manufacturer: الشركة المصنعة
+    model: الطراز
+    purchase_price: سعر الشراء
+    purchase_date: تاريخ الشراء
+    power_consumption: استهلاك الطاقة (واط)
+    hourly_cost: التكلفة بالساعة
+    depreciation_years: فترة الاستهلاك (سنوات)
+    repair_factor: عامل الإصلاح (%)
+    paid_off: مسدد
+    months_to_payoff: أشهر للسداد
   print_pricing:
     index:
-      title: "حسابات الطباعة الخاصة بي"
-      subtitle: "تتبع وإدارة حسابات تكلفة الطباعة ثلاثية الأبعاد"
-      create_new: "حساب طباعة جديدة"
+      title: حسابات الطباعة الخاصة بي
+      subtitle: تتبع وإدارة حسابات تكلفة الطباعة ثلاثية الأبعاد
+      create_new: حساب طباعة جديدة
+      total_calculations: إجمالي الحسابات
+      total_print_time: إجمالي وقت الطباعة
+      search_placeholder: البحث حسب اسم المهمة أو نوع الفيلامنت...
       empty_state:
-        title: "لا توجد حسابات بعد"
-        description: "ابدأ بإنشاء أول حساب تكلفة طباعة لتتبع النفقات والتسعير لمشاريع الطباعة ثلاثية الأبعاد الخاصة بك."
-    
-    job_name: "اسم المهمة"
-    print_time: "وقت الطباعة"
-    times_printed: "عدد مرات الطباعة"
-    final_price: "السعر النهائي"
-    confirm_delete: "هل أنت متأكد من أنك تريد حذف '%{name}'؟"
-    times_printed_incremented: "تم زيادة عدد مرات الطباعة بنجاح"
-    times_printed_decremented: "تم تقليل عدد مرات الطباعة بنجاح"
-    times_printed_decrease: "تقليل عدد مرات الطباعة"
-    times_printed_increase: "زيادة عدد مرات الطباعة"
-    printed_times: "عدد مرات الطباعة"
-    title: "تسعير الطباعة"
-    cost_summary: "ملخص التكلفة"
-
-    # Cost breakdown
+        title: لا توجد حسابات بعد
+        description: ابدأ بإنشاء أول حساب تكلفة طباعة لتتبع النفقات والتسعير لمشاريع
+          الطباعة ثلاثية الأبعاد الخاصة بك.
+      no_results:
+        title: لم يتم العثور على نتائج
+        description: لا توجد حسابات طباعة تطابق '%{query}'. جرب مصطلح بحث مختلف.
+    job_name: اسم المهمة
+    print_time: وقت الطباعة
+    times_printed: عدد مرات الطباعة
+    final_price: السعر النهائي
+    confirm_delete: هل أنت متأكد من أنك تريد حذف '%{name}'؟
+    times_printed_incremented: تم زيادة عدد مرات الطباعة بنجاح
+    times_printed_decremented: تم تقليل عدد مرات الطباعة بنجاح
+    times_printed_decrease: تقليل عدد مرات الطباعة
+    times_printed_increase: زيادة عدد مرات الطباعة
+    printed_times: عدد مرات الطباعة
+    title: تسعير الطباعة
+    cost_summary: ملخص التكلفة
     cost_breakdown:
-      filament: "تكلفة الخيط"
-    
+      filament: تكلفة الخيط
     calculator:
-      title: "آلة حاسبة الطباعة ثلاثية الأبعاد"
-      subtitle: "احسب تكاليف الطباعة ثلاثية الأبعاد بدقة"
-
-    # Edit forms
+      title: آلة حاسبة الطباعة ثلاثية الأبعاد
+      subtitle: احسب تكاليف الطباعة ثلاثية الأبعاد بدقة
+      edit_title: تعديل حساب الطباعة
+      edit_subtitle: قم بتحديث حساب تكلفة الطباعة ثلاثية الأبعاد
     edit:
-      title: "تعديل تسعير الطباعة"
-      subtitle: "حدِّث حساب تكلفة الطباعة ثلاثية الأبعاد"
-    
-    # Form sections
+      title: تعديل تسعير الطباعة
+      subtitle: حدِّث حساب تكلفة الطباعة ثلاثية الأبعاد
     sections:
-      basic_info: "المعلومات الأساسية"
-      print_time_material: "وقت الطباعة والمواد"
-      filament_details: "تفاصيل الخيط"
-      electricity: "الكهرباء"
-      electricity_auto_calculated: "الكهرباء (حساب تلقائي)"
-      electricity_power_consumption: "الكهرباء واستهلاك الطاقة"
-      electricity_print_time: "الكهرباء ووقت الطباعة"
-      electricity_energy_cost: "الكهرباء وتكلفة الطاقة"
-      electricity_settings_link_html: "قم بتكوين إعدادات الكهرباء في %{link} الخاص بك"
-      profile_settings: "إعدادات الملف الشخصي"
-      labor: "العمل"
-      machine_upkeep: "صيانة الآلة"
-      other_costs_tax: "تكاليف أخرى والضرائب"
-      final_price: "السعر النهائي"
-
+      basic_info: المعلومات الأساسية
+      print_time_material: وقت الطباعة والمواد
+      filament_details: تفاصيل الخيط
+      electricity: الكهرباء
+      electricity_auto_calculated: الكهرباء (حساب تلقائي)
+      electricity_power_consumption: الكهرباء واستهلاك الطاقة
+      electricity_print_time: الكهرباء ووقت الطباعة
+      electricity_energy_cost: الكهرباء وتكلفة الطاقة
+      electricity_settings_link_html: قم بتكوين إعدادات الكهرباء في %{link} الخاص
+        بك
+      profile_settings: إعدادات الملف الشخصي
+      labor: العمل
+      machine_upkeep: صيانة الآلة
+      other_costs_tax: تكاليف أخرى والضرائب
+      final_price: السعر النهائي
+      plates: الألواح
+      plate: لوحة
     show:
-      cost_summary: "ملخص التكلفة"
-      print_information: "معلومات الطباعة"
+      cost_summary: ملخص التكلفة
+      print_information: معلومات الطباعة
       costs:
-        filament: "تكلفة الخيط"
-        electricity: "تكلفة الكهرباء"
-        labor: "تكلفة العمل"
-        machine: "تكلفة الآلة"
-        other: "تكاليف أخرى"
-        subtotal: "المجموع الفرعي"
-        final_price: "السعر النهائي"
-  
-  # Printers Module
+        filament: تكلفة الخيط
+        electricity: تكلفة الكهرباء
+        labor: تكلفة العمل
+        machine: تكلفة الآلة
+        other: تكاليف أخرى
+        subtotal: المجموع الفرعي
+        final_price: السعر النهائي
+    buttons:
+      add_plate: إضافة لوحة
+    help:
+      plates_limit: يمكنك إضافة ما يصل إلى 10 ألواح لكل مهمة طباعة.
+  currency:
+    usd: الدولار الأمريكي
+    eur: اليورو
+    gbp: الجنيه الإسترليني
+    jpy: الين الياباني
+    cad: الدولار الكندي
+    aud: الدولار الأسترالي
+  energy:
+    cost_per_kwh: تكلفة الكيلوواط/ساعة
   printers:
     index:
-      title: "طابعاتي"
-      subtitle: "إدارة طابعاتك ثلاثية الأبعاد ومواصفاتها"
-      add_new: "إضافة طابعة جديدة"
+      title: طابعاتي
+      subtitle: إدارة طابعاتك ثلاثية الأبعاد ومواصفاتها
+      add_new: إضافة طابعة جديدة
       empty_state:
-        title: "لا توجد طابعات مسجلة بعد"
-        description: "أضف أول طابعة ثلاثية الأبعاد لبدء حساب تكاليف الطباعة بدقة."
-    
+        title: لا توجد طابعات مسجلة بعد
+        description: أضف أول طابعة ثلاثية الأبعاد لبدء حساب تكاليف الطباعة بدقة.
     new:
-      title: "إضافة طابعة جديدة"
-      subtitle: "سجل مواصفات طابعتك ثلاثية الأبعاد لحسابات تكلفة دقيقة"
-  
-  # User profile
+      title: إضافة طابعة جديدة
+      subtitle: سجل مواصفات طابعتك ثلاثية الأبعاد لحسابات تكلفة دقيقة
   profile:
     show:
-      title: "ملف المستخدم"
-      subtitle: "إعدادات حسابك وتفضيلاتك"
-      account_info: "معلومات الحساب"
-      email: "البريد الإلكتروني"
-      member_since: "عضو منذ"
-      default_preferences: "التفضيلات الافتراضية"
-    
+      title: ملف المستخدم
+      subtitle: إعدادات حسابك وتفضيلاتك
+      account_info: معلومات الحساب
+      email: البريد الإلكتروني
+      member_since: عضو منذ
+      default_preferences: التفضيلات الافتراضية
     fields:
-      default_currency: "العملة الافتراضية"
-      energy_cost: "تكلفة الطاقة لكل كيلوواط ساعة"
-      energy_cost_help: "تكلفة الكهرباء المحلية لكل كيلوواط ساعة"
-    
-    default_currency: "العملة الافتراضية"
-    default_energy_cost: "تكلفة الطاقة الافتراضية"
-    settings: "الإعدادات"
-  
-  # Application title
+      default_currency: العملة الافتراضية
+      energy_cost: تكلفة الطاقة لكل كيلوواط ساعة
+      energy_cost_help: تكلفة الكهرباء المحلية لكل كيلوواط ساعة
+    default_currency: العملة الافتراضية
+    default_energy_cost: تكلفة الطاقة الافتراضية
+    settings: الإعدادات
   app:
-    title: "CalcuMake"
-    title_default: "CalcuMake"
-  # Footer
+    title: CalcuMake
+    title_default: CalcuMake
   footer:
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
-    description: "Professional 3D printing cost calculation and project management"
-
-  # Legal pages (Basic navigation - full content in English)
+    description: Professional 3D printing cost calculation and project management
   legal:
-    last_updated: "آخر تحديث"
+    last_updated: آخر تحديث
     privacy_policy:
-      title: "سياسة الخصوصية"
-      nav_title: "سياسة الخصوصية"
+      title: سياسة الخصوصية
+      nav_title: سياسة الخصوصية
     user_agreement:
-      title: "اتفاقية المستخدم"
-      nav_title: "شروط الخدمة"
-
-  # Support page
+      title: اتفاقية المستخدم
+      nav_title: شروط الخدمة
   support:
-    title: "الدعم"
-    nav_title: "الدعم"
-    contact_us: "Contact Us"
-    description: "Need help with CalcuMake? Have a question or suggestion? We're here to help!"
-    email_label: "Email Support"
-    response_time: "We typically respond within 24-48 hours"
-
-# Print Pricings (plural) Module
+    title: الدعم
+    nav_title: الدعم
+    contact_us: Contact Us
+    description: Need help with CalcuMake? Have a question or suggestion? We're here
+      to help!
+    email_label: Email Support
+    response_time: We typically respond within 24-48 hours
 print_pricings:
   form:
-    filament_weight: "وزن الخيط"
-    print_time_hours: "ساعات وقت الطباعة"
+    filament_weight: وزن الخيط
+    print_time_hours: ساعات وقت الطباعة

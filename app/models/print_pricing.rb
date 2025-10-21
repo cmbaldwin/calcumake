@@ -1,13 +1,14 @@
 class PrintPricing < ApplicationRecord
   belongs_to :user
   belongs_to :printer, optional: true
+  has_many :plates, dependent: :destroy
+
+  accepts_nested_attributes_for :plates, allow_destroy: true, reject_if: :all_blank
 
   validates :job_name, presence: true
-  validates :filament_type, presence: true
-  validates :printing_time_hours, :printing_time_minutes, numericality: { greater_than_or_equal_to: 0 }
-  validates :filament_weight, :spool_price, :spool_weight, :markup_percentage,
-            numericality: { greater_than: 0 }
   validates :times_printed, numericality: { greater_than_or_equal_to: 0, only_integer: true }
+  validate :must_have_at_least_one_plate
+  validate :cannot_have_more_than_ten_plates
 
   before_save :calculate_final_price
 
@@ -15,13 +16,19 @@ class PrintPricing < ApplicationRecord
 
   delegate :default_currency, :default_energy_cost_per_kwh, to: :user
 
+  scope :search, ->(query) do
+    return all if query.blank?
+
+    where("job_name ILIKE ?", "%#{sanitize_sql_like(query)}%")
+      .or(where(id: Plate.where("filament_type ILIKE ?", "%#{sanitize_sql_like(query)}%").select(:print_pricing_id)))
+  end
+
   def total_printing_time_minutes
-    (printing_time_hours || 0) * 60 + (printing_time_minutes || 0)
+    plates.sum(&:total_printing_time_minutes)
   end
 
   def total_filament_cost
-    return 0 unless filament_weight && spool_price && spool_weight
-    (filament_weight * spool_price / spool_weight) * (1 + (markup_percentage || 0) / 100)
+    plates.sum(&:total_filament_cost)
   end
 
   def total_electricity_cost
@@ -74,5 +81,17 @@ class PrintPricing < ApplicationRecord
     subtotal = calculate_subtotal
     vat_amount = subtotal * (vat_percentage || 0) / 100
     self.final_price = subtotal + vat_amount
+  end
+
+  def must_have_at_least_one_plate
+    if plates.reject(&:marked_for_destruction?).empty?
+      errors.add(:base, "Must have at least one plate")
+    end
+  end
+
+  def cannot_have_more_than_ten_plates
+    if plates.reject(&:marked_for_destruction?).size > 10
+      errors.add(:base, "Cannot have more than 10 plates")
+    end
   end
 end

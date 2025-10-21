@@ -1,227 +1,186 @@
+---
 fr:
-  language_name: "Français"
-  
-  # Navigation
+  language_name: Français
   nav:
-    brand: "CalcuMake"
-    my_pricings: "Mes Tarifs"
-    new_pricing: "Nouveau Tarif"
-    my_printers: "Mes Imprimantes"
-    profile: "Profil"
-    help: "Aide"
-    sign_out: "Se déconnecter"
-    sign_in: "Se connecter"
-    sign_up: "S'inscrire"
-    language: "Langue"
-  
-  # Common actions
+    brand: CalcuMake
+    my_pricings: Mes Tarifs
+    new_pricing: Nouveau Tarif
+    my_printers: Mes Imprimantes
+    profile: Profil
+    help: Aide
+    sign_out: Se déconnecter
+    sign_in: Se connecter
+    sign_up: S'inscrire
+    language: Langue
   actions:
-    save: "Enregistrer"
-    cancel: "Annuler"
-    edit: "Modifier"
-    delete: "Supprimer"
-    create: "Créer"
-    update: "Mettre à jour"
-    new: "Nouveau"
-    show: "Afficher"
-    back: "Retour"
-    submit: "Soumettre"
-    view: "Voir"
-    actions: "Actions"
-  
-  # Flash messages
+    save: Enregistrer
+    cancel: Annuler
+    edit: Modifier
+    delete: Supprimer
+    create: Créer
+    update: Mettre à jour
+    new: Nouveau
+    show: Afficher
+    back: Retour
+    submit: Soumettre
+    view: Voir
+    actions: Actions
   flash:
-    success: "Succès"
-    error: "Erreur"
-    alert: "Alerte"
-    notice: "Avis"
+    success: Succès
+    error: Erreur
+    alert: Alerte
+    notice: Avis
     created: "%{model} créé avec succès"
     updated: "%{model} mis à jour avec succès"
     deleted: "%{model} supprimé avec succès"
-  
-  # Models
   models:
-    user: "Utilisateur"
-    printer: "Imprimante"
-    print_pricing: "Tarification d'Impression"
-  
-  # Printer related
+    user: Utilisateur
+    printer: Imprimante
+    print_pricing: Tarification d'Impression
   printer:
-    name: "Nom de l'Imprimante"
-    manufacturer: "Fabricant"
-    model: "Modèle"
-    purchase_price: "Prix d'Achat"
-    purchase_date: "Date d'Achat"
-    power_consumption: "Consommation Électrique (Watts)"
-    hourly_cost: "Coût Horaire"
-    depreciation_years: "Période d'Amortissement (Années)"
-    repair_factor: "Facteur de Réparation (%)"
-    paid_off: "Amorti"
-    months_to_payoff: "Mois pour Amortir"
-  
-  # Print pricing related
-  print_pricing:
-    name: "Nom du Travail d'Impression"
-    print_time_hours: "Temps d'Impression (Heures)"
-    filament_weight: "Poids du Filament (g)"
-    spool_price: "Prix de la Bobine"
-    spool_weight: "Poids de la Bobine (g)"
-    markup_percentage: "Pourcentage de Marge"
-
-    fields:
-      markup_percentage: "Pourcentage de Marge"
-      prep_time_minutes: "Temps de Préparation (minutes)"
-      prep_cost_per_hour: "Coût de Préparation par Heure"
-    prep_time_minutes: "Temps de Préparation (Minutes)"
-    post_time_minutes: "Temps de Post-traitement (Minutes)"
-    postprocessing_time_minutes: "Temps de Post-traitement (minutes)"
-    postprocessing_time_placeholder: "30"
-    postprocessing_cost_per_hour: "Coût de Post-traitement par Heure"
-    vat_rate: "Taux de TVA (%)"
-    total_cost: "Coût Total"
-    profit_margin: "Marge Bénéficiaire"
-  
-  # Currency
-  currency:
-    usd: "Dollar Américain"
-    eur: "Euro"
-    gbp: "Livre Sterling"
-    jpy: "Yen Japonais"
-    cad: "Dollar Canadien"
-    aud: "Dollar Australien"
-  
-  # Energy costs
-  energy:
-    cost_per_kwh: "Coût par kWh"
-    
-  # Print Pricing Module
+    name: Nom de l'Imprimante
+    manufacturer: Fabricant
+    model: Modèle
+    purchase_price: Prix d'Achat
+    purchase_date: Date d'Achat
+    power_consumption: Consommation Électrique (Watts)
+    hourly_cost: Coût Horaire
+    depreciation_years: Période d'Amortissement (Années)
+    repair_factor: Facteur de Réparation (%)
+    paid_off: Amorti
+    months_to_payoff: Mois pour Amortir
   print_pricing:
     index:
-      title: "Mes Calculs d'Impression"
-      subtitle: "Suivre et gérer les calculs de coûts d'impression 3D"
-      create_new: "Calculer Nouvelle Impression"
+      title: Mes Calculs d'Impression
+      subtitle: Suivre et gérer les calculs de coûts d'impression 3D
+      create_new: Calculer Nouvelle Impression
+      total_calculations: Total de Calculs
+      total_print_time: Temps Total d'Impression
+      search_placeholder: Rechercher par nom de travail ou type de filament...
       empty_state:
-        title: "Aucun calcul pour le moment"
-        description: "Commencez par créer votre premier calcul de coût d'impression pour suivre les dépenses et la tarification de vos projets d'impression 3D."
-    
-    job_name: "Nom du Travail"
-    print_time: "Temps d'Impression"
-    times_printed: "Fois Imprimé"
-    final_price: "Prix Final"
-    confirm_delete: "Êtes-vous sûr de vouloir supprimer '%{name}' ?"
-    times_printed_incremented: "Nombre d'impressions augmenté avec succès"
-    times_printed_decremented: "Nombre d'impressions diminué avec succès"
-    times_printed_decrease: "Diminuer le nombre d'impressions"
-    times_printed_increase: "Augmenter le nombre d'impressions"
-    printed_times: "Fois Imprimé"
-    title: "Tarification d'Impression"
-    cost_summary: "Résumé des Coûts"
-
-    # Cost breakdown
+        title: Aucun calcul pour le moment
+        description: Commencez par créer votre premier calcul de coût d'impression
+          pour suivre les dépenses et la tarification de vos projets d'impression
+          3D.
+      no_results:
+        title: Aucun résultat trouvé
+        description: Aucun calcul d'impression ne correspond à '%{query}'. Essayez
+          un terme de recherche différent.
+    job_name: Nom du Travail
+    print_time: Temps d'Impression
+    times_printed: Fois Imprimé
+    final_price: Prix Final
+    confirm_delete: Êtes-vous sûr de vouloir supprimer '%{name}' ?
+    times_printed_incremented: Nombre d'impressions augmenté avec succès
+    times_printed_decremented: Nombre d'impressions diminué avec succès
+    times_printed_decrease: Diminuer le nombre d'impressions
+    times_printed_increase: Augmenter le nombre d'impressions
+    printed_times: Fois Imprimé
+    title: Tarification d'Impression
+    cost_summary: Résumé des Coûts
     cost_breakdown:
-      filament: "Coût du Filament"
-    
+      filament: Coût du Filament
     calculator:
-      title: "Calculatrice d'Impression 3D"
-      subtitle: "Calculez vos coûts d'impression 3D avec précision"
-
-    # Edit forms
+      title: Calculatrice d'Impression 3D
+      subtitle: Calculez vos coûts d'impression 3D avec précision
+      edit_title: Modifier le Calcul d'Impression
+      edit_subtitle: Mettez à jour votre calcul de coûts d'impression 3D
     edit:
-      title: "Modifier la Tarification d'Impression"
-      subtitle: "Mettez à jour votre calcul de coût d'impression 3D"
-    
-    # Form sections
+      title: Modifier la Tarification d'Impression
+      subtitle: Mettez à jour votre calcul de coût d'impression 3D
     sections:
-      basic_info: "Informations de Base"
-      print_time_material: "Temps d'Impression et Matériau"
-      filament_details: "Détails du Filament"
-      electricity: "Électricité"
-      electricity_auto_calculated: "Électricité (Calculée automatiquement)"
-      electricity_power_consumption: "Électricité et Consommation d'Énergie"
-      electricity_print_time: "Électricité et Temps d'Impression"
-      electricity_energy_cost: "Électricité et Coût Énergétique"
-      electricity_settings_link_html: "Configurez les paramètres d'électricité dans votre %{link}"
-      profile_settings: "Paramètres du Profil"
-      labor: "Main-d'œuvre"
-      machine_upkeep: "Entretien de la Machine"
-      other_costs_tax: "Autres Coûts et Taxes"
-      final_price: "Prix Final"
-
+      basic_info: Informations de Base
+      print_time_material: Temps d'Impression et Matériau
+      filament_details: Détails du Filament
+      electricity: Électricité
+      electricity_auto_calculated: Électricité (Calculée automatiquement)
+      electricity_power_consumption: Électricité et Consommation d'Énergie
+      electricity_print_time: Électricité et Temps d'Impression
+      electricity_energy_cost: Électricité et Coût Énergétique
+      electricity_settings_link_html: Configurez les paramètres d'électricité dans
+        votre %{link}
+      profile_settings: Paramètres du Profil
+      labor: Main-d'œuvre
+      machine_upkeep: Entretien de la Machine
+      other_costs_tax: Autres Coûts et Taxes
+      final_price: Prix Final
+      plates: Plaques
+      plate: Plaque
     show:
-      cost_summary: "Résumé des Coûts"
-      print_information: "Informations d'Impression"
+      cost_summary: Résumé des Coûts
+      print_information: Informations d'Impression
       costs:
-        filament: "Coût du Filament"
-        electricity: "Coût de l'Électricité"
-        labor: "Coût de la Main-d'œuvre"
-        machine: "Coût de la Machine"
-        other: "Autres Coûts"
-        subtotal: "Sous-total"
-        final_price: "Prix Final"
-  
-  # Printers Module
+        filament: Coût du Filament
+        electricity: Coût de l'Électricité
+        labor: Coût de la Main-d'œuvre
+        machine: Coût de la Machine
+        other: Autres Coûts
+        subtotal: Sous-total
+        final_price: Prix Final
+    buttons:
+      add_plate: Ajouter une Plaque
+    help:
+      plates_limit: Vous pouvez ajouter jusqu'à 10 plaques par travail d'impression.
+  currency:
+    usd: Dollar Américain
+    eur: Euro
+    gbp: Livre Sterling
+    jpy: Yen Japonais
+    cad: Dollar Canadien
+    aud: Dollar Australien
+  energy:
+    cost_per_kwh: Coût par kWh
   printers:
     index:
-      title: "Mes Imprimantes"
-      subtitle: "Gérez vos imprimantes 3D et leurs spécifications"
-      add_new: "Ajouter Nouvelle Imprimante"
+      title: Mes Imprimantes
+      subtitle: Gérez vos imprimantes 3D et leurs spécifications
+      add_new: Ajouter Nouvelle Imprimante
       empty_state:
-        title: "Aucune imprimante enregistrée"
-        description: "Ajoutez votre première imprimante 3D pour commencer à calculer les coûts d'impression avec précision."
-    
+        title: Aucune imprimante enregistrée
+        description: Ajoutez votre première imprimante 3D pour commencer à calculer
+          les coûts d'impression avec précision.
     new:
-      title: "Ajouter Nouvelle Imprimante"
-      subtitle: "Enregistrez les spécifications de votre imprimante 3D pour des calculs de coût précis"
-  
-  # User profile
+      title: Ajouter Nouvelle Imprimante
+      subtitle: Enregistrez les spécifications de votre imprimante 3D pour des calculs
+        de coût précis
   profile:
     show:
-      title: "Profil Utilisateur"
-      subtitle: "Paramètres et préférences de votre compte"
-      account_info: "Informations du Compte"
-      email: "Email"
-      member_since: "Membre depuis"
-      default_preferences: "Préférences par Défaut"
-    
+      title: Profil Utilisateur
+      subtitle: Paramètres et préférences de votre compte
+      account_info: Informations du Compte
+      email: Email
+      member_since: Membre depuis
+      default_preferences: Préférences par Défaut
     fields:
-      default_currency: "Devise par Défaut"
-      energy_cost: "Coût de l'Énergie par kWh"
-      energy_cost_help: "Votre coût local d'électricité par kilowatt-heure"
-    
-    default_currency: "Devise par Défaut"
-    default_energy_cost: "Coût Énergétique par Défaut"
-    settings: "Paramètres"
-  
-  # Application title
+      default_currency: Devise par Défaut
+      energy_cost: Coût de l'Énergie par kWh
+      energy_cost_help: Votre coût local d'électricité par kilowatt-heure
+    default_currency: Devise par Défaut
+    default_energy_cost: Coût Énergétique par Défaut
+    settings: Paramètres
   app:
-    title: "CalcuMake"
-    title_default: "CalcuMake"
-  # Footer
+    title: CalcuMake
+    title_default: CalcuMake
   footer:
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
-    description: "Professional 3D printing cost calculation and project management"
-
-  # Legal pages (Basic navigation - full content in English)
+    description: Professional 3D printing cost calculation and project management
   legal:
-    last_updated: "Dernière mise à jour"
+    last_updated: Dernière mise à jour
     privacy_policy:
-      title: "Politique de confidentialité"
-      nav_title: "Politique de confidentialité"
+      title: Politique de confidentialité
+      nav_title: Politique de confidentialité
     user_agreement:
-      title: "Accord d'utilisateur"
-      nav_title: "Conditions d'utilisation"
-
-  # Support page
+      title: Accord d'utilisateur
+      nav_title: Conditions d'utilisation
   support:
-    title: "Assistance"
-    nav_title: "Assistance"
-    contact_us: "Contact Us"
-    description: "Need help with CalcuMake? Have a question or suggestion? We're here to help!"
-    email_label: "Email Support"
-    response_time: "We typically respond within 24-48 hours"
-
-# Print Pricings (plural) Module
+    title: Assistance
+    nav_title: Assistance
+    contact_us: Contact Us
+    description: Need help with CalcuMake? Have a question or suggestion? We're here
+      to help!
+    email_label: Email Support
+    response_time: We typically respond within 24-48 hours
 print_pricings:
   form:
-    filament_weight: "Poids du Filament"
-    print_time_hours: "Heures de Temps d'Impression"
+    filament_weight: Poids du Filament
+    print_time_hours: Heures de Temps d'Impression
