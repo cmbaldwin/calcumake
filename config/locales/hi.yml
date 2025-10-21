@@ -1,227 +1,184 @@
+---
 hi:
-  language_name: "हिंदी"
-  
-  # Navigation
+  language_name: हिंदी
   nav:
-    brand: "CalcuMake"
-    my_pricings: "मेरी कीमतें"
-    new_pricing: "नई कीमत"
-    my_printers: "मेरे प्रिंटर"
-    profile: "प्रोफ़ाइल"
-    help: "सहायता"
-    sign_out: "साइन आउट"
-    sign_in: "साइन इन"
-    sign_up: "साइन अप"
-    language: "भाषा"
-  
-  # Common actions
+    brand: CalcuMake
+    my_pricings: मेरी कीमतें
+    new_pricing: नई कीमत
+    my_printers: मेरे प्रिंटर
+    profile: प्रोफ़ाइल
+    help: सहायता
+    sign_out: साइन आउट
+    sign_in: साइन इन
+    sign_up: साइन अप
+    language: भाषा
   actions:
-    save: "सेव करें"
-    cancel: "रद्द करें"
-    edit: "संपादित करें"
-    delete: "हटाएं"
-    create: "बनाएं"
-    update: "अपडेट करें"
-    new: "नया"
-    show: "दिखाएं"
-    back: "वापस"
-    submit: "सबमिट करें"
-    view: "देखें"
-    actions: "कार्य"
-  
-  # Flash messages
+    save: सेव करें
+    cancel: रद्द करें
+    edit: संपादित करें
+    delete: हटाएं
+    create: बनाएं
+    update: अपडेट करें
+    new: नया
+    show: दिखाएं
+    back: वापस
+    submit: सबमिट करें
+    view: देखें
+    actions: कार्य
   flash:
-    success: "सफलता"
-    error: "त्रुटि"
-    alert: "चेतावनी"
-    notice: "सूचना"
+    success: सफलता
+    error: त्रुटि
+    alert: चेतावनी
+    notice: सूचना
     created: "%{model} सफलतापूर्वक बनाया गया"
     updated: "%{model} सफलतापूर्वक अपडेट किया गया"
     deleted: "%{model} सफलतापूर्वक हटाया गया"
-  
-  # Models
   models:
-    user: "उपयोगकर्ता"
-    printer: "प्रिंटर"
-    print_pricing: "प्रिंट मूल्य निर्धारण"
-  
-  # Printer related
+    user: उपयोगकर्ता
+    printer: प्रिंटर
+    print_pricing: प्रिंट मूल्य निर्धारण
   printer:
-    name: "प्रिंटर का नाम"
-    manufacturer: "निर्माता"
-    model: "मॉडल"
-    purchase_price: "खरीद मूल्य"
-    purchase_date: "खरीद की तारीख"
-    power_consumption: "बिजली की खपत (वाट)"
-    hourly_cost: "घंटे की लागत"
-    depreciation_years: "मूल्यह्रास अवधि (वर्ष)"
-    repair_factor: "मरम्मत कारक (%)"
-    paid_off: "पेड ऑफ"
-    months_to_payoff: "पेऑफ तक महीने"
-  
-  # Print pricing related
-  print_pricing:
-    name: "प्रिंट जॉब का नाम"
-    print_time_hours: "प्रिंट समय (घंटे)"
-    filament_weight: "फिलामेंट वजन (ग्राम)"
-    spool_price: "स्पूल की कीमत"
-    spool_weight: "स्पूल का वजन (ग्राम)"
-    markup_percentage: "मार्कअप प्रतिशत"
-
-    fields:
-      markup_percentage: "मार्कअप प्रतिशत"
-      prep_time_minutes: "तैयारी का समय (मिनट)"
-      prep_cost_per_hour: "प्रति घंटा तैयारी लागत"
-    prep_time_minutes: "तैयारी का समय (मिनट)"
-    post_time_minutes: "पोस्ट-प्रोसेसिंग समय (मिनट)"
-    postprocessing_time_minutes: "पोस्ट-प्रोसेसिंग समय (मिनट)"
-    postprocessing_time_placeholder: "30"
-    postprocessing_cost_per_hour: "प्रति घंटा पोस्ट-प्रोसेसिंग लागत"
-    vat_rate: "वैट दर (%)"
-    total_cost: "कुल लागत"
-    profit_margin: "लाभ मार्जिन"
-  
-  # Currency
-  currency:
-    usd: "अमेरिकी डॉलर"
-    eur: "यूरो"
-    gbp: "ब्रिटिश पाउंड"
-    jpy: "जापानी येन"
-    cad: "कनाडाई डॉलर"
-    aud: "ऑस्ट्रेलियाई डॉलर"
-  
-  # Energy costs
-  energy:
-    cost_per_kwh: "प्रति किलोवाट घंटे की लागत"
-    
-  # Print Pricing Module
+    name: प्रिंटर का नाम
+    manufacturer: निर्माता
+    model: मॉडल
+    purchase_price: खरीद मूल्य
+    purchase_date: खरीद की तारीख
+    power_consumption: बिजली की खपत (वाट)
+    hourly_cost: घंटे की लागत
+    depreciation_years: मूल्यह्रास अवधि (वर्ष)
+    repair_factor: मरम्मत कारक (%)
+    paid_off: पेड ऑफ
+    months_to_payoff: पेऑफ तक महीने
   print_pricing:
     index:
-      title: "मेरी प्रिंट गणनाएं"
-      subtitle: "3D प्रिंटिंग लागत गणनाओं को ट्रैक और प्रबंधित करें"
-      create_new: "नई प्रिंट गणना"
+      title: मेरी प्रिंट गणनाएं
+      subtitle: 3D प्रिंटिंग लागत गणनाओं को ट्रैक और प्रबंधित करें
+      create_new: नई प्रिंट गणना
+      total_calculations: कुल गणनाएं
+      total_print_time: कुल प्रिंट समय
+      search_placeholder: जॉब नाम या फिलामेंट प्रकार से खोजें...
       empty_state:
-        title: "अभी तक कोई गणना नहीं"
-        description: "अपने 3D प्रिंटिंग प्रोजेक्ट्स के लिए खर्च और मूल्य निर्धारण को ट्रैक करने के लिए अपनी पहली प्रिंट लागत गणना बनाना शुरू करें।"
-    
-    job_name: "जॉब का नाम"
-    print_time: "प्रिंट समय"
-    times_printed: "प्रिंट की संख्या"
-    final_price: "अंतिम कीमत"
-    confirm_delete: "क्या आप वाकई '%{name}' को हटाना चाहते हैं?"
-    times_printed_incremented: "प्रिंट संख्या सफलतापूर्वक बढ़ाई गई"
-    times_printed_decremented: "प्रिंट संख्या सफलतापूर्वक घटाई गई"
-    times_printed_decrease: "प्रिंट संख्या कम करें"
-    times_printed_increase: "प्रिंट संख्या बढ़ाएं"
-    printed_times: "प्रिंट की गई बार"
-    title: "प्रिंट मूल्य निर्धारण"
-    cost_summary: "लागत सारांश"
-
-    # Cost breakdown
+        title: अभी तक कोई गणना नहीं
+        description: अपने 3D प्रिंटिंग प्रोजेक्ट्स के लिए खर्च और मूल्य निर्धारण को
+          ट्रैक करने के लिए अपनी पहली प्रिंट लागत गणना बनाना शुरू करें।
+      no_results:
+        title: कोई परिणाम नहीं मिला
+        description: "'%{query}' से मेल खाने वाली कोई प्रिंट गणना नहीं। एक अलग खोज
+          शब्द आज़माएं।"
+    job_name: जॉब का नाम
+    print_time: प्रिंट समय
+    times_printed: प्रिंट की संख्या
+    final_price: अंतिम कीमत
+    confirm_delete: क्या आप वाकई '%{name}' को हटाना चाहते हैं?
+    times_printed_incremented: प्रिंट संख्या सफलतापूर्वक बढ़ाई गई
+    times_printed_decremented: प्रिंट संख्या सफलतापूर्वक घटाई गई
+    times_printed_decrease: प्रिंट संख्या कम करें
+    times_printed_increase: प्रिंट संख्या बढ़ाएं
+    printed_times: प्रिंट की गई बार
+    title: प्रिंट मूल्य निर्धारण
+    cost_summary: लागत सारांश
     cost_breakdown:
-      filament: "फिलामेंट लागत"
-    
+      filament: फिलामेंट लागत
     calculator:
-      title: "3D प्रिंट कैलकुलेटर"
-      subtitle: "अपनी 3D प्रिंटिंग लागतों की सटीक गणना करें"
-
-    # Edit forms
+      title: 3D प्रिंट कैलकुलेटर
+      subtitle: अपनी 3D प्रिंटिंग लागतों की सटीक गणना करें
+      edit_title: प्रिंट गणना संपादित करें
+      edit_subtitle: अपनी 3D प्रिंटिंग लागत गणना अपडेट करें
     edit:
-      title: "प्रिंट मूल्य निर्धारण संपादित करें"
-      subtitle: "अपनी 3D प्रिंटिंग लागत गणना अपडेट करें"
-
+      title: प्रिंट मूल्य निर्धारण संपादित करें
+      subtitle: अपनी 3D प्रिंटिंग लागत गणना अपडेट करें
     sections:
-      basic_info: "बुनियादी जानकारी"
-      print_time_material: "प्रिंट समय और सामग्री"
-      filament_details: "फिलामेंट विवरण"
-      electricity: "बिजली"
-      electricity_auto_calculated: "बिजली (स्वचालित गणना)"
-      electricity_power_consumption: "बिजली और पावर खपत"
-      electricity_print_time: "बिजली और प्रिंट समय"
-      electricity_energy_cost: "बिजली और ऊर्जा लागत"
-      electricity_settings_link_html: "अपने %{link} में बिजली सेटिंग्स कॉन्फ़िगर करें"
-      profile_settings: "प्रोफाइल सेटिंग्स"
-      labor: "श्रम"
-      machine_upkeep: "मशीन और रखरखाव"
-      other_costs_tax: "अन्य लागत और कर"
-      final_price: "अंतिम कीमत"
-
+      basic_info: बुनियादी जानकारी
+      print_time_material: प्रिंट समय और सामग्री
+      filament_details: फिलामेंट विवरण
+      electricity: बिजली
+      electricity_auto_calculated: बिजली (स्वचालित गणना)
+      electricity_power_consumption: बिजली और पावर खपत
+      electricity_print_time: बिजली और प्रिंट समय
+      electricity_energy_cost: बिजली और ऊर्जा लागत
+      electricity_settings_link_html: अपने %{link} में बिजली सेटिंग्स कॉन्फ़िगर करें
+      profile_settings: प्रोफाइल सेटिंग्स
+      labor: श्रम
+      machine_upkeep: मशीन और रखरखाव
+      other_costs_tax: अन्य लागत और कर
+      final_price: अंतिम कीमत
+      plates: प्लेट्स
+      plate: प्लेट
     show:
-      cost_summary: "लागत सारांश"
-      print_information: "प्रिंट जानकारी"
+      cost_summary: लागत सारांश
+      print_information: प्रिंट जानकारी
       costs:
-        filament: "फिलामेंट लागत"
-        electricity: "बिजली की लागत"
-        electricity_auto_calculated: "बिजली (स्वचालित रूप से गणना की गई)"
-        labor: "श्रम लागत"
-        machine: "मशीन लागत"
-        other: "अन्य लागतें"
-        subtotal: "उप-योग"
-        final_price: "अंतिम कीमत"
-  
-  # Printers Module  
+        filament: फिलामेंट लागत
+        electricity: बिजली की लागत
+        electricity_auto_calculated: बिजली (स्वचालित रूप से गणना की गई)
+        labor: श्रम लागत
+        machine: मशीन लागत
+        other: अन्य लागतें
+        subtotal: उप-योग
+        final_price: अंतिम कीमत
+    buttons:
+      add_plate: प्लेट जोड़ें
+    help:
+      plates_limit: आप प्रति प्रिंट जॉब में 10 प्लेट तक जोड़ सकते हैं।
+  currency:
+    usd: अमेरिकी डॉलर
+    eur: यूरो
+    gbp: ब्रिटिश पाउंड
+    jpy: जापानी येन
+    cad: कनाडाई डॉलर
+    aud: ऑस्ट्रेलियाई डॉलर
+  energy:
+    cost_per_kwh: प्रति किलोवाट घंटे की लागत
   printers:
     index:
-      title: "मेरे प्रिंटर"
-      subtitle: "अपने 3D प्रिंटर और उनकी विशिष्टताओं का प्रबंधन करें"
-      add_new: "नया प्रिंटर जोड़ें"
+      title: मेरे प्रिंटर
+      subtitle: अपने 3D प्रिंटर और उनकी विशिष्टताओं का प्रबंधन करें
+      add_new: नया प्रिंटर जोड़ें
       empty_state:
-        title: "अभी तक कोई प्रिंटर पंजीकृत नहीं"
-        description: "प्रिंटिंग लागतों की सटीक गणना शुरू करने के लिए अपना पहला 3D प्रिंटर जोड़ें।"
-    
+        title: अभी तक कोई प्रिंटर पंजीकृत नहीं
+        description: प्रिंटिंग लागतों की सटीक गणना शुरू करने के लिए अपना पहला 3D प्रिंटर
+          जोड़ें।
     new:
-      title: "नया प्रिंटर जोड़ें"
-      subtitle: "सटीक लागत गणना के लिए अपने 3D प्रिंटर की विशिष्टताओं को पंजीकृत करें"
-  
-  # User profile
+      title: नया प्रिंटर जोड़ें
+      subtitle: सटीक लागत गणना के लिए अपने 3D प्रिंटर की विशिष्टताओं को पंजीकृत करें
   profile:
     show:
-      title: "उपयोगकर्ता प्रोफ़ाइल"
-      subtitle: "आपकी खाता सेटिंग्स और प्राथमिकताएं"
-      account_info: "खाता जानकारी"
-      email: "ईमेल"
-      member_since: "सदस्य बने"
-      default_preferences: "डिफ़ॉल्ट प्राथमिकताएं"
-    
+      title: उपयोगकर्ता प्रोफ़ाइल
+      subtitle: आपकी खाता सेटिंग्स और प्राथमिकताएं
+      account_info: खाता जानकारी
+      email: ईमेल
+      member_since: सदस्य बने
+      default_preferences: डिफ़ॉल्ट प्राथमिकताएं
     fields:
-      default_currency: "डिफ़ॉल्ट मुद्रा"
-      energy_cost: "ऊर्जा लागत प्रति kWh"
-      energy_cost_help: "आपकी स्थानीय प्रति किलोवाट-घंटा बिजली लागत"
-    
-    default_currency: "डिफ़ॉल्ट मुद्रा"
-    default_energy_cost: "डिफ़ॉल्ट ऊर्जा लागत"
-    settings: "सेटिंग्स"
-  
-  # Application title
+      default_currency: डिफ़ॉल्ट मुद्रा
+      energy_cost: ऊर्जा लागत प्रति kWh
+      energy_cost_help: आपकी स्थानीय प्रति किलोवाट-घंटा बिजली लागत
+    default_currency: डिफ़ॉल्ट मुद्रा
+    default_energy_cost: डिफ़ॉल्ट ऊर्जा लागत
+    settings: सेटिंग्स
   app:
-    title: "CalcuMake"
-    title_default: "CalcuMake"
-  # Footer
+    title: CalcuMake
+    title_default: CalcuMake
   footer:
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
-    description: "Professional 3D printing cost calculation and project management"
-
-  # Legal pages (Basic navigation - full content in English)
+    description: Professional 3D printing cost calculation and project management
   legal:
-    last_updated: "अंतिम अद्यतन"
+    last_updated: अंतिम अद्यतन
     privacy_policy:
-      title: "गोपनीयता नीति"
-      nav_title: "गोपनीयता नीति"
+      title: गोपनीयता नीति
+      nav_title: गोपनीयता नीति
     user_agreement:
-      title: "उपयोगकर्ता समझौता"
-      nav_title: "सेवा की शर्तें"
-
-  # Support page
+      title: उपयोगकर्ता समझौता
+      nav_title: सेवा की शर्तें
   support:
-    title: "सहायता"
-    nav_title: "सहायता"
-    contact_us: "Contact Us"
-    description: "Need help with CalcuMake? Have a question or suggestion? We're here to help!"
-    email_label: "Email Support"
-    response_time: "We typically respond within 24-48 hours"
-
-# Print Pricings (plural) Module
+    title: सहायता
+    nav_title: सहायता
+    contact_us: Contact Us
+    description: Need help with CalcuMake? Have a question or suggestion? We're here
+      to help!
+    email_label: Email Support
+    response_time: We typically respond within 24-48 hours
 print_pricings:
   form:
-    filament_weight: "फिलामेंट वजन"
-    print_time_hours: "प्रिंट समय (घंटे)"
+    filament_weight: फिलामेंट वजन
+    print_time_hours: प्रिंट समय (घंटे)

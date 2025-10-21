@@ -1,0 +1,43 @@
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0"><%= t('print_pricing.sections.basic_info') %></h5>
+    </div>
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <%= f.label :job_name, class: "form-label" %>
+          <%= f.text_field :job_name, class: "form-control", placeholder: t('print_pricing.fields.job_name_placeholder') %>
+        </div>
+
+        <div class="col-md-6">
+          <%= f.label :printer_id, t('print_pricing.fields.select_printer'), class: "form-label" %>
+          <%= f.select :printer_id,
+              options_from_collection_for_select(current_user.printers, :id, :name, f.object.printer_id),
+              { prompt: t('print_pricing.fields.select_printer_prompt') },
+              { class: "form-select" } %>
+          <div class="form-text">
+            <%= t('print_pricing.fields.no_printer_help') %>
+            <%= link_to t('print_pricing.fields.add_printer_link'), new_printer_path,
+                class: "text-primary",
+                data: { confirm: t('print_pricing.sections.unsaved_progress_warning') } %>
+          </div>
+        </div>
+
+        <% if f.object.new_record? %>
+          <div class="col-12">
+            <div class="form-check form-switch">
+              <%= f.check_box :start_with_one_print,
+                  { checked: false, class: "form-check-input" },
+                  "1", "0" %>
+              <label class="form-check-label" for="<%= f.field_id(:start_with_one_print) %>">
+                <%= t('print_pricing.fields.start_with_one_print') %>
+              </label>
+              <div class="form-text"><%= t('print_pricing.fields.start_with_one_print_help') %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

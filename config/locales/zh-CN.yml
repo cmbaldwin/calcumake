@@ -1,254 +1,213 @@
-"zh-CN":
-  language_name: "中文（简体）"
-  
-  # Navigation
+---
+zh-CN:
+  language_name: 中文（简体）
   nav:
-    brand: "CalcuMake"
-    my_pricings: "我的定价"
-    new_pricing: "新建定价"
-    my_printers: "我的打印机"
-    profile: "个人资料"
-    help: "帮助"
-    sign_out: "退出登录"
-    sign_in: "登录"
-    sign_up: "注册"
-    language: "语言"
-  
-  # Common actions
+    brand: CalcuMake
+    my_pricings: 我的定价
+    new_pricing: 新建定价
+    my_printers: 我的打印机
+    profile: 个人资料
+    help: 帮助
+    sign_out: 退出登录
+    sign_in: 登录
+    sign_up: 注册
+    language: 语言
   actions:
-    save: "保存"
-    cancel: "取消"
-    edit: "编辑"
-    delete: "删除"
-    create: "创建"
-    update: "更新"
-    new: "新建"
-    show: "显示"
-    back: "返回"
-    submit: "提交"
-    view: "查看"
-    actions: "操作"
-  
-  # Flash messages
+    save: 保存
+    cancel: 取消
+    edit: 编辑
+    delete: 删除
+    create: 创建
+    update: 更新
+    new: 新建
+    show: 显示
+    back: 返回
+    submit: 提交
+    view: 查看
+    actions: 操作
   flash:
-    success: "成功"
-    error: "错误"
-    alert: "警告"
-    notice: "通知"
-    created: "成功创建%{model}"
-    updated: "成功更新%{model}"
-    deleted: "成功删除%{model}"
-  
-  # Models
+    success: 成功
+    error: 错误
+    alert: 警告
+    notice: 通知
+    created: 成功创建%{model}
+    updated: 成功更新%{model}
+    deleted: 成功删除%{model}
   models:
-    user: "用户"
-    printer: "打印机"
-    print_pricing: "打印定价"
-  
-  # Common terms
+    user: 用户
+    printer: 打印机
+    print_pricing: 打印定价
   common:
-    created: "创建于"
-    currency: "货币"
-    hours: "小时"
-    minutes: "分钟"
-    grams: "克"
-    watts: "瓦"
-    kwh: "千瓦时"
+    created: 创建于
+    currency: 货币
+    hours: 小时
+    minutes: 分钟
+    grams: 克
+    watts: 瓦
+    kwh: 千瓦时
     percentage: "%"
-    years: "年"
-    "yes": "是"
-    "no": "否"
-    are_you_sure: "您确定吗？"
+    years: 年
+    'yes': 是
+    'no': 否
+    are_you_sure: 您确定吗？
     errors_prohibited: "%{count}个%{errors}阻止了%{model}保存："
     error_count:
-      one: "错误"
-      other: "错误"
-  
-  # Print Pricing Module
+      one: 错误
+      other: 错误
   print_pricing:
-    # Index page
     index:
-      title: "我的打印计算"
-      subtitle: "跟踪和管理3D打印成本计算"
-      create_new: "计算新打印"
-      total_calculations: "总计算数"
-      total_print_time: "总打印时间"
+      title: 我的打印计算
+      subtitle: 跟踪和管理3D打印成本计算
+      create_new: 计算新打印
+      total_calculations: 总计算数
+      total_print_time: 总打印时间
+      search_placeholder: 按作业名称或材料类型搜索...
       empty_state:
-        title: "暂无计算记录"
-        description: "开始创建您的第一个打印成本计算，跟踪3D打印项目的费用和定价。"
-    
-    job_name: "作业名称"
-    print_time: "打印时间"
-    times_printed: "打印次数"
-    final_price: "最终价格"
-    confirm_delete: "您确定要删除'%{name}'吗？"
-    times_printed_incremented: "打印次数增加成功"
-    times_printed_decremented: "打印次数减少成功"
-    times_printed_decrease: "打印次数减少"
-    times_printed_increase: "增加打印次数"
-    printed_times: "打印次数"
-    title: "打印定价"
-    cost_summary: "成本摘要"
-
-    # Cost breakdown
+        title: 暂无计算记录
+        description: 开始创建您的第一个打印成本计算，跟踪3D打印项目的费用和定价。
+      no_results:
+        title: 未找到结果
+        description: 没有与'%{query}'匹配的打印计算。请尝试不同的搜索词。
+    job_name: 作业名称
+    print_time: 打印时间
+    times_printed: 打印次数
+    final_price: 最终价格
+    confirm_delete: 您确定要删除'%{name}'吗？
+    times_printed_incremented: 打印次数增加成功
+    times_printed_decremented: 打印次数减少成功
+    times_printed_decrease: 打印次数减少
+    times_printed_increase: 增加打印次数
+    printed_times: 打印次数
+    title: 打印定价
+    cost_summary: 成本摘要
     cost_breakdown:
-      filament: "耗材成本"
-    
+      filament: 耗材成本
     calculator:
-      title: "3D打印计算器"
-      subtitle: "精确计算您的3D打印成本"
-      edit_title: "编辑打印定价"
-      edit_subtitle: "更新3D打印成本计算"
-
-    # Edit forms
+      title: 3D打印计算器
+      subtitle: 精确计算您的3D打印成本
+      edit_title: 编辑打印计算
+      edit_subtitle: 更新您的3D打印成本计算
     edit:
-      title: "编辑打印定价"
-      subtitle: "更新您的3D打印成本计算"
-    
+      title: 编辑打印定价
+      subtitle: 更新您的3D打印成本计算
     sections:
-      basic_info: "基本信息"
-      print_time_material: "打印时间与材料"
-      filament_details: "耗材详情"
-      electricity: "电力"
-      electricity_auto_calculated: "电力（自动计算）"
-      electricity_power_consumption: "电力与功耗"
-      electricity_print_time: "电力与打印时间"
-      electricity_energy_cost: "电力与能源成本"
-      electricity_settings_link_html: "在您的%{link}中配置电力设置"
-      profile_settings: "配置文件设置"
-      labor: "人工"
-      machine_upkeep: "机器与维护"
-      other_costs_tax: "其他费用与税费"
-      final_price: "最终价格"
-    
+      basic_info: 基本信息
+      print_time_material: 打印时间与材料
+      filament_details: 耗材详情
+      electricity: 电力
+      electricity_auto_calculated: 电力（自动计算）
+      electricity_power_consumption: 电力与功耗
+      electricity_print_time: 电力与打印时间
+      electricity_energy_cost: 电力与能源成本
+      electricity_settings_link_html: 在您的%{link}中配置电力设置
+      profile_settings: 配置文件设置
+      labor: 人工
+      machine_upkeep: 机器与维护
+      other_costs_tax: 其他费用与税费
+      final_price: 最终价格
+      plates: 打印板
+      plate: 打印板
     show:
-      created_on: "创建于%{date}"
-      edit_calculation: "编辑计算"
-      delete: "删除"
-      cost_summary: "成本摘要"
-      print_information: "打印信息"
-      filament_details: "耗材详情"
-      
+      created_on: 创建于%{date}
+      edit_calculation: 编辑计算
+      delete: 删除
+      cost_summary: 成本摘要
+      print_information: 打印信息
+      filament_details: 耗材详情
       costs:
-        filament: "耗材成本"
-        electricity: "电力成本"
-        labor: "人工成本"
-        machine: "机器成本"
-        other: "其他成本"
-        subtotal: "小计"
-        vat: "增值税（%{rate}%）"
-        final_price: "最终价格"
-  
-  # Printers Module
+        filament: 耗材成本
+        electricity: 电力成本
+        labor: 人工成本
+        machine: 机器成本
+        other: 其他成本
+        subtotal: 小计
+        vat: 增值税（%{rate}%）
+        final_price: 最终价格
+    buttons:
+      add_plate: 添加打印板
+    help:
+      plates_limit: 每个打印作业最多可以添加10个打印板。
   printers:
     index:
-      title: "我的打印机"
-      subtitle: "管理您的3D打印机及其规格"
-      add_new: "添加新打印机"
+      title: 我的打印机
+      subtitle: 管理您的3D打印机及其规格
+      add_new: 添加新打印机
       empty_state:
-        title: "尚未注册打印机"
-        description: "添加您的第一台3D打印机，开始精确计算打印成本。"
-        add_first: "添加您的第一台打印机"
-    
+        title: 尚未注册打印机
+        description: 添加您的第一台3D打印机，开始精确计算打印成本。
+        add_first: 添加您的第一台打印机
     card:
-      power_consumption: "功耗"
-      cost: "成本"
-      daily_usage: "日使用时间"
-      payoff_goal: "回本目标"
+      power_consumption: 功耗
+      cost: 成本
+      daily_usage: 日使用时间
+      payoff_goal: 回本目标
       paid_off: "✓ 已回本"
       months_to_payoff: "%{months}个月回本"
-      hours: "小时"
-      years: "年"
-    
+      hours: 小时
+      years: 年
     new:
-      title: "添加新打印机"
-      subtitle: "注册您的3D打印机规格以进行精确成本计算"
-    
+      title: 添加新打印机
+      subtitle: 注册您的3D打印机规格以进行精确成本计算
     edit:
-      title: "编辑打印机"
-      subtitle: "更新您的3D打印机规格"
-  
-  # User Profile Module
+      title: 编辑打印机
+      subtitle: 更新您的3D打印机规格
   profile:
     show:
-      title: "用户资料"
-      subtitle: "您的账户设置和偏好"
-      account_info: "账户信息"
-      email: "邮箱"
-      member_since: "注册于"
-      default_preferences: "默认偏好"
-      back_to_calculations: "返回计算"
-    
+      title: 用户资料
+      subtitle: 您的账户设置和偏好
+      account_info: 账户信息
+      email: 邮箱
+      member_since: 注册于
+      default_preferences: 默认偏好
+      back_to_calculations: 返回计算
     edit:
-      title: "用户资料设置"
-      subtitle: "配置您的默认偏好"
-      default_settings: "默认设置"
-    
+      title: 用户资料设置
+      subtitle: 配置您的默认偏好
+      default_settings: 默认设置
     fields:
-      default_currency: "默认货币"
-      default_currency_help: "用作新定价计算的默认货币"
-      energy_cost: "电价/千瓦时"
-      energy_cost_placeholder: "0.120"
-      energy_cost_help: "您当地的每千瓦时电价"
-
-    fields:
-      markup_percentage: "加价百分比"
-      prep_time_minutes: "准备时间（分钟）"
-      prep_cost_per_hour: "每小时准备成本"
-      postprocessing_time_minutes: "后处理时间（分钟）"
-      postprocessing_time_placeholder: "30"
-      postprocessing_cost_per_hour: "每小时后处理费用"
-  
-  # Currency
+      markup_percentage: 加价百分比
+      prep_time_minutes: 准备时间（分钟）
+      prep_cost_per_hour: 每小时准备成本
+      postprocessing_time_minutes: 后处理时间（分钟）
+      postprocessing_time_placeholder: '30'
+      postprocessing_cost_per_hour: 每小时后处理费用
   currency:
-    usd: "美元"
-    eur: "欧元"
-    gbp: "英镑"
-    jpy: "日元"
-    cad: "加元"
-    aud: "澳元"
-  
-  # Energy costs
+    usd: 美元
+    eur: 欧元
+    gbp: 英镑
+    jpy: 日元
+    cad: 加元
+    aud: 澳元
   energy:
-    cost_per_kwh: "每千瓦时电价"
-  
-  # Date and time formats
+    cost_per_kwh: 每千瓦时电价
   time:
-    at: "于"
+    at: 于
     formats:
       month_day_year: "%Y年%m月%d日"
       month_day_year_time: "%Y年%m月%d日 %H:%M"
-  
-  # Application title
   app:
-    title: "CalcuMake"
-    title_default: "CalcuMake"
-  # Footer
+    title: CalcuMake
+    title_default: CalcuMake
   footer:
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
-    description: "Professional 3D printing cost calculation and project management"
-
-  # Legal pages (Basic navigation - full content in English)
+    description: Professional 3D printing cost calculation and project management
   legal:
-    last_updated: "最后更新"
+    last_updated: 最后更新
     privacy_policy:
-      title: "隐私政策"
-      nav_title: "隐私政策"
+      title: 隐私政策
+      nav_title: 隐私政策
     user_agreement:
-      title: "用户协议"
-      nav_title: "服务条款"
-
-  # Support page
+      title: 用户协议
+      nav_title: 服务条款
   support:
-    title: "支持"
-    nav_title: "支持"
-    contact_us: "Contact Us"
-    description: "Need help with CalcuMake? Have a question or suggestion? We're here to help!"
-    email_label: "Email Support"
-    response_time: "We typically respond within 24-48 hours"
-
-# Print Pricings (plural) Module
+    title: 支持
+    nav_title: 支持
+    contact_us: Contact Us
+    description: Need help with CalcuMake? Have a question or suggestion? We're here
+      to help!
+    email_label: Email Support
+    response_time: We typically respond within 24-48 hours
 print_pricings:
   form:
-    filament_weight: "耗材重量"
-    print_time_hours: "打印时间（小时）"
+    filament_weight: 耗材重量
+    print_time_hours: 打印时间（小时）

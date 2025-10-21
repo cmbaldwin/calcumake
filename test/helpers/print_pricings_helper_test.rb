@@ -11,7 +11,11 @@ class PrintPricingsHelperTest < ActionView::TestCase
   test "format_print_time returns formatted string" do
     result = format_print_time(@pricing)
     assert_match(/\d+h \d+m/, result)
-    assert_equal "#{@pricing.printing_time_hours}h #{@pricing.printing_time_minutes}m", result
+    # Verify it calculates from plates correctly
+    total_minutes = @pricing.total_printing_time_minutes
+    hours = total_minutes / 60
+    minutes = total_minutes % 60
+    assert_equal "#{hours}h #{minutes}m", result
   end
 
   test "format_creation_date returns formatted date" do
@@ -28,9 +32,10 @@ class PrintPricingsHelperTest < ActionView::TestCase
 
   test "pricing_card_metadata_badges returns HTML with badges" do
     result = pricing_card_metadata_badges(@pricing)
-    assert_includes result, @pricing.default_currency
-    assert_includes result, "badge bg-secondary"
+    assert_includes result, "badge bg-info" # Plate count badge
+    assert_includes result, "badge bg-secondary" # Filament type badge
     assert_includes result, "text-muted"
+    assert_includes result, "plate" # Should show plate count
   end
 
   test "pricing_card_actions returns HTML with dropdown actions" do
@@ -63,7 +68,8 @@ class PrintPricingsHelperTest < ActionView::TestCase
     sections = cost_breakdown_sections(@pricing)
     assert_kind_of Array, sections
     assert sections.any? { |s| s[:title] == "Print Information" }
-    assert sections.any? { |s| s[:title] == "Filament Details" }
+    # Now shows individual plates instead of "Filament Details"
+    assert sections.any? { |s| s[:title].include?("Plate") }
 
     # Check that sections have the expected structure
     sections.each do |section|

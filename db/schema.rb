@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_18_011402) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_21_020830) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
-  create_table "print_pricings", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "job_name"
+  create_table "plates", force: :cascade do |t|
+    t.bigint "print_pricing_id", null: false
     t.integer "printing_time_hours"
     t.integer "printing_time_minutes"
     t.decimal "filament_weight"
@@ -24,6 +23,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_18_011402) do
     t.decimal "spool_price"
     t.decimal "spool_weight"
     t.decimal "markup_percentage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["print_pricing_id"], name: "index_plates_on_print_pricing_id"
+  end
+
+  create_table "print_pricings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "job_name"
     t.integer "prep_time_minutes"
     t.decimal "prep_cost_per_hour"
     t.integer "postprocessing_time_minutes"
@@ -71,6 +78,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_18_011402) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "plates", "print_pricings"
   add_foreign_key "print_pricings", "printers"
   add_foreign_key "print_pricings", "users"
   add_foreign_key "printers", "users"

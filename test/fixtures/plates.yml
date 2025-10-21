@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  print_pricing: one
+  printing_time_hours: 2
+  printing_time_minutes: 30
+  filament_weight: 50.0
+  filament_type: PLA
+  spool_price: 25.0
+  spool_weight: 1000.0
+  markup_percentage: 20.0
+
+two:
+  print_pricing: two
+  printing_time_hours: 1
+  printing_time_minutes: 45
+  filament_weight: 35.0
+  filament_type: PETG
+  spool_price: 3000.0
+  spool_weight: 1000.0
+  markup_percentage: 15.0

@@ -41,9 +41,11 @@ class UserTest < ActiveSupport::TestCase
       daily_usage_hours: 8,
       repair_cost_percentage: 5.0
     )
-    @user.print_pricings.create!(
+    pricing = @user.print_pricings.build(
       job_name: "Test Print",
-      printer: printer,
+      printer: printer
+    )
+    pricing.plates.build(
       filament_type: "PLA",
       filament_weight: 50.0,
       spool_price: 25.0,
@@ -52,6 +54,7 @@ class UserTest < ActiveSupport::TestCase
       printing_time_hours: 2,
       printing_time_minutes: 30
     )
+    pricing.save!
 
     assert_difference "PrintPricing.count", -1 do
       @user.destroy
