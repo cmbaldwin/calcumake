@@ -242,4 +242,92 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to print_pricing_url(PrintPricing.last)
     assert_equal 0, PrintPricing.last.times_printed
   end
+
+  # Invoice tests
+  test "should get invoice" do
+    get invoice_print_pricing_url(@print_pricing)
+    assert_response :success
+  end
+
+  test "invoice should display job details" do
+    get invoice_print_pricing_url(@print_pricing)
+    assert_select "h3", text: I18n.t("print_pricing.job_details")
+    assert_select "p", text: /#{@print_pricing.job_name}/
+  end
+
+  test "invoice should display all plates" do
+    # Add a second plate to test multiple plates display
+    @print_pricing.plates.create!(
+      printing_time_hours: 1,
+      printing_time_minutes: 15,
+      filament_weight: 25.0,
+      filament_type: "PETG",
+      spool_price: 30.0,
+      spool_weight: 1000.0,
+      markup_percentage: 20.0
+    )
+
+    get invoice_print_pricing_url(@print_pricing)
+    assert_response :success
+
+    # Should show plate count
+    assert_select "p", text: /#{@print_pricing.plates.count}/
+
+    # Should show both filament types
+    assert_match @print_pricing.plates.first.filament_type, response.body
+    assert_match @print_pricing.plates.second.filament_type, response.body
+  end
+
+  test "invoice should display cost breakdown" do
+    get invoice_print_pricing_url(@print_pricing)
+    assert_select "h3", text: I18n.t("print_pricing.cost_breakdown_label")
+    assert_select "table.table"
+    # Check that cost breakdown items appear in the response
+    assert_match I18n.t("print_pricing.filament_cost"), response.body
+    assert_match I18n.t("print_pricing.subtotal"), response.body
+    assert_match I18n.t("print_pricing.total"), response.body
+  end
+
+  test "invoice should display invoice header" do
+    get invoice_print_pricing_url(@print_pricing)
+    assert_select "h1.invoice-title", text: I18n.t("print_pricing.invoice")
+    assert_select "p.invoice-number", text: /INV-/
+    assert_select "p.invoice-date"
+  end
+
+  test "invoice should display company info" do
+    get invoice_print_pricing_url(@print_pricing)
+    assert_select ".company-info" do
+      assert_select "p", text: @user.email
+    end
+  end
+
+  test "invoice should not be accessible by other users" do
+    other_user = User.create!(
+      email: "other@example.com",
+      password: "password123",
+      default_currency: "USD",
+      default_energy_cost_per_kwh: 0.12
+    )
+    sign_in other_user
+
+    get invoice_print_pricing_url(@print_pricing)
+    assert_response :not_found
+  end
+
+  test "invoice should display total weight from all plates" do
+    @print_pricing.plates.create!(
+      printing_time_hours: 1,
+      printing_time_minutes: 0,
+      filament_weight: 35.0,
+      filament_type: "ABS",
+      spool_price: 28.0,
+      spool_weight: 1000.0,
+      markup_percentage: 15.0
+    )
+
+    get invoice_print_pricing_url(@print_pricing)
+    total_weight = @print_pricing.plates.sum(&:filament_weight)
+    assert_match total_weight.round(1).to_s, response.body
+  end
 end

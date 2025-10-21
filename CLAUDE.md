@@ -30,19 +30,67 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **User**: Authenticated users with default currency and energy cost settings
 - **Printer**: User-owned 3D printers with power consumption, cost, and payoff tracking
 - **PrintPricing**: Individual print job calculations with comprehensive cost breakdown
+- **Plate**: Individual build plates within a print job (1-10 plates per pricing)
 
 ```
 User (1) -> (many) Printers
 User (1) -> (many) PrintPricings
+PrintPricing (1) -> (many) Plates
 ```
+
+### Multi-Plate Architecture
+Each `PrintPricing` can contain **1 to 10 plates**, representing multiple build plates for a single print job:
+
+**Plate Model** ([app/models/plate.rb](app/models/plate.rb)):
+- `printing_time_hours` - Hours to print this plate
+- `printing_time_minutes` - Minutes to print this plate
+- `filament_weight` - Grams of filament used for this plate
+- `filament_type` - Type of filament (PLA, ABS, PETG, etc.)
+- `spool_price` - Cost of filament spool in user's currency
+- `spool_weight` - Weight of filament spool in grams
+- `markup_percentage` - Markup percentage for filament cost
+
+**Dynamic Plate Management**:
+- Users can add/remove plates using Stimulus controller
+- Minimum 1 plate required (validation enforced)
+- Maximum 10 plates allowed (UI enforces limit)
+- Each plate has its own print time and material specifications
+- All calculations sum across plates for total job cost
+
+**Implementation Details**:
+```ruby
+# PrintPricing validations
+validates :plates, length: {
+  minimum: 1, message: "must have at least one plate",
+  maximum: 10, message: "cannot have more than ten plates"
+}
+
+# Nested attributes for dynamic plate management
+accepts_nested_attributes_for :plates, allow_destroy: true, reject_if: :all_blank
+
+# Calculations sum across all plates
+def total_printing_time_minutes
+  plates.sum(&:total_printing_time_minutes)
+end
+
+def total_filament_cost
+  plates.sum(&:total_filament_cost)
+end
+```
+
+**Stimulus Controller** ([app/javascript/controllers/nested_form_controller.js](app/javascript/controllers/nested_form_controller.js)):
+- Handles dynamic add/remove of plate fields in forms
+- Uses template-based approach with unique timestamps
+- Manages remove button visibility (hidden when only 1 plate)
+- Disables add button at 10 plate limit
 
 ### Key Pricing Calculation Components
 The `PrintPricing` model handles complex cost calculations including:
-- Filament costs (based on weight, spool price, markup)
-- Electricity costs (power consumption × time × energy rate)
-- Labor costs (prep and post-processing time)
-- Machine upkeep costs (depreciation and repair factors)
-- VAT and final pricing calculations
+- **Filament costs** - Sum of all plates' (weight × spool price / spool weight × markup)
+- **Electricity costs** - Sum of all plates' print time × power consumption × energy rate
+- **Labor costs** - Prep and post-processing time (job-level, not per-plate)
+- **Machine upkeep costs** - Depreciation and repair factors (job-level)
+- **VAT and final pricing** - Applied to total calculated costs
 
 ### Currency Support
 Multi-currency support via `CurrencyHelper`:
@@ -134,44 +182,189 @@ The application uses Turbo Streams for seamless real-time updates:
 
 ### Stimulus Controllers
 The application uses Stimulus controllers for interactive functionality:
-- **Toast Controller** (`toast_controller.js`): Handles auto-dismissing flash notifications with configurable delays
-- **Times Printed Controller** (`times_printed_controller.js`): Manages increment/decrement functionality with proper Turbo stream handling
+
+- **Nested Form Controller** ([app/javascript/controllers/nested_form_controller.js](app/javascript/controllers/nested_form_controller.js)):
+  - Manages dynamic add/remove of plate fields in PrintPricing forms
+  - Uses template-based approach with unique timestamp IDs
+  - Key methods:
+    - `add()`: Adds new plate using template, replacing NEW_RECORD with timestamp
+    - `remove()`: Marks existing plates for deletion (_destroy field) or removes new plates from DOM
+    - `updateRemoveButtons()`: Manages button visibility (hides when 1 plate, disables add at 10 plates)
+  - Targets: `container` (plate list), `template` (hidden template for new plates)
+  - Usage in form: `data-controller="nested-form"` on form container
+
+- **Toast Controller** ([app/javascript/controllers/toast_controller.js](app/javascript/controllers/toast_controller.js)):
+  - Handles auto-dismissing flash notifications with configurable delays
+
+- **Times Printed Controller** ([app/javascript/controllers/times_printed_controller.js](app/javascript/controllers/times_printed_controller.js)):
+  - Manages increment/decrement functionality with proper Turbo stream handling
+
+**Controller Patterns:**
 - **Data Values**: Controllers use Stimulus values API for configuration (e.g., `data-toast-auto-dismiss-value`)
 - **Actions**: Interactive elements use `data-action` attributes to connect to controller methods
+- **Targets**: Elements use `data-{controller}-target` for DOM element references
 
 ### Component Architecture & Helper Organization
 The application follows a well-organized component-based architecture:
 
 **Helper Organization:**
-- **PrintPricingsHelper**: Contains view-specific formatting and display logic
-  - `format_print_time(pricing)`: Formats printing time display
+- **PrintPricingsHelper** ([app/helpers/print_pricings_helper.rb](app/helpers/print_pricings_helper.rb)): View-specific formatting and display logic
+  - `format_print_time(pricing)`: Calculates and formats total printing time across all plates
   - `format_creation_date(pricing)`: Formats creation date display
   - `total_print_time_hours(print_pricings)`: Calculates total print time across multiple pricings
-  - `pricing_card_metadata_badges(pricing)`: Generates metadata badges for pricing cards
+  - `pricing_card_metadata_badges(pricing)`: Generates badges showing plate count, filament types, weight, and time
   - `pricing_card_actions(pricing)`: Generates action buttons for pricing cards
+  - `cost_breakdown_sections(pricing)`: Renders comprehensive cost breakdown including all plates
+  - `form_section_card(title, &block)`: DRY helper for form section cards
+  - `form_info_section(icon, title, &block)`: DRY helper for info sections
+  - `currency_input_group(form, field, **options)`: DRY helper for currency inputs with Bootstrap styling
 - **ApplicationHelper**: General-purpose helpers for common UI patterns
 - **CurrencyHelper**: Currency formatting and multi-currency support utilities
 
 **Shared Components:**
-- **`shared/components/_pricing_card.html.erb`**: Reusable pricing card component with responsive Bootstrap grid
+- **`shared/components/_pricing_card.html.erb`**: Reusable pricing card component displaying plate count, filament types, and totals
 - **`shared/components/_stats_cards.html.erb`**: Statistics display component for index pages
 - **`shared/components/_times_printed_control.html.erb`**: Interactive increment/decrement control with Turbo Stream support
+
+**Form Architecture - Modular Partials:**
+The PrintPricing form was refactored from 206 lines of duplicated code to a highly modular, DRY architecture:
+
+- **`print_pricings/_form.html.erb`** (9 lines): Shared form wrapper used by both new and edit views
+- **`print_pricings/form_sections/_basic_information.html.erb`**: Job name, printer selection, start_with_one_print toggle
+- **`print_pricings/form_sections/_plates.html.erb`**: Dynamic plates container with Stimulus controller integration
+- **`print_pricings/form_sections/_labor_costs.html.erb`**: Prep and postprocessing time inputs
+- **`print_pricings/form_sections/_other_costs.html.erb`**: Other costs and VAT percentage
+- **`print_pricings/form_sections/_info_sections.html.erb`**: Electricity and machine upkeep information cards
+- **`print_pricings/_plate_fields.html.erb`**: Individual plate field template (used by Stimulus for dynamic add/remove)
+
+**Result**: 96% code reduction (206 → 9 lines per form view)
 
 **View Organization:**
 - Eliminated unused auto-generated view files (create.html.erb, update.html.erb, destroy.html.erb)
 - Removed backup/original files from development process
 - Consolidated logic into helpers and shared components for better maintainability
+- Form sections organized in dedicated `/form_sections/` directory
 - All partials moved to logical shared/components structure when used across multiple views
 
 **Testing Coverage:**
 - Comprehensive helper method tests in `test/helpers/print_pricings_helper_test.rb`
 - Integration tests for Turbo Stream functionality
 - All shared components tested through controller and integration tests
+- Complete test coverage for plates feature with 141 tests passing
+
+### Search Functionality
+**Typeahead Search with Turbo Frames:**
+
+The PrintPricings index includes reactive search functionality:
+
+**Implementation** ([app/views/print_pricings/index.html.erb](app/views/print_pricings/index.html.erb)):
+```erb
+<%= form_with(url: print_pricings_path, method: :get,
+              data: { turbo_frame: :print_pricings_results }) do |form| %>
+  <%= form.text_field :query, value: params[:query],
+      placeholder: t('print_pricing.index.search_placeholder'),
+      oninput: "this.form.requestSubmit()" %>
+<% end %>
+
+<%= turbo_frame_tag :print_pricings_results do %>
+  <!-- Results rendered here -->
+<% end %>
+```
+
+**Search Scope** ([app/models/print_pricing.rb](app/models/print_pricing.rb)):
+```ruby
+scope :search, ->(query) do
+  return all if query.blank?
+  where("job_name ILIKE ?", "%#{sanitize_sql_like(query)}%")
+    .or(where(id: Plate.where("filament_type ILIKE ?",
+              "%#{sanitize_sql_like(query)}%").select(:print_pricing_id)))
+end
+```
+
+**Features:**
+- Searches across job names and plate filament types
+- Auto-submits on input (no button required)
+- Updates results reactively via Turbo Frame
+- Shows "no results" state when query matches nothing
+- Fully internationalized search placeholder and messages
 
 ## Database
 - **PostgreSQL** as primary database
 - User profile settings stored in users table
 - Comprehensive pricing data with decimal precision for financial calculations
+
+### Database Schema - Plates Table
+The `plates` table stores individual build plate data for each print job:
+
+**Migration** ([db/migrate/20251021020820_create_plates.rb](db/migrate/20251021020820_create_plates.rb)):
+```ruby
+create_table :plates do |t|
+  t.references :print_pricing, null: false, foreign_key: true
+  t.integer :printing_time_hours
+  t.integer :printing_time_minutes
+  t.decimal :filament_weight, precision: 10, scale: 2
+  t.string :filament_type
+  t.decimal :spool_price, precision: 10, scale: 2
+  t.decimal :spool_weight, precision: 10, scale: 2
+  t.decimal :markup_percentage, precision: 5, scale: 2
+  t.timestamps
+end
+```
+
+**Data Migration** ([db/migrate/20251021020830_migrate_plate_data_from_print_pricings.rb](db/migrate/20251021020830_migrate_plate_data_from_print_pricings.rb)):
+- Automatically migrated all existing `PrintPricing` records to have one `Plate` with their original data
+- Removed plate-specific columns from `print_pricings` table after migration
+- Fully reversible migration (can roll back safely)
+
+### Best Practices - Working with Plates
+
+**Creating PrintPricings in Code:**
+Always use the `build` → `save!` pattern, never `create!` directly:
+
+```ruby
+# CORRECT - Build first, then save
+pricing = user.print_pricings.build(job_name: "Test Job", printer: printer)
+pricing.plates.build(
+  printing_time_hours: 2,
+  printing_time_minutes: 30,
+  filament_weight: 50.0,
+  filament_type: "PLA",
+  spool_price: 25.0,
+  spool_weight: 1000.0,
+  markup_percentage: 15.0
+)
+pricing.save!
+
+# WRONG - This will fail validation (no plates)
+pricing = user.print_pricings.create!(job_name: "Test Job", printer: printer)
+```
+
+**Controller Parameters:**
+Use nested `plates_attributes` hash for form submissions:
+
+```ruby
+# Correct params structure
+{
+  print_pricing: {
+    job_name: "Job Name",
+    printer_id: 1,
+    plates_attributes: {
+      "0" => { printing_time_hours: 2, filament_weight: 50.0, ... },
+      "1" => { printing_time_hours: 1, filament_weight: 30.0, ... }
+    }
+  }
+}
+```
+
+**Testing:**
+- Always build at least one plate when testing PrintPricing creation
+- Use fixtures with both `print_pricings.yml` and `plates.yml`
+- Test edge cases: minimum (1 plate), maximum (10 plates)
+
+**Displaying Data:**
+- Never access old attributes like `pricing.printing_time_hours` (removed in migration)
+- Use helper methods: `format_print_time(pricing)` for calculated values
+- Access plates via association: `pricing.plates.sum(&:filament_weight)`
 
 ## Authentication & Authorization
 - **Devise** handles user authentication
