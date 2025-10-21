@@ -1,6 +1,9 @@
 module PrintPricingsHelper
   def format_print_time(pricing)
-    "#{pricing.printing_time_hours}h #{pricing.printing_time_minutes}m"
+    total_minutes = pricing.total_printing_time_minutes
+    hours = total_minutes / 60
+    minutes = total_minutes % 60
+    "#{hours}h #{minutes}m"
   end
 
   def format_creation_date(pricing)
@@ -13,8 +16,11 @@ module PrintPricingsHelper
 
   def pricing_card_metadata_badges(pricing)
     content_tag :div, class: "d-flex gap-2 flex-wrap d-lg-none justify-content-center" do
-      concat content_tag(:span, pricing.default_currency, class: "badge bg-secondary")
-      concat content_tag(:span, format_print_time(pricing), class: "text-muted")
+      concat content_tag(:span, "#{pricing.plates.count} plate#{'s' unless pricing.plates.count == 1}", class: "badge bg-info")
+      pricing.plates.map(&:filament_type).uniq.each do |type|
+        concat content_tag(:span, type, class: "badge bg-secondary")
+      end
+      concat content_tag(:small, "#{pricing.plates.sum(&:filament_weight).round(1)}g | #{format_print_time(pricing)}", class: "text-muted")
     end
   end
 
@@ -23,15 +29,16 @@ module PrintPricingsHelper
       button = content_tag(:button, t("actions.actions"), class: "btn btn-outline-secondary btn-sm dropdown-toggle", type: "button", data: { "bs-toggle": "dropdown", "bs-boundary": "viewport", "bs-container": "body" }, "aria-expanded": "false")
 
       menu_items = []
-      menu_items << content_tag(:li, link_to(t("actions.show"), pricing, class: "dropdown-item"))
-      menu_items << content_tag(:li, link_to(t("print_pricing.invoice"), invoice_print_pricing_path(pricing), class: "dropdown-item"))
-      menu_items << content_tag(:li, link_to(t("actions.edit"), edit_print_pricing_path(pricing), class: "dropdown-item"))
+      menu_items << content_tag(:li, link_to(t("actions.show"), pricing, class: "dropdown-item", data: { turbo_frame: "_top" }))
+      menu_items << content_tag(:li, link_to(t("print_pricing.invoice"), invoice_print_pricing_path(pricing), class: "dropdown-item", data: { turbo_frame: "_top" }))
+      menu_items << content_tag(:li, link_to(t("actions.edit"), edit_print_pricing_path(pricing), class: "dropdown-item", data: { turbo_frame: "_top" }))
       menu_items << content_tag(:li, content_tag(:hr, "", class: "dropdown-divider"))
       menu_items << content_tag(:li, link_to(t("actions.delete"), pricing, method: :delete,
                                            class: "dropdown-item text-danger",
                                            data: {
                                              confirm: t("print_pricing.confirm_delete", name: pricing.job_name),
-                                             turbo_method: :delete
+                                             turbo_method: :delete,
+                                             turbo_frame: "_top"
                                            }))
 
       menu = content_tag(:ul, menu_items.join.html_safe, class: "dropdown-menu")
@@ -73,21 +80,26 @@ module PrintPricingsHelper
       title: "Print Information",
       items: [
         [ "Currency", content_tag(:span, pricing.default_currency, class: "badge badge-currency") ],
-        [ "Printing Time", format_print_time(pricing) ],
-        [ "Filament Weight", "#{pricing.filament_weight}g" ],
-        [ "Filament Type", content_tag(:span, pricing.filament_type, class: "badge badge-filament") ]
+        [ "Total Printing Time", format_print_time(pricing) ],
+        [ "Number of Plates", pricing.plates.count.to_s ],
+        [ "Times Printed", pricing.times_printed.to_s ]
       ]
     }
 
-    # Filament details
-    sections << {
-      title: "Filament Details",
-      items: [
-        [ "Spool Price", format_currency_with_symbol(pricing.spool_price, pricing.default_currency) ],
-        [ "Spool Weight", "#{pricing.spool_weight}g" ],
-        [ "Markup", "#{pricing.markup_percentage}%" ]
-      ]
-    }
+    # Plates information
+    pricing.plates.each_with_index do |plate, index|
+      sections << {
+        title: "Plate #{index + 1}",
+        items: [
+          [ "Print Time", "#{plate.printing_time_hours}h #{plate.printing_time_minutes}m" ],
+          [ "Filament Weight", "#{plate.filament_weight}g" ],
+          [ "Filament Type", content_tag(:span, plate.filament_type, class: "badge badge-filament") ],
+          [ "Spool Price", format_currency_with_symbol(plate.spool_price, pricing.default_currency) ],
+          [ "Spool Weight", "#{plate.spool_weight}g" ],
+          [ "Markup", "#{plate.markup_percentage}%" ]
+        ]
+      }
+    end
 
     # Electricity (if applicable)
     if pricing.printer&.power_consumption && pricing.default_energy_cost_per_kwh
@@ -130,6 +142,48 @@ module PrintPricingsHelper
 
   def format_currency_with_symbol(amount, currency)
     "#{currency_symbol(currency)}#{format_currency(amount, currency)}"
+  end
+
+  # Form helpers for DRYing up form sections
+  def form_section_card(title:, columns: "col-12", height_class: nil, &block)
+    col_class = columns
+    col_class += " #{height_class}" if height_class
+
+    content_tag :div, class: col_class do
+      content_tag :div, class: "card" do
+        concat(content_tag(:div, class: "card-header") do
+          content_tag :h5, title, class: "mb-0"
+        end)
+        concat(content_tag(:div, class: "card-body", &block))
+      end
+    end
+  end
+
+  def form_info_section(title:, items:, link_text: nil, link_url: nil, link_options: {})
+    content_tag :div, class: "alert alert-info" do
+      concat(content_tag(:p, class: "mb-2") do
+        content_tag :strong, title
+      end)
+      concat(content_tag(:ul, class: "mb-2") do
+        items.each { |item| concat(content_tag(:li, item)) }
+      end)
+      if link_text && link_url
+        concat(content_tag(:small) do
+          link_to(link_text, link_url, link_options.merge(class: "text-primary"))
+        end)
+      end
+    end
+  end
+
+  def currency_input_group(form, field, label: nil, placeholder: nil, **options)
+    label_text = label || t("print_pricing.fields.#{field}")
+    content_tag :div, class: "col-12" do
+      concat(form.label(field, label_text, class: "form-label"))
+      concat(content_tag(:div, class: "input-group") do
+        concat(content_tag(:span, currency_symbol(current_user.default_currency), class: "input-group-text"))
+        concat(form.number_field(field, { step: 0.01, placeholder: placeholder, class: "form-control" }.merge(options)))
+      end)
+    end
   end
 
   private

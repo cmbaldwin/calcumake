@@ -1,652 +1,563 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
+---
 en:
-  language_name: "English"
-
-  # Navigation
+  language_name: English
   nav:
-    brand: "CalcuMake"
-    my_pricings: "My Pricings"
-    new_pricing: "New Pricing"
-    my_printers: "My Printers"
-    profile: "Profile"
-    help: "Help"
-    sign_out: "Sign out"
-    sign_in: "Sign in"
-    sign_up: "Sign up"
-    language: "Language"
-
-  # Common actions
+    brand: CalcuMake
+    my_pricings: My Pricings
+    new_pricing: New Pricing
+    my_printers: My Printers
+    profile: Profile
+    help: Help
+    sign_out: Sign out
+    sign_in: Sign in
+    sign_up: Sign up
+    language: Language
   actions:
-    save: "Save"
-    cancel: "Cancel"
-    edit: "Edit"
-    delete: "Delete"
-    create: "Create"
-    update: "Update"
-    new: "New"
-    show: "Show"
-    back: "Back"
-    submit: "Submit"
-    view: "View"
-    actions: "Actions"
-    print: "Print"
-
-  # Flash messages
+    save: Save
+    cancel: Cancel
+    edit: Edit
+    delete: Delete
+    create: Create
+    update: Update
+    new: New
+    show: Show
+    back: Back
+    submit: Submit
+    view: View
+    actions: Actions
+    print: Print
   flash:
-    success: "Success"
-    error: "Error"
-    alert: "Alert"
-    notice: "Notice"
-    created: "Successfully created %{model}"
-    updated: "Successfully updated %{model}"
-    deleted: "Successfully deleted %{model}"
-
-  # Models
+    success: Success
+    error: Error
+    alert: Alert
+    notice: Notice
+    created: Successfully created %{model}
+    updated: Successfully updated %{model}
+    deleted: Successfully deleted %{model}
   models:
-    user: "User"
-    printer: "Printer"
-    print_pricing: "Print Pricing"
-
-  # Common terms
+    user: User
+    printer: Printer
+    print_pricing: Print Pricing
   common:
-    created: "Created"
-    currency: "Currency"
-    hours: "Hours"
-    minutes: "Minutes"
-    grams: "g"
-    watts: "W"
-    kwh: "kWh"
+    created: Created
+    currency: Currency
+    hours: Hours
+    minutes: Minutes
+    grams: g
+    watts: W
+    kwh: kWh
     percentage: "%"
-    years: "years"
-    "yes": "Yes"
-    "no": "No"
-    are_you_sure: "Are you sure?"
+    years: years
+    'yes': 'Yes'
+    'no': 'No'
+    are_you_sure: Are you sure?
     errors_prohibited: "%{count} %{errors} prohibited this %{model} from being saved:"
     error_count:
-      one: "error"
-      other: "errors"
-
-  # Time units
+      one: error
+      other: errors
   time:
-    hour:
-      one: "hour"
-      other: "hours"
-    minute:
-      one: "minute"
-      other: "minutes"
-
-  # Print Pricing Module
-  print_pricing:
-    # Index page
-    index:
-      title: "My Print Calculations"
-      subtitle: "Track and manage your 3D printing cost calculations"
-      create_new: "Calculate New Print"
-      total_calculations: "Total Calculations"
-      total_print_time: "Total Print Time"
-      empty_state:
-        title: "No calculations yet"
-        description: "Start by creating your first print cost calculation to track expenses and pricing for your 3D printing projects."
-
-    # Form fields
-    job_name: "Job Name"
-    print_time: "Print Time"
-    times_printed: "Times Printed"
-    times_printed_decrease: "Decrease times printed"
-    times_printed_increase: "Increase times printed"
-    printed_times: "Printed Times"
-    final_price: "Final Price"
-    confirm_delete: "Are you sure you want to delete '%{name}'?"
-    times_printed_incremented: "Times printed increased successfully"
-    times_printed_decremented: "Times printed decreased successfully"
-    title: "Print Pricing"
-    cost_summary: "Cost Summary"
-    back_to_all: "← Back to All Pricings"
-    create_new: "Create New Pricing"
-
-    # Cost breakdown
-    cost_breakdown:
-      filament: "Filament Cost"
-      electricity: "Electricity Cost"
-      labor: "Labor Cost"
-      machine: "Machine Cost"
-      other: "Other Costs"
-      vat: "VAT"
-
-    # Invoice specific
-    invoice: "Invoice"
-    invoice_number: "Invoice Number"
-    invoice_date: "Invoice Date"
-    from: "From"
-    3d_printing_services: "3D Printing Services"
-    job_details: "Job Details"
-    filament_type: "Filament Type"
-    weight: "Weight"
-    cost_breakdown_label: "Cost Breakdown"
-    description: "Description"
-    amount: "Amount"
-    filament_cost: "Filament Cost"
-    markup: "markup"
-    electricity_cost: "Electricity Cost"
-    labor_cost: "Labor Cost"
-    prep_time: "Prep time"
-    postprocessing_time: "Post-processing time"
-    machine_upkeep: "Machine Upkeep"
-    depreciation_and_maintenance: "Depreciation and maintenance"
-    other_costs: "Other Costs"
-    subtotal: "Subtotal"
-    vat: "VAT"
-    total: "Total"
-    notes: "Notes"
-    invoice_notes_text: "Thank you for your business. Please keep this invoice for your records."
-    payment_info: "Payment Information"
-    payment_info_text: "Payment terms and details will be communicated separately."
-    download_pdf: "Download PDF"
-
-    # New/Edit forms
-    calculator:
-      title: "3D Print Calculator"
-      subtitle: "Calculate your 3D printing costs with precision"
-      edit_title: "Edit Print Pricing"
-      edit_subtitle: "Update your 3D printing cost calculation"
-
-    # Edit forms
-    edit:
-      title: "Edit Print Pricing"
-      subtitle: "Update your 3D printing cost calculation"
-
-    # Form sections
-    sections:
-      basic_info: "Basic Information"
-      print_time_material: "Print Time & Material"
-      filament_details: "Filament Details"
-      electricity: "Electricity"
-      electricity_auto_calculated: "Electricity (Auto-calculated)"
-      electricity_power_consumption: "Electricity & Power Consumption"
-      electricity_print_time: "Electricity & Print Time"
-      electricity_energy_cost: "Electricity & Energy Cost"
-      electricity_settings_link_html: "Configure electricity settings in your %{link}"
-      profile_settings: "Profile Settings"
-      labor: "Labor"
-      machine_upkeep: "Machine & Upkeep"
-      machine_auto_calculated: "Machine (Auto-calculated)"
-      machine_cost_usage: "Machine Cost & Usage"
-      machine_return_period: "Machine Return Period"
-      machine_repair_factor: "Machine Repair Factor"
-      add_edit_printer: "add or edit a printer"
-      machine_printer_config_html: "Configure printer specifications when you %{link}"
-      unsaved_progress_warning: "Unsaved Progress Warning"
-      other_costs_tax: "Other Costs & Tax"
-      final_price: "Final Price"
-
-    # Form fields
-    fields:
-      job_name: "Job Name"
-      job_name_placeholder: "e.g., Miniature Model"
-      select_printer: "Select Printer"
-      select_printer_prompt: "Select a printer"
-      no_printer_help: "Don't have a printer registered?"
-      add_printer_link: "Add a new printer"
-      print_time_hours: "Hours"
-      print_time_minutes: "Minutes"
-      filament_weight: "Filament Weight (g)"
-      filament_weight_placeholder: "36"
-      filament_type: "Filament Type"
-      filament_type_prompt: "Select type"
-      spool_price: "Spool Price"
-      spool_price_placeholder: "25.00"
-      spool_weight: "Spool Weight (g)"
-      spool_weight_placeholder: "1000"
-      markup: "Markup (%)"
-      markup_placeholder: "20"
-      markup_percentage: "Markup Percentage"
-      prep_time: "Prep Time (min)"
-      prep_time_placeholder: "30"
-      prep_time_minutes: "Prep Time (minutes)"
-      prep_cost_hour: "Prep Cost/Hour"
-      prep_cost_placeholder: "20.00"
-      prep_cost_per_hour: "Prep Cost per Hour"
-      post_time: "Post-Process Time (min)"
-      post_time_placeholder: "30"
-      postprocessing_time_minutes: "Post-processing Time (minutes)"
-      postprocessing_time_placeholder: "30"
-      postprocessing_cost_per_hour: "Post-processing Cost per Hour"
-      postprocessing_cost_placeholder: "20.00"
-      post_cost_hour: "Post-Process Cost/Hour"
-      post_cost_placeholder: "20.00"
-      other_costs: "Other Costs"
-      other_costs_placeholder: "0.00"
-      vat: "VAT (%)"
-      vat_placeholder: "10"
-      vat_percentage: "VAT Percentage"
-      power_consumption: "Power Consumption (W)"
-      power_consumption_placeholder: "200"
-      energy_cost_kwh: "Energy Cost per kWh"
-      energy_cost_placeholder: "0.12"
-      printer_cost: "Printer Cost"
-      printer_cost_placeholder: "500.00"
-      payoff_goal: "Payoff Goal (Years)"
-      payoff_goal_placeholder: "3"
-      daily_usage: "Daily Usage (Hours)"
-      daily_usage_placeholder: "8"
-      repair_cost: "Repair Cost (%)"
-      repair_cost_placeholder: "5"
-      currency: "Currency"
-      currency_prompt: "Select currency"
-      start_with_one_print: "Start with 1 times printed"
-      start_with_one_print_help: "Enable this to automatically set this pricing as printed once"
-
-    # Filament types
-    filament_types:
-      pla: "PLA"
-      abs: "ABS"
-      petg: "PETG"
-      tpu: "TPU"
-      asa: "ASA"
-      other: "Other"
-
-    # Calculations display
-    calculations:
-      filament_cost: "Filament cost"
-      electricity_cost: "Electricity cost"
-      labor_cost: "Labor cost"
-      machine_cost: "Machine cost"
-      estimated_price: "Estimated Price"
-
-    # Info messages
-    info:
-      electricity_auto: "Electricity cost will be automatically calculated based on:"
-      printer_power: "Selected printer's power consumption"
-      print_duration: "Print time duration"
-      energy_cost_setting: "Your default energy cost: %{cost}/kWh"
-      update_energy_cost: "You can update your default energy cost in your"
-      profile_settings: "profile settings"
-      machine_auto: "Machine depreciation and upkeep cost will be calculated from your selected printer's specifications:"
-      printer_cost_usage: "Printer cost and usage hours"
-      investment_return: "Investment return period"
-      repair_factor: "Repair cost factor"
-      configure_printer: "These values are configured when you"
-      add_edit_printer: "add or edit a printer"
-
-    # Buttons
-    buttons:
-      calculate_save: "Calculate"
-      update_pricing: "Update Pricing"
-      update: "Update"
-      cancel: "Cancel"
-
-    # Show page
-    show:
-      created_on: "Created on %{date}"
-      edit_calculation: "Edit Calculation"
-      delete: "Delete"
-      cost_summary: "Cost Summary"
-      print_information: "Print Information"
-      filament_details: "Filament Details"
-      electricity_cost: "Electricity Cost"
-      labor_cost: "Labor Cost"
-      machine_upkeep_cost: "Machine & Upkeep Cost"
-
-      # Cost breakdown
-      costs:
-        filament: "Filament Cost"
-        electricity: "Electricity Cost"
-        labor: "Labor Cost"
-        machine: "Machine Cost"
-        other: "Other Costs"
-        subtotal: "Subtotal"
-        vat: "VAT (%{rate}%)"
-        final_price: "Final Price"
-
-      # Details
-      details:
-        currency: "Currency"
-        printing_time: "Printing Time"
-        filament_weight: "Filament Weight"
-        filament_type: "Filament Type"
-        spool_price: "Spool Price"
-        spool_weight: "Spool Weight"
-        markup: "Markup"
-        power_consumption: "Power Consumption"
-        energy_cost_kwh: "Energy Cost per kWh"
-        total_electricity_cost: "Total Electricity Cost"
-        prep_time: "Prep Time"
-        postprocessing_time: "Postprocessing Time"
-        total_labor_cost: "Total Labor Cost"
-        printer_cost: "Printer Cost"
-        payoff_goal: "Payoff Goal"
-        daily_usage: "Daily Usage"
-        repair_cost: "Repair Cost"
-        total_machine_cost: "Total Machine Cost"
-
-      # Actions
-      actions:
-        back_to_all: "← Back to All Pricings"
-        create_new: "Create New Pricing"
-        confirm_delete: "Are you sure you want to delete '%{name}'?"
-
-  # Printers Module
-  printers:
-    # Index page
-    index:
-      title: "My Printers"
-      subtitle: "Manage your 3D printers and their specifications"
-      add_new: "Add New Printer"
-      empty_state:
-        title: "No printers registered yet"
-        description: "Add your first 3D printer to start calculating printing costs accurately."
-        add_first: "Add Your First Printer"
-
-    # Printer card
-    card:
-      power_consumption: "Power Consumption"
-      cost: "Cost"
-      daily_usage: "Daily Usage"
-      payoff_goal: "Payoff Goal"
-      paid_off: "✓ Paid Off"
-      months_to_payoff: "%{months} months to payoff"
-      hours: "hours"
-      years: "years"
-
-    # New/Edit forms
-    new:
-      title: "Add New Printer"
-      subtitle: "Register your 3D printer specifications for accurate cost calculations"
-
-    edit:
-      title: "Edit Printer"
-      subtitle: "Update your 3D printer specifications"
-
-    # Show page
-    show:
-      specifications: "Specifications"
-      financial_status: "Financial Status"
-      print_jobs: "Print Jobs"
-      new_print_job: "New Print Job"
-      repair_cost: "Repair Cost"
-      date_added: "Date Added"
-      not_set: "Not set"
-      fully_paid_off: "This printer has been fully paid off based on your payoff goals."
-      payoff_progress: "Payoff Progress"
-      no_print_jobs: "No print jobs yet"
-      no_print_jobs_description: "Create your first print pricing calculation for this printer."
-      create_first_job: "Create First Print Job"
-      view_all_jobs: "View All %{count} Jobs"
-
-    # Form sections
-    sections:
-      basic_info: "Basic Information"
-      technical_specs: "Technical Specifications"
-      financial_info: "Financial Information"
-      usage_info: "Usage Information"
-
-    # Form fields
-    fields:
-      name: "Printer Name"
-      name_placeholder: "e.g., My Prusa i3 MK3S+"
-      manufacturer: "Manufacturer"
-      manufacturer_prompt: "Select manufacturer"
-      power_consumption: "Power Consumption (Watts)"
-      power_consumption_placeholder: "200"
-      power_consumption_help: "Typical range: 50W (small printers) to 500W (large printers)"
-      cost: "Printer Cost"
-      cost_placeholder: "500.00"
-      payoff_goal: "Payoff Goal (Years)"
-      payoff_goal_placeholder: "3"
-      payoff_goal_help: "How many years do you want to recoup the printer cost?"
-      daily_usage: "Daily Usage (Hours)"
-      daily_usage_placeholder: "8"
-      daily_usage_help: "Average hours per day you plan to use this printer"
-      repair_factor: "Repair Cost Factor (%)"
-      repair_factor_placeholder: "5.0"
-      repair_factor_help: "Additional cost factor for maintenance and repairs"
-
-    # Buttons
-    buttons:
-      add_printer: "Add Printer"
-      update_printer: "Update Printer"
-      cancel: "Cancel"
-
-  # User Profile Module
-  profile:
-    # Show page
-    show:
-      title: "User Profile"
-      subtitle: "Your account settings and preferences"
-      account_info: "Account Information"
-      email: "Email"
-      member_since: "Member since"
-      default_preferences: "Default Preferences"
-      back_to_calculations: "Back to Calculations"
-
-    # Edit page
-    edit:
-      title: "User Profile Settings"
-      subtitle: "Configure your default preferences"
-      default_settings: "Default Settings"
-
-    # Form fields
-    fields:
-      default_currency: "Default Currency"
-      default_currency_help: "Used as default for new pricing calculations"
-      energy_cost: "Energy Cost per kWh"
-      energy_cost_placeholder: "0.120"
-      energy_cost_help: "Your local electricity cost per kilowatt-hour"
-      energy_cost_help_extended: "Your local electricity cost per kilowatt-hour. This will be used as the default for new calculations."
-
-    # Buttons
-    buttons:
-      update_settings: "Update Settings"
-      update_profile: "Update Profile"
-      cancel: "Cancel"
-
-  # Currency
-  currency:
-    usd: "US Dollar"
-    eur: "Euro"
-    gbp: "British Pound"
-    jpy: "Japanese Yen"
-    cad: "Canadian Dollar"
-    aud: "Australian Dollar"
-
-  # Energy costs
-  energy:
-    cost_per_kwh: "Energy Cost per kWh"
-
-  # Date and time formats
-  time:
-    at: "at"
+    at: at
     formats:
       month_day_year: "%B %d, %Y"
       month_day_year_time: "%B %d, %Y at %I:%M %p"
-
-  # Application title
+  print_pricing:
+    index:
+      title: My Print Calculations
+      subtitle: Track and manage your 3D printing cost calculations
+      create_new: Calculate New Print
+      total_calculations: Total Calculations
+      total_print_time: Total Print Time
+      search_placeholder: Search by job name or filament type...
+      empty_state:
+        title: No calculations yet
+        description: Start by creating your first print cost calculation to track
+          expenses and pricing for your 3D printing projects.
+      no_results:
+        title: No results found
+        description: No print calculations match '%{query}'. Try a different search
+          term.
+    job_name: Job Name
+    print_time: Print Time
+    times_printed: Times Printed
+    times_printed_decrease: Decrease times printed
+    times_printed_increase: Increase times printed
+    printed_times: Printed Times
+    final_price: Final Price
+    confirm_delete: Are you sure you want to delete '%{name}'?
+    times_printed_incremented: Times printed increased successfully
+    times_printed_decremented: Times printed decreased successfully
+    title: Print Pricing
+    cost_summary: Cost Summary
+    back_to_all: "← Back to All Pricings"
+    create_new: Create New Pricing
+    cost_breakdown:
+      filament: Filament Cost
+      electricity: Electricity Cost
+      labor: Labor Cost
+      machine: Machine Cost
+      other: Other Costs
+      vat: VAT
+    invoice: Invoice
+    invoice_number: Invoice Number
+    invoice_date: Invoice Date
+    from: From
+    3d_printing_services: 3D Printing Services
+    job_details: Job Details
+    filament_type: Filament Type
+    weight: Weight
+    cost_breakdown_label: Cost Breakdown
+    description: Description
+    amount: Amount
+    filament_cost: Filament Cost
+    markup: markup
+    electricity_cost: Electricity Cost
+    labor_cost: Labor Cost
+    prep_time: Prep time
+    postprocessing_time: Post-processing time
+    machine_upkeep: Machine Upkeep
+    depreciation_and_maintenance: Depreciation and maintenance
+    other_costs: Other Costs
+    subtotal: Subtotal
+    vat: VAT
+    total: Total
+    notes: Notes
+    invoice_notes_text: Thank you for your business. Please keep this invoice for
+      your records.
+    payment_info: Payment Information
+    payment_info_text: Payment terms and details will be communicated separately.
+    download_pdf: Download PDF
+    calculator:
+      title: 3D Print Calculator
+      subtitle: Calculate your 3D printing costs with precision
+      edit_title: Edit Print Calculation
+      edit_subtitle: Update your 3D printing cost calculation
+    edit:
+      title: Edit Print Pricing
+      subtitle: Update your 3D printing cost calculation
+    sections:
+      basic_info: Basic Information
+      print_time_material: Print Time & Material
+      filament_details: Filament Details
+      electricity: Electricity
+      electricity_auto_calculated: Electricity (Auto-calculated)
+      electricity_power_consumption: Electricity & Power Consumption
+      electricity_print_time: Electricity & Print Time
+      electricity_energy_cost: Electricity & Energy Cost
+      electricity_settings_link_html: Configure electricity settings in your %{link}
+      profile_settings: Profile Settings
+      labor: Labor
+      machine_upkeep: Machine & Upkeep
+      machine_auto_calculated: Machine (Auto-calculated)
+      machine_cost_usage: Machine Cost & Usage
+      machine_return_period: Machine Return Period
+      machine_repair_factor: Machine Repair Factor
+      add_edit_printer: add or edit a printer
+      machine_printer_config_html: Configure printer specifications when you %{link}
+      unsaved_progress_warning: Unsaved Progress Warning
+      other_costs_tax: Other Costs & Tax
+      final_price: Final Price
+      plates: Plates
+      plate: Plate
+    fields:
+      job_name: Job Name
+      job_name_placeholder: e.g., Miniature Model
+      select_printer: Select Printer
+      select_printer_prompt: Select a printer
+      no_printer_help: Don't have a printer registered?
+      add_printer_link: Add a new printer
+      print_time_hours: Hours
+      print_time_minutes: Minutes
+      filament_weight: Filament Weight (g)
+      filament_weight_placeholder: '36'
+      filament_type: Filament Type
+      filament_type_prompt: Select type
+      spool_price: Spool Price
+      spool_price_placeholder: '25.00'
+      spool_weight: Spool Weight (g)
+      spool_weight_placeholder: '1000'
+      markup: Markup (%)
+      markup_placeholder: '20'
+      markup_percentage: Markup Percentage
+      prep_time: Prep Time (min)
+      prep_time_placeholder: '30'
+      prep_time_minutes: Prep Time (minutes)
+      prep_cost_hour: Prep Cost/Hour
+      prep_cost_placeholder: '20.00'
+      prep_cost_per_hour: Prep Cost per Hour
+      post_time: Post-Process Time (min)
+      post_time_placeholder: '30'
+      postprocessing_time_minutes: Post-processing Time (minutes)
+      postprocessing_time_placeholder: '30'
+      postprocessing_cost_per_hour: Post-processing Cost per Hour
+      postprocessing_cost_placeholder: '20.00'
+      post_cost_hour: Post-Process Cost/Hour
+      post_cost_placeholder: '20.00'
+      other_costs: Other Costs
+      other_costs_placeholder: '0.00'
+      vat: VAT (%)
+      vat_placeholder: '10'
+      vat_percentage: VAT Percentage
+      power_consumption: Power Consumption (W)
+      power_consumption_placeholder: '200'
+      energy_cost_kwh: Energy Cost per kWh
+      energy_cost_placeholder: '0.12'
+      printer_cost: Printer Cost
+      printer_cost_placeholder: '500.00'
+      payoff_goal: Payoff Goal (Years)
+      payoff_goal_placeholder: '3'
+      daily_usage: Daily Usage (Hours)
+      daily_usage_placeholder: '8'
+      repair_cost: Repair Cost (%)
+      repair_cost_placeholder: '5'
+      currency: Currency
+      currency_prompt: Select currency
+      start_with_one_print: Start with 1 times printed
+      start_with_one_print_help: Enable this to automatically set this pricing as
+        printed once
+    filament_types:
+      pla: PLA
+      abs: ABS
+      petg: PETG
+      tpu: TPU
+      asa: ASA
+      other: Other
+    calculations:
+      filament_cost: Filament cost
+      electricity_cost: Electricity cost
+      labor_cost: Labor cost
+      machine_cost: Machine cost
+      estimated_price: Estimated Price
+    info:
+      electricity_auto: 'Electricity cost will be automatically calculated based on:'
+      printer_power: Selected printer's power consumption
+      print_duration: Print time duration
+      energy_cost_setting: 'Your default energy cost: %{cost}/kWh'
+      update_energy_cost: You can update your default energy cost in your
+      profile_settings: profile settings
+      machine_auto: 'Machine depreciation and upkeep cost will be calculated from
+        your selected printer''s specifications:'
+      printer_cost_usage: Printer cost and usage hours
+      investment_return: Investment return period
+      repair_factor: Repair cost factor
+      configure_printer: These values are configured when you
+      add_edit_printer: add or edit a printer
+    buttons:
+      calculate_save: Calculate
+      update_pricing: Update Pricing
+      update: Update
+      cancel: Cancel
+      add_plate: Add Plate
+    show:
+      created_on: Created on %{date}
+      edit_calculation: Edit Calculation
+      delete: Delete
+      cost_summary: Cost Summary
+      print_information: Print Information
+      filament_details: Filament Details
+      electricity_cost: Electricity Cost
+      labor_cost: Labor Cost
+      machine_upkeep_cost: Machine & Upkeep Cost
+      costs:
+        filament: Filament Cost
+        electricity: Electricity Cost
+        labor: Labor Cost
+        machine: Machine Cost
+        other: Other Costs
+        subtotal: Subtotal
+        vat: VAT (%{rate}%)
+        final_price: Final Price
+      details:
+        currency: Currency
+        printing_time: Printing Time
+        filament_weight: Filament Weight
+        filament_type: Filament Type
+        spool_price: Spool Price
+        spool_weight: Spool Weight
+        markup: Markup
+        power_consumption: Power Consumption
+        energy_cost_kwh: Energy Cost per kWh
+        total_electricity_cost: Total Electricity Cost
+        prep_time: Prep Time
+        postprocessing_time: Postprocessing Time
+        total_labor_cost: Total Labor Cost
+        printer_cost: Printer Cost
+        payoff_goal: Payoff Goal
+        daily_usage: Daily Usage
+        repair_cost: Repair Cost
+        total_machine_cost: Total Machine Cost
+      actions:
+        back_to_all: "← Back to All Pricings"
+        create_new: Create New Pricing
+        confirm_delete: Are you sure you want to delete '%{name}'?
+    help:
+      plates_limit: You can add up to 10 plates per print job.
+  printers:
+    index:
+      title: My Printers
+      subtitle: Manage your 3D printers and their specifications
+      add_new: Add New Printer
+      empty_state:
+        title: No printers registered yet
+        description: Add your first 3D printer to start calculating printing costs
+          accurately.
+        add_first: Add Your First Printer
+    card:
+      power_consumption: Power Consumption
+      cost: Cost
+      daily_usage: Daily Usage
+      payoff_goal: Payoff Goal
+      paid_off: "✓ Paid Off"
+      months_to_payoff: "%{months} months to payoff"
+      hours: hours
+      years: years
+    new:
+      title: Add New Printer
+      subtitle: Register your 3D printer specifications for accurate cost calculations
+    edit:
+      title: Edit Printer
+      subtitle: Update your 3D printer specifications
+    show:
+      specifications: Specifications
+      financial_status: Financial Status
+      print_jobs: Print Jobs
+      new_print_job: New Print Job
+      repair_cost: Repair Cost
+      date_added: Date Added
+      not_set: Not set
+      fully_paid_off: This printer has been fully paid off based on your payoff goals.
+      payoff_progress: Payoff Progress
+      no_print_jobs: No print jobs yet
+      no_print_jobs_description: Create your first print pricing calculation for this
+        printer.
+      create_first_job: Create First Print Job
+      view_all_jobs: View All %{count} Jobs
+    sections:
+      basic_info: Basic Information
+      technical_specs: Technical Specifications
+      financial_info: Financial Information
+      usage_info: Usage Information
+    fields:
+      name: Printer Name
+      name_placeholder: e.g., My Prusa i3 MK3S+
+      manufacturer: Manufacturer
+      manufacturer_prompt: Select manufacturer
+      power_consumption: Power Consumption (Watts)
+      power_consumption_placeholder: '200'
+      power_consumption_help: 'Typical range: 50W (small printers) to 500W (large
+        printers)'
+      cost: Printer Cost
+      cost_placeholder: '500.00'
+      payoff_goal: Payoff Goal (Years)
+      payoff_goal_placeholder: '3'
+      payoff_goal_help: How many years do you want to recoup the printer cost?
+      daily_usage: Daily Usage (Hours)
+      daily_usage_placeholder: '8'
+      daily_usage_help: Average hours per day you plan to use this printer
+      repair_factor: Repair Cost Factor (%)
+      repair_factor_placeholder: '5.0'
+      repair_factor_help: Additional cost factor for maintenance and repairs
+    buttons:
+      add_printer: Add Printer
+      update_printer: Update Printer
+      cancel: Cancel
+  profile:
+    show:
+      title: User Profile
+      subtitle: Your account settings and preferences
+      account_info: Account Information
+      email: Email
+      member_since: Member since
+      default_preferences: Default Preferences
+      back_to_calculations: Back to Calculations
+    edit:
+      title: User Profile Settings
+      subtitle: Configure your default preferences
+      default_settings: Default Settings
+    fields:
+      default_currency: Default Currency
+      default_currency_help: Used as default for new pricing calculations
+      energy_cost: Energy Cost per kWh
+      energy_cost_placeholder: '0.120'
+      energy_cost_help: Your local electricity cost per kilowatt-hour
+      energy_cost_help_extended: Your local electricity cost per kilowatt-hour. This
+        will be used as the default for new calculations.
+    buttons:
+      update_settings: Update Settings
+      update_profile: Update Profile
+      cancel: Cancel
+  currency:
+    usd: US Dollar
+    eur: Euro
+    gbp: British Pound
+    jpy: Japanese Yen
+    cad: Canadian Dollar
+    aud: Australian Dollar
+  energy:
+    cost_per_kwh: Energy Cost per kWh
   app:
-    title: "CalcuMake - 3D Print Cost Calculator"
-    title_default: "CalcuMake - 3D Print Cost Calculator"
-
-  # Footer
+    title: CalcuMake - 3D Print Cost Calculator
+    title_default: CalcuMake - 3D Print Cost Calculator
   footer:
-    description: "Professional 3D printing cost calculation and project management"
+    description: Professional 3D printing cost calculation and project management
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
-
-  # Support page
   support:
-    title: "Support"
-    nav_title: "Support"
-    contact_us: "Contact Us"
-    description: "Need help with CalcuMake? Have a question or suggestion? We're here to help!"
-    email_label: "Email Support"
-    response_time: "We typically respond within 24-48 hours"
-
-  # Legal pages
+    title: Support
+    nav_title: Support
+    contact_us: Contact Us
+    description: Need help with CalcuMake? Have a question or suggestion? We're here
+      to help!
+    email_label: Email Support
+    response_time: We typically respond within 24-48 hours
   legal:
-    last_updated: "Last updated"
-
+    last_updated: Last updated
     privacy_policy:
-      title: "Privacy Policy"
-      nav_title: "Privacy Policy"
-
+      title: Privacy Policy
+      nav_title: Privacy Policy
       information_we_collect:
-        title: "Information We Collect"
-        content: "We collect information you provide directly to us and information we may collect automatically when you use our service."
-
+        title: Information We Collect
+        content: We collect information you provide directly to us and information
+          we may collect automatically when you use our service.
         account_info:
-          title: "Account Information"
-          email: "Email address for account authentication"
-          preferences: "User preferences such as default currency and language"
-          usage_data: "Usage patterns and feature preferences"
-
+          title: Account Information
+          email: Email address for account authentication
+          preferences: User preferences such as default currency and language
+          usage_data: Usage patterns and feature preferences
         project_data:
-          title: "Project Data"
-          pricing_calculations: "3D printing cost calculations and project data"
-          printer_specifications: "Printer specifications and settings"
-          project_metadata: "Project names, dates, and metadata"
-
+          title: Project Data
+          pricing_calculations: 3D printing cost calculations and project data
+          printer_specifications: Printer specifications and settings
+          project_metadata: Project names, dates, and metadata
       how_we_use_info:
-        title: "How We Use Your Information"
-        provide_service: "Provide, maintain, and improve our 3D printing calculation service"
-        improve_features: "Develop new features and enhance existing functionality"
-        customer_support: "Provide customer support and respond to your inquiries"
-        security: "Protect against fraud, abuse, and security threats"
-
+        title: How We Use Your Information
+        provide_service: Provide, maintain, and improve our 3D printing calculation
+          service
+        improve_features: Develop new features and enhance existing functionality
+        customer_support: Provide customer support and respond to your inquiries
+        security: Protect against fraud, abuse, and security threats
       data_sharing:
-        title: "Information Sharing"
-        content: "We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:"
-        legal_requirements: "When required by law or to protect our legal rights"
-        service_providers: "With trusted service providers who assist in operating our service"
-        business_transfer: "In connection with a business transfer or acquisition"
-
+        title: Information Sharing
+        content: 'We do not sell, trade, or rent your personal information to third
+          parties. We may share your information only in the following circumstances:'
+        legal_requirements: When required by law or to protect our legal rights
+        service_providers: With trusted service providers who assist in operating
+          our service
+        business_transfer: In connection with a business transfer or acquisition
       advertising:
-        title: "Advertising"
-        content: "Our website displays advertisements through Google AdSense. These ads may be based on your interests and browsing behavior."
-        google_adsense: "Google AdSense may use cookies and other tracking technologies to serve relevant advertisements."
-        opt_out: "You can control ad personalization and opt out of personalized advertising by visiting"
-        google_ad_settings: "Google Ad Settings"
-
+        title: Advertising
+        content: Our website displays advertisements through Google AdSense. These
+          ads may be based on your interests and browsing behavior.
+        google_adsense: Google AdSense may use cookies and other tracking technologies
+          to serve relevant advertisements.
+        opt_out: You can control ad personalization and opt out of personalized advertising
+          by visiting
+        google_ad_settings: Google Ad Settings
       data_security:
-        title: "Data Security"
-        content: "We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction."
-
+        title: Data Security
+        content: We implement appropriate technical and organizational security measures
+          to protect your personal information against unauthorized access, alteration,
+          disclosure, or destruction.
       your_rights:
-        title: "Your Rights"
-        access: "Access and review your personal information"
-        correction: "Correct inaccurate or incomplete information"
-        deletion: "Request deletion of your personal information"
-        portability: "Export your data in a portable format"
-
+        title: Your Rights
+        access: Access and review your personal information
+        correction: Correct inaccurate or incomplete information
+        deletion: Request deletion of your personal information
+        portability: Export your data in a portable format
       cookies:
-        title: "Cookies and Tracking"
-        content: "We use cookies and similar technologies to enhance your experience, remember your preferences, and provide personalized content and advertisements."
-
+        title: Cookies and Tracking
+        content: We use cookies and similar technologies to enhance your experience,
+          remember your preferences, and provide personalized content and advertisements.
       changes:
-        title: "Changes to This Policy"
-        content: "We may update this privacy policy from time to time. We will notify you of any material changes by posting the new policy on this page with an updated effective date."
-
+        title: Changes to This Policy
+        content: We may update this privacy policy from time to time. We will notify
+          you of any material changes by posting the new policy on this page with
+          an updated effective date.
       contact:
-        title: "Contact Us"
-        content: "If you have any questions about this privacy policy, please contact us through the support channels available in the application."
-
+        title: Contact Us
+        content: If you have any questions about this privacy policy, please contact
+          us through the support channels available in the application.
     user_agreement:
-      title: "User Agreement"
-      nav_title: "Terms of Service"
-
+      title: User Agreement
+      nav_title: Terms of Service
       acceptance:
-        title: "Acceptance of Terms"
-        content: "By accessing and using CalcuMake, you accept and agree to be bound by the terms and provision of this agreement."
-
+        title: Acceptance of Terms
+        content: By accessing and using CalcuMake, you accept and agree to be bound
+          by the terms and provision of this agreement.
       description:
-        title: "Service Description"
-        content: "CalcuMake is a web-based application that provides 3D printing cost calculation and project management tools. Our service includes:"
-        cost_calculations: "Comprehensive cost calculations for 3D printing projects"
-        project_management: "Project tracking and management features"
-        invoice_generation: "Invoice generation and PDF export capabilities"
-        printer_tracking: "Printer specifications and usage tracking"
-
+        title: Service Description
+        content: 'CalcuMake is a web-based application that provides 3D printing cost
+          calculation and project management tools. Our service includes:'
+        cost_calculations: Comprehensive cost calculations for 3D printing projects
+        project_management: Project tracking and management features
+        invoice_generation: Invoice generation and PDF export capabilities
+        printer_tracking: Printer specifications and usage tracking
       user_accounts:
-        title: "User Accounts"
-        content: "To use our service, you must create an account. You are responsible for:"
-        accurate_info: "Providing accurate and complete account information"
-        secure_credentials: "Maintaining the security of your account credentials"
-        responsible_use: "All activities that occur under your account"
-        notify_breaches: "Notifying us immediately of any suspected security breaches"
-
+        title: User Accounts
+        content: 'To use our service, you must create an account. You are responsible
+          for:'
+        accurate_info: Providing accurate and complete account information
+        secure_credentials: Maintaining the security of your account credentials
+        responsible_use: All activities that occur under your account
+        notify_breaches: Notifying us immediately of any suspected security breaches
       acceptable_use:
-        title: "Acceptable Use"
-        content: "You agree to use our service only for lawful purposes and in accordance with this agreement. You agree not to:"
-        lawful_purposes: "Use the service for any unlawful or prohibited purposes"
-        respect_rights: "Violate any applicable laws or regulations"
-        no_harmful_content: "Upload or transmit harmful, offensive, or inappropriate content"
-        no_interference: "Interfere with or disrupt the service or servers"
-        no_unauthorized_access: "Attempt to gain unauthorized access to any part of the service"
-
+        title: Acceptable Use
+        content: 'You agree to use our service only for lawful purposes and in accordance
+          with this agreement. You agree not to:'
+        lawful_purposes: Use the service for any unlawful or prohibited purposes
+        respect_rights: Violate any applicable laws or regulations
+        no_harmful_content: Upload or transmit harmful, offensive, or inappropriate
+          content
+        no_interference: Interfere with or disrupt the service or servers
+        no_unauthorized_access: Attempt to gain unauthorized access to any part of
+          the service
       data_accuracy:
-        title: "Data Accuracy and Calculations"
-        content: "While we strive to provide accurate calculation tools, you are responsible for verifying the accuracy of all calculations and data. Our calculations are estimates and should be validated against your specific requirements and local conditions."
-
+        title: Data Accuracy and Calculations
+        content: While we strive to provide accurate calculation tools, you are responsible
+          for verifying the accuracy of all calculations and data. Our calculations
+          are estimates and should be validated against your specific requirements
+          and local conditions.
       intellectual_property:
-        title: "Intellectual Property"
-        our_content: "The service and its original content, features, and functionality are owned by us and are protected by international copyright, trademark, and other intellectual property laws."
-        your_content: "You retain ownership of any data, calculations, or content you create using our service. You grant us a limited license to use this content solely to provide the service to you."
-
+        title: Intellectual Property
+        our_content: The service and its original content, features, and functionality
+          are owned by us and are protected by international copyright, trademark,
+          and other intellectual property laws.
+        your_content: You retain ownership of any data, calculations, or content you
+          create using our service. You grant us a limited license to use this content
+          solely to provide the service to you.
       disclaimers:
-        title: "Disclaimers"
-        important: "Important Notice"
-        calculations_estimates: "All cost calculations and estimates are for informational purposes only"
-        verify_accuracy: "You must verify all calculations and data for accuracy"
-        no_guarantee: "We do not guarantee the accuracy, completeness, or reliability of any calculations"
-        as_is_basis: "The service is provided on an 'as is' and 'as available' basis"
-
+        title: Disclaimers
+        important: Important Notice
+        calculations_estimates: All cost calculations and estimates are for informational
+          purposes only
+        verify_accuracy: You must verify all calculations and data for accuracy
+        no_guarantee: We do not guarantee the accuracy, completeness, or reliability
+          of any calculations
+        as_is_basis: The service is provided on an 'as is' and 'as available' basis
       limitation_liability:
-        title: "Limitation of Liability"
-        content: "To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses."
-
+        title: Limitation of Liability
+        content: To the maximum extent permitted by law, we shall not be liable for
+          any indirect, incidental, special, consequential, or punitive damages, including
+          without limitation, loss of profits, data, use, goodwill, or other intangible
+          losses.
       termination:
-        title: "Termination"
-        content: "We may terminate or suspend your account and access to the service immediately, without prior notice, for conduct that we believe violates this agreement or is harmful to other users, us, or third parties."
-
+        title: Termination
+        content: We may terminate or suspend your account and access to the service
+          immediately, without prior notice, for conduct that we believe violates
+          this agreement or is harmful to other users, us, or third parties.
       governing_law:
-        title: "Governing Law"
-        content: "This agreement shall be governed by and construed in accordance with the laws of the jurisdiction in which our service operates, without regard to its conflict of law provisions."
-
+        title: Governing Law
+        content: This agreement shall be governed by and construed in accordance with
+          the laws of the jurisdiction in which our service operates, without regard
+          to its conflict of law provisions.
       changes:
-        title: "Changes to Agreement"
-        content: "We reserve the right to modify this agreement at any time. We will notify users of any material changes by posting the updated agreement on our website with a new effective date."
-
+        title: Changes to Agreement
+        content: We reserve the right to modify this agreement at any time. We will
+          notify users of any material changes by posting the updated agreement on
+          our website with a new effective date.
       contact:
-        title: "Contact Information"
-        content: "If you have any questions about this agreement, please contact us through the support channels available in the application."
-
-  # Print Pricings (plural) Module
+        title: Contact Information
+        content: If you have any questions about this agreement, please contact us
+          through the support channels available in the application.
   print_pricings:
     form:
-      filament_weight: "Filament Weight"
-      print_time_hours: "Print Time Hours"
+      filament_weight: Filament Weight
+      print_time_hours: Print Time Hours

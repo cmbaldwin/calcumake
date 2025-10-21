@@ -29,19 +29,24 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create print_pricing" do
     assert_difference("PrintPricing.count") do
-      post print_pricings_url, params: {
-        print_pricing: {
-          job_name: "New Test Job",
-          currency: "EUR",
-          printing_time_hours: 3,
-          printing_time_minutes: 45,
-          filament_weight: 75.0,
-          filament_type: "ABS",
-          spool_price: 30.0,
-          spool_weight: 1000.0,
-          markup_percentage: 25.0
+      assert_difference("Plate.count") do
+        post print_pricings_url, params: {
+          print_pricing: {
+            job_name: "New Test Job",
+            plates_attributes: {
+              "0" => {
+                printing_time_hours: 3,
+                printing_time_minutes: 45,
+                filament_weight: 75.0,
+                filament_type: "ABS",
+                spool_price: 30.0,
+                spool_weight: 1000.0,
+                markup_percentage: 25.0
+              }
+            }
+          }
         }
-      }
+      end
     end
 
     assert_redirected_to print_pricing_url(PrintPricing.last)
@@ -115,9 +120,11 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
       daily_usage_hours: 8,
       repair_cost_percentage: 5.0
     )
-    other_pricing = other_user.print_pricings.create!(
+    other_pricing = other_user.print_pricings.build(
       job_name: "Other User's Print",
-      printer: other_printer,
+      printer: other_printer
+    )
+    other_pricing.plates.build(
       printing_time_hours: 1,
       printing_time_minutes: 0,
       filament_weight: 30.0,
@@ -126,6 +133,7 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
       spool_weight: 1000.0,
       markup_percentage: 15.0
     )
+    other_pricing.save!
 
     # Should return 404 because current_user.print_pricings.find won't find it
     get print_pricing_url(other_pricing)
@@ -191,14 +199,18 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
         print_pricing: {
           job_name: "Test Print Job",
           printer_id: @printer.id,
-          printing_time_hours: 2,
-          printing_time_minutes: 30,
-          filament_weight: 35.0,
-          filament_type: "PLA",
-          spool_price: 25.0,
-          spool_weight: 1000.0,
-          markup_percentage: 20.0,
-          start_with_one_print: "1"
+          start_with_one_print: "1",
+          plates_attributes: {
+            "0" => {
+              printing_time_hours: 2,
+              printing_time_minutes: 30,
+              filament_weight: 35.0,
+              filament_type: "PLA",
+              spool_price: 25.0,
+              spool_weight: 1000.0,
+              markup_percentage: 20.0
+            }
+          }
         }
       }
     end
@@ -212,14 +224,18 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
         print_pricing: {
           job_name: "Test Print Job",
           printer_id: @printer.id,
-          printing_time_hours: 2,
-          printing_time_minutes: 30,
-          filament_weight: 35.0,
-          filament_type: "PLA",
-          spool_price: 25.0,
-          spool_weight: 1000.0,
-          markup_percentage: 20.0,
-          start_with_one_print: "0"
+          start_with_one_print: "0",
+          plates_attributes: {
+            "0" => {
+              printing_time_hours: 2,
+              printing_time_minutes: 30,
+              filament_weight: 35.0,
+              filament_type: "PLA",
+              spool_price: 25.0,
+              spool_weight: 1000.0,
+              markup_percentage: 20.0
+            }
+          }
         }
       }
     end
