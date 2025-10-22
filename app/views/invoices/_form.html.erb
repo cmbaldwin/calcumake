@@ -28,7 +28,7 @@
               <div class="row g-2">
                 <% if current_user.company_logo.attached? %>
                   <div class="col-12 mb-2">
-                    <%= image_tag current_user.company_logo, style: "max-width: 200px; max-height: 100px;" %>
+                    <%= image_tag current_user.company_logo.url(disposition: :inline), style: "max-width: 200px; max-height: 100px;", alt: "Company Logo" %>
                   </div>
                 <% end %>
                 <div class="col-12">
