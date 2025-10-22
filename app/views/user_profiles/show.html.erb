@@ -94,12 +94,73 @@
           </div>
           <div class="col-md-6">
             <%= form.label :company_logo, t('profile.fields.company_logo'), class: "form-label" %>
-            <%= form.file_field :company_logo, class: "form-control", accept: "image/*" %>
-            <% if @user.company_logo.attached? %>
-              <div class="mt-2">
-                <%= image_tag url_for(@user.company_logo), style: "max-width: 150px; max-height: 75px;", alt: "Company Logo" %>
+
+            <div class="image-upload-container"
+                 data-controller="image-upload"
+                 data-image-upload-max-size-value="5242880"
+                 data-action="dragover->image-upload#dragover dragleave->image-upload#dragleave drop->image-upload#drop">
+
+              <!-- File Input -->
+              <%= form.file_field :company_logo,
+                  class: "form-control",
+                  accept: "image/*",
+                  data: {
+                    "image-upload-target": "input",
+                    "action": "change->image-upload#change"
+                  } %>
+
+              <!-- Upload Area -->
+              <div class="upload-area mt-2 p-3 border border-2 border-dashed rounded text-center"
+                   style="transition: all 0.2s ease;">
+
+                <!-- Current Image or Placeholder -->
+                <% if @user.company_logo.attached? %>
+                  <img data-image-upload-target="preview"
+                       src="<%= url_for(@user.company_logo) %>"
+                       alt="Company Logo"
+                       class="img-fluid rounded"
+                       style="max-width: 150px; max-height: 75px;">
+                  <div data-image-upload-target="placeholder" style="display: none;">
+                    <i class="fas fa-image text-muted mb-2" style="font-size: 2rem;"></i>
+                    <p class="text-muted mb-0">
+                      <small>Drag & drop an image here or click to browse</small>
+                    </p>
+                  </div>
+                <% else %>
+                  <img data-image-upload-target="preview"
+                       alt="Preview"
+                       class="img-fluid rounded"
+                       style="max-width: 150px; max-height: 75px; display: none;">
+                  <div data-image-upload-target="placeholder">
+                    <i class="fas fa-image text-muted mb-2" style="font-size: 2rem;"></i>
+                    <p class="text-muted mb-0">
+                      <small>Drag & drop an image here or click to browse</small>
+                    </p>
+                  </div>
+                <% end %>
+
+                <!-- Remove Button -->
+                <% if @user.company_logo.attached? %>
+                  <div class="mt-2">
+                    <button type="button"
+                            class="btn btn-sm btn-outline-danger"
+                            data-action="click->image-upload#remove">
+                      <i class="fas fa-times"></i> Remove
+                    </button>
+                  </div>
+                <% end %>
               </div>
-            <% end %>
+
+              <!-- Error Display -->
+              <div data-image-upload-target="error"
+                   class="alert alert-danger mt-2"
+                   style="display: none;"></div>
+
+              <!-- Help Text -->
+              <div class="form-text">
+                Maximum file size: 5MB. Supported formats: JPG, PNG, SVG, WebP
+              </div>
+            </div>
           </div>
           <div class="col-12">
             <%= form.label :default_company_address, t('profile.fields.company_address'), class: "form-label" %>
