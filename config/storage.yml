@@ -14,7 +14,7 @@ hetzner:
   secret_access_key: <%= ENV.fetch("HETZNER_S3_SECRET_KEY", nil) %>
   region: hel1
   bucket: moab
-  public: true
+  public: false
   upload:
     server_side_encryption: AES256
   force_path_style: true
