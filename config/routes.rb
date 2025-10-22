@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     member do
       patch :increment_times_printed
       patch :decrement_times_printed
-      get :invoice
+      post :duplicate
     end
     resources :invoices do
       member do

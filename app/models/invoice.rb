@@ -51,13 +51,29 @@ class Invoice < ApplicationRecord
   private
 
   def generate_invoice_number
-    last_invoice = Invoice.where(user: user).order(created_at: :desc).first
-    if last_invoice && last_invoice.invoice_number =~ /INV-(\d+)/
-      number = $1.to_i + 1
-    else
-      number = 1
+    return unless user # Skip if no user (for validations)
+
+    # Use database transaction to ensure thread safety
+    Invoice.transaction do
+      # Lock the user record to prevent race conditions
+      user.lock!
+
+      # Get the next invoice number and increment it
+      current_number = user.next_invoice_number || 1
+
+      # Check if this number already exists and sync if needed
+      proposed_number = "INV-#{current_number.to_s.rjust(6, '0')}"
+      if Invoice.exists?(invoice_number: proposed_number)
+        # Synchronize counter with existing invoices
+        user.synchronize_invoice_counter!
+        current_number = user.reload.next_invoice_number
+      end
+
+      user.update!(next_invoice_number: current_number + 1)
+
+      # Format the invoice number with zero padding
+      self.invoice_number = "INV-#{current_number.to_s.rjust(6, '0')}"
     end
-    self.invoice_number = "INV-#{number.to_s.rjust(6, '0')}"
   end
 
   def set_defaults

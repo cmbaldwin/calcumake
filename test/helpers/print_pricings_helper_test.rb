@@ -2,6 +2,7 @@ require "test_helper"
 
 class PrintPricingsHelperTest < ActionView::TestCase
   include CurrencyHelper
+  include ApplicationHelper
 
   setup do
     @pricing = print_pricings(:one)

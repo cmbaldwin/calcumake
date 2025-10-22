@@ -4,10 +4,12 @@ one:
   default_currency: USD
   default_energy_cost_per_kwh: 0.12
   locale: en
+  next_invoice_number: 1
 
-two:  
+two:
   email: user2@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password123') %>
   default_currency: EUR
   default_energy_cost_per_kwh: 0.10
   locale: es
+  next_invoice_number: 1

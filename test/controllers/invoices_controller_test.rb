@@ -169,4 +169,39 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
     get new_print_pricing_invoice_url(@print_pricing)
     assert_redirected_to new_user_session_url
   end
+
+  test "should show next invoice number preview on new invoice form" do
+    sign_in @user
+
+    get new_print_pricing_invoice_url(@print_pricing)
+    assert_response :success
+
+    # Check that the form shows the next invoice number preview
+    next_number = @user.next_invoice_number
+    expected_preview = "INV-#{next_number.to_s.rjust(6, '0')}"
+    assert_select "input[value='#{expected_preview}'][readonly]"
+  end
+
+  test "should not allow deletion of non-draft invoices" do
+    sign_in @user
+    @invoice.update!(status: "sent")
+
+    delete print_pricing_invoice_url(@print_pricing, @invoice)
+    assert_redirected_to print_pricing_invoice_path(@print_pricing, @invoice)
+
+    follow_redirect!
+    assert_match "Only draft invoices can be deleted", response.body
+    assert Invoice.exists?(@invoice.id), "Invoice should not have been deleted"
+  end
+
+  test "should allow deletion of draft invoices" do
+    sign_in @user
+    @invoice.update!(status: "draft")
+
+    assert_difference("Invoice.count", -1) do
+      delete print_pricing_invoice_url(@print_pricing, @invoice)
+    end
+
+    assert_redirected_to print_pricing_path(@print_pricing)
+  end
 end
