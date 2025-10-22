@@ -26,48 +26,7 @@
                             </thead>
                             <tbody>
                                 <% @invoices.each do |invoice| %>
-                                <tr>
-                                    <td>
-                                        <%= link_to invoice.invoice_number, print_pricing_invoice_path(@print_pricing, invoice) %>
-                                    </td>
-                                    <td><%= invoice.company_name %></td>
-                                    <td><%= l(invoice.invoice_date, format: :short) %></td>
-                                    <td>
-                                        <% if invoice.due_date %>
-                                        <%= l(invoice.due_date, format: :short) %>
-                                        <% if invoice.overdue? %>
-                                        <span class="badge bg-danger ms-1"><%= t('print_pricing.overdue') %></span>
-                                        <% end %>
-                                        <% else %>
-                                        <span class="text-muted">-</span>
-                                        <% end %>
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-<%= case invoice.status
-                          when 'paid' then 'success'
-                          when 'sent' then 'info'
-                          when 'cancelled' then 'danger'
-                          else 'secondary'
-                        end %>">
-                                            <%= t("invoices.status.#{invoice.status}") %>
-                                        </span>
-                                    </td>
-                                    <td class="text-end">
-                                        <%= currency_symbol(invoice.currency) %><%= format_currency(invoice.total, invoice.currency) %>
-                                    </td>
-                                    <td class="text-end">
-                                        <div class="btn-group btn-group-sm">
-                                            <%= link_to t('actions.edit'), edit_print_pricing_invoice_path(@print_pricing, invoice),
-                                class: "btn btn-outline-primary", data: { turbo_frame: "_top" } %>
-                                            <% if invoice.status == "draft" %>
-                                              <%= link_to t('actions.delete'), print_pricing_invoice_path(@print_pricing, invoice),
-                                method: :delete,
-                                data: { turbo_method: :delete, turbo_confirm: t('invoices.confirm_delete'), turbo_frame: "_top" },
-                                class: "btn btn-outline-danger" %>
-                                            <% end %>
-                                        </div>
-                                    </td>
-                                </tr>
+                                  <%= render "invoices/partials/index_table_row", invoice: invoice, print_pricing: @print_pricing %>
                                 <% end %>
                             </tbody>
                         </table>

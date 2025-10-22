@@ -1,0 +1,8 @@
+<div class="d-print-none mb-4 d-flex justify-content-between align-items-center">
+  <div>
+    <%= link_to t('actions.back'), print_pricing_path(print_pricing), class: "btn btn-outline-secondary" %>
+  </div>
+  <div class="d-flex gap-2">
+    <%= render "invoices/partials/show_action_buttons", invoice: invoice, print_pricing: print_pricing %>
+  </div>
+</div>

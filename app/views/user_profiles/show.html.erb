@@ -1,176 +1,38 @@
-<% content_for :body_class, "profile-page" %>
+<% content_for :title, "User Profile" %>
 
-<!-- Header -->
-<div class="text-center mb-4">
-    <h1 class="display-5 fw-bold text-primary mb-2"><%= t('profile.show.title') %></h1>
-    <p class="lead text-muted"><%= t('profile.show.subtitle') %></p>
+<div class="calculator-header" style="text-align: center; margin-bottom: 3rem;">
+  <h1 style="color: var(--primary); font-size: 2.8rem; font-weight: 800;">
+    User Profile
+  </h1>
+  <p style="color: var(--text-secondary); font-size: 1.1rem;">
+    View your profile settings
+  </p>
 </div>
 
-<%= form_with model: @user, url: user_profile_path, method: :patch, local: true, html: { class: "row g-3" } do |form| %>
-<% if @user.errors.any? %>
-<div class="col-12">
-    <div class="alert alert-danger">
-        <h4><%= pluralize(@user.errors.count, "error") %> prohibited this profile from being saved:</h4>
-        <ul class="mb-0">
-            <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-        </ul>
+<div class="form-section" style="background: white; border-radius: 16px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 20px var(--shadow);">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 style="color: var(--primary); margin: 0;">
+      Default Settings
+    </h3>
+    <%= link_to "Edit Profile", edit_user_profile_path, class: "btn btn-primary" %>
+  </div>
+  
+  <div class="row">
+    <div class="column column-50">
+      <p><strong>Email:</strong> <%= @user.email %></p>
+      <p><strong>Default Currency:</strong> <%= @user.default_currency || "Not set" %></p>
+      <p><strong>Default Energy Cost per kWh:</strong> <%= @user.default_energy_cost_per_kwh || "Not set" %></p>
     </div>
-</div>
-<% end %>
-
-<!-- Account Information -->
-<div class="col-12">
-    <div class="card">
-        <div class="card-header">
-            <h5 class="mb-0"><%= t('profile.show.account_info') %></h5>
-        </div>
-        <div class="card-body">
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <strong><%= t('profile.show.email') %>:</strong>
-                    <p class="mb-0"><%= @user.email %></p>
-                </div>
-                <div class="col-md-6">
-                    <strong><%= t('profile.show.member_since') %>:</strong>
-                    <p class="mb-0"><%= @user.created_at.strftime(t('time.formats.month_day_year')) %></p>
-                </div>
-            </div>
-        </div>
+    <div class="column column-50">
+      <% if @user.default_company_name.present? %>
+        <p><strong>Company Name:</strong> <%= @user.default_company_name %></p>
+      <% end %>
+      <% if @user.default_company_email.present? %>
+        <p><strong>Company Email:</strong> <%= @user.default_company_email %></p>
+      <% end %>
+      <% if @user.default_company_phone.present? %>
+        <p><strong>Company Phone:</strong> <%= @user.default_company_phone %></p>
+      <% end %>
     </div>
+  </div>
 </div>
-
-<!-- Default Preferences -->
-<div class="col-12">
-    <div class="card">
-        <div class="card-header">
-            <h5 class="mb-0"><%= t('profile.show.default_preferences') %></h5>
-        </div>
-        <div class="card-body">
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <%= form.label :default_currency, t('profile.fields.default_currency'), class: "form-label" %>
-                    <%= form.select :default_currency,
-                options_for_select(currency_options, @user.default_currency),
-                { prompt: t('print_pricing.fields.currency_prompt') },
-                { class: "form-select" } %>
-                    <div class="form-text"><%= t('profile.fields.default_currency_help') %></div>
-                </div>
-                <div class="col-md-6">
-                    <%= form.label :default_energy_cost_per_kwh, t('profile.fields.energy_cost'), class: "form-label" %>
-                    <%= form.number_field :default_energy_cost_per_kwh,
-                step: 0.001,
-                min: 0.001,
-                placeholder: t('profile.fields.energy_cost_placeholder'),
-                class: "form-control" %>
-                    <div class="form-text"><%= t('profile.fields.energy_cost_help_extended') %></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Company Information for Invoices -->
-<div class="col-12">
-    <div class="card">
-        <div class="card-header">
-            <h5 class="mb-0"><%= t('profile.show.company_info') %></h5>
-        </div>
-        <div class="card-body">
-            <p class="text-muted mb-4"><%= t('profile.show.company_info_description') %></p>
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <%= form.label :default_company_name, t('profile.fields.company_name'), class: "form-label" %>
-                    <%= form.text_field :default_company_name, class: "form-control", placeholder: t('profile.fields.company_name_placeholder') %>
-                </div>
-                <div class="col-md-6">
-                    <%= form.label :default_company_email, t('profile.fields.company_email'), class: "form-label" %>
-                    <%= form.email_field :default_company_email, class: "form-control", placeholder: t('profile.fields.company_email_placeholder') %>
-                </div>
-                <div class="col-md-6">
-                    <%= form.label :default_company_phone, t('profile.fields.company_phone'), class: "form-label" %>
-                    <%= form.telephone_field :default_company_phone, class: "form-control", placeholder: t('profile.fields.company_phone_placeholder') %>
-                </div>
-                <div class="col-md-6">
-                    <%= form.label :company_logo, t('profile.fields.company_logo'), class: "form-label" %>
-
-                    <div class="image-upload-container" data-controller="image-upload" data-image-upload-max-size-value="5242880" data-action="dragover->image-upload#dragover dragleave->image-upload#dragleave drop->image-upload#drop">
-
-                        <!-- File Input -->
-                        <%= form.file_field :company_logo,
-                  class: "form-control",
-                  accept: "image/*",
-                  data: {
-                    "image-upload-target": "input",
-                    "action": "change->image-upload#change"
-                  } %>
-
-                        <!-- Upload Area -->
-                        <div class="upload-area mt-2 p-3 border border-2 border-dashed rounded text-center" style="transition: all 0.2s ease;">
-
-                            <!-- Current Image or Placeholder -->
-                            <% if @user.company_logo.attached? %>
-                            <%= image_tag @user.company_logo_url, data: { image_upload_target: "preview" }, alt: "Company Logo", class: "img-fluid rounded", style: "max-width: 150px; max-height: 75px;" %>
-                            <div data-image-upload-target="placeholder" style="display: none;">
-                                <i class="fas fa-image text-muted mb-2" style="font-size: 2rem;"></i>
-                                <p class="text-muted mb-0">
-                                    <small>Drag & drop an image here or click to browse</small>
-                                </p>
-                            </div>
-                            <% else %>
-                            <img data-image-upload-target="preview" alt="Preview" class="img-fluid rounded" style="max-width: 150px; max-height: 75px; display: none;">
-                            <div data-image-upload-target="placeholder">
-                                <i class="fas fa-image text-muted mb-2" style="font-size: 2rem;"></i>
-                                <p class="text-muted mb-0">
-                                    <small>Drag & drop an image here or click to browse</small>
-                                </p>
-                            </div>
-                            <% end %>
-
-                            <!-- Remove Button -->
-                            <% if @user.company_logo.attached? %>
-                            <div class="mt-2">
-                                <button type="button" class="btn btn-sm btn-outline-danger" data-action="click->image-upload#remove">
-                                    <i class="fas fa-times"></i> Remove
-                                </button>
-                            </div>
-                            <% end %>
-                        </div>
-
-                        <!-- Error Display -->
-                        <div data-image-upload-target="error" class="alert alert-danger mt-2" style="display: none;"></div>
-
-                        <!-- Help Text -->
-                        <div class="form-text">
-                            Maximum file size: 5MB. Supported formats: JPG, PNG, SVG, WebP
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <%= form.label :default_company_address, t('profile.fields.company_address'), class: "form-label" %>
-                    <%= form.text_area :default_company_address, rows: 3, class: "form-control", placeholder: t('profile.fields.company_address_placeholder') %>
-                </div>
-                <div class="col-12">
-                    <%= form.label :default_payment_details, t('profile.fields.payment_details'), class: "form-label" %>
-                    <%= form.text_area :default_payment_details, rows: 4, class: "form-control", placeholder: t('profile.fields.payment_details_placeholder') %>
-                    <div class="form-text"><%= t('profile.fields.payment_details_help') %></div>
-                </div>
-                <div class="col-12">
-                    <%= form.label :default_invoice_notes, t('profile.fields.invoice_notes'), class: "form-label" %>
-                    <%= form.text_area :default_invoice_notes, rows: 3, class: "form-control", placeholder: t('profile.fields.invoice_notes_placeholder') %>
-                    <div class="form-text"><%= t('profile.fields.invoice_notes_help') %></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Form Actions -->
-<div class="col-12">
-    <div class="d-flex gap-3 justify-content-center pt-3 border-top">
-        <%= form.submit t('profile.buttons.update_settings'), class: "btn btn-primary btn-lg" %>
-        <%= link_to t('actions.back'), print_pricings_path, class: "btn btn-outline-secondary btn-lg" %>
-    </div>
-</div>
-<% end %>

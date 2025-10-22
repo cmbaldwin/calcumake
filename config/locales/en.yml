@@ -656,6 +656,7 @@ en:
       paid: Paid
       cancelled: Cancelled
     fields:
+      invoice_details: Invoice Details
       company_info: Company Info
       company_name: Company Name
       company_address: Company Address

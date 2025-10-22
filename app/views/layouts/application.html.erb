@@ -4,8 +4,14 @@
 <head>
     <title><%= meta_title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <%# PWA Meta Tags %>
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="CalcuMake">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#0d6efd">
+    
     <%# Google AdSense %>
     <meta name="google-adsense-account" content="ca-pub-5257142454834240">
     <%= csrf_meta_tags %>
@@ -31,16 +37,33 @@
     </script>
     <%= yield :structured_data %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+    <%# PWA Manifest %>
+    <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <%# Favicons and Icons %>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
     <%# Bootstrap 5 with custom styling %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    
+    <%# PWA Service Worker Registration %>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('<%= pwa_service_worker_path %>')
+          .then((registration) => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch((error) => {
+            console.error('Service Worker registration failed:', error);
+          });
+      }
+    </script>
 </head>
 
 <body class="<%= content_for(:body_class) %>">

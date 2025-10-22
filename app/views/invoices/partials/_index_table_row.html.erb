@@ -1,0 +1,35 @@
+<tr>
+    <td>
+        <%= link_to invoice.invoice_number, print_pricing_invoice_path(print_pricing, invoice) %>
+    </td>
+    <td><%= invoice.company_name %></td>
+    <td><%= l(invoice.invoice_date, format: :short) %></td>
+    <td>
+        <% if invoice.due_date %>
+        <%= l(invoice.due_date, format: :short) %>
+        <% if invoice.overdue? %>
+        <span class="badge bg-danger ms-1"><%= t('print_pricing.overdue') %></span>
+        <% end %>
+        <% else %>
+        <span class="text-muted">-</span>
+        <% end %>
+    </td>
+    <td>
+        <%= invoice_status_badge(invoice, size: "") %>
+    </td>
+    <td class="text-end">
+        <%= formatted_currency_amount(invoice.total, invoice.currency) %>
+    </td>
+    <td class="text-end">
+        <div class="btn-group btn-group-sm">
+            <%= link_to t('actions.edit'), edit_print_pricing_invoice_path(print_pricing, invoice),
+            class: "btn btn-outline-primary", data: { turbo_frame: "_top" } %>
+            <% if invoice.status == "draft" %>
+            <%= link_to t('actions.delete'), print_pricing_invoice_path(print_pricing, invoice),
+              method: :delete,
+              data: { turbo_method: :delete, turbo_confirm: t('invoices.confirm_delete'), turbo_frame: "_top" },
+              class: "btn btn-outline-danger" %>
+            <% end %>
+        </div>
+    </td>
+</tr>

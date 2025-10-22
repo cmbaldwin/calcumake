@@ -1,0 +1,22 @@
+<div class="row mb-4">
+  <div class="col-12">
+    <table class="table table-bordered invoice-line-items-table">
+      <thead class="table-light">
+        <tr>
+          <th><%= t('invoices.line_items.description') %></th>
+          <th class="text-center quantity-column"><%= t('invoices.line_items.quantity') %></th>
+          <th class="text-end unit-price-column"><%= t('invoices.line_items.unit_price') %></th>
+          <th class="text-end total-column"><%= t('invoices.line_items.total') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% invoice.invoice_line_items.each do |item| %>
+          <%= render "invoices/partials/line_item_row", item: item, currency: invoice.currency %>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <%= render "invoices/partials/line_items_footer", invoice: invoice %>
+      </tfoot>
+    </table>
+  </div>
+</div>

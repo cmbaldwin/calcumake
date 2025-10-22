@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0"><%= t("invoices.fields.invoice_details") %></h5>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            <%= render "invoices/partials/invoice_number_field", form: form, invoice: invoice %>
+            <%= render "invoices/partials/invoice_date_fields", form: form %>
+            <%= render "invoices/partials/invoice_status_currency_fields", form: form, invoice: invoice %>
+        </div>
+    </div>
+</div>

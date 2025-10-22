@@ -1,0 +1,11 @@
+<div class="col-md-4">
+  <%= form.label :invoice_number, t("invoices.fields.invoice_number"), class: "form-label" %>
+  <% if invoice.persisted? %>
+    <div class="readonly-field-container">
+      <%= form.text_field :invoice_number, class: "form-control", readonly: true %>
+    </div>
+  <% else %>
+    <%= render "invoices/partials/invoice_number_preview", form: form %>
+  <% end %>
+  <div class="form-text"><%= t("invoices.fields.invoice_number_help") %></div>
+</div>
