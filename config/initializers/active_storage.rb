@@ -15,18 +15,20 @@ Rails.application.configure do
   ]
 end
 
-# Custom blob URL options for S3
-ActiveStorage::Blob.class_eval do
-  def url(expires_in: ActiveStorage.service_urls_expire_in, disposition: :attachment, filename: nil, **options)
-    case disposition
-    when :inline
-      # For inline display, use proper content type
-      options[:response_content_type] = content_type if content_type.present?
-      options[:response_content_disposition] = "inline; filename=\"#{filename || self.filename}\""
-    when :attachment
-      options[:response_content_disposition] = "attachment; filename=\"#{filename || self.filename}\""
-    end
+# Custom blob URL handling for proper S3 content types
+Rails.application.reloader.to_prepare do
+  ActiveStorage::Blob.class_eval do
+    def url(expires_in: ActiveStorage.service_urls_expire_in, disposition: :attachment, filename: nil, **options)
+      case disposition
+      when :inline
+        # For inline display, use proper content type
+        options[:response_content_type] = content_type if content_type.present?
+        options[:response_content_disposition] = "inline; filename=\"#{filename || self.filename.to_s}\""
+      when :attachment
+        options[:response_content_disposition] = "attachment; filename=\"#{filename || self.filename.to_s}\""
+      end
 
-    service.url(key, expires_in: expires_in, **options)
+      service.url(key, expires_in: expires_in, **options)
+    end
   end
 end
