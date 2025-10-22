@@ -116,7 +116,7 @@
                 <!-- Current Image or Placeholder -->
                 <% if @user.company_logo.attached? %>
                   <img data-image-upload-target="preview"
-                       src="<%= url_for(@user.company_logo) %>"
+                       src="<%= @user.company_logo.url %>"
                        alt="Company Logo"
                        class="img-fluid rounded"
                        style="max-width: 150px; max-height: 75px;">
@@ -125,6 +125,12 @@
                     <p class="text-muted mb-0">
                       <small>Drag & drop an image here or click to browse</small>
                     </p>
+                  </div>
+                  <!-- Debug info -->
+                  <div class="mt-2">
+                    <small class="text-muted">
+                      Debug URL: <%= @user.company_logo.url %>
+                    </small>
                   </div>
                 <% else %>
                   <img data-image-upload-target="preview"
