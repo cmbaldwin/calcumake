@@ -659,7 +659,7 @@ en:
       payment_details: Payment Details
       notes: Notes
       invoice_number: Invoice Number
-      invoice_number_help: Automatically generated when invoice is created and cannot be edited
+      invoice_number_help: Automatically generated when invoices are created (cannot be edited)
       invoice_date: Invoice Date
       due_date: Due Date
       status: Status
