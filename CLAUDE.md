@@ -27,15 +27,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Core Architecture
 
 ### Models and Relationships
-- **User**: Authenticated users with default currency and energy cost settings
+- **User**: Authenticated users with default currency and energy cost settings, invoice defaults, and company logo
 - **Printer**: User-owned 3D printers with power consumption, cost, and payoff tracking
 - **PrintPricing**: Individual print job calculations with comprehensive cost breakdown
 - **Plate**: Individual build plates within a print job (1-10 plates per pricing)
+- **Invoice**: Professional invoices generated from PrintPricing with automatic numbering and status tracking
+- **InvoiceLineItem**: Individual line items within invoices (filament, electricity, labor, machine, other, custom)
 
 ```
 User (1) -> (many) Printers
 User (1) -> (many) PrintPricings
+User (1) -> (many) Invoices
 PrintPricing (1) -> (many) Plates
+PrintPricing (1) -> (many) Invoices
+Invoice (1) -> (many) InvoiceLineItems
 ```
 
 ### Multi-Plate Architecture
@@ -91,6 +96,36 @@ The `PrintPricing` model handles complex cost calculations including:
 - **Labor costs** - Prep and post-processing time (job-level, not per-plate)
 - **Machine upkeep costs** - Depreciation and repair factors (job-level)
 - **VAT and final pricing** - Applied to total calculated costs
+
+### Professional Invoicing System
+The application includes a comprehensive invoicing system for converting print pricing calculations into professional invoices:
+
+**Invoice Model** ([app/models/invoice.rb](app/models/invoice.rb)):
+- **Automatic numbering**: Sequential invoice numbers (INV-000001, INV-000002, etc.) with thread-safe generation
+- **Status tracking**: Draft → Sent → Paid/Cancelled workflow
+- **Company branding**: Logo upload and company details integration
+- **Multi-currency support**: Inherits currency from user defaults or print pricing
+- **Due date management**: Automatic overdue detection and status updates
+
+**Invoice Line Items** ([app/models/invoice_line_item.rb](app/models/invoice_line_item.rb)):
+- **Categorized line items**: filament, electricity, labor, machine, other, custom
+- **Automatic calculations**: quantity × unit_price = total_price
+- **Flexible ordering**: Order position for custom line item arrangement
+- **Rich descriptions**: Detailed breakdown of each cost component
+
+**User Invoice Integration**:
+- **Company defaults**: Default company name, address, email, phone, payment details
+- **Invoice templates**: Default notes and payment instructions
+- **Counter synchronization**: Automatic invoice number management per user
+- **Active Storage**: Company logo attachment for professional branding
+
+**Key Features**:
+- One-click invoice generation from print pricing calculations
+- Professional PDF export capabilities
+- Invoice status management (draft, sent, paid, cancelled)
+- Company logo and branding integration via Active Storage
+- Thread-safe invoice numbering with automatic collision detection
+- Complete audit trail with creation and modification timestamps
 
 ### Currency Support
 Multi-currency support via `CurrencyHelper`:
@@ -384,6 +419,22 @@ The application includes a properly configured Rails Admin interface:
 - **Kamal** deployment configuration available
 - **Docker** containerization support
 - **Thruster** for production HTTP acceleration
+
+### Active Storage Configuration
+**Hetzner S3 Object Storage** - Production file storage configuration:
+- **Service**: S3-compatible Hetzner Object Storage (hel1 region)
+- **Bucket**: `moab` bucket for all production file uploads
+- **Environment variables**: `HETZNER_S3_ACCESS_KEY` and `HETZNER_S3_SECRET_KEY`
+- **Endpoint**: `https://hel1.your-objectstorage.com/`
+- **Usage**: Company logos, user profile attachments, invoice assets
+- **Local development**: Uses local disk storage (`local` service)
+- **Testing**: Uses temporary disk storage (`test` service)
+
+**Configuration Files**:
+- `config/storage.yml`: Defines storage services and S3 connection details
+- `config/environments/production.rb`: Sets `config.active_storage.service = :hetzner`
+- `.kamal/secrets`: Manages S3 credentials via 1Password integration
+- `config/deploy.yml`: Injects S3 environment variables during deployment
 
 ## Monetization
 **Google AdSense Integration:**

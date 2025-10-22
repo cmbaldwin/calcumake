@@ -57,11 +57,14 @@
                                     </td>
                                     <td class="text-end">
                                         <div class="btn-group btn-group-sm">
-                                            <%= link_to t('actions.edit'), edit_print_pricing_invoice_path(@print_pricing, invoice), class: "btn btn-outline-primary" %>
-                                            <%= link_to t('actions.delete'), print_pricing_invoice_path(@print_pricing, invoice), 
-                              method: :delete, 
-                              data: { turbo_method: :delete, turbo_confirm: t('invoices.confirm_delete') },
-                              class: "btn btn-outline-danger" %>
+                                            <%= link_to t('actions.edit'), edit_print_pricing_invoice_path(@print_pricing, invoice),
+                                class: "btn btn-outline-primary", data: { turbo_frame: "_top" } %>
+                                            <% if invoice.status == "draft" %>
+                                              <%= link_to t('actions.delete'), print_pricing_invoice_path(@print_pricing, invoice),
+                                method: :delete,
+                                data: { turbo_method: :delete, turbo_confirm: t('invoices.confirm_delete'), turbo_frame: "_top" },
+                                class: "btn btn-outline-danger" %>
+                                            <% end %>
                                         </div>
                                     </td>
                                 </tr>

@@ -18,6 +18,7 @@ en:
     cancel: Cancel
     edit: Edit
     delete: Delete
+    duplicate: Duplicate
     create: Create
     update: Update
     new: New
@@ -91,6 +92,8 @@ en:
     confirm_delete: Are you sure you want to delete '%{name}'?
     times_printed_incremented: Times printed increased successfully
     times_printed_decremented: Times printed decreased successfully
+    duplicated_successfully: Print pricing duplicated successfully
+    duplicate_failed: Failed to duplicate print pricing
     title: Print Pricing
     cost_summary: Cost Summary
     back_to_all: "← Back to All Pricings"
@@ -318,6 +321,7 @@ en:
       cost: Cost
       daily_usage: Daily Usage
       payoff_goal: Payoff Goal
+      repair_cost_percentage: Repair Cost
       paid_off: "✓ Paid Off"
       months_to_payoff: "%{months} months to payoff"
       hours: hours
@@ -630,6 +634,7 @@ en:
     created_successfully: Invoice created successfully
     updated_successfully: Invoice updated successfully
     deleted_successfully: Invoice deleted successfully
+    cannot_delete_non_draft: Only draft invoices can be deleted
     marked_as_sent: Invoice marked as sent
     marked_as_paid: Invoice marked as paid
     marked_as_cancelled: Invoice marked as cancelled
@@ -654,6 +659,7 @@ en:
       payment_details: Payment Details
       notes: Notes
       invoice_number: Invoice Number
+      invoice_number_help: Automatically generated when invoice is created and cannot be edited
       invoice_date: Invoice Date
       due_date: Due Date
       status: Status
