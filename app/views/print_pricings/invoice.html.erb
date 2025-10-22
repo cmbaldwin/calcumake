@@ -6,15 +6,15 @@
     <div class="invoice-actions d-print-none mb-3">
         <div class="d-flex gap-2">
             <%= link_to print_pricing_path(@print_pricing), class: "btn btn-outline-secondary" do %>
-            <i class="bi bi-arrow-left"></i> <%= t('actions.back') %>
+            <%= t('actions.back') %>
             <% end %>
 
             <button type="button" class="btn btn-primary" data-action="click->pdf-generator#generatePDF">
-                <i class="bi bi-download"></i> <%= t('print_pricing.download_pdf') %>
+                <%= t('print_pricing.download_pdf') %>
             </button>
 
             <button type="button" class="btn btn-outline-secondary" onclick="window.print()">
-                <i class="bi bi-printer"></i> <%= t('actions.print') %>
+                <%= t('actions.print') %>
             </button>
         </div>
     </div>

@@ -22,6 +22,16 @@ class UserProfilesController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:default_currency, :default_energy_cost_per_kwh)
+    params.require(:user).permit(
+      :default_currency,
+      :default_energy_cost_per_kwh,
+      :default_company_name,
+      :default_company_address,
+      :default_company_email,
+      :default_company_phone,
+      :default_payment_details,
+      :default_invoice_notes,
+      :company_logo
+    )
   end
 end

@@ -28,4 +28,9 @@ module ApplicationHelper
     return "0%" if value.nil? || value == 0
     "#{value}%"
   end
+
+  def translate_filament_type(filament_type)
+    return "" if filament_type.blank?
+    t("print_pricing.filament_types.#{filament_type.downcase}")
+  end
 end
