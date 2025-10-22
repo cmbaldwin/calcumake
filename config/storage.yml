@@ -9,11 +9,13 @@ local:
 # Hetzner S3 Object Storage
 hetzner:
   service: S3
-  endpoint: "https://hel1.your-objectstorage.com/"
+  endpoint: "https://hel1.your-objectstorage.com"
   access_key_id: <%= ENV.fetch("HETZNER_S3_ACCESS_KEY", nil) %>
   secret_access_key: <%= ENV.fetch("HETZNER_S3_SECRET_KEY", nil) %>
   region: hel1
   bucket: moab
+  force_path_style: true
+  public: true
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
