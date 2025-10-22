@@ -90,11 +90,12 @@ export default class extends Controller {
       return await html2canvas.default(element, {
         scale: 2, // Higher scale for better quality
         useCORS: true,
-        allowTaint: true,
+        allowTaint: false, // Changed to false to prevent tainted canvas
         backgroundColor: '#ffffff',
         logging: false,
         width: element.scrollWidth,
         height: element.scrollHeight,
+        imageTimeout: 0, // No timeout for image loading
         onclone: (clonedDoc) => {
           // Ensure all text is visible in the cloned document
           const clonedElement = clonedDoc.querySelector('.invoice-content')
@@ -102,6 +103,16 @@ export default class extends Controller {
             clonedElement.style.transform = 'none'
             clonedElement.style.animation = 'none'
           }
+          // Convert any relative URLs to absolute URLs
+          const images = clonedDoc.querySelectorAll('img')
+          images.forEach(img => {
+            if (img.src && !img.src.startsWith('data:')) {
+              // Make sure the image source is absolute
+              const absoluteUrl = new URL(img.src, window.location.origin).href
+              img.setAttribute('crossorigin', 'anonymous')
+              img.src = absoluteUrl
+            }
+          })
         }
       })
     } catch (error) {
