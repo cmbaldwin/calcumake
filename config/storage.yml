@@ -15,6 +15,9 @@ hetzner:
   region: hel1
   bucket: moab
   public: true
+  upload:
+    server_side_encryption: AES256
+  force_path_style: true
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
