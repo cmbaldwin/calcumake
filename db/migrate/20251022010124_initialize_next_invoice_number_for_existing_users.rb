@@ -5,7 +5,7 @@ class InitializeNextInvoiceNumberForExistingUsers < ActiveRecord::Migration[8.0]
       # Find the highest invoice number for this user
       last_invoice = Invoice.where(user: user)
                            .where("invoice_number ~ ?", '^INV-[0-9]+$')
-                           .order("CAST(SUBSTRING(invoice_number FROM 'INV-([0-9]+)') AS INTEGER) DESC")
+                           .order(Arel.sql("CAST(SUBSTRING(invoice_number FROM 'INV-([0-9]+)') AS INTEGER) DESC"))
                            .first
 
       if last_invoice && last_invoice.invoice_number =~ /INV-(\d+)/
