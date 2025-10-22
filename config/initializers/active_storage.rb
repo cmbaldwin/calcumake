@@ -15,6 +15,19 @@ Rails.application.configure do
   ]
 end
 
+# Add caching headers to Active Storage proxy responses
+Rails.application.reloader.to_prepare do
+  ActiveStorage::Blobs::ProxyController.class_eval do
+    before_action :set_cache_headers
+
+    private
+
+    def set_cache_headers
+      expires_in 1.hour, public: true
+    end
+  end
+end
+
 # Custom blob URL handling for proper S3 content types
 Rails.application.reloader.to_prepare do
   ActiveStorage::Blob.class_eval do
