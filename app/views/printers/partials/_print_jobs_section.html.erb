@@ -1,0 +1,53 @@
+<div class="print-jobs-section">
+  <%= printer_jobs_section_header(printer) %>
+
+  <% if printer.print_pricings.any? %>
+    <div class="print-jobs-list">
+      <% printer.print_pricings.order(created_at: :desc).limit(10).each do |print_pricing| %>
+        <div class="print-job-card">
+          <div class="job-info">
+            <h4><%= print_pricing.job_name %></h4>
+            <div class="job-details">
+              <span class="detail-item">
+                <strong><%= t('print_pricing.sections.plates') %>:</strong> <%= print_pricing.plates.count %>
+              </span>
+              <span class="detail-item">
+                <strong><%= t('common.hours') %>:</strong> <%= format_print_time(print_pricing) %>
+              </span>
+              <span class="detail-item">
+                <strong>Weight:</strong> <%= print_pricing.plates.sum(&:filament_weight).round(1) %>g
+              </span>
+              <% if print_pricing.times_printed && print_pricing.times_printed > 1 %>
+                <span class="detail-item">
+                  <strong><%= t('print_pricing.times_printed') %>:</strong> <%= print_pricing.times_printed %>
+                </span>
+              <% end %>
+            </div>
+          </div>
+          <div class="job-pricing">
+            <div class="total-price">
+              <%= currency_symbol(current_user.default_currency) %><%= print_pricing.final_price %>
+            </div>
+            <div class="job-actions">
+              <%= link_to t('actions.view'), print_pricing, class: "secondary-button small", data: { turbo_frame: "_top" } %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <% if printer.print_pricings.count > 10 %>
+        <div class="show-more">
+          <%= link_to t('printers.show.view_all_jobs', count: printer.print_pricings.count),
+              print_pricings_path(printer_id: printer.id), class: "secondary-button" %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="empty-jobs">
+      <div class="empty-icon">📄</div>
+      <h3><%= t('printers.show.no_print_jobs') %></h3>
+      <p><%= t('printers.show.no_print_jobs_description') %></p>
+      <%= link_to t('printers.show.create_first_job'), new_print_pricing_path(printer_id: printer.id), class: "primary-button" %>
+    </div>
+  <% end %>
+</div>

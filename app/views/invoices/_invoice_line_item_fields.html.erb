@@ -19,7 +19,11 @@
 
         <div class="col-md-2">
             <%= f.label :total, t("invoices.line_items.total"), class: "form-label" %>
-            <input type="number" class="form-control line-item-total" readonly value="<%= f.object.total_price %>">
+            <div class="readonly-field-container">
+                <input type="text" class="form-control line-item-total computed-field" readonly
+                       value="<%= f.object.total_price&.> 0 ? f.object.total_price : 'Auto-calculated' %>"
+                       placeholder="Auto-calculated">
+            </div>
         </div>
 
         <div class="col-12">

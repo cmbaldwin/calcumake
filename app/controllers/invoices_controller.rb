@@ -56,6 +56,12 @@ class InvoicesController < ApplicationController
   end
 
   def destroy
+    unless @invoice.status == "draft"
+      redirect_to print_pricing_invoice_path(@print_pricing, @invoice),
+                  alert: t("invoices.cannot_delete_non_draft")
+      return
+    end
+
     @invoice.destroy
     redirect_to print_pricing_path(@print_pricing),
                 notice: t("invoices.deleted_successfully")

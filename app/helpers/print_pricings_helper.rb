@@ -30,7 +30,7 @@ module PrintPricingsHelper
 
       menu_items = []
       menu_items << content_tag(:li, link_to(t("actions.show"), pricing, class: "dropdown-item", data: { turbo_frame: "_top" }))
-      menu_items << content_tag(:li, link_to(t("print_pricing.invoice"), invoice_print_pricing_path(pricing), class: "dropdown-item", data: { turbo_frame: "_top" }))
+      menu_items << content_tag(:li, link_to(t("invoices.title"), print_pricing_invoices_path(pricing), class: "dropdown-item", data: { turbo_frame: "_top" }))
       menu_items << content_tag(:li, link_to(t("actions.edit"), edit_print_pricing_path(pricing), class: "dropdown-item", data: { turbo_frame: "_top" }))
       menu_items << content_tag(:li, content_tag(:hr, "", class: "dropdown-divider"))
       menu_items << content_tag(:li, link_to(t("actions.delete"), pricing, method: :delete,
@@ -52,14 +52,18 @@ module PrintPricingsHelper
       button = content_tag(:button, t("actions.actions"), class: "btn btn-primary btn-sm dropdown-toggle", type: "button", data: { "bs-toggle": "dropdown" }, "aria-expanded": "false")
 
       menu_items = []
-      menu_items << content_tag(:li, link_to(t("print_pricing.new_invoice"), invoice_print_pricing_path(pricing), class: "dropdown-item", data: { turbo_frame: "_top" }))
-      menu_items << content_tag(:li, link_to(t("actions.edit"), edit_print_pricing_path(pricing), class: "dropdown-item"))
+      menu_items << content_tag(:li, link_to(t("actions.edit"), edit_print_pricing_path(pricing),
+                                           class: "dropdown-item", data: { turbo_frame: "_top" }))
+      menu_items << content_tag(:li, link_to(t("actions.duplicate"), duplicate_print_pricing_path(pricing),
+                                           method: :post, class: "dropdown-item",
+                                           data: { turbo_method: :post, turbo_frame: "_top" }))
       menu_items << content_tag(:li, content_tag(:hr, "", class: "dropdown-divider"))
       menu_items << content_tag(:li, link_to(t("actions.delete"), pricing, method: :delete,
                                            class: "dropdown-item text-danger",
                                            data: {
                                              confirm: t("print_pricing.confirm_delete", name: pricing.job_name),
-                                             turbo_method: :delete
+                                             turbo_method: :delete,
+                                             turbo_frame: "_top"
                                            }))
 
       menu = content_tag(:ul, menu_items.join.html_safe, class: "dropdown-menu")

@@ -55,8 +55,8 @@
                             <%= t('actions.actions') %>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><%= link_to t('actions.view'), printer, class: "dropdown-item" %></li>
-                            <li><%= link_to t('actions.edit'), edit_printer_path(printer), class: "dropdown-item" %></li>
+                            <li><%= link_to t('actions.view'), printer, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>
+                            <li><%= link_to t('actions.edit'), edit_printer_path(printer), class: "dropdown-item", data: { turbo_frame: "_top" } %></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

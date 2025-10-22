@@ -1,2 +1,14 @@
-<h1>Printers#edit</h1>
-<p>Find me in app/views/printers/edit.html.erb</p>
+<%= printer_form_header(true) %>
+
+<%= form_with model: @printer, local: true, html: { class: "printer-form" } do |form| %>
+  <%= printer_form_error_messages(@printer) %>
+
+  <div class="form-grid">
+    <%= printer_form_basic_information(form, @printer) %>
+    <%= printer_form_technical_specs(form) %>
+    <%= printer_form_financial_info(form) %>
+    <%= printer_form_usage_info(form) %>
+  </div>
+
+  <%= printer_form_actions(form, true) %>
+<% end %>

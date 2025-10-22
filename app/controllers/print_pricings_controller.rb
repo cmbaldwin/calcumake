@@ -1,6 +1,6 @@
 class PrintPricingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_print_pricing, only: [ :show, :edit, :update, :destroy, :increment_times_printed, :decrement_times_printed, :invoice ]
+  before_action :set_print_pricing, only: [ :show, :edit, :update, :destroy, :increment_times_printed, :decrement_times_printed, :duplicate ]
 
   def index
     @print_pricings = current_user.print_pricings.search(params[:query]).order(created_at: :desc)
@@ -80,7 +80,33 @@ class PrintPricingsController < ApplicationController
     end
   end
 
-  def invoice
+  def duplicate
+    # Duplicate the print pricing with all its plates
+    @new_print_pricing = @print_pricing.dup
+    @new_print_pricing.job_name = "#{@print_pricing.job_name} (Copy)"
+    @new_print_pricing.times_printed = 0
+
+    # Duplicate all plates
+    @print_pricing.plates.each do |plate|
+      @new_print_pricing.plates.build(plate.attributes.except("id", "print_pricing_id", "created_at", "updated_at"))
+    end
+
+    if @new_print_pricing.save
+      respond_to do |format|
+        format.html { redirect_to @new_print_pricing, notice: t("print_pricing.duplicated_successfully") }
+        format.turbo_stream {
+          redirect_to @new_print_pricing, notice: t("print_pricing.duplicated_successfully")
+        }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @print_pricing, alert: t("print_pricing.duplicate_failed") }
+        format.turbo_stream {
+          flash.now[:alert] = t("print_pricing.duplicate_failed")
+          render "layouts/flash"
+        }
+      end
+    end
   end
 
   private

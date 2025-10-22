@@ -66,7 +66,21 @@
           <div class="row g-3">
             <div class="col-md-4">
               <%= form.label :invoice_number, t("invoices.fields.invoice_number"), class: "form-label" %>
-              <%= form.text_field :invoice_number, class: "form-control", readonly: @invoice.persisted? %>
+              <% if @invoice.persisted? %>
+                <div class="readonly-field-container">
+                  <%= form.text_field :invoice_number, class: "form-control", readonly: true %>
+                </div>
+              <% else %>
+                <% next_number = current_user.next_invoice_number %>
+                <% preview_number = "INV-#{next_number.to_s.rjust(6, '0')}" %>
+                <div class="readonly-field-container">
+                  <%= text_field_tag :invoice_number_preview, preview_number,
+                        class: "form-control text-muted preview-field", readonly: true,
+                        placeholder: "Generated automatically" %>
+                </div>
+                <%= form.hidden_field :invoice_number %>
+              <% end %>
+              <div class="form-text"><%= t("invoices.fields.invoice_number_help") %></div>
             </div>
 
             <div class="col-md-4">
@@ -95,7 +109,7 @@
               <%= form.label :currency, t("invoices.fields.currency"), class: "form-label" %>
               <%= form.select :currency,
                     options_for_select(currency_options, @invoice.currency || current_user.default_currency),
-                    {}, class: "form-select" %>
+                    { prompt: "Select currency" }, class: "form-select" %>
               <div class="form-text"><%= t("invoices.fields.currency_help") %></div>
             </div>
           </div>
@@ -207,7 +221,10 @@ document.addEventListener('DOMContentLoaded', function() {
           
           <div class="col-md-2">
             <label class="form-label"><%= t("invoices.line_items.total") %></label>
-            <input type="number" class="form-control line-item-total" readonly value="0">
+            <div class="readonly-field-container">
+              <input type="text" class="form-control line-item-total computed-field" readonly
+                     value="Auto-calculated" placeholder="Auto-calculated">
+            </div>
           </div>
           
           <div class="col-12">

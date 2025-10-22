@@ -40,10 +40,10 @@
             <!-- Actions -->
             <div class="col-12">
                 <div class="d-flex gap-2 flex-wrap justify-content-end border-top pt-3">
-                    <%= link_to t('actions.view'), print_pricing_invoice_path(invoice.print_pricing, invoice), 
-              class: "btn btn-sm btn-outline-secondary" %>
-                    <%= link_to t('actions.edit'), edit_print_pricing_invoice_path(invoice.print_pricing, invoice), 
-              class: "btn btn-sm btn-outline-primary" %>
+                    <%= link_to t('actions.view'), print_pricing_invoice_path(invoice.print_pricing, invoice),
+              class: "btn btn-sm btn-outline-secondary", data: { turbo_frame: "_top" } %>
+                    <%= link_to t('actions.edit'), edit_print_pricing_invoice_path(invoice.print_pricing, invoice),
+              class: "btn btn-sm btn-outline-primary", data: { turbo_frame: "_top" } %>
                 </div>
             </div>
         </div>
