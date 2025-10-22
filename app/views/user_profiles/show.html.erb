@@ -97,7 +97,7 @@
             <%= form.file_field :company_logo, class: "form-control", accept: "image/*" %>
             <% if @user.company_logo.attached? %>
               <div class="mt-2">
-                <%= image_tag @user.company_logo, style: "max-width: 150px; max-height: 75px;" %>
+                <%= image_tag url_for(@user.company_logo), style: "max-width: 150px; max-height: 75px;", alt: "Company Logo" %>
               </div>
             <% end %>
           </div>
