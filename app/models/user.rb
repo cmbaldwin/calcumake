@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :print_pricings, dependent: :destroy
   has_many :printers, dependent: :destroy
+  has_one_attached :company_logo
 
   validates :default_currency, presence: true
   validates :default_energy_cost_per_kwh, presence: true, numericality: { greater_than: 0 }

@@ -1,0 +1,88 @@
+<% content_for :title, "#{t('invoices.title')} - #{@print_pricing.job_name}" %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1><%= t('invoices.title') %></h1>
+                <%= link_to t('invoices.new_invoice'), new_print_pricing_invoice_path(@print_pricing), class: "btn btn-primary" %>
+            </div>
+
+            <% if @invoices&.any? %>
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th><%= t('invoices.fields.invoice_number') %></th>
+                                    <th><%= t('invoices.fields.company_name') %></th>
+                                    <th><%= t('invoices.fields.invoice_date') %></th>
+                                    <th><%= t('invoices.fields.due_date') %></th>
+                                    <th><%= t('invoices.fields.status') %></th>
+                                    <th class="text-end"><%= t('print_pricing.total') %></th>
+                                    <th class="text-end"><%= t('actions.title') %></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% @invoices.each do |invoice| %>
+                                <tr>
+                                    <td>
+                                        <%= link_to invoice.invoice_number, print_pricing_invoice_path(@print_pricing, invoice) %>
+                                    </td>
+                                    <td><%= invoice.company_name %></td>
+                                    <td><%= l(invoice.invoice_date, format: :short) %></td>
+                                    <td>
+                                        <% if invoice.due_date %>
+                                        <%= l(invoice.due_date, format: :short) %>
+                                        <% if invoice.overdue? %>
+                                        <span class="badge bg-danger ms-1"><%= t('print_pricing.overdue') %></span>
+                                        <% end %>
+                                        <% else %>
+                                        <span class="text-muted">-</span>
+                                        <% end %>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-<%= case invoice.status
+                          when 'paid' then 'success'
+                          when 'sent' then 'info'
+                          when 'cancelled' then 'danger'
+                          else 'secondary'
+                        end %>">
+                                            <%= t("invoices.status.#{invoice.status}") %>
+                                        </span>
+                                    </td>
+                                    <td class="text-end">
+                                        <%= currency_symbol(invoice.currency) %><%= format_currency(invoice.total, invoice.currency) %>
+                                    </td>
+                                    <td class="text-end">
+                                        <div class="btn-group btn-group-sm">
+                                            <%= link_to t('actions.edit'), edit_print_pricing_invoice_path(@print_pricing, invoice), class: "btn btn-outline-primary" %>
+                                            <%= link_to t('actions.delete'), print_pricing_invoice_path(@print_pricing, invoice), 
+                              method: :delete, 
+                              data: { turbo_method: :delete, turbo_confirm: t('invoices.confirm_delete') },
+                              class: "btn btn-outline-danger" %>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <% else %>
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <p class="text-muted mb-3"><%= t('invoices.no_invoices') %></p>
+                    <%= link_to t('invoices.create_invoice'), new_print_pricing_invoice_path(@print_pricing), class: "btn btn-primary" %>
+                </div>
+            </div>
+            <% end %>
+
+            <div class="mt-4">
+                <%= link_to t('actions.back'), print_pricing_path(@print_pricing), class: "btn btn-outline-secondary" %>
+            </div>
+        </div>
+    </div>
+</div>

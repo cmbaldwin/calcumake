@@ -71,6 +71,55 @@
     </div>
   </div>
 
+  <!-- Company Information for Invoices -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('profile.show.company_info') %></h5>
+      </div>
+      <div class="card-body">
+        <p class="text-muted mb-4"><%= t('profile.show.company_info_description') %></p>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <%= form.label :default_company_name, t('profile.fields.company_name'), class: "form-label" %>
+            <%= form.text_field :default_company_name, class: "form-control", placeholder: t('profile.fields.company_name_placeholder') %>
+          </div>
+          <div class="col-md-6">
+            <%= form.label :default_company_email, t('profile.fields.company_email'), class: "form-label" %>
+            <%= form.email_field :default_company_email, class: "form-control", placeholder: t('profile.fields.company_email_placeholder') %>
+          </div>
+          <div class="col-md-6">
+            <%= form.label :default_company_phone, t('profile.fields.company_phone'), class: "form-label" %>
+            <%= form.telephone_field :default_company_phone, class: "form-control", placeholder: t('profile.fields.company_phone_placeholder') %>
+          </div>
+          <div class="col-md-6">
+            <%= form.label :company_logo, t('profile.fields.company_logo'), class: "form-label" %>
+            <%= form.file_field :company_logo, class: "form-control", accept: "image/*" %>
+            <% if @user.company_logo.attached? %>
+              <div class="mt-2">
+                <%= image_tag @user.company_logo, style: "max-width: 150px; max-height: 75px;" %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-12">
+            <%= form.label :default_company_address, t('profile.fields.company_address'), class: "form-label" %>
+            <%= form.text_area :default_company_address, rows: 3, class: "form-control", placeholder: t('profile.fields.company_address_placeholder') %>
+          </div>
+          <div class="col-12">
+            <%= form.label :default_payment_details, t('profile.fields.payment_details'), class: "form-label" %>
+            <%= form.text_area :default_payment_details, rows: 4, class: "form-control", placeholder: t('profile.fields.payment_details_placeholder') %>
+            <div class="form-text"><%= t('profile.fields.payment_details_help') %></div>
+          </div>
+          <div class="col-12">
+            <%= form.label :default_invoice_notes, t('profile.fields.invoice_notes'), class: "form-label" %>
+            <%= form.text_area :default_invoice_notes, rows: 3, class: "form-control", placeholder: t('profile.fields.invoice_notes_placeholder') %>
+            <div class="form-text"><%= t('profile.fields.invoice_notes_help') %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Form Actions -->
   <div class="col-12">
     <div class="d-flex gap-3 justify-content-center pt-3 border-top">

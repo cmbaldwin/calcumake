@@ -2,6 +2,7 @@ class PrintPricing < ApplicationRecord
   belongs_to :user
   belongs_to :printer, optional: true
   has_many :plates, dependent: :destroy
+  has_many :invoices, dependent: :destroy
 
   accepts_nested_attributes_for :plates, allow_destroy: true, reject_if: :all_blank
 

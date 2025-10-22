@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  invoice: one
+  description: Filament cost for print job
+  quantity: 100.5
+  unit_price: 0.05
+  total_price: 5.03
+  line_item_type: filament
+  order_position: 1
+
+two:
+  invoice: two
+  description: Machine time
+  quantity: 2.5
+  unit_price: 10.0
+  total_price: 25.0
+  line_item_type: machine
+  order_position: 1

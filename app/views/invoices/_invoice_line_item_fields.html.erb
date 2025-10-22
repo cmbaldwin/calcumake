@@ -1,0 +1,51 @@
+<div class="invoice-line-item-fields border rounded p-3 mb-3">
+    <div class="row g-2">
+        <%= f.hidden_field :order_position %>
+
+        <div class="col-md-6">
+            <%= f.label :description, t("invoices.line_items.description"), class: "form-label" %>
+            <%= f.text_field :description, class: "form-control", required: true %>
+        </div>
+
+        <div class="col-md-2">
+            <%= f.label :quantity, t("invoices.line_items.quantity"), class: "form-label" %>
+            <%= f.number_field :quantity, class: "form-control line-item-quantity", step: 0.01, required: true %>
+        </div>
+
+        <div class="col-md-2">
+            <%= f.label :unit_price, t("invoices.line_items.unit_price"), class: "form-label" %>
+            <%= f.number_field :unit_price, class: "form-control line-item-price", step: 0.01, required: true %>
+        </div>
+
+        <div class="col-md-2">
+            <%= f.label :total, t("invoices.line_items.total"), class: "form-label" %>
+            <input type="number" class="form-control line-item-total" readonly value="<%= f.object.total_price %>">
+        </div>
+
+        <div class="col-12">
+            <%= f.select :line_item_type, 
+            options_for_select([
+              ["Custom", "custom"],
+              ["Filament", "filament"],
+              ["Electricity", "electricity"],
+              ["Labor", "labor"],
+              ["Machine", "machine"],
+              ["Other", "other"]
+            ], f.object.line_item_type),
+            {}, class: "form-select" %>
+        </div>
+
+        <div class="col-12">
+            <% if f.object.persisted? %>
+            <%= f.hidden_field :_destroy %>
+            <button type="button" class="btn btn-sm btn-danger remove-line-item">
+                <%= t("invoices.line_items.remove") %>
+            </button>
+            <% else %>
+            <button type="button" class="btn btn-sm btn-danger remove-line-item">
+                <%= t("invoices.line_items.remove") %>
+            </button>
+            <% end %>
+        </div>
+    </div>
+</div>

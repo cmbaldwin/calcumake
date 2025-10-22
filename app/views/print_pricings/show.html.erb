@@ -93,6 +93,33 @@
     </div>
 </div>
 
+<!-- Invoices Section -->
+<%= turbo_frame_tag "invoices_section" do %>
+<div class="card mb-4">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3 class="mb-0 h5"><%= t('invoices.title') %></h3>
+            <div class="d-grid gap-2">
+                <%= link_to new_print_pricing_invoice_path(@print_pricing), class: "btn btn-primary", data: { turbo_frame: "_top" } do %>
+                <%= t('invoices.new_invoice') %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <% if @print_pricing.invoices.any? %>
+        <%= render partial: "invoices/invoice_card", collection: @print_pricing.invoices.recent, as: :invoice %>
+        <% else %>
+        <div class="text-center py-4">
+            <p class="text-muted mt-3 mb-2"><%= t('invoices.no_invoices') %></p>
+            <p class="text-muted small"><%= t('invoices.create_first_invoice') %></p>
+            <%= link_to t('invoices.create_invoice'), new_print_pricing_invoice_path(@print_pricing), class: "btn btn-primary mt-2", data: { turbo_frame: "_top" } %>
+        </div>
+        <% end %>
+    </div>
+</div>
+<% end %>
+
 <!-- Details Sections -->
 <div class="row g-4">
     <% cost_breakdown_sections(@print_pricing).each do |section| %>
@@ -117,7 +144,7 @@
 <!-- Navigation Actions -->
 <div class="d-flex gap-3 justify-content-center mt-4">
     <%= link_to print_pricings_path, class: "btn btn-outline-secondary" do %>
-    <span>← <%= t('print_pricing.back_to_all') %></span>
+    <span><%= t('print_pricing.back_to_all') %></span>
     <% end %>
     <%= link_to new_print_pricing_path, class: "btn btn-primary" do %>
     <span><%= t('print_pricing.create_new') %></span>

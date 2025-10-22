@@ -1,0 +1,18 @@
+<% content_for :title, t("invoices.new_invoice") %>
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1><%= t("invoices.new_invoice") %></h1>
+                <%= link_to t("actions.back"), print_pricing_path(@print_pricing), class: "btn btn-outline-secondary" %>
+            </div>
+
+            <div class="alert alert-info">
+                <strong>Print Pricing:</strong> <%= @print_pricing.job_name %>
+            </div>
+
+            <%= render "form" %>
+        </div>
+    </div>
+</div>

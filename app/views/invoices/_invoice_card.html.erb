@@ -1,0 +1,51 @@
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row g-3">
+            <!-- Invoice Number and Status -->
+            <div class="col-12 col-md-6">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div>
+                        <%= link_to invoice.invoice_number, print_pricing_invoice_path(invoice.print_pricing, invoice), 
+                class: "h5 mb-1 text-decoration-none" %>
+                        <div class="text-muted small">
+                            <%= l(invoice.invoice_date, format: :short) %>
+                        </div>
+                    </div>
+                    <span class="<%= invoice_status_badge_class(invoice) %>">
+                        <%= t("invoices.status.#{invoice.status}") %>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Due Date and Total -->
+            <div class="col-12 col-md-6">
+                <div class="text-md-end">
+                    <div class="mb-2">
+                        <% if invoice.due_date %>
+                        <span class="text-muted small"><%= t('invoices.fields.due_date') %>:</span>
+                        <span class="fw-medium"><%= l(invoice.due_date, format: :short) %></span>
+                        <% if invoice.overdue? %>
+                        <span class="badge bg-danger ms-1"><%= t('print_pricing.overdue') %></span>
+                        <% end %>
+                        <% else %>
+                        <span class="text-muted small"><%= t('invoices.fields.due_date') %>: -</span>
+                        <% end %>
+                    </div>
+                    <div class="h4 mb-0 text-success">
+                        <%= currency_symbol(invoice.currency) %><%= format_currency(invoice.total, invoice.currency) %>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="col-12">
+                <div class="d-flex gap-2 flex-wrap justify-content-end border-top pt-3">
+                    <%= link_to t('actions.view'), print_pricing_invoice_path(invoice.print_pricing, invoice), 
+              class: "btn btn-sm btn-outline-secondary" %>
+                    <%= link_to t('actions.edit'), edit_print_pricing_invoice_path(invoice.print_pricing, invoice), 
+              class: "btn btn-sm btn-outline-primary" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
