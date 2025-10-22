@@ -631,6 +631,11 @@ en:
     new_invoice: New Invoice
     edit_invoice: Edit Invoice
     create_invoice: Create Invoice
+    download_pdf: Download PDF
+    print: Print
+    bill_to: Bill To
+    mark_as_sent: Mark as Sent
+    mark_as_paid: Mark as Paid
     created_successfully: Invoice created successfully
     updated_successfully: Invoice updated successfully
     deleted_successfully: Invoice deleted successfully
