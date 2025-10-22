@@ -1,0 +1,43 @@
+/* Invoice Styles */
+
+/* Company Logo */
+.invoice-company-logo {
+  max-width: 200px;
+  max-height: 100px;
+}
+
+/* Pre-formatted text (addresses, notes, payment details) */
+.invoice-preformatted-text {
+  white-space: pre-line;
+}
+
+/* Line Items Table Column Widths */
+.invoice-line-items-table th.quantity-column,
+.invoice-line-items-table td.quantity-column {
+  width: 100px;
+}
+
+.invoice-line-items-table th.unit-price-column,
+.invoice-line-items-table td.unit-price-column {
+  width: 120px;
+}
+
+.invoice-line-items-table th.total-column,
+.invoice-line-items-table td.total-column {
+  width: 120px;
+}
+
+/* Print Styles */
+@media print {
+  .d-print-none {
+    display: none !important;
+  }
+
+  .invoice-content {
+    box-shadow: none !important;
+  }
+
+  body {
+    background: white;
+  }
+}

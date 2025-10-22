@@ -12,7 +12,7 @@ class User < ApplicationRecord
   # Cache company logo URL for 1 hour to improve performance
   def company_logo_url
     return nil unless company_logo.attached?
-    
+
     Rails.cache.fetch([ "user", id, "company_logo", company_logo.blob.id ], expires_in: 1.hour) do
       Rails.application.routes.url_helpers.rails_blob_path(company_logo, disposition: "inline", only_path: true)
     end

@@ -1,0 +1,13 @@
+<% unless invoice.status == "paid" %>
+  <%= button_to t('invoices.mark_as_sent'), mark_as_sent_print_pricing_invoice_path(print_pricing, invoice),
+      method: :patch, class: "btn btn-info", disabled: invoice.status != "draft" %>
+  <%= button_to t('invoices.mark_as_paid'), mark_as_paid_print_pricing_invoice_path(print_pricing, invoice),
+      method: :patch, class: "btn btn-success", disabled: invoice.status == "draft" %>
+<% end %>
+<%= link_to t('actions.edit'), edit_print_pricing_invoice_path(print_pricing, invoice), class: "btn btn-primary" %>
+<button type="button" class="btn btn-secondary" data-action="click->pdf-generator#generatePDF">
+  <i class="bi bi-file-pdf"></i> <%= t('invoices.download_pdf') %>
+</button>
+<button type="button" class="btn btn-outline-secondary" onclick="window.print()">
+  <i class="bi bi-printer"></i> <%= t('invoices.print') %>
+</button>

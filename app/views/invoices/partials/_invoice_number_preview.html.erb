@@ -1,0 +1,8 @@
+<% next_number = current_user.next_invoice_number %>
+<% preview_number = invoice_number_preview(next_number) %>
+<div class="readonly-field-container">
+    <%= text_field_tag :invoice_number_preview, preview_number,
+        class: "form-control text-muted preview-field", readonly: true,
+        placeholder: "Generated automatically" %>
+</div>
+<%= form.hidden_field :invoice_number %>

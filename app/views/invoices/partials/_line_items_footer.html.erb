@@ -1,0 +1,8 @@
+<tr>
+  <td colspan="3" class="text-end"><strong><%= t('print_pricing.subtotal') %>:</strong></td>
+  <td class="text-end"><strong><%= formatted_currency_amount(invoice.subtotal, invoice.currency) %></strong></td>
+</tr>
+<tr class="table-primary">
+  <td colspan="3" class="text-end"><strong><%= t('print_pricing.total') %>:</strong></td>
+  <td class="text-end"><strong><%= formatted_currency_amount(invoice.total, invoice.currency) %></strong></td>
+</tr>

@@ -9,12 +9,12 @@
 
         <div class="col-md-2">
             <%= f.label :quantity, t("invoices.line_items.quantity"), class: "form-label" %>
-            <%= f.number_field :quantity, class: "form-control line-item-quantity", step: 0.01, required: true %>
+            <%= f.number_field :quantity, class: "form-control line-item-quantity", step: 0.01, required: true, data: { action: "input->invoice-form#calculateLineTotal" } %>
         </div>
 
         <div class="col-md-2">
             <%= f.label :unit_price, t("invoices.line_items.unit_price"), class: "form-label" %>
-            <%= f.number_field :unit_price, class: "form-control line-item-price", step: 0.01, required: true %>
+            <%= f.number_field :unit_price, class: "form-control line-item-price", step: 0.01, required: true, data: { action: "input->invoice-form#calculateLineTotal" } %>
         </div>
 
         <div class="col-md-2">
@@ -42,14 +42,10 @@
         <div class="col-12">
             <% if f.object.persisted? %>
             <%= f.hidden_field :_destroy %>
-            <button type="button" class="btn btn-sm btn-danger remove-line-item">
-                <%= t("invoices.line_items.remove") %>
-            </button>
-            <% else %>
-            <button type="button" class="btn btn-sm btn-danger remove-line-item">
-                <%= t("invoices.line_items.remove") %>
-            </button>
             <% end %>
+            <button type="button" class="btn btn-sm btn-danger" data-action="click->invoice-form#removeLineItem">
+                <i class="bi bi-trash"></i> <%= t("invoices.line_items.remove") %>
+            </button>
         </div>
     </div>
 </div>

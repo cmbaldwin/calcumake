@@ -1,4 +1,4 @@
-<%= form_with(model: [@print_pricing, @invoice], local: true) do |form| %>
+<%= form_with(model: [@print_pricing, @invoice], local: true, data: { controller: "invoice-form", invoice_form_currency_value: @invoice.currency, invoice_form_default_currency_value: @print_pricing.default_currency }) do |form| %>
 <% if @invoice.errors.any? %>
 <div class="alert alert-danger">
     <h4><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h4>
@@ -13,276 +13,25 @@
 <div class="row g-3">
     <!-- Company Information Info Card -->
     <div class="col-12">
-        <div class="card border-info">
-            <div class="card-header bg-info bg-opacity-10">
-                <h5 class="mb-0">
-                    <%= t("invoices.fields.company_info") %>
-                </h5>
-            </div>
-            <div class="card-body">
-                <p class="mb-2">
-                    <%= t("invoices.company_info_card_text") %>
-                </p>
-                <% if current_user.default_company_name.present? %>
-                <div class="mt-3 p-3 bg-light rounded">
-                    <div class="row g-2">
-                        <% if current_user.company_logo.attached? %>
-                        <div class="col-12 mb-2">
-                            <%= image_tag current_user.company_logo_url, style: "max-width: 200px; max-height: 100px;", alt: "Company Logo" %>
-                        </div>
-                        <% end %>
-                        <div class="col-12">
-                            <strong><%= current_user.default_company_name %></strong>
-                        </div>
-                        <% if current_user.default_company_email.present? %>
-                        <div class="col-12 text-muted small">
-                            <%= current_user.default_company_email %>
-                        </div>
-                        <% end %>
-                        <% if current_user.default_company_phone.present? %>
-                        <div class="col-12 text-muted small">
-                            <%= current_user.default_company_phone %>
-                        </div>
-                        <% end %>
-                    </div>
-                </div>
-                <% else %>
-                <div class="alert alert-warning mt-3 mb-0">
-                    <%= t("invoices.no_company_info") %>
-                </div>
-                <% end %>
-                <%= link_to t("invoices.edit_company_info"), user_profile_path, class: "btn btn-info mt-3" %>
-            </div>
-        </div>
+        <%= render "invoices/partials/company_info_card" %>
     </div>
 
     <!-- Invoice Details -->
     <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0">Invoice Details</h5>
-            </div>
-            <div class="card-body">
-                <div class="row g-3">
-                    <div class="col-md-4">
-                        <%= form.label :invoice_number, t("invoices.fields.invoice_number"), class: "form-label" %>
-                        <% if @invoice.persisted? %>
-                        <div class="readonly-field-container">
-                            <%= form.text_field :invoice_number, class: "form-control", readonly: true %>
-                        </div>
-                        <% else %>
-                        <% next_number = current_user.next_invoice_number %>
-                        <% preview_number = "INV-#{next_number.to_s.rjust(6, '0')}" %>
-                        <div class="readonly-field-container">
-                            <%= text_field_tag :invoice_number_preview, preview_number,
-                        class: "form-control text-muted preview-field", readonly: true,
-                        placeholder: "Generated automatically" %>
-                        </div>
-                        <%= form.hidden_field :invoice_number %>
-                        <% end %>
-                        <div class="form-text"><%= t("invoices.fields.invoice_number_help") %></div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <%= form.label :invoice_date, t("invoices.fields.invoice_date"), class: "form-label" %>
-                        <%= form.date_field :invoice_date, class: "form-control" %>
-                    </div>
-
-                    <div class="col-md-4">
-                        <%= form.label :due_date, t("invoices.fields.due_date"), class: "form-label" %>
-                        <%= form.date_field :due_date, class: "form-control" %>
-                    </div>
-
-                    <div class="col-md-6">
-                        <%= form.label :status, t("invoices.fields.status"), class: "form-label" %>
-                        <%= form.select :status, 
-                    options_for_select([
-                      [t("invoices.status.draft"), "draft"],
-                      [t("invoices.status.sent"), "sent"],
-                      [t("invoices.status.paid"), "paid"],
-                      [t("invoices.status.cancelled"), "cancelled"]
-                    ], @invoice.status),
-                    {}, class: "form-select" %>
-                    </div>
-
-                    <div class="col-md-6">
-                        <%= form.label :currency, t("invoices.fields.currency"), class: "form-label" %>
-                        <%= form.select :currency,
-                    options_for_select(currency_options, @invoice.currency || current_user.default_currency),
-                    { prompt: "Select currency" }, class: "form-select" %>
-                        <div class="form-text"><%= t("invoices.fields.currency_help") %></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <%= render "invoices/partials/invoice_details_card", form: form, invoice: @invoice %>
     </div>
 
     <!-- Line Items -->
     <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0"><%= t("invoices.line_items.title") %></h5>
-            </div>
-            <div class="card-body">
-                <div id="invoice-line-items">
-                    <%= form.fields_for :invoice_line_items do |line_item_form| %>
-                    <%= render "invoice_line_item_fields", f: line_item_form %>
-                    <% end %>
-                </div>
-
-                <div class="mt-3">
-                    <button type="button" class="btn btn-outline-primary" id="add-line-item">
-                        <%= t("invoices.line_items.add_line_item") %>
-                    </button>
-                </div>
-
-                <div class="mt-4 pt-3 border-top">
-                    <div class="row">
-                        <div class="col-md-6 offset-md-6">
-                            <table class="table">
-                                <tr>
-                                    <td class="text-end"><strong><%= t("print_pricing.subtotal") %>:</strong></td>
-                                    <td class="text-end" id="invoice-subtotal">
-                                        <%= number_to_currency(@invoice.subtotal, unit: currency_symbol(@invoice.currency || @print_pricing.default_currency)) %>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-end"><strong><%= t("print_pricing.total") %>:</strong></td>
-                                    <td class="text-end" id="invoice-total">
-                                        <%= number_to_currency(@invoice.total, unit: currency_symbol(@invoice.currency || @print_pricing.default_currency)) %>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <%= render "invoices/partials/line_items_card", form: form, invoice: @invoice, currency: @invoice.currency || @print_pricing.default_currency %>
     </div>
 
     <!-- Payment Details & Notes -->
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0"><%= t("invoices.fields.payment_details") %></h5>
-            </div>
-            <div class="card-body">
-                <%= form.text_area :payment_details, class: "form-control", rows: 5, placeholder: "Bank Name: Example Bank\nAccount Number: 1234567890\nRouting Number: 987654321" %>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0"><%= t("invoices.fields.notes") %></h5>
-            </div>
-            <div class="card-body">
-                <%= form.text_area :notes, class: "form-control", rows: 5, placeholder: "Thank you for your business!" %>
-            </div>
-        </div>
-    </div>
+    <%= render "invoices/partials/payment_notes_cards", form: form %>
 
     <!-- Actions -->
     <div class="col-12">
-        <div class="d-flex gap-2">
-            <%= form.submit class: "btn btn-primary" %>
-            <%= link_to t("actions.cancel"), @invoice.persisted? ? print_pricing_invoice_path(@print_pricing, @invoice) : print_pricing_path(@print_pricing), class: "btn btn-secondary" %>
-        </div>
+        <%= render "invoices/partials/form_actions", form: form, invoice: @invoice, print_pricing: @print_pricing %>
     </div>
 </div>
 <% end %>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        let lineItemIndex = < %= @invoice.invoice_line_items.length % > ;
-
-        document.getElementById('add-line-item')?.addEventListener('click', function() {
-            const container = document.getElementById('invoice-line-items');
-            const template = `
-      <div class="invoice-line-item-fields border rounded p-3 mb-3">
-        <div class="row g-2">
-          <input type="hidden" name="invoice[invoice_line_items_attributes][${lineItemIndex}][order_position]" value="${lineItemIndex}">
-          
-          <div class="col-md-6">
-            <label class="form-label"><%= t("invoices.line_items.description") %></label>
-            <input type="text" name="invoice[invoice_line_items_attributes][${lineItemIndex}][description]" class="form-control" required>
-          </div>
-          
-          <div class="col-md-2">
-            <label class="form-label"><%= t("invoices.line_items.quantity") %></label>
-            <input type="number" name="invoice[invoice_line_items_attributes][${lineItemIndex}][quantity]" class="form-control line-item-quantity" step="0.01" value="1" required>
-          </div>
-          
-          <div class="col-md-2">
-            <label class="form-label"><%= t("invoices.line_items.unit_price") %></label>
-            <input type="number" name="invoice[invoice_line_items_attributes][${lineItemIndex}][unit_price]" class="form-control line-item-price" step="0.01" value="0" required>
-          </div>
-          
-          <div class="col-md-2">
-            <label class="form-label"><%= t("invoices.line_items.total") %></label>
-            <div class="readonly-field-container">
-              <input type="text" class="form-control line-item-total computed-field" readonly
-                     value="Auto-calculated" placeholder="Auto-calculated">
-            </div>
-          </div>
-          
-          <div class="col-12">
-            <select name="invoice[invoice_line_items_attributes][${lineItemIndex}][line_item_type]" class="form-select">
-              <option value="custom">Custom</option>
-              <option value="filament">Filament</option>
-              <option value="electricity">Electricity</option>
-              <option value="labor">Labor</option>
-              <option value="machine">Machine</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          
-          <div class="col-12">
-            <button type="button" class="btn btn-sm btn-danger remove-line-item">
-              <i class="bi bi-trash"></i> <%= t("invoices.line_items.remove") %>
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-
-            container.insertAdjacentHTML('beforeend', template);
-            lineItemIndex++;
-            attachLineItemListeners();
-        });
-
-        function attachLineItemListeners() {
-            document.querySelectorAll('.remove-line-item').forEach(button => {
-                button.removeEventListener('click', removeLineItem);
-                button.addEventListener('click', removeLineItem);
-            });
-
-            document.querySelectorAll('.line-item-quantity, .line-item-price').forEach(input => {
-                input.removeEventListener('input', calculateLineTotal);
-                input.addEventListener('input', calculateLineTotal);
-            });
-        }
-
-        function removeLineItem(e) {
-            const container = e.target.closest('.invoice-line-item-fields');
-            const destroyInput = container.querySelector('input[name*="[_destroy]"]');
-            if (destroyInput) {
-                destroyInput.value = '1';
-                container.style.display = 'none';
-            } else {
-                container.remove();
-            }
-        }
-
-        function calculateLineTotal(e) {
-            const container = e.target.closest('.invoice-line-item-fields');
-            const quantity = parseFloat(container.querySelector('.line-item-quantity').value) || 0;
-            const price = parseFloat(container.querySelector('.line-item-price').value) || 0;
-            const total = quantity * price;
-            container.querySelector('.line-item-total').value = total.toFixed(2);
-        }
-
-        attachLineItemListeners();
-    });
-</script>

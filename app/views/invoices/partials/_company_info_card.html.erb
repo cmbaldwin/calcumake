@@ -1,0 +1,14 @@
+<div class="card border-info">
+    <div class="card-header bg-info bg-opacity-10">
+        <h5 class="mb-0">
+            <%= t("invoices.fields.company_info") %>
+        </h5>
+    </div>
+    <div class="card-body">
+        <p class="mb-2">
+            <%= t("invoices.company_info_card_text") %>
+        </p>
+        <%= render "invoices/partials/company_info_display", user: current_user %>
+        <%= link_to t("invoices.edit_company_info"), user_profile_path, class: "btn btn-info mt-3" %>
+    </div>
+</div>
