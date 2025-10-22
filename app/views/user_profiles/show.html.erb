@@ -111,7 +111,7 @@
 
                             <!-- Current Image or Placeholder -->
                             <% if @user.company_logo.attached? %>
-                            <%= image_tag rails_blob_path(current_user.company_logo, disposition: "inline"), data: { image_upload_target: "preview" }, alt: "Company Logo", class: "img-fluid rounded", style: "max-width: 150px; max-height: 75px;" %>
+                            <%= image_tag @user.company_logo_url, data: { image_upload_target: "preview" }, alt: "Company Logo", class: "img-fluid rounded", style: "max-width: 150px; max-height: 75px;" %>
                             <div data-image-upload-target="placeholder" style="display: none;">
                                 <i class="fas fa-image text-muted mb-2" style="font-size: 2rem;"></i>
                                 <p class="text-muted mb-0">

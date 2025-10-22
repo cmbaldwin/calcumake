@@ -25,6 +25,13 @@ Rails.application.configure do
   config.active_storage.service = :hetzner
   config.action_controller.default_url_options = { host: "calcumake.com" }
 
+  # Use proxy mode to serve Active Storage files through the application
+  # This is required for kamal-proxy setups to avoid CORS issues
+  config.active_storage.resolve_model_to_route = :rails_storage_proxy
+  
+  # Set longer URL expiration for better caching (default is 5 minutes)
+  config.active_storage.service_urls_expire_in = 1.hour
+
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
   config.assume_ssl = true
 
