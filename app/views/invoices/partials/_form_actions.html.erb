@@ -1,0 +1,6 @@
+<div class="d-flex gap-2">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to t("actions.cancel"), 
+        invoice.persisted? ? print_pricing_invoice_path(print_pricing, invoice) : print_pricing_path(print_pricing), 
+        class: "btn btn-secondary" %>
+</div>

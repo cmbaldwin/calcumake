@@ -1,0 +1,20 @@
+<div class="mt-4 pt-3 border-top">
+  <div class="row">
+    <div class="col-md-6 offset-md-6">
+      <table class="table">
+        <tr>
+          <td class="text-end"><strong><%= t("print_pricing.subtotal") %>:</strong></td>
+          <td class="text-end" data-invoice-form-target="subtotal">
+            <%= formatted_currency_amount(invoice.subtotal, currency) %>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-end"><strong><%= t("print_pricing.total") %>:</strong></td>
+          <td class="text-end" data-invoice-form-target="total">
+            <%= formatted_currency_amount(invoice.total, currency) %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

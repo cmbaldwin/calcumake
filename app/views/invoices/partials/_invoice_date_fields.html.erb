@@ -1,0 +1,9 @@
+<div class="col-md-4">
+  <%= form.label :invoice_date, t("invoices.fields.invoice_date"), class: "form-label" %>
+  <%= form.date_field :invoice_date, class: "form-control" %>
+</div>
+
+<div class="col-md-4">
+  <%= form.label :due_date, t("invoices.fields.due_date"), class: "form-label" %>
+  <%= form.date_field :due_date, class: "form-control" %>
+</div>

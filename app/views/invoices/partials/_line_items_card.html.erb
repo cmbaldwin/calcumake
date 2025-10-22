@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0"><%= t("invoices.line_items.title") %></h5>
+  </div>
+  <div class="card-body">
+    <div id="invoice-line-items" data-invoice-form-target="lineItems">
+      <%= form.fields_for :invoice_line_items do |line_item_form| %>
+        <%= render "invoice_line_item_fields", f: line_item_form %>
+      <% end %>
+    </div>
+    
+    <div class="mt-3">
+      <button type="button" class="btn btn-outline-primary" data-action="click->invoice-form#addLineItem">
+        <i class="bi bi-plus-circle"></i> <%= t("invoices.line_items.add_line_item") %>
+      </button>
+    </div>
+
+    <%= render "invoices/partials/invoice_totals", invoice: invoice, currency: currency %>
+  </div>
+</div>

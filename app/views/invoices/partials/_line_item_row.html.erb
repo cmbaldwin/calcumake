@@ -1,0 +1,6 @@
+<tr>
+    <td><%= item.description %></td>
+    <td class="text-center"><%= item.quantity %></td>
+    <td class="text-end"><%= formatted_currency_amount(item.unit_price, currency) %></td>
+    <td class="text-end"><%= formatted_currency_amount(item.total_price, currency) %></td>
+</tr>

@@ -1,0 +1,28 @@
+<% if user.default_company_name.present? %>
+  <div class="mt-3 p-3 bg-light rounded">
+    <div class="row g-2">
+      <% if user.company_logo.attached? %>
+        <div class="col-12 mb-2">
+          <%= image_tag user.company_logo_url, class: "invoice-company-logo", alt: "Company Logo" %>
+        </div>
+      <% end %>
+      <div class="col-12">
+        <strong><%= user.default_company_name %></strong>
+      </div>
+      <% if user.default_company_email.present? %>
+        <div class="col-12 text-muted small">
+          <%= user.default_company_email %>
+        </div>
+      <% end %>
+      <% if user.default_company_phone.present? %>
+        <div class="col-12 text-muted small">
+          <%= user.default_company_phone %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="alert alert-warning mt-3 mb-0">
+    <%= t("invoices.no_company_info") %>
+  </div>
+<% end %>
