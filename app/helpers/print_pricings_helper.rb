@@ -10,11 +10,6 @@ module PrintPricingsHelper
     pricing.created_at.strftime("%b %d, %Y")
   end
 
-  def translate_filament_type(filament_type)
-    return "" if filament_type.blank?
-    t("print_pricing.filament_types.#{filament_type.downcase}")
-  end
-
   def total_print_time_hours(print_pricings)
     print_pricings.sum { |p| p.total_actual_print_time_minutes } / 60
   end
@@ -57,7 +52,7 @@ module PrintPricingsHelper
       button = content_tag(:button, t("actions.actions"), class: "btn btn-primary btn-sm dropdown-toggle", type: "button", data: { "bs-toggle": "dropdown" }, "aria-expanded": "false")
 
       menu_items = []
-      menu_items << content_tag(:li, link_to(t("print_pricing.invoice"), invoice_print_pricing_path(pricing), class: "dropdown-item"))
+      menu_items << content_tag(:li, link_to(t("print_pricing.new_invoice"), invoice_print_pricing_path(pricing), class: "dropdown-item", data: { turbo_frame: "_top" }))
       menu_items << content_tag(:li, link_to(t("actions.edit"), edit_print_pricing_path(pricing), class: "dropdown-item"))
       menu_items << content_tag(:li, content_tag(:hr, "", class: "dropdown-divider"))
       menu_items << content_tag(:li, link_to(t("actions.delete"), pricing, method: :delete,

@@ -8,6 +8,13 @@ Rails.application.routes.draw do
       patch :decrement_times_printed
       get :invoice
     end
+    resources :invoices do
+      member do
+        patch :mark_as_sent
+        patch :mark_as_paid
+        patch :mark_as_cancelled
+      end
+    end
   end
   resources :printers
 
