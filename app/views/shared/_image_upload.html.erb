@@ -3,7 +3,7 @@
   <!-- File Input -->
   <%= form.file_field field_name,
     class: "form-control",
-    accept: "image/*",
+    accept: "image/png,image/jpg,image/jpeg,image/gif,image/webp",
     data: {
       "image-upload-target": "input",
       "action": "change->image-upload#change"

@@ -9,15 +9,6 @@ class User < ApplicationRecord
   has_many :invoices, dependent: :destroy
   has_one_attached :company_logo
 
-  # Cache company logo URL for 1 hour to improve performance
-  def company_logo_url
-    return nil unless company_logo.attached?
-
-    Rails.cache.fetch([ "user", id, "company_logo", company_logo.blob.id ], expires_in: 1.hour) do
-      company_logo.url(expires_in: 1.hour, disposition: :inline)
-    end
-  end
-
   validates :default_currency, presence: true
   validates :default_energy_cost_per_kwh, presence: true, numericality: { greater_than: 0 }
   validates :locale, inclusion: { in: I18n.available_locales.map(&:to_s) }, allow_blank: true

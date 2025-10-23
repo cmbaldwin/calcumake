@@ -86,7 +86,7 @@
                     <%= render 'shared/image_upload',
                       form: form,
                       field_name: :company_logo,
-                      image_url: @user.company_logo.attached? ? @user.company_logo_url : nil,
+                      image_url: @user.company_logo.attached? ? url_for(@user.company_logo) : nil,
                       alt_text: 'Company Logo',
                       placeholder_text: 'Drag & drop an image here or click to browse',
                       remove_text: 'Remove',
