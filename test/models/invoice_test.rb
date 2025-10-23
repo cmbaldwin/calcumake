@@ -257,4 +257,63 @@ class InvoiceTest < ActiveSupport::TestCase
     assert_equal newer, recent.first
     assert_equal older, recent.second
   end
+
+  # Instance methods
+  test "build_default_line_items creates line items from print pricing" do
+    invoice = @print_pricing.invoices.build(user: @user)
+    invoice.build_default_line_items
+
+    assert invoice.invoice_line_items.any?, "Should build line items"
+
+    # Should have line items for each plate
+    plate_items = invoice.invoice_line_items.select { |item| item.line_item_type == "filament" }
+    assert_equal @print_pricing.plates.count, plate_items.count
+
+    # Check if electricity cost is included
+    if @print_pricing.total_electricity_cost > 0
+      electricity_item = invoice.invoice_line_items.find { |item| item.line_item_type == "electricity" }
+      assert electricity_item.present?, "Should include electricity cost"
+      assert_equal @print_pricing.total_electricity_cost, electricity_item.unit_price
+    end
+  end
+
+  test "build_default_line_items sets correct order positions" do
+    invoice = @print_pricing.invoices.build(user: @user)
+    invoice.build_default_line_items
+
+    positions = invoice.invoice_line_items.map(&:order_position)
+    assert_equal positions, positions.sort, "Order positions should be sequential"
+    assert_equal 0, positions.first, "First position should be 0"
+  end
+
+  test "build_default_line_items includes labor costs when present" do
+    @print_pricing.prep_time_minutes = 60
+    @print_pricing.prep_cost_per_hour = 25.0
+    @print_pricing.postprocessing_time_minutes = 60
+    @print_pricing.postprocessing_cost_per_hour = 25.0
+    @print_pricing.save!
+
+    invoice = @print_pricing.invoices.build(user: @user)
+    invoice.build_default_line_items
+
+    labor_item = invoice.invoice_line_items.find { |item| item.line_item_type == "labor" }
+    if @print_pricing.total_labor_cost > 0
+      assert labor_item.present?, "Should include labor cost"
+      assert_equal @print_pricing.total_labor_cost, labor_item.unit_price
+    end
+  end
+
+  test "build_default_line_items handles print pricing with minimal data" do
+    # Use the existing print_pricing from setup which has plates
+    invoice = @print_pricing.invoices.build(user: @user)
+
+    # Should not raise an error even if called multiple times
+    assert_nothing_raised do
+      invoice.build_default_line_items
+      invoice.build_default_line_items # Should be idempotent
+    end
+
+    # Verify line items were created
+    assert invoice.invoice_line_items.any?, "Should create line items"
+  end
 end

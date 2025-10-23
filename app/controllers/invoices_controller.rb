@@ -1,5 +1,6 @@
 class InvoicesController < ApplicationController
   include ApplicationHelper
+  include ResourceAuthorization
 
   before_action :authenticate_user!
   before_action :set_print_pricing
@@ -26,7 +27,7 @@ class InvoicesController < ApplicationController
     @invoice.notes = current_user.default_invoice_notes
 
     # Build default line items from print pricing
-    build_default_line_items
+    @invoice.build_default_line_items
   end
 
   def create
@@ -108,9 +109,7 @@ class InvoicesController < ApplicationController
   end
 
   def authorize_invoice
-    unless @invoice.user == current_user
-      redirect_to root_path, alert: t("errors.unauthorized")
-    end
+    authorize_resource_ownership!(@invoice, redirect_path: root_path)
   end
 
   def invoice_params
@@ -121,68 +120,5 @@ class InvoicesController < ApplicationController
         :id, :description, :quantity, :unit_price, :line_item_type, :order_position, :_destroy
       ]
     )
-  end
-
-  def build_default_line_items
-    position = 0
-
-    # Filament cost line items (one per plate)
-    @print_pricing.plates.each_with_index do |plate, index|
-      @invoice.invoice_line_items.build(
-        description: "#{t('print_pricing.sections.plate')} #{index + 1}: #{plate.filament_weight}g #{translate_filament_type(plate.filament_type)}",
-        quantity: 1,
-        unit_price: plate.total_filament_cost,
-        line_item_type: "filament",
-        order_position: position
-      )
-      position += 1
-    end
-
-    # Electricity cost
-    if @print_pricing.total_electricity_cost > 0
-      @invoice.invoice_line_items.build(
-        description: t("print_pricing.electricity_cost"),
-        quantity: 1,
-        unit_price: @print_pricing.total_electricity_cost,
-        line_item_type: "electricity",
-        order_position: position
-      )
-      position += 1
-    end
-
-    # Labor costs
-    if @print_pricing.total_labor_cost > 0
-      @invoice.invoice_line_items.build(
-        description: t("print_pricing.labor_cost"),
-        quantity: 1,
-        unit_price: @print_pricing.total_labor_cost,
-        line_item_type: "labor",
-        order_position: position
-      )
-      position += 1
-    end
-
-    # Machine upkeep
-    if @print_pricing.total_machine_upkeep_cost > 0
-      @invoice.invoice_line_items.build(
-        description: t("print_pricing.machine_upkeep"),
-        quantity: 1,
-        unit_price: @print_pricing.total_machine_upkeep_cost,
-        line_item_type: "machine",
-        order_position: position
-      )
-      position += 1
-    end
-
-    # Other costs
-    if @print_pricing.other_costs && @print_pricing.other_costs > 0
-      @invoice.invoice_line_items.build(
-        description: t("print_pricing.other_costs"),
-        quantity: 1,
-        unit_price: @print_pricing.other_costs,
-        line_item_type: "other",
-        order_position: position
-      )
-    end
   end
 end
