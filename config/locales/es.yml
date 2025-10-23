@@ -3,6 +3,7 @@ es:
   language_name: Español
   nav:
     brand: CalcuMake
+    print_pricings: Mis Precios
     my_pricings: Mis Precios
     new_pricing: Nuevo Precio
     my_printers: Mis Impresoras
@@ -350,6 +351,8 @@ es:
       update_settings: Actualizar Configuración
       update_profile: Actualizar Perfil
       cancel: Cancelar
+    image_upload:
+      help_text: "Tamaño máximo de archivo: 5MB. Formatos soportados: PNG, JPG, GIF, WebP"
   currency:
     usd: Dólar Estadounidense
     eur: Euro

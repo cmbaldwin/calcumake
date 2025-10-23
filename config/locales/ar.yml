@@ -3,6 +3,7 @@ ar:
   language_name: العربية
   nav:
     brand: CalcuMake
+    print_pricings: أسعاري
     my_pricings: أسعاري
     new_pricing: سعر جديد
     my_printers: طابعاتي
