@@ -14,7 +14,7 @@ class User < ApplicationRecord
     return nil unless company_logo.attached?
 
     Rails.cache.fetch([ "user", id, "company_logo", company_logo.blob.id ], expires_in: 1.hour) do
-      Rails.application.routes.url_helpers.rails_blob_path(company_logo, disposition: "inline", only_path: true)
+      company_logo.url(expires_in: 1.hour, disposition: :inline)
     end
   end
 
