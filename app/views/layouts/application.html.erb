@@ -52,21 +52,9 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     
-    <%# PWA Service Worker Registration %>
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('<%= pwa_service_worker_path %>')
-          .then((registration) => {
-            console.log('Service Worker registered with scope:', registration.scope);
-          })
-          .catch((error) => {
-            console.error('Service Worker registration failed:', error);
-          });
-      }
-    </script>
 </head>
 
-<body class="<%= content_for(:body_class) %>">
+<body class="<%= content_for(:body_class) %>" data-controller="pwa-registration" data-pwa-registration-service-worker-path-value="<%= pwa_service_worker_path %>">
     <!-- Flash Messages -->
     <div id="flash">
         <%= render "layouts/flash" %>

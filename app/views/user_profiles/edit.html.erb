@@ -1,8 +1,8 @@
-<div class="calculator-header" style="text-align: center; margin-bottom: 3rem;">
-  <h1 style="color: var(--primary); font-size: 2.8rem; font-weight: 800;">
+<div class="calculator-header">
+  <h1>
     User Profile Settings
   </h1>
-  <p style="color: var(--text-secondary); font-size: 1.1rem;">
+  <p>
     Configure your default preferences
   </p>
 </div>
@@ -19,8 +19,8 @@
     </div>
   <% end %>
 
-  <div class="form-section" style="background: white; border-radius: 16px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 20px var(--shadow);">
-    <h3 style="color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--accent); padding-bottom: 1rem;">
+  <div class="form-section">
+    <h3>
       Default Settings
     </h3>
     <div class="row">
@@ -29,27 +29,23 @@
         <%= form.select :default_currency, 
             options_for_select(currency_options, @user.default_currency), 
             { prompt: "Select currency" } %>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">
+        <p class="form-text">
           This will be used as the default currency for new pricing calculations.
         </p>
       </div>
       <div class="column column-50">
         <label for="user_default_energy_cost_per_kwh">Default Energy Cost per kWh</label>
         <%= form.number_field :default_energy_cost_per_kwh, step: 0.001, min: 0.001, 
-            placeholder: "0.120", style: "text-align: right;" %>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">
+            placeholder: "0.120", class: "text-end" %>
+        <p class="form-text">
           Your local electricity cost per kilowatt-hour. This will be used as the default for new calculations.
         </p>
       </div>
     </div>
   </div>
 
-  <div class="form-actions" style="text-align: center; margin-top: 2rem;">
-    <%= form.submit "Update Profile", class: "btn button-outline", 
-        style: "background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); 
-               color: white; border: none; padding: 1rem 2rem; font-size: 1.1rem; 
-               border-radius: 8px; cursor: pointer; margin-right: 1rem;" %>
-    <%= link_to "Cancel", user_profile_path, class: "btn button-clear",
-        style: "padding: 1rem 2rem; font-size: 1.1rem;" %>
+  <div class="form-actions">
+    <%= form.submit "Update Profile", class: "btn button-primary" %>
+    <%= link_to "Cancel", user_profile_path, class: "btn button-clear" %>
   </div>
 <% end %>

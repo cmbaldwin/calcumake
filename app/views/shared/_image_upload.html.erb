@@ -1,0 +1,51 @@
+<div class="image-upload-container" data-controller="image-upload" data-image-upload-max-size-value="5242880" data-action="dragover->image-upload#dragover dragleave->image-upload#dragleave drop->image-upload#drop">
+  
+  <!-- File Input -->
+  <%= form.file_field field_name,
+    class: "form-control",
+    accept: "image/*",
+    data: {
+      "image-upload-target": "input",
+      "action": "change->image-upload#change"
+    } %>
+
+  <!-- Upload Area -->
+  <div class="upload-area mt-2 p-3 border border-2 border-dashed rounded text-center">
+    
+    <!-- Current Image or Placeholder -->
+    <% if image_url.present? %>
+    <img data-image-upload-target="preview" src="<%= image_url %>" alt="<%= alt_text %>" class="img-fluid rounded preview-image">
+    <div data-image-upload-target="placeholder" class="hidden-element">
+      <i class="fas fa-image text-muted mb-2 placeholder-icon"></i>
+      <p class="text-muted mb-0">
+        <small><%= placeholder_text %></small>
+      </p>
+    </div>
+    <% else %>
+    <img data-image-upload-target="preview" alt="Preview" class="img-fluid rounded preview-image hidden-element">
+    <div data-image-upload-target="placeholder">
+      <i class="fas fa-image text-muted mb-2 placeholder-icon"></i>
+      <p class="text-muted mb-0">
+        <small><%= placeholder_text %></small>
+      </p>
+    </div>
+    <% end %>
+
+    <!-- Remove Button -->
+    <% if image_url.present? %>
+    <div class="mt-2">
+      <button type="button" class="btn btn-sm btn-outline-danger" data-action="click->image-upload#remove">
+        <i class="fas fa-times"></i> <%= remove_text %>
+      </button>
+    </div>
+    <% end %>
+  </div>
+
+  <!-- Error Display -->
+  <div data-image-upload-target="error" class="alert alert-danger mt-2 error-message"></div>
+
+  <!-- Help Text -->
+  <div class="form-text">
+    <%= help_text %>
+  </div>
+</div>
