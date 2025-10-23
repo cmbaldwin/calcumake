@@ -48,6 +48,71 @@ class Invoice < ApplicationRecord
     update(status: "cancelled")
   end
 
+  def build_default_line_items
+    return unless print_pricing
+
+    position = 0
+
+    # Filament cost line items (one per plate)
+    print_pricing.plates.each_with_index do |plate, index|
+      invoice_line_items.build(
+        description: "Plate #{index + 1}: #{plate.filament_weight}g #{plate.filament_type}",
+        quantity: 1,
+        unit_price: plate.total_filament_cost,
+        line_item_type: "filament",
+        order_position: position
+      )
+      position += 1
+    end
+
+    # Electricity cost
+    if print_pricing.total_electricity_cost > 0
+      invoice_line_items.build(
+        description: I18n.t("print_pricing.electricity_cost"),
+        quantity: 1,
+        unit_price: print_pricing.total_electricity_cost,
+        line_item_type: "electricity",
+        order_position: position
+      )
+      position += 1
+    end
+
+    # Labor costs
+    if print_pricing.total_labor_cost > 0
+      invoice_line_items.build(
+        description: I18n.t("print_pricing.labor_cost"),
+        quantity: 1,
+        unit_price: print_pricing.total_labor_cost,
+        line_item_type: "labor",
+        order_position: position
+      )
+      position += 1
+    end
+
+    # Machine upkeep
+    if print_pricing.total_machine_upkeep_cost > 0
+      invoice_line_items.build(
+        description: I18n.t("print_pricing.machine_upkeep"),
+        quantity: 1,
+        unit_price: print_pricing.total_machine_upkeep_cost,
+        line_item_type: "machine",
+        order_position: position
+      )
+      position += 1
+    end
+
+    # Other costs
+    if print_pricing.other_costs && print_pricing.other_costs > 0
+      invoice_line_items.build(
+        description: I18n.t("print_pricing.other_costs"),
+        quantity: 1,
+        unit_price: print_pricing.other_costs,
+        line_item_type: "other",
+        order_position: position
+      )
+    end
+  end
+
   private
 
   def generate_invoice_number
