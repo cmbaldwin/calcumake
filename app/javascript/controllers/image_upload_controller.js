@@ -65,9 +65,10 @@ export default class extends Controller {
   }
 
   isValidFile(file) {
-    // Check file type
-    if (!file.type.startsWith('image/')) {
-      this.showError("Please select an image file")
+    // Check file type - only allow specific image formats
+    const allowedTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif', 'image/webp']
+    if (!allowedTypes.includes(file.type)) {
+      this.showError("Please select a PNG, JPG, GIF, or WebP image file")
       return false
     }
 
