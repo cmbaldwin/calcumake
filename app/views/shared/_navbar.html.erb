@@ -10,46 +10,51 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <% if user_signed_in? %>
-                    <li class="nav-item">
-                        <%= link_to t('nav.new_pricing'), new_print_pricing_path, class: "nav-link" %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to t('nav.my_printers'), printers_path, class: "nav-link" %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to t('nav.profile'), user_profile_path, class: "nav-link" %>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="helpDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <%= t('nav.help') %>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="helpDropdown">
-                            <li><%= link_to t('support.nav_title'), support_path, class: "dropdown-item" %></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><%= link_to t('legal.privacy_policy.nav_title'), privacy_policy_path, class: "dropdown-item" %></li>
-                            <li><%= link_to t('legal.user_agreement.nav_title'), user_agreement_path, class: "dropdown-item" %></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to t('nav.sign_out'), destroy_user_session_path, method: :delete, class: "nav-link" %>
-                    </li>
+                <li class="nav-item">
+                    <%= link_to t('nav.print_pricings'), print_pricings_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to t('nav.new_pricing'), new_print_pricing_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to t('nav.my_printers'), printers_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to t('nav.profile'), user_profile_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="helpDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <%= t('nav.help') %>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="helpDropdown">
+                        <li><%= link_to t('support.nav_title'), support_path, class: "dropdown-item" %></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><%= link_to t('legal.privacy_policy.nav_title'), privacy_policy_path, class: "dropdown-item" %></li>
+                        <li><%= link_to t('legal.user_agreement.nav_title'), user_agreement_path, class: "dropdown-item" %></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <%= link_to t('nav.sign_out'), destroy_user_session_path, method: :delete, class: "nav-link" %>
+                </li>
                 <% else %>
-                    <li class="nav-item">
-                        <%= link_to t('support.nav_title'), support_path, class: "nav-link" %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to t('nav.sign_in'), new_user_session_path, class: "nav-link" %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to t('nav.sign_up'), new_user_registration_path, class: "nav-link btn btn-light text-primary ms-2" %>
-                    </li>
+                <li class="nav-item">
+                    <%= link_to t('support.nav_title'), support_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to t('nav.sign_in'), new_user_session_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to t('nav.sign_up'), new_user_registration_path, class: "nav-link btn btn-light text-primary ms-2" %>
+                </li>
                 <% end %>
             </ul>
 
             <!-- Language Selector -->
             <div class="navbar-text">
                 <%= form_with url: switch_locale_path, method: :post, local: true, class: "d-flex" do |form| %>
-                    <%= form.select :locale,
+                <%= form.select :locale,
                         options_for_select([
                           [t('language_name', locale: :en), 'en'],
                           [t('language_name', locale: :ja), 'ja'],

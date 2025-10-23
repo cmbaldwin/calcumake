@@ -3,6 +3,7 @@ ja:
   language_name: 日本語
   nav:
     brand: CalcuMake
+    print_pricings: 料金設定
     my_pricings: 料金設定
     new_pricing: 新しい料金設定
     my_printers: プリンター
@@ -353,6 +354,8 @@ ja:
     buttons:
       update_settings: 設定更新
       update_profile: プロフィール更新
+    image_upload:
+      help_text: "最大ファイルサイズ：5MB。サポート形式：PNG、JPG、GIF、WebP"
   currency:
     usd: 米ドル
     eur: ユーロ
