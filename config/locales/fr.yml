@@ -3,6 +3,7 @@ fr:
   language_name: Français
   nav:
     brand: CalcuMake
+    print_pricings: Mes Tarifs
     my_pricings: Mes Tarifs
     new_pricing: Nouveau Tarif
     my_printers: Mes Imprimantes

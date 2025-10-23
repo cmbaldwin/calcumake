@@ -3,6 +3,7 @@ zh-CN:
   language_name: 中文（简体）
   nav:
     brand: CalcuMake
+    print_pricings: 我的定价
     my_pricings: 我的定价
     new_pricing: 新建定价
     my_printers: 我的打印机
