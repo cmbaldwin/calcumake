@@ -8,7 +8,7 @@
         <p class="mb-2">
             <%= t("invoices.company_info_card_text") %>
         </p>
-        <%= render "invoices/partials/company_info_display", user: current_user %>
+        <%= render "invoices/partials/display/company", user: current_user %>
         <%= link_to t("invoices.edit_company_info"), user_profile_path, class: "btn btn-info mt-3" %>
     </div>
 </div>

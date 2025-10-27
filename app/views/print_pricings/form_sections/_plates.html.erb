@@ -1,30 +1,28 @@
-<div class="col-12" data-controller="nested-form" data-nested-form-max-items-value="10">
-  <div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0"><%= t('print_pricing.sections.plates') %></h5>
-      <button type="button"
-              class="btn btn-sm btn-success"
-              data-action="nested-form#add">
-        + <%= t('print_pricing.buttons.add_plate') %>
-      </button>
-    </div>
-    <div class="card-body">
-      <div data-nested-form-target="container">
-        <%= f.fields_for :plates do |plate_form| %>
-          <%= render 'print_pricings/plate_fields', f: plate_form %>
-        <% end %>
-      </div>
+<div class="col-12" data-controller="nested-form" data-nested-form-max-items-value="10" data-nested-form-dynamic-list-outlet=".plate-dynamic-list">
+    <div class="card plate-dynamic-list" data-controller="dynamic-list">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0"><%= t('print_pricing.sections.plates') %></h5>
+            <button type="button" class="btn btn-sm btn-success" data-action="nested-form#add" data-dynamic-list-target="addButton">
+                + <%= t('print_pricing.buttons.add_plate') %>
+            </button>
+        </div>
+        <div class="card-body">
+            <div data-nested-form-target="container" data-dynamic-list-target="container">
+                <%= f.fields_for :plates do |plate_form| %>
+                <%= render 'print_pricings/plate_fields', f: plate_form %>
+                <% end %>
+            </div>
 
-      <!-- Template for new plates -->
-      <template data-nested-form-target="template">
-        <%= f.fields_for :plates, Plate.new, child_index: 'NEW_RECORD' do |plate_form| %>
-          <%= render 'print_pricings/plate_fields', f: plate_form %>
-        <% end %>
-      </template>
+            <!-- Template for new plates -->
+            <template data-nested-form-target="template" data-dynamic-list-target="template">
+                <%= f.fields_for :plates, Plate.new, child_index: 'NEW_RECORD' do |plate_form| %>
+                <%= render 'print_pricings/plate_fields', f: plate_form %>
+                <% end %>
+            </template>
 
-      <div class="form-text mt-2">
-        <%= t('print_pricing.help.plates_limit') %>
-      </div>
+            <div class="form-text mt-2">
+                <%= t('print_pricing.help.plates_limit') %>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

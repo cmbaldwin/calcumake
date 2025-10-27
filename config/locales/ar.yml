@@ -7,6 +7,7 @@ ar:
     my_pricings: أسعاري
     new_pricing: سعر جديد
     my_printers: طابعاتي
+    my_filaments: خيوط الطباعة
     profile: الملف الشخصي
     help: مساعدة
     sign_out: تسجيل الخروج
@@ -18,6 +19,8 @@ ar:
     cancel: إلغاء
     edit: تعديل
     delete: حذف
+    duplicate: نسخ
+    copy: نسخة
     create: إنشاء
     update: تحديث
     new: جديد
@@ -34,10 +37,13 @@ ar:
     created: تم إنشاء %{model} بنجاح
     updated: تم تحديث %{model} بنجاح
     deleted: تم حذف %{model} بنجاح
+    duplicated: تم نسخ %{model} بنجاح
+    duplicate_failed: فشل نسخ %{model}
   models:
     user: المستخدم
     printer: الطابعة
     print_pricing: تسعير الطباعة
+    filament: خيط الطباعة
   printer:
     name: اسم الطابعة
     manufacturer: الشركة المصنعة
@@ -208,6 +214,20 @@ ar:
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
+filaments:
+  index:
+    title: خيوط الطباعة
+    subtitle: إدارة مخزون خيوط الطباعة ثلاثية الأبعاد
+    add_new: إضافة خيط جديد
+  fields:
+    name: اسم الخيط
+    brand: العلامة التجارية
+    material_type: نوع المادة
+    filament: خيط الطباعة
+    select_filament: اختر خيط طباعة
+  buttons:
+    add_filament: إضافة خيط
+    update_filament: تحديث الخيط
 print_pricings:
   form:
     filament_weight: وزن الخيط

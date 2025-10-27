@@ -1,0 +1,16 @@
+class PlateFilament < ApplicationRecord
+  belongs_to :plate
+  belongs_to :filament
+
+  validates :filament_weight, presence: true, numericality: { greater_than: 0 }
+  validates :filament_id, uniqueness: { scope: :plate_id, message: :already_added }
+
+  delegate :user, to: :plate
+  delegate :print_pricing, to: :plate
+  delegate :cost_per_gram, :material_type, :display_name, to: :filament
+
+  def total_cost
+    return 0 unless filament_weight.present? && filament.cost_per_gram > 0
+    filament_weight * filament.cost_per_gram
+  end
+end

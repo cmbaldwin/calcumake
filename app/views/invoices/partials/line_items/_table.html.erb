@@ -11,11 +11,11 @@
       </thead>
       <tbody>
         <% invoice.invoice_line_items.each do |item| %>
-          <%= render "invoices/partials/line_item_row", item: item, currency: invoice.currency %>
+          <%= render "invoices/partials/line_items/row", item: item, currency: invoice.currency %>
         <% end %>
       </tbody>
       <tfoot>
-        <%= render "invoices/partials/line_items_footer", invoice: invoice %>
+        <%= render "invoices/partials/line_items/footer", invoice: invoice %>
       </tfoot>
     </table>
   </div>

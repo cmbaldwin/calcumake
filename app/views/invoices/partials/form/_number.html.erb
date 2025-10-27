@@ -5,7 +5,7 @@
       <%= form.text_field :invoice_number, class: "form-control", readonly: true %>
     </div>
   <% else %>
-    <%= render "invoices/partials/invoice_number_preview", form: form %>
+    <%= render "invoices/partials/display/number", form: form %>
   <% end %>
   <div class="form-text"><%= t("invoices.fields.invoice_number_help") %></div>
 </div>

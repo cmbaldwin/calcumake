@@ -56,7 +56,7 @@ class Invoice < ApplicationRecord
     # Filament cost line items (one per plate)
     print_pricing.plates.each_with_index do |plate, index|
       invoice_line_items.build(
-        description: "Plate #{index + 1}: #{plate.filament_weight}g #{plate.filament_type}",
+        description: "Plate #{index + 1}: #{plate.total_filament_weight.round(1)}g #{plate.filament_types}",
         quantity: 1,
         unit_price: plate.total_filament_cost,
         line_item_type: "filament",

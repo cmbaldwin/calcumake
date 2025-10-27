@@ -32,6 +32,12 @@ class UserTest < ActiveSupport::TestCase
 
   test "should destroy associated print_pricings when user is destroyed" do
     @user.save!
+    filament = @user.filaments.create!(
+      name: "Test PLA",
+      material_type: "PLA",
+      spool_price: 25.0,
+      spool_weight: 1000.0
+    )
     printer = @user.printers.create!(
       name: "Test Printer",
       manufacturer: "Prusa",
@@ -45,14 +51,13 @@ class UserTest < ActiveSupport::TestCase
       job_name: "Test Print",
       printer: printer
     )
-    pricing.plates.build(
-      filament_type: "PLA",
-      filament_weight: 50.0,
-      spool_price: 25.0,
-      spool_weight: 1000.0,
-      markup_percentage: 20.0,
+    plate = pricing.plates.build(
       printing_time_hours: 2,
       printing_time_minutes: 30
+    )
+    plate.plate_filaments.build(
+      filament: filament,
+      filament_weight: 50.0
     )
     pricing.save!
 

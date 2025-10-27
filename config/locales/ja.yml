@@ -1,12 +1,78 @@
 ---
 ja:
   language_name: 日本語
+  activerecord:
+    errors:
+      models:
+        filament:
+          attributes:
+            name:
+              blank: "フィラメント名を入力してください"
+              taken: "この名前のフィラメントはすでに存在します"
+            material_type:
+              blank: "材質タイプを選択してください"
+              inclusion: "有効な材質タイプを選択してください"
+            diameter:
+              blank: "直径を入力してください"
+              inclusion: "有効な直径を選択してください"
+            spool_weight:
+              greater_than: "スプール重量は0より大きい値である必要があります"
+              not_a_number: "スプール重量は数値である必要があります"
+            spool_price:
+              greater_than: "スプール価格は0より大きい値である必要があります"
+              not_a_number: "スプール価格は数値である必要があります"
+            print_temperature_min:
+              greater_than: "最低温度は0°Cより高い値である必要があります"
+              less_than: "最低温度は500°C未満である必要があります"
+              not_a_number: "最低温度は数値である必要があります"
+            print_temperature_max:
+              greater_than: "最高温度は0°Cより高い値である必要があります"
+              less_than: "最高温度は500°C未満である必要があります"
+              not_a_number: "最高温度は数値である必要があります"
+              temperature_range: "最低温度より高い値である必要があります"
+            heated_bed_temperature:
+              greater_than: "ベッド温度は0°Cより高い値である必要があります"
+              less_than: "ベッド温度は500°C未満である必要があります"
+              not_a_number: "ベッド温度は数値である必要があります"
+            print_speed_max:
+              greater_than: "印刷速度は0より大きい値である必要があります"
+              less_than: "印刷速度は1000未満である必要があります"
+              not_a_number: "印刷速度は数値である必要があります"
+            storage_temperature_max:
+              greater_than: "保管温度は-50°Cより高い値である必要があります"
+              less_than: "保管温度は100°C未満である必要があります"
+              not_a_number: "保管温度は数値である必要があります"
+            density:
+              greater_than: "密度は0より大きい値である必要があります"
+              less_than: "密度は10未満である必要があります"
+              not_a_number: "密度は数値である必要があります"
+        plate_filament:
+          attributes:
+            filament_weight:
+              blank: "フィラメント重量を入力してください"
+              greater_than: "フィラメント重量は0より大きい値である必要があります"
+              not_a_number: "フィラメント重量は数値である必要があります"
+            filament_id:
+              blank: "フィラメントを選択してください"
+              already_added: "このフィラメントはすでにこのプレートに追加されています"
+        plate:
+          attributes:
+            base:
+              no_filaments: "少なくとも1つのフィラメントが必要です"
+              duplicate_filaments: "同じフィラメントを1つのプレートで複数回使用することはできません"
+        print_pricing:
+          attributes:
+            base:
+              no_plates: "少なくとも1つのプレートが必要です"
+              too_many_plates: "プレートは10個を超えることはできません"
+              duplicate_filaments_on_plate: "同じプレートで同じフィラメントを複数回使用することはできません"
   nav:
     brand: CalcuMake
     print_pricings: 料金設定
     my_pricings: 料金設定
     new_pricing: 新しい料金設定
     my_printers: プリンター
+    my_filaments: フィラメント
     profile: プロフィール
     help: ヘルプ
     sign_out: サインアウト
@@ -18,6 +84,8 @@ ja:
     cancel: キャンセル
     edit: 編集
     delete: 削除
+    duplicate: 複製
+    copy: コピー
     create: 作成
     update: 更新
     new: 新規
@@ -34,10 +102,13 @@ ja:
     created: "%{model}を正常に作成しました"
     updated: "%{model}を正常に更新しました"
     deleted: "%{model}を正常に削除しました"
+    duplicated: "%{model}を正常に複製しました"
+    duplicate_failed: "%{model}の複製に失敗しました"
   models:
     user: ユーザー
     printer: プリンター
     print_pricing: 印刷料金
+    filament: フィラメント
   common:
     created: 作成日
     currency: 通貨
@@ -391,6 +462,86 @@ ja:
     description: CalcuMakeについてのご質問やご提案がありますか？お気軽にお問い合わせください。
     email_label: メールサポート
     response_time: 通常24〜48時間以内に返信いたします
+  filaments:
+    index:
+      title: フィラメント一覧
+      subtitle: 3D印刷フィラメントの在庫を管理
+      add_new: 新しいフィラメントを追加
+      search_placeholder: 名前、ブランド、材質、色で検索...
+      clear_search: 検索をクリア
+      empty_state:
+        title: まだフィラメントが登録されていません
+        description: 最初のフィラメントを追加して、印刷計算用の材料ライブラリを構築しましょう。
+        add_first: 最初のフィラメントを追加
+      no_results:
+        title: 結果が見つかりません
+        description: "'%{query}'に一致するフィラメントはありません。別の検索語句をお試しください。"
+    new:
+      title: 新しいフィラメントを追加
+      subtitle: 材料ライブラリに新しいフィラメントを登録
+    edit:
+      title: フィラメント編集
+      subtitle: フィラメント仕様を更新
+    show:
+      title: フィラメント詳細
+      usage_history: 使用履歴
+      times_used: 使用回数
+      total_weight_used: 総使用重量
+      new_print_with_filament: このフィラメントで新しい印刷
+      recent_prints: 最近の印刷
+      not_used_yet: このフィラメントはまだ使用されていません
+      create_first_print: 最初の印刷を作成
+      no_cost_info: コスト情報がありません
+    sections:
+      basic_info: 基本情報
+      cost_info: コスト情報
+      properties: 特性
+      technical_specs: 技術仕様
+    fields:
+      name: フィラメント名
+      name_placeholder: 例：ベーシックPLA、プレミアムPETG
+      brand: ブランド
+      brand_placeholder: 例：Hatchbox、Prusa、eSUN
+      material_type: 材質タイプ
+      material_type_prompt: 材質タイプを選択
+      diameter: 直径
+      color: 色
+      color_placeholder: 例：赤、自然色、透明
+      finish: 仕上げ
+      finish_placeholder: 例：マット、光沢、シルク
+      spool_weight: スプール重量
+      spool_weight_placeholder: "1000"
+      spool_price: スプール価格
+      spool_price_placeholder: "25.00"
+      density: 密度
+      density_placeholder: "1.24"
+      cost_per_gram: グラムあたり単価
+      temperature_range: 温度範囲
+      moisture_sensitive: 湿気に敏感
+      food_safe: 食品安全
+      recyclable: リサイクル可能
+      notes: 備考
+      notes_placeholder: このフィラメントに関する追加情報...
+      filament: フィラメント
+      select_filament: フィラメントを選択
+      weight_used: 使用重量
+      selected: 選択済み
+      none_selected: 未選択
+      not_set: 未設定
+      total_cost: 総コスト
+      no_filament_registered: フィラメントが登録されていませんか？
+      add_new_filament: 新しいフィラメントを追加
+      bed_temperature: ベッド温度
+      max_print_speed: 最大印刷速度
+      storage_temp: 保管温度
+    properties:
+      moisture_sensitive: 湿気に敏感
+      food_safe: 食品安全
+      recyclable: リサイクル可能
+    buttons:
+      add_filament: フィラメント追加
+      update_filament: フィラメント更新
+    confirm_delete: "'%{name}'を削除してもよろしいですか？"
   print_pricings:
     form:
       filament_weight: フィラメント重量

@@ -3,7 +3,10 @@
     <div class="row g-2">
         <% if user.company_logo.attached? %>
         <div class="col-12 mb-2">
-            <%= image_tag url_for(user.company_logo), class: "invoice-company-logo", alt: "Company Logo" %>
+            <%= image_tag url_for(user.company_logo),
+                alt: "Company Logo",
+                class: "img-fluid",
+                style: "max-width: 100px; max-height: 50px; object-fit: contain;" %>
         </div>
         <% end %>
         <div class="col-12">

@@ -1,54 +1,47 @@
 import { Controller } from "@hotwired/stimulus"
 
+// Backward-compatible nested form controller that uses dynamic-list as an outlet
 export default class extends Controller {
-  static targets = ["container", "template"]
+  static outlets = ["dynamic-list"]
+
   static values = {
-    maxItems: { type: Number, default: 10 }
+    maxItems: { type: Number, default: 10 },
+    minItems: { type: Number, default: 1 },
+    itemName: { type: String, default: "plate" },
+    addButtonText: { type: String, default: "Add Plate" }
   }
 
   connect() {
+    // Don't update buttons until outlet connects
+  }
+
+  dynamicListOutletConnected(dynamicListController) {
+    // Configure the dynamic list with our values
+    dynamicListController.maxItemsValue = this.maxItemsValue
+    dynamicListController.minItemsValue = this.minItemsValue
+    dynamicListController.itemNameValue = this.itemNameValue
+    dynamicListController.addButtonTextValue = this.addButtonTextValue
+
+    // Now that outlet is connected, update remove buttons
     this.updateRemoveButtons()
   }
 
-  add(event) {
-    event.preventDefault()
-
-    const content = this.templateTarget.innerHTML.replace(/NEW_RECORD/g, new Date().getTime())
-    this.containerTarget.insertAdjacentHTML('beforeend', content)
-    this.updateRemoveButtons()
-  }
-
-  remove(event) {
-    event.preventDefault()
-
-    const item = event.target.closest('.nested-form-item')
-
-    // If this is a persisted record, mark it for deletion
-    const destroyInput = item.querySelector('input[name*="_destroy"]')
-    if (destroyInput) {
-      destroyInput.value = '1'
-      item.style.display = 'none'
-    } else {
-      // If it's a new record, just remove it from the DOM
-      item.remove()
-    }
-
-    this.updateRemoveButtons()
-  }
-
+  // Backward compatibility method - delegates to dynamic-list outlet
   updateRemoveButtons() {
-    const visibleItems = this.containerTarget.querySelectorAll('.nested-form-item:not([style*="display: none"])')
-    const removeButtons = this.containerTarget.querySelectorAll('[data-action*="nested-form#remove"]')
+    this.dynamicListOutlets.forEach(outlet => outlet.updateControls())
+  }
 
-    // Show/hide remove buttons based on count (must have at least 1 plate)
-    removeButtons.forEach((button, index) => {
-      button.style.display = visibleItems.length <= 1 ? 'none' : 'inline-block'
-    })
+  // Delegate add method to dynamic-list outlet
+  add(event) {
+    if (this.dynamicListOutlets.length > 0) {
+      this.dynamicListOutlets[0].add(event)
+    }
+  }
 
-    // Check if we've reached max items
-    const addButton = this.element.querySelector('[data-action*="nested-form#add"]')
-    if (addButton) {
-      addButton.disabled = visibleItems.length >= this.maxItemsValue
+  // Delegate remove method to dynamic-list outlet
+  remove(event) {
+    if (this.dynamicListOutlets.length > 0) {
+      this.dynamicListOutlets[0].remove(event)
     }
   }
 }

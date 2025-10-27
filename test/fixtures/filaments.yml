@@ -1,0 +1,43 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  name: Basic PLA
+  brand: Hatchbox
+  material_type: PLA
+  diameter: 1.75
+  density: 1.24
+  print_temperature_min: 190
+  print_temperature_max: 220
+  heated_bed_temperature: 60
+  print_speed_max: 60
+  color: Red
+  finish: Matte
+  spool_weight: 1000.0
+  spool_price: 25.00
+  storage_temperature_max: 25
+  moisture_sensitive: false
+  food_safe: false
+  recyclable: true
+  notes: High quality PLA filament
+
+two:
+  user: two
+  name: Premium PETG
+  brand: Prusa
+  material_type: PETG
+  diameter: 1.75
+  density: 1.27
+  print_temperature_min: 220
+  print_temperature_max: 250
+  heated_bed_temperature: 80
+  print_speed_max: 50
+  color: Natural
+  finish: Clear
+  spool_weight: 1000.0
+  spool_price: 30.00
+  storage_temperature_max: 30
+  moisture_sensitive: true
+  food_safe: true
+  recyclable: true
+  notes: PETG for engineering applications

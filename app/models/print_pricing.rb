@@ -21,7 +21,6 @@ class PrintPricing < ApplicationRecord
     return all if query.blank?
 
     where("job_name ILIKE ?", "%#{sanitize_sql_like(query)}%")
-      .or(where(id: Plate.where("filament_type ILIKE ?", "%#{sanitize_sql_like(query)}%").select(:print_pricing_id)))
   end
 
   def total_printing_time_minutes
@@ -86,13 +85,13 @@ class PrintPricing < ApplicationRecord
 
   def must_have_at_least_one_plate
     if plates.reject(&:marked_for_destruction?).empty?
-      errors.add(:base, "Must have at least one plate")
+      errors.add(:base, :no_plates)
     end
   end
 
   def cannot_have_more_than_ten_plates
     if plates.reject(&:marked_for_destruction?).size > 10
-      errors.add(:base, "Cannot have more than 10 plates")
+      errors.add(:base, :too_many_plates)
     end
   end
 end

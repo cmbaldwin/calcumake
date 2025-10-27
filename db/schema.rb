@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_22_010124) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_27_032458) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -40,6 +40,33 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_22_010124) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "filaments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.string "brand"
+    t.string "material_type", null: false
+    t.decimal "diameter", precision: 4, scale: 2, default: "1.75"
+    t.decimal "density", precision: 4, scale: 2
+    t.integer "print_temperature_min"
+    t.integer "print_temperature_max"
+    t.integer "heated_bed_temperature"
+    t.integer "print_speed_max"
+    t.string "color"
+    t.string "finish"
+    t.decimal "spool_weight", precision: 8, scale: 2
+    t.decimal "spool_price", precision: 10, scale: 2
+    t.integer "storage_temperature_max"
+    t.boolean "moisture_sensitive", default: false
+    t.boolean "food_safe", default: false
+    t.boolean "recyclable", default: false
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["material_type"], name: "index_filaments_on_material_type"
+    t.index ["user_id", "name"], name: "index_filaments_on_user_id_and_name", unique: true
+    t.index ["user_id"], name: "index_filaments_on_user_id"
   end
 
   create_table "invoice_line_items", force: :cascade do |t|
@@ -78,15 +105,21 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_22_010124) do
     t.index ["user_id"], name: "index_invoices_on_user_id"
   end
 
+  create_table "plate_filaments", force: :cascade do |t|
+    t.bigint "plate_id", null: false
+    t.bigint "filament_id", null: false
+    t.decimal "filament_weight", precision: 8, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["filament_id"], name: "index_plate_filaments_on_filament_id"
+    t.index ["plate_id", "filament_id"], name: "index_plate_filaments_on_plate_id_and_filament_id", unique: true
+    t.index ["plate_id"], name: "index_plate_filaments_on_plate_id"
+  end
+
   create_table "plates", force: :cascade do |t|
     t.bigint "print_pricing_id", null: false
     t.integer "printing_time_hours"
     t.integer "printing_time_minutes"
-    t.decimal "filament_weight"
-    t.string "filament_type"
-    t.decimal "spool_price"
-    t.decimal "spool_weight"
-    t.decimal "markup_percentage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["print_pricing_id"], name: "index_plates_on_print_pricing_id"
@@ -145,15 +178,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_22_010124) do
     t.text "default_payment_details"
     t.text "default_invoice_notes"
     t.integer "next_invoice_number"
+    t.integer "default_prep_time_minutes", default: 10
+    t.decimal "default_prep_cost_per_hour", precision: 10, scale: 2, default: "1000.0"
+    t.integer "default_postprocessing_time_minutes", default: 10
+    t.decimal "default_postprocessing_cost_per_hour", precision: 10, scale: 2, default: "1000.0"
+    t.decimal "default_other_costs", precision: 10, scale: 2, default: "450.0"
+    t.decimal "default_vat_percentage", precision: 5, scale: 2, default: "20.0"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "filaments", "users"
   add_foreign_key "invoice_line_items", "invoices"
   add_foreign_key "invoices", "print_pricings"
   add_foreign_key "invoices", "users"
+  add_foreign_key "plate_filaments", "filaments"
+  add_foreign_key "plate_filaments", "plates"
   add_foreign_key "plates", "print_pricings"
   add_foreign_key "print_pricings", "printers"
   add_foreign_key "print_pricings", "users"

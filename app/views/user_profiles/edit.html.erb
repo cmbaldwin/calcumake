@@ -44,6 +44,68 @@
     </div>
   </div>
 
+  <div class="form-section">
+    <h3>Labor & Cost Defaults</h3>
+    <p class="form-text">These values will be pre-filled when creating new print pricing calculations.</p>
+
+    <div class="row">
+      <div class="column column-50">
+        <label for="user_default_prep_time_minutes">Prep Time (minutes)</label>
+        <%= form.number_field :default_prep_time_minutes, step: 1, min: 0,
+            placeholder: "10", class: "text-end" %>
+        <p class="form-text">Time spent preparing prints before starting.</p>
+      </div>
+      <div class="column column-50">
+        <label for="user_default_prep_cost_per_hour">Prep Cost per Hour</label>
+        <div class="input-group">
+          <span class="input-group-text"><%= currency_symbol(@user.default_currency) %></span>
+          <%= form.number_field :default_prep_cost_per_hour, step: 0.01, min: 0,
+              placeholder: "1000", class: "text-end" %>
+        </div>
+        <p class="form-text">Hourly rate for preparation work.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column column-50">
+        <label for="user_default_postprocessing_time_minutes">Post-processing Time (minutes)</label>
+        <%= form.number_field :default_postprocessing_time_minutes, step: 1, min: 0,
+            placeholder: "10", class: "text-end" %>
+        <p class="form-text">Time spent on post-processing (cleaning, support removal, etc.).</p>
+      </div>
+      <div class="column column-50">
+        <label for="user_default_postprocessing_cost_per_hour">Post-processing Cost per Hour</label>
+        <div class="input-group">
+          <span class="input-group-text"><%= currency_symbol(@user.default_currency) %></span>
+          <%= form.number_field :default_postprocessing_cost_per_hour, step: 0.01, min: 0,
+              placeholder: "1000", class: "text-end" %>
+        </div>
+        <p class="form-text">Hourly rate for post-processing work.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column column-50">
+        <label for="user_default_other_costs">Other Costs</label>
+        <div class="input-group">
+          <span class="input-group-text"><%= currency_symbol(@user.default_currency) %></span>
+          <%= form.number_field :default_other_costs, step: 0.01, min: 0,
+              placeholder: "450", class: "text-end" %>
+        </div>
+        <p class="form-text">Additional costs like packaging, shipping preparation, etc.</p>
+      </div>
+      <div class="column column-50">
+        <label for="user_default_vat_percentage">VAT Percentage</label>
+        <div class="input-group">
+          <%= form.number_field :default_vat_percentage, step: 0.01, min: 0, max: 100,
+              placeholder: "20", class: "text-end" %>
+          <span class="input-group-text">%</span>
+        </div>
+        <p class="form-text">Default VAT/tax percentage for your location.</p>
+      </div>
+    </div>
+  </div>
+
   <div class="form-actions">
     <%= form.submit "Update Profile", class: "btn button-primary" %>
     <%= link_to "Cancel", user_profile_path, class: "btn button-clear" %>

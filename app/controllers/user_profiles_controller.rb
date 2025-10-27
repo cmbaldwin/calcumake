@@ -31,7 +31,13 @@ class UserProfilesController < ApplicationController
       :default_company_phone,
       :default_payment_details,
       :default_invoice_notes,
-      :company_logo
+      :company_logo,
+      :default_prep_time_minutes,
+      :default_prep_cost_per_hour,
+      :default_postprocessing_time_minutes,
+      :default_postprocessing_cost_per_hour,
+      :default_other_costs,
+      :default_vat_percentage
     )
   end
 end

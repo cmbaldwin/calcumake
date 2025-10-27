@@ -7,6 +7,7 @@ zh-CN:
     my_pricings: 我的定价
     new_pricing: 新建定价
     my_printers: 我的打印机
+    my_filaments: 我的材料
     profile: 个人资料
     help: 帮助
     sign_out: 退出登录
@@ -18,6 +19,8 @@ zh-CN:
     cancel: 取消
     edit: 编辑
     delete: 删除
+    duplicate: 复制
+    copy: 副本
     create: 创建
     update: 更新
     new: 新建
@@ -34,10 +37,13 @@ zh-CN:
     created: 成功创建%{model}
     updated: 成功更新%{model}
     deleted: 成功删除%{model}
+    duplicated: 成功复制%{model}
+    duplicate_failed: 复制%{model}失败
   models:
     user: 用户
     printer: 打印机
     print_pricing: 打印定价
+    filament: 材料
   common:
     created: 创建于
     currency: 货币
@@ -239,6 +245,20 @@ zh-CN:
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
+filaments:
+  index:
+    title: 我的材料
+    subtitle: 管理您的3D打印材料库存
+    add_new: 添加新材料
+  fields:
+    name: 材料名称
+    brand: 品牌
+    material_type: 材料类型
+    filament: 材料
+    select_filament: 选择材料
+  buttons:
+    add_filament: 添加材料
+    update_filament: 更新材料
 print_pricings:
   form:
     filament_weight: 耗材重量
