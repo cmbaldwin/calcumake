@@ -23,10 +23,10 @@
 
                 <div class="col-lg-2 d-none d-lg-block text-center">
                     <div class="d-flex flex-column gap-1">
-                        <% pricing.plates.map(&:filament_type).uniq.each do |type| %>
+                        <% pricing.plates.flat_map { |p| p.filament_types.split(", ") }.uniq.each do |type| %>
                             <span class="badge bg-secondary"><%= type %></span>
                         <% end %>
-                        <small class="text-muted"><%= pricing.plates.sum(&:filament_weight).round(1) %>g</small>
+                        <small class="text-muted"><%= pricing.plates.sum(&:total_filament_weight).round(1) %>g</small>
                     </div>
                 </div>
 

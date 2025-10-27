@@ -1,0 +1,9 @@
+<h2 class="mb-2"><%= t('invoices.title').singularize %></h2>
+<p class="mb-1 small"><strong class="text-muted"><%= t('invoices.fields.invoice_number') %>:</strong> <span class="fs-6"><%= invoice.invoice_number %></span></p>
+<p class="mb-1 small"><strong class="text-muted"><%= t('invoices.fields.invoice_date') %>:</strong> <%= l(invoice.invoice_date, format: :long) %></p>
+<% if invoice.due_date.present? %>
+<p class="mb-1 small"><strong class="text-muted"><%= t('invoices.fields.due_date') %>:</strong> <%= l(invoice.due_date, format: :long) %></p>
+<% end %>
+<p class="mb-0">
+    <%= invoice_status_badge(invoice) %>
+</p>

@@ -1,0 +1,94 @@
+<div class="border rounded p-3 mb-3" data-filament-item>
+  <%= f.hidden_field :_destroy %>
+
+  <div class="row g-3 align-items-end">
+    <!-- Filament Selection -->
+    <div class="col-md-6">
+      <%= f.label :filament_id, t('filaments.fields.filament'), class: "form-label" %>
+      <%= f.select :filament_id,
+          options_for_select([['', '']] + user_filaments.map do |filament|
+            [
+              filament.display_name,
+              filament.id,
+              {
+                'data-cost-per-gram' => filament.cost_per_gram,
+                'data-material-type' => filament.material_type,
+                'data-diameter' => filament.diameter
+              }
+            ]
+          end, f.object.filament_id),
+          { prompt: t('filaments.fields.select_filament') },
+          {
+            class: "form-select",
+            'data-action': 'change->filament-list#filamentChanged'
+          } %>
+    </div>
+
+    <!-- Filament Weight -->
+    <div class="col-md-4">
+      <%= f.label :filament_weight, t('filaments.fields.weight_used'), class: "form-label" %>
+      <div class="input-group">
+        <%= f.number_field :filament_weight,
+            step: 0.1,
+            min: 0.1,
+            placeholder: "50.0",
+            class: "form-control",
+            'data-action': 'input->filament-list#weightChanged' %>
+        <span class="input-group-text">g</span>
+      </div>
+    </div>
+
+    <!-- Remove Button -->
+    <div class="col-md-2">
+      <button type="button"
+              class="btn btn-sm btn-outline-danger w-100"
+              data-action="filament-list#remove">
+        <%= t('actions.delete') %>
+      </button>
+    </div>
+
+    <!-- Filament Info Display -->
+    <div class="col-12">
+      <div class="row g-2 text-muted small">
+        <div class="col-md-4">
+          <strong><%= t('filaments.fields.selected') %>:</strong>
+          <span data-filament-name>
+            <%= f.object.filament&.display_name || t('filaments.fields.none_selected') %>
+          </span>
+        </div>
+        <div class="col-md-4">
+          <strong><%= t('filaments.fields.cost_per_gram') %>:</strong>
+          <span data-filament-cost>
+            <% if f.object.filament&.cost_per_gram && f.object.filament.cost_per_gram > 0 %>
+              <%= currency_symbol(current_user.default_currency) %><%= "%.3f" % f.object.filament.cost_per_gram %>/g
+            <% else %>
+              <%= t('filaments.fields.not_set') %>
+            <% end %>
+          </span>
+        </div>
+        <div class="col-md-4">
+          <strong><%= t('filaments.fields.total_cost') %>:</strong>
+          <span data-total-cost>
+            <% if f.object.total_cost && f.object.total_cost > 0 %>
+              <%= currency_symbol(current_user.default_currency) %><%= "%.2f" % f.object.total_cost %>
+            <% else %>
+              <%= currency_symbol(current_user.default_currency) %>0.00
+            <% end %>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="col-12">
+      <div class="d-flex gap-2 align-items-center">
+        <small class="text-muted"><%= t('filaments.fields.no_filament_registered') %></small>
+        <%= link_to t('filaments.fields.add_new_filament'),
+            new_filament_path,
+            class: "btn btn-sm btn-outline-primary",
+            target: "_blank",
+            rel: "noopener" %>
+      </div>
+    </div>
+  </div>
+</div>

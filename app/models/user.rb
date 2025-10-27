@@ -7,12 +7,20 @@ class User < ApplicationRecord
   has_many :print_pricings, dependent: :destroy
   has_many :printers, dependent: :destroy
   has_many :invoices, dependent: :destroy
+  has_many :filaments, dependent: :destroy
   has_one_attached :company_logo
 
   validates :default_currency, presence: true
   validates :default_energy_cost_per_kwh, presence: true, numericality: { greater_than: 0 }
   validates :locale, inclusion: { in: I18n.available_locales.map(&:to_s) }, allow_blank: true
   validates :next_invoice_number, presence: true, numericality: { greater_than: 0, only_integer: true }
+
+  validates :default_prep_time_minutes, numericality: { greater_than_or_equal_to: 0, only_integer: true }, allow_nil: true
+  validates :default_prep_cost_per_hour, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
+  validates :default_postprocessing_time_minutes, numericality: { greater_than_or_equal_to: 0, only_integer: true }, allow_nil: true
+  validates :default_postprocessing_cost_per_hour, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
+  validates :default_other_costs, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
+  validates :default_vat_percentage, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }, allow_nil: true
 
   before_validation :set_default_locale, on: :create
   before_validation :set_default_next_invoice_number, on: :create

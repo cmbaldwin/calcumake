@@ -24,8 +24,14 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_response :success
 
-    # First create a printer for the user
+    # First create a printer and filament for the user
     current_user = User.find_by(email: "newuser@example.com")
+    filament = current_user.filaments.create!(
+      name: "Test PLA",
+      material_type: "PLA",
+      spool_price: 20.0,
+      spool_weight: 1000.0
+    )
     printer = current_user.printers.create!(
       name: "Test Printer",
       manufacturer: "Prusa",
@@ -50,11 +56,12 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
           "0" => {
             printing_time_hours: 1,
             printing_time_minutes: 30,
-            filament_weight: 25.0,
-            filament_type: "PLA",
-            spool_price: 20.0,
-            spool_weight: 1000.0,
-            markup_percentage: 15.0
+            plate_filaments_attributes: {
+              "0" => {
+                filament_id: filament.id,
+                filament_weight: 25.0
+              }
+            }
           }
         }
       }
@@ -75,7 +82,13 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
       default_energy_cost_per_kwh: 0.15
     )
 
-    # Create a printer for the test
+    # Create a printer and filament for the test
+    filament = @user.filaments.create!(
+      name: "Test PETG",
+      material_type: "PETG",
+      spool_price: 35.0,
+      spool_weight: 1000.0
+    )
     printer = @user.printers.create!(
       name: "Flow Test Printer",
       manufacturer: "Prusa",
@@ -105,11 +118,12 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
             "0" => {
               printing_time_hours: 2,
               printing_time_minutes: 15,
-              filament_weight: 40.0,
-              filament_type: "PETG",
-              spool_price: 35.0,
-              spool_weight: 1000.0,
-              markup_percentage: 20.0
+              plate_filaments_attributes: {
+                "0" => {
+                  filament_id: filament.id,
+                  filament_weight: 40.0
+                }
+              }
             }
           }
         }
@@ -161,6 +175,12 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
       default_currency: "USD",
       default_energy_cost_per_kwh: 0.12
     )
+    other_filament = other_user.filaments.create!(
+      name: "Other PLA",
+      material_type: "PLA",
+      spool_price: 20.0,
+      spool_weight: 1000.0
+    )
     other_printer = other_user.printers.create!(
       name: "Other Integration Printer",
       manufacturer: "Prusa",
@@ -174,14 +194,13 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
       job_name: "Other User's Print",
       printer: other_printer
     )
-    other_pricing.plates.build(
+    plate = other_pricing.plates.build(
       printing_time_hours: 1,
-      printing_time_minutes: 0,
-      filament_weight: 30.0,
-      filament_type: "PLA",
-      spool_price: 20.0,
-      spool_weight: 1000.0,
-      markup_percentage: 15.0
+      printing_time_minutes: 0
+    )
+    plate.plate_filaments.build(
+      filament: other_filament,
+      filament_weight: 30.0
     )
     other_pricing.save!
 
@@ -211,7 +230,13 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
       default_energy_cost_per_kwh: 35.0
     )
 
-    # Create a printer for the comprehensive test
+    # Create a printer and filament for the comprehensive test
+    filament = @user.filaments.create!(
+      name: "Test ABS",
+      material_type: "ABS",
+      spool_price: 4500.0,
+      spool_weight: 1000.0
+    )
     printer = @user.printers.create!(
       name: "Complete Test Printer",
       manufacturer: "Prusa",
@@ -237,11 +262,12 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
           "0" => {
             printing_time_hours: 3,
             printing_time_minutes: 45,
-            filament_weight: 60.0,
-            filament_type: "ABS",
-            spool_price: 4500.0,
-            spool_weight: 1000.0,
-            markup_percentage: 25.0
+            plate_filaments_attributes: {
+              "0" => {
+                filament_id: filament.id,
+                filament_weight: 60.0
+              }
+            }
           }
         }
       }

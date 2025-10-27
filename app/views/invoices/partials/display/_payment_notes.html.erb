@@ -2,13 +2,13 @@
   <% if invoice.payment_details.present? %>
     <div class="col-md-6 mb-4">
       <h6><%= t('invoices.fields.payment_details') %></h6>
-      <p class="invoice-preformatted-text"><%= invoice.payment_details %></p>
+      <div class="invoice-preformatted-text"><%= simple_format(invoice.payment_details) %></div>
     </div>
   <% end %>
   <% if invoice.notes.present? %>
     <div class="col-md-6 mb-4">
       <h6><%= t('invoices.fields.notes') %></h6>
-      <p class="invoice-preformatted-text"><%= invoice.notes %></p>
+      <div class="invoice-preformatted-text"><%= simple_format(invoice.notes) %></div>
     </div>
   <% end %>
 </div>

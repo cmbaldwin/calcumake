@@ -1,0 +1,21 @@
+<% if user.company_logo.attached? %>
+<div class="mb-2">
+  <img src="<%= url_for(user.company_logo) %>"
+       alt="Company Logo"
+       class="img-fluid"
+       style="max-width: 150px; max-height: 80px; object-fit: contain;"
+       crossorigin="anonymous">
+</div>
+<% end %>
+<% if invoice.company_name.present? %>
+<h5 class="mb-1"><%= invoice.company_name %></h5>
+<% end %>
+<% if invoice.company_address.present? %>
+<p class="mb-1 small invoice-preformatted-text"><%= invoice.company_address %></p>
+<% end %>
+<% if invoice.company_email.present? %>
+<p class="mb-1 small"><%= invoice.company_email %></p>
+<% end %>
+<% if invoice.company_phone.present? %>
+<p class="mb-0 small"><%= invoice.company_phone %></p>
+<% end %>

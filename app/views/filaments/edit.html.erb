@@ -1,0 +1,155 @@
+<!-- Page Header -->
+<div class="text-center mb-5">
+    <h3 class="display-5 fw-bold text-primary mb-3"><%= t('filaments.edit.title') %></h3>
+    <p class="lead text-muted"><%= t('filaments.edit.subtitle') %></p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <%= form_with model: @filament, local: true, class: "needs-validation", novalidate: true do |form| %>
+            <% if @filament.errors.any? %>
+                <div class="alert alert-danger mb-4">
+                    <h6 class="fw-bold mb-2">
+                        <%= t('common.errors_prohibited', count: @filament.errors.count, errors: t('common.error_count', count: @filament.errors.count), model: t('models.filament').downcase) %>
+                    </h6>
+                    <ul class="mb-0 ps-3">
+                        <% @filament.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+
+            <!-- Basic Information -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><%= t('filaments.sections.basic_info') %></h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <%= form.label :name, t('filaments.fields.name'), class: "form-label" %>
+                            <%= form.text_field :name, class: "form-control", placeholder: t('filaments.fields.name_placeholder'), required: true %>
+                        </div>
+                        <div class="col-md-6">
+                            <%= form.label :brand, t('filaments.fields.brand'), class: "form-label" %>
+                            <%= form.text_field :brand, class: "form-control", placeholder: t('filaments.fields.brand_placeholder') %>
+                        </div>
+                        <div class="col-md-6">
+                            <%= form.label :material_type, t('filaments.fields.material_type'), class: "form-label" %>
+                            <%= form.select :material_type,
+                                options_for_select([
+                                    ['PLA', 'PLA'],
+                                    ['ABS', 'ABS'],
+                                    ['PETG', 'PETG'],
+                                    ['TPU', 'TPU'],
+                                    ['ASA', 'ASA'],
+                                    ['HIPS', 'HIPS'],
+                                    ['Nylon', 'Nylon'],
+                                    ['PC', 'PC'],
+                                    ['PVA', 'PVA'],
+                                    ['Wood', 'Wood'],
+                                    ['Metal', 'Metal'],
+                                    ['Carbon', 'Carbon']
+                                ], @filament.material_type),
+                                { prompt: t('filaments.fields.material_type_prompt') },
+                                { class: "form-select", required: true } %>
+                        </div>
+                        <div class="col-md-6">
+                            <%= form.label :diameter, t('filaments.fields.diameter'), class: "form-label" %>
+                            <%= form.select :diameter,
+                                options_for_select([['1.75mm', 1.75], ['2.85mm', 2.85], ['3.00mm', 3.0]], @filament.diameter),
+                                {},
+                                { class: "form-select", required: true } %>
+                        </div>
+                        <div class="col-md-6">
+                            <%= form.label :color, t('filaments.fields.color'), class: "form-label" %>
+                            <%= form.text_field :color, class: "form-control", placeholder: t('filaments.fields.color_placeholder') %>
+                        </div>
+                        <div class="col-md-6">
+                            <%= form.label :finish, t('filaments.fields.finish'), class: "form-label" %>
+                            <%= form.text_field :finish, class: "form-control", placeholder: t('filaments.fields.finish_placeholder') %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cost Information -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><%= t('filaments.sections.cost_info') %></h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <%= form.label :spool_weight, t('filaments.fields.spool_weight'), class: "form-label" %>
+                            <div class="input-group">
+                                <%= form.number_field :spool_weight, class: "form-control", step: 0.01, min: 0, placeholder: t('filaments.fields.spool_weight_placeholder') %>
+                                <span class="input-group-text">g</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <%= form.label :spool_price, t('filaments.fields.spool_price'), class: "form-label" %>
+                            <div class="input-group">
+                                <span class="input-group-text"><%= currency_symbol(current_user.default_currency) %></span>
+                                <%= form.number_field :spool_price, class: "form-control", step: 0.01, min: 0, placeholder: t('filaments.fields.spool_price_placeholder') %>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <%= form.label :density, t('filaments.fields.density'), class: "form-label" %>
+                            <div class="input-group">
+                                <%= form.number_field :density, class: "form-control", step: 0.01, min: 0, placeholder: t('filaments.fields.density_placeholder') %>
+                                <span class="input-group-text">g/cm³</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Properties -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><%= t('filaments.sections.properties') %></h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <%= form.check_box :moisture_sensitive, class: "form-check-input" %>
+                                <%= form.label :moisture_sensitive, t('filaments.fields.moisture_sensitive'), class: "form-check-label" %>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <%= form.check_box :food_safe, class: "form-check-input" %>
+                                <%= form.label :food_safe, t('filaments.fields.food_safe'), class: "form-check-label" %>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <%= form.check_box :recyclable, class: "form-check-input" %>
+                                <%= form.label :recyclable, t('filaments.fields.recyclable'), class: "form-check-label" %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><%= t('filaments.fields.notes') %></h5>
+                </div>
+                <div class="card-body">
+                    <%= form.text_area :notes, class: "form-control", rows: 4, placeholder: t('filaments.fields.notes_placeholder') %>
+                </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="d-flex justify-content-center gap-3 mb-5">
+                <%= form.submit t('filaments.buttons.update_filament'), class: "btn btn-primary px-4" %>
+                <%= link_to t('actions.cancel'), @filament, class: "btn btn-outline-secondary px-4" %>
+            </div>
+        <% end %>
+    </div>
+</div>

@@ -17,10 +17,11 @@ module PrintPricingsHelper
   def pricing_card_metadata_badges(pricing)
     content_tag :div, class: "d-flex gap-2 flex-wrap d-lg-none justify-content-center" do
       concat content_tag(:span, "#{pricing.plates.count} plate#{'s' unless pricing.plates.count == 1}", class: "badge bg-info")
-      pricing.plates.map(&:filament_type).uniq.each do |type|
+      pricing.plates.flat_map { |p| p.filament_types.split(", ") }.uniq.each do |type|
         concat content_tag(:span, translate_filament_type(type), class: "badge bg-secondary")
       end
-      concat content_tag(:small, "#{pricing.plates.sum(&:filament_weight).round(1)}g | #{format_print_time(pricing)}", class: "text-muted")
+      total_weight = pricing.plates.sum(&:total_filament_weight).round(1)
+      concat content_tag(:small, "#{total_weight}g | #{format_print_time(pricing)}", class: "text-muted")
     end
   end
 
@@ -92,16 +93,20 @@ module PrintPricingsHelper
 
     # Plates information
     pricing.plates.each_with_index do |plate, index|
+      plate_items = [
+        [ "Print Time", "#{plate.printing_time_hours}h #{plate.printing_time_minutes}m" ],
+        [ "Total Filament Weight", "#{plate.total_filament_weight.round(1)}g" ],
+        [ "Filament Types", plate.filament_types ]
+      ]
+
+      # Add each filament as a sub-item
+      plate.plate_filaments.each do |pf|
+        plate_items << [ "  - #{pf.filament.display_name}", "#{pf.filament_weight}g" ]
+      end
+
       sections << {
         title: "Plate #{index + 1}",
-        items: [
-          [ "Print Time", "#{plate.printing_time_hours}h #{plate.printing_time_minutes}m" ],
-          [ "Filament Weight", "#{plate.filament_weight}g" ],
-          [ "Filament Type", content_tag(:span, translate_filament_type(plate.filament_type), class: "badge badge-filament") ],
-          [ "Spool Price", format_currency_with_symbol(plate.spool_price, pricing.default_currency) ],
-          [ "Spool Weight", "#{plate.spool_weight}g" ],
-          [ "Markup", "#{plate.markup_percentage}%" ]
-        ]
+        items: plate_items
       }
     end
 

@@ -30,6 +30,7 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
   test "should create print_pricing" do
     assert_difference("PrintPricing.count") do
       assert_difference("Plate.count") do
+        assert_difference("PlateFilament.count") do
         post print_pricings_url, params: {
           print_pricing: {
             job_name: "New Test Job",
@@ -37,15 +38,17 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
               "0" => {
                 printing_time_hours: 3,
                 printing_time_minutes: 45,
-                filament_weight: 75.0,
-                filament_type: "ABS",
-                spool_price: 30.0,
-                spool_weight: 1000.0,
-                markup_percentage: 25.0
+                plate_filaments_attributes: {
+                  "0" => {
+                    filament_id: filaments(:one).id,
+                    filament_weight: 75.0
+                  }
+                }
               }
             }
           }
         }
+        end
       end
     end
 
@@ -56,9 +59,7 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference("PrintPricing.count") do
       post print_pricings_url, params: {
         print_pricing: {
-          job_name: "",
-          currency: "",
-          filament_type: ""
+          job_name: ""
         }
       }
     end
@@ -79,8 +80,7 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
   test "should update print_pricing" do
     patch print_pricing_url(@print_pricing), params: {
       print_pricing: {
-        job_name: "Updated Job Name",
-        currency: "GBP"
+        job_name: "Updated Job Name"
       }
     }
     assert_redirected_to print_pricing_url(@print_pricing)
@@ -89,8 +89,7 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
   test "should not update print_pricing with invalid params" do
     patch print_pricing_url(@print_pricing), params: {
       print_pricing: {
-        job_name: "",
-        filament_weight: -1
+        job_name: ""
       }
     }
     assert_response :unprocessable_content
@@ -112,6 +111,25 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
       default_energy_cost_per_kwh: 0.12,
       next_invoice_number: 1
     )
+    other_filament = other_user.filaments.create!(
+      name: "Other PLA",
+      brand: "Generic",
+      material_type: "PLA",
+      diameter: 1.75,
+      density: 1.24,
+      print_temperature_min: 190,
+      print_temperature_max: 220,
+      heated_bed_temperature: 60,
+      print_speed_max: 60,
+      color: "Blue",
+      finish: "Matte",
+      spool_weight: 1000.0,
+      spool_price: 20.00,
+      storage_temperature_max: 25,
+      moisture_sensitive: false,
+      food_safe: false,
+      recyclable: true
+    )
     other_printer = other_user.printers.create!(
       name: "Other Printer",
       manufacturer: "Prusa",
@@ -125,14 +143,13 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
       job_name: "Other User's Print",
       printer: other_printer
     )
-    other_pricing.plates.build(
+    plate = other_pricing.plates.build(
       printing_time_hours: 1,
-      printing_time_minutes: 0,
-      filament_weight: 30.0,
-      filament_type: "PLA",
-      spool_price: 20.0,
-      spool_weight: 1000.0,
-      markup_percentage: 15.0
+      printing_time_minutes: 0
+    )
+    plate.plate_filaments.build(
+      filament: other_filament,
+      filament_weight: 30.0
     )
     other_pricing.save!
 
@@ -196,24 +213,29 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create print_pricing with start_with_one_print toggle" do
     assert_difference("PrintPricing.count") do
-      post print_pricings_url, params: {
-        print_pricing: {
-          job_name: "Test Print Job",
-          printer_id: @printer.id,
-          start_with_one_print: "1",
-          plates_attributes: {
-            "0" => {
-              printing_time_hours: 2,
-              printing_time_minutes: 30,
-              filament_weight: 35.0,
-              filament_type: "PLA",
-              spool_price: 25.0,
-              spool_weight: 1000.0,
-              markup_percentage: 20.0
+      assert_difference("Plate.count") do
+        assert_difference("PlateFilament.count") do
+          post print_pricings_url, params: {
+            print_pricing: {
+              job_name: "Test Print Job",
+              printer_id: @printer.id,
+              start_with_one_print: "1",
+              plates_attributes: {
+                "0" => {
+                  printing_time_hours: 2,
+                  printing_time_minutes: 30,
+                  plate_filaments_attributes: {
+                    "0" => {
+                      filament_id: filaments(:one).id,
+                      filament_weight: 35.0
+                    }
+                  }
+                }
+              }
             }
           }
-        }
-      }
+        end
+      end
     end
     assert_redirected_to print_pricing_url(PrintPricing.last)
     assert_equal 1, PrintPricing.last.times_printed
@@ -221,24 +243,29 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create print_pricing without start_with_one_print toggle" do
     assert_difference("PrintPricing.count") do
-      post print_pricings_url, params: {
-        print_pricing: {
-          job_name: "Test Print Job",
-          printer_id: @printer.id,
-          start_with_one_print: "0",
-          plates_attributes: {
-            "0" => {
-              printing_time_hours: 2,
-              printing_time_minutes: 30,
-              filament_weight: 35.0,
-              filament_type: "PLA",
-              spool_price: 25.0,
-              spool_weight: 1000.0,
-              markup_percentage: 20.0
+      assert_difference("Plate.count") do
+        assert_difference("PlateFilament.count") do
+          post print_pricings_url, params: {
+            print_pricing: {
+              job_name: "Test Print Job",
+              printer_id: @printer.id,
+              start_with_one_print: "0",
+              plates_attributes: {
+                "0" => {
+                  printing_time_hours: 2,
+                  printing_time_minutes: 30,
+                  plate_filaments_attributes: {
+                    "0" => {
+                      filament_id: filaments(:one).id,
+                      filament_weight: 35.0
+                    }
+                  }
+                }
+              }
             }
           }
-        }
-      }
+        end
+      end
     end
     assert_redirected_to print_pricing_url(PrintPricing.last)
     assert_equal 0, PrintPricing.last.times_printed
@@ -272,5 +299,35 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
 
     post duplicate_print_pricing_url(@print_pricing)
     assert_response :not_found
+  end
+
+  test "should not create print_pricing with duplicate filaments on same plate" do
+    assert_no_difference("PrintPricing.count") do
+      post print_pricings_url, params: {
+        print_pricing: {
+          job_name: "Test Duplicate Filaments",
+          printer_id: @printer.id,
+          plates_attributes: {
+            "0" => {
+              printing_time_hours: 2,
+              printing_time_minutes: 30,
+              plate_filaments_attributes: {
+                "0" => {
+                  filament_id: filaments(:one).id,
+                  filament_weight: 25.0
+                },
+                "1" => {
+                  filament_id: filaments(:one).id,  # Same filament ID - should fail
+                  filament_weight: 15.0
+                }
+              }
+            }
+          }
+        }
+      }
+    end
+
+    assert_response :unprocessable_content
+    assert_select "li", text: /Cannot use the same filament multiple times on the same plate/
   end
 end

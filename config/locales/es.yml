@@ -1,12 +1,78 @@
 ---
 es:
   language_name: Español
+  activerecord:
+    errors:
+      models:
+        filament:
+          attributes:
+            name:
+              blank: "Por favor ingresa un nombre de filamento"
+              taken: "Ya tienes un filamento con este nombre"
+            material_type:
+              blank: "Por favor selecciona un tipo de material"
+              inclusion: "Por favor selecciona un tipo de material válido"
+            diameter:
+              blank: "Por favor ingresa un diámetro"
+              inclusion: "Por favor selecciona un diámetro válido"
+            spool_weight:
+              greater_than: "El peso del carrete debe ser mayor que 0"
+              not_a_number: "El peso del carrete debe ser un número"
+            spool_price:
+              greater_than: "El precio del carrete debe ser mayor que 0"
+              not_a_number: "El precio del carrete debe ser un número"
+            print_temperature_min:
+              greater_than: "La temperatura mínima debe ser mayor que 0°C"
+              less_than: "La temperatura mínima debe ser menor que 500°C"
+              not_a_number: "La temperatura mínima debe ser un número"
+            print_temperature_max:
+              greater_than: "La temperatura máxima debe ser mayor que 0°C"
+              less_than: "La temperatura máxima debe ser menor que 500°C"
+              not_a_number: "La temperatura máxima debe ser un número"
+              temperature_range: "debe ser mayor que la temperatura mínima"
+            heated_bed_temperature:
+              greater_than: "La temperatura de cama debe ser mayor que 0°C"
+              less_than: "La temperatura de cama debe ser menor que 500°C"
+              not_a_number: "La temperatura de cama debe ser un número"
+            print_speed_max:
+              greater_than: "La velocidad de impresión debe ser mayor que 0"
+              less_than: "La velocidad de impresión debe ser menor que 1000"
+              not_a_number: "La velocidad de impresión debe ser un número"
+            storage_temperature_max:
+              greater_than: "La temperatura de almacenamiento debe ser mayor que -50°C"
+              less_than: "La temperatura de almacenamiento debe ser menor que 100°C"
+              not_a_number: "La temperatura de almacenamiento debe ser un número"
+            density:
+              greater_than: "La densidad debe ser mayor que 0"
+              less_than: "La densidad debe ser menor que 10"
+              not_a_number: "La densidad debe ser un número"
+        plate_filament:
+          attributes:
+            filament_weight:
+              blank: "Por favor ingresa el peso del filamento"
+              greater_than: "El peso del filamento debe ser mayor que 0"
+              not_a_number: "El peso del filamento debe ser un número"
+            filament_id:
+              blank: "Por favor selecciona un filamento"
+              already_added: "Este filamento ya ha sido agregado a esta placa"
+        plate:
+          attributes:
+            base:
+              no_filaments: "Debe tener al menos un filamento"
+              duplicate_filaments: "No se puede usar el mismo filamento varias veces en una placa"
+        print_pricing:
+          attributes:
+            base:
+              no_plates: "Debe tener al menos una placa"
+              too_many_plates: "No puede tener más de 10 placas"
+              duplicate_filaments_on_plate: "No se puede usar el mismo filamento varias veces en la misma placa"
   nav:
     brand: CalcuMake
     print_pricings: Mis Precios
     my_pricings: Mis Precios
     new_pricing: Nuevo Precio
     my_printers: Mis Impresoras
+    my_filaments: Mis Filamentos
     profile: Perfil
     help: Ayuda
     sign_out: Cerrar sesión
@@ -18,6 +84,8 @@ es:
     cancel: Cancelar
     edit: Editar
     delete: Eliminar
+    duplicate: Duplicar
+    copy: Copia
     create: Crear
     update: Actualizar
     new: Nuevo
@@ -34,10 +102,13 @@ es:
     created: "%{model} creado exitosamente"
     updated: "%{model} actualizado exitosamente"
     deleted: "%{model} eliminado exitosamente"
+    duplicated: "%{model} duplicado exitosamente"
+    duplicate_failed: "Error al duplicar %{model}"
   models:
     user: Usuario
     printer: Impresora
     print_pricing: Precio de Impresión
+    filament: Filamento
   common:
     created: Creado
     currency: Moneda
@@ -389,6 +460,86 @@ es:
     user_agreement:
       title: Acuerdo de Usuario
       nav_title: Términos de Servicio
+filaments:
+  index:
+    title: Mis Filamentos
+    subtitle: Gestiona tu inventario de filamentos de impresión 3D
+    add_new: Agregar Nuevo Filamento
+    search_placeholder: Buscar por nombre, marca, material o color...
+    clear_search: Limpiar Búsqueda
+    empty_state:
+      title: Aún no hay filamentos registrados
+      description: Agrega tu primer filamento para comenzar a construir tu biblioteca de materiales para cálculos de impresión.
+      add_first: Agregar Tu Primer Filamento
+    no_results:
+      title: No se encontraron resultados
+      description: "Ningún filamento coincide con '%{query}'. Intenta con un término de búsqueda diferente."
+  new:
+    title: Agregar Nuevo Filamento
+    subtitle: Registrar un nuevo filamento para tu biblioteca de materiales
+  edit:
+    title: Editar Filamento
+    subtitle: Actualizar especificaciones del filamento
+  show:
+    title: Detalles del Filamento
+    usage_history: Historial de Uso
+    times_used: Veces Usado
+    total_weight_used: Peso Total Usado
+    new_print_with_filament: Nueva Impresión con este Filamento
+    recent_prints: Impresiones Recientes
+    not_used_yet: Este filamento aún no ha sido usado
+    create_first_print: Crear Tu Primera Impresión
+    no_cost_info: No hay información de costo disponible
+  sections:
+    basic_info: Información Básica
+    cost_info: Información de Costo
+    properties: Propiedades
+    technical_specs: Especificaciones Técnicas
+  fields:
+    name: Nombre del Filamento
+    name_placeholder: ej., PLA Básico, PETG Premium
+    brand: Marca
+    brand_placeholder: ej., Hatchbox, Prusa, eSUN
+    material_type: Tipo de Material
+    material_type_prompt: Seleccionar tipo de material
+    diameter: Diámetro
+    color: Color
+    color_placeholder: ej., Rojo, Natural, Transparente
+    finish: Acabado
+    finish_placeholder: ej., Mate, Brillante, Seda
+    spool_weight: Peso del Carrete
+    spool_weight_placeholder: "1000"
+    spool_price: Precio del Carrete
+    spool_price_placeholder: "25.00"
+    density: Densidad
+    density_placeholder: "1.24"
+    cost_per_gram: Costo por Gramo
+    temperature_range: Rango de Temperatura
+    moisture_sensitive: Sensible a la Humedad
+    food_safe: Apto para Alimentos
+    recyclable: Reciclable
+    notes: Notas
+    notes_placeholder: Información adicional sobre este filamento...
+    filament: Filamento
+    select_filament: Seleccionar un filamento
+    weight_used: Peso Usado
+    selected: Seleccionado
+    none_selected: Ninguno seleccionado
+    not_set: No establecido
+    total_cost: Costo Total
+    no_filament_registered: ¿No tienes filamento registrado?
+    add_new_filament: Agregar Nuevo Filamento
+    bed_temperature: Temperatura de Cama
+    max_print_speed: Velocidad Máxima de Impresión
+    storage_temp: Temperatura de Almacenamiento
+  properties:
+    moisture_sensitive: Sensible a la Humedad
+    food_safe: Apto para Alimentos
+    recyclable: Reciclable
+  buttons:
+    add_filament: Agregar Filamento
+    update_filament: Actualizar Filamento
+  confirm_delete: "¿Estás seguro de que quieres eliminar '%{name}'?"
 print_pricings:
   form:
     filament_weight: Peso del Filamento
