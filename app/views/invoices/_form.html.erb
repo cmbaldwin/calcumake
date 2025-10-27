@@ -13,25 +13,25 @@
 <div class="row g-3">
     <!-- Company Information Info Card -->
     <div class="col-12">
-        <%= render "invoices/partials/company_info_card" %>
+        <%= render "invoices/partials/form/company_info" %>
     </div>
 
     <!-- Invoice Details -->
     <div class="col-12">
-        <%= render "invoices/partials/invoice_details_card", form: form, invoice: @invoice %>
+        <%= render "invoices/partials/form/details", form: form, invoice: @invoice %>
     </div>
 
     <!-- Line Items -->
     <div class="col-12">
-        <%= render "invoices/partials/line_items_card", form: form, invoice: @invoice, currency: @invoice.currency || @print_pricing.default_currency %>
+        <%= render "invoices/partials/line_items/card", form: form, invoice: @invoice, currency: @invoice.currency || @print_pricing.default_currency %>
     </div>
 
     <!-- Payment Details & Notes -->
-    <%= render "invoices/partials/payment_notes_cards", form: form %>
+    <%= render "invoices/partials/form/payment_notes", form: form %>
 
     <!-- Actions -->
     <div class="col-12">
-        <%= render "invoices/partials/form_actions", form: form, invoice: @invoice, print_pricing: @print_pricing %>
+        <%= render "invoices/partials/form/actions", form: form, invoice: @invoice, print_pricing: @print_pricing %>
     </div>
 </div>
 <% end %>

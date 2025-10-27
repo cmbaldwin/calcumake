@@ -26,7 +26,7 @@
                             </thead>
                             <tbody>
                                 <% @invoices.each do |invoice| %>
-                                  <%= render "invoices/partials/index_table_row", invoice: invoice, print_pricing: @print_pricing %>
+                                  <%= render "invoices/partials/display/index_row", invoice: invoice, print_pricing: @print_pricing %>
                                 <% end %>
                             </tbody>
                         </table>

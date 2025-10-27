@@ -34,10 +34,11 @@ pricing.save!
 **Never access** old attributes like `pricing.printing_time_hours` (removed). Use `pricing.plates.sum(&:filament_weight)`.
 
 ### Key Patterns
-- Nested attributes: `plates_attributes`
-- Dynamic forms via Stimulus `nested_form_controller`
+- Nested attributes: `plates_attributes`, `plate_filaments_attributes`
+- Dynamic forms via Stimulus outlets: `nested_form_controller` → `dynamic_list_controller`
+- Filament management: `filament_list_controller` → `dynamic_list_controller`
 - Calculations sum across all plates
-- Always build at least one plate for tests
+- Always build at least one plate with at least one filament for tests
 
 ## Frontend Stack
 - **Stimulus** for interactions
@@ -69,6 +70,12 @@ Never replace frames directly - wrap content:
 - UMD versions for importmap compatibility
 - Rails Admin uses separate importmap (`config/importmap.rails_admin.rb`)
 - Never pin `rails_admin` in main importmap
+
+### Stimulus Architecture
+- Use **outlets** and **events** for controller communication, not inheritance
+- Controllers connect in order: `connect()` → `outletConnected()` → initialize functionality
+- Wait for outlet connections before accessing outlet targets
+- Limits: 10 plates max, 16 filaments per plate, minimum 1 of each
 
 ## Internationalization
 Supports 7 languages: en, ja, zh-CN, hi, es, fr, ar

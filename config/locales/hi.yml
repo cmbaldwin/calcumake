@@ -7,6 +7,7 @@ hi:
     my_pricings: मेरी कीमतें
     new_pricing: नई कीमत
     my_printers: मेरे प्रिंटर
+    my_filaments: My Filaments
     profile: प्रोफ़ाइल
     help: सहायता
     sign_out: साइन आउट
@@ -18,6 +19,8 @@ hi:
     cancel: रद्द करें
     edit: संपादित करें
     delete: हटाएं
+    duplicate: डुप्लिकेट करें
+    copy: प्रतिलिपि
     create: बनाएं
     update: अपडेट करें
     new: नया
@@ -34,10 +37,13 @@ hi:
     created: "%{model} सफलतापूर्वक बनाया गया"
     updated: "%{model} सफलतापूर्वक अपडेट किया गया"
     deleted: "%{model} सफलतापूर्वक हटाया गया"
+    duplicated: "%{model} सफलतापूर्वक डुप्लिकेट किया गया"
+    duplicate_failed: "%{model} डुप्लिकेट करने में विफल"
   models:
     user: उपयोगकर्ता
     printer: प्रिंटर
     print_pricing: प्रिंट मूल्य निर्धारण
+    filament: फिलामेंट
   printer:
     name: प्रिंटर का नाम
     manufacturer: निर्माता
@@ -210,6 +216,20 @@ hi:
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
+filaments:
+  index:
+    title: मेरे फिलामेंट
+    subtitle: अपने 3D प्रिंटिंग फिलामेंट इन्वेंटरी का प्रबंधन करें
+    add_new: नया फिलामेंट जोड़ें
+  fields:
+    name: फिलामेंट नाम
+    brand: ब्रांड
+    material_type: सामग्री प्रकार
+    filament: फिलामेंट
+    select_filament: एक फिलामेंट चुनें
+  buttons:
+    add_filament: फिलामेंट जोड़ें
+    update_filament: फिलामेंट अपडेट करें
 print_pricings:
   form:
     filament_weight: फिलामेंट वजन

@@ -1,33 +1,41 @@
-<div class="invoice-line-item-fields border rounded p-3 mb-3">
-    <div class="row g-2">
+<% price_step = defined?(currency) && currency_decimals(currency) == 0 ? 1 : 0.01 %>
+<% precision = defined?(currency) ? currency_decimals(currency) : 2 %>
+<div class="invoice-line-item-fields border rounded p-2 mb-2">
+    <div class="row g-2 align-items-end">
         <%= f.hidden_field :order_position %>
 
-        <div class="col-md-6">
-            <%= f.label :description, t("invoices.line_items.description"), class: "form-label" %>
-            <%= f.text_field :description, class: "form-control", required: true %>
+        <div class="col-md-5">
+            <%= f.label :description, t("invoices.line_items.description"), class: "form-label small mb-1" %>
+            <%= f.text_field :description, class: "form-control form-control-sm", required: true %>
         </div>
 
-        <div class="col-md-2">
-            <%= f.label :quantity, t("invoices.line_items.quantity"), class: "form-label" %>
-            <%= f.number_field :quantity, class: "form-control line-item-quantity", step: 0.01, required: true, data: { action: "input->invoice-form#calculateLineTotal" } %>
+        <div class="col-6 col-md-2">
+            <%= f.label :quantity, t("invoices.line_items.quantity"), class: "form-label small mb-1" %>
+            <%= f.number_field :quantity, class: "form-control form-control-sm line-item-quantity", step: 1, required: true, data: { action: "input->invoice-form#calculateLineTotal" } %>
         </div>
 
-        <div class="col-md-2">
-            <%= f.label :unit_price, t("invoices.line_items.unit_price"), class: "form-label" %>
-            <%= f.number_field :unit_price, class: "form-control line-item-price", step: 0.01, required: true, data: { action: "input->invoice-form#calculateLineTotal" } %>
+        <div class="col-6 col-md-2">
+            <%= f.label :unit_price, t("invoices.line_items.unit_price"), class: "form-label small mb-1" %>
+            <%= f.number_field :unit_price, class: "form-control form-control-sm line-item-price", step: price_step, required: true, data: { action: "input->invoice-form#calculateLineTotal" } %>
         </div>
 
-        <div class="col-md-2">
-            <%= f.label :total, t("invoices.line_items.total"), class: "form-label" %>
-            <div class="readonly-field-container">
-                <input type="text" class="form-control line-item-total computed-field" readonly
-                       value="<%= f.object.total_price&.positive? ? f.object.total_price : 'Pending' %>"
-                       placeholder="Pending">
-            </div>
+        <div class="col-8 col-md-2">
+            <%= f.label :total, t("invoices.line_items.total"), class: "form-label small mb-1" %>
+            <input type="text" class="form-control form-control-sm line-item-total bg-light" readonly value="<%= f.object.total_price&.positive? ? number_with_precision(f.object.total_price, precision: precision) : (precision == 0 ? '0' : '0.00') %>">
+        </div>
+
+        <div class="col-4 col-md-1 text-end">
+            <%= f.label :actions, "&nbsp;".html_safe, class: "form-label small mb-1 d-block" %>
+            <% if f.object.persisted? %>
+            <%= f.hidden_field :_destroy %>
+            <% end %>
+            <button type="button" class="btn btn-sm btn-outline-danger" data-action="click->invoice-form#removeLineItem" title="<%= t('invoices.line_items.remove') %>">
+                <i class="bi bi-trash"></i>
+            </button>
         </div>
 
         <div class="col-12">
-            <%= f.select :line_item_type, 
+            <%= f.select :line_item_type,
             options_for_select([
               ["Custom", "custom"],
               ["Filament", "filament"],
@@ -36,16 +44,7 @@
               ["Machine", "machine"],
               ["Other", "other"]
             ], f.object.line_item_type),
-            {}, class: "form-select" %>
-        </div>
-
-        <div class="col-12">
-            <% if f.object.persisted? %>
-            <%= f.hidden_field :_destroy %>
-            <% end %>
-            <button type="button" class="btn btn-sm btn-danger" data-action="click->invoice-form#removeLineItem">
-                <i class="bi bi-trash"></i> <%= t("invoices.line_items.remove") %>
-            </button>
+            {}, class: "form-select form-select-sm" %>
         </div>
     </div>
 </div>

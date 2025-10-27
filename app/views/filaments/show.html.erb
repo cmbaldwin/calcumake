@@ -1,0 +1,242 @@
+<!-- Page Header -->
+<div class="d-flex justify-content-between align-items-start mb-4">
+  <div>
+    <h1 class="h2 text-primary mb-2"><%= @filament.name %></h1>
+    <div class="d-flex gap-2 mb-3">
+      <span class="badge bg-primary fs-6"><%= @filament.material_type %></span>
+      <% if @filament.color.present? %>
+        <span class="badge bg-secondary fs-6"><%= @filament.color %></span>
+      <% end %>
+      <% if @filament.brand.present? %>
+        <span class="badge bg-info fs-6"><%= @filament.brand %></span>
+      <% end %>
+    </div>
+  </div>
+  <div class="d-flex gap-2">
+    <%= link_to t('actions.edit'), edit_filament_path(@filament), class: "btn btn-primary" %>
+    <%= link_to t('actions.back'), filaments_path, class: "btn btn-outline-secondary" %>
+  </div>
+</div>
+
+<!-- Properties Row -->
+<div class="row g-2 mb-4">
+  <% if @filament.moisture_sensitive? %>
+    <div class="col-auto">
+      <span class="badge bg-warning text-dark"><%= t('filaments.properties.moisture_sensitive') %></span>
+    </div>
+  <% end %>
+  <% if @filament.food_safe? %>
+    <div class="col-auto">
+      <span class="badge bg-success"><%= t('filaments.properties.food_safe') %></span>
+    </div>
+  <% end %>
+  <% if @filament.recyclable? %>
+    <div class="col-auto">
+      <span class="badge bg-info"><%= t('filaments.properties.recyclable') %></span>
+    </div>
+  <% end %>
+</div>
+
+<div class="row g-4">
+  <!-- Basic Properties -->
+  <div class="col-lg-6">
+    <div class="card h-100">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('filaments.sections.basic_info') %></h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('filaments.fields.diameter') %></label>
+              <div class="fw-bold"><%= @filament.diameter %>mm</div>
+            </div>
+          </div>
+          <% if @filament.density.present? %>
+          <div class="col-6">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('filaments.fields.density') %></label>
+              <div class="fw-bold"><%= @filament.density %> g/cm³</div>
+            </div>
+          </div>
+          <% end %>
+          <% if @filament.finish.present? %>
+          <div class="col-12">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('filaments.fields.finish') %></label>
+              <div class="fw-bold"><%= @filament.finish %></div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cost Information -->
+  <div class="col-lg-6">
+    <div class="card h-100">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('filaments.sections.cost_info') %></h5>
+      </div>
+      <div class="card-body">
+        <% if @filament.spool_price.present? && @filament.spool_weight.present? %>
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('filaments.fields.spool_price') %></label>
+              <div class="fw-bold"><%= currency_symbol(current_user.default_currency) %><%= @filament.spool_price %></div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('filaments.fields.spool_weight') %></label>
+              <div class="fw-bold"><%= @filament.spool_weight %>g</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('filaments.fields.cost_per_gram') %></label>
+              <div class="fw-bold fs-5 text-primary">
+                <%= currency_symbol(current_user.default_currency) %><%= "%.3f" % @filament.cost_per_gram %>/g
+              </div>
+            </div>
+          </div>
+        </div>
+        <% else %>
+        <div class="text-muted">
+          <em><%= t('filaments.show.no_cost_info') %></em>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Temperature Specifications -->
+  <div class="col-lg-6">
+    <div class="card h-100">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('filaments.sections.technical_specs') %></h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-12">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('filaments.fields.temperature_range') %></label>
+              <div class="fw-bold"><%= @filament.temperature_range %></div>
+            </div>
+          </div>
+          <% if @filament.heated_bed_temperature.present? %>
+          <div class="col-6">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('filaments.fields.bed_temperature') %></label>
+              <div class="fw-bold"><%= @filament.heated_bed_temperature %>°C</div>
+            </div>
+          </div>
+          <% end %>
+          <% if @filament.print_speed_max.present? %>
+          <div class="col-6">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('filaments.fields.max_print_speed') %></label>
+              <div class="fw-bold"><%= @filament.print_speed_max %>mm/s</div>
+            </div>
+          </div>
+          <% end %>
+          <% if @filament.storage_temperature_max.present? %>
+          <div class="col-12">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('filaments.fields.storage_temp') %></label>
+              <div class="fw-bold">Max <%= @filament.storage_temperature_max %>°C</div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Usage History -->
+  <div class="col-lg-6">
+    <div class="card h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0"><%= t('filaments.show.usage_history') %></h5>
+        <%= link_to t('filaments.show.new_print_with_filament'),
+            new_print_pricing_path,
+            class: "btn btn-sm btn-outline-primary" %>
+      </div>
+      <div class="card-body">
+        <% if @filament.plates.any? %>
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('filaments.show.times_used') %></label>
+              <div class="fw-bold fs-5 text-success"><%= @filament.plates.count %></div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('filaments.show.total_weight_used') %></label>
+              <div class="fw-bold fs-5 text-primary">
+                <%= @filament.plate_filaments.sum(:filament_weight) %>g
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-3">
+
+        <h6 class="mb-2"><%= t('filaments.show.recent_prints') %></h6>
+        <% @filament.plates.includes(:print_pricing).limit(5).each do |plate| %>
+        <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+          <div>
+            <%= link_to plate.print_pricing.job_name,
+                plate.print_pricing,
+                class: "text-decoration-none" %>
+            <small class="text-muted d-block">
+              <%= plate.plate_filaments.where(filament: @filament).sum(:filament_weight) %>g used
+            </small>
+          </div>
+          <small class="text-muted">
+            <%= time_ago_in_words(plate.created_at) %> ago
+          </small>
+        </div>
+        <% end %>
+        <% else %>
+        <div class="text-center py-4">
+          <div class="text-muted mb-3">
+            <em><%= t('filaments.show.not_used_yet') %></em>
+          </div>
+          <%= link_to t('filaments.show.create_first_print'),
+              new_print_pricing_path,
+              class: "btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <% if @filament.notes.present? %>
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('filaments.fields.notes') %></h5>
+      </div>
+      <div class="card-body">
+        <p class="mb-0"><%= simple_format(@filament.notes) %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<!-- Actions -->
+<div class="d-flex justify-content-center gap-3 mt-5 pt-4 border-top">
+  <%= link_to t('actions.edit'), edit_filament_path(@filament), class: "btn btn-primary" %>
+  <%= link_to t('actions.delete'),
+      @filament,
+      method: :delete,
+      confirm: t('filaments.confirm_delete', name: @filament.name),
+      class: "btn btn-outline-danger" %>
+  <%= link_to t('actions.back'), filaments_path, class: "btn btn-outline-secondary" %>
+</div>

@@ -1,12 +1,14 @@
 // CalcuMake Service Worker
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CACHE_NAME = `calcumake-${CACHE_VERSION}`;
 
 // Assets to cache immediately on install
 const PRECACHE_URLS = [
   '/',
+  '/icon.svg',
   '/icon-192.png',
   '/icon-512.png',
+  '/icon.png',
   '/apple-touch-icon.png',
   '/favicon.ico'
 ];

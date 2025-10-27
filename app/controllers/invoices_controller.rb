@@ -25,6 +25,7 @@ class InvoicesController < ApplicationController
     @invoice.company_phone = current_user.default_company_phone
     @invoice.payment_details = current_user.default_payment_details
     @invoice.notes = current_user.default_invoice_notes
+    @invoice.currency = current_user.default_currency
 
     # Build default line items from print pricing
     @invoice.build_default_line_items

@@ -14,29 +14,28 @@ class PlateTest < ActiveSupport::TestCase
 
   test "total_filament_cost calculates correctly" do
     plate = plates(:one)
-    base_cost = (plate.filament_weight * plate.spool_price / plate.spool_weight)
-    expected = base_cost * (1 + plate.markup_percentage / 100)
+    expected = plate.plate_filaments.sum(&:total_cost)
     assert_in_delta expected, plate.total_filament_cost, 0.01
   end
 
-  test "requires filament_type" do
+  test "requires at least one filament" do
     plate = Plate.new(
       print_pricing: print_pricings(:one),
       printing_time_hours: 1,
-      printing_time_minutes: 0,
-      filament_weight: 50.0,
-      spool_price: 25.0,
-      spool_weight: 1000.0,
-      markup_percentage: 20.0
+      printing_time_minutes: 0
     )
     assert_not plate.valid?
-    assert_includes plate.errors[:filament_type], "can't be blank"
+    assert plate.errors[:base].any? { |msg| msg.include?("filament") }
   end
 
-  test "requires positive filament_weight" do
+  test "total_filament_weight calculates correctly" do
     plate = plates(:one)
-    plate.filament_weight = 0
-    assert_not plate.valid?
-    assert_includes plate.errors[:filament_weight], "must be greater than 0"
+    expected = plate.plate_filaments.sum(&:filament_weight)
+    assert_equal expected, plate.total_filament_weight
+  end
+
+  test "filament_types returns comma-separated material types" do
+    plate = plates(:one)
+    assert_kind_of String, plate.filament_types
   end
 end

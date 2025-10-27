@@ -7,6 +7,7 @@ fr:
     my_pricings: Mes Tarifs
     new_pricing: Nouveau Tarif
     my_printers: Mes Imprimantes
+    my_filaments: Mes Filaments
     profile: Profil
     help: Aide
     sign_out: Se déconnecter
@@ -18,6 +19,8 @@ fr:
     cancel: Annuler
     edit: Modifier
     delete: Supprimer
+    duplicate: Dupliquer
+    copy: Copie
     create: Créer
     update: Mettre à jour
     new: Nouveau
@@ -34,10 +37,13 @@ fr:
     created: "%{model} créé avec succès"
     updated: "%{model} mis à jour avec succès"
     deleted: "%{model} supprimé avec succès"
+    duplicated: "%{model} dupliqué avec succès"
+    duplicate_failed: "Échec de la duplication de %{model}"
   models:
     user: Utilisateur
     printer: Imprimante
     print_pricing: Tarification d'Impression
+    filament: Filament
   printer:
     name: Nom de l'Imprimante
     manufacturer: Fabricant
@@ -212,6 +218,20 @@ fr:
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
+filaments:
+  index:
+    title: Mes Filaments
+    subtitle: Gérez votre inventaire de filaments d'impression 3D
+    add_new: Ajouter un Nouveau Filament
+  fields:
+    name: Nom du Filament
+    brand: Marque
+    material_type: Type de Matériau
+    filament: Filament
+    select_filament: Sélectionner un filament
+  buttons:
+    add_filament: Ajouter Filament
+    update_filament: Mettre à Jour Filament
 print_pricings:
   form:
     filament_weight: Poids du Filament

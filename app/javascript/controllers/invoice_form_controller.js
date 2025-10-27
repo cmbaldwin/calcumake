@@ -8,44 +8,67 @@ export default class extends Controller {
     defaultCurrency: String
   }
 
+  // Currencies with zero decimal places
+  get zeroDecimalCurrencies() {
+    return ['JPY', 'KRW', 'VND', 'CLP', 'TWD']
+  }
+
+  get currentCurrency() {
+    return this.currencyValue || this.defaultCurrencyValue || 'USD'
+  }
+
+  get currencyDecimals() {
+    return this.zeroDecimalCurrencies.includes(this.currentCurrency) ? 0 : 2
+  }
+
+  get priceStep() {
+    return this.currencyDecimals === 0 ? 1 : 0.01
+  }
+
   connect() {
     this.lineItemIndex = this.lineItemsTarget.querySelectorAll('.invoice-line-item-fields').length
     this.attachLineItemListeners()
+    // Calculate all line totals on load
+    this.updateAllLineTotals()
   }
 
   addLineItem(event) {
     event.preventDefault()
 
     const template = `
-      <div class="invoice-line-item-fields border rounded p-3 mb-3">
-        <div class="row g-2">
+      <div class="invoice-line-item-fields border rounded p-2 mb-2">
+        <div class="row g-2 align-items-end">
           <input type="hidden" name="invoice[invoice_line_items_attributes][${this.lineItemIndex}][order_position]" value="${this.lineItemIndex}">
-          
-          <div class="col-md-6">
-            <label class="form-label">${this.getTranslation('description')}</label>
-            <input type="text" name="invoice[invoice_line_items_attributes][${this.lineItemIndex}][description]" class="form-control" required>
+
+          <div class="col-md-5">
+            <label class="form-label small mb-1">${this.getTranslation('description')}</label>
+            <input type="text" name="invoice[invoice_line_items_attributes][${this.lineItemIndex}][description]" class="form-control form-control-sm" required>
           </div>
-          
-          <div class="col-md-2">
-            <label class="form-label">${this.getTranslation('quantity')}</label>
-            <input type="number" name="invoice[invoice_line_items_attributes][${this.lineItemIndex}][quantity]" class="form-control line-item-quantity" step="0.01" value="1" required data-action="input->invoice-form#calculateLineTotal">
+
+          <div class="col-6 col-md-2">
+            <label class="form-label small mb-1">${this.getTranslation('quantity')}</label>
+            <input type="number" name="invoice[invoice_line_items_attributes][${this.lineItemIndex}][quantity]" class="form-control form-control-sm line-item-quantity" step="1" min="1" value="1" required data-action="input->invoice-form#calculateLineTotal">
           </div>
-          
-          <div class="col-md-2">
-            <label class="form-label">${this.getTranslation('unit_price')}</label>
-            <input type="number" name="invoice[invoice_line_items_attributes][${this.lineItemIndex}][unit_price]" class="form-control line-item-price" step="0.01" value="0" required data-action="input->invoice-form#calculateLineTotal">
+
+          <div class="col-6 col-md-2">
+            <label class="form-label small mb-1">${this.getTranslation('unit_price')}</label>
+            <input type="number" name="invoice[invoice_line_items_attributes][${this.lineItemIndex}][unit_price]" class="form-control form-control-sm line-item-price" step="${this.priceStep}" value="0" required data-action="input->invoice-form#calculateLineTotal">
           </div>
-          
-          <div class="col-md-2">
-            <label class="form-label">${this.getTranslation('total')}</label>
-            <div class="readonly-field-container">
-              <input type="text" class="form-control line-item-total computed-field" readonly
-                     value="Auto-calculated" placeholder="Auto-calculated">
-            </div>
+
+          <div class="col-8 col-md-2">
+            <label class="form-label small mb-1">${this.getTranslation('total')}</label>
+            <input type="text" class="form-control form-control-sm line-item-total bg-light" readonly value="${this.currencyDecimals === 0 ? '0' : '0.00'}">
           </div>
-          
+
+          <div class="col-4 col-md-1 text-end">
+            <label class="form-label small mb-1 d-block">&nbsp;</label>
+            <button type="button" class="btn btn-sm btn-outline-danger" data-action="click->invoice-form#removeLineItem" title="${this.getTranslation('remove')}">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+
           <div class="col-12">
-            <select name="invoice[invoice_line_items_attributes][${this.lineItemIndex}][line_item_type]" class="form-select">
+            <select name="invoice[invoice_line_items_attributes][${this.lineItemIndex}][line_item_type]" class="form-select form-select-sm">
               <option value="custom">Custom</option>
               <option value="filament">Filament</option>
               <option value="electricity">Electricity</option>
@@ -54,12 +77,6 @@ export default class extends Controller {
               <option value="other">Other</option>
             </select>
           </div>
-          
-          <div class="col-12">
-            <button type="button" class="btn btn-sm btn-danger" data-action="click->invoice-form#removeLineItem">
-              <i class="bi bi-trash"></i> ${this.getTranslation('remove')}
-            </button>
-          </div>
         </div>
       </div>
     `
@@ -67,6 +84,7 @@ export default class extends Controller {
     this.lineItemsTarget.insertAdjacentHTML('beforeend', template)
     this.lineItemIndex++
     this.attachLineItemListeners()
+    this.updateAllLineTotals()
   }
 
   removeLineItem(event) {
@@ -86,12 +104,27 @@ export default class extends Controller {
 
   calculateLineTotal(event) {
     const container = event.target.closest('.invoice-line-item-fields')
-    const quantity = parseFloat(container.querySelector('.line-item-quantity').value) || 0
-    const price = parseFloat(container.querySelector('.line-item-price').value) || 0
+    this.updateLineTotal(container)
+  }
+
+  updateLineTotal(container) {
+    const quantity = parseFloat(container.querySelector('.line-item-quantity')?.value) || 0
+    const price = parseFloat(container.querySelector('.line-item-price')?.value) || 0
     const total = quantity * price
-    container.querySelector('.line-item-total').value = total.toFixed(2)
+    const totalField = container.querySelector('.line-item-total')
+    if (totalField) {
+      totalField.value = total.toFixed(this.currencyDecimals)
+    }
 
     this.updateTotals()
+  }
+
+  updateAllLineTotals() {
+    this.lineItemsTarget.querySelectorAll('.invoice-line-item-fields').forEach(container => {
+      if (container.style.display !== 'none') {
+        this.updateLineTotal(container)
+      }
+    })
   }
 
   updateTotals() {
@@ -130,8 +163,7 @@ export default class extends Controller {
   }
 
   formatCurrency(amount) {
-    // Simple currency formatting - could be enhanced
-    return amount.toFixed(2)
+    return amount.toFixed(this.currencyDecimals)
   }
 
   getTranslation(key) {

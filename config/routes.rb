@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :filaments do
+    member do
+      post :duplicate
+    end
+  end
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   devise_for :users
 

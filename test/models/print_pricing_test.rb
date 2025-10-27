@@ -18,20 +18,26 @@ class PrintPricingTest < ActiveSupport::TestCase
       daily_usage_hours: 8,
       repair_cost_percentage: 5.0
     )
+    @filament = Filament.create!(
+      user: @user,
+      name: "Test PLA",
+      material_type: "PLA",
+      spool_price: 25.0,
+      spool_weight: 1000.0
+    )
     @print_pricing = PrintPricing.new(
       user: @user,
       printer: @printer,
       job_name: "Test Print",
       vat_percentage: 10.0
     )
-    @print_pricing.plates.build(
+    plate = @print_pricing.plates.build(
       printing_time_hours: 2,
-      printing_time_minutes: 30,
-      filament_weight: 50.0,
-      filament_type: "PLA",
-      spool_price: 25.0,
-      spool_weight: 1000.0,
-      markup_percentage: 20.0
+      printing_time_minutes: 30
+    )
+    plate.plate_filaments.build(
+      filament: @filament,
+      filament_weight: 50.0
     )
   end
 
@@ -57,20 +63,19 @@ class PrintPricingTest < ActiveSupport::TestCase
   end
 
   test "should sum printing time across all plates" do
-    @print_pricing.plates.build(
+    plate = @print_pricing.plates.build(
       printing_time_hours: 1,
-      printing_time_minutes: 15,
-      filament_weight: 30.0,
-      filament_type: "PETG",
-      spool_price: 30.0,
-      spool_weight: 1000.0,
-      markup_percentage: 15.0
+      printing_time_minutes: 15
+    )
+    plate.plate_filaments.build(
+      filament: @filament,
+      filament_weight: 30.0
     )
     assert_equal 225, @print_pricing.total_printing_time_minutes # 150 + 75
   end
 
   test "should calculate total_filament_cost correctly" do
-    expected_cost = (50.0 * 25.0 / 1000.0) * 1.2
+    expected_cost = 50.0 * (@filament.cost_per_gram)
     assert_in_delta expected_cost, @print_pricing.total_filament_cost, 0.01
   end
 

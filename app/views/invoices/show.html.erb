@@ -2,20 +2,20 @@
 
 <div data-controller="pdf-generator" data-pdf-generator-filename-value="<%= @invoice.invoice_number %>">
     <!-- Action Buttons -->
-    <%= render "invoices/partials/show_header", invoice: @invoice, print_pricing: @print_pricing %>
+    <%= render "invoices/partials/header/show", invoice: @invoice, print_pricing: @print_pricing %>
 
     <!-- Invoice Content (for PDF generation and printing) -->
-    <div class="invoice-content bg-white p-5 shadow-sm">
+    <div class="invoice-content bg-white p-4 shadow-sm">
         <!-- Invoice Header -->
-        <%= render "invoices/partials/invoice_header", invoice: @invoice, user: current_user %>
+        <%= render "invoices/partials/header/main", invoice: @invoice, user: current_user %>
 
         <!-- Customer Information -->
-        <%= render "invoices/partials/customer_info", customer_name: @print_pricing.job_name %>
+        <%= render "invoices/partials/form/customer", customer_name: @print_pricing.job_name %>
 
         <!-- Line Items Table -->
-        <%= render "invoices/partials/line_items_table", invoice: @invoice %>
+        <%= render "invoices/partials/line_items/table", invoice: @invoice %>
 
         <!-- Payment Details and Notes -->
-        <%= render "invoices/partials/payment_notes_display", invoice: @invoice %>
+        <%= render "invoices/partials/display/payment_notes", invoice: @invoice %>
     </div>
 </div>

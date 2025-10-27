@@ -5,7 +5,7 @@
   <div class="card-body">
     <div id="invoice-line-items" data-invoice-form-target="lineItems">
       <%= form.fields_for :invoice_line_items do |line_item_form| %>
-        <%= render "invoice_line_item_fields", f: line_item_form %>
+        <%= render "invoice_line_item_fields", f: line_item_form, currency: currency %>
       <% end %>
     </div>
     
@@ -15,6 +15,6 @@
       </button>
     </div>
 
-    <%= render "invoices/partials/invoice_totals", invoice: invoice, currency: currency %>
+    <%= render "invoices/partials/line_items/totals", invoice: invoice, currency: currency %>
   </div>
 </div>
