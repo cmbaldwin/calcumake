@@ -70,8 +70,7 @@ hi:
           ट्रैक करने के लिए अपनी पहली प्रिंट लागत गणना बनाना शुरू करें।
       no_results:
         title: कोई परिणाम नहीं मिला
-        description: "'%{query}' से मेल खाने वाली कोई प्रिंट गणना नहीं। एक अलग खोज
-          शब्द आज़माएं।"
+        description: "'%{query}' से मेल खाने वाली कोई प्रिंट गणना नहीं। एक अलग खोज शब्द आज़माएं।"
     job_name: जॉब का नाम
     print_time: प्रिंट समय
     times_printed: प्रिंट की संख्या
@@ -230,6 +229,70 @@ filaments:
   buttons:
     add_filament: फिलामेंट जोड़ें
     update_filament: फिलामेंट अपडेट करें
+  invoices:
+    title: इनवॉइस
+    new_invoice: नया इनवॉइस
+    edit_invoice: इनवॉइस संपादित करें
+    create_invoice: इनवॉइस बनाएं
+    index:
+      title: मेरे इनवॉइस
+      subtitle: प्रोजेक्ट्स में अपने सभी इनवॉइस को ट्रैक और मैनेज करें
+      search_placeholder: जॉब नाम से खोजें...
+      empty_state:
+        title: अभी तक कोई इनवॉइस नहीं
+        description: अपनी प्रिंट गणनाओं के लिए इनवॉइस बनाना शुरू करें।
+      no_results:
+        title: कोई परिणाम नहीं मिला
+        description: "'%{query}' से मेल खाने वाला कोई इनवॉइस नहीं। अलग खोज शब्द आज़माएं।"
+    download_pdf: PDF डाउनलोड करें
+    print: प्रिंट करें
+    bill_to: बिल करने का पता
+    mark_as_sent: भेजा गया के रूप में चिह्नित करें
+    mark_as_paid: भुगतान किया गया के रूप में चिह्नित करें
+    created_successfully: इनवॉइस सफलतापूर्वक बनाया गया
+    updated_successfully: इनवॉइस सफलतापूर्वक अपडेट किया गया
+    deleted_successfully: इनवॉइस सफलतापूर्वक हटाया गया
+    cannot_delete_non_draft: केवल ड्राफ्ट इनवॉइस हटाए जा सकते हैं
+    marked_as_sent: इनवॉइस को भेजा गया के रूप में चिह्नित किया गया
+    marked_as_paid: इनवॉइस को भुगतान किया गया के रूप में चिह्नित किया गया
+    marked_as_cancelled: इनवॉइस को रद्द के रूप में चिह्नित किया गया
+    failed_to_update: इनवॉइस अपडेट करने में विफल
+    confirm_delete: क्या आप वाकई इस इनवॉइस को हटाना चाहते हैं?
+    no_invoices: अभी तक कोई इनवॉइस नहीं
+    create_first_invoice: इस प्रिंट गणना के लिए अपना पहला इनवॉइस बनाएं
+    company_info_card_text: इनवॉइस कंपनी की जानकारी आपकी प्रोफ़ाइल सेटिंग्स में प्रबंधित की जाती है। अपने सभी इनवॉइस में उपयोग करने के लिए वहां अपनी कंपनी विवरण अपडेट करें।
+    no_company_info: कोई कंपनी जानकारी सेट नहीं की गई है। कंपनी विवरण जोड़ने के लिए कृपया अपनी प्रोफ़ाइल अपडेट करें।
+    edit_company_info: प्रोफ़ाइल में कंपनी जानकारी संपादित करें
+    status:
+      draft: ड्राफ्ट
+      sent: भेजा गया
+      paid: भुगतान किया गया
+      cancelled: रद्द
+    fields:
+      invoice_details: इनवॉइस विवरण
+      company_info: कंपनी जानकारी
+      company_name: कंपनी का नाम
+      company_address: कंपनी का पता
+      company_email: कंपनी ईमेल
+      company_phone: कंपनी फोन
+      payment_details: भुगतान विवरण
+      notes: नोट्स
+      invoice_number: इनवॉइस नंबर
+      invoice_number_help: इनवॉइस बनाने पर स्वचालित रूप से जनरेट होता है (संपादित नहीं किया जा सकता)
+      invoice_date: इनवॉइस तारीख
+      due_date: देय तारीख
+      status: स्थिति
+      currency: मुद्रा
+      currency_help: इस इनवॉइस पर सभी राशियों के लिए दशमलव स्थान और फॉर्मेटिंग निर्धारित करता है
+      company_logo: कंपनी लोगो
+    line_items:
+      title: लाइन आइटम
+      add_line_item: लाइन आइटम जोड़ें
+      description: विवरण
+      quantity: मात्रा
+      unit_price: यूनिट मूल्य
+      total: कुल
+      remove: हटाएं
 print_pricings:
   form:
     filament_weight: फिलामेंट वजन
