@@ -538,6 +538,70 @@ ja:
       add_filament: フィラメント追加
       update_filament: フィラメント更新
     confirm_delete: "'%{name}'を削除してもよろしいですか？"
+  invoices:
+    title: 請求書
+    new_invoice: 新規請求書
+    edit_invoice: 請求書編集
+    create_invoice: 請求書作成
+    index:
+      title: 請求書一覧
+      subtitle: プロジェクト全体の請求書を追跡・管理
+      search_placeholder: ジョブ名で検索...
+      empty_state:
+        title: 請求書がありません
+        description: 印刷計算から請求書を作成してください。
+      no_results:
+        title: 結果が見つかりません
+        description: "'%{query}'に一致する請求書がありません。別の検索語を試してください。"
+    download_pdf: PDF ダウンロード
+    print: 印刷
+    bill_to: 請求先
+    mark_as_sent: 送信済みにする
+    mark_as_paid: 支払済みにする
+    created_successfully: 請求書が正常に作成されました
+    updated_successfully: 請求書が正常に更新されました
+    deleted_successfully: 請求書が正常に削除されました
+    cannot_delete_non_draft: 下書きの請求書のみ削除できます
+    marked_as_sent: 請求書を送信済みにしました
+    marked_as_paid: 請求書を支払済みにしました
+    marked_as_cancelled: 請求書をキャンセルしました
+    failed_to_update: 請求書の更新に失敗しました
+    confirm_delete: この請求書を削除してもよろしいですか？
+    no_invoices: 請求書がありません
+    create_first_invoice: この印刷計算の最初の請求書を作成
+    company_info_card_text: 請求書の会社情報はプロフィール設定で管理されます。すべての請求書で使用するために、そこで会社詳細を更新してください。
+    no_company_info: 会社情報が設定されていません。会社詳細を追加するためにプロフィールを更新してください。
+    edit_company_info: プロフィールで会社情報を編集
+    status:
+      draft: 下書き
+      sent: 送信済み
+      paid: 支払済み
+      cancelled: キャンセル
+    fields:
+      invoice_details: 請求書詳細
+      company_info: 会社情報
+      company_name: 会社名
+      company_address: 会社住所
+      company_email: 会社メール
+      company_phone: 会社電話
+      payment_details: 支払詳細
+      notes: 備考
+      invoice_number: 請求書番号
+      invoice_number_help: 請求書作成時に自動生成されます（編集不可）
+      invoice_date: 請求日
+      due_date: 支払期限
+      status: ステータス
+      currency: 通貨
+      currency_help: この請求書のすべての金額の小数点以下桁数と書式を決定します
+      company_logo: 会社ロゴ
+    line_items:
+      title: 明細項目
+      add_line_item: 明細項目追加
+      description: 説明
+      quantity: 数量
+      unit_price: 単価
+      total: 合計
+      remove: 削除
   print_pricings:
     form:
       filament_weight: フィラメント重量

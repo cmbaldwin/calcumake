@@ -140,8 +140,7 @@ es:
           rastrear gastos y precios de sus proyectos de impresión 3D.
       no_results:
         title: No se encontraron resultados
-        description: No hay cálculos de impresión que coincidan con '%{query}'. Pruebe
-          con un término de búsqueda diferente.
+        description: "No hay cálculos de impresión que coincidan con '%{query}'. Pruebe con un término de búsqueda diferente."
     job_name: Nombre del Trabajo
     print_time: Tiempo de Impresión
     times_printed: Veces Impreso
@@ -536,6 +535,70 @@ filaments:
     add_filament: Agregar Filamento
     update_filament: Actualizar Filamento
   confirm_delete: "¿Estás seguro de que quieres eliminar '%{name}'?"
+  invoices:
+    title: Facturas
+    new_invoice: Nueva Factura
+    edit_invoice: Editar Factura
+    create_invoice: Crear Factura
+    index:
+      title: Mis Facturas
+      subtitle: Rastrea y gestiona todas tus facturas entre proyectos
+      search_placeholder: Buscar por nombre de trabajo...
+      empty_state:
+        title: Aún no hay facturas
+        description: Comienza creando facturas para tus cálculos de impresión.
+      no_results:
+        title: No se encontraron resultados
+        description: "Ninguna factura coincide con '%{query}'. Prueba con un término de búsqueda diferente."
+    download_pdf: Descargar PDF
+    print: Imprimir
+    bill_to: Facturar a
+    mark_as_sent: Marcar como Enviada
+    mark_as_paid: Marcar como Pagada
+    created_successfully: Factura creada exitosamente
+    updated_successfully: Factura actualizada exitosamente
+    deleted_successfully: Factura eliminada exitosamente
+    cannot_delete_non_draft: Solo se pueden eliminar las facturas en borrador
+    marked_as_sent: Factura marcada como enviada
+    marked_as_paid: Factura marcada como pagada
+    marked_as_cancelled: Factura marcada como cancelada
+    failed_to_update: Error al actualizar la factura
+    confirm_delete: ¿Estás seguro de que quieres eliminar esta factura?
+    no_invoices: Aún no hay facturas
+    create_first_invoice: Crea tu primera factura para este cálculo de impresión
+    company_info_card_text: La información de la empresa de la factura se gestiona en la configuración de tu perfil. Actualiza los detalles de tu empresa allí para usarlos en todas tus facturas.
+    no_company_info: No se ha establecido información de la empresa. Por favor actualiza tu perfil para agregar los detalles de la empresa.
+    edit_company_info: Editar Información de la Empresa en el Perfil
+    status:
+      draft: Borrador
+      sent: Enviada
+      paid: Pagada
+      cancelled: Cancelada
+    fields:
+      invoice_details: Detalles de la Factura
+      company_info: Información de la Empresa
+      company_name: Nombre de la Empresa
+      company_address: Dirección de la Empresa
+      company_email: Correo de la Empresa
+      company_phone: Teléfono de la Empresa
+      payment_details: Detalles de Pago
+      notes: Notas
+      invoice_number: Número de Factura
+      invoice_number_help: Generado automáticamente cuando se crean las facturas (no se puede editar)
+      invoice_date: Fecha de la Factura
+      due_date: Fecha de Vencimiento
+      status: Estado
+      currency: Moneda
+      currency_help: Determina los lugares decimales y el formato para todas las cantidades en esta factura
+      company_logo: Logo de la Empresa
+    line_items:
+      title: Elementos de Línea
+      add_line_item: Agregar Elemento de Línea
+      description: Descripción
+      quantity: Cantidad
+      unit_price: Precio Unitario
+      total: Total
+      remove: Eliminar
 print_pricings:
   form:
     filament_weight: Peso del Filamento

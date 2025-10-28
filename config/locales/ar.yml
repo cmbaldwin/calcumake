@@ -70,7 +70,7 @@ ar:
           الطباعة ثلاثية الأبعاد الخاصة بك.
       no_results:
         title: لم يتم العثور على نتائج
-        description: لا توجد حسابات طباعة تطابق '%{query}'. جرب مصطلح بحث مختلف.
+        description: "لا توجد حسابات طباعة تطابق '%{query}'. جرب مصطلح بحث مختلف."
     job_name: اسم المهمة
     print_time: وقت الطباعة
     times_printed: عدد مرات الطباعة
@@ -228,6 +228,70 @@ filaments:
   buttons:
     add_filament: إضافة خيط
     update_filament: تحديث الخيط
+  invoices:
+    title: الفواتير
+    new_invoice: فاتورة جديدة
+    edit_invoice: تعديل الفاتورة
+    create_invoice: إنشاء فاتورة
+    index:
+      title: فواتيري
+      subtitle: تتبع وإدارة جميع فواتيرك عبر المشاريع
+      search_placeholder: البحث باسم المهمة...
+      empty_state:
+        title: لا توجد فواتير حتى الآن
+        description: ابدأ بإنشاء فواتير لحسابات الطباعة الخاصة بك.
+      no_results:
+        title: لم يتم العثور على نتائج
+        description: "لا توجد فواتير تطابق '%{query}'. جرب مصطلح بحث مختلف."
+    download_pdf: تحميل PDF
+    print: طباعة
+    bill_to: فاتورة إلى
+    mark_as_sent: وضع علامة كمرسلة
+    mark_as_paid: وضع علامة كمدفوعة
+    created_successfully: تم إنشاء الفاتورة بنجاح
+    updated_successfully: تم تحديث الفاتورة بنجاح
+    deleted_successfully: تم حذف الفاتورة بنجاح
+    cannot_delete_non_draft: يمكن حذف المسودات فقط
+    marked_as_sent: تم وضع علامة على الفاتورة كمرسلة
+    marked_as_paid: تم وضع علامة على الفاتورة كمدفوعة
+    marked_as_cancelled: تم وضع علامة على الفاتورة كملغاة
+    failed_to_update: فشل في تحديث الفاتورة
+    confirm_delete: هل أنت متأكد من أنك تريد حذف هذه الفاتورة؟
+    no_invoices: لا توجد فواتير حتى الآن
+    create_first_invoice: أنشئ فاتورتك الأولى لحساب الطباعة هذا
+    company_info_card_text: يتم إدارة معلومات شركة الفاتورة في إعدادات ملفك الشخصي. قم بتحديث تفاصيل شركتك هناك لاستخدامها في جميع فواتيرك.
+    no_company_info: لم يتم تعيين معلومات الشركة. يرجى تحديث ملفك الشخصي لإضافة تفاصيل الشركة.
+    edit_company_info: تعديل معلومات الشركة في الملف الشخصي
+    status:
+      draft: مسودة
+      sent: مرسلة
+      paid: مدفوعة
+      cancelled: ملغاة
+    fields:
+      invoice_details: تفاصيل الفاتورة
+      company_info: معلومات الشركة
+      company_name: اسم الشركة
+      company_address: عنوان الشركة
+      company_email: بريد الشركة الإلكتروني
+      company_phone: هاتف الشركة
+      payment_details: تفاصيل الدفع
+      notes: ملاحظات
+      invoice_number: رقم الفاتورة
+      invoice_number_help: يتم إنشاؤه تلقائياً عند إنشاء الفواتير (لا يمكن تعديله)
+      invoice_date: تاريخ الفاتورة
+      due_date: تاريخ الاستحقاق
+      status: الحالة
+      currency: العملة
+      currency_help: يحدد الأماكن العشرية والتنسيق لجميع المبالغ في هذه الفاتورة
+      company_logo: شعار الشركة
+    line_items:
+      title: عناصر السطر
+      add_line_item: إضافة عنصر سطر
+      description: الوصف
+      quantity: الكمية
+      unit_price: سعر الوحدة
+      total: المجموع
+      remove: إزالة
 print_pricings:
   form:
     filament_weight: وزن الخيط
