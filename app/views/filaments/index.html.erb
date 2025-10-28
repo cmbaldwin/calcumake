@@ -5,31 +5,42 @@
     <%= link_to t('filaments.index.add_new'), new_filament_path, class: "btn btn-primary btn-lg" %>
 </div>
 
-<!-- Search and Filter Section -->
-<% if @filaments.any? || @q.present? %>
-<div class="card mb-4">
+<!-- Search and Filter Section with Typehead -->
+<% if @filaments.any? || params[:q].present? %>
+<div class="card mb-4" data-controller="search" data-search-url-value="<%= filaments_path %>">
     <div class="card-body">
-        <%= form_with url: filaments_path, method: :get, local: true, class: "row g-3" do |form| %>
+        <%= search_form_for @q, url: filaments_path,
+            html: {
+              class: "row g-3",
+              data: {
+                turbo_frame: :filament_results,
+                search_target: "form"
+              }
+            } do |form| %>
             <div class="col-md-6">
-                <%= form.text_field :q,
-                    value: @q,
+                <%= form.search_field :name_or_brand_or_color_cont,
                     placeholder: t('filaments.index.search_placeholder'),
-                    class: "form-control" %>
+                    class: "form-control",
+                    data: {
+                      search_target: "input",
+                      action: "input->search#search"
+                    } %>
             </div>
-            <div class="col-md-4">
-                <%= form.select :material_type,
-                    options_for_select([['All Materials', '']] + @material_types.map { |t| [t, t] }, @material_type),
+            <div class="col-md-6">
+                <%= form.select :material_type_eq,
+                    options_for_select([['All Materials', '']] + @material_types.map { |t| [t, t] }, params.dig(:q, :material_type_eq)),
                     {},
-                    { class: "form-select" } %>
-            </div>
-            <div class="col-md-2">
-                <%= form.submit t('actions.search'), class: "btn btn-primary w-100" %>
+                    {
+                      class: "form-select",
+                      data: { action: "change->search#search" }
+                    } %>
             </div>
         <% end %>
     </div>
 </div>
 <% end %>
 
+<%= turbo_frame_tag :filament_results do %>
 <% if @filaments.any? %>
 <div class="row g-4">
     <% @filaments.each do |filament| %>
@@ -74,12 +85,6 @@
                     <div class="d-flex flex-wrap gap-1">
                         <% if filament.moisture_sensitive? %>
                             <span class="badge bg-warning text-dark"><%= t('filaments.properties.moisture_sensitive') %></span>
-                        <% end %>
-                        <% if filament.food_safe? %>
-                            <span class="badge bg-success"><%= t('filaments.properties.food_safe') %></span>
-                        <% end %>
-                        <% if filament.recyclable? %>
-                            <span class="badge bg-info"><%= t('filaments.properties.recyclable') %></span>
                         <% end %>
                     </div>
                 </div>
@@ -136,3 +141,4 @@
     </div>
 </div>
 <% end %>
+<% end %> <!-- Close turbo_frame_tag -->

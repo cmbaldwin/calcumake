@@ -25,16 +25,6 @@
       <span class="badge bg-warning text-dark"><%= t('filaments.properties.moisture_sensitive') %></span>
     </div>
   <% end %>
-  <% if @filament.food_safe? %>
-    <div class="col-auto">
-      <span class="badge bg-success"><%= t('filaments.properties.food_safe') %></span>
-    </div>
-  <% end %>
-  <% if @filament.recyclable? %>
-    <div class="col-auto">
-      <span class="badge bg-info"><%= t('filaments.properties.recyclable') %></span>
-    </div>
-  <% end %>
 </div>
 
 <div class="row g-4">

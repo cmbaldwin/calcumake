@@ -17,8 +17,6 @@ one:
   spool_price: 25.00
   storage_temperature_max: 25
   moisture_sensitive: false
-  food_safe: false
-  recyclable: true
   notes: High quality PLA filament
 
 two:
@@ -38,6 +36,4 @@ two:
   spool_price: 30.00
   storage_temperature_max: 30
   moisture_sensitive: true
-  food_safe: true
-  recyclable: true
   notes: PETG for engineering applications

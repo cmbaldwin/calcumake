@@ -16,6 +16,16 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get standalone invoices index" do
+    get invoices_url
+    assert_response :success
+  end
+
+  test "should search invoices by job name" do
+    get invoices_url, params: { q: { print_pricing_job_name_cont: @print_pricing.job_name } }
+    assert_response :success
+  end
+
   test "should only show invoices for the specified print_pricing" do
     get print_pricing_invoices_url(@print_pricing)
     assert_response :success

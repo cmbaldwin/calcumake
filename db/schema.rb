@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_27_032458) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_28_052125) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -59,8 +59,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_27_032458) do
     t.decimal "spool_price", precision: 10, scale: 2
     t.integer "storage_temperature_max"
     t.boolean "moisture_sensitive", default: false
-    t.boolean "food_safe", default: false
-    t.boolean "recyclable", default: false
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

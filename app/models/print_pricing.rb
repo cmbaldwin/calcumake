@@ -23,6 +23,14 @@ class PrintPricing < ApplicationRecord
     where("job_name ILIKE ?", "%#{sanitize_sql_like(query)}%")
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "final_price", "id", "id_value", "job_name", "other_costs", "postprocessing_cost_per_hour", "postprocessing_time_minutes", "prep_cost_per_hour", "prep_time_minutes", "printer_id", "times_printed", "updated_at", "user_id", "vat_percentage"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["invoices", "plates", "printer", "user"]
+  end
+
   def total_printing_time_minutes
     plates.sum(&:total_printing_time_minutes)
   end

@@ -21,6 +21,10 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  # Standalone invoices route for global invoice management
+  resources :invoices, only: [:index]
+
   resources :printers
 
   resource :user_profile, only: [ :show, :edit, :update ], path: "profile"
