@@ -516,8 +516,6 @@ filaments:
     cost_per_gram: Costo por Gramo
     temperature_range: Rango de Temperatura
     moisture_sensitive: Sensible a la Humedad
-    food_safe: Apto para Alimentos
-    recyclable: Reciclable
     notes: Notas
     notes_placeholder: Información adicional sobre este filamento...
     filament: Filamento
@@ -534,8 +532,6 @@ filaments:
     storage_temp: Temperatura de Almacenamiento
   properties:
     moisture_sensitive: Sensible a la Humedad
-    food_safe: Apto para Alimentos
-    recyclable: Reciclable
   buttons:
     add_filament: Agregar Filamento
     update_filament: Actualizar Filamento

@@ -3,12 +3,22 @@ class InvoicesController < ApplicationController
   include ResourceAuthorization
 
   before_action :authenticate_user!
-  before_action :set_print_pricing
+  before_action :set_print_pricing, except: [:index]
+  before_action :set_print_pricing_for_nested_index, only: [:index]
   before_action :set_invoice, only: [ :show, :edit, :update, :destroy, :mark_as_sent, :mark_as_paid, :mark_as_cancelled ]
   before_action :authorize_invoice, only: [ :show, :edit, :update, :destroy, :mark_as_sent, :mark_as_paid, :mark_as_cancelled ]
 
   def index
-    @invoices = @print_pricing.invoices.recent
+    if params[:print_pricing_id].present?
+      # Nested route: show invoices for specific print pricing
+      @invoices = @print_pricing.invoices.recent
+      @nested_view = true
+    else
+      # Standalone route: show all user's invoices with search
+      @q = current_user.invoices.ransack(params[:q])
+      @invoices = @q.result.includes(:print_pricing).recent
+      @nested_view = false
+    end
   end
 
   def show
@@ -103,6 +113,10 @@ class InvoicesController < ApplicationController
 
   def set_print_pricing
     @print_pricing = current_user.print_pricings.find(params[:print_pricing_id])
+  end
+
+  def set_print_pricing_for_nested_index
+    @print_pricing = current_user.print_pricings.find(params[:print_pricing_id]) if params[:print_pricing_id].present?
   end
 
   def set_invoice

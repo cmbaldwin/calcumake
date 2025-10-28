@@ -1,50 +1,145 @@
-<% content_for :title, "#{t('invoices.title')} - #{@print_pricing.job_name}" %>
+<% if @nested_view %>
+  <% content_for :title, "#{t('invoices.title')} - #{@print_pricing.job_name}" %>
+<% else %>
+  <% content_for :title, t('invoices.title') %>
+<% end %>
 
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1><%= t('invoices.title') %></h1>
-                <%= link_to t('invoices.new_invoice'), new_print_pricing_invoice_path(@print_pricing), class: "btn btn-primary" %>
-            </div>
+<% if @nested_view %>
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                  <h1><%= t('invoices.title') %></h1>
+                  <%= link_to t('invoices.new_invoice'), new_print_pricing_invoice_path(@print_pricing), class: "btn btn-primary" %>
+              </div>
+<% else %>
+  <!-- Standalone Invoice Index with Search -->
+  <div class="text-center mb-5">
+      <h3 class="display-5 fw-bold text-primary mb-3"><%= t('invoices.index.title') %></h3>
+      <p class="lead text-muted mb-4">
+          <%= t('invoices.index.subtitle') %>
+      </p>
+  </div>
 
-            <% if @invoices&.any? %>
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th><%= t('invoices.fields.invoice_number') %></th>
-                                    <th><%= t('invoices.fields.company_name') %></th>
-                                    <th><%= t('invoices.fields.invoice_date') %></th>
-                                    <th><%= t('invoices.fields.due_date') %></th>
-                                    <th><%= t('invoices.fields.status') %></th>
-                                    <th class="text-end"><%= t('print_pricing.total') %></th>
-                                    <th class="text-end"><%= t('actions.title') %></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% @invoices.each do |invoice| %>
-                                  <%= render "invoices/partials/display/index_row", invoice: invoice, print_pricing: @print_pricing %>
+  <!-- Search Section -->
+  <div class="mb-4" data-controller="search" data-search-url-value="<%= invoices_path %>">
+      <%= search_form_for @q, url: invoices_path,
+          html: {
+            data: {
+              turbo_frame: :invoice_results,
+              search_target: "form"
+            }
+          } do |form| %>
+          <%= form.search_field :print_pricing_job_name_cont,
+              placeholder: t('invoices.index.search_placeholder'),
+              class: "form-control",
+              data: {
+                search_target: "input",
+                action: "input->search#search"
+              } %>
+      <% end %>
+  </div>
+
+  <%= turbo_frame_tag :invoice_results do %>
+<% end %>
+
+    <% if @invoices&.any? %>
+        <div class="row g-4">
+            <% @invoices.each do |invoice| %>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 text-primary">
+                                <%= link_to invoice.invoice_number,
+                                    (@nested_view ? print_pricing_invoice_path(@print_pricing, invoice) : print_pricing_invoice_path(invoice.print_pricing, invoice)),
+                                    class: "text-decoration-none" %>
+                            </h5>
+                            <span class="badge <%= invoice_status_badge_class(invoice) %>">
+                                <%= t("invoices.status.#{invoice.status}") %>
+                            </span>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <% unless @nested_view %>
+                                    <div class="d-flex justify-content-between py-2 border-bottom">
+                                        <span class="fw-medium text-muted"><%= t('invoices.fields.job_name') %>:</span>
+                                        <span class="fw-bold">
+                                            <%= link_to invoice.print_pricing.job_name,
+                                                print_pricing_path(invoice.print_pricing),
+                                                class: "text-decoration-none" %>
+                                        </span>
+                                    </div>
                                 <% end %>
-                            </tbody>
-                        </table>
+                                <% if invoice.company_name.present? %>
+                                    <div class="d-flex justify-content-between py-2 border-bottom">
+                                        <span class="fw-medium text-muted"><%= t('invoices.fields.company_name') %>:</span>
+                                        <span class="fw-bold"><%= invoice.company_name %></span>
+                                    </div>
+                                <% end %>
+                                <% if invoice.invoice_date.present? %>
+                                    <div class="d-flex justify-content-between py-2 border-bottom">
+                                        <span class="fw-medium text-muted"><%= t('invoices.fields.invoice_date') %>:</span>
+                                        <span class="fw-bold"><%= l(invoice.invoice_date, format: :month_day_year) %></span>
+                                    </div>
+                                <% end %>
+                                <% if invoice.due_date.present? %>
+                                    <div class="d-flex justify-content-between py-2 border-bottom">
+                                        <span class="fw-medium text-muted"><%= t('invoices.fields.due_date') %>:</span>
+                                        <span class="fw-bold"><%= l(invoice.due_date, format: :month_day_year) %></span>
+                                    </div>
+                                <% end %>
+                                <div class="d-flex justify-content-between py-2">
+                                    <span class="fw-medium text-muted"><%= t('print_pricing.total') %>:</span>
+                                    <span class="fw-bold text-success"><%= format_currency(invoice.total, invoice.currency) %></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-center">
+                                <div class="btn-group" role="group">
+                                    <%= link_to t('actions.view'),
+                                        (@nested_view ? print_pricing_invoice_path(@print_pricing, invoice) : print_pricing_invoice_path(invoice.print_pricing, invoice)),
+                                        class: "btn btn-sm btn-outline-primary" %>
+                                    <%= link_to t('actions.edit'),
+                                        (@nested_view ? edit_print_pricing_invoice_path(@print_pricing, invoice) : edit_print_pricing_invoice_path(invoice.print_pricing, invoice)),
+                                        class: "btn btn-sm btn-outline-secondary" %>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <% else %>
-            <div class="card">
-                <div class="card-body text-center py-5">
-                    <p class="text-muted mb-3"><%= t('invoices.no_invoices') %></p>
-                    <%= link_to t('invoices.create_invoice'), new_print_pricing_invoice_path(@print_pricing), class: "btn btn-primary" %>
+            <% end %>
+        </div>
+    <% else %>
+        <div class="text-center py-5">
+            <div class="card border-0 bg-light">
+                <div class="card-body py-5">
+                    <% if params[:q].present? %>
+                        <h3 class="text-muted mb-3"><%= t('invoices.index.no_results.title') %></h3>
+                        <p class="text-muted mb-4">
+                            <%= t('invoices.index.no_results.description', query: params.dig(:q, :print_pricing_job_name_cont)) %>
+                        </p>
+                    <% else %>
+                        <h3 class="text-muted mb-3"><%= t('invoices.index.empty_state.title') %></h3>
+                        <p class="text-muted mb-4">
+                            <%= t('invoices.index.empty_state.description') %>
+                        </p>
+                    <% end %>
                 </div>
             </div>
-            <% end %>
-
-            <div class="mt-4">
-                <%= link_to t('actions.back'), print_pricing_path(@print_pricing), class: "btn btn-outline-secondary" %>
-            </div>
         </div>
+    <% end %>
+
+<% if @nested_view %>
     </div>
-</div>
+    </div>
+    <div class="mt-4">
+        <%= link_to t('actions.back'), print_pricing_path(@print_pricing), class: "btn btn-outline-secondary" %>
+    </div>
+    </div>
+    </div>
+<% else %>
+    <% end %> <!-- Close turbo_frame_tag -->
+<% end %>

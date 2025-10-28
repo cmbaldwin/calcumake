@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Filament < ApplicationRecord
   belongs_to :user
   has_many :plate_filaments, dependent: :destroy
@@ -28,6 +30,14 @@ class Filament < ApplicationRecord
   end
 
   scope :by_material_type, ->(type) { where(material_type: type) if type.present? }
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["brand", "color", "created_at", "density", "diameter", "finish", "heated_bed_temperature", "id", "material_type", "moisture_sensitive", "name", "notes", "print_speed_max", "print_temperature_max", "print_temperature_min", "spool_price", "spool_weight", "storage_temperature_max", "updated_at", "user_id"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["plate_filaments", "plates", "user"]
+  end
 
   def display_name
     "#{brand.present? ? "#{brand} " : ""}#{name} (#{material_type}#{color.present? ? " - #{color}" : ""})"

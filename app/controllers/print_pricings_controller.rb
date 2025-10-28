@@ -3,7 +3,8 @@ class PrintPricingsController < ApplicationController
   before_action :set_print_pricing, only: [ :show, :edit, :update, :destroy, :increment_times_printed, :decrement_times_printed, :duplicate ]
 
   def index
-    @print_pricings = current_user.print_pricings.search(params[:query]).order(created_at: :desc)
+    @q = current_user.print_pricings.ransack(params[:q])
+    @print_pricings = @q.result.order(created_at: :desc)
   end
 
   def show

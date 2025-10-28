@@ -26,6 +26,9 @@
                     <%= link_to t('nav.my_filaments'), filaments_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
+                    <%= link_to t('nav.invoices'), invoices_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
                     <%= link_to t('nav.profile'), user_profile_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item dropdown">
@@ -42,7 +45,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <%= link_to t('nav.sign_out'), destroy_user_session_path, method: :delete, class: "nav-link" %>
+                    <%= link_to t('nav.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
                 </li>
                 <% else %>
                 <li class="nav-item">
