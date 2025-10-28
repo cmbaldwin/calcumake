@@ -518,8 +518,6 @@ ja:
       cost_per_gram: グラムあたり単価
       temperature_range: 温度範囲
       moisture_sensitive: 湿気に敏感
-      food_safe: 食品安全
-      recyclable: リサイクル可能
       notes: 備考
       notes_placeholder: このフィラメントに関する追加情報...
       filament: フィラメント
@@ -536,8 +534,6 @@ ja:
       storage_temp: 保管温度
     properties:
       moisture_sensitive: 湿気に敏感
-      food_safe: 食品安全
-      recyclable: リサイクル可能
     buttons:
       add_filament: フィラメント追加
       update_filament: フィラメント更新

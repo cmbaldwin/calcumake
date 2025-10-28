@@ -1,16 +1,12 @@
+# frozen_string_literal: true
+
 class FilamentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_filament, only: [:show, :edit, :update, :destroy, :duplicate]
 
   def index
-    @q = params[:q]
-    @material_type = params[:material_type]
-
-    @filaments = current_user.filaments
-                             .search(@q)
-                             .by_material_type(@material_type)
-                             .order(:material_type, :name)
-
+    @q = current_user.filaments.ransack(params[:q])
+    @filaments = @q.result.order(:material_type, :name)
     @material_types = current_user.filaments.distinct.pluck(:material_type).compact.sort
   end
 
@@ -72,7 +68,7 @@ class FilamentsController < ApplicationController
       :name, :brand, :material_type, :diameter, :density,
       :print_temperature_min, :print_temperature_max, :heated_bed_temperature,
       :print_speed_max, :color, :finish, :spool_weight, :spool_price,
-      :storage_temperature_max, :moisture_sensitive, :food_safe, :recyclable, :notes
+      :storage_temperature_max, :moisture_sensitive, :notes
     )
   end
 end

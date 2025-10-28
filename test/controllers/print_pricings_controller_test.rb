@@ -127,8 +127,6 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
       spool_price: 20.00,
       storage_temperature_max: 25,
       moisture_sensitive: false,
-      food_safe: false,
-      recyclable: true
     )
     other_printer = other_user.printers.create!(
       name: "Other Printer",

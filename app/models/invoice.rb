@@ -23,6 +23,14 @@ class Invoice < ApplicationRecord
   scope :cancelled, -> { where(status: "cancelled") }
   scope :recent, -> { order(invoice_date: :desc) }
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["company_name", "created_at", "currency", "due_date", "id", "invoice_date", "invoice_number", "notes", "status", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["print_pricing"]
+  end
+
   # Instance methods
   def subtotal
     invoice_line_items.sum(:total_price)

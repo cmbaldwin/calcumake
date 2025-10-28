@@ -8,13 +8,21 @@
 </div>
 
 <!-- Search Section -->
-<div class="mb-4">
-    <%= form_with(url: print_pricings_path, method: :get, data: { turbo_frame: :print_pricings_results }) do |form| %>
-        <%= form.text_field :query,
-            value: params[:query],
+<div class="mb-4" data-controller="search" data-search-url-value="<%= print_pricings_path %>">
+    <%= search_form_for @q, url: print_pricings_path,
+        html: {
+          data: {
+            turbo_frame: :print_pricings_results,
+            search_target: "form"
+          }
+        } do |form| %>
+        <%= form.search_field :job_name_cont,
             placeholder: t('print_pricing.index.search_placeholder'),
             class: "form-control",
-            oninput: "this.form.requestSubmit()" %>
+            data: {
+              search_target: "input",
+              action: "input->search#search"
+            } %>
     <% end %>
 </div>
 
@@ -36,10 +44,10 @@
         <div class="text-center py-5">
             <div class="card border-0 bg-light">
                 <div class="card-body py-5">
-                    <% if params[:query].present? %>
+                    <% if params.dig(:q, :job_name_cont).present? %>
                         <h3 class="text-muted mb-3"><%= t('print_pricing.index.no_results.title') %></h3>
                         <p class="text-muted mb-4">
-                            <%= t('print_pricing.index.no_results.description', query: params[:query]) %>
+                            <%= t('print_pricing.index.no_results.description', query: params.dig(:q, :job_name_cont)) %>
                         </p>
                     <% else %>
                         <h3 class="text-muted mb-3"><%= t('print_pricing.index.empty_state.title') %></h3>
