@@ -71,8 +71,7 @@ fr:
           3D.
       no_results:
         title: Aucun résultat trouvé
-        description: Aucun calcul d'impression ne correspond à '%{query}'. Essayez
-          un terme de recherche différent.
+        description: "Aucun calcul d'impression ne correspond à '%{query}'. Essayez un terme de recherche différent."
     job_name: Nom du Travail
     print_time: Temps d'Impression
     times_printed: Fois Imprimé
@@ -232,6 +231,70 @@ filaments:
   buttons:
     add_filament: Ajouter Filament
     update_filament: Mettre à Jour Filament
+  invoices:
+    title: Factures
+    new_invoice: Nouvelle Facture
+    edit_invoice: Modifier la Facture
+    create_invoice: Créer une Facture
+    index:
+      title: Mes Factures
+      subtitle: Suivez et gérez toutes vos factures à travers les projets
+      search_placeholder: Rechercher par nom de travail...
+      empty_state:
+        title: Aucune facture pour l'instant
+        description: Commencez par créer des factures pour vos calculs d'impression.
+      no_results:
+        title: Aucun résultat trouvé
+        description: "Aucune facture ne correspond à '%{query}'. Essayez un terme de recherche différent."
+    download_pdf: Télécharger PDF
+    print: Imprimer
+    bill_to: Facturer à
+    mark_as_sent: Marquer comme Envoyée
+    mark_as_paid: Marquer comme Payée
+    created_successfully: Facture créée avec succès
+    updated_successfully: Facture mise à jour avec succès
+    deleted_successfully: Facture supprimée avec succès
+    cannot_delete_non_draft: Seules les factures brouillon peuvent être supprimées
+    marked_as_sent: Facture marquée comme envoyée
+    marked_as_paid: Facture marquée comme payée
+    marked_as_cancelled: Facture marquée comme annulée
+    failed_to_update: Échec de la mise à jour de la facture
+    confirm_delete: Êtes-vous sûr de vouloir supprimer cette facture ?
+    no_invoices: Aucune facture pour l'instant
+    create_first_invoice: Créez votre première facture pour ce calcul d'impression
+    company_info_card_text: Les informations de l'entreprise de la facture sont gérées dans les paramètres de votre profil. Mettez à jour les détails de votre entreprise là-bas pour les utiliser dans toutes vos factures.
+    no_company_info: Aucune information d'entreprise définie. Veuillez mettre à jour votre profil pour ajouter les détails de l'entreprise.
+    edit_company_info: Modifier les Informations de l'Entreprise dans le Profil
+    status:
+      draft: Brouillon
+      sent: Envoyée
+      paid: Payée
+      cancelled: Annulée
+    fields:
+      invoice_details: Détails de la Facture
+      company_info: Informations de l'Entreprise
+      company_name: Nom de l'Entreprise
+      company_address: Adresse de l'Entreprise
+      company_email: Email de l'Entreprise
+      company_phone: Téléphone de l'Entreprise
+      payment_details: Détails de Paiement
+      notes: Notes
+      invoice_number: Numéro de Facture
+      invoice_number_help: Généré automatiquement lors de la création des factures (ne peut pas être modifié)
+      invoice_date: Date de la Facture
+      due_date: Date d'Échéance
+      status: Statut
+      currency: Devise
+      currency_help: Détermine les décimales et le formatage pour tous les montants sur cette facture
+      company_logo: Logo de l'Entreprise
+    line_items:
+      title: Éléments de Ligne
+      add_line_item: Ajouter un Élément de Ligne
+      description: Description
+      quantity: Quantité
+      unit_price: Prix Unitaire
+      total: Total
+      remove: Supprimer
 print_pricings:
   form:
     filament_weight: Poids du Filament

@@ -74,7 +74,7 @@ zh-CN:
         description: 开始创建您的第一个打印成本计算，跟踪3D打印项目的费用和定价。
       no_results:
         title: 未找到结果
-        description: 没有与'%{query}'匹配的打印计算。请尝试不同的搜索词。
+        description: "没有与'%{query}'匹配的打印计算。请尝试不同的搜索词。"
     job_name: 作业名称
     print_time: 打印时间
     times_printed: 打印次数
@@ -259,6 +259,70 @@ filaments:
   buttons:
     add_filament: 添加材料
     update_filament: 更新材料
+  invoices:
+    title: 发票
+    new_invoice: 新建发票
+    edit_invoice: 编辑发票
+    create_invoice: 创建发票
+    index:
+      title: 我的发票
+      subtitle: 跟踪和管理所有项目的发票
+      search_placeholder: 按作业名称搜索...
+      empty_state:
+        title: 暂无发票
+        description: 开始为您的打印计算创建发票。
+      no_results:
+        title: 未找到结果
+        description: "没有与'%{query}'匹配的发票。请尝试不同的搜索词。"
+    download_pdf: 下载PDF
+    print: 打印
+    bill_to: 账单地址
+    mark_as_sent: 标记为已发送
+    mark_as_paid: 标记为已付款
+    created_successfully: 发票创建成功
+    updated_successfully: 发票更新成功
+    deleted_successfully: 发票删除成功
+    cannot_delete_non_draft: 只能删除草稿发票
+    marked_as_sent: 发票已标记为已发送
+    marked_as_paid: 发票已标记为已付款
+    marked_as_cancelled: 发票已标记为已取消
+    failed_to_update: 发票更新失败
+    confirm_delete: 您确定要删除此发票吗？
+    no_invoices: 暂无发票
+    create_first_invoice: 为此打印计算创建第一张发票
+    company_info_card_text: 发票公司信息在您的个人资料设置中管理。在那里更新您的公司详细信息以在所有发票中使用。
+    no_company_info: 未设置公司信息。请更新您的个人资料以添加公司详细信息。
+    edit_company_info: 在个人资料中编辑公司信息
+    status:
+      draft: 草稿
+      sent: 已发送
+      paid: 已付款
+      cancelled: 已取消
+    fields:
+      invoice_details: 发票详情
+      company_info: 公司信息
+      company_name: 公司名称
+      company_address: 公司地址
+      company_email: 公司邮箱
+      company_phone: 公司电话
+      payment_details: 付款详情
+      notes: 备注
+      invoice_number: 发票号码
+      invoice_number_help: 创建发票时自动生成（无法编辑）
+      invoice_date: 发票日期
+      due_date: 到期日期
+      status: 状态
+      currency: 货币
+      currency_help: 确定此发票上所有金额的小数位数和格式
+      company_logo: 公司徽标
+    line_items:
+      title: 明细项目
+      add_line_item: 添加明细项目
+      description: 描述
+      quantity: 数量
+      unit_price: 单价
+      total: 总计
+      remove: 删除
 print_pricings:
   form:
     filament_weight: 耗材重量
