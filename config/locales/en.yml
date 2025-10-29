@@ -977,15 +977,15 @@ en:
 
       accuracy:
         question: "How accurate are the calculations?"
-        answer: "CalcuMake uses industry-standard formulas and accounts for all cost factors including filament, electricity, labor time, and machine depreciation. Our calculations are typically accurate within 2-3% of actual costs."
+        answer: "CalcuMake uses simple formulas and accounts for all cost factors including filament, electricity, labor time, and machine depreciation."
 
       currencies:
         question: "What currencies does CalcuMake support?"
-        answer: "CalcuMake supports USD, EUR, GBP, JPY, CAD, and AUD with automatic formatting and precision for each currency. You can switch currencies anytime in your profile settings."
+        answer: "CalcuMake currently supports USD, EUR, GBP, JPY, CAD, and AUD with automatic formatting and precision for each currency. You can switch currencies anytime in your profile settings."
 
       printers:
         question: "Does CalcuMake support my 3D printer?"
-        answer: "CalcuMake works with any 3D printer! You simply enter your printer's power consumption and other specifications. We have tested with Prusa, Ender, Bambu Lab, Ultimaker, and many other brands."
+        answer: "CalcuMake works with any 3D printer! You simply enter your printer's power consumption and other specifications. We're planning support for resin printers soon!"
 
       electricity:
         question: "How do electricity costs work?"
