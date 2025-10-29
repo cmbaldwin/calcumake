@@ -1,5 +1,9 @@
 # CalcuMake Landing Page & Feature Enhancement Plan
 
+**Branch**: `paid` - All SaaS transformation features developed on this branch
+**Current Status**: Planning phase complete, ready for implementation
+**Base Branch**: `master` (production CalcuMake app)
+
 ## Project Overview
 
 Transform CalcuMake from an internal tool to a commercial SaaS product with:
@@ -36,7 +40,6 @@ Convert 3D printing enthusiasts into CalcuMake users by showcasing the pain poin
 #### Problem Statement
 
 - "Are you losing money on 3D prints?"
-- Statistics: "73% of 3D print services undercharge by 40%"
 - Pain points:
   - Manual calculation errors
   - Forgetting electricity costs
@@ -81,23 +84,21 @@ Convert 3D printing enthusiasts into CalcuMake users by showcasing the pain poin
 
 **Free Tier:**
 
-- Up to 5 print calculations per month
+- **First month**: Full Startup tier access (trial period)
+- **After trial**: Up to 5 print calculations per month
 - 1 printer profile
 - 4 filament types
 - 5 invoices per month
 - CalcuMake branding on invoices
-- **Google AdSense ads**
+- **Ads** (Note: AdSense implementation pending approval - can take weeks)
 
-**Sartup Tier ($3.99/month):**
+**Startup Tier ($0.99/month):**
 
 - Up to 50 print calculations per month
 - Up to 10 printer profiles
 - Up to 16 filament types
 - Remove CalcuMake branding
 - **No ads**
-- Priority support
-- Advanced analytics
-- Bulk import/export
 
 **Pro Tier ($9.99/month):**
 
@@ -109,10 +110,11 @@ Convert 3D printing enthusiasts into CalcuMake users by showcasing the pain poin
 - Priority support
 - Advanced analytics
 - Bulk import/export
+- Future premium features
 
 #### Trust Signals
 
-- "No credit card required for free tier"
+- "No credit card required - start with full Startup features for 30 days"
 - "Cancel anytime"
 - "Your data stays private"
 - SSL security badge
@@ -174,6 +176,7 @@ Allow users to experience CalcuMake without signup via pre-populated demo data.
 # Add to users table
 add_column :users, :plan, :string, default: 'free', null: false
 add_column :users, :plan_expires_at, :datetime
+add_column :users, :trial_ends_at, :datetime
 add_column :users, :stripe_customer_id, :string
 
 # Usage tracking
@@ -197,12 +200,31 @@ class PlanLimits
     invoices: 5
   }.freeze
 
+  STARTUP_LIMITS = {
+    print_pricings: 50,
+    printers: 10,
+    filaments: 16,
+    invoices: Float::INFINITY
+  }.freeze
+
   PRO_LIMITS = {
     print_pricings: Float::INFINITY,
     printers: Float::INFINITY,
     filaments: Float::INFINITY,
     invoices: Float::INFINITY
   }.freeze
+
+  # Trial period - new users get Startup limits for first month
+  def self.limits_for_user(user)
+    return STARTUP_LIMITS if user.in_trial_period?
+
+    case user.plan
+    when 'free' then FREE_LIMITS
+    when 'startup' then STARTUP_LIMITS
+    when 'pro' then PRO_LIMITS
+    else FREE_LIMITS
+    end
+  end
 end
 ```
 
@@ -211,6 +233,7 @@ end
 - **Google AdSense**: Add ads to sidebar and between content sections
 - **Ad Placement**: Non-intrusive, following Google policies
 - **Ad-Free Experience**: Immediate benefit of Pro upgrade
+- **Implementation Note**: AdSense approval can take 2-4 weeks and requires substantial content. Plan to launch freemium model without ads initially, then add ads after approval.
 
 ### Billing Integration
 
@@ -398,7 +421,7 @@ end
 
 - **OAuth Failures**: Fallback to email signup always available
 - **Email Deliverability**: Monitor Resend analytics, have backup SMTP
-- **Ad Performance**: AdSense approval may take time - plan content accordingly
+- **AdSense Approval Delays**: Can take 2-4 weeks and requires quality content. Launch freemium without ads first, add ads post-approval
 - **Plan Limits**: Graceful degradation when limits exceeded
 
 ### Business Risks
