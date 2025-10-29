@@ -12,6 +12,33 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#0d6efd">
     
+    <%# Google Analytics (GA4) %>
+    <% if Rails.env.production? %>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+
+      // Track landing page conversions
+      function trackSignupStart() {
+        gtag('event', 'signup_start', {
+          event_category: 'engagement',
+          event_label: 'landing_page'
+        });
+      }
+
+      function trackDemoView() {
+        gtag('event', 'demo_view', {
+          event_category: 'engagement',
+          event_label: 'landing_page'
+        });
+      }
+    </script>
+    <% end %>
+
     <%# Google AdSense %>
     <meta name="google-adsense-account" content="ca-pub-5257142454834240">
     <%= csrf_meta_tags %>

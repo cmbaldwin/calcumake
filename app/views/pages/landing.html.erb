@@ -1,0 +1,412 @@
+<%# Landing page for CalcuMake - conversion optimized for 3D printing enthusiasts %>
+
+<%# Override page title and meta tags for SEO %>
+<% content_for :title, @page_title %>
+<% content_for :meta_description, @meta_description %>
+<% content_for :meta_keywords, @meta_keywords %>
+
+<%# Add landing page specific structured data %>
+<% content_for :structured_data do %>
+  <script type="application/ld+json">
+    <%= @structured_data.to_json.html_safe %>
+  </script>
+<% end %>
+
+<div class="landing-page">
+  <!-- Hero Section -->
+  <section class="hero-section text-center py-5 mb-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h1 class="display-4 fw-bold text-primary mb-3">
+            <%= t('landing.hero.headline') %>
+          </h1>
+          <p class="lead text-muted mb-4">
+            <%= t('landing.hero.subheadline') %>
+          </p>
+          <div class="hero-ctas mb-4">
+            <%= link_to t('landing.hero.cta_primary'), new_user_registration_path,
+                class: "btn btn-primary btn-lg me-3 mb-2",
+                onclick: "if(typeof trackSignupStart === 'function') trackSignupStart();" %>
+            <%= link_to t('landing.hero.cta_demo'), demo_path,
+                class: "btn btn-outline-secondary btn-lg mb-2",
+                onclick: "if(typeof trackDemoView === 'function') trackDemoView();" %>
+          </div>
+          <div class="trust-signals">
+            <small class="text-muted">
+              <i class="bi bi-shield-check"></i>
+              <%= t('landing.hero.trust_signal') %>
+            </small>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="hero-visual">
+            <!-- Placeholder for interactive calculator preview or screenshot -->
+            <div class="card shadow-lg">
+              <div class="card-body p-4">
+                <h5 class="card-title text-primary"><i class="bi bi-calculator"></i> <%= t('landing.hero.preview_title') %></h5>
+                <div class="row g-2 mb-3">
+                  <div class="col-6">
+                    <label class="form-label small">Filament Weight</label>
+                    <div class="form-control text-center">45.2g</div>
+                  </div>
+                  <div class="col-6">
+                    <label class="form-label small">Print Time</label>
+                    <div class="form-control text-center">2.5h</div>
+                  </div>
+                </div>
+                <div class="alert alert-success mb-0">
+                  <strong>Total Cost: $3.47</strong>
+                  <small class="d-block">Electricity + Filament + Labor</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Statement -->
+  <section class="problem-section py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="h1 text-primary mb-4">
+            <%= t('landing.problem.headline') %>
+          </h2>
+          <div class="row g-4 mt-4">
+            <div class="col-md-6">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                  <i class="bi bi-exclamation-triangle-fill text-warning fs-1 mb-3"></i>
+                  <h5><%= t('landing.problem.manual_errors') %></h5>
+                  <p class="text-muted"><%= t('landing.problem.manual_errors_desc') %></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                  <i class="bi bi-lightning-charge-fill text-warning fs-1 mb-3"></i>
+                  <h5><%= t('landing.problem.electricity_costs') %></h5>
+                  <p class="text-muted"><%= t('landing.problem.electricity_costs_desc') %></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                  <i class="bi bi-graph-down text-danger fs-1 mb-3"></i>
+                  <h5><%= t('landing.problem.inconsistent_pricing') %></h5>
+                  <p class="text-muted"><%= t('landing.problem.inconsistent_pricing_desc') %></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                  <i class="bi bi-clock-fill text-info fs-1 mb-3"></i>
+                  <h5><%= t('landing.problem.time_wasted') %></h5>
+                  <p class="text-muted"><%= t('landing.problem.time_wasted_desc') %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Showcase -->
+  <section class="features-section py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center mb-5">
+          <h2 class="h1 text-primary"><%= t('landing.solution.headline') %></h2>
+          <p class="lead text-muted"><%= t('landing.solution.subheadline') %></p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="feature-card h-100">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body p-4">
+                <div class="feature-icon text-primary mb-3">
+                  <i class="bi bi-calculator-fill fs-1"></i>
+                </div>
+                <h4 class="text-primary"><%= t('landing.features.accurate_calculation.title') %></h4>
+                <p class="text-muted mb-3"><%= t('landing.features.accurate_calculation.desc') %></p>
+                <ul class="list-unstyled">
+                  <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.accurate_calculation.filament') %></li>
+                  <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.accurate_calculation.electricity') %></li>
+                  <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.accurate_calculation.labor') %></li>
+                  <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.accurate_calculation.depreciation') %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="feature-card h-100">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body p-4">
+                <div class="feature-icon text-primary mb-3">
+                  <i class="bi bi-printer-fill fs-1"></i>
+                </div>
+                <h4 class="text-primary"><%= t('landing.features.multi_printer.title') %></h4>
+                <p class="text-muted mb-3"><%= t('landing.features.multi_printer.desc') %></p>
+                <ul class="list-unstyled">
+                  <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.multi_printer.power') %></li>
+                  <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.multi_printer.roi') %></li>
+                  <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.multi_printer.organization') %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="feature-card h-100">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body p-4">
+                <div class="feature-icon text-primary mb-3">
+                  <i class="bi bi-file-earmark-pdf-fill fs-1"></i>
+                </div>
+                <h4 class="text-primary"><%= t('landing.features.invoicing.title') %></h4>
+                <p class="text-muted mb-3"><%= t('landing.features.invoicing.desc') %></p>
+                <ul class="list-unstyled">
+                  <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.invoicing.pdf') %></li>
+                  <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.invoicing.branding') %></li>
+                  <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.invoicing.currency') %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="feature-card h-100">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body p-4">
+                <div class="feature-icon text-primary mb-3">
+                  <i class="bi bi-folder-fill fs-1"></i>
+                </div>
+                <h4 class="text-primary"><%= t('landing.features.organization.title') %></h4>
+                <p class="text-muted mb-3"><%= t('landing.features.organization.desc') %></p>
+                <ul class="list-unstyled">
+                  <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.organization.search') %></li>
+                  <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.organization.duplicate') %></li>
+                  <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.organization.history') %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-section py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center mb-5">
+          <h2 class="h1 text-primary"><%= t('landing.pricing.headline') %></h2>
+          <p class="lead text-muted"><%= t('landing.pricing.subheadline') %></p>
+        </div>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <!-- Free Tier -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4 text-center">
+              <h4 class="text-primary"><%= t('landing.pricing.free.title') %></h4>
+              <div class="price-display mb-3">
+                <span class="h2 text-primary">$0</span>
+                <span class="text-muted">/month</span>
+              </div>
+              <div class="alert alert-info mb-4">
+                <strong><%= t('landing.pricing.free.trial_notice') %></strong>
+              </div>
+              <ul class="list-unstyled text-start mb-4">
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.free.calculations') %></li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.free.printers') %></li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.free.filaments') %></li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.free.invoices') %></li>
+                <li class="mb-2"><i class="bi bi-x-circle text-muted me-2"></i><%= t('landing.pricing.free.branding') %></li>
+              </ul>
+              <%= link_to t('landing.pricing.cta'), new_user_registration_path,
+                  class: "btn btn-outline-primary w-100",
+                  onclick: "if(typeof trackSignupStart === 'function') trackSignupStart();" %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Startup Tier -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card border-primary shadow-lg h-100 position-relative">
+            <div class="badge bg-primary position-absolute top-0 start-50 translate-middle px-3 py-2">
+              <%= t('landing.pricing.startup.badge') %>
+            </div>
+            <div class="card-body p-4 text-center">
+              <h4 class="text-primary"><%= t('landing.pricing.startup.title') %></h4>
+              <div class="price-display mb-3">
+                <span class="h2 text-primary">$0.99</span>
+                <span class="text-muted">/month</span>
+              </div>
+              <ul class="list-unstyled text-start mb-4">
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.startup.calculations') %></li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.startup.printers') %></li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.startup.filaments') %></li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.startup.branding') %></li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.startup.ads') %></li>
+              </ul>
+              <%= link_to t('landing.pricing.cta'), new_user_registration_path,
+                  class: "btn btn-primary w-100" %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pro Tier -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4 text-center">
+              <h4 class="text-primary"><%= t('landing.pricing.pro.title') %></h4>
+              <div class="price-display mb-3">
+                <span class="h2 text-primary">$9.99</span>
+                <span class="text-muted">/month</span>
+              </div>
+              <ul class="list-unstyled text-start mb-4">
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.pro.unlimited') %></li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.pro.branding') %></li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.pro.ads') %></li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.pro.support') %></li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.pro.analytics') %></li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.pro.features') %></li>
+              </ul>
+              <%= link_to t('landing.pricing.cta'), new_user_registration_path,
+                  class: "btn btn-outline-primary w-100",
+                  onclick: "if(typeof trackSignupStart === 'function') trackSignupStart();" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <div class="trust-signals">
+            <p class="text-muted mb-2">
+              <i class="bi bi-shield-check text-success me-2"></i>
+              <%= t('landing.pricing.trust_signals.no_credit_card') %>
+            </p>
+            <p class="text-muted mb-2">
+              <i class="bi bi-x-circle text-success me-2"></i>
+              <%= t('landing.pricing.trust_signals.cancel_anytime') %>
+            </p>
+            <p class="text-muted">
+              <i class="bi bi-lock-fill text-success me-2"></i>
+              <%= t('landing.pricing.trust_signals.data_private') %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="h1 text-primary text-center mb-5"><%= t('landing.faq.headline') %></h2>
+
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  <%= t('landing.faq.accuracy.question') %>
+                </button>
+              </h3>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <%= t('landing.faq.accuracy.answer') %>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  <%= t('landing.faq.currencies.question') %>
+                </button>
+              </h3>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <%= t('landing.faq.currencies.answer') %>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  <%= t('landing.faq.printers.question') %>
+                </button>
+              </h3>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <%= t('landing.faq.printers.answer') %>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                  <%= t('landing.faq.electricity.question') %>
+                </button>
+              </h3>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <%= t('landing.faq.electricity.answer') %>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                  <%= t('landing.faq.invoices.question') %>
+                </button>
+              </h3>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <%= t('landing.faq.invoices.answer') %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta py-5 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="h1 mb-3"><%= t('landing.final_cta.headline') %></h2>
+          <p class="lead mb-4"><%= t('landing.final_cta.subheadline') %></p>
+          <%= link_to t('landing.final_cta.button'), new_user_registration_path,
+              class: "btn btn-light btn-lg",
+              onclick: "if(typeof trackSignupStart === 'function') trackSignupStart();" %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
