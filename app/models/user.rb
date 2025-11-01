@@ -21,6 +21,8 @@ class User < ApplicationRecord
   validates :default_postprocessing_cost_per_hour, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
   validates :default_other_costs, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
   validates :default_vat_percentage, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }, allow_nil: true
+  validates :default_listing_cost_percentage, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }, allow_nil: true
+  validates :default_payment_processing_cost_percentage, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }, allow_nil: true
 
   before_validation :set_default_locale, on: :create
   before_validation :set_default_next_invoice_number, on: :create
