@@ -133,6 +133,9 @@ es:
       create_new: Calcular Nueva Impresión
       total_calculations: Total de Cálculos
       total_print_time: Tiempo Total de Impresión
+      total_filament_used: Total de Filamento Usado
+      total_estimated_sales: Total de Ventas Estimadas
+      total_estimated_profit: Total de Ganancias Estimadas
       search_placeholder: Buscar por nombre de trabajo o tipo de filamento...
       empty_state:
         title: No hay cálculos aún
@@ -179,7 +182,7 @@ es:
     depreciation_and_maintenance: Depreciación y mantenimiento
     other_costs: Otros Costos
     subtotal: Subtotal
-    vat: IVA
+    vat: Impuesto de Ventas (IVA)
     total: Total
     notes: Notas
     invoice_notes_text: Gracias por su negocio. Por favor conserve esta factura para sus registros.
@@ -247,8 +250,13 @@ es:
       post_cost_placeholder: '20.00'
       other_costs: Otros Costos
       other_costs_placeholder: '0.00'
-      vat: IVA (%)
+      vat: Impuesto de Ventas (IVA) (%)
       vat_placeholder: '10'
+      vat_percentage: Porcentaje de Impuesto de Ventas (IVA)
+      listing_cost_percentage: Porcentaje de Costo de Listado (%)
+      listing_cost_percentage_placeholder: "3"
+      payment_processing_cost_percentage: Porcentaje de Costo de Procesamiento de Pagos (%)
+      payment_processing_cost_percentage_placeholder: "2.9"
       power_consumption: Consumo de Energía (W)
       power_consumption_placeholder: '200'
       energy_cost_kwh: Costo de Energía por kWh
@@ -312,8 +320,10 @@ es:
         labor: Costo de Mano de Obra
         machine: Costo de Máquina
         other: Otros Costos
+        listing: Costos de Listado
+        payment_processing: Procesamiento de Pagos
         subtotal: Subtotal
-        vat: IVA (%{rate}%)
+        vat: Impuesto de Ventas (IVA) (%{rate}%)
         final_price: Precio Final
       details:
         currency: Moneda
@@ -417,6 +427,22 @@ es:
       energy_cost_help: Su costo local de electricidad por kilovatio-hora
       energy_cost_help_extended: Su costo local de electricidad por kilovatio-hora.
         Se utilizará como predeterminado para nuevos cálculos.
+      prep_time: Tiempo de Preparación (minutos)
+      prep_time_help: Tiempo dedicado a preparar impresiones antes de comenzar
+      prep_cost: Costo de Preparación por Hora
+      prep_cost_help: Tarifa por hora para trabajo de preparación
+      postprocessing_time: Tiempo de Post-procesamiento (minutos)
+      postprocessing_time_help: Tiempo dedicado al post-procesamiento (limpieza, remoción de soportes, etc.)
+      postprocessing_cost: Costo de Post-procesamiento por Hora
+      postprocessing_cost_help: Tarifa por hora para trabajo de post-procesamiento
+      other_costs: Otros Costos
+      other_costs_help: Costos adicionales como empaque, preparación de envío, etc.
+      vat_percentage: Porcentaje de Impuesto de Ventas (IVA)
+      vat_percentage_help: Porcentaje predeterminado de impuesto de ventas/IVA para su ubicación
+      listing_cost_percentage: Porcentaje de Costo de Listado
+      listing_cost_percentage_help: Porcentaje predeterminado de tarifa de listado en marketplace (ej. eBay, Amazon)
+      payment_processing_cost_percentage: Porcentaje de Costo de Procesamiento de Pagos
+      payment_processing_cost_percentage_help: Porcentaje predeterminado de tarifa de procesamiento de pagos (ej. PayPal, Stripe)
     buttons:
       update_settings: Actualizar Configuración
       update_profile: Actualizar Perfil
@@ -447,7 +473,7 @@ es:
     title: Soporte
     nav_title: Soporte
     contact_us: Contáctanos
-    description: "¿Necesitas ayuda con 3DP? ¿Tienes una pregunta o sugerencia? ¡Estamos
+    description: "¿Necesitas ayuda con CalcuMake? ¿Tienes una pregunta o sugerencia? ¡Estamos
       aquí para ayudarte!"
     email_label: Soporte por Email
     response_time: Normalmente respondemos en 24-48 horas
@@ -459,82 +485,82 @@ es:
     user_agreement:
       title: Acuerdo de Usuario
       nav_title: Términos de Servicio
-filaments:
-  index:
-    title: Mis Filamentos
-    subtitle: Gestiona tu inventario de filamentos de impresión 3D
-    add_new: Agregar Nuevo Filamento
-    search_placeholder: Buscar por nombre, marca, material o color...
-    clear_search: Limpiar Búsqueda
-    empty_state:
-      title: Aún no hay filamentos registrados
-      description: Agrega tu primer filamento para comenzar a construir tu biblioteca de materiales para cálculos de impresión.
-      add_first: Agregar Tu Primer Filamento
-    no_results:
-      title: No se encontraron resultados
-      description: "Ningún filamento coincide con '%{query}'. Intenta con un término de búsqueda diferente."
-  new:
-    title: Agregar Nuevo Filamento
-    subtitle: Registrar un nuevo filamento para tu biblioteca de materiales
-  edit:
-    title: Editar Filamento
-    subtitle: Actualizar especificaciones del filamento
-  show:
-    title: Detalles del Filamento
-    usage_history: Historial de Uso
-    times_used: Veces Usado
-    total_weight_used: Peso Total Usado
-    new_print_with_filament: Nueva Impresión con este Filamento
-    recent_prints: Impresiones Recientes
-    not_used_yet: Este filamento aún no ha sido usado
-    create_first_print: Crear Tu Primera Impresión
-    no_cost_info: No hay información de costo disponible
-  sections:
-    basic_info: Información Básica
-    cost_info: Información de Costo
-    properties: Propiedades
-    technical_specs: Especificaciones Técnicas
-  fields:
-    name: Nombre del Filamento
-    name_placeholder: ej., PLA Básico, PETG Premium
-    brand: Marca
-    brand_placeholder: ej., Hatchbox, Prusa, eSUN
-    material_type: Tipo de Material
-    material_type_prompt: Seleccionar tipo de material
-    diameter: Diámetro
-    color: Color
-    color_placeholder: ej., Rojo, Natural, Transparente
-    finish: Acabado
-    finish_placeholder: ej., Mate, Brillante, Seda
-    spool_weight: Peso del Carrete
-    spool_weight_placeholder: "1000"
-    spool_price: Precio del Carrete
-    spool_price_placeholder: "25.00"
-    density: Densidad
-    density_placeholder: "1.24"
-    cost_per_gram: Costo por Gramo
-    temperature_range: Rango de Temperatura
-    moisture_sensitive: Sensible a la Humedad
-    notes: Notas
-    notes_placeholder: Información adicional sobre este filamento...
-    filament: Filamento
-    select_filament: Seleccionar un filamento
-    weight_used: Peso Usado
-    selected: Seleccionado
-    none_selected: Ninguno seleccionado
-    not_set: No establecido
-    total_cost: Costo Total
-    no_filament_registered: ¿No tienes filamento registrado?
-    add_new_filament: Agregar Nuevo Filamento
-    bed_temperature: Temperatura de Cama
-    max_print_speed: Velocidad Máxima de Impresión
-    storage_temp: Temperatura de Almacenamiento
-  properties:
-    moisture_sensitive: Sensible a la Humedad
-  buttons:
-    add_filament: Agregar Filamento
-    update_filament: Actualizar Filamento
-  confirm_delete: "¿Estás seguro de que quieres eliminar '%{name}'?"
+  filaments:
+    index:
+      title: Mis Filamentos
+      subtitle: Gestiona tu inventario de filamentos de impresión 3D
+      add_new: Agregar Nuevo Filamento
+      search_placeholder: Buscar por nombre, marca, material o color...
+      clear_search: Limpiar Búsqueda
+      empty_state:
+        title: Aún no hay filamentos registrados
+        description: Agrega tu primer filamento para comenzar a construir tu biblioteca de materiales para cálculos de impresión.
+        add_first: Agregar Tu Primer Filamento
+      no_results:
+        title: No se encontraron resultados
+        description: "Ningún filamento coincide con '%{query}'. Intenta con un término de búsqueda diferente."
+    new:
+      title: Agregar Nuevo Filamento
+      subtitle: Registrar un nuevo filamento para tu biblioteca de materiales
+    edit:
+      title: Editar Filamento
+      subtitle: Actualizar especificaciones del filamento
+    show:
+      title: Detalles del Filamento
+      usage_history: Historial de Uso
+      times_used: Veces Usado
+      total_weight_used: Peso Total Usado
+      new_print_with_filament: Nueva Impresión con este Filamento
+      recent_prints: Impresiones Recientes
+      not_used_yet: Este filamento aún no ha sido usado
+      create_first_print: Crear Tu Primera Impresión
+      no_cost_info: No hay información de costo disponible
+    sections:
+      basic_info: Información Básica
+      cost_info: Información de Costo
+      properties: Propiedades
+      technical_specs: Especificaciones Técnicas
+    fields:
+      name: Nombre del Filamento
+      name_placeholder: ej., PLA Básico, PETG Premium
+      brand: Marca
+      brand_placeholder: ej., Hatchbox, Prusa, eSUN
+      material_type: Tipo de Material
+      material_type_prompt: Seleccionar tipo de material
+      diameter: Diámetro
+      color: Color
+      color_placeholder: ej., Rojo, Natural, Transparente
+      finish: Acabado
+      finish_placeholder: ej., Mate, Brillante, Seda
+      spool_weight: Peso del Carrete
+      spool_weight_placeholder: "1000"
+      spool_price: Precio del Carrete
+      spool_price_placeholder: "25.00"
+      density: Densidad
+      density_placeholder: "1.24"
+      cost_per_gram: Costo por Gramo
+      temperature_range: Rango de Temperatura
+      moisture_sensitive: Sensible a la Humedad
+      notes: Notas
+      notes_placeholder: Información adicional sobre este filamento...
+      filament: Filamento
+      select_filament: Seleccionar un filamento
+      weight_used: Peso Usado
+      selected: Seleccionado
+      none_selected: Ninguno seleccionado
+      not_set: No establecido
+      total_cost: Costo Total
+      no_filament_registered: ¿No tienes filamento registrado?
+      add_new_filament: Agregar Nuevo Filamento
+      bed_temperature: Temperatura de Cama
+      max_print_speed: Velocidad Máxima de Impresión
+      storage_temp: Temperatura de Almacenamiento
+    properties:
+      moisture_sensitive: Sensible a la Humedad
+    buttons:
+      add_filament: Agregar Filamento
+      update_filament: Actualizar Filamento
+    confirm_delete: "¿Estás seguro de que quieres eliminar '%{name}'?"
   invoices:
     title: Facturas
     new_invoice: Nueva Factura
@@ -599,7 +625,164 @@ filaments:
       unit_price: Precio Unitario
       total: Total
       remove: Eliminar
-print_pricings:
-  form:
-    filament_weight: Peso del Filamento
-    print_time_hours: Horas de Tiempo de Impresión
+  print_pricings:
+    form:
+      filament_weight: Peso del Filamento
+      print_time_hours: Horas de Tiempo de Impresión
+
+  # Traducciones de la página de inicio
+  landing:
+    hero:
+      headline: "Más creatividad, menos cálculos"
+      subheadline: "Olvídate de las hojas de cálculo y los cálculos tediosos. Automatiza la fijación de precios para que puedas disfrutar de la parte divertida."
+      cta_primary: "Comenzar a Calcular Gratis"
+      cta_demo: "Ver Demo"
+      trust_signal: "No se requiere tarjeta de crédito - comienza con todas las funciones de Startup durante 30 días"
+      preview_title: "Vista Previa Rápida de Costos"
+      preview_filament_weight: "Peso del Filamento"
+      preview_print_time: "Tiempo de Impresión"
+      preview_total_cost: "Costo Total"
+      preview_cost_breakdown: "Electricidad + Filamento + Mano de Obra"
+
+    problem:
+      headline: "¿Estás perdiendo dinero en impresiones 3D?"
+      manual_errors: "Errores de Cálculo Manual"
+      manual_errors_desc: "Las hojas de cálculo y el cálculo mental llevan a errores costosos y facturación insuficiente."
+      electricity_costs: "Costos de Electricidad Olvidados"
+      electricity_costs_desc: "El consumo de energía puede agregar 20-40% a tus costos reales pero a menudo se ignora."
+      inconsistent_pricing: "Precios Inconsistentes"
+      inconsistent_pricing_desc: "Cálculos diferentes para trabajos similares confunden a los clientes y dañan las ganancias."
+      time_wasted: "Tiempo Perdido en Hojas de Cálculo"
+      time_wasted_desc: "Horas gastadas en cálculos manuales en lugar de hacer crecer tu negocio de impresión."
+
+    solution:
+      headline: "Herramientas Profesionales para Makers Serios"
+      subheadline: "Todo lo que necesitas para cotizar con precisión y gestionar tus proyectos de impresión 3D como un profesional."
+
+    features:
+      accurate_calculation:
+        title: "Cálculo Preciso de Costos"
+        desc: "Obtén costos precisos cada vez con cálculo integral que incluye todos los gastos ocultos."
+        filament: "Peso del filamento + costo del carrete"
+        electricity: "Seguimiento del consumo eléctrico"
+        labor: "Tiempo de trabajo (preparación + post-procesamiento)"
+        depreciation: "Depreciación de máquina"
+
+      multi_printer:
+        title: "Gestión Multi-Impresora"
+        desc: "Rastrea especificaciones de diferentes impresoras y monitorea tu retorno de inversión en toda tu flota."
+        power: "Seguimiento individual del consumo de energía"
+        roi: "Seguimiento de ROI por impresora"
+        organization: "Gestión organizada de trabajos de impresión"
+
+      invoicing:
+        title: "Facturación Profesional"
+        desc: "Genera facturas PDF profesionales con tu marca empresarial y soporte multi-moneda."
+        pdf: "Facturas PDF auto-generadas"
+        branding: "Marca empresarial personalizada"
+        currency: "Soporte multi-moneda"
+
+      organization:
+        title: "Organización de Proyectos"
+        desc: "Mantén tus trabajos de impresión organizados con potentes herramientas de búsqueda, filtrado y gestión de proyectos."
+        search: "Buscar y filtrar trabajos de impresión"
+        duplicate: "Duplicar proyectos similares"
+        history: "Seguimiento completo del historial de impresión"
+
+    pricing:
+      headline: "Precios Simples y Transparentes"
+      subheadline: "Elige el plan que se adapte a tu volumen de impresión. Actualiza o degrada en cualquier momento."
+      cta: "Comenzar Gratis"
+
+      free:
+        title: "Gratis"
+        trial_notice: "¡El primer mes incluye todas las funciones de Startup!"
+        calculations: "5 cálculos por mes (después del trial)"
+        printers: "1 perfil de impresora"
+        filaments: "4 tipos de filamento"
+        invoices: "5 facturas por mes"
+        branding: "Marca CalcuMake en facturas"
+
+      startup:
+        title: "Startup"
+        badge: "Más Popular"
+        calculations: "50 cálculos por mes"
+        printers: "10 perfiles de impresora"
+        filaments: "16 tipos de filamento"
+        branding: "Remover marca CalcuMake"
+        ads: "Sin anuncios"
+
+      pro:
+        title: "Pro"
+        unlimited: "Todo ilimitado"
+        branding: "Remover marca CalcuMake"
+        ads: "Sin anuncios"
+        support: "Soporte prioritario"
+        analytics: "Análisis avanzado"
+        features: "Futuras funciones premium"
+
+      trust_signals:
+        no_credit_card: "No se requiere tarjeta de crédito - comienza con todas las funciones de Startup durante 30 días"
+        cancel_anytime: "Cancela en cualquier momento"
+        data_private: "Tus datos permanecen privados"
+
+    faq:
+      headline: "Preguntas Frecuentes"
+
+      accuracy:
+        question: "¿Qué tan precisos son los cálculos?"
+        answer: "CalcuMake usa fórmulas simples y considera todos los factores de costo incluyendo filamento, electricidad, tiempo de trabajo y depreciación de máquina."
+
+      currencies:
+        question: "¿Qué monedas soporta CalcuMake?"
+        answer: "CalcuMake actualmente soporta USD, EUR, GBP, JPY, CAD y AUD con formato automático y precisión para cada moneda. Puedes cambiar monedas en cualquier momento en la configuración de tu perfil."
+
+      printers:
+        question: "¿CalcuMake soporta mi impresora 3D?"
+        answer: "¡CalcuMake funciona con cualquier impresora 3D! Simplemente ingresas el consumo de energía de tu impresora y otras especificaciones. ¡Estamos planeando soporte para impresoras de resina pronto!"
+
+      electricity:
+        question: "¿Cómo funcionan los costos de electricidad?"
+        answer: "CalcuMake calcula automáticamente los costos de electricidad basado en el consumo de energía de tu impresora (en vatios), duración de impresión y tu tarifa local de energía por kWh. Esto asegura que nunca olvides este factor de costo a menudo pasado por alto."
+
+      invoices:
+        question: "¿Puedo personalizar mis facturas?"
+        answer: "¡Sí! Puedes agregar el logo de tu empresa, personalizar colores e incluir tu información comercial. Los planes de pago remueven la marca CalcuMake para una apariencia completamente profesional."
+
+    final_cta:
+      headline: "¿Listo para dejar de perder dinero en impresiones 3D?"
+      subheadline: "Únete a miles de makers que confían en CalcuMake para precios precisos y gestión profesional de proyectos."
+      button: "Comenzar Tu Prueba Gratuita"
+
+  calculators:
+    quick_cost_calculator: "Calculadora de Costo Rápido"
+    print_time_hours: "Tiempo de Impresión (horas)"
+    filament_weight_grams: "Peso del Filamento (gramos)"
+    filament_price_per_kg: "Precio del Filamento por KG (€)"
+    labor_rate_per_hour: "Tarifa Laboral por Hora (€)"
+    create_full_calculation: "Crear Cálculo Completo"
+    features:
+      real_time: "Cálculo en tiempo real mientras escribes"
+      includes_costs: "Incluye costos de electricidad y mano de obra"
+    results:
+      filament_cost: "Costo del Filamento"
+      electricity_cost: "Costo de Electricidad"
+      labor_cost: "Costo Laboral"
+      total_cost: "Costo Total"
+      estimated_cost: "Costo Estimado:"
+
+  demo:
+    title: "Prueba la Demo de CalcuMake"
+    subtitle: "Prueba nuestra calculadora de costos de impresión 3D con datos de muestra. ¡No se requiere cuenta!"
+    sign_up_full_version: "Registrarse para la Versión Completa"
+    start_free_trial: "Comenzar Prueba Gratuita"
+    limitations:
+      title: "Esta es una Versión de Demostración"
+      description: "La aplicación completa CalcuMake incluye:"
+      features:
+        - "Múltiples perfiles de impresora con especificaciones automáticas"
+        - "Biblioteca integral de filamentos con propiedades de materiales"
+        - "Generación profesional de facturas PDF"
+        - "Historial de proyectos y funcionalidad de duplicación"
+        - "Soporte multi-moneda"
+        - "Cálculos de depreciación de máquinas"

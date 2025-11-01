@@ -1,0 +1,14 @@
+<%# Final CTA - Bottom call-to-action section %>
+<section class="final-cta rounded-4 p-3 my-2 bg-primary text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="h1 mb-3"><%= t('landing.final_cta.headline') %></h2>
+                <p class="lead mb-4"><%= t('landing.final_cta.subheadline') %></p>
+                <%= link_to t('landing.final_cta.button'), new_user_registration_path,
+          class: "btn btn-light btn-lg",
+          onclick: "if(typeof trackSignupStart === 'function') trackSignupStart();" %>
+            </div>
+        </div>
+    </div>
+</section>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_28_052125) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_31_015626) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -137,6 +137,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_28_052125) do
     t.datetime "updated_at", null: false
     t.bigint "printer_id"
     t.integer "times_printed", default: 0, null: false
+    t.decimal "listing_cost_percentage", precision: 5, scale: 2
+    t.decimal "payment_processing_cost_percentage", precision: 5, scale: 2
     t.index ["printer_id"], name: "index_print_pricings_on_printer_id"
     t.index ["times_printed"], name: "index_print_pricings_on_times_printed"
     t.index ["user_id"], name: "index_print_pricings_on_user_id"
@@ -182,6 +184,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_28_052125) do
     t.decimal "default_postprocessing_cost_per_hour", precision: 10, scale: 2, default: "1000.0"
     t.decimal "default_other_costs", precision: 10, scale: 2, default: "450.0"
     t.decimal "default_vat_percentage", precision: 5, scale: 2, default: "20.0"
+    t.decimal "default_listing_cost_percentage", precision: 5, scale: 2, default: "0.0"
+    t.decimal "default_payment_processing_cost_percentage", precision: 5, scale: 2, default: "0.0"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

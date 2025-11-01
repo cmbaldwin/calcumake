@@ -1,3 +1,5 @@
+require 'ostruct'
+
 class PagesController < ApplicationController
   # Note: Public pages don't require authentication in this app
 
@@ -52,7 +54,18 @@ class PagesController < ApplicationController
   end
 
   def demo
-    # Demo page with sample data - coming in Phase 3
-    redirect_to root_path
+    # Demo page with sample calculator - no authentication required
+    @page_title = "CalcuMake Demo - Try Our 3D Print Cost Calculator"
+    @meta_description = "Try CalcuMake's 3D print cost calculator with sample data. See how easy it is to calculate accurate pricing for your 3D printing projects."
+
+    # Sample data for demo
+    @demo_printer = OpenStruct.new(
+      name: "Sample Printer",
+      power_consumption: 200,
+      cost: 500.00,
+      payoff_goal: 3,
+      daily_usage: 8,
+      repair_factor: 5.0
+    )
   end
 end

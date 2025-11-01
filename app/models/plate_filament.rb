@@ -7,10 +7,10 @@ class PlateFilament < ApplicationRecord
 
   delegate :user, to: :plate
   delegate :print_pricing, to: :plate
-  delegate :cost_per_gram, :material_type, :display_name, to: :filament
+  delegate :cost_per_gram, :material_type, :display_name, to: :filament, allow_nil: true
 
   def total_cost
-    return 0 unless filament_weight.present? && filament.cost_per_gram > 0
+    return 0 unless filament_weight.present? && filament&.cost_per_gram.to_f > 0
     filament_weight * filament.cost_per_gram
   end
 end
