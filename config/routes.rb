@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get "privacy-policy", to: "legal#privacy_policy", as: :privacy_policy
   get "user-agreement", to: "legal#user_agreement", as: :user_agreement
   get "support", to: "legal#support", as: :support
+  get "commerce-disclosure", to: "legal#commerce_disclosure", as: :commerce_disclosure
 
   # Locale switching
   post "switch_locale", to: "application#switch_locale"

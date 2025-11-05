@@ -456,9 +456,60 @@ es:
     privacy_policy:
       title: Política de Privacidad
       nav_title: Política de Privacidad
+      advertising:
+        title: Publicidad
+        content: Nuestro sitio web puede mostrar publicidad a través de Google AdSense en el futuro. Estos anuncios pueden basarse en sus intereses y comportamiento de navegación.
+        google_adsense: Cuando se implemente, Google AdSense puede usar cookies y otras tecnologías de seguimiento para ofrecer anuncios relevantes.
+        opt_out: Podrá controlar la personalización de anuncios y optar por no recibir publicidad personalizada visitando
+        google_ad_settings: Configuración de anuncios de Google
     user_agreement:
       title: Acuerdo de Usuario
       nav_title: Términos de Servicio
+    commerce_disclosure:
+      title: Divulgación Comercial (特定商取引法に基づく表記)
+      nav_title: Divulgación Comercial
+      business_operator:
+        title: Operador Comercial
+        name: "Nombre de la Empresa: 株式会社モアブ (MOAB Co., Ltd.)"
+        representative: "Representante: Cody Baldwin"
+      business_address:
+        title: Dirección Comercial
+        address: "Japón (Contáctenos para información detallada de dirección)"
+      contact:
+        title: Información de Contacto
+        email_label: Correo Electrónico
+        email: cody@moab.jp
+        phone_label: Teléfono
+        phone: Disponible bajo petición por correo electrónico
+        hours_label: Horario de Atención
+        hours: Lunes - Viernes, 9:00 AM - 6:00 PM JST (excluyendo días festivos japoneses)
+      service_description:
+        title: Descripción del Servicio
+        content: "CalcuMake es una aplicación basada en web que proporciona herramientas de cálculo de costos y gestión de proyectos de impresión 3D. Nuestro servicio incluye:"
+        cost_calculations: Cálculos de costos integrales para proyectos de impresión 3D
+        project_management: Funciones de seguimiento y gestión de proyectos
+        invoice_generation: Capacidades de generación de facturas y exportación a PDF
+        printer_tracking: Seguimiento de especificaciones y uso de impresoras
+      pricing:
+        title: Precios
+        content: CalcuMake se ofrece actualmente como un servicio gratuito para todos los usuarios.
+        future_note: Si introducimos funciones de pago o suscripciones en el futuro, los detalles de precios se mostrarán claramente en nuestro sitio web antes de la implementación.
+      payment_methods:
+        title: Métodos de Pago
+        content: Como el servicio es actualmente gratuito, no se requieren métodos de pago.
+        future_note: "Si se introducen funciones de pago, los métodos de pago aceptados incluirán: Tarjeta de Crédito (Visa, Mastercard, American Express, JCB), y otros métodos que se anuncien."
+      payment_timing:
+        title: Momento del Pago
+        content: No aplicable ya que el servicio es actualmente gratuito. Para cualquier servicio de pago futuro, el momento del pago se comunicará claramente.
+      delivery:
+        title: Entrega del Servicio
+        content: CalcuMake es un servicio basado en web accesible inmediatamente después de la creación de la cuenta. No hay productos físicos ni envíos involucrados.
+      returns:
+        title: Devoluciones y Reembolsos
+        content: Como CalcuMake es un servicio gratuito basado en web, las devoluciones no aplican. Si se introducen funciones de pago, nuestra política de reembolso se establecerá claramente.
+      cancellation:
+        title: Política de Cancelación
+        content: Los usuarios pueden cancelar su cuenta en cualquier momento contactando al soporte. Los datos de la cuenta se manejarán de acuerdo con nuestra Política de Privacidad.
 filaments:
   index:
     title: Mis Filamentos

@@ -452,9 +452,60 @@ ja:
     privacy_policy:
       title: プライバシーポリシー
       nav_title: プライバシーポリシー
+      advertising:
+        title: 広告
+        content: 当社のウェブサイトは、将来的にGoogle AdSenseを通じて広告を表示する可能性があります。これらの広告は、お客様の興味や閲覧行動に基づいて表示される場合があります。
+        google_adsense: Google AdSenseが実装された場合、Cookieやその他のトラッキング技術を使用して関連する広告を配信する可能性があります。
+        opt_out: 広告のパーソナライゼーションを管理し、パーソナライズド広告をオプトアウトすることができるようになります。次のページにアクセスしてください
+        google_ad_settings: Google広告設定
     user_agreement:
       title: 利用規約
       nav_title: 利用規約
+    commerce_disclosure:
+      title: 特定商取引法に基づく表記
+      nav_title: 特定商取引法
+      business_operator:
+        title: 事業者名
+        name: "会社名: 株式会社モアブ (MOAB Co., Ltd.)"
+        representative: "代表者: Cody Baldwin"
+      business_address:
+        title: 所在地
+        address: "日本国内（詳細な住所情報については、お問い合わせください）"
+      contact:
+        title: 連絡先
+        email_label: メール
+        email: cody@moab.jp
+        phone_label: 電話番号
+        phone: メールにてお問い合わせください
+        hours_label: 営業時間
+        hours: 月曜日～金曜日 午前9時～午後6時（日本標準時、日本の祝日を除く）
+      service_description:
+        title: サービス内容
+        content: "CalcuMakeは、3Dプリント原価計算とプロジェクト管理ツールを提供するWebベースのアプリケーションです。サービス内容："
+        cost_calculations: 3Dプリントプロジェクトの包括的なコスト計算
+        project_management: プロジェクト追跡・管理機能
+        invoice_generation: 請求書生成・PDF出力機能
+        printer_tracking: プリンター仕様・使用状況追跡
+      pricing:
+        title: 販売価格
+        content: CalcuMakeは現在、全ユーザーに無料でサービスを提供しています。
+        future_note: 将来的に有料機能やサブスクリプションを導入する場合、実装前にウェブサイト上で価格情報を明確に表示いたします。
+      payment_methods:
+        title: 支払方法
+        content: 現在サービスは無料のため、お支払い方法は不要です。
+        future_note: "有料機能を導入する場合、以下のお支払い方法に対応予定です：クレジットカード（Visa、Mastercard、American Express、JCB）、その他告知される方法。"
+      payment_timing:
+        title: 支払時期
+        content: 現在サービスは無料のため該当しません。将来の有料サービスについては、支払時期を明確にお伝えします。
+      delivery:
+        title: サービス提供
+        content: CalcuMakeはWebベースのサービスで、アカウント作成後すぐにアクセス可能です。物理的な製品や配送は含まれません。
+      returns:
+        title: 返品・返金
+        content: CalcuMakeは無料のWebベースサービスのため、返品は該当しません。有料機能を導入する場合、返金ポリシーを明確に表示します。
+      cancellation:
+        title: 解約について
+        content: ユーザーはいつでもサポートに連絡してアカウントを解約できます。アカウントデータはプライバシーポリシーに従って処理されます。
   support:
     title: サポート
     nav_title: サポート
