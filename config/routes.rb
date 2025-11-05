@@ -29,6 +29,20 @@ Rails.application.routes.draw do
 
   resource :user_profile, only: [ :show, :edit, :update ], path: "profile"
 
+  # Subscription management
+  resources :subscriptions, only: [] do
+    collection do
+      get :pricing
+      post :create_checkout_session
+      get :success
+      get :manage
+      post :cancel
+    end
+  end
+
+  # Stripe webhooks
+  post "webhooks/stripe", to: "webhooks/stripe#create"
+
   # Legal pages
   get "privacy-policy", to: "legal#privacy_policy", as: :privacy_policy
   get "user-agreement", to: "legal#user_agreement", as: :user_agreement
