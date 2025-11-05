@@ -30,6 +30,8 @@ export default class extends Controller {
     this.attachLineItemListeners()
     // Calculate all line totals on load
     this.updateAllLineTotals()
+    // Add blur listeners to round values
+    this.attachRoundingListeners()
   }
 
   addLineItem(event) {
@@ -84,6 +86,7 @@ export default class extends Controller {
     this.lineItemsTarget.insertAdjacentHTML('beforeend', template)
     this.lineItemIndex++
     this.attachLineItemListeners()
+    this.attachRoundingListeners()
     this.updateAllLineTotals()
   }
 
@@ -105,6 +108,16 @@ export default class extends Controller {
   calculateLineTotal(event) {
     const container = event.target.closest('.invoice-line-item-fields')
     this.updateLineTotal(container)
+  }
+
+  roundValue(event) {
+    const input = event.target
+    if (input.value) {
+      const value = parseFloat(input.value)
+      if (!isNaN(value)) {
+        input.value = value.toFixed(this.currencyDecimals)
+      }
+    }
   }
 
   updateLineTotal(container) {
@@ -159,6 +172,15 @@ export default class extends Controller {
       if (!button.dataset.action) {
         button.dataset.action = 'click->invoice-form#removeLineItem'
       }
+    })
+  }
+
+  attachRoundingListeners() {
+    // Add blur listeners to round values when user finishes editing
+    this.lineItemsTarget.querySelectorAll('.line-item-price').forEach(input => {
+      input.addEventListener('blur', (e) => this.roundValue(e))
+      // Also update the step attribute to match currency
+      input.step = this.priceStep
     })
   }
 
