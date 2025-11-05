@@ -2156,3 +2156,45 @@ html {
 #pricing-plans {
   scroll-margin-top: 2rem;
 }
+
+/* ========================================
+   Usage Dashboard Widget Styles
+   ======================================== */
+
+/* Compact usage dashboard widget */
+.usage-dashboard-widget {
+  background: linear-gradient(135deg, rgba(200, 16, 46, 0.05) 0%, rgba(210, 105, 30, 0.05) 100%);
+  border: 1px solid var(--moab-stone);
+  box-shadow: 0 0.25rem 0.5rem rgba(139, 69, 19, 0.08);
+}
+
+.usage-dashboard-widget .card-body {
+  font-size: 0.9rem;
+}
+
+.usage-mini-stat {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(210, 180, 140, 0.3);
+}
+
+.usage-mini-stat .progress {
+  background-color: rgba(210, 180, 140, 0.3);
+}
+
+.usage-dashboard-widget .alert {
+  border-radius: 0.25rem;
+}
+
+/* Responsive adjustments for dashboard widget */
+@media (max-width: 768px) {
+  .usage-dashboard-widget .d-none {
+    display: none !important;
+  }
+
+  .usage-dashboard-widget .btn-sm {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
