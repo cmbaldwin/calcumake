@@ -7,65 +7,67 @@ es:
         filament:
           attributes:
             name:
-              blank: "Por favor ingresa un nombre de filamento"
-              taken: "Ya tienes un filamento con este nombre"
+              blank: Por favor ingresa un nombre de filamento
+              taken: Ya tienes un filamento con este nombre
             material_type:
-              blank: "Por favor selecciona un tipo de material"
-              inclusion: "Por favor selecciona un tipo de material válido"
+              blank: Por favor selecciona un tipo de material
+              inclusion: Por favor selecciona un tipo de material válido
             diameter:
-              blank: "Por favor ingresa un diámetro"
-              inclusion: "Por favor selecciona un diámetro válido"
+              blank: Por favor ingresa un diámetro
+              inclusion: Por favor selecciona un diámetro válido
             spool_weight:
-              greater_than: "El peso del carrete debe ser mayor que 0"
-              not_a_number: "El peso del carrete debe ser un número"
+              greater_than: El peso del carrete debe ser mayor que 0
+              not_a_number: El peso del carrete debe ser un número
             spool_price:
-              greater_than: "El precio del carrete debe ser mayor que 0"
-              not_a_number: "El precio del carrete debe ser un número"
+              greater_than: El precio del carrete debe ser mayor que 0
+              not_a_number: El precio del carrete debe ser un número
             print_temperature_min:
-              greater_than: "La temperatura mínima debe ser mayor que 0°C"
-              less_than: "La temperatura mínima debe ser menor que 500°C"
-              not_a_number: "La temperatura mínima debe ser un número"
+              greater_than: La temperatura mínima debe ser mayor que 0°C
+              less_than: La temperatura mínima debe ser menor que 500°C
+              not_a_number: La temperatura mínima debe ser un número
             print_temperature_max:
-              greater_than: "La temperatura máxima debe ser mayor que 0°C"
-              less_than: "La temperatura máxima debe ser menor que 500°C"
-              not_a_number: "La temperatura máxima debe ser un número"
-              temperature_range: "debe ser mayor que la temperatura mínima"
+              greater_than: La temperatura máxima debe ser mayor que 0°C
+              less_than: La temperatura máxima debe ser menor que 500°C
+              not_a_number: La temperatura máxima debe ser un número
+              temperature_range: debe ser mayor que la temperatura mínima
             heated_bed_temperature:
-              greater_than: "La temperatura de cama debe ser mayor que 0°C"
-              less_than: "La temperatura de cama debe ser menor que 500°C"
-              not_a_number: "La temperatura de cama debe ser un número"
+              greater_than: La temperatura de cama debe ser mayor que 0°C
+              less_than: La temperatura de cama debe ser menor que 500°C
+              not_a_number: La temperatura de cama debe ser un número
             print_speed_max:
-              greater_than: "La velocidad de impresión debe ser mayor que 0"
-              less_than: "La velocidad de impresión debe ser menor que 1000"
-              not_a_number: "La velocidad de impresión debe ser un número"
+              greater_than: La velocidad de impresión debe ser mayor que 0
+              less_than: La velocidad de impresión debe ser menor que 1000
+              not_a_number: La velocidad de impresión debe ser un número
             storage_temperature_max:
-              greater_than: "La temperatura de almacenamiento debe ser mayor que -50°C"
-              less_than: "La temperatura de almacenamiento debe ser menor que 100°C"
-              not_a_number: "La temperatura de almacenamiento debe ser un número"
+              greater_than: La temperatura de almacenamiento debe ser mayor que -50°C
+              less_than: La temperatura de almacenamiento debe ser menor que 100°C
+              not_a_number: La temperatura de almacenamiento debe ser un número
             density:
-              greater_than: "La densidad debe ser mayor que 0"
-              less_than: "La densidad debe ser menor que 10"
-              not_a_number: "La densidad debe ser un número"
+              greater_than: La densidad debe ser mayor que 0
+              less_than: La densidad debe ser menor que 10
+              not_a_number: La densidad debe ser un número
         plate_filament:
           attributes:
             filament_weight:
-              blank: "Por favor ingresa el peso del filamento"
-              greater_than: "El peso del filamento debe ser mayor que 0"
-              not_a_number: "El peso del filamento debe ser un número"
+              blank: Por favor ingresa el peso del filamento
+              greater_than: El peso del filamento debe ser mayor que 0
+              not_a_number: El peso del filamento debe ser un número
             filament_id:
-              blank: "Por favor selecciona un filamento"
-              already_added: "Este filamento ya ha sido agregado a esta placa"
+              blank: Por favor selecciona un filamento
+              already_added: Este filamento ya ha sido agregado a esta placa
         plate:
           attributes:
             base:
-              no_filaments: "Debe tener al menos un filamento"
-              duplicate_filaments: "No se puede usar el mismo filamento varias veces en una placa"
+              no_filaments: Debe tener al menos un filamento
+              duplicate_filaments: No se puede usar el mismo filamento varias veces
+                en una placa
         print_pricing:
           attributes:
             base:
-              no_plates: "Debe tener al menos una placa"
-              too_many_plates: "No puede tener más de 10 placas"
-              duplicate_filaments_on_plate: "No se puede usar el mismo filamento varias veces en la misma placa"
+              no_plates: Debe tener al menos una placa
+              too_many_plates: No puede tener más de 10 placas
+              duplicate_filaments_on_plate: No se puede usar el mismo filamento varias
+                veces en la misma placa
   nav:
     brand: CalcuMake
     print_pricings: Mis Precios
@@ -103,7 +105,7 @@ es:
     updated: "%{model} actualizado exitosamente"
     deleted: "%{model} eliminado exitosamente"
     duplicated: "%{model} duplicado exitosamente"
-    duplicate_failed: "Error al duplicar %{model}"
+    duplicate_failed: Error al duplicar %{model}
   models:
     user: Usuario
     printer: Impresora
@@ -140,7 +142,8 @@ es:
           rastrear gastos y precios de sus proyectos de impresión 3D.
       no_results:
         title: No se encontraron resultados
-        description: "No hay cálculos de impresión que coincidan con '%{query}'. Pruebe con un término de búsqueda diferente."
+        description: No hay cálculos de impresión que coincidan con '%{query}'. Pruebe
+          con un término de búsqueda diferente.
     job_name: Nombre del Trabajo
     print_time: Tiempo de Impresión
     times_printed: Veces Impreso
@@ -162,7 +165,13 @@ es:
     3d_printing_services: Servicios de Impresión 3D
     job_details: Detalles del Trabajo
     filament_type: Tipo de Filamento
-    filament_types: Tipos de Filamento
+    filament_types:
+      pla: PLA
+      abs: ABS
+      petg: PETG
+      tpu: TPU
+      asa: ASA
+      other: Otro
     weight: Peso
     total_weight: Peso Total
     total_print_time: Tiempo Total de Impresión
@@ -182,7 +191,8 @@ es:
     vat: IVA
     total: Total
     notes: Notas
-    invoice_notes_text: Gracias por su negocio. Por favor conserve esta factura para sus registros.
+    invoice_notes_text: Gracias por su negocio. Por favor conserve esta factura para
+      sus registros.
     payment_info: Información de Pago
     payment_info_text: Los términos y detalles de pago se comunicarán por separado.
     download_pdf: Descargar PDF
@@ -263,13 +273,6 @@ es:
       repair_cost_placeholder: '5'
       currency: Moneda
       currency_prompt: Seleccionar moneda
-    filament_types:
-      pla: PLA
-      abs: ABS
-      petg: PETG
-      tpu: TPU
-      asa: ASA
-      other: Otro
     calculations:
       filament_cost: Costo del filamento
       electricity_cost: Costo de electricidad
@@ -422,7 +425,8 @@ es:
       update_profile: Actualizar Perfil
       cancel: Cancelar
     image_upload:
-      help_text: "Tamaño máximo de archivo: 5MB. Formatos soportados: PNG, JPG, GIF, WebP"
+      help_text: 'Tamaño máximo de archivo: 5MB. Formatos soportados: PNG, JPG, GIF,
+        WebP'
   currency:
     usd: Dólar Estadounidense
     eur: Euro
@@ -451,6 +455,13 @@ es:
       aquí para ayudarte!"
     email_label: Soporte por Email
     response_time: Normalmente respondemos en 24-48 horas
+    billing_support:
+      title: Soporte de Facturación y Suscripción
+      description: Para consultas de facturación, cambios de suscripción, solicitudes
+        de reembolso o problemas de pago, contáctenos con el correo electrónico de
+        su cuenta.
+      priority_note: Los suscriptores de los niveles Pro y Enterprise reciben tiempos
+        de respuesta de soporte prioritario.
   legal:
     last_updated: Última actualización
     privacy_policy:
@@ -458,23 +469,120 @@ es:
       nav_title: Política de Privacidad
       advertising:
         title: Publicidad
-        content: Nuestro sitio web puede mostrar publicidad a través de Google AdSense en el futuro. Estos anuncios pueden basarse en sus intereses y comportamiento de navegación.
-        google_adsense: Cuando se implemente, Google AdSense puede usar cookies y otras tecnologías de seguimiento para ofrecer anuncios relevantes.
-        opt_out: Podrá controlar la personalización de anuncios y optar por no recibir publicidad personalizada visitando
+        content: Nuestro nivel Gratuito muestra publicidad a través de Google AdSense.
+          Estos anuncios se basan en sus intereses y comportamiento de navegación.
+          Los niveles de suscripción de pago no muestran publicidad.
+        google_adsense: Google AdSense utiliza cookies y otras tecnologías de seguimiento
+          para ofrecer anuncios relevantes. Esto se aplica solo a usuarios del nivel
+          Gratuito.
+        opt_out: Puede controlar la personalización de anuncios y optar por no recibir
+          publicidad personalizada visitando
         google_ad_settings: Configuración de anuncios de Google
+        upgrade_note: Para eliminar todos los anuncios, actualice a un nivel de suscripción
+          de pago.
+      information_we_collect:
+        title: Información que Recopilamos
+        content: Recopilamos información que nos proporciona directamente e información
+          que podemos recopilar automáticamente cuando utiliza nuestro servicio.
+        account_info:
+          title: Información de la Cuenta
+          email: Dirección de correo electrónico para autenticación de cuenta
+          preferences: Preferencias del usuario como moneda predeterminada e idioma
+          usage_data: Patrones de uso y preferencias de funciones
+        project_data:
+          title: Datos del Proyecto
+          pricing_calculations: Cálculos de costos de impresión 3D y datos del proyecto
+          printer_specifications: Especificaciones y configuraciones de impresora
+          project_metadata: Nombres de proyectos, fechas y metadatos
+        payment_info:
+          title: Información de Pago y Facturación
+          payment_details: Detalles del método de pago (procesados de forma segura
+            por nuestro procesador de pagos)
+          billing_address: Dirección de facturación e información de contacto
+          transaction_history: Historial de transacciones y suscripciones
+          subscription_tier: Su nivel de suscripción y funciones seleccionadas
+      data_sharing:
+        title: Compartir Información
+        content: 'No vendemos, comercializamos ni alquilamos su información personal
+          a terceros. Solo compartimos su información en las siguientes circunstancias:'
+        legal_requirements: Cuando lo exija la ley o para proteger nuestros derechos
+          legales
+        service_providers: Con proveedores de servicios de confianza que ayudan a
+          operar nuestro servicio (incluidos proveedores de alojamiento en la nube
+          e infraestructura)
+        payment_processors: Con procesadores de pagos (como Stripe) para procesar
+          pagos de suscripción y gestionar facturación
+        advertising_partners: Con socios publicitarios (como Google AdSense) para
+          mostrar anuncios relevantes a usuarios del nivel Gratuito
+        business_transfer: En relación con una transferencia o adquisición de negocio
     user_agreement:
       title: Acuerdo de Usuario
       nav_title: Términos de Servicio
+      subscription_tiers:
+        title: Niveles de Suscripción y Precios
+        content: 'CalcuMake ofrece tres niveles de suscripción:'
+        free_tier: 'Nivel Gratuito: Funciones básicas con visualización de anuncios'
+        pro_tier: 'Nivel Pro: Funciones avanzadas, sin anuncios, soporte prioritario
+          (suscripción de pago)'
+        enterprise_tier: 'Nivel Enterprise: Todas las funciones, soporte premium,
+          integraciones personalizadas (suscripción de pago)'
+        pricing_note: Los precios actuales están disponibles en nuestro sitio web
+          y pueden actualizarse con aviso a los suscriptores existentes.
+      payment_terms:
+        title: Pago y Facturación
+        content: 'Si se suscribe a un nivel de pago, acepta los siguientes términos
+          de pago:'
+        subscription_fee: Se le cobrará la tarifa de suscripción al comienzo de cada
+          ciclo de facturación
+        billing_cycles: Los ciclos de facturación son mensuales o anuales, según su
+          selección
+        payment_method: Debe proporcionar un método de pago válido para suscribirse
+          a niveles de pago
+        automatic_renewal: Las suscripciones se renuevan automáticamente a menos que
+          se cancelen antes de la fecha de renovación
+        price_changes: Podemos cambiar los precios con 30 días de aviso a los suscriptores
+          existentes
+        payment_processor: Los pagos se procesan de forma segura a través de nuestro
+          procesador de pagos de terceros (Stripe)
+        failed_payments: Los pagos fallidos pueden resultar en degradación o suspensión
+          del servicio
+        currency: Los precios se muestran en su moneda seleccionada
+      cancellation_refunds:
+        title: Cancelación y Reembolsos
+        content: 'Puede cancelar su suscripción en cualquier momento:'
+        cancellation_process: Cancele a través de la configuración de su cuenta o
+          contactando al soporte
+        cancellation_effect: La cancelación surte efecto al final de su período de
+          facturación actual
+        access_until_end: Conserva el acceso a las funciones de pago hasta el final
+          del período pagado
+        refund_policy: Ofrecemos una garantía de devolución de dinero de 14 días para
+          suscriptores primerizos
+        no_partial_refunds: No se proporcionan reembolsos parciales por el tiempo
+          de suscripción restante excepto según lo requiera la ley
+        downgrade_option: Puede degradar a un nivel inferior al final de su ciclo
+          de facturación
+      free_tier_limitations:
+        title: Limitaciones del Nivel Gratuito
+        content: 'El nivel Gratuito incluye visualización de anuncios y puede tener
+          limitaciones de uso:'
+        advertisements: Los usuarios del nivel Gratuito verán anuncios en toda la
+          aplicación
+        feature_limits: Algunas funciones avanzadas están restringidas a niveles de
+          pago
+        support_priority: El soporte del nivel Gratuito se proporciona en base al
+          mejor esfuerzo
+        upgrade_anytime: Puede actualizar a un nivel de pago en cualquier momento
     commerce_disclosure:
       title: Divulgación Comercial (特定商取引法に基づく表記)
       nav_title: Divulgación Comercial
       business_operator:
         title: Operador Comercial
-        name: "Nombre de la Empresa: 株式会社モアブ (MOAB Co., Ltd.)"
-        representative: "Representante: Cody Baldwin"
+        name: 'Nombre de la Empresa: 株式会社モアブ (MOAB Co., Ltd.)'
+        representative: 'Representante: Cody Baldwin'
       business_address:
         title: Dirección Comercial
-        address: "Japón (Contáctenos para información detallada de dirección)"
+        address: Japón (Contáctenos para información detallada de dirección)
       contact:
         title: Información de Contacto
         email_label: Correo Electrónico
@@ -485,31 +593,79 @@ es:
         hours: Lunes - Viernes, 9:00 AM - 6:00 PM JST (excluyendo días festivos japoneses)
       service_description:
         title: Descripción del Servicio
-        content: "CalcuMake es una aplicación basada en web que proporciona herramientas de cálculo de costos y gestión de proyectos de impresión 3D. Nuestro servicio incluye:"
-        cost_calculations: Cálculos de costos integrales para proyectos de impresión 3D
+        content: 'CalcuMake es una aplicación basada en web que proporciona herramientas
+          de cálculo de costos y gestión de proyectos de impresión 3D. Nuestro servicio
+          incluye:'
+        cost_calculations: Cálculos de costos integrales para proyectos de impresión
+          3D
         project_management: Funciones de seguimiento y gestión de proyectos
-        invoice_generation: Capacidades de generación de facturas y exportación a PDF
+        invoice_generation: Capacidades de generación de facturas y exportación a
+          PDF
         printer_tracking: Seguimiento de especificaciones y uso de impresoras
       pricing:
         title: Precios
-        content: CalcuMake se ofrece actualmente como un servicio gratuito para todos los usuarios.
-        future_note: Si introducimos funciones de pago o suscripciones en el futuro, los detalles de precios se mostrarán claramente en nuestro sitio web antes de la implementación.
+        content: 'CalcuMake ofrece tres niveles de suscripción:'
+        free_tier: 'Nivel Gratuito: ¥0/mes - Funciones básicas con anuncios'
+        pro_tier: 'Nivel Pro: Suscripción mensual o anual de pago - Funciones avanzadas,
+          sin anuncios, soporte prioritario'
+        enterprise_tier: 'Nivel Enterprise: Suscripción mensual o anual de pago -
+          Todas las funciones, soporte premium, integraciones personalizadas'
+        pricing_details: Los precios exactos se muestran en nuestro sitio web y en
+          la aplicación durante la selección de suscripción.
+        price_changes: Los precios pueden ajustarse con 30 días de aviso previo a
+          los suscriptores existentes.
       payment_methods:
         title: Métodos de Pago
-        content: Como el servicio es actualmente gratuito, no se requieren métodos de pago.
-        future_note: "Si se introducen funciones de pago, los métodos de pago aceptados incluirán: Tarjeta de Crédito (Visa, Mastercard, American Express, JCB), y otros métodos que se anuncien."
+        content: 'Para suscripciones de pago, aceptamos los siguientes métodos de
+          pago:'
+        credit_cards: 'Tarjetas de Crédito: Visa, Mastercard, American Express, JCB'
+        payment_processor: Todos los pagos se procesan de forma segura a través de
+          Stripe, nuestro socio de procesamiento de pagos.
+        secure_processing: No almacenamos su información completa de tarjeta de crédito
+          en nuestros servidores.
+        free_tier_note: Los usuarios del nivel Gratuito no necesitan proporcionar
+          información de pago.
       payment_timing:
         title: Momento del Pago
-        content: No aplicable ya que el servicio es actualmente gratuito. Para cualquier servicio de pago futuro, el momento del pago se comunicará claramente.
+        content: 'El pago se cobra según su ciclo de facturación seleccionado:'
+        initial_payment: El pago inicial se cobra inmediatamente al suscribirse
+        recurring_payments: Los pagos recurrentes se cobran al comienzo de cada período
+          de facturación (mensual o anual)
+        automatic_renewal: Las suscripciones se renuevan automáticamente a menos que
+          se cancelen
+        cancellation_timing: Las cancelaciones surten efecto al final del período
+          de facturación actual
       delivery:
         title: Entrega del Servicio
-        content: CalcuMake es un servicio basado en web accesible inmediatamente después de la creación de la cuenta. No hay productos físicos ni envíos involucrados.
+        content: CalcuMake es un servicio basado en web accesible inmediatamente después
+          de la creación de la cuenta. No hay productos físicos ni envíos involucrados.
       returns:
         title: Devoluciones y Reembolsos
-        content: Como CalcuMake es un servicio gratuito basado en web, las devoluciones no aplican. Si se introducen funciones de pago, nuestra política de reembolso se establecerá claramente.
+        content: 'Como CalcuMake es un servicio de suscripción digital, nuestra política
+          de reembolso es la siguiente:'
+        money_back_guarantee: Garantía de devolución de dinero de 14 días para suscriptores
+          de pago primerizos
+        refund_process: Contacte al soporte dentro de los 14 días de su suscripción
+          inicial para un reembolso completo
+        no_partial_refunds: No se proporcionan reembolsos parciales por el tiempo
+          de suscripción restante excepto según lo requiera la ley
+        renewal_refunds: Los pagos de renovación no son reembolsables a menos que
+          lo requiera la ley
+        free_tier_refunds: El uso del nivel Gratuito no involucra pagos y no se aplican
+          reembolsos
       cancellation:
         title: Política de Cancelación
-        content: Los usuarios pueden cancelar su cuenta en cualquier momento contactando al soporte. Los datos de la cuenta se manejarán de acuerdo con nuestra Política de Privacidad.
+        content: 'Términos de cancelación de suscripción:'
+        cancellation_method: Cancele en cualquier momento a través de la configuración
+          de su cuenta o contactando al soporte en cody@moab.jp
+        cancellation_effect: La cancelación surte efecto al final de su período de
+          facturación actual
+        access_retention: Conserva el acceso completo a las funciones de pago hasta
+          el final del período pagado
+        data_retention: Los datos de la cuenta se retienen según nuestra Política
+          de Privacidad
+        resubscription: Puede volver a suscribirse en cualquier momento después de
+          la cancelación
 filaments:
   index:
     title: Mis Filamentos
@@ -519,11 +675,13 @@ filaments:
     clear_search: Limpiar Búsqueda
     empty_state:
       title: Aún no hay filamentos registrados
-      description: Agrega tu primer filamento para comenzar a construir tu biblioteca de materiales para cálculos de impresión.
+      description: Agrega tu primer filamento para comenzar a construir tu biblioteca
+        de materiales para cálculos de impresión.
       add_first: Agregar Tu Primer Filamento
     no_results:
       title: No se encontraron resultados
-      description: "Ningún filamento coincide con '%{query}'. Intenta con un término de búsqueda diferente."
+      description: Ningún filamento coincide con '%{query}'. Intenta con un término
+        de búsqueda diferente.
   new:
     title: Agregar Nuevo Filamento
     subtitle: Registrar un nuevo filamento para tu biblioteca de materiales
@@ -558,11 +716,11 @@ filaments:
     finish: Acabado
     finish_placeholder: ej., Mate, Brillante, Seda
     spool_weight: Peso del Carrete
-    spool_weight_placeholder: "1000"
+    spool_weight_placeholder: '1000'
     spool_price: Precio del Carrete
-    spool_price_placeholder: "25.00"
+    spool_price_placeholder: '25.00'
     density: Densidad
-    density_placeholder: "1.24"
+    density_placeholder: '1.24'
     cost_per_gram: Costo por Gramo
     temperature_range: Rango de Temperatura
     moisture_sensitive: Sensible a la Humedad
@@ -575,7 +733,7 @@ filaments:
     none_selected: Ninguno seleccionado
     not_set: No establecido
     total_cost: Costo Total
-    no_filament_registered: ¿No tienes filamento registrado?
+    no_filament_registered: "¿No tienes filamento registrado?"
     add_new_filament: Agregar Nuevo Filamento
     bed_temperature: Temperatura de Cama
     max_print_speed: Velocidad Máxima de Impresión
@@ -600,7 +758,8 @@ filaments:
         description: Comienza creando facturas para tus cálculos de impresión.
       no_results:
         title: No se encontraron resultados
-        description: "Ninguna factura coincide con '%{query}'. Prueba con un término de búsqueda diferente."
+        description: Ninguna factura coincide con '%{query}'. Prueba con un término
+          de búsqueda diferente.
     download_pdf: Descargar PDF
     print: Imprimir
     bill_to: Facturar a
@@ -614,11 +773,14 @@ filaments:
     marked_as_paid: Factura marcada como pagada
     marked_as_cancelled: Factura marcada como cancelada
     failed_to_update: Error al actualizar la factura
-    confirm_delete: ¿Estás seguro de que quieres eliminar esta factura?
+    confirm_delete: "¿Estás seguro de que quieres eliminar esta factura?"
     no_invoices: Aún no hay facturas
     create_first_invoice: Crea tu primera factura para este cálculo de impresión
-    company_info_card_text: La información de la empresa de la factura se gestiona en la configuración de tu perfil. Actualiza los detalles de tu empresa allí para usarlos en todas tus facturas.
-    no_company_info: No se ha establecido información de la empresa. Por favor actualiza tu perfil para agregar los detalles de la empresa.
+    company_info_card_text: La información de la empresa de la factura se gestiona
+      en la configuración de tu perfil. Actualiza los detalles de tu empresa allí
+      para usarlos en todas tus facturas.
+    no_company_info: No se ha establecido información de la empresa. Por favor actualiza
+      tu perfil para agregar los detalles de la empresa.
     edit_company_info: Editar Información de la Empresa en el Perfil
     status:
       draft: Borrador
@@ -635,12 +797,14 @@ filaments:
       payment_details: Detalles de Pago
       notes: Notas
       invoice_number: Número de Factura
-      invoice_number_help: Generado automáticamente cuando se crean las facturas (no se puede editar)
+      invoice_number_help: Generado automáticamente cuando se crean las facturas (no
+        se puede editar)
       invoice_date: Fecha de la Factura
       due_date: Fecha de Vencimiento
       status: Estado
       currency: Moneda
-      currency_help: Determina los lugares decimales y el formato para todas las cantidades en esta factura
+      currency_help: Determina los lugares decimales y el formato para todas las cantidades
+        en esta factura
       company_logo: Logo de la Empresa
     line_items:
       title: Elementos de Línea
