@@ -540,3 +540,13 @@ print_pricings:
       headline: "3D prints पर पैसा खोना बंद करने के लिए ready हैं?"
       subheadline: "हजारों makers के साथ join हों जो accurate pricing और professional project management के लिए CalcuMake पर trust करते हैं।"
       button: "अपना Free Trial शुरू करें"
+
+  devise:
+    shared:
+      sign_in_with_provider: "%{provider} के साथ साइन इन करें"
+      sign_in_with_provider_aria: "अपने %{provider} खाते का उपयोग करके साइन इन करें"
+      or_sign_in_with_email: "या ईमेल के साथ साइन इन करें"
+      oauth_signin_options: "तृतीय पक्षीय साइन इन विकल्प"
+      alternative_signin_method: "वैकल्पिक साइन इन विधि"
+    omniauth_callbacks:
+      success: "%{kind} खाते से सफलतापूर्वक प्रमाणित हुआ।"

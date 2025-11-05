@@ -42,4 +42,94 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_respond_to self, :content_tag
     assert_respond_to self, :form_with
   end
+
+  # OAuth helper method tests
+  test "oauth_provider_icon returns Google SVG for Google provider" do
+    icon = oauth_provider_icon("Google")
+    assert_includes icon, "svg"
+    assert_includes icon, "18"
+    assert_includes icon, "me-2"
+    assert_includes icon, "aria-hidden"
+    assert_includes icon, "#4285F4"  # Google blue color
+    assert_includes icon, "#34A853"  # Google green color
+    assert_includes icon, "#FBBC05"  # Google yellow color
+    assert_includes icon, "#EA4335"  # Google red color
+  end
+
+  test "oauth_provider_icon returns GitHub SVG for GitHub provider" do
+    icon = oauth_provider_icon("GitHub")
+    assert_includes icon, "svg"
+    assert_includes icon, "18"
+    assert_includes icon, "me-2"
+    assert_includes icon, "aria-hidden"
+    assert_includes icon, "currentColor"
+    assert_includes icon, "viewBox=\"0 0 16 16\""
+  end
+
+  test "oauth_provider_icon returns Microsoft SVG for Microsoft provider" do
+    icon = oauth_provider_icon("Microsoft")
+    assert_includes icon, "svg"
+    assert_includes icon, "18"
+    assert_includes icon, "me-2"
+    assert_includes icon, "aria-hidden"
+    assert_includes icon, "currentColor"
+    assert_includes icon, "viewBox=\"0 0 16 16\""
+    assert_includes icon, "7.462 0H0v7.19h7.462V0z"
+  end
+
+  test "oauth_provider_icon handles case insensitive input" do
+    google_lowercase = oauth_provider_icon("google")
+    google_uppercase = oauth_provider_icon("GOOGLE")
+    google_mixed = oauth_provider_icon("Google")
+
+    assert_equal google_lowercase, google_uppercase
+    assert_equal google_lowercase, google_mixed
+    assert_includes google_lowercase, "#4285F4"
+  end
+
+  test "oauth_provider_icon returns empty string for unknown provider" do
+    assert_equal "", oauth_provider_icon("unknown")
+    assert_equal "", oauth_provider_icon("")
+    assert_equal "", oauth_provider_icon(nil)
+  end
+
+  test "oauth_provider_button_class returns correct classes for each provider" do
+    assert_equal "btn btn-outline-danger", oauth_provider_button_class("Google")
+    assert_equal "btn btn-outline-dark", oauth_provider_button_class("GitHub")
+    assert_equal "btn btn-outline-primary", oauth_provider_button_class("Microsoft")
+  end
+
+  test "oauth_provider_button_class handles case insensitive input" do
+    assert_equal "btn btn-outline-danger", oauth_provider_button_class("google")
+    assert_equal "btn btn-outline-danger", oauth_provider_button_class("GOOGLE")
+    assert_equal "btn btn-outline-danger", oauth_provider_button_class("Google")
+  end
+
+  test "oauth_provider_button_class returns default class for unknown provider" do
+    assert_equal "btn btn-outline-secondary", oauth_provider_button_class("unknown")
+    assert_equal "btn btn-outline-secondary", oauth_provider_button_class("")
+    assert_equal "btn btn-outline-secondary", oauth_provider_button_class(nil)
+  end
+
+  test "oauth helper methods work together for all supported providers" do
+    providers = ["Google", "GitHub", "Microsoft"]
+
+    providers.each do |provider|
+      icon = oauth_provider_icon(provider)
+      button_class = oauth_provider_button_class(provider)
+
+      assert_not_equal "", icon, "Icon should not be empty for #{provider}"
+      assert_includes button_class, "btn", "Button class should include 'btn' for #{provider}"
+      assert_includes icon, "svg", "Icon should be an SVG for #{provider}"
+      assert_includes icon, "aria-hidden", "Icon should have aria-hidden for accessibility"
+    end
+  end
+
+  test "translate_filament_type handles all material types" do
+    assert_equal I18n.t("print_pricing.filament_types.pla"), translate_filament_type("PLA")
+    assert_equal I18n.t("print_pricing.filament_types.abs"), translate_filament_type("ABS")
+    assert_equal I18n.t("print_pricing.filament_types.petg"), translate_filament_type("PETG")
+    assert_equal "", translate_filament_type("")
+    assert_equal "", translate_filament_type(nil)
+  end
 end

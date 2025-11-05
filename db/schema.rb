@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_31_015626) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_01_053620) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -186,6 +186,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_31_015626) do
     t.decimal "default_vat_percentage", precision: 5, scale: 2, default: "20.0"
     t.decimal "default_listing_cost_percentage", precision: 5, scale: 2, default: "0.0"
     t.decimal "default_payment_processing_cost_percentage", precision: 5, scale: 2, default: "0.0"
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

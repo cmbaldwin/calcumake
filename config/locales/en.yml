@@ -1014,7 +1014,7 @@ en:
 
     final_cta:
       headline: "Ready to stop losing money on 3D prints?"
-      subheadline: "Join thousands of makers who trust CalcuMake for accurate pricing and professional project management."
+      subheadline: "Join %{crossed_out_start}thousands of%{crossed_out_end} at least 1 other maker (me!) who trusts CalcuMake for accurate pricing and professional project management. You've already read everything so far, you might as well sign up — it's free, check it out!"
       button: "Start Your Free Trial"
   locale_suggestion:
     banner:
@@ -1064,3 +1064,13 @@ en:
         - "Project history and duplicate functionality"
         - "Multi-currency support"
         - "Machine depreciation calculations"
+
+  devise:
+    shared:
+      sign_in_with_provider: "Sign in with %{provider}"
+      sign_in_with_provider_aria: "Sign in using your %{provider} account"
+      or_sign_in_with_email: "or sign in with email"
+      oauth_signin_options: "Third-party sign-in options"
+      alternative_signin_method: "Alternative sign-in method"
+    omniauth_callbacks:
+      success: "Successfully authenticated from %{kind} account."

@@ -23,6 +23,15 @@ gem "jbuilder"
 # Authentication
 gem "devise"
 
+# OAuth providers
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-github"
+gem "omniauth-microsoft_graph"
+gem "omniauth-facebook"
+gem "omniauth-yahoojp"
+gem "omniauth-rails_csrf_protection"
+
 # Admin interface
 gem "rails_admin"
 

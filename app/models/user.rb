@@ -2,7 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable,
+         omniauth_providers: [:google_oauth2, :github, :microsoft_graph, :facebook, :yahoojp]
 
   has_many :print_pricings, dependent: :destroy
   has_many :printers, dependent: :destroy
@@ -34,6 +35,36 @@ class User < ApplicationRecord
                                 .maximum("CAST(SUBSTRING(invoice_number FROM 5) AS INTEGER)")
     correct_next_number = (max_invoice_number || 0) + 1
     update!(next_invoice_number: correct_next_number)
+  end
+
+  # OAuth methods
+  def self.from_omniauth(auth)
+    user = where(email: auth.info.email).first_or_create do |new_user|
+      new_user.email = auth.info.email
+      new_user.provider = auth.provider
+      new_user.uid = auth.uid
+      new_user.skip_confirmation! if new_user.respond_to?(:skip_confirmation!)
+
+      # Try to get name from OAuth data
+      if auth.info.name.present?
+        # Could split into first/last name if you have those fields
+        # For now, we'll just store it in a way that works with your existing setup
+      end
+
+      # Generate a random password for OAuth users
+      new_user.password = Devise.friendly_token[0, 20]
+    end
+
+    # Update existing user with OAuth provider info if not already set
+    if user.persisted? && (user.provider != auth.provider || user.uid != auth.uid)
+      user.update(provider: auth.provider, uid: auth.uid)
+    end
+
+    user
+  end
+
+  def oauth_user?
+    provider.present? && uid.present?
   end
 
   private
