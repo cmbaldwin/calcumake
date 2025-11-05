@@ -786,3 +786,13 @@ es:
         - "Historial de proyectos y funcionalidad de duplicación"
         - "Soporte multi-moneda"
         - "Cálculos de depreciación de máquinas"
+
+  devise:
+    shared:
+      sign_in_with_provider: "Iniciar sesión con %{provider}"
+      sign_in_with_provider_aria: "Iniciar sesión usando tu cuenta de %{provider}"
+      or_sign_in_with_email: "o iniciar sesión con email"
+      oauth_signin_options: "Opciones de inicio de sesión de terceros"
+      alternative_signin_method: "Método alternativo de inicio de sesión"
+    omniauth_callbacks:
+      success: "Autenticado exitosamente desde la cuenta de %{kind}."

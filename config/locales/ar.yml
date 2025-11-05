@@ -537,3 +537,13 @@ filaments:
         - "تاريخ المشاريع ووظيفة النسخ"
         - "دعم العملات المتعددة"
         - "حسابات إهلاك الآلات"
+
+  devise:
+    shared:
+      sign_in_with_provider: "تسجيل الدخول باستخدام %{provider}"
+      sign_in_with_provider_aria: "تسجيل الدخول باستخدام حساب %{provider} الخاص بك"
+      or_sign_in_with_email: "أو تسجيل الدخول بالبريد الإلكتروني"
+      oauth_signin_options: "خيارات تسجيل الدخول من طرف ثالث"
+      alternative_signin_method: "طريقة تسجيل دخول بديلة"
+    omniauth_callbacks:
+      success: "تم التحقق بنجاح من حساب %{kind}."

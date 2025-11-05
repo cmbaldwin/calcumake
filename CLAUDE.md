@@ -125,3 +125,11 @@ Minitest with Turbo Stream tests. Test both HTML and turbo_stream formats.
 - `app/helpers/seo_helper.rb` - SEO meta tags and structured data
 - `app/assets/stylesheets/application.css` - Moab theme styling
 - `config/locales/` - All 7 language files
+
+## Documentation Context Reference
+
+**OAuth Setup:** `docs/OAUTH_SETUP_GUIDE.md`
+**Landing Page:** `docs/LANDING_PAGE_PLAN.md`
+**Turbo Framework:** `docs/TURBO_REFERENCE.md` | `docs/TURBO_CHEATSHEET.md`
+
+*Reference documentation only when specific context is required.*

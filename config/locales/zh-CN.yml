@@ -571,3 +571,13 @@ filaments:
         - "项目历史和复制功能"
         - "多货币支持"
         - "机器折旧计算"
+
+  devise:
+    shared:
+      sign_in_with_provider: "使用 %{provider} 登录"
+      sign_in_with_provider_aria: "使用您的 %{provider} 账户登录"
+      or_sign_in_with_email: "或使用邮箱登录"
+      oauth_signin_options: "第三方登录选项"
+      alternative_signin_method: "替代登录方式"
+    omniauth_callbacks:
+      success: "已成功通过 %{kind} 账户验证。"

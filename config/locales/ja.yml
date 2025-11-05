@@ -784,3 +784,13 @@ ja:
         - "プロジェクト履歴と複製機能"
         - "多通貨サポート"
         - "機械減価償却計算"
+
+  devise:
+    shared:
+      sign_in_with_provider: "%{provider}でサインイン"
+      sign_in_with_provider_aria: "%{provider}アカウントを使用してサインイン"
+      or_sign_in_with_email: "またはメールアドレスでサインイン"
+      oauth_signin_options: "サードパーティサインインオプション"
+      alternative_signin_method: "代替サインイン方法"
+    omniauth_callbacks:
+      success: "%{kind}アカウントから正常に認証されました。"
