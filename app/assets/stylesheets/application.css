@@ -1986,3 +1986,173 @@ body.has-locale-suggestion {
   border-bottom-left-radius: calc(0.5rem - 1px);
   border-bottom-right-radius: calc(0.5rem - 1px);
 }
+
+/* ========================================
+   Subscription Pricing Page Styles
+   ======================================== */
+
+/* Pricing card styling with Moab theme */
+.pricing-card {
+  transition: all 0.3s ease;
+  border: 2px solid var(--moab-stone);
+  position: relative;
+  overflow: visible;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 2rem rgba(139, 69, 19, 0.15);
+}
+
+/* Popular plan badge */
+.pricing-card.popular-plan {
+  border-color: var(--bs-primary);
+  border-width: 3px;
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-secondary) 100%);
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 0.25rem 0.5rem rgba(200, 16, 46, 0.3);
+  z-index: 10;
+}
+
+/* Current plan styling */
+.pricing-card.current-plan {
+  border-color: var(--bs-success);
+  background: rgba(156, 175, 136, 0.05);
+}
+
+/* Plan price styling */
+.plan-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--bs-primary);
+}
+
+.price-amount {
+  font-size: 2.5rem;
+}
+
+.price-period {
+  font-size: 1rem;
+  color: var(--bs-secondary);
+  font-weight: 400;
+}
+
+/* Feature list styling */
+.pricing-card .list-unstyled li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(210, 180, 140, 0.2);
+  font-size: 0.9rem;
+}
+
+.pricing-card .list-unstyled li:last-child {
+  border-bottom: none;
+}
+
+.pricing-card .list-unstyled li i {
+  font-size: 1.1rem;
+  margin-right: 0.5rem;
+}
+
+/* Gradient button for popular plan */
+.btn-gradient-primary {
+  background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-secondary) 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 0.25rem 0.75rem rgba(200, 16, 46, 0.3);
+}
+
+.btn-gradient-primary:hover {
+  background: linear-gradient(135deg, #a80e26 0%, #b85a1a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(200, 16, 46, 0.4);
+}
+
+/* Usage stats styling */
+.usage-stat {
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(210, 180, 140, 0.3);
+}
+
+.usage-stat .progress {
+  border-radius: 0.25rem;
+  background-color: rgba(210, 180, 140, 0.2);
+}
+
+.usage-stat .progress-bar {
+  transition: width 0.6s ease;
+}
+
+/* FAQ accordion styling */
+#subscriptionFAQ .accordion-item {
+  border: 1px solid var(--moab-stone);
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+#subscriptionFAQ .accordion-button {
+  background-color: rgba(255, 248, 220, 0.5);
+  color: var(--bs-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+#subscriptionFAQ .accordion-button:not(.collapsed) {
+  background: linear-gradient(135deg, rgba(200, 16, 46, 0.1) 0%, rgba(210, 105, 30, 0.1) 100%);
+  color: var(--bs-primary);
+}
+
+#subscriptionFAQ .accordion-button:focus {
+  box-shadow: none;
+  border-color: var(--bs-primary);
+}
+
+#subscriptionFAQ .accordion-body {
+  font-size: 0.9rem;
+  color: var(--bs-dark);
+  background-color: white;
+}
+
+/* Responsive adjustments for pricing cards */
+@media (max-width: 768px) {
+  .plan-price {
+    font-size: 1.5rem;
+  }
+
+  .price-amount {
+    font-size: 2rem;
+  }
+
+  .pricing-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .popular-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.75rem;
+  }
+}
+
+/* Add smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Pricing plans anchor target */
+#pricing-plans {
+  scroll-margin-top: 2rem;
+}
