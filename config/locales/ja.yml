@@ -452,15 +452,77 @@ ja:
     privacy_policy:
       title: プライバシーポリシー
       nav_title: プライバシーポリシー
+      information_we_collect:
+        title: 収集する情報
+        content: 当社は、お客様から直接提供された情報と、サービス利用時に自動的に収集される情報を収集します。
+        account_info:
+          title: アカウント情報
+          email: アカウント認証用のメールアドレス
+          preferences: デフォルト通貨や言語などのユーザー設定
+          usage_data: 使用パターンと機能設定
+        project_data:
+          title: プロジェクトデータ
+          pricing_calculations: 3Dプリントのコスト計算とプロジェクトデータ
+          printer_specifications: プリンター仕様と設定
+          project_metadata: プロジェクト名、日付、メタデータ
+        payment_info:
+          title: 支払いおよび請求情報
+          payment_details: 支払い方法の詳細（支払い処理業者が安全に処理）
+          billing_address: 請求先住所と連絡先情報
+          transaction_history: 取引とサブスクリプションの履歴
+          subscription_tier: 選択されたサブスクリプションティアと機能
+      data_sharing:
+        title: 情報の共有
+        content: "当社は、お客様の個人情報を第三者に販売、取引、または賃貸することはありません。以下の状況でのみ情報を共有する場合があります："
+        legal_requirements: 法律で要求された場合、または法的権利を保護するため
+        service_providers: サービス運営を支援する信頼できるサービスプロバイダー（クラウドホスティングおよびインフラストラクチャープロバイダーを含む）
+        payment_processors: サブスクリプション支払いの処理および請求管理のための支払い処理業者（Stripeなど）
+        advertising_partners: 無料ティアユーザーに関連広告を表示するための広告パートナー（Google AdSenseなど）
+        business_transfer: 事業譲渡または買収に関連して
       advertising:
         title: 広告
-        content: 当社のウェブサイトは、将来的にGoogle AdSenseを通じて広告を表示する可能性があります。これらの広告は、お客様の興味や閲覧行動に基づいて表示される場合があります。
-        google_adsense: Google AdSenseが実装された場合、Cookieやその他のトラッキング技術を使用して関連する広告を配信する可能性があります。
-        opt_out: 広告のパーソナライゼーションを管理し、パーソナライズド広告をオプトアウトすることができるようになります。次のページにアクセスしてください
+        content: 無料ティアでは、Google AdSenseを通じて広告が表示されます。これらの広告は、お客様の興味や閲覧行動に基づいています。有料サブスクリプションティアでは広告は表示されません。
+        google_adsense: Google AdSenseは、Cookieおよびその他のトラッキング技術を使用して関連する広告を配信します。これは無料ティアユーザーのみに適用されます。
+        opt_out: 次のページにアクセスすることで、広告のパーソナライゼーションを管理し、パーソナライズド広告をオプトアウトできます
         google_ad_settings: Google広告設定
+        upgrade_note: すべての広告を削除するには、有料サブスクリプションティアにアップグレードしてください。
     user_agreement:
       title: 利用規約
       nav_title: 利用規約
+      subscription_tiers:
+        title: サブスクリプションティアと価格
+        content: "CalcuMakeは3つのサブスクリプションティアを提供しています："
+        free_tier: "無料ティア：広告表示付きの基本機能"
+        pro_tier: "Proティア：高度な機能、広告なし、優先サポート（有料サブスクリプション）"
+        enterprise_tier: "Enterpriseティア：すべての機能、プレミアムサポート、カスタム統合（有料サブスクリプション）"
+        pricing_note: 現在の価格は当社のウェブサイトで確認でき、既存のサブスクライバーには通知して更新される場合があります。
+      payment_terms:
+        title: 支払いおよび請求
+        content: "有料ティアにサブスクライブする場合、以下の支払い条件に同意します："
+        subscription_fee: 各請求サイクルの開始時にサブスクリプション料金が請求されます
+        billing_cycles: 請求サイクルは、選択に応じて月次または年次です
+        payment_method: 有料ティアにサブスクライブするには、有効な支払い方法を提供する必要があります
+        automatic_renewal: 更新日前にキャンセルしない限り、サブスクリプションは自動的に更新されます
+        price_changes: 既存のサブスクライバーには30日前に通知して価格を変更する場合があります
+        payment_processor: 支払いは、サードパーティの支払い処理業者（Stripe）を通じて安全に処理されます
+        failed_payments: 支払いが失敗すると、サービスのダウングレードまたは停止が発生する場合があります
+        currency: 価格は選択した通貨で表示されます
+      cancellation_refunds:
+        title: キャンセルと返金
+        content: "いつでもサブスクリプションをキャンセルできます："
+        cancellation_process: アカウント設定からキャンセルするか、サポートに連絡してください
+        cancellation_effect: キャンセルは現在の請求期間の終了時に有効になります
+        access_until_end: 有料期間の終了まで有料機能へのアクセスは維持されます
+        refund_policy: 初回サブスクライバーには14日間の返金保証を提供します
+        no_partial_refunds: 法律で要求される場合を除き、残りのサブスクリプション期間の部分返金は提供されません
+        downgrade_option: 請求サイクルの終了時に低いティアにダウングレードできます
+      free_tier_limitations:
+        title: 無料ティアの制限
+        content: "無料ティアには広告表示が含まれ、使用制限がある場合があります："
+        advertisements: 無料ティアユーザーには、アプリケーション全体で広告が表示されます
+        feature_limits: 一部の高度な機能は有料ティアに制限されています
+        support_priority: 無料ティアサポートはベストエフォートベースで提供されます
+        upgrade_anytime: いつでも有料ティアにアップグレードできます
     commerce_disclosure:
       title: 特定商取引法に基づく表記
       nav_title: 特定商取引法
@@ -488,24 +550,45 @@ ja:
         printer_tracking: プリンター仕様・使用状況追跡
       pricing:
         title: 販売価格
-        content: CalcuMakeは現在、全ユーザーに無料でサービスを提供しています。
-        future_note: 将来的に有料機能やサブスクリプションを導入する場合、実装前にウェブサイト上で価格情報を明確に表示いたします。
+        content: "CalcuMakeは3つのサブスクリプションティアを提供しています："
+        free_tier: "無料ティア：¥0/月 - 広告付き基本機能"
+        pro_tier: "Proティア：月次または年次の有料サブスクリプション - 高度な機能、広告なし、優先サポート"
+        enterprise_tier: "Enterpriseティア：月次または年次の有料サブスクリプション - すべての機能、プレミアムサポート、カスタム統合"
+        pricing_details: 正確な価格は、ウェブサイトおよびアプリケーション内のサブスクリプション選択時に表示されます。
+        price_changes: 価格は既存のサブスクライバーへの30日前の通知により調整される場合があります。
       payment_methods:
         title: 支払方法
-        content: 現在サービスは無料のため、お支払い方法は不要です。
-        future_note: "有料機能を導入する場合、以下のお支払い方法に対応予定です：クレジットカード（Visa、Mastercard、American Express、JCB）、その他告知される方法。"
+        content: "有料サブスクリプションには、以下の支払い方法を受け付けています："
+        credit_cards: "クレジットカード：Visa、Mastercard、American Express、JCB"
+        payment_processor: すべての支払いは、当社の支払い処理パートナーであるStripeを通じて安全に処理されます。
+        secure_processing: 完全なクレジットカード情報は当社のサーバーに保存されません。
+        free_tier_note: 無料ティアユーザーは支払い情報を提供する必要はありません。
       payment_timing:
         title: 支払時期
-        content: 現在サービスは無料のため該当しません。将来の有料サービスについては、支払時期を明確にお伝えします。
+        content: "お支払いは、選択した請求サイクルに従って請求されます："
+        initial_payment: 初回支払いはサブスクリプション時に即座に請求されます
+        recurring_payments: 定期支払いは各請求期間（月次または年次）の開始時に請求されます
+        automatic_renewal: サブスクリプションはキャンセルしない限り自動的に更新されます
+        cancellation_timing: キャンセルは現在の請求期間の終了時に有効になります
       delivery:
         title: サービス提供
         content: CalcuMakeはWebベースのサービスで、アカウント作成後すぐにアクセス可能です。物理的な製品や配送は含まれません。
       returns:
         title: 返品・返金
-        content: CalcuMakeは無料のWebベースサービスのため、返品は該当しません。有料機能を導入する場合、返金ポリシーを明確に表示します。
+        content: "CalcuMakeはデジタルサブスクリプションサービスのため、返金ポリシーは以下の通りです："
+        money_back_guarantee: 初回有料サブスクライバーには14日間の返金保証
+        refund_process: 初回サブスクリプションから14日以内にサポートに連絡して全額返金を受けられます
+        no_partial_refunds: 法律で要求される場合を除き、残りのサブスクリプション期間の部分返金は提供されません
+        renewal_refunds: 更新支払いは法律で要求される場合を除き返金不可です
+        free_tier_refunds: 無料ティアの使用には支払いが含まれないため、返金は適用されません
       cancellation:
         title: 解約について
-        content: ユーザーはいつでもサポートに連絡してアカウントを解約できます。アカウントデータはプライバシーポリシーに従って処理されます。
+        content: "サブスクリプションキャンセルの条件："
+        cancellation_method: アカウント設定から、またはcody@moab.jpのサポートに連絡していつでもキャンセルできます
+        cancellation_effect: キャンセルは現在の請求期間の終了時に有効になります
+        access_retention: 有料期間の終了まで有料機能への完全なアクセスは維持されます
+        data_retention: アカウントデータは当社のプライバシーポリシーに従って保持されます
+        resubscription: キャンセル後いつでも再サブスクライブできます
   support:
     title: サポート
     nav_title: サポート
@@ -513,6 +596,10 @@ ja:
     description: CalcuMakeについてのご質問やご提案がありますか？お気軽にお問い合わせください。
     email_label: メールサポート
     response_time: 通常24〜48時間以内に返信いたします
+    billing_support:
+      title: 請求とサブスクリプションのサポート
+      description: 請求に関するお問い合わせ、サブスクリプションの変更、返金リクエスト、または支払いの問題については、アカウントのメールアドレスを添えてお問い合わせください。
+      priority_note: ProおよびEnterpriseティアのサブスクライバーは、優先サポート応答時間を受けられます。
   filaments:
     index:
       title: フィラメント一覧
