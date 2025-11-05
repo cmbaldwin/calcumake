@@ -557,6 +557,10 @@ en:
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
+    billing_support:
+      title: Billing and Subscription Support
+      description: For billing inquiries, subscription changes, refund requests, or payment issues, please contact us with your account email.
+      priority_note: Pro and Enterprise tier subscribers receive priority support response times.
   legal:
     last_updated: Last updated
     privacy_policy:
@@ -577,6 +581,12 @@ en:
           pricing_calculations: 3D printing cost calculations and project data
           printer_specifications: Printer specifications and settings
           project_metadata: Project names, dates, and metadata
+        payment_info:
+          title: Payment and Billing Information
+          payment_details: Payment method details (processed securely by our payment processor)
+          billing_address: Billing address and contact information
+          transaction_history: Transaction and subscription history
+          subscription_tier: Your selected subscription tier and features
       how_we_use_info:
         title: How We Use Your Information
         provide_service:
@@ -593,20 +603,27 @@ en:
         legal_requirements: When required by law or to protect our legal rights
         service_providers:
           With trusted service providers who assist in operating
-          our service
+          our service (including cloud hosting and infrastructure providers)
+        payment_processors:
+          With payment processors (such as Stripe) to process subscription
+          payments and manage billing
+        advertising_partners:
+          With advertising partners (such as Google AdSense) to display
+          relevant advertisements to Free tier users
         business_transfer: In connection with a business transfer or acquisition
       advertising:
         title: Advertising
         content:
-          Our website may display advertisements through Google AdSense in the future. These
-          ads may be based on your interests and browsing behavior.
+          Our Free tier displays advertisements through Google AdSense. These
+          ads are based on your interests and browsing behavior. Paid subscription tiers do not display advertisements.
         google_adsense:
-          When implemented, Google AdSense may use cookies and other tracking technologies
-          to serve relevant advertisements.
+          Google AdSense uses cookies and other tracking technologies
+          to serve relevant advertisements. This applies only to Free tier users.
         opt_out:
-          You will be able to control ad personalization and opt out of personalized advertising
+          You can control ad personalization and opt out of personalized advertising
           by visiting
         google_ad_settings: Google Ad Settings
+        upgrade_note: To remove all advertisements, upgrade to a paid subscription tier.
       data_security:
         title: Data Security
         content:
@@ -652,6 +669,44 @@ en:
         project_management: Project tracking and management features
         invoice_generation: Invoice generation and PDF export capabilities
         printer_tracking: Printer specifications and usage tracking
+      subscription_tiers:
+        title: Subscription Tiers and Pricing
+        content:
+          "CalcuMake offers three subscription tiers:"
+        free_tier: "Free Tier: Basic features with advertisement display"
+        pro_tier: "Pro Tier: Advanced features, no ads, priority support (paid subscription)"
+        enterprise_tier: "Enterprise Tier: All features, premium support, custom integrations (paid subscription)"
+        pricing_note: Current pricing is available on our website and may be updated with notice to existing subscribers.
+      payment_terms:
+        title: Payment and Billing
+        content:
+          "If you subscribe to a paid tier, you agree to the following payment terms:"
+        subscription_fee: You will be charged the subscription fee at the start of each billing cycle
+        billing_cycles: Billing cycles are monthly or annual, depending on your selection
+        payment_method: You must provide a valid payment method to subscribe to paid tiers
+        automatic_renewal: Subscriptions automatically renew unless canceled before the renewal date
+        price_changes: We may change pricing with 30 days notice to existing subscribers
+        payment_processor: Payments are processed securely through our third-party payment processor (Stripe)
+        failed_payments: Failed payments may result in service downgrade or suspension
+        currency: Prices are displayed in your selected currency
+      cancellation_refunds:
+        title: Cancellation and Refunds
+        content:
+          "You may cancel your subscription at any time:"
+        cancellation_process: Cancel through your account settings or by contacting support
+        cancellation_effect: Cancellation takes effect at the end of your current billing period
+        access_until_end: You retain access to paid features until the end of the paid period
+        refund_policy: We offer a 14-day money-back guarantee for first-time subscribers
+        no_partial_refunds: Partial refunds for remaining subscription time are not provided except as required by law
+        downgrade_option: You may downgrade to a lower tier at the end of your billing cycle
+      free_tier_limitations:
+        title: Free Tier Limitations
+        content:
+          "The Free tier includes advertisement display and may have usage limitations:"
+        advertisements: Free tier users will see advertisements throughout the application
+        feature_limits: Some advanced features are restricted to paid tiers
+        support_priority: Free tier support is provided on a best-effort basis
+        upgrade_anytime: You may upgrade to a paid tier at any time
       user_accounts:
         title: User Accounts
         content:
@@ -760,24 +815,45 @@ en:
         printer_tracking: Printer specifications and usage tracking
       pricing:
         title: Pricing
-        content: CalcuMake is currently offered as a free service to all users.
-        future_note: "Should we introduce paid features or subscriptions in the future, pricing details will be clearly displayed on our website prior to implementation."
+        content: "CalcuMake offers three subscription tiers:"
+        free_tier: "Free Tier: ¥0/month - Basic features with advertisements"
+        pro_tier: "Pro Tier: Paid monthly or annual subscription - Advanced features, no ads, priority support"
+        enterprise_tier: "Enterprise Tier: Paid monthly or annual subscription - All features, premium support, custom integrations"
+        pricing_details: Exact pricing is displayed on our website and in the application during subscription selection.
+        price_changes: Prices may be adjusted with 30 days advance notice to existing subscribers.
       payment_methods:
         title: Payment Methods
-        content: As the service is currently free, no payment methods are required.
-        future_note: "If paid features are introduced, accepted payment methods will include: Credit Card (Visa, Mastercard, American Express, JCB), and other methods as announced."
+        content: "For paid subscriptions, we accept the following payment methods:"
+        credit_cards: "Credit Cards: Visa, Mastercard, American Express, JCB"
+        payment_processor: All payments are securely processed through Stripe, our payment processing partner.
+        secure_processing: We do not store your complete credit card information on our servers.
+        free_tier_note: Free tier users do not need to provide payment information.
       payment_timing:
         title: Payment Timing
-        content: Not applicable as the service is currently free. For any future paid services, payment timing will be clearly communicated.
+        content: "Payment is charged according to your selected billing cycle:"
+        initial_payment: Initial payment is charged immediately upon subscription
+        recurring_payments: Recurring payments are charged at the start of each billing period (monthly or annually)
+        automatic_renewal: Subscriptions renew automatically unless canceled
+        cancellation_timing: Cancellations take effect at the end of the current billing period
       delivery:
         title: Service Delivery
         content: CalcuMake is a web-based service accessible immediately upon account creation. There are no physical products or shipping involved.
       returns:
         title: Returns and Refunds
-        content: As CalcuMake is a free web-based service, returns do not apply. Should paid features be introduced, our refund policy will be clearly stated.
+        content: "As CalcuMake is a digital subscription service, our refund policy is as follows:"
+        money_back_guarantee: 14-day money-back guarantee for first-time paid subscribers
+        refund_process: Contact support within 14 days of your initial subscription for a full refund
+        no_partial_refunds: Partial refunds for remaining subscription time are not provided except as required by law
+        renewal_refunds: Renewal payments are non-refundable unless otherwise required by law
+        free_tier_refunds: Free tier usage does not involve payments and no refunds apply
       cancellation:
         title: Cancellation Policy
-        content: Users may cancel their account at any time by contacting support. Account data will be handled according to our Privacy Policy.
+        content: "Subscription cancellation terms:"
+        cancellation_method: Cancel anytime through your account settings or by contacting support at cody@moab.jp
+        cancellation_effect: Cancellation takes effect at the end of your current billing period
+        access_retention: You retain full access to paid features until the end of the paid period
+        data_retention: Account data is retained according to our Privacy Policy
+        resubscription: You may resubscribe at any time after cancellation
   print_pricings:
     form:
       filament_weight: Filament Weight
