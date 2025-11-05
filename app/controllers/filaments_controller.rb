@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 class FilamentsController < ApplicationController
+  include UsageTrackable
+
   before_action :authenticate_user!
   before_action :set_filament, only: [:show, :edit, :update, :destroy, :duplicate]
+  before_action :check_resource_limit, only: [:duplicate], prepend: true
 
   def index
     @q = current_user.filaments.ransack(params[:q])
@@ -58,6 +61,11 @@ class FilamentsController < ApplicationController
   end
 
   private
+
+  # Filaments use total count, not monthly tracking
+  def skip_usage_tracking?
+    true
+  end
 
   def set_filament
     @filament = current_user.filaments.find(params[:id])

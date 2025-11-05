@@ -1074,3 +1074,55 @@ en:
       alternative_signin_method: "Alternative sign-in method"
     omniauth_callbacks:
       success: "Successfully authenticated from %{kind} account."
+
+  # Usage limits and subscription management
+  usage_limits:
+    limit_reached: "You've reached your %{plan} plan limit of %{limit} %{resource}. Please upgrade to continue."
+    approaching_limit: "You're approaching your plan limit for %{resource}"
+    usage_summary: "Usage Summary"
+    current_usage: "%{current} of %{limit} used"
+    unlimited: "Unlimited"
+
+  subscriptions:
+    title: "Subscription & Pricing"
+    current_plan: "Current Plan"
+    upgrade: "Upgrade Plan"
+    manage: "Manage Subscription"
+    cancel: "Cancel Subscription"
+    invalid_plan: "Invalid subscription plan selected"
+    checkout_error: "Unable to create checkout session. Please try again."
+    verification_error: "Unable to verify subscription. Please contact support."
+    portal_error: "Unable to access subscription management. Please try again."
+    no_subscription: "You don't have an active subscription"
+    upgrade_successful: "Successfully upgraded to %{plan} plan!"
+    cancel_scheduled: "Your subscription will be canceled at the end of the billing period"
+    cancel_error: "Unable to cancel subscription. Please try again."
+    trial_badge: "30-Day Free Trial"
+    trial_remaining: "%{days} days remaining"
+    features:
+      calculations: "%{count} print calculations/month"
+      printers: "%{count} printer profiles"
+      filaments: "%{count} filament types"
+      invoices: "%{count} invoices/month"
+      unlimited_calculations: "Unlimited print calculations"
+      unlimited_printers: "Unlimited printers"
+      unlimited_filaments: "Unlimited filaments"
+      unlimited_invoices: "Unlimited invoices"
+      no_branding: "Remove CalcuMake branding"
+      no_ads: "Ad-free experience"
+      priority_support: "Priority support"
+      analytics: "Advanced analytics"
+      import_export: "Bulk import/export"
+    plans:
+      free:
+        name: "Free"
+        price: "$0"
+        description: "Perfect for trying out CalcuMake"
+      startup:
+        name: "Startup"
+        price: "$0.99/month"
+        description: "Great for hobbyists and small projects"
+      pro:
+        name: "Pro"
+        price: "$9.99/month"
+        description: "Unlimited power for professionals"
