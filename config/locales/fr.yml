@@ -195,6 +195,21 @@ fr:
     default_currency: Devise par Défaut
     default_energy_cost: Coût Énergétique par Défaut
     settings: Paramètres
+    buttons:
+      update_settings: Mettre à Jour les Paramètres
+      update_profile: Mettre à Jour le Profil
+    image_upload:
+      help_text: "Taille maximale du fichier : 5 Mo. Formats pris en charge : PNG, JPG, GIF, WebP"
+    delete_account:
+      title: Supprimer le Compte
+      warning_title: Avertissement
+      warning_message: La suppression de votre compte est permanente et ne peut pas être annulée. Toutes vos données seront supprimées définitivement.
+      description: Si vous ne souhaitez plus utiliser CalcuMake, vous pouvez supprimer votre compte. Veuillez lire la section FAQ sur la page d'assistance pour plus d'informations.
+      unlock_checkbox: Je comprends que la suppression de mon compte est permanente
+      confirm_checkbox: Je confirme vouloir supprimer mon compte et toutes les données associées
+      button: Supprimer Mon Compte
+      final_confirmation: Êtes-vous absolument sûr de vouloir supprimer votre compte ? Cette action ne peut pas être annulée et toutes vos données seront définitivement supprimées.
+      success: Votre compte a été supprimé avec succès. Merci d'avoir utilisé CalcuMake.
   app:
     title: CalcuMake
     title_default: CalcuMake
@@ -212,11 +227,34 @@ fr:
   support:
     title: Assistance
     nav_title: Assistance
-    contact_us: Contact Us
-    description: Need help with CalcuMake? Have a question or suggestion? We're here
-      to help!
-    email_label: Email Support
-    response_time: We typically respond within 24-48 hours
+    contact_us: Contactez-nous
+    description: Besoin d'aide avec CalcuMake ? Vous avez une question ou une suggestion ? Nous sommes là pour vous aider !
+    email_label: Assistance par Email
+    response_time: Nous répondons généralement dans les 24 à 48 heures
+    faq:
+      title: Questions Fréquemment Posées
+      delete_account:
+        question: Comment supprimer mon compte ?
+        answer: Pour supprimer votre compte, suivez ces étapes :
+        step1: Accédez à votre page de Profil depuis le menu de navigation
+        step2: Faites défiler jusqu'à la section "Supprimer le Compte" en bas de la page
+        step3: Cochez la case "Je comprends que la suppression de mon compte est permanente"
+        step4: Cochez la case "Je confirme vouloir supprimer mon compte et toutes les données associées"
+        step5: Cliquez sur le bouton "Supprimer Mon Compte" et confirmez l'avertissement final
+        warning_title: Important
+        warning_message: La suppression du compte est permanente et ne peut pas être annulée. Toutes vos données seront définitivement supprimées.
+      data_recovery:
+        question: Puis-je récupérer mon compte après suppression ?
+        answer: Non, la suppression du compte est permanente et irréversible. Une fois supprimé, votre compte et toutes les données associées ne peuvent pas être récupérés. Si vous pensez vouloir utiliser CalcuMake à nouveau à l'avenir, envisagez simplement de ne pas utiliser votre compte au lieu de le supprimer.
+      what_deleted:
+        question: Quelles données sont supprimées lorsque je supprime mon compte ?
+        intro: Lorsque vous supprimez votre compte, toutes les données suivantes sont définitivement supprimées :
+        item1: Votre compte utilisateur et vos identifiants de connexion
+        item2: Tous vos calculs de prix d'impression
+        item3: Toutes vos imprimantes et leurs configurations
+        item4: Tous vos profils de filament
+        item5: Toutes vos factures
+        item6: Toutes vos informations et préférences d'entreprise
 filaments:
   index:
     title: Mes Filaments

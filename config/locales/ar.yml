@@ -192,6 +192,21 @@ ar:
     default_currency: العملة الافتراضية
     default_energy_cost: تكلفة الطاقة الافتراضية
     settings: الإعدادات
+    buttons:
+      update_settings: تحديث الإعدادات
+      update_profile: تحديث الملف الشخصي
+    image_upload:
+      help_text: "الحد الأقصى لحجم الملف: 5 ميجابايت. التنسيقات المدعومة: PNG، JPG، GIF، WebP"
+    delete_account:
+      title: حذف الحساب
+      warning_title: تحذير
+      warning_message: حذف حسابك دائم ولا يمكن التراجع عنه. سيتم حذف جميع بياناتك بشكل دائم.
+      description: إذا كنت لا ترغب بعد الآن في استخدام CalcuMake، يمكنك حذف حسابك. يرجى قراءة قسم الأسئلة الشائعة في صفحة الدعم للمزيد من المعلومات.
+      unlock_checkbox: أفهم أن حذف حسابي دائم
+      confirm_checkbox: أؤكد أنني أريد حذف حسابي وجميع البيانات المرتبطة به
+      button: حذف حسابي
+      final_confirmation: هل أنت متأكد تمامًا من رغبتك في حذف حسابك؟ لا يمكن التراجع عن هذا الإجراء وسيتم حذف جميع بياناتك بشكل دائم.
+      success: تم حذف حسابك بنجاح. شكرًا لاستخدامك CalcuMake.
   app:
     title: CalcuMake
     title_default: CalcuMake
@@ -209,11 +224,34 @@ ar:
   support:
     title: الدعم
     nav_title: الدعم
-    contact_us: Contact Us
-    description: Need help with CalcuMake? Have a question or suggestion? We're here
-      to help!
-    email_label: Email Support
-    response_time: We typically respond within 24-48 hours
+    contact_us: اتصل بنا
+    description: هل تحتاج إلى مساعدة في CalcuMake؟ هل لديك سؤال أو اقتراح؟ نحن هنا للمساعدة!
+    email_label: الدعم عبر البريد الإلكتروني
+    response_time: نرد عادةً خلال 24-48 ساعة
+    faq:
+      title: الأسئلة الشائعة
+      delete_account:
+        question: كيف أحذف حسابي؟
+        answer: لحذف حسابك، اتبع الخطوات التالية:
+        step1: انتقل إلى صفحة الملف الشخصي من قائمة التنقل
+        step2: قم بالتمرير لأسفل إلى قسم "حذف الحساب" في أسفل الصفحة
+        step3: ضع علامة في المربع "أفهم أن حذف حسابي دائم"
+        step4: ضع علامة في المربع "أؤكد أنني أريد حذف حسابي وجميع البيانات المرتبطة به"
+        step5: انقر فوق زر "حذف حسابي" وقم بتأكيد التحذير النهائي
+        warning_title: مهم
+        warning_message: حذف الحساب دائم ولا يمكن التراجع عنه. سيتم حذف جميع بياناتك بشكل دائم.
+      data_recovery:
+        question: هل يمكنني استرداد حسابي بعد الحذف؟
+        answer: لا، حذف الحساب دائم ولا رجعة فيه. بمجرد الحذف، لا يمكن استرداد حسابك وجميع البيانات المرتبطة به. إذا كنت تعتقد أنك قد ترغب في استخدام CalcuMake مرة أخرى في المستقبل، ففكر في عدم استخدام حسابك بدلاً من حذفه.
+      what_deleted:
+        question: ما البيانات التي يتم حذفها عند حذف حسابي؟
+        intro: عند حذف حسابك، يتم حذف جميع البيانات التالية بشكل دائم:
+        item1: حساب المستخدم الخاص بك وبيانات اعتماد تسجيل الدخول
+        item2: جميع حسابات تسعير الطباعة الخاصة بك
+        item3: جميع الطابعات الخاصة بك وتكويناتها
+        item4: جميع ملفات تعريف الخيوط الخاصة بك
+        item5: جميع الفواتير الخاصة بك
+        item6: جميع معلومات وتفضيلات شركتك
 filaments:
   index:
     title: خيوط الطباعة
