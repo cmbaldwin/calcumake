@@ -1964,3 +1964,25 @@ body.has-locale-suggestion {
 .quick-calculator .alert-success.updated {
   animation: pulse-success 0.6s ease;
 }
+
+/* Calculator card header rounding fixes */
+.card .card-header {
+  border-top-left-radius: calc(0.375rem - 1px);
+  border-top-right-radius: calc(0.375rem - 1px);
+}
+
+.card .card-body:last-child {
+  border-bottom-left-radius: calc(0.375rem - 1px);
+  border-bottom-right-radius: calc(0.375rem - 1px);
+}
+
+/* Demo calculator specific styling */
+.card.shadow-sm .card-header {
+  border-top-left-radius: calc(0.5rem - 1px);
+  border-top-right-radius: calc(0.5rem - 1px);
+}
+
+.card.shadow-sm .card-body:last-child {
+  border-bottom-left-radius: calc(0.5rem - 1px);
+  border-bottom-right-radius: calc(0.5rem - 1px);
+}
