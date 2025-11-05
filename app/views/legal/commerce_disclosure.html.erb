@@ -1,0 +1,102 @@
+<% content_for :title, t('legal.commerce_disclosure.title') %>
+
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="h2 mb-0"><%= t('legal.commerce_disclosure.title') %></h1>
+        <small class="text-muted"><%= t('legal.last_updated') %>: <%= Date.current.strftime("%B %d, %Y") %></small>
+      </div>
+      <div class="card-body">
+        <div class="legal-content">
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.business_operator.title') %></h3>
+            <p><%= t('legal.commerce_disclosure.business_operator.name') %></p>
+            <p><%= t('legal.commerce_disclosure.business_operator.representative') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.business_address.title') %></h3>
+            <p><%= t('legal.commerce_disclosure.business_address.address') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.contact.title') %></h3>
+            <p><strong><%= t('legal.commerce_disclosure.contact.email_label') %>:</strong> <%= t('legal.commerce_disclosure.contact.email') %></p>
+            <p><strong><%= t('legal.commerce_disclosure.contact.phone_label') %>:</strong> <%= t('legal.commerce_disclosure.contact.phone') %></p>
+            <p><strong><%= t('legal.commerce_disclosure.contact.hours_label') %>:</strong> <%= t('legal.commerce_disclosure.contact.hours') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.service_description.title') %></h3>
+            <p><%= t('legal.commerce_disclosure.service_description.content') %></p>
+            <ul>
+              <li><%= t('legal.commerce_disclosure.service_description.cost_calculations') %></li>
+              <li><%= t('legal.commerce_disclosure.service_description.project_management') %></li>
+              <li><%= t('legal.commerce_disclosure.service_description.invoice_generation') %></li>
+              <li><%= t('legal.commerce_disclosure.service_description.printer_tracking') %></li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.pricing.title') %></h3>
+            <p><%= t('legal.commerce_disclosure.pricing.content') %></p>
+            <p><%= t('legal.commerce_disclosure.pricing.future_note') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.payment_methods.title') %></h3>
+            <p><%= t('legal.commerce_disclosure.payment_methods.content') %></p>
+            <p><%= t('legal.commerce_disclosure.payment_methods.future_note') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.payment_timing.title') %></h3>
+            <p><%= t('legal.commerce_disclosure.payment_timing.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.delivery.title') %></h3>
+            <p><%= t('legal.commerce_disclosure.delivery.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.returns.title') %></h3>
+            <p><%= t('legal.commerce_disclosure.returns.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.cancellation.title') %></h3>
+            <p><%= t('legal.commerce_disclosure.cancellation.content') %></p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .legal-content h3 {
+    color: var(--bs-primary);
+    border-bottom: 2px solid var(--bs-primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .legal-content ul {
+    margin-bottom: 1rem;
+  }
+
+  .legal-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-content section {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .legal-content section:last-child {
+    border-bottom: none;
+  }
+</style>

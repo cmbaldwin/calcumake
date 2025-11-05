@@ -234,9 +234,60 @@ zh-CN:
     privacy_policy:
       title: 隐私政策
       nav_title: 隐私政策
+      advertising:
+        title: 广告
+        content: 我们的网站未来可能会通过Google AdSense展示广告。这些广告可能基于您的兴趣和浏览行为。
+        google_adsense: 实施后，Google AdSense可能会使用Cookie和其他跟踪技术来提供相关广告。
+        opt_out: 您将能够控制广告个性化并选择退出个性化广告，请访问
+        google_ad_settings: Google广告设置
     user_agreement:
       title: 用户协议
       nav_title: 服务条款
+    commerce_disclosure:
+      title: 商务信息披露 (特定商取引法に基づく表記)
+      nav_title: 商务披露
+      business_operator:
+        title: 经营者
+        name: "公司名称: 株式会社モアブ (MOAB Co., Ltd.)"
+        representative: "代表: Cody Baldwin"
+      business_address:
+        title: 营业地址
+        address: "日本（详细地址信息请联系我们）"
+      contact:
+        title: 联系方式
+        email_label: 电子邮件
+        email: cody@moab.jp
+        phone_label: 电话
+        phone: 可通过电子邮件索取
+        hours_label: 支持时间
+        hours: 周一至周五，上午9:00 - 下午6:00 日本标准时间（日本公共假期除外）
+      service_description:
+        title: 服务说明
+        content: "CalcuMake 是一个基于网络的应用程序，提供3D打印成本计算和项目管理工具。我们的服务包括："
+        cost_calculations: 3D打印项目的全面成本计算
+        project_management: 项目跟踪和管理功能
+        invoice_generation: 发票生成和PDF导出功能
+        printer_tracking: 打印机规格和使用跟踪
+      pricing:
+        title: 价格
+        content: CalcuMake 目前向所有用户免费提供服务。
+        future_note: 如果将来推出付费功能或订阅服务，我们将在实施前在网站上清楚地显示价格详情。
+      payment_methods:
+        title: 支付方式
+        content: 由于服务目前免费，无需支付方式。
+        future_note: "如果推出付费功能，接受的支付方式将包括：信用卡（Visa、Mastercard、American Express、JCB）和其他公布的方式。"
+      payment_timing:
+        title: 付款时间
+        content: 由于服务目前免费，不适用。对于任何未来的付费服务，付款时间将明确告知。
+      delivery:
+        title: 服务交付
+        content: CalcuMake 是一个基于网络的服务，创建账户后即可立即访问。不涉及实物产品或运输。
+      returns:
+        title: 退货和退款
+        content: 由于 CalcuMake 是免费的网络服务，不适用退货。如果推出付费功能，我们将明确说明退款政策。
+      cancellation:
+        title: 取消政策
+        content: 用户可以随时通过联系支持来取消账户。账户数据将根据我们的隐私政策处理。
   support:
     title: 支持
     nav_title: 支持
