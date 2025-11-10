@@ -2,7 +2,7 @@
 
 class FilamentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_filament, only: [:show, :edit, :update, :destroy, :duplicate]
+  before_action :set_filament, only: [ :show, :edit, :update, :destroy, :duplicate ]
 
   def index
     @q = current_user.filaments.ransack(params[:q])
@@ -21,7 +21,7 @@ class FilamentsController < ApplicationController
     @filament = current_user.filaments.build(filament_params)
 
     if @filament.save
-      redirect_to @filament, notice: t('flash.created', model: t('models.filament'))
+      redirect_to @filament, notice: t("flash.created", model: t("models.filament"))
     else
       render :new, status: :unprocessable_content
     end
@@ -32,7 +32,7 @@ class FilamentsController < ApplicationController
 
   def update
     if @filament.update(filament_params)
-      redirect_to @filament, notice: t('flash.updated', model: t('models.filament'))
+      redirect_to @filament, notice: t("flash.updated", model: t("models.filament"))
     else
       render :edit, status: :unprocessable_content
     end
@@ -40,7 +40,7 @@ class FilamentsController < ApplicationController
 
   def destroy
     @filament.destroy
-    redirect_to filaments_path, notice: t('flash.deleted', model: t('models.filament'))
+    redirect_to filaments_path, notice: t("flash.deleted", model: t("models.filament"))
   end
 
   def duplicate
@@ -51,9 +51,9 @@ class FilamentsController < ApplicationController
     @new_filament.name = "#{@filament.name} (#{t('actions.copy')})"
 
     if @new_filament.save
-      redirect_to edit_filament_path(@new_filament), notice: t('flash.duplicated', model: t('models.filament'))
+      redirect_to edit_filament_path(@new_filament), notice: t("flash.duplicated", model: t("models.filament"))
     else
-      redirect_to filaments_path, alert: t('flash.duplicate_failed', model: t('models.filament'))
+      redirect_to filaments_path, alert: t("flash.duplicate_failed", model: t("models.filament"))
     end
   end
 

@@ -24,11 +24,11 @@ class Invoice < ApplicationRecord
   scope :recent, -> { order(invoice_date: :desc) }
 
   def self.ransackable_attributes(auth_object = nil)
-    ["company_name", "created_at", "currency", "due_date", "id", "invoice_date", "invoice_number", "notes", "status", "updated_at"]
+    [ "company_name", "created_at", "currency", "due_date", "id", "invoice_date", "invoice_number", "notes", "status", "updated_at" ]
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["print_pricing"]
+    [ "print_pricing" ]
   end
 
   # Instance methods
