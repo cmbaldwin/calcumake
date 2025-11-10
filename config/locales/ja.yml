@@ -602,6 +602,10 @@ ja:
       unit_price: 単価
       total: 合計
       remove: 削除
+      round_all_up: すべて切り上げ
+      round_all_up_help: すべての単価を最も近い整数値に切り上げます
+      round_all_down: すべて切り捨て
+      round_all_down_help: すべての単価を最も近い整数値に切り捨てます
   print_pricings:
     form:
       filament_weight: フィラメント重量

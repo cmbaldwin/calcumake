@@ -599,6 +599,10 @@ filaments:
       unit_price: Precio Unitario
       total: Total
       remove: Eliminar
+      round_all_up: Redondear Todo Hacia Arriba
+      round_all_up_help: Redondear todos los precios unitarios hacia arriba al valor entero más cercano
+      round_all_down: Redondear Todo Hacia Abajo
+      round_all_down_help: Redondear todos los precios unitarios hacia abajo al valor entero más cercano
 print_pricings:
   form:
     filament_weight: Peso del Filamento

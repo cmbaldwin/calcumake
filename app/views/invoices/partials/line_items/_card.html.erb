@@ -9,10 +9,19 @@
       <% end %>
     </div>
     
-    <div class="mt-3">
+    <div class="mt-3 d-flex flex-wrap gap-2 align-items-center">
       <button type="button" class="btn btn-outline-primary" data-action="click->invoice-form#addLineItem">
         <i class="bi bi-plus-circle"></i> <%= t("invoices.line_items.add_line_item") %>
       </button>
+
+      <div class="ms-auto d-flex gap-2">
+        <button type="button" class="btn btn-sm btn-outline-secondary" data-action="click->invoice-form#roundAllDown" title="<%= t('invoices.line_items.round_all_down_help') %>">
+          <i class="bi bi-arrow-down-circle"></i> <%= t("invoices.line_items.round_all_down") %>
+        </button>
+        <button type="button" class="btn btn-sm btn-outline-secondary" data-action="click->invoice-form#roundAllUp" title="<%= t('invoices.line_items.round_all_up_help') %>">
+          <i class="bi bi-arrow-up-circle"></i> <%= t("invoices.line_items.round_all_up") %>
+        </button>
+      </div>
     </div>
 
     <%= render "invoices/partials/line_items/totals", invoice: invoice, currency: currency %>

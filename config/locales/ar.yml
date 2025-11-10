@@ -292,6 +292,10 @@ filaments:
       unit_price: سعر الوحدة
       total: المجموع
       remove: إزالة
+      round_all_up: تقريب الكل لأعلى
+      round_all_up_help: تقريب جميع أسعار الوحدة لأعلى إلى أقرب قيمة كاملة
+      round_all_down: تقريب الكل لأسفل
+      round_all_down_help: تقريب جميع أسعار الوحدة لأسفل إلى أقرب قيمة كاملة
 print_pricings:
   form:
     filament_weight: وزن الخيط
