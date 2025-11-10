@@ -222,6 +222,14 @@ export default class extends Controller {
       input.addEventListener('blur', (e) => this.roundValue(e))
       // Also update the step attribute to match currency
       input.step = this.priceStep
+
+      // Round existing values on page load to match currency precision
+      if (input.value && input.value !== '') {
+        const value = parseFloat(input.value)
+        if (!isNaN(value)) {
+          input.value = value.toFixed(this.currencyDecimals)
+        }
+      }
     })
   }
 
