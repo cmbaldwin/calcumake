@@ -1,6 +1,19 @@
 <div class="row mb-4">
     <div class="col-12">
         <h5><%= t('invoices.bill_to') %></h5>
-        <p class="mb-0"><strong><%= customer_name %></strong></p>
+        <% if defined?(client) && client.present? %>
+            <p class="mb-0"><strong><%= client.display_name %></strong></p>
+            <% if client.email.present? %>
+                <p class="mb-0"><%= client.email %></p>
+            <% end %>
+            <% if client.phone.present? %>
+                <p class="mb-0"><%= client.phone %></p>
+            <% end %>
+            <% if client.address.present? %>
+                <p class="mb-0 mt-2" style="white-space: pre-line;"><%= client.address %></p>
+            <% end %>
+        <% else %>
+            <p class="mb-0"><strong><%= customer_name %></strong></p>
+        <% end %>
     </div>
 </div>

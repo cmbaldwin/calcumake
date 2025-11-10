@@ -9,6 +9,7 @@ ar:
     my_printers: طابعاتي
     my_filaments: خيوط الطباعة
     invoices: الفواتير
+    clients: Clients
     profile: الملف الشخصي
     help: مساعدة
     sign_out: تسجيل الخروج
@@ -45,6 +46,7 @@ ar:
     printer: الطابعة
     print_pricing: تسعير الطباعة
     filament: خيط الطباعة
+    client: Client
   printer:
     name: اسم الطابعة
     manufacturer: الشركة المصنعة

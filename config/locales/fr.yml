@@ -9,6 +9,7 @@ fr:
     my_printers: Mes Imprimantes
     my_filaments: Mes Filaments
     invoices: Factures
+    clients: Clients
     profile: Profil
     help: Aide
     sign_out: Se déconnecter
@@ -45,6 +46,7 @@ fr:
     printer: Imprimante
     print_pricing: Tarification d'Impression
     filament: Filament
+    client: Client
   printer:
     name: Nom de l'Imprimante
     manufacturer: Fabricant

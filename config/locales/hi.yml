@@ -9,6 +9,7 @@ hi:
     my_printers: मेरे प्रिंटर
     my_filaments: My Filaments
     invoices: चालान
+    clients: Clients
     profile: प्रोफ़ाइल
     help: सहायता
     sign_out: साइन आउट
@@ -45,6 +46,7 @@ hi:
     printer: प्रिंटर
     print_pricing: प्रिंट मूल्य निर्धारण
     filament: फिलामेंट
+    client: Client
   printer:
     name: प्रिंटर का नाम
     manufacturer: निर्माता

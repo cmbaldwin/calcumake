@@ -91,6 +91,7 @@ en:
     my_printers: My Printers
     my_filaments: My Filaments
     invoices: Invoices
+    clients: Clients
     profile: Profile
     help: Help
     sign_out: Sign out
@@ -131,6 +132,7 @@ en:
     printer: Printer
     print_pricing: Print Pricing
     filament: Filament
+    client: Client
   common:
     created: Created
     currency: Currency
@@ -794,6 +796,11 @@ en:
       currency: Currency
       currency_help: Determines decimal places and formatting for all amounts on this invoice
       company_logo: Company Logo
+      client: Client
+      select_client: Select Client
+      no_client_selected: No client selected
+      client_help_text: Select an existing client or
+      print_pricing: Print Pricing
     line_items:
       title: Line Items
       add_line_item: Add Line Item
@@ -806,6 +813,65 @@ en:
       round_all_up_help: Round all unit prices up to the nearest whole value
       round_all_down: Round Down All
       round_all_down_help: Round all unit prices down to the nearest whole value
+  clients:
+    index:
+      title: My Clients
+      subtitle: Manage your client information
+      add_new: Add New Client
+      search_placeholder: Search by name, company, or email...
+      clear_search: Clear Search
+      empty_state:
+        title: No clients yet
+        description: Add your first client to start managing customer information.
+        add_first: Add Your First Client
+      no_results:
+        title: No results found
+        description: No clients match your search. Try a different search term.
+    new:
+      title: Add New Client
+      subtitle: Create a new client profile
+    edit:
+      title: Edit Client
+      subtitle: Update client information for %{name}
+    show:
+      title: Client Details
+      member_since: Member Since
+      invoices: Invoices
+      print_pricings: Print Pricings
+      no_invoices: No invoices yet
+      no_print_pricings: No print pricings yet
+    sections:
+      basic_info: Basic Information
+      contact_info: Contact Information
+      additional_info: Additional Information
+    fields:
+      name: Name
+      name_placeholder: John Doe
+      company_name: Company Name
+      company_name_placeholder: Acme Corporation
+      email: Email
+      email_placeholder: john@example.com
+      phone: Phone
+      phone_placeholder: +1 (555) 123-4567
+      address: Address
+      address_placeholder: "123 Main Street\nCity, State 12345"
+      tax_id: Tax ID / VAT Number
+      tax_id_placeholder: "12-3456789"
+      notes: Notes
+      notes_placeholder: Additional notes about this client...
+      select_client: Select Client
+      no_client_selected: No client selected
+      client_help_text: Select an existing client or
+      client: Client
+    card:
+      invoices: Invoices
+    buttons:
+      create: Create Client
+      update: Update Client
+    confirm_delete: Are you sure you want to delete '%{name}'? This won't delete associated invoices or print pricings.
+    created_successfully: Client created successfully
+    updated_successfully: Client updated successfully
+    deleted_successfully: Client deleted successfully
   filaments:
     index:
       title: My Filaments

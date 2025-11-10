@@ -1,6 +1,7 @@
 class PrintPricing < ApplicationRecord
   belongs_to :user
   belongs_to :printer, optional: true
+  belongs_to :client, optional: true
   has_many :plates, dependent: :destroy
   has_many :invoices, dependent: :destroy
 
