@@ -120,6 +120,47 @@ export default class extends Controller {
     }
   }
 
+  roundAllUp(event) {
+    event.preventDefault()
+    this.roundAllPrices('up')
+  }
+
+  roundAllDown(event) {
+    event.preventDefault()
+    this.roundAllPrices('down')
+  }
+
+  roundAllPrices(direction) {
+    // Get all visible line item price inputs
+    this.lineItemsTarget.querySelectorAll('.invoice-line-item-fields').forEach(container => {
+      if (container.style.display !== 'none') {
+        const priceInput = container.querySelector('.line-item-price')
+        if (priceInput && priceInput.value) {
+          const currentValue = parseFloat(priceInput.value)
+          if (!isNaN(currentValue)) {
+            let roundedValue
+            if (this.currencyDecimals === 0) {
+              // For zero-decimal currencies, round to whole numbers
+              roundedValue = direction === 'up' ? Math.ceil(currentValue) : Math.floor(currentValue)
+            } else {
+              // For currencies with decimals, round to the next/previous decimal unit
+              const multiplier = Math.pow(10, this.currencyDecimals)
+              if (direction === 'up') {
+                roundedValue = Math.ceil(currentValue * multiplier) / multiplier
+              } else {
+                roundedValue = Math.floor(currentValue * multiplier) / multiplier
+              }
+            }
+            priceInput.value = roundedValue.toFixed(this.currencyDecimals)
+            // Trigger calculation after rounding
+            this.updateLineTotal(container)
+          }
+        }
+      }
+    })
+    this.updateTotals()
+  }
+
   updateLineTotal(container) {
     const quantity = parseFloat(container.querySelector('.line-item-quantity')?.value) || 0
     const price = parseFloat(container.querySelector('.line-item-price')?.value) || 0
