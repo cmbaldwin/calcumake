@@ -7,7 +7,7 @@ class Filament < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { scope: :user_id }
   validates :material_type, presence: true, inclusion: { in: %w[PLA ABS PETG TPU ASA HIPS Nylon PC PVA Wood Metal Carbon] }
-  validates :diameter, presence: true, inclusion: { in: [1.75, 2.85, 3.0] }
+  validates :diameter, presence: true, inclusion: { in: [ 1.75, 2.85, 3.0 ] }
   validates :spool_weight, :spool_price, numericality: { greater_than: 0 }, allow_blank: true
   validates :print_temperature_min, :print_temperature_max, :heated_bed_temperature,
             numericality: { greater_than: 0, less_than: 500 }, allow_blank: true
@@ -32,11 +32,11 @@ class Filament < ApplicationRecord
   scope :by_material_type, ->(type) { where(material_type: type) if type.present? }
 
   def self.ransackable_attributes(auth_object = nil)
-    ["brand", "color", "created_at", "density", "diameter", "finish", "heated_bed_temperature", "id", "material_type", "moisture_sensitive", "name", "notes", "print_speed_max", "print_temperature_max", "print_temperature_min", "spool_price", "spool_weight", "storage_temperature_max", "updated_at", "user_id"]
+    [ "brand", "color", "created_at", "density", "diameter", "finish", "heated_bed_temperature", "id", "material_type", "moisture_sensitive", "name", "notes", "print_speed_max", "print_temperature_max", "print_temperature_min", "spool_price", "spool_weight", "storage_temperature_max", "updated_at", "user_id" ]
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["plate_filaments", "plates", "user"]
+    [ "plate_filaments", "plates", "user" ]
   end
 
   def display_name

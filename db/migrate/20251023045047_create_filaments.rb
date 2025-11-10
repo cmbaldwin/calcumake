@@ -24,7 +24,7 @@ class CreateFilaments < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    add_index :filaments, [:user_id, :name], unique: true
+    add_index :filaments, [ :user_id, :name ], unique: true
     add_index :filaments, :material_type
   end
 end
