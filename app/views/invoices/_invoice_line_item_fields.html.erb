@@ -16,7 +16,7 @@
 
         <div class="col-6 col-md-2">
             <%= f.label :unit_price, t("invoices.line_items.unit_price"), class: "form-label small mb-1" %>
-            <%= f.number_field :unit_price, class: "form-control form-control-sm line-item-price", step: price_step, required: true, data: { action: "input->invoice-form#calculateLineTotal" } %>
+            <%= f.number_field :unit_price, class: "form-control form-control-sm line-item-price", step: price_step, value: (f.object.unit_price ? number_with_precision(f.object.unit_price, precision: precision) : nil), required: true, data: { action: "input->invoice-form#calculateLineTotal" } %>
         </div>
 
         <div class="col-8 col-md-2">
