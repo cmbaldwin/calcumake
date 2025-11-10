@@ -8,6 +8,7 @@ fr:
     new_pricing: Nouveau Tarif
     my_printers: Mes Imprimantes
     my_filaments: Mes Filaments
+    invoices: Factures
     profile: Profil
     help: Aide
     sign_out: Se déconnecter
@@ -295,6 +296,10 @@ filaments:
       unit_price: Prix Unitaire
       total: Total
       remove: Supprimer
+      round_all_up: Arrondir Tout Vers le Haut
+      round_all_up_help: Arrondir tous les prix unitaires vers le haut à la valeur entière la plus proche
+      round_all_down: Arrondir Tout Vers le Bas
+      round_all_down_help: Arrondir tous les prix unitaires vers le bas à la valeur entière la plus proche
 print_pricings:
   form:
     filament_weight: Poids du Filament

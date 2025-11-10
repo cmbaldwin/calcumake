@@ -8,6 +8,7 @@ zh-CN:
     new_pricing: 新建定价
     my_printers: 我的打印机
     my_filaments: 我的材料
+    invoices: 发票
     profile: 个人资料
     help: 帮助
     sign_out: 退出登录
@@ -323,6 +324,10 @@ filaments:
       unit_price: 单价
       total: 总计
       remove: 删除
+      round_all_up: 全部向上取整
+      round_all_up_help: 将所有单价向上取整到最接近的整数值
+      round_all_down: 全部向下取整
+      round_all_down_help: 将所有单价向下取整到最接近的整数值
 print_pricings:
   form:
     filament_weight: 耗材重量

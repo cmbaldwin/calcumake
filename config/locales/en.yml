@@ -802,6 +802,10 @@ en:
       unit_price: Unit Price
       total: Total
       remove: Remove
+      round_all_up: Round Up All
+      round_all_up_help: Round all unit prices up to the nearest whole value
+      round_all_down: Round Down All
+      round_all_down_help: Round all unit prices down to the nearest whole value
   filaments:
     index:
       title: My Filaments
