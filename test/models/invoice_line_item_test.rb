@@ -122,6 +122,37 @@ class InvoiceLineItemTest < ActiveSupport::TestCase
     assert_equal 50.00, @line_item.total_price
   end
 
+  # Currency rounding
+  test "should round unit_price to 0 decimals for JPY currency" do
+    @invoice.currency = "JPY"
+    @line_item.unit_price = 69.6
+    @line_item.quantity = 1
+    @line_item.save!
+
+    assert_equal 70.0, @line_item.unit_price
+    assert_equal 70.0, @line_item.total_price
+  end
+
+  test "should round unit_price to 2 decimals for USD currency" do
+    @invoice.currency = "USD"
+    @line_item.unit_price = 69.678
+    @line_item.quantity = 1
+    @line_item.save!
+
+    assert_equal 69.68, @line_item.unit_price
+    assert_equal 69.68, @line_item.total_price
+  end
+
+  test "should not round quantity based on currency" do
+    @invoice.currency = "JPY"
+    @line_item.unit_price = 100
+    @line_item.quantity = 1.5
+    @line_item.save!
+
+    assert_equal 1.5, @line_item.quantity
+    assert_equal 150.0, @line_item.total_price
+  end
+
   # Scopes
   test "ordered scope should order by order_position" do
     item1 = @invoice.invoice_line_items.create!(

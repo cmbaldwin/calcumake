@@ -25,7 +25,7 @@ class InvoiceLineItem < ApplicationRecord
 
     precision = currency_decimals
     self.unit_price = unit_price.round(precision) if unit_price
-    self.quantity = quantity.round(precision) if quantity
+    # Note: quantity is not rounded to currency precision as it represents count of items
   end
 
   def calculate_total_price
