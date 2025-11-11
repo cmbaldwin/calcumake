@@ -20,7 +20,7 @@
             <%= t('print_pricing.fields.no_printer_help') %>
             <%= link_to t('print_pricing.fields.add_printer_link'), new_printer_path,
                 class: "text-primary",
-                data: { confirm: t('print_pricing.sections.unsaved_progress_warning') } %>
+                data: { turbo_frame: "modal" } %>
           </div>
         </div>
 

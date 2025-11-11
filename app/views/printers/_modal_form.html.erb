@@ -1,0 +1,26 @@
+<%= turbo_frame_tag "modal_content" do %>
+  <div class="modal-header">
+    <h5 class="modal-title"><%= t('printers.new.title') %></h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+
+  <%= form_with model: @printer,
+                data: { turbo_frame: "_top" },
+                html: { class: "printer-form" } do |form| %>
+    <div class="modal-body">
+      <%= printer_form_error_messages(@printer) %>
+
+      <div class="form-grid">
+        <%= printer_form_basic_information(form, @printer) %>
+        <%= printer_form_technical_specs(form) %>
+        <%= printer_form_financial_info(form) %>
+        <%= printer_form_usage_info(form) %>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t('actions.cancel') %></button>
+      <%= form.submit t('printers.buttons.add_printer'), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+<% end %>

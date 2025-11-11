@@ -86,8 +86,7 @@
         <%= link_to t('filaments.fields.add_new_filament'),
             new_filament_path,
             class: "btn btn-sm btn-outline-primary",
-            target: "_blank",
-            rel: "noopener" %>
+            data: { turbo_frame: "modal" } %>
       </div>
     </div>
   </div>

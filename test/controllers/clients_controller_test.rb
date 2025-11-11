@@ -26,4 +26,38 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     get edit_client_url(@client)
     assert_response :success
   end
+
+  # Modal functionality tests
+  test "should get new as turbo_stream for modal" do
+    get new_client_url, as: :turbo_stream
+    assert_response :success
+    assert_match(/turbo-stream/, response.body)
+    assert_match(/modal/, response.body)
+  end
+
+  test "should create client via turbo_stream for modal" do
+    assert_difference("Client.count") do
+      post clients_url, params: {
+        client: {
+          name: "Modal Test Client",
+          email: "modal@test.com"
+        }
+      }, as: :turbo_stream
+    end
+    assert_response :success
+    assert_match(/turbo-stream/, response.body)
+  end
+
+  test "should render errors in modal on create failure" do
+    assert_no_difference("Client.count") do
+      post clients_url, params: {
+        client: {
+          name: "",  # Invalid: name is required
+          email: "test@test.com"
+        }
+      }, as: :turbo_stream
+    end
+    assert_response :unprocessable_entity
+    assert_match(/modal/, response.body)
+  end
 end
