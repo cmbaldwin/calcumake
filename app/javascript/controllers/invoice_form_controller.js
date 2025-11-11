@@ -30,6 +30,8 @@ export default class extends Controller {
     this.attachLineItemListeners()
     // Calculate all line totals on load
     this.updateAllLineTotals()
+    // Add blur listeners to round values
+    this.attachRoundingListeners()
   }
 
   addLineItem(event) {
@@ -84,6 +86,7 @@ export default class extends Controller {
     this.lineItemsTarget.insertAdjacentHTML('beforeend', template)
     this.lineItemIndex++
     this.attachLineItemListeners()
+    this.attachRoundingListeners()
     this.updateAllLineTotals()
   }
 
@@ -105,6 +108,57 @@ export default class extends Controller {
   calculateLineTotal(event) {
     const container = event.target.closest('.invoice-line-item-fields')
     this.updateLineTotal(container)
+  }
+
+  roundValue(event) {
+    const input = event.target
+    if (input.value) {
+      const value = parseFloat(input.value)
+      if (!isNaN(value)) {
+        input.value = value.toFixed(this.currencyDecimals)
+      }
+    }
+  }
+
+  roundAllUp(event) {
+    event.preventDefault()
+    this.roundAllPrices('up')
+  }
+
+  roundAllDown(event) {
+    event.preventDefault()
+    this.roundAllPrices('down')
+  }
+
+  roundAllPrices(direction) {
+    // Get all visible line item price inputs
+    this.lineItemsTarget.querySelectorAll('.invoice-line-item-fields').forEach(container => {
+      if (container.style.display !== 'none') {
+        const priceInput = container.querySelector('.line-item-price')
+        if (priceInput && priceInput.value) {
+          const currentValue = parseFloat(priceInput.value)
+          if (!isNaN(currentValue)) {
+            let roundedValue
+            if (this.currencyDecimals === 0) {
+              // For zero-decimal currencies, round to whole numbers
+              roundedValue = direction === 'up' ? Math.ceil(currentValue) : Math.floor(currentValue)
+            } else {
+              // For currencies with decimals, round to the next/previous decimal unit
+              const multiplier = Math.pow(10, this.currencyDecimals)
+              if (direction === 'up') {
+                roundedValue = Math.ceil(currentValue * multiplier) / multiplier
+              } else {
+                roundedValue = Math.floor(currentValue * multiplier) / multiplier
+              }
+            }
+            priceInput.value = roundedValue.toFixed(this.currencyDecimals)
+            // Trigger calculation after rounding
+            this.updateLineTotal(container)
+          }
+        }
+      }
+    })
+    this.updateTotals()
   }
 
   updateLineTotal(container) {
@@ -158,6 +212,23 @@ export default class extends Controller {
     this.lineItemsTarget.querySelectorAll('.remove-line-item').forEach(button => {
       if (!button.dataset.action) {
         button.dataset.action = 'click->invoice-form#removeLineItem'
+      }
+    })
+  }
+
+  attachRoundingListeners() {
+    // Add blur listeners to round values when user finishes editing
+    this.lineItemsTarget.querySelectorAll('.line-item-price').forEach(input => {
+      input.addEventListener('blur', (e) => this.roundValue(e))
+      // Also update the step attribute to match currency
+      input.step = this.priceStep
+
+      // Round existing values on page load to match currency precision
+      if (input.value && input.value !== '') {
+        const value = parseFloat(input.value)
+        if (!isNaN(value)) {
+          input.value = value.toFixed(this.currencyDecimals)
+        }
       }
     })
   }
