@@ -1,4 +1,4 @@
-require 'ostruct'
+require "ostruct"
 
 class PagesController < ApplicationController
   # Note: Public pages don't require authentication in this app

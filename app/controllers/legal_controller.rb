@@ -7,4 +7,7 @@ class LegalController < ApplicationController
 
   def support
   end
+
+  def commerce_disclosure
+  end
 end

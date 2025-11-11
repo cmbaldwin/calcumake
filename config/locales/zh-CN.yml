@@ -8,8 +8,6 @@ zh-CN:
     new_pricing: 新建定价
     my_printers: 我的打印机
     my_filaments: 我的材料
-    invoices: 发票
-    clients: Clients
     profile: 个人资料
     help: 帮助
     sign_out: 退出登录
@@ -46,7 +44,6 @@ zh-CN:
     printer: 打印机
     print_pricing: 打印定价
     filament: 材料
-    client: Client
   common:
     created: 创建于
     currency: 货币
@@ -71,6 +68,9 @@ zh-CN:
       create_new: 计算新打印
       total_calculations: 总计算数
       total_print_time: 总打印时间
+      total_filament_used: 总耗材使用量
+      total_estimated_sales: 总预估销售额
+      total_estimated_profit: 总预估利润
       search_placeholder: 按作业名称或材料类型搜索...
       empty_state:
         title: 暂无计算记录
@@ -116,7 +116,7 @@ zh-CN:
     depreciation_and_maintenance: 折旧和维护
     other_costs: 其他费用
     subtotal: 小计
-    vat: 增值税
+    vat: 销售税 (VAT)
     total: 总计
     notes: 备注
     invoice_notes_text: 感谢您的惠顾。请保留此发票作为记录。
@@ -161,10 +161,73 @@ zh-CN:
         labor: 人工成本
         machine: 机器成本
         other: 其他成本
+        listing: 平台费用
+        payment_processing: 支付处理费
         subtotal: 小计
-        vat: 增值税（%{rate}%）
+        vat: 销售税 (VAT) (%{rate}%)
         final_price: 最终价格
+    fields:
+      job_name: 作业名称
+      job_name_placeholder: 例：模型制作
+      select_printer: 选择打印机
+      select_printer_prompt: 选择打印机
+      no_printer_help: 还没有注册打印机？
+      add_printer_link: 添加新打印机
+      print_time_hours: 小时
+      print_time_minutes: 分钟
+      filament_weight: 耗材重量（克）
+      filament_weight_placeholder: "36"
+      filament_type: 耗材类型
+      filament_type_prompt: 选择类型
+      spool_price: 线轴价格
+      spool_price_placeholder: "25.00"
+      spool_weight: 线轴重量（克）
+      spool_weight_placeholder: "1000"
+      markup: 加价（%）
+      markup_placeholder: "20"
+      markup_percentage: 加价百分比
+      prep_time: 准备时间（分钟）
+      prep_time_placeholder: "30"
+      prep_time_minutes: 准备时间（分钟）
+      prep_cost_hour: 准备费用/小时
+      prep_cost_placeholder: "20.00"
+      prep_cost_per_hour: 每小时准备费用
+      post_time: 后处理时间（分钟）
+      post_time_placeholder: "30"
+      postprocessing_time_minutes: 后处理时间（分钟）
+      postprocessing_time_placeholder: "30"
+      postprocessing_cost_per_hour: 每小时后处理费用
+      postprocessing_cost_placeholder: "20.00"
+      post_cost_hour: 后处理费用/小时
+      post_cost_placeholder: "20.00"
+      other_costs: 其他费用
+      other_costs_placeholder: "0.00"
+      vat: 销售税 (VAT) (%)
+      vat_placeholder: "10"
+      vat_percentage: 销售税 (VAT) 百分比
+      listing_cost_percentage: 平台费用百分比 (%)
+      listing_cost_percentage_placeholder: "3"
+      payment_processing_cost_percentage: 支付处理费百分比 (%)
+      payment_processing_cost_percentage_placeholder: "2.9"
+      power_consumption: 功耗（瓦）
+      power_consumption_placeholder: "200"
+      energy_cost_kwh: 每千瓦时电费
+      energy_cost_placeholder: "0.12"
+      printer_cost: 打印机价格
+      printer_cost_placeholder: "500.00"
+      payoff_goal: 回本目标（年）
+      payoff_goal_placeholder: "3"
+      daily_usage: 日使用时间（小时）
+      daily_usage_placeholder: "8"
+      repair_cost: 维修费用（%）
+      repair_cost_placeholder: "5"
+      currency: 货币
+      currency_prompt: 选择货币
     buttons:
+      calculate_save: 计算
+      update_pricing: 更新定价
+      update: 更新
+      cancel: 取消
       add_plate: 添加打印板
     help:
       plates_limit: 每个打印作业最多可以添加10个打印板。
@@ -206,6 +269,28 @@ zh-CN:
       subtitle: 配置您的默认偏好
       default_settings: 默认设置
     fields:
+      default_currency: 默认货币
+      default_currency_help: 用作新定价计算的默认值
+      energy_cost: 每千瓦时电费
+      energy_cost_placeholder: "0.120"
+      energy_cost_help: 当地每千瓦时电费
+      energy_cost_help_extended: 当地每千瓦时电费。将用作新计算的默认值。
+      prep_time: 准备时间（分钟）
+      prep_time_help: 开始打印前的准备时间
+      prep_cost: 每小时准备费用
+      prep_cost_help: 准备工作的时薪
+      postprocessing_time: 后处理时间（分钟）
+      postprocessing_time_help: 后处理时间（清洁、支撑移除等）
+      postprocessing_cost: 每小时后处理费用
+      postprocessing_cost_help: 后处理工作的时薪
+      other_costs: 其他费用
+      other_costs_help: 包装、运输准备等附加费用
+      vat_percentage: 销售税 (VAT) 百分比
+      vat_percentage_help: 您所在地区的默认销售税/VAT百分比
+      listing_cost_percentage: 平台费用百分比
+      listing_cost_percentage_help: 默认的市场平台手续费百分比（如淘宝、京东）
+      payment_processing_cost_percentage: 支付处理费百分比
+      payment_processing_cost_percentage_help: 默认的支付处理手续费百分比（如支付宝、微信支付）
       markup_percentage: 加价百分比
       prep_time_minutes: 准备时间（分钟）
       prep_cost_per_hour: 每小时准备成本
@@ -237,17 +322,154 @@ zh-CN:
     privacy_policy:
       title: 隐私政策
       nav_title: 隐私政策
+      information_we_collect:
+        title: 我们收集的信息
+        content: 我们收集您直接提供给我们的信息以及您使用我们服务时自动收集的信息。
+        account_info:
+          title: 账户信息
+          email: 用于账户认证的电子邮件地址
+          preferences: 用户偏好，如默认货币和语言
+          usage_data: 使用模式和功能偏好
+        project_data:
+          title: 项目数据
+          pricing_calculations: 3D打印成本计算和项目数据
+          printer_specifications: 打印机规格和设置
+          project_metadata: 项目名称、日期和元数据
+        payment_info:
+          title: 支付和账单信息
+          payment_details: 支付方式详情（由我们的支付处理商安全处理）
+          billing_address: 账单地址和联系信息
+          transaction_history: 交易和订阅历史
+          subscription_tier: 您选择的订阅层级和功能
+      data_sharing:
+        title: 信息共享
+        content: "我们不会出售、交易或出租您的个人信息给第三方。我们仅在以下情况下共享您的信息："
+        legal_requirements: 法律要求时或为保护我们的合法权利
+        service_providers: 与协助运营我们服务的可信服务提供商（包括云托管和基础设施提供商）
+        payment_processors: 与支付处理商（如Stripe）共享以处理订阅付款和管理账单
+        advertising_partners: 与广告合作伙伴（如Google AdSense）共享以向免费层用户展示相关广告
+        business_transfer: 与业务转让或收购相关
+      advertising:
+        title: 广告
+        content: 我们的免费层通过Google AdSense展示广告。这些广告基于您的兴趣和浏览行为。付费订阅层不显示广告。
+        google_adsense: Google AdSense使用Cookie和其他跟踪技术来提供相关广告。这仅适用于免费层用户。
+        opt_out: 您可以通过访问以下网址控制广告个性化并选择退出个性化广告
+        google_ad_settings: Google广告设置
+        upgrade_note: 要删除所有广告，请升级到付费订阅层。
     user_agreement:
       title: 用户协议
       nav_title: 服务条款
+      subscription_tiers:
+        title: 订阅层级和定价
+        content: "CalcuMake提供三个订阅层级："
+        free_tier: "免费层：带广告的基本功能"
+        pro_tier: "Pro层：高级功能、无广告、优先支持（付费订阅）"
+        enterprise_tier: "Enterprise层：所有功能、高级支持、自定义集成（付费订阅）"
+        pricing_note: 当前定价可在我们的网站上查看，并可能在通知现有订阅者后更新。
+      payment_terms:
+        title: 付款和账单
+        content: "如果您订阅付费层，您同意以下付款条款："
+        subscription_fee: 您将在每个账单周期开始时被收取订阅费
+        billing_cycles: 账单周期根据您的选择为月度或年度
+        payment_method: 您必须提供有效的付款方式才能订阅付费层
+        automatic_renewal: 除非在续订日期前取消，否则订阅将自动续订
+        price_changes: 我们可能会在提前30天通知现有订阅者后更改定价
+        payment_processor: 付款通过我们的第三方支付处理商（Stripe）安全处理
+        failed_payments: 付款失败可能导致服务降级或暂停
+        currency: 价格以您选择的货币显示
+      cancellation_refunds:
+        title: 取消和退款
+        content: "您可以随时取消订阅："
+        cancellation_process: 通过您的账户设置取消或联系支持
+        cancellation_effect: 取消在当前账单期结束时生效
+        access_until_end: 您在付费期结束前保留对付费功能的访问权限
+        refund_policy: 我们为首次订阅者提供14天退款保证
+        no_partial_refunds: 除法律要求外，不提供剩余订阅时间的部分退款
+        downgrade_option: 您可以在账单周期结束时降级到较低层级
+      free_tier_limitations:
+        title: 免费层限制
+        content: "免费层包括广告显示，可能有使用限制："
+        advertisements: 免费层用户将在整个应用程序中看到广告
+        feature_limits: 某些高级功能仅限于付费层
+        support_priority: 免费层支持以尽力而为的基础提供
+        upgrade_anytime: 您可以随时升级到付费层
+    commerce_disclosure:
+      title: 商务信息披露 (特定商取引法に基づく表記)
+      nav_title: 商务披露
+      business_operator:
+        title: 经营者
+        name: "公司名称: 株式会社モアブ (MOAB Co., Ltd.)"
+        representative: "代表: Cody Baldwin"
+      business_address:
+        title: 营业地址
+        address: "日本（详细地址信息请联系我们）"
+      contact:
+        title: 联系方式
+        email_label: 电子邮件
+        email: cody@moab.jp
+        phone_label: 电话
+        phone: 可通过电子邮件索取
+        hours_label: 支持时间
+        hours: 周一至周五，上午9:00 - 下午6:00 日本标准时间（日本公共假期除外）
+      service_description:
+        title: 服务说明
+        content: "CalcuMake 是一个基于网络的应用程序，提供3D打印成本计算和项目管理工具。我们的服务包括："
+        cost_calculations: 3D打印项目的全面成本计算
+        project_management: 项目跟踪和管理功能
+        invoice_generation: 发票生成和PDF导出功能
+        printer_tracking: 打印机规格和使用跟踪
+      pricing:
+        title: 价格
+        content: "CalcuMake提供三个订阅层级："
+        free_tier: "免费层：¥0/月 - 带广告的基本功能"
+        pro_tier: "Pro层：月度或年度付费订阅 - 高级功能、无广告、优先支持"
+        enterprise_tier: "Enterprise层：月度或年度付费订阅 - 所有功能、高级支持、自定义集成"
+        pricing_details: 确切定价在网站和应用程序的订阅选择期间显示。
+        price_changes: 价格可能会在提前30天通知现有订阅者后调整。
+      payment_methods:
+        title: 支付方式
+        content: "对于付费订阅，我们接受以下付款方式："
+        credit_cards: "信用卡：Visa、Mastercard、American Express、JCB"
+        payment_processor: 所有付款都通过我们的支付处理合作伙伴Stripe安全处理。
+        secure_processing: 我们不会在服务器上存储您的完整信用卡信息。
+        free_tier_note: 免费层用户无需提供付款信息。
+      payment_timing:
+        title: 付款时间
+        content: "根据您选择的账单周期收费："
+        initial_payment: 订阅时立即收取初始付款
+        recurring_payments: 定期付款在每个账单期（月度或年度）开始时收取
+        automatic_renewal: 除非取消，否则订阅自动续订
+        cancellation_timing: 取消在当前账单期结束时生效
+      delivery:
+        title: 服务交付
+        content: CalcuMake 是一个基于网络的服务，创建账户后即可立即访问。不涉及实物产品或运输。
+      returns:
+        title: 退货和退款
+        content: "作为数字订阅服务，我们的退款政策如下："
+        money_back_guarantee: 首次付费订阅者享有14天退款保证
+        refund_process: 在首次订阅后14天内联系支持以获得全额退款
+        no_partial_refunds: 除法律要求外，不提供剩余订阅时间的部分退款
+        renewal_refunds: 除法律要求外，续订付款不可退款
+        free_tier_refunds: 免费层使用不涉及付款，不适用退款
+      cancellation:
+        title: 取消政策
+        content: "订阅取消条款："
+        cancellation_method: 通过账户设置或联系support@cody@moab.jp随时取消
+        cancellation_effect: 取消在当前账单期结束时生效
+        access_retention: 您在付费期结束前保留对付费功能的完全访问权限
+        data_retention: 账户数据根据我们的隐私政策保留
+        resubscription: 您可以在取消后随时重新订阅
   support:
     title: 支持
     nav_title: 支持
-    contact_us: Contact Us
-    description: Need help with CalcuMake? Have a question or suggestion? We're here
-      to help!
-    email_label: Email Support
-    response_time: We typically respond within 24-48 hours
+    contact_us: 联系我们
+    description: 需要CalcuMake的帮助吗？有问题或建议吗？我们随时为您提供帮助！
+    email_label: 电子邮件支持
+    response_time: 我们通常在24-48小时内回复
+    billing_support:
+      title: 账单和订阅支持
+      description: 如有账单咨询、订阅更改、退款请求或付款问题，请提供您的账户电子邮件联系我们。
+      priority_note: Pro和Enterprise层订阅者享有优先支持响应时间。
 filaments:
   index:
     title: 我的材料
@@ -318,7 +540,6 @@ filaments:
       currency: 货币
       currency_help: 确定此发票上所有金额的小数位数和格式
       company_logo: 公司徽标
-      project: 项目
     line_items:
       title: 明细项目
       add_line_item: 添加明细项目
@@ -327,11 +548,471 @@ filaments:
       unit_price: 单价
       total: 总计
       remove: 删除
-      round_all_up: 全部向上取整
-      round_all_up_help: 将所有单价向上取整到最接近的整数值
-      round_all_down: 全部向下取整
-      round_all_down_help: 将所有单价向下取整到最接近的整数值
-print_pricings:
-  form:
-    filament_weight: 耗材重量
-    print_time_hours: 打印时间（小时）
+  landing:
+    hero:
+      headline: "专注创造，告别繁琐计算"
+      subheadline: "跳过电子表格和复杂计算。自动化定价让您回归最有趣的创作部分。"
+      cta_primary: "免费开始计算"
+      cta_demo: "查看演示"
+      trust_signal: "无需信用卡 - 免费试用30天，享受所有Startup功能"
+      preview_title: "快速成本预览"
+      preview_filament_weight: "耗材重量"
+      preview_print_time: "打印时间"
+      preview_total_cost: "总成本"
+      preview_cost_breakdown: "电费 + 耗材 + 人工"
+
+    problem:
+      headline: "您在3D打印上亏钱了吗？"
+      manual_errors: "手动计算错误"
+      manual_errors_desc: "电子表格和心算会导致代价高昂的错误和收费过低。"
+      electricity_costs: "被遗忘的电费"
+      electricity_costs_desc: "功耗可能增加20-40%的实际成本，但经常被忽视。"
+      inconsistent_pricing: "不一致的定价"
+      inconsistent_pricing_desc: "类似工作的不同计算会让客户困惑并损害利润。"
+      time_wasted: "在电子表格上浪费时间"
+      time_wasted_desc: "花费数小时进行手动计算，而不是发展您的打印业务。"
+
+    solution:
+      headline: "专业工具为认真的制造商"
+      subheadline: "准确定价和专业管理3D打印项目所需的一切。"
+
+    features:
+      accurate_calculation:
+        title: "精确成本计算"
+        desc: "通过包含所有隐藏费用的综合计算，每次都能获得精确成本。"
+        filament: "耗材重量 + 线轴成本"
+        electricity: "功耗跟踪"
+        labor: "人工时间（准备 + 后处理）"
+        depreciation: "机器折旧"
+
+      multi_printer:
+        title: "多打印机管理"
+        desc: "跟踪不同打印机规格，监控整个设备群的投资回报率。"
+        power: "个人功耗跟踪"
+        roi: "每台打印机ROI跟踪"
+        organization: "有组织的打印作业管理"
+
+      invoicing:
+        title: "专业开票"
+        desc: "生成专业PDF发票，支持公司品牌和多货币。"
+        pdf: "自动生成PDF发票"
+        branding: "自定义公司品牌"
+        currency: "多货币支持"
+
+      organization:
+        title: "项目组织"
+        desc: "通过强大的搜索、过滤和项目管理工具保持打印作业有序。"
+        search: "搜索和过滤打印作业"
+        duplicate: "复制类似项目"
+        history: "完整打印历史跟踪"
+
+    pricing:
+      headline: "简单透明的定价"
+      subheadline: "选择适合您打印量的计划。随时升级或降级。"
+      cta: "免费开始"
+
+      free:
+        title: "免费"
+        trial_notice: "第一个月包含完整的Startup功能！"
+        calculations: "每月5次计算（试用后）"
+        printers: "1个打印机配置文件"
+        filaments: "4种耗材类型"
+        invoices: "每月5张发票"
+        branding: "发票上显示CalcuMake品牌"
+
+      startup:
+        title: "Startup"
+        badge: "最受欢迎"
+        calculations: "每月50次计算"
+        printers: "10个打印机配置文件"
+        filaments: "16种耗材类型"
+        branding: "移除CalcuMake品牌"
+        ads: "无广告"
+
+      pro:
+        title: "Pro"
+        unlimited: "一切无限制"
+        branding: "移除CalcuMake品牌"
+        ads: "无广告"
+        support: "优先支持"
+        analytics: "高级分析"
+        features: "未来高级功能"
+
+      trust_signals:
+        no_credit_card: "无需信用卡 - 免费试用30天，享受所有Startup功能"
+        cancel_anytime: "随时取消"
+        data_private: "您的数据保持私密"
+
+    faq:
+      headline: "常见问题"
+
+      accuracy:
+        question: "计算的准确性如何？"
+        answer: "CalcuMake使用简单公式，考虑包括耗材、电力、人工时间和机器折旧在内的所有成本因素。"
+
+      currencies:
+        question: "CalcuMake支持哪些货币？"
+        answer: "CalcuMake目前支持USD、EUR、GBP、JPY、CAD和AUD，每种货币都有自动格式化和精度设置。您可以在个人资料设置中随时切换货币。"
+
+      printers:
+        question: "CalcuMake支持我的3D打印机吗？"
+        answer: "CalcuMake适用于任何3D打印机！您只需输入打印机的功耗和其他规格。我们很快也会支持树脂打印机！"
+
+      electricity:
+        question: "电费是如何计算的？"
+        answer: "CalcuMake根据您打印机的功耗（瓦特）、打印时间和当地每千瓦时的能源费率自动计算电费。这确保您永远不会忘记这个经常被忽视的成本因素。"
+
+      invoices:
+        question: "我可以自定义发票吗？"
+        answer: "可以！您可以添加公司徽标、自定义颜色并包含您的业务信息。付费计划会移除CalcuMake品牌，实现完全专业的外观。"
+
+    final_cta:
+      headline: "准备停止在3D打印上亏钱了吗？"
+      subheadline: "加入成千上万信任CalcuMake进行准确定价和专业项目管理的制造商。"
+      button: "开始免费试用"
+
+  print_pricings:
+    form:
+      filament_weight: 耗材重量
+      print_time_hours: 打印时间（小时）
+
+  calculators:
+    quick_cost_calculator: "快速成本计算器"
+    print_time_hours: "打印时间（小时）"
+    filament_weight_grams: "耗材重量（克）"
+    filament_price_per_kg: "耗材价格（元/公斤）"
+    labor_rate_per_hour: "人工费率（元/小时）"
+    create_full_calculation: "创建完整计算"
+    features:
+      real_time: "实时计算"
+      includes_costs: "包含电费和人工成本"
+    results:
+      filament_cost: "耗材成本"
+      electricity_cost: "电费"
+      labor_cost: "人工成本"
+      total_cost: "总成本"
+      estimated_cost: "预估成本："
+
+  demo:
+    title: "试用CalcuMake演示"
+    subtitle: "使用示例数据测试我们的3D打印成本计算器。无需注册！"
+    sign_up_full_version: "注册完整版本"
+    start_free_trial: "开始免费试用"
+    limitations:
+      title: "这是演示版本"
+      description: "完整的CalcuMake应用包括："
+      features:
+        - "具有自动规格的多打印机配置文件"
+        - "具有材料属性的综合耗材库"
+        - "专业PDF发票生成"
+        - "项目历史和复制功能"
+        - "多货币支持"
+        - "机器折旧计算"
+
+  devise:
+    shared:
+      sign_in_with_provider: "使用 %{provider} 登录"
+      sign_in_with_provider_aria: "使用您的 %{provider} 账户登录"
+      or_sign_in_with_email: "或使用邮箱登录"
+      oauth_signin_options: "第三方登录选项"
+      alternative_signin_method: "替代登录方式"
+    omniauth_callbacks:
+      success: "已成功通过 %{kind} 账户验证。"
+
+  # 使用限制和订阅管理
+  usage_limits:
+    limit_reached: "您已达到%{plan}计划的%{limit}个%{resource}限制。请升级以继续。"
+    approaching_limit: "您正在接近%{resource}的计划限制"
+    usage_summary: "使用情况摘要"
+    current_usage: "已使用 %{current} / %{limit}"
+    unlimited: "无限制"
+
+  subscriptions:
+    title: "订阅和定价"
+    current_plan: "当前计划"
+    upgrade: "升级计划"
+    manage: "管理订阅"
+    cancel: "取消订阅"
+    invalid_plan: "选择了无效的订阅计划"
+    checkout_error: "无法创建结账会话。请重试。"
+    verification_error: "无法验证订阅。请联系支持。"
+    portal_error: "无法访问订阅管理。请重试。"
+    no_subscription: "您没有有效的订阅"
+    upgrade_successful: "成功升级到%{plan}计划！"
+    cancel_scheduled: "您的订阅将在计费周期结束时取消"
+    cancel_error: "无法取消订阅。请重试。"
+    trial_badge: "30天免费试用"
+    trial_remaining: "剩余%{days}天"
+    features:
+      calculations: "每月%{count}次打印计算"
+      printers: "%{count}个打印机配置文件"
+      filaments: "%{count}种耗材类型"
+      invoices: "每月%{count}张发票"
+      unlimited_calculations: "无限制打印计算"
+      unlimited_printers: "无限制打印机"
+      unlimited_filaments: "无限制耗材"
+      unlimited_invoices: "无限制发票"
+      no_branding: "移除CalcuMake品牌"
+      no_ads: "无广告体验"
+      priority_support: "优先支持"
+      analytics: "高级分析"
+      import_export: "批量导入/导出"
+    plans:
+      subtitle: "选择最适合您的计划"
+      free:
+        name: "免费"
+        price: "¥0"
+        description: "非常适合试用CalcuMake"
+      startup:
+        name: "初创"
+        price: "¥7/月"
+        description: "适合爱好者和小型项目"
+      pro:
+        name: "专业"
+        price: "¥70/月"
+        description: "为专业人士提供无限能力"
+    most_popular: "最受欢迎"
+    month: "月"
+    your_plan: "您的当前计划"
+    remaining: "剩余"
+    renews_on: "续订日期"
+    trial_ends_on: "试用结束日期"
+    upgrade_now: "立即升级"
+    upgrade_to_plan: "升级到%{plan}"
+    downgrade_to_free: "降级到免费计划"
+    confirm_downgrade: "您确定要降级吗？您将失去对高级功能的访问权限。"
+    manage_subscription: "管理您的订阅"
+    manage_description: "通过我们的安全计费门户更新您的付款方式、查看账单历史记录或取消订阅。"
+    open_billing_portal: "打开计费门户"
+    cancel_subscription: "取消订阅"
+    cancel_confirmation: "您确定要取消订阅吗？您将保留访问权限直到当前计费周期结束。"
+    manage_note: "所有计费都由Stripe安全处理。您的支付信息永远不会存储在我们的服务器上。"
+    approaching_limits_message: "您正在接近计划限制。考虑升级以避免中断。"
+    faq:
+      title: "常见问题"
+      trial_question: "30天试用期结束后会怎样？"
+      trial_answer: "30天试用期结束后，您的账户将自动切换到免费计划。您可以继续使用CalcuMake的免费计划限制，或随时升级到初创或专业计划。"
+      cancel_question: "我可以随时取消订阅吗？"
+      cancel_answer: "是的！您可以随时取消订阅。在当前计费周期结束之前，您将保留对付费计划功能的访问权限，然后自动切换到免费计划。"
+      data_question: "如果我降级，我的数据会怎样？"
+      data_answer: "降级时，您的所有现有数据都会保留。但是，如果您超过免费计划限制，您将无法创建新资源。您现有的项目、打印机、耗材和发票仍可以以只读模式访问。"
+      payment_question: "你们接受哪些付款方式？"
+      payment_answer: "我们通过Stripe（我们安全的支付处理器）接受所有主要的信用卡和借记卡。这包括Visa、Mastercard、American Express等。所有支付信息都由Stripe安全处理，永远不会存储在我们的服务器上。"
+      change_plan_question: "我以后可以更改计划吗？"
+      change_plan_answer: "当然可以！您可以随时升级或降级您的计划。升级立即生效，您将按比例收费。降级在当前计费周期结束时生效。"
+      reset_question: "我的每月限制何时重置？"
+      reset_answer: "打印计算和发票的每月限制在每月1日重置。打印机和耗材限制是总数，不是每月限制。"
+
+  # 模型名称显示
+  models:
+    print_pricing_plural: "打印计算"
+    printer_plural: "打印机"
+    filament_plural: "耗材"
+    invoice_plural: "发票"
+  devise:
+    shared:
+  landing:
+    hero:
+      headline: "专注创造，告别繁琐计算"
+      subheadline: "跳过电子表格和复杂计算。自动化定价让您回归最有趣的创作部分。"
+      cta_primary: "免费开始计算"
+      cta_demo: "查看演示"
+      trust_signal: "无需信用卡 - 免费试用30天，享受所有Startup功能"
+      preview_title: "快速成本预览"
+      preview_filament_weight: "耗材重量"
+      preview_print_time: "打印时间"
+      preview_total_cost: "总成本"
+      preview_cost_breakdown: "电费 + 耗材 + 人工"
+
+    problem:
+      headline: "您在3D打印上亏钱了吗？"
+      manual_errors: "手动计算错误"
+      manual_errors_desc: "电子表格和心算会导致代价高昂的错误和收费过低。"
+      electricity_costs: "被遗忘的电费"
+      electricity_costs_desc: "功耗可能增加20-40%的实际成本，但经常被忽视。"
+      inconsistent_pricing: "不一致的定价"
+      inconsistent_pricing_desc: "类似工作的不同计算会让客户困惑并损害利润。"
+      time_wasted: "在电子表格上浪费时间"
+      time_wasted_desc: "花费数小时进行手动计算，而不是发展您的打印业务。"
+
+    solution:
+      headline: "专业工具为认真的制造商"
+      subheadline: "准确定价和专业管理3D打印项目所需的一切。"
+
+    features:
+      accurate_calculation:
+        title: "精确成本计算"
+        desc: "通过包含所有隐藏费用的综合计算，每次都能获得精确成本。"
+        filament: "耗材重量 + 线轴成本"
+        electricity: "功耗跟踪"
+        labor: "人工时间（准备 + 后处理）"
+        depreciation: "机器折旧"
+
+      multi_printer:
+        title: "多打印机管理"
+        desc: "跟踪不同打印机规格，监控整个设备群的投资回报率。"
+        power: "个人功耗跟踪"
+        roi: "每台打印机ROI跟踪"
+        organization: "有组织的打印作业管理"
+
+      invoicing:
+        title: "专业开票"
+        desc: "生成专业PDF发票，支持公司品牌和多货币。"
+        pdf: "自动生成PDF发票"
+        branding: "自定义公司品牌"
+        currency: "多货币支持"
+
+      organization:
+        title: "项目组织"
+        desc: "通过强大的搜索、过滤和项目管理工具保持打印作业有序。"
+        search: "搜索和过滤打印作业"
+        duplicate: "复制类似项目"
+        history: "完整打印历史跟踪"
+
+    pricing:
+      headline: "简单透明的定价"
+      subheadline: "选择适合您打印量的计划。随时升级或降级。"
+      cta: "免费开始"
+
+      free:
+        title: "免费"
+        trial_notice: "第一个月包含完整的Startup功能！"
+        calculations: "每月5次计算（试用后）"
+        printers: "1个打印机配置文件"
+        filaments: "4种耗材类型"
+        invoices: "每月5张发票"
+        branding: "发票上显示CalcuMake品牌"
+
+      startup:
+        title: "Startup"
+        badge: "最受欢迎"
+        calculations: "每月50次计算"
+        printers: "10个打印机配置文件"
+        filaments: "16种耗材类型"
+        branding: "移除CalcuMake品牌"
+        ads: "无广告"
+
+      pro:
+        title: "Pro"
+        unlimited: "一切无限制"
+        branding: "移除CalcuMake品牌"
+        ads: "无广告"
+        support: "优先支持"
+        analytics: "高级分析"
+        features: "未来高级功能"
+
+      trust_signals:
+        no_credit_card: "无需信用卡 - 免费试用30天，享受所有Startup功能"
+        cancel_anytime: "随时取消"
+        data_private: "您的数据保持私密"
+
+    faq:
+      headline: "常见问题"
+
+      accuracy:
+        question: "计算的准确性如何？"
+        answer: "CalcuMake使用简单公式，考虑包括耗材、电力、人工时间和机器折旧在内的所有成本因素。"
+
+      currencies:
+        question: "CalcuMake支持哪些货币？"
+        answer: "CalcuMake目前支持USD、EUR、GBP、JPY、CAD和AUD，每种货币都有自动格式化和精度设置。您可以在个人资料设置中随时切换货币。"
+
+      printers:
+        question: "CalcuMake支持我的3D打印机吗？"
+        answer: "CalcuMake适用于任何3D打印机！您只需输入打印机的功耗和其他规格。我们很快也会支持树脂打印机！"
+
+      electricity:
+        question: "电费是如何计算的？"
+        answer: "CalcuMake根据您打印机的功耗（瓦特）、打印时间和当地每千瓦时的能源费率自动计算电费。这确保您永远不会忘记这个经常被忽视的成本因素。"
+
+      invoices:
+        question: "我可以自定义发票吗？"
+        answer: "可以！您可以添加公司徽标、自定义颜色并包含您的业务信息。付费计划会移除CalcuMake品牌，实现完全专业的外观。"
+
+    final_cta:
+      headline: "准备停止在3D打印上亏钱了吗？"
+      subheadline: "加入成千上万信任CalcuMake进行准确定价和专业项目管理的制造商。"
+      button: "开始免费试用"
+
+  print_pricings:
+    form:
+      filament_weight: 耗材重量
+      print_time_hours: 打印时间（小时）
+
+  calculators:
+    quick_cost_calculator: "快速成本计算器"
+    print_time_hours: "打印时间（小时）"
+    filament_weight_grams: "耗材重量（克）"
+    filament_price_per_kg: "耗材价格（元/公斤）"
+    labor_rate_per_hour: "人工费率（元/小时）"
+    create_full_calculation: "创建完整计算"
+    features:
+      real_time: "实时计算"
+      includes_costs: "包含电费和人工成本"
+    results:
+      filament_cost: "耗材成本"
+      electricity_cost: "电费"
+      labor_cost: "人工成本"
+      total_cost: "总成本"
+      estimated_cost: "预估成本："
+
+  demo:
+    title: "试用CalcuMake演示"
+    subtitle: "使用示例数据测试我们的3D打印成本计算器。无需注册！"
+    sign_up_full_version: "注册完整版本"
+    start_free_trial: "开始免费试用"
+    limitations:
+      title: "这是演示版本"
+      description: "完整的CalcuMake应用包括："
+      features:
+        - "具有自动规格的多打印机配置文件"
+        - "具有材料属性的综合耗材库"
+        - "专业PDF发票生成"
+        - "项目历史和复制功能"
+        - "多货币支持"
+        - "机器折旧计算"
+
+  devise:
+    shared:
+      sign_in_with_provider: "使用 %{provider} 登录"
+      sign_in_with_provider_aria: "使用您的 %{provider} 账户登录"
+      or_sign_in_with_email: "或使用邮箱登录"
+      oauth_signin_options: "第三方登录选项"
+      alternative_signin_method: "替代登录方式"
+    omniauth_callbacks:
+      success: "已成功通过 %{kind} 账户验证。"
+
+  # 使用限制和订阅管理
+  usage_limits:
+    limit_reached: "您已达到%{plan}计划的%{limit}个%{resource}限制。请升级以继续。"
+    approaching_limit: "您正在接近%{resource}的计划限制"
+    usage_summary: "使用情况摘要"
+    current_usage: "已使用 %{current} / %{limit}"
+    unlimited: "无限制"
+
+  subscriptions:
+    title: "订阅和定价"
+    current_plan: "当前计划"
+    upgrade: "升级计划"
+    manage: "管理订阅"
+    cancel: "取消订阅"
+    invalid_plan: "选择了无效的订阅计划"
+    checkout_error: "无法创建结账会话。请重试。"
+    verification_error: "无法验证订阅。请联系支持。"
+    portal_error: "无法访问订阅管理。请重试。"
+    no_subscription: "您没有有效的订阅"
+    upgrade_successful: "成功升级到%{plan}计划！"
+    cancel_scheduled: "您的订阅将在计费周期结束时取消"
+    cancel_error: "无法取消订阅。请重试。"
+    trial_badge: "30天免费试用"
+    trial_remaining: "剩余%{days}天"
+    features:
+      calculations: "每月%{count}次打印计算"
+      printers: "%{count}个打印机配置文件"
+      filaments: "%{count}种耗材类型"
+      invoices: "每月%{count}张发票"
+      unlimited_calculations: "无限制打印计算"
+      alternative_signin_method: Alternative signin method
+      or_sign_in_with_email: Or Sign In With Email
+      sign_in_with_provider: Sign in with %{provider}
+      sign_in_with_provider_aria: Sign in with %{provider}

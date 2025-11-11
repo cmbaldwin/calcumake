@@ -91,7 +91,6 @@ en:
     my_printers: My Printers
     my_filaments: My Filaments
     invoices: Invoices
-    clients: Clients
     profile: Profile
     help: Help
     sign_out: Sign out
@@ -132,7 +131,6 @@ en:
     printer: Printer
     print_pricing: Print Pricing
     filament: Filament
-    client: Client
   common:
     created: Created
     currency: Currency
@@ -165,9 +163,6 @@ en:
       create_new: Calculate New Print
       total_calculations: Total Calculations
       total_print_time: Total Print Time
-      total_filament_used: Total Filament Used
-      total_estimated_sales: Total Estimated Sales
-      total_estimated_profit: Total Estimated Profit
       search_placeholder: Search by job name or filament type...
       empty_state:
         title: No calculations yet
@@ -305,13 +300,9 @@ en:
       post_cost_placeholder: "20.00"
       other_costs: Other Costs
       other_costs_placeholder: "0.00"
-      vat: Sales Tax (VAT) (%)
+      vat: VAT (%)
       vat_placeholder: "10"
-      vat_percentage: Sales Tax (VAT) Percentage
-      listing_cost_percentage: Listing Cost Percentage (%)
-      listing_cost_percentage_placeholder: "3"
-      payment_processing_cost_percentage: Payment Processing Cost Percentage (%)
-      payment_processing_cost_percentage_placeholder: "2.9"
+      vat_percentage: VAT Percentage
       power_consumption: Power Consumption (W)
       power_consumption_placeholder: "200"
       energy_cost_kwh: Energy Cost per kWh
@@ -380,10 +371,8 @@ en:
         labor: Labor Cost
         machine: Machine Cost
         other: Other Costs
-        listing: Listing Costs
-        payment_processing: Payment Processing
         subtotal: Subtotal
-        vat: Sales Tax (VAT) (%{rate}%)
+        vat: VAT (%{rate}%)
         final_price: Final Price
       details:
         currency: Currency
@@ -521,12 +510,8 @@ en:
       postprocessing_cost_help: Hourly rate for post-processing work
       other_costs: Other Costs
       other_costs_help: Additional costs like packaging, shipping preparation, etc.
-      vat_percentage: Sales Tax (VAT) Percentage
-      vat_percentage_help: Default sales tax/VAT percentage for your location
-      listing_cost_percentage: Listing Cost Percentage
-      listing_cost_percentage_help: Default marketplace listing fee percentage (e.g., Etsy, eBay)
-      payment_processing_cost_percentage: Payment Processing Cost Percentage
-      payment_processing_cost_percentage_help: Default payment processing fee percentage (e.g., PayPal, Stripe)
+      vat_percentage: VAT Percentage
+      vat_percentage_help: Default VAT/tax percentage for your location
       company_name: Company Name
       company_name_placeholder: "Acme Corporation"
       company_email: Company Email
@@ -572,6 +557,12 @@ en:
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
+    faq:
+      title: Frequently Asked Questions
+    billing_support:
+      title: Billing and Subscription Support
+      description: For billing inquiries, subscription changes, refund requests, or payment issues, please contact us with your account email.
+      priority_note: Pro and Enterprise tier subscribers receive priority support response times.
   legal:
     last_updated: Last updated
     privacy_policy:
@@ -592,6 +583,12 @@ en:
           pricing_calculations: 3D printing cost calculations and project data
           printer_specifications: Printer specifications and settings
           project_metadata: Project names, dates, and metadata
+        payment_info:
+          title: Payment and Billing Information
+          payment_details: Payment method details (processed securely by our payment processor)
+          billing_address: Billing address and contact information
+          transaction_history: Transaction and subscription history
+          subscription_tier: Your selected subscription tier and features
       how_we_use_info:
         title: How We Use Your Information
         provide_service:
@@ -608,20 +605,27 @@ en:
         legal_requirements: When required by law or to protect our legal rights
         service_providers:
           With trusted service providers who assist in operating
-          our service
+          our service (including cloud hosting and infrastructure providers)
+        payment_processors:
+          With payment processors (such as Stripe) to process subscription
+          payments and manage billing
+        advertising_partners:
+          With advertising partners (such as Google AdSense) to display
+          relevant advertisements to Free tier users
         business_transfer: In connection with a business transfer or acquisition
       advertising:
         title: Advertising
         content:
-          Our website displays advertisements through Google AdSense. These
-          ads may be based on your interests and browsing behavior.
+          Our Free tier displays advertisements through Google AdSense. These
+          ads are based on your interests and browsing behavior. Paid subscription tiers do not display advertisements.
         google_adsense:
-          Google AdSense may use cookies and other tracking technologies
-          to serve relevant advertisements.
+          Google AdSense uses cookies and other tracking technologies
+          to serve relevant advertisements. This applies only to Free tier users.
         opt_out:
           You can control ad personalization and opt out of personalized advertising
           by visiting
         google_ad_settings: Google Ad Settings
+        upgrade_note: To remove all advertisements, upgrade to a paid subscription tier.
       data_security:
         title: Data Security
         content:
@@ -667,6 +671,44 @@ en:
         project_management: Project tracking and management features
         invoice_generation: Invoice generation and PDF export capabilities
         printer_tracking: Printer specifications and usage tracking
+      subscription_tiers:
+        title: Subscription Tiers and Pricing
+        content:
+          "CalcuMake offers three subscription tiers:"
+        free_tier: "Free Tier: Basic features with advertisement display"
+        pro_tier: "Pro Tier: Advanced features, no ads, priority support (paid subscription)"
+        enterprise_tier: "Enterprise Tier: All features, premium support, custom integrations (paid subscription)"
+        pricing_note: Current pricing is available on our website and may be updated with notice to existing subscribers.
+      payment_terms:
+        title: Payment and Billing
+        content:
+          "If you subscribe to a paid tier, you agree to the following payment terms:"
+        subscription_fee: You will be charged the subscription fee at the start of each billing cycle
+        billing_cycles: Billing cycles are monthly or annual, depending on your selection
+        payment_method: You must provide a valid payment method to subscribe to paid tiers
+        automatic_renewal: Subscriptions automatically renew unless canceled before the renewal date
+        price_changes: We may change pricing with 30 days notice to existing subscribers
+        payment_processor: Payments are processed securely through our third-party payment processor (Stripe)
+        failed_payments: Failed payments may result in service downgrade or suspension
+        currency: Prices are displayed in your selected currency
+      cancellation_refunds:
+        title: Cancellation and Refunds
+        content:
+          "You may cancel your subscription at any time:"
+        cancellation_process: Cancel through your account settings or by contacting support
+        cancellation_effect: Cancellation takes effect at the end of your current billing period
+        access_until_end: You retain access to paid features until the end of the paid period
+        refund_policy: We offer a 14-day money-back guarantee for first-time subscribers
+        no_partial_refunds: Partial refunds for remaining subscription time are not provided except as required by law
+        downgrade_option: You may downgrade to a lower tier at the end of your billing cycle
+      free_tier_limitations:
+        title: Free Tier Limitations
+        content:
+          "The Free tier includes advertisement display and may have usage limitations:"
+        advertisements: Free tier users will see advertisements throughout the application
+        feature_limits: Some advanced features are restricted to paid tiers
+        support_priority: Free tier support is provided on a best-effort basis
+        upgrade_anytime: You may upgrade to a paid tier at any time
       user_accounts:
         title: User Accounts
         content:
@@ -748,6 +790,72 @@ en:
         content:
           If you have any questions about this agreement, please contact us
           through the support channels available in the application.
+    commerce_disclosure:
+      title: Commerce Disclosure (特定商取引法に基づく表記)
+      nav_title: Commerce Disclosure
+      business_operator:
+        title: Business Operator
+        name: "Company Name: 株式会社モアブ (MOAB Co., Ltd.)"
+        representative: "Representative: Cody Baldwin"
+      business_address:
+        title: Business Address
+        address: "Japan (Contact us for detailed address information)"
+      contact:
+        title: Contact Information
+        email_label: Email
+        email: cody@moab.jp
+        phone_label: Phone
+        phone: Available upon request via email
+        hours_label: Support Hours
+        hours: Monday - Friday, 9:00 AM - 6:00 PM JST (excluding Japanese holidays)
+      service_description:
+        title: Service Description
+        content: "CalcuMake is a web-based application providing 3D printing cost calculation and project management tools. Our service includes:"
+        cost_calculations: Comprehensive cost calculations for 3D printing projects
+        project_management: Project tracking and management features
+        invoice_generation: Invoice generation and PDF export capabilities
+        printer_tracking: Printer specifications and usage tracking
+      pricing:
+        title: Pricing
+        content: "CalcuMake offers three subscription tiers:"
+        free_tier: "Free Tier: ¥0/month - Basic features with advertisements"
+        pro_tier: "Pro Tier: Paid monthly or annual subscription - Advanced features, no ads, priority support"
+        enterprise_tier: "Enterprise Tier: Paid monthly or annual subscription - All features, premium support, custom integrations"
+        pricing_details: Exact pricing is displayed on our website and in the application during subscription selection.
+        price_changes: Prices may be adjusted with 30 days advance notice to existing subscribers.
+      payment_methods:
+        title: Payment Methods
+        content: "For paid subscriptions, we accept the following payment methods:"
+        credit_cards: "Credit Cards: Visa, Mastercard, American Express, JCB"
+        payment_processor: All payments are securely processed through Stripe, our payment processing partner.
+        secure_processing: We do not store your complete credit card information on our servers.
+        free_tier_note: Free tier users do not need to provide payment information.
+      payment_timing:
+        title: Payment Timing
+        content: "Payment is charged according to your selected billing cycle:"
+        initial_payment: Initial payment is charged immediately upon subscription
+        recurring_payments: Recurring payments are charged at the start of each billing period (monthly or annually)
+        automatic_renewal: Subscriptions renew automatically unless canceled
+        cancellation_timing: Cancellations take effect at the end of the current billing period
+      delivery:
+        title: Service Delivery
+        content: CalcuMake is a web-based service accessible immediately upon account creation. There are no physical products or shipping involved.
+      returns:
+        title: Returns and Refunds
+        content: "As CalcuMake is a digital subscription service, our refund policy is as follows:"
+        money_back_guarantee: 14-day money-back guarantee for first-time paid subscribers
+        refund_process: Contact support within 14 days of your initial subscription for a full refund
+        no_partial_refunds: Partial refunds for remaining subscription time are not provided except as required by law
+        renewal_refunds: Renewal payments are non-refundable unless otherwise required by law
+        free_tier_refunds: Free tier usage does not involve payments and no refunds apply
+      cancellation:
+        title: Cancellation Policy
+        content: "Subscription cancellation terms:"
+        cancellation_method: Cancel anytime through your account settings or by contacting support at cody@moab.jp
+        cancellation_effect: Cancellation takes effect at the end of your current billing period
+        access_retention: You retain full access to paid features until the end of the paid period
+        data_retention: Account data is retained according to our Privacy Policy
+        resubscription: You may resubscribe at any time after cancellation
   print_pricings:
     form:
       filament_weight: Filament Weight
@@ -809,12 +917,6 @@ en:
       currency: Currency
       currency_help: Determines decimal places and formatting for all amounts on this invoice
       company_logo: Company Logo
-      client: Client
-      select_client: Select Client
-      no_client_selected: No client selected
-      client_help_text: Select an existing client or
-      print_pricing: Print Pricing
-      project: Project
     line_items:
       title: Line Items
       add_line_item: Add Line Item
@@ -823,69 +925,6 @@ en:
       unit_price: Unit Price
       total: Total
       remove: Remove
-      round_all_up: Round Up All
-      round_all_up_help: Round all unit prices up to the nearest whole value
-      round_all_down: Round Down All
-      round_all_down_help: Round all unit prices down to the nearest whole value
-  clients:
-    index:
-      title: My Clients
-      subtitle: Manage your client information
-      add_new: Add New Client
-      search_placeholder: Search by name, company, or email...
-      clear_search: Clear Search
-      empty_state:
-        title: No clients yet
-        description: Add your first client to start managing customer information.
-        add_first: Add Your First Client
-      no_results:
-        title: No results found
-        description: No clients match your search. Try a different search term.
-    new:
-      title: Add New Client
-      subtitle: Create a new client profile
-    edit:
-      title: Edit Client
-      subtitle: Update client information for %{name}
-    show:
-      title: Client Details
-      member_since: Member Since
-      invoices: Invoices
-      print_pricings: Print Pricings
-      no_invoices: No invoices yet
-      no_print_pricings: No print pricings yet
-    sections:
-      basic_info: Basic Information
-      contact_info: Contact Information
-      additional_info: Additional Information
-    fields:
-      name: Name
-      name_placeholder: John Doe
-      company_name: Company Name
-      company_name_placeholder: Acme Corporation
-      email: Email
-      email_placeholder: john@example.com
-      phone: Phone
-      phone_placeholder: +1 (555) 123-4567
-      address: Address
-      address_placeholder: "123 Main Street\nCity, State 12345"
-      tax_id: Tax ID / VAT Number
-      tax_id_placeholder: "12-3456789"
-      notes: Notes
-      notes_placeholder: Additional notes about this client...
-      select_client: Select Client
-      no_client_selected: No client selected
-      client_help_text: Select an existing client or
-      client: Client
-    card:
-      invoices: Invoices
-    buttons:
-      create: Create Client
-      update: Update Client
-    confirm_delete: Are you sure you want to delete '%{name}'? This won't delete associated invoices or print pricings.
-    created_successfully: Client created successfully
-    updated_successfully: Client updated successfully
-    deleted_successfully: Client deleted successfully
   filaments:
     index:
       title: My Filaments
@@ -963,8 +1002,13 @@ en:
       add_filament: Add Filament
       update_filament: Update Filament
     confirm_delete: Are you sure you want to delete '%{name}'?
-
-  # Landing page translations
+  devise:
+    shared:
+      oauth_signin_options: Sign in with social accounts
+      alternative_signin_method: Alternative signin method
+      or_sign_in_with_email: Or Sign In With Email
+      sign_in_with_provider: Sign in with %{provider}
+      sign_in_with_provider_aria: Sign in with %{provider}
   landing:
     hero:
       headline: "More creating, less calculating"
@@ -977,7 +1021,6 @@ en:
       preview_print_time: "Print Time"
       preview_total_cost: "Total Cost"
       preview_cost_breakdown: "Electricity + Filament + Labor"
-
     problem:
       headline: "Are you wasting time calculating pricing for 3D prints?"
       manual_errors: "Manual Calculation Errors"
@@ -988,11 +1031,9 @@ en:
       inconsistent_pricing_desc: "Different calculations for similar jobs confuse customers and hurt profits."
       time_wasted: "Time Wasted on Spreadsheets"
       time_wasted_desc: "Hours spent on manual calculations instead of growing your printing business."
-
     solution:
       headline: "Professional Tools for Serious Makers"
       subheadline: "Everything you need to price accurately and manage your 3D printing projects like a pro."
-
     features:
       accurate_calculation:
         title: "Accurate Cost Calculation"
@@ -1001,33 +1042,28 @@ en:
         electricity: "Electricity consumption tracking"
         labor: "Labor time (prep + post-processing)"
         depreciation: "Machine depreciation"
-
       multi_printer:
         title: "Multi-Printer Management"
         desc: "Track different printer specifications and monitor your return on investment across your entire fleet."
         power: "Individual power consumption tracking"
         roi: "ROI tracking per printer"
         organization: "Organized print job management"
-
       invoicing:
         title: "Professional Invoicing"
         desc: "Generate professional PDF invoices with your company branding and multi-currency support."
         pdf: "Auto-generated PDF invoices"
         branding: "Custom company branding"
         currency: "Multi-currency support"
-
       organization:
         title: "Project Organization"
         desc: "Keep your print jobs organized with powerful search, filtering, and project management tools."
         search: "Search and filter print jobs"
         duplicate: "Duplicate similar projects"
         history: "Complete print history tracking"
-
     pricing:
       headline: "Simple, Transparent Pricing"
       subheadline: "Choose the plan that fits your printing volume. Upgrade or downgrade anytime."
       cta: "Get Started Free"
-
       free:
         title: "Free"
         trial_notice: "First month includes full Startup features!"
@@ -1036,7 +1072,6 @@ en:
         filaments: "4 filament types"
         invoices: "5 invoices per month"
         branding: "CalcuMake branding on invoices"
-
       startup:
         title: "Startup"
         badge: "Most Popular"
@@ -1045,7 +1080,6 @@ en:
         filaments: "16 filament types"
         branding: "Remove CalcuMake branding"
         ads: "No ads"
-
       pro:
         title: "Pro"
         unlimited: "Unlimited everything"
@@ -1054,94 +1088,12 @@ en:
         support: "Priority support"
         analytics: "Advanced analytics"
         features: "Future premium features"
-
       trust_signals:
         no_credit_card: "No credit card required - start with full Startup features for 30 days"
         cancel_anytime: "Cancel anytime"
         data_private: "Your data stays private"
-
     faq:
       headline: "Frequently Asked Questions"
-
       accuracy:
         question: "How accurate are the calculations?"
         answer: "CalcuMake uses simple formulas and accounts for all cost factors including filament, electricity, labor time, and machine depreciation."
-
-      currencies:
-        question: "What currencies does CalcuMake support?"
-        answer: "CalcuMake currently supports USD, EUR, GBP, JPY, CAD, and AUD with automatic formatting and precision for each currency. You can switch currencies anytime in your profile settings."
-
-      printers:
-        question: "Does CalcuMake support my 3D printer?"
-        answer: "CalcuMake works with any 3D printer! You simply enter your printer's power consumption and other specifications. We're planning support for resin printers soon!"
-
-      electricity:
-        question: "How do electricity costs work?"
-        answer: "CalcuMake automatically calculates electricity costs based on your printer's power consumption (in watts), print duration, and your local energy rate per kWh. This ensures you never forget this often-overlooked cost factor."
-
-      invoices:
-        question: "Can I customize my invoices?"
-        answer: "Yes! You can add your company logo, customize colors, and include your business information. Paid plans remove the CalcuMake branding for a completely professional look."
-
-    final_cta:
-      headline: "Ready to stop losing money on 3D prints?"
-      subheadline: "Join %{crossed_out_start}thousands of%{crossed_out_end} at least 1 other maker (me!) who trusts CalcuMake for accurate pricing and professional project management. You've already read everything so far, you might as well sign up — it's free, check it out!"
-      button: "Start Your Free Trial"
-  locale_suggestion:
-    banner:
-      title: "Looks like you're browsing from a different region."
-      switch_to: "Switch to %{language} for a better experience?"
-      currently_viewing: "Currently viewing in %{language}"
-      switch_button: "Switch Language"
-      stay_button: "Stay Here"
-      close: "Close"
-
-  calculators:
-    quick_cost_calculator: "Quick Cost Calculator"
-    print_time_hours: "Print Time (hours)"
-    filament_weight_grams: "Filament Weight (grams)"
-    filament_price_per_kg: "Filament Price per KG ($)"
-    labor_rate_per_hour: "Labor Rate per Hour ($)"
-    create_full_calculation: "Create Full Calculation"
-    includes_defaults: "Includes Default Costs:"
-    defaults:
-      filament_price: "Filament"
-      labor_rate: "Labor"
-      energy_cost: "Energy"
-      power_consumption: "Power"
-      machine_payoff: "Machine Payoff"
-    features:
-      real_time: "Real-time calculation as you type"
-      includes_costs: "Includes electricity and labor costs"
-    results:
-      filament_cost: "Filament Cost"
-      electricity_cost: "Electricity Cost"
-      labor_cost: "Labor Cost"
-      total_cost: "Total Cost"
-      estimated_cost: "Estimated Cost:"
-
-  demo:
-    title: "Try CalcuMake Demo"
-    subtitle: "Test our 3D print cost calculator with sample data. No account required!"
-    sign_up_full_version: "Sign Up for Full Version"
-    start_free_trial: "Start Free Trial"
-    limitations:
-      title: "This is a Demo Version"
-      description: "The full CalcuMake app includes:"
-      features:
-        - "Multiple printer profiles with automatic specifications"
-        - "Comprehensive filament library with material properties"
-        - "Professional PDF invoice generation"
-        - "Project history and duplicate functionality"
-        - "Multi-currency support"
-        - "Machine depreciation calculations"
-
-  devise:
-    shared:
-      sign_in_with_provider: "Sign in with %{provider}"
-      sign_in_with_provider_aria: "Sign in using your %{provider} account"
-      or_sign_in_with_email: "or sign in with email"
-      oauth_signin_options: "Third-party sign-in options"
-      alternative_signin_method: "Alternative sign-in method"
-    omniauth_callbacks:
-      success: "Successfully authenticated from %{kind} account."
