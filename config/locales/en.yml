@@ -801,6 +801,7 @@ en:
       no_client_selected: No client selected
       client_help_text: Select an existing client or
       print_pricing: Print Pricing
+      project: Project
     line_items:
       title: Line Items
       add_line_item: Add Line Item

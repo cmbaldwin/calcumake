@@ -594,6 +594,7 @@ filaments:
       currency: Moneda
       currency_help: Determina los lugares decimales y el formato para todas las cantidades en esta factura
       company_logo: Logo de la Empresa
+      project: Proyecto
     line_items:
       title: Elementos de Línea
       add_line_item: Agregar Elemento de Línea

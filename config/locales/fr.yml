@@ -290,6 +290,7 @@ filaments:
       currency: Devise
       currency_help: Détermine les décimales et le formatage pour tous les montants sur cette facture
       company_logo: Logo de l'Entreprise
+      project: Projet
     line_items:
       title: Éléments de Ligne
       add_line_item: Ajouter un Élément de Ligne

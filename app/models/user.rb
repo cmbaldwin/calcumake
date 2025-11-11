@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :printers, dependent: :destroy
   has_many :invoices, dependent: :destroy
   has_many :filaments, dependent: :destroy
+  has_many :clients, dependent: :destroy
   has_one_attached :company_logo
 
   validates :default_currency, presence: true

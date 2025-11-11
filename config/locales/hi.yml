@@ -288,6 +288,7 @@ filaments:
       currency: मुद्रा
       currency_help: इस इनवॉइस पर सभी राशियों के लिए दशमलव स्थान और फॉर्मेटिंग निर्धारित करता है
       company_logo: कंपनी लोगो
+      project: परियोजना
     line_items:
       title: लाइन आइटम
       add_line_item: लाइन आइटम जोड़ें

@@ -15,5 +15,9 @@
         <% else %>
             <p class="mb-0"><strong><%= customer_name %></strong></p>
         <% end %>
+
+        <% if defined?(customer_name) && customer_name.present? %>
+            <p class="mb-0 mt-2"><strong><%= t('invoices.fields.project') %>:</strong> <%= customer_name %></p>
+        <% end %>
     </div>
 </div>

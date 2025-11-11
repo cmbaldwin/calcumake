@@ -318,6 +318,7 @@ filaments:
       currency: 货币
       currency_help: 确定此发票上所有金额的小数位数和格式
       company_logo: 公司徽标
+      project: 项目
     line_items:
       title: 明细项目
       add_line_item: 添加明细项目

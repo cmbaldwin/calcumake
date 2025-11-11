@@ -597,6 +597,7 @@ ja:
       currency: 通貨
       currency_help: この請求書のすべての金額の小数点以下桁数と書式を決定します
       company_logo: 会社ロゴ
+      project: プロジェクト
     line_items:
       title: 明細項目
       add_line_item: 明細項目追加
