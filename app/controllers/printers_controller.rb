@@ -1,6 +1,17 @@
 class PrintersController < ApplicationController
+  include UsageTrackable
+
   before_action :authenticate_user!
   before_action :set_printer, only: [ :show, :edit, :update, :destroy ]
+
+  private
+
+  # Printers use total count, not monthly tracking
+  def skip_usage_tracking?
+    true
+  end
+
+  public
 
   def index
     @printers = current_user.printers.order(:name)

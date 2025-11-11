@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_10_234216) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_11_012547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -177,8 +177,23 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_10_234216) do
     t.index ["user_id"], name: "index_printers_on_user_id"
   end
 
+  create_table "usage_trackings", force: :cascade do |t|
+    t.integer "count", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.date "period_start", null: false
+    t.string "resource_type", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["period_start"], name: "index_usage_trackings_on_period_start"
+    t.index ["user_id", "resource_type", "period_start"], name: "index_usage_trackings_unique", unique: true
+    t.index ["user_id"], name: "index_usage_trackings_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.boolean "admin", default: false, null: false
+    t.datetime "confirmation_sent_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
     t.datetime "created_at", null: false
     t.text "default_company_address"
     t.string "default_company_email"
@@ -200,14 +215,24 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_10_234216) do
     t.string "encrypted_password", default: "", null: false
     t.string "locale"
     t.integer "next_invoice_number"
+    t.string "plan", default: "free", null: false
+    t.datetime "plan_expires_at"
     t.string "provider"
     t.datetime "remember_created_at"
     t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
+    t.string "stripe_customer_id"
+    t.string "stripe_subscription_id"
+    t.datetime "trial_ends_at"
     t.string "uid"
+    t.string "unconfirmed_email"
     t.datetime "updated_at", null: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["plan"], name: "index_users_on_plan"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["stripe_customer_id"], name: "index_users_on_stripe_customer_id", unique: true, where: "(stripe_customer_id IS NOT NULL)"
+    t.index ["stripe_subscription_id"], name: "index_users_on_stripe_subscription_id", unique: true, where: "(stripe_subscription_id IS NOT NULL)"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -225,4 +250,5 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_10_234216) do
   add_foreign_key "print_pricings", "printers"
   add_foreign_key "print_pricings", "users"
   add_foreign_key "printers", "users"
+  add_foreign_key "usage_trackings", "users"
 end

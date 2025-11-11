@@ -1,0 +1,107 @@
+<%# Compact usage dashboard widget for main navigation/index pages
+  Shows current plan status and usage for non-Pro users
+%>
+
+<div class="card usage-dashboard-widget mb-3">
+  <div class="card-body py-2 px-3">
+    <div class="row align-items-center">
+      <%# Plan Status %>
+      <div class="col-md-4 mb-2 mb-md-0">
+        <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-award text-primary"></i>
+          <div>
+            <small class="text-muted d-block" style="font-size: 0.7rem; line-height: 1;">
+              <%= t('subscriptions.current_plan') %>
+            </small>
+            <strong class="d-block" style="font-size: 0.9rem; line-height: 1.2;">
+              <%= current_user.plan.titleize %>
+              <% if current_user.in_trial_period? %>
+                <span class="badge bg-info" style="font-size: 0.65rem;">
+                  <%= t('subscriptions.trial_badge') %>
+                </span>
+              <% end %>
+            </strong>
+          </div>
+        </div>
+      </div>
+
+      <%# Quick Usage Stats (only for Free/Startup) %>
+      <% unless current_user.pro_plan? %>
+        <div class="col-md-6 mb-2 mb-md-0">
+          <div class="row g-2">
+            <%# Print Calculations %>
+            <div class="col-6">
+              <div class="usage-mini-stat">
+                <small class="text-muted d-block" style="font-size: 0.7rem;">
+                  <%= t('models.print_pricing_plural') %>
+                </small>
+                <% limit = current_user.limit_for('print_pricing') %>
+                <% current = current_user.current_usage('print_pricing') %>
+                <% percentage = current_user.usage_percentage('print_pricing') %>
+                <div class="progress mt-1" style="height: 4px;">
+                  <div class="progress-bar <%= percentage >= 80 ? 'bg-warning' : 'bg-success' %>"
+                       style="width: <%= [percentage, 100].min %>%"></div>
+                </div>
+                <small style="font-size: 0.7rem;">
+                  <%= current %>/<%= limit %>
+                </small>
+              </div>
+            </div>
+
+            <%# Printers %>
+            <div class="col-6">
+              <div class="usage-mini-stat">
+                <small class="text-muted d-block" style="font-size: 0.7rem;">
+                  <%= t('models.printer_plural') %>
+                </small>
+                <% limit = current_user.limit_for('printer') %>
+                <% current = current_user.current_usage('printer') %>
+                <% percentage = current_user.usage_percentage('printer') %>
+                <div class="progress mt-1" style="height: 4px;">
+                  <div class="progress-bar <%= percentage >= 80 ? 'bg-warning' : 'bg-success' %>"
+                       style="width: <%= [percentage, 100].min %>%"></div>
+                </div>
+                <small style="font-size: 0.7rem;">
+                  <%= current %>/<%= limit %>
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <%# Action Button %>
+      <div class="col-md-2 text-md-end">
+        <% if current_user.pro_plan? %>
+          <%= link_to pricing_subscriptions_path, class: 'btn btn-sm btn-outline-secondary' do %>
+            <i class="bi bi-gear"></i>
+            <span class="d-none d-lg-inline"><%= t('subscriptions.manage') %></span>
+          <% end %>
+        <% else %>
+          <%= link_to pricing_subscriptions_path, class: 'btn btn-sm btn-primary btn-gradient-primary' do %>
+            <i class="bi bi-arrow-up-circle"></i>
+            <span class="d-none d-lg-inline"><%= t('subscriptions.upgrade') %></span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <%# Warning for approaching limits %>
+    <% if current_user.in_trial_period? %>
+      <div class="alert alert-info py-1 px-2 mb-0 mt-2" style="font-size: 0.8rem;">
+        <i class="bi bi-gift"></i>
+        <%= t('subscriptions.trial_remaining', days: current_user.trial_days_remaining) %> -
+        <%= link_to t('subscriptions.upgrade_now'), pricing_subscriptions_path, class: 'alert-link' %>
+      </div>
+    <% elsif !current_user.pro_plan? %>
+      <% resources_approaching = ['print_pricing', 'printer', 'filament', 'invoice'].select { |r| current_user.approaching_limit?(r) } %>
+      <% if resources_approaching.any? %>
+        <div class="alert alert-warning py-1 px-2 mb-0 mt-2" style="font-size: 0.8rem;">
+          <i class="bi bi-exclamation-triangle"></i>
+          <%= t('usage_limits.approaching_limits_message') %> -
+          <%= link_to t('subscriptions.upgrade_now'), pricing_subscriptions_path, class: 'alert-link' %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<%# FAQ section for subscription pricing %>
+
+<div class="accordion" id="subscriptionFAQ">
+  <%# Question 1: What happens after trial %>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+        <%= t('subscriptions.faq.trial_question', default: 'What happens after my 30-day trial ends?') %>
+      </button>
+    </h2>
+    <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#subscriptionFAQ">
+      <div class="accordion-body">
+        <%= t('subscriptions.faq.trial_answer',
+              default: 'After your 30-day trial ends, your account will automatically switch to the Free plan. You can continue using CalcuMake with Free plan limits, or upgrade to Startup or Pro at any time.') %>
+      </div>
+    </div>
+  </div>
+
+  <%# Question 2: Cancel anytime %>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+        <%= t('subscriptions.faq.cancel_question', default: 'Can I cancel my subscription anytime?') %>
+      </button>
+    </h2>
+    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#subscriptionFAQ">
+      <div class="accordion-body">
+        <%= t('subscriptions.faq.cancel_answer',
+              default: 'Yes! You can cancel your subscription at any time. You will retain access to your paid plan features until the end of your current billing period, then automatically switch to the Free plan.') %>
+      </div>
+    </div>
+  </div>
+
+  <%# Question 3: What happens to data %>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+        <%= t('subscriptions.faq.data_question', default: 'What happens to my data if I downgrade?') %>
+      </button>
+    </h2>
+    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#subscriptionFAQ">
+      <div class="accordion-body">
+        <%= t('subscriptions.faq.data_answer',
+              default: 'All your existing data is preserved when you downgrade. However, you won\'t be able to create new resources if you exceed your Free plan limits. Your existing projects, printers, filaments, and invoices remain accessible in read-only mode.') %>
+      </div>
+    </div>
+  </div>
+
+  <%# Question 4: Payment methods %>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+        <%= t('subscriptions.faq.payment_question', default: 'What payment methods do you accept?') %>
+      </button>
+    </h2>
+    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#subscriptionFAQ">
+      <div class="accordion-body">
+        <%= t('subscriptions.faq.payment_answer',
+              default: 'We accept all major credit and debit cards through Stripe, our secure payment processor. This includes Visa, Mastercard, American Express, and more. All payment information is securely handled by Stripe and never stored on our servers.') %>
+      </div>
+    </div>
+  </div>
+
+  <%# Question 5: Upgrade/downgrade %>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+        <%= t('subscriptions.faq.change_plan_question', default: 'Can I change plans later?') %>
+      </button>
+    </h2>
+    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#subscriptionFAQ">
+      <div class="accordion-body">
+        <%= t('subscriptions.faq.change_plan_answer',
+              default: 'Absolutely! You can upgrade or downgrade your plan at any time. Upgrades take effect immediately and you\'ll be charged a prorated amount. Downgrades take effect at the end of your current billing period.') %>
+      </div>
+    </div>
+  </div>
+
+  <%# Question 6: Usage limits reset %>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+        <%= t('subscriptions.faq.reset_question', default: 'When do my monthly limits reset?') %>
+      </button>
+    </h2>
+    <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#subscriptionFAQ">
+      <div class="accordion-body">
+        <%= t('subscriptions.faq.reset_answer',
+              default: 'Monthly limits for print calculations and invoices reset on the 1st day of each month. Printer and filament limits are total counts, not monthly limits.') %>
+      </div>
+    </div>
+  </div>
+</div>

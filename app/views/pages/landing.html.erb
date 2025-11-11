@@ -1,0 +1,25 @@
+<%# Landing page for CalcuMake - conversion optimized for 3D printing enthusiasts %>
+
+<%# Override page title and meta tags for SEO %>
+<% content_for :title, @page_title %>
+<% content_for :meta_description, @meta_description %>
+<% content_for :meta_keywords, @meta_keywords %>
+
+<%# Add landing page specific structured data %>
+<% content_for :structured_data do %>
+<script type="application/ld+json">
+    < %= @structured_data.to_json.html_safe % >
+</script>
+<% end %>
+
+<%# Include locale suggestion banner at the top %>
+<%= render 'shared/locale_suggestion_banner' %>
+
+<div class="landing-page">
+    <%= render 'pages/landing/hero' %>
+    <%= render 'pages/landing/problem' %>
+    <%= render 'pages/landing/features' %>
+    <%= render 'pages/landing/pricing' %>
+    <%= render 'pages/landing/faq' %>
+    <%= render 'pages/landing/final_cta' %>
+</div>
