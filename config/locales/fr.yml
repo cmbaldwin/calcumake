@@ -9,6 +9,7 @@ fr:
     my_printers: Mes Imprimantes
     my_filaments: Mes Filaments
     invoices: Factures
+    clients: Clients
     profile: Profil
     help: Aide
     sign_out: Se déconnecter
@@ -45,6 +46,7 @@ fr:
     printer: Imprimante
     print_pricing: Tarification d'Impression
     filament: Filament
+    client: Client
   printer:
     name: Nom de l'Imprimante
     manufacturer: Fabricant
@@ -288,6 +290,7 @@ filaments:
       currency: Devise
       currency_help: Détermine les décimales et le formatage pour tous les montants sur cette facture
       company_logo: Logo de l'Entreprise
+      project: Projet
     line_items:
       title: Éléments de Ligne
       add_line_item: Ajouter un Élément de Ligne

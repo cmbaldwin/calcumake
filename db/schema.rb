@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_28_052125) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_10_234216) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -40,6 +40,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_28_052125) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.string "company_name"
+    t.string "email"
+    t.string "phone"
+    t.text "address"
+    t.string "tax_id"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
   create_table "filaments", force: :cascade do |t|
@@ -97,6 +111,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_28_052125) do
     t.string "currency", default: "USD", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "client_id"
+    t.index ["client_id"], name: "index_invoices_on_client_id"
     t.index ["invoice_number"], name: "index_invoices_on_invoice_number", unique: true
     t.index ["print_pricing_id"], name: "index_invoices_on_print_pricing_id"
     t.index ["status"], name: "index_invoices_on_status"
@@ -137,6 +153,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_28_052125) do
     t.datetime "updated_at", null: false
     t.bigint "printer_id"
     t.integer "times_printed", default: 0, null: false
+    t.decimal "listing_cost_percentage", precision: 5, scale: 2
+    t.decimal "payment_processing_cost_percentage", precision: 5, scale: 2
+    t.bigint "client_id"
+    t.index ["client_id"], name: "index_print_pricings_on_client_id"
     t.index ["printer_id"], name: "index_print_pricings_on_printer_id"
     t.index ["times_printed"], name: "index_print_pricings_on_times_printed"
     t.index ["user_id"], name: "index_print_pricings_on_user_id"
@@ -182,19 +202,26 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_28_052125) do
     t.decimal "default_postprocessing_cost_per_hour", precision: 10, scale: 2, default: "1000.0"
     t.decimal "default_other_costs", precision: 10, scale: 2, default: "450.0"
     t.decimal "default_vat_percentage", precision: 5, scale: 2, default: "20.0"
+    t.decimal "default_listing_cost_percentage", precision: 5, scale: 2, default: "0.0"
+    t.decimal "default_payment_processing_cost_percentage", precision: 5, scale: 2, default: "0.0"
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "clients", "users"
   add_foreign_key "filaments", "users"
   add_foreign_key "invoice_line_items", "invoices"
+  add_foreign_key "invoices", "clients"
   add_foreign_key "invoices", "print_pricings"
   add_foreign_key "invoices", "users"
   add_foreign_key "plate_filaments", "filaments"
   add_foreign_key "plate_filaments", "plates"
   add_foreign_key "plates", "print_pricings"
+  add_foreign_key "print_pricings", "clients"
   add_foreign_key "print_pricings", "printers"
   add_foreign_key "print_pricings", "users"
   add_foreign_key "printers", "users"

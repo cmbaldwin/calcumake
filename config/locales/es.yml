@@ -74,6 +74,7 @@ es:
     my_printers: Mis Impresoras
     my_filaments: Mis Filamentos
     invoices: Facturas
+    clients: Clients
     profile: Perfil
     help: Ayuda
     sign_out: Cerrar sesión
@@ -110,6 +111,7 @@ es:
     printer: Impresora
     print_pricing: Precio de Impresión
     filament: Filamento
+    client: Client
   common:
     created: Creado
     currency: Moneda
@@ -592,6 +594,7 @@ filaments:
       currency: Moneda
       currency_help: Determina los lugares decimales y el formato para todas las cantidades en esta factura
       company_logo: Logo de la Empresa
+      project: Proyecto
     line_items:
       title: Elementos de Línea
       add_line_item: Agregar Elemento de Línea
