@@ -1,0 +1,13 @@
+<!-- Demo Limitations Notice -->
+<div class="alert alert-info mt-4">
+  <h5><i class="bi bi-info-circle me-2"></i><%= t('demo.limitations.title') %></h5>
+  <p class="mb-2"><%= t('demo.limitations.description') %></p>
+  <ul class="mb-2">
+    <% t('demo.limitations.features').each do |feature| %>
+      <li><%= feature %></li>
+    <% end %>
+  </ul>
+  <%= link_to t('demo.start_free_trial'), new_user_registration_path,
+      class: "btn btn-primary",
+      onclick: "if(typeof trackSignupStart === 'function') trackSignupStart();" %>
+</div>

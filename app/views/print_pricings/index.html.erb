@@ -1,10 +1,21 @@
-<!-- Hero Section -->
-<div class="text-center mb-5">
-    <h3 class="display-5 fw-bold text-primary mb-3"><%= t('print_pricing.index.title') %></h3>
-    <p class="lead text-muted mb-4">
-        <%= t('print_pricing.index.subtitle') %>
-    </p>
-    <%= link_to t('print_pricing.index.create_new'), new_print_pricing_path, class: "btn btn-primary btn-lg" %>
+<%# Usage Dashboard Widget %>
+<%= render 'shared/usage_dashboard_widget' %>
+
+<!-- Header Section with Quick Calculator -->
+<div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-start justify-content-lg-center mb-5 gap-4">
+    <!-- Left Side: Title and CTA -->
+    <div class="flex-grow-1 text-center text-lg-start mb-4 mb-lg-0">
+        <h3 class="display-5 fw-bold text-primary mb-3"><%= t('print_pricing.index.title') %></h3>
+        <p class="lead text-muted mb-4">
+            <%= t('print_pricing.index.subtitle') %>
+        </p>
+        <%= link_to t('print_pricing.index.create_new'), new_print_pricing_path, class: "btn btn-primary btn-lg" %>
+    </div>
+
+    <!-- Right Side: Quick Calculator (Desktop) / Below Header (Mobile) -->
+    <div class="flex-shrink-0" style="width: 100%; max-width: 400px;">
+        <%= quick_calculator(energy_cost: current_user&.default_energy_cost_per_kwh || 0.12) %>
+    </div>
 </div>
 
 <!-- Search Section -->

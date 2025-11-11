@@ -1,0 +1,40 @@
+<%
+  # Calculator results component
+  # Handles both demo (detailed) and quick (simple) result displays
+
+  mode ||= 'demo'
+  stimulus_controller ||= 'demo-calculator'
+  show_detailed_results ||= true
+%>
+
+<% if show_detailed_results && mode == 'demo' %>
+  <!-- Detailed Results (Demo Mode) -->
+  <div class="alert alert-success" data-demo-calculator-target="results">
+    <div class="row g-3">
+      <div class="col-md-3">
+        <strong><%= t('calculators.results.filament_cost') %></strong>
+        <div class="h5 text-success mb-0" data-demo-calculator-target="filamentCost">$1.13</div>
+      </div>
+      <div class="col-md-3">
+        <strong><%= t('calculators.results.electricity_cost') %></strong>
+        <div class="h5 text-success mb-0" data-demo-calculator-target="electricityCost">$0.06</div>
+      </div>
+      <div class="col-md-3">
+        <strong><%= t('calculators.results.labor_cost') %></strong>
+        <div class="h5 text-success mb-0" data-demo-calculator-target="laborCost">$50.00</div>
+      </div>
+      <div class="col-md-3">
+        <strong><%= t('calculators.results.total_cost') %></strong>
+        <div class="h4 text-primary mb-0" data-demo-calculator-target="totalCost">$51.19</div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <!-- Simple Results (Quick Mode) -->
+  <div class="alert alert-success p-2 mb-2" data-quick-calculator-target="results">
+    <div class="d-flex justify-content-between align-items-center">
+      <small class="text-muted"><%= t('calculators.results.estimated_cost') %></small>
+      <strong class="h6 mb-0 text-primary" data-quick-calculator-target="totalCost">$3.47</strong>
+    </div>
+  </div>
+<% end %>

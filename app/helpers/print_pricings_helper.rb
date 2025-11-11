@@ -14,6 +14,22 @@ module PrintPricingsHelper
     print_pricings.sum { |p| p.total_actual_print_time_minutes } / 60
   end
 
+  def total_filament_weight_grams(print_pricings)
+    print_pricings.sum { |p| p.plates.sum(&:total_filament_weight) * (p.times_printed || 0) }
+  end
+
+  def total_estimated_sales(print_pricings)
+    print_pricings.sum { |p| (p.final_price || 0) * (p.times_printed || 0) }
+  end
+
+  def total_estimated_profit(print_pricings)
+    print_pricings.sum { |p|
+      subtotal = p.calculate_subtotal
+      profit_per_print = (p.final_price || 0) - subtotal
+      profit_per_print * (p.times_printed || 0)
+    }
+  end
+
   def pricing_card_metadata_badges(pricing)
     content_tag :div, class: "d-flex gap-2 flex-wrap d-lg-none justify-content-center" do
       concat content_tag(:span, "#{pricing.plates.count} plate#{'s' unless pricing.plates.count == 1}", class: "badge bg-info")

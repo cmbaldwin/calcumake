@@ -1,0 +1,139 @@
+<%
+  # Unified calculator component
+  # Supports both demo and quick modes via local variables
+
+  mode ||= 'demo'  # 'demo' or 'quick'
+  stimulus_controller ||= 'demo-calculator'
+  energy_cost ||= 0.12
+  show_detailed_results ||= true
+  show_features ||= true
+  user_currency ||= 'USD'
+  user_locale ||= 'en-US'
+  size_class ||= mode == 'quick' ? 'form-control-sm' : 'form-control'
+  card_class ||= mode == 'quick' ? 'border-primary rounded' : 'shadow-sm'
+%>
+
+<div class="card <%= card_class %>"
+     data-controller="<%= stimulus_controller %>"
+     data-<%= stimulus_controller %>-energy-cost-value="<%= energy_cost %>"
+     <% if mode == 'quick' %>
+       data-<%= stimulus_controller %>-user-currency-value="<%= user_currency %>"
+       data-<%= stimulus_controller %>-user-locale-value="<%= user_locale %>"
+       data-<%= stimulus_controller %>-filament-price-per-kg-value="<%= filament_price_per_kg || 25.0 %>"
+       data-<%= stimulus_controller %>-labor-rate-per-hour-value="<%= labor_rate_per_hour || 20.0 %>"
+     <% end %>>
+
+  <!-- Calculator Header -->
+  <div class="card-header bg-primary text-white">
+    <span class="<%= mode == 'demo' ? 'h3 card-title mb-0' : 'fw-bold' %>">
+      <i class="bi bi-calculator<%= '-fill' if mode == 'demo' %> me-2"></i>
+      <%= t('calculators.quick_cost_calculator') %>
+    </span>
+  </div>
+
+  <!-- Calculator Body -->
+  <div class="card-body <%= mode == 'quick' ? 'p-3' : 'p-4' %>">
+
+    <!-- Input Section -->
+    <div class="row <%= mode == 'demo' ? 'g-3 mb-4' : 'g-2 mb-3' %>">
+      <div class="<%= mode == 'demo' ? 'col-md-6' : 'col-6' %>">
+        <label class="form-label <%= 'small mb-1' if mode == 'quick' %>">
+          <%= t('calculators.print_time_hours') %>
+        </label>
+        <input type="number"
+               class="<%= size_class %>"
+               data-<%= stimulus_controller %>-target="printTime"
+               data-action="input-><%= stimulus_controller %>#calculate"
+               value="2.5"
+               min="0.1"
+               step="0.1">
+      </div>
+      <div class="<%= mode == 'demo' ? 'col-md-6' : 'col-6' %>">
+        <label class="form-label <%= 'small mb-1' if mode == 'quick' %>">
+          <%= t('calculators.filament_weight_grams') %>
+        </label>
+        <input type="number"
+               class="<%= size_class %>"
+               data-<%= stimulus_controller %>-target="filamentWeight"
+               data-action="input-><%= stimulus_controller %>#calculate"
+               value="45.2"
+               min="1"
+               step="0.1">
+      </div>
+      <% if mode == 'demo' %>
+        <div class="col-md-6">
+          <label class="form-label"><%= t('calculators.filament_price_per_kg') %></label>
+          <input type="number"
+                 class="form-control"
+                 data-demo-calculator-target="filamentPrice"
+                 data-action="input->demo-calculator#calculate"
+                 value="25.00"
+                 min="1"
+                 step="0.01">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label"><%= t('calculators.labor_rate_per_hour') %></label>
+          <input type="number"
+                 class="form-control"
+                 data-demo-calculator-target="laborRate"
+                 data-action="input->demo-calculator#calculate"
+                 value="20.00"
+                 min="0"
+                 step="0.01">
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Results Section -->
+    <%= render "shared/components/calculators/results",
+               mode: mode,
+               stimulus_controller: stimulus_controller,
+               show_detailed_results: show_detailed_results %>
+
+    <% if mode == 'demo' && show_features %>
+      <!-- Features Highlight -->
+      <div class="row g-3 mt-3">
+        <div class="col-md-6">
+          <div class="d-flex align-items-center text-muted">
+            <i class="bi bi-check-circle text-success me-2"></i>
+            <small><%= t('calculators.features.real_time') %></small>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex align-items-center text-muted">
+            <i class="bi bi-check-circle text-success me-2"></i>
+            <small><%= t('calculators.features.includes_costs') %></small>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <% if mode == 'quick' %>
+      <!-- Cost Breakdown Info -->
+      <div class="mt-2 mb-3">
+        <div class="text-muted small">
+          <div class="fw-bold mb-1"><%= t('calculators.includes_defaults') %></div>
+          <ul class="list-unstyled small mb-0" style="font-size: 0.75rem; line-height: 1.2;">
+            <li>• <%= t('calculators.defaults.filament_price') %>: <%= format_currency_with_symbol(filament_price_per_kg || 25, user_currency) %>/kg</li>
+            <li>• <%= t('calculators.defaults.labor_rate') %>: <%= format_currency_with_symbol(labor_rate_per_hour || 20, user_currency) %>/hour</li>
+            <li>• <%= t('calculators.defaults.energy_cost') %>: <%= format_currency_with_symbol(energy_cost, user_currency) %>/kWh</li>
+            <li>• <%= t('calculators.defaults.power_consumption') %>: 200W</li>
+            <% if current_user&.printers&.first %>
+              <li>• <%= t('calculators.defaults.machine_payoff') %>: <%= current_user.printers.first.payoff_goal_years %> years</li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Quick Action -->
+      <div class="d-grid">
+        <button type="button"
+                class="btn btn-outline-primary btn-sm"
+                data-action="click->quick-calculator#createFromEstimate">
+          <i class="bi bi-plus-circle me-1"></i>
+          <%= t('calculators.create_full_calculation') %>
+        </button>
+      </div>
+    <% end %>
+  </div>
+</div>
