@@ -426,6 +426,16 @@ es:
       cancel: Cancelar
     image_upload:
       help_text: "Tamaño máximo de archivo: 5MB. Formatos soportados: PNG, JPG, GIF, WebP"
+    delete_account:
+      title: Eliminar Cuenta
+      warning_title: Advertencia
+      warning_message: Eliminar su cuenta es permanente y no se puede deshacer. Todos sus datos serán eliminados permanentemente.
+      description: Si ya no desea usar CalcuMake, puede eliminar su cuenta. Lea la sección de preguntas frecuentes en la página de soporte para obtener más información.
+      unlock_checkbox: Entiendo que eliminar mi cuenta es permanente
+      confirm_checkbox: Confirmo que quiero eliminar mi cuenta y todos los datos asociados
+      button: Eliminar Mi Cuenta
+      final_confirmation: ¿Está absolutamente seguro de que desea eliminar su cuenta? Esta acción no se puede deshacer y todos sus datos serán eliminados permanentemente.
+      success: Su cuenta ha sido eliminada exitosamente. Gracias por usar CalcuMake.
   currency:
     usd: Dólar Estadounidense
     eur: Euro
@@ -454,6 +464,30 @@ es:
       aquí para ayudarte!"
     email_label: Soporte por Email
     response_time: Normalmente respondemos en 24-48 horas
+    faq:
+      title: Preguntas Frecuentes
+      delete_account:
+        question: ¿Cómo elimino mi cuenta?
+        answer: "Para eliminar su cuenta, siga estos pasos:"
+        step1: Vaya a su página de Perfil desde el menú de navegación
+        step2: Desplácese hasta la sección "Eliminar Cuenta" en la parte inferior de la página
+        step3: Marque la casilla "Entiendo que eliminar mi cuenta es permanente"
+        step4: Marque la casilla "Confirmo que quiero eliminar mi cuenta y todos los datos asociados"
+        step5: Haga clic en el botón "Eliminar Mi Cuenta" y confirme la advertencia final
+        warning_title: Importante
+        warning_message: La eliminación de la cuenta es permanente y no se puede deshacer. Todos sus datos serán eliminados permanentemente.
+      data_recovery:
+        question: ¿Puedo recuperar mi cuenta después de eliminarla?
+        answer: No, la eliminación de la cuenta es permanente e irreversible. Una vez eliminada, su cuenta y todos los datos asociados no se pueden recuperar. Si cree que podría querer usar CalcuMake nuevamente en el futuro, considere simplemente no usar su cuenta en lugar de eliminarla.
+      what_deleted:
+        question: ¿Qué datos se eliminan cuando elimino mi cuenta?
+        intro: "Cuando elimina su cuenta, todos los siguientes datos se eliminan permanentemente:"
+        item1: Su cuenta de usuario y credenciales de inicio de sesión
+        item2: Todos sus cálculos de precios de impresión
+        item3: Todas sus impresoras y sus configuraciones
+        item4: Todos sus perfiles de filamento
+        item5: Todas sus facturas
+        item6: Toda su información y preferencias de la empresa
   legal:
     last_updated: Última actualización
     privacy_policy:

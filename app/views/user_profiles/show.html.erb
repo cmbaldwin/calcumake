@@ -181,3 +181,60 @@
     </div>
 </div>
 <% end %>
+
+<!-- Delete Account Section -->
+<div class="col-12 mt-4" data-controller="delete-account">
+    <div class="card border-danger">
+        <div class="card-header bg-danger text-white">
+            <h5 class="mb-0"><%= t('profile.delete_account.title') %></h5>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger mb-4">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <strong><%= t('profile.delete_account.warning_title') %></strong>
+                <p class="mb-0 mt-2"><%= t('profile.delete_account.warning_message') %></p>
+            </div>
+
+            <p class="mb-4"><%= t('profile.delete_account.description') %></p>
+
+            <div class="mb-3">
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="unlockDeleteAccount"
+                        data-delete-account-target="unlockCheckbox"
+                        data-action="change->delete-account#updateButtonState">
+                    <label class="form-check-label" for="unlockDeleteAccount">
+                        <%= t('profile.delete_account.unlock_checkbox') %>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="confirmDeleteAccount"
+                        data-delete-account-target="confirmCheckbox"
+                        data-action="change->delete-account#updateButtonState">
+                    <label class="form-check-label" for="confirmDeleteAccount">
+                        <%= t('profile.delete_account.confirm_checkbox') %>
+                    </label>
+                </div>
+            </div>
+
+            <%= button_to t('profile.delete_account.button'),
+                user_profile_path,
+                method: :delete,
+                class: "btn btn-danger",
+                disabled: true,
+                data: {
+                    delete_account_target: "deleteButton",
+                    confirm_message: t('profile.delete_account.final_confirmation'),
+                    action: "click->delete-account#confirmDelete"
+                } %>
+        </div>
+    </div>
+</div>

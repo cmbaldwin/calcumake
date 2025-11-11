@@ -212,6 +212,21 @@ zh-CN:
       postprocessing_time_minutes: 后处理时间（分钟）
       postprocessing_time_placeholder: '30'
       postprocessing_cost_per_hour: 每小时后处理费用
+    buttons:
+      update_settings: 更新设置
+      update_profile: 更新资料
+    image_upload:
+      help_text: "最大文件大小：5MB。支持格式：PNG、JPG、GIF、WebP"
+    delete_account:
+      title: 删除账户
+      warning_title: 警告
+      warning_message: 删除您的账户是永久性的，无法撤销。您的所有数据将被永久删除。
+      description: 如果您不再希望使用CalcuMake，可以删除您的账户。请阅读支持页面的常见问题部分以获取更多信息。
+      unlock_checkbox: 我明白删除我的账户是永久性的
+      confirm_checkbox: 我确认要删除我的账户及所有相关数据
+      button: 删除我的账户
+      final_confirmation: 您确定要删除您的账户吗？此操作无法撤销，您的所有数据将被永久删除。
+      success: 您的账户已成功删除。感谢您使用CalcuMake。
   currency:
     usd: 美元
     eur: 欧元
@@ -243,11 +258,34 @@ zh-CN:
   support:
     title: 支持
     nav_title: 支持
-    contact_us: Contact Us
-    description: Need help with CalcuMake? Have a question or suggestion? We're here
-      to help!
-    email_label: Email Support
-    response_time: We typically respond within 24-48 hours
+    contact_us: 联系我们
+    description: 需要CalcuMake的帮助吗？有问题或建议吗？我们随时为您服务！
+    email_label: 电子邮件支持
+    response_time: 我们通常在24-48小时内回复
+    faq:
+      title: 常见问题
+      delete_account:
+        question: 如何删除我的账户？
+        answer: 要删除您的账户，请按照以下步骤操作：
+        step1: 从导航菜单转到您的个人资料页面
+        step2: 向下滚动到页面底部的"删除账户"部分
+        step3: 勾选"我明白删除我的账户是永久性的"复选框
+        step4: 勾选"我确认要删除我的账户及所有相关数据"复选框
+        step5: 点击"删除我的账户"按钮并确认最终警告
+        warning_title: 重要提示
+        warning_message: 账户删除是永久性的，无法撤销。您的所有数据将被永久删除。
+      data_recovery:
+        question: 删除后可以恢复我的账户吗？
+        answer: 不可以，账户删除是永久性且不可逆的。一旦删除，您的账户和所有相关数据都无法恢复。如果您认为将来可能还会使用CalcuMake，请考虑不使用账户而不是删除它。
+      what_deleted:
+        question: 删除账户时会删除哪些数据？
+        intro: 当您删除账户时，以下所有数据将被永久删除：
+        item1: 您的用户账户和登录凭据
+        item2: 您所有的打印定价计算
+        item3: 您所有的打印机及其配置
+        item4: 您所有的耗材资料
+        item5: 您所有的发票
+        item6: 您所有的公司信息和偏好设置
 filaments:
   index:
     title: 我的材料
