@@ -1986,3 +1986,49 @@ body.has-locale-suggestion {
   border-bottom-left-radius: calc(0.5rem - 1px);
   border-bottom-right-radius: calc(0.5rem - 1px);
 }
+
+/* Last Login Method Indicator */
+.last-login-badge {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  color: var(--bs-info);
+  background: rgba(135, 206, 235, 0.1);
+  border-radius: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.last-login-badge i {
+  font-size: 0.875rem;
+}
+
+.oauth-buttons .last-used-method {
+  border: 2px solid var(--bs-info) !important;
+  box-shadow: 0 0 0 0.2rem rgba(135, 206, 235, 0.15);
+  position: relative;
+}
+
+.oauth-buttons .last-used-method::before {
+  content: "\F17B"; /* Bootstrap Icons: clock-history */
+  font-family: "bootstrap-icons";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: var(--bs-info);
+  color: white;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.alert-sm {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+}

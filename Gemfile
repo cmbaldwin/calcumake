@@ -30,6 +30,7 @@ gem "omniauth-github"
 gem "omniauth-microsoft_graph"
 gem "omniauth-facebook"
 gem "omniauth-yahoojp"
+gem "omniauth-line"
 gem "omniauth-rails_csrf_protection"
 
 # Admin interface
