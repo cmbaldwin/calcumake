@@ -1,0 +1,13 @@
+<%= turbo_stream.update "modal" do %>
+  <div id="modal"
+       class="modal fade"
+       tabindex="-1"
+       data-controller="modal"
+       data-action="turbo:submit-end->modal#handleSubmit turbo:frame-load->modal#open">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <%= render "clients/modal_form" %>
+      </div>
+    </div>
+  </div>
+<% end %>
