@@ -1,9 +1,9 @@
-<div class="login-form text-center">
+<div class="login-form text-center" data-controller="last-login">
   <h2 class="mb-3"><%= t('nav.sign_in') %></h2>
 
   <%= render "devise/shared/oauth_buttons" %>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { last_login_target: "emailForm", action: "submit->last-login#trackEmailLogin" } }) do |f| %>
     <div class="field mb-3">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
