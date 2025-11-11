@@ -498,3 +498,6 @@ print_pricings:
   form:
     filament_weight: फिलामेंट वजन
     print_time_hours: प्रिंट समय (घंटे)
+  devise:
+    shared:
+      oauth_signin_options: Sign in options

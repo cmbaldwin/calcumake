@@ -809,3 +809,6 @@ filaments:
     printer_plural: "打印机"
     filament_plural: "耗材"
     invoice_plural: "发票"
+  devise:
+    shared:
+      oauth_signin_options: Sign in options
