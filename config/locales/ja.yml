@@ -74,6 +74,7 @@ ja:
     my_printers: プリンター
     my_filaments: フィラメント
     invoices: 請求書
+    clients: クライアント
     profile: プロフィール
     help: ヘルプ
     sign_out: サインアウト
@@ -110,6 +111,7 @@ ja:
     printer: プリンター
     print_pricing: 印刷料金
     filament: フィラメント
+    client: クライアント
   common:
     created: 作成日
     currency: 通貨
@@ -595,6 +597,7 @@ ja:
       currency: 通貨
       currency_help: この請求書のすべての金額の小数点以下桁数と書式を決定します
       company_logo: 会社ロゴ
+      project: プロジェクト
     line_items:
       title: 明細項目
       add_line_item: 明細項目追加
@@ -611,3 +614,62 @@ ja:
     form:
       filament_weight: フィラメント重量
       print_time_hours: 印刷時間（時間）
+  clients:
+    index:
+      title: マイクライアント
+      subtitle: クライアント情報を管理
+      add_new: 新しいクライアント追加
+      search_placeholder: 名前、会社名、メールで検索...
+      clear_search: 検索クリア
+      empty_state:
+        title: まだクライアントがいません
+        description: 最初のクライアントを追加して、顧客情報の管理を開始しましょう。
+        add_first: 最初のクライアント追加
+      no_results:
+        title: 結果が見つかりません
+        description: 検索に一致するクライアントはありません。別の検索用語をお試しください。
+    new:
+      title: 新しいクライアント追加
+      subtitle: 新しいクライアントプロファイルを作成
+    edit:
+      title: クライアント編集
+      subtitle: "%{name}のクライアント情報を更新"
+    show:
+      title: クライアント詳細
+      member_since: メンバー登録日
+      invoices: 請求書
+      print_pricings: 印刷料金
+      no_invoices: まだ請求書がありません
+      no_print_pricings: まだ印刷料金がありません
+    sections:
+      basic_info: 基本情報
+      contact_info: 連絡先情報
+      additional_info: 追加情報
+    fields:
+      name: 名前
+      name_placeholder: 山田太郎
+      company_name: 会社名
+      company_name_placeholder: 株式会社サンプル
+      email: メールアドレス
+      email_placeholder: sample@example.com
+      phone: 電話番号
+      phone_placeholder: 03-1234-5678
+      address: 住所
+      address_placeholder: "東京都渋谷区〇〇1-2-3"
+      tax_id: 税務番号/法人番号
+      tax_id_placeholder: "1234567890123"
+      notes: メモ
+      notes_placeholder: このクライアントに関する追加メモ...
+      select_client: クライアント選択
+      no_client_selected: クライアントが選択されていません
+      client_help_text: 既存のクライアントを選択するか
+      client: クライアント
+    card:
+      invoices: 請求書
+    buttons:
+      create: クライアント作成
+      update: クライアント更新
+    confirm_delete: "'%{name}'を削除してもよろしいですか？関連する請求書や印刷料金は削除されません。"
+    created_successfully: クライアントが正常に作成されました
+    updated_successfully: クライアントが正常に更新されました
+    deleted_successfully: クライアントが正常に削除されました

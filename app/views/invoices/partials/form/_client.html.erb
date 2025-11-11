@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0"><%= t("invoices.fields.client") %></h5>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-12">
+                <%= form.label :client_id, t("invoices.fields.select_client"), class: "form-label" %>
+                <%= form.collection_select :client_id,
+                    current_user.clients.order(:name),
+                    :id,
+                    :display_name,
+                    {
+                      prompt: t("invoices.fields.no_client_selected"),
+                      include_blank: true
+                    },
+                    { class: "form-select" } %>
+                <div class="form-text">
+                  <%= t("invoices.fields.client_help_text") %>
+                  <%= link_to t("clients.new.title"), new_client_path, target: "_blank", class: "text-decoration-none" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

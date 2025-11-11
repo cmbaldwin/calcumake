@@ -1,0 +1,87 @@
+<%= form_with model: @client, local: true, class: "needs-validation", novalidate: true do |form| %>
+    <% if @client.errors.any? %>
+        <div class="alert alert-danger mb-4">
+            <h6 class="fw-bold mb-2">
+                <%= t('common.errors_prohibited', count: @client.errors.count, errors: t('common.error_count', count: @client.errors.count), model: t('models.client').downcase) %>
+            </h6>
+            <ul class="mb-0 ps-3">
+                <% @client.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <!-- Basic Information -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><%= t('clients.sections.basic_info') %></h5>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <%= form.label :name, t('clients.fields.name'), class: "form-label" %>
+                    <%= form.text_field :name, class: "form-control", placeholder: t('clients.fields.name_placeholder'), required: true %>
+                </div>
+                <div class="col-md-6">
+                    <%= form.label :company_name, t('clients.fields.company_name'), class: "form-label" %>
+                    <%= form.text_field :company_name, class: "form-control", placeholder: t('clients.fields.company_name_placeholder') %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><%= t('clients.sections.contact_info') %></h5>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <%= form.label :email, t('clients.fields.email'), class: "form-label" %>
+                    <%= form.email_field :email, class: "form-control", placeholder: t('clients.fields.email_placeholder') %>
+                </div>
+                <div class="col-md-6">
+                    <%= form.label :phone, t('clients.fields.phone'), class: "form-label" %>
+                    <%= form.text_field :phone, class: "form-control", placeholder: t('clients.fields.phone_placeholder') %>
+                </div>
+                <div class="col-12">
+                    <%= form.label :address, t('clients.fields.address'), class: "form-label" %>
+                    <%= form.text_area :address, class: "form-control", rows: 3, placeholder: t('clients.fields.address_placeholder') %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Information -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><%= t('clients.sections.additional_info') %></h5>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <%= form.label :tax_id, t('clients.fields.tax_id'), class: "form-label" %>
+                    <%= form.text_field :tax_id, class: "form-control", placeholder: t('clients.fields.tax_id_placeholder') %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><%= t('clients.fields.notes') %></h5>
+        </div>
+        <div class="card-body">
+            <%= form.text_area :notes, class: "form-control", rows: 4, placeholder: t('clients.fields.notes_placeholder') %>
+        </div>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="d-flex justify-content-center gap-3 mb-5">
+        <%= form.submit @client.new_record? ? t('clients.buttons.create') : t('clients.buttons.update'), class: "btn btn-primary px-4" %>
+        <%= link_to t('actions.cancel'), clients_path, class: "btn btn-outline-secondary px-4" %>
+    </div>
+<% end %>
