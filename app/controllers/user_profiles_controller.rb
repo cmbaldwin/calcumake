@@ -24,7 +24,7 @@ class UserProfilesController < ApplicationController
     @user.destroy!
 
     sign_out @user
-    redirect_to root_path, notice: I18n.t('profile.delete_account.success')
+    redirect_to root_path, notice: I18n.t("profile.delete_account.success")
   end
 
   private

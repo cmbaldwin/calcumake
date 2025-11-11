@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   # Standalone invoices route for global invoice management
-  resources :invoices, only: [:index]
+  resources :invoices, only: [ :index ]
 
   resources :printers
 

@@ -571,7 +571,7 @@ en:
       title: Frequently Asked Questions
       delete_account:
         question: How do I delete my account?
-        answer: To delete your account, follow these steps:
+        answer: "To delete your account, follow these steps:"
         step1: Go to your Profile page from the navigation menu
         step2: Scroll down to the "Delete Account" section at the bottom of the page
         step3: Check the box "I understand that deleting my account is permanent"
@@ -584,7 +584,7 @@ en:
         answer: No, account deletion is permanent and irreversible. Once deleted, your account and all associated data cannot be recovered. If you think you might want to use CalcuMake again in the future, consider simply not using your account instead of deleting it.
       what_deleted:
         question: What data gets deleted when I delete my account?
-        intro: When you delete your account, all of the following data is permanently deleted:
+        intro: "When you delete your account, all of the following data is permanently deleted:"
         item1: Your user account and login credentials
         item2: All your print pricing calculations
         item3: All your printers and their configurations
