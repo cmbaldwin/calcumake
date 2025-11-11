@@ -1,0 +1,38 @@
+<%# OAuth provider configuration %>
+<% oauth_providers = [
+  { name: 'Google', path: user_google_oauth2_omniauth_authorize_path },
+  { name: 'GitHub', path: user_github_omniauth_authorize_path },
+  { name: 'Microsoft', path: user_microsoft_graph_omniauth_authorize_path },
+  { name: 'Facebook', path: user_facebook_omniauth_authorize_path },
+  { name: 'Yahoo Japan', path: user_yahoojp_omniauth_authorize_path }
+] %>
+
+<div class="oauth-buttons mb-4" role="group" aria-labelledby="oauth-signin-heading">
+  <div class="visually-hidden" id="oauth-signin-heading"><%= t('devise.shared.oauth_signin_options') %></div>
+
+  <div class="row g-2">
+    <% oauth_providers.each do |provider| %>
+      <div class="col-12">
+        <%= link_to provider[:path],
+            method: :post,
+            class: "#{oauth_provider_button_class(provider[:name])} w-100 d-flex align-items-center justify-content-center",
+            role: "button",
+            "aria-label": t('devise.shared.sign_in_with_provider_aria', provider: provider[:name]),
+            data: {
+              bs_toggle: "tooltip",
+              bs_placement: "top",
+              bs_title: t('devise.shared.sign_in_with_provider', provider: provider[:name])
+            } do %>
+          <%= oauth_provider_icon(provider[:name]) %>
+          <span><%= t('devise.shared.sign_in_with_provider', provider: provider[:name]) %></span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="text-center my-3">
+    <small class="text-muted" role="separator" aria-label="<%= t('devise.shared.alternative_signin_method') %>">
+      <%= t('devise.shared.or_sign_in_with_email') %>
+    </small>
+  </div>
+</div>

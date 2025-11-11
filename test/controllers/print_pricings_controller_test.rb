@@ -27,6 +27,16 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get new with pre-filled parameters from quick calculator" do
+    get new_print_pricing_url, params: { print_time_hours: "2.5", filament_weight: "45.2" }
+    assert_response :success
+
+    # Check that the print pricing was built with pre-filled values
+    assert @controller.instance_variable_get(:@print_pricing).plates.first.printing_time_hours == 2
+    assert @controller.instance_variable_get(:@print_pricing).plates.first.printing_time_minutes == 30
+    assert @controller.instance_variable_get(:@print_pricing).plates.first.plate_filaments.first.filament_weight == 45.2
+  end
+
   test "should create print_pricing" do
     assert_difference("PrintPricing.count") do
       assert_difference("Plate.count") do

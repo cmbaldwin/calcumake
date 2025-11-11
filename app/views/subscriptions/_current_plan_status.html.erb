@@ -1,0 +1,63 @@
+<%# Current plan and trial status display %>
+
+<div class="card border-primary">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h3 class="h6 mb-2">
+          <i class="bi bi-award"></i>
+          <%= t('subscriptions.your_plan', default: 'Your Current Plan') %>
+        </h3>
+        <div class="d-flex align-items-center gap-3">
+          <span class="h4 mb-0">
+            <%= current_user.plan.titleize %>
+            <% if current_user.plan != 'free' %>
+              <span class="badge bg-success ms-2">Active</span>
+            <% end %>
+          </span>
+
+          <% if current_user.in_trial_period? %>
+            <span class="badge bg-info">
+              <i class="bi bi-gift"></i>
+              <%= t('subscriptions.trial_badge') %>
+              - <%= pluralize(current_user.trial_days_remaining, 'day') %> <%= t('subscriptions.remaining', default: 'remaining') %>
+            </span>
+          <% end %>
+        </div>
+
+        <% if current_user.plan_expires_at.present? && !current_user.in_trial_period? %>
+          <p class="text-muted mb-0 mt-2">
+            <small>
+              <%= t('subscriptions.renews_on', default: 'Renews on') %>:
+              <%= l(current_user.plan_expires_at, format: :long) %>
+            </small>
+          </p>
+        <% end %>
+
+        <% if current_user.in_trial_period? %>
+          <p class="text-muted mb-0 mt-2">
+            <small>
+              <%= t('subscriptions.trial_ends_on', default: 'Trial ends on') %>:
+              <%= l(current_user.trial_ends_at, format: :long) %>
+            </small>
+          </p>
+        <% end %>
+      </div>
+
+      <div class="col-md-4 text-md-end mt-3 mt-md-0">
+        <% if current_user.stripe_subscription_id.present? %>
+          <%= link_to manage_subscriptions_path,
+                      class: 'btn btn-outline-primary btn-sm',
+                      data: { turbo: false } do %>
+            <i class="bi bi-gear"></i>
+            <%= t('subscriptions.manage') %>
+          <% end %>
+        <% elsif !current_user.pro_plan? %>
+          <%= link_to t('subscriptions.upgrade_now', default: 'Upgrade Now'),
+                      '#pricing-plans',
+                      class: 'btn btn-primary btn-sm' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

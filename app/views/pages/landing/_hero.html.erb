@@ -1,0 +1,53 @@
+<%# Hero Section - Main value proposition with CTA and preview %>
+<section class="hero-section rounded-4 p-3 my-2 text-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold text-primary mb-3">
+                    <%= t('landing.hero.headline') %>
+                </h1>
+                <p class="lead text-muted mb-4">
+                    <%= t('landing.hero.subheadline') %>
+                </p>
+                <div class="hero-ctas mb-4">
+                    <%= link_to t('landing.hero.cta_primary'), new_user_registration_path,
+            class: "btn btn-primary btn-lg me-3 mb-2",
+            onclick: "if(typeof trackSignupStart === 'function') trackSignupStart();" %>
+                    <%= link_to t('landing.hero.cta_demo'), demo_path,
+            class: "btn btn-outline-secondary btn-lg mb-2",
+            onclick: "if(typeof trackDemoView === 'function') trackDemoView();" %>
+                </div>
+                <div class="trust-signals">
+                    <small class="text-muted">
+                        <i class="bi bi-shield-check"></i>
+                        <%= t('landing.hero.trust_signal') %>
+                    </small>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-visual">
+                    <!-- Placeholder for interactive calculator preview or screenshot -->
+                    <div class="card shadow-lg">
+                        <div class="card-body p-4">
+                            <h5 class="card-title text-primary"><i class="bi bi-calculator"></i> <%= t('landing.hero.preview_title') %></h5>
+                            <div class="row g-2 mb-3">
+                                <div class="col-6">
+                                    <label class="form-label small"><%= t('landing.hero.preview_filament_weight') %></label>
+                                    <div class="form-control text-center">45.2g</div>
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label small"><%= t('landing.hero.preview_print_time') %></label>
+                                    <div class="form-control text-center">2.5h</div>
+                                </div>
+                            </div>
+                            <div class="alert alert-success mb-0">
+                                <strong><%= t('landing.hero.preview_total_cost') %>: $3.47</strong>
+                                <small class="d-block"><%= t('landing.hero.preview_cost_breakdown') %></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

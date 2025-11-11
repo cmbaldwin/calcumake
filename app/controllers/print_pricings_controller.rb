@@ -1,6 +1,9 @@
 class PrintPricingsController < ApplicationController
+  include UsageTrackable
+
   before_action :authenticate_user!
   before_action :set_print_pricing, only: [ :show, :edit, :update, :destroy, :increment_times_printed, :decrement_times_printed, :duplicate ]
+  before_action :check_resource_limit, only: [ :duplicate ], prepend: true
 
   def index
     @q = current_user.print_pricings.ransack(params[:q])
@@ -19,8 +22,22 @@ class PrintPricingsController < ApplicationController
       other_costs: current_user.default_other_costs,
       vat_percentage: current_user.default_vat_percentage
     )
-    plate = @print_pricing.plates.build # Build one plate by default
-    plate.plate_filaments.build # Build one filament by default
+
+    # Build one plate by default with quick calculator pre-filled values
+    plate = @print_pricing.plates.build
+
+    # Pre-fill from quick calculator if parameters are present
+    if params[:print_time_hours].present?
+      hours = params[:print_time_hours].to_f
+      plate.printing_time_hours = hours.to_i
+      plate.printing_time_minutes = ((hours % 1) * 60).round
+    end
+
+    # Build one filament by default with pre-filled weight
+    filament = plate.plate_filaments.build
+    if params[:filament_weight].present?
+      filament.filament_weight = params[:filament_weight].to_f
+    end
   end
 
   def create
@@ -114,6 +131,9 @@ class PrintPricingsController < ApplicationController
     end
 
     if @new_print_pricing.save
+      # Track the duplicated resource
+      UsageTracking.track!(current_user, "print_pricing")
+
       respond_to do |format|
         format.html { redirect_to @new_print_pricing, notice: t("print_pricing.duplicated_successfully") }
         format.turbo_stream {

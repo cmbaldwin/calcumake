@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     end
   end
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   resources :print_pricings do
     member do
@@ -30,6 +30,20 @@ Rails.application.routes.draw do
 
   resource :user_profile, only: [ :show, :edit, :update, :destroy ], path: "profile"
 
+  # Subscription management
+  resources :subscriptions, only: [] do
+    collection do
+      get :pricing
+      post :create_checkout_session
+      get :success
+      get :manage
+      post :cancel
+    end
+  end
+
+  # Stripe webhooks
+  post "webhooks/stripe", to: "webhooks/stripe#create"
+
   # Legal pages
   get "privacy-policy", to: "legal#privacy_policy", as: :privacy_policy
   get "user-agreement", to: "legal#user_agreement", as: :user_agreement
@@ -38,8 +52,12 @@ Rails.application.routes.draw do
   # Locale switching
   post "switch_locale", to: "application#switch_locale"
 
+  # Landing page and demo
+  get "landing", to: "pages#landing", as: :landing
+  get "demo", to: "pages#demo", as: :demo
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root "print_pricings#index"
+  root "pages#landing"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

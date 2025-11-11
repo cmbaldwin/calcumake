@@ -66,6 +66,9 @@ fr:
       create_new: Calculer Nouvelle Impression
       total_calculations: Total de Calculs
       total_print_time: Temps Total d'Impression
+      total_filament_used: Total de Filament Utilisé
+      total_estimated_sales: Total des Ventes Estimées
+      total_estimated_profit: Total des Bénéfices Estimés
       search_placeholder: Rechercher par nom de travail ou type de filament...
       empty_state:
         title: Aucun calcul pour le moment
@@ -113,7 +116,7 @@ fr:
     depreciation_and_maintenance: Dépréciation et entretien
     other_costs: Autres Coûts
     subtotal: Sous-total
-    vat: TVA
+    vat: Taxe de Vente (TVA)
     total: Total
     notes: Notes
     invoice_notes_text: Merci pour votre confiance. Veuillez conserver cette facture pour vos dossiers.
@@ -155,9 +158,73 @@ fr:
         labor: Coût de la Main-d'œuvre
         machine: Coût de la Machine
         other: Autres Coûts
+        listing: Frais de Listage
+        payment_processing: Traitement des Paiements
         subtotal: Sous-total
+        vat: Taxe de Vente (TVA) (%{rate}%)
         final_price: Prix Final
+    fields:
+      job_name: Nom du Travail
+      job_name_placeholder: ex., Modèle Miniature
+      select_printer: Sélectionner une Imprimante
+      select_printer_prompt: Sélectionnez une imprimante
+      no_printer_help: Pas d'imprimante enregistrée ?
+      add_printer_link: Ajouter une nouvelle imprimante
+      print_time_hours: Heures
+      print_time_minutes: Minutes
+      filament_weight: Poids du Filament (g)
+      filament_weight_placeholder: "36"
+      filament_type: Type de Filament
+      filament_type_prompt: Sélectionner le type
+      spool_price: Prix de la Bobine
+      spool_price_placeholder: "25.00"
+      spool_weight: Poids de la Bobine (g)
+      spool_weight_placeholder: "1000"
+      markup: Marge (%)
+      markup_placeholder: "20"
+      markup_percentage: Pourcentage de Marge
+      prep_time: Temps de Préparation (min)
+      prep_time_placeholder: "30"
+      prep_time_minutes: Temps de Préparation (minutes)
+      prep_cost_hour: Coût de Prép./Heure
+      prep_cost_placeholder: "20.00"
+      prep_cost_per_hour: Coût de Préparation par Heure
+      post_time: Temps de Post-traitement (min)
+      post_time_placeholder: "30"
+      postprocessing_time_minutes: Temps de Post-traitement (minutes)
+      postprocessing_time_placeholder: "30"
+      postprocessing_cost_per_hour: Coût de Post-traitement par Heure
+      postprocessing_cost_placeholder: "20.00"
+      post_cost_hour: Coût de Post-trait./Heure
+      post_cost_placeholder: "20.00"
+      other_costs: Autres Coûts
+      other_costs_placeholder: "0.00"
+      vat: Taxe de Vente (TVA) (%)
+      vat_placeholder: "10"
+      vat_percentage: Pourcentage de Taxe de Vente (TVA)
+      listing_cost_percentage: Pourcentage de Frais de Listage (%)
+      listing_cost_percentage_placeholder: "3"
+      payment_processing_cost_percentage: Pourcentage de Frais de Traitement des Paiements (%)
+      payment_processing_cost_percentage_placeholder: "2.9"
+      power_consumption: Consommation d'Énergie (W)
+      power_consumption_placeholder: "200"
+      energy_cost_kwh: Coût de l'Énergie par kWh
+      energy_cost_placeholder: "0.12"
+      printer_cost: Coût de l'Imprimante
+      printer_cost_placeholder: "500.00"
+      payoff_goal: Objectif d'Amortissement (Années)
+      payoff_goal_placeholder: "3"
+      daily_usage: Utilisation Quotidienne (Heures)
+      daily_usage_placeholder: "8"
+      repair_cost: Coût de Réparation (%)
+      repair_cost_placeholder: "5"
+      currency: Devise
+      currency_prompt: Sélectionner la devise
     buttons:
+      calculate_save: Calculer
+      update_pricing: Mettre à Jour les Tarifs
+      update: Mettre à Jour
+      cancel: Annuler
       add_plate: Ajouter une Plaque
     help:
       plates_limit: Vous pouvez ajouter jusqu'à 10 plaques par travail d'impression.
@@ -193,8 +260,27 @@ fr:
       default_preferences: Préférences par Défaut
     fields:
       default_currency: Devise par Défaut
+      default_currency_help: Utilisée par défaut pour les nouveaux calculs de tarification
       energy_cost: Coût de l'Énergie par kWh
+      energy_cost_placeholder: "0.120"
       energy_cost_help: Votre coût local d'électricité par kilowatt-heure
+      energy_cost_help_extended: Votre coût local d'électricité par kilowatt-heure. Sera utilisé par défaut pour les nouveaux calculs.
+      prep_time: Temps de Préparation (minutes)
+      prep_time_help: Temps passé à préparer les impressions avant de commencer
+      prep_cost: Coût de Préparation par Heure
+      prep_cost_help: Tarif horaire pour le travail de préparation
+      postprocessing_time: Temps de Post-traitement (minutes)
+      postprocessing_time_help: Temps passé sur le post-traitement (nettoyage, retrait des supports, etc.)
+      postprocessing_cost: Coût de Post-traitement par Heure
+      postprocessing_cost_help: Tarif horaire pour le travail de post-traitement
+      other_costs: Autres Coûts
+      other_costs_help: Coûts supplémentaires comme l'emballage, la préparation d'expédition, etc.
+      vat_percentage: Pourcentage de Taxe de Vente (TVA)
+      vat_percentage_help: Pourcentage par défaut de taxe de vente/TVA pour votre localisation
+      listing_cost_percentage: Pourcentage de Frais de Listage
+      listing_cost_percentage_help: Pourcentage par défaut des frais de listage marketplace (ex. eBay, Amazon)
+      payment_processing_cost_percentage: Pourcentage de Frais de Traitement des Paiements
+      payment_processing_cost_percentage_help: Pourcentage par défaut des frais de traitement des paiements (ex. PayPal, Stripe)
     default_currency: Devise par Défaut
     default_energy_cost: Coût Énergétique par Défaut
     settings: Paramètres
@@ -345,3 +431,261 @@ print_pricings:
   form:
     filament_weight: Poids du Filament
     print_time_hours: Heures de Temps d'Impression
+
+  # Traductions de la page d'accueil
+  landing:
+    hero:
+      headline: "Plus d'art, moins d'administratif"
+      subheadline: "Fini les feuilles de calcul et les calculs fastidieux. Automatisez la tarification pour vous concentrer sur votre passion créative."
+      cta_primary: "Commencer Gratuitement"
+      cta_demo: "Voir la Démo"
+      trust_signal: "Aucune carte de crédit requise - commencez avec toutes les fonctionnalités Startup pendant 30 jours"
+      preview_title: "Aperçu Rapide des Coûts"
+      preview_filament_weight: "Poids du Filament"
+      preview_print_time: "Temps d'Impression"
+      preview_total_cost: "Coût Total"
+      preview_cost_breakdown: "Électricité + Filament + Main-d'œuvre"
+
+    problem:
+      headline: "Perdez-vous de l'argent sur l'impression 3D ?"
+      manual_errors: "Erreurs de Calcul Manuel"
+      manual_errors_desc: "Les feuilles de calcul et les calculs mentaux entraînent des erreurs coûteuses et une sous-facturation."
+      electricity_costs: "Coûts d'Électricité Oubliés"
+      electricity_costs_desc: "La consommation électrique peut ajouter 20-40% à vos coûts réels mais est souvent ignorée."
+      inconsistent_pricing: "Tarification Incohérente"
+      inconsistent_pricing_desc: "Des calculs différents pour des travaux similaires confondent les clients et nuisent aux profits."
+      time_wasted: "Temps Perdu sur les Feuilles de Calcul"
+      time_wasted_desc: "Heures passées sur des calculs manuels au lieu de développer votre activité d'impression."
+
+    solution:
+      headline: "Outils Professionnels pour Makers Sérieux"
+      subheadline: "Tout ce dont vous avez besoin pour tarifer avec précision et gérer vos projets d'impression 3D comme un pro."
+
+    features:
+      accurate_calculation:
+        title: "Calcul de Coûts Précis"
+        desc: "Obtenez des coûts précis à chaque fois avec un calcul complet incluant toutes les dépenses cachées."
+        filament: "Poids du filament + coût de la bobine"
+        electricity: "Suivi de la consommation électrique"
+        labor: "Temps de travail (préparation + post-traitement)"
+        depreciation: "Amortissement de la machine"
+
+      multi_printer:
+        title: "Gestion Multi-Imprimantes"
+        desc: "Suivez les différentes spécifications d'imprimantes et surveillez votre retour sur investissement sur toute votre flotte."
+        power: "Suivi individuel de la consommation"
+        roi: "Suivi ROI par imprimante"
+        organization: "Gestion organisée des travaux d'impression"
+
+      invoicing:
+        title: "Facturation Professionnelle"
+        desc: "Générez des factures PDF professionnelles avec votre image de marque et support multi-devises."
+        pdf: "Factures PDF auto-générées"
+        branding: "Image de marque personnalisée"
+        currency: "Support multi-devises"
+
+      organization:
+        title: "Organisation de Projets"
+        desc: "Gardez vos travaux d'impression organisés avec des outils puissants de recherche, filtrage et gestion de projets."
+        search: "Rechercher et filtrer les travaux"
+        duplicate: "Dupliquer des projets similaires"
+        history: "Suivi complet de l'historique d'impression"
+
+    pricing:
+      headline: "Tarification Simple et Transparente"
+      subheadline: "Choisissez le plan qui correspond à votre volume d'impression. Mettez à niveau ou rétrogradez à tout moment."
+      cta: "Commencer Gratuitement"
+
+      free:
+        title: "Gratuit"
+        trial_notice: "Le premier mois inclut toutes les fonctionnalités Startup !"
+        calculations: "5 calculs par mois (après l'essai)"
+        printers: "1 profil d'imprimante"
+        filaments: "4 types de filaments"
+        invoices: "5 factures par mois"
+        branding: "Marque CalcuMake sur les factures"
+
+      startup:
+        title: "Startup"
+        badge: "Le Plus Populaire"
+        calculations: "50 calculs par mois"
+        printers: "10 profils d'imprimantes"
+        filaments: "16 types de filaments"
+        branding: "Supprimer la marque CalcuMake"
+        ads: "Sans publicité"
+
+      pro:
+        title: "Pro"
+        unlimited: "Tout illimité"
+        branding: "Supprimer la marque CalcuMake"
+        ads: "Sans publicité"
+        support: "Support prioritaire"
+        analytics: "Analyses avancées"
+        features: "Futures fonctionnalités premium"
+
+      trust_signals:
+        no_credit_card: "Aucune carte de crédit requise - commencez avec toutes les fonctionnalités Startup pendant 30 jours"
+        cancel_anytime: "Annulez à tout moment"
+        data_private: "Vos données restent privées"
+
+    faq:
+      headline: "Questions Fréquemment Posées"
+
+      accuracy:
+        question: "Quelle est la précision des calculs ?"
+        answer: "CalcuMake utilise des formules simples et prend en compte tous les facteurs de coût incluant le filament, l'électricité, le temps de travail et l'amortissement de la machine."
+
+      currencies:
+        question: "Quelles devises CalcuMake supporte-t-il ?"
+        answer: "CalcuMake supporte actuellement USD, EUR, GBP, JPY, CAD et AUD avec formatage automatique et précision pour chaque devise. Vous pouvez changer de devise à tout moment dans vos paramètres de profil."
+
+      printers:
+        question: "CalcuMake supporte-t-il mon imprimante 3D ?"
+        answer: "CalcuMake fonctionne avec n'importe quelle imprimante 3D ! Vous entrez simplement la consommation électrique de votre imprimante et d'autres spécifications. Nous prévoyons bientôt le support pour les imprimantes à résine !"
+
+      electricity:
+        question: "Comment fonctionnent les coûts d'électricité ?"
+        answer: "CalcuMake calcule automatiquement les coûts d'électricité basés sur la consommation de votre imprimante (en watts), la durée d'impression et votre tarif énergétique local par kWh. Cela assure que vous n'oubliez jamais ce facteur de coût souvent négligé."
+
+      invoices:
+        question: "Puis-je personnaliser mes factures ?"
+        answer: "Oui ! Vous pouvez ajouter le logo de votre entreprise, personnaliser les couleurs et inclure vos informations commerciales. Les plans payants suppriment la marque CalcuMake pour un aspect complètement professionnel."
+
+    final_cta:
+      headline: "Prêt à arrêter de perdre de l'argent sur l'impression 3D ?"
+      subheadline: "Rejoignez des milliers de makers qui font confiance à CalcuMake pour une tarification précise et une gestion de projets professionnelle."
+      button: "Commencer Votre Essai Gratuit"
+
+  calculators:
+    quick_cost_calculator: "Calculateur de Coût Rapide"
+    print_time_hours: "Temps d'Impression (heures)"
+    filament_weight_grams: "Poids du Filament (grammes)"
+    filament_price_per_kg: "Prix du Filament par KG (€)"
+    labor_rate_per_hour: "Tarif de Main-d'œuvre par Heure (€)"
+    create_full_calculation: "Créer un Calcul Complet"
+    features:
+      real_time: "Calcul en temps réel pendant la saisie"
+      includes_costs: "Inclut les coûts d'électricité et de main-d'œuvre"
+    results:
+      filament_cost: "Coût du Filament"
+      electricity_cost: "Coût d'Électricité"
+      labor_cost: "Coût de Main-d'œuvre"
+      total_cost: "Coût Total"
+      estimated_cost: "Coût Estimé:"
+
+  demo:
+    title: "Essayer la Démo CalcuMake"
+    subtitle: "Testez notre calculateur de coûts d'impression 3D avec des données d'exemple. Aucun compte requis !"
+    sign_up_full_version: "S'inscrire pour la Version Complète"
+    start_free_trial: "Commencer l'Essai Gratuit"
+    limitations:
+      title: "Ceci est une Version de Démonstration"
+      description: "L'application CalcuMake complète inclut :"
+      features:
+        - "Profils d'imprimantes multiples avec spécifications automatiques"
+        - "Bibliothèque de filaments complète avec propriétés des matériaux"
+        - "Génération professionnelle de factures PDF"
+        - "Historique de projet et fonctionnalité de duplication"
+        - "Support multi-devises"
+        - "Calculs d'amortissement de machines"
+
+  devise:
+    shared:
+      sign_in_with_provider: "Se connecter avec %{provider}"
+      sign_in_with_provider_aria: "Se connecter avec votre compte %{provider}"
+      or_sign_in_with_email: "ou se connecter par email"
+      oauth_signin_options: "Options de connexion tierces"
+      alternative_signin_method: "Méthode de connexion alternative"
+    omniauth_callbacks:
+      success: "Authentifié avec succès depuis le compte %{kind}."
+
+  # Limites d'utilisation et gestion des abonnements
+  usage_limits:
+    limit_reached: "Vous avez atteint la limite de %{limit} %{resource} de votre plan %{plan}. Veuillez mettre à niveau pour continuer."
+    approaching_limit: "Vous approchez de la limite de votre plan pour %{resource}"
+    usage_summary: "Résumé d'utilisation"
+    current_usage: "%{current} sur %{limit} utilisés"
+    unlimited: "Illimité"
+
+  subscriptions:
+    title: "Abonnement et tarification"
+    current_plan: "Plan actuel"
+    upgrade: "Mettre à niveau le plan"
+    manage: "Gérer l'abonnement"
+    cancel: "Annuler l'abonnement"
+    invalid_plan: "Plan d'abonnement invalide sélectionné"
+    checkout_error: "Impossible de créer la session de paiement. Veuillez réessayer."
+    verification_error: "Impossible de vérifier l'abonnement. Veuillez contacter le support."
+    portal_error: "Impossible d'accéder à la gestion des abonnements. Veuillez réessayer."
+    no_subscription: "Vous n'avez pas d'abonnement actif"
+    upgrade_successful: "Mise à niveau réussie vers le plan %{plan} !"
+    cancel_scheduled: "Votre abonnement sera annulé à la fin de la période de facturation"
+    cancel_error: "Impossible d'annuler l'abonnement. Veuillez réessayer."
+    trial_badge: "Essai gratuit de 30 jours"
+    trial_remaining: "%{days} jours restants"
+    features:
+      calculations: "%{count} calculs d'impression/mois"
+      printers: "%{count} profils d'imprimante"
+      filaments: "%{count} types de filament"
+      invoices: "%{count} factures/mois"
+      unlimited_calculations: "Calculs d'impression illimités"
+      unlimited_printers: "Imprimantes illimitées"
+      unlimited_filaments: "Filaments illimités"
+      unlimited_invoices: "Factures illimitées"
+      no_branding: "Supprimer la marque CalcuMake"
+      no_ads: "Expérience sans publicité"
+      priority_support: "Support prioritaire"
+      analytics: "Analyses avancées"
+      import_export: "Import/export en masse"
+    plans:
+      subtitle: "Choisissez le plan qui vous convient le mieux"
+      free:
+        name: "Gratuit"
+        price: "0€"
+        description: "Parfait pour essayer CalcuMake"
+      startup:
+        name: "Startup"
+        price: "0.99€/mois"
+        description: "Idéal pour les passionnés et les petits projets"
+      pro:
+        name: "Pro"
+        price: "9.99€/mois"
+        description: "Puissance illimitée pour les professionnels"
+    most_popular: "Le plus populaire"
+    month: "mois"
+    your_plan: "Votre plan actuel"
+    remaining: "restants"
+    renews_on: "Se renouvelle le"
+    trial_ends_on: "L'essai se termine le"
+    upgrade_now: "Mettre à niveau maintenant"
+    upgrade_to_plan: "Mettre à niveau vers %{plan}"
+    downgrade_to_free: "Rétrograder vers le plan gratuit"
+    confirm_downgrade: "Êtes-vous sûr de vouloir rétrograder ? Vous perdrez l'accès aux fonctionnalités premium."
+    manage_subscription: "Gérer votre abonnement"
+    manage_description: "Mettez à jour votre méthode de paiement, consultez l'historique de facturation ou annulez votre abonnement via notre portail de facturation sécurisé."
+    open_billing_portal: "Ouvrir le portail de facturation"
+    cancel_subscription: "Annuler l'abonnement"
+    cancel_confirmation: "Êtes-vous sûr de vouloir annuler votre abonnement ? Vous conserverez l'accès jusqu'à la fin de votre période de facturation."
+    manage_note: "Toute la facturation est gérée en toute sécurité par Stripe. Vos informations de paiement ne sont jamais stockées sur nos serveurs."
+    approaching_limits_message: "Vous approchez des limites de votre plan. Envisagez de mettre à niveau pour éviter les interruptions."
+    faq:
+      title: "Questions fréquemment posées"
+      trial_question: "Que se passe-t-il après la fin de mon essai de 30 jours ?"
+      trial_answer: "Après la fin de votre essai de 30 jours, votre compte basculera automatiquement sur le plan gratuit. Vous pouvez continuer à utiliser CalcuMake avec les limites du plan gratuit, ou passer à Startup ou Pro à tout moment."
+      cancel_question: "Puis-je annuler mon abonnement à tout moment ?"
+      cancel_answer: "Oui ! Vous pouvez annuler votre abonnement à tout moment. Vous conserverez l'accès aux fonctionnalités de votre plan payant jusqu'à la fin de votre période de facturation actuelle, puis basculerez automatiquement sur le plan gratuit."
+      data_question: "Qu'arrive-t-il à mes données si je rétrograde ?"
+      data_answer: "Toutes vos données existantes sont conservées lorsque vous rétrogradez. Cependant, vous ne pourrez pas créer de nouvelles ressources si vous dépassez les limites de votre plan gratuit. Vos projets, imprimantes, filaments et factures existants restent accessibles en mode lecture seule."
+      payment_question: "Quels moyens de paiement acceptez-vous ?"
+      payment_answer: "Nous acceptons toutes les principales cartes de crédit et de débit via Stripe, notre processeur de paiement sécurisé. Cela inclut Visa, Mastercard, American Express et plus encore. Toutes les informations de paiement sont gérées en toute sécurité par Stripe et ne sont jamais stockées sur nos serveurs."
+      change_plan_question: "Puis-je changer de plan plus tard ?"
+      change_plan_answer: "Absolument ! Vous pouvez mettre à niveau ou rétrograder votre plan à tout moment. Les mises à niveau prennent effet immédiatement et vous serez facturé un montant au prorata. Les rétrogradations prennent effet à la fin de votre période de facturation actuelle."
+      reset_question: "Quand mes limites mensuelles sont-elles réinitialisées ?"
+      reset_answer: "Les limites mensuelles pour les calculs d'impression et les factures sont réinitialisées le 1er jour de chaque mois. Les limites d'imprimantes et de filaments sont des totaux, pas des limites mensuelles."
+
+  # Noms de modèles pour l'affichage
+  models:
+    print_pricing_plural: "Calculs d'impression"
+    printer_plural: "Imprimantes"
+    filament_plural: "Filaments"
+    invoice_plural: "Factures"

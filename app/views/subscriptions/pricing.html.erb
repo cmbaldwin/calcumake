@@ -1,0 +1,75 @@
+<%# Subscription pricing page with plan comparison and upgrade options %>
+
+<% content_for :title, t('subscriptions.title') %>
+
+<div class="container py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h1 class="h3 mb-1"><%= t('subscriptions.title') %></h1>
+      <p class="text-muted mb-0">
+        <%= t('subscriptions.plans.subtitle', default: 'Choose the plan that works best for you') %>
+      </p>
+    </div>
+  </div>
+
+  <%# Current Plan & Trial Status %>
+  <div class="row mb-4">
+    <div class="col-12">
+      <%= render 'subscriptions/current_plan_status' %>
+    </div>
+  </div>
+
+  <%# Usage Statistics %>
+  <% if current_user.free_plan? || current_user.startup_plan? %>
+    <div class="row mb-4">
+      <div class="col-12">
+        <%= render 'subscriptions/usage_stats', usage: @usage %>
+      </div>
+    </div>
+  <% end %>
+
+  <%# Pricing Cards %>
+  <div id="pricing-plans" class="row mb-4">
+    <div class="col-md-4 mb-3">
+      <%= render 'subscriptions/pricing_card',
+                 plan: 'free',
+                 features: @plans[:free],
+                 current: current_user.free_plan?,
+                 usage: @usage %>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <%= render 'subscriptions/pricing_card',
+                 plan: 'startup',
+                 features: @plans[:startup],
+                 current: current_user.startup_plan?,
+                 popular: true,
+                 usage: @usage %>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <%= render 'subscriptions/pricing_card',
+                 plan: 'pro',
+                 features: @plans[:pro],
+                 current: current_user.pro_plan?,
+                 usage: @usage %>
+    </div>
+  </div>
+
+  <%# Manage Subscription Section %>
+  <% if current_user.stripe_subscription_id.present? %>
+    <div class="row">
+      <div class="col-12">
+        <%= render 'subscriptions/manage_subscription' %>
+      </div>
+    </div>
+  <% end %>
+
+  <%# FAQ Section %>
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2 class="h4 mb-3"><%= t('subscriptions.faq.title', default: 'Frequently Asked Questions') %></h2>
+      <%= render 'subscriptions/faq' %>
+    </div>
+  </div>
+</div>

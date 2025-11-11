@@ -1,0 +1,44 @@
+<%# Subscription management options %>
+
+<div class="card border-secondary">
+  <div class="card-header bg-light">
+    <h3 class="h6 mb-0">
+      <i class="bi bi-credit-card"></i>
+      <%= t('subscriptions.manage_subscription', default: 'Manage Your Subscription') %>
+    </h3>
+  </div>
+  <div class="card-body">
+    <p class="mb-3">
+      <%= t('subscriptions.manage_description',
+            default: 'Update your payment method, view billing history, or cancel your subscription through our secure billing portal.') %>
+    </p>
+
+    <div class="d-flex gap-2 flex-wrap">
+      <%= link_to manage_subscriptions_path,
+                  class: 'btn btn-primary',
+                  data: { turbo: false } do %>
+        <i class="bi bi-box-arrow-up-right"></i>
+        <%= t('subscriptions.open_billing_portal', default: 'Open Billing Portal') %>
+      <% end %>
+
+      <%= button_to cancel_subscriptions_path,
+                    method: :post,
+                    class: 'btn btn-outline-danger',
+                    data: {
+                      confirm: t('subscriptions.cancel_confirmation',
+                                default: 'Are you sure you want to cancel your subscription? You will retain access until the end of your billing period.')
+                    } do %>
+        <i class="bi bi-x-circle"></i>
+        <%= t('subscriptions.cancel_subscription', default: 'Cancel Subscription') %>
+      <% end %>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0 py-2 px-3">
+      <small>
+        <i class="bi bi-info-circle"></i>
+        <%= t('subscriptions.manage_note',
+              default: 'All billing is securely handled by Stripe. Your payment information is never stored on our servers.') %>
+      </small>
+    </div>
+  </div>
+</div>

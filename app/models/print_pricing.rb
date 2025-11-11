@@ -9,6 +9,8 @@ class PrintPricing < ApplicationRecord
 
   validates :job_name, presence: true
   validates :times_printed, numericality: { greater_than_or_equal_to: 0, only_integer: true }
+  validates :listing_cost_percentage, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }, allow_nil: true
+  validates :payment_processing_cost_percentage, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }, allow_nil: true
   validate :must_have_at_least_one_plate
   validate :cannot_have_more_than_ten_plates
 
@@ -66,6 +68,16 @@ class PrintPricing < ApplicationRecord
     depreciation_cost
   end
 
+  def total_listing_cost
+    subtotal = calculate_subtotal
+    (listing_cost_percentage || user.default_listing_cost_percentage || 0) * subtotal / 100
+  end
+
+  def total_payment_processing_cost
+    subtotal = calculate_subtotal
+    (payment_processing_cost_percentage || user.default_payment_processing_cost_percentage || 0) * subtotal / 100
+  end
+
   def calculate_subtotal
     total_filament_cost + total_electricity_cost + total_labor_cost +
     total_machine_upkeep_cost + (other_costs || 0)
@@ -88,8 +100,11 @@ class PrintPricing < ApplicationRecord
 
   def calculate_final_price
     subtotal = calculate_subtotal
-    vat_amount = subtotal * (vat_percentage || 0) / 100
-    self.final_price = subtotal + vat_amount
+    listing_cost = total_listing_cost
+    payment_cost = total_payment_processing_cost
+    subtotal_with_fees = subtotal + listing_cost + payment_cost
+    vat_amount = subtotal_with_fees * (vat_percentage || user.default_vat_percentage || 0) / 100
+    self.final_price = subtotal_with_fees + vat_amount
   end
 
   def must_have_at_least_one_plate

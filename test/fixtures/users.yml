@@ -13,3 +13,53 @@ two:
   default_energy_cost_per_kwh: 0.10
   locale: es
   next_invoice_number: 1
+
+oauth_google:
+  email: googleuser@gmail.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'randompassword123') %>
+  default_currency: USD
+  default_energy_cost_per_kwh: 0.12
+  locale: en
+  next_invoice_number: 1
+  provider: google_oauth2
+  uid: "google_123456789"
+
+oauth_github:
+  email: githubuser@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'randompassword456') %>
+  default_currency: USD
+  default_energy_cost_per_kwh: 0.12
+  locale: en
+  next_invoice_number: 1
+  provider: github
+  uid: "github_987654321"
+
+oauth_microsoft:
+  email: msuser@outlook.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'randompassword789') %>
+  default_currency: USD
+  default_energy_cost_per_kwh: 0.12
+  locale: en
+  next_invoice_number: 1
+  provider: microsoft_graph
+  uid: "ms_555666777"
+
+oauth_facebook:
+  email: facebookuser@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'randompassword101') %>
+  default_currency: USD
+  default_energy_cost_per_kwh: 0.12
+  locale: en
+  next_invoice_number: 1
+  provider: facebook
+  uid: "facebook_888999000"
+
+oauth_yahoojp:
+  email: yahoojpuser@yahoo.co.jp
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'randompassword202') %>
+  default_currency: JPY
+  default_energy_cost_per_kwh: 0.25
+  locale: ja
+  next_invoice_number: 1
+  provider: yahoojp
+  uid: "yahoojp_111222333"

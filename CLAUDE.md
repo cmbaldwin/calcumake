@@ -102,14 +102,34 @@ Devise with user-specific data isolation. Rails Admin at `/admin` (requires `adm
 Minitest with Turbo Stream tests. Test both HTML and turbo_stream formats.
 
 ## Design Standards
-Compact design system:
-- Typography: 15-25% smaller than standard
-- Spacing: 25-40% reduction
-- Buttons: Universal `0.6rem 1.2rem` padding
-- All buttons identical dimensions regardless of type
+**Moab Desert Theme** - Compact design system inspired by Utah's natural landscapes:
+- **Color Palette**: Deep red primary (#c8102e), sandstone orange secondary (#d2691e), desert sage success (#9caf88)
+- **Typography**: 15-25% smaller than standard Bootstrap
+- **Spacing**: 25-40% reduction from standard
+- **Buttons**: Universal `0.6rem 1.2rem` padding, gradient backgrounds
+- **Cards**: Glass-morphism effect with backdrop-filter and subtle shadows
+- **Responsive**: Mobile-first with container adjustments
+
+## Code Standards & Tools
+- **Ruby Style**: Omakase Ruby style guide with Rubocop
+- **CSS**: Bootstrap 5 CDN + custom CSS variables for theming
+- **Testing**: Minitest with parallel workers, system tests via Capybara/Selenium
+- **Security**: Brakeman static analysis, CSP headers, CSRF protection
+- **SEO**: Comprehensive meta tags, structured data, sitemap generation
+- **Performance**: Asset pipeline with Propshaft, CDN imports, PWA caching
 
 ## Key Files
 - `app/models/plate.rb` - Individual plate model
 - `app/javascript/controllers/nested_form_controller.js` - Dynamic plate management
 - `app/helpers/print_pricings_helper.rb` - View formatting
+- `app/helpers/seo_helper.rb` - SEO meta tags and structured data
+- `app/assets/stylesheets/application.css` - Moab theme styling
 - `config/locales/` - All 7 language files
+
+## Documentation Context Reference
+
+**OAuth Setup:** `docs/OAUTH_SETUP_GUIDE.md`
+**Landing Page:** `docs/LANDING_PAGE_PLAN.md`
+**Turbo Framework:** `docs/TURBO_REFERENCE.md` | `docs/TURBO_CHEATSHEET.md`
+
+*Reference documentation only when specific context is required.*
