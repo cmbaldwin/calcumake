@@ -1,0 +1,97 @@
+<%= turbo_frame_tag "modal_content" do %>
+  <div class="modal-header">
+    <h5 class="modal-title"><%= t('clients.new.title') %></h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+
+  <%= form_with model: @client,
+                data: { turbo_frame: "_top" },
+                html: { class: "needs-validation", novalidate: true } do |form| %>
+    <div class="modal-body">
+      <% if @client.errors.any? %>
+        <div class="alert alert-danger mb-4">
+          <h6 class="fw-bold mb-2">
+            <%= t('common.errors_prohibited', count: @client.errors.count, errors: t('common.error_count', count: @client.errors.count), model: t('models.client').downcase) %>
+          </h6>
+          <ul class="mb-0 ps-3">
+            <% @client.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <!-- Basic Information -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h6 class="mb-0"><%= t('clients.sections.basic_info') %></h6>
+        </div>
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <%= form.label :name, t('clients.fields.name'), class: "form-label" %>
+              <%= form.text_field :name, class: "form-control", placeholder: t('clients.fields.name_placeholder'), required: true %>
+            </div>
+            <div class="col-md-6">
+              <%= form.label :company_name, t('clients.fields.company_name'), class: "form-label" %>
+              <%= form.text_field :company_name, class: "form-control", placeholder: t('clients.fields.company_name_placeholder') %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h6 class="mb-0"><%= t('clients.sections.contact_info') %></h6>
+        </div>
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <%= form.label :email, t('clients.fields.email'), class: "form-label" %>
+              <%= form.email_field :email, class: "form-control", placeholder: t('clients.fields.email_placeholder') %>
+            </div>
+            <div class="col-md-6">
+              <%= form.label :phone, t('clients.fields.phone'), class: "form-label" %>
+              <%= form.text_field :phone, class: "form-control", placeholder: t('clients.fields.phone_placeholder') %>
+            </div>
+            <div class="col-12">
+              <%= form.label :address, t('clients.fields.address'), class: "form-label" %>
+              <%= form.text_area :address, class: "form-control", rows: 2, placeholder: t('clients.fields.address_placeholder') %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Information -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h6 class="mb-0"><%= t('clients.sections.additional_info') %></h6>
+        </div>
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <%= form.label :tax_id, t('clients.fields.tax_id'), class: "form-label" %>
+              <%= form.text_field :tax_id, class: "form-control", placeholder: t('clients.fields.tax_id_placeholder') %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="card">
+        <div class="card-header">
+          <h6 class="mb-0"><%= t('clients.fields.notes') %></h6>
+        </div>
+        <div class="card-body">
+          <%= form.text_area :notes, class: "form-control", rows: 3, placeholder: t('clients.fields.notes_placeholder') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t('actions.cancel') %></button>
+      <%= form.submit t('clients.buttons.create'), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+<% end %>

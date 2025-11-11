@@ -18,15 +18,32 @@ class FilamentsController < ApplicationController
 
   def new
     @filament = current_user.filaments.build(diameter: 1.75)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream { render :modal_form }
+    end
   end
 
   def create
     @filament = current_user.filaments.build(filament_params)
 
     if @filament.save
-      redirect_to @filament, notice: t("flash.created", model: t("models.filament"))
+      respond_to do |format|
+        format.html { redirect_to @filament, notice: t("flash.created", model: t("models.filament")) }
+        format.turbo_stream {
+          flash.now[:notice] = t("flash.created", model: t("models.filament"))
+          render turbo_stream: [
+            turbo_stream.update("modal", "<div id='modal' class='modal fade' data-controller='modal'></div>"),
+            turbo_stream.prepend("flash", partial: "layouts/flash_message", locals: { type: :notice, message: flash.now[:notice] })
+          ]
+        }
+      end
     else
-      render :new, status: :unprocessable_content
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_content }
+        format.turbo_stream { render :modal_form, status: :unprocessable_content }
+      end
     end
   end
 
