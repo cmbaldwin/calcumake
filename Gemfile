@@ -23,6 +23,9 @@ gem "jbuilder"
 # Authentication
 gem "devise"
 
+# Email service
+gem "resend"
+
 # OAuth providers
 gem "omniauth"
 gem "omniauth-google-oauth2"

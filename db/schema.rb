@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_10_234216) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_11_012547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -179,6 +179,9 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_10_234216) do
 
   create_table "users", force: :cascade do |t|
     t.boolean "admin", default: false, null: false
+    t.datetime "confirmation_sent_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
     t.datetime "created_at", null: false
     t.text "default_company_address"
     t.string "default_company_email"
@@ -205,7 +208,9 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_10_234216) do
     t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
     t.string "uid"
+    t.string "unconfirmed_email"
     t.datetime "updated_at", null: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
