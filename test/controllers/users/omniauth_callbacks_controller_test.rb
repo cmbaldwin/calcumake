@@ -71,6 +71,19 @@ class Users::OmniauthCallbacksControllerTest < ActiveSupport::TestCase
     end
   end
 
+  test "User.from_omniauth creates new user with LINE OAuth data" do
+    auth_data = create_line_auth_hash(email: "line_controller@example.com")
+
+    assert_difference "User.count", 1 do
+      user = User.from_omniauth(auth_data)
+      assert user.persisted?
+      assert_equal "line_controller@example.com", user.email
+      assert_equal "line", user.provider
+      assert_equal "line789", user.uid
+      assert user.oauth_user?
+    end
+  end
+
   test "User.from_omniauth links existing user by email" do
     existing_user = users(:one)
     auth_data = create_google_auth_hash(email: existing_user.email)
@@ -103,6 +116,7 @@ class Users::OmniauthCallbacksControllerTest < ActiveSupport::TestCase
     assert_respond_to controller, :microsoft_graph
     assert_respond_to controller, :facebook
     assert_respond_to controller, :yahoojp
+    assert_respond_to controller, :line
     assert_respond_to controller, :failure
 
     # Test that handle_auth private method exists
@@ -110,7 +124,7 @@ class Users::OmniauthCallbacksControllerTest < ActiveSupport::TestCase
   end
 
   test "OAuth providers are correctly configured on User model" do
-    expected_providers = [:google_oauth2, :github, :microsoft_graph, :facebook, :yahoojp]
+    expected_providers = [:google_oauth2, :github, :microsoft_graph, :facebook, :yahoojp, :line]
     assert_equal expected_providers, User.omniauth_providers
   end
 
@@ -259,6 +273,31 @@ class Users::OmniauthCallbacksControllerTest < ActiveSupport::TestCase
           email: email,
           name: name,
           locale: "ja-JP"
+        )
+      )
+    )
+  end
+
+  def create_line_auth_hash(email: "lineuser@example.com", uid: "line789", name: "LINE User")
+    OpenStruct.new(
+      provider: "line",
+      uid: uid,
+      info: OpenStruct.new(
+        email: email,
+        name: name,
+        image: "https://profile.line-scdn.net/#{uid}"
+      ),
+      credentials: OpenStruct.new(
+        token: "mock_line_token",
+        refresh_token: "mock_line_refresh_token",
+        expires_at: Time.current + 30.days
+      ),
+      extra: OpenStruct.new(
+        raw_info: OpenStruct.new(
+          userId: uid,
+          displayName: name,
+          email: email,
+          pictureUrl: "https://profile.line-scdn.net/#{uid}"
         )
       )
     )

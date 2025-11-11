@@ -70,6 +70,19 @@ class OauthAuthenticationTest < ActiveSupport::TestCase
     end
   end
 
+  test "OAuth user creation works with LINE provider" do
+    auth_data = create_oauth_mock("line", "line@test.com", "line789")
+
+    assert_difference "User.count", 1 do
+      user = User.from_omniauth(auth_data)
+      assert user.persisted?
+      assert_equal "line@test.com", user.email
+      assert_equal "line", user.provider
+      assert_equal "line789", user.uid
+      assert user.oauth_user?
+    end
+  end
+
   test "OAuth authentication links existing user account" do
     existing_user = users(:one)
     auth_data = create_oauth_mock("google_oauth2", existing_user.email, "12345")
@@ -159,7 +172,8 @@ class OauthAuthenticationTest < ActiveSupport::TestCase
       { name: "github", email: "github@test.com", uid: "github456" },
       { name: "microsoft_graph", email: "microsoft@test.com", uid: "microsoft789" },
       { name: "facebook", email: "facebook@test.com", uid: "facebook101" },
-      { name: "yahoojp", email: "yahoojp@test.com", uid: "yahoojp202" }
+      { name: "yahoojp", email: "yahoojp@test.com", uid: "yahoojp202" },
+      { name: "line", email: "line@test.com", uid: "line303" }
     ]
 
     providers.each do |provider_data|
