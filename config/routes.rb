@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :clients
   resources :filaments do
     member do
       post :duplicate

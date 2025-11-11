@@ -16,6 +16,11 @@
         <%= render "invoices/partials/form/company_info" %>
     </div>
 
+    <!-- Client Selection -->
+    <div class="col-12">
+        <%= render "invoices/partials/form/client", form: form %>
+    </div>
+
     <!-- Invoice Details -->
     <div class="col-12">
         <%= render "invoices/partials/form/details", form: form, invoice: @invoice %>
