@@ -557,6 +557,8 @@ en:
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
+    faq:
+      title: Frequently Asked Questions
     billing_support:
       title: Billing and Subscription Support
       description: For billing inquiries, subscription changes, refund requests, or payment issues, please contact us with your account email.
@@ -1000,3 +1002,6 @@ en:
       add_filament: Add Filament
       update_filament: Update Filament
     confirm_delete: Are you sure you want to delete '%{name}'?
+  devise:
+    shared:
+      oauth_signin_options: Sign in with social accounts

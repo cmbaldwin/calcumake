@@ -467,3 +467,6 @@ print_pricings:
   form:
     filament_weight: وزن الخيط
     print_time_hours: ساعات وقت الطباعة
+  devise:
+    shared:
+      oauth_signin_options: Sign in options

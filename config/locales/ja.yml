@@ -1023,3 +1023,6 @@ ja:
     printer_plural: "プリンター"
     filament_plural: "フィラメント"
     invoice_plural: "請求書"
+  devise:
+    shared:
+      oauth_signin_options: Sign in options

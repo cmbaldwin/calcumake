@@ -508,3 +508,6 @@ print_pricings:
   form:
     filament_weight: Poids du Filament
     print_time_hours: Heures de Temps d'Impression
+  devise:
+    shared:
+      oauth_signin_options: Sign in options
