@@ -8,6 +8,7 @@ hi:
     new_pricing: नई कीमत
     my_printers: मेरे प्रिंटर
     my_filaments: My Filaments
+    invoices: चालान
     profile: प्रोफ़ाइल
     help: सहायता
     sign_out: साइन आउट
@@ -379,6 +380,10 @@ filaments:
       unit_price: यूनिट मूल्य
       total: कुल
       remove: हटाएं
+      round_all_up: सभी को ऊपर राउंड करें
+      round_all_up_help: सभी इकाई मूल्यों को निकटतम पूर्ण मान तक ऊपर राउंड करें
+      round_all_down: सभी को नीचे राउंड करें
+      round_all_down_help: सभी इकाई मूल्यों को निकटतम पूर्ण मान तक नीचे राउंड करें
 print_pricings:
   form:
     filament_weight: फिलामेंट वजन

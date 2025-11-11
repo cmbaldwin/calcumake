@@ -8,6 +8,6 @@ class CreatePlateFilaments < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    add_index :plate_filaments, [:plate_id, :filament_id], unique: true
+    add_index :plate_filaments, [ :plate_id, :filament_id ], unique: true
   end
 end

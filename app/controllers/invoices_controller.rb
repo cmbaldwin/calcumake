@@ -3,8 +3,8 @@ class InvoicesController < ApplicationController
   include ResourceAuthorization
 
   before_action :authenticate_user!
-  before_action :set_print_pricing, except: [:index]
-  before_action :set_print_pricing_for_nested_index, only: [:index]
+  before_action :set_print_pricing, except: [ :index ]
+  before_action :set_print_pricing_for_nested_index, only: [ :index ]
   before_action :set_invoice, only: [ :show, :edit, :update, :destroy, :mark_as_sent, :mark_as_paid, :mark_as_cancelled ]
   before_action :authorize_invoice, only: [ :show, :edit, :update, :destroy, :mark_as_sent, :mark_as_paid, :mark_as_cancelled ]
 
