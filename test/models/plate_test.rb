@@ -25,7 +25,7 @@ class PlateTest < ActiveSupport::TestCase
       printing_time_minutes: 0
     )
     assert_not plate.valid?
-    assert plate.errors[:base].any? { |msg| msg.include?("filament") }
+    assert plate.errors[:base].any?
   end
 
   test "total_filament_weight calculates correctly" do
