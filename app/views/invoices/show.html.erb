@@ -10,7 +10,7 @@
         <%= render "invoices/partials/header/main", invoice: @invoice, user: current_user %>
 
         <!-- Customer Information -->
-        <%= render "invoices/partials/form/customer", customer_name: @print_pricing.job_name %>
+        <%= render "invoices/partials/form/customer", customer_name: @print_pricing.job_name, client: @invoice.client %>
 
         <!-- Line Items Table -->
         <%= render "invoices/partials/line_items/table", invoice: @invoice %>
