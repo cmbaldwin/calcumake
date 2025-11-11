@@ -2032,3 +2032,24 @@ body.has-locale-suggestion {
   font-size: 0.875rem;
   padding: 0.5rem 1rem;
 }
+
+/* Devise authentication forms - constrain width on large screens */
+.login-form {
+  max-width: 28rem; /* 448px - compact but comfortable for forms */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem;
+}
+
+/* Ensure form controls within login forms are appropriately sized */
+.login-form .form-control {
+  font-size: 0.9rem;
+}
+
+.login-form .field {
+  text-align: left; /* Left-align labels and inputs for better UX */
+}
+
+.login-form h2 {
+  margin-bottom: 1.5rem;
+}

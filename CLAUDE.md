@@ -1,7 +1,7 @@
 # CLAUDE.md
 
 ## Application Overview
-**CalcuMake** - Rails 8.0 3D print project management with invoicing, cost tracking, and pricing calculations. Multi-currency support, Devise authentication.
+**CalcuMake** - Rails 8.1.1 3D print project management with invoicing, cost tracking, and pricing calculations. Multi-currency support, Devise authentication with OAuth and email confirmation.
 
 **Copyright**: © 2025 株式会社モアブ (MOAB Co., Ltd.)
 
@@ -15,11 +15,12 @@
 ## Core Architecture
 
 ### Models
-- **User**: Currency/energy defaults, company info, logo
+- **User**: Currency/energy defaults, company info, logo, confirmable, omniauthable
+- **Client**: Customer management (searchable via Ransack)
 - **Printer**: Power consumption, payoff tracking
-- **PrintPricing**: Job calculations (1-10 plates)
+- **PrintPricing**: Job calculations (1-10 plates), linked to clients
 - **Plate**: Individual build plates with time/material specs
-- **Invoice**: Auto-numbered, status tracking
+- **Invoice**: Auto-numbered, status tracking, client integration
 - **InvoiceLineItem**: Categorized cost breakdowns
 
 ### Multi-Plate System
@@ -86,7 +87,9 @@ Supports 7 languages: en, ja, zh-CN, hi, es, fr, ar
 PostgreSQL with plates table storing per-plate data. Always test with fixtures for both `print_pricings.yml` and `plates.yml`.
 
 ## Authentication
-Devise with user-specific data isolation. Rails Admin at `/admin` (requires `admin: true`).
+Devise with confirmable and omniauthable modules. OAuth providers: Google, GitHub, Microsoft, Facebook, Yahoo Japan, LINE. Email confirmation via Resend (noreply@calcumake.com). Rails Admin at `/admin` (requires `admin: true`).
+
+**Local Development**: Requires `dotenv-rails` gem and `.env.local` file (see `.env.local.example`). OAuth credentials stored in 1Password with `CALCUMAKE_` prefix, used in app without prefix.
 
 ## PWA (Progressive Web App)
 - Built-in Rails 8 PWA with manifest + service worker
@@ -108,6 +111,7 @@ Minitest with Turbo Stream tests. Test both HTML and turbo_stream formats.
 - **Spacing**: 25-40% reduction from standard
 - **Buttons**: Universal `0.6rem 1.2rem` padding, gradient backgrounds
 - **Cards**: Glass-morphism effect with backdrop-filter and subtle shadows
+- **Forms**: Authentication forms constrained to 28rem max-width, centered on large screens
 - **Responsive**: Mobile-first with container adjustments
 
 ## Code Standards & Tools
@@ -119,12 +123,17 @@ Minitest with Turbo Stream tests. Test both HTML and turbo_stream formats.
 - **Performance**: Asset pipeline with Propshaft, CDN imports, PWA caching
 
 ## Key Files
+- `app/models/user.rb` - User model with Devise confirmable + omniauthable
+- `app/models/client.rb` - Client management model
 - `app/models/plate.rb` - Individual plate model
+- `app/helpers/oauth_helper.rb` - OAuth provider configuration
+- `app/helpers/application_helper.rb` - OAuth buttons and icons for views
+- `app/views/devise/shared/_oauth_buttons.html.erb` - OAuth login buttons partial
 - `app/javascript/controllers/nested_form_controller.js` - Dynamic plate management
 - `app/helpers/print_pricings_helper.rb` - View formatting
-- `app/helpers/seo_helper.rb` - SEO meta tags and structured data
 - `app/assets/stylesheets/application.css` - Moab theme styling
 - `config/locales/` - All 7 language files
+- `.env.local` - OAuth credentials (gitignored, see `.env.local.example`)
 
 ## Documentation Context Reference
 
