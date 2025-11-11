@@ -1,0 +1,14 @@
+<%# Reusable Turbo Modal Component %>
+<div id="modal"
+     class="modal fade"
+     tabindex="-1"
+     data-controller="modal"
+     data-action="turbo:submit-end->modal#handleSubmit">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <%= turbo_frame_tag "modal_content" do %>
+        <%# Modal content will be loaded here via Turbo Frame %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     end
   end
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   resources :print_pricings do
     member do
@@ -28,12 +28,27 @@ Rails.application.routes.draw do
 
   resources :printers
 
-  resource :user_profile, only: [ :show, :edit, :update ], path: "profile"
+  resource :user_profile, only: [ :show, :edit, :update, :destroy ], path: "profile"
+
+  # Subscription management
+  resources :subscriptions, only: [] do
+    collection do
+      get :pricing
+      post :create_checkout_session
+      get :success
+      get :manage
+      post :cancel
+    end
+  end
+
+  # Stripe webhooks
+  post "webhooks/stripe", to: "webhooks/stripe#create"
 
   # Legal pages
   get "privacy-policy", to: "legal#privacy_policy", as: :privacy_policy
   get "user-agreement", to: "legal#user_agreement", as: :user_agreement
   get "support", to: "legal#support", as: :support
+  get "commerce-disclosure", to: "legal#commerce_disclosure", as: :commerce_disclosure
 
   # Locale switching
   post "switch_locale", to: "application#switch_locale"

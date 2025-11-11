@@ -13,32 +13,32 @@ class OauthButtonsViewTest < ActionView::TestCase
 
     # Test Google OAuth button
     assert_select "a[href='#{user_google_oauth2_omniauth_authorize_path}']", 1 do
-      assert_select "span", text: I18n.t('devise.shared.sign_in_with_provider', provider: 'Google')
+      assert_select "span", text: I18n.t("devise.shared.sign_in_with_provider", provider: "Google")
     end
 
     # Test GitHub OAuth button
     assert_select "a[href='#{user_github_omniauth_authorize_path}']", 1 do
-      assert_select "span", text: I18n.t('devise.shared.sign_in_with_provider', provider: 'GitHub')
+      assert_select "span", text: I18n.t("devise.shared.sign_in_with_provider", provider: "GitHub")
     end
 
     # Test Microsoft OAuth button
     assert_select "a[href='#{user_microsoft_graph_omniauth_authorize_path}']", 1 do
-      assert_select "span", text: I18n.t('devise.shared.sign_in_with_provider', provider: 'Microsoft')
+      assert_select "span", text: I18n.t("devise.shared.sign_in_with_provider", provider: "Microsoft")
     end
 
     # Test Facebook OAuth button
     assert_select "a[href='#{user_facebook_omniauth_authorize_path}']", 1 do
-      assert_select "span", text: I18n.t('devise.shared.sign_in_with_provider', provider: 'Facebook')
+      assert_select "span", text: I18n.t("devise.shared.sign_in_with_provider", provider: "Facebook")
     end
 
     # Test Yahoo Japan OAuth button
     assert_select "a[href='#{user_yahoojp_omniauth_authorize_path}']", 1 do
-      assert_select "span", text: I18n.t('devise.shared.sign_in_with_provider', provider: 'Yahoo Japan')
+      assert_select "span", text: I18n.t("devise.shared.sign_in_with_provider", provider: "Yahoo Japan")
     end
 
     # Test separator text
     assert_select ".text-center.my-3 small.text-muted", 1 do
-      assert_select "small", text: I18n.t('devise.shared.or_sign_in_with_email')
+      assert_select "small", text: I18n.t("devise.shared.or_sign_in_with_email")
     end
   end
 
@@ -107,16 +107,16 @@ class OauthButtonsViewTest < ActionView::TestCase
       if I18n.available_locales.include?(:es)
         I18n.locale = :es
         rendered = render partial: "devise/shared/oauth_buttons"
-        assert_includes rendered, I18n.t('devise.shared.sign_in_with_provider', provider: 'Google')
-        assert_includes rendered, I18n.t('devise.shared.or_sign_in_with_email')
+        assert_includes rendered, I18n.t("devise.shared.sign_in_with_provider", provider: "Google")
+        assert_includes rendered, I18n.t("devise.shared.or_sign_in_with_email")
       end
 
       # Test Japanese (if translations exist)
       if I18n.available_locales.include?(:ja)
         I18n.locale = :ja
         rendered = render partial: "devise/shared/oauth_buttons"
-        assert_includes rendered, I18n.t('devise.shared.sign_in_with_provider', provider: 'Google')
-        assert_includes rendered, I18n.t('devise.shared.or_sign_in_with_email')
+        assert_includes rendered, I18n.t("devise.shared.sign_in_with_provider", provider: "Google")
+        assert_includes rendered, I18n.t("devise.shared.or_sign_in_with_email")
       end
     ensure
       I18n.locale = original_locale
@@ -135,11 +135,11 @@ class OauthButtonsViewTest < ActionView::TestCase
 
     # Verify the provider configuration array is used correctly
     providers = [
-      { name: 'Google', path_method: :user_google_oauth2_omniauth_authorize_path },
-      { name: 'GitHub', path_method: :user_github_omniauth_authorize_path },
-      { name: 'Microsoft', path_method: :user_microsoft_graph_omniauth_authorize_path },
-      { name: 'Facebook', path_method: :user_facebook_omniauth_authorize_path },
-      { name: 'Yahoo Japan', path_method: :user_yahoojp_omniauth_authorize_path }
+      { name: "Google", path_method: :user_google_oauth2_omniauth_authorize_path },
+      { name: "GitHub", path_method: :user_github_omniauth_authorize_path },
+      { name: "Microsoft", path_method: :user_microsoft_graph_omniauth_authorize_path },
+      { name: "Facebook", path_method: :user_facebook_omniauth_authorize_path },
+      { name: "Yahoo Japan", path_method: :user_yahoojp_omniauth_authorize_path }
     ]
 
     providers.each do |provider|

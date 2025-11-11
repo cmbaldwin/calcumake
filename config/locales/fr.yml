@@ -8,8 +8,6 @@ fr:
     new_pricing: Nouveau Tarif
     my_printers: Mes Imprimantes
     my_filaments: Mes Filaments
-    invoices: Factures
-    clients: Clients
     profile: Profil
     help: Aide
     sign_out: Se déconnecter
@@ -40,13 +38,12 @@ fr:
     updated: "%{model} mis à jour avec succès"
     deleted: "%{model} supprimé avec succès"
     duplicated: "%{model} dupliqué avec succès"
-    duplicate_failed: "Échec de la duplication de %{model}"
+    duplicate_failed: Échec de la duplication de %{model}
   models:
     user: Utilisateur
     printer: Imprimante
     print_pricing: Tarification d'Impression
     filament: Filament
-    client: Client
   printer:
     name: Nom de l'Imprimante
     manufacturer: Fabricant
@@ -66,9 +63,6 @@ fr:
       create_new: Calculer Nouvelle Impression
       total_calculations: Total de Calculs
       total_print_time: Temps Total d'Impression
-      total_filament_used: Total de Filament Utilisé
-      total_estimated_sales: Total des Ventes Estimées
-      total_estimated_profit: Total des Bénéfices Estimés
       search_placeholder: Rechercher par nom de travail ou type de filament...
       empty_state:
         title: Aucun calcul pour le moment
@@ -77,7 +71,8 @@ fr:
           3D.
       no_results:
         title: Aucun résultat trouvé
-        description: "Aucun calcul d'impression ne correspond à '%{query}'. Essayez un terme de recherche différent."
+        description: Aucun calcul d'impression ne correspond à '%{query}'. Essayez
+          un terme de recherche différent.
     job_name: Nom du Travail
     print_time: Temps d'Impression
     times_printed: Fois Imprimé
@@ -116,10 +111,11 @@ fr:
     depreciation_and_maintenance: Dépréciation et entretien
     other_costs: Autres Coûts
     subtotal: Sous-total
-    vat: Taxe de Vente (TVA)
+    vat: TVA
     total: Total
     notes: Notes
-    invoice_notes_text: Merci pour votre confiance. Veuillez conserver cette facture pour vos dossiers.
+    invoice_notes_text: Merci pour votre confiance. Veuillez conserver cette facture
+      pour vos dossiers.
     payment_info: Informations de Paiement
     payment_info_text: Les conditions et détails de paiement seront communiqués séparément.
     download_pdf: Télécharger PDF
@@ -158,73 +154,9 @@ fr:
         labor: Coût de la Main-d'œuvre
         machine: Coût de la Machine
         other: Autres Coûts
-        listing: Frais de Listage
-        payment_processing: Traitement des Paiements
         subtotal: Sous-total
-        vat: Taxe de Vente (TVA) (%{rate}%)
         final_price: Prix Final
-    fields:
-      job_name: Nom du Travail
-      job_name_placeholder: ex., Modèle Miniature
-      select_printer: Sélectionner une Imprimante
-      select_printer_prompt: Sélectionnez une imprimante
-      no_printer_help: Pas d'imprimante enregistrée ?
-      add_printer_link: Ajouter une nouvelle imprimante
-      print_time_hours: Heures
-      print_time_minutes: Minutes
-      filament_weight: Poids du Filament (g)
-      filament_weight_placeholder: "36"
-      filament_type: Type de Filament
-      filament_type_prompt: Sélectionner le type
-      spool_price: Prix de la Bobine
-      spool_price_placeholder: "25.00"
-      spool_weight: Poids de la Bobine (g)
-      spool_weight_placeholder: "1000"
-      markup: Marge (%)
-      markup_placeholder: "20"
-      markup_percentage: Pourcentage de Marge
-      prep_time: Temps de Préparation (min)
-      prep_time_placeholder: "30"
-      prep_time_minutes: Temps de Préparation (minutes)
-      prep_cost_hour: Coût de Prép./Heure
-      prep_cost_placeholder: "20.00"
-      prep_cost_per_hour: Coût de Préparation par Heure
-      post_time: Temps de Post-traitement (min)
-      post_time_placeholder: "30"
-      postprocessing_time_minutes: Temps de Post-traitement (minutes)
-      postprocessing_time_placeholder: "30"
-      postprocessing_cost_per_hour: Coût de Post-traitement par Heure
-      postprocessing_cost_placeholder: "20.00"
-      post_cost_hour: Coût de Post-trait./Heure
-      post_cost_placeholder: "20.00"
-      other_costs: Autres Coûts
-      other_costs_placeholder: "0.00"
-      vat: Taxe de Vente (TVA) (%)
-      vat_placeholder: "10"
-      vat_percentage: Pourcentage de Taxe de Vente (TVA)
-      listing_cost_percentage: Pourcentage de Frais de Listage (%)
-      listing_cost_percentage_placeholder: "3"
-      payment_processing_cost_percentage: Pourcentage de Frais de Traitement des Paiements (%)
-      payment_processing_cost_percentage_placeholder: "2.9"
-      power_consumption: Consommation d'Énergie (W)
-      power_consumption_placeholder: "200"
-      energy_cost_kwh: Coût de l'Énergie par kWh
-      energy_cost_placeholder: "0.12"
-      printer_cost: Coût de l'Imprimante
-      printer_cost_placeholder: "500.00"
-      payoff_goal: Objectif d'Amortissement (Années)
-      payoff_goal_placeholder: "3"
-      daily_usage: Utilisation Quotidienne (Heures)
-      daily_usage_placeholder: "8"
-      repair_cost: Coût de Réparation (%)
-      repair_cost_placeholder: "5"
-      currency: Devise
-      currency_prompt: Sélectionner la devise
     buttons:
-      calculate_save: Calculer
-      update_pricing: Mettre à Jour les Tarifs
-      update: Mettre à Jour
-      cancel: Annuler
       add_plate: Ajouter une Plaque
     help:
       plates_limit: Vous pouvez ajouter jusqu'à 10 plaques par travail d'impression.
@@ -260,27 +192,8 @@ fr:
       default_preferences: Préférences par Défaut
     fields:
       default_currency: Devise par Défaut
-      default_currency_help: Utilisée par défaut pour les nouveaux calculs de tarification
       energy_cost: Coût de l'Énergie par kWh
-      energy_cost_placeholder: "0.120"
       energy_cost_help: Votre coût local d'électricité par kilowatt-heure
-      energy_cost_help_extended: Votre coût local d'électricité par kilowatt-heure. Sera utilisé par défaut pour les nouveaux calculs.
-      prep_time: Temps de Préparation (minutes)
-      prep_time_help: Temps passé à préparer les impressions avant de commencer
-      prep_cost: Coût de Préparation par Heure
-      prep_cost_help: Tarif horaire pour le travail de préparation
-      postprocessing_time: Temps de Post-traitement (minutes)
-      postprocessing_time_help: Temps passé sur le post-traitement (nettoyage, retrait des supports, etc.)
-      postprocessing_cost: Coût de Post-traitement par Heure
-      postprocessing_cost_help: Tarif horaire pour le travail de post-traitement
-      other_costs: Autres Coûts
-      other_costs_help: Coûts supplémentaires comme l'emballage, la préparation d'expédition, etc.
-      vat_percentage: Pourcentage de Taxe de Vente (TVA)
-      vat_percentage_help: Pourcentage par défaut de taxe de vente/TVA pour votre localisation
-      listing_cost_percentage: Pourcentage de Frais de Listage
-      listing_cost_percentage_help: Pourcentage par défaut des frais de listage marketplace (ex. eBay, Amazon)
-      payment_processing_cost_percentage: Pourcentage de Frais de Traitement des Paiements
-      payment_processing_cost_percentage_help: Pourcentage par défaut des frais de traitement des paiements (ex. PayPal, Stripe)
     default_currency: Devise par Défaut
     default_energy_cost: Coût Énergétique par Défaut
     settings: Paramètres
@@ -295,9 +208,203 @@ fr:
     privacy_policy:
       title: Politique de confidentialité
       nav_title: Politique de confidentialité
+      advertising:
+        title: Publicité
+        content: Notre niveau Gratuit affiche des publicités via Google AdSense. Ces
+          annonces sont basées sur vos intérêts et votre comportement de navigation.
+          Les niveaux d'abonnement payants n'affichent pas de publicités.
+        google_adsense: Google AdSense utilise des cookies et d'autres technologies
+          de suivi pour diffuser des publicités pertinentes. Cela ne s'applique qu'aux
+          utilisateurs du niveau Gratuit.
+        opt_out: Vous pouvez contrôler la personnalisation des annonces et refuser
+          la publicité personnalisée en visitant
+        google_ad_settings: Paramètres des annonces Google
+        upgrade_note: Pour supprimer toutes les publicités, passez à un niveau d'abonnement
+          payant.
+      information_we_collect:
+        title: Informations que Nous Collectons
+        content: Nous collectons les informations que vous nous fournissez directement
+          et les informations que nous pouvons collecter automatiquement lorsque vous
+          utilisez notre service.
+        account_info:
+          title: Informations de Compte
+          email: Adresse e-mail pour l'authentification du compte
+          preferences: Préférences utilisateur telles que la devise et la langue par
+            défaut
+          usage_data: Modèles d'utilisation et préférences de fonctionnalités
+        project_data:
+          title: Données de Projet
+          pricing_calculations: Calculs des coûts d'impression 3D et données de projet
+          printer_specifications: Spécifications et paramètres d'imprimante
+          project_metadata: Noms de projets, dates et métadonnées
+        payment_info:
+          title: Informations de Paiement et de Facturation
+          payment_details: Détails du mode de paiement (traités en toute sécurité
+            par notre processeur de paiement)
+          billing_address: Adresse de facturation et informations de contact
+          transaction_history: Historique des transactions et des abonnements
+          subscription_tier: Votre niveau d'abonnement et fonctionnalités sélectionnés
+      data_sharing:
+        title: Partage d'Informations
+        content: 'Nous ne vendons, n''échangeons ni ne louons vos informations personnelles
+          à des tiers. Nous ne partageons vos informations que dans les circonstances
+          suivantes:'
+        legal_requirements: Lorsque la loi l'exige ou pour protéger nos droits légaux
+        service_providers: Avec des fournisseurs de services de confiance qui nous
+          aident à exploiter notre service (y compris les fournisseurs d'hébergement
+          cloud et d'infrastructure)
+        payment_processors: Avec des processeurs de paiement (comme Stripe) pour traiter
+          les paiements d'abonnement et gérer la facturation
+        advertising_partners: Avec des partenaires publicitaires (comme Google AdSense)
+          pour afficher des publicités pertinentes aux utilisateurs du niveau Gratuit
+        business_transfer: Dans le cadre d'un transfert ou d'une acquisition d'entreprise
     user_agreement:
       title: Accord d'utilisateur
       nav_title: Conditions d'utilisation
+      subscription_tiers:
+        title: Niveaux d'Abonnement et Tarification
+        content: 'CalcuMake propose trois niveaux d''abonnement:'
+        free_tier: 'Niveau Gratuit: Fonctionnalités de base avec affichage de publicités'
+        pro_tier: 'Niveau Pro: Fonctionnalités avancées, sans publicités, support
+          prioritaire (abonnement payant)'
+        enterprise_tier: 'Niveau Enterprise: Toutes les fonctionnalités, support premium,
+          intégrations personnalisées (abonnement payant)'
+        pricing_note: Les tarifs actuels sont disponibles sur notre site web et peuvent
+          être mis à jour avec un préavis aux abonnés existants.
+      payment_terms:
+        title: Paiement et Facturation
+        content: 'Si vous vous abonnez à un niveau payant, vous acceptez les conditions
+          de paiement suivantes:'
+        subscription_fee: Les frais d'abonnement vous seront facturés au début de
+          chaque cycle de facturation
+        billing_cycles: Les cycles de facturation sont mensuels ou annuels, selon
+          votre sélection
+        payment_method: Vous devez fournir un mode de paiement valide pour vous abonner
+          aux niveaux payants
+        automatic_renewal: Les abonnements se renouvellent automatiquement sauf annulation
+          avant la date de renouvellement
+        price_changes: Nous pouvons modifier les tarifs avec un préavis de 30 jours
+          aux abonnés existants
+        payment_processor: Les paiements sont traités en toute sécurité via notre
+          processeur de paiement tiers (Stripe)
+        failed_payments: Les paiements échoués peuvent entraîner une rétrogradation
+          ou une suspension du service
+        currency: Les prix sont affichés dans votre devise sélectionnée
+      cancellation_refunds:
+        title: Annulation et Remboursements
+        content: 'Vous pouvez annuler votre abonnement à tout moment:'
+        cancellation_process: Annulez via les paramètres de votre compte ou en contactant
+          le support
+        cancellation_effect: L'annulation prend effet à la fin de votre période de
+          facturation actuelle
+        access_until_end: Vous conservez l'accès aux fonctionnalités payantes jusqu'à
+          la fin de la période payée
+        refund_policy: Nous offrons une garantie de remboursement de 14 jours pour
+          les nouveaux abonnés
+        no_partial_refunds: Les remboursements partiels pour le temps d'abonnement
+          restant ne sont pas fournis sauf si la loi l'exige
+        downgrade_option: Vous pouvez rétrograder vers un niveau inférieur à la fin
+          de votre cycle de facturation
+      free_tier_limitations:
+        title: Limitations du Niveau Gratuit
+        content: 'Le niveau Gratuit inclut l''affichage de publicités et peut avoir
+          des limitations d''utilisation:'
+        advertisements: Les utilisateurs du niveau Gratuit verront des publicités
+          dans toute l'application
+        feature_limits: Certaines fonctionnalités avancées sont réservées aux niveaux
+          payants
+        support_priority: Le support du niveau Gratuit est fourni sur la base du meilleur
+          effort
+        upgrade_anytime: Vous pouvez passer à un niveau payant à tout moment
+    commerce_disclosure:
+      title: Divulgation Commerciale (特定商取引法に基づく表記)
+      nav_title: Divulgation Commerciale
+      business_operator:
+        title: Opérateur Commercial
+        name: 'Nom de l''entreprise: 株式会社モアブ (MOAB Co., Ltd.)'
+        representative: 'Représentant: Cody Baldwin'
+      business_address:
+        title: Adresse Commerciale
+        address: Japon (Contactez-nous pour des informations d'adresse détaillées)
+      contact:
+        title: Informations de Contact
+        email_label: E-mail
+        email: cody@moab.jp
+        phone_label: Téléphone
+        phone: Disponible sur demande par e-mail
+        hours_label: Heures d'Assistance
+        hours: Lundi - Vendredi, 9h00 - 18h00 JST (hors jours fériés japonais)
+      service_description:
+        title: Description du Service
+        content: 'CalcuMake est une application web fournissant des outils de calcul
+          des coûts et de gestion de projets d''impression 3D. Notre service comprend:'
+        cost_calculations: Calculs de coûts complets pour les projets d'impression
+          3D
+        project_management: Fonctionnalités de suivi et de gestion de projets
+        invoice_generation: Capacités de génération de factures et d'exportation PDF
+        printer_tracking: Suivi des spécifications et de l'utilisation des imprimantes
+      pricing:
+        title: Tarification
+        content: 'CalcuMake propose trois niveaux d''abonnement:'
+        free_tier: 'Niveau Gratuit: ¥0/mois - Fonctionnalités de base avec publicités'
+        pro_tier: 'Niveau Pro: Abonnement mensuel ou annuel payant - Fonctionnalités
+          avancées, sans publicités, support prioritaire'
+        enterprise_tier: 'Niveau Enterprise: Abonnement mensuel ou annuel payant -
+          Toutes les fonctionnalités, support premium, intégrations personnalisées'
+        pricing_details: Les tarifs exacts sont affichés sur notre site web et dans
+          l'application lors de la sélection de l'abonnement.
+        price_changes: Les prix peuvent être ajustés avec un préavis de 30 jours aux
+          abonnés existants.
+      payment_methods:
+        title: Modes de Paiement
+        content: 'Pour les abonnements payants, nous acceptons les modes de paiement
+          suivants:'
+        credit_cards: 'Cartes de Crédit: Visa, Mastercard, American Express, JCB'
+        payment_processor: Tous les paiements sont traités en toute sécurité via Stripe,
+          notre partenaire de traitement des paiements.
+        secure_processing: Nous ne stockons pas vos informations de carte de crédit
+          complètes sur nos serveurs.
+        free_tier_note: Les utilisateurs du niveau Gratuit n'ont pas besoin de fournir
+          d'informations de paiement.
+      payment_timing:
+        title: Moment du Paiement
+        content: 'Le paiement est facturé selon votre cycle de facturation sélectionné:'
+        initial_payment: Le paiement initial est facturé immédiatement lors de l'abonnement
+        recurring_payments: Les paiements récurrents sont facturés au début de chaque
+          période de facturation (mensuelle ou annuelle)
+        automatic_renewal: Les abonnements se renouvellent automatiquement sauf annulation
+        cancellation_timing: Les annulations prennent effet à la fin de la période
+          de facturation actuelle
+      delivery:
+        title: Livraison du Service
+        content: CalcuMake est un service web accessible immédiatement après la création
+          du compte. Aucun produit physique ni expédition n'est impliqué.
+      returns:
+        title: Retours et Remboursements
+        content: 'En tant que service d''abonnement numérique, notre politique de
+          remboursement est la suivante:'
+        money_back_guarantee: Garantie de remboursement de 14 jours pour les nouveaux
+          abonnés payants
+        refund_process: Contactez le support dans les 14 jours de votre abonnement
+          initial pour un remboursement complet
+        no_partial_refunds: Les remboursements partiels pour le temps d'abonnement
+          restant ne sont pas fournis sauf si la loi l'exige
+        renewal_refunds: Les paiements de renouvellement ne sont pas remboursables
+          sauf si la loi l'exige
+        free_tier_refunds: L'utilisation du niveau Gratuit n'implique pas de paiements
+          et aucun remboursement ne s'applique
+      cancellation:
+        title: Politique d'Annulation
+        content: 'Conditions d''annulation d''abonnement:'
+        cancellation_method: Annulez à tout moment via les paramètres de votre compte
+          ou en contactant le support à cody@moab.jp
+        cancellation_effect: L'annulation prend effet à la fin de votre période de
+          facturation actuelle
+        access_retention: Vous conservez un accès complet aux fonctionnalités payantes
+          jusqu'à la fin de la période payée
+        data_retention: Les données du compte sont conservées conformément à notre
+          Politique de Confidentialité
+        resubscription: Vous pouvez vous réabonner à tout moment après l'annulation
   support:
     title: Assistance
     nav_title: Assistance
@@ -306,6 +413,13 @@ fr:
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
+    billing_support:
+      title: Support de Facturation et d'Abonnement
+      description: Pour les demandes de facturation, les changements d'abonnement,
+        les demandes de remboursement ou les problèmes de paiement, veuillez nous
+        contacter avec l'adresse e-mail de votre compte.
+      priority_note: Les abonnés des niveaux Pro et Enterprise bénéficient de temps
+        de réponse de support prioritaires.
 filaments:
   index:
     title: Mes Filaments
@@ -334,7 +448,8 @@ filaments:
         description: Commencez par créer des factures pour vos calculs d'impression.
       no_results:
         title: Aucun résultat trouvé
-        description: "Aucune facture ne correspond à '%{query}'. Essayez un terme de recherche différent."
+        description: Aucune facture ne correspond à '%{query}'. Essayez un terme de
+          recherche différent.
     download_pdf: Télécharger PDF
     print: Imprimer
     bill_to: Facturer à
@@ -351,8 +466,11 @@ filaments:
     confirm_delete: Êtes-vous sûr de vouloir supprimer cette facture ?
     no_invoices: Aucune facture pour l'instant
     create_first_invoice: Créez votre première facture pour ce calcul d'impression
-    company_info_card_text: Les informations de l'entreprise de la facture sont gérées dans les paramètres de votre profil. Mettez à jour les détails de votre entreprise là-bas pour les utiliser dans toutes vos factures.
-    no_company_info: Aucune information d'entreprise définie. Veuillez mettre à jour votre profil pour ajouter les détails de l'entreprise.
+    company_info_card_text: Les informations de l'entreprise de la facture sont gérées
+      dans les paramètres de votre profil. Mettez à jour les détails de votre entreprise
+      là-bas pour les utiliser dans toutes vos factures.
+    no_company_info: Aucune information d'entreprise définie. Veuillez mettre à jour
+      votre profil pour ajouter les détails de l'entreprise.
     edit_company_info: Modifier les Informations de l'Entreprise dans le Profil
     status:
       draft: Brouillon
@@ -369,14 +487,15 @@ filaments:
       payment_details: Détails de Paiement
       notes: Notes
       invoice_number: Numéro de Facture
-      invoice_number_help: Généré automatiquement lors de la création des factures (ne peut pas être modifié)
+      invoice_number_help: Généré automatiquement lors de la création des factures
+        (ne peut pas être modifié)
       invoice_date: Date de la Facture
       due_date: Date d'Échéance
       status: Statut
       currency: Devise
-      currency_help: Détermine les décimales et le formatage pour tous les montants sur cette facture
+      currency_help: Détermine les décimales et le formatage pour tous les montants
+        sur cette facture
       company_logo: Logo de l'Entreprise
-      project: Projet
     line_items:
       title: Éléments de Ligne
       add_line_item: Ajouter un Élément de Ligne
@@ -385,16 +504,12 @@ filaments:
       unit_price: Prix Unitaire
       total: Total
       remove: Supprimer
-      round_all_up: Arrondir Tout Vers le Haut
-      round_all_up_help: Arrondir tous les prix unitaires vers le haut à la valeur entière la plus proche
-      round_all_down: Arrondir Tout Vers le Bas
-      round_all_down_help: Arrondir tous les prix unitaires vers le bas à la valeur entière la plus proche
 print_pricings:
   form:
     filament_weight: Poids du Filament
     print_time_hours: Heures de Temps d'Impression
-
-  # Traductions de la page d'accueil
+  devise:
+    shared:
   landing:
     hero:
       headline: "Plus d'art, moins d'administratif"
@@ -560,3 +675,43 @@ print_pricings:
       alternative_signin_method: "Méthode de connexion alternative"
     omniauth_callbacks:
       success: "Authentifié avec succès depuis le compte %{kind}."
+
+  # Limites d'utilisation et gestion des abonnements
+  usage_limits:
+    limit_reached: "Vous avez atteint la limite de %{limit} %{resource} de votre plan %{plan}. Veuillez mettre à niveau pour continuer."
+    approaching_limit: "Vous approchez de la limite de votre plan pour %{resource}"
+    usage_summary: "Résumé d'utilisation"
+    current_usage: "%{current} sur %{limit} utilisés"
+    unlimited: "Illimité"
+
+  subscriptions:
+    title: "Abonnement et tarification"
+    current_plan: "Plan actuel"
+    upgrade: "Mettre à niveau le plan"
+    manage: "Gérer l'abonnement"
+    cancel: "Annuler l'abonnement"
+    invalid_plan: "Plan d'abonnement invalide sélectionné"
+    checkout_error: "Impossible de créer la session de paiement. Veuillez réessayer."
+    verification_error: "Impossible de vérifier l'abonnement. Veuillez contacter le support."
+    portal_error: "Impossible d'accéder à la gestion des abonnements. Veuillez réessayer."
+    no_subscription: "Vous n'avez pas d'abonnement actif"
+    upgrade_successful: "Mise à niveau réussie vers le plan %{plan} !"
+    cancel_scheduled: "Votre abonnement sera annulé à la fin de la période de facturation"
+    cancel_error: "Impossible d'annuler l'abonnement. Veuillez réessayer."
+    trial_badge: "Essai gratuit de 30 jours"
+    trial_remaining: "%{days} jours restants"
+    features:
+      calculations: "%{count} calculs d'impression/mois"
+      printers: "%{count} profils d'imprimante"
+      filaments: "%{count} types de filament"
+      invoices: "%{count} factures/mois"
+      unlimited_calculations: "Calculs d'impression illimités"
+      unlimited_printers: "Imprimantes illimitées"
+      unlimited_filaments: "Filaments illimités"
+      unlimited_invoices: "Factures illimitées"
+      no_branding: "Supprimer la marque CalcuMake"
+      no_ads: "Expérience sans publicité"
+      alternative_signin_method: Alternative signin method
+      or_sign_in_with_email: Or Sign In With Email
+      sign_in_with_provider: Sign in with %{provider}
+      sign_in_with_provider_aria: Sign in with %{provider}

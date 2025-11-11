@@ -1,6 +1,7 @@
 class InvoicesController < ApplicationController
   include ApplicationHelper
   include ResourceAuthorization
+  include UsageTrackable
 
   before_action :authenticate_user!
   before_action :set_print_pricing, except: [ :index ]

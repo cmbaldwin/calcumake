@@ -15,15 +15,32 @@ class ClientsController < ApplicationController
 
   def new
     @client = current_user.clients.build
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream { render :modal_form }
+    end
   end
 
   def create
     @client = current_user.clients.build(client_params)
 
     if @client.save
-      redirect_to @client, notice: t("clients.created_successfully")
+      respond_to do |format|
+        format.html { redirect_to @client, notice: t("clients.created_successfully") }
+        format.turbo_stream {
+          flash.now[:notice] = t("clients.created_successfully")
+          render turbo_stream: [
+            turbo_stream.update("modal", "<div id='modal' class='modal fade' data-controller='modal'></div>"),
+            turbo_stream.prepend("flash", partial: "layouts/flash_message", locals: { type: :notice, message: flash.now[:notice] })
+          ]
+        }
+      end
     else
-      render :new, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :modal_form, status: :unprocessable_entity }
+      end
     end
   end
 

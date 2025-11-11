@@ -8,8 +8,6 @@ hi:
     new_pricing: नई कीमत
     my_printers: मेरे प्रिंटर
     my_filaments: My Filaments
-    invoices: चालान
-    clients: Clients
     profile: प्रोफ़ाइल
     help: सहायता
     sign_out: साइन आउट
@@ -46,7 +44,6 @@ hi:
     printer: प्रिंटर
     print_pricing: प्रिंट मूल्य निर्धारण
     filament: फिलामेंट
-    client: Client
   printer:
     name: प्रिंटर का नाम
     manufacturer: निर्माता
@@ -66,9 +63,6 @@ hi:
       create_new: नई प्रिंट गणना
       total_calculations: कुल गणनाएं
       total_print_time: कुल प्रिंट समय
-      total_filament_used: कुल फिलामेंट उपयोग
-      total_estimated_sales: कुल अनुमानित बिक्री
-      total_estimated_profit: कुल अनुमानित लाभ
       search_placeholder: जॉब नाम या फिलामेंट प्रकार से खोजें...
       empty_state:
         title: अभी तक कोई गणना नहीं
@@ -76,7 +70,8 @@ hi:
           ट्रैक करने के लिए अपनी पहली प्रिंट लागत गणना बनाना शुरू करें।
       no_results:
         title: कोई परिणाम नहीं मिला
-        description: "'%{query}' से मेल खाने वाली कोई प्रिंट गणना नहीं। एक अलग खोज शब्द आज़माएं।"
+        description: "'%{query}' से मेल खाने वाली कोई प्रिंट गणना नहीं। एक अलग खोज
+          शब्द आज़माएं।"
     job_name: जॉब का नाम
     print_time: प्रिंट समय
     times_printed: प्रिंट की संख्या
@@ -115,10 +110,11 @@ hi:
     depreciation_and_maintenance: मूल्यह्रास और रखरखाव
     other_costs: अन्य लागत
     subtotal: उपयोग
-    vat: बिक्री कर (VAT)
+    vat: वैट
     total: कुल
     notes: टिप्पणियां
-    invoice_notes_text: आपके व्यवसाय के लिए धन्यवाद। कृपया इस चालान को अपने रिकॉर्ड के लिए रखें।
+    invoice_notes_text: आपके व्यवसाय के लिए धन्यवाद। कृपया इस चालान को अपने रिकॉर्ड
+      के लिए रखें।
     payment_info: भुगतान जानकारी
     payment_info_text: भुगतान शर्तें और विवरण अलग से सूचित किए जाएंगे।
     download_pdf: PDF डाउनलोड करें
@@ -157,73 +153,9 @@ hi:
         labor: श्रम लागत
         machine: मशीन लागत
         other: अन्य लागतें
-        listing: लिस्टिंग शुल्क
-        payment_processing: भुगतान प्रोसेसिंग
         subtotal: उप-योग
-        vat: बिक्री कर (VAT) (%{rate}%)
         final_price: अंतिम कीमत
-    fields:
-      job_name: जॉब का नाम
-      job_name_placeholder: "उदाहरण: मिनिएचर मॉडल"
-      select_printer: प्रिंटर चुनें
-      select_printer_prompt: प्रिंटर चुनें
-      no_printer_help: कोई प्रिंटर पंजीकृत नहीं है?
-      add_printer_link: नया प्रिंटर जोड़ें
-      print_time_hours: घंटे
-      print_time_minutes: मिनट
-      filament_weight: फिलामेंट वजन (ग्राम)
-      filament_weight_placeholder: "36"
-      filament_type: फिलामेंट प्रकार
-      filament_type_prompt: प्रकार चुनें
-      spool_price: स्पूल कीमत
-      spool_price_placeholder: "25.00"
-      spool_weight: स्पूल वजन (ग्राम)
-      spool_weight_placeholder: "1000"
-      markup: मार्कअप (%)
-      markup_placeholder: "20"
-      markup_percentage: मार्कअप प्रतिशत
-      prep_time: तैयारी समय (मिनट)
-      prep_time_placeholder: "30"
-      prep_time_minutes: तैयारी समय (मिनट)
-      prep_cost_hour: तैयारी लागत/घंटा
-      prep_cost_placeholder: "20.00"
-      prep_cost_per_hour: प्रति घंटा तैयारी लागत
-      post_time: पोस्ट-प्रोसेस समय (मिनट)
-      post_time_placeholder: "30"
-      postprocessing_time_minutes: पोस्ट-प्रोसेसिंग समय (मिनट)
-      postprocessing_time_placeholder: "30"
-      postprocessing_cost_per_hour: प्रति घंटा पोस्ट-प्रोसेसिंग लागत
-      postprocessing_cost_placeholder: "20.00"
-      post_cost_hour: पोस्ट-प्रोसेस लागत/घंटा
-      post_cost_placeholder: "20.00"
-      other_costs: अन्य लागतें
-      other_costs_placeholder: "0.00"
-      vat: बिक्री कर (VAT) (%)
-      vat_placeholder: "10"
-      vat_percentage: बिक्री कर (VAT) प्रतिशत
-      listing_cost_percentage: लिस्टिंग लागत प्रतिशत (%)
-      listing_cost_percentage_placeholder: "3"
-      payment_processing_cost_percentage: भुगतान प्रोसेसिंग लागत प्रतिशत (%)
-      payment_processing_cost_percentage_placeholder: "2.9"
-      power_consumption: बिजली खपत (वाट)
-      power_consumption_placeholder: "200"
-      energy_cost_kwh: प्रति kWh ऊर्जा लागत
-      energy_cost_placeholder: "0.12"
-      printer_cost: प्रिंटर लागत
-      printer_cost_placeholder: "500.00"
-      payoff_goal: पेऑफ लक्ष्य (वर्ष)
-      payoff_goal_placeholder: "3"
-      daily_usage: दैनिक उपयोग (घंटे)
-      daily_usage_placeholder: "8"
-      repair_cost: मरम्मत लागत (%)
-      repair_cost_placeholder: "5"
-      currency: मुद्रा
-      currency_prompt: मुद्रा चुनें
     buttons:
-      calculate_save: गणना करें
-      update_pricing: मूल्य निर्धारण अपडेट करें
-      update: अपडेट करें
-      cancel: रद्द करें
       add_plate: प्लेट जोड़ें
     help:
       plates_limit: आप प्रति प्रिंट जॉब में 10 प्लेट तक जोड़ सकते हैं।
@@ -258,27 +190,8 @@ hi:
       default_preferences: डिफ़ॉल्ट प्राथमिकताएं
     fields:
       default_currency: डिफ़ॉल्ट मुद्रा
-      default_currency_help: नए मूल्य निर्धारण गणनाओं के लिए डिफ़ॉल्ट के रूप में उपयोग
       energy_cost: ऊर्जा लागत प्रति kWh
-      energy_cost_placeholder: "0.120"
       energy_cost_help: आपकी स्थानीय प्रति किलोवाट-घंटा बिजली लागत
-      energy_cost_help_extended: आपकी स्थानीय प्रति किलोवाट-घंटा बिजली लागत। यह नई गणनाओं के लिए डिफ़ॉल्ट के रूप में उपयोग किया जाएगा।
-      prep_time: तैयारी समय (मिनट)
-      prep_time_help: प्रिंट शुरू करने से पहले तैयारी में लगा समय
-      prep_cost: प्रति घंटा तैयारी लागत
-      prep_cost_help: तैयारी काम के लिए घंटेवार दर
-      postprocessing_time: पोस्ट-प्रोसेसिंग समय (मिनट)
-      postprocessing_time_help: पोस्ट-प्रोसेसिंग में लगा समय (सफाई, सपोर्ट हटाना आदि)
-      postprocessing_cost: प्रति घंटा पोस्ट-प्रोसेसिंग लागत
-      postprocessing_cost_help: पोस्ट-प्रोसेसिंग काम के लिए घंटेवार दर
-      other_costs: अन्य लागतें
-      other_costs_help: पैकेजिंग, शिपिंग तैयारी आदि जैसे अतिरिक्त खर्च
-      vat_percentage: बिक्री कर (VAT) प्रतिशत
-      vat_percentage_help: आपके स्थान के लिए डिफ़ॉल्ट बिक्री कर/VAT प्रतिशत
-      listing_cost_percentage: लिस्टिंग लागत प्रतिशत
-      listing_cost_percentage_help: डिफ़ॉल्ट मार्केटप्लेस लिस्टिंग फीस प्रतिशत (जैसे Amazon, Flipkart)
-      payment_processing_cost_percentage: भुगतान प्रोसेसिंग लागत प्रतिशत
-      payment_processing_cost_percentage_help: डिफ़ॉल्ट भुगतान प्रोसेसिंग फीस प्रतिशत (जैसे PayTM, PhonePe)
     default_currency: डिफ़ॉल्ट मुद्रा
     default_energy_cost: डिफ़ॉल्ट ऊर्जा लागत
     settings: सेटिंग्स
@@ -293,9 +206,197 @@ hi:
     privacy_policy:
       title: गोपनीयता नीति
       nav_title: गोपनीयता नीति
+      advertising:
+        title: विज्ञापन
+        content: हमारा निःशुल्क स्तर Google AdSense के माध्यम से विज्ञापन प्रदर्शित
+          करता है। ये विज्ञापन आपकी रुचियों और ब्राउज़िंग व्यवहार पर आधारित हैं। भुगतान
+          सदस्यता स्तर विज्ञापन प्रदर्शित नहीं करते हैं।
+        google_adsense: Google AdSense प्रासंगिक विज्ञापन प्रदान करने के लिए कुकीज़
+          और अन्य ट्रैकिंग तकनीकों का उपयोग करता है। यह केवल निःशुल्क स्तर उपयोगकर्ताओं
+          पर लागू होता है।
+        opt_out: आप विज्ञापन वैयक्तिकरण को नियंत्रित कर सकते हैं और वैयक्तिकृत विज्ञापन
+          से ऑप्ट-आउट कर सकते हैं
+        google_ad_settings: Google विज्ञापन सेटिंग्स
+        upgrade_note: सभी विज्ञापनों को हटाने के लिए, भुगतान सदस्यता स्तर पर अपग्रेड
+          करें।
+      information_we_collect:
+        title: हम जो जानकारी एकत्र करते हैं
+        content: हम वह जानकारी एकत्र करते हैं जो आप हमें सीधे प्रदान करते हैं और वह
+          जानकारी जो हम स्वचालित रूप से एकत्र कर सकते हैं जब आप हमारी सेवा का उपयोग
+          करते हैं।
+        account_info:
+          title: खाता जानकारी
+          email: खाता प्रमाणीकरण के लिए ईमेल पता
+          preferences: उपयोगकर्ता प्राथमिकताएँ जैसे डिफ़ॉल्ट मुद्रा और भाषा
+          usage_data: उपयोग पैटर्न और सुविधा प्राथमिकताएँ
+        project_data:
+          title: परियोजना डेटा
+          pricing_calculations: 3D प्रिंटिंग लागत गणना और परियोजना डेटा
+          printer_specifications: प्रिंटर विनिर्देश और सेटिंग्स
+          project_metadata: परियोजना नाम, तिथियाँ और मेटाडेटा
+        payment_info:
+          title: भुगतान और बिलिंग जानकारी
+          payment_details: भुगतान विधि विवरण (हमारे भुगतान प्रोसेसर द्वारा सुरक्षित
+            रूप से संसाधित)
+          billing_address: बिलिंग पता और संपर्क जानकारी
+          transaction_history: लेनदेन और सदस्यता इतिहास
+          subscription_tier: आपकी चयनित सदस्यता स्तर और सुविधाएँ
+      data_sharing:
+        title: जानकारी साझाकरण
+        content: 'हम आपकी व्यक्तिगत जानकारी को तीसरे पक्षों को नहीं बेचते, व्यापार
+          नहीं करते या किराए पर नहीं देते हैं। हम केवल निम्नलिखित परिस्थितियों में
+          आपकी जानकारी साझा कर सकते हैं:'
+        legal_requirements: जब कानून द्वारा आवश्यक हो या हमारे कानूनी अधिकारों की
+          रक्षा के लिए
+        service_providers: विश्वसनीय सेवा प्रदाताओं के साथ जो हमारी सेवा संचालित करने
+          में सहायता करते हैं (क्लाउड होस्टिंग और इंफ्रास्ट्रक्चर प्रदाताओं सहित)
+        payment_processors: भुगतान प्रोसेसरों (जैसे Stripe) के साथ सदस्यता भुगतान
+          संसाधित करने और बिलिंग प्रबंधित करने के लिए
+        advertising_partners: विज्ञापन भागीदारों (जैसे Google AdSense) के साथ निःशुल्क
+          स्तर उपयोगकर्ताओं को प्रासंगिक विज्ञापन प्रदर्शित करने के लिए
+        business_transfer: व्यवसाय हस्तांतरण या अधिग्रहण के संबंध में
     user_agreement:
       title: उपयोगकर्ता समझौता
       nav_title: सेवा की शर्तें
+      subscription_tiers:
+        title: सदस्यता स्तर और मूल्य निर्धारण
+        content: 'CalcuMake तीन सदस्यता स्तर प्रदान करता है:'
+        free_tier: 'निःशुल्क स्तर: विज्ञापन प्रदर्शन के साथ बुनियादी सुविधाएँ'
+        pro_tier: 'Pro स्तर: उन्नत सुविधाएँ, कोई विज्ञापन नहीं, प्राथमिकता समर्थन
+          (भुगतान सदस्यता)'
+        enterprise_tier: 'Enterprise स्तर: सभी सुविधाएँ, प्रीमियम समर्थन, कस्टम एकीकरण
+          (भुगतान सदस्यता)'
+        pricing_note: वर्तमान मूल्य निर्धारण हमारी वेबसाइट पर उपलब्ध है और मौजूदा
+          ग्राहकों को सूचना के साथ अपडेट किया जा सकता है।
+      payment_terms:
+        title: भुगतान और बिलिंग
+        content: 'यदि आप भुगतान स्तर की सदस्यता लेते हैं, तो आप निम्नलिखित भुगतान
+          शर्तों से सहमत होते हैं:'
+        subscription_fee: आपसे प्रत्येक बिलिंग चक्र की शुरुआत में सदस्यता शुल्क लिया
+          जाएगा
+        billing_cycles: बिलिंग चक्र आपके चयन के अनुसार मासिक या वार्षिक हैं
+        payment_method: भुगतान स्तरों की सदस्यता लेने के लिए आपको एक वैध भुगतान विधि
+          प्रदान करनी होगी
+        automatic_renewal: सदस्यताएँ स्वचालित रूप से नवीनीकृत होती हैं जब तक नवीनीकरण
+          तिथि से पहले रद्द नहीं की जातीं
+        price_changes: हम मौजूदा ग्राहकों को 30 दिन की सूचना के साथ मूल्य निर्धारण
+          बदल सकते हैं
+        payment_processor: भुगतान हमारे तृतीय-पक्ष भुगतान प्रोसेसर (Stripe) के माध्यम
+          से सुरक्षित रूप से संसाधित किए जाते हैं
+        failed_payments: विफल भुगतान के परिणामस्वरूप सेवा डाउनग्रेड या निलंबन हो सकता
+          है
+        currency: मूल्य आपकी चयनित मुद्रा में प्रदर्शित किए जाते हैं
+      cancellation_refunds:
+        title: रद्दीकरण और धनवापसी
+        content: 'आप किसी भी समय अपनी सदस्यता रद्द कर सकते हैं:'
+        cancellation_process: अपनी खाता सेटिंग्स के माध्यम से रद्द करें या समर्थन
+          से संपर्क करें
+        cancellation_effect: रद्दीकरण आपकी वर्तमान बिलिंग अवधि के अंत में प्रभावी
+          होता है
+        access_until_end: आप भुगतान अवधि के अंत तक भुगतान सुविधाओं तक पहुँच बनाए रखते
+          हैं
+        refund_policy: हम पहली बार ग्राहकों के लिए 14-दिन की धनवापसी गारंटी प्रदान
+          करते हैं
+        no_partial_refunds: शेष सदस्यता समय के लिए आंशिक धनवापसी प्रदान नहीं की जाती
+          है सिवाय कानून द्वारा आवश्यक होने पर
+        downgrade_option: आप अपने बिलिंग चक्र के अंत में निचले स्तर पर डाउनग्रेड कर
+          सकते हैं
+      free_tier_limitations:
+        title: निःशुल्क स्तर सीमाएँ
+        content: 'निःशुल्क स्तर में विज्ञापन प्रदर्शन शामिल है और उपयोग सीमाएँ हो
+          सकती हैं:'
+        advertisements: निःशुल्क स्तर उपयोगकर्ता पूरे एप्लिकेशन में विज्ञापन देखेंगे
+        feature_limits: कुछ उन्नत सुविधाएँ भुगतान स्तरों तक सीमित हैं
+        support_priority: निःशुल्क स्तर समर्थन सर्वोत्तम प्रयास के आधार पर प्रदान
+          किया जाता है
+        upgrade_anytime: आप किसी भी समय भुगतान स्तर पर अपग्रेड कर सकते हैं
+    commerce_disclosure:
+      title: वाणिज्य प्रकटीकरण (特定商取引法に基づく表記)
+      nav_title: वाणिज्य प्रकटीकरण
+      business_operator:
+        title: व्यवसाय संचालक
+        name: 'कंपनी का नाम: 株式会社モアブ (MOAB Co., Ltd.)'
+        representative: 'प्रतिनिधि: Cody Baldwin'
+      business_address:
+        title: व्यावसायिक पता
+        address: जापान (विस्तृत पता जानकारी के लिए हमसे संपर्क करें)
+      contact:
+        title: संपर्क जानकारी
+        email_label: ईमेल
+        email: cody@moab.jp
+        phone_label: फ़ोन
+        phone: ईमेल के माध्यम से अनुरोध पर उपलब्ध
+        hours_label: सहायता घंटे
+        hours: सोमवार - शुक्रवार, सुबह 9:00 - शाम 6:00 JST (जापानी छुट्टियों को छोड़कर)
+      service_description:
+        title: सेवा विवरण
+        content: 'CalcuMake एक वेब-आधारित एप्लिकेशन है जो 3D प्रिंटिंग लागत गणना और
+          परियोजना प्रबंधन उपकरण प्रदान करता है। हमारी सेवा में शामिल हैं:'
+        cost_calculations: 3D प्रिंटिंग परियोजनाओं के लिए व्यापक लागत गणना
+        project_management: परियोजना ट्रैकिंग और प्रबंधन सुविधाएँ
+        invoice_generation: चालान निर्माण और PDF निर्यात क्षमताएँ
+        printer_tracking: प्रिंटर विनिर्देश और उपयोग ट्रैकिंग
+      pricing:
+        title: मूल्य निर्धारण
+        content: 'CalcuMake तीन सदस्यता स्तर प्रदान करता है:'
+        free_tier: 'निःशुल्क स्तर: ¥0/माह - विज्ञापनों के साथ बुनियादी सुविधाएँ'
+        pro_tier: 'Pro स्तर: मासिक या वार्षिक भुगतान सदस्यता - उन्नत सुविधाएँ, कोई
+          विज्ञापन नहीं, प्राथमिकता समर्थन'
+        enterprise_tier: 'Enterprise स्तर: मासिक या वार्षिक भुगतान सदस्यता - सभी सुविधाएँ,
+          प्रीमियम समर्थन, कस्टम एकीकरण'
+        pricing_details: सटीक मूल्य निर्धारण हमारी वेबसाइट और सदस्यता चयन के दौरान
+          एप्लिकेशन में प्रदर्शित किया जाता है।
+        price_changes: मौजूदा ग्राहकों को 30 दिन की अग्रिम सूचना के साथ मूल्य समायोजित
+          किए जा सकते हैं।
+      payment_methods:
+        title: भुगतान विधियाँ
+        content: 'भुगतान सदस्यताओं के लिए, हम निम्नलिखित भुगतान विधियाँ स्वीकार करते
+          हैं:'
+        credit_cards: 'क्रेडिट कार्ड: Visa, Mastercard, American Express, JCB'
+        payment_processor: सभी भुगतान हमारे भुगतान प्रसंस्करण भागीदार Stripe के माध्यम
+          से सुरक्षित रूप से संसाधित किए जाते हैं।
+        secure_processing: हम अपने सर्वर पर आपकी पूर्ण क्रेडिट कार्ड जानकारी संग्रहीत
+          नहीं करते हैं।
+        free_tier_note: निःशुल्क स्तर उपयोगकर्ताओं को भुगतान जानकारी प्रदान करने की
+          आवश्यकता नहीं है।
+      payment_timing:
+        title: भुगतान समय
+        content: 'आपके चयनित बिलिंग चक्र के अनुसार भुगतान लिया जाता है:'
+        initial_payment: सदस्यता पर तुरंत प्रारंभिक भुगतान लिया जाता है
+        recurring_payments: आवर्ती भुगतान प्रत्येक बिलिंग अवधि (मासिक या वार्षिक)
+          की शुरुआत में लिए जाते हैं
+        automatic_renewal: सदस्यताएँ स्वचालित रूप से नवीनीकृत होती हैं जब तक रद्द
+          नहीं की जातीं
+        cancellation_timing: रद्दीकरण वर्तमान बिलिंग अवधि के अंत में प्रभावी होता
+          है
+      delivery:
+        title: सेवा वितरण
+        content: CalcuMake एक वेब-आधारित सेवा है जो खाता निर्माण के तुरंत बाद सुलभ
+          है। कोई भौतिक उत्पाद या शिपिंग शामिल नहीं है।
+      returns:
+        title: रिटर्न और धनवापसी
+        content: 'एक डिजिटल सदस्यता सेवा के रूप में, हमारी धनवापसी नीति निम्नानुसार
+          है:'
+        money_back_guarantee: पहली बार भुगतान ग्राहकों के लिए 14-दिन की धनवापसी गारंटी
+        refund_process: पूर्ण धनवापसी के लिए अपनी प्रारंभिक सदस्यता के 14 दिनों के
+          भीतर समर्थन से संपर्क करें
+        no_partial_refunds: शेष सदस्यता समय के लिए आंशिक धनवापसी प्रदान नहीं की जाती
+          है सिवाय कानून द्वारा आवश्यक होने पर
+        renewal_refunds: नवीनीकरण भुगतान धनवापसी योग्य नहीं हैं सिवाय कानून द्वारा
+          आवश्यक होने पर
+        free_tier_refunds: निःशुल्क स्तर उपयोग में भुगतान शामिल नहीं है और कोई धनवापसी
+          लागू नहीं होती
+      cancellation:
+        title: रद्दीकरण नीति
+        content: 'सदस्यता रद्दीकरण शर्तें:'
+        cancellation_method: अपनी खाता सेटिंग्स के माध्यम से या cody@moab.jp पर समर्थन
+          से संपर्क करके किसी भी समय रद्द करें
+        cancellation_effect: रद्दीकरण आपकी वर्तमान बिलिंग अवधि के अंत में प्रभावी
+          होता है
+        access_retention: आप भुगतान अवधि के अंत तक भुगतान सुविधाओं तक पूर्ण पहुँच
+          बनाए रखते हैं
+        data_retention: खाता डेटा हमारी गोपनीयता नीति के अनुसार बनाए रखा जाता है
+        resubscription: आप रद्दीकरण के बाद किसी भी समय पुनः सदस्यता ले सकते हैं
   support:
     title: सहायता
     nav_title: सहायता
@@ -304,6 +405,12 @@ hi:
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
+    billing_support:
+      title: बिलिंग और सदस्यता समर्थन
+      description: बिलिंग पूछताछ, सदस्यता परिवर्तन, धनवापसी अनुरोध, या भुगतान समस्याओं
+        के लिए, कृपया अपने खाता ईमेल के साथ हमसे संपर्क करें।
+      priority_note: Pro और Enterprise स्तर ग्राहकों को प्राथमिकता समर्थन प्रतिक्रिया
+        समय प्राप्त होता है।
 filaments:
   index:
     title: मेरे फिलामेंट
@@ -349,8 +456,11 @@ filaments:
     confirm_delete: क्या आप वाकई इस इनवॉइस को हटाना चाहते हैं?
     no_invoices: अभी तक कोई इनवॉइस नहीं
     create_first_invoice: इस प्रिंट गणना के लिए अपना पहला इनवॉइस बनाएं
-    company_info_card_text: इनवॉइस कंपनी की जानकारी आपकी प्रोफ़ाइल सेटिंग्स में प्रबंधित की जाती है। अपने सभी इनवॉइस में उपयोग करने के लिए वहां अपनी कंपनी विवरण अपडेट करें।
-    no_company_info: कोई कंपनी जानकारी सेट नहीं की गई है। कंपनी विवरण जोड़ने के लिए कृपया अपनी प्रोफ़ाइल अपडेट करें।
+    company_info_card_text: इनवॉइस कंपनी की जानकारी आपकी प्रोफ़ाइल सेटिंग्स में प्रबंधित
+      की जाती है। अपने सभी इनवॉइस में उपयोग करने के लिए वहां अपनी कंपनी विवरण अपडेट
+      करें।
+    no_company_info: कोई कंपनी जानकारी सेट नहीं की गई है। कंपनी विवरण जोड़ने के लिए
+      कृपया अपनी प्रोफ़ाइल अपडेट करें।
     edit_company_info: प्रोफ़ाइल में कंपनी जानकारी संपादित करें
     status:
       draft: ड्राफ्ट
@@ -367,14 +477,15 @@ filaments:
       payment_details: भुगतान विवरण
       notes: नोट्स
       invoice_number: इनवॉइस नंबर
-      invoice_number_help: इनवॉइस बनाने पर स्वचालित रूप से जनरेट होता है (संपादित नहीं किया जा सकता)
+      invoice_number_help: इनवॉइस बनाने पर स्वचालित रूप से जनरेट होता है (संपादित
+        नहीं किया जा सकता)
       invoice_date: इनवॉइस तारीख
       due_date: देय तारीख
       status: स्थिति
       currency: मुद्रा
-      currency_help: इस इनवॉइस पर सभी राशियों के लिए दशमलव स्थान और फॉर्मेटिंग निर्धारित करता है
+      currency_help: इस इनवॉइस पर सभी राशियों के लिए दशमलव स्थान और फॉर्मेटिंग निर्धारित
+        करता है
       company_logo: कंपनी लोगो
-      project: परियोजना
     line_items:
       title: लाइन आइटम
       add_line_item: लाइन आइटम जोड़ें
@@ -383,49 +494,20 @@ filaments:
       unit_price: यूनिट मूल्य
       total: कुल
       remove: हटाएं
-      round_all_up: सभी को ऊपर राउंड करें
-      round_all_up_help: सभी इकाई मूल्यों को निकटतम पूर्ण मान तक ऊपर राउंड करें
-      round_all_down: सभी को नीचे राउंड करें
-      round_all_down_help: सभी इकाई मूल्यों को निकटतम पूर्ण मान तक नीचे राउंड करें
 print_pricings:
   form:
     filament_weight: फिलामेंट वजन
     print_time_hours: प्रिंट समय (घंटे)
-
-  calculators:
-    quick_cost_calculator: "त्वरित लागत कैलकुलेटर"
-    print_time_hours: "प्रिंट समय (घंटे)"
-    filament_weight_grams: "फिलामेंट वजन (ग्राम)"
-    filament_price_per_kg: "फिलामेंट मूल्य प्रति किग्रा (₹)"
-    labor_rate_per_hour: "श्रम दर प्रति घंटा (₹)"
-    create_full_calculation: "पूर्ण गणना बनाएं"
-    features:
-      real_time: "टाइप करते समय तत्काल गणना"
-      includes_costs: "बिजली और श्रम लागत शामिल"
-    results:
-      filament_cost: "फिलामेंट लागत"
-      electricity_cost: "बिजली लागत"
-      labor_cost: "श्रम लागत"
-      total_cost: "कुल लागत"
-      estimated_cost: "अनुमानित लागत:"
-
-  demo:
-    title: "CalcuMake डेमो आजमाएं"
-    subtitle: "नमूना डेटा के साथ हमारे 3D प्रिंट कॉस्ट कैलकुलेटर का परीक्षण करें। खाता आवश्यक नहीं!"
-    sign_up_full_version: "पूर्ण संस्करण के लिए साइन अप करें"
-    start_free_trial: "निःशुल्क परीक्षण प्रारंभ करें"
-    limitations:
-      title: "यह एक डेमो संस्करण है"
-      description: "पूर्ण CalcuMake ऐप में शामिल है:"
-      features:
-        - "स्वचालित विशिष्टताओं के साथ कई प्रिंटर प्रोफाइल"
-        - "सामग्री गुणों के साथ व्यापक फिलामेंट लाइब्रेरी"
-        - "व्यावसायिक PDF चालान जनरेशन"
-        - "परियोजना इतिहास और डुप्लिकेट कार्यक्षमता"
-        - "बहु-मुद्रा समर्थन"
-        - "मशीन मूल्यह्रास गणना"
-
-  # Landing page translations
+  devise:
+    shared:
+      oauth_signin_options: Sign in options
+  devise:
+    shared:
+      oauth_signin_options: Sign in options
+      alternative_signin_method: Alternative signin method
+      or_sign_in_with_email: Or Sign In With Email
+      sign_in_with_provider: Sign in with %{provider}
+      sign_in_with_provider_aria: Sign in with %{provider}
   landing:
     hero:
       headline: "ज्यादा बनाएं, कम गिनती करें"
@@ -558,3 +640,72 @@ print_pricings:
       alternative_signin_method: "वैकल्पिक साइन इन विधि"
     omniauth_callbacks:
       success: "%{kind} खाते से सफलतापूर्वक प्रमाणित हुआ।"
+
+  # उपयोग सीमा और सदस्यता प्रबंधन
+  usage_limits:
+    limit_reached: "आप %{plan} योजना की %{limit} %{resource} सीमा तक पहुंच गए हैं। जारी रखने के लिए कृपया अपग्रेड करें।"
+    approaching_limit: "आप %{resource} की योजना सीमा के करीब पहुंच रहे हैं"
+    usage_summary: "उपयोग सारांश"
+    current_usage: "%{limit} में से %{current} उपयोग किया गया"
+    unlimited: "असीमित"
+
+  subscriptions:
+    title: "सदस्यता और मूल्य निर्धारण"
+    current_plan: "वर्तमान योजना"
+    upgrade: "योजना अपग्रेड करें"
+    manage: "सदस्यता प्रबंधित करें"
+    cancel: "सदस्यता रद्द करें"
+    invalid_plan: "अमान्य सदस्यता योजना चुनी गई"
+    checkout_error: "चेकआउट सत्र बनाने में असमर्थ। कृपया पुनः प्रयास करें।"
+    verification_error: "सदस्यता सत्यापित करने में असमर्थ। कृपया सहायता से संपर्क करें।"
+    portal_error: "सदस्यता प्रबंधन तक पहुंचने में असमर्थ। कृपया पुनः प्रयास करें।"
+    no_subscription: "आपके पास कोई सक्रिय सदस्यता नहीं है"
+    upgrade_successful: "%{plan} योजना में सफलतापूर्वक अपग्रेड किया गया!"
+    cancel_scheduled: "आपकी सदस्यता बिलिंग अवधि के अंत में रद्द कर दी जाएगी"
+    cancel_error: "सदस्यता रद्द करने में असमर्थ। कृपया पुनः प्रयास करें।"
+    trial_badge: "30 दिन का निःशुल्क परीक्षण"
+    trial_remaining: "%{days} दिन शेष"
+    features:
+      calculations: "प्रति माह %{count} प्रिंट गणनाएँ"
+      printers: "%{count} प्रिंटर प्रोफाइल"
+      filaments: "%{count} फिलामेंट प्रकार"
+      invoices: "प्रति माह %{count} चालान"
+      unlimited_calculations: "असीमित प्रिंट गणनाएँ"
+      unlimited_printers: "असीमित प्रिंटर"
+      unlimited_filaments: "असीमित फिलामेंट"
+      unlimited_invoices: "असीमित चालान"
+      no_branding: "CalcuMake ब्रांडिंग हटाएं"
+      no_ads: "विज्ञापन-मुक्त अनुभव"
+      priority_support: "प्राथमिकता समर्थन"
+      analytics: "उन्नत विश्लेषण"
+      import_export: "थोक आयात/निर्यात"
+    plans:
+      subtitle: "अपने लिए सबसे उपयुक्त योजना चुनें"
+      free:
+        name: "निःशुल्क"
+        price: "₹0"
+        description: "CalcuMake आज़माने के लिए बिल्कुल सही"
+      startup:
+        name: "स्टार्टअप"
+        price: "₹80/माह"
+        description: "शौक़ीनों और छोटी परियोजनाओं के लिए बढ़िया"
+      pro:
+        name: "प्रो"
+        price: "₹800/माह"
+        description: "पेशेवरों के लिए असीमित शक्ति"
+    most_popular: "सबसे लोकप्रिय"
+    month: "माह"
+    your_plan: "आपकी वर्तमान योजना"
+    remaining: "शेष"
+    renews_on: "नवीनीकरण तिथि"
+    trial_ends_on: "परीक्षण समाप्ति तिथि"
+    upgrade_now: "अभी अपग्रेड करें"
+    upgrade_to_plan: "%{plan} में अपग्रेड करें"
+    downgrade_to_free: "निःशुल्क योजना में डाउनग्रेड करें"
+    confirm_downgrade: "क्या आप वाकई डाउनग्रेड करना चाहते हैं? आप प्रीमियम सुविधाओं तक पहुंच खो देंगे।"
+    manage_subscription: "अपनी सदस्यता प्रबंधित करें"
+    manage_description: "हमारे सुरक्षित बिलिंग पोर्टल के माध्यम से अपनी भुगतान विधि अपडेट करें, बिलिंग इतिहास देखें, या सदस्यता रद्द करें।"
+    open_billing_portal: "बिलिंग पोर्टल खोलें"
+    cancel_subscription: "सदस्यता रद्द करें"
+    cancel_confirmation: "क्या आप वाकई अपनी सदस्यता रद्द करना चाहते हैं? आप अपनी बिलिंग अवधि के अंत तक पहुंच बनाए रखेंगे।"
+    manage_note: "सभी बिलिंग Stripe द्वारा सुरक्षित रूप से संभाली जाती है। आपकी भुगतान जानकारी कभी भी हमारे सर्वर पर संग्रहीत नहीं की जाती है।"

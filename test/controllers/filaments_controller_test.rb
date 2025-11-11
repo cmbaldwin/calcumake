@@ -164,4 +164,40 @@ class FilamentsControllerTest < ActionDispatch::IntegrationTest
     get edit_filament_url(other_filament)
     assert_response :not_found
   end
+
+  # Modal functionality tests
+  test "should get new as turbo_stream for modal" do
+    get new_filament_url, as: :turbo_stream
+    assert_response :success
+    assert_match(/turbo-stream/, response.body)
+    assert_match(/modal/, response.body)
+  end
+
+  test "should create filament via turbo_stream for modal" do
+    assert_difference("Filament.count") do
+      post filaments_url, params: {
+        filament: {
+          name: "Modal Test Filament",
+          material_type: "PLA",
+          diameter: 1.75,
+          density: 1.24
+        }
+      }, as: :turbo_stream
+    end
+    assert_response :success
+    assert_match(/turbo-stream/, response.body)
+  end
+
+  test "should render errors in modal on create failure" do
+    assert_no_difference("Filament.count") do
+      post filaments_url, params: {
+        filament: {
+          name: "",  # Invalid: name is required
+          material_type: "PLA"
+        }
+      }, as: :turbo_stream
+    end
+    assert_response :unprocessable_content
+    assert_match(/modal/, response.body)
+  end
 end

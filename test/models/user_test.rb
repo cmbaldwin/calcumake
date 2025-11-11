@@ -285,6 +285,155 @@ class UserTest < ActiveSupport::TestCase
     assert_not_includes regular_user.printers, oauth_printer
   end
 
+  # Subscription and plan management tests
+  test "new user should have trial period set" do
+    new_user = User.create!(
+      email: "trial@example.com",
+      password: "password123",
+      default_currency: "USD",
+      default_energy_cost_per_kwh: 0.12
+    )
+
+    assert new_user.trial_ends_at.present?
+    assert new_user.in_trial_period?
+    assert new_user.trial_days_remaining > 0
+  end
+
+  test "in_trial_period? should return true during trial" do
+    user = users(:one)
+    user.update!(trial_ends_at: 10.days.from_now)
+
+    assert user.in_trial_period?
+  end
+
+  test "in_trial_period? should return false after trial ends" do
+    user = users(:one)
+    user.update!(trial_ends_at: 1.day.ago)
+
+    assert_not user.in_trial_period?
+  end
+
+  test "trial_days_remaining should return correct days" do
+    user = users(:one)
+    user.update!(trial_ends_at: 5.days.from_now)
+
+    assert_equal 5, user.trial_days_remaining
+  end
+
+  test "trial_days_remaining should return 0 after trial ends" do
+    user = users(:one)
+    user.update!(trial_ends_at: 1.day.ago)
+
+    assert_equal 0, user.trial_days_remaining
+  end
+
+  test "free_plan? should return true for free users" do
+    user = users(:one)
+    user.update!(plan: "free")
+
+    assert user.free_plan?
+    assert_not user.startup_plan?
+    assert_not user.pro_plan?
+  end
+
+  test "startup_plan? should return true for startup users" do
+    user = users(:one)
+    user.update!(plan: "startup")
+
+    assert_not user.free_plan?
+    assert user.startup_plan?
+    assert_not user.pro_plan?
+  end
+
+  test "pro_plan? should return true for pro users" do
+    user = users(:one)
+    user.update!(plan: "pro")
+
+    assert_not user.free_plan?
+    assert_not user.startup_plan?
+    assert user.pro_plan?
+  end
+
+  test "active_subscription? should return true during trial" do
+    user = users(:one)
+    user.update!(plan: "free", trial_ends_at: 10.days.from_now)
+
+    assert user.active_subscription?
+  end
+
+  test "active_subscription? should return true for paid plans" do
+    user = users(:one)
+    user.update!(plan: "pro", trial_ends_at: nil)
+
+    assert user.active_subscription?
+  end
+
+  test "active_subscription? should return false for expired free plan" do
+    user = users(:one)
+    user.update!(
+      plan: "free",
+      trial_ends_at: 1.day.ago,
+      plan_expires_at: 1.day.ago
+    )
+
+    assert_not user.active_subscription?
+  end
+
+  test "can_create? should use PlanLimits service" do
+    user = users(:one)
+    user.update!(plan: "free")
+
+    assert user.can_create?("print_pricing")
+  end
+
+  test "limit_for should use PlanLimits service" do
+    user = users(:one)
+    user.update!(plan: "free")
+
+    assert_equal 5, user.limit_for("print_pricing")
+  end
+
+  test "upgrade_to_startup! should update plan" do
+    user = users(:one)
+    user.update!(
+      plan: "free",
+      trial_ends_at: 10.days.from_now
+    )
+
+    user.upgrade_to_startup!
+
+    assert_equal "startup", user.plan
+    assert_nil user.plan_expires_at
+    assert_nil user.trial_ends_at
+  end
+
+  test "upgrade_to_pro! should update plan" do
+    user = users(:one)
+    user.update!(plan: "free")
+
+    user.upgrade_to_pro!
+
+    assert_equal "pro", user.plan
+    assert_nil user.plan_expires_at
+    assert_nil user.trial_ends_at
+  end
+
+  test "downgrade_to_free! should update plan and clear subscription" do
+    user = users(:one)
+    user.update!(
+      plan: "pro",
+      stripe_subscription_id: "sub_123",
+      plan_expires_at: 30.days.from_now
+    )
+
+    user.downgrade_to_free!
+
+    assert_equal "free", user.plan
+    assert_nil user.plan_expires_at
+    assert_nil user.trial_ends_at
+    assert_nil user.stripe_subscription_id
+  end
+
   private
 
   def create_oauth_hash(email, provider, uid, name = "Test User")

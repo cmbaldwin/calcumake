@@ -36,6 +36,9 @@ gem "omniauth-yahoojp"
 gem "omniauth-line"
 gem "omniauth-rails_csrf_protection"
 
+# Payment processing
+gem "stripe"
+
 # Admin interface
 gem "rails_admin"
 

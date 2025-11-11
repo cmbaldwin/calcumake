@@ -1,6 +1,17 @@
 class PrintersController < ApplicationController
+  include UsageTrackable
+
   before_action :authenticate_user!
   before_action :set_printer, only: [ :show, :edit, :update, :destroy ]
+
+  private
+
+  # Printers use total count, not monthly tracking
+  def skip_usage_tracking?
+    true
+  end
+
+  public
 
   def index
     @printers = current_user.printers.order(:name)
@@ -11,6 +22,11 @@ class PrintersController < ApplicationController
 
   def new
     @printer = current_user.printers.build
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream { render :modal_form }
+    end
   end
 
   def create
@@ -21,11 +37,17 @@ class PrintersController < ApplicationController
         format.html { redirect_to @printer, notice: "Printer was successfully created." }
         format.turbo_stream {
           flash.now[:notice] = "Printer was successfully created."
-          render "layouts/flash"
+          render turbo_stream: [
+            turbo_stream.update("modal", "<div id='modal' class='modal fade' data-controller='modal'></div>"),
+            turbo_stream.prepend("flash", partial: "layouts/flash_message", locals: { type: :notice, message: flash.now[:notice] })
+          ]
         }
       end
     else
-      render :new, status: :unprocessable_content
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_content }
+        format.turbo_stream { render :modal_form, status: :unprocessable_content }
+      end
     end
   end
 
