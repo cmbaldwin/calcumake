@@ -8,6 +8,7 @@ ar:
     new_pricing: سعر جديد
     my_printers: طابعاتي
     my_filaments: خيوط الطباعة
+    invoices: الفواتير
     profile: الملف الشخصي
     help: مساعدة
     sign_out: تسجيل الخروج
@@ -63,9 +64,6 @@ ar:
       create_new: حساب طباعة جديدة
       total_calculations: إجمالي الحسابات
       total_print_time: إجمالي وقت الطباعة
-      total_filament_used: إجمالي الفيلامنت المستخدم
-      total_estimated_sales: إجمالي المبيعات المقدرة
-      total_estimated_profit: إجمالي الربح المقدر
       search_placeholder: البحث حسب اسم المهمة أو نوع الفيلامنت...
       empty_state:
         title: لا توجد حسابات بعد
@@ -112,7 +110,7 @@ ar:
     depreciation_and_maintenance: الاستهلاك والصيانة
     other_costs: تكاليف أخرى
     subtotal: المجموع الفرعي
-    vat: ضريبة المبيعات (ضريبة القيمة المضافة)
+    vat: ضريبة القيمة المضافة
     total: الإجمالي
     notes: ملاحظات
     invoice_notes_text: شكراً لك على عملك. يرجى الاحتفاظ بهذه الفاتورة لسجلاتك.
@@ -154,73 +152,9 @@ ar:
         labor: تكلفة العمل
         machine: تكلفة الآلة
         other: تكاليف أخرى
-        listing: رسوم الإدراج
-        payment_processing: معالجة المدفوعات
         subtotal: المجموع الفرعي
-        vat: ضريبة المبيعات (ضريبة القيمة المضافة) (%{rate}%)
         final_price: السعر النهائي
-    fields:
-      job_name: اسم المهمة
-      job_name_placeholder: "مثال: نموذج مصغر"
-      select_printer: اختر طابعة
-      select_printer_prompt: اختر طابعة
-      no_printer_help: لا توجد طابعة مسجلة؟
-      add_printer_link: إضافة طابعة جديدة
-      print_time_hours: ساعات
-      print_time_minutes: دقائق
-      filament_weight: وزن الخيط (جرام)
-      filament_weight_placeholder: "36"
-      filament_type: نوع الخيط
-      filament_type_prompt: اختر النوع
-      spool_price: سعر البكرة
-      spool_price_placeholder: "25.00"
-      spool_weight: وزن البكرة (جرام)
-      spool_weight_placeholder: "1000"
-      markup: هامش الربح (%)
-      markup_placeholder: "20"
-      markup_percentage: نسبة هامش الربح
-      prep_time: وقت التحضير (دقيقة)
-      prep_time_placeholder: "30"
-      prep_time_minutes: وقت التحضير (دقائق)
-      prep_cost_hour: تكلفة التحضير/ساعة
-      prep_cost_placeholder: "20.00"
-      prep_cost_per_hour: تكلفة التحضير لكل ساعة
-      post_time: وقت المعالجة اللاحقة (دقيقة)
-      post_time_placeholder: "30"
-      postprocessing_time_minutes: وقت المعالجة اللاحقة (دقائق)
-      postprocessing_time_placeholder: "30"
-      postprocessing_cost_per_hour: تكلفة المعالجة اللاحقة لكل ساعة
-      postprocessing_cost_placeholder: "20.00"
-      post_cost_hour: تكلفة المعالجة اللاحقة/ساعة
-      post_cost_placeholder: "20.00"
-      other_costs: تكاليف أخرى
-      other_costs_placeholder: "0.00"
-      vat: ضريبة المبيعات (ضريبة القيمة المضافة) (%)
-      vat_placeholder: "10"
-      vat_percentage: نسبة ضريبة المبيعات (ضريبة القيمة المضافة)
-      listing_cost_percentage: نسبة رسوم الإدراج (%)
-      listing_cost_percentage_placeholder: "3"
-      payment_processing_cost_percentage: نسبة رسوم معالجة المدفوعات (%)
-      payment_processing_cost_percentage_placeholder: "2.9"
-      power_consumption: استهلاك الطاقة (واط)
-      power_consumption_placeholder: "200"
-      energy_cost_kwh: تكلفة الطاقة لكل كيلوواط ساعة
-      energy_cost_placeholder: "0.12"
-      printer_cost: تكلفة الطابعة
-      printer_cost_placeholder: "500.00"
-      payoff_goal: هدف السداد (سنوات)
-      payoff_goal_placeholder: "3"
-      daily_usage: الاستخدام اليومي (ساعات)
-      daily_usage_placeholder: "8"
-      repair_cost: تكلفة الإصلاح (%)
-      repair_cost_placeholder: "5"
-      currency: العملة
-      currency_prompt: اختر العملة
     buttons:
-      calculate_save: حساب
-      update_pricing: تحديث التسعير
-      update: تحديث
-      cancel: إلغاء
       add_plate: إضافة لوحة
     help:
       plates_limit: يمكنك إضافة ما يصل إلى 10 ألواح لكل مهمة طباعة.
@@ -254,27 +188,8 @@ ar:
       default_preferences: التفضيلات الافتراضية
     fields:
       default_currency: العملة الافتراضية
-      default_currency_help: مستخدمة كافتراضية لحسابات التسعير الجديدة
       energy_cost: تكلفة الطاقة لكل كيلوواط ساعة
-      energy_cost_placeholder: "0.120"
       energy_cost_help: تكلفة الكهرباء المحلية لكل كيلوواط ساعة
-      energy_cost_help_extended: تكلفة الكهرباء المحلية لكل كيلوواط ساعة. ستستخدم كافتراضية للحسابات الجديدة.
-      prep_time: وقت التحضير (دقائق)
-      prep_time_help: الوقت المقضي في تحضير الطباعات قبل البدء
-      prep_cost: تكلفة التحضير لكل ساعة
-      prep_cost_help: المعدل الساعي لعمل التحضير
-      postprocessing_time: وقت المعالجة اللاحقة (دقائق)
-      postprocessing_time_help: الوقت المقضي في المعالجة اللاحقة (التنظيف، إزالة الدعامات، إلخ)
-      postprocessing_cost: تكلفة المعالجة اللاحقة لكل ساعة
-      postprocessing_cost_help: المعدل الساعي لعمل المعالجة اللاحقة
-      other_costs: تكاليف أخرى
-      other_costs_help: تكاليف إضافية مثل التغليف، تحضير الشحن، إلخ
-      vat_percentage: نسبة ضريبة المبيعات (ضريبة القيمة المضافة)
-      vat_percentage_help: نسبة ضريبة المبيعات/ضريبة القيمة المضافة الافتراضية لموقعك
-      listing_cost_percentage: نسبة رسوم الإدراج
-      listing_cost_percentage_help: نسبة رسوم إدراج السوق الافتراضية (مثل جميع، أمازون)
-      payment_processing_cost_percentage: نسبة رسوم معالجة المدفوعات
-      payment_processing_cost_percentage_help: نسبة رسوم معالجة المدفوعات الافتراضية (مثل PayPal، Apple Pay)
     default_currency: العملة الافتراضية
     default_energy_cost: تكلفة الطاقة الافتراضية
     settings: الإعدادات
@@ -378,172 +293,11 @@ filaments:
       unit_price: سعر الوحدة
       total: المجموع
       remove: إزالة
-  print_pricings:
-    form:
-      filament_weight: وزن الخيط
-      print_time_hours: ساعات وقت الطباعة
-  landing:
-    hero:
-      headline: "أكثر إبداعاً، أقل حساباً"
-      subheadline: "تخلّص من جداول البيانات والحسابات المملة. اجعل التسعير تلقائياً لتركز على الجزء الممتع."
-      cta_primary: "ابدأ الحساب مجاناً"
-      cta_demo: "شاهد العرض التوضيحي"
-      trust_signal: "لا حاجة لبطاقة ائتمان - ابدأ بجميع ميزات Startup كاملة لمدة 30 يوماً"
-      preview_title: "معاينة سريعة للتكلفة"
-      preview_filament_weight: "وزن الخيط"
-      preview_print_time: "وقت الطباعة"
-      preview_total_cost: "التكلفة الإجمالية"
-      preview_cost_breakdown: "الكهرباء + الخيط + العمالة"
-
-    problem:
-      headline: "هل تخسر المال في الطباعة ثلاثية الأبعاد؟"
-      manual_errors: "أخطاء الحساب اليدوي"
-      manual_errors_desc: "جداول البيانات والحساب الذهني يؤديان إلى أخطاء مكلفة وتسعير منخفض."
-      electricity_costs: "تكاليف الكهرباء المنسية"
-      electricity_costs_desc: "استهلاك الطاقة قد يضيف 20-40% إلى تكاليفك الفعلية لكنه غالباً ما يُتجاهل."
-      inconsistent_pricing: "التسعير غير المتسق"
-      inconsistent_pricing_desc: "الحسابات المختلفة للمهام المتشابهة تربك العملاء وتضر بالأرباح."
-      time_wasted: "الوقت المهدر في جداول البيانات"
-      time_wasted_desc: "ساعات تُقضى في الحسابات اليدوية بدلاً من تنمية أعمال الطباعة."
-
-    solution:
-      headline: "أدوات احترافية للصُنّاع الجادين"
-      subheadline: "كل ما تحتاجه للتسعير الدقيق وإدارة مشاريع الطباعة ثلاثية الأبعاد بطريقة احترافية."
-
-    features:
-      accurate_calculation:
-        title: "حساب دقيق للتكلفة"
-        desc: "احصل على تكاليف دقيقة في كل مرة مع حساب شامل يشمل جميع النفقات المخفية."
-        filament: "وزن الفيلامنت + تكلفة البكرة"
-        electricity: "تتبع استهلاك الكهرباء"
-        labor: "وقت العمل (التحضير + المعالجة اللاحقة)"
-        depreciation: "إهلاك الآلة"
-
-      multi_printer:
-        title: "إدارة متعددة الطابعات"
-        desc: "تتبع مواصفات الطابعات المختلفة وراقب عائد الاستثمار عبر أسطولك بالكامل."
-        power: "تتبع استهلاك الطاقة الفردي"
-        roi: "تتبع عائد الاستثمار لكل طابعة"
-        organization: "إدارة منظمة لمهام الطباعة"
-
-      invoicing:
-        title: "فوترة احترافية"
-        desc: "أنشئ فواتير PDF احترافية بعلامتك التجارية ودعم متعدد العملات."
-        pdf: "فواتير PDF مُولّدة تلقائياً"
-        branding: "علامة تجارية مخصصة للشركة"
-        currency: "دعم متعدد العملات"
-
-      organization:
-        title: "تنظيم المشاريع"
-        desc: "حافظ على تنظيم مهام الطباعة بأدوات بحث وفلترة وإدارة مشاريع قوية."
-        search: "البحث والفلترة في مهام الطباعة"
-        duplicate: "نسخ المشاريع المتشابهة"
-        history: "تتبع كامل لتاريخ الطباعة"
-
-    pricing:
-      headline: "تسعير بسيط وشفاف"
-      subheadline: "اختر الخطة التي تناسب حجم طباعتك. يمكن الترقية أو التخفيض في أي وقت."
-      cta: "ابدأ مجاناً"
-
-      free:
-        title: "مجاني"
-        trial_notice: "الشهر الأول يشمل جميع ميزات Startup كاملة!"
-        calculations: "5 حسابات شهرياً (بعد التجربة)"
-        printers: "ملف طابعة واحد"
-        filaments: "4 أنواع فيلامنت"
-        invoices: "5 فواتير شهرياً"
-        branding: "علامة CalcuMake التجارية على الفواتير"
-
-      startup:
-        title: "Startup"
-        badge: "الأكثر شعبية"
-        calculations: "50 حساباً شهرياً"
-        printers: "10 ملفات طابعات"
-        filaments: "16 نوع فيلامنت"
-        branding: "إزالة علامة CalcuMake التجارية"
-        ads: "بدون إعلانات"
-
-      pro:
-        title: "Pro"
-        unlimited: "كل شيء غير محدود"
-        branding: "إزالة علامة CalcuMake التجارية"
-        ads: "بدون إعلانات"
-        support: "دعم أولوي"
-        analytics: "تحليلات متقدمة"
-        features: "ميزات مستقبلية مدفوعة"
-
-      trust_signals:
-        no_credit_card: "لا حاجة لبطاقة ائتمان - ابدأ بجميع ميزات Startup لمدة 30 يوماً"
-        cancel_anytime: "إلغاء في أي وقت"
-        data_private: "بياناتك تبقى خاصة"
-
-    faq:
-      headline: "الأسئلة الشائعة"
-
-      accuracy:
-        question: "ما مدى دقة الحسابات؟"
-        answer: "تستخدم CalcuMake معادلات بسيطة وتحسب جميع عوامل التكلفة بما في ذلك الفيلامنت والكهرباء ووقت العمل وإهلاك الآلة."
-
-      currencies:
-        question: "ما العملات التي تدعمها CalcuMake؟"
-        answer: "تدعم CalcuMake حالياً USD و EUR و GBP و JPY و CAD و AUD مع التنسيق التلقائي والدقة لكل عملة. يمكنك تغيير العملات في أي وقت في إعدادات ملفك الشخصي."
-
-      printers:
-        question: "هل تدعم CalcuMake طابعتي ثلاثية الأبعاد؟"
-        answer: "تعمل CalcuMake مع أي طابعة ثلاثية الأبعاد! ما عليك سوى إدخال استهلاك طابعتك للطاقة والمواصفات الأخرى. نخطط لدعم طابعات الراتنج قريباً!"
-
-      electricity:
-        question: "كيف تعمل تكاليف الكهرباء؟"
-        answer: "تحسب CalcuMake تلقائياً تكاليف الكهرباء بناءً على استهلاك طابعتك للطاقة (بالواط) ومدة الطباعة وتعرفة الطاقة المحلية لكل كيلوواط ساعة. هذا يضمن عدم نسيان عامل التكلفة المُتجاهل غالباً."
-
-      invoices:
-        question: "هل يمكنني تخصيص فواتيري؟"
-        answer: "نعم! يمكنك إضافة شعار شركتك وتخصيص الألوان وتضمين معلومات أعمالك. الخطط المدفوعة تزيل علامة CalcuMake التجارية للحصول على مظهر احترافي كامل."
-
-    final_cta:
-      headline: "مستعد للتوقف عن خسارة المال في الطباعة ثلاثية الأبعاد؟"
-      subheadline: "انضم لآلاف الصُنّاع الذين يثقون في CalcuMake للتسعير الدقيق وإدارة المشاريع الاحترافية."
-      button: "ابدأ تجربتك المجانية"
-
-  calculators:
-    quick_cost_calculator: "آلة حاسبة التكلفة السريعة"
-    print_time_hours: "وقت الطباعة (ساعات)"
-    filament_weight_grams: "وزن الخيط (جرام)"
-    filament_price_per_kg: "سعر الخيط لكل كيلوجرام (ريال)"
-    labor_rate_per_hour: "معدل العمالة لكل ساعة (ريال)"
-    create_full_calculation: "إنشاء حساب كامل"
-    features:
-      real_time: "حساب فوري أثناء الكتابة"
-      includes_costs: "يشمل تكاليف الكهرباء والعمالة"
-    results:
-      filament_cost: "تكلفة الخيط"
-      electricity_cost: "تكلفة الكهرباء"
-      labor_cost: "تكلفة العمالة"
-      total_cost: "التكلفة الإجمالية"
-      estimated_cost: "التكلفة المقدرة:"
-
-  demo:
-    title: "جرب عرض CalcuMake التوضيحي"
-    subtitle: "اختبر آلة حاسبة تكلفة الطباعة ثلاثية الأبعاد مع بيانات تجريبية. لا حاجة لحساب!"
-    sign_up_full_version: "تسجيل للنسخة الكاملة"
-    start_free_trial: "بدء التجربة المجانية"
-    limitations:
-      title: "هذه نسخة تجريبية"
-      description: "تطبيق CalcuMake الكامل يشمل:"
-      features:
-        - "ملفات طابعات متعددة مع مواصفات تلقائية"
-        - "مكتبة شاملة للخيوط مع خصائص المواد"
-        - "توليد فواتير PDF احترافية"
-        - "تاريخ المشاريع ووظيفة النسخ"
-        - "دعم العملات المتعددة"
-        - "حسابات إهلاك الآلات"
-
-  devise:
-    shared:
-      sign_in_with_provider: "تسجيل الدخول باستخدام %{provider}"
-      sign_in_with_provider_aria: "تسجيل الدخول باستخدام حساب %{provider} الخاص بك"
-      or_sign_in_with_email: "أو تسجيل الدخول بالبريد الإلكتروني"
-      oauth_signin_options: "خيارات تسجيل الدخول من طرف ثالث"
-      alternative_signin_method: "طريقة تسجيل دخول بديلة"
-    omniauth_callbacks:
-      success: "تم التحقق بنجاح من حساب %{kind}."
+      round_all_up: تقريب الكل لأعلى
+      round_all_up_help: تقريب جميع أسعار الوحدة لأعلى إلى أقرب قيمة كاملة
+      round_all_down: تقريب الكل لأسفل
+      round_all_down_help: تقريب جميع أسعار الوحدة لأسفل إلى أقرب قيمة كاملة
+print_pricings:
+  form:
+    filament_weight: وزن الخيط
+    print_time_hours: ساعات وقت الطباعة

@@ -73,6 +73,7 @@ ja:
     new_pricing: 新しい料金設定
     my_printers: プリンター
     my_filaments: フィラメント
+    invoices: 請求書
     profile: プロフィール
     help: ヘルプ
     sign_out: サインアウト
@@ -133,9 +134,6 @@ ja:
       create_new: 新しい印刷計算
       total_calculations: 総計算数
       total_print_time: 総印刷時間
-      total_filament_used: 総フィラメント使用量
-      total_estimated_sales: 総推定売上
-      total_estimated_profit: 総推定利益
       search_placeholder: ジョブ名またはフィラメントタイプで検索...
       empty_state:
         title: まだ計算がありません
@@ -181,7 +179,7 @@ ja:
     depreciation_and_maintenance: 減価償却と保守
     other_costs: その他費用
     subtotal: 小計
-    vat: 消費税 (VAT)
+    vat: VAT
     total: 合計
     notes: 備考
     invoice_notes_text: ご利用ありがとうございます。この請求書を記録として保管してください。
@@ -248,13 +246,8 @@ ja:
       post_cost_placeholder: '20.00'
       other_costs: その他費用
       other_costs_placeholder: '0.00'
-      vat: 消費税 (VAT) (%)
+      vat: 消費税（%）
       vat_placeholder: '10'
-      vat_percentage: 消費税 (VAT) 割合
-      listing_cost_percentage: 出品手数料率 (%)
-      listing_cost_percentage_placeholder: "3"
-      payment_processing_cost_percentage: 決済手数料率 (%)
-      payment_processing_cost_percentage_placeholder: "2.9"
       power_consumption: 消費電力（W）
       power_consumption_placeholder: '200'
       energy_cost_kwh: 電気代/kWh
@@ -316,10 +309,8 @@ ja:
         labor: 労働費
         machine: 機械費
         other: その他費用
-        listing: 出品手数料
-        payment_processing: 決済手数料
         subtotal: 小計
-        vat: 消費税 (VAT) (%{rate}%)
+        vat: 消費税（%{rate}%）
         final_price: 最終価格
       details:
         currency: 通貨
@@ -432,22 +423,6 @@ ja:
       energy_cost_placeholder: '0.120'
       energy_cost_help: 現地の1キロワット時あたりの電気代
       energy_cost_help_extended: 現地の1キロワット時あたりの電気代。新しい計算のデフォルトとして使用されます。
-      prep_time: 準備時間（分）
-      prep_time_help: 印刷開始前の準備時間
-      prep_cost: 時間あたり準備費
-      prep_cost_help: 準備作業の時給
-      postprocessing_time: 後処理時間（分）
-      postprocessing_time_help: 後処理（清掃、サポート除去など）の時間
-      postprocessing_cost: 時間あたり後処理費
-      postprocessing_cost_help: 後処理作業の時給
-      other_costs: その他費用
-      other_costs_help: 梱包、発送準備などの追加費用
-      vat_percentage: 消費税 (VAT) 割合
-      vat_percentage_help: お住まいの地域のデフォルト消費税/VAT割合
-      listing_cost_percentage: 出品手数料率
-      listing_cost_percentage_help: デフォルトのマーケットプレイス出品手数料率（例：Etsy、eBay）
-      payment_processing_cost_percentage: 決済手数料率
-      payment_processing_cost_percentage_help: デフォルトの決済処理手数料率（例：PayPal、Stripe）
     buttons:
       update_settings: 設定更新
       update_profile: プロフィール更新
@@ -628,169 +603,11 @@ ja:
       unit_price: 単価
       total: 合計
       remove: 削除
-  landing:
-    hero:
-      headline: "ものづくりに集中、計算は自動で"
-      subheadline: "面倒な表計算や複雑な計算は必要ありません。価格設定を自動化して、楽しいものづくりに専念しましょう。"
-      cta_primary: "無料で計算開始"
-      cta_demo: "デモを見る"
-      trust_signal: "クレジットカード不要 - 30日間、すべてのStartup機能を利用可能"
-      preview_title: "クイックコストプレビュー"
-      preview_filament_weight: "フィラメント重量"
-      preview_print_time: "印刷時間"
-      preview_total_cost: "総費用"
-      preview_cost_breakdown: "電気代 + フィラメント + 労働費"
-    problem:
-      headline: "3D印刷で損をしていませんか？"
-      manual_errors: "手動計算エラー"
-      manual_errors_desc: "スプレッドシートと暗算は、コストのかかる間違いや過少請求につながります。"
-      electricity_costs: "忘れられた電気代"
-      electricity_costs_desc: "消費電力は実際のコストの20-40%を追加する可能性がありますが、しばしば無視されます。"
-      inconsistent_pricing: "一貫しない価格設定"
-      inconsistent_pricing_desc: "類似の仕事で異なる計算をすると、顧客を混乱させ、利益を損ないます。"
-      time_wasted: "スプレッドシートでの時間の無駄"
-      time_wasted_desc: "印刷ビジネスの成長ではなく、手動計算に費やされる時間。"
-    solution:
-      headline: "真剣なメーカーのためのプロフェッショナルツール"
-      subheadline: "正確な価格設定と3D印刷プロジェクトのプロフェッショナル管理に必要なすべて。"
-    features:
-      accurate_calculation:
-        title: "正確なコスト計算"
-        desc: "隠れた費用をすべて含む包括的な計算で、毎回正確なコストを取得。"
-        filament: "フィラメント重量 + スプールコスト"
-        electricity: "電力消費量追跡"
-        labor: "労働時間（準備 + 後処理）"
-        depreciation: "機械の減価償却"
-      multi_printer:
-        title: "マルチプリンター管理"
-        desc: "異なるプリンター仕様を追跡し、全フリート全体の投資収益率を監視。"
-        power: "個別の消費電力追跡"
-        roi: "プリンター別ROI追跡"
-        organization: "組織化された印刷ジョブ管理"
-      invoicing:
-        title: "プロフェッショナル請求書"
-        desc: "会社ブランディングと多通貨サポートでプロフェッショナルなPDF請求書を生成。"
-        pdf: "自動生成PDF請求書"
-        branding: "カスタム会社ブランディング"
-        currency: "多通貨サポート"
-      organization:
-        title: "プロジェクト組織化"
-        desc: "強力な検索、フィルタリング、プロジェクト管理ツールで印刷ジョブを整理。"
-        search: "印刷ジョブの検索とフィルタリング"
-        duplicate: "類似プロジェクトの複製"
-        history: "完全な印刷履歴追跡"
-    pricing:
-      headline: "シンプルで透明な価格設定"
-      subheadline: "印刷量に合ったプランを選択。いつでもアップグレードまたはダウングレード可能。"
-      cta: "無料で始める"
-      free:
-        title: "無料"
-        trial_notice: "最初の月はすべてのStartup機能が含まれます！"
-        calculations: "月5回の計算（トライアル後）"
-        printers: "1つのプリンタープロファイル"
-        filaments: "4つのフィラメントタイプ"
-        invoices: "月5つの請求書"
-        branding: "請求書にCalcuMakeブランディング"
-      startup:
-        title: "Startup"
-        badge: "最も人気"
-        calculations: "月50回の計算"
-        printers: "10のプリンタープロファイル"
-        filaments: "16のフィラメントタイプ"
-        branding: "CalcuMakeブランディングを削除"
-        ads: "広告なし"
-      pro:
-        title: "Pro"
-        unlimited: "すべて無制限"
-        branding: "CalcuMakeブランディングを削除"
-        ads: "広告なし"
-        support: "優先サポート"
-        analytics: "高度な分析"
-        features: "将来のプレミアム機能"
-      trust_signals:
-        no_credit_card: "クレジットカード不要 - 30日間、すべてのStartup機能でスタート"
-        cancel_anytime: "いつでもキャンセル"
-        data_private: "データはプライベートに保たれます"
-    faq:
-      headline: "よくある質問"
-      accuracy:
-        question: "計算の精度はどの程度ですか？"
-        answer: "CalcuMakeはシンプルな公式を使用し、フィラメント、電気、労働時間、機械の減価償却を含むすべてのコスト要因を考慮します。"
-      currencies:
-        question: "CalcuMakeはどの通貨をサポートしていますか？"
-        answer: "CalcuMakeは現在、USD、EUR、GBP、JPY、CAD、AUDを自動フォーマットと各通貨の精度でサポートしています。プロフィール設定でいつでも通貨を切り替えできます。"
-      printers:
-        question: "CalcuMakeは私の3Dプリンターをサポートしていますか？"
-        answer: "CalcuMakeはどの3Dプリンターでも動作します！プリンターの消費電力やその他の仕様を入力するだけです。レジンプリンターのサポートも近日予定しています！"
-      electricity:
-        question: "電気代はどのように機能しますか？"
-        answer: "CalcuMakeは、プリンターの消費電力（ワット）、印刷時間、地域のkWhあたりのエネルギー料金に基づいて電気代を自動計算します。これにより、見落とされがちなこのコスト要因を決して忘れることがありません。"
-      invoices:
-        question: "請求書をカスタマイズできますか？"
-        answer: "はい！会社のロゴを追加し、色をカスタマイズし、ビジネス情報を含めることができます。有料プランではCalcuMakeブランディングを削除して、完全にプロフェッショナルな外観にできます。"
-    final_cta:
-      headline: "3D印刷で損するのをやめませんか？"
-      subheadline: "正確な価格設定とプロフェッショナルなプロジェクト管理でCalcuMakeを信頼する何千ものメーカーに参加してください。"
-      button: "無料トライアルを開始"
-  locale_suggestion:
-    banner:
-      title: "別の地域からアクセスされているようです。"
-      switch_to: "より良い体験のために%{language}に切り替えますか？"
-      currently_viewing: "現在%{language}で表示中"
-      switch_button: "言語を切り替え"
-      stay_button: "このまま"
-      close: "閉じる"
+      round_all_up: すべて切り上げ
+      round_all_up_help: すべての単価を最も近い整数値に切り上げます
+      round_all_down: すべて切り捨て
+      round_all_down_help: すべての単価を最も近い整数値に切り捨てます
   print_pricings:
     form:
       filament_weight: フィラメント重量
       print_time_hours: 印刷時間（時間）
-
-  calculators:
-    quick_cost_calculator: "クイックコスト計算機"
-    print_time_hours: "印刷時間（時間）"
-    filament_weight_grams: "フィラメント重量（グラム）"
-    filament_price_per_kg: "フィラメント価格（¥/kg）"
-    labor_rate_per_hour: "作業時給（¥/時間）"
-    create_full_calculation: "詳細計算を作成"
-    includes_defaults: "デフォルトコストを含む："
-    defaults:
-      filament_price: "フィラメント"
-      labor_rate: "労働費"
-      energy_cost: "エネルギー"
-      power_consumption: "電力"
-      machine_payoff: "機械償却"
-    features:
-      real_time: "リアルタイム計算"
-      includes_costs: "電気代と人件費を含む"
-    results:
-      filament_cost: "フィラメント費用"
-      electricity_cost: "電気代"
-      labor_cost: "人件費"
-      total_cost: "総費用"
-      estimated_cost: "推定費用："
-
-  demo:
-    title: "CalcuMakeデモを試す"
-    subtitle: "サンプルデータで3D印刷コスト計算機をテスト。アカウント不要！"
-    sign_up_full_version: "フルバージョンに登録"
-    start_free_trial: "無料トライアル開始"
-    limitations:
-      title: "これはデモバージョンです"
-      description: "フルCalcuMakeアプリには以下が含まれます："
-      features:
-        - "自動仕様付きの複数プリンタープロファイル"
-        - "材料特性を持つ包括的フィラメントライブラリ"
-        - "プロフェッショナルPDF請求書生成"
-        - "プロジェクト履歴と複製機能"
-        - "多通貨サポート"
-        - "機械減価償却計算"
-
-  devise:
-    shared:
-      sign_in_with_provider: "%{provider}でサインイン"
-      sign_in_with_provider_aria: "%{provider}アカウントを使用してサインイン"
-      or_sign_in_with_email: "またはメールアドレスでサインイン"
-      oauth_signin_options: "サードパーティサインインオプション"
-      alternative_signin_method: "代替サインイン方法"
-    omniauth_callbacks:
-      success: "%{kind}アカウントから正常に認証されました。"
