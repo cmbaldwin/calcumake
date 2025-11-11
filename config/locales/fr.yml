@@ -510,4 +510,208 @@ print_pricings:
     print_time_hours: Heures de Temps d'Impression
   devise:
     shared:
-      oauth_signin_options: Sign in options
+  landing:
+    hero:
+      headline: "Plus d'art, moins d'administratif"
+      subheadline: "Fini les feuilles de calcul et les calculs fastidieux. Automatisez la tarification pour vous concentrer sur votre passion créative."
+      cta_primary: "Commencer Gratuitement"
+      cta_demo: "Voir la Démo"
+      trust_signal: "Aucune carte de crédit requise - commencez avec toutes les fonctionnalités Startup pendant 30 jours"
+      preview_title: "Aperçu Rapide des Coûts"
+      preview_filament_weight: "Poids du Filament"
+      preview_print_time: "Temps d'Impression"
+      preview_total_cost: "Coût Total"
+      preview_cost_breakdown: "Électricité + Filament + Main-d'œuvre"
+
+    problem:
+      headline: "Perdez-vous de l'argent sur l'impression 3D ?"
+      manual_errors: "Erreurs de Calcul Manuel"
+      manual_errors_desc: "Les feuilles de calcul et les calculs mentaux entraînent des erreurs coûteuses et une sous-facturation."
+      electricity_costs: "Coûts d'Électricité Oubliés"
+      electricity_costs_desc: "La consommation électrique peut ajouter 20-40% à vos coûts réels mais est souvent ignorée."
+      inconsistent_pricing: "Tarification Incohérente"
+      inconsistent_pricing_desc: "Des calculs différents pour des travaux similaires confondent les clients et nuisent aux profits."
+      time_wasted: "Temps Perdu sur les Feuilles de Calcul"
+      time_wasted_desc: "Heures passées sur des calculs manuels au lieu de développer votre activité d'impression."
+
+    solution:
+      headline: "Outils Professionnels pour Makers Sérieux"
+      subheadline: "Tout ce dont vous avez besoin pour tarifer avec précision et gérer vos projets d'impression 3D comme un pro."
+
+    features:
+      accurate_calculation:
+        title: "Calcul de Coûts Précis"
+        desc: "Obtenez des coûts précis à chaque fois avec un calcul complet incluant toutes les dépenses cachées."
+        filament: "Poids du filament + coût de la bobine"
+        electricity: "Suivi de la consommation électrique"
+        labor: "Temps de travail (préparation + post-traitement)"
+        depreciation: "Amortissement de la machine"
+
+      multi_printer:
+        title: "Gestion Multi-Imprimantes"
+        desc: "Suivez les différentes spécifications d'imprimantes et surveillez votre retour sur investissement sur toute votre flotte."
+        power: "Suivi individuel de la consommation"
+        roi: "Suivi ROI par imprimante"
+        organization: "Gestion organisée des travaux d'impression"
+
+      invoicing:
+        title: "Facturation Professionnelle"
+        desc: "Générez des factures PDF professionnelles avec votre image de marque et support multi-devises."
+        pdf: "Factures PDF auto-générées"
+        branding: "Image de marque personnalisée"
+        currency: "Support multi-devises"
+
+      organization:
+        title: "Organisation de Projets"
+        desc: "Gardez vos travaux d'impression organisés avec des outils puissants de recherche, filtrage et gestion de projets."
+        search: "Rechercher et filtrer les travaux"
+        duplicate: "Dupliquer des projets similaires"
+        history: "Suivi complet de l'historique d'impression"
+
+    pricing:
+      headline: "Tarification Simple et Transparente"
+      subheadline: "Choisissez le plan qui correspond à votre volume d'impression. Mettez à niveau ou rétrogradez à tout moment."
+      cta: "Commencer Gratuitement"
+
+      free:
+        title: "Gratuit"
+        trial_notice: "Le premier mois inclut toutes les fonctionnalités Startup !"
+        calculations: "5 calculs par mois (après l'essai)"
+        printers: "1 profil d'imprimante"
+        filaments: "4 types de filaments"
+        invoices: "5 factures par mois"
+        branding: "Marque CalcuMake sur les factures"
+
+      startup:
+        title: "Startup"
+        badge: "Le Plus Populaire"
+        calculations: "50 calculs par mois"
+        printers: "10 profils d'imprimantes"
+        filaments: "16 types de filaments"
+        branding: "Supprimer la marque CalcuMake"
+        ads: "Sans publicité"
+
+      pro:
+        title: "Pro"
+        unlimited: "Tout illimité"
+        branding: "Supprimer la marque CalcuMake"
+        ads: "Sans publicité"
+        support: "Support prioritaire"
+        analytics: "Analyses avancées"
+        features: "Futures fonctionnalités premium"
+
+      trust_signals:
+        no_credit_card: "Aucune carte de crédit requise - commencez avec toutes les fonctionnalités Startup pendant 30 jours"
+        cancel_anytime: "Annulez à tout moment"
+        data_private: "Vos données restent privées"
+
+    faq:
+      headline: "Questions Fréquemment Posées"
+
+      accuracy:
+        question: "Quelle est la précision des calculs ?"
+        answer: "CalcuMake utilise des formules simples et prend en compte tous les facteurs de coût incluant le filament, l'électricité, le temps de travail et l'amortissement de la machine."
+
+      currencies:
+        question: "Quelles devises CalcuMake supporte-t-il ?"
+        answer: "CalcuMake supporte actuellement USD, EUR, GBP, JPY, CAD et AUD avec formatage automatique et précision pour chaque devise. Vous pouvez changer de devise à tout moment dans vos paramètres de profil."
+
+      printers:
+        question: "CalcuMake supporte-t-il mon imprimante 3D ?"
+        answer: "CalcuMake fonctionne avec n'importe quelle imprimante 3D ! Vous entrez simplement la consommation électrique de votre imprimante et d'autres spécifications. Nous prévoyons bientôt le support pour les imprimantes à résine !"
+
+      electricity:
+        question: "Comment fonctionnent les coûts d'électricité ?"
+        answer: "CalcuMake calcule automatiquement les coûts d'électricité basés sur la consommation de votre imprimante (en watts), la durée d'impression et votre tarif énergétique local par kWh. Cela assure que vous n'oubliez jamais ce facteur de coût souvent négligé."
+
+      invoices:
+        question: "Puis-je personnaliser mes factures ?"
+        answer: "Oui ! Vous pouvez ajouter le logo de votre entreprise, personnaliser les couleurs et inclure vos informations commerciales. Les plans payants suppriment la marque CalcuMake pour un aspect complètement professionnel."
+
+    final_cta:
+      headline: "Prêt à arrêter de perdre de l'argent sur l'impression 3D ?"
+      subheadline: "Rejoignez des milliers de makers qui font confiance à CalcuMake pour une tarification précise et une gestion de projets professionnelle."
+      button: "Commencer Votre Essai Gratuit"
+
+  calculators:
+    quick_cost_calculator: "Calculateur de Coût Rapide"
+    print_time_hours: "Temps d'Impression (heures)"
+    filament_weight_grams: "Poids du Filament (grammes)"
+    filament_price_per_kg: "Prix du Filament par KG (€)"
+    labor_rate_per_hour: "Tarif de Main-d'œuvre par Heure (€)"
+    create_full_calculation: "Créer un Calcul Complet"
+    features:
+      real_time: "Calcul en temps réel pendant la saisie"
+      includes_costs: "Inclut les coûts d'électricité et de main-d'œuvre"
+    results:
+      filament_cost: "Coût du Filament"
+      electricity_cost: "Coût d'Électricité"
+      labor_cost: "Coût de Main-d'œuvre"
+      total_cost: "Coût Total"
+      estimated_cost: "Coût Estimé:"
+
+  demo:
+    title: "Essayer la Démo CalcuMake"
+    subtitle: "Testez notre calculateur de coûts d'impression 3D avec des données d'exemple. Aucun compte requis !"
+    sign_up_full_version: "S'inscrire pour la Version Complète"
+    start_free_trial: "Commencer l'Essai Gratuit"
+    limitations:
+      title: "Ceci est une Version de Démonstration"
+      description: "L'application CalcuMake complète inclut :"
+      features:
+        - "Profils d'imprimantes multiples avec spécifications automatiques"
+        - "Bibliothèque de filaments complète avec propriétés des matériaux"
+        - "Génération professionnelle de factures PDF"
+        - "Historique de projet et fonctionnalité de duplication"
+        - "Support multi-devises"
+        - "Calculs d'amortissement de machines"
+
+  devise:
+    shared:
+      sign_in_with_provider: "Se connecter avec %{provider}"
+      sign_in_with_provider_aria: "Se connecter avec votre compte %{provider}"
+      or_sign_in_with_email: "ou se connecter par email"
+      oauth_signin_options: "Options de connexion tierces"
+      alternative_signin_method: "Méthode de connexion alternative"
+    omniauth_callbacks:
+      success: "Authentifié avec succès depuis le compte %{kind}."
+
+  # Limites d'utilisation et gestion des abonnements
+  usage_limits:
+    limit_reached: "Vous avez atteint la limite de %{limit} %{resource} de votre plan %{plan}. Veuillez mettre à niveau pour continuer."
+    approaching_limit: "Vous approchez de la limite de votre plan pour %{resource}"
+    usage_summary: "Résumé d'utilisation"
+    current_usage: "%{current} sur %{limit} utilisés"
+    unlimited: "Illimité"
+
+  subscriptions:
+    title: "Abonnement et tarification"
+    current_plan: "Plan actuel"
+    upgrade: "Mettre à niveau le plan"
+    manage: "Gérer l'abonnement"
+    cancel: "Annuler l'abonnement"
+    invalid_plan: "Plan d'abonnement invalide sélectionné"
+    checkout_error: "Impossible de créer la session de paiement. Veuillez réessayer."
+    verification_error: "Impossible de vérifier l'abonnement. Veuillez contacter le support."
+    portal_error: "Impossible d'accéder à la gestion des abonnements. Veuillez réessayer."
+    no_subscription: "Vous n'avez pas d'abonnement actif"
+    upgrade_successful: "Mise à niveau réussie vers le plan %{plan} !"
+    cancel_scheduled: "Votre abonnement sera annulé à la fin de la période de facturation"
+    cancel_error: "Impossible d'annuler l'abonnement. Veuillez réessayer."
+    trial_badge: "Essai gratuit de 30 jours"
+    trial_remaining: "%{days} jours restants"
+    features:
+      calculations: "%{count} calculs d'impression/mois"
+      printers: "%{count} profils d'imprimante"
+      filaments: "%{count} types de filament"
+      invoices: "%{count} factures/mois"
+      unlimited_calculations: "Calculs d'impression illimités"
+      unlimited_printers: "Imprimantes illimitées"
+      unlimited_filaments: "Filaments illimités"
+      unlimited_invoices: "Factures illimitées"
+      no_branding: "Supprimer la marque CalcuMake"
+      no_ads: "Expérience sans publicité"
+      alternative_signin_method: Alternative signin method
+      or_sign_in_with_email: Or Sign In With Email
+      sign_in_with_provider: Sign in with %{provider}
+      sign_in_with_provider_aria: Sign in with %{provider}
