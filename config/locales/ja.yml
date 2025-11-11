@@ -73,8 +73,6 @@ ja:
     new_pricing: 新しい料金設定
     my_printers: プリンター
     my_filaments: フィラメント
-    invoices: 請求書
-    clients: クライアント
     profile: プロフィール
     help: ヘルプ
     sign_out: サインアウト
@@ -111,7 +109,6 @@ ja:
     printer: プリンター
     print_pricing: 印刷料金
     filament: フィラメント
-    client: クライアント
   common:
     created: 作成日
     currency: 通貨
@@ -136,6 +133,9 @@ ja:
       create_new: 新しい印刷計算
       total_calculations: 総計算数
       total_print_time: 総印刷時間
+      total_filament_used: 総フィラメント使用量
+      total_estimated_sales: 総推定売上
+      total_estimated_profit: 総推定利益
       search_placeholder: ジョブ名またはフィラメントタイプで検索...
       empty_state:
         title: まだ計算がありません
@@ -181,7 +181,7 @@ ja:
     depreciation_and_maintenance: 減価償却と保守
     other_costs: その他費用
     subtotal: 小計
-    vat: VAT
+    vat: 消費税 (VAT)
     total: 合計
     notes: 備考
     invoice_notes_text: ご利用ありがとうございます。この請求書を記録として保管してください。
@@ -248,8 +248,13 @@ ja:
       post_cost_placeholder: '20.00'
       other_costs: その他費用
       other_costs_placeholder: '0.00'
-      vat: 消費税（%）
+      vat: 消費税 (VAT) (%)
       vat_placeholder: '10'
+      vat_percentage: 消費税 (VAT) 割合
+      listing_cost_percentage: 出品手数料率 (%)
+      listing_cost_percentage_placeholder: "3"
+      payment_processing_cost_percentage: 決済手数料率 (%)
+      payment_processing_cost_percentage_placeholder: "2.9"
       power_consumption: 消費電力（W）
       power_consumption_placeholder: '200'
       energy_cost_kwh: 電気代/kWh
@@ -311,8 +316,10 @@ ja:
         labor: 労働費
         machine: 機械費
         other: その他費用
+        listing: 出品手数料
+        payment_processing: 決済手数料
         subtotal: 小計
-        vat: 消費税（%{rate}%）
+        vat: 消費税 (VAT) (%{rate}%)
         final_price: 最終価格
       details:
         currency: 通貨
@@ -425,6 +432,22 @@ ja:
       energy_cost_placeholder: '0.120'
       energy_cost_help: 現地の1キロワット時あたりの電気代
       energy_cost_help_extended: 現地の1キロワット時あたりの電気代。新しい計算のデフォルトとして使用されます。
+      prep_time: 準備時間（分）
+      prep_time_help: 印刷開始前の準備時間
+      prep_cost: 時間あたり準備費
+      prep_cost_help: 準備作業の時給
+      postprocessing_time: 後処理時間（分）
+      postprocessing_time_help: 後処理（清掃、サポート除去など）の時間
+      postprocessing_cost: 時間あたり後処理費
+      postprocessing_cost_help: 後処理作業の時給
+      other_costs: その他費用
+      other_costs_help: 梱包、発送準備などの追加費用
+      vat_percentage: 消費税 (VAT) 割合
+      vat_percentage_help: お住まいの地域のデフォルト消費税/VAT割合
+      listing_cost_percentage: 出品手数料率
+      listing_cost_percentage_help: デフォルトのマーケットプレイス出品手数料率（例：Etsy、eBay）
+      payment_processing_cost_percentage: 決済手数料率
+      payment_processing_cost_percentage_help: デフォルトの決済処理手数料率（例：PayPal、Stripe）
     buttons:
       update_settings: 設定更新
       update_profile: プロフィール更新
@@ -455,9 +478,143 @@ ja:
     privacy_policy:
       title: プライバシーポリシー
       nav_title: プライバシーポリシー
+      information_we_collect:
+        title: 収集する情報
+        content: 当社は、お客様から直接提供された情報と、サービス利用時に自動的に収集される情報を収集します。
+        account_info:
+          title: アカウント情報
+          email: アカウント認証用のメールアドレス
+          preferences: デフォルト通貨や言語などのユーザー設定
+          usage_data: 使用パターンと機能設定
+        project_data:
+          title: プロジェクトデータ
+          pricing_calculations: 3Dプリントのコスト計算とプロジェクトデータ
+          printer_specifications: プリンター仕様と設定
+          project_metadata: プロジェクト名、日付、メタデータ
+        payment_info:
+          title: 支払いおよび請求情報
+          payment_details: 支払い方法の詳細（支払い処理業者が安全に処理）
+          billing_address: 請求先住所と連絡先情報
+          transaction_history: 取引とサブスクリプションの履歴
+          subscription_tier: 選択されたサブスクリプションティアと機能
+      data_sharing:
+        title: 情報の共有
+        content: "当社は、お客様の個人情報を第三者に販売、取引、または賃貸することはありません。以下の状況でのみ情報を共有する場合があります："
+        legal_requirements: 法律で要求された場合、または法的権利を保護するため
+        service_providers: サービス運営を支援する信頼できるサービスプロバイダー（クラウドホスティングおよびインフラストラクチャープロバイダーを含む）
+        payment_processors: サブスクリプション支払いの処理および請求管理のための支払い処理業者（Stripeなど）
+        advertising_partners: 無料ティアユーザーに関連広告を表示するための広告パートナー（Google AdSenseなど）
+        business_transfer: 事業譲渡または買収に関連して
+      advertising:
+        title: 広告
+        content: 無料ティアでは、Google AdSenseを通じて広告が表示されます。これらの広告は、お客様の興味や閲覧行動に基づいています。有料サブスクリプションティアでは広告は表示されません。
+        google_adsense: Google AdSenseは、Cookieおよびその他のトラッキング技術を使用して関連する広告を配信します。これは無料ティアユーザーのみに適用されます。
+        opt_out: 次のページにアクセスすることで、広告のパーソナライゼーションを管理し、パーソナライズド広告をオプトアウトできます
+        google_ad_settings: Google広告設定
+        upgrade_note: すべての広告を削除するには、有料サブスクリプションティアにアップグレードしてください。
     user_agreement:
       title: 利用規約
       nav_title: 利用規約
+      subscription_tiers:
+        title: サブスクリプションティアと価格
+        content: "CalcuMakeは3つのサブスクリプションティアを提供しています："
+        free_tier: "無料ティア：広告表示付きの基本機能"
+        pro_tier: "Proティア：高度な機能、広告なし、優先サポート（有料サブスクリプション）"
+        enterprise_tier: "Enterpriseティア：すべての機能、プレミアムサポート、カスタム統合（有料サブスクリプション）"
+        pricing_note: 現在の価格は当社のウェブサイトで確認でき、既存のサブスクライバーには通知して更新される場合があります。
+      payment_terms:
+        title: 支払いおよび請求
+        content: "有料ティアにサブスクライブする場合、以下の支払い条件に同意します："
+        subscription_fee: 各請求サイクルの開始時にサブスクリプション料金が請求されます
+        billing_cycles: 請求サイクルは、選択に応じて月次または年次です
+        payment_method: 有料ティアにサブスクライブするには、有効な支払い方法を提供する必要があります
+        automatic_renewal: 更新日前にキャンセルしない限り、サブスクリプションは自動的に更新されます
+        price_changes: 既存のサブスクライバーには30日前に通知して価格を変更する場合があります
+        payment_processor: 支払いは、サードパーティの支払い処理業者（Stripe）を通じて安全に処理されます
+        failed_payments: 支払いが失敗すると、サービスのダウングレードまたは停止が発生する場合があります
+        currency: 価格は選択した通貨で表示されます
+      cancellation_refunds:
+        title: キャンセルと返金
+        content: "いつでもサブスクリプションをキャンセルできます："
+        cancellation_process: アカウント設定からキャンセルするか、サポートに連絡してください
+        cancellation_effect: キャンセルは現在の請求期間の終了時に有効になります
+        access_until_end: 有料期間の終了まで有料機能へのアクセスは維持されます
+        refund_policy: 初回サブスクライバーには14日間の返金保証を提供します
+        no_partial_refunds: 法律で要求される場合を除き、残りのサブスクリプション期間の部分返金は提供されません
+        downgrade_option: 請求サイクルの終了時に低いティアにダウングレードできます
+      free_tier_limitations:
+        title: 無料ティアの制限
+        content: "無料ティアには広告表示が含まれ、使用制限がある場合があります："
+        advertisements: 無料ティアユーザーには、アプリケーション全体で広告が表示されます
+        feature_limits: 一部の高度な機能は有料ティアに制限されています
+        support_priority: 無料ティアサポートはベストエフォートベースで提供されます
+        upgrade_anytime: いつでも有料ティアにアップグレードできます
+    commerce_disclosure:
+      title: 特定商取引法に基づく表記
+      nav_title: 特定商取引法
+      business_operator:
+        title: 事業者名
+        name: "会社名: 株式会社モアブ (MOAB Co., Ltd.)"
+        representative: "代表者: Cody Baldwin"
+      business_address:
+        title: 所在地
+        address: "日本国内（詳細な住所情報については、お問い合わせください）"
+      contact:
+        title: 連絡先
+        email_label: メール
+        email: cody@moab.jp
+        phone_label: 電話番号
+        phone: メールにてお問い合わせください
+        hours_label: 営業時間
+        hours: 月曜日～金曜日 午前9時～午後6時（日本標準時、日本の祝日を除く）
+      service_description:
+        title: サービス内容
+        content: "CalcuMakeは、3Dプリント原価計算とプロジェクト管理ツールを提供するWebベースのアプリケーションです。サービス内容："
+        cost_calculations: 3Dプリントプロジェクトの包括的なコスト計算
+        project_management: プロジェクト追跡・管理機能
+        invoice_generation: 請求書生成・PDF出力機能
+        printer_tracking: プリンター仕様・使用状況追跡
+      pricing:
+        title: 販売価格
+        content: "CalcuMakeは3つのサブスクリプションティアを提供しています："
+        free_tier: "無料ティア：¥0/月 - 広告付き基本機能"
+        pro_tier: "Proティア：月次または年次の有料サブスクリプション - 高度な機能、広告なし、優先サポート"
+        enterprise_tier: "Enterpriseティア：月次または年次の有料サブスクリプション - すべての機能、プレミアムサポート、カスタム統合"
+        pricing_details: 正確な価格は、ウェブサイトおよびアプリケーション内のサブスクリプション選択時に表示されます。
+        price_changes: 価格は既存のサブスクライバーへの30日前の通知により調整される場合があります。
+      payment_methods:
+        title: 支払方法
+        content: "有料サブスクリプションには、以下の支払い方法を受け付けています："
+        credit_cards: "クレジットカード：Visa、Mastercard、American Express、JCB"
+        payment_processor: すべての支払いは、当社の支払い処理パートナーであるStripeを通じて安全に処理されます。
+        secure_processing: 完全なクレジットカード情報は当社のサーバーに保存されません。
+        free_tier_note: 無料ティアユーザーは支払い情報を提供する必要はありません。
+      payment_timing:
+        title: 支払時期
+        content: "お支払いは、選択した請求サイクルに従って請求されます："
+        initial_payment: 初回支払いはサブスクリプション時に即座に請求されます
+        recurring_payments: 定期支払いは各請求期間（月次または年次）の開始時に請求されます
+        automatic_renewal: サブスクリプションはキャンセルしない限り自動的に更新されます
+        cancellation_timing: キャンセルは現在の請求期間の終了時に有効になります
+      delivery:
+        title: サービス提供
+        content: CalcuMakeはWebベースのサービスで、アカウント作成後すぐにアクセス可能です。物理的な製品や配送は含まれません。
+      returns:
+        title: 返品・返金
+        content: "CalcuMakeはデジタルサブスクリプションサービスのため、返金ポリシーは以下の通りです："
+        money_back_guarantee: 初回有料サブスクライバーには14日間の返金保証
+        refund_process: 初回サブスクリプションから14日以内にサポートに連絡して全額返金を受けられます
+        no_partial_refunds: 法律で要求される場合を除き、残りのサブスクリプション期間の部分返金は提供されません
+        renewal_refunds: 更新支払いは法律で要求される場合を除き返金不可です
+        free_tier_refunds: 無料ティアの使用には支払いが含まれないため、返金は適用されません
+      cancellation:
+        title: 解約について
+        content: "サブスクリプションキャンセルの条件："
+        cancellation_method: アカウント設定から、またはcody@moab.jpのサポートに連絡していつでもキャンセルできます
+        cancellation_effect: キャンセルは現在の請求期間の終了時に有効になります
+        access_retention: 有料期間の終了まで有料機能への完全なアクセスは維持されます
+        data_retention: アカウントデータは当社のプライバシーポリシーに従って保持されます
+        resubscription: キャンセル後いつでも再サブスクライブできます
   support:
     title: サポート
     nav_title: サポート
@@ -465,6 +622,10 @@ ja:
     description: CalcuMakeについてのご質問やご提案がありますか？お気軽にお問い合わせください。
     email_label: メールサポート
     response_time: 通常24〜48時間以内に返信いたします
+    billing_support:
+      title: 請求とサブスクリプションのサポート
+      description: 請求に関するお問い合わせ、サブスクリプションの変更、返金リクエスト、または支払いの問題については、アカウントのメールアドレスを添えてお問い合わせください。
+      priority_note: ProおよびEnterpriseティアのサブスクライバーは、優先サポート応答時間を受けられます。
   filaments:
     index:
       title: フィラメント一覧
@@ -597,7 +758,6 @@ ja:
       currency: 通貨
       currency_help: この請求書のすべての金額の小数点以下桁数と書式を決定します
       company_logo: 会社ロゴ
-      project: プロジェクト
     line_items:
       title: 明細項目
       add_line_item: 明細項目追加
@@ -606,70 +766,467 @@ ja:
       unit_price: 単価
       total: 合計
       remove: 削除
-      round_all_up: すべて切り上げ
-      round_all_up_help: すべての単価を最も近い整数値に切り上げます
-      round_all_down: すべて切り捨て
-      round_all_down_help: すべての単価を最も近い整数値に切り捨てます
+  landing:
+    hero:
+      headline: "ものづくりに集中、計算は自動で"
+      subheadline: "面倒な表計算や複雑な計算は必要ありません。価格設定を自動化して、楽しいものづくりに専念しましょう。"
+      cta_primary: "無料で計算開始"
+      cta_demo: "デモを見る"
+      trust_signal: "クレジットカード不要 - 30日間、すべてのStartup機能を利用可能"
+      preview_title: "クイックコストプレビュー"
+      preview_filament_weight: "フィラメント重量"
+      preview_print_time: "印刷時間"
+      preview_total_cost: "総費用"
+      preview_cost_breakdown: "電気代 + フィラメント + 労働費"
+    problem:
+      headline: "3D印刷で損をしていませんか？"
+      manual_errors: "手動計算エラー"
+      manual_errors_desc: "スプレッドシートと暗算は、コストのかかる間違いや過少請求につながります。"
+      electricity_costs: "忘れられた電気代"
+      electricity_costs_desc: "消費電力は実際のコストの20-40%を追加する可能性がありますが、しばしば無視されます。"
+      inconsistent_pricing: "一貫しない価格設定"
+      inconsistent_pricing_desc: "類似の仕事で異なる計算をすると、顧客を混乱させ、利益を損ないます。"
+      time_wasted: "スプレッドシートでの時間の無駄"
+      time_wasted_desc: "印刷ビジネスの成長ではなく、手動計算に費やされる時間。"
+    solution:
+      headline: "真剣なメーカーのためのプロフェッショナルツール"
+      subheadline: "正確な価格設定と3D印刷プロジェクトのプロフェッショナル管理に必要なすべて。"
+    features:
+      accurate_calculation:
+        title: "正確なコスト計算"
+        desc: "隠れた費用をすべて含む包括的な計算で、毎回正確なコストを取得。"
+        filament: "フィラメント重量 + スプールコスト"
+        electricity: "電力消費量追跡"
+        labor: "労働時間（準備 + 後処理）"
+        depreciation: "機械の減価償却"
+      multi_printer:
+        title: "マルチプリンター管理"
+        desc: "異なるプリンター仕様を追跡し、全フリート全体の投資収益率を監視。"
+        power: "個別の消費電力追跡"
+        roi: "プリンター別ROI追跡"
+        organization: "組織化された印刷ジョブ管理"
+      invoicing:
+        title: "プロフェッショナル請求書"
+        desc: "会社ブランディングと多通貨サポートでプロフェッショナルなPDF請求書を生成。"
+        pdf: "自動生成PDF請求書"
+        branding: "カスタム会社ブランディング"
+        currency: "多通貨サポート"
+      organization:
+        title: "プロジェクト組織化"
+        desc: "強力な検索、フィルタリング、プロジェクト管理ツールで印刷ジョブを整理。"
+        search: "印刷ジョブの検索とフィルタリング"
+        duplicate: "類似プロジェクトの複製"
+        history: "完全な印刷履歴追跡"
+    pricing:
+      headline: "シンプルで透明な価格設定"
+      subheadline: "印刷量に合ったプランを選択。いつでもアップグレードまたはダウングレード可能。"
+      cta: "無料で始める"
+      free:
+        title: "無料"
+        trial_notice: "最初の月はすべてのStartup機能が含まれます！"
+        calculations: "月5回の計算（トライアル後）"
+        printers: "1つのプリンタープロファイル"
+        filaments: "4つのフィラメントタイプ"
+        invoices: "月5つの請求書"
+        branding: "請求書にCalcuMakeブランディング"
+      startup:
+        title: "Startup"
+        badge: "最も人気"
+        calculations: "月50回の計算"
+        printers: "10のプリンタープロファイル"
+        filaments: "16のフィラメントタイプ"
+        branding: "CalcuMakeブランディングを削除"
+        ads: "広告なし"
+      pro:
+        title: "Pro"
+        unlimited: "すべて無制限"
+        branding: "CalcuMakeブランディングを削除"
+        ads: "広告なし"
+        support: "優先サポート"
+        analytics: "高度な分析"
+        features: "将来のプレミアム機能"
+      trust_signals:
+        no_credit_card: "クレジットカード不要 - 30日間、すべてのStartup機能でスタート"
+        cancel_anytime: "いつでもキャンセル"
+        data_private: "データはプライベートに保たれます"
+    faq:
+      headline: "よくある質問"
+      accuracy:
+        question: "計算の精度はどの程度ですか？"
+        answer: "CalcuMakeはシンプルな公式を使用し、フィラメント、電気、労働時間、機械の減価償却を含むすべてのコスト要因を考慮します。"
+      currencies:
+        question: "CalcuMakeはどの通貨をサポートしていますか？"
+        answer: "CalcuMakeは現在、USD、EUR、GBP、JPY、CAD、AUDを自動フォーマットと各通貨の精度でサポートしています。プロフィール設定でいつでも通貨を切り替えできます。"
+      printers:
+        question: "CalcuMakeは私の3Dプリンターをサポートしていますか？"
+        answer: "CalcuMakeはどの3Dプリンターでも動作します！プリンターの消費電力やその他の仕様を入力するだけです。レジンプリンターのサポートも近日予定しています！"
+      electricity:
+        question: "電気代はどのように機能しますか？"
+        answer: "CalcuMakeは、プリンターの消費電力（ワット）、印刷時間、地域のkWhあたりのエネルギー料金に基づいて電気代を自動計算します。これにより、見落とされがちなこのコスト要因を決して忘れることがありません。"
+      invoices:
+        question: "請求書をカスタマイズできますか？"
+        answer: "はい！会社のロゴを追加し、色をカスタマイズし、ビジネス情報を含めることができます。有料プランではCalcuMakeブランディングを削除して、完全にプロフェッショナルな外観にできます。"
+    final_cta:
+      headline: "3D印刷で損するのをやめませんか？"
+      subheadline: "正確な価格設定とプロフェッショナルなプロジェクト管理でCalcuMakeを信頼する何千ものメーカーに参加してください。"
+      button: "無料トライアルを開始"
+  locale_suggestion:
+    banner:
+      title: "別の地域からアクセスされているようです。"
+      switch_to: "より良い体験のために%{language}に切り替えますか？"
+      currently_viewing: "現在%{language}で表示中"
+      switch_button: "言語を切り替え"
+      stay_button: "このまま"
+      close: "閉じる"
   print_pricings:
     form:
       filament_weight: フィラメント重量
       print_time_hours: 印刷時間（時間）
-  clients:
-    index:
-      title: マイクライアント
-      subtitle: クライアント情報を管理
-      add_new: 新しいクライアント追加
-      search_placeholder: 名前、会社名、メールで検索...
-      clear_search: 検索クリア
-      empty_state:
-        title: まだクライアントがいません
-        description: 最初のクライアントを追加して、顧客情報の管理を開始しましょう。
-        add_first: 最初のクライアント追加
-      no_results:
-        title: 結果が見つかりません
-        description: 検索に一致するクライアントはありません。別の検索用語をお試しください。
-    new:
-      title: 新しいクライアント追加
-      subtitle: 新しいクライアントプロファイルを作成
-    edit:
-      title: クライアント編集
-      subtitle: "%{name}のクライアント情報を更新"
-    show:
-      title: クライアント詳細
-      member_since: メンバー登録日
-      invoices: 請求書
-      print_pricings: 印刷料金
-      no_invoices: まだ請求書がありません
-      no_print_pricings: まだ印刷料金がありません
-    sections:
-      basic_info: 基本情報
-      contact_info: 連絡先情報
-      additional_info: 追加情報
-    fields:
-      name: 名前
-      name_placeholder: 山田太郎
-      company_name: 会社名
-      company_name_placeholder: 株式会社サンプル
-      email: メールアドレス
-      email_placeholder: sample@example.com
-      phone: 電話番号
-      phone_placeholder: 03-1234-5678
-      address: 住所
-      address_placeholder: "東京都渋谷区〇〇1-2-3"
-      tax_id: 税務番号/法人番号
-      tax_id_placeholder: "1234567890123"
-      notes: メモ
-      notes_placeholder: このクライアントに関する追加メモ...
-      select_client: クライアント選択
-      no_client_selected: クライアントが選択されていません
-      client_help_text: 既存のクライアントを選択するか
-      client: クライアント
-    card:
-      invoices: 請求書
-    buttons:
-      create: クライアント作成
-      update: クライアント更新
-    confirm_delete: "'%{name}'を削除してもよろしいですか？関連する請求書や印刷料金は削除されません。"
-    created_successfully: クライアントが正常に作成されました
-    updated_successfully: クライアントが正常に更新されました
-    deleted_successfully: クライアントが正常に削除されました
+
+  calculators:
+    quick_cost_calculator: "クイックコスト計算機"
+    print_time_hours: "印刷時間（時間）"
+    filament_weight_grams: "フィラメント重量（グラム）"
+    filament_price_per_kg: "フィラメント価格（¥/kg）"
+    labor_rate_per_hour: "作業時給（¥/時間）"
+    create_full_calculation: "詳細計算を作成"
+    includes_defaults: "デフォルトコストを含む："
+    defaults:
+      filament_price: "フィラメント"
+      labor_rate: "労働費"
+      energy_cost: "エネルギー"
+      power_consumption: "電力"
+      machine_payoff: "機械償却"
+    features:
+      real_time: "リアルタイム計算"
+      includes_costs: "電気代と人件費を含む"
+    results:
+      filament_cost: "フィラメント費用"
+      electricity_cost: "電気代"
+      labor_cost: "人件費"
+      total_cost: "総費用"
+      estimated_cost: "推定費用："
+
+  demo:
+    title: "CalcuMakeデモを試す"
+    subtitle: "サンプルデータで3D印刷コスト計算機をテスト。アカウント不要！"
+    sign_up_full_version: "フルバージョンに登録"
+    start_free_trial: "無料トライアル開始"
+    limitations:
+      title: "これはデモバージョンです"
+      description: "フルCalcuMakeアプリには以下が含まれます："
+      features:
+        - "自動仕様付きの複数プリンタープロファイル"
+        - "材料特性を持つ包括的フィラメントライブラリ"
+        - "プロフェッショナルPDF請求書生成"
+        - "プロジェクト履歴と複製機能"
+        - "多通貨サポート"
+        - "機械減価償却計算"
+
+  devise:
+    shared:
+      sign_in_with_provider: "%{provider}でサインイン"
+      sign_in_with_provider_aria: "%{provider}アカウントを使用してサインイン"
+      or_sign_in_with_email: "またはメールアドレスでサインイン"
+      oauth_signin_options: "サードパーティサインインオプション"
+      alternative_signin_method: "代替サインイン方法"
+    omniauth_callbacks:
+      success: "%{kind}アカウントから正常に認証されました。"
+
+  # 使用制限とサブスクリプション管理
+  usage_limits:
+    limit_reached: "%{plan}プランの上限（%{limit}%{resource}）に達しました。続けるにはアップグレードしてください。"
+    approaching_limit: "%{resource}のプラン上限に近づいています"
+    usage_summary: "使用状況の概要"
+    current_usage: "%{limit}中%{current}使用中"
+    unlimited: "無制限"
+
+  subscriptions:
+    title: "サブスクリプションと料金"
+    current_plan: "現在のプラン"
+    upgrade: "プランをアップグレード"
+    manage: "サブスクリプションを管理"
+    cancel: "サブスクリプションをキャンセル"
+    invalid_plan: "無効なサブスクリプションプランが選択されました"
+    checkout_error: "チェックアウトセッションを作成できません。もう一度お試しください。"
+    verification_error: "サブスクリプションを確認できません。サポートにお問い合わせください。"
+    portal_error: "サブスクリプション管理にアクセスできません。もう一度お試しください。"
+    no_subscription: "アクティブなサブスクリプションがありません"
+    upgrade_successful: "%{plan}プランへのアップグレードに成功しました！"
+    cancel_scheduled: "サブスクリプションは請求期間の終了時にキャンセルされます"
+    cancel_error: "サブスクリプションをキャンセルできません。もう一度お試しください。"
+    trial_badge: "30日間無料トライアル"
+    trial_remaining: "残り%{days}日"
+    features:
+      calculations: "月間%{count}印刷計算"
+      printers: "%{count}プリンタープロファイル"
+      filaments: "%{count}フィラメントタイプ"
+      invoices: "月間%{count}請求書"
+      unlimited_calculations: "無制限印刷計算"
+      unlimited_printers: "無制限プリンター"
+      unlimited_filaments: "無制限フィラメント"
+      unlimited_invoices: "無制限請求書"
+      no_branding: "CalcuMakeブランディングを削除"
+      no_ads: "広告なし"
+      priority_support: "優先サポート"
+      analytics: "高度な分析"
+      import_export: "一括インポート/エクスポート"
+    plans:
+      subtitle: "最適なプランをお選びください"
+      free:
+        name: "無料"
+        price: "¥0"
+        description: "CalcuMakeを試すのに最適"
+      startup:
+        name: "スタートアップ"
+        price: "¥150/月"
+        description: "趣味や小規模プロジェクトに最適"
+      pro:
+        name: "プロ"
+        price: "¥1,500/月"
+        description: "プロフェッショナル向けの無制限パワー"
+    most_popular: "最も人気"
+    month: "月"
+    your_plan: "現在のプラン"
+    remaining: "残り"
+    renews_on: "更新日"
+    trial_ends_on: "トライアル終了日"
+    upgrade_now: "今すぐアップグレード"
+    upgrade_to_plan: "%{plan}にアップグレード"
+    downgrade_to_free: "無料プランにダウングレード"
+    confirm_downgrade: "本当にダウングレードしますか？プレミアム機能へのアクセスを失います。"
+    manage_subscription: "サブスクリプションを管理"
+    manage_description: "安全な請求ポータルを通じて、支払い方法の更新、請求履歴の表示、またはサブスクリプションのキャンセルを行います。"
+    open_billing_portal: "請求ポータルを開く"
+    cancel_subscription: "サブスクリプションをキャンセル"
+    cancel_confirmation: "本当にサブスクリプションをキャンセルしますか？請求期間の終了までアクセスは維持されます。"
+    manage_note: "すべての請求はStripeによって安全に処理されます。お支払い情報は当社のサーバーには保存されません。"
+    approaching_limits_message: "プラン上限に近づいています。中断を避けるためにアップグレードをご検討ください。"
+    faq:
+      title: "よくある質問"
+      trial_question: "30日間のトライアル終了後はどうなりますか？"
+      trial_answer: "30日間のトライアル終了後、アカウントは自動的に無料プランに切り替わります。無料プランの制限でCalcuMakeを引き続き使用するか、いつでもスタートアップまたはプロにアップグレードできます。"
+      cancel_question: "いつでもサブスクリプションをキャンセルできますか？"
+      cancel_answer: "はい！いつでもサブスクリプションをキャンセルできます。現在の請求期間の終了まで有料プラン機能へのアクセスは維持され、その後自動的に無料プランに切り替わります。"
+      data_question: "ダウングレードするとデータはどうなりますか？"
+      data_answer: "ダウングレードしても既存のデータはすべて保持されます。ただし、無料プランの上限を超えている場合、新しいリソースを作成することはできません。既存のプロジェクト、プリンター、フィラメント、請求書は読み取り専用モードでアクセス可能です。"
+      payment_question: "どの支払い方法を受け付けていますか？"
+      payment_answer: "安全な決済処理業者であるStripeを通じて、すべての主要なクレジットカードとデビットカードを受け付けています。これにはVisa、Mastercard、American Expressなどが含まれます。すべての支払い情報はStripeによって安全に処理され、当社のサーバーには保存されません。"
+      change_plan_question: "後でプランを変更できますか？"
+      change_plan_answer: "もちろんです！いつでもプランをアップグレードまたはダウングレードできます。アップグレードはすぐに有効になり、日割り計算された金額が請求されます。ダウングレードは現在の請求期間の終了時に有効になります。"
+      reset_question: "月間制限はいつリセットされますか？"
+      reset_answer: "印刷計算と請求書の月間制限は毎月1日にリセットされます。プリンターとフィラメントの制限は合計数であり、月間制限ではありません。"
+
+  # モデル名の表示用
+  models:
+    print_pricing_plural: "印刷計算"
+    printer_plural: "プリンター"
+    filament_plural: "フィラメント"
+    invoice_plural: "請求書"
+  devise:
+    shared:
+  landing:
+    hero:
+      headline: "ものづくりに集中、計算は自動で"
+      subheadline: "面倒な表計算や複雑な計算は必要ありません。価格設定を自動化して、楽しいものづくりに専念しましょう。"
+      cta_primary: "無料で計算開始"
+      cta_demo: "デモを見る"
+      trust_signal: "クレジットカード不要 - 30日間、すべてのStartup機能を利用可能"
+      preview_title: "クイックコストプレビュー"
+      preview_filament_weight: "フィラメント重量"
+      preview_print_time: "印刷時間"
+      preview_total_cost: "総費用"
+      preview_cost_breakdown: "電気代 + フィラメント + 労働費"
+    problem:
+      headline: "3D印刷で損をしていませんか？"
+      manual_errors: "手動計算エラー"
+      manual_errors_desc: "スプレッドシートと暗算は、コストのかかる間違いや過少請求につながります。"
+      electricity_costs: "忘れられた電気代"
+      electricity_costs_desc: "消費電力は実際のコストの20-40%を追加する可能性がありますが、しばしば無視されます。"
+      inconsistent_pricing: "一貫しない価格設定"
+      inconsistent_pricing_desc: "類似の仕事で異なる計算をすると、顧客を混乱させ、利益を損ないます。"
+      time_wasted: "スプレッドシートでの時間の無駄"
+      time_wasted_desc: "印刷ビジネスの成長ではなく、手動計算に費やされる時間。"
+    solution:
+      headline: "真剣なメーカーのためのプロフェッショナルツール"
+      subheadline: "正確な価格設定と3D印刷プロジェクトのプロフェッショナル管理に必要なすべて。"
+    features:
+      accurate_calculation:
+        title: "正確なコスト計算"
+        desc: "隠れた費用をすべて含む包括的な計算で、毎回正確なコストを取得。"
+        filament: "フィラメント重量 + スプールコスト"
+        electricity: "電力消費量追跡"
+        labor: "労働時間（準備 + 後処理）"
+        depreciation: "機械の減価償却"
+      multi_printer:
+        title: "マルチプリンター管理"
+        desc: "異なるプリンター仕様を追跡し、全フリート全体の投資収益率を監視。"
+        power: "個別の消費電力追跡"
+        roi: "プリンター別ROI追跡"
+        organization: "組織化された印刷ジョブ管理"
+      invoicing:
+        title: "プロフェッショナル請求書"
+        desc: "会社ブランディングと多通貨サポートでプロフェッショナルなPDF請求書を生成。"
+        pdf: "自動生成PDF請求書"
+        branding: "カスタム会社ブランディング"
+        currency: "多通貨サポート"
+      organization:
+        title: "プロジェクト組織化"
+        desc: "強力な検索、フィルタリング、プロジェクト管理ツールで印刷ジョブを整理。"
+        search: "印刷ジョブの検索とフィルタリング"
+        duplicate: "類似プロジェクトの複製"
+        history: "完全な印刷履歴追跡"
+    pricing:
+      headline: "シンプルで透明な価格設定"
+      subheadline: "印刷量に合ったプランを選択。いつでもアップグレードまたはダウングレード可能。"
+      cta: "無料で始める"
+      free:
+        title: "無料"
+        trial_notice: "最初の月はすべてのStartup機能が含まれます！"
+        calculations: "月5回の計算（トライアル後）"
+        printers: "1つのプリンタープロファイル"
+        filaments: "4つのフィラメントタイプ"
+        invoices: "月5つの請求書"
+        branding: "請求書にCalcuMakeブランディング"
+      startup:
+        title: "Startup"
+        badge: "最も人気"
+        calculations: "月50回の計算"
+        printers: "10のプリンタープロファイル"
+        filaments: "16のフィラメントタイプ"
+        branding: "CalcuMakeブランディングを削除"
+        ads: "広告なし"
+      pro:
+        title: "Pro"
+        unlimited: "すべて無制限"
+        branding: "CalcuMakeブランディングを削除"
+        ads: "広告なし"
+        support: "優先サポート"
+        analytics: "高度な分析"
+        features: "将来のプレミアム機能"
+      trust_signals:
+        no_credit_card: "クレジットカード不要 - 30日間、すべてのStartup機能でスタート"
+        cancel_anytime: "いつでもキャンセル"
+        data_private: "データはプライベートに保たれます"
+    faq:
+      headline: "よくある質問"
+      accuracy:
+        question: "計算の精度はどの程度ですか？"
+        answer: "CalcuMakeはシンプルな公式を使用し、フィラメント、電気、労働時間、機械の減価償却を含むすべてのコスト要因を考慮します。"
+      currencies:
+        question: "CalcuMakeはどの通貨をサポートしていますか？"
+        answer: "CalcuMakeは現在、USD、EUR、GBP、JPY、CAD、AUDを自動フォーマットと各通貨の精度でサポートしています。プロフィール設定でいつでも通貨を切り替えできます。"
+      printers:
+        question: "CalcuMakeは私の3Dプリンターをサポートしていますか？"
+        answer: "CalcuMakeはどの3Dプリンターでも動作します！プリンターの消費電力やその他の仕様を入力するだけです。レジンプリンターのサポートも近日予定しています！"
+      electricity:
+        question: "電気代はどのように機能しますか？"
+        answer: "CalcuMakeは、プリンターの消費電力（ワット）、印刷時間、地域のkWhあたりのエネルギー料金に基づいて電気代を自動計算します。これにより、見落とされがちなこのコスト要因を決して忘れることがありません。"
+      invoices:
+        question: "請求書をカスタマイズできますか？"
+        answer: "はい！会社のロゴを追加し、色をカスタマイズし、ビジネス情報を含めることができます。有料プランではCalcuMakeブランディングを削除して、完全にプロフェッショナルな外観にできます。"
+    final_cta:
+      headline: "3D印刷で損するのをやめませんか？"
+      subheadline: "正確な価格設定とプロフェッショナルなプロジェクト管理でCalcuMakeを信頼する何千ものメーカーに参加してください。"
+      button: "無料トライアルを開始"
+  locale_suggestion:
+    banner:
+      title: "別の地域からアクセスされているようです。"
+      switch_to: "より良い体験のために%{language}に切り替えますか？"
+      currently_viewing: "現在%{language}で表示中"
+      switch_button: "言語を切り替え"
+      stay_button: "このまま"
+      close: "閉じる"
+  print_pricings:
+    form:
+      filament_weight: フィラメント重量
+      print_time_hours: 印刷時間（時間）
+
+  calculators:
+    quick_cost_calculator: "クイックコスト計算機"
+    print_time_hours: "印刷時間（時間）"
+    filament_weight_grams: "フィラメント重量（グラム）"
+    filament_price_per_kg: "フィラメント価格（¥/kg）"
+    labor_rate_per_hour: "作業時給（¥/時間）"
+    create_full_calculation: "詳細計算を作成"
+    includes_defaults: "デフォルトコストを含む："
+    defaults:
+      filament_price: "フィラメント"
+      labor_rate: "労働費"
+      energy_cost: "エネルギー"
+      power_consumption: "電力"
+      machine_payoff: "機械償却"
+    features:
+      real_time: "リアルタイム計算"
+      includes_costs: "電気代と人件費を含む"
+    results:
+      filament_cost: "フィラメント費用"
+      electricity_cost: "電気代"
+      labor_cost: "人件費"
+      total_cost: "総費用"
+      estimated_cost: "推定費用："
+
+  demo:
+    title: "CalcuMakeデモを試す"
+    subtitle: "サンプルデータで3D印刷コスト計算機をテスト。アカウント不要！"
+    sign_up_full_version: "フルバージョンに登録"
+    start_free_trial: "無料トライアル開始"
+    limitations:
+      title: "これはデモバージョンです"
+      description: "フルCalcuMakeアプリには以下が含まれます："
+      features:
+        - "自動仕様付きの複数プリンタープロファイル"
+        - "材料特性を持つ包括的フィラメントライブラリ"
+        - "プロフェッショナルPDF請求書生成"
+        - "プロジェクト履歴と複製機能"
+        - "多通貨サポート"
+        - "機械減価償却計算"
+
+  devise:
+    shared:
+      sign_in_with_provider: "%{provider}でサインイン"
+      sign_in_with_provider_aria: "%{provider}アカウントを使用してサインイン"
+      or_sign_in_with_email: "またはメールアドレスでサインイン"
+      oauth_signin_options: "サードパーティサインインオプション"
+      alternative_signin_method: "代替サインイン方法"
+    omniauth_callbacks:
+      success: "%{kind}アカウントから正常に認証されました。"
+
+  # 使用制限とサブスクリプション管理
+  usage_limits:
+    limit_reached: "%{plan}プランの上限（%{limit}%{resource}）に達しました。続けるにはアップグレードしてください。"
+    approaching_limit: "%{resource}のプラン上限に近づいています"
+    usage_summary: "使用状況の概要"
+    current_usage: "%{limit}中%{current}使用中"
+    unlimited: "無制限"
+
+  subscriptions:
+    title: "サブスクリプションと料金"
+    current_plan: "現在のプラン"
+    upgrade: "プランをアップグレード"
+    manage: "サブスクリプションを管理"
+    cancel: "サブスクリプションをキャンセル"
+    invalid_plan: "無効なサブスクリプションプランが選択されました"
+    checkout_error: "チェックアウトセッションを作成できません。もう一度お試しください。"
+    verification_error: "サブスクリプションを確認できません。サポートにお問い合わせください。"
+    portal_error: "サブスクリプション管理にアクセスできません。もう一度お試しください。"
+    no_subscription: "アクティブなサブスクリプションがありません"
+    upgrade_successful: "%{plan}プランへのアップグレードに成功しました！"
+    cancel_scheduled: "サブスクリプションは請求期間の終了時にキャンセルされます"
+    cancel_error: "サブスクリプションをキャンセルできません。もう一度お試しください。"
+    trial_badge: "30日間無料トライアル"
+    trial_remaining: "残り%{days}日"
+    features:
+      calculations: "月間%{count}印刷計算"
+      printers: "%{count}プリンタープロファイル"
+      filaments: "%{count}フィラメントタイプ"
+      invoices: "月間%{count}請求書"
+      unlimited_calculations: "無制限印刷計算"
+      unlimited_printers: "無制限プリンター"
+      unlimited_filaments: "無制限フィラメント"
+      unlimited_invoices: "無制限請求書"
+      no_branding: "CalcuMakeブランディングを削除"
+      alternative_signin_method: Alternative signin method
+      or_sign_in_with_email: Or Sign In With Email
+      sign_in_with_provider: Sign in with %{provider}
+      sign_in_with_provider_aria: Sign in with %{provider}

@@ -1,0 +1,127 @@
+<%# Pricing card for a subscription plan
+  Required locals:
+  - plan: 'free', 'startup', or 'pro'
+  - features: hash with plan details
+  - current: boolean, is this the user's current plan
+  Optional locals:
+  - popular: boolean, mark as popular choice
+  - usage: hash with current usage stats
+%>
+
+<% popular ||= false %>
+
+<div class="card pricing-card <%= 'popular-plan' if popular %> <%= 'current-plan' if current %> h-100">
+  <% if popular %>
+    <div class="popular-badge">
+      <%= t('subscriptions.most_popular', default: 'Most Popular') %>
+    </div>
+  <% end %>
+
+  <div class="card-body d-flex flex-column">
+    <%# Plan Header %>
+    <div class="text-center mb-3">
+      <h3 class="h5 mb-1"><%= features[:name] %></h3>
+      <div class="plan-price mb-2">
+        <span class="price-amount"><%= features[:price] %></span>
+        <% unless plan == 'free' %>
+          <span class="price-period">/<%= t('subscriptions.month', default: 'month') %></span>
+        <% end %>
+      </div>
+      <p class="text-muted small mb-0"><%= features[:description] %></p>
+    </div>
+
+    <%# Trial Badge for Free Plan %>
+    <% if plan == 'free' && current_user.in_trial_period? %>
+      <div class="alert alert-info py-2 px-3 mb-3 text-center">
+        <small>
+          <i class="bi bi-gift"></i>
+          <%= t('subscriptions.trial_badge') %>
+          <br>
+          <strong><%= t('subscriptions.trial_remaining', days: current_user.trial_days_remaining) %></strong>
+        </small>
+      </div>
+    <% end %>
+
+    <%# Current Plan Badge %>
+    <% if current %>
+      <div class="alert alert-success py-2 px-3 mb-3 text-center">
+        <small><i class="bi bi-check-circle"></i> <%= t('subscriptions.current_plan') %></small>
+      </div>
+    <% end %>
+
+    <%# Features List %>
+    <ul class="list-unstyled mb-4 flex-grow-1">
+      <%# Resource Limits %>
+      <li class="mb-2">
+        <i class="bi bi-check text-success"></i>
+        <% if features[:limits][:print_pricings] == Float::INFINITY %>
+          <%= t('subscriptions.features.unlimited_calculations') %>
+        <% else %>
+          <%= t('subscriptions.features.calculations', count: features[:limits][:print_pricings]) %>
+        <% end %>
+      </li>
+
+      <li class="mb-2">
+        <i class="bi bi-check text-success"></i>
+        <% if features[:limits][:printers] == Float::INFINITY %>
+          <%= t('subscriptions.features.unlimited_printers') %>
+        <% else %>
+          <%= t('subscriptions.features.printers', count: features[:limits][:printers]) %>
+        <% end %>
+      </li>
+
+      <li class="mb-2">
+        <i class="bi bi-check text-success"></i>
+        <% if features[:limits][:filaments] == Float::INFINITY %>
+          <%= t('subscriptions.features.unlimited_filaments') %>
+        <% else %>
+          <%= t('subscriptions.features.filaments', count: features[:limits][:filaments]) %>
+        <% end %>
+      </li>
+
+      <li class="mb-2">
+        <i class="bi bi-check text-success"></i>
+        <% if features[:limits][:invoices] == Float::INFINITY %>
+          <%= t('subscriptions.features.unlimited_invoices') %>
+        <% else %>
+          <%= t('subscriptions.features.invoices', count: features[:limits][:invoices]) %>
+        <% end %>
+      </li>
+
+      <%# Additional Features %>
+      <% features[:features].each do |feature| %>
+        <li class="mb-2">
+          <i class="bi bi-check text-success"></i>
+          <%= feature %>
+        </li>
+      <% end %>
+    </ul>
+
+    <%# Action Button %>
+    <div class="mt-auto">
+      <% if current %>
+        <button class="btn btn-outline-secondary w-100" disabled>
+          <%= t('subscriptions.current_plan') %>
+        </button>
+      <% elsif plan == 'free' %>
+        <% if current_user.stripe_subscription_id.present? %>
+          <%= button_to t('subscriptions.downgrade_to_free', default: 'Downgrade to Free'),
+                        cancel_subscriptions_path,
+                        method: :post,
+                        class: 'btn btn-outline-secondary w-100',
+                        data: { confirm: t('subscriptions.confirm_downgrade', default: 'Are you sure you want to downgrade? You will lose access to premium features.') } %>
+        <% else %>
+          <button class="btn btn-outline-secondary w-100" disabled>
+            <%= t('subscriptions.current_plan') %>
+          </button>
+        <% end %>
+      <% else %>
+        <%= button_to t('subscriptions.upgrade_to_plan', plan: features[:name]),
+                      create_checkout_session_subscriptions_path(plan: plan),
+                      method: :post,
+                      class: "btn btn-primary w-100 #{'btn-gradient-primary' if popular}",
+                      data: { turbo: false } %>
+      <% end %>
+    </div>
+  </div>
+</div>

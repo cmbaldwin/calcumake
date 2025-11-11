@@ -69,27 +69,27 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     # Test Japanese
-    get root_path, params: { locale: 'ja' }
+    get root_path, params: { locale: "ja" }
     assert_response :success
 
     # Test Spanish
-    get root_path, params: { locale: 'es' }
+    get root_path, params: { locale: "es" }
     assert_response :success
 
     # Test French
-    get root_path, params: { locale: 'fr' }
+    get root_path, params: { locale: "fr" }
     assert_response :success
 
     # Test Chinese
-    get root_path, params: { locale: 'zh-CN' }
+    get root_path, params: { locale: "zh-CN" }
     assert_response :success
 
     # Test Hindi
-    get root_path, params: { locale: 'hi' }
+    get root_path, params: { locale: "hi" }
     assert_response :success
 
     # Test Arabic
-    get root_path, params: { locale: 'ar' }
+    get root_path, params: { locale: "ar" }
     assert_response :success
   end
 
@@ -131,7 +131,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     post user_session_path, params: {
       user: {
         email: user.email,
-        password: 'password123'
+        password: "password123"
       }
     }
   end

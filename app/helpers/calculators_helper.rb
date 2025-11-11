@@ -1,8 +1,8 @@
 module CalculatorsHelper
   def demo_calculator(energy_cost: 0.12, **options)
     render "shared/components/calculators/calculator_base",
-           mode: 'demo',
-           stimulus_controller: 'demo-calculator',
+           mode: "demo",
+           stimulus_controller: "demo-calculator",
            energy_cost: energy_cost,
            show_detailed_results: true,
            show_features: true,
@@ -16,13 +16,13 @@ module CalculatorsHelper
     average_labor_cost = (user_prep_cost + user_post_cost) / 2.0
 
     render "shared/components/calculators/calculator_base",
-           mode: 'quick',
-           stimulus_controller: 'quick-calculator',
+           mode: "quick",
+           stimulus_controller: "quick-calculator",
            energy_cost: energy_cost,
            show_detailed_results: false,
            show_features: false,
-           user_currency: current_user&.default_currency || 'USD',
-           user_locale: I18n.locale.to_s.gsub('_', '-'),
+           user_currency: current_user&.default_currency || "USD",
+           user_locale: I18n.locale.to_s.gsub("_", "-"),
            filament_price_per_kg: 25.0, # Keep this as a reasonable average for quick estimates
            labor_rate_per_hour: average_labor_cost,
            **options

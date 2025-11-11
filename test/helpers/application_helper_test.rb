@@ -112,7 +112,7 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test "oauth helper methods work together for all supported providers" do
-    providers = ["Google", "GitHub", "Microsoft"]
+    providers = [ "Google", "GitHub", "Microsoft" ]
 
     providers.each do |provider|
       icon = oauth_provider_icon(provider)

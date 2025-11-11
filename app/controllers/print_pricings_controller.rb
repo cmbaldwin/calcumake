@@ -1,6 +1,9 @@
 class PrintPricingsController < ApplicationController
+  include UsageTrackable
+
   before_action :authenticate_user!
   before_action :set_print_pricing, only: [ :show, :edit, :update, :destroy, :increment_times_printed, :decrement_times_printed, :duplicate ]
+  before_action :check_resource_limit, only: [ :duplicate ], prepend: true
 
   def index
     @q = current_user.print_pricings.ransack(params[:q])
@@ -128,6 +131,9 @@ class PrintPricingsController < ApplicationController
     end
 
     if @new_print_pricing.save
+      # Track the duplicated resource
+      UsageTracking.track!(current_user, "print_pricing")
+
       respond_to do |format|
         format.html { redirect_to @new_print_pricing, notice: t("print_pricing.duplicated_successfully") }
         format.turbo_stream {
