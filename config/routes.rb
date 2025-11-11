@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   resources :printers
 
-  resource :user_profile, only: [ :show, :edit, :update ], path: "profile"
+  resource :user_profile, only: [ :show, :edit, :update, :destroy ], path: "profile"
 
   # Legal pages
   get "privacy-policy", to: "legal#privacy_policy", as: :privacy_policy
