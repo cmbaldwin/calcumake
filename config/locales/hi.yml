@@ -166,6 +166,61 @@ hi:
     jpy: जापानी येन
     cad: कनाडाई डॉलर
     aud: ऑस्ट्रेलियाई डॉलर
+  clients:
+    index:
+      title: मेरे ग्राहक
+      subtitle: अपने ग्राहक की जानकारी प्रबंधित करें
+      add_new: नया ग्राहक जोड़ें
+      search_placeholder: "नाम, कंपनी या ईमेल द्वारा खोजें..."
+      clear_search: खोज साफ़ करें
+      empty_state:
+        title: अभी तक कोई ग्राहक नहीं
+        description: ग्राहक जानकारी प्रबंधित करना शुरू करने के लिए अपना पहला ग्राहक जोड़ें।
+        add_first: अपना पहला ग्राहक जोड़ें
+      no_results:
+        title: कोई परिणाम नहीं मिला
+        description: आपकी खोज से मेल खाने वाला कोई ग्राहक नहीं है। एक अलग खोज शब्द का प्रयास करें।
+    new:
+      title: नया ग्राहक जोड़ें
+      subtitle: एक नई ग्राहक प्रोफ़ाइल बनाएं
+    edit:
+      title: ग्राहक संपादित करें
+      subtitle: "%{name} के लिए ग्राहक जानकारी अपडेट करें"
+    show:
+      title: ग्राहक विवरण
+      member_since: सदस्य बने
+      invoices: चालान
+      print_pricings: प्रिंट मूल्य
+      no_invoices: अभी तक कोई चालान नहीं
+      no_print_pricings: अभी तक कोई प्रिंट मूल्य नहीं
+    sections:
+      basic_info: मूल जानकारी
+      contact_info: संपर्क जानकारी
+      additional_info: अतिरिक्त जानकारी
+    fields:
+      name: नाम
+      name_placeholder: राज कुमार
+      company_name: कंपनी का नाम
+      company_name_placeholder: Acme Corporation
+      email: ईमेल
+      email_placeholder: "raj@example.com"
+      phone: फोन
+      phone_placeholder: "+91 98765 43210"
+      address: पता
+      address_placeholder: "123 मुख्य सड़क\nशहर, राज्य 12345"
+      tax_id: "Tax ID / VAT Number"
+      tax_id_placeholder: "12-3456789"
+      notes: नोट्स
+      notes_placeholder: इस ग्राहक के बारे में अतिरिक्त नोट्स...
+      select_client: ग्राहक चुनें
+      no_client_selected: कोई ग्राहक नहीं चुना गया
+      client_help_text: एक मौजूदा ग्राहक चुनें या
+      client: ग्राहक
+    card:
+      view_details: विवरण देखें
+      edit: संपादित करें
+      delete: हटाएं
+      confirm_delete: क्या आप वाकई इस ग्राहक को हटाना चाहते हैं?
   energy:
     cost_per_kwh: प्रति किलोवाट घंटे की लागत
   printers:
@@ -192,6 +247,21 @@ hi:
       default_currency: डिफ़ॉल्ट मुद्रा
       energy_cost: ऊर्जा लागत प्रति kWh
       energy_cost_help: आपकी स्थानीय प्रति किलोवाट-घंटा बिजली लागत
+    buttons:
+      update_settings: सेटिंग्स अपडेट करें
+      update_profile: प्रोफ़ाइल अपडेट करें
+    image_upload:
+      help_text: "Maximum file size: 5MB. Supported formats: PNG, JPG, GIF, WebP"
+    delete_account:
+      title: खाता हटाएं
+      warning_title: चेतावनी
+      warning_message: अपने खाते को हटाना स्थायी है और इसे पूर्ववत नहीं किया जा सकता। आपका सभी डेटा स्थायी रूप से हटा दिया जाएगा।
+      description: यदि आप अब CalcuMake का उपयोग नहीं करना चाहते हैं, तो आप अपना खाता हटा सकते हैं। अधिक जानकारी के लिए कृपया समर्थन पृष्ठ पर FAQ अनुभाग पढ़ें।
+      unlock_checkbox: मैं समझता हूं कि मेरा खाता हटाना स्थायी है
+      confirm_checkbox: मैं पुष्टि करता हूं कि मैं अपना खाता और सभी संबंधित डेटा हटाना चाहता हूं
+      button: मेरा खाता हटाएं
+      final_confirmation: क्या आप वाकई अपना खाता हटाना चाहते हैं? यह क्रिया पूर्ववत नहीं की जा सकती और आपका सभी डेटा स्थायी रूप से हटा दिया जाएगा।
+      success: आपका खाता सफलतापूर्वक हटा दिया गया है। CalcuMake का उपयोग करने के लिए धन्यवाद।
     default_currency: डिफ़ॉल्ट मुद्रा
     default_energy_cost: डिफ़ॉल्ट ऊर्जा लागत
     settings: सेटिंग्स
@@ -405,6 +475,30 @@ hi:
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
+    faq:
+      title: FAQ Title
+      delete_account:
+        question: How do I delete my account?
+        answer: To delete your account follow these steps
+        step1: Go to your Profile page
+        step2: Scroll to Delete Account section
+        step3: Check the box I understand deleting is permanent
+        step4: Check the box I confirm I want to delete
+        step5: Click Delete My Account button
+        warning_title: Important
+        warning_message: Account deletion is permanent and cannot be undone
+      data_recovery:
+        question: Can I recover my account after deletion?
+        answer: No account deletion is permanent and irreversible
+      what_deleted:
+        question: What data gets deleted?
+        intro: When you delete your account all data is deleted
+        item1: Your user account
+        item2: All print pricing calculations
+        item3: All printers
+        item4: All filaments
+        item5: All invoices
+        item6: All company info
     billing_support:
       title: बिलिंग और सदस्यता समर्थन
       description: बिलिंग पूछताछ, सदस्यता परिवर्तन, धनवापसी अनुरोध, या भुगतान समस्याओं
@@ -630,6 +724,46 @@ print_pricings:
       headline: "3D prints पर पैसा खोना बंद करने के लिए ready हैं?"
       subheadline: "हजारों makers के साथ join हों जो accurate pricing और professional project management के लिए CalcuMake पर trust करते हैं।"
       button: "अपना Free Trial शुरू करें"
+
+  calculators:
+    quick_cost_calculator: "त्वरित लागत कैलकुलेटर"
+    print_time_hours: "प्रिंट समय (घंटे)"
+    filament_weight_grams: "फिलामेंट वजन (ग्राम)"
+    filament_price_per_kg: "फिलामेंट मूल्य प्रति किग्रा (₹)"
+    labor_rate_per_hour: "श्रम दर प्रति घंटा (₹)"
+    create_full_calculation: "पूर्ण गणना बनाएं"
+    includes_defaults: "डिफ़ॉल्ट लागत शामिल:"
+    defaults:
+      filament_price: "फिलामेंट"
+      labor_rate: "श्रम"
+      energy_cost: "ऊर्जा"
+      power_consumption: "बिजली खपत"
+      machine_payoff: "मशीन मूल्यह्रास"
+    features:
+      real_time: "टाइप करते समय तत्काल गणना"
+      includes_costs: "बिजली और श्रम लागत शामिल"
+    results:
+      filament_cost: "फिलामेंट लागत"
+      electricity_cost: "बिजली लागत"
+      labor_cost: "श्रम लागत"
+      total_cost: "कुल लागत"
+      estimated_cost: "अनुमानित लागत:"
+
+  demo:
+    title: "CalcuMake डेमो आज़माएं"
+    subtitle: "नमूना डेटा के साथ हमारी 3D प्रिंट लागत कैलकुलेटर का परीक्षण करें। कोई खाता आवश्यक नहीं!"
+    sign_up_full_version: "पूर्ण संस्करण के लिए साइन अप करें"
+    start_free_trial: "निःशुल्क परीक्षण शुरू करें"
+    limitations:
+      title: "यह एक डेमो संस्करण है"
+      description: "पूर्ण CalcuMake एप्लिकेशन में शामिल है:"
+      features:
+        - "स्वचालित विनिर्देशों के साथ एकाधिक प्रिंटर प्रोफाइल"
+        - "सामग्री गुणों के साथ व्यापक फिलामेंट लाइब्रेरी"
+        - "पेशेवर PDF चालान जनरेशन"
+        - "परियोजना इतिहास और डुप्लिकेट कार्यक्षमता"
+        - "बहु-मुद्रा समर्थन"
+        - "मशीन मूल्यह्रास गणना"
 
   devise:
     shared:

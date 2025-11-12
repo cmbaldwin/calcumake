@@ -427,6 +427,16 @@ es:
     image_upload:
       help_text: 'Tamaño máximo de archivo: 5MB. Formatos soportados: PNG, JPG, GIF,
         WebP'
+    delete_account:
+      title: Eliminar Cuenta
+      warning_title: Advertencia
+      warning_message: Eliminar su cuenta es permanente y no se puede deshacer. Todos sus datos se eliminarán permanentemente.
+      description: Si ya no desea utilizar CalcuMake, puede eliminar su cuenta. Por favor lea la sección de preguntas frecuentes en la página de soporte para más información.
+      unlock_checkbox: Entiendo que eliminar mi cuenta es permanente
+      confirm_checkbox: Confirmo que quiero eliminar mi cuenta y todos los datos asociados
+      button: Eliminar Mi Cuenta
+      final_confirmation: "¿Está absolutamente seguro de que desea eliminar su cuenta? Esta acción no se puede deshacer y todos sus datos se eliminarán permanentemente."
+      success: Su cuenta ha sido eliminada exitosamente. Gracias por usar CalcuMake.
   currency:
     usd: Dólar Estadounidense
     eur: Euro
@@ -434,6 +444,61 @@ es:
     jpy: Yen Japonés
     cad: Dólar Canadiense
     aud: Dólar Australiano
+  clients:
+    index:
+      title: Mis Clientes
+      subtitle: Administre la información de sus clientes
+      add_new: Agregar Nuevo Cliente
+      search_placeholder: Buscar por nombre, empresa o correo...
+      clear_search: Limpiar Búsqueda
+      empty_state:
+        title: Aún no hay clientes
+        description: Agregue su primer cliente para comenzar a gestionar la información de clientes.
+        add_first: Agregue Su Primer Cliente
+      no_results:
+        title: No se encontraron resultados
+        description: No hay clientes que coincidan con su búsqueda. Pruebe con un término de búsqueda diferente.
+    new:
+      title: Agregar Nuevo Cliente
+      subtitle: Crear un nuevo perfil de cliente
+    edit:
+      title: Editar Cliente
+      subtitle: Actualizar información del cliente para %{name}
+    show:
+      title: Detalles del Cliente
+      member_since: Miembro Desde
+      invoices: Facturas
+      print_pricings: Precios de Impresión
+      no_invoices: Aún no hay facturas
+      no_print_pricings: Aún no hay precios de impresión
+    sections:
+      basic_info: Información Básica
+      contact_info: Información de Contacto
+      additional_info: Información Adicional
+    fields:
+      name: Nombre
+      name_placeholder: Juan Pérez
+      company_name: Nombre de la Empresa
+      company_name_placeholder: Corporación Acme
+      email: Correo Electrónico
+      email_placeholder: "juan@ejemplo.com"
+      phone: Teléfono
+      phone_placeholder: "+34 600 00 00 00"
+      address: Dirección
+      address_placeholder: "Calle Principal 123\nCiudad, Provincia 12345"
+      tax_id: ID Fiscal / Número de IVA
+      tax_id_placeholder: "12-3456789"
+      notes: Notas
+      notes_placeholder: Notas adicionales sobre este cliente...
+      select_client: Seleccionar Cliente
+      no_client_selected: No se seleccionó ningún cliente
+      client_help_text: Seleccione un cliente existente o
+      client: Cliente
+    card:
+      view_details: Ver Detalles
+      edit: Editar
+      delete: Eliminar
+      confirm_delete: "¿Está seguro de que desea eliminar este cliente?"
   energy:
     cost_per_kwh: Costo por kWh
   time:
@@ -455,6 +520,30 @@ es:
       aquí para ayudarte!"
     email_label: Soporte por Email
     response_time: Normalmente respondemos en 24-48 horas
+    faq:
+      title: Preguntas Frecuentes
+      delete_account:
+        question: "¿Cómo elimino mi cuenta?"
+        answer: "Para eliminar su cuenta, siga estos pasos:"
+        step1: Vaya a su página de Perfil desde el menú de navegación
+        step2: Desplácese hasta la sección "Eliminar Cuenta" en la parte inferior de la página
+        step3: Marque la casilla "Entiendo que eliminar mi cuenta es permanente"
+        step4: Marque la casilla "Confirmo que quiero eliminar mi cuenta y todos los datos asociados"
+        step5: Haga clic en el botón "Eliminar Mi Cuenta" y confirme la advertencia final
+        warning_title: Importante
+        warning_message: La eliminación de la cuenta es permanente y no se puede deshacer. Todos sus datos serán eliminados permanentemente.
+      data_recovery:
+        question: "¿Puedo recuperar mi cuenta después de eliminarla?"
+        answer: "No, la eliminación de la cuenta es permanente e irreversible. Una vez eliminada, su cuenta y todos los datos asociados no se pueden recuperar. Si cree que podría querer usar CalcuMake nuevamente en el futuro, considere simplemente no usar su cuenta en lugar de eliminarla."
+      what_deleted:
+        question: "¿Qué datos se eliminan cuando elimino mi cuenta?"
+        intro: "Cuando elimina su cuenta, todos los siguientes datos se eliminan permanentemente:"
+        item1: Su cuenta de usuario y credenciales de inicio de sesión
+        item2: Todos sus cálculos de precios de impresión
+        item3: Todas sus impresoras y sus configuraciones
+        item4: Todos sus perfiles de filamento
+        item5: Todas sus facturas
+        item6: Toda su información de empresa y preferencias
     billing_support:
       title: Soporte de Facturación y Suscripción
       description: Para consultas de facturación, cambios de suscripción, solicitudes
@@ -950,6 +1039,13 @@ print_pricings:
     filament_price_per_kg: "Precio del Filamento por KG (€)"
     labor_rate_per_hour: "Tarifa Laboral por Hora (€)"
     create_full_calculation: "Crear Cálculo Completo"
+    includes_defaults: "Incluye Costos Predeterminados:"
+    defaults:
+      filament_price: "Filamento"
+      labor_rate: "Mano de Obra"
+      energy_cost: "Energía"
+      power_consumption: "Consumo Eléctrico"
+      machine_payoff: "Amortización de Máquina"
     features:
       real_time: "Cálculo en tiempo real mientras escribes"
       includes_costs: "Incluye costos de electricidad y mano de obra"

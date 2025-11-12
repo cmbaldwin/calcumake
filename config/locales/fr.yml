@@ -167,6 +167,61 @@ fr:
     jpy: Yen Japonais
     cad: Dollar Canadien
     aud: Dollar Australien
+  clients:
+    index:
+      title: Mes Clients
+      subtitle: Gérez les informations de vos clients
+      add_new: Ajouter Nouveau Client
+      search_placeholder: Rechercher par nom, entreprise ou email...
+      clear_search: Effacer la Recherche
+      empty_state:
+        title: Aucun client pour le moment
+        description: Ajoutez votre premier client pour commencer à gérer les informations clients.
+        add_first: Ajoutez Votre Premier Client
+      no_results:
+        title: Aucun résultat trouvé
+        description: Aucun client ne correspond à votre recherche. Essayez un terme de recherche différent.
+    new:
+      title: Ajouter Nouveau Client
+      subtitle: Créer un nouveau profil client
+    edit:
+      title: Modifier Client
+      subtitle: Mettre à jour les informations client pour %{name}
+    show:
+      title: Détails du Client
+      member_since: Membre Depuis
+      invoices: Factures
+      print_pricings: Tarifs d'Impression
+      no_invoices: Aucune facture pour le moment
+      no_print_pricings: Aucun tarif d'impression pour le moment
+    sections:
+      basic_info: Informations de Base
+      contact_info: Informations de Contact
+      additional_info: Informations Supplémentaires
+    fields:
+      name: Nom
+      name_placeholder: Jean Dupont
+      company_name: Nom de l'Entreprise
+      company_name_placeholder: Société Acme
+      email: Email
+      email_placeholder: "jean@exemple.com"
+      phone: Téléphone
+      phone_placeholder: "+33 6 00 00 00 00"
+      address: Adresse
+      address_placeholder: "123 Rue Principale\nVille, Région 75001"
+      tax_id: Numéro Fiscal / TVA
+      tax_id_placeholder: "12-3456789"
+      notes: Notes
+      notes_placeholder: Notes supplémentaires sur ce client...
+      select_client: Sélectionner un Client
+      no_client_selected: Aucun client sélectionné
+      client_help_text: Sélectionnez un client existant ou
+      client: Client
+    card:
+      view_details: Voir les Détails
+      edit: Modifier
+      delete: Supprimer
+      confirm_delete: "Êtes-vous sûr de vouloir supprimer ce client?"
   energy:
     cost_per_kwh: Coût par kWh
   printers:
@@ -194,6 +249,21 @@ fr:
       default_currency: Devise par Défaut
       energy_cost: Coût de l'Énergie par kWh
       energy_cost_help: Votre coût local d'électricité par kilowatt-heure
+    buttons:
+      update_settings: Mettre à Jour les Paramètres
+      update_profile: Mettre à Jour le Profil
+    image_upload:
+      help_text: "Taille maximale du fichier: 5MB. Formats supportés: PNG, JPG, GIF, WebP"
+    delete_account:
+      title: Supprimer le Compte
+      warning_title: Avertissement
+      warning_message: La suppression de votre compte est permanente et ne peut pas être annulée. Toutes vos données seront définitivement supprimées.
+      description: Si vous ne souhaitez plus utiliser CalcuMake, vous pouvez supprimer votre compte. Veuillez lire la section FAQ de la page d'assistance pour plus d'informations.
+      unlock_checkbox: Je comprends que la suppression de mon compte est permanente
+      confirm_checkbox: Je confirme que je veux supprimer mon compte et toutes les données associées
+      button: Supprimer Mon Compte
+      final_confirmation: "Êtes-vous absolument sûr de vouloir supprimer votre compte? Cette action ne peut pas être annulée et toutes vos données seront définitivement supprimées."
+      success: Votre compte a été supprimé avec succès. Merci d'avoir utilisé CalcuMake.
     default_currency: Devise par Défaut
     default_energy_cost: Coût Énergétique par Défaut
     settings: Paramètres
@@ -413,6 +483,30 @@ fr:
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
+    faq:
+      title: Questions Fréquemment Posées
+      delete_account:
+        question: "Comment supprimer mon compte ?"
+        answer: "Pour supprimer votre compte, suivez ces étapes :"
+        step1: Accédez à votre page de Profil depuis le menu de navigation
+        step2: Faites défiler jusqu'à la section "Supprimer le Compte" en bas de la page
+        step3: "Cochez la case \"Je comprends que la suppression de mon compte est permanente\""
+        step4: "Cochez la case \"Je confirme que je veux supprimer mon compte et toutes les données associées\""
+        step5: "Cliquez sur le bouton \"Supprimer Mon Compte\" et confirmez l'avertissement final"
+        warning_title: Important
+        warning_message: La suppression du compte est permanente et ne peut pas être annulée. Toutes vos données seront définitivement supprimées.
+      data_recovery:
+        question: "Puis-je récupérer mon compte après suppression ?"
+        answer: "Non, la suppression du compte est permanente et irréversible. Une fois supprimé, votre compte et toutes les données associées ne peuvent pas être récupérés. Si vous pensez que vous pourriez vouloir utiliser CalcuMake à nouveau à l'avenir, envisagez simplement de ne pas utiliser votre compte plutôt que de le supprimer."
+      what_deleted:
+        question: "Quelles données sont supprimées lorsque je supprime mon compte ?"
+        intro: "Lorsque vous supprimez votre compte, toutes les données suivantes sont définitivement supprimées :"
+        item1: Votre compte utilisateur et vos identifiants de connexion
+        item2: Tous vos calculs de tarification d'impression
+        item3: Toutes vos imprimantes et leurs configurations
+        item4: Tous vos profils de filament
+        item5: Toutes vos factures
+        item6: Toutes vos informations d'entreprise et préférences
     billing_support:
       title: Support de Facturation et d'Abonnement
       description: Pour les demandes de facturation, les changements d'abonnement,
@@ -640,6 +734,13 @@ print_pricings:
     filament_price_per_kg: "Prix du Filament par KG (€)"
     labor_rate_per_hour: "Tarif de Main-d'œuvre par Heure (€)"
     create_full_calculation: "Créer un Calcul Complet"
+    includes_defaults: "Inclut les Coûts par Défaut:"
+    defaults:
+      filament_price: "Filament"
+      labor_rate: "Main-d'œuvre"
+      energy_cost: "Énergie"
+      power_consumption: "Consommation Électrique"
+      machine_payoff: "Amortissement de la Machine"
     features:
       real_time: "Calcul en temps réel pendant la saisie"
       includes_costs: "Inclut les coûts d'électricité et de main-d'œuvre"
