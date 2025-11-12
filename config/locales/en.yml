@@ -90,6 +90,7 @@ en:
     new_pricing: New Pricing
     my_printers: My Printers
     my_filaments: My Filaments
+    clients: My Clients
     invoices: Invoices
     profile: Profile
     help: Help
@@ -131,6 +132,11 @@ en:
     printer: Printer
     print_pricing: Print Pricing
     filament: Filament
+    client: Client
+    print_pricing_plural: Print Pricings
+    printer_plural: Printers
+    filament_plural: Filaments
+    invoice_plural: Invoices
   common:
     created: Created
     currency: Currency
@@ -284,6 +290,7 @@ en:
       markup: Markup (%)
       markup_placeholder: "20"
       markup_percentage: Markup Percentage
+      filament_markup: Filament Markup (%)
       prep_time: Prep Time (min)
       prep_time_placeholder: "30"
       prep_time_minutes: Prep Time (minutes)
@@ -512,6 +519,8 @@ en:
       other_costs_help: Additional costs like packaging, shipping preparation, etc.
       vat_percentage: VAT Percentage
       vat_percentage_help: Default VAT/tax percentage for your location
+      default_filament_markup: Default Filament Markup
+      default_filament_markup_help: Default markup percentage added to filament costs (e.g. 20% markup for profit margin)
       company_name: Company Name
       company_name_placeholder: "Acme Corporation"
       company_email: Company Email
@@ -598,6 +607,14 @@ en:
       edit: Edit
       delete: Delete
       confirm_delete: Are you sure you want to delete this client?
+      invoices: Invoices
+    buttons:
+      create: Create Client
+      update: Update Client
+    created_successfully: Client created successfully
+    updated_successfully: Client updated successfully
+    deleted_successfully: Client deleted successfully
+    confirm_delete: Are you sure you want to delete this client?
   currency:
     usd: US Dollar
     eur: Euro
@@ -1215,6 +1232,14 @@ en:
         - "Project history and duplicate functionality"
         - "Multi-currency support"
         - "Machine depreciation calculations"
+  locale_suggestion:
+    banner:
+      title: "It looks like you're accessing from a different region."
+      switch_to: "Switch to %{language} for a better experience?"
+      currently_viewing: "Currently viewing in %{language}"
+      switch_button: "Switch Language"
+      stay_button: "Stay"
+      close: "Close"
   calculators:
     quick_cost_calculator: "Quick Cost Calculator"
     print_time_hours: "Print Time (hours)"

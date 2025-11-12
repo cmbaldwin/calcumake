@@ -44,6 +44,11 @@ ar:
     printer: الطابعة
     print_pricing: تسعير الطباعة
     filament: خيط الطباعة
+    client: العميل
+    print_pricing_plural: تسعيرات الطباعة
+    printer_plural: الطابعات
+    filament_plural: خيوط الطباعة
+    invoice_plural: الفواتير
   printer:
     name: اسم الطابعة
     manufacturer: الشركة المصنعة
@@ -219,6 +224,9 @@ ar:
       edit: تعديل
       delete: حذف
       confirm_delete: "هل أنت متأكد من رغبتك في حذف هذا العميل؟"
+    buttons:
+      create: إنشاء عميل
+      update: تحديث العميل
   energy:
     cost_per_kwh: تكلفة الكيلوواط/ساعة
   printers:

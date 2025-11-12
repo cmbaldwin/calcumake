@@ -104,6 +104,18 @@
         <p class="form-text">Default VAT/tax percentage for your location.</p>
       </div>
     </div>
+
+    <div class="row">
+      <div class="column column-50">
+        <label for="user_default_filament_markup_percentage"><%= t('profile.fields.default_filament_markup') %></label>
+        <div class="input-group">
+          <%= form.number_field :default_filament_markup_percentage, step: 1, min: 0, max: 500,
+              placeholder: "20", class: "text-end" %>
+          <span class="input-group-text">%</span>
+        </div>
+        <p class="form-text"><%= t('profile.fields.default_filament_markup_help') %></p>
+      </div>
+    </div>
   </div>
 
   <div class="form-actions">
