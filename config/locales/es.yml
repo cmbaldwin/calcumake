@@ -111,6 +111,11 @@ es:
     printer: Impresora
     print_pricing: Precio de Impresión
     filament: Filamento
+    client: Cliente
+    print_pricing_plural: Precios de Impresión
+    printer_plural: Impresoras
+    filament_plural: Filamentos
+    invoice_plural: Facturas
   common:
     created: Creado
     currency: Moneda
@@ -499,6 +504,9 @@ es:
       edit: Editar
       delete: Eliminar
       confirm_delete: "¿Está seguro de que desea eliminar este cliente?"
+    buttons:
+      create: Crear Cliente
+      update: Actualizar Cliente
   energy:
     cost_per_kwh: Costo por kWh
   time:

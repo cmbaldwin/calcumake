@@ -44,6 +44,11 @@ hi:
     printer: प्रिंटर
     print_pricing: प्रिंट मूल्य निर्धारण
     filament: फिलामेंट
+    client: ग्राहक
+    print_pricing_plural: प्रिंट मूल्य निर्धारण
+    printer_plural: प्रिंटर
+    filament_plural: फिलामेंट
+    invoice_plural: चालान
   printer:
     name: प्रिंटर का नाम
     manufacturer: निर्माता
@@ -221,6 +226,9 @@ hi:
       edit: संपादित करें
       delete: हटाएं
       confirm_delete: क्या आप वाकई इस ग्राहक को हटाना चाहते हैं?
+    buttons:
+      create: ग्राहक बनाएं
+      update: ग्राहक अपडेट करें
   energy:
     cost_per_kwh: प्रति किलोवाट घंटे की लागत
   printers:

@@ -165,7 +165,7 @@ class PrintPricingsController < ApplicationController
       plates_attributes: [
         :id, :printing_time_hours, :printing_time_minutes, :_destroy,
         plate_filaments_attributes: [
-          :id, :filament_id, :filament_weight, :_destroy
+          :id, :filament_id, :filament_weight, :markup_percentage, :_destroy
         ]
       ]
     )

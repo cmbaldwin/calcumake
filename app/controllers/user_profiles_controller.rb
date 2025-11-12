@@ -47,7 +47,8 @@ class UserProfilesController < ApplicationController
       :default_other_costs,
       :default_vat_percentage,
       :default_listing_cost_percentage,
-      :default_payment_processing_cost_percentage
+      :default_payment_processing_cost_percentage,
+      :default_filament_markup_percentage
     )
   end
 end
