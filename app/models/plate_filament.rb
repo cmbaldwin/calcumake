@@ -11,6 +11,8 @@ class PlateFilament < ApplicationRecord
 
   def total_cost
     return 0 unless filament_weight.present? && filament&.cost_per_gram.to_f > 0
-    filament_weight * filament.cost_per_gram
+    base_cost = filament_weight * filament.cost_per_gram
+    markup_multiplier = 1 + ((markup_percentage || 0) / 100.0)
+    base_cost * markup_multiplier
   end
 end

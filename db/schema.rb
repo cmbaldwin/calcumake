@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_11_012547) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_12_095002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -123,6 +123,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_11_012547) do
     t.datetime "created_at", null: false
     t.bigint "filament_id", null: false
     t.decimal "filament_weight", precision: 8, scale: 2, null: false
+    t.decimal "markup_percentage", precision: 5, scale: 2, default: "20.0"
     t.bigint "plate_id", null: false
     t.datetime "updated_at", null: false
     t.index ["filament_id"], name: "index_plate_filaments_on_filament_id"
@@ -201,6 +202,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_11_012547) do
     t.string "default_company_phone"
     t.string "default_currency", default: "USD"
     t.decimal "default_energy_cost_per_kwh", precision: 8, scale: 4, default: "0.12"
+    t.decimal "default_filament_markup_percentage", precision: 5, scale: 2, default: "20.0"
     t.text "default_invoice_notes"
     t.decimal "default_listing_cost_percentage", precision: 5, scale: 2, default: "0.0"
     t.decimal "default_other_costs", precision: 10, scale: 2, default: "450.0"

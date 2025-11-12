@@ -25,7 +25,7 @@
     </div>
 
     <!-- Filament Weight -->
-    <div class="col-md-4">
+    <div class="col-md-3">
       <%= f.label :filament_weight, t('filaments.fields.weight_used'), class: "form-label" %>
       <div class="input-group">
         <%= f.number_field :filament_weight,
@@ -35,6 +35,22 @@
             class: "form-control",
             'data-action': 'input->filament-list#weightChanged' %>
         <span class="input-group-text">g</span>
+      </div>
+    </div>
+
+    <!-- Markup Percentage -->
+    <div class="col-md-3">
+      <%= f.label :markup_percentage, t('print_pricing.fields.filament_markup'), class: "form-label" %>
+      <div class="input-group">
+        <%= f.number_field :markup_percentage,
+            step: 1,
+            min: 0,
+            max: 500,
+            placeholder: current_user.default_filament_markup_percentage || "20",
+            value: f.object.markup_percentage || current_user.default_filament_markup_percentage,
+            class: "form-control",
+            'data-action': 'input->filament-list#weightChanged' %>
+        <span class="input-group-text">%</span>
       </div>
     </div>
 
