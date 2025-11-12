@@ -164,6 +164,61 @@ ar:
     jpy: الين الياباني
     cad: الدولار الكندي
     aud: الدولار الأسترالي
+  clients:
+    index:
+      title: عملائي
+      subtitle: إدارة معلومات عملائك
+      add_new: إضافة عميل جديد
+      search_placeholder: "البحث بالاسم أو الشركة أو البريد الإلكتروني..."
+      clear_search: مسح البحث
+      empty_state:
+        title: لا يوجد عملاء بعد
+        description: أضف عميلك الأول لبدء إدارة معلومات العملاء.
+        add_first: أضف عميلك الأول
+      no_results:
+        title: لم يتم العثور على نتائج
+        description: لا يوجد عملاء يطابقون بحثك. جرب مصطلح بحث مختلف.
+    new:
+      title: إضافة عميل جديد
+      subtitle: إنشاء ملف تعريف عميل جديد
+    edit:
+      title: تعديل العميل
+      subtitle: تحديث معلومات العميل لـ %{name}
+    show:
+      title: تفاصيل العميل
+      member_since: عضو منذ
+      invoices: الفواتير
+      print_pricings: أسعار الطباعة
+      no_invoices: لا توجد فواتير بعد
+      no_print_pricings: لا توجد أسعار طباعة بعد
+    sections:
+      basic_info: المعلومات الأساسية
+      contact_info: معلومات الاتصال
+      additional_info: معلومات إضافية
+    fields:
+      name: الاسم
+      name_placeholder: أحمد محمد
+      company_name: اسم الشركة
+      company_name_placeholder: شركة أكمي
+      email: البريد الإلكتروني
+      email_placeholder: "ahmed@example.com"
+      phone: الهاتف
+      phone_placeholder: "+966 50 000 0000"
+      address: العنوان
+      address_placeholder: "123 الشارع الرئيسي\nالمدينة، المنطقة 12345"
+      tax_id: "الرقم الضريبي / رقم ضريبة القيمة المضافة"
+      tax_id_placeholder: "12-3456789"
+      notes: ملاحظات
+      notes_placeholder: ملاحظات إضافية حول هذا العميل...
+      select_client: اختر عميلاً
+      no_client_selected: لم يتم اختيار عميل
+      client_help_text: اختر عميلاً موجوداً أو
+      client: العميل
+    card:
+      view_details: عرض التفاصيل
+      edit: تعديل
+      delete: حذف
+      confirm_delete: "هل أنت متأكد من رغبتك في حذف هذا العميل؟"
   energy:
     cost_per_kwh: تكلفة الكيلوواط/ساعة
   printers:
@@ -189,6 +244,21 @@ ar:
       default_currency: العملة الافتراضية
       energy_cost: تكلفة الطاقة لكل كيلوواط ساعة
       energy_cost_help: تكلفة الكهرباء المحلية لكل كيلوواط ساعة
+    buttons:
+      update_settings: تحديث الإعدادات
+      update_profile: تحديث الملف الشخصي
+    image_upload:
+      help_text: "الحد الأقصى لحجم الملف: 5 ميجابايت. التنسيقات المدعومة: PNG، JPG، GIF، WebP"
+    delete_account:
+      title: حذف الحساب
+      warning_title: تحذير
+      warning_message: حذف حسابك نهائي ولا يمكن التراجع عنه. سيتم حذف جميع بياناتك نهائياً.
+      description: إذا لم تعد ترغب في استخدام CalcuMake، يمكنك حذف حسابك. يرجى قراءة قسم الأسئلة الشائعة في صفحة الدعم لمزيد من المعلومات.
+      unlock_checkbox: أفهم أن حذف حسابي نهائي
+      confirm_checkbox: أؤكد أنني أريد حذف حسابي وجميع البيانات المرتبطة به
+      button: حذف حسابي
+      final_confirmation: "هل أنت متأكد تماماً من رغبتك في حذف حسابك؟ لا يمكن التراجع عن هذا الإجراء وسيتم حذف جميع بياناتك نهائياً."
+      success: تم حذف حسابك بنجاح. شكراً لاستخدام CalcuMake.
     default_currency: العملة الافتراضية
     default_energy_cost: تكلفة الطاقة الافتراضية
     settings: الإعدادات
@@ -377,6 +447,30 @@ ar:
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
+    faq:
+      title: الأسئلة الشائعة
+      delete_account:
+        question: كيف أحذف حسابي؟
+        answer: "لحذف حسابك، اتبع هذه الخطوات:"
+        step1: انتقل إلى صفحة ملفك الشخصي من قائمة التنقل
+        step2: قم بالتمرير إلى قسم "حذف الحساب" في أسفل الصفحة
+        step3: ضع علامة في المربع "أفهم أن حذف حسابي دائم"
+        step4: ضع علامة في المربع "أؤكد أنني أريد حذف حسابي وجميع البيانات المرتبطة"
+        step5: انقر فوق زر "حذف حسابي" وأكد التحذير النهائي
+        warning_title: مهم
+        warning_message: حذف الحساب دائم ولا يمكن التراجع عنه. سيتم حذف جميع بياناتك بشكل دائم.
+      data_recovery:
+        question: هل يمكنني استرداد حسابي بعد الحذف؟
+        answer: لا، حذف الحساب دائم ولا رجعة فيه. بمجرد الحذف، لا يمكن استرداد حسابك وجميع البيانات المرتبطة. إذا كنت تعتقد أنك قد ترغب في استخدام CalcuMake مرة أخرى في المستقبل، ففكر في عدم استخدام حسابك بدلاً من حذفه.
+      what_deleted:
+        question: ما هي البيانات التي يتم حذفها عند حذف حسابي؟
+        intro: "عند حذف حسابك، يتم حذف جميع البيانات التالية بشكل دائم:"
+        item1: حساب المستخدم وبيانات تسجيل الدخول الخاصة بك
+        item2: جميع حسابات تسعير الطباعة الخاصة بك
+        item3: جميع الطابعات وتكويناتها
+        item4: جميع ملفات تعريف الخيوط الخاصة بك
+        item5: جميع فواتيرك
+        item6: جميع معلومات شركتك وتفضيلاتك
     billing_support:
       title: دعم الفوترة والاشتراك
       description: لاستفسارات الفوترة أو تغييرات الاشتراك أو طلبات الاسترداد أو مشاكل
@@ -599,6 +693,13 @@ print_pricings:
     filament_price_per_kg: "سعر الخيط لكل كيلوجرام (ريال)"
     labor_rate_per_hour: "معدل العمالة لكل ساعة (ريال)"
     create_full_calculation: "إنشاء حساب كامل"
+    includes_defaults: "يتضمن التكاليف الافتراضية:"
+    defaults:
+      filament_price: "الخيط"
+      labor_rate: "العمالة"
+      energy_cost: "الطاقة"
+      power_consumption: "استهلاك الطاقة"
+      machine_payoff: "استهلاك الآلة"
     features:
       real_time: "حساب فوري أثناء الكتابة"
       includes_costs: "يشمل تكاليف الكهرباء والعمالة"

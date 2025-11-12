@@ -453,6 +453,16 @@ ja:
       update_profile: プロフィール更新
     image_upload:
       help_text: "最大ファイルサイズ：5MB。サポート形式：PNG、JPG、GIF、WebP"
+    delete_account:
+      title: アカウントを削除
+      warning_title: 警告
+      warning_message: アカウントの削除は永久的であり、元に戻すことはできません。すべてのデータが完全に削除されます。
+      description: CalcuMakeをもう使用したくない場合は、アカウントを削除できます。詳細については、サポートページのFAQセクションをお読みください。
+      unlock_checkbox: アカウントの削除は永久的であることを理解しました
+      confirm_checkbox: アカウントとすべての関連データを削除することを確認します
+      button: アカウントを削除
+      final_confirmation: 本当にアカウントを削除してもよろしいですか？この操作は取り消すことができず、すべてのデータが完全に削除されます。
+      success: アカウントが正常に削除されました。CalcuMakeをご利用いただきありがとうございました。
   currency:
     usd: 米ドル
     eur: ユーロ
@@ -460,6 +470,61 @@ ja:
     jpy: 日本円
     cad: カナダドル
     aud: 豪ドル
+  clients:
+    index:
+      title: クライアント一覧
+      subtitle: クライアント情報を管理
+      add_new: 新しいクライアントを追加
+      search_placeholder: 名前、会社、またはメールで検索...
+      clear_search: 検索をクリア
+      empty_state:
+        title: まだクライアントがいません
+        description: 最初のクライアントを追加して、顧客情報の管理を開始しましょう。
+        add_first: 最初のクライアントを追加
+      no_results:
+        title: 結果が見つかりません
+        description: 検索に一致するクライアントがありません。別の検索語句をお試しください。
+    new:
+      title: 新しいクライアントを追加
+      subtitle: 新しいクライアントプロファイルを作成
+    edit:
+      title: クライアントを編集
+      subtitle: "%{name}のクライアント情報を更新"
+    show:
+      title: クライアント詳細
+      member_since: 登録日
+      invoices: 請求書
+      print_pricings: 印刷料金
+      no_invoices: まだ請求書がありません
+      no_print_pricings: まだ印刷料金がありません
+    sections:
+      basic_info: 基本情報
+      contact_info: 連絡先情報
+      additional_info: 追加情報
+    fields:
+      name: 名前
+      name_placeholder: 山田太郎
+      company_name: 会社名
+      company_name_placeholder: 株式会社アクメ
+      email: メール
+      email_placeholder: "john@example.com"
+      phone: 電話
+      phone_placeholder: "+81 90-1234-5678"
+      address: 住所
+      address_placeholder: "東京都渋谷区道玄坂1-2-3\n〒150-0043"
+      tax_id: 税ID / VAT番号
+      tax_id_placeholder: "12-3456789"
+      notes: 備考
+      notes_placeholder: このクライアントに関する追加情報...
+      select_client: クライアントを選択
+      no_client_selected: クライアントが選択されていません
+      client_help_text: 既存のクライアントを選択するか
+      client: クライアント
+    card:
+      view_details: 詳細を表示
+      edit: 編集
+      delete: 削除
+      confirm_delete: このクライアントを削除してもよろしいですか？
   energy:
     cost_per_kwh: 電力単価（円/kWh）
   time:
@@ -622,6 +687,30 @@ ja:
     description: CalcuMakeについてのご質問やご提案がありますか？お気軽にお問い合わせください。
     email_label: メールサポート
     response_time: 通常24〜48時間以内に返信いたします
+    faq:
+      title: よくある質問
+      delete_account:
+        question: アカウントを削除するにはどうすればいいですか？
+        answer: "アカウントを削除するには、以下の手順に従ってください："
+        step1: ナビゲーションメニューからプロフィールページに移動します
+        step2: ページ下部の「アカウント削除」セクションまでスクロールします
+        step3: "「アカウントの削除は永久的であることを理解しました」にチェックを入れます"
+        step4: "「アカウントとすべての関連データを削除することを確認します」にチェックを入れます"
+        step5: "「アカウントを削除」ボタンをクリックし、最終警告を確認します"
+        warning_title: 重要
+        warning_message: アカウントの削除は永久的であり、取り消すことはできません。すべてのデータが完全に削除されます。
+      data_recovery:
+        question: 削除後にアカウントを復元できますか？
+        answer: いいえ、アカウントの削除は永久的で元に戻すことができません。削除されると、アカウントとすべての関連データは復元できません。将来再びCalcuMakeを使用する可能性がある場合は、アカウントを削除せずに単に使用しないことをご検討ください。
+      what_deleted:
+        question: アカウントを削除すると、どのデータが削除されますか？
+        intro: "アカウントを削除すると、以下のすべてのデータが完全に削除されます："
+        item1: ユーザーアカウントとログイン資格情報
+        item2: すべての印刷料金計算
+        item3: すべてのプリンターとその設定
+        item4: すべてのフィラメントプロファイル
+        item5: すべての請求書
+        item6: すべての会社情報と設定
     billing_support:
       title: 請求とサブスクリプションのサポート
       description: 請求に関するお問い合わせ、サブスクリプションの変更、返金リクエスト、または支払いの問題については、アカウントのメールアドレスを添えてお問い合わせください。

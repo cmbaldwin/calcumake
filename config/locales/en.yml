@@ -533,6 +533,71 @@ en:
       cancel: Cancel
     image_upload:
       help_text: "Maximum file size: 5MB. Supported formats: PNG, JPG, GIF, WebP"
+    delete_account:
+      title: Delete Account
+      warning_title: Warning
+      warning_message: Deleting your account is permanent and cannot be undone. All your data will be permanently deleted.
+      description: If you no longer wish to use CalcuMake, you can delete your account. Please read the FAQ section on the support page for more information.
+      unlock_checkbox: I understand that deleting my account is permanent
+      confirm_checkbox: I confirm that I want to delete my account and all associated data
+      button: Delete My Account
+      final_confirmation: Are you absolutely sure you want to delete your account? This action cannot be undone and all your data will be permanently deleted.
+      success: Your account has been successfully deleted. Thank you for using CalcuMake.
+  clients:
+    index:
+      title: My Clients
+      subtitle: Manage your client information
+      add_new: Add New Client
+      search_placeholder: Search by name, company, or email...
+      clear_search: Clear Search
+      empty_state:
+        title: No clients yet
+        description: Add your first client to start managing customer information.
+        add_first: Add Your First Client
+      no_results:
+        title: No results found
+        description: No clients match your search. Try a different search term.
+    new:
+      title: Add New Client
+      subtitle: Create a new client profile
+    edit:
+      title: Edit Client
+      subtitle: Update client information for %{name}
+    show:
+      title: Client Details
+      member_since: Member Since
+      invoices: Invoices
+      print_pricings: Print Pricings
+      no_invoices: No invoices yet
+      no_print_pricings: No print pricings yet
+    sections:
+      basic_info: Basic Information
+      contact_info: Contact Information
+      additional_info: Additional Information
+    fields:
+      name: Name
+      name_placeholder: John Doe
+      company_name: Company Name
+      company_name_placeholder: Acme Corporation
+      email: Email
+      email_placeholder: john@example.com
+      phone: Phone
+      phone_placeholder: "+1 (555) 123-4567"
+      address: Address
+      address_placeholder: "123 Main Street\nCity, State 12345"
+      tax_id: Tax ID / VAT Number
+      tax_id_placeholder: "12-3456789"
+      notes: Notes
+      notes_placeholder: Additional notes about this client...
+      select_client: Select Client
+      no_client_selected: No client selected
+      client_help_text: Select an existing client or
+      client: Client
+    card:
+      view_details: View Details
+      edit: Edit
+      delete: Delete
+      confirm_delete: Are you sure you want to delete this client?
   currency:
     usd: US Dollar
     eur: Euro
@@ -559,6 +624,28 @@ en:
     response_time: We typically respond within 24-48 hours
     faq:
       title: Frequently Asked Questions
+      delete_account:
+        question: How do I delete my account?
+        answer: "To delete your account, follow these steps:"
+        step1: Go to your Profile page from the navigation menu
+        step2: Scroll down to the "Delete Account" section at the bottom of the page
+        step3: Check the box "I understand that deleting my account is permanent"
+        step4: Check the box "I confirm that I want to delete my account and all associated data"
+        step5: Click the "Delete My Account" button and confirm the final warning
+        warning_title: Important
+        warning_message: Account deletion is permanent and cannot be undone. All your data will be permanently deleted.
+      data_recovery:
+        question: Can I recover my account after deletion?
+        answer: No, account deletion is permanent and irreversible. Once deleted, your account and all associated data cannot be recovered. If you think you might want to use CalcuMake again in the future, consider simply not using your account instead of deleting it.
+      what_deleted:
+        question: What data gets deleted when I delete my account?
+        intro: "When you delete your account, all of the following data is permanently deleted:"
+        item1: Your user account and login credentials
+        item2: All your print pricing calculations
+        item3: All your printers and their configurations
+        item4: All your filament profiles
+        item5: All your invoices
+        item6: All your company information and preferences
     billing_support:
       title: Billing and Subscription Support
       description: For billing inquiries, subscription changes, refund requests, or payment issues, please contact us with your account email.
@@ -1097,3 +1184,57 @@ en:
       accuracy:
         question: "How accurate are the calculations?"
         answer: "CalcuMake uses simple formulas and accounts for all cost factors including filament, electricity, labor time, and machine depreciation."
+      currencies:
+        question: "What currencies does CalcuMake support?"
+        answer: "CalcuMake currently supports USD, EUR, GBP, JPY, CAD, and AUD with automatic formatting and precision for each currency. You can switch currencies anytime in your profile settings."
+      printers:
+        question: "Does CalcuMake support my 3D printer?"
+        answer: "CalcuMake works with any 3D printer! You simply enter your printer's power consumption and other specifications. We're planning support for resin printers soon!"
+      electricity:
+        question: "How do electricity costs work?"
+        answer: "CalcuMake automatically calculates electricity costs based on your printer's power consumption (in watts), print duration, and your local energy rate per kWh. This ensures you never forget this often-overlooked cost factor."
+      invoices:
+        question: "Can I customize my invoices?"
+        answer: "Yes! You can add your company logo, customize colors, and include your business information. Paid plans remove the CalcuMake branding for a completely professional look."
+    final_cta:
+      headline: "Ready to stop losing money on 3D prints?"
+      subheadline: "Join thousands of makers who trust CalcuMake for accurate pricing and professional project management."
+      button: "Start Your Free Trial"
+  demo:
+    title: "Try CalcuMake Demo"
+    subtitle: "Test our 3D print cost calculator with sample data. No account required!"
+    sign_up_full_version: "Sign Up for Full Version"
+    start_free_trial: "Start Free Trial"
+    limitations:
+      title: "This is a Demo Version"
+      description: "The full CalcuMake app includes:"
+      features:
+        - "Multiple printer profiles with automatic specifications"
+        - "Comprehensive filament library with material properties"
+        - "Professional PDF invoice generation"
+        - "Project history and duplicate functionality"
+        - "Multi-currency support"
+        - "Machine depreciation calculations"
+  calculators:
+    quick_cost_calculator: "Quick Cost Calculator"
+    print_time_hours: "Print Time (hours)"
+    filament_weight_grams: "Filament Weight (grams)"
+    filament_price_per_kg: "Filament Price per KG ($)"
+    labor_rate_per_hour: "Labor Rate per Hour ($)"
+    create_full_calculation: "Create Full Calculation"
+    includes_defaults: "Includes Default Costs:"
+    defaults:
+      filament_price: "Filament"
+      labor_rate: "Labor"
+      energy_cost: "Energy"
+      power_consumption: "Power"
+      machine_payoff: "Machine Payoff"
+    features:
+      real_time: "Real-time calculation as you type"
+      includes_costs: "Includes electricity and labor costs"
+    results:
+      filament_cost: "Filament Cost"
+      electricity_cost: "Electricity Cost"
+      labor_cost: "Labor Cost"
+      total_cost: "Total Cost"
+      estimated_cost: "Estimated Cost:"

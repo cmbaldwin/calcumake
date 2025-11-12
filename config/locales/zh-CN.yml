@@ -297,6 +297,21 @@ zh-CN:
       postprocessing_time_minutes: 后处理时间（分钟）
       postprocessing_time_placeholder: '30'
       postprocessing_cost_per_hour: 每小时后处理费用
+    buttons:
+      update_settings: 更新设置
+      update_profile: 更新资料
+    image_upload:
+      help_text: "最大文件大小：5MB。支持的格式：PNG、JPG、GIF、WebP"
+    delete_account:
+      title: 删除账户
+      warning_title: 警告
+      warning_message: 删除账户是永久性的，无法撤销。您的所有数据将被永久删除。
+      description: 如果您不再希望使用CalcuMake，可以删除您的账户。请阅读支持页面上的常见问题部分以获取更多信息。
+      unlock_checkbox: 我理解删除账户是永久性的
+      confirm_checkbox: 我确认要删除我的账户和所有相关数据
+      button: 删除我的账户
+      final_confirmation: 您确定要删除您的账户吗？此操作无法撤销，您的所有数据将被永久删除。
+      success: 您的账户已成功删除。感谢您使用CalcuMake。
   currency:
     usd: 美元
     eur: 欧元
@@ -304,6 +319,61 @@ zh-CN:
     jpy: 日元
     cad: 加元
     aud: 澳元
+  clients:
+    index:
+      title: 我的客户
+      subtitle: 管理您的客户信息
+      add_new: 添加新客户
+      search_placeholder: 按姓名、公司或邮箱搜索...
+      clear_search: 清除搜索
+      empty_state:
+        title: 暂无客户
+        description: 添加您的第一个客户以开始管理客户信息。
+        add_first: 添加您的第一个客户
+      no_results:
+        title: 未找到结果
+        description: 没有与您的搜索匹配的客户。请尝试不同的搜索词。
+    new:
+      title: 添加新客户
+      subtitle: 创建新的客户资料
+    edit:
+      title: 编辑客户
+      subtitle: 更新%{name}的客户信息
+    show:
+      title: 客户详情
+      member_since: 注册于
+      invoices: 发票
+      print_pricings: 打印定价
+      no_invoices: 暂无发票
+      no_print_pricings: 暂无打印定价
+    sections:
+      basic_info: 基本信息
+      contact_info: 联系信息
+      additional_info: 附加信息
+    fields:
+      name: 姓名
+      name_placeholder: 张三
+      company_name: 公司名称
+      company_name_placeholder: 艾克米公司
+      email: 邮箱
+      email_placeholder: "john@example.com"
+      phone: 电话
+      phone_placeholder: "+86 138-0000-0000"
+      address: 地址
+      address_placeholder: "北京市朝阳区建国路1号\n100000"
+      tax_id: 税号 / 增值税号
+      tax_id_placeholder: "12-3456789"
+      notes: 备注
+      notes_placeholder: 关于此客户的附加信息...
+      select_client: 选择客户
+      no_client_selected: 未选择客户
+      client_help_text: 选择现有客户或
+      client: 客户
+    card:
+      view_details: 查看详情
+      edit: 编辑
+      delete: 删除
+      confirm_delete: 您确定要删除此客户吗？
   energy:
     cost_per_kwh: 每千瓦时电价
   time:
@@ -466,6 +536,30 @@ zh-CN:
     description: 需要CalcuMake的帮助吗？有问题或建议吗？我们随时为您提供帮助！
     email_label: 电子邮件支持
     response_time: 我们通常在24-48小时内回复
+    faq:
+      title: 常见问题
+      delete_account:
+        question: 如何删除我的账户？
+        answer: "要删除您的账户，请按照以下步骤操作："
+        step1: 从导航菜单转到您的个人资料页面
+        step2: 滚动到页面底部的"删除账户"部分
+        step3: 勾选"我理解删除账户是永久性的"复选框
+        step4: 勾选"我确认要删除我的账户和所有相关数据"复选框
+        step5: 点击"删除我的账户"按钮并确认最终警告
+        warning_title: 重要
+        warning_message: 账户删除是永久性的，无法撤销。您的所有数据将被永久删除。
+      data_recovery:
+        question: 删除后可以恢复我的账户吗？
+        answer: 不可以，账户删除是永久性的且不可逆转。一旦删除，您的账户和所有相关数据将无法恢复。如果您认为将来可能想再次使用CalcuMake，请考虑不使用您的账户而不是删除它。
+      what_deleted:
+        question: 删除账户时会删除哪些数据？
+        intro: "当您删除账户时，以下所有数据将被永久删除："
+        item1: 您的用户账户和登录凭据
+        item2: 您的所有打印定价计算
+        item3: 您的所有打印机及其配置
+        item4: 您的所有材料配置文件
+        item5: 您的所有发票
+        item6: 您的所有公司信息和偏好设置
     billing_support:
       title: 账单和订阅支持
       description: 如有账单咨询、订阅更改、退款请求或付款问题，请提供您的账户电子邮件联系我们。
@@ -683,6 +777,13 @@ filaments:
     filament_price_per_kg: "耗材价格（元/公斤）"
     labor_rate_per_hour: "人工费率（元/小时）"
     create_full_calculation: "创建完整计算"
+    includes_defaults: "包含默认成本："
+    defaults:
+      filament_price: "耗材"
+      labor_rate: "人工"
+      energy_cost: "能源"
+      power_consumption: "功耗"
+      machine_payoff: "设备折旧"
     features:
       real_time: "实时计算"
       includes_costs: "包含电费和人工成本"
@@ -946,6 +1047,13 @@ filaments:
     filament_price_per_kg: "耗材价格（元/公斤）"
     labor_rate_per_hour: "人工费率（元/小时）"
     create_full_calculation: "创建完整计算"
+    includes_defaults: "包含默认成本："
+    defaults:
+      filament_price: "耗材"
+      labor_rate: "人工"
+      energy_cost: "能源"
+      power_consumption: "功耗"
+      machine_payoff: "设备折旧"
     features:
       real_time: "实时计算"
       includes_costs: "包含电费和人工成本"
