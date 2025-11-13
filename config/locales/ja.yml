@@ -214,6 +214,7 @@ ja:
       plates: プレート
       plate: プレート
     fields:
+      project: プロジェクト
       job_name: ジョブ名
       job_name_placeholder: 例：ミニチュアモデル
       select_printer: プリンター選択
@@ -642,11 +643,12 @@ ja:
       pricing:
         title: 販売価格
         content: "CalcuMakeは3つのサブスクリプションティアを提供しています："
-        free_tier: "無料ティア：¥0/月 - 広告付き基本機能"
-        pro_tier: "Proティア：月次または年次の有料サブスクリプション - 高度な機能、広告なし、優先サポート"
-        enterprise_tier: "Enterpriseティア：月次または年次の有料サブスクリプション - すべての機能、プレミアムサポート、カスタム統合"
-        pricing_details: 正確な価格は、ウェブサイトおよびアプリケーション内のサブスクリプション選択時に表示されます。
+        free_tier: "無料ティア：¥0/月 - Startupティア制限で30日間無料、その後広告付き基本機能"
+        startup_tier: "Startupティア：¥150/月（$1.50/月USD） - 高度な機能、広告なし、優先サポート、高い使用制限"
+        pro_tier: "Proティア：¥1500/月（$15/月USD） - すべての機能、無制限の使用、プレミアムサポート、高度なレポート"
+        pricing_details: すべての価格は日本円（¥）と米ドル（$）で表示されます。決済はStripeを通じて安全に処理されます。
         price_changes: 価格は既存のサブスクライバーへの30日前の通知により調整される場合があります。
+        future_note: 今後、年次請求や追加の支払いオプションが追加される可能性があります。
       payment_methods:
         title: 支払方法
         content: "有料サブスクリプションには、以下の支払い方法を受け付けています："
@@ -1025,7 +1027,7 @@ ja:
 
   # 使用制限とサブスクリプション管理
   usage_limits:
-    limit_reached: "%{plan}プランの上限（%{limit}%{resource}）に達しました。続けるにはアップグレードしてください。"
+    limit_reached: "プランの制限に達しました：%{plan}プランの%{resource}は%{limit}個までです。アップグレードして続行してください。"
     approaching_limit: "%{resource}のプラン上限に近づいています"
     usage_summary: "使用状況の概要"
     current_usage: "%{limit}中%{current}使用中"
@@ -1119,3 +1121,7 @@ ja:
       create: クライアントを作成
       update: クライアントを更新
 
+  subscriptions:
+    current_plan: "現在のプラン"
+  usage_limits:
+    limit_reached: "プランの制限に達しました：%{plan}プランの%{resource}は%{limit}個までです。アップグレードして続行してください。"

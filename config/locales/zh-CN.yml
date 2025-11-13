@@ -167,6 +167,7 @@ zh-CN:
         vat: 销售税 (VAT) (%{rate}%)
         final_price: 最终价格
     fields:
+      project: 项目
       job_name: 作业名称
       job_name_placeholder: 例：模型制作
       select_printer: 选择打印机
@@ -491,11 +492,12 @@ zh-CN:
       pricing:
         title: 价格
         content: "CalcuMake提供三个订阅层级："
-        free_tier: "免费层：¥0/月 - 带广告的基本功能"
-        pro_tier: "Pro层：月度或年度付费订阅 - 高级功能、无广告、优先支持"
-        enterprise_tier: "Enterprise层：月度或年度付费订阅 - 所有功能、高级支持、自定义集成"
-        pricing_details: 确切定价在网站和应用程序的订阅选择期间显示。
+        free_tier: "免费层：¥0/月 - 30天Startup层级试用，之后带广告的基本功能"
+        startup_tier: "Startup层：¥150/月（$1.50/月USD） - 高级功能、无广告、优先支持、更高的使用限制"
+        pro_tier: "Pro层：¥1500/月（$15/月USD） - 所有功能、无限使用、高级支持、高级报告"
+        pricing_details: 所有价格以日元（¥）和美元（$）显示。账单通过Stripe安全处理。
         price_changes: 价格可能会在提前30天通知现有订阅者后调整。
+        future_note: 未来可能会添加年度账单和其他支付选项。
       payment_methods:
         title: 支付方式
         content: "对于付费订阅，我们接受以下付款方式："
@@ -823,7 +825,7 @@ filaments:
 
   # 使用限制和订阅管理
   usage_limits:
-    limit_reached: "您已达到%{plan}计划的%{limit}个%{resource}限制。请升级以继续。"
+    limit_reached: "您已达到%{plan}计划的限制：%{limit}个%{resource}。升级以继续。"
     approaching_limit: "您正在接近%{resource}的计划限制"
     usage_summary: "使用情况摘要"
     current_usage: "已使用 %{current} / %{limit}"
@@ -917,3 +919,7 @@ filaments:
       create: 创建客户
       update: 更新客户
 
+  subscriptions:
+    current_plan: "当前计划"
+  usage_limits:
+    limit_reached: "您已达到%{plan}计划的限制：%{limit}个%{resource}。升级以继续。"

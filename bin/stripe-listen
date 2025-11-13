@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Get Stripe webhook secret and save to .env.local before starting listener
+
+set -e
+
+ENV_FILE=".env.local"
+
+echo "🔑 Getting Stripe webhook signing secret..."
+
+# Get the webhook secret (this command prints the secret and exits)
+webhook_secret=$(stripe listen --print-secret 2>&1 | grep "whsec_" | head -1 | tr -d '\n')
+
+if [[ -z "$webhook_secret" ]]; then
+  echo "❌ Failed to get webhook secret from Stripe CLI"
+  exit 1
+fi
+
+# Update .env.local with the webhook secret
+if [ -f "$ENV_FILE" ]; then
+  # Check if STRIPE_WEBHOOK_SECRET exists
+  if grep -q "^STRIPE_WEBHOOK_SECRET=" "$ENV_FILE"; then
+    # Update existing line (BSD sed syntax for macOS)
+    sed -i '' "s|^STRIPE_WEBHOOK_SECRET=.*|STRIPE_WEBHOOK_SECRET=$webhook_secret|" "$ENV_FILE"
+    echo "✅ Updated STRIPE_WEBHOOK_SECRET in $ENV_FILE"
+  else
+    # Append new line
+    echo "STRIPE_WEBHOOK_SECRET=$webhook_secret" >> "$ENV_FILE"
+    echo "✅ Added STRIPE_WEBHOOK_SECRET to $ENV_FILE"
+  fi
+else
+  echo "❌ $ENV_FILE not found"
+  exit 1
+fi
+
+# Now start the webhook listener
+echo "🎧 Starting Stripe webhook listener..."
+exec stripe listen --forward-to localhost:3000/webhooks/stripe

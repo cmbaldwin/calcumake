@@ -1,2 +1,48 @@
-#!/usr/bin/env ruby
-exec "./bin/rails", "server", *ARGV
+#!/usr/bin/env bash
+
+set -e
+
+if ! command -v foreman &> /dev/null
+then
+  echo "Installing foreman..."
+  gem install foreman
+fi
+
+# Check if Stripe CLI is installed
+if ! command -v stripe &> /dev/null
+then
+  echo "⚠️  Warning: Stripe CLI not installed. Webhook forwarding will not work."
+  echo "   Install from: https://stripe.com/docs/stripe-cli"
+  echo "   Or run: brew install stripe/stripe-cli/stripe"
+  echo ""
+  echo "Starting Rails server only..."
+  exec bin/rails server -p 3000
+else
+  echo "🔧 Setting up Stripe webhook secret..."
+
+  # Get webhook secret and update .env.local BEFORE starting services
+  ENV_FILE=".env.local"
+  webhook_secret=$(stripe listen --print-secret 2>&1 | grep "whsec_" | head -1 | tr -d '\n')
+
+  if [[ -n "$webhook_secret" ]]; then
+    if [ -f "$ENV_FILE" ]; then
+      if grep -q "^STRIPE_WEBHOOK_SECRET=" "$ENV_FILE"; then
+        sed -i '' "s|^STRIPE_WEBHOOK_SECRET=.*|STRIPE_WEBHOOK_SECRET=$webhook_secret|" "$ENV_FILE"
+        echo "✅ Updated STRIPE_WEBHOOK_SECRET in $ENV_FILE"
+      else
+        echo "STRIPE_WEBHOOK_SECRET=$webhook_secret" >> "$ENV_FILE"
+        echo "✅ Added STRIPE_WEBHOOK_SECRET to $ENV_FILE"
+      fi
+
+      # Export for current session so Rails can use it immediately
+      export STRIPE_WEBHOOK_SECRET="$webhook_secret"
+      echo "✅ Webhook secret ready for Rails"
+    fi
+  else
+    echo "⚠️  Could not get webhook secret, continuing anyway..."
+  fi
+
+  echo ""
+  echo "🚀 Starting Rails server and Stripe webhook forwarding..."
+  exec foreman start -f Procfile.dev "$@"
+fi

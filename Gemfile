@@ -94,4 +94,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+
+  # Stub HTTP requests for testing external APIs like Stripe
+  gem "webmock"
 end

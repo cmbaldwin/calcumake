@@ -140,6 +140,9 @@ es:
       create_new: Calcular Nueva Impresión
       total_calculations: Total de Cálculos
       total_print_time: Tiempo Total de Impresión
+      total_filament_used: Filamento Total Usado
+      total_estimated_sales: Ventas Totales Estimadas
+      total_estimated_profit: Beneficio Total Estimado
       search_placeholder: Buscar por nombre de trabajo o tipo de filamento...
       empty_state:
         title: No hay cálculos aún
@@ -228,6 +231,7 @@ es:
       plates: Placas
       plate: Placa
     fields:
+      project: Proyecto
       job_name: Nombre del Trabajo
       job_name_placeholder: ej., Modelo en Miniatura
       select_printer: Seleccionar Impresora
@@ -702,15 +706,12 @@ es:
       pricing:
         title: Precios
         content: 'CalcuMake ofrece tres niveles de suscripción:'
-        free_tier: 'Nivel Gratuito: ¥0/mes - Funciones básicas con anuncios'
-        pro_tier: 'Nivel Pro: Suscripción mensual o anual de pago - Funciones avanzadas,
-          sin anuncios, soporte prioritario'
-        enterprise_tier: 'Nivel Enterprise: Suscripción mensual o anual de pago -
-          Todas las funciones, soporte premium, integraciones personalizadas'
-        pricing_details: Los precios exactos se muestran en nuestro sitio web y en
-          la aplicación durante la selección de suscripción.
-        price_changes: Los precios pueden ajustarse con 30 días de aviso previo a
-          los suscriptores existentes.
+        free_tier: 'Nivel Gratuito: ¥0/mes - Prueba de 30 días con límites de Startup, luego funciones básicas con anuncios'
+        startup_tier: 'Nivel Startup: ¥150/mes ($1.50/mes USD) - Funciones avanzadas, sin anuncios, soporte prioritario, límites de uso más altos'
+        pro_tier: 'Nivel Pro: ¥1500/mes ($15/mes USD) - Todas las funciones, uso ilimitado, soporte premium, informes avanzados'
+        pricing_details: Todos los precios se muestran en yenes japoneses (¥) y dólares estadounidenses ($). La facturación se gestiona de forma segura a través de Stripe.
+        price_changes: Los precios pueden ajustarse con 30 días de aviso previo a los suscriptores existentes.
+        future_note: En el futuro se pueden agregar opciones de pago adicionales y facturación anual.
       payment_methods:
         title: Métodos de Pago
         content: 'Para suscripciones de pago, aceptamos los siguientes métodos de
@@ -1092,7 +1093,8 @@ print_pricings:
       success: "Autenticado exitosamente desde la cuenta de %{kind}."
   # Límites de uso y gestión de suscripciones
   usage_limits:
-    limit_reached: "Has alcanzado el límite de %{limit} %{resource} de tu plan %{plan}. Por favor, actualiza para continuar."
+    limit_reached: "Has alcanzado el límite de tu plan %{plan}: %{limit} %{resource}. Actualiza para continuar."
+    approaching_limits_message: "Se está acercando a los límites de su plan. Considere actualizar para más recursos."
     approaching_limit: "Te estás acercando al límite de tu plan para %{resource}"
     usage_summary: "Resumen de uso"
     current_usage: "%{current} de %{limit} utilizados"
@@ -1130,3 +1132,8 @@ print_pricings:
       or_sign_in_with_email: Or Sign In With Email
       sign_in_with_provider: Sign in with %{provider}
       sign_in_with_provider_aria: Sign in with %{provider}
+  subscriptions:
+    current_plan: "Plan Actual"
+  usage_limits:
+    limit_reached: "Has alcanzado el límite de tu plan %{plan}: %{limit} %{resource}. Actualiza para continuar."
+    approaching_limits_message: "Se está acercando a los límites de su plan. Considere actualizar para más recursos."

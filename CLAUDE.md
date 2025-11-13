@@ -96,6 +96,19 @@ Devise with confirmable and omniauthable modules. OAuth providers: Google, GitHu
 - Auto-registration via `pwa_registration_controller.js`
 - Routes: `/manifest` and `/service-worker`
 
+## Subscription System (Stripe)
+- **Plans**: Free (trial), Startup ($0.99/mo), Pro ($9.99/mo)
+- **Implementation**: PR #26 merged - Stripe Checkout with webhooks
+- **Status**: ~95% complete, needs API credentials configuration
+- **Controllers**: `SubscriptionsController`, `Webhooks::StripeController`
+- **Testing**: WebMock stubs for unit tests, Stripe Sandbox for integration
+- **Sandbox Mode**: Uses NEW Stripe Sandbox system (not legacy test mode)
+- **Credentials needed**: `publishable_key`, `secret_key`, `webhook_secret`, `startup_price_id`, `pro_price_id`
+- **Configuration**: See `config/initializers/stripe.rb` for setup
+- **Development**: `bin/dev` runs Rails + Stripe webhook forwarding via foreman
+- **Webhook Testing**: Stripe CLI forwards to `localhost:3000/webhooks/stripe`
+- **Test Cards**: Use `4242 4242 4242 4242` (Visa) or `pm_card_visa` payment method ID
+
 ## Deployment
 - **Kamal** with Docker
 - **Hetzner S3** for file storage
@@ -137,8 +150,16 @@ Minitest with Turbo Stream tests. Test both HTML and turbo_stream formats.
 
 ## Documentation Context Reference
 
+### Active Documentation
 **OAuth Setup:** `docs/OAUTH_SETUP_GUIDE.md`
+**Stripe Integration:** `docs/STRIPE_SETUP.md`
 **Landing Page:** `docs/LANDING_PAGE_PLAN.md`
 **Turbo Framework:** `docs/TURBO_REFERENCE.md` | `docs/TURBO_CHEATSHEET.md`
+
+### Historical Context (Archive)
+When additional context is needed for historical decisions or completed features:
+- **Monetization & Legal:** `docs/archive/2025-11-05-monetization-legal-compliance-report.md` - Complete legal compliance analysis for paid plans, privacy policies, and subscription system
+- **Feature Status:** `docs/archive/MONETIZATION_UPDATE_SUMMARY.md`, `docs/archive/TRANSLATION_STATUS.md` - Historical implementation records
+- **Future Plans:** `docs/archive/ADSENSE_PREPARATION.md` - Prepared but not implemented features
 
 *Reference documentation only when specific context is required.*
