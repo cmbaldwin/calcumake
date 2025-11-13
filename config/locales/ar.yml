@@ -504,6 +504,7 @@ filaments:
     new_invoice: فاتورة جديدة
     edit_invoice: تعديل الفاتورة
     create_invoice: إنشاء فاتورة
+    made_with_calcumake: Made with CalcuMake
     index:
       title: فواتيري
       subtitle: تتبع وإدارة جميع فواتيرك عبر المشاريع

@@ -969,6 +969,7 @@ en:
     new_invoice: New Invoice
     edit_invoice: Edit Invoice
     create_invoice: Create Invoice
+    made_with_calcumake: Made with CalcuMake
     index:
       title: My Invoices
       subtitle: Track and manage all your invoices across projects
