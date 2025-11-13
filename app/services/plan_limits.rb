@@ -51,21 +51,23 @@ class PlanLimits
     # Get the limit for a specific resource type
     def limit_for(user, resource_type)
       limits = limits_for(user)
-      limits[resource_type.to_sym] || 0
+      # Convert singular resource type to plural for hash lookup
+      plural_key = resource_type.to_s.pluralize.to_sym
+      limits[plural_key] || 0
     end
 
     # Get current usage count for a resource type
     def current_usage(user, resource_type)
       case resource_type.to_s
       when "print_pricing"
-        # For print_pricings, use monthly usage tracking
-        UsageTracking.current_usage(user, "print_pricing")
+        # Count total print_pricings (not monthly)
+        user.print_pricings.count
       when "printer", "filament"
         # For printers and filaments, count total records
         user.send(resource_type.to_s.pluralize).count
       when "invoice"
-        # For invoices, use monthly usage tracking
-        UsageTracking.current_usage(user, "invoice")
+        # Count total invoices (not monthly)
+        user.invoices.count
       else
         0
       end
