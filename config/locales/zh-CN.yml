@@ -583,6 +583,7 @@ filaments:
     new_invoice: 新建发票
     edit_invoice: 编辑发票
     create_invoice: 创建发票
+    made_with_calcumake: Made with CalcuMake
     index:
       title: 我的发票
       subtitle: 跟踪和管理所有项目的发票

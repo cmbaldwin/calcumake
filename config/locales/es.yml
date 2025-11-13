@@ -846,6 +846,7 @@ filaments:
     new_invoice: Nueva Factura
     edit_invoice: Editar Factura
     create_invoice: Crear Factura
+    made_with_calcumake: Made with CalcuMake
     index:
       title: Mis Facturas
       subtitle: Rastrea y gestiona todas tus facturas entre proyectos

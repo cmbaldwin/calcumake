@@ -532,6 +532,7 @@ filaments:
     new_invoice: नया इनवॉइस
     edit_invoice: इनवॉइस संपादित करें
     create_invoice: इनवॉइस बनाएं
+    made_with_calcumake: Made with CalcuMake
     index:
       title: मेरे इनवॉइस
       subtitle: प्रोजेक्ट्स में अपने सभी इनवॉइस को ट्रैक और मैनेज करें

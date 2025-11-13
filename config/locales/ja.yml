@@ -796,6 +796,7 @@ ja:
     new_invoice: 新規請求書
     edit_invoice: 請求書編集
     create_invoice: 請求書作成
+    made_with_calcumake: Made with CalcuMake
     index:
       title: 請求書一覧
       subtitle: プロジェクト全体の請求書を追跡・管理
