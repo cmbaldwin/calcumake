@@ -8,6 +8,8 @@ fr:
     new_pricing: Nouveau Tarif
     my_printers: Mes Imprimantes
     my_filaments: Mes Filaments
+    invoices: Factures
+    clients: Clients
     profile: Profil
     help: Aide
     sign_out: Se déconnecter
@@ -42,8 +44,12 @@ fr:
   models:
     user: Utilisateur
     printer: Imprimante
+    printer_plural: Imprimantes
     print_pricing: Tarification d'Impression
+    print_pricing_plural: Tarifications d'Impression
     filament: Filament
+    client: Client
+    invoice: Facture
   printer:
     name: Nom de l'Imprimante
     manufacturer: Fabricant
@@ -56,6 +62,14 @@ fr:
     repair_factor: Facteur de Réparation (%)
     paid_off: Amorti
     months_to_payoff: Mois pour Amortir
+  locale_suggestion:
+    banner:
+      title: "Il semble que vous visitiez depuis une région différente"
+      switch_to: "Voulez-vous passer à %{language}?"
+      currently_viewing: "Actuellement en %{language}"
+      switch_button: "Changer de Langue"
+      stay_button: "Rester en Français"
+      close: "Fermer"
   print_pricing:
     index:
       title: Mes Calculs d'Impression
@@ -63,6 +77,9 @@ fr:
       create_new: Calculer Nouvelle Impression
       total_calculations: Total de Calculs
       total_print_time: Temps Total d'Impression
+      total_filament_used: Filament Total Utilisé
+      total_estimated_sales: Ventes Estimées Totales
+      total_estimated_profit: Bénéfice Total Estimé
       search_placeholder: Rechercher par nom de travail ou type de filament...
       empty_state:
         title: Aucun calcul pour le moment
@@ -182,6 +199,60 @@ fr:
       title: Ajouter Nouvelle Imprimante
       subtitle: Enregistrez les spécifications de votre imprimante 3D pour des calculs
         de coût précis
+  clients:
+    index:
+      title: Mes Clients
+      subtitle: Gérez vos contacts et informations clients
+      add_new: Ajouter Nouveau Client
+      search_placeholder: Rechercher par nom, entreprise ou email...
+      clear_search: Effacer la Recherche
+      empty_state:
+        title: Aucun client pour le moment
+        description: Ajoutez votre premier client pour commencer à gérer les relations clients et la facturation.
+        add_first: Ajouter Votre Premier Client
+      no_results:
+        title: Aucun résultat trouvé
+        description: "Aucun client ne correspond à '%{query}'. Essayez un terme de recherche différent."
+    new:
+      title: Ajouter Nouveau Client
+      subtitle: Enregistrez un nouveau client pour la facturation et la gestion de projets
+    edit:
+      title: Modifier Client
+      subtitle: Mettre à jour les informations du client
+    show:
+      member_since: Membre Depuis
+      invoices: Factures
+      print_pricings: Tarifications d'Impression
+      no_invoices: Aucune facture pour ce client
+      no_print_pricings: Aucune tarification d'impression pour ce client
+    sections:
+      basic_info: Informations de Base
+      contact_info: Informations de Contact
+      additional_info: Informations Supplémentaires
+    fields:
+      name: Nom du Client
+      name_placeholder: ex., Jean Dupont
+      company_name: Nom de l'Entreprise
+      company_name_placeholder: ex., Acme Corporation
+      email: Email
+      email_placeholder: client@example.com
+      phone: Téléphone
+      phone_placeholder: +33 1 23 45 67 89
+      address: Adresse
+      address_placeholder: "123 Rue Principale\nVille, Région 75001"
+      tax_id: Numéro de TVA / SIRET
+      tax_id_placeholder: ex., FR12345678901
+      notes: Notes
+      notes_placeholder: Informations supplémentaires sur ce client...
+    card:
+      invoices: Factures
+    buttons:
+      create: Créer Client
+      update: Mettre à Jour Client
+    confirm_delete: "Êtes-vous sûr de vouloir supprimer '%{name}'?"
+    created_successfully: Client créé avec succès
+    updated_successfully: Client mis à jour avec succès
+    deleted_successfully: Client supprimé avec succès
   profile:
     show:
       title: Profil Utilisateur
@@ -190,6 +261,10 @@ fr:
       email: Email
       member_since: Membre depuis
       default_preferences: Préférences par Défaut
+    delete_account:
+      title: Supprimer le Compte
+      warning_title: Avertissement
+      warning_message: La suppression du compte est permanente et ne peut pas être annulée. Toutes vos données, y compris les calculs d'impression, les imprimantes, les filaments et les factures, seront définitivement supprimées.
     fields:
       default_currency: Devise par Défaut
       energy_cost: Coût de l'Énergie par kWh
@@ -203,6 +278,13 @@ fr:
   footer:
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
     description: Professional 3D printing cost calculation and project management
+  usage_limits:
+    limit_reached: "Vous avez atteint la limite d'utilisation de cette fonctionnalité. Veuillez mettre à niveau votre forfait pour continuer."
+  subscriptions:
+    current_plan: Forfait Actuel
+  demo:
+    title: Démo
+    description: Explorez CalcuMake avec des données d'exemple
   legal:
     last_updated: Dernière mise à jour
     privacy_policy:
@@ -413,6 +495,25 @@ fr:
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
+    faq:
+      title: Questions Fréquemment Posées
+      delete_account:
+        question: Comment supprimer mon compte?
+        answer: Pour supprimer votre compte, suivez ces étapes
+        step1: Contactez notre équipe d'assistance à cody@moab.jp avec l'adresse e-mail de votre compte
+        step2: Confirmez votre identité et votre demande de suppression
+        step3: Annulez tous les abonnements actifs (le cas échéant)
+        step4: Nous traiterons votre demande dans les 7 jours ouvrables
+        step5: Vous recevrez un e-mail de confirmation une fois que votre compte et vos données seront définitivement supprimés
+        warning_title: Avertissement Important
+        warning_message: La suppression du compte est permanente et ne peut pas être annulée. Toutes vos données, y compris les calculs d'impression, les imprimantes, les filaments et les factures, seront définitivement supprimées.
+      data_recovery:
+        question: Puis-je récupérer mes données après avoir supprimé mon compte?
+        answer: "Non, la suppression du compte est permanente et irréversible. Une fois votre compte supprimé, toutes les données, y compris les calculs d'impression, les imprimantes, les filaments, les factures et les informations sur les clients, sont définitivement supprimées de nos systèmes et ne peuvent pas être récupérées. Assurez-vous d'exporter toutes les données que vous souhaitez conserver avant de demander la suppression du compte."
+      what_deleted:
+        question: Quelles données sont supprimées lorsque je supprime mon compte?
+        intro: "Lorsque vous supprimez votre compte, toutes les données associées sont définitivement supprimées, y compris:"
+        answer: "Lorsque vous supprimez votre compte, toutes les données associées sont définitivement supprimées, y compris: votre profil d'utilisateur et vos paramètres, tous les calculs de tarification d'impression, toutes les imprimantes enregistrées et leurs spécifications, toutes les entrées de filaments dans votre bibliothèque, toutes les factures et informations sur les clients, les logos d'entreprise et les fichiers téléchargés, et tout l'historique des abonnements et de facturation."
     billing_support:
       title: Support de Facturation et d'Abonnement
       description: Pour les demandes de facturation, les changements d'abonnement,
@@ -420,7 +521,7 @@ fr:
         contacter avec l'adresse e-mail de votre compte.
       priority_note: Les abonnés des niveaux Pro et Enterprise bénéficient de temps
         de réponse de support prioritaires.
-filaments:
+  filaments:
   index:
     title: Mes Filaments
     subtitle: Gérez votre inventaire de filaments d'impression 3D
@@ -496,6 +597,17 @@ filaments:
       currency_help: Détermine les décimales et le formatage pour tous les montants
         sur cette facture
       company_logo: Logo de l'Entreprise
+      client: Client
+      client_help_text: Sélectionnez un client existant ou créez-en un nouveau
+      select_client: Sélectionner un Client
+      no_client_selected: Aucun client sélectionné
+      print_pricing: Tarification d'Impression
+      project: Projet
+    statuses:
+      draft: Brouillon
+      sent: Envoyée
+      paid: Payée
+      cancelled: Annulée
     line_items:
       title: Éléments de Ligne
       add_line_item: Ajouter un Élément de Ligne
@@ -504,7 +616,7 @@ filaments:
       unit_price: Prix Unitaire
       total: Total
       remove: Supprimer
-print_pricings:
+  print_pricings:
   form:
     filament_weight: Poids du Filament
     print_time_hours: Heures de Temps d'Impression

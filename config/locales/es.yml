@@ -75,6 +75,8 @@ es:
     new_pricing: Nuevo Precio
     my_printers: Mis Impresoras
     my_filaments: Mis Filamentos
+    invoices: Facturas
+    clients: Clientes
     profile: Perfil
     help: Ayuda
     sign_out: Cerrar sesión
@@ -109,8 +111,12 @@ es:
   models:
     user: Usuario
     printer: Impresora
+    printer_plural: Impresoras
     print_pricing: Precio de Impresión
+    print_pricing_plural: Precios de Impresión
     filament: Filamento
+    client: Cliente
+    invoice: Factura
   common:
     created: Creado
     currency: Moneda
@@ -128,6 +134,14 @@ es:
     error_count:
       one: error
       other: errores
+  locale_suggestion:
+    banner:
+      title: "Parece que estás visitando desde una región diferente"
+      switch_to: "¿Te gustaría cambiar a %{language}?"
+      currently_viewing: "Actualmente viendo en %{language}"
+      switch_button: "Cambiar Idioma"
+      stay_button: "Permanecer en Español"
+      close: "Cerrar"
   print_pricing:
     index:
       title: Mis Cálculos de Impresión
@@ -135,6 +149,9 @@ es:
       create_new: Calcular Nueva Impresión
       total_calculations: Total de Cálculos
       total_print_time: Tiempo Total de Impresión
+      total_filament_used: Filamento Total Utilizado
+      total_estimated_sales: Ventas Estimadas Totales
+      total_estimated_profit: Beneficio Total Estimado
       search_placeholder: Buscar por nombre de trabajo o tipo de filamento...
       empty_state:
         title: No hay cálculos aún
@@ -398,6 +415,60 @@ es:
       add_printer: Agregar Impresora
       update_printer: Actualizar Impresora
       cancel: Cancelar
+  clients:
+    index:
+      title: Mis Clientes
+      subtitle: Gestiona tus contactos y información de clientes
+      add_new: Agregar Nuevo Cliente
+      search_placeholder: Buscar por nombre, empresa o correo...
+      clear_search: Limpiar Búsqueda
+      empty_state:
+        title: Aún no hay clientes
+        description: Agrega tu primer cliente para comenzar a gestionar relaciones y facturación.
+        add_first: Agregar Tu Primer Cliente
+      no_results:
+        title: No se encontraron resultados
+        description: "No hay clientes que coincidan con '%{query}'. Intenta con un término diferente."
+    new:
+      title: Agregar Nuevo Cliente
+      subtitle: Registra un nuevo cliente para facturación y gestión de proyectos
+    edit:
+      title: Editar Cliente
+      subtitle: Actualizar información del cliente
+    show:
+      member_since: Miembro Desde
+      invoices: Facturas
+      print_pricings: Precios de Impresión
+      no_invoices: Aún no hay facturas para este cliente
+      no_print_pricings: Aún no hay precios de impresión para este cliente
+    sections:
+      basic_info: Información Básica
+      contact_info: Información de Contacto
+      additional_info: Información Adicional
+    fields:
+      name: Nombre del Cliente
+      name_placeholder: ej., Juan Pérez
+      company_name: Nombre de la Empresa
+      company_name_placeholder: ej., Acme Corporation
+      email: Correo Electrónico
+      email_placeholder: cliente@example.com
+      phone: Teléfono
+      phone_placeholder: +34 912 34 56 78
+      address: Dirección
+      address_placeholder: "Calle Principal 123\nCiudad, Estado 12345"
+      tax_id: ID Fiscal / Número de IVA
+      tax_id_placeholder: ej., B12345678
+      notes: Notas
+      notes_placeholder: Información adicional sobre este cliente...
+    card:
+      invoices: Facturas
+    buttons:
+      create: Crear Cliente
+      update: Actualizar Cliente
+    confirm_delete: "¿Está seguro de que desea eliminar '%{name}'?"
+    created_successfully: Cliente creado exitosamente
+    updated_successfully: Cliente actualizado exitosamente
+    deleted_successfully: Cliente eliminado exitosamente
   profile:
     show:
       title: Perfil de Usuario
@@ -407,6 +478,10 @@ es:
       member_since: Miembro desde
       default_preferences: Preferencias Predeterminadas
       back_to_calculations: Volver a Cálculos
+    delete_account:
+      title: Eliminar Cuenta
+      warning_title: Advertencia
+      warning_message: La eliminación de la cuenta es permanente y no se puede deshacer. Todos sus datos, incluidos los cálculos de impresión, impresoras, filamentos y facturas, serán eliminados permanentemente.
     edit:
       title: Configuración del Perfil de Usuario
       subtitle: Configure sus preferencias predeterminadas
@@ -447,6 +522,13 @@ es:
   footer:
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
     description: Cálculo profesional de costos de impresión 3D y gestión de proyectos
+  usage_limits:
+    limit_reached: "Has alcanzado el límite de uso para esta función. Por favor, actualiza tu plan para continuar."
+  subscriptions:
+    current_plan: Plan Actual
+  demo:
+    title: Demo
+    description: Explora CalcuMake con datos de ejemplo
   support:
     title: Soporte
     nav_title: Soporte
@@ -455,6 +537,25 @@ es:
       aquí para ayudarte!"
     email_label: Soporte por Email
     response_time: Normalmente respondemos en 24-48 horas
+    faq:
+      title: Preguntas Frecuentes
+      delete_account:
+        question: ¿Cómo elimino mi cuenta?
+        answer: Para eliminar su cuenta, siga estos pasos
+        step1: Contacte a nuestro equipo de soporte en cody@moab.jp con su dirección de correo electrónico de la cuenta
+        step2: Confirme su identidad y solicitud de eliminación
+        step3: Cancele cualquier suscripción activa (si aplica)
+        step4: Procesaremos su solicitud dentro de 7 días hábiles
+        step5: Recibirá un correo electrónico de confirmación una vez que su cuenta y datos sean eliminados permanentemente
+        warning_title: Advertencia Importante
+        warning_message: La eliminación de la cuenta es permanente y no se puede deshacer. Todos sus datos, incluidos los cálculos de impresión, impresoras, filamentos y facturas, serán eliminados permanentemente.
+      data_recovery:
+        question: ¿Puedo recuperar mis datos después de eliminar mi cuenta?
+        answer: "No, la eliminación de la cuenta es permanente e irreversible. Una vez que se elimina su cuenta, todos los datos, incluidos los cálculos de impresión, impresoras, filamentos, facturas e información del cliente, se eliminan permanentemente de nuestros sistemas y no se pueden recuperar. Asegúrese de exportar los datos que desee conservar antes de solicitar la eliminación de la cuenta."
+      what_deleted:
+        question: ¿Qué datos se eliminan cuando elimino mi cuenta?
+        intro: "Cuando eliminas tu cuenta, todos los datos asociados se eliminan permanentemente, incluidos:"
+        answer: "Cuando eliminas tu cuenta, todos los datos asociados se eliminan permanentemente, incluidos: tu perfil de usuario y configuración, todos los cálculos de precios de impresión, todas las impresoras registradas y sus especificaciones, todas las entradas de filamentos en tu biblioteca, todas las facturas e información de clientes, logotipos de empresa y archivos cargados, y todo el historial de suscripciones y facturación."
     billing_support:
       title: Soporte de Facturación y Suscripción
       description: Para consultas de facturación, cambios de suscripción, solicitudes
@@ -666,7 +767,7 @@ es:
           de Privacidad
         resubscription: Puede volver a suscribirse en cualquier momento después de
           la cancelación
-filaments:
+  filaments:
   index:
     title: Mis Filamentos
     subtitle: Gestiona tu inventario de filamentos de impresión 3D
@@ -806,6 +907,17 @@ filaments:
       currency_help: Determina los lugares decimales y el formato para todas las cantidades
         en esta factura
       company_logo: Logo de la Empresa
+      client: Cliente
+      client_help_text: Seleccione un cliente existente o cree uno nuevo
+      select_client: Seleccionar Cliente
+      no_client_selected: Ningún cliente seleccionado
+      print_pricing: Precio de Impresión
+      project: Proyecto
+    statuses:
+      draft: Borrador
+      sent: Enviada
+      paid: Pagada
+      cancelled: Cancelada
     line_items:
       title: Elementos de Línea
       add_line_item: Agregar Elemento de Línea
@@ -814,7 +926,7 @@ filaments:
       unit_price: Precio Unitario
       total: Total
       remove: Eliminar
-print_pricings:
+  print_pricings:
   form:
     filament_weight: Peso del Filamento
     print_time_hours: Horas de Tiempo de Impresión

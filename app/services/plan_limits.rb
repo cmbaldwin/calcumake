@@ -51,7 +51,9 @@ class PlanLimits
     # Get the limit for a specific resource type
     def limit_for(user, resource_type)
       limits = limits_for(user)
-      limits[resource_type.to_sym] || 0
+      # Pluralize resource_type to match the keys in the limits hash
+      resource_key = resource_type.to_s.pluralize.to_sym
+      limits[resource_key] || 0
     end
 
     # Get current usage count for a resource type

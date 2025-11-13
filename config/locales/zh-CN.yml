@@ -8,6 +8,8 @@ zh-CN:
     new_pricing: 新建定价
     my_printers: 我的打印机
     my_filaments: 我的材料
+    invoices: 发票
+    clients: 客户
     profile: 个人资料
     help: 帮助
     sign_out: 退出登录
@@ -42,8 +44,12 @@ zh-CN:
   models:
     user: 用户
     printer: 打印机
+    printer_plural: 打印机
     print_pricing: 打印定价
+    print_pricing_plural: 打印定价
     filament: 材料
+    client: 客户
+    invoice: 发票
   common:
     created: 创建于
     currency: 货币
@@ -61,6 +67,14 @@ zh-CN:
     error_count:
       one: 错误
       other: 错误
+  locale_suggestion:
+    banner:
+      title: "看起来您是从其他地区访问的"
+      switch_to: "要切换到%{language}吗？"
+      currently_viewing: "当前正在查看%{language}"
+      switch_button: "切换语言"
+      stay_button: "保持简体中文"
+      close: "关闭"
   print_pricing:
     index:
       title: 我的打印计算
@@ -255,6 +269,60 @@ zh-CN:
     edit:
       title: 编辑打印机
       subtitle: 更新您的3D打印机规格
+  clients:
+    index:
+      title: 我的客户
+      subtitle: 管理您的客户联系人和信息
+      add_new: 添加新客户
+      search_placeholder: 按姓名、公司或邮箱搜索...
+      clear_search: 清除搜索
+      empty_state:
+        title: 暂无客户
+        description: 添加您的第一个客户，开始管理客户关系和发票。
+        add_first: 添加您的第一个客户
+      no_results:
+        title: 未找到结果
+        description: "没有与'%{query}'匹配的客户。请尝试不同的搜索词。"
+    new:
+      title: 添加新客户
+      subtitle: 注册新客户以进行发票和项目管理
+    edit:
+      title: 编辑客户
+      subtitle: 更新客户信息
+    show:
+      member_since: 注册时间
+      invoices: 发票
+      print_pricings: 打印定价
+      no_invoices: 该客户暂无发票
+      no_print_pricings: 该客户暂无打印定价
+    sections:
+      basic_info: 基本信息
+      contact_info: 联系信息
+      additional_info: 附加信息
+    fields:
+      name: 客户姓名
+      name_placeholder: 例如：张三
+      company_name: 公司名称
+      company_name_placeholder: 例如：XX科技有限公司
+      email: 邮箱
+      email_placeholder: client@example.com
+      phone: 电话
+      phone_placeholder: 138-0000-0000
+      address: 地址
+      address_placeholder: "北京市朝阳区XX路XX号\nXX大厦XX层"
+      tax_id: 税号 / 增值税号
+      tax_id_placeholder: 例如：91110000XXXXXXXX00
+      notes: 备注
+      notes_placeholder: 关于该客户的附加信息...
+    card:
+      invoices: 发票
+    buttons:
+      create: 创建客户
+      update: 更新客户
+    confirm_delete: 您确定要删除'%{name}'吗？
+    created_successfully: 客户创建成功
+    updated_successfully: 客户更新成功
+    deleted_successfully: 客户删除成功
   profile:
     show:
       title: 用户资料
@@ -264,6 +332,10 @@ zh-CN:
       member_since: 注册于
       default_preferences: 默认偏好
       back_to_calculations: 返回计算
+    delete_account:
+      title: 删除账户
+      warning_title: 警告
+      warning_message: 账户删除是永久性的，无法撤销。包括打印计算、打印机、耗材和发票在内的所有数据都将被永久删除。
     edit:
       title: 用户资料设置
       subtitle: 配置您的默认偏好
@@ -317,6 +389,44 @@ zh-CN:
   footer:
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
     description: Professional 3D printing cost calculation and project management
+  usage_limits:
+    limit_reached: "您已达到此功能的使用限制。请升级您的计划以继续。"
+  subscriptions:
+    current_plan: 当前计划
+  demo:
+    title: 演示
+    subtitle: 无需注册即可试用我们的计算器
+    description: 使用示例数据探索CalcuMake
+  support:
+    title: 支持
+    nav_title: 支持
+    contact_us: 联系我们
+    description: 需要CalcuMake的帮助？有问题或建议？我们随时为您提供帮助！
+    email_label: 邮件支持
+    response_time: 我们通常在24-48小时内回复
+    faq:
+      title: 常见问题
+      delete_account:
+        question: 如何删除我的账户？
+        answer: 要删除您的账户，请按照以下步骤操作
+        step1: 使用您的账户电子邮件地址联系我们的支持团队cody@moab.jp
+        step2: 确认您的身份和删除请求
+        step3: 取消任何活动订阅（如适用）
+        step4: 我们将在7个工作日内处理您的请求
+        step5: 账户和数据永久删除后，您将收到确认电子邮件
+        warning_title: 重要警告
+        warning_message: 账户删除是永久性的，无法撤销。包括打印计算、打印机、耗材和发票在内的所有数据都将被永久删除。
+      data_recovery:
+        question: 删除账户后我可以恢复数据吗？
+        answer: "不可以，账户删除是永久性的且不可逆的。一旦您的账户被删除，包括打印计算、打印机、耗材、发票和客户信息在内的所有数据都将从我们的系统中永久删除，无法恢复。请在请求删除账户之前确保导出您希望保留的任何数据。"
+      what_deleted:
+        question: 删除账户时会删除哪些数据？
+        intro: "删除账户时，所有相关数据将被永久删除，包括："
+        answer: "删除账户时，所有相关数据将被永久删除，包括：您的用户资料和设置、所有打印定价计算、所有注册的打印机及其规格、耗材库中的所有条目、所有发票和客户信息、上传的公司徽标和文件、以及所有订阅和账单历史记录。"
+    billing_support:
+      title: 账单和订阅支持
+      description: 如有账单查询、订阅变更、退款请求或付款问题，请提供您的账户邮箱与我们联系。
+      priority_note: Pro和Enterprise级别订阅者将获得优先支持响应时间。
   legal:
     last_updated: 最后更新
     privacy_policy:
@@ -470,7 +580,7 @@ zh-CN:
       title: 账单和订阅支持
       description: 如有账单咨询、订阅更改、退款请求或付款问题，请提供您的账户电子邮件联系我们。
       priority_note: Pro和Enterprise层订阅者享有优先支持响应时间。
-filaments:
+  filaments:
   index:
     title: 我的材料
     subtitle: 管理您的3D打印材料库存
@@ -540,6 +650,17 @@ filaments:
       currency: 货币
       currency_help: 确定此发票上所有金额的小数位数和格式
       company_logo: 公司徽标
+      client: 客户
+      client_help_text: 选择现有客户或创建新客户
+      select_client: 选择客户
+      no_client_selected: 未选择客户
+      print_pricing: 打印定价
+      project: 项目
+    statuses:
+      draft: 草稿
+      sent: 已发送
+      paid: 已付款
+      cancelled: 已取消
     line_items:
       title: 明细项目
       add_line_item: 添加明细项目

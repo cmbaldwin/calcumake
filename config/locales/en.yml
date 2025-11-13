@@ -91,6 +91,7 @@ en:
     my_printers: My Printers
     my_filaments: My Filaments
     invoices: Invoices
+    clients: Clients
     profile: Profile
     help: Help
     sign_out: Sign out
@@ -129,8 +130,12 @@ en:
   models:
     user: User
     printer: Printer
+    printer_plural: Printers
     print_pricing: Print Pricing
+    print_pricing_plural: Print Pricings
     filament: Filament
+    client: Client
+    invoice: Invoice
   common:
     created: Created
     currency: Currency
@@ -156,6 +161,14 @@ en:
     formats:
       month_day_year: "%B %d, %Y"
       month_day_year_time: "%B %d, %Y at %I:%M %p"
+  locale_suggestion:
+    banner:
+      title: "It looks like you're visiting from a different region"
+      switch_to: "Would you like to switch to %{language}?"
+      currently_viewing: "Currently viewing in %{language}"
+      switch_button: "Switch Language"
+      stay_button: "Stay in English"
+      close: "Close"
   print_pricing:
     index:
       title: My Print Calculations
@@ -163,6 +176,9 @@ en:
       create_new: Calculate New Print
       total_calculations: Total Calculations
       total_print_time: Total Print Time
+      total_filament_used: Total Filament Used
+      total_estimated_sales: Total Estimated Sales
+      total_estimated_profit: Total Estimated Profit
       search_placeholder: Search by job name or filament type...
       empty_state:
         title: No calculations yet
@@ -473,6 +489,60 @@ en:
       add_printer: Add Printer
       update_printer: Update Printer
       cancel: Cancel
+  clients:
+    index:
+      title: My Clients
+      subtitle: Manage your client contacts and information
+      add_new: Add New Client
+      search_placeholder: Search by name, company, or email...
+      clear_search: Clear Search
+      empty_state:
+        title: No clients yet
+        description: Add your first client to start managing customer relationships and invoicing.
+        add_first: Add Your First Client
+      no_results:
+        title: No results found
+        description: No clients match '%{query}'. Try a different search term.
+    new:
+      title: Add New Client
+      subtitle: Register a new client for invoicing and project management
+    edit:
+      title: Edit Client
+      subtitle: Update client information
+    show:
+      member_since: Member Since
+      invoices: Invoices
+      print_pricings: Print Pricings
+      no_invoices: No invoices for this client yet
+      no_print_pricings: No print pricings for this client yet
+    sections:
+      basic_info: Basic Information
+      contact_info: Contact Information
+      additional_info: Additional Information
+    fields:
+      name: Client Name
+      name_placeholder: e.g., John Doe
+      company_name: Company Name
+      company_name_placeholder: e.g., Acme Corporation
+      email: Email
+      email_placeholder: client@example.com
+      phone: Phone
+      phone_placeholder: +1 (555) 123-4567
+      address: Address
+      address_placeholder: "123 Main Street\nCity, State 12345"
+      tax_id: Tax ID / VAT Number
+      tax_id_placeholder: e.g., 12-3456789
+      notes: Notes
+      notes_placeholder: Additional information about this client...
+    card:
+      invoices: Invoices
+    buttons:
+      create: Create Client
+      update: Update Client
+    confirm_delete: Are you sure you want to delete '%{name}'?
+    created_successfully: Client created successfully
+    updated_successfully: Client updated successfully
+    deleted_successfully: Client deleted successfully
   profile:
     show:
       title: User Profile
@@ -487,6 +557,10 @@ en:
       company_info_description: This information will be used as the default for all invoices you create
       company_info_help: This information will be used on all invoices you create
       back_to_calculations: Back to Calculations
+    delete_account:
+      title: Delete Account
+      warning_title: Warning
+      warning_message: Account deletion is permanent and cannot be undone. All your data including print calculations, printers, filaments, and invoices will be permanently deleted.
     edit:
       title: User Profile Settings
       subtitle: Configure your default preferences
@@ -548,6 +622,14 @@ en:
   footer:
     description: Professional 3D printing cost calculation and project management
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
+  usage_limits:
+    limit_reached: "You've reached your usage limit for this feature. Please upgrade your plan to continue."
+  subscriptions:
+    current_plan: Current Plan
+  demo:
+    title: Demo
+    subtitle: Try our calculator without signing up
+    description: Explore CalcuMake with sample data
   support:
     title: Support
     nav_title: Support
@@ -559,6 +641,23 @@ en:
     response_time: We typically respond within 24-48 hours
     faq:
       title: Frequently Asked Questions
+      delete_account:
+        question: How do I delete my account?
+        answer: To delete your account, follow these steps
+        step1: Contact our support team at cody@moab.jp with your account email address
+        step2: Confirm your identity and deletion request
+        step3: Cancel any active subscriptions (if applicable)
+        step4: We will process your request within 7 business days
+        step5: You will receive a confirmation email once your account and data are permanently deleted
+        warning_title: Important Warning
+        warning_message: Account deletion is permanent and cannot be undone. All your data, including print calculations, printers, filaments, and invoices will be permanently deleted.
+      data_recovery:
+        question: Can I recover my data after deleting my account?
+        answer: "No, account deletion is permanent and irreversible. Once your account is deleted, all data including print calculations, printers, filaments, invoices, and client information is permanently removed from our systems and cannot be recovered. Please ensure you export any data you wish to keep before requesting account deletion."
+      what_deleted:
+        question: What data is deleted when I delete my account?
+        intro: "When you delete your account, all associated data is permanently deleted, including:"
+        answer: "When you delete your account, all associated data is permanently removed, including: your user profile and settings, all print pricing calculations, all registered printers and their specifications, all filament entries in your library, all invoices and client information, uploaded company logos and files, and all subscription and billing history."
     billing_support:
       title: Billing and Subscription Support
       description: For billing inquiries, subscription changes, refund requests, or payment issues, please contact us with your account email.
@@ -917,6 +1016,17 @@ en:
       currency: Currency
       currency_help: Determines decimal places and formatting for all amounts on this invoice
       company_logo: Company Logo
+      client: Client
+      client_help_text: Select an existing client or create a new one
+      select_client: Select Client
+      no_client_selected: No client selected
+      print_pricing: Print Pricing
+      project: Project
+    statuses:
+      draft: Draft
+      sent: Sent
+      paid: Paid
+      cancelled: Cancelled
     line_items:
       title: Line Items
       add_line_item: Add Line Item
@@ -1097,3 +1207,22 @@ en:
       accuracy:
         question: "How accurate are the calculations?"
         answer: "CalcuMake uses simple formulas and accounts for all cost factors including filament, electricity, labor time, and machine depreciation."
+
+      currencies:
+        question: "Does CalcuMake support multiple currencies?"
+        answer: "Yes! You can set your preferred currency in account settings. CalcuMake supports all major currencies including USD, EUR, JPY, GBP, CNY, INR, CAD, AUD, and more with automatic formatting and precision for each currency."
+
+      printers:
+        question: "Which 3D printers are supported?"
+        answer: "CalcuMake works with any FDM/FFF 3D printer! Simply enter your printer's power consumption and other specifications. We're planning support for resin printers soon!"
+
+      electricity:
+        question: "How are electricity costs calculated?"
+        answer: "CalcuMake automatically calculates electricity costs based on your printer's power consumption (in watts), printing time (in hours), and your local electricity rate per kWh. This ensures you never forget this often-overlooked cost factor."
+
+      invoices:
+        question: "Can I generate professional invoices?"
+        answer: "Yes! CalcuMake includes a full invoicing system with customizable templates, client management, and PDF export capabilities. You can add your company logo, customize colors, and include your business information. Paid plans remove CalcuMake branding for a completely professional look."
+    final_cta:
+      headline: "Ready to get started?"
+      subheadline: "Join thousands of makers who trust CalcuMake for accurate pricing and professional project management."

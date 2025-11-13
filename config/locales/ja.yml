@@ -73,6 +73,8 @@ ja:
     new_pricing: 新しい料金設定
     my_printers: プリンター
     my_filaments: フィラメント
+    invoices: 請求書
+    clients: クライアント
     profile: プロフィール
     help: ヘルプ
     sign_out: サインアウト
@@ -107,8 +109,12 @@ ja:
   models:
     user: ユーザー
     printer: プリンター
+    printer_plural: プリンター
     print_pricing: 印刷料金
+    print_pricing_plural: 印刷料金設定
     filament: フィラメント
+    client: クライアント
+    invoice: 請求書
   common:
     created: 作成日
     currency: 通貨
@@ -126,6 +132,14 @@ ja:
     error_count:
       one: エラー
       other: エラー
+  locale_suggestion:
+    banner:
+      title: "別の地域から訪問されているようです"
+      switch_to: "%{language}に切り替えますか？"
+      currently_viewing: "現在%{language}で表示中"
+      switch_button: "言語を切り替え"
+      stay_button: "日本語のまま"
+      close: "閉じる"
   print_pricing:
     index:
       title: 印刷計算一覧
@@ -134,7 +148,7 @@ ja:
       total_calculations: 総計算数
       total_print_time: 総印刷時間
       total_filament_used: 総フィラメント使用量
-      total_estimated_sales: 総推定売上
+      total_estimated_sales: 総推定売上高
       total_estimated_profit: 総推定利益
       search_placeholder: ジョブ名またはフィラメントタイプで検索...
       empty_state:
@@ -412,6 +426,60 @@ ja:
       add_printer: プリンター追加
       update_printer: プリンター更新
       cancel: キャンセル
+  clients:
+    index:
+      title: クライアント管理
+      subtitle: クライアントの連絡先情報を管理
+      add_new: 新しいクライアントを追加
+      search_placeholder: 名前、会社、またはメールで検索...
+      clear_search: 検索をクリア
+      empty_state:
+        title: まだクライアントがありません
+        description: 最初のクライアントを追加して、顧客関係管理と請求を開始しましょう。
+        add_first: 最初のクライアントを追加
+      no_results:
+        title: 結果が見つかりません
+        description: "'%{query}'に一致するクライアントはありません。別の検索語句をお試しください。"
+    new:
+      title: 新しいクライアントを追加
+      subtitle: 請求とプロジェクト管理のために新しいクライアントを登録
+    edit:
+      title: クライアントを編集
+      subtitle: クライアント情報を更新
+    show:
+      member_since: 登録日
+      invoices: 請求書
+      print_pricings: 印刷料金設定
+      no_invoices: このクライアントの請求書はまだありません
+      no_print_pricings: このクライアントの印刷料金設定はまだありません
+    sections:
+      basic_info: 基本情報
+      contact_info: 連絡先情報
+      additional_info: 追加情報
+    fields:
+      name: クライアント名
+      name_placeholder: 例：山田太郎
+      company_name: 会社名
+      company_name_placeholder: 例：株式会社ABC
+      email: メールアドレス
+      email_placeholder: client@example.com
+      phone: 電話番号
+      phone_placeholder: 03-1234-5678
+      address: 住所
+      address_placeholder: "〒123-4567\n東京都渋谷区○○1-2-3"
+      tax_id: 税番号 / VAT番号
+      tax_id_placeholder: 例：T1234567890123
+      notes: メモ
+      notes_placeholder: このクライアントに関する追加情報...
+    card:
+      invoices: 請求書
+    buttons:
+      create: クライアントを作成
+      update: クライアントを更新
+    confirm_delete: "'%{name}'を削除してもよろしいですか？"
+    created_successfully: クライアントを正常に作成しました
+    updated_successfully: クライアントを正常に更新しました
+    deleted_successfully: クライアントを正常に削除しました
   profile:
     show:
       title: ユーザープロフィール
@@ -421,6 +489,10 @@ ja:
       member_since: 登録日
       default_preferences: デフォルト設定
       back_to_calculations: 計算に戻る
+    delete_account:
+      title: アカウントを削除
+      warning_title: 警告
+      warning_message: アカウントの削除は永久的であり、元に戻すことはできません。印刷計算、プリンター、フィラメント、請求書を含むすべてのデータが完全に削除されます。
     edit:
       title: ユーザープロフィール設定
       subtitle: デフォルト設定を構成
@@ -473,6 +545,44 @@ ja:
   footer:
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
     description: Professional 3D printing cost calculation and project management
+  usage_limits:
+    limit_reached: "この機能の使用制限に達しました。続行するにはプランをアップグレードしてください。"
+  subscriptions:
+    current_plan: 現在のプラン
+  demo:
+    title: デモ
+    subtitle: サインアップせずに計算機を試す
+    description: サンプルデータでCalcuMakeを探索
+  support:
+    title: サポート
+    nav_title: サポート
+    contact_us: お問い合わせ
+    description: CalcuMakeについてお困りですか？ご質問やご提案がございますか？私たちがお手伝いします！
+    email_label: メールサポート
+    response_time: 通常24〜48時間以内に返信いたします
+    faq:
+      title: よくある質問
+      delete_account:
+        question: アカウントを削除するにはどうすればよいですか？
+        answer: アカウントを削除するには、以下の手順に従ってください
+        step1: アカウントのメールアドレスを添えて、cody@moab.jpのサポートチームにご連絡ください
+        step2: 本人確認と削除リクエストを確認します
+        step3: アクティブなサブスクリプションをキャンセルします（該当する場合）
+        step4: 7営業日以内にリクエストを処理します
+        step5: アカウントとデータが完全に削除されたら、確認メールが届きます
+        warning_title: 重要な警告
+        warning_message: アカウントの削除は永久的であり、元に戻すことはできません。印刷計算、プリンター、フィラメント、請求書を含むすべてのデータが完全に削除されます。
+      data_recovery:
+        question: アカウント削除後にデータを復元できますか？
+        answer: "いいえ、アカウントの削除は永久的で元に戻すことができません。アカウントが削除されると、印刷計算、プリンター、フィラメント、請求書、クライアント情報を含むすべてのデータが当社のシステムから完全に削除され、復元できません。アカウント削除をリクエストする前に、保持したいデータを必ずエクスポートしてください。"
+      what_deleted:
+        question: アカウントを削除すると、どのデータが削除されますか？
+        intro: "アカウントを削除すると、関連するすべてのデータが完全に削除されます。以下が含まれます："
+        answer: "アカウントを削除すると、関連するすべてのデータが完全に削除されます。削除されるデータには以下が含まれます：ユーザープロフィールと設定、すべての印刷料金計算、登録されたすべてのプリンターとその仕様、フィラメントライブラリのすべてのエントリ、すべての請求書とクライアント情報、アップロードされた会社ロゴとファイル、すべてのサブスクリプションと請求履歴。"
+    billing_support:
+      title: 請求とサブスクリプションのサポート
+      description: 請求に関するお問い合わせ、サブスクリプションの変更、払い戻し要求、または支払いの問題については、アカウントのメールアドレスを添えてお問い合わせください。
+      priority_note: ProおよびEnterpriseティアの加入者は、優先的なサポート応答時間を受けられます。
   legal:
     last_updated: 最終更新
     privacy_policy:
@@ -758,6 +868,17 @@ ja:
       currency: 通貨
       currency_help: この請求書のすべての金額の小数点以下桁数と書式を決定します
       company_logo: 会社ロゴ
+      client: クライアント
+      client_help_text: 既存のクライアントを選択するか、新しいクライアントを作成します
+      select_client: クライアントを選択
+      no_client_selected: クライアントが選択されていません
+      print_pricing: 印刷料金設定
+      project: プロジェクト
+    statuses:
+      draft: 下書き
+      sent: 送信済み
+      paid: 支払済み
+      cancelled: キャンセル
     line_items:
       title: 明細項目
       add_line_item: 明細項目追加

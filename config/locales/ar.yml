@@ -8,6 +8,8 @@ ar:
     new_pricing: سعر جديد
     my_printers: طابعاتي
     my_filaments: خيوط الطباعة
+    invoices: الفواتير
+    clients: العملاء
     profile: الملف الشخصي
     help: مساعدة
     sign_out: تسجيل الخروج
@@ -42,8 +44,12 @@ ar:
   models:
     user: المستخدم
     printer: الطابعة
+    printer_plural: الطابعات
     print_pricing: تسعير الطباعة
+    print_pricing_plural: تسعيرات الطباعة
     filament: خيط الطباعة
+    client: العميل
+    invoice: الفاتورة
   printer:
     name: اسم الطابعة
     manufacturer: الشركة المصنعة
@@ -56,6 +62,14 @@ ar:
     repair_factor: عامل الإصلاح (%)
     paid_off: مسدد
     months_to_payoff: أشهر للسداد
+  locale_suggestion:
+    banner:
+      title: "يبدو أنك تزور من منطقة مختلفة"
+      switch_to: "هل ترغب في التبديل إلى %{language}؟"
+      currently_viewing: "تعرض حالياً بـ%{language}"
+      switch_button: "تغيير اللغة"
+      stay_button: "البقاء بالعربية"
+      close: "إغلاق"
   print_pricing:
     index:
       title: حسابات الطباعة الخاصة بي
@@ -63,6 +77,9 @@ ar:
       create_new: حساب طباعة جديدة
       total_calculations: إجمالي الحسابات
       total_print_time: إجمالي وقت الطباعة
+      total_filament_used: إجمالي خيوط الطباعة المستخدمة
+      total_estimated_sales: إجمالي المبيعات المقدرة
+      total_estimated_profit: إجمالي الربح المقدر
       search_placeholder: البحث حسب اسم المهمة أو نوع الفيلامنت...
       empty_state:
         title: لا توجد حسابات بعد
@@ -177,6 +194,60 @@ ar:
     new:
       title: إضافة طابعة جديدة
       subtitle: سجل مواصفات طابعتك ثلاثية الأبعاد لحسابات تكلفة دقيقة
+  clients:
+    index:
+      title: عملائي
+      subtitle: إدارة معلومات العملاء وجهات الاتصال
+      add_new: إضافة عميل جديد
+      search_placeholder: البحث حسب الاسم أو الشركة أو البريد الإلكتروني...
+      clear_search: مسح البحث
+      empty_state:
+        title: لا يوجد عملاء بعد
+        description: أضف عميلك الأول لبدء إدارة علاقات العملاء والفواتير.
+        add_first: إضافة عميلك الأول
+      no_results:
+        title: لم يتم العثور على نتائج
+        description: "لا يوجد عملاء يطابقون '%{query}'. جرب مصطلح بحث مختلف."
+    new:
+      title: إضافة عميل جديد
+      subtitle: تسجيل عميل جديد للفواتير وإدارة المشاريع
+    edit:
+      title: تعديل العميل
+      subtitle: تحديث معلومات العميل
+    show:
+      member_since: عضو منذ
+      invoices: الفواتير
+      print_pricings: أسعار الطباعة
+      no_invoices: لا توجد فواتير لهذا العميل بعد
+      no_print_pricings: لا توجد أسعار طباعة لهذا العميل بعد
+    sections:
+      basic_info: معلومات أساسية
+      contact_info: معلومات الاتصال
+      additional_info: معلومات إضافية
+    fields:
+      name: اسم العميل
+      name_placeholder: "مثال: أحمد محمد"
+      company_name: اسم الشركة
+      company_name_placeholder: "مثال: شركة ABC"
+      email: البريد الإلكتروني
+      email_placeholder: client@example.com
+      phone: الهاتف
+      phone_placeholder: +966 50 123 4567
+      address: العنوان
+      address_placeholder: "شارع الرئيسي 123\nالمدينة، المنطقة 12345"
+      tax_id: الرقم الضريبي / رقم TVA
+      tax_id_placeholder: "مثال: 300000000000003"
+      notes: ملاحظات
+      notes_placeholder: معلومات إضافية حول هذا العميل...
+    card:
+      invoices: الفواتير
+    buttons:
+      create: إنشاء عميل
+      update: تحديث العميل
+    confirm_delete: "هل أنت متأكد من حذف '%{name}'؟"
+    created_successfully: تم إنشاء العميل بنجاح
+    updated_successfully: تم تحديث العميل بنجاح
+    deleted_successfully: تم حذف العميل بنجاح
   profile:
     show:
       title: ملف المستخدم
@@ -185,6 +256,10 @@ ar:
       email: البريد الإلكتروني
       member_since: عضو منذ
       default_preferences: التفضيلات الافتراضية
+    delete_account:
+      title: حذف الحساب
+      warning_title: تحذير
+      warning_message: حذف الحساب دائم ولا يمكن التراجع عنه. سيتم حذف جميع بياناتك بما في ذلك حسابات الطباعة والطابعات والخيوط والفواتير بشكل دائم.
     fields:
       default_currency: العملة الافتراضية
       energy_cost: تكلفة الطاقة لكل كيلوواط ساعة
@@ -198,6 +273,13 @@ ar:
   footer:
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
     description: Professional 3D printing cost calculation and project management
+  usage_limits:
+    limit_reached: "لقد وصلت إلى حد الاستخدام لهذه الميزة. يرجى ترقية خطتك للمتابعة."
+  subscriptions:
+    current_plan: الخطة الحالية
+  demo:
+    title: تجريبي
+    description: استكشف CalcuMake باستخدام بيانات عينة
   legal:
     last_updated: آخر تحديث
     privacy_policy:
@@ -377,13 +459,32 @@ ar:
       to help!
     email_label: Email Support
     response_time: We typically respond within 24-48 hours
+    faq:
+      title: الأسئلة الشائعة
+      delete_account:
+        question: كيف أحذف حسابي؟
+        answer: لحذف حسابك، اتبع هذه الخطوات
+        step1: اتصل بفريق الدعم لدينا على cody@moab.jp مع عنوان البريد الإلكتروني لحسابك
+        step2: أكد هويتك وطلب الحذف
+        step3: قم بإلغاء أي اشتراكات نشطة (إذا كان ذلك ينطبق)
+        step4: سنقوم بمعالجة طلبك خلال 7 أيام عمل
+        step5: ستتلقى بريدًا إلكترونيًا للتأكيد بمجرد حذف حسابك وبياناتك بشكل دائم
+        warning_title: تحذير مهم
+        warning_message: حذف الحساب دائم ولا يمكن التراجع عنه. سيتم حذف جميع بياناتك، بما في ذلك حسابات الطباعة والطابعات وخيوط الطباعة والفواتير، بشكل دائم.
+      data_recovery:
+        question: هل يمكنني استعادة بياناتي بعد حذف حسابي؟
+        answer: "لا، حذف الحساب دائم ولا رجعة فيه. بمجرد حذف حسابك، يتم حذف جميع البيانات بما في ذلك حسابات الطباعة والطابعات والخيوط والفواتير ومعلومات العملاء بشكل دائم من أنظمتنا ولا يمكن استعادتها. يرجى التأكد من تصدير أي بيانات ترغب في الاحتفاظ بها قبل طلب حذف الحساب."
+      what_deleted:
+        question: ما هي البيانات التي يتم حذفها عندما أحذف حسابي؟
+        intro: "عند حذف حسابك، يتم حذف جميع البيانات المرتبطة بشكل دائم، بما في ذلك:"
+        answer: "عند حذف حسابك، يتم حذف جميع البيانات المرتبطة بشكل دائم، بما في ذلك: ملف تعريف المستخدم والإعدادات الخاصة بك، جميع حسابات تسعير الطباعة، جميع الطابعات المسجلة ومواصفاتها، جميع إدخالات الخيوط في مكتبتك، جميع الفواتير ومعلومات العملاء، شعارات الشركة والملفات المحملة، وجميع سجلات الاشتراك والفوترة."
     billing_support:
       title: دعم الفوترة والاشتراك
       description: لاستفسارات الفوترة أو تغييرات الاشتراك أو طلبات الاسترداد أو مشاكل
         الدفع، يرجى الاتصال بنا مع البريد الإلكتروني لحسابك.
       priority_note: يحصل المشتركون في مستويات Pro وEnterprise على أوقات استجابة دعم
         ذات أولوية.
-filaments:
+  filaments:
   index:
     title: خيوط الطباعة
     subtitle: إدارة مخزون خيوط الطباعة ثلاثية الأبعاد
@@ -455,6 +556,17 @@ filaments:
       currency: العملة
       currency_help: يحدد الأماكن العشرية والتنسيق لجميع المبالغ في هذه الفاتورة
       company_logo: شعار الشركة
+      client: العميل
+      client_help_text: اختر عميلاً موجوداً أو أنشئ عميلاً جديداً
+      select_client: اختر العميل
+      no_client_selected: لم يتم تحديد عميل
+      print_pricing: تسعير الطباعة
+      project: المشروع
+    statuses:
+      draft: مسودة
+      sent: تم الإرسال
+      paid: مدفوعة
+      cancelled: ملغاة
     line_items:
       title: عناصر السطر
       add_line_item: إضافة عنصر سطر
@@ -463,7 +575,7 @@ filaments:
       unit_price: سعر الوحدة
       total: المجموع
       remove: إزالة
-print_pricings:
+  print_pricings:
   form:
     filament_weight: وزن الخيط
     print_time_hours: ساعات وقت الطباعة

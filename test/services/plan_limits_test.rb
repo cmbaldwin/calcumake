@@ -109,8 +109,8 @@ class PlanLimitsTest < ActiveSupport::TestCase
     @user.update!(plan: "free")
 
     # Create actual printer records
-    @user.printers.create!(name: "Printer 1", power_consumption: 200)
-    @user.printers.create!(name: "Printer 2", power_consumption: 150)
+    @user.printers.create!(name: "Printer 1", power_consumption: 200, cost: 500, payoff_goal_years: 3)
+    @user.printers.create!(name: "Printer 2", power_consumption: 150, cost: 400, payoff_goal_years: 2)
 
     assert_equal 2, PlanLimits.current_usage(@user, "printer")
   end

@@ -7,7 +7,9 @@ hi:
     my_pricings: मेरी कीमतें
     new_pricing: नई कीमत
     my_printers: मेरे प्रिंटर
-    my_filaments: My Filaments
+    my_filaments: मेरे फिलामेंट
+    invoices: चालान
+    clients: ग्राहक
     profile: प्रोफ़ाइल
     help: सहायता
     sign_out: साइन आउट
@@ -42,8 +44,12 @@ hi:
   models:
     user: उपयोगकर्ता
     printer: प्रिंटर
+    printer_plural: प्रिंटर
     print_pricing: प्रिंट मूल्य निर्धारण
+    print_pricing_plural: प्रिंट मूल्य निर्धारण
     filament: फिलामेंट
+    client: ग्राहक
+    invoice: चालान
   printer:
     name: प्रिंटर का नाम
     manufacturer: निर्माता
@@ -56,6 +62,14 @@ hi:
     repair_factor: मरम्मत कारक (%)
     paid_off: पेड ऑफ
     months_to_payoff: पेऑफ तक महीने
+  locale_suggestion:
+    banner:
+      title: "ऐसा लगता है कि आप एक अलग क्षेत्र से आ रहे हैं"
+      switch_to: "क्या आप %{language} पर स्विच करना चाहेंगे?"
+      currently_viewing: "वर्तमान में %{language} में देख रहे हैं"
+      switch_button: "भाषा बदलें"
+      stay_button: "हिंदी में रहें"
+      close: "बंद करें"
   print_pricing:
     index:
       title: मेरी प्रिंट गणनाएं
@@ -63,6 +77,9 @@ hi:
       create_new: नई प्रिंट गणना
       total_calculations: कुल गणनाएं
       total_print_time: कुल प्रिंट समय
+      total_filament_used: कुल फिलामेंट उपयोग
+      total_estimated_sales: कुल अनुमानित बिक्री
+      total_estimated_profit: कुल अनुमानित लाभ
       search_placeholder: जॉब नाम या फिलामेंट प्रकार से खोजें...
       empty_state:
         title: अभी तक कोई गणना नहीं
@@ -180,6 +197,60 @@ hi:
     new:
       title: नया प्रिंटर जोड़ें
       subtitle: सटीक लागत गणना के लिए अपने 3D प्रिंटर की विशिष्टताओं को पंजीकृत करें
+  clients:
+    index:
+      title: मेरे ग्राहक
+      subtitle: अपने ग्राहक संपर्क और जानकारी प्रबंधित करें
+      add_new: नया ग्राहक जोड़ें
+      search_placeholder: नाम, कंपनी या ईमेल से खोजें...
+      clear_search: खोज साफ़ करें
+      empty_state:
+        title: अभी तक कोई ग्राहक नहीं
+        description: ग्राहक संबंध प्रबंधन और चालान शुरू करने के लिए अपना पहला ग्राहक जोड़ें।
+        add_first: अपना पहला ग्राहक जोड़ें
+      no_results:
+        title: कोई परिणाम नहीं मिला
+        description: "'%{query}' से कोई ग्राहक मेल नहीं खाता। कृपया एक अलग खोज शब्द आजमाएं।"
+    new:
+      title: नया ग्राहक जोड़ें
+      subtitle: चालान और परियोजना प्रबंधन के लिए एक नया ग्राहक पंजीकृत करें
+    edit:
+      title: ग्राहक संपादित करें
+      subtitle: ग्राहक जानकारी अपडेट करें
+    show:
+      member_since: सदस्य बने
+      invoices: चालान
+      print_pricings: प्रिंट मूल्य निर्धारण
+      no_invoices: इस ग्राहक के लिए अभी तक कोई चालान नहीं
+      no_print_pricings: इस ग्राहक के लिए अभी तक कोई प्रिंट मूल्य निर्धारण नहीं
+    sections:
+      basic_info: बुनियादी जानकारी
+      contact_info: संपर्क जानकारी
+      additional_info: अतिरिक्त जानकारी
+    fields:
+      name: ग्राहक का नाम
+      name_placeholder: उदाहरण：राजेश कुमार
+      company_name: कंपनी का नाम
+      company_name_placeholder: उदाहरण：ABC टेक्नोलॉजीज
+      email: ईमेल
+      email_placeholder: client@example.com
+      phone: फोन
+      phone_placeholder: +91-98765-43210
+      address: पता
+      address_placeholder: "123 मुख्य सड़क\nशहर, राज्य 123456"
+      tax_id: कर ID / VAT नंबर
+      tax_id_placeholder: उदाहरण：ABCDE1234F
+      notes: नोट्स
+      notes_placeholder: इस ग्राहक के बारे में अतिरिक्त जानकारी...
+    card:
+      invoices: चालान
+    buttons:
+      create: ग्राहक बनाएं
+      update: ग्राहक अपडेट करें
+    confirm_delete: "क्या आप वाकई '%{name}' को हटाना चाहते हैं?"
+    created_successfully: ग्राहक सफलतापूर्वक बनाया गया
+    updated_successfully: ग्राहक सफलतापूर्वक अपडेट किया गया
+    deleted_successfully: ग्राहक सफलतापूर्वक हटाया गया
   profile:
     show:
       title: उपयोगकर्ता प्रोफ़ाइल
@@ -188,6 +259,10 @@ hi:
       email: ईमेल
       member_since: सदस्य बने
       default_preferences: डिफ़ॉल्ट प्राथमिकताएं
+    delete_account:
+      title: खाता हटाएं
+      warning_title: चेतावनी
+      warning_message: खाता हटाना स्थायी है और इसे पूर्ववत नहीं किया जा सकता। प्रिंट गणना, प्रिंटर, फिलामेंट और चालान सहित आपका सभी डेटा स्थायी रूप से हटा दिया जाएगा।
     fields:
       default_currency: डिफ़ॉल्ट मुद्रा
       energy_cost: ऊर्जा लागत प्रति kWh
@@ -201,6 +276,44 @@ hi:
   footer:
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
     description: Professional 3D printing cost calculation and project management
+  usage_limits:
+    limit_reached: "आपने इस सुविधा की उपयोग सीमा पूर्ण कर ली है। जारी रखने के लिए कृपया अपनी योजना को अपग्रेड करें।"
+  subscriptions:
+    current_plan: वर्तमान योजना
+  demo:
+    title: डेमो
+    subtitle: साइन अप किए बिना हमारे कैलकुलेटर को आज़माएं
+    description: नमूना डेटा के साथ CalcuMake का अन्वेषण करें
+  support:
+    title: सहायता
+    nav_title: सहायता
+    contact_us: हमसे संपर्क करें
+    description: CalcuMake में मदद चाहिए? कोई सवाल या सुझाव है? हम यहां मदद के लिए हैं!
+    email_label: ईमेल सहायता
+    response_time: हम आमतौर पर 24-48 घंटों के भीतर जवाब देते हैं
+    faq:
+      title: अक्सर पूछे जाने वाले प्रश्न
+      delete_account:
+        question: मैं अपना खाता कैसे हटाऊं?
+        answer: अपना खाता हटाने के लिए, निम्नलिखित चरणों का पालन करें
+        step1: अपने खाते के ईमेल पते के साथ cody@moab.jp पर हमारी सहायता टीम से संपर्क करें
+        step2: अपनी पहचान और हटाने के अनुरोध की पुष्टि करें
+        step3: किसी भी सक्रिय सदस्यता को रद्द करें (यदि लागू हो)
+        step4: हम 7 कार्य दिवसों के भीतर आपके अनुरोध को संसाधित करेंगे
+        step5: आपके खाते और डेटा के स्थायी रूप से हटा दिए जाने के बाद आपको एक पुष्टिकरण ईमेल प्राप्त होगा
+        warning_title: महत्वपूर्ण चेतावनी
+        warning_message: खाता हटाना स्थायी है और इसे पूर्ववत नहीं किया जा सकता। प्रिंट गणना, प्रिंटर, फिलामेंट और चालान सहित आपका सभी डेटा स्थायी रूप से हटा दिया जाएगा।
+      data_recovery:
+        question: क्या मैं अपना खाता हटाने के बाद अपना डेटा पुनर्प्राप्त कर सकता हूं?
+        answer: "नहीं, खाता हटाना स्थायी और अपरिवर्तनीय है। एक बार जब आपका खाता हटा दिया जाता है, तो प्रिंट गणना, प्रिंटर, फिलामेंट, चालान और ग्राहक जानकारी सहित सभी डेटा हमारे सिस्टम से स्थायी रूप से हटा दिया जाता है और पुनर्प्राप्त नहीं किया जा सकता। कृपया खाता हटाने का अनुरोध करने से पहले वह डेटा निर्यात करना सुनिश्चित करें जिसे आप रखना चाहते हैं।"
+      what_deleted:
+        question: जब मैं अपना खाता हटाता हूं तो कौन सा डेटा हटा दिया जाता है?
+        intro: "जब आप अपना खाता हटाते हैं, तो सभी संबंधित डेटा स्थायी रूप से हटा दिया जाता है, जिसमें शामिल हैं:"
+        answer: "जब आप अपना खाता हटाते हैं, तो सभी संबंधित डेटा स्थायी रूप से हटा दिया जाता है, जिसमें शामिल हैं: आपकी उपयोगकर्ता प्रोफ़ाइल और सेटिंग्स, सभी प्रिंट मूल्य निर्धारण गणना, सभी पंजीकृत प्रिंटर और उनकी विशिष्टताएं, आपकी लाइब्रेरी में सभी फिलामेंट प्रविष्टियां, सभी चालान और ग्राहक जानकारी, अपलोड किए गए कंपनी लोगो और फ़ाइलें, और सभी सदस्यता और बिलिंग इतिहास।"
+    billing_support:
+      title: बिलिंग और सब्सक्रिप्शन सहायता
+      description: बिलिंग पूछताछ, सब्सक्रिप्शन परिवर्तन, रिफंड अनुरोध, या भुगतान समस्याओं के लिए, कृपया अपने खाते के ईमेल के साथ हमसे संपर्क करें।
+      priority_note: Pro और Enterprise स्तर के सब्सक्राइबर्स को प्राथमिकता समर्थन प्रतिक्रिया समय प्राप्त होता है।
   legal:
     last_updated: अंतिम अद्यतन
     privacy_policy:
@@ -411,7 +524,7 @@ hi:
         के लिए, कृपया अपने खाता ईमेल के साथ हमसे संपर्क करें।
       priority_note: Pro और Enterprise स्तर ग्राहकों को प्राथमिकता समर्थन प्रतिक्रिया
         समय प्राप्त होता है।
-filaments:
+  filaments:
   index:
     title: मेरे फिलामेंट
     subtitle: अपने 3D प्रिंटिंग फिलामेंट इन्वेंटरी का प्रबंधन करें
@@ -486,6 +599,17 @@ filaments:
       currency_help: इस इनवॉइस पर सभी राशियों के लिए दशमलव स्थान और फॉर्मेटिंग निर्धारित
         करता है
       company_logo: कंपनी लोगो
+      client: ग्राहक
+      client_help_text: मौजूदा ग्राहक चुनें या नया बनाएं
+      select_client: ग्राहक चुनें
+      no_client_selected: कोई ग्राहक चयनित नहीं
+      print_pricing: प्रिंट मूल्य निर्धारण
+      project: परियोजना
+    statuses:
+      draft: ड्राफ्ट
+      sent: भेजा गया
+      paid: भुगतान किया गया
+      cancelled: रद्द
     line_items:
       title: लाइन आइटम
       add_line_item: लाइन आइटम जोड़ें
@@ -494,7 +618,7 @@ filaments:
       unit_price: यूनिट मूल्य
       total: कुल
       remove: हटाएं
-print_pricings:
+  print_pricings:
   form:
     filament_weight: फिलामेंट वजन
     print_time_hours: प्रिंट समय (घंटे)
