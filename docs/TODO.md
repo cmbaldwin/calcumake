@@ -2,22 +2,32 @@
 
 ## Current Status
 - **Pricing Updated**: ¥150/month ($1.50 USD) Startup, ¥1500/month ($15 USD) Pro
-- **Test Results**: 17 failures + 12 errors (down from 21F + 15E)
+- **Test Results**: 11 failures + 8 errors = 19 issues (down from 29)
 - **Stripe Integration**: ~95% complete, needs final testing
 - **Commerce Disclosure**: Ready at `/commerce-disclosure` for Stripe verification
+- **Translation Coverage**: All 7 languages updated with new keys
 
 ## High Priority
 
-### 1. Test Remaining Failures (17 failures, 12 errors)
-Current test results show 29 issues remaining. Most are likely:
-- Missing translation keys
-- Controller test failures (navbar, authentication redirects)
-- PrintPricingTest calculation issues
-- View/partial rendering issues
+### 1. Test Remaining Failures (11 failures, 8 errors = 19 issues)
+**Progress**: Reduced from 29 issues to 19 (34% improvement)
 
-**Action**: Run individual failing tests to identify specific issues:
+**Remaining Issues by Category**:
+- **InvoicesController** (8 errors): Translation or asset loading issues
+- **OAuth Button Tests** (4 failures): LINE provider icon rendering
+- **PrintersController** (3 failures): Printer creation validation
+- **Other Tests** (4 failures): Landing page structured data, print pricing flows
+
+**Action**: Run specific failing tests:
 ```bash
-bin/rails test --verbose
+# Invoice tests
+bin/rails test test/controllers/invoices_controller_test.rb
+
+# OAuth button tests
+bin/rails test test/views/devise/shared/oauth_buttons_test.rb
+
+# Printer tests
+bin/rails test test/controllers/printers_controller_test.rb
 ```
 
 ### 2. Test Stripe Integration in Development
@@ -225,7 +235,29 @@ stripe listen --print-secret
 - [x] PlanLimits tests passing (25/25)
 - [x] Flash partial created for limit warnings
 - [x] Translations updated for all 7 languages
-- [x] Test failures reduced from 36 to 29
+- [x] Test failures reduced from 29 to 19 (34% improvement)
+- [x] OAuth button tests updated for 6 providers (added LINE)
+- [x] Navbar and redirect tests fixed
+- [x] Invoice asset handling improved for tests
 - [ ] Final dev testing of Stripe integration
 - [ ] Production Stripe setup
-- [ ] Remaining test failures addressed
+- [ ] Remaining 19 test failures addressed
+
+## Recent Session Notes (2025-01-13)
+### Test Fixes Completed
+- Fixed missing translation keys: `total_estimated_profit`, `approaching_limits_message`, `select_client`, `upgrade_now`
+- Updated all OAuth button tests to expect 6 providers instead of 5
+- Fixed navbar tests to use `print_pricings_path` instead of `root_path` (authenticated users get redirected)
+- Fixed ApplicationController test to use `printers_path` (protected route) instead of `root_path` (public)
+- Improved invoice view asset handling with better error rescue for test environment
+
+### Test Results
+- **Before**: 29 issues (17 failures + 12 errors)
+- **After**: 19 issues (11 failures + 8 errors)
+- **Improvement**: 34% reduction
+
+### Remaining Test Issues
+1. **InvoicesController** (8 errors) - Need to investigate translation propagation
+2. **OAuth Button Views** (4 failures) - LINE icon rendering issue
+3. **PrintersController** (3 failures) - Printer creation validation
+4. **Integration Tests** (4 failures) - Various flows and structured data
