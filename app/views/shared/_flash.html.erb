@@ -1,0 +1,26 @@
+<% flash_messages = local_assigns[:flash] || flash %>
+<% flash_messages.each do |flash_type, message| %>
+  <div
+    class="toast-message toast-<%= flash_type %>"
+    data-controller="toast"
+    data-toast-auto-dismiss-value="5000"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="toast-content">
+      <span class="toast-icon">
+        <% case flash_type.to_s %>
+        <% when 'notice', 'success' %>
+          ✓
+        <% when 'alert', 'error' %>
+          ⚠
+        <% else %>
+          ℹ
+        <% end %>
+      </span>
+      <span class="toast-text"><%= message %></span>
+      <button type="button" class="toast-close" data-action="click->toast#close" aria-label="Close">×</button>
+    </div>
+  </div>
+<% end %>

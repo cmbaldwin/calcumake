@@ -6,6 +6,28 @@ class PlanLimitsTest < ActiveSupport::TestCase
     @user.update!(plan: "free", trial_ends_at: nil)
   end
 
+  # Helper method to create a print_pricing record (replaces UsageTracking.track!)
+  def create_print_pricing(user)
+    printer = user.printers.first || user.printers.create!(
+      name: "Test Printer",
+      power_consumption: 200,
+      cost: 500,
+      payoff_goal_years: 3,
+      daily_usage_hours: 8
+    )
+    filament = user.filaments.first || user.filaments.create!(
+      name: "Test Filament",
+      cost_per_kg: 20,
+      color: "Black",
+      material: "PLA"
+    )
+    pricing = user.print_pricings.build(job_name: "Test Job #{user.print_pricings.count + 1}", printer: printer)
+    plate = pricing.plates.build(printing_time_hours: 1, printing_time_minutes: 0)
+    plate.plate_filaments.build(filament: filament, filament_weight: 10)
+    pricing.save!
+    pricing
+  end
+
   test "FREE_LIMITS should have correct limits" do
     assert_equal 5, PlanLimits::FREE_LIMITS[:print_pricings]
     assert_equal 1, PlanLimits::FREE_LIMITS[:printers]
@@ -57,10 +79,11 @@ class PlanLimitsTest < ActiveSupport::TestCase
 
   test "can_create? should return true when under limit" do
     @user.update!(plan: "free")
+    @user.print_pricings.destroy_all  # Start fresh
 
     # Free plan has 5 print_pricings limit, create 3
     3.times do
-      UsageTracking.track!(@user, "print_pricing")
+      create_print_pricing(@user)
     end
 
     assert PlanLimits.can_create?(@user, "print_pricing")
@@ -68,10 +91,11 @@ class PlanLimitsTest < ActiveSupport::TestCase
 
   test "can_create? should return false when at limit" do
     @user.update!(plan: "free")
+    @user.print_pricings.destroy_all  # Start fresh
 
     # Free plan has 5 print_pricings limit, create 5
     5.times do
-      UsageTracking.track!(@user, "print_pricing")
+      create_print_pricing(@user)
     end
 
     assert_not PlanLimits.can_create?(@user, "print_pricing")
@@ -82,7 +106,7 @@ class PlanLimitsTest < ActiveSupport::TestCase
 
     # Create many resources
     100.times do
-      UsageTracking.track!(@user, "print_pricing")
+      create_print_pricing(@user)
     end
 
     assert PlanLimits.can_create?(@user, "print_pricing")
@@ -99,26 +123,29 @@ class PlanLimitsTest < ActiveSupport::TestCase
 
   test "current_usage should return correct count for monthly resources" do
     @user.update!(plan: "free")
+    @user.print_pricings.destroy_all  # Start fresh
 
-    3.times { UsageTracking.track!(@user, "print_pricing") }
+    3.times { create_print_pricing(@user) }
 
     assert_equal 3, PlanLimits.current_usage(@user, "print_pricing")
   end
 
   test "current_usage should return total count for non-monthly resources" do
     @user.update!(plan: "free")
+    @user.printers.destroy_all  # Start fresh
 
-    # Create actual printer records
-    @user.printers.create!(name: "Printer 1", power_consumption: 200)
-    @user.printers.create!(name: "Printer 2", power_consumption: 150)
+    # Create actual printer records with all required fields
+    @user.printers.create!(name: "Printer 1", power_consumption: 200, cost: 500, payoff_goal_years: 3, daily_usage_hours: 8)
+    @user.printers.create!(name: "Printer 2", power_consumption: 150, cost: 400, payoff_goal_years: 2, daily_usage_hours: 8)
 
     assert_equal 2, PlanLimits.current_usage(@user, "printer")
   end
 
   test "remaining should return correct remaining count" do
     @user.update!(plan: "free")
+    @user.print_pricings.destroy_all  # Start fresh
 
-    2.times { UsageTracking.track!(@user, "print_pricing") }
+    2.times { create_print_pricing(@user) }
 
     # Free plan has 5 limit, used 2, should have 3 remaining
     assert_equal 3, PlanLimits.remaining(@user, "print_pricing")
@@ -132,24 +159,27 @@ class PlanLimitsTest < ActiveSupport::TestCase
 
   test "limit_reached? should return true when at limit" do
     @user.update!(plan: "free")
+    @user.print_pricings.destroy_all  # Start fresh
 
-    5.times { UsageTracking.track!(@user, "print_pricing") }
+    5.times { create_print_pricing(@user) }
 
     assert PlanLimits.limit_reached?(@user, "print_pricing")
   end
 
   test "limit_reached? should return false when under limit" do
     @user.update!(plan: "free")
+    @user.print_pricings.destroy_all  # Start fresh
 
-    2.times { UsageTracking.track!(@user, "print_pricing") }
+    2.times { create_print_pricing(@user) }
 
     assert_not PlanLimits.limit_reached?(@user, "print_pricing")
   end
 
   test "usage_percentage should return correct percentage" do
     @user.update!(plan: "free")
+    @user.print_pricings.destroy_all  # Start fresh
 
-    2.times { UsageTracking.track!(@user, "print_pricing") }
+    2.times { create_print_pricing(@user) }
 
     # 2 out of 5 = 40%
     assert_equal 40, PlanLimits.usage_percentage(@user, "print_pricing")
@@ -158,15 +188,16 @@ class PlanLimitsTest < ActiveSupport::TestCase
   test "usage_percentage should return 0 for unlimited resources" do
     @user.update!(plan: "pro")
 
-    10.times { UsageTracking.track!(@user, "print_pricing") }
+    10.times { create_print_pricing(@user) }
 
     assert_equal 0, PlanLimits.usage_percentage(@user, "print_pricing")
   end
 
   test "approaching_limit? should return true at 80% usage" do
     @user.update!(plan: "free")
+    @user.print_pricings.destroy_all  # Start fresh
 
-    4.times { UsageTracking.track!(@user, "print_pricing") }
+    4.times { create_print_pricing(@user) }
 
     # 4 out of 5 = 80%
     assert PlanLimits.approaching_limit?(@user, "print_pricing")
@@ -174,8 +205,9 @@ class PlanLimitsTest < ActiveSupport::TestCase
 
   test "approaching_limit? should return false below 80% usage" do
     @user.update!(plan: "free")
+    @user.print_pricings.destroy_all  # Start fresh
 
-    3.times { UsageTracking.track!(@user, "print_pricing") }
+    3.times { create_print_pricing(@user) }
 
     # 3 out of 5 = 60%
     assert_not PlanLimits.approaching_limit?(@user, "print_pricing")
@@ -184,7 +216,7 @@ class PlanLimitsTest < ActiveSupport::TestCase
   test "approaching_limit? should return false for unlimited resources" do
     @user.update!(plan: "pro")
 
-    100.times { UsageTracking.track!(@user, "print_pricing") }
+    100.times { create_print_pricing(@user) }
 
     assert_not PlanLimits.approaching_limit?(@user, "print_pricing")
   end
@@ -203,7 +235,7 @@ class PlanLimitsTest < ActiveSupport::TestCase
     features = PlanLimits.features_for("startup")
 
     assert_equal "Startup", features[:name]
-    assert_equal "$0.99/month", features[:price]
+    assert_equal "$1.50/month", features[:price]
     assert_equal PlanLimits::STARTUP_LIMITS, features[:limits]
     assert_not features[:trial]
   end
@@ -212,7 +244,7 @@ class PlanLimitsTest < ActiveSupport::TestCase
     features = PlanLimits.features_for("pro")
 
     assert_equal "Pro", features[:name]
-    assert_equal "$9.99/month", features[:price]
+    assert_equal "$15/month", features[:price]
     assert_equal PlanLimits::PRO_LIMITS, features[:limits]
     assert_not features[:trial]
   end

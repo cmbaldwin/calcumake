@@ -68,6 +68,9 @@ ar:
       create_new: حساب طباعة جديدة
       total_calculations: إجمالي الحسابات
       total_print_time: إجمالي وقت الطباعة
+      total_filament_used: إجمالي الخيوط المستخدمة
+      total_estimated_sales: إجمالي المبيعات المقدرة
+      total_estimated_profit: إجمالي الربح المقدر
       search_placeholder: البحث حسب اسم المهمة أو نوع الفيلامنت...
       empty_state:
         title: لا توجد حسابات بعد
@@ -201,6 +204,7 @@ ar:
       contact_info: معلومات الاتصال
       additional_info: معلومات إضافية
     fields:
+      project: المشروع
       name: الاسم
       name_placeholder: أحمد محمد
       company_name: اسم الشركة
@@ -396,15 +400,12 @@ ar:
       pricing:
         title: التسعير
         content: 'يقدم CalcuMake ثلاثة مستويات اشتراك:'
-        free_tier: 'المستوى المجاني: ¥0/شهر - ميزات أساسية مع إعلانات'
-        pro_tier: 'مستوى Pro: اشتراك شهري أو سنوي مدفوع - ميزات متقدمة، بدون إعلانات،
-          دعم ذو أولوية'
-        enterprise_tier: 'مستوى Enterprise: اشتراك شهري أو سنوي مدفوع - جميع الميزات،
-          دعم متميز، تكاملات مخصصة'
-        pricing_details: يتم عرض التسعير الدقيق على موقعنا الإلكتروني وفي التطبيق
-          أثناء اختيار الاشتراك.
-        price_changes: قد يتم تعديل الأسعار مع إشعار مسبق مدته 30 يومًا للمشتركين
-          الحاليين.
+        free_tier: 'المستوى المجاني: ¥0/شهر - تجربة مجانية لمدة 30 يومًا بحدود Startup، ثم ميزات أساسية مع إعلانات'
+        startup_tier: 'مستوى Startup: ¥150/شهر ($1.50/شهر دولار أمريكي) - ميزات متقدمة، بدون إعلانات، دعم ذو أولوية، حدود استخدام أعلى'
+        pro_tier: 'مستوى Pro: ¥1500/شهر ($15/شهر دولار أمريكي) - جميع الميزات، استخدام غير محدود، دعم متميز، تقارير متقدمة'
+        pricing_details: جميع الأسعار مدرجة بالين الياباني (¥) والدولار الأمريكي ($). تتم معالجة الفواتير بشكل آمن عبر Stripe.
+        price_changes: قد يتم تعديل الأسعار مع إشعار مسبق مدته 30 يومًا للمشتركين الحاليين.
+        future_note: قد تتم إضافة خيارات دفع إضافية وفوترة سنوية في المستقبل.
       payment_methods:
         title: طرق الدفع
         content: 'للاشتراكات المدفوعة، نقبل طرق الدفع التالية:'
@@ -747,7 +748,8 @@ print_pricings:
 
   # حدود الاستخدام وإدارة الاشتراكات
   usage_limits:
-    limit_reached: "لقد وصلت إلى حد خطة %{plan} البالغ %{limit} %{resource}. يرجى الترقية للمتابعة."
+    limit_reached: "لقد وصلت إلى حد خطة %{plan} الخاصة بك: %{limit} %{resource}. قم بالترقية للمتابعة."
+    approaching_limits_message: "أنت تقترب من حدود خطتك. فكر في الترقية للحصول على المزيد من الموارد."
     approaching_limit: "أنت تقترب من حد خطتك لـ %{resource}"
     usage_summary: "ملخص الاستخدام"
     current_usage: "تم استخدام %{current} من %{limit}"
@@ -784,3 +786,8 @@ print_pricings:
       or_sign_in_with_email: Or Sign In With Email
       sign_in_with_provider: Sign in with %{provider}
       sign_in_with_provider_aria: Sign in with %{provider}
+  subscriptions:
+    current_plan: "الخطة الحالية"
+  usage_limits:
+    limit_reached: "لقد وصلت إلى حد خطة %{plan} الخاصة بك: %{limit} %{resource}. قم بالترقية للمتابعة."
+    approaching_limits_message: "أنت تقترب من حدود خطتك. فكر في الترقية للحصول على المزيد من الموارد."

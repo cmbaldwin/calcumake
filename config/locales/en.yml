@@ -169,6 +169,9 @@ en:
       create_new: Calculate New Print
       total_calculations: Total Calculations
       total_print_time: Total Print Time
+      total_filament_used: Total Filament Used
+      total_estimated_sales: Total Estimated Sales
+      total_estimated_profit: Total Estimated Profit
       search_placeholder: Search by job name or filament type...
       empty_state:
         title: No calculations yet
@@ -271,6 +274,7 @@ en:
       plate: Plate
       filaments: Filaments
     fields:
+      project: Project
       job_name: Job Name
       job_name_placeholder: e.g., Miniature Model
       select_printer: Select Printer
@@ -922,11 +926,12 @@ en:
       pricing:
         title: Pricing
         content: "CalcuMake offers three subscription tiers:"
-        free_tier: "Free Tier: ¥0/month - Basic features with advertisements"
-        pro_tier: "Pro Tier: Paid monthly or annual subscription - Advanced features, no ads, priority support"
-        enterprise_tier: "Enterprise Tier: Paid monthly or annual subscription - All features, premium support, custom integrations"
-        pricing_details: Exact pricing is displayed on our website and in the application during subscription selection.
+        free_tier: "Free Tier: ¥0/month - 30-day trial with Startup limits, then basic features with advertisements"
+        startup_tier: "Startup Tier: ¥150/month ($1.50/month USD) - Advanced features, no ads, priority support, higher usage limits"
+        pro_tier: "Pro Tier: ¥1500/month ($15/month USD) - All features, unlimited usage, premium support, advanced reporting"
+        pricing_details: All prices are listed in Japanese Yen (¥) and US Dollars ($). Billing is handled securely through Stripe.
         price_changes: Prices may be adjusted with 30 days advance notice to existing subscribers.
+        future_note: Additional payment options and annual billing may be added in the future.
       payment_methods:
         title: Payment Methods
         content: "For paid subscriptions, we accept the following payment methods:"
@@ -1015,6 +1020,9 @@ en:
       notes: Notes
       invoice_number: Invoice Number
       job_name: Job Name
+      client: Client
+      project: Project
+      select_client: Select Client
       invoice_number_help: Automatically generated when invoices are created (cannot be edited)
       invoice_date: Invoice Date
       due_date: Due Date
@@ -1264,3 +1272,10 @@ en:
       labor_cost: "Labor Cost"
       total_cost: "Total Cost"
       estimated_cost: "Estimated Cost:"
+  subscriptions:
+    current_plan: "Current Plan"
+    upgrade: "Upgrade"
+    upgrade_now: "Upgrade Now"
+  usage_limits:
+    limit_reached: "You've reached your %{plan} plan limit of %{limit} %{resource}. Upgrade to continue."
+    approaching_limits_message: "You're approaching your plan limits. Consider upgrading for more resources."

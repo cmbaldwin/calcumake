@@ -16,7 +16,8 @@ class ApplicationControllerTest < ActionDispatch::IntegrationTest
     # Simulate a modern browser user agent
     modern_browser_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
-    get root_path, headers: { "HTTP_USER_AGENT" => modern_browser_agent }
+    # Test with a protected route (printers require authentication)
+    get printers_path, headers: { "HTTP_USER_AGENT" => modern_browser_agent }
 
     # Should redirect to login since authentication is required
     assert_response :redirect

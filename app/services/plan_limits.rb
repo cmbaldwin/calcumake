@@ -120,7 +120,7 @@ class PlanLimits
       when "startup"
         {
           name: "Startup",
-          price: "$0.99/month",
+          price: "$1.50/month",
           limits: STARTUP_LIMITS,
           features: [ "Remove CalcuMake branding", "No ads", "Email support" ],
           trial: false
@@ -128,7 +128,7 @@ class PlanLimits
       when "pro"
         {
           name: "Pro",
-          price: "$9.99/month",
+          price: "$15/month",
           limits: PRO_LIMITS,
           features: [
             "Unlimited everything",
