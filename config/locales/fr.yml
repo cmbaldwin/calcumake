@@ -68,6 +68,9 @@ fr:
       create_new: Calculer Nouvelle Impression
       total_calculations: Total de Calculs
       total_print_time: Temps Total d'Impression
+      total_filament_used: Filament Total Utilisé
+      total_estimated_sales: Total des Ventes Estimées
+      total_estimated_profit: Bénéfice Total Estimé
       search_placeholder: Rechercher par nom de travail ou type de filament...
       empty_state:
         title: Aucun calcul pour le moment
@@ -204,6 +207,7 @@ fr:
       contact_info: Informations de Contact
       additional_info: Informations Supplémentaires
     fields:
+      project: Projet
       name: Nom
       name_placeholder: Jean Dupont
       company_name: Nom de l'Entreprise
@@ -424,15 +428,12 @@ fr:
       pricing:
         title: Tarification
         content: 'CalcuMake propose trois niveaux d''abonnement:'
-        free_tier: 'Niveau Gratuit: ¥0/mois - Fonctionnalités de base avec publicités'
-        pro_tier: 'Niveau Pro: Abonnement mensuel ou annuel payant - Fonctionnalités
-          avancées, sans publicités, support prioritaire'
-        enterprise_tier: 'Niveau Enterprise: Abonnement mensuel ou annuel payant -
-          Toutes les fonctionnalités, support premium, intégrations personnalisées'
-        pricing_details: Les tarifs exacts sont affichés sur notre site web et dans
-          l'application lors de la sélection de l'abonnement.
-        price_changes: Les prix peuvent être ajustés avec un préavis de 30 jours aux
-          abonnés existants.
+        free_tier: 'Niveau Gratuit: ¥0/mois - Essai de 30 jours avec limites Startup, puis fonctionnalités de base avec publicités'
+        startup_tier: 'Niveau Startup: ¥150/mois ($1.50/mois USD) - Fonctionnalités avancées, sans publicités, support prioritaire, limites d''utilisation plus élevées'
+        pro_tier: 'Niveau Pro: ¥1500/mois ($15/mois USD) - Toutes les fonctionnalités, utilisation illimitée, support premium, rapports avancés'
+        pricing_details: Tous les prix sont indiqués en yens japonais (¥) et en dollars américains ($). La facturation est gérée en toute sécurité via Stripe.
+        price_changes: Les prix peuvent être ajustés avec un préavis de 30 jours aux abonnés existants.
+        future_note: Des options de paiement supplémentaires et une facturation annuelle peuvent être ajoutées à l''avenir.
       payment_methods:
         title: Modes de Paiement
         content: 'Pour les abonnements payants, nous acceptons les modes de paiement
@@ -788,7 +789,8 @@ print_pricings:
 
   # Limites d'utilisation et gestion des abonnements
   usage_limits:
-    limit_reached: "Vous avez atteint la limite de %{limit} %{resource} de votre plan %{plan}. Veuillez mettre à niveau pour continuer."
+    limit_reached: "Vous avez atteint la limite de votre plan %{plan}: %{limit} %{resource}. Mettez à niveau pour continuer."
+    approaching_limits_message: "Vous approchez des limites de votre forfait. Pensez à passer à un forfait supérieur pour plus de ressources."
     approaching_limit: "Vous approchez de la limite de votre plan pour %{resource}"
     usage_summary: "Résumé d'utilisation"
     current_usage: "%{current} sur %{limit} utilisés"
@@ -825,3 +827,8 @@ print_pricings:
       or_sign_in_with_email: Or Sign In With Email
       sign_in_with_provider: Sign in with %{provider}
       sign_in_with_provider_aria: Sign in with %{provider}
+  subscriptions:
+    current_plan: "Plan Actuel"
+  usage_limits:
+    limit_reached: "Vous avez atteint la limite de votre plan %{plan}: %{limit} %{resource}. Mettez à niveau pour continuer."
+    approaching_limits_message: "Vous approchez des limites de votre forfait. Pensez à passer à un forfait supérieur pour plus de ressources."

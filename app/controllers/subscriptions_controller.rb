@@ -171,13 +171,11 @@ class SubscriptionsController < ApplicationController
 
   # Get Stripe price ID for Startup plan
   def stripe_startup_price_id
-    # TODO: Configure in credentials or environment variables
-    Rails.application.credentials.dig(:stripe, :startup_price_id) || "price_startup_monthly"
+    Rails.configuration.stripe[:startup_price_id]
   end
 
   # Get Stripe price ID for Pro plan
   def stripe_pro_price_id
-    # TODO: Configure in credentials or environment variables
-    Rails.application.credentials.dig(:stripe, :pro_price_id) || "price_pro_monthly"
+    Rails.configuration.stripe[:pro_price_id]
   end
 end

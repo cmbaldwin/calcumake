@@ -156,8 +156,8 @@ module Webhooks
       price_id = subscription.items.data.first&.price&.id
 
       # Match price ID to plan tier
-      startup_price_id = Rails.application.credentials.dig(:stripe, :startup_price_id)
-      pro_price_id = Rails.application.credentials.dig(:stripe, :pro_price_id)
+      startup_price_id = Rails.configuration.stripe[:startup_price_id]
+      pro_price_id = Rails.configuration.stripe[:pro_price_id]
 
       case price_id
       when startup_price_id

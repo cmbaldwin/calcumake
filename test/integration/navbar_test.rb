@@ -9,7 +9,7 @@ class NavbarTest < ActionDispatch::IntegrationTest
 
   test "navbar shows help dropdown for authenticated users" do
     sign_in @user
-    get root_path
+    get print_pricings_path
     assert_response :success
 
     # Should contain help dropdown
@@ -58,7 +58,7 @@ class NavbarTest < ActionDispatch::IntegrationTest
 
   test "navbar shows appropriate links for authenticated users" do
     sign_in @user
-    get root_path
+    get print_pricings_path
     assert_response :success
 
     assert_select "a[href='#{new_print_pricing_path}']", text: I18n.t("nav.new_pricing")
