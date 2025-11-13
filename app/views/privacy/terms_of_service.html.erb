@@ -1,0 +1,72 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="card shadow-sm">
+        <div class="card-body p-4 p-md-5">
+          <h1 class="mb-4"><%= t('gdpr.terms_of_service_title') %></h1>
+          <p class="text-muted mb-4"><%= t('gdpr.last_updated', date: l(Date.new(2025, 1, 1), format: :long)) %></p>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.tos_sections.acceptance.title') %></h2>
+            <p><%= t('gdpr.tos_sections.acceptance.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.tos_sections.service_description.title') %></h2>
+            <p><%= t('gdpr.tos_sections.service_description.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.tos_sections.user_accounts.title') %></h2>
+            <p><%= t('gdpr.tos_sections.user_accounts.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.tos_sections.acceptable_use.title') %></h2>
+            <p><%= t('gdpr.tos_sections.acceptable_use.intro') %></p>
+            <ul>
+              <li><%= t('gdpr.tos_sections.acceptable_use.items.illegal') %></li>
+              <li><%= t('gdpr.tos_sections.acceptable_use.items.harmful') %></li>
+              <li><%= t('gdpr.tos_sections.acceptable_use.items.unauthorized') %></li>
+              <li><%= t('gdpr.tos_sections.acceptable_use.items.interference') %></li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.tos_sections.intellectual_property.title') %></h2>
+            <p><%= t('gdpr.tos_sections.intellectual_property.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.tos_sections.payment_terms.title') %></h2>
+            <p><%= t('gdpr.tos_sections.payment_terms.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.tos_sections.termination.title') %></h2>
+            <p><%= t('gdpr.tos_sections.termination.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.tos_sections.liability.title') %></h2>
+            <p><%= t('gdpr.tos_sections.liability.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.tos_sections.governing_law.title') %></h2>
+            <p><%= t('gdpr.tos_sections.governing_law.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.tos_sections.changes.title') %></h2>
+            <p><%= t('gdpr.tos_sections.changes.content') %></p>
+          </section>
+
+          <div class="mt-5 pt-4 border-top">
+            <%= link_to t('common.back'), :back, class: "btn btn-outline-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -715,3 +715,201 @@ print_pricings:
       or_sign_in_with_email: Or Sign In With Email
       sign_in_with_provider: Sign in with %{provider}
       sign_in_with_provider_aria: Sign in with %{provider}
+
+  # GDPR Compliance Translations
+  gdpr:
+    privacy_policy: "Politique de confidentialité"
+    cookie_policy: "Politique des cookies"
+    terms_of_service: "Conditions d'utilisation"
+    privacy_policy_title: "Politique de confidentialité"
+    terms_of_service_title: "Conditions d'utilisation"
+    cookie_policy_title: "Politique des cookies"
+    last_updated: "Dernière mise à jour : %{date}"
+    consent_recorded: "Votre préférence de consentement a été enregistrée."
+    consent_error: "Une erreur s'est produite lors de l'enregistrement de votre consentement. Veuillez réessayer."
+    account_deleted: "Votre compte et toutes les données associées ont été supprimés définitivement."
+    
+    cookie_consent:
+      title: "Nous valorisons votre vie privée"
+      message_html: "Nous utilisons des cookies pour améliorer votre expérience de navigation et analyser le trafic du site. En cliquant sur 'Accepter', vous consentez à notre utilisation des cookies. Lisez notre %{privacy_policy_link} et notre %{cookie_policy_link} pour plus d'informations."
+      accept: "Accepter"
+      reject: "Refuser"
+    
+    sections:
+      introduction:
+        title: "Introduction"
+        content: "MOAB Co., Ltd. ('nous', 'notre', 'nos') s'engage à protéger et respecter votre vie privée. Cette Politique de confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous utilisez notre service CalcuMake."
+      data_controller:
+        title: "Responsable du traitement"
+        content_html: "<strong>MOAB Co., Ltd.</strong><br>Enregistrée au Japon<br>Pour les demandes de confidentialité : privacy@calcumake.com"
+      data_collection:
+        title: "Informations que nous collectons"
+        intro: "Nous collectons les types d'informations personnelles suivants :"
+        items:
+          account_data: "Informations de compte : Adresse e-mail, nom, détails de l'entreprise et identifiants d'authentification"
+          usage_data: "Données d'utilisation : Calculs de tarification d'impression, configurations d'imprimantes, données de factures et profils de filaments"
+          technical_data: "Données techniques : Adresse IP, type de navigateur, informations sur l'appareil et journaux d'accès"
+          payment_data: "Informations de paiement : Traitées en toute sécurité via Stripe (nous ne stockons pas les détails complets des cartes de paiement)"
+      legal_basis:
+        title: "Base légale du traitement"
+        content: "Nous traitons vos données personnelles sur la base de : (1) L'exécution d'un contrat avec vous, (2) Votre consentement, (3) Le respect d'obligations légales, et (4) Nos intérêts légitimes à fournir et améliorer nos services."
+      data_usage:
+        title: "Comment nous utilisons vos données"
+        items:
+          service_provision: "Pour fournir et maintenir notre service"
+          communication: "Pour communiquer avec vous concernant votre compte et les mises à jour"
+          improvement: "Pour améliorer et personnaliser votre expérience"
+          legal_compliance: "Pour nous conformer aux obligations légales et prévenir la fraude"
+      data_sharing:
+        title: "Partage et divulgation de données"
+        content: "Nous ne vendons pas vos données personnelles. Nous pouvons partager des données avec des prestataires de services (Stripe pour les paiements, fournisseurs d'hébergement cloud), lorsque la loi l'exige ou pour protéger nos droits."
+      user_rights:
+        title: "Vos droits en vertu du RGPD et de l'APPI"
+        intro: "Vous disposez des droits suivants concernant vos données personnelles :"
+        items:
+          access:
+            title: "Droit d'accès"
+            description: "Demander une copie de vos données personnelles"
+          rectification:
+            title: "Droit de rectification"
+            description: "Corriger les données inexactes ou incomplètes"
+          erasure:
+            title: "Droit à l'effacement"
+            description_html: "Demander la suppression de vos données (%{link})"
+            link_text: "supprimer le compte"
+          portability:
+            title: "Droit à la portabilité des données"
+            description_html: "Recevoir vos données dans un format lisible par machine (%{link})"
+            link_text: "exporter les données"
+          objection:
+            title: "Droit d'opposition"
+            description: "S'opposer à certains types de traitement"
+      data_retention:
+        title: "Conservation des données"
+        content: "Nous conservons vos données personnelles aussi longtemps que votre compte est actif ou selon les besoins pour fournir des services. Lors de la suppression du compte, les données sont définitivement supprimées dans les 30 jours, sauf si la conservation est requise par la loi."
+      security:
+        title: "Mesures de sécurité"
+        content: "Nous mettons en œuvre des mesures de sécurité conformes aux normes de l'industrie, notamment le chiffrement, l'authentification sécurisée, des audits de sécurité réguliers et des contrôles d'accès pour protéger vos données."
+      cookies:
+        title: "Cookies et suivi"
+        content_html: "Nous utilisons des cookies pour les fonctionnalités essentielles et l'analyse. Pour plus d'informations, consultez notre %{link}."
+      international_transfers:
+        title: "Transferts internationaux de données"
+        content: "Vos données peuvent être transférées et traitées dans des pays en dehors de votre juridiction. Nous veillons à ce que des garanties appropriées soient en place pour protéger vos données conformément aux exigences du RGPD et de l'APPI."
+      changes:
+        title: "Modifications de cette politique"
+        content: "Nous pouvons mettre à jour cette Politique de confidentialité périodiquement. Nous vous informerons des changements importants par e-mail ou par un avis bien visible sur notre service."
+      contact:
+        title: "Nous contacter"
+        content_html: "Pour toute question relative à la confidentialité ou pour exercer vos droits, contactez-nous à : privacy@calcumake.com"
+    
+    tos_sections:
+      acceptance:
+        title: "Acceptation des conditions"
+        content: "En accédant et en utilisant CalcuMake, vous acceptez et convenez d'être lié par ces Conditions d'utilisation."
+      service_description:
+        title: "Description du service"
+        content: "CalcuMake est une application web pour calculer les coûts d'impression 3D, gérer les imprimantes et générer des factures."
+      user_accounts:
+        title: "Comptes utilisateurs"
+        content: "Vous êtes responsable de maintenir la confidentialité de vos identifiants de compte et de toutes les activités qui se produisent sous votre compte."
+      acceptable_use:
+        title: "Utilisation acceptable"
+        intro: "Vous acceptez de ne pas :"
+        items:
+          illegal: "Utiliser le service à des fins illégales"
+          harmful: "Télécharger du code malveillant ou du contenu nuisible"
+          unauthorized: "Tenter un accès non autorisé à nos systèmes"
+          interference: "Interférer ou perturber le service"
+      intellectual_property:
+        title: "Propriété intellectuelle"
+        content: "Tout le contenu, les fonctionnalités et les fonctions de CalcuMake sont la propriété de MOAB Co., Ltd. et sont protégés par les lois internationales sur les droits d'auteur, les marques et autres lois sur la propriété intellectuelle."
+      payment_terms:
+        title: "Conditions de paiement"
+        content: "Les abonnements payants sont facturés à l'avance de manière récurrente. Les remboursements sont traités selon notre politique de remboursement."
+      termination:
+        title: "Résiliation"
+        content: "Nous pouvons résilier ou suspendre votre compte à tout moment en cas de violation de ces Conditions. Vous pouvez résilier votre compte à tout moment via les paramètres du compte."
+      liability:
+        title: "Limitation de responsabilité"
+        content: "CalcuMake est fourni 'tel quel' sans garanties. Nous ne sommes pas responsables des dommages indirects, accessoires ou consécutifs découlant de votre utilisation du service."
+      governing_law:
+        title: "Loi applicable"
+        content: "Ces Conditions sont régies par les lois du Japon. Pour les utilisateurs de l'UE, les lois applicables de protection des consommateurs s'appliquent."
+      changes:
+        title: "Modifications des conditions"
+        content: "Nous nous réservons le droit de modifier ces Conditions à tout moment. L'utilisation continue du service après les modifications constitue l'acceptation des Conditions modifiées."
+    
+    cookie_sections:
+      what_are_cookies:
+        title: "Qu'est-ce que les cookies ?"
+        content: "Les cookies sont de petits fichiers texte stockés sur votre appareil qui nous aident à fournir et améliorer notre service."
+      how_we_use:
+        title: "Comment nous utilisons les cookies"
+        intro: "Nous utilisons les types de cookies suivants :"
+        essential:
+          title: "Cookies essentiels"
+          description: "Requis pour les fonctionnalités de base comme l'authentification et la sécurité"
+        functional:
+          title: "Cookies fonctionnels"
+          description: "Mémorisent vos préférences et paramètres"
+        analytics:
+          title: "Cookies analytiques"
+          description: "Nous aident à comprendre comment vous utilisez le service (nécessite le consentement)"
+      cookie_list:
+        title: "Liste des cookies"
+        table:
+          name: "Nom du cookie"
+          purpose: "Objectif"
+          duration: "Durée"
+        cookies:
+          session:
+            purpose: "Gestion de session et authentification"
+            duration: "Session (effacé à la déconnexion)"
+          consent:
+            purpose: "Stocke votre préférence de consentement aux cookies"
+            duration: "1 an"
+          remember:
+            purpose: "Vous garde connecté entre les sessions"
+            duration: "2 semaines"
+      managing_cookies:
+        title: "Gestion des cookies"
+        content: "Vous pouvez contrôler et supprimer les cookies via les paramètres de votre navigateur. Notez que la désactivation des cookies essentiels peut affecter les fonctionnalités du service."
+      third_party:
+        title: "Cookies tiers"
+        content: "Nous utilisons Stripe pour le traitement des paiements et Google Analytics pour l'analyse d'utilisation. Ces services peuvent définir leurs propres cookies soumis à leurs politiques de confidentialité."
+    
+    data_export:
+      title: "Exporter vos données"
+      description: "Téléchargez une copie complète de toutes vos données personnelles stockées dans CalcuMake au format JSON."
+      what_included: "Ce qui est inclus :"
+      items:
+        account_info: "Informations de compte"
+        print_pricings: "Tous les calculs de tarification d'impression"
+        printers: "Configurations d'imprimantes"
+        invoices: "Historique des factures"
+        filaments: "Profils de filaments"
+        clients: "Informations clients"
+        consents: "Historique des consentements"
+      format: "Format d'exportation"
+      format_description: "Vos données seront exportées sous forme de fichier JSON que vous pourrez enregistrer et traiter avec des outils standard."
+      download_button: "Télécharger mes données"
+    
+    data_deletion:
+      title: "Supprimer votre compte"
+      warning_title: "Attention : Cette action ne peut pas être annulée !"
+      warning_message: "La suppression de votre compte supprimera définitivement toutes vos données de nos systèmes. Cela inclut tous les prix d'impression, factures, imprimantes, filaments et informations clients."
+      what_deleted: "Ce qui sera supprimé :"
+      items:
+        account: "Votre compte et identifiants de connexion"
+        print_pricings: "Tous les calculs de tarification d'impression"
+        printers: "Toutes les configurations d'imprimantes"
+        invoices: "Toutes les factures et l'historique des factures"
+        filaments: "Tous les profils de filaments"
+        clients: "Toutes les informations clients"
+        uploaded_files: "Tous les fichiers téléchargés (logos d'entreprise, etc.)"
+      before_deletion: "Avant de supprimer"
+      export_recommendation_html: "Nous recommandons d'%{link} vos données avant de supprimer votre compte, car cette action est permanente et ne peut pas être annulée."
+      export_link: "exporter"
+      delete_button: "Supprimer mon compte définitivement"
+      confirm_message: "Êtes-vous absolument sûr de vouloir supprimer définitivement votre compte et toutes les données associées ? Cette action ne peut pas être annulée."
