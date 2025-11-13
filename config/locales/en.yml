@@ -1097,3 +1097,201 @@ en:
       accuracy:
         question: "How accurate are the calculations?"
         answer: "CalcuMake uses simple formulas and accounts for all cost factors including filament, electricity, labor time, and machine depreciation."
+
+  # GDPR Compliance Translations
+  gdpr:
+    privacy_policy: "Privacy Policy"
+    cookie_policy: "Cookie Policy"
+    terms_of_service: "Terms of Service"
+    privacy_policy_title: "Privacy Policy"
+    terms_of_service_title: "Terms of Service"
+    cookie_policy_title: "Cookie Policy"
+    last_updated: "Last updated: %{date}"
+    consent_recorded: "Your consent preference has been recorded."
+    consent_error: "There was an error recording your consent. Please try again."
+    account_deleted: "Your account and all associated data have been permanently deleted."
+    
+    cookie_consent:
+      title: "We value your privacy"
+      message_html: "We use cookies to enhance your browsing experience and analyze site traffic. By clicking 'Accept', you consent to our use of cookies. Read our %{privacy_policy_link} and %{cookie_policy_link} for more information."
+      accept: "Accept"
+      reject: "Reject"
+    
+    sections:
+      introduction:
+        title: "Introduction"
+        content: "MOAB Co., Ltd. ('we', 'our', 'us') is committed to protecting and respecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our CalcuMake service."
+      data_controller:
+        title: "Data Controller"
+        content_html: "<strong>MOAB Co., Ltd.</strong><br>Registered in Japan<br>For privacy inquiries: privacy@calcumake.com"
+      data_collection:
+        title: "Information We Collect"
+        intro: "We collect the following types of personal information:"
+        items:
+          account_data: "Account Information: Email address, name, company details, and authentication credentials"
+          usage_data: "Usage Data: Print pricing calculations, printer configurations, invoice data, and filament profiles"
+          technical_data: "Technical Data: IP address, browser type, device information, and access logs"
+          payment_data: "Payment Information: Processed securely through Stripe (we do not store full payment card details)"
+      legal_basis:
+        title: "Legal Basis for Processing"
+        content: "We process your personal data based on: (1) Performance of a contract with you, (2) Your consent, (3) Compliance with legal obligations, and (4) Our legitimate interests in providing and improving our services."
+      data_usage:
+        title: "How We Use Your Data"
+        items:
+          service_provision: "To provide and maintain our service"
+          communication: "To communicate with you about your account and updates"
+          improvement: "To improve and personalize your experience"
+          legal_compliance: "To comply with legal obligations and prevent fraud"
+      data_sharing:
+        title: "Data Sharing and Disclosure"
+        content: "We do not sell your personal data. We may share data with service providers (Stripe for payments, cloud hosting providers), when required by law, or to protect our rights."
+      user_rights:
+        title: "Your Rights Under GDPR and APPI"
+        intro: "You have the following rights regarding your personal data:"
+        items:
+          access:
+            title: "Right of Access"
+            description: "Request a copy of your personal data"
+          rectification:
+            title: "Right to Rectification"
+            description: "Correct inaccurate or incomplete data"
+          erasure:
+            title: "Right to Erasure"
+            description_html: "Request deletion of your data (%{link})"
+            link_text: "delete account"
+          portability:
+            title: "Right to Data Portability"
+            description_html: "Receive your data in a machine-readable format (%{link})"
+            link_text: "export data"
+          objection:
+            title: "Right to Object"
+            description: "Object to certain types of processing"
+      data_retention:
+        title: "Data Retention"
+        content: "We retain your personal data for as long as your account is active or as needed to provide services. Upon account deletion, data is permanently removed within 30 days, except where retention is required by law."
+      security:
+        title: "Security Measures"
+        content: "We implement industry-standard security measures including encryption, secure authentication, regular security audits, and access controls to protect your data."
+      cookies:
+        title: "Cookies and Tracking"
+        content_html: "We use cookies for essential functionality and analytics. For more information, see our %{link}."
+      international_transfers:
+        title: "International Data Transfers"
+        content: "Your data may be transferred to and processed in countries outside your jurisdiction. We ensure appropriate safeguards are in place to protect your data in accordance with GDPR and APPI requirements."
+      changes:
+        title: "Changes to This Policy"
+        content: "We may update this Privacy Policy periodically. We will notify you of material changes via email or prominent notice on our service."
+      contact:
+        title: "Contact Us"
+        content_html: "For privacy-related questions or to exercise your rights, contact us at: privacy@calcumake.com"
+    
+    tos_sections:
+      acceptance:
+        title: "Acceptance of Terms"
+        content: "By accessing and using CalcuMake, you accept and agree to be bound by these Terms of Service."
+      service_description:
+        title: "Service Description"
+        content: "CalcuMake is a web-based application for calculating 3D printing costs, managing printers, and generating invoices."
+      user_accounts:
+        title: "User Accounts"
+        content: "You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account."
+      acceptable_use:
+        title: "Acceptable Use"
+        intro: "You agree not to:"
+        items:
+          illegal: "Use the service for any illegal purpose"
+          harmful: "Upload malicious code or harmful content"
+          unauthorized: "Attempt unauthorized access to our systems"
+          interference: "Interfere with or disrupt the service"
+      intellectual_property:
+        title: "Intellectual Property"
+        content: "All content, features, and functionality of CalcuMake are owned by MOAB Co., Ltd. and protected by international copyright, trademark, and other intellectual property laws."
+      payment_terms:
+        title: "Payment Terms"
+        content: "Paid subscriptions are billed in advance on a recurring basis. Refunds are handled according to our refund policy."
+      termination:
+        title: "Termination"
+        content: "We may terminate or suspend your account at any time for violation of these Terms. You may terminate your account at any time through account settings."
+      liability:
+        title: "Limitation of Liability"
+        content: "CalcuMake is provided 'as is' without warranties. We are not liable for any indirect, incidental, or consequential damages arising from your use of the service."
+      governing_law:
+        title: "Governing Law"
+        content: "These Terms are governed by the laws of Japan. For EU users, applicable consumer protection laws apply."
+      changes:
+        title: "Changes to Terms"
+        content: "We reserve the right to modify these Terms at any time. Continued use of the service after changes constitutes acceptance of the modified Terms."
+    
+    cookie_sections:
+      what_are_cookies:
+        title: "What Are Cookies?"
+        content: "Cookies are small text files stored on your device that help us provide and improve our service."
+      how_we_use:
+        title: "How We Use Cookies"
+        intro: "We use the following types of cookies:"
+        essential:
+          title: "Essential Cookies"
+          description: "Required for basic functionality like authentication and security"
+        functional:
+          title: "Functional Cookies"
+          description: "Remember your preferences and settings"
+        analytics:
+          title: "Analytics Cookies"
+          description: "Help us understand how you use the service (requires consent)"
+      cookie_list:
+        title: "Cookie List"
+        table:
+          name: "Cookie Name"
+          purpose: "Purpose"
+          duration: "Duration"
+        cookies:
+          session:
+            purpose: "Session management and authentication"
+            duration: "Session (cleared on logout)"
+          consent:
+            purpose: "Stores your cookie consent preference"
+            duration: "1 year"
+          remember:
+            purpose: "Keeps you logged in between sessions"
+            duration: "2 weeks"
+      managing_cookies:
+        title: "Managing Cookies"
+        content: "You can control and delete cookies through your browser settings. Note that disabling essential cookies may affect service functionality."
+      third_party:
+        title: "Third-Party Cookies"
+        content: "We use Stripe for payment processing and Google Analytics for usage analytics. These services may set their own cookies subject to their privacy policies."
+    
+    data_export:
+      title: "Export Your Data"
+      description: "Download a complete copy of all your personal data stored in CalcuMake in JSON format."
+      what_included: "What's Included:"
+      items:
+        account_info: "Account information"
+        print_pricings: "All print pricing calculations"
+        printers: "Printer configurations"
+        invoices: "Invoice history"
+        filaments: "Filament profiles"
+        clients: "Client information"
+        consents: "Consent history"
+      format: "Export Format"
+      format_description: "Your data will be exported as a JSON file that you can save and process with standard tools."
+      download_button: "Download My Data"
+    
+    data_deletion:
+      title: "Delete Your Account"
+      warning_title: "Warning: This action cannot be undone!"
+      warning_message: "Deleting your account will permanently remove all your data from our systems. This includes all print pricings, invoices, printers, filaments, and client information."
+      what_deleted: "What Will Be Deleted:"
+      items:
+        account: "Your account and login credentials"
+        print_pricings: "All print pricing calculations"
+        printers: "All printer configurations"
+        invoices: "All invoices and invoice history"
+        filaments: "All filament profiles"
+        clients: "All client information"
+        uploaded_files: "All uploaded files (company logos, etc.)"
+      before_deletion: "Before You Delete"
+      export_recommendation_html: "We recommend %{link} your data before deleting your account, as this action is permanent and cannot be reversed."
+      export_link: "exporting"
+      delete_button: "Delete My Account Permanently"
+      confirm_message: "Are you absolutely sure you want to permanently delete your account and all associated data? This action cannot be undone."

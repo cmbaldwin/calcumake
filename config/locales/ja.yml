@@ -1230,3 +1230,201 @@ ja:
       or_sign_in_with_email: Or Sign In With Email
       sign_in_with_provider: Sign in with %{provider}
       sign_in_with_provider_aria: Sign in with %{provider}
+
+  # GDPR Compliance Translations
+  gdpr:
+    privacy_policy: "プライバシーポリシー"
+    cookie_policy: "クッキーポリシー"
+    terms_of_service: "利用規約"
+    privacy_policy_title: "プライバシーポリシー"
+    terms_of_service_title: "利用規約"
+    cookie_policy_title: "クッキーポリシー"
+    last_updated: "最終更新日：%{date}"
+    consent_recorded: "お客様の同意設定が記録されました。"
+    consent_error: "同意の記録中にエラーが発生しました。もう一度お試しください。"
+    account_deleted: "アカウントと関連するすべてのデータが完全に削除されました。"
+    
+    cookie_consent:
+      title: "お客様のプライバシーを尊重します"
+      message_html: "当社はクッキーを使用して、お客様のブラウジング体験を向上させ、サイトトラフィックを分析しています。「承認」をクリックすると、クッキーの使用に同意したことになります。詳細については、%{privacy_policy_link}と%{cookie_policy_link}をお読みください。"
+      accept: "承認"
+      reject: "拒否"
+    
+    sections:
+      introduction:
+        title: "はじめに"
+        content: "株式会社モアブ（以下「当社」）は、お客様のプライバシーの保護と尊重に取り組んでいます。本プライバシーポリシーは、CalcuMakeサービスをご利用いただく際に、当社がお客様の情報をどのように収集、使用、開示、保護するかを説明するものです。"
+      data_controller:
+        title: "データ管理者"
+        content_html: "<strong>株式会社モアブ</strong><br>日本国登記<br>プライバシーに関するお問い合わせ：privacy@calcumake.com"
+      data_collection:
+        title: "収集する情報"
+        intro: "当社は以下の種類の個人情報を収集します："
+        items:
+          account_data: "アカウント情報：メールアドレス、氏名、会社詳細、および認証資格情報"
+          usage_data: "使用データ：印刷価格計算、プリンター構成、請求書データ、およびフィラメントプロファイル"
+          technical_data: "技術データ：IPアドレス、ブラウザタイプ、デバイス情報、およびアクセスログ"
+          payment_data: "決済情報：Stripeを通じて安全に処理されます（当社は完全な決済カード情報を保存しません）"
+      legal_basis:
+        title: "処理の法的根拠"
+        content: "当社は、以下に基づいてお客様の個人データを処理します：(1) お客様との契約の履行、(2) お客様の同意、(3) 法的義務の遵守、(4) サービスの提供と改善における当社の正当な利益。"
+      data_usage:
+        title: "データの使用方法"
+        items:
+          service_provision: "サービスの提供と維持"
+          communication: "アカウントと更新に関するお客様とのコミュニケーション"
+          improvement: "お客様の体験の改善とパーソナライゼーション"
+          legal_compliance: "法的義務の遵守と詐欺の防止"
+      data_sharing:
+        title: "データの共有と開示"
+        content: "当社はお客様の個人データを販売しません。サービスプロバイダー（決済のためのStripe、クラウドホスティングプロバイダー）、法律で要求された場合、または当社の権利を保護するためにデータを共有する場合があります。"
+      user_rights:
+        title: "GDPRおよびAPPIに基づくお客様の権利"
+        intro: "お客様の個人データに関して、以下の権利があります："
+        items:
+          access:
+            title: "アクセス権"
+            description: "個人データのコピーをリクエスト"
+          rectification:
+            title: "訂正権"
+            description: "不正確または不完全なデータの訂正"
+          erasure:
+            title: "削除権"
+            description_html: "データの削除をリクエスト（%{link}）"
+            link_text: "アカウント削除"
+          portability:
+            title: "データポータビリティ権"
+            description_html: "機械読み取り可能な形式でデータを受け取る（%{link}）"
+            link_text: "データエクスポート"
+          objection:
+            title: "異議申立権"
+            description: "特定の種類の処理に異議を唱える"
+      data_retention:
+        title: "データ保持"
+        content: "当社は、お客様のアカウントがアクティブである限り、またはサービスを提供するために必要な限り、お客様の個人データを保持します。アカウント削除後、法律で保持が要求される場合を除き、30日以内にデータは完全に削除されます。"
+      security:
+        title: "セキュリティ対策"
+        content: "当社は、暗号化、安全な認証、定期的なセキュリティ監査、およびアクセス制御を含む業界標準のセキュリティ対策を実装して、お客様のデータを保護します。"
+      cookies:
+        title: "クッキーとトラッキング"
+        content_html: "当社は、必須機能と分析のためにクッキーを使用しています。詳細については、%{link}をご覧ください。"
+      international_transfers:
+        title: "国際データ転送"
+        content: "お客様のデータは、お客様の管轄外の国に転送され、処理される場合があります。当社は、GDPRおよびAPPI要件に従ってお客様のデータを保護するための適切な保護措置を確保しています。"
+      changes:
+        title: "本ポリシーの変更"
+        content: "当社は本プライバシーポリシーを定期的に更新する場合があります。重要な変更については、メールまたはサービス上の目立つ通知を通じてお知らせします。"
+      contact:
+        title: "お問い合わせ"
+        content_html: "プライバシーに関する質問や権利の行使については、privacy@calcumake.comまでご連絡ください。"
+    
+    tos_sections:
+      acceptance:
+        title: "規約の承認"
+        content: "CalcuMakeにアクセスして使用することにより、お客様は本利用規約に拘束されることに同意します。"
+      service_description:
+        title: "サービスの説明"
+        content: "CalcuMakeは、3Dプリントコストの計算、プリンターの管理、および請求書の生成のためのWebベースのアプリケーションです。"
+      user_accounts:
+        title: "ユーザーアカウント"
+        content: "お客様は、アカウント資格情報の機密性を維持し、アカウントで発生するすべての活動に責任を負います。"
+      acceptable_use:
+        title: "許容される使用"
+        intro: "お客様は以下を行わないことに同意します："
+        items:
+          illegal: "違法な目的でサービスを使用すること"
+          harmful: "悪意のあるコードや有害なコンテンツをアップロードすること"
+          unauthorized: "当社のシステムへの不正アクセスを試みること"
+          interference: "サービスを妨害または中断すること"
+      intellectual_property:
+        title: "知的財産"
+        content: "CalcuMakeのすべてのコンテンツ、機能、および機能性は、株式会社モアブが所有し、国際著作権、商標、およびその他の知的財産法によって保護されています。"
+      payment_terms:
+        title: "支払い条件"
+        content: "有料サブスクリプションは、定期的に事前に請求されます。返金は返金ポリシーに従って処理されます。"
+      termination:
+        title: "終了"
+        content: "当社は、本規約違反の場合、いつでもお客様のアカウントを終了または一時停止することができます。お客様は、アカウント設定からいつでもアカウントを終了できます。"
+      liability:
+        title: "責任の制限"
+        content: "CalcuMakeは「現状のまま」保証なしで提供されます。当社は、サービスの使用から生じる間接的、付随的、または結果的な損害について責任を負いません。"
+      governing_law:
+        title: "準拠法"
+        content: "本規約は日本の法律に準拠します。EUユーザーの場合、適用される消費者保護法が適用されます。"
+      changes:
+        title: "規約の変更"
+        content: "当社は本規約をいつでも変更する権利を留保します。変更後のサービスの継続使用は、変更された規約の承認を構成します。"
+    
+    cookie_sections:
+      what_are_cookies:
+        title: "クッキーとは？"
+        content: "クッキーは、サービスの提供と改善に役立つデバイスに保存される小さなテキストファイルです。"
+      how_we_use:
+        title: "クッキーの使用方法"
+        intro: "当社は以下の種類のクッキーを使用しています："
+        essential:
+          title: "必須クッキー"
+          description: "認証やセキュリティなどの基本機能に必要"
+        functional:
+          title: "機能的クッキー"
+          description: "お客様の設定と選好を記憶"
+        analytics:
+          title: "分析クッキー"
+          description: "サービスの使用方法を理解するのに役立ちます（同意が必要）"
+      cookie_list:
+        title: "クッキーリスト"
+        table:
+          name: "クッキー名"
+          purpose: "目的"
+          duration: "期間"
+        cookies:
+          session:
+            purpose: "セッション管理と認証"
+            duration: "セッション（ログアウト時にクリア）"
+          consent:
+            purpose: "お客様のクッキー同意設定を保存"
+            duration: "1年"
+          remember:
+            purpose: "セッション間でログイン状態を維持"
+            duration: "2週間"
+      managing_cookies:
+        title: "クッキーの管理"
+        content: "ブラウザ設定を通じてクッキーを制御および削除できます。必須クッキーを無効にすると、サービス機能に影響を与える可能性があることに注意してください。"
+      third_party:
+        title: "サードパーティのクッキー"
+        content: "当社は、決済処理にStripe、使用分析にGoogle Analyticsを使用しています。これらのサービスは、独自のプライバシーポリシーに従って独自のクッキーを設定する場合があります。"
+    
+    data_export:
+      title: "データのエクスポート"
+      description: "CalcuMakeに保存されているすべての個人データの完全なコピーをJSON形式でダウンロードします。"
+      what_included: "含まれる内容："
+      items:
+        account_info: "アカウント情報"
+        print_pricings: "すべての印刷価格計算"
+        printers: "プリンター構成"
+        invoices: "請求書履歴"
+        filaments: "フィラメントプロファイル"
+        clients: "クライアント情報"
+        consents: "同意履歴"
+      format: "エクスポート形式"
+      format_description: "データはJSONファイルとしてエクスポートされ、標準ツールで保存および処理できます。"
+      download_button: "データをダウンロード"
+    
+    data_deletion:
+      title: "アカウントの削除"
+      warning_title: "警告：この操作は元に戻せません！"
+      warning_message: "アカウントを削除すると、システムからすべてのデータが完全に削除されます。これには、すべての印刷価格、請求書、プリンター、フィラメント、およびクライアント情報が含まれます。"
+      what_deleted: "削除される内容："
+      items:
+        account: "アカウントとログイン資格情報"
+        print_pricings: "すべての印刷価格計算"
+        printers: "すべてのプリンター構成"
+        invoices: "すべての請求書と請求書履歴"
+        filaments: "すべてのフィラメントプロファイル"
+        clients: "すべてのクライアント情報"
+        uploaded_files: "アップロードされたすべてのファイル（会社ロゴなど）"
+      before_deletion: "削除前に"
+      export_recommendation_html: "アカウントを削除する前にデータを%{link}することをお勧めします。この操作は永久的で、元に戻すことはできません。"
+      export_link: "エクスポート"
+      delete_button: "アカウントを完全に削除"
+      confirm_message: "アカウントと関連するすべてのデータを完全に削除してもよろしいですか？この操作は元に戻せません。"

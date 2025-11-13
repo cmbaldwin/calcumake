@@ -1016,3 +1016,201 @@ filaments:
       or_sign_in_with_email: Or Sign In With Email
       sign_in_with_provider: Sign in with %{provider}
       sign_in_with_provider_aria: Sign in with %{provider}
+
+  # GDPR Compliance Translations
+  gdpr:
+    privacy_policy: "隐私政策"
+    cookie_policy: "Cookie政策"
+    terms_of_service: "服务条款"
+    privacy_policy_title: "隐私政策"
+    terms_of_service_title: "服务条款"
+    cookie_policy_title: "Cookie政策"
+    last_updated: "最后更新：%{date}"
+    consent_recorded: "您的同意偏好已记录。"
+    consent_error: "记录您的同意时出错。请重试。"
+    account_deleted: "您的账户和所有相关数据已被永久删除。"
+    
+    cookie_consent:
+      title: "我们重视您的隐私"
+      message_html: "我们使用Cookie来增强您的浏览体验并分析网站流量。点击"接受"即表示您同意我们使用Cookie。请阅读我们的%{privacy_policy_link}和%{cookie_policy_link}以获取更多信息。"
+      accept: "接受"
+      reject: "拒绝"
+    
+    sections:
+      introduction:
+        title: "简介"
+        content: "MOAB株式会社（"我们"、"我们的"、"我们"）致力于保护和尊重您的隐私。本隐私政策说明了当您使用我们的CalcuMake服务时，我们如何收集、使用、披露和保护您的信息。"
+      data_controller:
+        title: "数据控制者"
+        content_html: "<strong>MOAB株式会社</strong><br>在日本注册<br>隐私查询：privacy@calcumake.com"
+      data_collection:
+        title: "我们收集的信息"
+        intro: "我们收集以下类型的个人信息："
+        items:
+          account_data: "账户信息：电子邮件地址、姓名、公司详情和身份验证凭据"
+          usage_data: "使用数据：打印定价计算、打印机配置、发票数据和耗材配置"
+          technical_data: "技术数据：IP地址、浏览器类型、设备信息和访问日志"
+          payment_data: "支付信息：通过Stripe安全处理（我们不存储完整的支付卡详细信息）"
+      legal_basis:
+        title: "处理的法律依据"
+        content: "我们基于以下原因处理您的个人数据：(1) 履行与您的合同，(2) 您的同意，(3) 遵守法律义务，(4) 我们在提供和改进服务方面的合法利益。"
+      data_usage:
+        title: "我们如何使用您的数据"
+        items:
+          service_provision: "提供和维护我们的服务"
+          communication: "就您的账户和更新与您沟通"
+          improvement: "改善和个性化您的体验"
+          legal_compliance: "遵守法律义务并防止欺诈"
+      data_sharing:
+        title: "数据共享和披露"
+        content: "我们不出售您的个人数据。我们可能会与服务提供商（Stripe用于支付、云托管提供商）、法律要求时或保护我们的权利时共享数据。"
+      user_rights:
+        title: "您在GDPR和APPI下的权利"
+        intro: "您对个人数据拥有以下权利："
+        items:
+          access:
+            title: "访问权"
+            description: "请求您的个人数据副本"
+          rectification:
+            title: "更正权"
+            description: "更正不准确或不完整的数据"
+          erasure:
+            title: "删除权"
+            description_html: "请求删除您的数据（%{link}）"
+            link_text: "删除账户"
+          portability:
+            title: "数据可移植权"
+            description_html: "以机器可读格式接收您的数据（%{link}）"
+            link_text: "导出数据"
+          objection:
+            title: "反对权"
+            description: "反对某些类型的处理"
+      data_retention:
+        title: "数据保留"
+        content: "只要您的账户处于活动状态或根据提供服务的需要，我们就会保留您的个人数据。账户删除后，除非法律要求保留，否则数据将在30天内永久删除。"
+      security:
+        title: "安全措施"
+        content: "我们实施行业标准的安全措施，包括加密、安全身份验证、定期安全审计和访问控制，以保护您的数据。"
+      cookies:
+        title: "Cookie和跟踪"
+        content_html: "我们使用Cookie进行基本功能和分析。有关更多信息，请参阅我们的%{link}。"
+      international_transfers:
+        title: "国际数据传输"
+        content: "您的数据可能会被传输到您所在司法管辖区以外的国家并在那里处理。我们确保根据GDPR和APPI要求采取适当的保护措施来保护您的数据。"
+      changes:
+        title: "本政策的变更"
+        content: "我们可能会定期更新本隐私政策。我们将通过电子邮件或服务上的醒目通知通知您重大变更。"
+      contact:
+        title: "联系我们"
+        content_html: "有关隐私相关的问题或行使您的权利，请联系我们：privacy@calcumake.com"
+    
+    tos_sections:
+      acceptance:
+        title: "接受条款"
+        content: "访问和使用CalcuMake即表示您接受并同意受本服务条款的约束。"
+      service_description:
+        title: "服务描述"
+        content: "CalcuMake是一个用于计算3D打印成本、管理打印机和生成发票的基于Web的应用程序。"
+      user_accounts:
+        title: "用户账户"
+        content: "您有责任维护账户凭据的机密性，并对账户下发生的所有活动负责。"
+      acceptable_use:
+        title: "可接受使用"
+        intro: "您同意不："
+        items:
+          illegal: "将服务用于任何非法目的"
+          harmful: "上传恶意代码或有害内容"
+          unauthorized: "尝试未经授权访问我们的系统"
+          interference: "干扰或中断服务"
+      intellectual_property:
+        title: "知识产权"
+        content: "CalcuMake的所有内容、功能和功能均由MOAB株式会社拥有，并受国际版权、商标和其他知识产权法保护。"
+      payment_terms:
+        title: "付款条款"
+        content: "付费订阅按定期预付款计费。退款按照我们的退款政策处理。"
+      termination:
+        title: "终止"
+        content: "我们可能会因违反本条款而随时终止或暂停您的账户。您可以随时通过账户设置终止您的账户。"
+      liability:
+        title: "责任限制"
+        content: "CalcuMake按"原样"提供，不提供任何保证。我们对因您使用服务而产生的任何间接、附带或后果性损害不承担责任。"
+      governing_law:
+        title: "适用法律"
+        content: "本条款受日本法律管辖。对于欧盟用户，适用的消费者保护法适用。"
+      changes:
+        title: "条款变更"
+        content: "我们保留随时修改本条款的权利。变更后继续使用服务即构成接受修改后的条款。"
+    
+    cookie_sections:
+      what_are_cookies:
+        title: "什么是Cookie？"
+        content: "Cookie是存储在您设备上的小文本文件，帮助我们提供和改进服务。"
+      how_we_use:
+        title: "我们如何使用Cookie"
+        intro: "我们使用以下类型的Cookie："
+        essential:
+          title: "基本Cookie"
+          description: "身份验证和安全等基本功能所需"
+        functional:
+          title: "功能Cookie"
+          description: "记住您的偏好和设置"
+        analytics:
+          title: "分析Cookie"
+          description: "帮助我们了解您如何使用服务（需要同意）"
+      cookie_list:
+        title: "Cookie列表"
+        table:
+          name: "Cookie名称"
+          purpose: "目的"
+          duration: "持续时间"
+        cookies:
+          session:
+            purpose: "会话管理和身份验证"
+            duration: "会话（注销时清除）"
+          consent:
+            purpose: "存储您的Cookie同意偏好"
+            duration: "1年"
+          remember:
+            purpose: "保持您在会话之间的登录状态"
+            duration: "2周"
+      managing_cookies:
+        title: "管理Cookie"
+        content: "您可以通过浏览器设置控制和删除Cookie。请注意，禁用基本Cookie可能会影响服务功能。"
+      third_party:
+        title: "第三方Cookie"
+        content: "我们使用Stripe进行支付处理，使用Google Analytics进行使用分析。这些服务可能会根据其隐私政策设置自己的Cookie。"
+    
+    data_export:
+      title: "导出您的数据"
+      description: "以JSON格式下载存储在CalcuMake中的所有个人数据的完整副本。"
+      what_included: "包含内容："
+      items:
+        account_info: "账户信息"
+        print_pricings: "所有打印定价计算"
+        printers: "打印机配置"
+        invoices: "发票历史"
+        filaments: "耗材配置"
+        clients: "客户信息"
+        consents: "同意历史"
+      format: "导出格式"
+      format_description: "您的数据将导出为JSON文件，您可以使用标准工具保存和处理。"
+      download_button: "下载我的数据"
+    
+    data_deletion:
+      title: "删除您的账户"
+      warning_title: "警告：此操作无法撤销！"
+      warning_message: "删除您的账户将永久从我们的系统中删除所有数据。这包括所有打印定价、发票、打印机、耗材和客户信息。"
+      what_deleted: "将被删除的内容："
+      items:
+        account: "您的账户和登录凭据"
+        print_pricings: "所有打印定价计算"
+        printers: "所有打印机配置"
+        invoices: "所有发票和发票历史"
+        filaments: "所有耗材配置"
+        clients: "所有客户信息"
+        uploaded_files: "所有上传的文件（公司徽标等）"
+      before_deletion: "删除前"
+      export_recommendation_html: "我们建议在删除账户之前%{link}您的数据，因为此操作是永久性的，无法撤销。"
+      export_link: "导出"
+      delete_button: "永久删除我的账户"
+      confirm_message: "您确定要永久删除您的账户和所有相关数据吗？此操作无法撤销。"

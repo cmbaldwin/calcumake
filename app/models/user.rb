@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :filaments, dependent: :destroy
   has_many :clients, dependent: :destroy
   has_many :usage_trackings, dependent: :destroy
+  has_many :user_consents, dependent: :destroy
   has_one_attached :company_logo
 
   validates :default_currency, presence: true
@@ -152,6 +153,54 @@ class User < ApplicationRecord
 
   def oauth_user?
     provider.present? && uid.present?
+  end
+
+  # GDPR Consent methods
+  def has_accepted_consent?(consent_type)
+    latest_consent = user_consents.for_type(consent_type).order(created_at: :desc).first
+    latest_consent&.accepted == true
+  end
+
+  def has_accepted_cookies?
+    has_accepted_consent?("cookies")
+  end
+
+  def has_accepted_privacy_policy?
+    has_accepted_consent?("privacy_policy")
+  end
+
+  def has_accepted_terms?
+    has_accepted_consent?("terms_of_service")
+  end
+
+  def record_consent(consent_type, accepted, ip_address: nil, user_agent: nil)
+    user_consents.create!(
+      consent_type: consent_type,
+      accepted: accepted,
+      ip_address: ip_address,
+      user_agent: user_agent
+    )
+  end
+
+  # Export user data for GDPR compliance
+  def export_data
+    {
+      user: {
+        email: email,
+        created_at: created_at,
+        locale: locale,
+        default_currency: default_currency,
+        company_name: company_name,
+        company_address: company_address,
+        company_tax_id: company_tax_id
+      },
+      print_pricings: print_pricings.as_json(include: :plates),
+      printers: printers.as_json,
+      invoices: invoices.as_json(include: :invoice_line_items),
+      filaments: filaments.as_json,
+      clients: clients.as_json,
+      consents: user_consents.as_json
+    }
   end
 
   private
