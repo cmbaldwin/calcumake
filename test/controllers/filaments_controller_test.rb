@@ -170,7 +170,8 @@ class FilamentsControllerTest < ActionDispatch::IntegrationTest
     get new_filament_url, as: :turbo_stream
     assert_response :success
     assert_match(/turbo-stream/, response.body)
-    assert_match(/modal/, response.body)
+    assert_match(/modal_content/, response.body)
+    assert_match(/filament/, response.body)
   end
 
   test "should create filament via turbo_stream for modal" do
@@ -186,6 +187,10 @@ class FilamentsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :success
     assert_match(/turbo-stream/, response.body)
+    # Should clear modal_content and close modal
+    assert_match(/modal_content/, response.body)
+    # Should show success flash message
+    assert_match(/flash/, response.body)
   end
 
   test "should render errors in modal on create failure" do
@@ -198,6 +203,17 @@ class FilamentsControllerTest < ActionDispatch::IntegrationTest
       }, as: :turbo_stream
     end
     assert_response :unprocessable_content
-    assert_match(/modal/, response.body)
+    assert_match(/modal_content/, response.body)
+    # Should show error messages within modal
+    assert_match(/can't be blank|is required/i, response.body)
+  end
+
+  test "should handle modal form with all required fields" do
+    get new_filament_url, as: :turbo_stream
+    assert_response :success
+    # Check that form has required fields
+    assert_match(/name/, response.body)
+    assert_match(/material_type/, response.body)
+    assert_match(/diameter/, response.body)
   end
 end
