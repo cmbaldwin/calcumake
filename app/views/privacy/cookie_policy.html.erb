@@ -1,0 +1,73 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="card shadow-sm">
+        <div class="card-body p-4 p-md-5">
+          <h1 class="mb-4"><%= t('gdpr.cookie_policy_title') %></h1>
+          <p class="text-muted mb-4"><%= t('gdpr.last_updated', date: l(Date.new(2025, 1, 1), format: :long)) %></p>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.cookie_sections.what_are_cookies.title') %></h2>
+            <p><%= t('gdpr.cookie_sections.what_are_cookies.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.cookie_sections.how_we_use.title') %></h2>
+            <p><%= t('gdpr.cookie_sections.how_we_use.intro') %></p>
+            <ul>
+              <li><strong><%= t('gdpr.cookie_sections.how_we_use.essential.title') %>:</strong> <%= t('gdpr.cookie_sections.how_we_use.essential.description') %></li>
+              <li><strong><%= t('gdpr.cookie_sections.how_we_use.functional.title') %>:</strong> <%= t('gdpr.cookie_sections.how_we_use.functional.description') %></li>
+              <li><strong><%= t('gdpr.cookie_sections.how_we_use.analytics.title') %>:</strong> <%= t('gdpr.cookie_sections.how_we_use.analytics.description') %></li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.cookie_sections.cookie_list.title') %></h2>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th><%= t('gdpr.cookie_sections.cookie_list.table.name') %></th>
+                    <th><%= t('gdpr.cookie_sections.cookie_list.table.purpose') %></th>
+                    <th><%= t('gdpr.cookie_sections.cookie_list.table.duration') %></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>_calcumake_session</code></td>
+                    <td><%= t('gdpr.cookie_sections.cookie_list.cookies.session.purpose') %></td>
+                    <td><%= t('gdpr.cookie_sections.cookie_list.cookies.session.duration') %></td>
+                  </tr>
+                  <tr>
+                    <td><code>cookie_consent</code></td>
+                    <td><%= t('gdpr.cookie_sections.cookie_list.cookies.consent.purpose') %></td>
+                    <td><%= t('gdpr.cookie_sections.cookie_list.cookies.consent.duration') %></td>
+                  </tr>
+                  <tr>
+                    <td><code>remember_user_token</code></td>
+                    <td><%= t('gdpr.cookie_sections.cookie_list.cookies.remember.purpose') %></td>
+                    <td><%= t('gdpr.cookie_sections.cookie_list.cookies.remember.duration') %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.cookie_sections.managing_cookies.title') %></h2>
+            <p><%= t('gdpr.cookie_sections.managing_cookies.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.cookie_sections.third_party.title') %></h2>
+            <p><%= t('gdpr.cookie_sections.third_party.content') %></p>
+          </section>
+
+          <div class="mt-5 pt-4 border-top">
+            <%= link_to t('common.back'), :back, class: "btn btn-outline-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
