@@ -582,6 +582,8 @@ zh-CN:
     downgrade_scheduled: 您的计划将在当前计费周期结束时更改为%{plan}
     downgrade_scheduled_free: 您的订阅将被取消，并在当前计费周期结束时降级为免费计划
     downgrade_error: 安排降级时出错。请重试。
+    confirm_upgrade: 您将立即被收取按比例分配的金额。是否继续？
+    confirm_downgrade: 您的计划将在当前计费周期结束时更改。是否继续？
 filaments:
   index:
     title: 我的材料

@@ -105,22 +105,48 @@
         </button>
       <% elsif plan == 'free' %>
         <% if current_user.stripe_subscription_id.present? %>
-          <%= button_to t('subscriptions.downgrade_to_free', default: 'Downgrade to Free'),
-                        cancel_subscriptions_path,
+          <%= button_to t('subscriptions.downgrade_to_plan', plan: 'Free'),
+                        downgrade_subscriptions_path(plan: 'free'),
                         method: :post,
                         class: 'btn btn-outline-secondary w-100',
-                        data: { confirm: t('subscriptions.confirm_downgrade', default: 'Are you sure you want to downgrade? You will lose access to premium features.') } %>
+                        data: { confirm: t('subscriptions.confirm_downgrade', default: 'Are you sure you want to downgrade? You will lose access to premium features at the end of your billing period.') } %>
         <% else %>
           <button class="btn btn-outline-secondary w-100" disabled>
             <%= t('subscriptions.current_plan') %>
           </button>
         <% end %>
       <% else %>
-        <%= button_to t('subscriptions.upgrade_to_plan', plan: features[:name]),
-                      create_checkout_session_subscriptions_path(plan: plan),
-                      method: :post,
-                      class: "btn btn-primary w-100 #{'btn-gradient-primary' if popular}",
-                      data: { turbo: false } %>
+        <%# Determine if this is an upgrade (existing subscription) or new subscription %>
+        <%
+          plan_hierarchy = { 'free' => 0, 'startup' => 1, 'pro' => 2 }
+          current_plan_level = plan_hierarchy[@current_plan]
+          target_plan_level = plan_hierarchy[plan]
+          is_upgrade = current_user.stripe_subscription_id.present? && target_plan_level > current_plan_level
+          is_downgrade = current_user.stripe_subscription_id.present? && target_plan_level < current_plan_level
+        %>
+
+        <% if is_upgrade %>
+          <%# Existing subscription, upgrading - use upgrade action for immediate upgrade with proration %>
+          <%= button_to t('subscriptions.upgrade_to_plan', plan: features[:name]),
+                        upgrade_subscriptions_path(plan: plan),
+                        method: :post,
+                        class: "btn btn-primary w-100 #{'btn-gradient-primary' if popular}",
+                        data: { confirm: t('subscriptions.confirm_upgrade', default: 'You will be charged the prorated amount immediately. Continue?') } %>
+        <% elsif is_downgrade %>
+          <%# Existing subscription, downgrading - use downgrade action for end-of-period change %>
+          <%= button_to t('subscriptions.downgrade_to_plan', plan: features[:name]),
+                        downgrade_subscriptions_path(plan: plan),
+                        method: :post,
+                        class: 'btn btn-outline-secondary w-100',
+                        data: { confirm: t('subscriptions.confirm_downgrade', default: 'Your plan will change at the end of your current billing period. Continue?') } %>
+        <% else %>
+          <%# No existing subscription - use Stripe Checkout %>
+          <%= button_to t('subscriptions.upgrade_to_plan', plan: features[:name]),
+                        create_checkout_session_subscriptions_path(plan: plan),
+                        method: :post,
+                        class: "btn btn-primary w-100 #{'btn-gradient-primary' if popular}",
+                        data: { turbo: false } %>
+        <% end %>
       <% end %>
     </div>
   </div>
