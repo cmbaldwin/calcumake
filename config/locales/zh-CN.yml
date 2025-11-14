@@ -18,6 +18,7 @@ zh-CN:
     data_rights_header: 您的数据权利
     export_data: 导出我的数据
     delete_account: 删除我的账户
+    usage_and_subscription: 使用情况与订阅
   actions:
     save: 保存
     cancel: 取消

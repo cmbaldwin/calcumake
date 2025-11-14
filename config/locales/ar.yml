@@ -18,6 +18,7 @@ ar:
     data_rights_header: حقوق البيانات الخاصة بك
     export_data: تصدير بياناتي
     delete_account: حذف حسابي
+    usage_and_subscription: الاستخدام والاشتراك
   actions:
     save: حفظ
     cancel: إلغاء
