@@ -62,7 +62,7 @@ class SubscriptionsController < ApplicationController
           quantity: 1
         } ],
         mode: "subscription",
-        success_url: subscription_success_url(session_id: "{CHECKOUT_SESSION_ID}"),
+        success_url: success_subscriptions_url(session_id: "{CHECKOUT_SESSION_ID}"),
         cancel_url: pricing_subscriptions_url,
         metadata: {
           user_id: current_user.id,

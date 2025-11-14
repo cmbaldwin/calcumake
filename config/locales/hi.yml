@@ -855,7 +855,23 @@ print_pricings:
     cancel_confirmation: "क्या आप वाकई अपनी सदस्यता रद्द करना चाहते हैं? आप अपनी बिलिंग अवधि के अंत तक पहुंच बनाए रखेंगे।"
     manage_note: "सभी बिलिंग Stripe द्वारा सुरक्षित रूप से संभाली जाती है। आपकी भुगतान जानकारी कभी भी हमारे सर्वर पर संग्रहीत नहीं की जाती है।"
   subscriptions:
+    title: "सदस्यता योजनाएं"
     current_plan: "वर्तमान योजना"
+    upgrade: "अपग्रेड"
+    upgrade_now: "अभी अपग्रेड करें"
+    manage: "सदस्यता प्रबंधित करें"
+    trial_badge: "परीक्षण"
+    plans:
+      subtitle: "अपने लिए सबसे अच्छी योजना चुनें"
+    features:
+      unlimited_calculations: "असीमित गणनाएं"
+      unlimited_printers: "असीमित प्रिंटर"
+      unlimited_filaments: "असीमित फिलामेंट"
+      unlimited_invoices: "असीमित चालान"
+    faq:
+      title: "अक्सर पूछे जाने वाले प्रश्न"
   usage_limits:
+    unlimited: "असीमित"
+    usage_summary: "उपयोग सारांश"
     limit_reached: "आपने अपनी %{plan} योजना की सीमा पूरी कर ली है: %{limit} %{resource}। जारी रखने के लिए अपग्रेड करें।"
     approaching_limits_message: "आप अपनी योजना सीमा के करीब पहुंच रहे हैं। अधिक संसाधनों के लिए अपग्रेड करने पर विचार करें।"

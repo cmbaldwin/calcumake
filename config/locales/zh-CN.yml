@@ -920,6 +920,22 @@ filaments:
       update: 更新客户
 
   subscriptions:
+    title: "订阅计划"
     current_plan: "当前计划"
+    upgrade: "升级"
+    upgrade_now: "立即升级"
+    manage: "管理订阅"
+    trial_badge: "试用"
+    plans:
+      subtitle: "选择最适合您的计划"
+    features:
+      unlimited_calculations: "无限计算"
+      unlimited_printers: "无限打印机"
+      unlimited_filaments: "无限耗材"
+      unlimited_invoices: "无限发票"
+    faq:
+      title: "常见问题"
   usage_limits:
+    unlimited: "无限"
+    usage_summary: "使用摘要"
     limit_reached: "您已达到%{plan}计划的限制：%{limit}个%{resource}。升级以继续。"

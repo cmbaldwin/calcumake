@@ -1,6 +1,8 @@
 require "ostruct"
 
 class PagesController < ApplicationController
+  include StructuredDataGenerator
+
   # Note: Public pages don't require authentication in this app
 
   def landing
@@ -12,45 +14,8 @@ class PagesController < ApplicationController
     @meta_description = "Make 3D printing profitable with accurate cost calculations. Multi-currency support, printer management, and instant invoicing. Start free - no credit card required."
     @meta_keywords = "3d print cost calculator, 3d printing calculator, filament cost calculator, 3d printer cost estimation, 3d printing pricing"
 
-    # Landing page specific structured data
-    @structured_data = {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "CalcuMake",
-      "description": "Professional 3D print cost calculator with multi-currency support, printer management, and instant invoicing",
-      "brand": {
-        "@type": "Brand",
-        "name": "CalcuMake"
-      },
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "Free Plan",
-          "price": "0",
-          "priceCurrency": "USD",
-          "description": "5 calculations per month with full Startup features for 30 days"
-        },
-        {
-          "@type": "Offer",
-          "name": "Startup Plan",
-          "price": "0.99",
-          "priceCurrency": "USD",
-          "description": "50 calculations per month, 10 printers, no ads"
-        },
-        {
-          "@type": "Offer",
-          "name": "Pro Plan",
-          "price": "9.99",
-          "priceCurrency": "USD",
-          "description": "Unlimited everything with priority support and analytics"
-        }
-      ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "127"
-      }
-    }
+    # Generate structured data for SEO (pricing fetched from Stripe API if available)
+    @structured_data = landing_page_structured_data
   end
 
   def demo
