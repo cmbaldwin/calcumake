@@ -1026,6 +1026,31 @@ ja:
     downgrade_error: ダウングレードのスケジュールエラー。もう一度お試しください。
     confirm_upgrade: 日割り料金がすぐに請求されます。続行しますか？
     confirm_downgrade: プランは現在の請求期間の終了時に変更されます。続行しますか？
+    confirm_upgrade_title: アップグレードの確認
+    confirm_upgrade_subtitle: サブスクリプションをアップグレードする前に詳細を確認してください
+    upgrade_summary: アップグレードの概要
+    new_plan: 新しいプラン
+    billing_period: 現在の請求期間
+    period_start: 開始日
+    period_end: 更新日
+    pricing_breakdown: 料金の内訳
+    new_plan_price: 新しいプランの月額料金
+    of: "/"
+    days: 日
+    prorated_charge_today: 本日の日割り請求額
+    what_happens_next: 次に何が起こりますか？
+    immediate_access: "%{plan}の全機能にすぐにアクセスできます"
+    charge_now: 日割り料金が今すぐ請求されます
+    next_bill: 次回の%{amount}の請求は%{date}です
+    confirm_and_upgrade: "%{plan}へのアップグレードを確認"
+    secure_payment: Stripeによる安全な決済処理
+    subscription_details: サブスクリプション詳細
+    status: ステータス
+    active: 有効
+    canceling: キャンセル中
+    access_until: アクセス期限
+    next_billing_date: 次回請求日
+    monthly_price: 月額料金
   gdpr:
     privacy_policy: プライバシーポリシー
     cookie_policy: クッキーポリシー
