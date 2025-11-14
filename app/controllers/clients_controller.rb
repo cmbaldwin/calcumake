@@ -30,10 +30,7 @@ class ClientsController < ApplicationController
         format.html { redirect_to @client, notice: t("clients.created_successfully") }
         format.turbo_stream {
           flash.now[:notice] = t("clients.created_successfully")
-          render turbo_stream: [
-            turbo_stream.update("modal", "<div id='modal' class='modal fade' data-controller='modal'></div>"),
-            turbo_stream.prepend("flash", partial: "layouts/flash_message", locals: { type: :notice, message: flash.now[:notice] })
-          ]
+          # Renders create.turbo_stream.erb
         }
       end
     else
