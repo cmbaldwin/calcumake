@@ -14,6 +14,10 @@ fr:
     sign_in: Se connecter
     sign_up: S'inscrire
     language: Langue
+    legal_header: Mentions Légales et Confidentialité
+    data_rights_header: Vos Droits sur les Données
+    export_data: Exporter Mes Données
+    delete_account: Supprimer Mon Compte
   actions:
     save: Enregistrer
     cancel: Annuler

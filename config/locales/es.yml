@@ -81,6 +81,10 @@ es:
     sign_in: Iniciar sesión
     sign_up: Registrarse
     language: Idioma
+    legal_header: Legal y Privacidad
+    data_rights_header: Sus Derechos de Datos
+    export_data: Exportar Mis Datos
+    delete_account: Eliminar Mi Cuenta
   actions:
     save: Guardar
     cancel: Cancelar

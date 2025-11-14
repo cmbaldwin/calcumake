@@ -43,8 +43,18 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><%= link_to t('legal.privacy_policy.nav_title'), privacy_policy_path, class: "dropdown-item" %></li>
-                        <li><%= link_to t('legal.user_agreement.nav_title'), user_agreement_path, class: "dropdown-item" %></li>
+                        <li><h6 class="dropdown-header"><%= t('nav.legal_header', default: 'Legal & Privacy') %></h6></li>
+                        <li><%= link_to t('gdpr.privacy_policy'), cookie_policy_path.sub('cookie-policy', 'privacy-policy'), class: "dropdown-item" %></li>
+                        <li><%= link_to t('gdpr.terms_of_service'), terms_of_service_path, class: "dropdown-item" %></li>
+                        <li><%= link_to t('gdpr.cookie_policy'), cookie_policy_path, class: "dropdown-item" %></li>
+                        <% if user_signed_in? %>
+                          <li>
+                              <hr class="dropdown-divider">
+                          </li>
+                          <li><h6 class="dropdown-header"><%= t('nav.data_rights_header', default: 'Your Data Rights') %></h6></li>
+                          <li><%= link_to t('nav.export_data', default: 'Export My Data'), data_export_path, class: "dropdown-item" %></li>
+                          <li><%= link_to t('nav.delete_account', default: 'Delete My Account'), data_deletion_path, class: "dropdown-item text-danger" %></li>
+                        <% end %>
                     </ul>
                 </li>
                 <li class="nav-item">

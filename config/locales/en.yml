@@ -100,6 +100,10 @@ en:
     sign_in: Sign in
     sign_up: Sign up
     language: Language
+    legal_header: "Legal & Privacy"
+    data_rights_header: "Your Data Rights"
+    export_data: "Export My Data"
+    delete_account: "Delete My Account"
   actions:
     title: Actions
     save: Save
