@@ -18,6 +18,7 @@ fr:
     data_rights_header: Vos Droits sur les Données
     export_data: Exporter Mes Données
     delete_account: Supprimer Mon Compte
+    usage_and_subscription: Utilisation et Abonnement
   actions:
     save: Enregistrer
     cancel: Annuler

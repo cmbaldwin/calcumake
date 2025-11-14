@@ -40,6 +40,9 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="helpDropdown">
                         <li><%= link_to t('support.nav_title'), support_path, class: "dropdown-item" %></li>
+                        <% if user_signed_in? %>
+                          <li><%= link_to t('nav.usage_and_subscription', default: 'Usage & Subscription'), user_profile_path, class: "dropdown-item" %></li>
+                        <% end %>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
