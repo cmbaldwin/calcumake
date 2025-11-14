@@ -83,6 +83,8 @@ Supports 7 languages: en, ja, zh-CN, hi, es, fr, ar
 
 **CRITICAL**: ALL new features MUST include translations for ALL 7 languages. Use `t('key')` helpers, never hardcode text.
 
+**Merging Translation Conflicts**: When merging branches with locale file conflicts, use `bin/merge-locale-yml` for semantic YAML merging (see `docs/TRANSLATION_MERGE_WORKFLOW.md` for full workflow).
+
 ## Database
 PostgreSQL with plates table storing per-plate data. Always test with fixtures for both `print_pricings.yml` and `plates.yml`.
 

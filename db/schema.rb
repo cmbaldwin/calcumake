@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_12_095002) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_13_083604) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -190,6 +190,18 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_12_095002) do
     t.index ["user_id"], name: "index_usage_trackings_on_user_id"
   end
 
+  create_table "user_consents", force: :cascade do |t|
+    t.boolean "accepted", default: false, null: false
+    t.string "consent_type", null: false
+    t.datetime "created_at", null: false
+    t.string "ip_address"
+    t.datetime "updated_at", null: false
+    t.text "user_agent"
+    t.bigint "user_id", null: false
+    t.index ["user_id", "consent_type", "created_at"], name: "index_consents_on_user_type_date"
+    t.index ["user_id"], name: "index_user_consents_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.boolean "admin", default: false, null: false
     t.datetime "confirmation_sent_at"
@@ -253,4 +265,5 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_12_095002) do
   add_foreign_key "print_pricings", "users"
   add_foreign_key "printers", "users"
   add_foreign_key "usage_trackings", "users"
+  add_foreign_key "user_consents", "users"
 end

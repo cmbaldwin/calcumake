@@ -439,12 +439,16 @@ es:
     delete_account:
       title: Eliminar Cuenta
       warning_title: Advertencia
-      warning_message: Eliminar su cuenta es permanente y no se puede deshacer. Todos sus datos se eliminarán permanentemente.
-      description: Si ya no desea utilizar CalcuMake, puede eliminar su cuenta. Por favor lea la sección de preguntas frecuentes en la página de soporte para más información.
+      warning_message: Eliminar su cuenta es permanente y no se puede deshacer. Todos
+        sus datos se eliminarán permanentemente.
+      description: Si ya no desea utilizar CalcuMake, puede eliminar su cuenta. Por
+        favor lea la sección de preguntas frecuentes en la página de soporte para
+        más información.
       unlock_checkbox: Entiendo que eliminar mi cuenta es permanente
       confirm_checkbox: Confirmo que quiero eliminar mi cuenta y todos los datos asociados
       button: Eliminar Mi Cuenta
-      final_confirmation: "¿Está absolutamente seguro de que desea eliminar su cuenta? Esta acción no se puede deshacer y todos sus datos se eliminarán permanentemente."
+      final_confirmation: "¿Está absolutamente seguro de que desea eliminar su cuenta?
+        Esta acción no se puede deshacer y todos sus datos se eliminarán permanentemente."
       success: Su cuenta ha sido eliminada exitosamente. Gracias por usar CalcuMake.
   currency:
     usd: Dólar Estadounidense
@@ -462,11 +466,13 @@ es:
       clear_search: Limpiar Búsqueda
       empty_state:
         title: Aún no hay clientes
-        description: Agregue su primer cliente para comenzar a gestionar la información de clientes.
+        description: Agregue su primer cliente para comenzar a gestionar la información
+          de clientes.
         add_first: Agregue Su Primer Cliente
       no_results:
         title: No se encontraron resultados
-        description: No hay clientes que coincidan con su búsqueda. Pruebe con un término de búsqueda diferente.
+        description: No hay clientes que coincidan con su búsqueda. Pruebe con un
+          término de búsqueda diferente.
     new:
       title: Agregar Nuevo Cliente
       subtitle: Crear un nuevo perfil de cliente
@@ -490,13 +496,15 @@ es:
       company_name: Nombre de la Empresa
       company_name_placeholder: Corporación Acme
       email: Correo Electrónico
-      email_placeholder: "juan@ejemplo.com"
+      email_placeholder: juan@ejemplo.com
       phone: Teléfono
       phone_placeholder: "+34 600 00 00 00"
       address: Dirección
-      address_placeholder: "Calle Principal 123\nCiudad, Provincia 12345"
+      address_placeholder: |-
+        Calle Principal 123
+        Ciudad, Provincia 12345
       tax_id: ID Fiscal / Número de IVA
-      tax_id_placeholder: "12-3456789"
+      tax_id_placeholder: 12-3456789
       notes: Notas
       notes_placeholder: Notas adicionales sobre este cliente...
       select_client: Seleccionar Cliente
@@ -536,20 +544,27 @@ es:
       title: Preguntas Frecuentes
       delete_account:
         question: "¿Cómo elimino mi cuenta?"
-        answer: "Para eliminar su cuenta, siga estos pasos:"
+        answer: 'Para eliminar su cuenta, siga estos pasos:'
         step1: Vaya a su página de Perfil desde el menú de navegación
-        step2: Desplácese hasta la sección "Eliminar Cuenta" en la parte inferior de la página
+        step2: Desplácese hasta la sección "Eliminar Cuenta" en la parte inferior
+          de la página
         step3: Marque la casilla "Entiendo que eliminar mi cuenta es permanente"
-        step4: Marque la casilla "Confirmo que quiero eliminar mi cuenta y todos los datos asociados"
-        step5: Haga clic en el botón "Eliminar Mi Cuenta" y confirme la advertencia final
+        step4: Marque la casilla "Confirmo que quiero eliminar mi cuenta y todos los
+          datos asociados"
+        step5: Haga clic en el botón "Eliminar Mi Cuenta" y confirme la advertencia
+          final
         warning_title: Importante
-        warning_message: La eliminación de la cuenta es permanente y no se puede deshacer. Todos sus datos serán eliminados permanentemente.
+        warning_message: La eliminación de la cuenta es permanente y no se puede deshacer.
+          Todos sus datos serán eliminados permanentemente.
       data_recovery:
         question: "¿Puedo recuperar mi cuenta después de eliminarla?"
-        answer: "No, la eliminación de la cuenta es permanente e irreversible. Una vez eliminada, su cuenta y todos los datos asociados no se pueden recuperar. Si cree que podría querer usar CalcuMake nuevamente en el futuro, considere simplemente no usar su cuenta en lugar de eliminarla."
+        answer: No, la eliminación de la cuenta es permanente e irreversible. Una
+          vez eliminada, su cuenta y todos los datos asociados no se pueden recuperar.
+          Si cree que podría querer usar CalcuMake nuevamente en el futuro, considere
+          simplemente no usar su cuenta en lugar de eliminarla.
       what_deleted:
         question: "¿Qué datos se eliminan cuando elimino mi cuenta?"
-        intro: "Cuando elimina su cuenta, todos los siguientes datos se eliminan permanentemente:"
+        intro: 'Cuando elimina su cuenta, todos los siguientes datos se eliminan permanentemente:'
         item1: Su cuenta de usuario y credenciales de inicio de sesión
         item2: Todos sus cálculos de precios de impresión
         item3: Todas sus impresoras y sus configuraciones
@@ -706,12 +721,19 @@ es:
       pricing:
         title: Precios
         content: 'CalcuMake ofrece tres niveles de suscripción:'
-        free_tier: 'Nivel Gratuito: ¥0/mes - Prueba de 30 días con límites de Startup, luego funciones básicas con anuncios'
-        startup_tier: 'Nivel Startup: ¥150/mes ($1.50/mes USD) - Funciones avanzadas, sin anuncios, soporte prioritario, límites de uso más altos'
-        pro_tier: 'Nivel Pro: ¥1500/mes ($15/mes USD) - Todas las funciones, uso ilimitado, soporte premium, informes avanzados'
-        pricing_details: Todos los precios se muestran en yenes japoneses (¥) y dólares estadounidenses ($). La facturación se gestiona de forma segura a través de Stripe.
-        price_changes: Los precios pueden ajustarse con 30 días de aviso previo a los suscriptores existentes.
-        future_note: En el futuro se pueden agregar opciones de pago adicionales y facturación anual.
+        free_tier: 'Nivel Gratuito: ¥0/mes - Funciones básicas con anuncios'
+        startup_tier: 'Nivel Startup: ¥150/mes ($1.50/mes USD) - Funciones avanzadas,
+          sin anuncios, soporte prioritario, límites de uso más altos'
+        pro_tier: 'Nivel Pro: Suscripción mensual o anual de pago - Funciones avanzadas,
+          sin anuncios, soporte prioritario'
+        pricing_details: Los precios exactos se muestran en nuestro sitio web y en
+          la aplicación durante la selección de suscripción.
+        price_changes: Los precios pueden ajustarse con 30 días de aviso previo a
+          los suscriptores existentes.
+        future_note: En el futuro se pueden agregar opciones de pago adicionales y
+          facturación anual.
+        enterprise_tier: 'Nivel Enterprise: Suscripción mensual o anual de pago -
+          Todas las funciones, soporte premium, integraciones personalizadas'
       payment_methods:
         title: Métodos de Pago
         content: 'Para suscripciones de pago, aceptamos los siguientes métodos de
@@ -919,246 +941,470 @@ print_pricings:
     print_time_hours: Horas de Tiempo de Impresión
   devise:
     shared:
+      sign_in_with_provider: Iniciar sesión con %{provider}
+      sign_in_with_provider_aria: Iniciar sesión usando tu cuenta de %{provider}
+      or_sign_in_with_email: o iniciar sesión con email
+      oauth_signin_options: Opciones de inicio de sesión de terceros
+      alternative_signin_method: Método alternativo de inicio de sesión
+    omniauth_callbacks:
+      success: Autenticado exitosamente desde la cuenta de %{kind}.
   landing:
     hero:
-      headline: "Más creatividad, menos cálculos"
-      subheadline: "Olvídate de las hojas de cálculo y los cálculos tediosos. Automatiza la fijación de precios para que puedas disfrutar de la parte divertida."
-      cta_primary: "Comenzar a Calcular Gratis"
-      cta_demo: "Ver Demo"
-      trust_signal: "No se requiere tarjeta de crédito - comienza con todas las funciones de Startup durante 30 días"
-      preview_title: "Vista Previa Rápida de Costos"
-      preview_filament_weight: "Peso del Filamento"
-      preview_print_time: "Tiempo de Impresión"
-      preview_total_cost: "Costo Total"
-      preview_cost_breakdown: "Electricidad + Filamento + Mano de Obra"
-
+      headline: Más creatividad, menos cálculos
+      subheadline: Olvídate de las hojas de cálculo y los cálculos tediosos. Automatiza
+        la fijación de precios para que puedas disfrutar de la parte divertida.
+      cta_primary: Comenzar a Calcular Gratis
+      cta_demo: Ver Demo
+      trust_signal: No se requiere tarjeta de crédito - comienza con todas las funciones
+        de Startup durante 30 días
+      preview_title: Vista Previa Rápida de Costos
+      preview_filament_weight: Peso del Filamento
+      preview_print_time: Tiempo de Impresión
+      preview_total_cost: Costo Total
+      preview_cost_breakdown: Electricidad + Filamento + Mano de Obra
     problem:
       headline: "¿Estás perdiendo dinero en impresiones 3D?"
-      manual_errors: "Errores de Cálculo Manual"
-      manual_errors_desc: "Las hojas de cálculo y el cálculo mental llevan a errores costosos y facturación insuficiente."
-      electricity_costs: "Costos de Electricidad Olvidados"
-      electricity_costs_desc: "El consumo de energía puede agregar 20-40% a tus costos reales pero a menudo se ignora."
-      inconsistent_pricing: "Precios Inconsistentes"
-      inconsistent_pricing_desc: "Cálculos diferentes para trabajos similares confunden a los clientes y dañan las ganancias."
-      time_wasted: "Tiempo Perdido en Hojas de Cálculo"
-      time_wasted_desc: "Horas gastadas en cálculos manuales en lugar de hacer crecer tu negocio de impresión."
-
+      manual_errors: Errores de Cálculo Manual
+      manual_errors_desc: Las hojas de cálculo y el cálculo mental llevan a errores
+        costosos y facturación insuficiente.
+      electricity_costs: Costos de Electricidad Olvidados
+      electricity_costs_desc: El consumo de energía puede agregar 20-40% a tus costos
+        reales pero a menudo se ignora.
+      inconsistent_pricing: Precios Inconsistentes
+      inconsistent_pricing_desc: Cálculos diferentes para trabajos similares confunden
+        a los clientes y dañan las ganancias.
+      time_wasted: Tiempo Perdido en Hojas de Cálculo
+      time_wasted_desc: Horas gastadas en cálculos manuales en lugar de hacer crecer
+        tu negocio de impresión.
     solution:
-      headline: "Herramientas Profesionales para Makers Serios"
-      subheadline: "Todo lo que necesitas para cotizar con precisión y gestionar tus proyectos de impresión 3D como un profesional."
-
+      headline: Herramientas Profesionales para Makers Serios
+      subheadline: Todo lo que necesitas para cotizar con precisión y gestionar tus
+        proyectos de impresión 3D como un profesional.
     features:
       accurate_calculation:
-        title: "Cálculo Preciso de Costos"
-        desc: "Obtén costos precisos cada vez con cálculo integral que incluye todos los gastos ocultos."
-        filament: "Peso del filamento + costo del carrete"
-        electricity: "Seguimiento del consumo eléctrico"
-        labor: "Tiempo de trabajo (preparación + post-procesamiento)"
-        depreciation: "Depreciación de máquina"
-
+        title: Cálculo Preciso de Costos
+        desc: Obtén costos precisos cada vez con cálculo integral que incluye todos
+          los gastos ocultos.
+        filament: Peso del filamento + costo del carrete
+        electricity: Seguimiento del consumo eléctrico
+        labor: Tiempo de trabajo (preparación + post-procesamiento)
+        depreciation: Depreciación de máquina
       multi_printer:
-        title: "Gestión Multi-Impresora"
-        desc: "Rastrea especificaciones de diferentes impresoras y monitorea tu retorno de inversión en toda tu flota."
-        power: "Seguimiento individual del consumo de energía"
-        roi: "Seguimiento de ROI por impresora"
-        organization: "Gestión organizada de trabajos de impresión"
-
+        title: Gestión Multi-Impresora
+        desc: Rastrea especificaciones de diferentes impresoras y monitorea tu retorno
+          de inversión en toda tu flota.
+        power: Seguimiento individual del consumo de energía
+        roi: Seguimiento de ROI por impresora
+        organization: Gestión organizada de trabajos de impresión
       invoicing:
-        title: "Facturación Profesional"
-        desc: "Genera facturas PDF profesionales con tu marca empresarial y soporte multi-moneda."
-        pdf: "Facturas PDF auto-generadas"
-        branding: "Marca empresarial personalizada"
-        currency: "Soporte multi-moneda"
-
+        title: Facturación Profesional
+        desc: Genera facturas PDF profesionales con tu marca empresarial y soporte
+          multi-moneda.
+        pdf: Facturas PDF auto-generadas
+        branding: Marca empresarial personalizada
+        currency: Soporte multi-moneda
       organization:
-        title: "Organización de Proyectos"
-        desc: "Mantén tus trabajos de impresión organizados con potentes herramientas de búsqueda, filtrado y gestión de proyectos."
-        search: "Buscar y filtrar trabajos de impresión"
-        duplicate: "Duplicar proyectos similares"
-        history: "Seguimiento completo del historial de impresión"
-
+        title: Organización de Proyectos
+        desc: Mantén tus trabajos de impresión organizados con potentes herramientas
+          de búsqueda, filtrado y gestión de proyectos.
+        search: Buscar y filtrar trabajos de impresión
+        duplicate: Duplicar proyectos similares
+        history: Seguimiento completo del historial de impresión
     pricing:
-      headline: "Precios Simples y Transparentes"
-      subheadline: "Elige el plan que se adapte a tu volumen de impresión. Actualiza o degrada en cualquier momento."
-      cta: "Comenzar Gratis"
-
+      headline: Precios Simples y Transparentes
+      subheadline: Elige el plan que se adapte a tu volumen de impresión. Actualiza
+        o degrada en cualquier momento.
+      cta: Comenzar Gratis
       free:
-        title: "Gratis"
+        title: Gratis
         trial_notice: "¡El primer mes incluye todas las funciones de Startup!"
-        calculations: "5 cálculos por mes (después del trial)"
-        printers: "1 perfil de impresora"
-        filaments: "4 tipos de filamento"
-        invoices: "5 facturas por mes"
-        branding: "Marca CalcuMake en facturas"
-
+        calculations: 5 cálculos por mes (después del trial)
+        printers: 1 perfil de impresora
+        filaments: 4 tipos de filamento
+        invoices: 5 facturas por mes
+        branding: Marca CalcuMake en facturas
       startup:
-        title: "Startup"
-        badge: "Más Popular"
-        calculations: "50 cálculos por mes"
-        printers: "10 perfiles de impresora"
-        filaments: "16 tipos de filamento"
-        branding: "Remover marca CalcuMake"
-        ads: "Sin anuncios"
-
+        title: Startup
+        badge: Más Popular
+        calculations: 50 cálculos por mes
+        printers: 10 perfiles de impresora
+        filaments: 16 tipos de filamento
+        branding: Remover marca CalcuMake
+        ads: Sin anuncios
       pro:
-        title: "Pro"
-        unlimited: "Todo ilimitado"
-        branding: "Remover marca CalcuMake"
-        ads: "Sin anuncios"
-        support: "Soporte prioritario"
-        analytics: "Análisis avanzado"
-        features: "Futuras funciones premium"
-
+        title: Pro
+        unlimited: Todo ilimitado
+        branding: Remover marca CalcuMake
+        ads: Sin anuncios
+        support: Soporte prioritario
+        analytics: Análisis avanzado
+        features: Futuras funciones premium
       trust_signals:
-        no_credit_card: "No se requiere tarjeta de crédito - comienza con todas las funciones de Startup durante 30 días"
-        cancel_anytime: "Cancela en cualquier momento"
-        data_private: "Tus datos permanecen privados"
-
+        no_credit_card: No se requiere tarjeta de crédito - comienza con todas las
+          funciones de Startup durante 30 días
+        cancel_anytime: Cancela en cualquier momento
+        data_private: Tus datos permanecen privados
     faq:
-      headline: "Preguntas Frecuentes"
-
+      headline: Preguntas Frecuentes
       accuracy:
         question: "¿Qué tan precisos son los cálculos?"
-        answer: "CalcuMake usa fórmulas simples y considera todos los factores de costo incluyendo filamento, electricidad, tiempo de trabajo y depreciación de máquina."
-
+        answer: CalcuMake usa fórmulas simples y considera todos los factores de costo
+          incluyendo filamento, electricidad, tiempo de trabajo y depreciación de
+          máquina.
       currencies:
         question: "¿Qué monedas soporta CalcuMake?"
-        answer: "CalcuMake actualmente soporta USD, EUR, GBP, JPY, CAD y AUD con formato automático y precisión para cada moneda. Puedes cambiar monedas en cualquier momento en la configuración de tu perfil."
-
+        answer: CalcuMake actualmente soporta USD, EUR, GBP, JPY, CAD y AUD con formato
+          automático y precisión para cada moneda. Puedes cambiar monedas en cualquier
+          momento en la configuración de tu perfil.
       printers:
         question: "¿CalcuMake soporta mi impresora 3D?"
-        answer: "¡CalcuMake funciona con cualquier impresora 3D! Simplemente ingresas el consumo de energía de tu impresora y otras especificaciones. ¡Estamos planeando soporte para impresoras de resina pronto!"
-
+        answer: "¡CalcuMake funciona con cualquier impresora 3D! Simplemente ingresas
+          el consumo de energía de tu impresora y otras especificaciones. ¡Estamos
+          planeando soporte para impresoras de resina pronto!"
       electricity:
         question: "¿Cómo funcionan los costos de electricidad?"
-        answer: "CalcuMake calcula automáticamente los costos de electricidad basado en el consumo de energía de tu impresora (en vatios), duración de impresión y tu tarifa local de energía por kWh. Esto asegura que nunca olvides este factor de costo a menudo pasado por alto."
-
+        answer: CalcuMake calcula automáticamente los costos de electricidad basado
+          en el consumo de energía de tu impresora (en vatios), duración de impresión
+          y tu tarifa local de energía por kWh. Esto asegura que nunca olvides este
+          factor de costo a menudo pasado por alto.
       invoices:
         question: "¿Puedo personalizar mis facturas?"
-        answer: "¡Sí! Puedes agregar el logo de tu empresa, personalizar colores e incluir tu información comercial. Los planes de pago remueven la marca CalcuMake para una apariencia completamente profesional."
-
+        answer: "¡Sí! Puedes agregar el logo de tu empresa, personalizar colores e
+          incluir tu información comercial. Los planes de pago remueven la marca CalcuMake
+          para una apariencia completamente profesional."
     final_cta:
       headline: "¿Listo para dejar de perder dinero en impresiones 3D?"
-      subheadline: "Únete a miles de makers que confían en CalcuMake para precios precisos y gestión profesional de proyectos."
-      button: "Comenzar Tu Prueba Gratuita"
-
+      subheadline: Únete a miles de makers que confían en CalcuMake para precios precisos
+        y gestión profesional de proyectos.
+      button: Comenzar Tu Prueba Gratuita
   calculators:
-    quick_cost_calculator: "Calculadora de Costo Rápido"
-    print_time_hours: "Tiempo de Impresión (horas)"
-    filament_weight_grams: "Peso del Filamento (gramos)"
-    filament_price_per_kg: "Precio del Filamento por KG (€)"
-    labor_rate_per_hour: "Tarifa Laboral por Hora (€)"
-    create_full_calculation: "Crear Cálculo Completo"
-    includes_defaults: "Incluye Costos Predeterminados:"
+    quick_cost_calculator: Calculadora de Costo Rápido
+    print_time_hours: Tiempo de Impresión (horas)
+    filament_weight_grams: Peso del Filamento (gramos)
+    filament_price_per_kg: Precio del Filamento por KG (€)
+    labor_rate_per_hour: Tarifa Laboral por Hora (€)
+    create_full_calculation: Crear Cálculo Completo
+    includes_defaults: 'Incluye Costos Predeterminados:'
     defaults:
-      filament_price: "Filamento"
-      labor_rate: "Mano de Obra"
-      energy_cost: "Energía"
-      power_consumption: "Consumo Eléctrico"
-      machine_payoff: "Amortización de Máquina"
+      filament_price: Filamento
+      labor_rate: Mano de Obra
+      energy_cost: Energía
+      power_consumption: Consumo Eléctrico
+      machine_payoff: Amortización de Máquina
     features:
-      real_time: "Cálculo en tiempo real mientras escribes"
-      includes_costs: "Incluye costos de electricidad y mano de obra"
+      real_time: Cálculo en tiempo real mientras escribes
+      includes_costs: Incluye costos de electricidad y mano de obra
     results:
-      filament_cost: "Costo del Filamento"
-      electricity_cost: "Costo de Electricidad"
-      labor_cost: "Costo Laboral"
-      total_cost: "Costo Total"
-      estimated_cost: "Costo Estimado:"
-
+      filament_cost: Costo del Filamento
+      electricity_cost: Costo de Electricidad
+      labor_cost: Costo Laboral
+      total_cost: Costo Total
+      estimated_cost: 'Costo Estimado:'
   demo:
-    title: "Prueba la Demo de CalcuMake"
-    subtitle: "Prueba nuestra calculadora de costos de impresión 3D con datos de muestra. ¡No se requiere cuenta!"
-    sign_up_full_version: "Registrarse para la Versión Completa"
-    start_free_trial: "Comenzar Prueba Gratuita"
+    title: Prueba la Demo de CalcuMake
+    subtitle: Prueba nuestra calculadora de costos de impresión 3D con datos de muestra.
+      ¡No se requiere cuenta!
+    sign_up_full_version: Registrarse para la Versión Completa
+    start_free_trial: Comenzar Prueba Gratuita
     limitations:
-      title: "Esta es una Versión de Demostración"
-      description: "La aplicación completa CalcuMake incluye:"
+      title: Esta es una Versión de Demostración
+      description: 'La aplicación completa CalcuMake incluye:'
       features:
-        - "Múltiples perfiles de impresora con especificaciones automáticas"
-        - "Biblioteca integral de filamentos con propiedades de materiales"
-        - "Generación profesional de facturas PDF"
-        - "Historial de proyectos y funcionalidad de duplicación"
-        - "Soporte multi-moneda"
-        - "Cálculos de depreciación de máquinas"
-
-  devise:
-    shared:
-      sign_in_with_provider: "Iniciar sesión con %{provider}"
-      sign_in_with_provider_aria: "Iniciar sesión usando tu cuenta de %{provider}"
-      or_sign_in_with_email: "o iniciar sesión con email"
-      oauth_signin_options: "Opciones de inicio de sesión de terceros"
-      alternative_signin_method: "Método alternativo de inicio de sesión"
-    omniauth_callbacks:
-      success: "Autenticado exitosamente desde la cuenta de %{kind}."
-  # Límites de uso y gestión de suscripciones
+      - Múltiples perfiles de impresora con especificaciones automáticas
+      - Biblioteca integral de filamentos con propiedades de materiales
+      - Generación profesional de facturas PDF
+      - Historial de proyectos y funcionalidad de duplicación
+      - Soporte multi-moneda
+      - Cálculos de depreciación de máquinas
   usage_limits:
-    limit_reached: "Has alcanzado el límite de tu plan %{plan}: %{limit} %{resource}. Actualiza para continuar."
-    approaching_limits_message: "Se está acercando a los límites de su plan. Considere actualizar para más recursos."
-    approaching_limit: "Te estás acercando al límite de tu plan para %{resource}"
-    usage_summary: "Resumen de uso"
+    unlimited: Ilimitado
+    usage_summary: Resumen de uso
+    limit_reached: Has alcanzado el límite de %{limit} %{resource} de tu plan %{plan}.
+      Por favor, actualiza para continuar.
+    approaching_limits_message: Se está acercando a los límites de su plan. Considere
+      actualizar para más recursos.
+    approaching_limit: Te estás acercando al límite de tu plan para %{resource}
     current_usage: "%{current} de %{limit} utilizados"
-    unlimited: "Ilimitado"
-
   subscriptions:
-    title: "Suscripción y precios"
-    current_plan: "Plan actual"
-    upgrade: "Actualizar plan"
-    manage: "Gestionar suscripción"
-    cancel: "Cancelar suscripción"
-    invalid_plan: "Plan de suscripción inválido seleccionado"
-    checkout_error: "No se puede crear la sesión de pago. Por favor, inténtalo de nuevo."
-    verification_error: "No se puede verificar la suscripción. Por favor, contacta con soporte."
-    portal_error: "No se puede acceder a la gestión de suscripciones. Por favor, inténtalo de nuevo."
-    no_subscription: "No tienes una suscripción activa"
+    title: Suscripción y precios
+    current_plan: Plan actual
+    upgrade: Actualizar plan
+    upgrade_now: Actualizar Ahora
+    manage: Gestionar suscripción
+    trial_badge: Prueba gratuita de 30 días
+    already_subscribed: Ya tienes una suscripción activa
+    invalid_plan: Plan de suscripción inválido seleccionado
+    checkout_error: No se puede crear la sesión de pago. Por favor, inténtalo de nuevo.
+    verification_error: No se puede verificar la suscripción. Por favor, contacta
+      con soporte.
     upgrade_successful: "¡Actualizado exitosamente al plan %{plan}!"
-    cancel_scheduled: "Tu suscripción se cancelará al final del período de facturación"
-    cancel_error: "No se puede cancelar la suscripción. Por favor, inténtalo de nuevo."
-    trial_badge: "Prueba gratuita de 30 días"
-    trial_remaining: "%{days} días restantes"
+    no_subscription: No tienes una suscripción activa
+    portal_error: No se puede acceder a la gestión de suscripciones. Por favor, inténtalo
+      de nuevo.
+    cancel_scheduled: Tu suscripción se cancelará al final del período de facturación
+    cancel_error: No se puede cancelar la suscripción. Por favor, inténtalo de nuevo.
+    plans:
+      subtitle: Elige el plan que mejor se adapte a ti
     features:
+      unlimited_calculations: Cálculos de impresión ilimitados
+      unlimited_printers: Impresoras ilimitadas
+      unlimited_filaments: Filamentos ilimitados
+      unlimited_invoices: Facturas ilimitadas
       calculations: "%{count} cálculos de impresión/mes"
       printers: "%{count} perfiles de impresora"
       filaments: "%{count} tipos de filamento"
       invoices: "%{count} facturas/mes"
-      unlimited_calculations: "Cálculos de impresión ilimitados"
-      unlimited_printers: "Impresoras ilimitadas"
-      unlimited_filaments: "Filamentos ilimitados"
-      unlimited_invoices: "Facturas ilimitadas"
-      no_branding: "Eliminar marca CalcuMake"
-      no_ads: "Experiencia sin anuncios"
-      priority_support: "Soporte prioritario"
+      no_branding: Eliminar marca CalcuMake
+      no_ads: Experiencia sin anuncios
+      priority_support: Soporte prioritario
       alternative_signin_method: Alternative signin method
       or_sign_in_with_email: Or Sign In With Email
       sign_in_with_provider: Sign in with %{provider}
       sign_in_with_provider_aria: Sign in with %{provider}
-  subscriptions:
-    title: "Planes de Suscripción"
-    current_plan: "Plan Actual"
-    upgrade: "Actualizar"
-    upgrade_now: "Actualizar Ahora"
-    manage: "Gestionar Suscripción"
-    trial_badge: "Prueba"
-    already_subscribed: "Ya tienes una suscripción activa"
-    invalid_plan: "Plan de suscripción inválido"
-    checkout_error: "Error al crear sesión de pago"
-    verification_error: "Error al verificar la suscripción"
-    upgrade_successful: "Actualizado exitosamente al plan %{plan}"
-    no_subscription: "No tienes una suscripción activa"
-    portal_error: "Error al acceder al portal de suscripciones"
-    cancel_scheduled: "Tu suscripción se cancelará al final del período de facturación"
-    cancel_error: "Error al cancelar la suscripción"
-    plans:
-      subtitle: "Elige el plan que mejor se adapte a ti"
-    features:
-      unlimited_calculations: "Cálculos ilimitados"
-      unlimited_printers: "Impresoras ilimitadas"
-      unlimited_filaments: "Filamentos ilimitados"
-      unlimited_invoices: "Facturas ilimitadas"
     faq:
-      title: "Preguntas Frecuentes"
-  usage_limits:
-    unlimited: "Ilimitado"
-    usage_summary: "Resumen de uso"
-    limit_reached: "Has alcanzado el límite de tu plan %{plan}: %{limit} %{resource}. Actualiza para continuar."
-    approaching_limits_message: "Se está acercando a los límites de su plan. Considere actualizar para más recursos."
+      title: Preguntas Frecuentes
+    cancel: Cancelar suscripción
+    trial_remaining: "%{days} días restantes"
+  gdpr:
+    privacy_policy: Política de privacidad
+    cookie_policy: Política de cookies
+    terms_of_service: Términos de servicio
+    privacy_policy_title: Política de privacidad
+    terms_of_service_title: Términos de servicio
+    cookie_policy_title: Política de cookies
+    last_updated: 'Última actualización: %{date}'
+    consent_recorded: Su preferencia de consentimiento ha sido registrada.
+    consent_error: Hubo un error al registrar su consentimiento. Inténtelo de nuevo.
+    account_deleted: Su cuenta y todos los datos asociados han sido eliminados permanentemente.
+    cookie_consent:
+      title: Valoramos su privacidad
+      message_html: Utilizamos cookies para mejorar su experiencia de navegación y
+        analizar el tráfico del sitio. Al hacer clic en 'Aceptar', acepta nuestro
+        uso de cookies. Lea nuestra %{privacy_policy_link} y %{cookie_policy_link}
+        para más información.
+      accept: Aceptar
+      reject: Rechazar
+    sections:
+      introduction:
+        title: Introducción
+        content: MOAB Co., Ltd. ('nosotros', 'nuestro', 'nos') está comprometido con
+          la protección y el respeto de su privacidad. Esta Política de privacidad
+          explica cómo recopilamos, usamos, divulgamos y protegemos su información
+          cuando utiliza nuestro servicio CalcuMake.
+      data_controller:
+        title: Responsable del tratamiento
+        content_html: "<strong>MOAB Co., Ltd.</strong><br>Registrada en Japón<br>Para
+          consultas de privacidad: privacy@calcumake.com"
+      data_collection:
+        title: Información que recopilamos
+        intro: 'Recopilamos los siguientes tipos de información personal:'
+        items:
+          account_data: 'Información de cuenta: Dirección de correo electrónico, nombre,
+            detalles de la empresa y credenciales de autenticación'
+          usage_data: 'Datos de uso: Cálculos de precios de impresión, configuraciones
+            de impresoras, datos de facturas y perfiles de filamentos'
+          technical_data: 'Datos técnicos: Dirección IP, tipo de navegador, información
+            del dispositivo y registros de acceso'
+          payment_data: 'Información de pago: Procesada de forma segura a través de
+            Stripe (no almacenamos los detalles completos de la tarjeta de pago)'
+      legal_basis:
+        title: Base legal para el procesamiento
+        content: 'Procesamos sus datos personales basándonos en: (1) Ejecución de
+          un contrato con usted, (2) Su consentimiento, (3) Cumplimiento de obligaciones
+          legales, y (4) Nuestros intereses legítimos en proporcionar y mejorar nuestros
+          servicios.'
+      data_usage:
+        title: Cómo usamos sus datos
+        items:
+          service_provision: Para proporcionar y mantener nuestro servicio
+          communication: Para comunicarnos con usted sobre su cuenta y actualizaciones
+          improvement: Para mejorar y personalizar su experiencia
+          legal_compliance: Para cumplir con las obligaciones legales y prevenir el
+            fraude
+      data_sharing:
+        title: Compartir y divulgación de datos
+        content: No vendemos sus datos personales. Podemos compartir datos con proveedores
+          de servicios (Stripe para pagos, proveedores de alojamiento en la nube),
+          cuando lo exija la ley o para proteger nuestros derechos.
+      user_rights:
+        title: Sus derechos bajo el RGPD y APPI
+        intro: 'Tiene los siguientes derechos con respecto a sus datos personales:'
+        items:
+          access:
+            title: Derecho de acceso
+            description: Solicitar una copia de sus datos personales
+          rectification:
+            title: Derecho de rectificación
+            description: Corregir datos inexactos o incompletos
+          erasure:
+            title: Derecho de supresión
+            description_html: Solicitar la eliminación de sus datos (%{link})
+            link_text: eliminar cuenta
+          portability:
+            title: Derecho a la portabilidad de datos
+            description_html: Recibir sus datos en un formato legible por máquina
+              (%{link})
+            link_text: exportar datos
+          objection:
+            title: Derecho de oposición
+            description: Oponerse a ciertos tipos de procesamiento
+      data_retention:
+        title: Retención de datos
+        content: Retenemos sus datos personales mientras su cuenta esté activa o según
+          sea necesario para proporcionar servicios. Tras la eliminación de la cuenta,
+          los datos se eliminan permanentemente en 30 días, excepto cuando la retención
+          sea requerida por ley.
+      security:
+        title: Medidas de seguridad
+        content: Implementamos medidas de seguridad estándar de la industria que incluyen
+          cifrado, autenticación segura, auditorías de seguridad regulares y controles
+          de acceso para proteger sus datos.
+      cookies:
+        title: Cookies y seguimiento
+        content_html: Utilizamos cookies para funciones esenciales y análisis. Para
+          más información, consulte nuestra %{link}.
+      international_transfers:
+        title: Transferencias internacionales de datos
+        content: Sus datos pueden transferirse y procesarse en países fuera de su
+          jurisdicción. Aseguramos que se implementen las salvaguardas apropiadas
+          para proteger sus datos de acuerdo con los requisitos del RGPD y APPI.
+      changes:
+        title: Cambios a esta política
+        content: Podemos actualizar esta Política de privacidad periódicamente. Le
+          notificaremos los cambios materiales por correo electrónico o mediante un
+          aviso destacado en nuestro servicio.
+      contact:
+        title: Contáctenos
+        content_html: 'Para preguntas relacionadas con la privacidad o para ejercer
+          sus derechos, contáctenos en: privacy@calcumake.com'
+    tos_sections:
+      acceptance:
+        title: Aceptación de los términos
+        content: Al acceder y usar CalcuMake, acepta y está de acuerdo en estar sujeto
+          a estos Términos de servicio.
+      service_description:
+        title: Descripción del servicio
+        content: CalcuMake es una aplicación basada en web para calcular costos de
+          impresión 3D, gestionar impresoras y generar facturas.
+      user_accounts:
+        title: Cuentas de usuario
+        content: Es responsable de mantener la confidencialidad de las credenciales
+          de su cuenta y de todas las actividades que ocurran bajo su cuenta.
+      acceptable_use:
+        title: Uso aceptable
+        intro: 'Acepta no:'
+        items:
+          illegal: Usar el servicio para cualquier propósito ilegal
+          harmful: Cargar código malicioso o contenido dañino
+          unauthorized: Intentar acceso no autorizado a nuestros sistemas
+          interference: Interferir o interrumpir el servicio
+      intellectual_property:
+        title: Propiedad intelectual
+        content: Todo el contenido, características y funcionalidad de CalcuMake son
+          propiedad de MOAB Co., Ltd. y están protegidos por leyes internacionales
+          de derechos de autor, marcas comerciales y otras leyes de propiedad intelectual.
+      payment_terms:
+        title: Términos de pago
+        content: Las suscripciones de pago se facturan por adelantado de forma recurrente.
+          Los reembolsos se manejan de acuerdo con nuestra política de reembolsos.
+      termination:
+        title: Terminación
+        content: Podemos terminar o suspender su cuenta en cualquier momento por violación
+          de estos Términos. Puede terminar su cuenta en cualquier momento a través
+          de la configuración de la cuenta.
+      liability:
+        title: Limitación de responsabilidad
+        content: CalcuMake se proporciona 'tal cual' sin garantías. No somos responsables
+          de ningún daño indirecto, incidental o consecuente que surja de su uso del
+          servicio.
+      governing_law:
+        title: Ley aplicable
+        content: Estos Términos se rigen por las leyes de Japón. Para usuarios de
+          la UE, se aplican las leyes de protección del consumidor aplicables.
+      changes:
+        title: Cambios en los términos
+        content: Nos reservamos el derecho de modificar estos Términos en cualquier
+          momento. El uso continuado del servicio después de los cambios constituye
+          la aceptación de los Términos modificados.
+    cookie_sections:
+      what_are_cookies:
+        title: "¿Qué son las cookies?"
+        content: Las cookies son pequeños archivos de texto almacenados en su dispositivo
+          que nos ayudan a proporcionar y mejorar nuestro servicio.
+      how_we_use:
+        title: Cómo usamos las cookies
+        intro: 'Utilizamos los siguientes tipos de cookies:'
+        essential:
+          title: Cookies esenciales
+          description: Requeridas para funciones básicas como autenticación y seguridad
+        functional:
+          title: Cookies funcionales
+          description: Recuerdan sus preferencias y configuraciones
+        analytics:
+          title: Cookies analíticas
+          description: Nos ayudan a entender cómo usa el servicio (requiere consentimiento)
+      cookie_list:
+        title: Lista de cookies
+        table:
+          name: Nombre de la cookie
+          purpose: Propósito
+          duration: Duración
+        cookies:
+          session:
+            purpose: Gestión de sesión y autenticación
+            duration: Sesión (se borra al cerrar sesión)
+          consent:
+            purpose: Almacena su preferencia de consentimiento de cookies
+            duration: 1 año
+          remember:
+            purpose: Mantiene su sesión iniciada entre sesiones
+            duration: 2 semanas
+      managing_cookies:
+        title: Gestión de cookies
+        content: Puede controlar y eliminar cookies a través de la configuración de
+          su navegador. Tenga en cuenta que deshabilitar las cookies esenciales puede
+          afectar la funcionalidad del servicio.
+      third_party:
+        title: Cookies de terceros
+        content: Usamos Stripe para el procesamiento de pagos y Google Analytics para
+          análisis de uso. Estos servicios pueden establecer sus propias cookies sujetas
+          a sus políticas de privacidad.
+    data_export:
+      title: Exportar sus datos
+      description: Descargue una copia completa de todos sus datos personales almacenados
+        en CalcuMake en formato JSON.
+      what_included: 'Qué se incluye:'
+      items:
+        account_info: Información de cuenta
+        print_pricings: Todos los cálculos de precios de impresión
+        printers: Configuraciones de impresoras
+        invoices: Historial de facturas
+        filaments: Perfiles de filamentos
+        clients: Información de clientes
+        consents: Historial de consentimientos
+      format: Formato de exportación
+      format_description: Sus datos se exportarán como un archivo JSON que puede guardar
+        y procesar con herramientas estándar.
+      download_button: Descargar mis datos
+    data_deletion:
+      title: Eliminar su cuenta
+      warning_title: 'Advertencia: ¡Esta acción no se puede deshacer!'
+      warning_message: Eliminar su cuenta eliminará permanentemente todos sus datos
+        de nuestros sistemas. Esto incluye todos los precios de impresión, facturas,
+        impresoras, filamentos e información de clientes.
+      what_deleted: 'Qué se eliminará:'
+      items:
+        account: Su cuenta y credenciales de inicio de sesión
+        print_pricings: Todos los cálculos de precios de impresión
+        printers: Todas las configuraciones de impresoras
+        invoices: Todas las facturas y el historial de facturas
+        filaments: Todos los perfiles de filamentos
+        clients: Toda la información de clientes
+        uploaded_files: Todos los archivos cargados (logotipos de empresa, etc.)
+      before_deletion: Antes de eliminar
+      export_recommendation_html: Recomendamos %{link} sus datos antes de eliminar
+        su cuenta, ya que esta acción es permanente y no se puede revertir.
+      export_link: exportar
+      delete_button: Eliminar mi cuenta permanentemente
+      confirm_message: "¿Está absolutamente seguro de que desea eliminar permanentemente
+        su cuenta y todos los datos asociados? Esta acción no se puede deshacer."

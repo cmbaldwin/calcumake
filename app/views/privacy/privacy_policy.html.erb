@@ -1,0 +1,99 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="card shadow-sm">
+        <div class="card-body p-4 p-md-5">
+          <h1 class="mb-4"><%= t('gdpr.privacy_policy_title') %></h1>
+          <p class="text-muted mb-4"><%= t('gdpr.last_updated', date: l(Date.new(2025, 1, 1), format: :long)) %></p>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.sections.introduction.title') %></h2>
+            <p><%= t('gdpr.sections.introduction.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.sections.data_controller.title') %></h2>
+            <p><%= t('gdpr.sections.data_controller.content_html') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.sections.data_collection.title') %></h2>
+            <p><%= t('gdpr.sections.data_collection.intro') %></p>
+            <ul>
+              <li><%= t('gdpr.sections.data_collection.items.account_data') %></li>
+              <li><%= t('gdpr.sections.data_collection.items.usage_data') %></li>
+              <li><%= t('gdpr.sections.data_collection.items.technical_data') %></li>
+              <li><%= t('gdpr.sections.data_collection.items.payment_data') %></li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.sections.legal_basis.title') %></h2>
+            <p><%= t('gdpr.sections.legal_basis.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.sections.data_usage.title') %></h2>
+            <ul>
+              <li><%= t('gdpr.sections.data_usage.items.service_provision') %></li>
+              <li><%= t('gdpr.sections.data_usage.items.communication') %></li>
+              <li><%= t('gdpr.sections.data_usage.items.improvement') %></li>
+              <li><%= t('gdpr.sections.data_usage.items.legal_compliance') %></li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.sections.data_sharing.title') %></h2>
+            <p><%= t('gdpr.sections.data_sharing.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.sections.user_rights.title') %></h2>
+            <p><%= t('gdpr.sections.user_rights.intro') %></p>
+            <ul>
+              <li><strong><%= t('gdpr.sections.user_rights.items.access.title') %>:</strong> <%= t('gdpr.sections.user_rights.items.access.description') %></li>
+              <li><strong><%= t('gdpr.sections.user_rights.items.rectification.title') %>:</strong> <%= t('gdpr.sections.user_rights.items.rectification.description') %></li>
+              <li><strong><%= t('gdpr.sections.user_rights.items.erasure.title') %>:</strong> <%= t('gdpr.sections.user_rights.items.erasure.description_html', link: link_to(t('gdpr.sections.user_rights.items.erasure.link_text'), data_deletion_path, class: 'text-primary')) %></li>
+              <li><strong><%= t('gdpr.sections.user_rights.items.portability.title') %>:</strong> <%= t('gdpr.sections.user_rights.items.portability.description_html', link: link_to(t('gdpr.sections.user_rights.items.portability.link_text'), data_export_path, class: 'text-primary')) %></li>
+              <li><strong><%= t('gdpr.sections.user_rights.items.objection.title') %>:</strong> <%= t('gdpr.sections.user_rights.items.objection.description') %></li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.sections.data_retention.title') %></h2>
+            <p><%= t('gdpr.sections.data_retention.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.sections.security.title') %></h2>
+            <p><%= t('gdpr.sections.security.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.sections.cookies.title') %></h2>
+            <p><%= t('gdpr.sections.cookies.content_html', link: link_to(t('gdpr.cookie_policy'), cookie_policy_path, class: 'text-primary')) %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.sections.international_transfers.title') %></h2>
+            <p><%= t('gdpr.sections.international_transfers.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.sections.changes.title') %></h2>
+            <p><%= t('gdpr.sections.changes.content') %></p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h4 mb-3"><%= t('gdpr.sections.contact.title') %></h2>
+            <p><%= t('gdpr.sections.contact.content_html') %></p>
+          </section>
+
+          <div class="mt-5 pt-4 border-top">
+            <%= link_to t('common.back'), :back, class: "btn btn-outline-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
