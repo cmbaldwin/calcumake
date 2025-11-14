@@ -1,0 +1,27 @@
+<%# Success response for client creation from modal %>
+<%# Clear modal content %>
+<%= turbo_stream.update "modal_content", "" %>
+
+<%# Dispatch custom event to close modal %>
+<%= turbo_stream.append "modal" do %>
+  <template>
+    <script>
+      // Use Bootstrap's Modal API to close the modal
+      const modalElement = document.getElementById('modal');
+      const modalInstance = bootstrap.Modal.getInstance(modalElement);
+      if (modalInstance) {
+        modalInstance.hide();
+      }
+
+      // Reload the page after a short delay to update dropdowns with new client
+      setTimeout(() => {
+        window.location.reload();
+      }, 800);
+    </script>
+  </template>
+<% end %>
+
+<%# Show success notification %>
+<%= turbo_stream.prepend "flash" do %>
+  <%= render "layouts/flash_message", type: :notice, message: flash.now[:notice] %>
+<% end %>
