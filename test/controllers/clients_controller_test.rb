@@ -32,7 +32,8 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     get new_client_url, as: :turbo_stream
     assert_response :success
     assert_match(/turbo-stream/, response.body)
-    assert_match(/modal/, response.body)
+    assert_match(/modal_content/, response.body)
+    assert_match(/client/, response.body)
   end
 
   test "should create client via turbo_stream for modal" do
@@ -46,6 +47,10 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :success
     assert_match(/turbo-stream/, response.body)
+    # Should clear modal_content and close modal
+    assert_match(/modal_content/, response.body)
+    # Should show success flash message
+    assert_match(/flash/, response.body)
   end
 
   test "should render errors in modal on create failure" do
@@ -58,6 +63,17 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
       }, as: :turbo_stream
     end
     assert_response :unprocessable_entity
-    assert_match(/modal/, response.body)
+    assert_match(/modal_content/, response.body)
+    # Should show error messages within modal
+    assert_match(/can't be blank|is required/i, response.body)
+  end
+
+  test "should load client form with all sections in modal" do
+    get new_client_url, as: :turbo_stream
+    assert_response :success
+    # Check for form sections
+    assert_match(/basic_info|contact_info|additional_info/, response.body)
+    assert_match(/name/, response.body)
+    assert_match(/email/, response.body)
   end
 end
