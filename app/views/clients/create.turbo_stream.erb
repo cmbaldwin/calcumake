@@ -1,22 +1,27 @@
 <%# Success response for client creation from modal %>
+<%# Update the client select dropdown with new client %>
+<%= turbo_stream.update "client_select_frame" do %>
+  <label for="invoice_client_id" class="form-label"><%= t("invoices.fields.select_client") %></label>
+  <select name="invoice[client_id]" id="invoice_client_id" class="form-select">
+    <option value=""><%= t("invoices.fields.no_client_selected") %></option>
+    <% current_user.clients.order(:name).each do |client| %>
+      <option value="<%= client.id %>" <%= 'selected' if client.id == @client.id %>><%= client.display_name %></option>
+    <% end %>
+  </select>
+<% end %>
+
 <%# Clear modal content %>
 <%= turbo_stream.update "modal_content", "" %>
 
-<%# Dispatch custom event to close modal %>
+<%# Close modal %>
 <%= turbo_stream.append "modal" do %>
   <template>
     <script>
-      // Use Bootstrap's Modal API to close the modal
       const modalElement = document.getElementById('modal');
       const modalInstance = bootstrap.Modal.getInstance(modalElement);
       if (modalInstance) {
         modalInstance.hide();
       }
-
-      // Reload the page after a short delay to update dropdowns with new client
-      setTimeout(() => {
-        window.location.reload();
-      }, 800);
     </script>
   </template>
 <% end %>

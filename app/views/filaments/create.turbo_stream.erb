@@ -1,25 +1,50 @@
 <%# Success response for filament creation from modal %>
-<%# Clear modal content %>
-<%= turbo_stream.update "modal_content", "" %>
-
-<%# Dispatch custom event to close modal %>
+<%# Update all filament select dropdowns with new filament %>
 <%= turbo_stream.append "modal" do %>
   <template>
     <script>
-      // Use Bootstrap's Modal API to close the modal
+      // Update all filament select dropdowns on the page
+      const filamentFrames = document.querySelectorAll('[data-filament-select-frame]');
+      const newFilament = {
+        id: <%= @filament.id %>,
+        name: "<%= j @filament.display_name %>",
+        costPerGram: <%= @filament.cost_per_gram || 0 %>,
+        materialType: "<%= j @filament.material_type.to_s %>",
+        diameter: <%= @filament.diameter || 0 %>
+      };
+
+      filamentFrames.forEach(frame => {
+        const select = frame.querySelector('select');
+        if (select) {
+          // Create new option
+          const option = document.createElement('option');
+          option.value = newFilament.id;
+          option.textContent = newFilament.name;
+          option.dataset.costPerGram = newFilament.costPerGram;
+          option.dataset.materialType = newFilament.materialType;
+          option.diameter = newFilament.diameter;
+          option.selected = true;
+
+          // Add option to select
+          select.appendChild(option);
+
+          // Trigger change event to update calculations
+          select.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      });
+
+      // Close modal
       const modalElement = document.getElementById('modal');
       const modalInstance = bootstrap.Modal.getInstance(modalElement);
       if (modalInstance) {
         modalInstance.hide();
       }
-
-      // Reload the page after a short delay to update dropdowns with new filament
-      setTimeout(() => {
-        window.location.reload();
-      }, 800);
     </script>
   </template>
 <% end %>
+
+<%# Clear modal content %>
+<%= turbo_stream.update "modal_content", "" %>
 
 <%# Show success notification %>
 <%= turbo_stream.prepend "flash" do %>

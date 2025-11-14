@@ -4,24 +4,26 @@
   <div class="row g-3 align-items-end">
     <!-- Filament Selection -->
     <div class="col-md-6">
-      <%= f.label :filament_id, t('filaments.fields.filament'), class: "form-label" %>
-      <%= f.select :filament_id,
-          options_for_select([['', '']] + user_filaments.map do |filament|
-            [
-              filament.display_name,
-              filament.id,
-              {
-                'data-cost-per-gram' => filament.cost_per_gram,
-                'data-material-type' => filament.material_type,
-                'data-diameter' => filament.diameter
-              }
-            ]
-          end, f.object.filament_id),
-          { prompt: t('filaments.fields.select_filament') },
-          {
-            class: "form-select",
-            'data-action': 'change->filament-list#filamentChanged'
-          } %>
+      <%= turbo_frame_tag dom_id(f.object, :filament_select), data: { filament_select_frame: true } do %>
+        <%= f.label :filament_id, t('filaments.fields.filament'), class: "form-label" %>
+        <%= f.select :filament_id,
+            options_for_select([['', '']] + user_filaments.map do |filament|
+              [
+                filament.display_name,
+                filament.id,
+                {
+                  'data-cost-per-gram' => filament.cost_per_gram,
+                  'data-material-type' => filament.material_type,
+                  'data-diameter' => filament.diameter
+                }
+              ]
+            end, f.object.filament_id),
+            { prompt: t('filaments.fields.select_filament') },
+            {
+              class: "form-select",
+              'data-action': 'change->filament-list#filamentChanged'
+            } %>
+      <% end %>
     </div>
 
     <!-- Filament Weight -->
@@ -100,7 +102,7 @@
       <div class="d-flex gap-2 align-items-center">
         <small class="text-muted"><%= t('filaments.fields.no_filament_registered') %></small>
         <%= link_to t('filaments.fields.add_new_filament'),
-            new_filament_path,
+            new_filament_path(format: :turbo_stream),
             class: "btn btn-sm btn-outline-primary",
             data: { turbo_frame: "modal_content" } %>
       </div>

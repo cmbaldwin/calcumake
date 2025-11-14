@@ -13,7 +13,7 @@
      aria-labelledby="modalTitle"
      aria-hidden="true"
      data-controller="modal"
-     data-action="turbo:submit-end->modal#handleSubmit turbo:frame-load->modal#frameLoaded">
+     data-action="turbo:frame-load->modal#open turbo:submit-end->modal#handleSubmit">
   <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content" data-modal-target="content">
       <%= turbo_frame_tag "modal_content" do %>
