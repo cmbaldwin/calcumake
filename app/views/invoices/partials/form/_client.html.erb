@@ -5,21 +5,26 @@
     <div class="card-body">
         <div class="row g-3">
             <div class="col-md-12">
-                <%= form.label :client_id, t("invoices.fields.select_client"), class: "form-label" %>
-                <%= form.collection_select :client_id,
-                    current_user.clients.order(:name),
-                    :id,
-                    :display_name,
-                    {
-                      prompt: t("invoices.fields.no_client_selected"),
-                      include_blank: true
-                    },
-                    { class: "form-select" } %>
-                <div class="form-text">
+                <%= turbo_frame_tag "client_select_frame" do %>
+                  <%= form.label :client_id, t("invoices.fields.select_client"), class: "form-label" %>
+                  <%= form.collection_select :client_id,
+                      current_user.clients.order(:name),
+                      :id,
+                      :display_name,
+                      {
+                        prompt: t("invoices.fields.no_client_selected"),
+                        include_blank: true
+                      },
+                      { class: "form-select" } %>
+                <% end %>
+                <div class="form-text mt-2">
                   <%= t("invoices.fields.client_help_text") %>
-                  <%= link_to t("clients.new.title"), new_client_path,
-                      class: "text-decoration-none",
-                      data: { turbo_frame: "modal_content" } %>
+                  <%= link_to new_client_path(format: :turbo_stream),
+                      class: "btn btn-sm btn-outline-primary ms-2",
+                      data: { turbo_frame: "modal_content" } do %>
+                    <i class="bi bi-plus-circle"></i>
+                    <%= t("clients.new.title") %>
+                  <% end %>
                 </div>
             </div>
         </div>
