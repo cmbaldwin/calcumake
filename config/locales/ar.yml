@@ -506,6 +506,17 @@ ar:
         الدفع، يرجى الاتصال بنا مع البريد الإلكتروني لحسابك.
       priority_note: يحصل المشتركون في مستويات Pro وEnterprise على أوقات استجابة دعم
         ذات أولوية.
+  subscriptions:
+    downgrade_to_plan: التخفيض إلى %{plan}
+    invalid_upgrade: لا يمكن الترقية إلى هذه الخطة
+    invalid_downgrade: لا يمكن التخفيض إلى هذه الخطة
+    upgrade_successful: تمت الترقية بنجاح إلى خطة %{plan}\! تم محاسبتك على المبلغ
+      المتناسب.
+    upgrade_error: خطأ في ترقية الاشتراك. يرجى المحاولة مرة أخرى.
+    downgrade_scheduled: ستتغير خطتك إلى %{plan} في نهاية فترة الفوترة الحالية
+    downgrade_scheduled_free: سيتم إلغاء اشتراكك وستنخفض إلى الخطة المجانية في نهاية
+      فترة الفوترة الحالية
+    downgrade_error: خطأ في جدولة التخفيض. يرجى المحاولة مرة أخرى.
 filaments:
   index:
     title: خيوط الطباعة

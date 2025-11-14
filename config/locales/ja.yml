@@ -992,7 +992,7 @@ ja:
     invalid_plan: 無効なサブスクリプションプランが選択されました
     checkout_error: チェックアウトセッションを作成できません。もう一度お試しください。
     verification_error: サブスクリプションを確認できません。サポートにお問い合わせください。
-    upgrade_successful: "%{plan}プランへのアップグレードに成功しました！"
+    upgrade_successful: "%{plan}プランへのアップグレードが完了しました！日割り料金が請求されました。"
     no_subscription: アクティブなサブスクリプションがありません
     portal_error: サブスクリプション管理にアクセスできません。もう一度お試しください。
     cancel_scheduled: サブスクリプションは請求期間の終了時にキャンセルされます
@@ -1017,6 +1017,13 @@ ja:
       title: よくある質問
     cancel: サブスクリプションをキャンセル
     trial_remaining: 残り%{days}日
+    downgrade_to_plan: "%{plan}にダウングレード"
+    invalid_upgrade: そのプランにアップグレードできません
+    invalid_downgrade: そのプランにダウングレードできません
+    upgrade_error: アップグレードエラー。もう一度お試しください。
+    downgrade_scheduled: 現在の請求期間の終了時に%{plan}プランに変更されます
+    downgrade_scheduled_free: サブスクリプションはキャンセルされ、現在の請求期間の終了時に無料プランにダウングレードされます
+    downgrade_error: ダウングレードのスケジュールエラー。もう一度お試しください。
   gdpr:
     privacy_policy: プライバシーポリシー
     cookie_policy: クッキーポリシー

@@ -1332,13 +1332,20 @@ en:
     upgrade: Upgrade
     upgrade_now: Upgrade Now
     upgrade_to_plan: Upgrade to %{plan}
+    downgrade_to_plan: Downgrade to %{plan}
     manage: Manage Subscription
     trial_badge: Trial
     already_subscribed: You already have an active subscription
     invalid_plan: Invalid subscription plan
+    invalid_upgrade: Cannot upgrade to that plan
+    invalid_downgrade: Cannot downgrade to that plan
     checkout_error: Error creating checkout session
     verification_error: Error verifying subscription
-    upgrade_successful: Successfully upgraded to %{plan} plan
+    upgrade_successful: Successfully upgraded to %{plan} plan! You've been charged the prorated amount.
+    upgrade_error: Error upgrading subscription. Please try again.
+    downgrade_scheduled: Your plan will change to %{plan} at the end of your current billing period
+    downgrade_scheduled_free: Your subscription will be canceled and you'll be downgraded to Free at the end of your current billing period
+    downgrade_error: Error scheduling downgrade. Please try again.
     no_subscription: You don't have an active subscription
     portal_error: Error accessing subscription portal
     cancel_scheduled: Your subscription will be canceled at the end of the billing

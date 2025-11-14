@@ -791,6 +791,18 @@ es:
           de Privacidad
         resubscription: Puede volver a suscribirse en cualquier momento después de
           la cancelación
+  subscriptions:
+    downgrade_to_plan: Bajar a %{plan}
+    invalid_upgrade: No se puede actualizar a ese plan
+    invalid_downgrade: No se puede bajar a ese plan
+    upgrade_successful: "¡Actualizado exitosamente al plan %{plan}\\! Se ha cobrado
+      el monto prorrateado."
+    upgrade_error: Error al actualizar la suscripción. Inténtelo de nuevo.
+    downgrade_scheduled: Su plan cambiará a %{plan} al final de su período de facturación
+      actual
+    downgrade_scheduled_free: Su suscripción será cancelada y bajará al plan Gratuito
+      al final de su período de facturación actual
+    downgrade_error: Error al programar la bajada de plan. Inténtelo de nuevo.
 filaments:
   index:
     title: Mis Filamentos
