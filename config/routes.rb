@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  # GDPR Compliance routes
+  resources :user_consents, only: [ :create ]
+  get "cookie-policy", to: "privacy#cookie_policy", as: :cookie_policy
+  get "terms-of-service", to: "privacy#terms_of_service", as: :terms_of_service
+  get "data-export", to: "privacy#data_export", as: :data_export
+  post "data-deletion", to: "privacy#data_deletion", as: :data_deletion
+  get "data-deletion", to: "privacy#data_deletion"
   resources :clients
   resources :filaments do
     member do

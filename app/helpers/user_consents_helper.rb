@@ -1,0 +1,2 @@
+module UserConsentsHelper
+end

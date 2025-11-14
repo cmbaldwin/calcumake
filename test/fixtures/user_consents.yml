@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+cookie_consent_user_one:
+  user: one
+  consent_type: cookies
+  accepted: true
+  ip_address: "127.0.0.1"
+  user_agent: "Mozilla/5.0"
+  created_at: <%= 1.day.ago %>
+
+privacy_policy_user_one:
+  user: one
+  consent_type: privacy_policy
+  accepted: true
+  ip_address: "127.0.0.1"
+  user_agent: "Mozilla/5.0"
+  created_at: <%= 2.days.ago %>
+
+rejected_consent_user_two:
+  user: two
+  consent_type: cookies
+  accepted: false
+  ip_address: "192.168.1.1"
+  user_agent: "Chrome/90.0"
+  created_at: <%= 3.days.ago %>

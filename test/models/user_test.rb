@@ -446,4 +446,90 @@ class UserTest < ActiveSupport::TestCase
       )
     )
   end
+
+  # GDPR Consent Tests
+  test "has_accepted_cookies? should return true when user accepted cookies" do
+    user = users(:one)
+    user.user_consents.create!(consent_type: "cookies", accepted: true, ip_address: "127.0.0.1")
+    assert user.has_accepted_cookies?
+  end
+
+  test "has_accepted_cookies? should return false when user rejected cookies" do
+    user = users(:one)
+    user.user_consents.create!(consent_type: "cookies", accepted: false, ip_address: "127.0.0.1")
+    assert_not user.has_accepted_cookies?
+  end
+
+  test "has_accepted_privacy_policy? should return correct value" do
+    user = users(:one)
+    user.user_consents.create!(consent_type: "privacy_policy", accepted: true, ip_address: "127.0.0.1")
+    assert user.has_accepted_privacy_policy?
+  end
+
+  test "has_accepted_terms? should return correct value" do
+    user = users(:one)
+    user.user_consents.create!(consent_type: "terms_of_service", accepted: true, ip_address: "127.0.0.1")
+    assert user.has_accepted_terms?
+  end
+
+  test "record_consent should create a new consent record" do
+    user = users(:one)
+
+    assert_difference("user.user_consents.count") do
+      user.record_consent("cookies", true, ip_address: "192.168.1.1", user_agent: "Test Agent")
+    end
+
+    consent = user.user_consents.last
+    assert_equal "cookies", consent.consent_type
+    assert_equal true, consent.accepted
+    assert_equal "192.168.1.1", consent.ip_address
+    assert_equal "Test Agent", consent.user_agent
+  end
+
+  test "export_data should return user data as hash" do
+    user = users(:one)
+    data = user.export_data
+
+    assert data.is_a?(Hash)
+    assert data.key?(:user)
+    assert data.key?(:print_pricings)
+    assert data.key?(:printers)
+    assert data.key?(:invoices)
+    assert data.key?(:filaments)
+    assert data.key?(:clients)
+    assert data.key?(:consents)
+  end
+
+  test "export_data should include user email" do
+    user = users(:one)
+    data = user.export_data
+
+    assert_equal user.email, data[:user][:email]
+  end
+
+  test "export_data should include associated records" do
+    user = users(:one)
+    # Ensure user has at least one print_pricing
+    if user.print_pricings.empty?
+      printer = user.printers.first || user.printers.create!(
+        name: "Test Printer",
+        manufacturer: "Test",
+        model: "Model X",
+        purchase_price: 300,
+        purchase_date: Date.today
+      )
+      pricing = user.print_pricings.create!(
+        job_name: "Test Job",
+        printer: printer,
+        total_cost: 10.50
+      )
+      pricing.plates.create!(
+        printing_time_hours: 2.0,
+        filament_weight: 50.0
+      )
+    end
+
+    data = user.export_data
+    assert data[:print_pricings].is_a?(Array)
+  end
 end

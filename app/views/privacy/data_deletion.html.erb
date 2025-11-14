@@ -1,0 +1,46 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-body p-4 p-md-5">
+          <h1 class="mb-4"><%= t('gdpr.data_deletion.title') %></h1>
+
+          <div class="alert alert-danger">
+            <i class="bi bi-exclamation-triangle me-2"></i>
+            <strong><%= t('gdpr.data_deletion.warning_title') %></strong>
+            <p class="mb-0 mt-2"><%= t('gdpr.data_deletion.warning_message') %></p>
+          </div>
+
+          <section class="mb-4">
+            <h2 class="h5 mb-3"><%= t('gdpr.data_deletion.what_deleted') %></h2>
+            <ul>
+              <li><%= t('gdpr.data_deletion.items.account') %></li>
+              <li><%= t('gdpr.data_deletion.items.print_pricings') %></li>
+              <li><%= t('gdpr.data_deletion.items.printers') %></li>
+              <li><%= t('gdpr.data_deletion.items.invoices') %></li>
+              <li><%= t('gdpr.data_deletion.items.filaments') %></li>
+              <li><%= t('gdpr.data_deletion.items.clients') %></li>
+              <li><%= t('gdpr.data_deletion.items.uploaded_files') %></li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h5 mb-3"><%= t('gdpr.data_deletion.before_deletion') %></h2>
+            <p><%= t('gdpr.data_deletion.export_recommendation_html',
+                     link: link_to(t('gdpr.data_deletion.export_link'), data_export_path, class: 'text-primary')) %></p>
+          </section>
+
+          <%= form_with url: data_deletion_path, method: :post,
+                        data: { turbo_confirm: t('gdpr.data_deletion.confirm_message') },
+                        class: "mt-4" do |f| %>
+            <div class="d-flex gap-3">
+              <%= f.submit t('gdpr.data_deletion.delete_button'),
+                          class: "btn btn-danger" %>
+              <%= link_to t('common.cancel'), :back, class: "btn btn-outline-secondary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
