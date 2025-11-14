@@ -52,12 +52,15 @@ module Webhooks
       user = find_user_by_customer_id(subscription.customer)
       return unless user
 
+      # Skip if subscription is incomplete (no billing period yet)
+      return if subscription["status"] == "incomplete"
+
       plan = determine_plan_from_subscription(subscription)
 
       user.update!(
         plan: plan,
         stripe_subscription_id: subscription.id,
-        plan_expires_at: Time.at(subscription["current_period_end"]),
+        plan_expires_at: subscription["current_period_end"] ? Time.at(subscription["current_period_end"]) : nil,
         trial_ends_at: nil
       )
 
@@ -80,7 +83,7 @@ module Webhooks
 
       user.update!(
         plan: plan,
-        plan_expires_at: Time.at(subscription["current_period_end"])
+        plan_expires_at: subscription["current_period_end"] ? Time.at(subscription["current_period_end"]) : nil
       )
 
       Rails.logger.info "✓ Subscription updated for user #{user.id}: #{plan}"
