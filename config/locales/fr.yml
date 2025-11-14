@@ -828,7 +828,23 @@ print_pricings:
       sign_in_with_provider: Sign in with %{provider}
       sign_in_with_provider_aria: Sign in with %{provider}
   subscriptions:
+    title: "Plans d'Abonnement"
     current_plan: "Plan Actuel"
+    upgrade: "Mettre à Niveau"
+    upgrade_now: "Mettre à Niveau Maintenant"
+    manage: "Gérer l'Abonnement"
+    trial_badge: "Essai"
+    plans:
+      subtitle: "Choisissez le plan qui vous convient le mieux"
+    features:
+      unlimited_calculations: "Calculs illimités"
+      unlimited_printers: "Imprimantes illimitées"
+      unlimited_filaments: "Filaments illimités"
+      unlimited_invoices: "Factures illimitées"
+    faq:
+      title: "Questions Fréquemment Posées"
   usage_limits:
+    unlimited: "Illimité"
+    usage_summary: "Résumé d'Utilisation"
     limit_reached: "Vous avez atteint la limite de votre plan %{plan}: %{limit} %{resource}. Mettez à niveau pour continuer."
     approaching_limits_message: "Vous approchez des limites de votre forfait. Pensez à passer à un forfait supérieur pour plus de ressources."

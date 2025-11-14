@@ -57,7 +57,7 @@ module Webhooks
       user.update!(
         plan: plan,
         stripe_subscription_id: subscription.id,
-        plan_expires_at: Time.at(subscription.current_period_end),
+        plan_expires_at: Time.at(subscription["current_period_end"]),
         trial_ends_at: nil
       )
 
@@ -80,7 +80,7 @@ module Webhooks
 
       user.update!(
         plan: plan,
-        plan_expires_at: Time.at(subscription.current_period_end)
+        plan_expires_at: Time.at(subscription["current_period_end"])
       )
 
       Rails.logger.info "✓ Subscription updated for user #{user.id}: #{plan}"
@@ -123,13 +123,13 @@ module Webhooks
 
     # Handle checkout session completion
     def handle_checkout_completed(session)
-      user_id = session.metadata&.dig("user_id")
+      user_id = session["metadata"]["user_id"]
       return unless user_id
 
       user = User.find_by(id: user_id)
       return unless user
 
-      plan = session.metadata["plan"]
+      plan = session["metadata"]["plan"]
 
       user.update!(
         stripe_customer_id: session.customer,
