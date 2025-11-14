@@ -803,6 +803,9 @@ es:
     downgrade_scheduled_free: Su suscripción será cancelada y bajará al plan Gratuito
       al final de su período de facturación actual
     downgrade_error: Error al programar la bajada de plan. Inténtelo de nuevo.
+    confirm_upgrade: Se le cobrará el monto prorrateado inmediatamente. ¿Continuar?
+    confirm_downgrade: Su plan cambiará al final de su período de facturación actual.
+      ¿Continuar?
 filaments:
   index:
     title: Mis Filamentos

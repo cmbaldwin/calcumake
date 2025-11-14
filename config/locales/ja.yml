@@ -1024,6 +1024,8 @@ ja:
     downgrade_scheduled: 現在の請求期間の終了時に%{plan}プランに変更されます
     downgrade_scheduled_free: サブスクリプションはキャンセルされ、現在の請求期間の終了時に無料プランにダウングレードされます
     downgrade_error: ダウングレードのスケジュールエラー。もう一度お試しください。
+    confirm_upgrade: 日割り料金がすぐに請求されます。続行しますか？
+    confirm_downgrade: プランは現在の請求期間の終了時に変更されます。続行しますか？
   gdpr:
     privacy_policy: プライバシーポリシー
     cookie_policy: クッキーポリシー

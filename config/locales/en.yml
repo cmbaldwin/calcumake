@@ -100,11 +100,11 @@ en:
     sign_in: Sign in
     sign_up: Sign up
     language: Language
-    usage_and_subscription: "Usage & Subscription"
-    legal_header: "Legal & Privacy"
-    data_rights_header: "Your Data Rights"
-    export_data: "Export My Data"
-    delete_account: "Delete My Account"
+    usage_and_subscription: Usage & Subscription
+    legal_header: Legal & Privacy
+    data_rights_header: Your Data Rights
+    export_data: Export My Data
+    delete_account: Delete My Account
   actions:
     title: Actions
     save: Save
@@ -1341,10 +1341,13 @@ en:
     invalid_downgrade: Cannot downgrade to that plan
     checkout_error: Error creating checkout session
     verification_error: Error verifying subscription
-    upgrade_successful: Successfully upgraded to %{plan} plan! You've been charged the prorated amount.
+    upgrade_successful: Successfully upgraded to %{plan} plan! You've been charged
+      the prorated amount.
     upgrade_error: Error upgrading subscription. Please try again.
-    downgrade_scheduled: Your plan will change to %{plan} at the end of your current billing period
-    downgrade_scheduled_free: Your subscription will be canceled and you'll be downgraded to Free at the end of your current billing period
+    downgrade_scheduled: Your plan will change to %{plan} at the end of your current
+      billing period
+    downgrade_scheduled_free: Your subscription will be canceled and you'll be downgraded
+      to Free at the end of your current billing period
     downgrade_error: Error scheduling downgrade. Please try again.
     no_subscription: You don't have an active subscription
     portal_error: Error accessing subscription portal
@@ -1364,6 +1367,9 @@ en:
       unlimited_invoices: Unlimited invoices
     faq:
       title: Frequently Asked Questions
+    confirm_upgrade: You will be charged the prorated amount immediately. Continue?
+    confirm_downgrade: Your plan will change at the end of your current billing period.
+      Continue?
   usage_limits:
     unlimited: Unlimited
     usage_summary: Usage Summary
