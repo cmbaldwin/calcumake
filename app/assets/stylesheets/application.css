@@ -2229,3 +2229,84 @@ html {
     font-size: 0.8rem;
   }
 }
+
+/* ========================================
+   GDPR Cookie Consent Banner Styles
+   ======================================== */
+
+.cookie-consent-banner {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-top: 3px solid var(--bs-primary);
+  box-shadow: 0 -0.5rem 2rem rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.cookie-consent-banner.show {
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.cookie-consent-banner h5 {
+  color: var(--bs-dark);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.cookie-consent-banner p {
+  line-height: 1.4;
+  font-size: 0.875rem;
+}
+
+.cookie-consent-banner .btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cookie-consent-banner .btn-primary {
+  background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-secondary) 100%);
+  border: none;
+}
+
+.cookie-consent-banner .btn-outline-secondary {
+  border-color: var(--moab-stone);
+  color: var(--bs-dark);
+}
+
+.cookie-consent-banner .btn-outline-secondary:hover {
+  background-color: var(--moab-stone);
+  border-color: var(--moab-stone);
+  color: var(--bs-dark);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cookie-consent-banner {
+    padding: 1rem !important;
+  }
+
+  .cookie-consent-banner h5 {
+    font-size: 0.9rem;
+  }
+
+  .cookie-consent-banner p {
+    font-size: 0.8rem;
+  }
+
+  .cookie-consent-banner .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+}
