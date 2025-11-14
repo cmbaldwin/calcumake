@@ -6,6 +6,9 @@
     <p class="lead text-muted"><%= t('profile.show.subtitle') %></p>
 </div>
 
+<!-- Usage Dashboard Widget -->
+<%= render 'shared/usage_dashboard_widget' %>
+
 <%= form_with model: @user, url: user_profile_path, method: :patch, local: true, html: { class: "row g-3" } do |form| %>
 <%= render 'shared/form_errors', object: @user %>
 

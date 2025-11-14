@@ -77,6 +77,11 @@
             <i class="bi bi-gear"></i>
             <span class="d-none d-lg-inline"><%= t('subscriptions.manage') %></span>
           <% end %>
+        <% elsif current_user.startup_plan? && !['print_pricing', 'printer', 'filament', 'invoice'].any? { |r| current_user.approaching_limit?(r) } %>
+          <%= link_to pricing_subscriptions_path, class: 'btn btn-sm btn-outline-secondary' do %>
+            <i class="bi bi-gear"></i>
+            <span class="d-none d-lg-inline"><%= t('subscriptions.manage') %></span>
+          <% end %>
         <% else %>
           <%= link_to pricing_subscriptions_path, class: 'btn btn-sm btn-primary btn-gradient-primary' do %>
             <i class="bi bi-arrow-up-circle"></i>

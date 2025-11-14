@@ -85,6 +85,7 @@ es:
     data_rights_header: Sus Derechos de Datos
     export_data: Exportar Mis Datos
     delete_account: Eliminar Mi Cuenta
+    usage_and_subscription: Uso y Suscripción
   actions:
     save: Guardar
     cancel: Cancelar
