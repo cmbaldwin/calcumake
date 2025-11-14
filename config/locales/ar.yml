@@ -14,6 +14,10 @@ ar:
     sign_in: تسجيل الدخول
     sign_up: إنشاء حساب
     language: اللغة
+    legal_header: القانونية والخصوصية
+    data_rights_header: حقوق البيانات الخاصة بك
+    export_data: تصدير بياناتي
+    delete_account: حذف حسابي
   actions:
     save: حفظ
     cancel: إلغاء
