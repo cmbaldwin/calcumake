@@ -926,6 +926,15 @@ filaments:
     upgrade_now: "立即升级"
     manage: "管理订阅"
     trial_badge: "试用"
+    already_subscribed: "您已经有一个有效的订阅"
+    invalid_plan: "无效的订阅计划"
+    checkout_error: "创建结账会话时出错"
+    verification_error: "验证订阅时出错"
+    upgrade_successful: "成功升级到%{plan}计划"
+    no_subscription: "您没有有效的订阅"
+    portal_error: "访问订阅门户时出错"
+    cancel_scheduled: "您的订阅将在计费周期结束时取消"
+    cancel_error: "取消订阅时出错"
     plans:
       subtitle: "选择最适合您的计划"
     features:

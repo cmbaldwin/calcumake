@@ -1128,6 +1128,15 @@ ja:
     upgrade_now: "今すぐアップグレード"
     manage: "サブスクリプション管理"
     trial_badge: "トライアル"
+    already_subscribed: "既にアクティブなサブスクリプションがあります"
+    invalid_plan: "無効なサブスクリプションプラン"
+    checkout_error: "チェックアウトセッションの作成エラー"
+    verification_error: "サブスクリプションの確認エラー"
+    upgrade_successful: "%{plan}プランへのアップグレードに成功しました"
+    no_subscription: "アクティブなサブスクリプションがありません"
+    portal_error: "サブスクリプションポータルへのアクセスエラー"
+    cancel_scheduled: "サブスクリプションは請求期間の終了時にキャンセルされます"
+    cancel_error: "サブスクリプションのキャンセルエラー"
     plans:
       subtitle: "最適なプランをお選びください"
     features:

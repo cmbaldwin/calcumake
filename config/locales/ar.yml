@@ -793,6 +793,15 @@ print_pricings:
     upgrade_now: "ترقية الآن"
     manage: "إدارة الاشتراك"
     trial_badge: "تجريبي"
+    already_subscribed: "لديك بالفعل اشتراك نشط"
+    invalid_plan: "خطة اشتراك غير صالحة"
+    checkout_error: "خطأ في إنشاء جلسة الدفع"
+    verification_error: "خطأ في التحقق من الاشتراك"
+    upgrade_successful: "تمت الترقية بنجاح إلى خطة %{plan}"
+    no_subscription: "ليس لديك اشتراك نشط"
+    portal_error: "خطأ في الوصول إلى بوابة الاشتراك"
+    cancel_scheduled: "سيتم إلغاء اشتراكك في نهاية فترة الفوترة"
+    cancel_error: "خطأ في إلغاء الاشتراك"
     plans:
       subtitle: "اختر الخطة الأفضل لك"
     features:

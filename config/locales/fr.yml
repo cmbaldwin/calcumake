@@ -834,6 +834,15 @@ print_pricings:
     upgrade_now: "Mettre à Niveau Maintenant"
     manage: "Gérer l'Abonnement"
     trial_badge: "Essai"
+    already_subscribed: "Vous avez déjà un abonnement actif"
+    invalid_plan: "Plan d'abonnement invalide"
+    checkout_error: "Erreur lors de la création de la session de paiement"
+    verification_error: "Erreur lors de la vérification de l'abonnement"
+    upgrade_successful: "Mise à niveau réussie vers le plan %{plan}"
+    no_subscription: "Vous n'avez pas d'abonnement actif"
+    portal_error: "Erreur d'accès au portail d'abonnement"
+    cancel_scheduled: "Votre abonnement sera annulé à la fin de la période de facturation"
+    cancel_error: "Erreur lors de l'annulation de l'abonnement"
     plans:
       subtitle: "Choisissez le plan qui vous convient le mieux"
     features:
