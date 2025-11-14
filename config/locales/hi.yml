@@ -14,6 +14,10 @@ hi:
     sign_in: साइन इन
     sign_up: साइन अप
     language: भाषा
+    legal_header: कानूनी और गोपनीयता
+    data_rights_header: आपके डेटा अधिकार
+    export_data: मेरा डेटा निर्यात करें
+    delete_account: मेरा खाता हटाएं
   actions:
     save: सेव करें
     cancel: रद्द करें

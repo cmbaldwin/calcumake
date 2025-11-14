@@ -79,6 +79,10 @@ ja:
     sign_in: サインイン
     sign_up: サインアップ
     language: 言語
+    legal_header: 法的情報とプライバシー
+    data_rights_header: あなたのデータ権利
+    export_data: データをエクスポート
+    delete_account: アカウントを削除
   actions:
     save: 保存
     cancel: キャンセル
