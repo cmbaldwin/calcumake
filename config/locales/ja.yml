@@ -1122,6 +1122,22 @@ ja:
       update: クライアントを更新
 
   subscriptions:
+    title: "サブスクリプションプラン"
     current_plan: "現在のプラン"
+    upgrade: "アップグレード"
+    upgrade_now: "今すぐアップグレード"
+    manage: "サブスクリプション管理"
+    trial_badge: "トライアル"
+    plans:
+      subtitle: "最適なプランをお選びください"
+    features:
+      unlimited_calculations: "無制限の計算"
+      unlimited_printers: "無制限のプリンター"
+      unlimited_filaments: "無制限のフィラメント"
+      unlimited_invoices: "無制限の請求書"
+    faq:
+      title: "よくある質問"
   usage_limits:
+    unlimited: "無制限"
+    usage_summary: "使用状況サマリー"
     limit_reached: "プランの制限に達しました：%{plan}プランの%{resource}は%{limit}個までです。アップグレードして続行してください。"

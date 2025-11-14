@@ -1273,9 +1273,23 @@ en:
       total_cost: "Total Cost"
       estimated_cost: "Estimated Cost:"
   subscriptions:
+    title: "Subscription Plans"
     current_plan: "Current Plan"
     upgrade: "Upgrade"
     upgrade_now: "Upgrade Now"
+    manage: "Manage Subscription"
+    trial_badge: "Trial"
+    plans:
+      subtitle: "Choose the plan that works best for you"
+    features:
+      unlimited_calculations: "Unlimited calculations"
+      unlimited_printers: "Unlimited printers"
+      unlimited_filaments: "Unlimited filaments"
+      unlimited_invoices: "Unlimited invoices"
+    faq:
+      title: "Frequently Asked Questions"
   usage_limits:
+    unlimited: "Unlimited"
+    usage_summary: "Usage Summary"
     limit_reached: "You've reached your %{plan} plan limit of %{limit} %{resource}. Upgrade to continue."
     approaching_limits_message: "You're approaching your plan limits. Consider upgrading for more resources."

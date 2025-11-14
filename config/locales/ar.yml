@@ -787,7 +787,23 @@ print_pricings:
       sign_in_with_provider: Sign in with %{provider}
       sign_in_with_provider_aria: Sign in with %{provider}
   subscriptions:
+    title: "خطط الاشتراك"
     current_plan: "الخطة الحالية"
+    upgrade: "ترقية"
+    upgrade_now: "ترقية الآن"
+    manage: "إدارة الاشتراك"
+    trial_badge: "تجريبي"
+    plans:
+      subtitle: "اختر الخطة الأفضل لك"
+    features:
+      unlimited_calculations: "حسابات غير محدودة"
+      unlimited_printers: "طابعات غير محدودة"
+      unlimited_filaments: "خيوط غير محدودة"
+      unlimited_invoices: "فواتير غير محدودة"
+    faq:
+      title: "الأسئلة الشائعة"
   usage_limits:
+    unlimited: "غير محدود"
+    usage_summary: "ملخص الاستخدام"
     limit_reached: "لقد وصلت إلى حد خطة %{plan} الخاصة بك: %{limit} %{resource}. قم بالترقية للمتابعة."
     approaching_limits_message: "أنت تقترب من حدود خطتك. فكر في الترقية للحصول على المزيد من الموارد."
