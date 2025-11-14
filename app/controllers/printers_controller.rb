@@ -37,10 +37,8 @@ class PrintersController < ApplicationController
         format.html { redirect_to @printer, notice: "Printer was successfully created." }
         format.turbo_stream {
           flash.now[:notice] = "Printer was successfully created."
-          render turbo_stream: [
-            turbo_stream.update("modal", "<div id='modal' class='modal fade' data-controller='modal'></div>"),
-            turbo_stream.prepend("flash", partial: "layouts/flash_message", locals: { type: :notice, message: flash.now[:notice] })
-          ]
+          # Using Turbo Stream to close modal and show flash message
+          # The modal will be closed via a data-action trigger
         }
       end
     else

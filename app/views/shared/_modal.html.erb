@@ -1,11 +1,21 @@
-<%# Reusable Turbo Modal Component %>
+<%# Reusable Turbo Modal Component
+  This modal component integrates with Turbo and Stimulus for seamless form handling.
+
+  Usage:
+  - Link to modal: <%= link_to "Add", new_resource_path, data: { turbo_frame: "modal_content" } %>
+  - Forms use data: { turbo_frame: "_top" } to break out on submission
+  - Controllers handle success/error via turbo_stream responses
+%>
 <div id="modal"
      class="modal fade"
      tabindex="-1"
+     role="dialog"
+     aria-labelledby="modalTitle"
+     aria-hidden="true"
      data-controller="modal"
-     data-action="turbo:submit-end->modal#handleSubmit">
+     data-action="turbo:submit-end->modal#handleSubmit turbo:frame-load->modal#frameLoaded">
   <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
+    <div class="modal-content" data-modal-target="content">
       <%= turbo_frame_tag "modal_content" do %>
         <%# Modal content will be loaded here via Turbo Frame %>
       <% end %>
