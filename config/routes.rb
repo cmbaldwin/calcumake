@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       post :create_checkout_session
       get :success
       get :manage
+      get :confirm_upgrade
       post :upgrade
       post :downgrade
       post :cancel

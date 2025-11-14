@@ -8,9 +8,83 @@
     </h3>
   </div>
   <div class="card-body">
+    <%# Subscription Details %>
+    <% if @subscription_details %>
+      <div class="mb-4">
+        <h6 class="text-muted mb-3">
+          <i class="bi bi-info-circle"></i>
+          <%= t('subscriptions.subscription_details', default: 'Subscription Details') %>
+        </h6>
+
+        <div class="row g-3">
+          <%# Current Plan %>
+          <div class="col-md-4">
+            <div class="border rounded p-3 h-100">
+              <small class="text-muted d-block mb-1"><%= t('subscriptions.current_plan') %></small>
+              <strong class="d-block h5 mb-0 text-primary"><%= current_user.plan.titleize %></strong>
+            </div>
+          </div>
+
+          <%# Status %>
+          <div class="col-md-4">
+            <div class="border rounded p-3 h-100">
+              <small class="text-muted d-block mb-1"><%= t('subscriptions.status', default: 'Status') %></small>
+              <% status_class = @subscription_details[:cancel_at_period_end] ? 'warning' : 'success' %>
+              <span class="badge bg-<%= status_class %>">
+                <% if @subscription_details[:cancel_at_period_end] %>
+                  <%= t('subscriptions.canceling', default: 'Canceling') %>
+                <% else %>
+                  <%= t('subscriptions.active', default: 'Active') %>
+                <% end %>
+              </span>
+            </div>
+          </div>
+
+          <%# Next Billing Date %>
+          <div class="col-md-4">
+            <div class="border rounded p-3 h-100">
+              <small class="text-muted d-block mb-1">
+                <% if @subscription_details[:cancel_at_period_end] %>
+                  <%= t('subscriptions.access_until', default: 'Access Until') %>
+                <% else %>
+                  <%= t('subscriptions.next_billing_date', default: 'Next Billing') %>
+                <% end %>
+              </small>
+              <strong class="d-block"><%= @subscription_details[:current_period_end].strftime('%b %d, %Y') %></strong>
+            </div>
+          </div>
+
+          <%# Monthly Price %>
+          <% if @subscription_details[:price] %>
+            <div class="col-md-4">
+              <div class="border rounded p-3 h-100">
+                <small class="text-muted d-block mb-1"><%= t('subscriptions.monthly_price', default: 'Monthly Price') %></small>
+                <strong class="d-block h5 mb-0">
+                  <%= number_to_currency(@subscription_details[:price].unit_amount / 100.0,
+                                       unit: @subscription_details[:price].currency.upcase == 'JPY' ? '¥' : '$') %>
+                </strong>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <%# Cancellation Notice %>
+        <% if @subscription_details[:cancel_at_period_end] %>
+          <div class="alert alert-warning mt-3 mb-0">
+            <i class="bi bi-exclamation-triangle"></i>
+            <%= t('subscriptions.cancel_notice',
+                  default: 'Your subscription will be canceled on %{date}. You will retain access to premium features until then.',
+                  date: @subscription_details[:current_period_end].strftime('%B %d, %Y')) %>
+          </div>
+        <% end %>
+      </div>
+
+      <hr>
+    <% end %>
+
     <p class="mb-3">
       <%= t('subscriptions.manage_description',
-            default: 'Update your payment method, view billing history, or cancel your subscription through our secure billing portal.') %>
+            default: 'Update your payment method, view billing history, or manage your subscription through our secure billing portal.') %>
     </p>
 
     <div class="d-flex gap-2 flex-wrap">
@@ -21,15 +95,17 @@
         <%= t('subscriptions.open_billing_portal', default: 'Open Billing Portal') %>
       <% end %>
 
-      <%= button_to cancel_subscriptions_path,
-                    method: :post,
-                    class: 'btn btn-outline-danger',
-                    data: {
-                      confirm: t('subscriptions.cancel_confirmation',
-                                default: 'Are you sure you want to cancel your subscription? You will retain access until the end of your billing period.')
-                    } do %>
-        <i class="bi bi-x-circle"></i>
-        <%= t('subscriptions.cancel_subscription', default: 'Cancel Subscription') %>
+      <% unless @subscription_details&.dig(:cancel_at_period_end) %>
+        <%= button_to cancel_subscriptions_path,
+                      method: :post,
+                      class: 'btn btn-outline-danger',
+                      data: {
+                        confirm: t('subscriptions.cancel_confirmation',
+                                  default: 'Are you sure you want to cancel your subscription? You will retain access until the end of your billing period.')
+                      } do %>
+          <i class="bi bi-x-circle"></i>
+          <%= t('subscriptions.cancel_subscription', default: 'Cancel Subscription') %>
+        <% end %>
       <% end %>
     </div>
 

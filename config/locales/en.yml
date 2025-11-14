@@ -1370,6 +1370,44 @@ en:
     confirm_upgrade: You will be charged the prorated amount immediately. Continue?
     confirm_downgrade: Your plan will change at the end of your current billing period.
       Continue?
+    confirm_upgrade_title: Confirm Your Upgrade
+    confirm_upgrade_subtitle: Review the details below before upgrading your subscription
+    upgrade_summary: Upgrade Summary
+    new_plan: New Plan
+    billing_period: Current Billing Period
+    period_start: Started
+    period_end: Renews
+    days_remaining:
+      one: "%{count} day remaining"
+      other: "%{count} days remaining"
+    pricing_breakdown: Pricing Breakdown
+    new_plan_price: New Plan Monthly Price
+    days_remaining_in_period:
+      one: Days Remaining in Period
+      other: Days Remaining in Period
+    of: of
+    days: days
+    prorated_charge_today: Prorated Charge Today
+    prorated_explanation: You will be charged the difference between your current
+      and new plan for the remaining days in your billing period. Your next full billing
+      cycle will begin on %{date}.
+    what_happens_next: What happens next?
+    immediate_access: You will have immediate access to all %{plan} features
+    charge_now: Your card will be charged the prorated amount now
+    next_bill: Your next full bill of %{amount} will be on %{date}
+    final_confirm_upgrade: Confirm upgrade to %{plan}? You will be charged %{amount}
+      immediately.
+    confirm_and_upgrade: Confirm & Upgrade to %{plan}
+    secure_payment: Secure payment processing by Stripe
+    subscription_details: Subscription Details
+    status: Status
+    active: Active
+    canceling: Canceling
+    access_until: Access Until
+    next_billing_date: Next Billing
+    monthly_price: Monthly Price
+    cancel_notice: Your subscription will be canceled on %{date}. You will retain
+      access to premium features until then.
   usage_limits:
     unlimited: Unlimited
     usage_summary: Usage Summary

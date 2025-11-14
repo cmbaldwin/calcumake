@@ -35,6 +35,22 @@ class SubscriptionsController < ApplicationController
         percentage: current_user.usage_percentage("invoice")
       }
     }
+
+    # Fetch subscription details if user has one
+    if current_user.stripe_subscription_id.present?
+      begin
+        @subscription = Stripe::Subscription.retrieve(current_user.stripe_subscription_id)
+        @subscription_details = {
+          status: @subscription.status,
+          current_period_end: Time.at(@subscription.current_period_end),
+          cancel_at_period_end: @subscription.cancel_at_period_end,
+          price: @subscription.items.data.first&.price
+        }
+      rescue Stripe::StripeError => e
+        Rails.logger.error "Error fetching subscription: #{e.message}"
+        @subscription_details = nil
+      end
+    end
   end
 
   # POST /subscriptions/create_checkout_session
@@ -136,6 +152,58 @@ class SubscriptionsController < ApplicationController
     rescue Stripe::StripeError => e
       Rails.logger.error "Stripe portal error: #{e.message}"
       redirect_to pricing_subscriptions_path, alert: t("subscriptions.portal_error")
+    end
+  end
+
+  # GET /subscriptions/confirm_upgrade
+  # Show upgrade confirmation page with pricing details
+  def confirm_upgrade
+    @target_plan = params[:plan]
+
+    unless %w[startup pro].include?(@target_plan)
+      redirect_to pricing_subscriptions_path, alert: t("subscriptions.invalid_plan")
+      return
+    end
+
+    unless current_user.stripe_subscription_id
+      # No existing subscription, redirect to regular checkout
+      redirect_to create_checkout_session_subscriptions_path(plan: @target_plan)
+      return
+    end
+
+    begin
+      @subscription = Stripe::Subscription.retrieve(current_user.stripe_subscription_id)
+      @current_plan = determine_current_plan(@subscription)
+
+      # Validate upgrade path
+      unless valid_upgrade?(@current_plan, @target_plan)
+        redirect_to pricing_subscriptions_path, alert: t("subscriptions.invalid_upgrade")
+        return
+      end
+
+      # Get price objects for calculation
+      current_price = @subscription.items.data.first.price
+      target_price_id = @target_plan == "startup" ? stripe_startup_price_id : stripe_pro_price_id
+      @target_price = Stripe::Price.retrieve(target_price_id)
+
+      # Calculate proration details
+      @current_period_start = Time.at(@subscription.current_period_start)
+      @current_period_end = Time.at(@subscription.current_period_end)
+      @days_remaining = ((@current_period_end - Time.now) / 1.day).ceil
+      @total_days = ((@current_period_end - @current_period_start) / 1.day).ceil
+
+      # Estimate prorated amount (Stripe will calculate the exact amount)
+      @prorated_amount = calculate_prorated_amount(
+        current_price.unit_amount,
+        @target_price.unit_amount,
+        @days_remaining,
+        @total_days
+      )
+
+      @currency = @target_price.currency.upcase
+    rescue Stripe::StripeError => e
+      Rails.logger.error "Stripe error in confirm_upgrade: #{e.message}"
+      redirect_to pricing_subscriptions_path, alert: t("subscriptions.upgrade_error")
     end
   end
 
@@ -334,5 +402,17 @@ class SubscriptionsController < ApplicationController
   def valid_downgrade?(current_plan, target_plan)
     plan_hierarchy = { "free" => 0, "startup" => 1, "pro" => 2 }
     plan_hierarchy[target_plan] < plan_hierarchy[current_plan]
+  end
+
+  # Calculate estimated prorated amount for upgrade
+  def calculate_prorated_amount(current_amount, target_amount, days_remaining, total_days)
+    # Amount for remaining period at current rate
+    remaining_current = (current_amount * days_remaining.to_f / total_days).round
+
+    # Amount for remaining period at new rate
+    remaining_new = (target_amount * days_remaining.to_f / total_days).round
+
+    # Prorated charge is the difference
+    [remaining_new - remaining_current, 0].max
   end
 end
