@@ -861,6 +861,15 @@ print_pricings:
     upgrade_now: "अभी अपग्रेड करें"
     manage: "सदस्यता प्रबंधित करें"
     trial_badge: "परीक्षण"
+    already_subscribed: "आपके पास पहले से एक सक्रिय सदस्यता है"
+    invalid_plan: "अमान्य सदस्यता योजना"
+    checkout_error: "चेकआउट सत्र बनाने में त्रुटि"
+    verification_error: "सदस्यता सत्यापित करने में त्रुटि"
+    upgrade_successful: "%{plan} योजना में सफलतापूर्वक अपग्रेड किया गया"
+    no_subscription: "आपके पास कोई सक्रिय सदस्यता नहीं है"
+    portal_error: "सदस्यता पोर्टल तक पहुंचने में त्रुटि"
+    cancel_scheduled: "आपकी सदस्यता बिलिंग अवधि के अंत में रद्द कर दी जाएगी"
+    cancel_error: "सदस्यता रद्द करने में त्रुटि"
     plans:
       subtitle: "अपने लिए सबसे अच्छी योजना चुनें"
     features:

@@ -47,6 +47,21 @@ class SubscriptionsController < ApplicationController
       return
     end
 
+    # Prevent creating duplicate subscriptions
+    if current_user.stripe_subscription_id.present?
+      # Check if subscription is still active in Stripe
+      begin
+        subscription = Stripe::Subscription.retrieve(current_user.stripe_subscription_id)
+        if subscription["status"] == "active" || subscription["status"] == "trialing"
+          redirect_to pricing_subscriptions_path, alert: t("subscriptions.already_subscribed")
+          return
+        end
+      rescue Stripe::InvalidRequestError
+        # Subscription doesn't exist in Stripe, allow creating new one
+        Rails.logger.info "Previous subscription #{current_user.stripe_subscription_id} not found, creating new"
+      end
+    end
+
     begin
       # Create or retrieve Stripe customer
       customer = get_or_create_stripe_customer

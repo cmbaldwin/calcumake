@@ -1139,6 +1139,15 @@ print_pricings:
     upgrade_now: "Actualizar Ahora"
     manage: "Gestionar Suscripción"
     trial_badge: "Prueba"
+    already_subscribed: "Ya tienes una suscripción activa"
+    invalid_plan: "Plan de suscripción inválido"
+    checkout_error: "Error al crear sesión de pago"
+    verification_error: "Error al verificar la suscripción"
+    upgrade_successful: "Actualizado exitosamente al plan %{plan}"
+    no_subscription: "No tienes una suscripción activa"
+    portal_error: "Error al acceder al portal de suscripciones"
+    cancel_scheduled: "Tu suscripción se cancelará al final del período de facturación"
+    cancel_error: "Error al cancelar la suscripción"
     plans:
       subtitle: "Elige el plan que mejor se adapte a ti"
     features:
