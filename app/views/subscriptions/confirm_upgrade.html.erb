@@ -1,0 +1,151 @@
+<%# Upgrade confirmation page with detailed pricing breakdown %>
+
+<% content_for :title, t('subscriptions.confirm_upgrade_title', default: 'Confirm Upgrade') %>
+
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <%# Header %>
+      <div class="text-center mb-4">
+        <h1 class="h3 mb-2">
+          <i class="bi bi-arrow-up-circle-fill text-primary"></i>
+          <%= t('subscriptions.confirm_upgrade_title', default: 'Confirm Your Upgrade') %>
+        </h1>
+        <p class="text-muted">
+          <%= t('subscriptions.confirm_upgrade_subtitle', default: 'Review the details below before upgrading your subscription') %>
+        </p>
+      </div>
+
+      <%# Upgrade Summary Card %>
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">
+            <i class="bi bi-info-circle"></i>
+            <%= t('subscriptions.upgrade_summary', default: 'Upgrade Summary') %>
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-6">
+              <small class="text-muted d-block"><%= t('subscriptions.current_plan') %></small>
+              <strong class="h5"><%= @current_plan.titleize %></strong>
+            </div>
+            <div class="col-6 text-end">
+              <small class="text-muted d-block"><%= t('subscriptions.new_plan', default: 'New Plan') %></small>
+              <strong class="h5 text-primary"><%= @target_plan.titleize %></strong>
+            </div>
+          </div>
+
+          <hr>
+
+          <%# Billing Period Information %>
+          <div class="mb-3">
+            <h6 class="text-muted mb-2">
+              <i class="bi bi-calendar-range"></i>
+              <%= t('subscriptions.billing_period', default: 'Current Billing Period') %>
+            </h6>
+            <div class="row">
+              <div class="col-6">
+                <small class="text-muted d-block"><%= t('subscriptions.period_start', default: 'Started') %></small>
+                <strong><%= @current_period_start.strftime('%B %d, %Y') %></strong>
+              </div>
+              <div class="col-6 text-end">
+                <small class="text-muted d-block"><%= t('subscriptions.period_end', default: 'Renews') %></small>
+                <strong><%= @current_period_end.strftime('%B %d, %Y') %></strong>
+              </div>
+            </div>
+            <div class="mt-2">
+              <div class="progress" style="height: 8px;">
+                <% progress = ((Time.now - @current_period_start) / (@current_period_end - @current_period_start) * 100).round %>
+                <div class="progress-bar bg-primary" style="width: <%= progress %>%"></div>
+              </div>
+              <small class="text-muted">
+                <%= t('subscriptions.days_remaining', count: @days_remaining) %>
+              </small>
+            </div>
+          </div>
+
+          <hr>
+
+          <%# Pricing Breakdown %>
+          <div class="mb-3">
+            <h6 class="text-muted mb-3">
+              <i class="bi bi-calculator"></i>
+              <%= t('subscriptions.pricing_breakdown', default: 'Pricing Breakdown') %>
+            </h6>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span><%= t('subscriptions.new_plan_price', default: 'New Plan Monthly Price') %></span>
+              <strong><%= number_to_currency(@target_price.unit_amount / 100.0, unit: @currency == 'JPY' ? '¥' : '$') %>/mo</strong>
+            </div>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span><%= t('subscriptions.days_remaining_in_period', count: @days_remaining) %></span>
+              <span><%= @days_remaining %> <%= t('subscriptions.of', default: 'of') %> <%= @total_days %> <%= t('subscriptions.days', default: 'days') %></span>
+            </div>
+
+            <hr class="my-2">
+
+            <div class="d-flex justify-content-between">
+              <strong><%= t('subscriptions.prorated_charge_today', default: 'Prorated Charge Today') %></strong>
+              <strong class="text-primary h5 mb-0">
+                <%= number_to_currency(@prorated_amount / 100.0, unit: @currency == 'JPY' ? '¥' : '$') %>
+              </strong>
+            </div>
+
+            <small class="text-muted d-block mt-2">
+              <i class="bi bi-info-circle"></i>
+              <%= t('subscriptions.prorated_explanation',
+                    default: 'You will be charged the difference between your current and new plan for the remaining days in your billing period. Your next full billing cycle will begin on %{date}.',
+                    date: @current_period_end.strftime('%B %d, %Y')) %>
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <%# What Happens Next %>
+      <div class="alert alert-info">
+        <h6 class="alert-heading">
+          <i class="bi bi-lightbulb"></i>
+          <%= t('subscriptions.what_happens_next', default: 'What happens next?') %>
+        </h6>
+        <ul class="mb-0">
+          <li><%= t('subscriptions.immediate_access', default: 'You will have immediate access to all %{plan} features', plan: @target_plan.titleize) %></li>
+          <li><%= t('subscriptions.charge_now', default: 'Your card will be charged the prorated amount now') %></li>
+          <li><%= t('subscriptions.next_bill', default: 'Your next full bill of %{amount} will be on %{date}',
+                    amount: number_to_currency(@target_price.unit_amount / 100.0, unit: @currency == 'JPY' ? '¥' : '$'),
+                    date: @current_period_end.strftime('%B %d, %Y')) %></li>
+        </ul>
+      </div>
+
+      <%# Action Buttons %>
+      <div class="d-flex gap-3 justify-content-center mt-4">
+        <%= link_to pricing_subscriptions_path, class: 'btn btn-outline-secondary btn-lg' do %>
+          <i class="bi bi-arrow-left"></i>
+          <%= t('actions.cancel', default: 'Cancel') %>
+        <% end %>
+
+        <%= button_to upgrade_subscriptions_path(plan: @target_plan),
+                      method: :post,
+                      class: 'btn btn-primary btn-lg btn-gradient-primary',
+                      data: {
+                        confirm: t('subscriptions.final_confirm_upgrade',
+                                 default: "Confirm upgrade to %{plan}? You will be charged %{amount} immediately.",
+                                 plan: @target_plan.titleize,
+                                 amount: number_to_currency(@prorated_amount / 100.0, unit: @currency == 'JPY' ? '¥' : '$'))
+                      } do %>
+          <i class="bi bi-check-circle"></i>
+          <%= t('subscriptions.confirm_and_upgrade', default: 'Confirm & Upgrade to %{plan}', plan: @target_plan.titleize) %>
+        <% end %>
+      </div>
+
+      <%# Security Note %>
+      <div class="text-center mt-4">
+        <small class="text-muted">
+          <i class="bi bi-shield-check"></i>
+          <%= t('subscriptions.secure_payment', default: 'Secure payment processing by Stripe') %>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>

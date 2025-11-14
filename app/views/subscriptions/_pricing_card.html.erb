@@ -126,12 +126,10 @@
         %>
 
         <% if is_upgrade %>
-          <%# Existing subscription, upgrading - use upgrade action for immediate upgrade with proration %>
-          <%= button_to t('subscriptions.upgrade_to_plan', plan: features[:name]),
-                        upgrade_subscriptions_path(plan: plan),
-                        method: :post,
-                        class: "btn btn-primary w-100 #{'btn-gradient-primary' if popular}",
-                        data: { confirm: t('subscriptions.confirm_upgrade', default: 'You will be charged the prorated amount immediately. Continue?') } %>
+          <%# Existing subscription, upgrading - show confirmation page first %>
+          <%= link_to t('subscriptions.upgrade_to_plan', plan: features[:name]),
+                      confirm_upgrade_subscriptions_path(plan: plan),
+                      class: "btn btn-primary w-100 #{'btn-gradient-primary' if popular}" %>
         <% elsif is_downgrade %>
           <%# Existing subscription, downgrading - use downgrade action for end-of-period change %>
           <%= button_to t('subscriptions.downgrade_to_plan', plan: features[:name]),
