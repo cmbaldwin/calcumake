@@ -569,6 +569,9 @@ fr:
       au plan Gratuit à la fin de votre période de facturation actuelle
     downgrade_error: Erreur lors de la planification de la rétrogradation. Veuillez
       réessayer.
+    confirm_upgrade: Le montant au prorata vous sera facturé immédiatement. Continuer?
+    confirm_downgrade: Votre plan changera à la fin de votre période de facturation
+      actuelle. Continuer?
 filaments:
   index:
     title: Mes Filaments
