@@ -573,6 +573,15 @@ zh-CN:
       title: 账单和订阅支持
       description: 如有账单咨询、订阅更改、退款请求或付款问题，请提供您的账户电子邮件联系我们。
       priority_note: Pro和Enterprise层订阅者享有优先支持响应时间。
+  subscriptions:
+    downgrade_to_plan: 降级至%{plan}
+    invalid_upgrade: 无法升级到该计划
+    invalid_downgrade: 无法降级到该计划
+    upgrade_successful: 已成功升级到%{plan}计划！您已按比例支付费用。
+    upgrade_error: 升级订阅时出错。请重试。
+    downgrade_scheduled: 您的计划将在当前计费周期结束时更改为%{plan}
+    downgrade_scheduled_free: 您的订阅将被取消，并在当前计费周期结束时降级为免费计划
+    downgrade_error: 安排降级时出错。请重试。
 filaments:
   index:
     title: 我的材料

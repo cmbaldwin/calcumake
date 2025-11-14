@@ -139,6 +139,121 @@ class SubscriptionsController < ApplicationController
     end
   end
 
+  # POST /subscriptions/upgrade
+  # Upgrade subscription immediately with prorated billing
+  def upgrade
+    target_plan = params[:plan]
+
+    unless %w[startup pro].include?(target_plan)
+      redirect_to pricing_subscriptions_path, alert: t("subscriptions.invalid_plan")
+      return
+    end
+
+    unless current_user.stripe_subscription_id
+      # No existing subscription, use regular checkout flow
+      redirect_to create_checkout_session_subscriptions_path(plan: target_plan)
+      return
+    end
+
+    begin
+      subscription = Stripe::Subscription.retrieve(current_user.stripe_subscription_id)
+      current_plan = determine_current_plan(subscription)
+
+      # Validate upgrade path (can't downgrade via upgrade action)
+      if !valid_upgrade?(current_plan, target_plan)
+        redirect_to pricing_subscriptions_path, alert: t("subscriptions.invalid_upgrade")
+        return
+      end
+
+      # Get the new price ID
+      new_price_id = target_plan == "startup" ? stripe_startup_price_id : stripe_pro_price_id
+
+      # Update the subscription with prorated billing (immediate upgrade)
+      updated_subscription = Stripe::Subscription.update(
+        subscription.id,
+        {
+          items: [
+            {
+              id: subscription.items.data.first.id,
+              price: new_price_id
+            }
+          ],
+          proration_behavior: "always_invoice", # Charge prorated amount immediately
+          billing_cycle_anchor: "unchanged" # Keep the same billing date
+        }
+      )
+
+      # Update user's plan immediately
+      current_user.update!(
+        plan: target_plan,
+        plan_expires_at: Time.at(updated_subscription.current_period_end)
+      )
+
+      redirect_to pricing_subscriptions_path, notice: t("subscriptions.upgrade_successful", plan: target_plan.titleize)
+    rescue Stripe::StripeError => e
+      Rails.logger.error "Stripe upgrade error: #{e.message}"
+      redirect_to pricing_subscriptions_path, alert: t("subscriptions.upgrade_error")
+    end
+  end
+
+  # POST /subscriptions/downgrade
+  # Downgrade subscription at end of current billing period
+  def downgrade
+    target_plan = params[:plan]
+
+    unless %w[free startup].include?(target_plan)
+      redirect_to pricing_subscriptions_path, alert: t("subscriptions.invalid_plan")
+      return
+    end
+
+    unless current_user.stripe_subscription_id
+      redirect_to pricing_subscriptions_path, alert: t("subscriptions.no_subscription")
+      return
+    end
+
+    begin
+      subscription = Stripe::Subscription.retrieve(current_user.stripe_subscription_id)
+      current_plan = determine_current_plan(subscription)
+
+      # Validate downgrade path (can't upgrade via downgrade action)
+      if !valid_downgrade?(current_plan, target_plan)
+        redirect_to pricing_subscriptions_path, alert: t("subscriptions.invalid_downgrade")
+        return
+      end
+
+      if target_plan == "free"
+        # Cancel subscription at period end
+        Stripe::Subscription.update(
+          subscription.id,
+          { cancel_at_period_end: true }
+        )
+        redirect_to pricing_subscriptions_path, notice: t("subscriptions.downgrade_scheduled_free")
+      else
+        # Schedule downgrade to startup at period end
+        new_price_id = stripe_startup_price_id
+
+        Stripe::Subscription.update(
+          subscription.id,
+          {
+            items: [
+              {
+                id: subscription.items.data.first.id,
+                price: new_price_id
+              }
+            ],
+            proration_behavior: "none", # No proration for downgrades
+            billing_cycle_anchor: "unchanged" # Apply at end of current period
+          }
+        )
+
+        redirect_to pricing_subscriptions_path, notice: t("subscriptions.downgrade_scheduled", plan: target_plan.titleize)
+      end
+    rescue Stripe::StripeError => e
+      Rails.logger.error "Stripe downgrade error: #{e.message}"
+      redirect_to pricing_subscriptions_path, alert: t("subscriptions.downgrade_error")
+    end
+  end
+
   # POST /subscriptions/cancel
   # Cancel subscription (downgrade to free)
   def cancel
@@ -192,5 +307,32 @@ class SubscriptionsController < ApplicationController
   # Get Stripe price ID for Pro plan
   def stripe_pro_price_id
     Rails.configuration.stripe[:pro_price_id]
+  end
+
+  # Determine current plan from Stripe subscription
+  def determine_current_plan(subscription)
+    price_id = subscription.items.data.first&.price&.id
+
+    case price_id
+    when stripe_startup_price_id
+      "startup"
+    when stripe_pro_price_id
+      "pro"
+    else
+      # Fallback to user's current plan
+      current_user.plan
+    end
+  end
+
+  # Check if upgrade is valid (moving to higher tier)
+  def valid_upgrade?(current_plan, target_plan)
+    plan_hierarchy = { "free" => 0, "startup" => 1, "pro" => 2 }
+    plan_hierarchy[target_plan] > plan_hierarchy[current_plan]
+  end
+
+  # Check if downgrade is valid (moving to lower tier)
+  def valid_downgrade?(current_plan, target_plan)
+    plan_hierarchy = { "free" => 0, "startup" => 1, "pro" => 2 }
+    plan_hierarchy[target_plan] < plan_hierarchy[current_plan]
   end
 end

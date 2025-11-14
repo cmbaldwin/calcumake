@@ -556,6 +556,19 @@ fr:
         contacter avec l'adresse e-mail de votre compte.
       priority_note: Les abonnés des niveaux Pro et Enterprise bénéficient de temps
         de réponse de support prioritaires.
+  subscriptions:
+    downgrade_to_plan: Rétrograder vers %{plan}
+    invalid_upgrade: Impossible de mettre à niveau vers ce plan
+    invalid_downgrade: Impossible de rétrograder vers ce plan
+    upgrade_successful: Mise à niveau réussie vers le plan %{plan}\! Le montant au
+      prorata a été facturé.
+    upgrade_error: Erreur lors de la mise à niveau de l'abonnement. Veuillez réessayer.
+    downgrade_scheduled: Votre plan passera à %{plan} à la fin de votre période de
+      facturation actuelle
+    downgrade_scheduled_free: Votre abonnement sera annulé et vous serez rétrogradé
+      au plan Gratuit à la fin de votre période de facturation actuelle
+    downgrade_error: Erreur lors de la planification de la rétrogradation. Veuillez
+      réessayer.
 filaments:
   index:
     title: Mes Filaments
