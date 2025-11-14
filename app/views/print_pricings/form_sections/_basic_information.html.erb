@@ -11,16 +11,21 @@
         </div>
 
         <div class="col-md-6">
-          <%= f.label :printer_id, t('print_pricing.fields.select_printer'), class: "form-label" %>
-          <%= f.select :printer_id,
-              options_from_collection_for_select(current_user.printers, :id, :name, f.object.printer_id),
-              { prompt: t('print_pricing.fields.select_printer_prompt') },
-              { class: "form-select" } %>
-          <div class="form-text">
+          <%= turbo_frame_tag "printer_select_frame" do %>
+            <%= f.label :printer_id, t('print_pricing.fields.select_printer'), class: "form-label" %>
+            <%= f.select :printer_id,
+                options_from_collection_for_select(current_user.printers, :id, :name, f.object.printer_id),
+                { prompt: t('print_pricing.fields.select_printer_prompt') },
+                { class: "form-select" } %>
+          <% end %>
+          <div class="form-text mt-2">
             <%= t('print_pricing.fields.no_printer_help') %>
-            <%= link_to t('print_pricing.fields.add_printer_link'), new_printer_path,
-                class: "text-primary",
-                data: { turbo_frame: "modal_content" } %>
+            <%= link_to new_printer_path(format: :turbo_stream),
+                class: "btn btn-sm btn-outline-primary ms-2",
+                data: { turbo_frame: "modal_content" } do %>
+              <i class="bi bi-plus-circle"></i>
+              <%= t('print_pricing.fields.add_printer_link') %>
+            <% end %>
           </div>
         </div>
 

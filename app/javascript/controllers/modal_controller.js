@@ -8,6 +8,7 @@ export default class extends Controller {
   }
 
   connect() {
+    console.log('Modal controller connected')
     // Initialize Bootstrap modal
     this.modal = new bootstrap.Modal(this.element, {
       backdrop: true,
@@ -34,12 +35,19 @@ export default class extends Controller {
 
   // Open the modal
   open(event) {
+    console.log('Opening modal', event)
     // Prevent default link behavior if called from a link
     if (event) {
       event.preventDefault()
     }
 
-    this.modal.show()
+    // Check if modal is already shown
+    if (!this.element.classList.contains('show')) {
+      this.modal.show()
+      console.log('Modal.show() called')
+    } else {
+      console.log('Modal already shown, skipping')
+    }
   }
 
   // Close the modal
@@ -62,31 +70,39 @@ export default class extends Controller {
 
   // Handle Turbo form submission
   handleSubmit(event) {
-    const { success, fetchResponse } = event.detail
+    console.log('Form submitted', event.detail)
+    const { success } = event.detail
 
-    // Only handle successful submissions (2xx status codes)
+    // Close modal on successful submission
     if (success) {
-      // Check if the response is a redirect (meaning form was valid)
-      // or a re-render (meaning there were validation errors)
-      if (fetchResponse) {
-        const contentType = fetchResponse.response.headers.get("Content-Type")
-
-        // If it's a turbo-stream response, let it handle the modal state
-        // Otherwise, check if it's a successful HTML response (redirect)
-        if (contentType && contentType.includes("text/html")) {
-          // This means we got redirected after successful save
-          // The turbo-stream will handle closing the modal
-        }
-      }
+      console.log('Form successful, closing modal')
+      this.close()
+    } else {
+      console.log('Form had errors, keeping modal open')
     }
+  }
+
+  // Close method without event parameter for internal use
+  close() {
+    this.modal.hide()
   }
 
   // Handle frame load events
   frameLoaded(event) {
+    console.log('Frame loaded event:', event.target)
     // When a frame is loaded, check if we should open the modal
     // This is triggered when loading content into the modal frame
-    if (!this.modal._isShown) {
-      this.open()
+    // Check if the turbo frame that loaded is the modal_content frame
+    const frame = event.target
+    console.log('Frame ID:', frame?.id)
+    if (frame && frame.id === 'modal_content') {
+      console.log('Modal content frame loaded, opening modal')
+      // Only open if modal is not already shown
+      // Use Bootstrap 5's _isShown property or check element classes
+      const isShown = this.element.classList.contains('show')
+      if (!isShown) {
+        this.open()
+      }
     }
   }
 

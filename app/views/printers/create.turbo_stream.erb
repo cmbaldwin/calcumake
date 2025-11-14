@@ -1,23 +1,27 @@
 <%# Success response for printer creation from modal %>
+<%# Update the printer select dropdown with new printer %>
+<%= turbo_stream.update "printer_select_frame" do %>
+  <label for="print_pricing_printer_id" class="form-label"><%= t('print_pricing.fields.select_printer') %></label>
+  <select name="print_pricing[printer_id]" id="print_pricing_printer_id" class="form-select">
+    <option value=""><%= t('print_pricing.fields.select_printer_prompt') %></option>
+    <% current_user.printers.order(:name).each do |printer| %>
+      <option value="<%= printer.id %>" <%= 'selected' if printer.id == @printer.id %>><%= printer.name %></option>
+    <% end %>
+  </select>
+<% end %>
+
 <%# Clear modal content %>
 <%= turbo_stream.update "modal_content", "" %>
 
-<%# Dispatch custom event to close modal %>
+<%# Close modal %>
 <%= turbo_stream.append "modal" do %>
-  <template data-turbo-stream-action="invoke" data-turbo-stream-target="modal.close">
+  <template>
     <script>
-      // Use Bootstrap's Modal API to close the modal
       const modalElement = document.getElementById('modal');
       const modalInstance = bootstrap.Modal.getInstance(modalElement);
       if (modalInstance) {
         modalInstance.hide();
       }
-
-      // Reload the page after a short delay to update dropdowns with new printer
-      // In a more sophisticated app, you'd use Turbo Frames to update specific parts
-      setTimeout(() => {
-        window.location.reload();
-      }, 800);
     </script>
   </template>
 <% end %>
