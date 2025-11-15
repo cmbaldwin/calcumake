@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# Clear cache for keys with English placeholder values
+echo "Checking for untranslated placeholders..."
+bin/force-retranslate
+
 # Sync translations with automated translation if API key available
-echo "Syncing translations..."
+echo "Syncing and translating all missing keys..."
 bin/sync-translations
 
 # Check if translations created any changes
