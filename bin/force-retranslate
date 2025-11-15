@@ -1,0 +1,122 @@
+#!/usr/bin/env ruby
+# Force re-translation of English values in non-English locale files
+# This clears the cache for keys that have English values so they get re-translated
+
+require 'yaml'
+require 'json'
+require 'fileutils'
+
+LOCALES_DIR = File.expand_path('../config/locales', __dir__)
+CACHE_DIR = File.expand_path('../tmp/translation_cache', __dir__)
+TARGET_LOCALES = ['ja', 'es', 'fr', 'ar', 'hi', 'zh-CN']
+
+def flatten_hash(hash, prefix = '')
+  result = {}
+  hash.each do |key, value|
+    full_key = prefix.empty? ? key : "#{prefix}.#{key}"
+    if value.is_a?(Hash)
+      result.merge!(flatten_hash(value, full_key))
+    else
+      result[full_key] = value
+    end
+  end
+  result
+end
+
+def looks_like_english?(text)
+  return false if text.nil? || text.empty?
+  return false unless text.is_a?(String)
+
+  # Check if text contains mostly English words
+  # Simple heuristic: if it matches common English patterns
+  english_patterns = [
+    /^[A-Z][a-z]+(\s+[a-z]+)*$/,  # "Start with one"
+    /^[A-Z][a-z]+\s+[A-Z][a-z]+/,  # "Basic Information"
+    /\b(the|and|or|in|on|at|to|for|of|with|by|from|as|is|was|are|be)\b/i,  # Common English words
+    /[A-Za-z]{3,}/  # Contains English-length words
+  ]
+
+  english_patterns.any? { |pattern| text =~ pattern }
+end
+
+puts "=" * 80
+puts "Force Re-Translation Tool"
+puts "=" * 80
+puts
+
+# Load English master
+en_file = File.join(LOCALES_DIR, 'en.yml')
+en_data = YAML.load_file(en_file)
+en_keys = flatten_hash(en_data['en'])
+
+puts "📖 Loaded #{en_keys.count} English keys"
+puts
+
+TARGET_LOCALES.each do |locale|
+  puts "🌍 Processing #{locale}..."
+
+  target_file = File.join(LOCALES_DIR, "#{locale}.yml")
+  cache_file = File.join(CACHE_DIR, "#{locale}.json")
+
+  unless File.exist?(target_file)
+    puts "   ⚠️  #{locale}.yml not found, skipping"
+    next
+  end
+
+  target_data = YAML.load_file(target_file)
+  target_keys = flatten_hash(target_data[locale])
+
+  # Find keys with English values
+  english_values = []
+  target_keys.each do |key, value|
+    if en_keys[key] && value == en_keys[key]
+      english_values << key
+    elsif looks_like_english?(value)
+      english_values << key
+    end
+  end
+
+  if english_values.empty?
+    puts "   ✅ No English values found (#{target_keys.count} keys)"
+  else
+    puts "   📝 Found #{english_values.count} keys with English values"
+
+    # Clear cache for these keys
+    if File.exist?(cache_file)
+      cache = JSON.parse(File.read(cache_file))
+      removed_count = 0
+
+      english_values.each do |key|
+        if cache.delete(key)
+          removed_count += 1
+        end
+      end
+
+      File.write(cache_file, JSON.pretty_generate(cache))
+      puts "   🗑️  Removed #{removed_count} cached translations"
+    else
+      puts "   📦 No cache file found (will translate fresh)"
+    end
+
+    # Show sample of keys to be re-translated
+    puts "   📋 Sample keys to re-translate:"
+    english_values.first(5).each do |key|
+      puts "      - #{key}: \"#{target_keys[key]}\""
+    end
+    if english_values.count > 5
+      puts "      ... and #{english_values.count - 5} more"
+    end
+  end
+
+  puts
+end
+
+puts "=" * 80
+puts "✨ Cache cleared for English values!"
+puts "=" * 80
+puts
+puts "💡 Next steps:"
+puts "   1. Run 'bin/sync-translations' with OPENROUTER_TRANSLATION_KEY set"
+puts "   2. Or run 'bin/translate-locales' directly"
+puts "   3. Keys with English values will be re-translated"
+puts
