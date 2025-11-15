@@ -2,10 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="modal"
 export default class extends Controller {
-  static targets = ["content", "form"]
-  static values = {
-    autoOpen: { type: Boolean, default: false }
-  }
+  static targets = ["content"]
 
   connect() {
     console.log('Modal controller connected')
@@ -16,38 +13,56 @@ export default class extends Controller {
       focus: true
     })
 
-    // Auto-open if the value is set (useful for turbo-stream responses)
-    if (this.autoOpenValue) {
-      this.open()
-    }
-
     // Listen for Bootstrap's hidden event to clean up
     this.element.addEventListener('hidden.bs.modal', this.handleHidden.bind(this))
+
+    // Listen for custom open-modal event from anywhere in the document
+    document.addEventListener('open-modal', this.handleOpenModal.bind(this))
   }
 
   disconnect() {
     // Clean up when controller is disconnected
     if (this.modal) {
       this.element.removeEventListener('hidden.bs.modal', this.handleHidden.bind(this))
+      document.removeEventListener('open-modal', this.handleOpenModal.bind(this))
       this.modal.dispose()
     }
   }
 
-  // Open the modal
-  open(event) {
-    console.log('Opening modal', event)
-    // Prevent default link behavior if called from a link
-    if (event) {
+  // Handle custom open-modal event from anywhere
+  handleOpenModal(event) {
+    console.log('Received open-modal event', event)
+    this.openWithLoading()
+  }
+
+  // Open the modal and show loading spinner
+  openWithLoading(event) {
+    console.log('Opening modal with loading spinner')
+
+    // Prevent default if called from a click event
+    if (event && event.preventDefault) {
       event.preventDefault()
     }
 
-    // Check if modal is already shown
-    if (!this.element.classList.contains('show')) {
-      this.modal.show()
-      console.log('Modal.show() called')
-    } else {
-      console.log('Modal already shown, skipping')
+    // Show loading spinner in modal content
+    const modalContent = this.element.querySelector('#modal_content')
+    if (modalContent) {
+      modalContent.innerHTML = `
+        <div class="modal-header">
+          <h5 class="modal-title">Loading...</h5>
+        </div>
+        <div class="modal-body text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <p class="mt-3 text-muted">Loading form...</p>
+        </div>
+      `
     }
+
+    // Open the modal immediately
+    this.modal.show()
+    console.log('Modal opened with loading state')
   }
 
   // Close the modal
@@ -60,11 +75,10 @@ export default class extends Controller {
 
   // Handle Bootstrap's hidden event
   handleHidden() {
-    // Reset modal content when fully hidden
-    // This prevents stale content from appearing on next open
-    if (this.hasContentTarget) {
-      // We don't clear the content immediately as it might be needed
-      // Turbo will replace it when a new modal is opened
+    // Clear modal content when fully hidden to prevent stale content
+    const modalContent = this.element.querySelector('#modal_content')
+    if (modalContent) {
+      modalContent.innerHTML = ''
     }
   }
 
@@ -80,36 +94,5 @@ export default class extends Controller {
     } else {
       console.log('Form had errors, keeping modal open')
     }
-  }
-
-  // Close method without event parameter for internal use
-  close() {
-    this.modal.hide()
-  }
-
-  // Handle frame load events
-  frameLoaded(event) {
-    console.log('Frame loaded event:', event.target)
-    // When a frame is loaded, check if we should open the modal
-    // This is triggered when loading content into the modal frame
-    // Check if the turbo frame that loaded is the modal_content frame
-    const frame = event.target
-    console.log('Frame ID:', frame?.id)
-    if (frame && frame.id === 'modal_content') {
-      console.log('Modal content frame loaded, opening modal')
-      // Only open if modal is not already shown
-      // Use Bootstrap 5's _isShown property or check element classes
-      const isShown = this.element.classList.contains('show')
-      if (!isShown) {
-        this.open()
-      }
-    }
-  }
-
-  // Handle form errors
-  // This method can be called from the form to indicate errors
-  showErrors() {
-    // Keep modal open when there are errors
-    // The form will be re-rendered with error messages
   }
 }

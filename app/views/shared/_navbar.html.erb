@@ -2,8 +2,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
-            <%= image_tag "calcumake.svg", alt: "CalcuMake", style: "height: 32px; width: auto; margin-right: 0.5rem;" %>
-            <span><%= t('nav.brand') %></span>
+        <%= image_tag "calcumake.svg", alt: "CalcuMake", style: "height: 32px; width: auto; margin-right: 0.5rem;" %>
+        <span><%= t('nav.brand') %></span>
         <% end %>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,22 +41,26 @@
                     <ul class="dropdown-menu" aria-labelledby="helpDropdown">
                         <li><%= link_to t('support.nav_title'), support_path, class: "dropdown-item" %></li>
                         <% if user_signed_in? %>
-                          <li><%= link_to t('nav.usage_and_subscription', default: 'Usage & Subscription'), user_profile_path, class: "dropdown-item" %></li>
+                        <li><%= link_to t('nav.usage_and_subscription', default: 'Usage & Subscription'), user_profile_path, class: "dropdown-item" %></li>
                         <% end %>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><h6 class="dropdown-header"><%= t('nav.legal_header', default: 'Legal & Privacy') %></h6></li>
-                        <li><%= link_to t('gdpr.privacy_policy'), cookie_policy_path.sub('cookie-policy', 'privacy-policy'), class: "dropdown-item" %></li>
-                        <li><%= link_to t('gdpr.terms_of_service'), terms_of_service_path, class: "dropdown-item" %></li>
-                        <li><%= link_to t('gdpr.cookie_policy'), cookie_policy_path, class: "dropdown-item" %></li>
+                        <li>
+                            <h6 class="dropdown-header"><%= t('nav.legal_header', default: 'Legal & Privacy') %></h6>
+                        </li>
+                        <li><%= link_to t('legal.privacy_policy.nav_title'), privacy_policy_path, class: "dropdown-item" %></li>
+                        <li><%= link_to t('legal.user_agreement.nav_title'), user_agreement_path, class: "dropdown-item" %></li>
+                        <li><%= link_to t('legal.commerce_disclosure.nav_title'), commerce_disclosure_path, class: "dropdown-item" %></li>
                         <% if user_signed_in? %>
-                          <li>
-                              <hr class="dropdown-divider">
-                          </li>
-                          <li><h6 class="dropdown-header"><%= t('nav.data_rights_header', default: 'Your Data Rights') %></h6></li>
-                          <li><%= link_to t('nav.export_data', default: 'Export My Data'), data_export_path, class: "dropdown-item" %></li>
-                          <li><%= link_to t('nav.delete_account', default: 'Delete My Account'), data_deletion_path, class: "dropdown-item text-danger" %></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <h6 class="dropdown-header"><%= t('nav.data_rights_header', default: 'Your Data Rights') %></h6>
+                        </li>
+                        <li><%= link_to t('nav.export_data', default: 'Export My Data'), data_export_path, class: "dropdown-item" %></li>
+                        <li><%= link_to t('nav.delete_account', default: 'Delete My Account'), data_deletion_path, class: "dropdown-item text-danger" %></li>
                         <% end %>
                     </ul>
                 </li>

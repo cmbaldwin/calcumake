@@ -14,11 +14,8 @@ fr:
     sign_in: Se connecter
     sign_up: S'inscrire
     language: Langue
-    legal_header: Mentions Légales et Confidentialité
-    data_rights_header: Vos Droits sur les Données
-    export_data: Exporter Mes Données
-    delete_account: Supprimer Mon Compte
-    usage_and_subscription: Utilisation et Abonnement
+    clients: My Clients
+    invoices: Invoices
   actions:
     save: Enregistrer
     cancel: Annuler
@@ -34,6 +31,10 @@ fr:
     submit: Soumettre
     view: Voir
     actions: Actions
+    title: Actions
+    print: Print
+    more: More
+    search: Search
   flash:
     success: Succès
     error: Erreur
@@ -73,9 +74,6 @@ fr:
       create_new: Calculer Nouvelle Impression
       total_calculations: Total de Calculs
       total_print_time: Temps Total d'Impression
-      total_filament_used: Filament Total Utilisé
-      total_estimated_sales: Total des Ventes Estimées
-      total_estimated_profit: Bénéfice Total Estimé
       search_placeholder: Rechercher par nom de travail ou type de filament...
       empty_state:
         title: Aucun calcul pour le moment
@@ -100,6 +98,11 @@ fr:
     cost_summary: Résumé des Coûts
     cost_breakdown:
       filament: Coût du Filament
+      electricity: Electricity Cost
+      labor: Labor Cost
+      machine: Machine Cost
+      other: Other Costs
+      vat: VAT
     invoice: Facture
     invoice_number: Numéro de Facture
     invoice_date: Date de Facture
@@ -158,6 +161,14 @@ fr:
       final_price: Prix Final
       plates: Plaques
       plate: Plaque
+      machine_auto_calculated: Machine (Auto-calculated)
+      machine_cost_usage: Machine Cost & Usage
+      machine_return_period: Machine Return Period
+      machine_repair_factor: Machine Repair Factor
+      add_edit_printer: add or edit a printer
+      machine_printer_config_html: Configure printer specifications when you %{link}
+      unsaved_progress_warning: Unsaved Progress Warning
+      filaments: Filaments
     show:
       cost_summary: Résumé des Coûts
       print_information: Informations d'Impression
@@ -169,10 +180,129 @@ fr:
         other: Autres Coûts
         subtotal: Sous-total
         final_price: Prix Final
+        vat: VAT (%{rate}%)
+      created_on: Created on %{date}
+      edit_calculation: Edit Calculation
+      delete: Delete
+      filament_details: Filament Details
+      electricity_cost: Electricity Cost
+      labor_cost: Labor Cost
+      machine_upkeep_cost: Machine & Upkeep Cost
+      details:
+        currency: Currency
+        printing_time: Printing Time
+        filament_weight: Filament Weight
+        filament_type: Filament Type
+        spool_price: Spool Price
+        spool_weight: Spool Weight
+        markup: Markup
+        power_consumption: Power Consumption
+        energy_cost_kwh: Energy Cost per kWh
+        total_electricity_cost: Total Electricity Cost
+        prep_time: Prep Time
+        postprocessing_time: Postprocessing Time
+        total_labor_cost: Total Labor Cost
+        printer_cost: Printer Cost
+        payoff_goal: Payoff Goal
+        daily_usage: Daily Usage
+        repair_cost: Repair Cost
+        total_machine_cost: Total Machine Cost
+      actions:
+        back_to_all: "← Back to All Pricings"
+        create_new: Create New Pricing
+        confirm_delete: Are you sure you want to delete '%{name}'?
     buttons:
       add_plate: Ajouter une Plaque
+      calculate_save: Calculate
+      update_pricing: Update Pricing
+      update: Update
+      cancel: Cancel
     help:
       plates_limit: Vous pouvez ajouter jusqu'à 10 plaques par travail d'impression.
+      filaments_limit: You can add up to 5 different filaments per plate.
+    overdue: Overdue
+    duplicated_successfully: Print pricing duplicated successfully
+    duplicate_failed: Failed to duplicate print pricing
+    back_to_all: "← Back to All Pricings"
+    create_new: Create New Pricing
+    filament_types_label: Filament Types
+    fields:
+      job_name: Job Name
+      job_name_placeholder: e.g., Miniature Model
+      select_printer: Select Printer
+      select_printer_prompt: Select a printer
+      no_printer_help: Don't have a printer registered?
+      add_printer_link: Add a new printer
+      print_time_hours: Hours
+      print_time_minutes: Minutes
+      filament_weight: Filament Weight (g)
+      filament_weight_placeholder: '36'
+      filament_type: Filament Type
+      filament_type_prompt: Select type
+      spool_price: Spool Price
+      spool_price_placeholder: '25.00'
+      spool_weight: Spool Weight (g)
+      spool_weight_placeholder: '1000'
+      markup: Markup (%)
+      markup_placeholder: '20'
+      markup_percentage: Markup Percentage
+      filament_markup: Filament Markup (%)
+      prep_time: Prep Time (min)
+      prep_time_placeholder: '30'
+      prep_time_minutes: Prep Time (minutes)
+      prep_cost_hour: Prep Cost/Hour
+      prep_cost_placeholder: '20.00'
+      prep_cost_per_hour: Prep Cost per Hour
+      post_time: Post-Process Time (min)
+      post_time_placeholder: '30'
+      postprocessing_time_minutes: Post-processing Time (minutes)
+      postprocessing_time_placeholder: '30'
+      postprocessing_cost_per_hour: Post-processing Cost per Hour
+      postprocessing_cost_placeholder: '20.00'
+      post_cost_hour: Post-Process Cost/Hour
+      post_cost_placeholder: '20.00'
+      other_costs: Other Costs
+      other_costs_placeholder: '0.00'
+      vat: VAT (%)
+      vat_placeholder: '10'
+      vat_percentage: VAT Percentage
+      power_consumption: Power Consumption (W)
+      power_consumption_placeholder: '200'
+      energy_cost_kwh: Energy Cost per kWh
+      energy_cost_placeholder: '0.12'
+      printer_cost: Printer Cost
+      printer_cost_placeholder: '500.00'
+      payoff_goal: Payoff Goal (Years)
+      payoff_goal_placeholder: '3'
+      daily_usage: Daily Usage (Hours)
+      daily_usage_placeholder: '8'
+      repair_cost: Repair Cost (%)
+      repair_cost_placeholder: '5'
+      currency: Currency
+      currency_prompt: Select currency
+      start_with_one_print: Start with 1 times printed
+      start_with_one_print_help: Enable this to automatically set this pricing as
+        printed once
+    calculations:
+      filament_cost: Filament cost
+      electricity_cost: Electricity cost
+      labor_cost: Labor cost
+      machine_cost: Machine cost
+      estimated_price: Estimated Price
+    info:
+      electricity_auto: 'Electricity cost will be automatically calculated based on:'
+      printer_power: Selected printer's power consumption
+      print_duration: Print time duration
+      energy_cost_setting: 'Your default energy cost: %{cost}/kWh'
+      update_energy_cost: You can update your default energy cost in your
+      profile_settings: profile settings
+      machine_auto: 'Machine depreciation and upkeep cost will be calculated from
+        your selected printer''s specifications:'
+      printer_cost_usage: Printer cost and usage hours
+      investment_return: Investment return period
+      repair_factor: Repair cost factor
+      configure_printer: These values are configured when you
+      add_edit_printer: add or edit a printer
   currency:
     usd: Dollar Américain
     eur: Euro
@@ -214,7 +344,6 @@ fr:
       contact_info: Informations de Contact
       additional_info: Informations Supplémentaires
     fields:
-      project: Projet
       name: Nom
       name_placeholder: Jean Dupont
       company_name: Nom de l'Entreprise
@@ -240,9 +369,14 @@ fr:
       edit: Modifier
       delete: Supprimer
       confirm_delete: Êtes-vous sûr de vouloir supprimer ce client?
+      invoices: Invoices
     buttons:
       create: Créer un Client
       update: Mettre à Jour le Client
+    created_successfully: Client created successfully
+    updated_successfully: Client updated successfully
+    deleted_successfully: Client deleted successfully
+    confirm_delete: Are you sure you want to delete this client?
   energy:
     cost_per_kwh: Coût par kWh
   printers:
@@ -254,10 +388,68 @@ fr:
         title: Aucune imprimante enregistrée
         description: Ajoutez votre première imprimante 3D pour commencer à calculer
           les coûts d'impression avec précision.
+        add_first: Add Your First Printer
     new:
       title: Ajouter Nouvelle Imprimante
       subtitle: Enregistrez les spécifications de votre imprimante 3D pour des calculs
         de coût précis
+    card:
+      power_consumption: Power Consumption
+      cost: Cost
+      daily_usage: Daily Usage
+      payoff_goal: Payoff Goal
+      repair_cost_percentage: Repair Cost
+      paid_off: "✓ Paid Off"
+      months_to_payoff: "%{months} months to payoff"
+      hours: hours
+      years: years
+    edit:
+      title: Edit Printer
+      subtitle: Update your 3D printer specifications
+    show:
+      specifications: Specifications
+      financial_status: Financial Status
+      print_jobs: Print Jobs
+      new_print_job: New Print Job
+      repair_cost: Repair Cost
+      date_added: Date Added
+      not_set: Not set
+      fully_paid_off: This printer has been fully paid off based on your payoff goals.
+      payoff_progress: Payoff Progress
+      no_print_jobs: No print jobs yet
+      no_print_jobs_description: Create your first print pricing calculation for this
+        printer.
+      create_first_job: Create First Print Job
+      view_all_jobs: View All %{count} Jobs
+    sections:
+      basic_info: Basic Information
+      technical_specs: Technical Specifications
+      financial_info: Financial Information
+      usage_info: Usage Information
+    fields:
+      name: Printer Name
+      name_placeholder: e.g., My Prusa i3 MK3S+
+      manufacturer: Manufacturer
+      manufacturer_prompt: Select manufacturer
+      power_consumption: Power Consumption (Watts)
+      power_consumption_placeholder: '200'
+      power_consumption_help: 'Typical range: 50W (small printers) to 500W (large
+        printers)'
+      cost: Printer Cost
+      cost_placeholder: '500.00'
+      payoff_goal: Payoff Goal (Years)
+      payoff_goal_placeholder: '3'
+      payoff_goal_help: How many years do you want to recoup the printer cost?
+      daily_usage: Daily Usage (Hours)
+      daily_usage_placeholder: '8'
+      daily_usage_help: Average hours per day you plan to use this printer
+      repair_factor: Repair Cost Factor (%)
+      repair_factor_placeholder: '5.0'
+      repair_factor_help: Additional cost factor for maintenance and repairs
+    buttons:
+      add_printer: Add Printer
+      update_printer: Update Printer
+      cancel: Cancel
   profile:
     show:
       title: Profil Utilisateur
@@ -266,13 +458,66 @@ fr:
       email: Email
       member_since: Membre depuis
       default_preferences: Préférences par Défaut
+      labor_defaults: Labor & Cost Defaults
+      labor_defaults_description: These values will be pre-filled when creating new
+        print pricing calculations
+      company_info: Company Information for Invoices
+      company_info_description: This information will be used as the default for all
+        invoices you create
+      company_info_help: This information will be used on all invoices you create
+      back_to_calculations: Back to Calculations
     fields:
       default_currency: Devise par Défaut
       energy_cost: Coût de l'Énergie par kWh
       energy_cost_help: Votre coût local d'électricité par kilowatt-heure
+      default_currency_help: Used as default for new pricing calculations
+      energy_cost_placeholder: '0.120'
+      energy_cost_help_extended: Your local electricity cost per kilowatt-hour. This
+        will be used as the default for new calculations.
+      prep_time: Prep Time (minutes)
+      prep_time_help: Time spent preparing prints before starting
+      prep_cost: Prep Cost per Hour
+      prep_cost_help: Hourly rate for preparation work
+      postprocessing_time: Post-processing Time (minutes)
+      postprocessing_time_help: Time spent on post-processing (cleaning, support removal,
+        etc.)
+      postprocessing_cost: Post-processing Cost per Hour
+      postprocessing_cost_help: Hourly rate for post-processing work
+      other_costs: Other Costs
+      other_costs_help: Additional costs like packaging, shipping preparation, etc.
+      vat_percentage: VAT Percentage
+      vat_percentage_help: Default VAT/tax percentage for your location
+      default_filament_markup: Default Filament Markup
+      default_filament_markup_help: Default markup percentage added to filament costs
+        (e.g. 20% markup for profit margin)
+      company_name: Company Name
+      company_name_placeholder: Acme Corporation
+      company_email: Company Email
+      company_email_placeholder: billing@example.com
+      company_phone: Company Phone
+      company_phone_placeholder: "+1 (555) 123-4567"
+      company_logo: Company Logo
+      company_address: Company Address
+      company_address_placeholder: |-
+        123 Main Street
+        City, State 12345
+        Country
+      payment_details: Payment Details
+      payment_details_placeholder: |-
+        Bank: Example Bank
+        Account Number: 123456789
+        Routing Number: 987654321
+        SWIFT/BIC: EXAMPUS33
+      payment_details_help: Bank account or payment information for invoices
+      invoice_notes: Default Invoice Notes
+      invoice_notes_placeholder: |-
+        Payment due within 30 days.
+        Thank you for your business!
+      invoice_notes_help: Default notes that will appear on all your invoices
     buttons:
       update_settings: Mettre à Jour les Paramètres
       update_profile: Mettre à Jour le Profil
+      cancel: Cancel
     image_upload:
       help_text: 'Taille maximale du fichier: 5MB. Formats supportés: PNG, JPG, GIF,
         WebP'
@@ -295,6 +540,10 @@ fr:
     default_currency: Devise par Défaut
     default_energy_cost: Coût Énergétique par Défaut
     settings: Paramètres
+    edit:
+      title: User Profile Settings
+      subtitle: Configure your default preferences
+      default_settings: Default Settings
   app:
     title: CalcuMake
     title_default: CalcuMake
@@ -356,6 +605,37 @@ fr:
         advertising_partners: Avec des partenaires publicitaires (comme Google AdSense)
           pour afficher des publicités pertinentes aux utilisateurs du niveau Gratuit
         business_transfer: Dans le cadre d'un transfert ou d'une acquisition d'entreprise
+      how_we_use_info:
+        title: How We Use Your Information
+        provide_service: Provide, maintain, and improve our 3D printing calculation
+          service
+        improve_features: Develop new features and enhance existing functionality
+        customer_support: Provide customer support and respond to your inquiries
+        security: Protect against fraud, abuse, and security threats
+      data_security:
+        title: Data Security
+        content: We implement appropriate technical and organizational security measures
+          to protect your personal information against unauthorized access, alteration,
+          disclosure, or destruction.
+      your_rights:
+        title: Your Rights
+        access: Access and review your personal information
+        correction: Correct inaccurate or incomplete information
+        deletion: Request deletion of your personal information
+        portability: Export your data in a portable format
+      cookies:
+        title: Cookies and Tracking
+        content: We use cookies and similar technologies to enhance your experience,
+          remember your preferences, and provide personalized content and advertisements.
+      changes:
+        title: Changes to This Policy
+        content: We may update this privacy policy from time to time. We will notify
+          you of any material changes by posting the new policy on this page with
+          an updated effective date.
+      contact:
+        title: Contact Us
+        content: If you have any questions about this privacy policy, please contact
+          us through the support channels available in the application.
     user_agreement:
       title: Accord d'utilisateur
       nav_title: Conditions d'utilisation
@@ -414,6 +694,85 @@ fr:
         support_priority: Le support du niveau Gratuit est fourni sur la base du meilleur
           effort
         upgrade_anytime: Vous pouvez passer à un niveau payant à tout moment
+      acceptance:
+        title: Acceptance of Terms
+        content: By accessing and using CalcuMake, you accept and agree to be bound
+          by the terms and provision of this agreement.
+      description:
+        title: Service Description
+        content: 'CalcuMake is a web-based application that provides 3D printing cost
+          calculation and project management tools. Our service includes:'
+        cost_calculations: Comprehensive cost calculations for 3D printing projects
+        project_management: Project tracking and management features
+        invoice_generation: Invoice generation and PDF export capabilities
+        printer_tracking: Printer specifications and usage tracking
+      user_accounts:
+        title: User Accounts
+        content: 'To use our service, you must create an account. You are responsible
+          for:'
+        accurate_info: Providing accurate and complete account information
+        secure_credentials: Maintaining the security of your account credentials
+        responsible_use: All activities that occur under your account
+        notify_breaches: Notifying us immediately of any suspected security breaches
+      acceptable_use:
+        title: Acceptable Use
+        content: 'You agree to use our service only for lawful purposes and in accordance
+          with this agreement. You agree not to:'
+        lawful_purposes: Use the service for any unlawful or prohibited purposes
+        respect_rights: Violate any applicable laws or regulations
+        no_harmful_content: Upload or transmit harmful, offensive, or inappropriate
+          content
+        no_interference: Interfere with or disrupt the service or servers
+        no_unauthorized_access: Attempt to gain unauthorized access to any part of
+          the service
+      data_accuracy:
+        title: Data Accuracy and Calculations
+        content: While we strive to provide accurate calculation tools, you are responsible
+          for verifying the accuracy of all calculations and data. Our calculations
+          are estimates and should be validated against your specific requirements
+          and local conditions.
+      intellectual_property:
+        title: Intellectual Property
+        our_content: The service and its original content, features, and functionality
+          are owned by us and are protected by international copyright, trademark,
+          and other intellectual property laws.
+        your_content: You retain ownership of any data, calculations, or content you
+          create using our service. You grant us a limited license to use this content
+          solely to provide the service to you.
+      disclaimers:
+        title: Disclaimers
+        important: Important Notice
+        calculations_estimates: All cost calculations and estimates are for informational
+          purposes only
+        verify_accuracy: You must verify all calculations and data for accuracy
+        no_guarantee: We do not guarantee the accuracy, completeness, or reliability
+          of any calculations
+        as_is_basis: The service is provided on an 'as is' and 'as available' basis
+      limitation_liability:
+        title: Limitation of Liability
+        content: To the maximum extent permitted by law, we shall not be liable for
+          any indirect, incidental, special, consequential, or punitive damages, including
+          without limitation, loss of profits, data, use, goodwill, or other intangible
+          losses.
+      termination:
+        title: Termination
+        content: We may terminate or suspend your account and access to the service
+          immediately, without prior notice, for conduct that we believe violates
+          this agreement or is harmful to other users, us, or third parties.
+      governing_law:
+        title: Governing Law
+        content: This agreement shall be governed by and construed in accordance with
+          the laws of the jurisdiction in which our service operates, without regard
+          to its conflict of law provisions.
+      changes:
+        title: Changes to Agreement
+        content: We reserve the right to modify this agreement at any time. We will
+          notify users of any material changes by posting the updated agreement on
+          our website with a new effective date.
+      contact:
+        title: Contact Information
+        content: If you have any questions about this agreement, please contact us
+          through the support channels available in the application.
     commerce_disclosure:
       title: Divulgation Commerciale (特定商取引法に基づく表記)
       nav_title: Divulgation Commerciale
@@ -445,19 +804,14 @@ fr:
         title: Tarification
         content: 'CalcuMake propose trois niveaux d''abonnement:'
         free_tier: 'Niveau Gratuit: ¥0/mois - Fonctionnalités de base avec publicités'
-        startup_tier: 'Niveau Startup: ¥150/mois ($1.50/mois USD) - Fonctionnalités
-          avancées, sans publicités, support prioritaire, limites d''utilisation plus
-          élevées'
         pro_tier: 'Niveau Pro: Abonnement mensuel ou annuel payant - Fonctionnalités
           avancées, sans publicités, support prioritaire'
+        enterprise_tier: 'Niveau Enterprise: Abonnement mensuel ou annuel payant -
+          Toutes les fonctionnalités, support premium, intégrations personnalisées'
         pricing_details: Les tarifs exacts sont affichés sur notre site web et dans
           l'application lors de la sélection de l'abonnement.
         price_changes: Les prix peuvent être ajustés avec un préavis de 30 jours aux
           abonnés existants.
-        future_note: Des options de paiement supplémentaires et une facturation annuelle
-          peuvent être ajoutées à l''avenir.
-        enterprise_tier: 'Niveau Enterprise: Abonnement mensuel ou annuel payant -
-          Toutes les fonctionnalités, support premium, intégrations personnalisées'
       payment_methods:
         title: Modes de Paiement
         content: 'Pour les abonnements payants, nous acceptons les modes de paiement
@@ -556,22 +910,522 @@ fr:
         contacter avec l'adresse e-mail de votre compte.
       priority_note: Les abonnés des niveaux Pro et Enterprise bénéficient de temps
         de réponse de support prioritaires.
-  subscriptions:
-    downgrade_to_plan: Rétrograder vers %{plan}
-    invalid_upgrade: Impossible de mettre à niveau vers ce plan
-    invalid_downgrade: Impossible de rétrograder vers ce plan
-    upgrade_successful: Mise à niveau réussie vers le plan %{plan}\! Le montant au
-      prorata a été facturé.
-    upgrade_error: Erreur lors de la mise à niveau de l'abonnement. Veuillez réessayer.
-    downgrade_scheduled: Votre plan passera à %{plan} à la fin de votre période de
-      facturation actuelle
-    downgrade_scheduled_free: Votre abonnement sera annulé et vous serez rétrogradé
-      au plan Gratuit à la fin de votre période de facturation actuelle
-    downgrade_error: Erreur lors de la planification de la rétrogradation. Veuillez
-      réessayer.
-    confirm_upgrade: Le montant au prorata vous sera facturé immédiatement. Continuer?
-    confirm_downgrade: Votre plan changera à la fin de votre période de facturation
-      actuelle. Continuer?
+  activerecord:
+    errors:
+      messages:
+        blank: can't be blank
+        taken: has already been taken
+        too_short: is too short (minimum is %{count} characters)
+        too_long: is too long (maximum is %{count} characters)
+        invalid: is invalid
+        greater_than: must be greater than %{count}
+        greater_than_or_equal_to: must be greater than or equal to %{count}
+        less_than: must be less than %{count}
+        less_than_or_equal_to: must be less than or equal to %{count}
+        not_a_number: is not a number
+        inclusion: is not included in the list
+        exclusion: is reserved
+        accepted: must be accepted
+        present: must be blank
+        confirmation: doesn't match %{attribute}
+        empty: can't be empty
+      models:
+        filament:
+          attributes:
+            name:
+              blank: Please enter a filament name
+              taken: You already have a filament with this name
+            material_type:
+              blank: Please select a material type
+              inclusion: Please select a valid material type
+            diameter:
+              blank: Please select a diameter
+              inclusion: Please select a valid diameter (1.75mm, 2.85mm, or 3.0mm)
+            spool_weight:
+              greater_than: Spool weight must be greater than 0
+              not_a_number: Spool weight must be a number
+            spool_price:
+              greater_than: Spool price must be greater than 0
+              not_a_number: Spool price must be a number
+            print_temperature_min:
+              greater_than: Minimum temperature must be greater than 0°C
+              less_than: Minimum temperature must be less than 500°C
+              not_a_number: Minimum temperature must be a number
+            print_temperature_max:
+              greater_than: Maximum temperature must be greater than 0°C
+              less_than: Maximum temperature must be less than 500°C
+              not_a_number: Maximum temperature must be a number
+              temperature_range: must be greater than minimum temperature
+            heated_bed_temperature:
+              greater_than: Bed temperature must be greater than 0°C
+              less_than: Bed temperature must be less than 500°C
+              not_a_number: Bed temperature must be a number
+            print_speed_max:
+              greater_than: Print speed must be greater than 0
+              less_than: Print speed must be less than 1000
+              not_a_number: Print speed must be a number
+            storage_temperature_max:
+              greater_than: Storage temperature must be greater than -50°C
+              less_than: Storage temperature must be less than 100°C
+              not_a_number: Storage temperature must be a number
+            density:
+              greater_than: Density must be greater than 0
+              less_than: Density must be less than 10
+              not_a_number: Density must be a number
+        plate_filament:
+          attributes:
+            filament_weight:
+              blank: Please enter the filament weight
+              greater_than: Filament weight must be greater than 0
+              not_a_number: Filament weight must be a number
+            filament_id:
+              blank: Please select a filament
+              already_added: This filament has already been added to this plate
+        plate:
+          attributes:
+            base:
+              no_filaments: Must have at least one filament
+              duplicate_filaments: Cannot use the same filament multiple times on
+                one plate
+        print_pricing:
+          attributes:
+            base:
+              no_plates: Must have at least one plate
+              too_many_plates: Cannot have more than 10 plates
+              duplicate_filaments_on_plate: Cannot use the same filament multiple
+                times on the same plate
+  common:
+    created: Created
+    currency: Currency
+    hours: Hours
+    minutes: Minutes
+    grams: g
+    watts: W
+    kwh: kWh
+    percentage: "%"
+    years: years
+    'yes': 'Yes'
+    'no': 'No'
+    are_you_sure: Are you sure?
+    errors_prohibited: "%{count} %{errors} prohibited this %{model} from being saved:"
+    error_count:
+      one: error
+      other: errors
+  date:
+    formats:
+      month_day_year: "%B %d, %Y"
+  time:
+    at: at
+    formats:
+      month_day_year: "%B %d, %Y"
+      month_day_year_time: "%B %d, %Y at %I:%M %p"
+  print_pricings:
+    form:
+      filament_weight: Filament Weight
+      print_time_hours: Print Time Hours
+  invoices:
+    title: Invoices
+    new_invoice: New Invoice
+    edit_invoice: Edit Invoice
+    create_invoice: Create Invoice
+    index:
+      title: My Invoices
+      subtitle: Track and manage all your invoices across projects
+      search_placeholder: Search by job name...
+      empty_state:
+        title: No invoices yet
+        description: Start by creating invoices for your print calculations.
+      no_results:
+        title: No results found
+        description: No invoices match '%{query}'. Try a different search term.
+    download_pdf: Download PDF
+    print: Print
+    bill_to: Bill To
+    mark_as_sent: Mark as Sent
+    mark_as_paid: Mark as Paid
+    created_successfully: Invoice created successfully
+    updated_successfully: Invoice updated successfully
+    deleted_successfully: Invoice deleted successfully
+    cannot_delete_non_draft: Only draft invoices can be deleted
+    marked_as_sent: Invoice marked as sent
+    marked_as_paid: Invoice marked as paid
+    marked_as_cancelled: Invoice marked as cancelled
+    failed_to_update: Failed to update invoice
+    confirm_delete: Are you sure you want to delete this invoice?
+    no_invoices: No invoices yet
+    create_first_invoice: Create your first invoice for this print calculation
+    company_info_card_text: Invoice company information is managed in your profile
+      settings. Update your company details there to use them in all your invoices.
+    no_company_info: No company information set. Please update your profile to add
+      company details.
+    edit_company_info: Edit Company Info in Profile
+    status:
+      draft: Draft
+      sent: Sent
+      paid: Paid
+      cancelled: Cancelled
+    fields:
+      invoice_details: Invoice Details
+      company_info: Company Info
+      company_name: Company Name
+      company_address: Company Address
+      company_email: Company Email
+      company_phone: Company Phone
+      payment_details: Payment Details
+      notes: Notes
+      invoice_number: Invoice Number
+      job_name: Job Name
+      invoice_number_help: Automatically generated when invoices are created (cannot
+        be edited)
+      invoice_date: Invoice Date
+      due_date: Due Date
+      status: Status
+      currency: Currency
+      currency_help: Determines decimal places and formatting for all amounts on this
+        invoice
+      company_logo: Company Logo
+    line_items:
+      title: Line Items
+      add_line_item: Add Line Item
+      description: Description
+      quantity: Quantity
+      unit_price: Unit Price
+      total: Total
+      remove: Remove
+  filaments:
+    index:
+      title: My Filaments
+      subtitle: Manage your 3D printing filament inventory
+      add_new: Add New Filament
+      search_placeholder: Search by name, brand, material, or color...
+      clear_search: Clear Search
+      empty_state:
+        title: No filaments registered yet
+        description: Add your first filament to start building your material library
+          for print calculations.
+        add_first: Add Your First Filament
+      no_results:
+        title: No results found
+        description: No filaments match '%{query}'. Try a different search term.
+    new:
+      title: Add New Filament
+      subtitle: Register a new filament for your material library
+    edit:
+      title: Edit Filament
+      subtitle: Update filament specifications
+    show:
+      usage_history: Usage History
+      times_used: Times Used
+      total_weight_used: Total Weight Used
+      new_print_with_filament: New Print with this Filament
+      recent_prints: Recent Prints
+      not_used_yet: This filament hasn't been used yet
+      create_first_print: Create Your First Print
+      no_cost_info: No cost information available
+    sections:
+      basic_info: Basic Information
+      cost_info: Cost Information
+      properties: Properties
+      technical_specs: Technical Specifications
+    fields:
+      name: Filament Name
+      name_placeholder: e.g., Basic PLA, Premium PETG
+      brand: Brand
+      brand_placeholder: e.g., Hatchbox, Prusa, eSUN
+      material_type: Material Type
+      material_type_prompt: Select material type
+      diameter: Diameter
+      color: Color
+      color_placeholder: e.g., Red, Natural, Transparent
+      finish: Finish
+      finish_placeholder: e.g., Matte, Glossy, Silk
+      spool_weight: Spool Weight
+      spool_weight_placeholder: '1000'
+      spool_price: Spool Price
+      spool_price_placeholder: '25.00'
+      density: Density
+      density_placeholder: '1.24'
+      cost_per_gram: Cost per Gram
+      temperature_range: Temperature Range
+      moisture_sensitive: Moisture Sensitive
+      notes: Notes
+      notes_placeholder: Additional information about this filament...
+      filament: Filament
+      select_filament: Select a filament
+      weight_used: Weight Used
+      selected: Selected
+      none_selected: None selected
+      not_set: Not set
+      total_cost: Total Cost
+      no_filament_registered: No filament registered?
+      add_new_filament: Add New Filament
+      bed_temperature: Bed Temperature
+      max_print_speed: Max Print Speed
+      storage_temp: Storage Temperature
+    properties:
+      moisture_sensitive: Moisture Sensitive
+    buttons:
+      add_filament: Add Filament
+      update_filament: Update Filament
+    confirm_delete: Are you sure you want to delete '%{name}'?
+  devise:
+    shared:
+      oauth_signin_options: Sign in with social accounts
+      alternative_signin_method: Alternative signin method
+      or_sign_in_with_email: Or Sign In With Email
+      sign_in_with_provider: Sign in with %{provider}
+      sign_in_with_provider_aria: Sign in with %{provider}
+    confirmations:
+      confirmed: Your email address has been successfully confirmed.
+      send_instructions: You will receive an email with instructions for how to confirm
+        your email address in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you
+        will receive an email with instructions for how to confirm your email address
+        in a few minutes.
+    failure:
+      already_authenticated: You are already signed in.
+      inactive: Your account is not activated yet.
+      invalid: Invalid %{authentication_keys} or password.
+      locked: Your account is locked.
+      last_attempt: You have one more attempt before your account is locked.
+      not_found_in_database: Invalid %{authentication_keys} or password.
+      timeout: Your session expired. Please sign in again to continue.
+      unauthenticated: You need to sign in or sign up before continuing.
+      unconfirmed: You have to confirm your email address before continuing.
+    mailer:
+      confirmation_instructions:
+        subject: Confirmation instructions
+      reset_password_instructions:
+        subject: Reset password instructions
+      unlock_instructions:
+        subject: Unlock instructions
+      email_changed:
+        subject: Email Changed
+      password_change:
+        subject: Password Changed
+    omniauth_callbacks:
+      failure: Could not authenticate you from %{kind} because "%{reason}".
+      success: Successfully authenticated from %{kind} account.
+    passwords:
+      no_token: You can't access this page without coming from a password reset email.
+        If you do come from a password reset email, please make sure you used the
+        full URL provided.
+      send_instructions: You will receive an email with instructions on how to reset
+        your password in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you
+        will receive a password recovery link at your email address in a few minutes.
+      updated: Your password has been changed successfully. You are now signed in.
+      updated_not_active: Your password has been changed successfully.
+    registrations:
+      destroyed: Bye! Your account has been successfully cancelled. We hope to see
+        you again soon.
+      signed_up: Welcome! You have signed up successfully.
+      signed_up_but_inactive: You have signed up successfully. However, we could not
+        sign you in because your account is not yet activated.
+      signed_up_but_locked: You have signed up successfully. However, we could not
+        sign you in because your account is locked.
+      signed_up_but_unconfirmed: A message with a confirmation link has been sent
+        to your email address. Please follow the link to activate your account.
+      update_needs_confirmation: You updated your account successfully, but we need
+        to verify your new email address. Please check your email and follow the confirmation
+        link to confirm your new email address.
+      updated: Your account has been updated successfully.
+      updated_but_not_signed_in: Your account has been updated successfully, but since
+        your password was changed, you need to sign in again.
+    sessions:
+      signed_in: Signed in successfully.
+      signed_out: Signed out successfully.
+      already_signed_out: Signed out successfully.
+    unlocks:
+      send_instructions: You will receive an email with instructions for how to unlock
+        your account in a few minutes.
+      send_paranoid_instructions: If your account exists, you will receive an email
+        with instructions for how to unlock it in a few minutes.
+      unlocked: Your account has been unlocked successfully. Please sign in to continue.
+  landing:
+    hero:
+      headline: More creating, less calculating
+      subheadline: Skip the spreadsheets and tedious calculations. Handle pricing
+        automatically so you can focus on the fun part.
+      cta_primary: Start Calculating Free
+      cta_demo: See Demo
+      trust_signal: No credit card required - start with full Startup features for
+        30 days
+      preview_title: Quick Cost Preview
+      preview_filament_weight: Filament Weight
+      preview_print_time: Print Time
+      preview_total_cost: Total Cost
+      preview_cost_breakdown: Electricity + Filament + Labor
+    problem:
+      headline: Are you wasting time calculating pricing for 3D prints?
+      manual_errors: Manual Calculation Errors
+      manual_errors_desc: Spreadsheets and mental math lead to costly mistakes and
+        undercharging.
+      electricity_costs: Forgotten Electricity Costs
+      electricity_costs_desc: Power consumption can add 20-40% to your actual costs
+        but is often ignored.
+      inconsistent_pricing: Inconsistent Pricing
+      inconsistent_pricing_desc: Different calculations for similar jobs confuse customers
+        and hurt profits.
+      time_wasted: Time Wasted on Spreadsheets
+      time_wasted_desc: Hours spent on manual calculations instead of growing your
+        printing business.
+    solution:
+      headline: Professional Tools for Serious Makers
+      subheadline: Everything you need to price accurately and manage your 3D printing
+        projects like a pro.
+    features:
+      accurate_calculation:
+        title: Accurate Cost Calculation
+        desc: Get precise costs every time with comprehensive calculation including
+          all hidden expenses.
+        filament: Filament weight + spool cost
+        electricity: Electricity consumption tracking
+        labor: Labor time (prep + post-processing)
+        depreciation: Machine depreciation
+      multi_printer:
+        title: Multi-Printer Management
+        desc: Track different printer specifications and monitor your return on investment
+          across your entire fleet.
+        power: Individual power consumption tracking
+        roi: ROI tracking per printer
+        organization: Organized print job management
+      invoicing:
+        title: Professional Invoicing
+        desc: Generate professional PDF invoices with your company branding and multi-currency
+          support.
+        pdf: Auto-generated PDF invoices
+        branding: Custom company branding
+        currency: Multi-currency support
+      organization:
+        title: Project Organization
+        desc: Keep your print jobs organized with powerful search, filtering, and
+          project management tools.
+        search: Search and filter print jobs
+        duplicate: Duplicate similar projects
+        history: Complete print history tracking
+    pricing:
+      headline: Simple, Transparent Pricing
+      subheadline: Choose the plan that fits your printing volume. Upgrade or downgrade
+        anytime.
+      cta: Get Started Free
+      free:
+        title: Free
+        trial_notice: First month includes full Startup features!
+        calculations: 5 calculations per month (after trial)
+        printers: 1 printer profile
+        filaments: 4 filament types
+        invoices: 5 invoices per month
+        branding: CalcuMake branding on invoices
+      startup:
+        title: Startup
+        badge: Most Popular
+        calculations: 50 calculations per month
+        printers: 10 printer profiles
+        filaments: 16 filament types
+        branding: Remove CalcuMake branding
+        ads: No ads
+      pro:
+        title: Pro
+        unlimited: Unlimited everything
+        branding: Remove CalcuMake branding
+        ads: No ads
+        support: Priority support
+        analytics: Advanced analytics
+        features: Future premium features
+      trust_signals:
+        no_credit_card: No credit card required - start with full Startup features
+          for 30 days
+        cancel_anytime: Cancel anytime
+        data_private: Your data stays private
+    faq:
+      headline: Frequently Asked Questions
+      accuracy:
+        question: How accurate are the calculations?
+        answer: CalcuMake uses simple formulas and accounts for all cost factors including
+          filament, electricity, labor time, and machine depreciation.
+      currencies:
+        question: What currencies does CalcuMake support?
+        answer: CalcuMake currently supports USD, EUR, GBP, JPY, CAD, and AUD with
+          automatic formatting and precision for each currency. You can switch currencies
+          anytime in your profile settings.
+      printers:
+        question: Does CalcuMake support my 3D printer?
+        answer: CalcuMake works with any 3D printer! You simply enter your printer's
+          power consumption and other specifications. We're planning support for resin
+          printers soon!
+      electricity:
+        question: How do electricity costs work?
+        answer: CalcuMake automatically calculates electricity costs based on your
+          printer's power consumption (in watts), print duration, and your local energy
+          rate per kWh. This ensures you never forget this often-overlooked cost factor.
+      invoices:
+        question: Can I customize my invoices?
+        answer: Yes! You can add your company logo, customize colors, and include
+          your business information. Paid plans remove the CalcuMake branding for
+          a completely professional look.
+    final_cta:
+      headline: Ready to stop losing money on 3D prints?
+      subheadline: Join thousands of makers who trust CalcuMake for accurate pricing
+        and professional project management.
+      button: Start Your Free Trial
+  demo:
+    title: Try CalcuMake Demo
+    subtitle: Test our 3D print cost calculator with sample data. No account required!
+    sign_up_full_version: Sign Up for Full Version
+    start_free_trial: Start Free Trial
+    limitations:
+      title: This is a Demo Version
+      description: 'The full CalcuMake app includes:'
+      features:
+      - Multiple printer profiles with automatic specifications
+      - Comprehensive filament library with material properties
+      - Professional PDF invoice generation
+      - Project history and duplicate functionality
+      - Multi-currency support
+      - Machine depreciation calculations
+  locale_suggestion:
+    banner:
+      title: It looks like you're accessing from a different region.
+      switch_to: Switch to %{language} for a better experience?
+      currently_viewing: Currently viewing in %{language}
+      switch_button: Switch Language
+      stay_button: Stay
+      close: Close
+  calculators:
+    quick_cost_calculator: Quick Cost Calculator
+    print_time_hours: Print Time (hours)
+    filament_weight_grams: Filament Weight (grams)
+    filament_price_per_kg: Filament Price per KG ($)
+    labor_rate_per_hour: Labor Rate per Hour ($)
+    create_full_calculation: Create Full Calculation
+    includes_defaults: 'Includes Default Costs:'
+    defaults:
+      filament_price: Filament
+      labor_rate: Labor
+      energy_cost: Energy
+      power_consumption: Power
+      machine_payoff: Machine Payoff
+    features:
+      real_time: Real-time calculation as you type
+      includes_costs: Includes electricity and labor costs
+    results:
+      filament_cost: Filament Cost
+      electricity_cost: Electricity Cost
+      labor_cost: Labor Cost
+      total_cost: Total Cost
+      estimated_cost: 'Estimated Cost:'
+  errors:
+    messages:
+      already_confirmed: was already confirmed, please try signing in
+      confirmation_period_expired: needs to be confirmed within %{period}, please
+        request a new one
+      expired: has expired, please request a new one
+      not_found: not found
+      not_locked: was not locked
+      not_saved:
+        one: '1 error prohibited this %{resource} from being saved:'
+        other: "%{count} errors prohibited this %{resource} from being saved:"
 filaments:
   index:
     title: Mes Filaments
@@ -591,7 +1445,6 @@ filaments:
     new_invoice: Nouvelle Facture
     edit_invoice: Modifier la Facture
     create_invoice: Créer une Facture
-    made_with_calcumake: Made with CalcuMake
     index:
       title: Mes Factures
       subtitle: Suivez et gérez toutes vos factures à travers les projets
@@ -839,302 +1692,41 @@ print_pricings:
       - Support multi-devises
       - Calculs d'amortissement de machines
   usage_limits:
-    unlimited: Illimité
-    usage_summary: Résumé d'utilisation
     limit_reached: Vous avez atteint la limite de %{limit} %{resource} de votre plan
       %{plan}. Veuillez mettre à niveau pour continuer.
-    approaching_limits_message: Vous approchez des limites de votre forfait. Pensez
-      à passer à un forfait supérieur pour plus de ressources.
     approaching_limit: Vous approchez de la limite de votre plan pour %{resource}
+    usage_summary: Résumé d'utilisation
     current_usage: "%{current} sur %{limit} utilisés"
+    unlimited: Illimité
   subscriptions:
     title: Abonnement et tarification
     current_plan: Plan actuel
     upgrade: Mettre à niveau le plan
-    upgrade_now: Mettre à Niveau Maintenant
     manage: Gérer l'abonnement
-    trial_badge: Essai gratuit de 30 jours
-    already_subscribed: Vous avez déjà un abonnement actif
+    cancel: Annuler l'abonnement
     invalid_plan: Plan d'abonnement invalide sélectionné
     checkout_error: Impossible de créer la session de paiement. Veuillez réessayer.
     verification_error: Impossible de vérifier l'abonnement. Veuillez contacter le
       support.
-    upgrade_successful: Mise à niveau réussie vers le plan %{plan} !
-    no_subscription: Vous n'avez pas d'abonnement actif
     portal_error: Impossible d'accéder à la gestion des abonnements. Veuillez réessayer.
+    no_subscription: Vous n'avez pas d'abonnement actif
+    upgrade_successful: Mise à niveau réussie vers le plan %{plan} !
     cancel_scheduled: Votre abonnement sera annulé à la fin de la période de facturation
     cancel_error: Impossible d'annuler l'abonnement. Veuillez réessayer.
-    plans:
-      subtitle: Choisissez le plan qui vous convient le mieux
+    trial_badge: Essai gratuit de 30 jours
+    trial_remaining: "%{days} jours restants"
     features:
-      unlimited_calculations: Calculs d'impression illimités
-      unlimited_printers: Imprimantes illimitées
-      unlimited_filaments: Filaments illimités
-      unlimited_invoices: Factures illimitées
       calculations: "%{count} calculs d'impression/mois"
       printers: "%{count} profils d'imprimante"
       filaments: "%{count} types de filament"
       invoices: "%{count} factures/mois"
+      unlimited_calculations: Calculs d'impression illimités
+      unlimited_printers: Imprimantes illimitées
+      unlimited_filaments: Filaments illimités
+      unlimited_invoices: Factures illimitées
       no_branding: Supprimer la marque CalcuMake
       no_ads: Expérience sans publicité
       alternative_signin_method: Alternative signin method
       or_sign_in_with_email: Or Sign In With Email
       sign_in_with_provider: Sign in with %{provider}
       sign_in_with_provider_aria: Sign in with %{provider}
-    faq:
-      title: Questions Fréquemment Posées
-    cancel: Annuler l'abonnement
-    trial_remaining: "%{days} jours restants"
-  gdpr:
-    privacy_policy: Politique de confidentialité
-    cookie_policy: Politique des cookies
-    terms_of_service: Conditions d'utilisation
-    privacy_policy_title: Politique de confidentialité
-    terms_of_service_title: Conditions d'utilisation
-    cookie_policy_title: Politique des cookies
-    last_updated: 'Dernière mise à jour : %{date}'
-    consent_recorded: Votre préférence de consentement a été enregistrée.
-    consent_error: Une erreur s'est produite lors de l'enregistrement de votre consentement.
-      Veuillez réessayer.
-    account_deleted: Votre compte et toutes les données associées ont été supprimés
-      définitivement.
-    cookie_consent:
-      title: Nous valorisons votre vie privée
-      message_html: Nous utilisons des cookies pour améliorer votre expérience de
-        navigation et analyser le trafic du site. En cliquant sur 'Accepter', vous
-        consentez à notre utilisation des cookies. Lisez notre %{privacy_policy_link}
-        et notre %{cookie_policy_link} pour plus d'informations.
-      accept: Accepter
-      reject: Refuser
-    sections:
-      introduction:
-        title: Introduction
-        content: MOAB Co., Ltd. ('nous', 'notre', 'nos') s'engage à protéger et respecter
-          votre vie privée. Cette Politique de confidentialité explique comment nous
-          collectons, utilisons, divulguons et protégeons vos informations lorsque
-          vous utilisez notre service CalcuMake.
-      data_controller:
-        title: Responsable du traitement
-        content_html: "<strong>MOAB Co., Ltd.</strong><br>Enregistrée au Japon<br>Pour
-          les demandes de confidentialité : privacy@calcumake.com"
-      data_collection:
-        title: Informations que nous collectons
-        intro: 'Nous collectons les types d''informations personnelles suivants :'
-        items:
-          account_data: 'Informations de compte : Adresse e-mail, nom, détails de
-            l''entreprise et identifiants d''authentification'
-          usage_data: 'Données d''utilisation : Calculs de tarification d''impression,
-            configurations d''imprimantes, données de factures et profils de filaments'
-          technical_data: 'Données techniques : Adresse IP, type de navigateur, informations
-            sur l''appareil et journaux d''accès'
-          payment_data: 'Informations de paiement : Traitées en toute sécurité via
-            Stripe (nous ne stockons pas les détails complets des cartes de paiement)'
-      legal_basis:
-        title: Base légale du traitement
-        content: 'Nous traitons vos données personnelles sur la base de : (1) L''exécution
-          d''un contrat avec vous, (2) Votre consentement, (3) Le respect d''obligations
-          légales, et (4) Nos intérêts légitimes à fournir et améliorer nos services.'
-      data_usage:
-        title: Comment nous utilisons vos données
-        items:
-          service_provision: Pour fournir et maintenir notre service
-          communication: Pour communiquer avec vous concernant votre compte et les
-            mises à jour
-          improvement: Pour améliorer et personnaliser votre expérience
-          legal_compliance: Pour nous conformer aux obligations légales et prévenir
-            la fraude
-      data_sharing:
-        title: Partage et divulgation de données
-        content: Nous ne vendons pas vos données personnelles. Nous pouvons partager
-          des données avec des prestataires de services (Stripe pour les paiements,
-          fournisseurs d'hébergement cloud), lorsque la loi l'exige ou pour protéger
-          nos droits.
-      user_rights:
-        title: Vos droits en vertu du RGPD et de l'APPI
-        intro: 'Vous disposez des droits suivants concernant vos données personnelles
-          :'
-        items:
-          access:
-            title: Droit d'accès
-            description: Demander une copie de vos données personnelles
-          rectification:
-            title: Droit de rectification
-            description: Corriger les données inexactes ou incomplètes
-          erasure:
-            title: Droit à l'effacement
-            description_html: Demander la suppression de vos données (%{link})
-            link_text: supprimer le compte
-          portability:
-            title: Droit à la portabilité des données
-            description_html: Recevoir vos données dans un format lisible par machine
-              (%{link})
-            link_text: exporter les données
-          objection:
-            title: Droit d'opposition
-            description: S'opposer à certains types de traitement
-      data_retention:
-        title: Conservation des données
-        content: Nous conservons vos données personnelles aussi longtemps que votre
-          compte est actif ou selon les besoins pour fournir des services. Lors de
-          la suppression du compte, les données sont définitivement supprimées dans
-          les 30 jours, sauf si la conservation est requise par la loi.
-      security:
-        title: Mesures de sécurité
-        content: Nous mettons en œuvre des mesures de sécurité conformes aux normes
-          de l'industrie, notamment le chiffrement, l'authentification sécurisée,
-          des audits de sécurité réguliers et des contrôles d'accès pour protéger
-          vos données.
-      cookies:
-        title: Cookies et suivi
-        content_html: Nous utilisons des cookies pour les fonctionnalités essentielles
-          et l'analyse. Pour plus d'informations, consultez notre %{link}.
-      international_transfers:
-        title: Transferts internationaux de données
-        content: Vos données peuvent être transférées et traitées dans des pays en
-          dehors de votre juridiction. Nous veillons à ce que des garanties appropriées
-          soient en place pour protéger vos données conformément aux exigences du
-          RGPD et de l'APPI.
-      changes:
-        title: Modifications de cette politique
-        content: Nous pouvons mettre à jour cette Politique de confidentialité périodiquement.
-          Nous vous informerons des changements importants par e-mail ou par un avis
-          bien visible sur notre service.
-      contact:
-        title: Nous contacter
-        content_html: 'Pour toute question relative à la confidentialité ou pour exercer
-          vos droits, contactez-nous à : privacy@calcumake.com'
-    tos_sections:
-      acceptance:
-        title: Acceptation des conditions
-        content: En accédant et en utilisant CalcuMake, vous acceptez et convenez
-          d'être lié par ces Conditions d'utilisation.
-      service_description:
-        title: Description du service
-        content: CalcuMake est une application web pour calculer les coûts d'impression
-          3D, gérer les imprimantes et générer des factures.
-      user_accounts:
-        title: Comptes utilisateurs
-        content: Vous êtes responsable de maintenir la confidentialité de vos identifiants
-          de compte et de toutes les activités qui se produisent sous votre compte.
-      acceptable_use:
-        title: Utilisation acceptable
-        intro: 'Vous acceptez de ne pas :'
-        items:
-          illegal: Utiliser le service à des fins illégales
-          harmful: Télécharger du code malveillant ou du contenu nuisible
-          unauthorized: Tenter un accès non autorisé à nos systèmes
-          interference: Interférer ou perturber le service
-      intellectual_property:
-        title: Propriété intellectuelle
-        content: Tout le contenu, les fonctionnalités et les fonctions de CalcuMake
-          sont la propriété de MOAB Co., Ltd. et sont protégés par les lois internationales
-          sur les droits d'auteur, les marques et autres lois sur la propriété intellectuelle.
-      payment_terms:
-        title: Conditions de paiement
-        content: Les abonnements payants sont facturés à l'avance de manière récurrente.
-          Les remboursements sont traités selon notre politique de remboursement.
-      termination:
-        title: Résiliation
-        content: Nous pouvons résilier ou suspendre votre compte à tout moment en
-          cas de violation de ces Conditions. Vous pouvez résilier votre compte à
-          tout moment via les paramètres du compte.
-      liability:
-        title: Limitation de responsabilité
-        content: CalcuMake est fourni 'tel quel' sans garanties. Nous ne sommes pas
-          responsables des dommages indirects, accessoires ou consécutifs découlant
-          de votre utilisation du service.
-      governing_law:
-        title: Loi applicable
-        content: Ces Conditions sont régies par les lois du Japon. Pour les utilisateurs
-          de l'UE, les lois applicables de protection des consommateurs s'appliquent.
-      changes:
-        title: Modifications des conditions
-        content: Nous nous réservons le droit de modifier ces Conditions à tout moment.
-          L'utilisation continue du service après les modifications constitue l'acceptation
-          des Conditions modifiées.
-    cookie_sections:
-      what_are_cookies:
-        title: Qu'est-ce que les cookies ?
-        content: Les cookies sont de petits fichiers texte stockés sur votre appareil
-          qui nous aident à fournir et améliorer notre service.
-      how_we_use:
-        title: Comment nous utilisons les cookies
-        intro: 'Nous utilisons les types de cookies suivants :'
-        essential:
-          title: Cookies essentiels
-          description: Requis pour les fonctionnalités de base comme l'authentification
-            et la sécurité
-        functional:
-          title: Cookies fonctionnels
-          description: Mémorisent vos préférences et paramètres
-        analytics:
-          title: Cookies analytiques
-          description: Nous aident à comprendre comment vous utilisez le service (nécessite
-            le consentement)
-      cookie_list:
-        title: Liste des cookies
-        table:
-          name: Nom du cookie
-          purpose: Objectif
-          duration: Durée
-        cookies:
-          session:
-            purpose: Gestion de session et authentification
-            duration: Session (effacé à la déconnexion)
-          consent:
-            purpose: Stocke votre préférence de consentement aux cookies
-            duration: 1 an
-          remember:
-            purpose: Vous garde connecté entre les sessions
-            duration: 2 semaines
-      managing_cookies:
-        title: Gestion des cookies
-        content: Vous pouvez contrôler et supprimer les cookies via les paramètres
-          de votre navigateur. Notez que la désactivation des cookies essentiels peut
-          affecter les fonctionnalités du service.
-      third_party:
-        title: Cookies tiers
-        content: Nous utilisons Stripe pour le traitement des paiements et Google
-          Analytics pour l'analyse d'utilisation. Ces services peuvent définir leurs
-          propres cookies soumis à leurs politiques de confidentialité.
-    data_export:
-      title: Exporter vos données
-      description: Téléchargez une copie complète de toutes vos données personnelles
-        stockées dans CalcuMake au format JSON.
-      what_included: 'Ce qui est inclus :'
-      items:
-        account_info: Informations de compte
-        print_pricings: Tous les calculs de tarification d'impression
-        printers: Configurations d'imprimantes
-        invoices: Historique des factures
-        filaments: Profils de filaments
-        clients: Informations clients
-        consents: Historique des consentements
-      format: Format d'exportation
-      format_description: Vos données seront exportées sous forme de fichier JSON
-        que vous pourrez enregistrer et traiter avec des outils standard.
-      download_button: Télécharger mes données
-    data_deletion:
-      title: Supprimer votre compte
-      warning_title: 'Attention : Cette action ne peut pas être annulée !'
-      warning_message: La suppression de votre compte supprimera définitivement toutes
-        vos données de nos systèmes. Cela inclut tous les prix d'impression, factures,
-        imprimantes, filaments et informations clients.
-      what_deleted: 'Ce qui sera supprimé :'
-      items:
-        account: Votre compte et identifiants de connexion
-        print_pricings: Tous les calculs de tarification d'impression
-        printers: Toutes les configurations d'imprimantes
-        invoices: Toutes les factures et l'historique des factures
-        filaments: Tous les profils de filaments
-        clients: Toutes les informations clients
-        uploaded_files: Tous les fichiers téléchargés (logos d'entreprise, etc.)
-      before_deletion: Avant de supprimer
-      export_recommendation_html: Nous recommandons d'%{link} vos données avant de
-        supprimer votre compte, car cette action est permanente et ne peut pas être
-        annulée.
-      export_link: exporter
-      delete_button: Supprimer mon compte définitivement
-      confirm_message: Êtes-vous absolument sûr de vouloir supprimer définitivement
-        votre compte et toutes les données associées ? Cette action ne peut pas être
-        annulée.

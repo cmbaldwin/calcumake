@@ -22,7 +22,11 @@
             <%= t('print_pricing.fields.no_printer_help') %>
             <%= link_to new_printer_path(format: :turbo_stream),
                 class: "btn btn-sm btn-outline-primary ms-2",
-                data: { turbo_frame: "modal_content" } do %>
+                data: { 
+                  controller: "modal-link",
+                  action: "click->modal-link#open",
+                  turbo_frame: "modal_content"
+                } do %>
               <i class="bi bi-plus-circle"></i>
               <%= t('print_pricing.fields.add_printer_link') %>
             <% end %>

@@ -11,6 +11,8 @@
 - `bin/rails test` - Run tests
 - `bin/rubocop` - Style checking
 - `bin/brakeman` - Security scan
+- `bin/sync-translations` - Sync and auto-translate missing keys (uses OpenRouter API if key available)
+- `bin/translate-locales` - Direct automated translation via OpenRouter API (requires OPENROUTER_TRANSLATION_KEY)
 
 ## Core Architecture
 
@@ -78,10 +80,96 @@ Never replace frames directly - wrap content:
 - Wait for outlet connections before accessing outlet targets
 - Limits: 10 plates max, 16 filaments per plate, minimum 1 of each
 
+### Modal Pattern (Turbo + Stimulus)
+**Custom Event-Based Modal System** for creating records within forms:
+
+**Controllers:**
+- `modal_controller.js` - Manages Bootstrap modal lifecycle and loading states
+- `modal_link_controller.js` - Dispatches custom `open-modal` event on link click
+
+**Pattern:**
+```erb
+<!-- Link to open modal -->
+<%= link_to new_resource_path(format: :turbo_stream),
+    data: {
+      controller: "modal-link",
+      action: "click->modal-link#open",
+      turbo_frame: "modal_content"
+    } %>
+```
+
+**Key Behaviors:**
+1. Modal link dispatches `open-modal` custom event (document-level)
+2. Modal controller listens for event and shows loading spinner immediately
+3. Turbo frame loads content into `modal_content` frame
+4. Success: Turbo stream updates specific dropdown + closes modal
+5. Error: Modal stays open showing validation errors
+
+**Turbo Stream Response Pattern:**
+```erb
+# Update specific dropdown only (not full page reload)
+<%= turbo_stream.update "resource_select_frame" do %>
+  <%= render_select_with_new_option %>
+<% end %>
+
+# Close modal via JavaScript
+<%= turbo_stream.append "modal" do %>
+  <script>
+    bootstrap.Modal.getInstance(document.getElementById('modal'))?.hide()
+  </script>
+<% end %>
+```
+
+**Active Implementations:**
+- Clients in invoice forms → updates `client_select_frame`
+- Printers in print pricing forms → updates `printer_select_frame`
+- Filaments in plate fields → updates all `[data-filament-select-frame]` (multiple instances)
+
 ## Internationalization
 Supports 7 languages: en, ja, zh-CN, hi, es, fr, ar
 
-**CRITICAL**: ALL new features MUST include translations for ALL 7 languages. Use `t('key')` helpers, never hardcode text.
+**CRITICAL**: Only maintain `en.yml` and `devise.en.yml` - all other locales are auto-translated.
+
+### Automated Translation System
+
+**Development Workflow** (Local):
+1. Add new keys to `config/locales/en.yml` or `config/locales/devise.en.yml`
+2. Run `bin/sync-translations` (uses English placeholders without API key)
+3. Test with `bin/rails test` to ensure nothing broke
+
+**Production Workflow** (Deployment):
+1. Add new keys to English master files
+2. Commit and push changes
+3. Pre-build hook automatically translates all missing keys via OpenRouter API
+4. Translations committed automatically before deployment
+
+**Translation Scripts**:
+
+`bin/sync-translations` - Intelligent wrapper script:
+- **With API key**: Calls `bin/translate-locales` for automated translation
+- **Without API key**: Falls back to English placeholder sync
+- Compares `en.yml` + `devise.en.yml` against all target locales
+- Auto-detects missing keys across all 6 languages
+
+`bin/translate-locales` - OpenRouter API integration:
+- **Model**: Google Gemini Flash 1.5 (8B) - extremely fast and cost-effective (~$0.00001875/1M tokens)
+- **Batch processing**: 50 keys per request for optimal performance
+- **Smart caching**: Stores translations in `tmp/translation_cache/` to avoid re-translating
+- **Validation**: Ensures interpolation variables (%{name}, etc.) are preserved
+- **Resume capability**: Can restart from cache if interrupted
+- **Cost**: ~$0.10 for full translation of all 1265+ keys across 6 languages
+
+**Key Features**:
+- Preserves interpolation variables (`%{variable}`)
+- Maintains HTML tags and ERB syntax
+- Validates translation quality before writing
+- Context-aware for 3D printing terminology
+- Automatic deployment integration via pre-build hook
+
+**Environment Variables**:
+- `OPENROUTER_TRANSLATION_KEY` - API key for automated translations (stored in 1Password)
+- Set locally for testing: `export OPENROUTER_TRANSLATION_KEY='your-key'`
+- Automatically available in deployment via Kamal secrets
 
 **Merging Translation Conflicts**: When merging branches with locale file conflicts, use `bin/merge-locale-yml` for semantic YAML merging (see `docs/TRANSLATION_MERGE_WORKFLOW.md` for full workflow).
 
@@ -145,9 +233,17 @@ Minitest with Turbo Stream tests. Test both HTML and turbo_stream formats.
 - `app/helpers/application_helper.rb` - OAuth buttons and icons for views
 - `app/views/devise/shared/_oauth_buttons.html.erb` - OAuth login buttons partial
 - `app/javascript/controllers/nested_form_controller.js` - Dynamic plate management
+- `app/javascript/controllers/modal_controller.js` - Modal lifecycle management
+- `app/javascript/controllers/modal_link_controller.js` - Modal open event dispatcher
+- `app/views/shared/_modal.html.erb` - Reusable modal component
 - `app/helpers/print_pricings_helper.rb` - View formatting
 - `app/assets/stylesheets/application.css` - Moab theme styling
-- `config/locales/` - All 7 language files
+- `config/locales/en.yml` - English master locale (only file to manually maintain)
+- `config/locales/devise.en.yml` - English Devise translations (only file to manually maintain)
+- `config/locales/*.yml` - Auto-translated locale files (ja, es, fr, ar, hi, zh-CN)
+- `bin/sync-translations` - Translation wrapper (auto-detects API key)
+- `bin/translate-locales` - Automated translation via OpenRouter API
+- `.kamal/hooks/pre-build` - Deployment hook (runs translations + tests + auto-commit)
 - `.env.local` - OAuth credentials (gitignored, see `.env.local.example`)
 
 ## Documentation Context Reference
@@ -157,6 +253,9 @@ Minitest with Turbo Stream tests. Test both HTML and turbo_stream formats.
 **Stripe Integration:** `docs/STRIPE_SETUP.md`
 **Landing Page:** `docs/LANDING_PAGE_PLAN.md`
 **Turbo Framework:** `docs/TURBO_REFERENCE.md` | `docs/TURBO_CHEATSHEET.md`
+**Modal Pattern:** `docs/MODAL_IMPLEMENTATION.md` - Complete guide for custom event-based modal system
+**Translation System:** `docs/AUTOMATED_TRANSLATION_SYSTEM.md` - OpenRouter API automated translations
+**Translation Workflow:** `docs/TRANSLATION_MERGE_WORKFLOW.md` - Locale file merging and sync procedures
 
 ### Historical Context (Archive)
 When additional context is needed for historical decisions or completed features:

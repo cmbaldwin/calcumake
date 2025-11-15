@@ -21,7 +21,11 @@
                   <%= t("invoices.fields.client_help_text") %>
                   <%= link_to new_client_path(format: :turbo_stream),
                       class: "btn btn-sm btn-outline-primary ms-2",
-                      data: { turbo_frame: "modal_content" } do %>
+                      data: { 
+                        controller: "modal-link",
+                        action: "click->modal-link#open",
+                        turbo_frame: "modal_content"
+                      } do %>
                     <i class="bi bi-plus-circle"></i>
                     <%= t("clients.new.title") %>
                   <% end %>
