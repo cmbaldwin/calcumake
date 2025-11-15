@@ -1,0 +1,310 @@
+#!/usr/bin/env ruby
+# Automated translation system using OpenRouter API
+# Translates missing keys from English master files to all target locales
+
+require 'yaml'
+require 'json'
+require 'net/http'
+require 'uri'
+require 'fileutils'
+
+LOCALES_DIR = File.expand_path('../config/locales', __dir__)
+MASTER_LOCALE = 'en'
+TARGET_LOCALES = ['ja', 'es', 'fr', 'ar', 'hi', 'zh-CN']
+BATCH_SIZE = 50 # Keys per API request
+CACHE_DIR = File.expand_path('../tmp/translation_cache', __dir__)
+
+# Language name mapping for better API prompts
+LANGUAGE_NAMES = {
+  'ja' => 'Japanese',
+  'es' => 'Spanish',
+  'fr' => 'French',
+  'ar' => 'Arabic',
+  'hi' => 'Hindi',
+  'zh-CN' => 'Simplified Chinese'
+}
+
+# Ensure cache directory exists
+FileUtils.mkdir_p(CACHE_DIR)
+
+def get_all_keys(hash, prefix = '')
+  keys = {}
+  hash.each do |key, value|
+    full_key = prefix.empty? ? key : "#{prefix}.#{key}"
+    if value.is_a?(Hash)
+      keys.merge!(get_all_keys(value, full_key))
+    else
+      keys[full_key] = value
+    end
+  end
+  keys
+end
+
+def set_nested_key(hash, key_path, value)
+  keys = key_path.split('.')
+  last_key = keys.pop
+  current = hash
+
+  keys.each do |key|
+    unless current.is_a?(Hash)
+      puts "   ⚠️  Cannot set #{key_path} - parent is not a hash"
+      return
+    end
+    current[key] ||= {}
+    current = current[key]
+  end
+
+  if current.is_a?(Hash)
+    current[last_key] = value
+  else
+    puts "   ⚠️  Cannot set #{key_path} - target is not a hash"
+  end
+end
+
+def call_openrouter_api(keys_to_translate, target_language, api_key)
+  uri = URI('https://openrouter.ai/api/v1/chat/completions')
+
+  # Prepare translation request with clear instructions
+  translation_pairs = keys_to_translate.map { |k, v| "#{k}: #{v}" }.join("\n")
+
+  prompt = <<~PROMPT
+    You are a professional translator for a 3D printing management web application called CalcuMake.
+
+    Translate the following English UI strings to #{LANGUAGE_NAMES[target_language]}.
+
+    CRITICAL RULES:
+    1. Preserve all interpolation variables EXACTLY as shown (e.g., %{name}, %{count}, etc.)
+    2. Preserve HTML tags if present
+    3. Keep technical terms accurate (e.g., "filament", "printer", "STL file")
+    4. Use natural, professional language for UI elements
+    5. For currency symbols, keep <%= %> tags intact
+    6. Return ONLY the translations in the same key: value format, nothing else
+
+    English strings to translate:
+    #{translation_pairs}
+
+    Respond with translations in this exact format:
+    key: translated_value
+  PROMPT
+
+  request_body = {
+    model: 'google/gemini-flash-1.5-8b',
+    messages: [
+      {
+        role: 'user',
+        content: prompt
+      }
+    ],
+    temperature: 0.3, # Lower temperature for more consistent translations
+    max_tokens: 4000
+  }
+
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  http.read_timeout = 60
+
+  request = Net::HTTP::Post.new(uri.path)
+  request['Authorization'] = "Bearer #{api_key}"
+  request['Content-Type'] = 'application/json'
+  request['HTTP-Referer'] = 'https://calcumake.com'
+  request['X-Title'] = 'CalcuMake Translation System'
+  request.body = request_body.to_json
+
+  response = http.request(request)
+
+  unless response.code == '200'
+    raise "API request failed: #{response.code} - #{response.body}"
+  end
+
+  result = JSON.parse(response.body)
+  content = result.dig('choices', 0, 'message', 'content')
+
+  unless content
+    raise "No content in API response: #{result.inspect}"
+  end
+
+  # Parse the response back into key-value pairs
+  translations = {}
+  content.split("\n").each do |line|
+    next if line.strip.empty?
+    next if line.strip.start_with?('#') # Skip comments
+
+    if line =~ /^(.+?):\s*(.+)$/
+      key = $1.strip
+      value = $2.strip
+      translations[key] = value
+    end
+  end
+
+  translations
+rescue StandardError => e
+  puts "   ❌ API Error: #{e.message}"
+  nil
+end
+
+def translate_batch(keys_hash, target_language, api_key, cache_file)
+  # Check cache first
+  cached_translations = {}
+  if File.exist?(cache_file)
+    cached_translations = JSON.parse(File.read(cache_file))
+  end
+
+  # Filter out already cached keys
+  keys_to_translate = keys_hash.reject { |k, _v| cached_translations.key?(k) }
+
+  if keys_to_translate.empty?
+    puts "   📦 All keys cached, skipping API call"
+    return cached_translations
+  end
+
+  puts "   🌐 Translating #{keys_to_translate.size} keys to #{LANGUAGE_NAMES[target_language]}..."
+
+  translations = call_openrouter_api(keys_to_translate, target_language, api_key)
+
+  if translations
+    # Merge with cached translations
+    all_translations = cached_translations.merge(translations)
+
+    # Update cache
+    File.write(cache_file, JSON.pretty_generate(all_translations))
+
+    puts "   ✅ Translated #{translations.size} keys (#{cached_translations.size} from cache)"
+    all_translations
+  else
+    puts "   ⚠️  Translation failed, using cached translations only"
+    cached_translations
+  end
+end
+
+def validate_translation(key, original, translated)
+  # Check for interpolation variables
+  original_vars = original.scan(/%\{[^}]+\}/)
+  translated_vars = translated.scan(/%\{[^}]+\}/)
+
+  if original_vars.sort != translated_vars.sort
+    puts "   ⚠️  Variable mismatch in #{key}:"
+    puts "      Original: #{original_vars.join(', ')}"
+    puts "      Translated: #{translated_vars.join(', ')}"
+    return false
+  end
+
+  true
+end
+
+# Main execution
+puts "=" * 80
+puts "CalcuMake Automated Translation System"
+puts "Using OpenRouter API with Google Gemini Flash 1.5"
+puts "=" * 80
+puts
+
+# Check for API key
+api_key = ENV['OPENROUTER_TRANSLATION_KEY'] || ENV['OPENROUTER_API_KEY']
+unless api_key
+  puts "❌ Error: OPENROUTER_TRANSLATION_KEY environment variable not set"
+  puts
+  puts "To use this script:"
+  puts "  export OPENROUTER_TRANSLATION_KEY='your-api-key'"
+  puts "  bin/translate-locales"
+  exit 1
+end
+
+# Load master locale files
+master_file = File.join(LOCALES_DIR, "#{MASTER_LOCALE}.yml")
+devise_master_file = File.join(LOCALES_DIR, "devise.#{MASTER_LOCALE}.yml")
+
+unless File.exist?(master_file)
+  puts "❌ Error: Master locale file not found: #{master_file}"
+  exit 1
+end
+
+master_data = YAML.load_file(master_file)
+master_keys = get_all_keys(master_data[MASTER_LOCALE])
+
+# Load Devise translations if they exist
+devise_keys = {}
+if File.exist?(devise_master_file)
+  devise_data = YAML.load_file(devise_master_file)
+  devise_keys = get_all_keys(devise_data[MASTER_LOCALE])
+  puts "📖 Loaded #{master_keys.count} keys from #{MASTER_LOCALE}.yml"
+  puts "📖 Loaded #{devise_keys.count} keys from devise.#{MASTER_LOCALE}.yml"
+else
+  puts "📖 Loaded #{master_keys.count} keys from #{MASTER_LOCALE}.yml"
+end
+
+all_master_keys = master_keys.merge(devise_keys)
+puts "📊 Total: #{all_master_keys.count} keys to manage"
+puts
+
+total_translations = 0
+total_api_calls = 0
+
+TARGET_LOCALES.each do |locale|
+  puts "🌍 Processing #{locale} (#{LANGUAGE_NAMES[locale]})..."
+
+  target_file = File.join(LOCALES_DIR, "#{locale}.yml")
+  cache_file = File.join(CACHE_DIR, "#{locale}.json")
+
+  unless File.exist?(target_file)
+    puts "   ⚠️  #{locale}.yml does not exist, creating..."
+    File.write(target_file, { locale => {} }.to_yaml)
+  end
+
+  target_data = YAML.load_file(target_file)
+  target_keys = get_all_keys(target_data[locale] || {})
+
+  missing_keys = all_master_keys.reject { |k, _v| target_keys.key?(k) }
+
+  if missing_keys.empty?
+    puts "   ✅ All translations present (#{target_keys.count} keys)"
+    next
+  end
+
+  puts "   📝 Found #{missing_keys.count} missing keys"
+
+  # Process in batches
+  missing_keys.each_slice(BATCH_SIZE).with_index do |batch, index|
+    batch_hash = batch.to_h
+    puts "   📦 Batch #{index + 1}/#{(missing_keys.size.to_f / BATCH_SIZE).ceil} (#{batch_hash.size} keys)"
+
+    translations = translate_batch(batch_hash, locale, api_key, cache_file)
+    total_api_calls += 1
+
+    next unless translations
+
+    # Apply translations with validation
+    translations.each do |key, value|
+      if validate_translation(key, batch_hash[key], value)
+        set_nested_key(target_data[locale] ||= {}, key, value)
+        total_translations += 1
+      else
+        # Fall back to English value if validation fails
+        set_nested_key(target_data[locale] ||= {}, key, batch_hash[key])
+        puts "      ↳ Using English value due to validation failure"
+      end
+    end
+
+    # Small delay between batches to avoid rate limiting
+    sleep 0.5 if index < (missing_keys.size.to_f / BATCH_SIZE).ceil - 1
+  end
+
+  # Write updated locale file
+  File.write(target_file, target_data.to_yaml)
+  puts "   💾 Updated #{locale}.yml"
+  puts
+end
+
+puts "=" * 80
+puts "✨ Translation Complete!"
+puts "=" * 80
+puts "📊 Statistics:"
+puts "   • Languages processed: #{TARGET_LOCALES.size}"
+puts "   • Total translations: #{total_translations}"
+puts "   • API calls made: #{total_api_calls}"
+puts "   • Cache directory: #{CACHE_DIR}"
+puts
+puts "💡 Next steps:"
+puts "   1. Review the updated locale files"
+puts "   2. Run 'bin/rails test' to ensure nothing broke"
+puts "   3. Commit the changes if everything looks good"
+puts

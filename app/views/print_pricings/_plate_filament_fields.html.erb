@@ -104,7 +104,11 @@
         <%= link_to t('filaments.fields.add_new_filament'),
             new_filament_path(format: :turbo_stream),
             class: "btn btn-sm btn-outline-primary",
-            data: { turbo_frame: "modal_content" } %>
+            data: { 
+              controller: "modal-link",
+              action: "click->modal-link#open",
+              turbo_frame: "modal_content"
+            } %>
       </div>
     </div>
   </div>

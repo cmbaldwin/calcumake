@@ -95,3 +95,5 @@ coverage.data
 # Ignore solid cache and queue databases
 /db/solid_cache.sqlite3
 /db/solid_queue.sqlite3
+# Translation cache
+/tmp/translation_cache/

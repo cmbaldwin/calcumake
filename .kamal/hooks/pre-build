@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Sync translations with automated translation if API key available
+echo "Syncing translations..."
+bin/sync-translations
+
+# Check if translations created any changes
+if ! git diff-index --quiet HEAD -- config/locales/; then
+    echo "Translation sync created changes. Staging locale files..."
+    git add config/locales/
+fi
+
 # Run tests first - ensure they pass before proceeding
 echo "Running tests..."
 bin/rails test
