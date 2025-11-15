@@ -253,19 +253,35 @@ TARGET_LOCALES.each do |locale|
   target_data = YAML.load_file(target_file)
   target_keys = get_all_keys(target_data[locale] || {})
 
+  # Find both missing keys AND keys with English values (untranslated)
   missing_keys = all_master_keys.reject { |k, _v| target_keys.key?(k) }
 
-  if missing_keys.empty?
+  # Find keys that exist but have the same value as English (untranslated placeholders)
+  english_placeholder_keys = {}
+  target_keys.each do |k, v|
+    if all_master_keys.key?(k) && v == all_master_keys[k]
+      english_placeholder_keys[k] = v
+    end
+  end
+
+  # Combine both types of keys that need translation
+  keys_needing_translation = missing_keys.merge(english_placeholder_keys)
+
+  if keys_needing_translation.empty?
     puts "   ✅ All translations present (#{target_keys.count} keys)"
     next
   end
 
   puts "   📝 Found #{missing_keys.count} missing keys"
+  if english_placeholder_keys.any?
+    puts "   🔄 Found #{english_placeholder_keys.count} untranslated (English placeholder) keys"
+  end
+  puts "   📋 Total keys to translate: #{keys_needing_translation.count}"
 
   # Process in batches
-  missing_keys.each_slice(BATCH_SIZE).with_index do |batch, index|
+  keys_needing_translation.each_slice(BATCH_SIZE).with_index do |batch, index|
     batch_hash = batch.to_h
-    puts "   📦 Batch #{index + 1}/#{(missing_keys.size.to_f / BATCH_SIZE).ceil} (#{batch_hash.size} keys)"
+    puts "   📦 Batch #{index + 1}/#{(keys_needing_translation.size.to_f / BATCH_SIZE).ceil} (#{batch_hash.size} keys)"
 
     translations = translate_batch(batch_hash, locale, api_key, cache_file)
     total_api_calls += 1
@@ -285,7 +301,7 @@ TARGET_LOCALES.each do |locale|
     end
 
     # Small delay between batches to avoid rate limiting
-    sleep 0.5 if index < (missing_keys.size.to_f / BATCH_SIZE).ceil - 1
+    sleep 0.5 if index < (keys_needing_translation.size.to_f / BATCH_SIZE).ceil - 1
   end
 
   # Write updated locale file

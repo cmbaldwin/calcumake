@@ -1,0 +1,263 @@
+#!/usr/bin/env ruby
+# Check for untranslated strings in the application
+# Scans views, controllers, and helpers for hardcoded English text
+
+require 'yaml'
+require 'fileutils'
+
+LOCALES_DIR = File.expand_path('../config/locales', __dir__)
+APP_DIR = File.expand_path('../app', __dir__)
+TARGET_LOCALES = ['ja', 'es', 'fr', 'ar', 'hi', 'zh-CN']
+
+# Patterns that indicate untranslated strings
+SUSPICIOUS_PATTERNS = [
+  # Hardcoded English strings in ERB
+  /[>"']\s*[A-Z][a-z]+\s+[a-z]+/,  # "Start with" or similar
+  /placeholder:\s*["'](?!<%= t\()[A-Z]/,  # placeholder: "English"
+  /title:\s*["'](?!<%= t\()[A-Z]/,  # title: "English"
+  /label.*["'](?!<%= t\()[A-Z][a-z]+\s/,  # label with English
+]
+
+def get_all_translation_keys(locale)
+  keys = {}
+
+  # Load main locale file
+  main_file = File.join(LOCALES_DIR, "#{locale}.yml")
+  if File.exist?(main_file)
+    data = YAML.load_file(main_file)
+    keys.merge!(flatten_hash(data[locale] || {}, locale))
+  end
+
+  # Load devise locale file if exists
+  devise_file = File.join(LOCALES_DIR, "devise.#{locale}.yml")
+  if File.exist?(devise_file)
+    data = YAML.load_file(devise_file)
+    keys.merge!(flatten_hash(data[locale] || {}, "devise.#{locale}"))
+  end
+
+  keys
+end
+
+def flatten_hash(hash, prefix = '')
+  result = {}
+  hash.each do |key, value|
+    full_key = prefix.empty? ? key : "#{prefix}.#{key}"
+    if value.is_a?(Hash)
+      result.merge!(flatten_hash(value, full_key))
+    else
+      result[full_key] = value
+    end
+  end
+  result
+end
+
+def scan_file_for_issues(file_path, en_keys, target_keys)
+  issues = []
+  content = File.read(file_path)
+
+  # Check for t() calls that might not have translations
+  content.scan(/t\(['"]([^'"]+)['"]\)/) do |match|
+    key = match[0]
+
+    # Check if key exists in English
+    unless en_keys.key?(key)
+      issues << {
+        type: :missing_key,
+        file: file_path,
+        key: key,
+        line: find_line_number(content, key)
+      }
+    else
+      # Check if key exists in target locales
+      TARGET_LOCALES.each do |locale|
+        unless target_keys[locale]&.key?(key)
+          issues << {
+            type: :missing_translation,
+            file: file_path,
+            key: key,
+            locale: locale,
+            english: en_keys[key],
+            line: find_line_number(content, key)
+          }
+        end
+      end
+    end
+  end
+
+  # Check for hardcoded strings
+  content.each_line.with_index do |line, index|
+    # Skip comments and translations
+    next if line.strip.start_with?('#')
+    next if line.include?('t(')
+    next if line.include?('I18n.t')
+
+    # Look for suspicious patterns
+    if line =~ /<%= f\.label/ && line !~ /t\(/
+      issues << {
+        type: :hardcoded_label,
+        file: file_path,
+        line: index + 1,
+        content: line.strip
+      }
+    elsif line =~ /placeholder:\s*["'][A-Z]/ && line !~ /t\(/
+      issues << {
+        type: :hardcoded_placeholder,
+        file: file_path,
+        line: index + 1,
+        content: line.strip
+      }
+    end
+  end
+
+  issues
+end
+
+def find_line_number(content, search_term)
+  content.lines.each_with_index do |line, index|
+    return index + 1 if line.include?(search_term)
+  end
+  0
+end
+
+puts "=" * 80
+puts "CalcuMake Translation Checker"
+puts "=" * 80
+puts
+
+# Load all translation keys
+puts "📖 Loading translation keys..."
+en_keys = get_all_translation_keys('en')
+puts "   English: #{en_keys.count} keys"
+
+target_keys = {}
+TARGET_LOCALES.each do |locale|
+  target_keys[locale] = get_all_translation_keys(locale)
+  puts "   #{locale}: #{target_keys[locale].count} keys"
+end
+puts
+
+# Scan all view files
+puts "🔍 Scanning view files..."
+all_issues = []
+
+Dir.glob("#{APP_DIR}/views/**/*.erb").each do |file|
+  issues = scan_file_for_issues(file, en_keys, target_keys)
+  all_issues.concat(issues)
+end
+
+# Scan helper files
+puts "🔍 Scanning helper files..."
+Dir.glob("#{APP_DIR}/helpers/**/*.rb").each do |file|
+  issues = scan_file_for_issues(file, en_keys, target_keys)
+  all_issues.concat(issues)
+end
+
+puts
+
+# Group and display issues
+if all_issues.empty?
+  puts "✅ No translation issues found!"
+else
+  puts "⚠️  Found #{all_issues.count} potential translation issues"
+  puts
+
+  # Group by type
+  grouped = all_issues.group_by { |i| i[:type] }
+
+  if grouped[:missing_key]
+    puts "❌ Missing Translation Keys (#{grouped[:missing_key].count}):"
+    grouped[:missing_key].uniq { |i| i[:key] }.first(10).each do |issue|
+      puts "   #{issue[:key]}"
+      puts "      Used in: #{issue[:file].sub(APP_DIR, 'app')}:#{issue[:line]}"
+    end
+    puts "   ... and #{[grouped[:missing_key].count - 10, 0].max} more" if grouped[:missing_key].count > 10
+    puts
+  end
+
+  if grouped[:missing_translation]
+    puts "🌍 Missing Translations by Locale:"
+    grouped[:missing_translation].group_by { |i| i[:locale] }.each do |locale, issues|
+      puts "   #{locale}: #{issues.uniq { |i| i[:key] }.count} missing keys"
+      issues.uniq { |i| i[:key] }.first(5).each do |issue|
+        puts "      - #{issue[:key]}: \"#{issue[:english]}\""
+      end
+      puts "      ... and #{[issues.count - 5, 0].max} more" if issues.count > 5
+    end
+    puts
+  end
+
+  if grouped[:hardcoded_label]
+    puts "🏷️  Hardcoded Labels (#{grouped[:hardcoded_label].count}):"
+    grouped[:hardcoded_label].first(10).each do |issue|
+      puts "   #{issue[:file].sub(APP_DIR, 'app')}:#{issue[:line]}"
+      puts "      #{issue[:content]}"
+    end
+    puts "   ... and #{[grouped[:hardcoded_label].count - 10, 0].max} more" if grouped[:hardcoded_label].count > 10
+    puts
+  end
+
+  if grouped[:hardcoded_placeholder]
+    puts "📝 Hardcoded Placeholders (#{grouped[:hardcoded_placeholder].count}):"
+    grouped[:hardcoded_placeholder].first(10).each do |issue|
+      puts "   #{issue[:file].sub(APP_DIR, 'app')}:#{issue[:line]}"
+      puts "      #{issue[:content]}"
+    end
+    puts "   ... and #{[grouped[:hardcoded_placeholder].count - 10, 0].max} more" if grouped[:hardcoded_placeholder].count > 10
+    puts
+  end
+
+  # Generate detailed report
+  report_file = File.expand_path('../tmp/translation_report.txt', __dir__)
+  File.write(report_file, generate_detailed_report(all_issues, en_keys, target_keys))
+  puts "📄 Detailed report saved to: #{report_file}"
+end
+
+puts
+puts "💡 Next steps:"
+puts "   1. Review the issues above"
+puts "   2. Add missing keys to config/locales/en.yml"
+puts "   3. Run bin/sync-translations to propagate changes"
+puts "   4. Replace hardcoded strings with t() helpers"
+puts
+
+def generate_detailed_report(issues, en_keys, target_keys)
+  report = []
+  report << "=" * 80
+  report << "CalcuMake Translation Report"
+  report << "Generated: #{Time.now}"
+  report << "=" * 80
+  report << ""
+
+  report << "Summary:"
+  report << "  Total issues: #{issues.count}"
+  report << "  English keys: #{en_keys.count}"
+  TARGET_LOCALES.each do |locale|
+    missing = issues.select { |i| i[:type] == :missing_translation && i[:locale] == locale }.count
+    report << "  #{locale}: #{target_keys[locale].count} keys (#{missing} missing)"
+  end
+  report << ""
+
+  # Detailed breakdown
+  report << "=" * 80
+  report << "Detailed Issues"
+  report << "=" * 80
+  report << ""
+
+  issues.group_by { |i| i[:type] }.each do |type, type_issues|
+    report << "#{type.to_s.upcase.gsub('_', ' ')} (#{type_issues.count}):"
+    report << "-" * 80
+
+    type_issues.each do |issue|
+      report << "File: #{issue[:file]}"
+      report << "Line: #{issue[:line]}" if issue[:line]
+      report << "Key: #{issue[:key]}" if issue[:key]
+      report << "Locale: #{issue[:locale]}" if issue[:locale]
+      report << "English: #{issue[:english]}" if issue[:english]
+      report << "Content: #{issue[:content]}" if issue[:content]
+      report << ""
+    end
+    report << ""
+  end
+
+  report.join("\n")
+end

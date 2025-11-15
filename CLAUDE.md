@@ -13,6 +13,8 @@
 - `bin/brakeman` - Security scan
 - `bin/sync-translations` - Sync and auto-translate missing keys (uses OpenRouter API if key available)
 - `bin/translate-locales` - Direct automated translation via OpenRouter API (requires OPENROUTER_TRANSLATION_KEY)
+- `bin/force-retranslate` - Clear cache for English placeholder values to force re-translation
+- `bin/check-translations` - Scan code for missing translation keys and hardcoded strings
 
 ## Core Architecture
 
