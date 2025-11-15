@@ -66,6 +66,23 @@ ja:
               no_plates: 少なくとも1つのプレートが必要です
               too_many_plates: プレートは10個を超えることはできません
               duplicate_filaments_on_plate: 同じプレートで同じフィラメントを複数回使用することはできません
+      messages:
+        blank: can't be blank
+        taken: has already been taken
+        too_short: is too short (minimum is %{count} characters)
+        too_long: is too long (maximum is %{count} characters)
+        invalid: is invalid
+        greater_than: must be greater than %{count}
+        greater_than_or_equal_to: must be greater than or equal to %{count}
+        less_than: must be less than %{count}
+        less_than_or_equal_to: must be less than or equal to %{count}
+        not_a_number: is not a number
+        inclusion: is not included in the list
+        exclusion: is reserved
+        accepted: must be accepted
+        present: must be blank
+        confirmation: doesn't match %{attribute}
+        empty: can't be empty
   nav:
     brand: CalcuMake
     print_pricings: 料金設定
@@ -79,11 +96,8 @@ ja:
     sign_in: サインイン
     sign_up: サインアップ
     language: 言語
-    legal_header: 法的情報とプライバシー
-    data_rights_header: あなたのデータ権利
-    export_data: データをエクスポート
-    delete_account: アカウントを削除
-    usage_and_subscription: 使用状況とサブスクリプション
+    clients: My Clients
+    invoices: Invoices
   actions:
     save: 保存
     cancel: キャンセル
@@ -99,6 +113,10 @@ ja:
     submit: 送信
     view: 表示
     actions: 操作
+    title: Actions
+    print: Print
+    more: More
+    search: Search
   flash:
     success: 成功
     error: エラー
@@ -114,6 +132,11 @@ ja:
     printer_plural: プリンター
     filament_plural: フィラメント
     invoice_plural: 請求書
+    user: User
+    printer: Printer
+    print_pricing: Print Pricing
+    filament: Filament
+    client: Client
   common:
     created: 作成日
     currency: 通貨
@@ -162,6 +185,11 @@ ja:
     cost_summary: 費用概要
     cost_breakdown:
       filament: フィラメント費用
+      electricity: Electricity Cost
+      labor: Labor Cost
+      machine: Machine Cost
+      other: Other Costs
+      vat: VAT
     invoice: 請求書
     invoice_number: 請求書番号
     invoice_date: 請求日
@@ -224,8 +252,15 @@ ja:
       final_price: 最終価格
       plates: プレート
       plate: プレート
+      machine_auto_calculated: Machine (Auto-calculated)
+      machine_cost_usage: Machine Cost & Usage
+      machine_return_period: Machine Return Period
+      machine_repair_factor: Machine Repair Factor
+      add_edit_printer: add or edit a printer
+      machine_printer_config_html: Configure printer specifications when you %{link}
+      unsaved_progress_warning: Unsaved Progress Warning
+      filaments: Filaments
     fields:
-      project: プロジェクト
       job_name: ジョブ名
       job_name_placeholder: 例：ミニチュアモデル
       select_printer: プリンター選択
@@ -281,6 +316,11 @@ ja:
       repair_cost_placeholder: '5'
       currency: 通貨
       currency_prompt: 通貨を選択
+      filament_markup: Filament Markup (%)
+      postprocessing_cost_placeholder: '20.00'
+      start_with_one_print: Start with 1 times printed
+      start_with_one_print_help: Enable this to automatically set this pricing as
+        printed once
     calculations:
       filament_cost: フィラメント費用
       electricity_cost: 電気代
@@ -305,6 +345,7 @@ ja:
       update_pricing: 料金更新
       cancel: キャンセル
       add_plate: プレートを追加
+      update: Update
     show:
       created_on: "%{date}に作成"
       edit_calculation: 計算編集
@@ -351,6 +392,13 @@ ja:
         confirm_delete: "'%{name}'を削除してもよろしいですか？"
     help:
       plates_limit: 1つの印刷ジョブに最大10個のプレートを追加できます。
+      filaments_limit: You can add up to 5 different filaments per plate.
+    overdue: Overdue
+    duplicated_successfully: Print pricing duplicated successfully
+    duplicate_failed: Failed to duplicate print pricing
+    back_to_all: "← Back to All Pricings"
+    create_new: Create New Pricing
+    filament_types_label: Filament Types
   printers:
     index:
       title: マイプリンター
@@ -369,6 +417,7 @@ ja:
       months_to_payoff: あと%{months}ヶ月で償却
       hours: 時間
       years: 年
+      repair_cost_percentage: Repair Cost
     new:
       title: 新しいプリンターを追加
       subtitle: 正確なコスト計算のため3Dプリンターの仕様を登録
@@ -426,6 +475,13 @@ ja:
       member_since: 登録日
       default_preferences: デフォルト設定
       back_to_calculations: 計算に戻る
+      labor_defaults: Labor & Cost Defaults
+      labor_defaults_description: These values will be pre-filled when creating new
+        print pricing calculations
+      company_info: Company Information for Invoices
+      company_info_description: This information will be used as the default for all
+        invoices you create
+      company_info_help: This information will be used on all invoices you create
     edit:
       title: ユーザープロフィール設定
       subtitle: デフォルト設定を構成
@@ -453,9 +509,37 @@ ja:
       listing_cost_percentage_help: デフォルトのマーケットプレイス出品手数料率（例：Etsy、eBay）
       payment_processing_cost_percentage: 決済手数料率
       payment_processing_cost_percentage_help: デフォルトの決済処理手数料率（例：PayPal、Stripe）
+      default_filament_markup: Default Filament Markup
+      default_filament_markup_help: Default markup percentage added to filament costs
+        (e.g. 20% markup for profit margin)
+      company_name: Company Name
+      company_name_placeholder: Acme Corporation
+      company_email: Company Email
+      company_email_placeholder: billing@example.com
+      company_phone: Company Phone
+      company_phone_placeholder: "+1 (555) 123-4567"
+      company_logo: Company Logo
+      company_address: Company Address
+      company_address_placeholder: |-
+        123 Main Street
+        City, State 12345
+        Country
+      payment_details: Payment Details
+      payment_details_placeholder: |-
+        Bank: Example Bank
+        Account Number: 123456789
+        Routing Number: 987654321
+        SWIFT/BIC: EXAMPUS33
+      payment_details_help: Bank account or payment information for invoices
+      invoice_notes: Default Invoice Notes
+      invoice_notes_placeholder: |-
+        Payment due within 30 days.
+        Thank you for your business!
+      invoice_notes_help: Default notes that will appear on all your invoices
     buttons:
       update_settings: 設定更新
       update_profile: プロフィール更新
+      cancel: Cancel
     image_upload:
       help_text: 最大ファイルサイズ：5MB。サポート形式：PNG、JPG、GIF、WebP
     delete_account:
@@ -479,6 +563,67 @@ ja:
     buttons:
       create: クライアントを作成
       update: クライアントを更新
+    index:
+      title: My Clients
+      subtitle: Manage your client information
+      add_new: Add New Client
+      search_placeholder: Search by name, company, or email...
+      clear_search: Clear Search
+      empty_state:
+        title: No clients yet
+        description: Add your first client to start managing customer information.
+        add_first: Add Your First Client
+      no_results:
+        title: No results found
+        description: No clients match your search. Try a different search term.
+    new:
+      title: Add New Client
+      subtitle: Create a new client profile
+    edit:
+      title: Edit Client
+      subtitle: Update client information for %{name}
+    show:
+      title: Client Details
+      member_since: Member Since
+      invoices: Invoices
+      print_pricings: Print Pricings
+      no_invoices: No invoices yet
+      no_print_pricings: No print pricings yet
+    sections:
+      basic_info: Basic Information
+      contact_info: Contact Information
+      additional_info: Additional Information
+    fields:
+      name: Name
+      name_placeholder: John Doe
+      company_name: Company Name
+      company_name_placeholder: Acme Corporation
+      email: Email
+      email_placeholder: john@example.com
+      phone: Phone
+      phone_placeholder: "+1 (555) 123-4567"
+      address: Address
+      address_placeholder: |-
+        123 Main Street
+        City, State 12345
+      tax_id: Tax ID / VAT Number
+      tax_id_placeholder: 12-3456789
+      notes: Notes
+      notes_placeholder: Additional notes about this client...
+      select_client: Select Client
+      no_client_selected: No client selected
+      client_help_text: Select an existing client or
+      client: Client
+    card:
+      view_details: View Details
+      edit: Edit
+      delete: Delete
+      confirm_delete: Are you sure you want to delete this client?
+      invoices: Invoices
+    created_successfully: Client created successfully
+    updated_successfully: Client updated successfully
+    deleted_successfully: Client deleted successfully
+    confirm_delete: Are you sure you want to delete this client?
   energy:
     cost_per_kwh: 電力単価（円/kWh）
   time:
@@ -531,6 +676,37 @@ ja:
         opt_out: 次のページにアクセスすることで、広告のパーソナライゼーションを管理し、パーソナライズド広告をオプトアウトできます
         google_ad_settings: Google広告設定
         upgrade_note: すべての広告を削除するには、有料サブスクリプションティアにアップグレードしてください。
+      how_we_use_info:
+        title: How We Use Your Information
+        provide_service: Provide, maintain, and improve our 3D printing calculation
+          service
+        improve_features: Develop new features and enhance existing functionality
+        customer_support: Provide customer support and respond to your inquiries
+        security: Protect against fraud, abuse, and security threats
+      data_security:
+        title: Data Security
+        content: We implement appropriate technical and organizational security measures
+          to protect your personal information against unauthorized access, alteration,
+          disclosure, or destruction.
+      your_rights:
+        title: Your Rights
+        access: Access and review your personal information
+        correction: Correct inaccurate or incomplete information
+        deletion: Request deletion of your personal information
+        portability: Export your data in a portable format
+      cookies:
+        title: Cookies and Tracking
+        content: We use cookies and similar technologies to enhance your experience,
+          remember your preferences, and provide personalized content and advertisements.
+      changes:
+        title: Changes to This Policy
+        content: We may update this privacy policy from time to time. We will notify
+          you of any material changes by posting the new policy on this page with
+          an updated effective date.
+      contact:
+        title: Contact Us
+        content: If you have any questions about this privacy policy, please contact
+          us through the support channels available in the application.
     user_agreement:
       title: 利用規約
       nav_title: 利用規約
@@ -568,6 +744,85 @@ ja:
         feature_limits: 一部の高度な機能は有料ティアに制限されています
         support_priority: 無料ティアサポートはベストエフォートベースで提供されます
         upgrade_anytime: いつでも有料ティアにアップグレードできます
+      acceptance:
+        title: Acceptance of Terms
+        content: By accessing and using CalcuMake, you accept and agree to be bound
+          by the terms and provision of this agreement.
+      description:
+        title: Service Description
+        content: 'CalcuMake is a web-based application that provides 3D printing cost
+          calculation and project management tools. Our service includes:'
+        cost_calculations: Comprehensive cost calculations for 3D printing projects
+        project_management: Project tracking and management features
+        invoice_generation: Invoice generation and PDF export capabilities
+        printer_tracking: Printer specifications and usage tracking
+      user_accounts:
+        title: User Accounts
+        content: 'To use our service, you must create an account. You are responsible
+          for:'
+        accurate_info: Providing accurate and complete account information
+        secure_credentials: Maintaining the security of your account credentials
+        responsible_use: All activities that occur under your account
+        notify_breaches: Notifying us immediately of any suspected security breaches
+      acceptable_use:
+        title: Acceptable Use
+        content: 'You agree to use our service only for lawful purposes and in accordance
+          with this agreement. You agree not to:'
+        lawful_purposes: Use the service for any unlawful or prohibited purposes
+        respect_rights: Violate any applicable laws or regulations
+        no_harmful_content: Upload or transmit harmful, offensive, or inappropriate
+          content
+        no_interference: Interfere with or disrupt the service or servers
+        no_unauthorized_access: Attempt to gain unauthorized access to any part of
+          the service
+      data_accuracy:
+        title: Data Accuracy and Calculations
+        content: While we strive to provide accurate calculation tools, you are responsible
+          for verifying the accuracy of all calculations and data. Our calculations
+          are estimates and should be validated against your specific requirements
+          and local conditions.
+      intellectual_property:
+        title: Intellectual Property
+        our_content: The service and its original content, features, and functionality
+          are owned by us and are protected by international copyright, trademark,
+          and other intellectual property laws.
+        your_content: You retain ownership of any data, calculations, or content you
+          create using our service. You grant us a limited license to use this content
+          solely to provide the service to you.
+      disclaimers:
+        title: Disclaimers
+        important: Important Notice
+        calculations_estimates: All cost calculations and estimates are for informational
+          purposes only
+        verify_accuracy: You must verify all calculations and data for accuracy
+        no_guarantee: We do not guarantee the accuracy, completeness, or reliability
+          of any calculations
+        as_is_basis: The service is provided on an 'as is' and 'as available' basis
+      limitation_liability:
+        title: Limitation of Liability
+        content: To the maximum extent permitted by law, we shall not be liable for
+          any indirect, incidental, special, consequential, or punitive damages, including
+          without limitation, loss of profits, data, use, goodwill, or other intangible
+          losses.
+      termination:
+        title: Termination
+        content: We may terminate or suspend your account and access to the service
+          immediately, without prior notice, for conduct that we believe violates
+          this agreement or is harmful to other users, us, or third parties.
+      governing_law:
+        title: Governing Law
+        content: This agreement shall be governed by and construed in accordance with
+          the laws of the jurisdiction in which our service operates, without regard
+          to its conflict of law provisions.
+      changes:
+        title: Changes to Agreement
+        content: We reserve the right to modify this agreement at any time. We will
+          notify users of any material changes by posting the updated agreement on
+          our website with a new effective date.
+      contact:
+        title: Contact Information
+        content: If you have any questions about this agreement, please contact us
+          through the support channels available in the application.
     commerce_disclosure:
       title: 特定商取引法に基づく表記
       nav_title: 特定商取引法
@@ -597,12 +852,10 @@ ja:
         title: 販売価格
         content: CalcuMakeは3つのサブスクリプションティアを提供しています：
         free_tier: 無料ティア：¥0/月 - 広告付き基本機能
-        startup_tier: Startupティア：¥150/月（$1.50/月USD） - 高度な機能、広告なし、優先サポート、高い使用制限
         pro_tier: Proティア：月次または年次の有料サブスクリプション - 高度な機能、広告なし、優先サポート
+        enterprise_tier: Enterpriseティア：月次または年次の有料サブスクリプション - すべての機能、プレミアムサポート、カスタム統合
         pricing_details: 正確な価格は、ウェブサイトおよびアプリケーション内のサブスクリプション選択時に表示されます。
         price_changes: 価格は既存のサブスクライバーへの30日前の通知により調整される場合があります。
-        future_note: 今後、年次請求や追加の支払いオプションが追加される可能性があります。
-        enterprise_tier: Enterpriseティア：月次または年次の有料サブスクリプション - すべての機能、プレミアムサポート、カスタム統合
       payment_methods:
         title: 支払方法
         content: 有料サブスクリプションには、以下の支払い方法を受け付けています：
@@ -752,7 +1005,6 @@ ja:
     new_invoice: 新規請求書
     edit_invoice: 請求書編集
     create_invoice: 請求書作成
-    made_with_calcumake: Made with CalcuMake
     index:
       title: 請求書一覧
       subtitle: プロジェクト全体の請求書を追跡・管理
@@ -804,6 +1056,7 @@ ja:
       currency: 通貨
       currency_help: この請求書のすべての金額の小数点以下桁数と書式を決定します
       company_logo: 会社ロゴ
+      job_name: Job Name
     line_items:
       title: 明細項目
       add_line_item: 明細項目追加
@@ -975,270 +1228,164 @@ ja:
       alternative_signin_method: 代替サインイン方法
     omniauth_callbacks:
       success: "%{kind}アカウントから正常に認証されました。"
+      failure: Could not authenticate you from %{kind} because "%{reason}".
+    confirmations:
+      confirmed: Your email address has been successfully confirmed.
+      send_instructions: You will receive an email with instructions for how to confirm
+        your email address in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you
+        will receive an email with instructions for how to confirm your email address
+        in a few minutes.
+    failure:
+      already_authenticated: You are already signed in.
+      inactive: Your account is not activated yet.
+      invalid: Invalid %{authentication_keys} or password.
+      locked: Your account is locked.
+      last_attempt: You have one more attempt before your account is locked.
+      not_found_in_database: Invalid %{authentication_keys} or password.
+      timeout: Your session expired. Please sign in again to continue.
+      unauthenticated: You need to sign in or sign up before continuing.
+      unconfirmed: You have to confirm your email address before continuing.
+    mailer:
+      confirmation_instructions:
+        subject: Confirmation instructions
+      reset_password_instructions:
+        subject: Reset password instructions
+      unlock_instructions:
+        subject: Unlock instructions
+      email_changed:
+        subject: Email Changed
+      password_change:
+        subject: Password Changed
+    passwords:
+      no_token: You can't access this page without coming from a password reset email.
+        If you do come from a password reset email, please make sure you used the
+        full URL provided.
+      send_instructions: You will receive an email with instructions on how to reset
+        your password in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you
+        will receive a password recovery link at your email address in a few minutes.
+      updated: Your password has been changed successfully. You are now signed in.
+      updated_not_active: Your password has been changed successfully.
+    registrations:
+      destroyed: Bye! Your account has been successfully cancelled. We hope to see
+        you again soon.
+      signed_up: Welcome! You have signed up successfully.
+      signed_up_but_inactive: You have signed up successfully. However, we could not
+        sign you in because your account is not yet activated.
+      signed_up_but_locked: You have signed up successfully. However, we could not
+        sign you in because your account is locked.
+      signed_up_but_unconfirmed: A message with a confirmation link has been sent
+        to your email address. Please follow the link to activate your account.
+      update_needs_confirmation: You updated your account successfully, but we need
+        to verify your new email address. Please check your email and follow the confirmation
+        link to confirm your new email address.
+      updated: Your account has been updated successfully.
+      updated_but_not_signed_in: Your account has been updated successfully, but since
+        your password was changed, you need to sign in again.
+    sessions:
+      signed_in: Signed in successfully.
+      signed_out: Signed out successfully.
+      already_signed_out: Signed out successfully.
+    unlocks:
+      send_instructions: You will receive an email with instructions for how to unlock
+        your account in a few minutes.
+      send_paranoid_instructions: If your account exists, you will receive an email
+        with instructions for how to unlock it in a few minutes.
+      unlocked: Your account has been unlocked successfully. Please sign in to continue.
   usage_limits:
-    unlimited: 無制限
-    usage_summary: 使用状況の概要
     limit_reached: "%{plan}プランの上限（%{limit}%{resource}）に達しました。続けるにはアップグレードしてください。"
     approaching_limit: "%{resource}のプラン上限に近づいています"
+    usage_summary: 使用状況の概要
     current_usage: "%{limit}中%{current}使用中"
+    unlimited: 無制限
   subscriptions:
     title: サブスクリプションと料金
     current_plan: 現在のプラン
     upgrade: プランをアップグレード
-    upgrade_now: 今すぐアップグレード
     manage: サブスクリプションを管理
-    trial_badge: 30日間無料トライアル
-    already_subscribed: 既にアクティブなサブスクリプションがあります
+    cancel: サブスクリプションをキャンセル
     invalid_plan: 無効なサブスクリプションプランが選択されました
     checkout_error: チェックアウトセッションを作成できません。もう一度お試しください。
     verification_error: サブスクリプションを確認できません。サポートにお問い合わせください。
-    upgrade_successful: "%{plan}プランへのアップグレードが完了しました！日割り料金が請求されました。"
-    no_subscription: アクティブなサブスクリプションがありません
     portal_error: サブスクリプション管理にアクセスできません。もう一度お試しください。
+    no_subscription: アクティブなサブスクリプションがありません
+    upgrade_successful: "%{plan}プランへのアップグレードに成功しました！"
     cancel_scheduled: サブスクリプションは請求期間の終了時にキャンセルされます
     cancel_error: サブスクリプションをキャンセルできません。もう一度お試しください。
-    plans:
-      subtitle: 最適なプランをお選びください
+    trial_badge: 30日間無料トライアル
+    trial_remaining: 残り%{days}日
     features:
-      unlimited_calculations: 無制限印刷計算
-      unlimited_printers: 無制限プリンター
-      unlimited_filaments: 無制限フィラメント
-      unlimited_invoices: 無制限請求書
       calculations: 月間%{count}印刷計算
       printers: "%{count}プリンタープロファイル"
       filaments: "%{count}フィラメントタイプ"
       invoices: 月間%{count}請求書
+      unlimited_calculations: 無制限印刷計算
+      unlimited_printers: 無制限プリンター
+      unlimited_filaments: 無制限フィラメント
+      unlimited_invoices: 無制限請求書
       no_branding: CalcuMakeブランディングを削除
-      alternative_signin_method: Alternative signin method
-      or_sign_in_with_email: Or Sign In With Email
-      sign_in_with_provider: Sign in with %{provider}
-      sign_in_with_provider_aria: Sign in with %{provider}
+      no_ads: 広告なし
+      priority_support: 優先サポート
+      analytics: 高度な分析
+      import_export: 一括インポート/エクスポート
+    plans:
+      subtitle: 最適なプランをお選びください
+      free:
+        name: 無料
+        price: "¥0"
+        description: CalcuMakeを試すのに最適
+      startup:
+        name: スタートアップ
+        price: "¥150/月"
+        description: 趣味や小規模プロジェクトに最適
+      pro:
+        name: プロ
+        price: "¥1,500/月"
+        description: プロフェッショナル向けの無制限パワー
+    most_popular: 最も人気
+    month: 月
+    your_plan: 現在のプラン
+    remaining: 残り
+    renews_on: 更新日
+    trial_ends_on: トライアル終了日
+    upgrade_now: 今すぐアップグレード
+    upgrade_to_plan: "%{plan}にアップグレード"
+    downgrade_to_free: 無料プランにダウングレード
+    confirm_downgrade: 本当にダウングレードしますか？プレミアム機能へのアクセスを失います。
+    manage_subscription: サブスクリプションを管理
+    manage_description: 安全な請求ポータルを通じて、支払い方法の更新、請求履歴の表示、またはサブスクリプションのキャンセルを行います。
+    open_billing_portal: 請求ポータルを開く
+    cancel_subscription: サブスクリプションをキャンセル
+    cancel_confirmation: 本当にサブスクリプションをキャンセルしますか？請求期間の終了までアクセスは維持されます。
+    manage_note: すべての請求はStripeによって安全に処理されます。お支払い情報は当社のサーバーには保存されません。
+    approaching_limits_message: プラン上限に近づいています。中断を避けるためにアップグレードをご検討ください。
     faq:
       title: よくある質問
-    cancel: サブスクリプションをキャンセル
-    trial_remaining: 残り%{days}日
-    downgrade_to_plan: "%{plan}にダウングレード"
-    invalid_upgrade: そのプランにアップグレードできません
-    invalid_downgrade: そのプランにダウングレードできません
-    upgrade_error: アップグレードエラー。もう一度お試しください。
-    downgrade_scheduled: 現在の請求期間の終了時に%{plan}プランに変更されます
-    downgrade_scheduled_free: サブスクリプションはキャンセルされ、現在の請求期間の終了時に無料プランにダウングレードされます
-    downgrade_error: ダウングレードのスケジュールエラー。もう一度お試しください。
-    confirm_upgrade: 日割り料金がすぐに請求されます。続行しますか？
-    confirm_downgrade: プランは現在の請求期間の終了時に変更されます。続行しますか？
-    confirm_upgrade_title: アップグレードの確認
-    confirm_upgrade_subtitle: サブスクリプションをアップグレードする前に詳細を確認してください
-    upgrade_summary: アップグレードの概要
-    new_plan: 新しいプラン
-    billing_period: 現在の請求期間
-    period_start: 開始日
-    period_end: 更新日
-    pricing_breakdown: 料金の内訳
-    new_plan_price: 新しいプランの月額料金
-    of: "/"
-    days: 日
-    prorated_charge_today: 本日の日割り請求額
-    what_happens_next: 次に何が起こりますか？
-    immediate_access: "%{plan}の全機能にすぐにアクセスできます"
-    charge_now: 日割り料金が今すぐ請求されます
-    next_bill: 次回の%{amount}の請求は%{date}です
-    confirm_and_upgrade: "%{plan}へのアップグレードを確認"
-    secure_payment: Stripeによる安全な決済処理
-    subscription_details: サブスクリプション詳細
-    status: ステータス
-    active: 有効
-    canceling: キャンセル中
-    access_until: アクセス期限
-    next_billing_date: 次回請求日
-    monthly_price: 月額料金
-  gdpr:
-    privacy_policy: プライバシーポリシー
-    cookie_policy: クッキーポリシー
-    terms_of_service: 利用規約
-    privacy_policy_title: プライバシーポリシー
-    terms_of_service_title: 利用規約
-    cookie_policy_title: クッキーポリシー
-    last_updated: 最終更新日：%{date}
-    consent_recorded: お客様の同意設定が記録されました。
-    consent_error: 同意の記録中にエラーが発生しました。もう一度お試しください。
-    account_deleted: アカウントと関連するすべてのデータが完全に削除されました。
-    cookie_consent:
-      title: お客様のプライバシーを尊重します
-      message_html: 当社はクッキーを使用して、お客様のブラウジング体験を向上させ、サイトトラフィックを分析しています。「承認」をクリックすると、クッキーの使用に同意したことになります。詳細については、%{privacy_policy_link}と%{cookie_policy_link}をお読みください。
-      accept: 承認
-      reject: 拒否
-    sections:
-      introduction:
-        title: はじめに
-        content: 株式会社モアブ（以下「当社」）は、お客様のプライバシーの保護と尊重に取り組んでいます。本プライバシーポリシーは、CalcuMakeサービスをご利用いただく際に、当社がお客様の情報をどのように収集、使用、開示、保護するかを説明するものです。
-      data_controller:
-        title: データ管理者
-        content_html: "<strong>株式会社モアブ</strong><br>日本国登記<br>プライバシーに関するお問い合わせ：privacy@calcumake.com"
-      data_collection:
-        title: 収集する情報
-        intro: 当社は以下の種類の個人情報を収集します：
-        items:
-          account_data: アカウント情報：メールアドレス、氏名、会社詳細、および認証資格情報
-          usage_data: 使用データ：印刷価格計算、プリンター構成、請求書データ、およびフィラメントプロファイル
-          technical_data: 技術データ：IPアドレス、ブラウザタイプ、デバイス情報、およびアクセスログ
-          payment_data: 決済情報：Stripeを通じて安全に処理されます（当社は完全な決済カード情報を保存しません）
-      legal_basis:
-        title: 処理の法的根拠
-        content: 当社は、以下に基づいてお客様の個人データを処理します：(1) お客様との契約の履行、(2) お客様の同意、(3) 法的義務の遵守、(4)
-          サービスの提供と改善における当社の正当な利益。
-      data_usage:
-        title: データの使用方法
-        items:
-          service_provision: サービスの提供と維持
-          communication: アカウントと更新に関するお客様とのコミュニケーション
-          improvement: お客様の体験の改善とパーソナライゼーション
-          legal_compliance: 法的義務の遵守と詐欺の防止
-      data_sharing:
-        title: データの共有と開示
-        content: 当社はお客様の個人データを販売しません。サービスプロバイダー（決済のためのStripe、クラウドホスティングプロバイダー）、法律で要求された場合、または当社の権利を保護するためにデータを共有する場合があります。
-      user_rights:
-        title: GDPRおよびAPPIに基づくお客様の権利
-        intro: お客様の個人データに関して、以下の権利があります：
-        items:
-          access:
-            title: アクセス権
-            description: 個人データのコピーをリクエスト
-          rectification:
-            title: 訂正権
-            description: 不正確または不完全なデータの訂正
-          erasure:
-            title: 削除権
-            description_html: データの削除をリクエスト（%{link}）
-            link_text: アカウント削除
-          portability:
-            title: データポータビリティ権
-            description_html: 機械読み取り可能な形式でデータを受け取る（%{link}）
-            link_text: データエクスポート
-          objection:
-            title: 異議申立権
-            description: 特定の種類の処理に異議を唱える
-      data_retention:
-        title: データ保持
-        content: 当社は、お客様のアカウントがアクティブである限り、またはサービスを提供するために必要な限り、お客様の個人データを保持します。アカウント削除後、法律で保持が要求される場合を除き、30日以内にデータは完全に削除されます。
-      security:
-        title: セキュリティ対策
-        content: 当社は、暗号化、安全な認証、定期的なセキュリティ監査、およびアクセス制御を含む業界標準のセキュリティ対策を実装して、お客様のデータを保護します。
-      cookies:
-        title: クッキーとトラッキング
-        content_html: 当社は、必須機能と分析のためにクッキーを使用しています。詳細については、%{link}をご覧ください。
-      international_transfers:
-        title: 国際データ転送
-        content: お客様のデータは、お客様の管轄外の国に転送され、処理される場合があります。当社は、GDPRおよびAPPI要件に従ってお客様のデータを保護するための適切な保護措置を確保しています。
-      changes:
-        title: 本ポリシーの変更
-        content: 当社は本プライバシーポリシーを定期的に更新する場合があります。重要な変更については、メールまたはサービス上の目立つ通知を通じてお知らせします。
-      contact:
-        title: お問い合わせ
-        content_html: プライバシーに関する質問や権利の行使については、privacy@calcumake.comまでご連絡ください。
-    tos_sections:
-      acceptance:
-        title: 規約の承認
-        content: CalcuMakeにアクセスして使用することにより、お客様は本利用規約に拘束されることに同意します。
-      service_description:
-        title: サービスの説明
-        content: CalcuMakeは、3Dプリントコストの計算、プリンターの管理、および請求書の生成のためのWebベースのアプリケーションです。
-      user_accounts:
-        title: ユーザーアカウント
-        content: お客様は、アカウント資格情報の機密性を維持し、アカウントで発生するすべての活動に責任を負います。
-      acceptable_use:
-        title: 許容される使用
-        intro: お客様は以下を行わないことに同意します：
-        items:
-          illegal: 違法な目的でサービスを使用すること
-          harmful: 悪意のあるコードや有害なコンテンツをアップロードすること
-          unauthorized: 当社のシステムへの不正アクセスを試みること
-          interference: サービスを妨害または中断すること
-      intellectual_property:
-        title: 知的財産
-        content: CalcuMakeのすべてのコンテンツ、機能、および機能性は、株式会社モアブが所有し、国際著作権、商標、およびその他の知的財産法によって保護されています。
-      payment_terms:
-        title: 支払い条件
-        content: 有料サブスクリプションは、定期的に事前に請求されます。返金は返金ポリシーに従って処理されます。
-      termination:
-        title: 終了
-        content: 当社は、本規約違反の場合、いつでもお客様のアカウントを終了または一時停止することができます。お客様は、アカウント設定からいつでもアカウントを終了できます。
-      liability:
-        title: 責任の制限
-        content: CalcuMakeは「現状のまま」保証なしで提供されます。当社は、サービスの使用から生じる間接的、付随的、または結果的な損害について責任を負いません。
-      governing_law:
-        title: 準拠法
-        content: 本規約は日本の法律に準拠します。EUユーザーの場合、適用される消費者保護法が適用されます。
-      changes:
-        title: 規約の変更
-        content: 当社は本規約をいつでも変更する権利を留保します。変更後のサービスの継続使用は、変更された規約の承認を構成します。
-    cookie_sections:
-      what_are_cookies:
-        title: クッキーとは？
-        content: クッキーは、サービスの提供と改善に役立つデバイスに保存される小さなテキストファイルです。
-      how_we_use:
-        title: クッキーの使用方法
-        intro: 当社は以下の種類のクッキーを使用しています：
-        essential:
-          title: 必須クッキー
-          description: 認証やセキュリティなどの基本機能に必要
-        functional:
-          title: 機能的クッキー
-          description: お客様の設定と選好を記憶
-        analytics:
-          title: 分析クッキー
-          description: サービスの使用方法を理解するのに役立ちます（同意が必要）
-      cookie_list:
-        title: クッキーリスト
-        table:
-          name: クッキー名
-          purpose: 目的
-          duration: 期間
-        cookies:
-          session:
-            purpose: セッション管理と認証
-            duration: セッション（ログアウト時にクリア）
-          consent:
-            purpose: お客様のクッキー同意設定を保存
-            duration: 1年
-          remember:
-            purpose: セッション間でログイン状態を維持
-            duration: 2週間
-      managing_cookies:
-        title: クッキーの管理
-        content: ブラウザ設定を通じてクッキーを制御および削除できます。必須クッキーを無効にすると、サービス機能に影響を与える可能性があることに注意してください。
-      third_party:
-        title: サードパーティのクッキー
-        content: 当社は、決済処理にStripe、使用分析にGoogle Analyticsを使用しています。これらのサービスは、独自のプライバシーポリシーに従って独自のクッキーを設定する場合があります。
-    data_export:
-      title: データのエクスポート
-      description: CalcuMakeに保存されているすべての個人データの完全なコピーをJSON形式でダウンロードします。
-      what_included: 含まれる内容：
-      items:
-        account_info: アカウント情報
-        print_pricings: すべての印刷価格計算
-        printers: プリンター構成
-        invoices: 請求書履歴
-        filaments: フィラメントプロファイル
-        clients: クライアント情報
-        consents: 同意履歴
-      format: エクスポート形式
-      format_description: データはJSONファイルとしてエクスポートされ、標準ツールで保存および処理できます。
-      download_button: データをダウンロード
-    data_deletion:
-      title: アカウントの削除
-      warning_title: 警告：この操作は元に戻せません！
-      warning_message: アカウントを削除すると、システムからすべてのデータが完全に削除されます。これには、すべての印刷価格、請求書、プリンター、フィラメント、およびクライアント情報が含まれます。
-      what_deleted: 削除される内容：
-      items:
-        account: アカウントとログイン資格情報
-        print_pricings: すべての印刷価格計算
-        printers: すべてのプリンター構成
-        invoices: すべての請求書と請求書履歴
-        filaments: すべてのフィラメントプロファイル
-        clients: すべてのクライアント情報
-        uploaded_files: アップロードされたすべてのファイル（会社ロゴなど）
-      before_deletion: 削除前に
-      export_recommendation_html: アカウントを削除する前にデータを%{link}することをお勧めします。この操作は永久的で、元に戻すことはできません。
-      export_link: エクスポート
-      delete_button: アカウントを完全に削除
-      confirm_message: アカウントと関連するすべてのデータを完全に削除してもよろしいですか？この操作は元に戻せません。
+      trial_question: 30日間のトライアル終了後はどうなりますか？
+      trial_answer: 30日間のトライアル終了後、アカウントは自動的に無料プランに切り替わります。無料プランの制限でCalcuMakeを引き続き使用するか、いつでもスタートアップまたはプロにアップグレードできます。
+      cancel_question: いつでもサブスクリプションをキャンセルできますか？
+      cancel_answer: はい！いつでもサブスクリプションをキャンセルできます。現在の請求期間の終了まで有料プラン機能へのアクセスは維持され、その後自動的に無料プランに切り替わります。
+      data_question: ダウングレードするとデータはどうなりますか？
+      data_answer: ダウングレードしても既存のデータはすべて保持されます。ただし、無料プランの上限を超えている場合、新しいリソースを作成することはできません。既存のプロジェクト、プリンター、フィラメント、請求書は読み取り専用モードでアクセス可能です。
+      payment_question: どの支払い方法を受け付けていますか？
+      payment_answer: 安全な決済処理業者であるStripeを通じて、すべての主要なクレジットカードとデビットカードを受け付けています。これにはVisa、Mastercard、American
+        Expressなどが含まれます。すべての支払い情報はStripeによって安全に処理され、当社のサーバーには保存されません。
+      change_plan_question: 後でプランを変更できますか？
+      change_plan_answer: もちろんです！いつでもプランをアップグレードまたはダウングレードできます。アップグレードはすぐに有効になり、日割り計算された金額が請求されます。ダウングレードは現在の請求期間の終了時に有効になります。
+      reset_question: 月間制限はいつリセットされますか？
+      reset_answer: 印刷計算と請求書の月間制限は毎月1日にリセットされます。プリンターとフィラメントの制限は合計数であり、月間制限ではありません。
+  date:
+    formats:
+      month_day_year: "%B %d, %Y"
+  errors:
+    messages:
+      already_confirmed: was already confirmed, please try signing in
+      confirmation_period_expired: needs to be confirmed within %{period}, please
+        request a new one
+      expired: has expired, please request a new one
+      not_found: not found
+      not_locked: was not locked
+      not_saved:
+        one: '1 error prohibited this %{resource} from being saved:'
+        other: "%{count} errors prohibited this %{resource} from being saved:"
