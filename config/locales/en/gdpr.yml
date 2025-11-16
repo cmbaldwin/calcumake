@@ -22,6 +22,8 @@ en:
       description: Download all your data in JSON format
       button: Download Data
       what_included: What's included in your data export
+      format: Data Format
+      format_description: Your data will be exported as a JSON file that you can save and review at any time.
       items:
         account_info: Account information
         print_pricings: Print pricing calculations
@@ -38,6 +40,10 @@ en:
       warning_message: All your data will be permanently deleted and cannot be recovered
       button: Delete Account
       what_deleted: What will be deleted
+      before_deletion: Before You Delete
+      export_recommendation_html: We recommend %{link} first so you have a backup before proceeding with deletion.
+      export_link: exporting your data
+      confirm_message: Are you sure you want to permanently delete your account? This action cannot be undone.
       items:
         account: Your user account and login credentials
         print_pricings: All print pricing calculations
@@ -57,6 +63,14 @@ en:
         title: User Accounts
         content: You are responsible for maintaining your account security and all
           activities under your account
+      acceptable_use:
+        title: Acceptable Use
+        intro: You agree not to use our service for any of the following purposes
+        items:
+          illegal: Illegal activities or violation of any laws
+          harmful: Uploading malicious code or harmful content
+          unauthorized: Attempting to gain unauthorized access to our systems
+          interference: Interfering with or disrupting our service or servers
     cookie_sections:
       what_are_cookies:
         title: What are cookies?
@@ -65,7 +79,17 @@ en:
           cookies to improve our service.
       how_we_use:
         title: How We Use Cookies
+        intro: We use different types of cookies to improve your experience and provide essential functionality
         content: We use cookies to remember your preferences, authenticate your sessions,
           and analyze site usage to improve our service
+        essential:
+          title: Essential Cookies
+          description: Required for authentication, security, and basic site functionality
+        functional:
+          title: Functional Cookies
+          description: Remember your preferences and settings to provide a personalized experience
+        analytics:
+          title: Analytics Cookies
+          description: Help us understand how you use our service so we can improve it
     consent_recorded: Your preferences have been saved
     account_deleted: Your account has been deleted successfully
