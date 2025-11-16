@@ -27,20 +27,20 @@ All Stripe configuration is in `.env.local`:
 STRIPE_PUBLISHABLE_KEY=pk_test_REDACTED
 STRIPE_SECRET_KEY=sk_test_REDACTED
 STRIPE_WEBHOOK_SECRET=                                # Auto-populated by bin/stripe-listen
-STRIPE_STARTUP_PRICE_ID=price_1SStMeDkapT94HR1vGXLi0kx  # $0.99/month
-STRIPE_PRO_PRICE_ID=price_1SStQYDkapT94HR1fFNyOa9a      # $9.99/month
+STRIPE_STARTUP_PRICE_ID=price_1SStMeDkapT94HR1vGXLi0kx  # ¥150/month
+STRIPE_PRO_PRICE_ID=price_1SStQYDkapT94HR1fFNyOa9a      # ¥1,500/month
 ```
 
 ### 3. Products Created
 
 Two subscription products are configured in your Stripe Sandbox:
 
-**Startup Plan** ($0.99/month)
+**Startup Plan** (¥150/month)
 - Product ID: `prod_TPiaAO4HA5vz9x`
 - Price ID: `price_1SStMeDkapT94HR1vGXLi0kx`
 - Features: 50 print pricings, 10 printers, 16 filaments, unlimited invoices
 
-**Pro Plan** ($9.99/month)
+**Pro Plan** (¥1,500/month)
 - Product ID: `prod_TPiq0Na4dHUHzn`
 - Price ID: `price_1SStQYDkapT94HR1fFNyOa9a`
 - Features: Unlimited everything

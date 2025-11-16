@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+require 'yaml'
+
+# Load the current en.yml
+en_data = YAML.load_file('config/locales/en.yml')['en']
+
+# Define the split structure
+splits = {
+  'activerecord.yml' => ['language_name', 'activerecord'],
+  'navigation.yml' => ['nav', 'actions', 'flash', 'models', 'common', 'date', 'time'],
+  'print_pricings.yml' => ['print_pricing', 'print_pricings'],
+  'printers.yml' => ['printers'],
+  'profile.yml' => ['profile'],
+  'clients.yml' => ['clients'],
+  'invoices.yml' => ['invoices'],
+  'filaments.yml' => ['filaments'],
+  'currency.yml' => ['currency', 'energy'],
+  'application.yml' => ['app', 'footer'],
+  'support.yml' => ['support'],
+  'legal.yml' => ['legal'],
+  'landing.yml' => ['landing', 'demo', 'locale_suggestion', 'calculators'],
+  'subscriptions.yml' => ['usage_limits', 'subscriptions'],
+  'gdpr.yml' => ['gdpr']
+}
+
+# Keep devise separate (already in devise.en.yml)
+
+puts "🔨 Splitting config/locales/en.yml into domain files..."
+puts
+
+# Create each split file
+splits.each do |filename, top_level_keys|
+  file_data = { 'en' => {} }
+
+  top_level_keys.each do |key|
+    if en_data.key?(key)
+      file_data['en'][key] = en_data[key]
+      puts "  ✓ #{filename}: Added '#{key}'"
+    end
+  end
+
+  # Write the file
+  File.write("config/locales/en/#{filename}", file_data.to_yaml)
+  puts "  📝 Created config/locales/en/#{filename}"
+  puts
+end
+
+puts "✅ Split complete! Created #{splits.count} files in config/locales/en/"
+puts
+puts "Original file preserved at config/locales/en.yml"
+puts "You can safely delete it after verifying the split files work correctly."

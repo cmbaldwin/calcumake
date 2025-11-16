@@ -1,0 +1,87 @@
+---
+en:
+  language_name: English
+  activerecord:
+    errors:
+      messages:
+        blank: can't be blank
+        taken: has already been taken
+        too_short: is too short (minimum is %{count} characters)
+        too_long: is too long (maximum is %{count} characters)
+        invalid: is invalid
+        greater_than: must be greater than %{count}
+        greater_than_or_equal_to: must be greater than or equal to %{count}
+        less_than: must be less than %{count}
+        less_than_or_equal_to: must be less than or equal to %{count}
+        not_a_number: is not a number
+        inclusion: is not included in the list
+        exclusion: is reserved
+        accepted: must be accepted
+        present: must be blank
+        confirmation: doesn't match %{attribute}
+        empty: can't be empty
+      models:
+        filament:
+          attributes:
+            name:
+              blank: Please enter a filament name
+              taken: You already have a filament with this name
+            material_type:
+              blank: Please select a material type
+              inclusion: Please select a valid material type
+            diameter:
+              blank: Please select a diameter
+              inclusion: Please select a valid diameter (1.75mm, 2.85mm, or 3.0mm)
+            spool_weight:
+              greater_than: Spool weight must be greater than 0
+              not_a_number: Spool weight must be a number
+            spool_price:
+              greater_than: Spool price must be greater than 0
+              not_a_number: Spool price must be a number
+            print_temperature_min:
+              greater_than: Minimum temperature must be greater than 0°C
+              less_than: Minimum temperature must be less than 500°C
+              not_a_number: Minimum temperature must be a number
+            print_temperature_max:
+              greater_than: Maximum temperature must be greater than 0°C
+              less_than: Maximum temperature must be less than 500°C
+              not_a_number: Maximum temperature must be a number
+              temperature_range: must be greater than minimum temperature
+            heated_bed_temperature:
+              greater_than: Bed temperature must be greater than 0°C
+              less_than: Bed temperature must be less than 500°C
+              not_a_number: Bed temperature must be a number
+            print_speed_max:
+              greater_than: Print speed must be greater than 0
+              less_than: Print speed must be less than 1000
+              not_a_number: Print speed must be a number
+            storage_temperature_max:
+              greater_than: Storage temperature must be greater than -50°C
+              less_than: Storage temperature must be less than 100°C
+              not_a_number: Storage temperature must be a number
+            density:
+              greater_than: Density must be greater than 0
+              less_than: Density must be less than 10
+              not_a_number: Density must be a number
+        plate_filament:
+          attributes:
+            filament_weight:
+              blank: Please enter the filament weight
+              greater_than: Filament weight must be greater than 0
+              not_a_number: Filament weight must be a number
+            filament_id:
+              blank: Please select a filament
+              already_added: This filament has already been added to this plate
+        plate:
+          attributes:
+            base:
+              no_filaments: Must have at least one filament
+              duplicate_filaments: Cannot use the same filament multiple times on
+                one plate
+        print_pricing:
+          attributes:
+            base:
+              no_plates: Must have at least one plate
+              too_many_plates: Cannot have more than 10 plates
+              duplicate_filaments_on_plate: Cannot use the same filament multiple
+                times on the same plate

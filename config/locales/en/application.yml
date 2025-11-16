@@ -1,0 +1,8 @@
+---
+en:
+  app:
+    title: CalcuMake - 3D Print Cost Calculator
+    title_default: CalcuMake - 3D Print Cost Calculator
+  footer:
+    description: Professional 3D printing cost calculation and project management
+    copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"

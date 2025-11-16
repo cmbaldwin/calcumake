@@ -1,0 +1,79 @@
+---
+en:
+  filaments:
+    index:
+      title: My Filaments
+      subtitle: Manage your 3D printing filament inventory
+      add_new: Add New Filament
+      search_placeholder: Search by name, brand, material, or color...
+      clear_search: Clear Search
+      empty_state:
+        title: No filaments registered yet
+        description: Add your first filament to start building your material library
+          for print calculations.
+        add_first: Add Your First Filament
+      no_results:
+        title: No results found
+        description: No filaments match '%{query}'. Try a different search term.
+    new:
+      title: Add New Filament
+      subtitle: Register a new filament for your material library
+    edit:
+      title: Edit Filament
+      subtitle: Update filament specifications
+    show:
+      title: Filament Details
+      usage_history: Usage History
+      times_used: Times Used
+      total_weight_used: Total Weight Used
+      new_print_with_filament: New Print with this Filament
+      recent_prints: Recent Prints
+      not_used_yet: This filament hasn't been used yet
+      create_first_print: Create Your First Print
+      no_cost_info: No cost information available
+    sections:
+      basic_info: Basic Information
+      cost_info: Cost Information
+      properties: Properties
+      technical_specs: Technical Specifications
+    fields:
+      name: Filament Name
+      name_placeholder: e.g., Basic PLA, Premium PETG
+      brand: Brand
+      brand_placeholder: e.g., Hatchbox, Prusa, eSUN
+      material_type: Material Type
+      material_type_prompt: Select material type
+      diameter: Diameter
+      color: Color
+      color_placeholder: e.g., Red, Natural, Transparent
+      finish: Finish
+      finish_placeholder: e.g., Matte, Glossy, Silk
+      spool_weight: Spool Weight
+      spool_weight_placeholder: '1000'
+      spool_price: Spool Price
+      spool_price_placeholder: '25.00'
+      density: Density
+      density_placeholder: '1.24'
+      cost_per_gram: Cost per Gram
+      temperature_range: Temperature Range
+      moisture_sensitive: Moisture Sensitive
+      notes: Notes
+      notes_placeholder: Additional information about this filament...
+      filament: Filament
+      select_filament: Select a filament
+      weight_used: Weight Used
+      selected: Selected
+      none_selected: None selected
+      not_set: Not set
+      total_cost: Total Cost
+      no_filament_registered: No filament registered?
+      add_new_filament: Add New Filament
+      bed_temperature: Bed Temperature
+      max_print_speed: Max Print Speed
+      storage_temp: Storage Temperature
+    properties:
+      moisture_sensitive: Moisture Sensitive
+    buttons:
+      add_filament: Add Filament
+      update_filament: Update Filament
+    confirm_delete: Are you sure you want to delete '%{name}'?

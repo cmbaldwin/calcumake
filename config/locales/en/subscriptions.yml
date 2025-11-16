@@ -1,0 +1,23 @@
+---
+en:
+  usage_limits:
+    usage_summary: Usage Summary
+    limit_reached: You've reached the %{resource} limit for your plan
+    approaching_limits_message: You're approaching your plan limits
+  subscriptions:
+    title: Subscription
+    current_plan: Current Plan
+    upgrade: Upgrade
+    upgrade_successful: Successfully upgraded to %{plan}
+    already_subscribed: You already have an active subscription
+    invalid_plan: Invalid subscription plan
+    no_subscription: No active subscription found
+    cancel_scheduled: Subscription cancellation scheduled
+    verification_error: Unable to verify your subscription. Please contact support.
+    features:
+      calculations: Print Calculations
+      printers: Printers
+      filaments: Filaments
+      invoices: Invoices
+      unlimited_invoices: Unlimited Invoices
+    upgrade_now: Upgrade Now

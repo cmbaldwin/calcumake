@@ -39,6 +39,9 @@ gem "omniauth-rails_csrf_protection"
 # Payment processing
 gem "stripe"
 
+# Translation API
+gem "open_router"
+
 # Admin interface
 gem "rails_admin"
 

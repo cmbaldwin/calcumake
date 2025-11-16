@@ -1,49 +1,6 @@
 #!/usr/bin/env ruby
-# Sync translation wrapper - calls automated translation if API key available
-# Falls back to English placeholders if API key not present
-
-require 'yaml'
-require 'fileutils'
-
-LOCALES_DIR = File.expand_path('../config/locales', __dir__)
-MASTER_LOCALE = 'en'
-TARGET_LOCALES = ['ja', 'es', 'fr', 'ar', 'hi', 'zh-CN']
-
-def get_all_keys(hash, prefix = '')
-  keys = {}
-  hash.each do |key, value|
-    full_key = prefix.empty? ? key : "#{prefix}.#{key}"
-    if value.is_a?(Hash)
-      keys.merge!(get_all_keys(value, full_key))
-    else
-      keys[full_key] = value
-    end
-  end
-  keys
-end
-
-def set_nested_key(hash, key_path, value)
-  keys = key_path.split('.')
-  last_key = keys.pop
-  current = hash
-
-  keys.each do |key|
-    # If current is not a hash, we can't continue - skip this key
-    unless current.is_a?(Hash)
-      puts "   ⚠️  Cannot set #{key_path} - parent is not a hash"
-      return
-    end
-    current[key] ||= {}
-    current = current[key]
-  end
-
-  # Final check before setting
-  if current.is_a?(Hash)
-    current[last_key] = value
-  else
-    puts "   ⚠️  Cannot set #{key_path} - target is not a hash"
-  end
-end
+# Sync translation wrapper - REQUIRES OpenRouter API key
+# This script is designed to FAIL if automated translation is not available
 
 # Check if API key is available
 api_key = ENV['OPENROUTER_TRANSLATION_KEY'] || ENV['OPENROUTER_API_KEY']
@@ -54,62 +11,18 @@ if api_key
   # Call the automated translation script
   exec(File.expand_path('translate-locales', __dir__))
 else
-  puts "📝 No API key detected - syncing with English placeholders"
-  puts "   Set OPENROUTER_TRANSLATION_KEY for automated translations"
+  puts "❌ ERROR: OPENROUTER_TRANSLATION_KEY environment variable not set"
   puts
-
-  # Load master locale
-  master_file = File.join(LOCALES_DIR, "#{MASTER_LOCALE}.yml")
-  master_data = YAML.load_file(master_file)
-  master_keys = get_all_keys(master_data[MASTER_LOCALE])
-
-  # Load Devise translations if they exist
-  devise_master_file = File.join(LOCALES_DIR, "devise.#{MASTER_LOCALE}.yml")
-  if File.exist?(devise_master_file)
-    devise_data = YAML.load_file(devise_master_file)
-    devise_keys = get_all_keys(devise_data[MASTER_LOCALE])
-    master_keys.merge!(devise_keys)
-  end
-
-  puts "Master locale (#{MASTER_LOCALE}) has #{master_keys.count} keys"
-  puts "\nSyncing translations...\n\n"
-
-  TARGET_LOCALES.each do |locale|
-    target_file = File.join(LOCALES_DIR, "#{locale}.yml")
-
-    unless File.exist?(target_file)
-      puts "⚠️  #{locale}.yml does not exist, skipping..."
-      next
-    end
-
-    target_data = YAML.load_file(target_file)
-    target_keys = get_all_keys(target_data[locale])
-
-    missing_keys = master_keys.keys - target_keys.keys
-
-    if missing_keys.empty?
-      puts "✅ #{locale}: All translations present (#{target_keys.count} keys)"
-    else
-      puts "🔄 #{locale}: Adding #{missing_keys.count} missing keys..."
-
-      # Add missing keys with English values
-      missing_keys.each do |key|
-        set_nested_key(target_data[locale], key, master_keys[key])
-      end
-
-      # Write back to file
-      File.write(target_file, target_data.to_yaml)
-
-      puts "   ✓ Updated #{locale}.yml (now has #{target_keys.count + missing_keys.count} keys)"
-      puts "   Note: Added keys have English values - please translate them!"
-    end
-  end
-
-  puts "\n✨ Sync complete!"
-  puts "\n📝 Next steps:"
-  puts "   1. Review the updated locale files"
-  puts "   2. Translate the English values to the target languages"
-  puts "   3. Run your tests to ensure nothing broke"
-  puts "\n💡 Tip: Set OPENROUTER_TRANSLATION_KEY to enable automated translations"
+  puts "This project requires automated translation to maintain locale files."
+  puts "We do NOT use English placeholders - all locales must be properly translated."
   puts
+  puts "To fix this:"
+  puts "  1. Get your OpenRouter API key from 1Password (CALCUMAKE_OPENROUTER_TRANSLATION_KEY)"
+  puts "  2. Set it locally:"
+  puts "     export OPENROUTER_TRANSLATION_KEY='your-key-here'"
+  puts "  3. Run this script again: bin/sync-translations"
+  puts
+  puts "For deployment, ensure Kamal secrets are configured correctly."
+  puts
+  exit 1
 end

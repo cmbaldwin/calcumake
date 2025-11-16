@@ -1,43 +1,28 @@
 <%# Locale suggestion banner - similar to Apple's region detection %>
-<div class="locale-suggestion-banner"
-     data-controller="locale-suggestion"
-     data-locale-suggestion-current-locale-value="<%= I18n.locale %>"
-     data-locale-suggestion-dismissed-key-value="locale_suggestion_dismissed_<%= Date.current.strftime('%Y%m') %>"
-     style="display: none;">
+<div class="locale-suggestion-banner p-2" data-controller="locale-suggestion" data-locale-suggestion-target="banner" data-locale-suggestion-current-locale-value="<%= I18n.locale %>" data-locale-suggestion-dismissed-key-value="locale_suggestion_dismissed_<%= Date.current.strftime('%Y%m') %>" style="display: none;">
 
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-8">
-        <div class="d-flex align-items-center">
-          <i class="bi bi-globe me-2 text-primary"></i>
-          <span class="suggestion-text">
-            <strong><%= t('locale_suggestion.banner.title') %></strong>
-            <%= t('locale_suggestion.banner.switch_to', language: '<span data-locale-suggestion-target="suggestedLocale" class="fw-bold text-primary"></span>').html_safe %>
-            <small class="text-muted d-block">
-              <%= t('locale_suggestion.banner.currently_viewing', language: '<span data-locale-suggestion-target="currentLocale"></span>').html_safe %>
-            </small>
-          </span>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-globe me-2 text-primary"></i>
+                    <span class="suggestion-text">
+                        <strong><%= t('locale_suggestion.banner.title') %></strong>
+                        <%= t('locale_suggestion.banner.switch_to', language: '<span data-locale-suggestion-target="suggestedLocale" class="fw-bold text-primary"></span>').html_safe %>
+                        <small class="text-muted d-block">
+                            <%= t('locale_suggestion.banner.currently_viewing', language: '<span data-locale-suggestion-target="currentLocale"></span>').html_safe %>
+                        </small>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-4 text-md-end mt-2 mt-md-0">
+                <button type="button" class="btn btn-primary btn-sm me-2" data-locale-suggestion-target="switchButton">
+                    <%= t('locale_suggestion.banner.switch_button') %>
+                </button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-action="click->locale-suggestion#dismiss" data-locale-suggestion-target="dismissButton">
+                    <%= t('locale_suggestion.banner.stay_button') %>
+                </button>
+            </div>
         </div>
-      </div>
-      <div class="col-md-4 text-md-end mt-2 mt-md-0">
-        <button type="button"
-                class="btn btn-primary btn-sm me-2"
-                data-locale-suggestion-target="switchButton">
-          <%= t('locale_suggestion.banner.switch_button') %>
-        </button>
-        <button type="button"
-                class="btn btn-outline-secondary btn-sm"
-                data-action="click->locale-suggestion#dismiss"
-                data-locale-suggestion-target="dismissButton">
-          <%= t('locale_suggestion.banner.stay_button') %>
-        </button>
-      </div>
     </div>
-  </div>
-
-  <button type="button"
-          class="btn-close position-absolute top-50 end-0 translate-middle-y me-3"
-          data-action="click->locale-suggestion#dismiss"
-          aria-label="<%= t('locale_suggestion.banner.close') %>">
-  </button>
 </div>
