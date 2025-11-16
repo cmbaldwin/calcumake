@@ -8,6 +8,8 @@ en:
     title: Subscription
     current_plan: Current Plan
     upgrade: Upgrade
+    upgrade_to_plan: Upgrade to %{plan}
+    downgrade_to_plan: Downgrade to %{plan}
     upgrade_successful: Successfully upgraded to %{plan}
     already_subscribed: You already have an active subscription
     invalid_plan: Invalid subscription plan
