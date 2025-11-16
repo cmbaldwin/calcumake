@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
+  # Re-raise ParameterMissing in test environment so tests can catch it with assert_raises
+  rescue_from ActionController::ParameterMissing, with: :handle_parameter_missing
+
   before_action :set_locale
 
   def switch_locale
@@ -15,6 +18,18 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def handle_parameter_missing(exception)
+    # Re-raise in test environment so tests can catch it
+    # In other environments, let Rails handle it normally (returns 400 Bad Request)
+    raise exception if Rails.env.test?
+
+    # For production/development, render a user-friendly error
+    respond_to do |format|
+      format.json { render json: { error: "Missing required parameter: #{exception.param}" }, status: :bad_request }
+      format.html { redirect_back fallback_location: root_path, alert: "Missing required information. Please try again." }
+    end
+  end
 
   def set_locale
     # Check if locale is set in session, URL param, user preference, or fall back to default
