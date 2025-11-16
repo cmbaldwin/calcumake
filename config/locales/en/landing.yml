@@ -1,0 +1,175 @@
+---
+en:
+  landing:
+    hero:
+      headline: More creating, less calculating
+      subheadline: Skip the spreadsheets and tedious calculations. Handle pricing
+        automatically so you can focus on the fun part.
+      cta_primary: Start Calculating Free
+      cta_demo: See Demo
+      trust_signal: No credit card required - start with full Startup features for
+        30 days
+      preview_title: Quick Cost Preview
+      preview_filament_weight: Filament Weight
+      preview_print_time: Print Time
+      preview_total_cost: Total Cost
+      preview_cost_breakdown: Electricity + Filament + Labor
+    problem:
+      headline: Are you wasting time calculating pricing for 3D prints?
+      manual_errors: Manual Calculation Errors
+      manual_errors_desc: Spreadsheets and mental math lead to costly mistakes and
+        undercharging.
+      electricity_costs: Forgotten Electricity Costs
+      electricity_costs_desc: Power consumption can add 20-40% to your actual costs
+        but is often ignored.
+      inconsistent_pricing: Inconsistent Pricing
+      inconsistent_pricing_desc: Different calculations for similar jobs confuse customers
+        and hurt profits.
+      time_wasted: Time Wasted on Spreadsheets
+      time_wasted_desc: Hours spent on manual calculations instead of growing your
+        printing business.
+    solution:
+      headline: Professional Tools for Serious Makers
+      subheadline: Everything you need to price accurately and manage your 3D printing
+        projects like a pro.
+    features:
+      accurate_calculation:
+        title: Accurate Cost Calculation
+        desc: Get precise costs every time with comprehensive calculation including
+          all hidden expenses.
+        filament: Filament weight + spool cost
+        electricity: Electricity consumption tracking
+        labor: Labor time (prep + post-processing)
+        depreciation: Machine depreciation
+      multi_printer:
+        title: Multi-Printer Management
+        desc: Track different printer specifications and monitor your return on investment
+          across your entire fleet.
+        power: Individual power consumption tracking
+        roi: ROI tracking per printer
+        organization: Organized print job management
+      invoicing:
+        title: Professional Invoicing
+        desc: Generate professional PDF invoices with your company branding and multi-currency
+          support.
+        pdf: Auto-generated PDF invoices
+        branding: Custom company branding
+        currency: Multi-currency support
+      organization:
+        title: Project Organization
+        desc: Keep your print jobs organized with powerful search, filtering, and
+          project management tools.
+        search: Search and filter print jobs
+        duplicate: Duplicate similar projects
+        history: Complete print history tracking
+    pricing:
+      headline: Simple, Transparent Pricing
+      subheadline: Choose the plan that fits your printing volume. Upgrade or downgrade
+        anytime.
+      cta: Get Started Free
+      free:
+        title: Free
+        trial_notice: First month includes full Startup features!
+        calculations: 5 calculations per month (after trial)
+        printers: 1 printer profile
+        filaments: 4 filament types
+        invoices: 5 invoices per month
+        branding: CalcuMake branding on invoices
+      startup:
+        title: Startup
+        badge: Most Popular
+        calculations: 50 calculations per month
+        printers: 10 printer profiles
+        filaments: 16 filament types
+        branding: Remove CalcuMake branding
+        ads: No ads
+      pro:
+        title: Pro
+        unlimited: Unlimited everything
+        branding: Remove CalcuMake branding
+        ads: No ads
+        support: Priority support
+        analytics: Advanced analytics
+        features: Future premium features
+      trust_signals:
+        no_credit_card: No credit card required - start with full Startup features
+          for 30 days
+        cancel_anytime: Cancel anytime
+        data_private: Your data stays private
+    faq:
+      headline: Frequently Asked Questions
+      accuracy:
+        question: How accurate are the calculations?
+        answer: CalcuMake uses simple formulas and accounts for all cost factors including
+          filament, electricity, labor time, and machine depreciation.
+      currencies:
+        question: What currencies does CalcuMake support?
+        answer: CalcuMake currently supports USD, EUR, GBP, JPY, CAD, and AUD with
+          automatic formatting and precision for each currency. You can switch currencies
+          anytime in your profile settings.
+      printers:
+        question: Does CalcuMake support my 3D printer?
+        answer: CalcuMake works with any 3D printer! You simply enter your printer's
+          power consumption and other specifications. We're planning support for resin
+          printers soon!
+      electricity:
+        question: How do electricity costs work?
+        answer: CalcuMake automatically calculates electricity costs based on your
+          printer's power consumption (in watts), print duration, and your local energy
+          rate per kWh. This ensures you never forget this often-overlooked cost factor.
+      invoices:
+        question: Can I customize my invoices?
+        answer: Yes! You can add your company logo, customize colors, and include
+          your business information. Paid plans remove the CalcuMake branding for
+          a completely professional look.
+    final_cta:
+      headline: Ready to stop losing money on 3D prints?
+      subheadline: Join thousands of makers who trust CalcuMake for accurate pricing
+        and professional project management.
+      button: Start Your Free Trial
+  demo:
+    title: Try CalcuMake Demo
+    subtitle: Test our 3D print cost calculator with sample data. No account required!
+    sign_up_full_version: Sign Up for Full Version
+    start_free_trial: Start Free Trial
+    limitations:
+      title: This is a Demo Version
+      description: 'The full CalcuMake app includes:'
+      features:
+      - Multiple printer profiles with automatic specifications
+      - Comprehensive filament library with material properties
+      - Professional PDF invoice generation
+      - Project history and duplicate functionality
+      - Multi-currency support
+      - Machine depreciation calculations
+  locale_suggestion:
+    banner:
+      title: It looks like you're accessing from a different region.
+      switch_to: Switch to %{language} for a better experience?
+      currently_viewing: Currently viewing in %{language}
+      switch_button: Switch Language
+      stay_button: Stay
+      close: Close
+  calculators:
+    quick_cost_calculator: Quick Cost Calculator
+    print_time_hours: Print Time (hours)
+    filament_weight_grams: Filament Weight (grams)
+    filament_price_per_kg: Filament Price per KG ($)
+    labor_rate_per_hour: Labor Rate per Hour ($)
+    create_full_calculation: Create Full Calculation
+    includes_defaults: 'Includes Default Costs:'
+    defaults:
+      filament_price: Filament
+      labor_rate: Labor
+      energy_cost: Energy
+      power_consumption: Power
+      machine_payoff: Machine Payoff
+    features:
+      real_time: Real-time calculation as you type
+      includes_costs: Includes electricity and labor costs
+    results:
+      filament_cost: Filament Cost
+      electricity_cost: Electricity Cost
+      labor_cost: Labor Cost
+      total_cost: Total Cost
+      estimated_cost: 'Estimated Cost:'

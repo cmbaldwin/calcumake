@@ -94,6 +94,11 @@ en:
     invoices: Invoices
     profile: Profile
     help: Help
+    usage_and_subscription: Usage & Subscription
+    legal_header: Legal & Privacy
+    data_rights_header: Your Data Rights
+    export_data: Export My Data
+    delete_account: Delete My Account
     sign_out: Sign out
     sign_in: Sign in
     sign_up: Sign up
@@ -180,6 +185,9 @@ en:
         description:
           No print calculations match '%{query}'. Try a different search
           term.
+      total_filament_used: Total Filament Used
+      total_estimated_sales: Total Estimated Sales
+      total_estimated_profit: Total Estimated Profit
     job_name: Job Name
     print_time: Print Time
     times_printed: Times Printed
@@ -969,6 +977,7 @@ en:
     new_invoice: New Invoice
     edit_invoice: Edit Invoice
     create_invoice: Create Invoice
+    made_with_calcumake: Made with CalcuMake
     index:
       title: My Invoices
       subtitle: Track and manage all your invoices across projects
@@ -1021,6 +1030,11 @@ en:
       currency: Currency
       currency_help: Determines decimal places and formatting for all amounts on this invoice
       company_logo: Company Logo
+      client: Client
+      project: Project
+      select_client: Select a client
+      no_client_selected: No client selected
+      client_help_text: Choose a client for this invoice
     line_items:
       title: Line Items
       add_line_item: Add Line Item
@@ -1029,6 +1043,10 @@ en:
       unit_price: Unit Price
       total: Total
       remove: Remove
+      round_all_down_help: "Round all amounts down to avoid overcharging"
+      round_all_down: "Round all down"
+      round_all_up_help: "Round all amounts up for buffer"
+      round_all_up: "Round all up"
   filaments:
     index:
       title: My Filaments
@@ -1051,6 +1069,14 @@ en:
       subtitle: Update filament specifications
     show:
       title: Filament Details
+      usage_history: Usage History
+      times_used: Times Used
+      total_weight_used: Total Weight Used
+      new_print_with_filament: New Print with this Filament
+      recent_prints: Recent Prints
+      not_used_yet: This filament hasn't been used yet
+      create_first_print: Create Your First Print
+      no_cost_info: No cost information available
     sections:
       basic_info: Basic Information
       cost_info: Cost Information
@@ -1093,15 +1119,6 @@ en:
       storage_temp: Storage Temperature
     properties:
       moisture_sensitive: Moisture Sensitive
-    show:
-      usage_history: Usage History
-      times_used: Times Used
-      total_weight_used: Total Weight Used
-      new_print_with_filament: New Print with this Filament
-      recent_prints: Recent Prints
-      not_used_yet: This filament hasn't been used yet
-      create_first_print: Create Your First Print
-      no_cost_info: No cost information available
     buttons:
       add_filament: Add Filament
       update_filament: Update Filament
@@ -1263,3 +1280,86 @@ en:
       labor_cost: "Labor Cost"
       total_cost: "Total Cost"
       estimated_cost: "Estimated Cost:"
+  usage_limits:
+    usage_summary: "Usage Summary"
+    limit_reached: "You've reached the %{resource} limit for your plan"
+    approaching_limits_message: "You're approaching your plan limits"
+  subscriptions:
+    title: "Subscription"
+    current_plan: "Current Plan"
+    upgrade: "Upgrade"
+    upgrade_successful: "Successfully upgraded to %{plan}"
+    already_subscribed: "You already have an active subscription"
+    invalid_plan: "Invalid subscription plan"
+    no_subscription: "No active subscription found"
+    cancel_scheduled: "Subscription cancellation scheduled"
+    verification_error: "Unable to verify your subscription. Please contact support."
+    features:
+      calculations: "Print Calculations"
+      printers: "Printers"
+      filaments: "Filaments"
+      invoices: "Invoices"
+      unlimited_invoices: "Unlimited Invoices"
+    upgrade_now: "Upgrade Now"
+  gdpr:
+    cookie_consent:
+      title: "Cookie Consent"
+      message: "We use cookies to improve your experience. By continuing to use this site, you agree to our cookie policy."
+      message_html: "We use cookies to improve your experience. By continuing to use this site, you agree to our %{cookie_policy_link}. Read our %{privacy_policy_link}."
+      accept: "Accept"
+      decline: "Decline"
+      reject: "Reject"
+    cookie_policy_title: "Cookie Policy"
+    cookie_policy: "We use cookies to enhance your experience. By using our site, you consent to cookies."
+    privacy_policy: "Privacy Policy"
+    privacy_policy_title: "Privacy Policy"
+    terms_of_service_title: "Terms of Service"
+    last_updated: "Last updated"
+    data_export:
+      title: "Export Your Data"
+      description: "Download all your data in JSON format"
+      button: "Download Data"
+      what_included: "What's included in your data export"
+      items:
+        account_info: "Account information"
+        print_pricings: "Print pricing calculations"
+        printers: "Printer profiles"
+        filaments: "Filament library"
+        invoices: "Invoices"
+        clients: "Client information"
+        consents: "User consents and privacy preferences"
+    data_deletion:
+      title: "Delete Your Account"
+      description: "Permanently delete your account and all associated data"
+      warning: "This action cannot be undone"
+      warning_title: "Warning: This action is permanent"
+      warning_message: "All your data will be permanently deleted and cannot be recovered"
+      button: "Delete Account"
+      what_deleted: "What will be deleted"
+      items:
+        account: "Your user account and login credentials"
+        print_pricings: "All print pricing calculations"
+        printers: "All printer profiles"
+        filaments: "All filament profiles"
+        invoices: "All invoices"
+        clients: "All client information"
+        uploaded_files: "All uploaded files and attachments"
+    tos_sections:
+      acceptance:
+        title: "Acceptance of Terms"
+        content: "By using CalcuMake, you agree to these terms of service"
+      service_description:
+        title: "Service Description"
+        content: "CalcuMake is a 3D print cost calculation and project management tool"
+      user_accounts:
+        title: "User Accounts"
+        content: "You are responsible for maintaining your account security and all activities under your account"
+    cookie_sections:
+      what_are_cookies:
+        title: "What are cookies?"
+        content: "Cookies are small text files stored on your device that help us provide a better experience. We use essential cookies for functionality and analytics cookies to improve our service."
+      how_we_use:
+        title: "How We Use Cookies"
+        content: "We use cookies to remember your preferences, authenticate your sessions, and analyze site usage to improve our service"
+    consent_recorded: "Your preferences have been saved"
+    account_deleted: "Your account has been deleted successfully"

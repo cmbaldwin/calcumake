@@ -1,0 +1,72 @@
+---
+en:
+  printers:
+    index:
+      title: My Printers
+      subtitle: Manage your 3D printers and their specifications
+      add_new: Add New Printer
+      empty_state:
+        title: No printers registered yet
+        description: Add your first 3D printer to start calculating printing costs
+          accurately.
+        add_first: Add Your First Printer
+    card:
+      power_consumption: Power Consumption
+      cost: Cost
+      daily_usage: Daily Usage
+      payoff_goal: Payoff Goal
+      repair_cost_percentage: Repair Cost
+      paid_off: "✓ Paid Off"
+      months_to_payoff: "%{months} months to payoff"
+      hours: hours
+      years: years
+    new:
+      title: Add New Printer
+      subtitle: Register your 3D printer specifications for accurate cost calculations
+    edit:
+      title: Edit Printer
+      subtitle: Update your 3D printer specifications
+    show:
+      specifications: Specifications
+      financial_status: Financial Status
+      print_jobs: Print Jobs
+      new_print_job: New Print Job
+      repair_cost: Repair Cost
+      date_added: Date Added
+      not_set: Not set
+      fully_paid_off: This printer has been fully paid off based on your payoff goals.
+      payoff_progress: Payoff Progress
+      no_print_jobs: No print jobs yet
+      no_print_jobs_description: Create your first print pricing calculation for this
+        printer.
+      create_first_job: Create First Print Job
+      view_all_jobs: View All %{count} Jobs
+    sections:
+      basic_info: Basic Information
+      technical_specs: Technical Specifications
+      financial_info: Financial Information
+      usage_info: Usage Information
+    fields:
+      name: Printer Name
+      name_placeholder: e.g., My Prusa i3 MK3S+
+      manufacturer: Manufacturer
+      manufacturer_prompt: Select manufacturer
+      power_consumption: Power Consumption (Watts)
+      power_consumption_placeholder: '200'
+      power_consumption_help: 'Typical range: 50W (small printers) to 500W (large
+        printers)'
+      cost: Printer Cost
+      cost_placeholder: '500.00'
+      payoff_goal: Payoff Goal (Years)
+      payoff_goal_placeholder: '3'
+      payoff_goal_help: How many years do you want to recoup the printer cost?
+      daily_usage: Daily Usage (Hours)
+      daily_usage_placeholder: '8'
+      daily_usage_help: Average hours per day you plan to use this printer
+      repair_factor: Repair Cost Factor (%)
+      repair_factor_placeholder: '5.0'
+      repair_factor_help: Additional cost factor for maintenance and repairs
+    buttons:
+      add_printer: Add Printer
+      update_printer: Update Printer
+      cancel: Cancel

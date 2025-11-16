@@ -1,40 +1,130 @@
 ---
 hi:
   language_name: हिंदी
+  activerecord:
+    errors:
+      messages:
+        blank: खाली नहीं हो सकता
+        taken: पहले से ही लिया गया है
+        too_short: बहुत छोटा है (न्यूनतम %{count} अक्षर)
+        too_long: बहुत लंबा है (अधिकतम %{count} अक्षर)
+        invalid: अमान्य है
+        greater_than: "%{count} से अधिक होना चाहिए"
+        greater_than_or_equal_to: "%{count} से अधिक या बराबर होना चाहिए"
+        less_than: "%{count} से कम होना चाहिए"
+        less_than_or_equal_to: "%{count} से कम या बराबर होना चाहिए"
+        not_a_number: एक संख्या नहीं है
+        inclusion: सूची में शामिल नहीं है
+        exclusion: आरक्षित है
+        accepted: स्वीकार किया जाना चाहिए
+        present: खाली होना चाहिए
+        confirmation: "%{attribute} से मेल नहीं खाता"
+        empty: खाली नहीं हो सकता
+      models:
+        filament:
+          attributes:
+            name:
+              blank: कृपया एक फिलामेंट नाम दर्ज करें
+              taken: आपके पास पहले से ही इस नाम का एक फिलामेंट है
+            material_type:
+              blank: कृपया एक सामग्री प्रकार चुनें
+              inclusion: कृपया एक मान्य सामग्री प्रकार चुनें
+            diameter:
+              blank: कृपया एक व्यास चुनें
+              inclusion: कृपया एक मान्य व्यास चुनें (1.75 मिमी, 2.85 मिमी, या 3.0
+                मिमी)
+            spool_weight:
+              greater_than: स्पूल वजन 0 से अधिक होना चाहिए
+              not_a_number: स्पूल वजन एक संख्या होनी चाहिए
+            spool_price:
+              greater_than: स्पूल मूल्य 0 से अधिक होना चाहिए
+              not_a_number: स्पूल मूल्य एक संख्या होनी चाहिए
+            print_temperature_min:
+              greater_than: न्यूनतम तापमान 0°C से अधिक होना चाहिए
+              less_than: न्यूनतम तापमान 500°C से कम होना चाहिए
+              not_a_number: न्यूनतम तापमान एक संख्या होनी चाहिए
+            print_temperature_max:
+              greater_than: अधिकतम तापमान 0°C से अधिक होना चाहिए
+              less_than: अधिकतम तापमान 500°C से कम होना चाहिए
+              not_a_number: अधिकतम तापमान एक संख्या होनी चाहिए
+              temperature_range: न्यूनतम तापमान से अधिक होना चाहिए
+            heated_bed_temperature:
+              greater_than: बेड तापमान 0°C से अधिक होना चाहिए
+              less_than: बेड तापमान 500°C से कम होना चाहिए
+              not_a_number: बेड तापमान एक संख्या होनी चाहिए
+            print_speed_max:
+              greater_than: प्रिंट गति 0 से अधिक होनी चाहिए
+              less_than: प्रिंट गति 1000 से कम होनी चाहिए
+              not_a_number: प्रिंट गति एक संख्या होनी चाहिए
+            storage_temperature_max:
+              greater_than: भंडारण तापमान -50°C से अधिक होना चाहिए
+              less_than: भंडारण तापमान 100°C से कम होना चाहिए
+              not_a_number: भंडारण तापमान एक संख्या होनी चाहिए
+            density:
+              greater_than: घनत्व 0 से अधिक होना चाहिए
+              less_than: घनत्व 10 से कम होना चाहिए
+              not_a_number: घनत्व एक संख्या होनी चाहिए
+        plate_filament:
+          attributes:
+            filament_weight:
+              blank: कृपया फिलामेंट वजन दर्ज करें
+              greater_than: फिलामेंट वजन 0 से अधिक होना चाहिए
+              not_a_number: फिलामेंट वजन एक संख्या होनी चाहिए
+            filament_id:
+              blank: कृपया एक फिलामेंट चुनें
+              already_added: यह फिलामेंट पहले से ही इस प्लेट में जोड़ा जा चुका है
+        plate:
+          attributes:
+            base:
+              no_filaments: कम से कम एक फिलामेंट होना चाहिए
+              duplicate_filaments: एक प्लेट पर एक ही फिलामेंट को कई बार इस्तेमाल नहीं
+                किया जा सकता
+        print_pricing:
+          attributes:
+            base:
+              no_plates: कम से कम एक प्लेट होनी चाहिए
+              too_many_plates: 10 से अधिक प्लेटें नहीं हो सकतीं
+              duplicate_filaments_on_plate: एक ही प्लेट पर एक ही फिलामेंट को कई बार
+                इस्तेमाल नहीं किया जा सकता
   nav:
     brand: CalcuMake
     print_pricings: मेरी कीमतें
     my_pricings: मेरी कीमतें
     new_pricing: नई कीमत
     my_printers: मेरे प्रिंटर
-    my_filaments: My Filaments
+    my_filaments: मेरे फिलामेंट
+    clients: मेरे ग्राहक
+    invoices: इनवॉइस
     profile: प्रोफ़ाइल
-    help: सहायता
+    help: मदद
     sign_out: साइन आउट
     sign_in: साइन इन
     sign_up: साइन अप
     language: भाषा
-    clients: My Clients
-    invoices: Invoices
+    usage_and_subscription: उपयोग और सदस्यता
+    legal_header: कानूनी और गोपनीयता
+    data_rights_header: आपके डेटा अधिकार
+    export_data: मेरा डेटा एक्सपोर्ट करें
+    delete_account: मेरा अकाउंट डिलीट करें
   actions:
-    save: सेव करें
+    title: क्रियाएँ
+    save: सहेजें
     cancel: रद्द करें
     edit: संपादित करें
     delete: हटाएं
-    duplicate: डुप्लिकेट करें
-    copy: प्रतिलिपि
+    duplicate: डुप्लिकेट
+    copy: कॉपी
     create: बनाएं
     update: अपडेट करें
     new: नया
-    show: दिखाएं
+    show: दिखाएँ
     back: वापस
-    submit: सबमिट करें
+    submit: जमा करें
     view: देखें
-    actions: कार्य
-    title: Actions
-    print: Print
-    more: More
-    search: Search
+    actions: क्रियाएँ
+    print: प्रिंट
+    more: और
+    search: खोजें
   flash:
     success: सफलता
     error: त्रुटि
@@ -42,9 +132,9 @@ hi:
     notice: सूचना
     created: "%{model} सफलतापूर्वक बनाया गया"
     updated: "%{model} सफलतापूर्वक अपडेट किया गया"
-    deleted: "%{model} सफलतापूर्वक हटाया गया"
+    deleted: "%{model} सफलतापूर्वक हटा दिया गया"
     duplicated: "%{model} सफलतापूर्वक डुप्लिकेट किया गया"
-    duplicate_failed: "%{model} डुप्लिकेट करने में विफल"
+    duplicate_failed: "%{model} को डुप्लिकेट करने में विफल"
   models:
     user: उपयोगकर्ता
     printer: प्रिंटर
@@ -53,90 +143,111 @@ hi:
     client: ग्राहक
     print_pricing_plural: प्रिंट मूल्य निर्धारण
     printer_plural: प्रिंटर
-    filament_plural: फिलामेंट
-    invoice_plural: चालान
-  printer:
-    name: प्रिंटर का नाम
-    manufacturer: निर्माता
-    model: मॉडल
-    purchase_price: खरीद मूल्य
-    purchase_date: खरीद की तारीख
-    power_consumption: बिजली की खपत (वाट)
-    hourly_cost: घंटे की लागत
-    depreciation_years: मूल्यह्रास अवधि (वर्ष)
-    repair_factor: मरम्मत कारक (%)
-    paid_off: पेड ऑफ
-    months_to_payoff: पेऑफ तक महीने
+    filament_plural: फिलामेंट्स
+    invoice_plural: इनवॉइस
+  common:
+    created: निर्मित
+    currency: मुद्रा
+    hours: घंटे
+    minutes: मिनट
+    grams: ग्राम
+    watts: W
+    kwh: kWh
+    percentage: "%"
+    years: वर्ष
+    'yes': हाँ
+    'no': नहीं
+    are_you_sure: क्या आप निश्चित हैं?
+    errors_prohibited: "%{count} %{errors} ने इस %{model} को सहेजने से रोक दिया:"
+    error_count:
+      one: त्रुटि
+      other: त्रुटियाँ
+  date:
+    formats:
+      month_day_year: "%B %d, %Y"
+  time:
+    at: पर
+    formats:
+      month_day_year: "%B %d, %Y"
+      month_day_year_time: "%B %d, %Y को %I:%M %p पर"
   print_pricing:
     index:
-      title: मेरी प्रिंट गणनाएं
-      subtitle: 3D प्रिंटिंग लागत गणनाओं को ट्रैक और प्रबंधित करें
-      create_new: नई प्रिंट गणना
-      total_calculations: कुल गणनाएं
+      title: मेरी प्रिंट गणनाएँ
+      subtitle: अपने 3D प्रिंटिंग लागत गणनाओं को ट्रैक और प्रबंधित करें
+      create_new: नई प्रिंट की गणना करें
+      total_calculations: कुल गणनाएँ
       total_print_time: कुल प्रिंट समय
-      search_placeholder: जॉब नाम या फिलामेंट प्रकार से खोजें...
+      search_placeholder: कार्य नाम या फिलामेंट प्रकार से खोजें...
       empty_state:
-        title: अभी तक कोई गणना नहीं
-        description: अपने 3D प्रिंटिंग प्रोजेक्ट्स के लिए खर्च और मूल्य निर्धारण को
-          ट्रैक करने के लिए अपनी पहली प्रिंट लागत गणना बनाना शुरू करें।
+        title: अभी तक कोई गणना नहीं है
+        description: अपने 3D प्रिंटिंग परियोजनाओं के लिए खर्चों और मूल्य निर्धारण
+          को ट्रैक करने के लिए अपनी पहली प्रिंट लागत गणना बनाकर शुरुआत करें।
       no_results:
         title: कोई परिणाम नहीं मिला
-        description: "'%{query}' से मेल खाने वाली कोई प्रिंट गणना नहीं। एक अलग खोज
-          शब्द आज़माएं।"
-    job_name: जॉब का नाम
+        description: कोई भी प्रिंट गणना '%{query}' से मेल नहीं खाती. एक अलग खोज शब्द
+          आज़माएँ।
+      total_filament_used: कुल फिलामेंट का उपयोग
+      total_estimated_sales: कुल अनुमानित बिक्री
+      total_estimated_profit: कुल अनुमानित लाभ
+    job_name: कार्य का नाम
     print_time: प्रिंट समय
-    times_printed: प्रिंट की संख्या
-    final_price: अंतिम कीमत
+    times_printed: मुद्रित बार
+    times_printed_decrease: मुद्रित बार घटाएँ
+    times_printed_increase: मुद्रित बार बढ़ाएँ
+    printed_times: मुद्रित बार
+    final_price: अंतिम मूल्य
+    overdue: अतिदेय
     confirm_delete: क्या आप वाकई '%{name}' को हटाना चाहते हैं?
-    times_printed_incremented: प्रिंट संख्या सफलतापूर्वक बढ़ाई गई
-    times_printed_decremented: प्रिंट संख्या सफलतापूर्वक घटाई गई
-    times_printed_decrease: प्रिंट संख्या कम करें
-    times_printed_increase: प्रिंट संख्या बढ़ाएं
-    printed_times: प्रिंट की गई बार
+    times_printed_incremented: मुद्रित बार सफलतापूर्वक बढ़ाया गया
+    times_printed_decremented: मुद्रित बार सफलतापूर्वक घटाया गया
+    duplicated_successfully: प्रिंट मूल्य निर्धारण सफलतापूर्वक डुप्लिकेट किया गया
+    duplicate_failed: प्रिंट मूल्य निर्धारण डुप्लिकेट करने में विफल
     title: प्रिंट मूल्य निर्धारण
     cost_summary: लागत सारांश
+    back_to_all: "← सभी मूल्य निर्धारण पर वापस जाएँ"
+    create_new: नया मूल्य निर्धारण बनाएँ
     cost_breakdown:
       filament: फिलामेंट लागत
-      electricity: Electricity Cost
-      labor: Labor Cost
-      machine: Machine Cost
-      other: Other Costs
-      vat: VAT
+      electricity: बिजली लागत
+      labor: श्रम लागत
+      machine: मशीन लागत
+      other: अन्य लागतें
+      vat: वैट
     invoice: चालान
     invoice_number: चालान संख्या
-    invoice_date: चालान दिनांक
+    invoice_date: चालान तिथि
     from: से
     3d_printing_services: 3D प्रिंटिंग सेवाएं
-    job_details: कार्य विवरण
+    job_details: जॉब विवरण
     filament_type: फिलामेंट प्रकार
-    filament_types: फिलामेंट प्रकार
+    filament_types_label: फिलामेंट प्रकार
     weight: वजन
     total_weight: कुल वजन
     total_print_time: कुल प्रिंट समय
-    cost_breakdown_label: लागत विवरण
+    cost_breakdown_label: लागत विभाजन
     description: विवरण
     amount: राशि
     filament_cost: फिलामेंट लागत
     markup: मार्कअप
     electricity_cost: बिजली लागत
     labor_cost: श्रम लागत
-    prep_time: तैयारी समय
+    prep_time: तैयारी का समय
     postprocessing_time: पोस्ट-प्रोसेसिंग समय
     machine_upkeep: मशीन रखरखाव
     depreciation_and_maintenance: मूल्यह्रास और रखरखाव
-    other_costs: अन्य लागत
-    subtotal: उपयोग
+    other_costs: अन्य लागतें
+    subtotal: उप-योग
     vat: वैट
     total: कुल
-    notes: टिप्पणियां
+    notes: टिप्पणियाँ
     invoice_notes_text: आपके व्यवसाय के लिए धन्यवाद। कृपया इस चालान को अपने रिकॉर्ड
       के लिए रखें।
     payment_info: भुगतान जानकारी
-    payment_info_text: भुगतान शर्तें और विवरण अलग से सूचित किए जाएंगे।
-    download_pdf: PDF डाउनलोड करें
+    payment_info_text: भुगतान की शर्तें और विवरण अलग से बताए जाएंगे।
+    download_pdf: पीडीएफ डाउनलोड करें
     calculator:
       title: 3D प्रिंट कैलकुलेटर
-      subtitle: अपनी 3D प्रिंटिंग लागतों की सटीक गणना करें
+      subtitle: अपनी 3D प्रिंटिंग लागतों की सटीकता से गणना करें
       edit_title: प्रिंट गणना संपादित करें
       edit_subtitle: अपनी 3D प्रिंटिंग लागत गणना अपडेट करें
     edit:
@@ -147,184 +258,337 @@ hi:
       print_time_material: प्रिंट समय और सामग्री
       filament_details: फिलामेंट विवरण
       electricity: बिजली
-      electricity_auto_calculated: बिजली (स्वचालित गणना)
-      electricity_power_consumption: बिजली और पावर खपत
+      electricity_auto_calculated: 'बिजली (स्वत: गणना की गई)'
+      electricity_power_consumption: बिजली और बिजली की खपत
       electricity_print_time: बिजली और प्रिंट समय
       electricity_energy_cost: बिजली और ऊर्जा लागत
-      electricity_settings_link_html: अपने %{link} में बिजली सेटिंग्स कॉन्फ़िगर करें
-      profile_settings: प्रोफाइल सेटिंग्स
+      electricity_settings_link_html: अपनी %{link} में बिजली सेटिंग्स कॉन्फ़िगर करें
+      profile_settings: प्रोफ़ाइल सेटिंग्स
       labor: श्रम
       machine_upkeep: मशीन और रखरखाव
-      other_costs_tax: अन्य लागत और कर
-      final_price: अंतिम कीमत
-      plates: प्लेट्स
+      machine_auto_calculated: 'मशीन (स्वत: गणना की गई)'
+      machine_cost_usage: मशीन लागत और उपयोग
+      machine_return_period: मशीन वापसी अवधि
+      machine_repair_factor: मशीन मरम्मत कारक
+      add_edit_printer: एक प्रिंटर जोड़ें या संपादित करें
+      machine_printer_config_html: प्रिंटर विनिर्देशों को कॉन्फ़िगर करें जब आप %{link}
+      unsaved_progress_warning: असुरक्षित प्रगति चेतावनी
+      other_costs_tax: अन्य लागतें और कर
+      final_price: अंतिम मूल्य
+      plates: प्लेटें
       plate: प्लेट
-      machine_auto_calculated: Machine (Auto-calculated)
-      machine_cost_usage: Machine Cost & Usage
-      machine_return_period: Machine Return Period
-      machine_repair_factor: Machine Repair Factor
-      add_edit_printer: add or edit a printer
-      machine_printer_config_html: Configure printer specifications when you %{link}
-      unsaved_progress_warning: Unsaved Progress Warning
-      filaments: Filaments
+      filaments: फिलामेंट्स
+    fields:
+      job_name: जॉब का नाम
+      job_name_placeholder: जैसे, लघु मॉडल
+      select_printer: प्रिंटर का चयन करें
+      select_printer_prompt: एक प्रिंटर का चयन करें
+      no_printer_help: क्या आपके पास कोई प्रिंटर पंजीकृत नहीं है?
+      add_printer_link: एक नया प्रिंटर जोड़ें
+      print_time_hours: घंटे
+      print_time_minutes: मिनट
+      filament_weight: फिलामेंट वजन (g)
+      filament_weight_placeholder: '36'
+      filament_type: फिलामेंट प्रकार
+      filament_type_prompt: प्रकार का चयन करें
+      spool_price: स्पूल मूल्य
+      spool_price_placeholder: '25.00'
+      spool_weight: स्पूल वजन (g)
+      spool_weight_placeholder: '1000'
+      markup: मार्कअप (%)
+      markup_placeholder: '20'
+      markup_percentage: मार्कअप प्रतिशत
+      filament_markup: फिलामेंट मार्कअप (%)
+      prep_time: तैयारी का समय (मिनट)
+      prep_time_placeholder: '30'
+      prep_time_minutes: तैयारी का समय (मिनट)
+      prep_cost_hour: तैयारी लागत/घंटा
+      prep_cost_placeholder: '20.00'
+      prep_cost_per_hour: तैयारी लागत प्रति घंटा
+      post_time: पोस्ट-प्रोसेस समय (मिनट)
+      post_time_placeholder: '30'
+      postprocessing_time_minutes: पोस्ट-प्रोसेसिंग समय (मिनट)
+      postprocessing_time_placeholder: '30'
+      postprocessing_cost_per_hour: पोस्ट-प्रोसेसिंग लागत प्रति घंटा
+      postprocessing_cost_placeholder: '20.00'
+      post_cost_hour: पोस्ट-प्रोसेस लागत/घंटा
+      post_cost_placeholder: '20.00'
+      other_costs: अन्य लागतें
+      other_costs_placeholder: '0.00'
+      vat: वैट (%)
+      vat_placeholder: '10'
+      vat_percentage: वैट प्रतिशत
+      power_consumption: बिजली की खपत (W)
+      power_consumption_placeholder: '200'
+      energy_cost_kwh: ऊर्जा लागत प्रति kWh
+      energy_cost_placeholder: '0.12'
+      printer_cost: प्रिंटर लागत
+      printer_cost_placeholder: '500.00'
+      payoff_goal: भुगतान लक्ष्य (वर्ष)
+      payoff_goal_placeholder: '3'
+      daily_usage: दैनिक उपयोग (घंटे)
+      daily_usage_placeholder: '8'
+      repair_cost: मरम्मत लागत (%)
+      repair_cost_placeholder: '5'
+      currency: मुद्रा
+      currency_prompt: मुद्रा चुनें
+      start_with_one_print: 1 बार प्रिंट के साथ शुरू करें
+      start_with_one_print_help: इस मूल्य निर्धारण को स्वचालित रूप से एक बार मुद्रित
+        के रूप में सेट करने के लिए इसे सक्षम करें
+    filament_types:
+      pla: PLA
+      abs: ABS
+      petg: PETG
+      tpu: TPU
+      asa: ASA
+      other: अन्य
+    calculations:
+      filament_cost: फिलामेंट लागत
+      electricity_cost: बिजली की लागत
+      labor_cost: श्रम लागत
+      machine_cost: मशीन लागत
+      estimated_price: अनुमानित मूल्य
+    info:
+      electricity_auto: 'बिजली की लागत स्वचालित रूप से निम्न के आधार पर गणना की जाएगी:'
+      printer_power: चयनित प्रिंटर की बिजली खपत
+      print_duration: प्रिंट समय अवधि
+      energy_cost_setting: 'आपकी डिफ़ॉल्ट ऊर्जा लागत: %{cost}/kWh'
+      update_energy_cost: आप अपनी डिफ़ॉल्ट ऊर्जा लागत को इसमें अपडेट कर सकते हैं
+      profile_settings: प्रोफ़ाइल सेटिंग्स
+      machine_auto: 'मशीन मूल्यह्रास और रखरखाव लागत आपके चयनित प्रिंटर के विनिर्देशों
+        से गणना की जाएगी:'
+      printer_cost_usage: प्रिंटर लागत और उपयोग के घंटे
+      investment_return: निवेश वापसी अवधि
+      repair_factor: मरम्मत लागत कारक
+      configure_printer: ये मान तब कॉन्फ़िगर किए जाते हैं जब आप
+      add_edit_printer: एक प्रिंटर जोड़ते या संपादित करते हैं
+    buttons:
+      calculate_save: गणना करें और सुरक्षित करें
+      update_pricing: मूल्य निर्धारण अपडेट करें
+      update: अपडेट करें
+      cancel: रद्द करें
+      add_plate: प्लेट जोड़ें
     show:
+      created_on: "%{date} को बनाया गया"
+      edit_calculation: गणना संपादित करें
+      delete: हटाएं
       cost_summary: लागत सारांश
       print_information: प्रिंट जानकारी
+      filament_details: फिलामेंट विवरण
+      electricity_cost: बिजली लागत
+      labor_cost: श्रम लागत
+      machine_upkeep_cost: मशीन और रखरखाव लागत
       costs:
         filament: फिलामेंट लागत
-        electricity: बिजली की लागत
-        electricity_auto_calculated: बिजली (स्वचालित रूप से गणना की गई)
+        electricity: बिजली लागत
         labor: श्रम लागत
         machine: मशीन लागत
         other: अन्य लागतें
         subtotal: उप-योग
-        final_price: अंतिम कीमत
-        vat: VAT (%{rate}%)
-      created_on: Created on %{date}
-      edit_calculation: Edit Calculation
-      delete: Delete
-      filament_details: Filament Details
-      electricity_cost: Electricity Cost
-      labor_cost: Labor Cost
-      machine_upkeep_cost: Machine & Upkeep Cost
+        vat: वैट (%{rate}%)
+        final_price: अंतिम मूल्य
       details:
-        currency: Currency
-        printing_time: Printing Time
-        filament_weight: Filament Weight
-        filament_type: Filament Type
-        spool_price: Spool Price
-        spool_weight: Spool Weight
-        markup: Markup
-        power_consumption: Power Consumption
-        energy_cost_kwh: Energy Cost per kWh
-        total_electricity_cost: Total Electricity Cost
-        prep_time: Prep Time
-        postprocessing_time: Postprocessing Time
-        total_labor_cost: Total Labor Cost
-        printer_cost: Printer Cost
-        payoff_goal: Payoff Goal
-        daily_usage: Daily Usage
-        repair_cost: Repair Cost
-        total_machine_cost: Total Machine Cost
+        currency: मुद्रा
+        printing_time: प्रिंटिंग समय
+        filament_weight: फिलामेंट वजन
+        filament_type: फिलामेंट प्रकार
+        spool_price: स्पूल मूल्य
+        spool_weight: स्पूल वजन
+        markup: मार्कअप
+        power_consumption: बिजली खपत
+        energy_cost_kwh: kWh प्रति ऊर्जा लागत
+        total_electricity_cost: कुल बिजली लागत
+        prep_time: तैयारी का समय
+        postprocessing_time: पोस्टप्रोसेसिंग समय
+        total_labor_cost: कुल श्रम लागत
+        printer_cost: प्रिंटर लागत
+        payoff_goal: भुगतान लक्ष्य
+        daily_usage: दैनिक उपयोग
+        repair_cost: मरम्मत लागत
+        total_machine_cost: कुल मशीन लागत
       actions:
-        back_to_all: "← Back to All Pricings"
-        create_new: Create New Pricing
-        confirm_delete: Are you sure you want to delete '%{name}'?
-    buttons:
-      add_plate: प्लेट जोड़ें
-      calculate_save: Calculate
-      update_pricing: Update Pricing
-      update: Update
-      cancel: Cancel
+        back_to_all: "← सभी मूल्य निर्धारण पर वापस जाएं"
+        create_new: नया मूल्य निर्धारण बनाएं
+        confirm_delete: क्या आप निश्चित रूप से '%{name}' को हटाना चाहते हैं?
     help:
-      plates_limit: आप प्रति प्रिंट जॉब में 10 प्लेट तक जोड़ सकते हैं।
-      filaments_limit: You can add up to 5 different filaments per plate.
-    overdue: Overdue
-    duplicated_successfully: Print pricing duplicated successfully
-    duplicate_failed: Failed to duplicate print pricing
-    back_to_all: "← Back to All Pricings"
-    create_new: Create New Pricing
-    filament_types_label: Filament Types
+      plates_limit: आप प्रति प्रिंट जॉब में अधिकतम 10 प्लेटें जोड़ सकते हैं।
+      filaments_limit: आप प्रति प्लेट में अधिकतम 5 विभिन्न फिलामेंट जोड़ सकते हैं।
+  printers:
+    index:
+      title: मेरे प्रिंटर
+      subtitle: अपने 3डी प्रिंटर और उनके विनिर्देशों का प्रबंधन करें
+      add_new: नया प्रिंटर जोड़ें
+      empty_state:
+        title: अभी तक कोई प्रिंटर पंजीकृत नहीं है
+        description: प्रिंटिंग लागत की सटीक गणना शुरू करने के लिए अपना पहला 3डी प्रिंटर
+          जोड़ें।
+        add_first: अपना पहला प्रिंटर जोड़ें
+    card:
+      power_consumption: बिजली की खपत
+      cost: लागत
+      daily_usage: दैनिक उपयोग
+      payoff_goal: भुगतान लक्ष्य
+      repair_cost_percentage: मरम्मत लागत
+      paid_off: "✓ भुगतान पूरा हुआ"
+      months_to_payoff: भुगतान के लिए %{months} महीने
+      hours: घंटे
+      years: वर्ष
+    new:
+      title: नया प्रिंटर जोड़ें
+      subtitle: सटीक लागत गणना के लिए अपने 3D प्रिंटर विनिर्देशों को पंजीकृत करें
+    edit:
+      title: प्रिंटर संपादित करें
+      subtitle: अपने 3D प्रिंटर विनिर्देशों को अपडेट करें
+    show:
+      specifications: विशेष विवरण
+      financial_status: वित्तीय स्थिति
+      print_jobs: प्रिंट जॉब्स
+      new_print_job: नया प्रिंट जॉब
+      repair_cost: मरम्मत लागत
+      date_added: शामिल करने की तिथि
+      not_set: निर्धारित नहीं
+      fully_paid_off: आपके भुगतान लक्ष्यों के आधार पर इस प्रिंटर का पूरा भुगतान हो
+        चुका है।
+      payoff_progress: भुगतान प्रगति
+      no_print_jobs: अभी तक कोई प्रिंट जॉब नहीं है
+      no_print_jobs_description: इस प्रिंटर के लिए अपनी पहली प्रिंट मूल्य निर्धारण
+        गणना बनाएँ।
+      create_first_job: पहला प्रिंट जॉब बनाएं
+      view_all_jobs: सभी %{count} जॉब देखें
+    sections:
+      basic_info: बुनियादी जानकारी
+      technical_specs: तकनीकी विनिर्देश
+      financial_info: वित्तीय जानकारी
+      usage_info: उपयोग की जानकारी
     fields:
-      job_name: Job Name
-      job_name_placeholder: e.g., Miniature Model
-      select_printer: Select Printer
-      select_printer_prompt: Select a printer
-      no_printer_help: Don't have a printer registered?
-      add_printer_link: Add a new printer
-      print_time_hours: Hours
-      print_time_minutes: Minutes
-      filament_weight: Filament Weight (g)
-      filament_weight_placeholder: '36'
-      filament_type: Filament Type
-      filament_type_prompt: Select type
-      spool_price: Spool Price
-      spool_price_placeholder: '25.00'
-      spool_weight: Spool Weight (g)
-      spool_weight_placeholder: '1000'
-      markup: Markup (%)
-      markup_placeholder: '20'
-      markup_percentage: Markup Percentage
-      filament_markup: Filament Markup (%)
-      prep_time: Prep Time (min)
-      prep_time_placeholder: '30'
-      prep_time_minutes: Prep Time (minutes)
-      prep_cost_hour: Prep Cost/Hour
-      prep_cost_placeholder: '20.00'
-      prep_cost_per_hour: Prep Cost per Hour
-      post_time: Post-Process Time (min)
-      post_time_placeholder: '30'
-      postprocessing_time_minutes: Post-processing Time (minutes)
-      postprocessing_time_placeholder: '30'
-      postprocessing_cost_per_hour: Post-processing Cost per Hour
-      postprocessing_cost_placeholder: '20.00'
-      post_cost_hour: Post-Process Cost/Hour
-      post_cost_placeholder: '20.00'
-      other_costs: Other Costs
-      other_costs_placeholder: '0.00'
-      vat: VAT (%)
-      vat_placeholder: '10'
-      vat_percentage: VAT Percentage
-      power_consumption: Power Consumption (W)
+      name: प्रिंटर का नाम
+      name_placeholder: जैसे, मेरा Prusa i3 MK3S+
+      manufacturer: निर्माता
+      manufacturer_prompt: निर्माता का चयन करें
+      power_consumption: बिजली की खपत (वाट)
       power_consumption_placeholder: '200'
-      energy_cost_kwh: Energy Cost per kWh
-      energy_cost_placeholder: '0.12'
-      printer_cost: Printer Cost
-      printer_cost_placeholder: '500.00'
-      payoff_goal: Payoff Goal (Years)
+      power_consumption_help: 'विशिष्ट सीमा: 50W (छोटे प्रिंटर) से 500W (बड़े प्रिंटर)'
+      cost: प्रिंटर लागत
+      cost_placeholder: '500.00'
+      payoff_goal: भुगतान लक्ष्य (वर्ष)
       payoff_goal_placeholder: '3'
-      daily_usage: Daily Usage (Hours)
+      payoff_goal_help: आप प्रिंटर लागत को कितने वर्षों में वसूल करना चाहते हैं?
+      daily_usage: दैनिक उपयोग (घंटे)
       daily_usage_placeholder: '8'
-      repair_cost: Repair Cost (%)
-      repair_cost_placeholder: '5'
-      currency: Currency
-      currency_prompt: Select currency
-      start_with_one_print: Start with 1 times printed
-      start_with_one_print_help: Enable this to automatically set this pricing as
-        printed once
-    calculations:
-      filament_cost: Filament cost
-      electricity_cost: Electricity cost
-      labor_cost: Labor cost
-      machine_cost: Machine cost
-      estimated_price: Estimated Price
-    info:
-      electricity_auto: 'Electricity cost will be automatically calculated based on:'
-      printer_power: Selected printer's power consumption
-      print_duration: Print time duration
-      energy_cost_setting: 'Your default energy cost: %{cost}/kWh'
-      update_energy_cost: You can update your default energy cost in your
-      profile_settings: profile settings
-      machine_auto: 'Machine depreciation and upkeep cost will be calculated from
-        your selected printer''s specifications:'
-      printer_cost_usage: Printer cost and usage hours
-      investment_return: Investment return period
-      repair_factor: Repair cost factor
-      configure_printer: These values are configured when you
-      add_edit_printer: add or edit a printer
-  currency:
-    usd: अमेरिकी डॉलर
-    eur: यूरो
-    gbp: ब्रिटिश पाउंड
-    jpy: जापानी येन
-    cad: कनाडाई डॉलर
-    aud: ऑस्ट्रेलियाई डॉलर
+      daily_usage_help: प्रति दिन औसतन कितने घंटे आप इस प्रिंटर का उपयोग करने की योजना
+        बना रहे हैं
+      repair_factor: मरम्मत लागत कारक (%)
+      repair_factor_placeholder: '5.0'
+      repair_factor_help: रखरखाव और मरम्मत के लिए अतिरिक्त लागत कारक
+    buttons:
+      add_printer: प्रिंटर जोड़ें
+      update_printer: प्रिंटर अपडेट करें
+      cancel: रद्द करें
+  profile:
+    show:
+      title: उपयोगकर्ता प्रोफाइल
+      subtitle: आपकी खाता सेटिंग्स और प्राथमिकताएं
+      account_info: खाता जानकारी
+      email: ईमेल
+      member_since: 'सदस्यता प्रारंभ:'
+      default_preferences: डिफ़ॉल्ट प्राथमिकताएं
+      labor_defaults: श्रम और लागत डिफ़ॉल्ट
+      labor_defaults_description: नई प्रिंट मूल्य निर्धारण गणना बनाते समय ये मान पहले
+        से भरे जाएंगे
+      company_info: चालान के लिए कंपनी की जानकारी
+      company_info_description: यह जानकारी आपके द्वारा बनाए गए सभी चालानों के लिए
+        डिफ़ॉल्ट के रूप में उपयोग की जाएगी
+      company_info_help: यह जानकारी आपके द्वारा बनाए गए सभी चालानों पर उपयोग की जाएगी
+      back_to_calculations: गणना पर वापस जाएं
+    edit:
+      title: उपयोगकर्ता प्रोफाइल सेटिंग्स
+      subtitle: अपनी डिफ़ॉल्ट प्राथमिकताएं कॉन्फ़िगर करें
+      default_settings: डिफ़ॉल्ट सेटिंग्स
+    fields:
+      default_currency: डिफ़ॉल्ट मुद्रा
+      default_currency_help: नई मूल्य निर्धारण गणनाओं के लिए डिफ़ॉल्ट के रूप में उपयोग
+        किया जाता है
+      energy_cost: ऊर्जा लागत प्रति kWh
+      energy_cost_placeholder: '0.120'
+      energy_cost_help: आपकी स्थानीय बिजली लागत प्रति किलोवाट-घंटा
+      energy_cost_help_extended: आपकी स्थानीय बिजली लागत प्रति किलोवाट-घंटा। यह नई
+        गणनाओं के लिए डिफ़ॉल्ट के रूप में उपयोग किया जाएगा।
+      prep_time: तैयारी का समय (मिनट)
+      prep_time_help: शुरू करने से पहले प्रिंट तैयार करने में लगने वाला समय
+      prep_cost: तैयारी लागत प्रति घंटा
+      prep_cost_help: तैयारी कार्य के लिए प्रति घंटा दर
+      postprocessing_time: पोस्ट-प्रोसेसिंग समय (मिनट)
+      postprocessing_time_help: पोस्ट-प्रोसेसिंग (सफाई, समर्थन हटाने, आदि) पर बिताया
+        गया समय
+      postprocessing_cost: पोस्ट-प्रोसेसिंग लागत प्रति घंटा
+      postprocessing_cost_help: पोस्ट-प्रोसेसिंग कार्य के लिए प्रति घंटा दर
+      other_costs: अन्य लागतें
+      other_costs_help: पैकेजिंग, शिपिंग तैयारी आदि जैसी अतिरिक्त लागतें।
+      vat_percentage: वैट प्रतिशत
+      vat_percentage_help: आपके स्थान के लिए डिफ़ॉल्ट वैट/कर प्रतिशत
+      default_filament_markup: डिफ़ॉल्ट फिलामेंट मार्कअप
+      default_filament_markup_help: फिलामेंट लागत में जोड़ा गया डिफ़ॉल्ट मार्कअप प्रतिशत
+        (उदाहरण के लिए, लाभ मार्जिन के लिए 20% मार्कअप)
+      company_name: कंपनी का नाम
+      company_name_placeholder: Acme Corporation
+      company_email: कंपनी ईमेल
+      company_email_placeholder: billing@example.com
+      company_phone: कंपनी फोन
+      company_phone_placeholder: "+1 (555) 123-4567"
+      company_logo: कंपनी लोगो
+      company_address: कंपनी का पता
+      company_address_placeholder: |-
+        123 Main Street
+        City, State 12345
+        Country
+      payment_details: भुगतान विवरण
+      payment_details_placeholder: |-
+        बैंक: Example Bank
+        खाता संख्या: 123456789
+        राउटिंग नंबर: 987654321
+        स्विफ्ट/बीआईसी: EXAMPUS33
+      payment_details_help: चालान के लिए बैंक खाता या भुगतान जानकारी
+      invoice_notes: डिफ़ॉल्ट चालान नोट्स
+      invoice_notes_placeholder: |-
+        भुगतान 30 दिनों के भीतर देय है।
+        आपके व्यवसाय के लिए धन्यवाद!
+      invoice_notes_help: डिफ़ॉल्ट नोट्स जो आपके सभी इनवॉइस पर दिखाई देंगे
+    buttons:
+      update_settings: सेटिंग्स अपडेट करें
+      update_profile: प्रोफ़ाइल अपडेट करें
+      cancel: रद्द करें
+    image_upload:
+      help_text: 'अधिकतम फ़ाइल आकार: 5MB। समर्थित प्रारूप: PNG, JPG, GIF, WebP'
+    delete_account:
+      title: खाता हटाएं
+      warning_title: चेतावनी
+      warning_message: आपका खाता हटाना स्थायी है और इसे पूर्ववत नहीं किया जा सकता
+        है। आपका सारा डेटा स्थायी रूप से हटा दिया जाएगा।
+      description: यदि आप अब CalcuMake का उपयोग नहीं करना चाहते हैं, तो आप अपना खाता
+        हटा सकते हैं। अधिक जानकारी के लिए कृपया समर्थन पृष्ठ पर FAQ अनुभाग पढ़ें।
+      unlock_checkbox: मैं समझता हूं कि मेरा खाता हटाना स्थायी है
+      confirm_checkbox: मैं पुष्टि करता हूं कि मैं अपना खाता और सभी संबंधित डेटा हटाना
+        चाहता हूं
+      button: मेरा खाता हटाएं
+      final_confirmation: क्या आप वाकई अपना खाता हटाना चाहते हैं? इस कार्रवाई को पूर्ववत
+        नहीं किया जा सकता है और आपका सारा डेटा स्थायी रूप से हटा दिया जाएगा।
+      success: आपका खाता सफलतापूर्वक हटा दिया गया है। CalcuMake का उपयोग करने के लिए
+        धन्यवाद।
   clients:
     index:
       title: मेरे ग्राहक
-      subtitle: अपने ग्राहक की जानकारी प्रबंधित करें
+      subtitle: अपनी ग्राहक जानकारी प्रबंधित करें
       add_new: नया ग्राहक जोड़ें
-      search_placeholder: नाम, कंपनी या ईमेल द्वारा खोजें...
+      search_placeholder: नाम, कंपनी या ईमेल से खोजें...
       clear_search: खोज साफ़ करें
       empty_state:
-        title: अभी तक कोई ग्राहक नहीं
+        title: अभी तक कोई ग्राहक नहीं है
         description: ग्राहक जानकारी प्रबंधित करना शुरू करने के लिए अपना पहला ग्राहक
           जोड़ें।
         add_first: अपना पहला ग्राहक जोड़ें
       no_results:
         title: कोई परिणाम नहीं मिला
-        description: आपकी खोज से मेल खाने वाला कोई ग्राहक नहीं है। एक अलग खोज शब्द
-          का प्रयास करें।
+        description: कोई भी ग्राहक आपकी खोज से मेल नहीं खाता। एक अलग खोज शब्द आज़माएं।
     new:
       title: नया ग्राहक जोड़ें
       subtitle: एक नई ग्राहक प्रोफ़ाइल बनाएं
@@ -333,438 +597,334 @@ hi:
       subtitle: "%{name} के लिए ग्राहक जानकारी अपडेट करें"
     show:
       title: ग्राहक विवरण
-      member_since: सदस्य बने
-      invoices: चालान
-      print_pricings: प्रिंट मूल्य
-      no_invoices: अभी तक कोई चालान नहीं
-      no_print_pricings: अभी तक कोई प्रिंट मूल्य नहीं
+      member_since: सदस्यता प्रारंभ
+      invoices: इनवॉइस
+      print_pricings: प्रिंट मूल्य निर्धारण
+      no_invoices: अभी तक कोई इनवॉइस नहीं है
+      no_print_pricings: अभी तक कोई प्रिंट मूल्य निर्धारण नहीं है
     sections:
-      basic_info: मूल जानकारी
+      basic_info: बुनियादी जानकारी
       contact_info: संपर्क जानकारी
       additional_info: अतिरिक्त जानकारी
     fields:
       name: नाम
-      name_placeholder: राज कुमार
+      name_placeholder: जॉन डो
       company_name: कंपनी का नाम
-      company_name_placeholder: Acme Corporation
+      company_name_placeholder: एक्मे कॉर्पोरेशन
       email: ईमेल
-      email_placeholder: raj@example.com
-      phone: फोन
-      phone_placeholder: "+91 98765 43210"
+      email_placeholder: john@example.com
+      phone: फ़ोन
+      phone_placeholder: "+1 (555) 123-4567"
       address: पता
       address_placeholder: |-
-        123 मुख्य सड़क
+        123 मेन स्ट्रीट
         शहर, राज्य 12345
-      tax_id: Tax ID / VAT Number
+      tax_id: टैक्स आईडी / वैट नंबर
       tax_id_placeholder: 12-3456789
-      notes: नोट्स
-      notes_placeholder: इस ग्राहक के बारे में अतिरिक्त नोट्स...
-      select_client: ग्राहक चुनें
-      no_client_selected: कोई ग्राहक नहीं चुना गया
-      client_help_text: एक मौजूदा ग्राहक चुनें या
+      notes: टिप्पणियाँ
+      notes_placeholder: इस ग्राहक के बारे में अतिरिक्त टिप्पणियाँ...
+      select_client: ग्राहक का चयन करें
+      no_client_selected: कोई ग्राहक चयनित नहीं है
+      client_help_text: एक मौजूदा ग्राहक का चयन करें या
       client: ग्राहक
     card:
       view_details: विवरण देखें
       edit: संपादित करें
       delete: हटाएं
       confirm_delete: क्या आप वाकई इस ग्राहक को हटाना चाहते हैं?
-      invoices: Invoices
+      invoices: चालान
     buttons:
-      create: ग्राहक बनाएं
+      create: ग्राहक बनाएँ
       update: ग्राहक अपडेट करें
-    created_successfully: Client created successfully
-    updated_successfully: Client updated successfully
-    deleted_successfully: Client deleted successfully
-    confirm_delete: Are you sure you want to delete this client?
+    created_successfully: ग्राहक सफलतापूर्वक बनाया गया
+    updated_successfully: ग्राहक सफलतापूर्वक अपडेट किया गया
+    deleted_successfully: ग्राहक सफलतापूर्वक हटा दिया गया
+    confirm_delete: क्या आप वाकई इस ग्राहक को हटाना चाहते हैं?
+  currency:
+    usd: अमेरिकी डॉलर
+    eur: यूरो
+    gbp: ब्रिटिश पाउंड
+    jpy: जापानी येन
+    cad: कनाडाई डॉलर
+    aud: ऑस्ट्रेलियाई डॉलर
   energy:
-    cost_per_kwh: प्रति किलोवाट घंटे की लागत
-  printers:
-    index:
-      title: मेरे प्रिंटर
-      subtitle: अपने 3D प्रिंटर और उनकी विशिष्टताओं का प्रबंधन करें
-      add_new: नया प्रिंटर जोड़ें
-      empty_state:
-        title: अभी तक कोई प्रिंटर पंजीकृत नहीं
-        description: प्रिंटिंग लागतों की सटीक गणना शुरू करने के लिए अपना पहला 3D प्रिंटर
-          जोड़ें।
-        add_first: Add Your First Printer
-    new:
-      title: नया प्रिंटर जोड़ें
-      subtitle: सटीक लागत गणना के लिए अपने 3D प्रिंटर की विशिष्टताओं को पंजीकृत करें
-    card:
-      power_consumption: Power Consumption
-      cost: Cost
-      daily_usage: Daily Usage
-      payoff_goal: Payoff Goal
-      repair_cost_percentage: Repair Cost
-      paid_off: "✓ Paid Off"
-      months_to_payoff: "%{months} months to payoff"
-      hours: hours
-      years: years
-    edit:
-      title: Edit Printer
-      subtitle: Update your 3D printer specifications
-    show:
-      specifications: Specifications
-      financial_status: Financial Status
-      print_jobs: Print Jobs
-      new_print_job: New Print Job
-      repair_cost: Repair Cost
-      date_added: Date Added
-      not_set: Not set
-      fully_paid_off: This printer has been fully paid off based on your payoff goals.
-      payoff_progress: Payoff Progress
-      no_print_jobs: No print jobs yet
-      no_print_jobs_description: Create your first print pricing calculation for this
-        printer.
-      create_first_job: Create First Print Job
-      view_all_jobs: View All %{count} Jobs
-    sections:
-      basic_info: Basic Information
-      technical_specs: Technical Specifications
-      financial_info: Financial Information
-      usage_info: Usage Information
-    fields:
-      name: Printer Name
-      name_placeholder: e.g., My Prusa i3 MK3S+
-      manufacturer: Manufacturer
-      manufacturer_prompt: Select manufacturer
-      power_consumption: Power Consumption (Watts)
-      power_consumption_placeholder: '200'
-      power_consumption_help: 'Typical range: 50W (small printers) to 500W (large
-        printers)'
-      cost: Printer Cost
-      cost_placeholder: '500.00'
-      payoff_goal: Payoff Goal (Years)
-      payoff_goal_placeholder: '3'
-      payoff_goal_help: How many years do you want to recoup the printer cost?
-      daily_usage: Daily Usage (Hours)
-      daily_usage_placeholder: '8'
-      daily_usage_help: Average hours per day you plan to use this printer
-      repair_factor: Repair Cost Factor (%)
-      repair_factor_placeholder: '5.0'
-      repair_factor_help: Additional cost factor for maintenance and repairs
-    buttons:
-      add_printer: Add Printer
-      update_printer: Update Printer
-      cancel: Cancel
-  profile:
-    show:
-      title: उपयोगकर्ता प्रोफ़ाइल
-      subtitle: आपकी खाता सेटिंग्स और प्राथमिकताएं
-      account_info: खाता जानकारी
-      email: ईमेल
-      member_since: सदस्य बने
-      default_preferences: डिफ़ॉल्ट प्राथमिकताएं
-      labor_defaults: Labor & Cost Defaults
-      labor_defaults_description: These values will be pre-filled when creating new
-        print pricing calculations
-      company_info: Company Information for Invoices
-      company_info_description: This information will be used as the default for all
-        invoices you create
-      company_info_help: This information will be used on all invoices you create
-      back_to_calculations: Back to Calculations
-    fields:
-      default_currency: डिफ़ॉल्ट मुद्रा
-      energy_cost: ऊर्जा लागत प्रति kWh
-      energy_cost_help: आपकी स्थानीय प्रति किलोवाट-घंटा बिजली लागत
-      default_currency_help: Used as default for new pricing calculations
-      energy_cost_placeholder: '0.120'
-      energy_cost_help_extended: Your local electricity cost per kilowatt-hour. This
-        will be used as the default for new calculations.
-      prep_time: Prep Time (minutes)
-      prep_time_help: Time spent preparing prints before starting
-      prep_cost: Prep Cost per Hour
-      prep_cost_help: Hourly rate for preparation work
-      postprocessing_time: Post-processing Time (minutes)
-      postprocessing_time_help: Time spent on post-processing (cleaning, support removal,
-        etc.)
-      postprocessing_cost: Post-processing Cost per Hour
-      postprocessing_cost_help: Hourly rate for post-processing work
-      other_costs: Other Costs
-      other_costs_help: Additional costs like packaging, shipping preparation, etc.
-      vat_percentage: VAT Percentage
-      vat_percentage_help: Default VAT/tax percentage for your location
-      default_filament_markup: Default Filament Markup
-      default_filament_markup_help: Default markup percentage added to filament costs
-        (e.g. 20% markup for profit margin)
-      company_name: Company Name
-      company_name_placeholder: Acme Corporation
-      company_email: Company Email
-      company_email_placeholder: billing@example.com
-      company_phone: Company Phone
-      company_phone_placeholder: "+1 (555) 123-4567"
-      company_logo: Company Logo
-      company_address: Company Address
-      company_address_placeholder: |-
-        123 Main Street
-        City, State 12345
-        Country
-      payment_details: Payment Details
-      payment_details_placeholder: |-
-        Bank: Example Bank
-        Account Number: 123456789
-        Routing Number: 987654321
-        SWIFT/BIC: EXAMPUS33
-      payment_details_help: Bank account or payment information for invoices
-      invoice_notes: Default Invoice Notes
-      invoice_notes_placeholder: |-
-        Payment due within 30 days.
-        Thank you for your business!
-      invoice_notes_help: Default notes that will appear on all your invoices
-    buttons:
-      update_settings: सेटिंग्स अपडेट करें
-      update_profile: प्रोफ़ाइल अपडेट करें
-      cancel: Cancel
-    image_upload:
-      help_text: 'Maximum file size: 5MB. Supported formats: PNG, JPG, GIF, WebP'
-    delete_account:
-      title: खाता हटाएं
-      warning_title: चेतावनी
-      warning_message: अपने खाते को हटाना स्थायी है और इसे पूर्ववत नहीं किया जा सकता।
-        आपका सभी डेटा स्थायी रूप से हटा दिया जाएगा।
-      description: यदि आप अब CalcuMake का उपयोग नहीं करना चाहते हैं, तो आप अपना खाता
-        हटा सकते हैं। अधिक जानकारी के लिए कृपया समर्थन पृष्ठ पर FAQ अनुभाग पढ़ें।
-      unlock_checkbox: मैं समझता हूं कि मेरा खाता हटाना स्थायी है
-      confirm_checkbox: मैं पुष्टि करता हूं कि मैं अपना खाता और सभी संबंधित डेटा हटाना
-        चाहता हूं
-      button: मेरा खाता हटाएं
-      final_confirmation: क्या आप वाकई अपना खाता हटाना चाहते हैं? यह क्रिया पूर्ववत
-        नहीं की जा सकती और आपका सभी डेटा स्थायी रूप से हटा दिया जाएगा।
-      success: आपका खाता सफलतापूर्वक हटा दिया गया है। CalcuMake का उपयोग करने के लिए
-        धन्यवाद।
-    default_currency: डिफ़ॉल्ट मुद्रा
-    default_energy_cost: डिफ़ॉल्ट ऊर्जा लागत
-    settings: सेटिंग्स
-    edit:
-      title: User Profile Settings
-      subtitle: Configure your default preferences
-      default_settings: Default Settings
+    cost_per_kwh: किलोवाट प्रति घंटा ऊर्जा लागत
   app:
-    title: CalcuMake
-    title_default: CalcuMake
+    title: CalcuMake - 3D प्रिंट लागत कैलकुलेटर
+    title_default: CalcuMake - 3D प्रिंट लागत कैलकुलेटर
   footer:
-    copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
-    description: Professional 3D printing cost calculation and project management
+    description: पेशेवर 3D प्रिंटिंग लागत गणना और परियोजना प्रबंधन
+    copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - सर्वाधिकार सुरक्षित"
+  support:
+    title: समर्थन
+    nav_title: समर्थन
+    contact_us: संपर्क करें
+    description: CalcuMake के साथ मदद चाहिए? कोई प्रश्न या सुझाव है? हम यहाँ मदद करने
+      के लिए हैं!
+    email_label: ईमेल समर्थन
+    response_time: हम आमतौर पर 24-48 घंटों के भीतर जवाब देते हैं
+    faq:
+      title: अक्सर पूछे जाने वाले प्रश्न
+      delete_account:
+        question: मैं अपना खाता कैसे हटाऊं?
+        answer: 'अपना खाता हटाने के लिए, इन चरणों का पालन करें:'
+        step1: नेविगेशन मेनू से अपने प्रोफ़ाइल पृष्ठ पर जाएं
+        step2: पृष्ठ के निचले भाग में "खाता हटाएं" अनुभाग तक स्क्रॉल करें
+        step3: '"मैं समझता हूं कि मेरा खाता हटाना स्थायी है" बॉक्स को चेक करें'
+        step4: '"मैं पुष्टि करता हूं कि मैं अपना खाता और सभी संबंधित डेटा हटाना चाहता
+          हूं" बॉक्स को चेक करें'
+        step5: '"मेरा खाता हटाएं" बटन पर क्लिक करें और अंतिम चेतावनी की पुष्टि करें'
+        warning_title: महत्वपूर्ण
+        warning_message: खाता हटाना स्थायी है और इसे पूर्ववत नहीं किया जा सकता है।
+          आपका सारा डेटा स्थायी रूप से हटा दिया जाएगा।
+      data_recovery:
+        question: क्या मैं हटाने के बाद अपना खाता पुनर्प्राप्त कर सकता हूँ?
+        answer: नहीं, खाता हटाना स्थायी और अपरिवर्तनीय है। एक बार हटा दिए जाने के
+          बाद, आपके खाते और सभी संबंधित डेटा को पुनर्प्राप्त नहीं किया जा सकता है।
+          यदि आपको लगता है कि आप भविष्य में फिर से CalcuMake का उपयोग करना चाहेंगे,
+          तो इसे हटाने के बजाय बस अपने खाते का उपयोग न करने पर विचार करें।
+      what_deleted:
+        question: जब मैं अपना खाता हटाता हूं तो कौन सा डेटा हटा दिया जाता है?
+        intro: 'जब आप अपना खाता हटाते हैं, तो निम्नलिखित सभी डेटा स्थायी रूप से हटा
+          दिए जाते हैं:'
+        item1: आपका उपयोगकर्ता खाता और लॉगिन क्रेडेंशियल
+        item2: आपकी सभी प्रिंट मूल्य निर्धारण गणना
+        item3: आपके सभी प्रिंटर और उनके कॉन्फ़िगरेशन
+        item4: आपकी सभी फिलामेंट प्रोफाइल
+        item5: आपके सभी इनवॉइस
+        item6: आपकी सभी कंपनी की जानकारी और प्राथमिकताएं
+    billing_support:
+      title: बिलिंग और सदस्यता सहायता
+      description: बिलिंग पूछताछ, सदस्यता परिवर्तन, धनवापसी अनुरोध, या भुगतान समस्याओं
+        के लिए, कृपया अपने खाते के ईमेल के साथ हमसे संपर्क करें।
+      priority_note: प्रो और एंटरप्राइज टियर के ग्राहकों को प्राथमिकता सहायता प्रतिक्रिया
+        समय प्राप्त होता है।
   legal:
     last_updated: अंतिम अद्यतन
     privacy_policy:
       title: गोपनीयता नीति
       nav_title: गोपनीयता नीति
-      advertising:
-        title: विज्ञापन
-        content: हमारा निःशुल्क स्तर Google AdSense के माध्यम से विज्ञापन प्रदर्शित
-          करता है। ये विज्ञापन आपकी रुचियों और ब्राउज़िंग व्यवहार पर आधारित हैं। भुगतान
-          सदस्यता स्तर विज्ञापन प्रदर्शित नहीं करते हैं।
-        google_adsense: Google AdSense प्रासंगिक विज्ञापन प्रदान करने के लिए कुकीज़
-          और अन्य ट्रैकिंग तकनीकों का उपयोग करता है। यह केवल निःशुल्क स्तर उपयोगकर्ताओं
-          पर लागू होता है।
-        opt_out: आप विज्ञापन वैयक्तिकरण को नियंत्रित कर सकते हैं और वैयक्तिकृत विज्ञापन
-          से ऑप्ट-आउट कर सकते हैं
-        google_ad_settings: Google विज्ञापन सेटिंग्स
-        upgrade_note: सभी विज्ञापनों को हटाने के लिए, भुगतान सदस्यता स्तर पर अपग्रेड
-          करें।
       information_we_collect:
         title: हम जो जानकारी एकत्र करते हैं
         content: हम वह जानकारी एकत्र करते हैं जो आप हमें सीधे प्रदान करते हैं और वह
-          जानकारी जो हम स्वचालित रूप से एकत्र कर सकते हैं जब आप हमारी सेवा का उपयोग
-          करते हैं।
+          जानकारी जिसे हम हमारी सेवा का उपयोग करते समय स्वचालित रूप से एकत्र कर सकते
+          हैं।
         account_info:
           title: खाता जानकारी
           email: खाता प्रमाणीकरण के लिए ईमेल पता
-          preferences: उपयोगकर्ता प्राथमिकताएँ जैसे डिफ़ॉल्ट मुद्रा और भाषा
-          usage_data: उपयोग पैटर्न और सुविधा प्राथमिकताएँ
+          preferences: उपयोगकर्ता प्राथमिकताएं जैसे डिफ़ॉल्ट मुद्रा और भाषा
+          usage_data: उपयोग पैटर्न और सुविधा प्राथमिकताएं
         project_data:
           title: परियोजना डेटा
           pricing_calculations: 3D प्रिंटिंग लागत गणना और परियोजना डेटा
           printer_specifications: प्रिंटर विनिर्देश और सेटिंग्स
-          project_metadata: परियोजना नाम, तिथियाँ और मेटाडेटा
+          project_metadata: परियोजना के नाम, तिथियां और मेटाडेटा
         payment_info:
           title: भुगतान और बिलिंग जानकारी
           payment_details: भुगतान विधि विवरण (हमारे भुगतान प्रोसेसर द्वारा सुरक्षित
             रूप से संसाधित)
           billing_address: बिलिंग पता और संपर्क जानकारी
-          transaction_history: लेनदेन और सदस्यता इतिहास
-          subscription_tier: आपकी चयनित सदस्यता स्तर और सुविधाएँ
+          transaction_history: लेन-देन और सदस्यता इतिहास
+          subscription_tier: आपके द्वारा चयनित सदस्यता टियर और सुविधाएँ
+      how_we_use_info:
+        title: हम आपकी जानकारी का उपयोग कैसे करते हैं
+        provide_service: हमारी 3D प्रिंटिंग गणना सेवा प्रदान करें, बनाए रखें और बेहतर
+          बनाएं
+        improve_features: नई सुविधाएँ विकसित करें और मौजूदा कार्यक्षमता को बढ़ाएं
+        customer_support: ग्राहक सहायता प्रदान करें और अपनी पूछताछ का जवाब दें
+        security: धोखाधड़ी, दुरुपयोग और सुरक्षा खतरों से बचाएं
       data_sharing:
-        title: जानकारी साझाकरण
-        content: 'हम आपकी व्यक्तिगत जानकारी को तीसरे पक्षों को नहीं बेचते, व्यापार
-          नहीं करते या किराए पर नहीं देते हैं। हम केवल निम्नलिखित परिस्थितियों में
-          आपकी जानकारी साझा कर सकते हैं:'
+        title: सूचना साझा करना
+        content: 'हम आपकी व्यक्तिगत जानकारी को तीसरे पक्ष को बेचते, व्यापार या किराए
+          पर नहीं देते हैं। हम आपकी जानकारी केवल निम्नलिखित परिस्थितियों में साझा
+          कर सकते हैं:'
         legal_requirements: जब कानून द्वारा आवश्यक हो या हमारे कानूनी अधिकारों की
           रक्षा के लिए
-        service_providers: विश्वसनीय सेवा प्रदाताओं के साथ जो हमारी सेवा संचालित करने
-          में सहायता करते हैं (क्लाउड होस्टिंग और इंफ्रास्ट्रक्चर प्रदाताओं सहित)
-        payment_processors: भुगतान प्रोसेसरों (जैसे Stripe) के साथ सदस्यता भुगतान
-          संसाधित करने और बिलिंग प्रबंधित करने के लिए
-        advertising_partners: विज्ञापन भागीदारों (जैसे Google AdSense) के साथ निःशुल्क
-          स्तर उपयोगकर्ताओं को प्रासंगिक विज्ञापन प्रदर्शित करने के लिए
-        business_transfer: व्यवसाय हस्तांतरण या अधिग्रहण के संबंध में
-      how_we_use_info:
-        title: How We Use Your Information
-        provide_service: Provide, maintain, and improve our 3D printing calculation
-          service
-        improve_features: Develop new features and enhance existing functionality
-        customer_support: Provide customer support and respond to your inquiries
-        security: Protect against fraud, abuse, and security threats
+        service_providers: विश्वसनीय सेवा प्रदाताओं के साथ जो हमारी सेवा के संचालन
+          में सहायता करते हैं (जिसमें क्लाउड होस्टिंग और बुनियादी ढांचा प्रदाता शामिल
+          हैं)
+        payment_processors: सदस्यता भुगतान संसाधित करने और बिलिंग प्रबंधित करने के
+          लिए भुगतान प्रोसेसर (जैसे Stripe) के साथ
+        advertising_partners: मुफ्त टियर उपयोगकर्ताओं को प्रासंगिक विज्ञापन प्रदर्शित
+          करने के लिए विज्ञापन भागीदारों (जैसे Google AdSense) के साथ
+        business_transfer: एक व्यवसाय हस्तांतरण या अधिग्रहण के संबंध में
+      advertising:
+        title: विज्ञापन
+        content: हमारा मुफ्त टियर Google AdSense के माध्यम से विज्ञापन प्रदर्शित करता
+          है। ये विज्ञापन आपकी रुचियों और ब्राउज़िंग व्यवहार पर आधारित हैं। सशुल्क
+          सदस्यता टियर विज्ञापन प्रदर्शित नहीं करते हैं।
+        google_adsense: Google AdSense प्रासंगिक विज्ञापन दिखाने के लिए कुकीज़ और
+          अन्य ट्रैकिंग तकनीकों का उपयोग करता है। यह केवल मुफ्त टियर उपयोगकर्ताओं
+          पर लागू होता है।
+        opt_out: आप विज्ञापन वैयक्तिकरण को नियंत्रित कर सकते हैं और पर जाकर वैयक्तिकृत
+          विज्ञापन से ऑप्ट आउट कर सकते हैं
+        google_ad_settings: Google विज्ञापन सेटिंग
+        upgrade_note: सभी विज्ञापनों को हटाने के लिए, सशुल्क सदस्यता टियर में अपग्रेड
+          करें।
       data_security:
-        title: Data Security
-        content: We implement appropriate technical and organizational security measures
-          to protect your personal information against unauthorized access, alteration,
-          disclosure, or destruction.
+        title: डेटा सुरक्षा
+        content: हम आपकी व्यक्तिगत जानकारी को अनधिकृत पहुंच, परिवर्तन, प्रकटीकरण या
+          विनाश से बचाने के लिए उचित तकनीकी और संगठनात्मक सुरक्षा उपाय लागू करते हैं।
       your_rights:
-        title: Your Rights
-        access: Access and review your personal information
-        correction: Correct inaccurate or incomplete information
-        deletion: Request deletion of your personal information
-        portability: Export your data in a portable format
+        title: आपके अधिकार
+        access: अपनी व्यक्तिगत जानकारी तक पहुंचें और उसकी समीक्षा करें
+        correction: गलत या अधूरी जानकारी को ठीक करें
+        deletion: अपनी व्यक्तिगत जानकारी को हटाने का अनुरोध करें
+        portability: अपने डेटा को एक पोर्टेबल प्रारूप में निर्यात करें
       cookies:
-        title: Cookies and Tracking
-        content: We use cookies and similar technologies to enhance your experience,
-          remember your preferences, and provide personalized content and advertisements.
+        title: कुकीज़ और ट्रैकिंग
+        content: हम आपके अनुभव को बेहतर बनाने, आपकी प्राथमिकताओं को याद रखने और व्यक्तिगत
+          सामग्री और विज्ञापन प्रदान करने के लिए कुकीज़ और समान तकनीकों का उपयोग करते
+          हैं।
       changes:
-        title: Changes to This Policy
-        content: We may update this privacy policy from time to time. We will notify
-          you of any material changes by posting the new policy on this page with
-          an updated effective date.
+        title: इस नीति में परिवर्तन
+        content: हम समय-समय पर इस गोपनीयता नीति को अपडेट कर सकते हैं। हम आपको एक अद्यतित
+          प्रभावी तिथि के साथ इस पृष्ठ पर नई नीति पोस्ट करके किसी भी महत्वपूर्ण परिवर्तन
+          की सूचना देंगे।
       contact:
-        title: Contact Us
-        content: If you have any questions about this privacy policy, please contact
-          us through the support channels available in the application.
+        title: संपर्क करें
+        content: यदि आपके पास इस गोपनीयता नीति के बारे में कोई प्रश्न हैं, तो कृपया
+          एप्लिकेशन में उपलब्ध समर्थन चैनलों के माध्यम से हमसे संपर्क करें।
     user_agreement:
       title: उपयोगकर्ता समझौता
       nav_title: सेवा की शर्तें
+      acceptance:
+        title: शर्तों की स्वीकृति
+        content: CalcuMake तक पहुँचने और इसका उपयोग करने से, आप इस समझौते की शर्तों
+          और प्रावधानों से बंधे रहने के लिए स्वीकार करते हैं और सहमत होते हैं।
+      description:
+        title: सेवा विवरण
+        content: 'CalcuMake एक वेब-आधारित एप्लिकेशन है जो 3D प्रिंटिंग लागत गणना और
+          परियोजना प्रबंधन उपकरण प्रदान करता है। हमारी सेवा में शामिल हैं:'
+        cost_calculations: 3D प्रिंटिंग परियोजनाओं के लिए व्यापक लागत गणना
+        project_management: परियोजना ट्रैकिंग और प्रबंधन सुविधाएँ
+        invoice_generation: चालान निर्माण और PDF निर्यात क्षमताएँ
+        printer_tracking: प्रिंटर विनिर्देश और उपयोग ट्रैकिंग
       subscription_tiers:
         title: सदस्यता स्तर और मूल्य निर्धारण
         content: 'CalcuMake तीन सदस्यता स्तर प्रदान करता है:'
-        free_tier: 'निःशुल्क स्तर: विज्ञापन प्रदर्शन के साथ बुनियादी सुविधाएँ'
-        pro_tier: 'Pro स्तर: उन्नत सुविधाएँ, कोई विज्ञापन नहीं, प्राथमिकता समर्थन
-          (भुगतान सदस्यता)'
-        enterprise_tier: 'Enterprise स्तर: सभी सुविधाएँ, प्रीमियम समर्थन, कस्टम एकीकरण
-          (भुगतान सदस्यता)'
+        free_tier: 'फ्री टीयर: विज्ञापन प्रदर्शन के साथ बुनियादी सुविधाएँ'
+        pro_tier: 'प्रो टीयर: उन्नत सुविधाएँ, कोई विज्ञापन नहीं, प्राथमिकता समर्थन
+          (सशुल्क सदस्यता)'
+        enterprise_tier: 'एंटरप्राइज टीयर: सभी सुविधाएँ, प्रीमियम समर्थन, कस्टम एकीकरण
+          (सशुल्क सदस्यता)'
         pricing_note: वर्तमान मूल्य निर्धारण हमारी वेबसाइट पर उपलब्ध है और मौजूदा
-          ग्राहकों को सूचना के साथ अपडेट किया जा सकता है।
+          ग्राहकों को नोटिस के साथ अपडेट किया जा सकता है।
       payment_terms:
         title: भुगतान और बिलिंग
-        content: 'यदि आप भुगतान स्तर की सदस्यता लेते हैं, तो आप निम्नलिखित भुगतान
+        content: 'यदि आप सशुल्क टीयर की सदस्यता लेते हैं, तो आप निम्नलिखित भुगतान
           शर्तों से सहमत होते हैं:'
-        subscription_fee: आपसे प्रत्येक बिलिंग चक्र की शुरुआत में सदस्यता शुल्क लिया
+        subscription_fee: प्रत्येक बिलिंग चक्र की शुरुआत में आपसे सदस्यता शुल्क लिया
           जाएगा
-        billing_cycles: बिलिंग चक्र आपके चयन के अनुसार मासिक या वार्षिक हैं
-        payment_method: भुगतान स्तरों की सदस्यता लेने के लिए आपको एक वैध भुगतान विधि
+        billing_cycles: बिलिंग चक्र मासिक या वार्षिक होते हैं, जो आपके चयन पर निर्भर
+          करते हैं
+        payment_method: सशुल्क टीयर की सदस्यता लेने के लिए आपको एक वैध भुगतान विधि
           प्रदान करनी होगी
-        automatic_renewal: सदस्यताएँ स्वचालित रूप से नवीनीकृत होती हैं जब तक नवीनीकरण
-          तिथि से पहले रद्द नहीं की जातीं
-        price_changes: हम मौजूदा ग्राहकों को 30 दिन की सूचना के साथ मूल्य निर्धारण
+        automatic_renewal: सदस्यताएँ स्वचालित रूप से नवीनीकृत हो जाती हैं जब तक कि
+          नवीनीकरण तिथि से पहले रद्द न कर दी जाएँ
+        price_changes: हम मौजूदा ग्राहकों को 30 दिनों के नोटिस के साथ मूल्य निर्धारण
           बदल सकते हैं
         payment_processor: भुगतान हमारे तृतीय-पक्ष भुगतान प्रोसेसर (Stripe) के माध्यम
           से सुरक्षित रूप से संसाधित किए जाते हैं
-        failed_payments: विफल भुगतान के परिणामस्वरूप सेवा डाउनग्रेड या निलंबन हो सकता
-          है
-        currency: मूल्य आपकी चयनित मुद्रा में प्रदर्शित किए जाते हैं
+        failed_payments: विफल भुगतान के परिणामस्वरूप सेवा में गिरावट या निलंबन हो
+          सकता है
+        currency: कीमतें आपकी चयनित मुद्रा में प्रदर्शित की जाती हैं
       cancellation_refunds:
         title: रद्दीकरण और धनवापसी
         content: 'आप किसी भी समय अपनी सदस्यता रद्द कर सकते हैं:'
-        cancellation_process: अपनी खाता सेटिंग्स के माध्यम से रद्द करें या समर्थन
-          से संपर्क करें
-        cancellation_effect: रद्दीकरण आपकी वर्तमान बिलिंग अवधि के अंत में प्रभावी
+        cancellation_process: अपनी खाता सेटिंग के माध्यम से या समर्थन से संपर्क करके
+          रद्द करें
+        cancellation_effect: रद्दीकरण आपके वर्तमान बिलिंग अवधि के अंत में प्रभावी
           होता है
-        access_until_end: आप भुगतान अवधि के अंत तक भुगतान सुविधाओं तक पहुँच बनाए रखते
+        access_until_end: आप सशुल्क अवधि के अंत तक सशुल्क सुविधाओं तक पहुँच बनाए रखते
           हैं
-        refund_policy: हम पहली बार ग्राहकों के लिए 14-दिन की धनवापसी गारंटी प्रदान
-          करते हैं
+        refund_policy: हम पहली बार सदस्यता लेने वालों के लिए 14-दिन की मनी-बैक गारंटी
+          प्रदान करते हैं
         no_partial_refunds: शेष सदस्यता समय के लिए आंशिक धनवापसी प्रदान नहीं की जाती
-          है सिवाय कानून द्वारा आवश्यक होने पर
-        downgrade_option: आप अपने बिलिंग चक्र के अंत में निचले स्तर पर डाउनग्रेड कर
-          सकते हैं
+          है, सिवाय कानून द्वारा आवश्यक के
+        downgrade_option: आप अपने बिलिंग चक्र के अंत में एक निचले टीयर पर डाउनग्रेड
+          कर सकते हैं
       free_tier_limitations:
-        title: निःशुल्क स्तर सीमाएँ
-        content: 'निःशुल्क स्तर में विज्ञापन प्रदर्शन शामिल है और उपयोग सीमाएँ हो
+        title: फ्री टीयर सीमाएँ
+        content: 'फ्री टीयर में विज्ञापन प्रदर्शन शामिल है और इसमें उपयोग सीमाएँ हो
           सकती हैं:'
-        advertisements: निःशुल्क स्तर उपयोगकर्ता पूरे एप्लिकेशन में विज्ञापन देखेंगे
-        feature_limits: कुछ उन्नत सुविधाएँ भुगतान स्तरों तक सीमित हैं
-        support_priority: निःशुल्क स्तर समर्थन सर्वोत्तम प्रयास के आधार पर प्रदान
-          किया जाता है
-        upgrade_anytime: आप किसी भी समय भुगतान स्तर पर अपग्रेड कर सकते हैं
-      acceptance:
-        title: Acceptance of Terms
-        content: By accessing and using CalcuMake, you accept and agree to be bound
-          by the terms and provision of this agreement.
-      description:
-        title: Service Description
-        content: 'CalcuMake is a web-based application that provides 3D printing cost
-          calculation and project management tools. Our service includes:'
-        cost_calculations: Comprehensive cost calculations for 3D printing projects
-        project_management: Project tracking and management features
-        invoice_generation: Invoice generation and PDF export capabilities
-        printer_tracking: Printer specifications and usage tracking
+        advertisements: फ्री टीयर उपयोगकर्ताओं को पूरे एप्लिकेशन में विज्ञापन दिखाई
+          देंगे
+        feature_limits: कुछ उन्नत सुविधाएँ सशुल्क टीयर तक ही सीमित हैं
+        support_priority: फ्री टीयर समर्थन सर्वोत्तम प्रयास के आधार पर प्रदान किया
+          जाता है
+        upgrade_anytime: आप किसी भी समय सशुल्क टीयर में अपग्रेड कर सकते हैं
       user_accounts:
-        title: User Accounts
-        content: 'To use our service, you must create an account. You are responsible
-          for:'
-        accurate_info: Providing accurate and complete account information
-        secure_credentials: Maintaining the security of your account credentials
-        responsible_use: All activities that occur under your account
-        notify_breaches: Notifying us immediately of any suspected security breaches
+        title: उपयोगकर्ता खाते
+        content: 'हमारी सेवा का उपयोग करने के लिए, आपको एक खाता बनाना होगा। आप इसके
+          लिए जिम्मेदार हैं:'
+        accurate_info: सटीक और पूर्ण खाता जानकारी प्रदान करना
+        secure_credentials: अपने खाते की साख की सुरक्षा बनाए रखना
+        responsible_use: आपके खाते के अंतर्गत होने वाली सभी गतिविधियाँ
+        notify_breaches: किसी भी संदिग्ध सुरक्षा उल्लंघन के बारे में हमें तुरंत सूचित
+          करना
       acceptable_use:
-        title: Acceptable Use
-        content: 'You agree to use our service only for lawful purposes and in accordance
-          with this agreement. You agree not to:'
-        lawful_purposes: Use the service for any unlawful or prohibited purposes
-        respect_rights: Violate any applicable laws or regulations
-        no_harmful_content: Upload or transmit harmful, offensive, or inappropriate
-          content
-        no_interference: Interfere with or disrupt the service or servers
-        no_unauthorized_access: Attempt to gain unauthorized access to any part of
-          the service
+        title: स्वीकार्य उपयोग
+        content: 'आप हमारी सेवा का उपयोग केवल वैध उद्देश्यों के लिए और इस समझौते के
+          अनुसार करने के लिए सहमत हैं। आप निम्नलिखित नहीं करने के लिए सहमत हैं:'
+        lawful_purposes: किसी भी गैरकानूनी या निषिद्ध उद्देश्य के लिए सेवा का उपयोग
+          करना
+        respect_rights: किसी भी लागू कानून या विनियमों का उल्लंघन करना
+        no_harmful_content: हानिकारक, आपत्तिजनक या अनुचित सामग्री अपलोड या संचारित
+          करना
+        no_interference: सेवा या सर्वर में हस्तक्षेप करना या उन्हें बाधित करना
+        no_unauthorized_access: सेवा के किसी भी भाग तक अनधिकृत पहुंच प्राप्त करने
+          का प्रयास करना
       data_accuracy:
-        title: Data Accuracy and Calculations
-        content: While we strive to provide accurate calculation tools, you are responsible
-          for verifying the accuracy of all calculations and data. Our calculations
-          are estimates and should be validated against your specific requirements
-          and local conditions.
+        title: डेटा सटीकता और गणनाएँ
+        content: हालांकि हम सटीक गणना उपकरण प्रदान करने का प्रयास करते हैं, लेकिन
+          आप सभी गणनाओं और डेटा की सटीकता को सत्यापित करने के लिए जिम्मेदार हैं। हमारी
+          गणनाएँ अनुमान हैं और आपकी विशिष्ट आवश्यकताओं और स्थानीय परिस्थितियों के
+          विरुद्ध मान्य की जानी चाहिए।
       intellectual_property:
-        title: Intellectual Property
-        our_content: The service and its original content, features, and functionality
-          are owned by us and are protected by international copyright, trademark,
-          and other intellectual property laws.
-        your_content: You retain ownership of any data, calculations, or content you
-          create using our service. You grant us a limited license to use this content
-          solely to provide the service to you.
+        title: बौद्धिक संपदा
+        our_content: सेवा और इसकी मूल सामग्री, सुविधाएँ और कार्यक्षमता हमारे स्वामित्व
+          में हैं और अंतर्राष्ट्रीय कॉपीराइट, ट्रेडमार्क और अन्य बौद्धिक संपदा कानूनों
+          द्वारा संरक्षित हैं।
+        your_content: हमारी सेवा का उपयोग करके आपके द्वारा बनाए गए किसी भी डेटा, गणना
+          या सामग्री का स्वामित्व आपके पास रहेगा। आप हमें केवल आपको सेवा प्रदान करने
+          के लिए इस सामग्री का उपयोग करने के लिए एक सीमित लाइसेंस प्रदान करते हैं।
       disclaimers:
-        title: Disclaimers
-        important: Important Notice
-        calculations_estimates: All cost calculations and estimates are for informational
-          purposes only
-        verify_accuracy: You must verify all calculations and data for accuracy
-        no_guarantee: We do not guarantee the accuracy, completeness, or reliability
-          of any calculations
-        as_is_basis: The service is provided on an 'as is' and 'as available' basis
+        title: अस्वीकरण
+        important: महत्वपूर्ण सूचना
+        calculations_estimates: सभी लागत गणनाएँ और अनुमान केवल सूचनात्मक उद्देश्यों
+          के लिए हैं
+        verify_accuracy: आपको सटीकता के लिए सभी गणनाओं और डेटा को सत्यापित करना होगा
+        no_guarantee: हम किसी भी गणना की सटीकता, पूर्णता या विश्वसनीयता की गारंटी
+          नहीं देते हैं
+        as_is_basis: सेवा 'जैसी है' और 'जैसी उपलब्ध है' के आधार पर प्रदान की जाती
+          है
       limitation_liability:
-        title: Limitation of Liability
-        content: To the maximum extent permitted by law, we shall not be liable for
-          any indirect, incidental, special, consequential, or punitive damages, including
-          without limitation, loss of profits, data, use, goodwill, or other intangible
-          losses.
+        title: दायित्व की सीमा
+        content: कानून द्वारा अनुमत अधिकतम सीमा तक, हम किसी भी अप्रत्यक्ष, आकस्मिक,
+          विशेष, परिणामी या दंडात्मक नुकसान के लिए उत्तरदायी नहीं होंगे, जिसमें लाभ,
+          डेटा, उपयोग, सद्भावना या अन्य अमूर्त नुकसान की हानि शामिल है, लेकिन इन्हीं
+          तक सीमित नहीं है।
       termination:
-        title: Termination
-        content: We may terminate or suspend your account and access to the service
-          immediately, without prior notice, for conduct that we believe violates
-          this agreement or is harmful to other users, us, or third parties.
+        title: समाप्ति
+        content: हम आपके खाते और सेवा तक पहुंच को तुरंत, बिना पूर्व सूचना के, ऐसे
+          आचरण के लिए समाप्त या निलंबित कर सकते हैं जो हमें लगता है कि इस समझौते का
+          उल्लंघन करता है या अन्य उपयोगकर्ताओं, हमें या तीसरे पक्षों के लिए हानिकारक
+          है।
       governing_law:
-        title: Governing Law
-        content: This agreement shall be governed by and construed in accordance with
-          the laws of the jurisdiction in which our service operates, without regard
-          to its conflict of law provisions.
+        title: शासित कानून
+        content: यह समझौता उस क्षेत्राधिकार के कानूनों के अनुसार शासित और समझा जाएगा
+          जिसमें हमारी सेवा संचालित होती है, इसके कानून प्रावधानों के टकराव की परवाह
+          किए बिना।
       changes:
-        title: Changes to Agreement
-        content: We reserve the right to modify this agreement at any time. We will
-          notify users of any material changes by posting the updated agreement on
-          our website with a new effective date.
+        title: समझौते में परिवर्तन
+        content: हम किसी भी समय इस समझौते को संशोधित करने का अधिकार सुरक्षित रखते
+          हैं। हम अद्यतन समझौते को एक नई प्रभावी तिथि के साथ हमारी वेबसाइट पर पोस्ट
+          करके किसी भी भौतिक परिवर्तन के उपयोगकर्ताओं को सूचित करेंगे।
       contact:
-        title: Contact Information
-        content: If you have any questions about this agreement, please contact us
-          through the support channels available in the application.
+        title: संपर्क जानकारी
+        content: यदि आपके इस समझौते के बारे में कोई प्रश्न हैं, तो कृपया एप्लिकेशन
+          में उपलब्ध समर्थन चैनलों के माध्यम से हमसे संपर्क करें।
     commerce_disclosure:
       title: वाणिज्य प्रकटीकरण (特定商取引法に基づく表記)
       nav_title: वाणिज्य प्रकटीकरण
@@ -773,969 +933,560 @@ hi:
         name: 'कंपनी का नाम: 株式会社モアブ (MOAB Co., Ltd.)'
         representative: 'प्रतिनिधि: Cody Baldwin'
       business_address:
-        title: व्यावसायिक पता
-        address: जापान (विस्तृत पता जानकारी के लिए हमसे संपर्क करें)
+        title: व्यवसाय का पता
+        address: जापान (विस्तृत पते की जानकारी के लिए हमसे संपर्क करें)
       contact:
         title: संपर्क जानकारी
         email_label: ईमेल
         email: cody@moab.jp
         phone_label: फ़ोन
         phone: ईमेल के माध्यम से अनुरोध पर उपलब्ध
-        hours_label: सहायता घंटे
-        hours: सोमवार - शुक्रवार, सुबह 9:00 - शाम 6:00 JST (जापानी छुट्टियों को छोड़कर)
+        hours_label: समर्थन घंटे
+        hours: सोमवार - शुक्रवार, सुबह 9:00 बजे - शाम 6:00 बजे जेएसटी (जापानी छुट्टियों
+          को छोड़कर)
       service_description:
         title: सेवा विवरण
         content: 'CalcuMake एक वेब-आधारित एप्लिकेशन है जो 3D प्रिंटिंग लागत गणना और
           परियोजना प्रबंधन उपकरण प्रदान करता है। हमारी सेवा में शामिल हैं:'
         cost_calculations: 3D प्रिंटिंग परियोजनाओं के लिए व्यापक लागत गणना
         project_management: परियोजना ट्रैकिंग और प्रबंधन सुविधाएँ
-        invoice_generation: चालान निर्माण और PDF निर्यात क्षमताएँ
-        printer_tracking: प्रिंटर विनिर्देश और उपयोग ट्रैकिंग
+        invoice_generation: चालान पीढ़ी और पीडीएफ निर्यात क्षमताएं
+        printer_tracking: प्रिंटर विनिर्देशों और उपयोग ट्रैकिंग
       pricing:
         title: मूल्य निर्धारण
         content: 'CalcuMake तीन सदस्यता स्तर प्रदान करता है:'
-        free_tier: 'निःशुल्क स्तर: ¥0/माह - विज्ञापनों के साथ बुनियादी सुविधाएँ'
-        pro_tier: 'Pro स्तर: मासिक या वार्षिक भुगतान सदस्यता - उन्नत सुविधाएँ, कोई
+        free_tier: 'फ्री टियर: ¥0/महीना - विज्ञापनों के साथ बुनियादी सुविधाएँ'
+        pro_tier: 'प्रो टियर: सशुल्क मासिक या वार्षिक सदस्यता - उन्नत सुविधाएँ, कोई
           विज्ञापन नहीं, प्राथमिकता समर्थन'
-        enterprise_tier: 'Enterprise स्तर: मासिक या वार्षिक भुगतान सदस्यता - सभी सुविधाएँ,
+        enterprise_tier: 'एंटरप्राइज टियर: सशुल्क मासिक या वार्षिक सदस्यता - सभी सुविधाएँ,
           प्रीमियम समर्थन, कस्टम एकीकरण'
         pricing_details: सटीक मूल्य निर्धारण हमारी वेबसाइट और सदस्यता चयन के दौरान
           एप्लिकेशन में प्रदर्शित किया जाता है।
-        price_changes: मौजूदा ग्राहकों को 30 दिन की अग्रिम सूचना के साथ मूल्य समायोजित
-          किए जा सकते हैं।
+        price_changes: मौजूदा ग्राहकों को 30 दिनों के अग्रिम नोटिस के साथ कीमतों को
+          समायोजित किया जा सकता है।
       payment_methods:
-        title: भुगतान विधियाँ
-        content: 'भुगतान सदस्यताओं के लिए, हम निम्नलिखित भुगतान विधियाँ स्वीकार करते
+        title: भुगतान के तरीके
+        content: 'सशुल्क सदस्यता के लिए, हम निम्नलिखित भुगतान विधियों को स्वीकार करते
           हैं:'
-        credit_cards: 'क्रेडिट कार्ड: Visa, Mastercard, American Express, JCB'
-        payment_processor: सभी भुगतान हमारे भुगतान प्रसंस्करण भागीदार Stripe के माध्यम
-          से सुरक्षित रूप से संसाधित किए जाते हैं।
-        secure_processing: हम अपने सर्वर पर आपकी पूर्ण क्रेडिट कार्ड जानकारी संग्रहीत
+        credit_cards: 'क्रेडिट कार्ड: वीज़ा, मास्टरकार्ड, अमेरिकन एक्सप्रेस, जेसीबी'
+        payment_processor: सभी भुगतान सुरक्षित रूप से स्ट्राइप के माध्यम से संसाधित
+          किए जाते हैं, जो हमारे भुगतान प्रसंस्करण भागीदार हैं।
+        secure_processing: हम आपके क्रेडिट कार्ड की पूरी जानकारी अपने सर्वर पर संग्रहीत
           नहीं करते हैं।
-        free_tier_note: निःशुल्क स्तर उपयोगकर्ताओं को भुगतान जानकारी प्रदान करने की
-          आवश्यकता नहीं है।
+        free_tier_note: फ्री टियर उपयोगकर्ताओं को भुगतान जानकारी प्रदान करने की आवश्यकता
+          नहीं है।
       payment_timing:
-        title: भुगतान समय
-        content: 'आपके चयनित बिलिंग चक्र के अनुसार भुगतान लिया जाता है:'
-        initial_payment: सदस्यता पर तुरंत प्रारंभिक भुगतान लिया जाता है
+        title: भुगतान का समय
+        content: 'भुगतान आपके चयनित बिलिंग चक्र के अनुसार लिया जाता है:'
+        initial_payment: प्रारंभिक भुगतान सदस्यता पर तुरंत लिया जाता है
         recurring_payments: आवर्ती भुगतान प्रत्येक बिलिंग अवधि (मासिक या वार्षिक)
           की शुरुआत में लिए जाते हैं
-        automatic_renewal: सदस्यताएँ स्वचालित रूप से नवीनीकृत होती हैं जब तक रद्द
-          नहीं की जातीं
-        cancellation_timing: रद्दीकरण वर्तमान बिलिंग अवधि के अंत में प्रभावी होता
-          है
+        automatic_renewal: सदस्यताएँ स्वचालित रूप से नवीनीकृत हो जाती हैं जब तक कि
+          रद्द न कर दी जाएँ
+        cancellation_timing: रद्दीकरण वर्तमान बिलिंग अवधि के अंत में प्रभावी होते
+          हैं
       delivery:
         title: सेवा वितरण
-        content: CalcuMake एक वेब-आधारित सेवा है जो खाता निर्माण के तुरंत बाद सुलभ
-          है। कोई भौतिक उत्पाद या शिपिंग शामिल नहीं है।
+        content: CalcuMake एक वेब-आधारित सेवा है जो खाता निर्माण पर तुरंत उपलब्ध है।
+          इसमें कोई भौतिक उत्पाद या शिपिंग शामिल नहीं है।
       returns:
-        title: रिटर्न और धनवापसी
-        content: 'एक डिजिटल सदस्यता सेवा के रूप में, हमारी धनवापसी नीति निम्नानुसार
-          है:'
-        money_back_guarantee: पहली बार भुगतान ग्राहकों के लिए 14-दिन की धनवापसी गारंटी
+        title: रिटर्न और रिफंड
+        content: 'चूंकि CalcuMake एक डिजिटल सदस्यता सेवा है, इसलिए हमारी रिफंड नीति
+          इस प्रकार है:'
+        money_back_guarantee: पहली बार सशुल्क ग्राहकों के लिए 14-दिन की मनी-बैक गारंटी
         refund_process: पूर्ण धनवापसी के लिए अपनी प्रारंभिक सदस्यता के 14 दिनों के
           भीतर समर्थन से संपर्क करें
         no_partial_refunds: शेष सदस्यता समय के लिए आंशिक धनवापसी प्रदान नहीं की जाती
-          है सिवाय कानून द्वारा आवश्यक होने पर
-        renewal_refunds: नवीनीकरण भुगतान धनवापसी योग्य नहीं हैं सिवाय कानून द्वारा
-          आवश्यक होने पर
-        free_tier_refunds: निःशुल्क स्तर उपयोग में भुगतान शामिल नहीं है और कोई धनवापसी
-          लागू नहीं होती
+          है सिवाय कानून द्वारा आवश्यक के
+        renewal_refunds: नवीनीकरण भुगतान गैर-वापसी योग्य हैं जब तक कि कानून द्वारा
+          अन्यथा आवश्यक न हो
+        free_tier_refunds: फ्री टियर उपयोग में भुगतान शामिल नहीं है और कोई धनवापसी
+          लागू नहीं होती है
       cancellation:
         title: रद्दीकरण नीति
-        content: 'सदस्यता रद्दीकरण शर्तें:'
-        cancellation_method: अपनी खाता सेटिंग्स के माध्यम से या cody@moab.jp पर समर्थन
-          से संपर्क करके किसी भी समय रद्द करें
+        content: 'सदस्यता रद्दीकरण की शर्तें:'
+        cancellation_method: अपनी खाता सेटिंग के माध्यम से या cody@moab.jp पर समर्थन
+          से संपर्क करके कभी भी रद्द करें
         cancellation_effect: रद्दीकरण आपकी वर्तमान बिलिंग अवधि के अंत में प्रभावी
           होता है
-        access_retention: आप भुगतान अवधि के अंत तक भुगतान सुविधाओं तक पूर्ण पहुँच
-          बनाए रखते हैं
+        access_retention: आप सशुल्क अवधि के अंत तक सशुल्क सुविधाओं तक पूरी पहुँच बनाए
+          रखते हैं
         data_retention: खाता डेटा हमारी गोपनीयता नीति के अनुसार बनाए रखा जाता है
-        resubscription: आप रद्दीकरण के बाद किसी भी समय पुनः सदस्यता ले सकते हैं
-  support:
-    title: सहायता
-    nav_title: सहायता
-    contact_us: Contact Us
-    description: Need help with CalcuMake? Have a question or suggestion? We're here
-      to help!
-    email_label: Email Support
-    response_time: We typically respond within 24-48 hours
-    faq:
-      title: FAQ Title
-      delete_account:
-        question: How do I delete my account?
-        answer: To delete your account follow these steps
-        step1: Go to your Profile page
-        step2: Scroll to Delete Account section
-        step3: Check the box I understand deleting is permanent
-        step4: Check the box I confirm I want to delete
-        step5: Click Delete My Account button
-        warning_title: Important
-        warning_message: Account deletion is permanent and cannot be undone
-      data_recovery:
-        question: Can I recover my account after deletion?
-        answer: No account deletion is permanent and irreversible
-      what_deleted:
-        question: What data gets deleted?
-        intro: When you delete your account all data is deleted
-        item1: Your user account
-        item2: All print pricing calculations
-        item3: All printers
-        item4: All filaments
-        item5: All invoices
-        item6: All company info
-    billing_support:
-      title: बिलिंग और सदस्यता समर्थन
-      description: बिलिंग पूछताछ, सदस्यता परिवर्तन, धनवापसी अनुरोध, या भुगतान समस्याओं
-        के लिए, कृपया अपने खाता ईमेल के साथ हमसे संपर्क करें।
-      priority_note: Pro और Enterprise स्तर ग्राहकों को प्राथमिकता समर्थन प्रतिक्रिया
-        समय प्राप्त होता है।
-  activerecord:
-    errors:
-      messages:
-        blank: can't be blank
-        taken: has already been taken
-        too_short: is too short (minimum is %{count} characters)
-        too_long: is too long (maximum is %{count} characters)
-        invalid: is invalid
-        greater_than: must be greater than %{count}
-        greater_than_or_equal_to: must be greater than or equal to %{count}
-        less_than: must be less than %{count}
-        less_than_or_equal_to: must be less than or equal to %{count}
-        not_a_number: is not a number
-        inclusion: is not included in the list
-        exclusion: is reserved
-        accepted: must be accepted
-        present: must be blank
-        confirmation: doesn't match %{attribute}
-        empty: can't be empty
-      models:
-        filament:
-          attributes:
-            name:
-              blank: Please enter a filament name
-              taken: You already have a filament with this name
-            material_type:
-              blank: Please select a material type
-              inclusion: Please select a valid material type
-            diameter:
-              blank: Please select a diameter
-              inclusion: Please select a valid diameter (1.75mm, 2.85mm, or 3.0mm)
-            spool_weight:
-              greater_than: Spool weight must be greater than 0
-              not_a_number: Spool weight must be a number
-            spool_price:
-              greater_than: Spool price must be greater than 0
-              not_a_number: Spool price must be a number
-            print_temperature_min:
-              greater_than: Minimum temperature must be greater than 0°C
-              less_than: Minimum temperature must be less than 500°C
-              not_a_number: Minimum temperature must be a number
-            print_temperature_max:
-              greater_than: Maximum temperature must be greater than 0°C
-              less_than: Maximum temperature must be less than 500°C
-              not_a_number: Maximum temperature must be a number
-              temperature_range: must be greater than minimum temperature
-            heated_bed_temperature:
-              greater_than: Bed temperature must be greater than 0°C
-              less_than: Bed temperature must be less than 500°C
-              not_a_number: Bed temperature must be a number
-            print_speed_max:
-              greater_than: Print speed must be greater than 0
-              less_than: Print speed must be less than 1000
-              not_a_number: Print speed must be a number
-            storage_temperature_max:
-              greater_than: Storage temperature must be greater than -50°C
-              less_than: Storage temperature must be less than 100°C
-              not_a_number: Storage temperature must be a number
-            density:
-              greater_than: Density must be greater than 0
-              less_than: Density must be less than 10
-              not_a_number: Density must be a number
-        plate_filament:
-          attributes:
-            filament_weight:
-              blank: Please enter the filament weight
-              greater_than: Filament weight must be greater than 0
-              not_a_number: Filament weight must be a number
-            filament_id:
-              blank: Please select a filament
-              already_added: This filament has already been added to this plate
-        plate:
-          attributes:
-            base:
-              no_filaments: Must have at least one filament
-              duplicate_filaments: Cannot use the same filament multiple times on
-                one plate
-        print_pricing:
-          attributes:
-            base:
-              no_plates: Must have at least one plate
-              too_many_plates: Cannot have more than 10 plates
-              duplicate_filaments_on_plate: Cannot use the same filament multiple
-                times on the same plate
-  common:
-    created: Created
-    currency: Currency
-    hours: Hours
-    minutes: Minutes
-    grams: g
-    watts: W
-    kwh: kWh
-    percentage: "%"
-    years: years
-    'yes': 'Yes'
-    'no': 'No'
-    are_you_sure: Are you sure?
-    errors_prohibited: "%{count} %{errors} prohibited this %{model} from being saved:"
-    error_count:
-      one: error
-      other: errors
-  date:
-    formats:
-      month_day_year: "%B %d, %Y"
-  time:
-    at: at
-    formats:
-      month_day_year: "%B %d, %Y"
-      month_day_year_time: "%B %d, %Y at %I:%M %p"
+        resubscription: आप रद्दीकरण के बाद किसी भी समय फिर से सदस्यता ले सकते हैं
   print_pricings:
     form:
-      filament_weight: Filament Weight
-      print_time_hours: Print Time Hours
+      filament_weight: फिलामेंट वजन
+      print_time_hours: प्रिंट समय घंटे
   invoices:
-    title: Invoices
-    new_invoice: New Invoice
-    edit_invoice: Edit Invoice
-    create_invoice: Create Invoice
+    title: चालान
+    new_invoice: नया चालान
+    edit_invoice: चालान संपादित करें
+    create_invoice: चालान बनाएं
     index:
-      title: My Invoices
-      subtitle: Track and manage all your invoices across projects
-      search_placeholder: Search by job name...
+      title: मेरे चालान
+      subtitle: परियोजनाओं में अपने सभी चालानों को ट्रैक और प्रबंधित करें
+      search_placeholder: कार्य नाम से खोजें...
       empty_state:
-        title: No invoices yet
-        description: Start by creating invoices for your print calculations.
-      no_results:
-        title: No results found
-        description: No invoices match '%{query}'. Try a different search term.
-    download_pdf: Download PDF
-    print: Print
-    bill_to: Bill To
-    mark_as_sent: Mark as Sent
-    mark_as_paid: Mark as Paid
-    created_successfully: Invoice created successfully
-    updated_successfully: Invoice updated successfully
-    deleted_successfully: Invoice deleted successfully
-    cannot_delete_non_draft: Only draft invoices can be deleted
-    marked_as_sent: Invoice marked as sent
-    marked_as_paid: Invoice marked as paid
-    marked_as_cancelled: Invoice marked as cancelled
-    failed_to_update: Failed to update invoice
-    confirm_delete: Are you sure you want to delete this invoice?
-    no_invoices: No invoices yet
-    create_first_invoice: Create your first invoice for this print calculation
-    company_info_card_text: Invoice company information is managed in your profile
-      settings. Update your company details there to use them in all your invoices.
-    no_company_info: No company information set. Please update your profile to add
-      company details.
-    edit_company_info: Edit Company Info in Profile
-    status:
-      draft: Draft
-      sent: Sent
-      paid: Paid
-      cancelled: Cancelled
-    fields:
-      invoice_details: Invoice Details
-      company_info: Company Info
-      company_name: Company Name
-      company_address: Company Address
-      company_email: Company Email
-      company_phone: Company Phone
-      payment_details: Payment Details
-      notes: Notes
-      invoice_number: Invoice Number
-      job_name: Job Name
-      invoice_number_help: Automatically generated when invoices are created (cannot
-        be edited)
-      invoice_date: Invoice Date
-      due_date: Due Date
-      status: Status
-      currency: Currency
-      currency_help: Determines decimal places and formatting for all amounts on this
-        invoice
-      company_logo: Company Logo
-    line_items:
-      title: Line Items
-      add_line_item: Add Line Item
-      description: Description
-      quantity: Quantity
-      unit_price: Unit Price
-      total: Total
-      remove: Remove
-  filaments:
-    index:
-      title: My Filaments
-      subtitle: Manage your 3D printing filament inventory
-      add_new: Add New Filament
-      search_placeholder: Search by name, brand, material, or color...
-      clear_search: Clear Search
-      empty_state:
-        title: No filaments registered yet
-        description: Add your first filament to start building your material library
-          for print calculations.
-        add_first: Add Your First Filament
-      no_results:
-        title: No results found
-        description: No filaments match '%{query}'. Try a different search term.
-    new:
-      title: Add New Filament
-      subtitle: Register a new filament for your material library
-    edit:
-      title: Edit Filament
-      subtitle: Update filament specifications
-    show:
-      usage_history: Usage History
-      times_used: Times Used
-      total_weight_used: Total Weight Used
-      new_print_with_filament: New Print with this Filament
-      recent_prints: Recent Prints
-      not_used_yet: This filament hasn't been used yet
-      create_first_print: Create Your First Print
-      no_cost_info: No cost information available
-    sections:
-      basic_info: Basic Information
-      cost_info: Cost Information
-      properties: Properties
-      technical_specs: Technical Specifications
-    fields:
-      name: Filament Name
-      name_placeholder: e.g., Basic PLA, Premium PETG
-      brand: Brand
-      brand_placeholder: e.g., Hatchbox, Prusa, eSUN
-      material_type: Material Type
-      material_type_prompt: Select material type
-      diameter: Diameter
-      color: Color
-      color_placeholder: e.g., Red, Natural, Transparent
-      finish: Finish
-      finish_placeholder: e.g., Matte, Glossy, Silk
-      spool_weight: Spool Weight
-      spool_weight_placeholder: '1000'
-      spool_price: Spool Price
-      spool_price_placeholder: '25.00'
-      density: Density
-      density_placeholder: '1.24'
-      cost_per_gram: Cost per Gram
-      temperature_range: Temperature Range
-      moisture_sensitive: Moisture Sensitive
-      notes: Notes
-      notes_placeholder: Additional information about this filament...
-      filament: Filament
-      select_filament: Select a filament
-      weight_used: Weight Used
-      selected: Selected
-      none_selected: None selected
-      not_set: Not set
-      total_cost: Total Cost
-      no_filament_registered: No filament registered?
-      add_new_filament: Add New Filament
-      bed_temperature: Bed Temperature
-      max_print_speed: Max Print Speed
-      storage_temp: Storage Temperature
-    properties:
-      moisture_sensitive: Moisture Sensitive
-    buttons:
-      add_filament: Add Filament
-      update_filament: Update Filament
-    confirm_delete: Are you sure you want to delete '%{name}'?
-  devise:
-    shared:
-      oauth_signin_options: Sign in with social accounts
-      alternative_signin_method: Alternative signin method
-      or_sign_in_with_email: Or Sign In With Email
-      sign_in_with_provider: Sign in with %{provider}
-      sign_in_with_provider_aria: Sign in with %{provider}
-    confirmations:
-      confirmed: Your email address has been successfully confirmed.
-      send_instructions: You will receive an email with instructions for how to confirm
-        your email address in a few minutes.
-      send_paranoid_instructions: If your email address exists in our database, you
-        will receive an email with instructions for how to confirm your email address
-        in a few minutes.
-    failure:
-      already_authenticated: You are already signed in.
-      inactive: Your account is not activated yet.
-      invalid: Invalid %{authentication_keys} or password.
-      locked: Your account is locked.
-      last_attempt: You have one more attempt before your account is locked.
-      not_found_in_database: Invalid %{authentication_keys} or password.
-      timeout: Your session expired. Please sign in again to continue.
-      unauthenticated: You need to sign in or sign up before continuing.
-      unconfirmed: You have to confirm your email address before continuing.
-    mailer:
-      confirmation_instructions:
-        subject: Confirmation instructions
-      reset_password_instructions:
-        subject: Reset password instructions
-      unlock_instructions:
-        subject: Unlock instructions
-      email_changed:
-        subject: Email Changed
-      password_change:
-        subject: Password Changed
-    omniauth_callbacks:
-      failure: Could not authenticate you from %{kind} because "%{reason}".
-      success: Successfully authenticated from %{kind} account.
-    passwords:
-      no_token: You can't access this page without coming from a password reset email.
-        If you do come from a password reset email, please make sure you used the
-        full URL provided.
-      send_instructions: You will receive an email with instructions on how to reset
-        your password in a few minutes.
-      send_paranoid_instructions: If your email address exists in our database, you
-        will receive a password recovery link at your email address in a few minutes.
-      updated: Your password has been changed successfully. You are now signed in.
-      updated_not_active: Your password has been changed successfully.
-    registrations:
-      destroyed: Bye! Your account has been successfully cancelled. We hope to see
-        you again soon.
-      signed_up: Welcome! You have signed up successfully.
-      signed_up_but_inactive: You have signed up successfully. However, we could not
-        sign you in because your account is not yet activated.
-      signed_up_but_locked: You have signed up successfully. However, we could not
-        sign you in because your account is locked.
-      signed_up_but_unconfirmed: A message with a confirmation link has been sent
-        to your email address. Please follow the link to activate your account.
-      update_needs_confirmation: You updated your account successfully, but we need
-        to verify your new email address. Please check your email and follow the confirmation
-        link to confirm your new email address.
-      updated: Your account has been updated successfully.
-      updated_but_not_signed_in: Your account has been updated successfully, but since
-        your password was changed, you need to sign in again.
-    sessions:
-      signed_in: Signed in successfully.
-      signed_out: Signed out successfully.
-      already_signed_out: Signed out successfully.
-    unlocks:
-      send_instructions: You will receive an email with instructions for how to unlock
-        your account in a few minutes.
-      send_paranoid_instructions: If your account exists, you will receive an email
-        with instructions for how to unlock it in a few minutes.
-      unlocked: Your account has been unlocked successfully. Please sign in to continue.
-  landing:
-    hero:
-      headline: More creating, less calculating
-      subheadline: Skip the spreadsheets and tedious calculations. Handle pricing
-        automatically so you can focus on the fun part.
-      cta_primary: Start Calculating Free
-      cta_demo: See Demo
-      trust_signal: No credit card required - start with full Startup features for
-        30 days
-      preview_title: Quick Cost Preview
-      preview_filament_weight: Filament Weight
-      preview_print_time: Print Time
-      preview_total_cost: Total Cost
-      preview_cost_breakdown: Electricity + Filament + Labor
-    problem:
-      headline: Are you wasting time calculating pricing for 3D prints?
-      manual_errors: Manual Calculation Errors
-      manual_errors_desc: Spreadsheets and mental math lead to costly mistakes and
-        undercharging.
-      electricity_costs: Forgotten Electricity Costs
-      electricity_costs_desc: Power consumption can add 20-40% to your actual costs
-        but is often ignored.
-      inconsistent_pricing: Inconsistent Pricing
-      inconsistent_pricing_desc: Different calculations for similar jobs confuse customers
-        and hurt profits.
-      time_wasted: Time Wasted on Spreadsheets
-      time_wasted_desc: Hours spent on manual calculations instead of growing your
-        printing business.
-    solution:
-      headline: Professional Tools for Serious Makers
-      subheadline: Everything you need to price accurately and manage your 3D printing
-        projects like a pro.
-    features:
-      accurate_calculation:
-        title: Accurate Cost Calculation
-        desc: Get precise costs every time with comprehensive calculation including
-          all hidden expenses.
-        filament: Filament weight + spool cost
-        electricity: Electricity consumption tracking
-        labor: Labor time (prep + post-processing)
-        depreciation: Machine depreciation
-      multi_printer:
-        title: Multi-Printer Management
-        desc: Track different printer specifications and monitor your return on investment
-          across your entire fleet.
-        power: Individual power consumption tracking
-        roi: ROI tracking per printer
-        organization: Organized print job management
-      invoicing:
-        title: Professional Invoicing
-        desc: Generate professional PDF invoices with your company branding and multi-currency
-          support.
-        pdf: Auto-generated PDF invoices
-        branding: Custom company branding
-        currency: Multi-currency support
-      organization:
-        title: Project Organization
-        desc: Keep your print jobs organized with powerful search, filtering, and
-          project management tools.
-        search: Search and filter print jobs
-        duplicate: Duplicate similar projects
-        history: Complete print history tracking
-    pricing:
-      headline: Simple, Transparent Pricing
-      subheadline: Choose the plan that fits your printing volume. Upgrade or downgrade
-        anytime.
-      cta: Get Started Free
-      free:
-        title: Free
-        trial_notice: First month includes full Startup features!
-        calculations: 5 calculations per month (after trial)
-        printers: 1 printer profile
-        filaments: 4 filament types
-        invoices: 5 invoices per month
-        branding: CalcuMake branding on invoices
-      startup:
-        title: Startup
-        badge: Most Popular
-        calculations: 50 calculations per month
-        printers: 10 printer profiles
-        filaments: 16 filament types
-        branding: Remove CalcuMake branding
-        ads: No ads
-      pro:
-        title: Pro
-        unlimited: Unlimited everything
-        branding: Remove CalcuMake branding
-        ads: No ads
-        support: Priority support
-        analytics: Advanced analytics
-        features: Future premium features
-      trust_signals:
-        no_credit_card: No credit card required - start with full Startup features
-          for 30 days
-        cancel_anytime: Cancel anytime
-        data_private: Your data stays private
-    faq:
-      headline: Frequently Asked Questions
-      accuracy:
-        question: How accurate are the calculations?
-        answer: CalcuMake uses simple formulas and accounts for all cost factors including
-          filament, electricity, labor time, and machine depreciation.
-      currencies:
-        question: What currencies does CalcuMake support?
-        answer: CalcuMake currently supports USD, EUR, GBP, JPY, CAD, and AUD with
-          automatic formatting and precision for each currency. You can switch currencies
-          anytime in your profile settings.
-      printers:
-        question: Does CalcuMake support my 3D printer?
-        answer: CalcuMake works with any 3D printer! You simply enter your printer's
-          power consumption and other specifications. We're planning support for resin
-          printers soon!
-      electricity:
-        question: How do electricity costs work?
-        answer: CalcuMake automatically calculates electricity costs based on your
-          printer's power consumption (in watts), print duration, and your local energy
-          rate per kWh. This ensures you never forget this often-overlooked cost factor.
-      invoices:
-        question: Can I customize my invoices?
-        answer: Yes! You can add your company logo, customize colors, and include
-          your business information. Paid plans remove the CalcuMake branding for
-          a completely professional look.
-    final_cta:
-      headline: Ready to stop losing money on 3D prints?
-      subheadline: Join thousands of makers who trust CalcuMake for accurate pricing
-        and professional project management.
-      button: Start Your Free Trial
-  demo:
-    title: Try CalcuMake Demo
-    subtitle: Test our 3D print cost calculator with sample data. No account required!
-    sign_up_full_version: Sign Up for Full Version
-    start_free_trial: Start Free Trial
-    limitations:
-      title: This is a Demo Version
-      description: 'The full CalcuMake app includes:'
-      features:
-      - Multiple printer profiles with automatic specifications
-      - Comprehensive filament library with material properties
-      - Professional PDF invoice generation
-      - Project history and duplicate functionality
-      - Multi-currency support
-      - Machine depreciation calculations
-  locale_suggestion:
-    banner:
-      title: It looks like you're accessing from a different region.
-      switch_to: Switch to %{language} for a better experience?
-      currently_viewing: Currently viewing in %{language}
-      switch_button: Switch Language
-      stay_button: Stay
-      close: Close
-  calculators:
-    quick_cost_calculator: Quick Cost Calculator
-    print_time_hours: Print Time (hours)
-    filament_weight_grams: Filament Weight (grams)
-    filament_price_per_kg: Filament Price per KG ($)
-    labor_rate_per_hour: Labor Rate per Hour ($)
-    create_full_calculation: Create Full Calculation
-    includes_defaults: 'Includes Default Costs:'
-    defaults:
-      filament_price: Filament
-      labor_rate: Labor
-      energy_cost: Energy
-      power_consumption: Power
-      machine_payoff: Machine Payoff
-    features:
-      real_time: Real-time calculation as you type
-      includes_costs: Includes electricity and labor costs
-    results:
-      filament_cost: Filament Cost
-      electricity_cost: Electricity Cost
-      labor_cost: Labor Cost
-      total_cost: Total Cost
-      estimated_cost: 'Estimated Cost:'
-  errors:
-    messages:
-      already_confirmed: was already confirmed, please try signing in
-      confirmation_period_expired: needs to be confirmed within %{period}, please
-        request a new one
-      expired: has expired, please request a new one
-      not_found: not found
-      not_locked: was not locked
-      not_saved:
-        one: '1 error prohibited this %{resource} from being saved:'
-        other: "%{count} errors prohibited this %{resource} from being saved:"
-filaments:
-  index:
-    title: मेरे फिलामेंट
-    subtitle: अपने 3D प्रिंटिंग फिलामेंट इन्वेंटरी का प्रबंधन करें
-    add_new: नया फिलामेंट जोड़ें
-  fields:
-    name: फिलामेंट नाम
-    brand: ब्रांड
-    material_type: सामग्री प्रकार
-    filament: फिलामेंट
-    select_filament: एक फिलामेंट चुनें
-  buttons:
-    add_filament: फिलामेंट जोड़ें
-    update_filament: फिलामेंट अपडेट करें
-  invoices:
-    title: इनवॉइस
-    new_invoice: नया इनवॉइस
-    edit_invoice: इनवॉइस संपादित करें
-    create_invoice: इनवॉइस बनाएं
-    index:
-      title: मेरे इनवॉइस
-      subtitle: प्रोजेक्ट्स में अपने सभी इनवॉइस को ट्रैक और मैनेज करें
-      search_placeholder: जॉब नाम से खोजें...
-      empty_state:
-        title: अभी तक कोई इनवॉइस नहीं
-        description: अपनी प्रिंट गणनाओं के लिए इनवॉइस बनाना शुरू करें।
+        title: अभी तक कोई चालान नहीं है
+        description: अपनी प्रिंट गणनाओं के लिए चालान बनाकर शुरुआत करें।
       no_results:
         title: कोई परिणाम नहीं मिला
-        description: "'%{query}' से मेल खाने वाला कोई इनवॉइस नहीं। अलग खोज शब्द आज़माएं।"
-    download_pdf: PDF डाउनलोड करें
-    print: प्रिंट करें
-    bill_to: बिल करने का पता
+        description: कोई भी चालान '%{query}' से मेल नहीं खाता. एक अलग खोज शब्द आज़माएं।
+    download_pdf: पीडीएफ डाउनलोड करें
+    print: प्रिंट
+    bill_to: बिल टू
     mark_as_sent: भेजा गया के रूप में चिह्नित करें
     mark_as_paid: भुगतान किया गया के रूप में चिह्नित करें
     created_successfully: इनवॉइस सफलतापूर्वक बनाया गया
     updated_successfully: इनवॉइस सफलतापूर्वक अपडेट किया गया
     deleted_successfully: इनवॉइस सफलतापूर्वक हटाया गया
-    cannot_delete_non_draft: केवल ड्राफ्ट इनवॉइस हटाए जा सकते हैं
-    marked_as_sent: इनवॉइस को भेजा गया के रूप में चिह्नित किया गया
-    marked_as_paid: इनवॉइस को भुगतान किया गया के रूप में चिह्नित किया गया
-    marked_as_cancelled: इनवॉइस को रद्द के रूप में चिह्नित किया गया
+    cannot_delete_non_draft: केवल ड्राफ्ट इनवॉइस ही हटाए जा सकते हैं
+    marked_as_sent: इनवॉइस भेजा गया के रूप में चिह्नित किया गया
+    marked_as_paid: इनवॉइस भुगतान किया गया के रूप में चिह्नित किया गया
+    marked_as_cancelled: इनवॉइस रद्द किया गया के रूप में चिह्नित किया गया
     failed_to_update: इनवॉइस अपडेट करने में विफल
     confirm_delete: क्या आप वाकई इस इनवॉइस को हटाना चाहते हैं?
-    no_invoices: अभी तक कोई इनवॉइस नहीं
+    no_invoices: अभी तक कोई इनवॉइस नहीं है
     create_first_invoice: इस प्रिंट गणना के लिए अपना पहला इनवॉइस बनाएं
     company_info_card_text: इनवॉइस कंपनी की जानकारी आपकी प्रोफ़ाइल सेटिंग्स में प्रबंधित
-      की जाती है। अपने सभी इनवॉइस में उपयोग करने के लिए वहां अपनी कंपनी विवरण अपडेट
-      करें।
-    no_company_info: कोई कंपनी जानकारी सेट नहीं की गई है। कंपनी विवरण जोड़ने के लिए
-      कृपया अपनी प्रोफ़ाइल अपडेट करें।
-    edit_company_info: प्रोफ़ाइल में कंपनी जानकारी संपादित करें
+      की जाती है. अपने सभी इनवॉइस में उपयोग करने के लिए वहां अपनी कंपनी का विवरण अपडेट
+      करें.
+    no_company_info: कोई कंपनी जानकारी सेट नहीं है. कंपनी का विवरण जोड़ने के लिए कृपया
+      अपनी प्रोफ़ाइल अपडेट करें.
+    edit_company_info: प्रोफ़ाइल में कंपनी की जानकारी संपादित करें
     status:
       draft: ड्राफ्ट
       sent: भेजा गया
       paid: भुगतान किया गया
-      cancelled: रद्द
+      cancelled: रद्द किया गया
     fields:
       invoice_details: इनवॉइस विवरण
-      company_info: कंपनी जानकारी
+      company_info: कंपनी की जानकारी
       company_name: कंपनी का नाम
       company_address: कंपनी का पता
-      company_email: कंपनी ईमेल
-      company_phone: कंपनी फोन
+      company_email: कंपनी का ईमेल
+      company_phone: कंपनी का फ़ोन
       payment_details: भुगतान विवरण
-      notes: नोट्स
+      notes: टिप्पणियाँ
       invoice_number: इनवॉइस नंबर
-      invoice_number_help: इनवॉइस बनाने पर स्वचालित रूप से जनरेट होता है (संपादित
+      job_name: जॉब का नाम
+      invoice_number_help: इनवॉइस बनाते समय स्वचालित रूप से उत्पन्न होता है (संपादित
         नहीं किया जा सकता)
-      invoice_date: इनवॉइस तारीख
-      due_date: देय तारीख
+      invoice_date: इनवॉइस की तारीख
+      due_date: देय तिथि
       status: स्थिति
       currency: मुद्रा
-      currency_help: इस इनवॉइस पर सभी राशियों के लिए दशमलव स्थान और फॉर्मेटिंग निर्धारित
+      currency_help: इस इनवॉइस पर सभी राशियों के लिए दशमलव स्थानों और स्वरूपण का निर्धारण
         करता है
-      company_logo: कंपनी लोगो
+      company_logo: कंपनी का लोगो
+      client: ग्राहक
+      project: परियोजना
+      select_client: एक ग्राहक का चयन करें
+      no_client_selected: कोई ग्राहक चयनित नहीं है
+      client_help_text: इस इनवॉइस के लिए एक ग्राहक चुनें
     line_items:
       title: लाइन आइटम
       add_line_item: लाइन आइटम जोड़ें
       description: विवरण
       quantity: मात्रा
-      unit_price: यूनिट मूल्य
+      unit_price: इकाई मूल्य
       total: कुल
       remove: हटाएं
-print_pricings:
-  form:
-    filament_weight: फिलामेंट वजन
-    print_time_hours: प्रिंट समय (घंटे)
+      round_all_down_help: अधिक शुल्क से बचने के लिए सभी राशियों को नीचे की ओर पूर्णांकित
+        करें
+      round_all_down: सभी को नीचे की ओर पूर्णांकित करें
+  filaments:
+    index:
+      title: मेरे फिलामेंट्स
+      subtitle: अपने 3D प्रिंटिंग फिलामेंट इन्वेंट्री को प्रबंधित करें
+      add_new: नया फिलामेंट जोड़ें
+      search_placeholder: नाम, ब्रांड, सामग्री या रंग से खोजें...
+      clear_search: खोज साफ़ करें
+      empty_state:
+        title: अभी तक कोई फिलामेंट पंजीकृत नहीं है
+        description: प्रिंट गणना के लिए अपनी सामग्री लाइब्रेरी बनाना शुरू करने के
+          लिए अपना पहला फिलामेंट जोड़ें।
+        add_first: अपना पहला फिलामेंट जोड़ें
+      no_results:
+        title: कोई परिणाम नहीं मिला
+        description: कोई भी फिलामेंट '%{query}' से मेल नहीं खाता. एक अलग खोज शब्द
+          आज़माएं.
+    new:
+      title: नया फिलामेंट जोड़ें
+      subtitle: अपनी सामग्री लाइब्रेरी के लिए एक नया फिलामेंट पंजीकृत करें
+    edit:
+      title: फिलामेंट संपादित करें
+      subtitle: फिलामेंट विशिष्टताओं को अपडेट करें
+    show:
+      title: फिलामेंट विवरण
+      usage_history: उपयोग इतिहास
+      times_used: कितनी बार उपयोग किया गया
+      total_weight_used: कुल प्रयुक्त वजन
+      new_print_with_filament: इस फिलामेंट के साथ नई प्रिंट
+      recent_prints: हाल की प्रिंट
+      not_used_yet: यह फिलामेंट अभी तक उपयोग नहीं किया गया है
+      create_first_print: अपनी पहली प्रिंट बनाएं
+      no_cost_info: कोई लागत जानकारी उपलब्ध नहीं है
+    sections:
+      basic_info: बुनियादी जानकारी
+      cost_info: लागत जानकारी
+      properties: गुण
+      technical_specs: तकनीकी विनिर्देश
+    fields:
+      name: फिलामेंट का नाम
+      name_placeholder: जैसे, बेसिक PLA, प्रीमियम PETG
+      brand: ब्रांड
+      brand_placeholder: जैसे, Hatchbox, Prusa, eSUN
+      material_type: सामग्री का प्रकार
+      material_type_prompt: सामग्री का प्रकार चुनें
+      diameter: व्यास
+      color: रंग
+      color_placeholder: जैसे, लाल, प्राकृतिक, पारदर्शी
+      finish: फिनिश
+      finish_placeholder: जैसे, मैट, ग्लॉसी, सिल्क
+      spool_weight: स्पूल वजन
+      spool_weight_placeholder: '1000'
+      spool_price: स्पूल मूल्य
+      spool_price_placeholder: '25.00'
+      density: घनत्व
+      density_placeholder: '1.24'
+      cost_per_gram: ग्राम प्रति लागत
+      temperature_range: तापमान सीमा
+      moisture_sensitive: नमी के प्रति संवेदनशील
+      notes: टिप्पणियाँ
+      notes_placeholder: इस फिलामेंट के बारे में अतिरिक्त जानकारी...
+      filament: फिलामेंट
+      select_filament: फिलामेंट चुनें
+      weight_used: इस्तेमाल किया गया वज़न
+      selected: चुना गया
+      none_selected: कोई नहीं चुना गया
+      not_set: निर्धारित नहीं
+      total_cost: कुल लागत
+      no_filament_registered: कोई फिलामेंट पंजीकृत नहीं है?
+      add_new_filament: नया फिलामेंट जोड़ें
+      bed_temperature: बेड का तापमान
+      max_print_speed: अधिकतम प्रिंट गति
+      storage_temp: भंडारण तापमान
+    properties:
+      moisture_sensitive: नमी के प्रति संवेदनशील
+    buttons:
+      add_filament: फिलामेंट जोड़ें
+      update_filament: फिलामेंट अपडेट करें
+    confirm_delete: क्या आप वाकई '%{name}' को हटाना चाहते हैं?
   devise:
     shared:
-      sign_in_with_provider: "%{provider} के साथ साइन इन करें"
-      sign_in_with_provider_aria: अपने %{provider} खाते का उपयोग करके साइन इन करें
-      or_sign_in_with_email: या ईमेल के साथ साइन इन करें
-      oauth_signin_options: तृतीय पक्षीय साइन इन विकल्प
+      oauth_signin_options: सोशल अकाउंट से साइन इन करें
       alternative_signin_method: वैकल्पिक साइन इन विधि
+      or_sign_in_with_email: या ईमेल से साइन इन करें
+      sign_in_with_provider: "%{provider} से साइन इन करें"
+      sign_in_with_provider_aria: "%{provider} से साइन इन करें"
+    confirmations:
+      confirmed: आपका ईमेल पता सफलतापूर्वक सत्यापित हो गया है।
+      send_instructions: आपको कुछ मिनटों में अपने ईमेल पते की पुष्टि करने के तरीके
+        के बारे में निर्देशों के साथ एक ईमेल प्राप्त होगा।
+      send_paranoid_instructions: यदि आपका ईमेल पता हमारे डेटाबेस में मौजूद है, तो
+        आपको कुछ मिनटों में अपने ईमेल पते की पुष्टि करने के तरीके के बारे में निर्देशों
+        के साथ एक ईमेल प्राप्त होगा।
+    failure:
+      already_authenticated: आप पहले से ही साइन इन हैं।
+      inactive: आपका खाता अभी तक सक्रिय नहीं है।
+      invalid: अमान्य %{authentication_keys} या पासवर्ड।
+      locked: आपका खाता लॉक है।
+      last_attempt: आपका खाता लॉक होने से पहले आपके पास एक और प्रयास है।
+      not_found_in_database: अमान्य %{authentication_keys} या पासवर्ड।
+      timeout: आपका सत्र समाप्त हो गया। जारी रखने के लिए कृपया फिर से साइन इन करें।
+      unauthenticated: जारी रखने से पहले आपको साइन इन या साइन अप करना होगा।
+      unconfirmed: जारी रखने से पहले आपको अपने ईमेल पते की पुष्टि करनी होगी।
+    mailer:
+      confirmation_instructions:
+        subject: पुष्टिकरण निर्देश
+      reset_password_instructions:
+        subject: पासवर्ड रीसेट करने के निर्देश
+      unlock_instructions:
+        subject: अनलॉक करने के निर्देश
+      email_changed:
+        subject: ईमेल बदला गया
+      password_change:
+        subject: पासवर्ड बदला गया
     omniauth_callbacks:
-      success: "%{kind} खाते से सफलतापूर्वक प्रमाणित हुआ।"
+      failure: '%{kind} से आपको प्रमाणित नहीं कर सका क्योंकि "%{reason}"।'
+      success: "%{kind} खाते से सफलतापूर्वक प्रमाणित किया गया।"
+    passwords:
+      no_token: आप पासवर्ड रीसेट ईमेल से आए बिना इस पृष्ठ तक नहीं पहुंच सकते। यदि
+        आप पासवर्ड रीसेट ईमेल से आते हैं, तो कृपया सुनिश्चित करें कि आपने प्रदान किए
+        गए पूर्ण URL का उपयोग किया है।
+      send_instructions: आपको कुछ मिनटों में अपना पासवर्ड रीसेट करने के तरीके के बारे
+        में निर्देशों के साथ एक ईमेल प्राप्त होगा।
+      send_paranoid_instructions: यदि आपका ईमेल पता हमारे डेटाबेस में मौजूद है, तो
+        आपको कुछ ही मिनटों में अपने ईमेल पते पर पासवर्ड रिकवरी लिंक प्राप्त होगा।
+      updated: आपका पासवर्ड सफलतापूर्वक बदल दिया गया है। अब आप साइन इन हैं।
+      updated_not_active: आपका पासवर्ड सफलतापूर्वक बदल दिया गया है।
+    registrations:
+      destroyed: अलविदा! आपका खाता सफलतापूर्वक रद्द कर दिया गया है। हमें उम्मीद है
+        कि हम आपको जल्द ही फिर से देखेंगे।
+      signed_up: स्वागत है! आपने सफलतापूर्वक साइन अप कर लिया है।
+      signed_up_but_inactive: आपने सफलतापूर्वक साइन अप कर लिया है। हालाँकि, हम आपको
+        साइन इन नहीं कर सके क्योंकि आपका खाता अभी तक सक्रिय नहीं है।
+      signed_up_but_locked: आपने सफलतापूर्वक साइन अप कर लिया है। हालाँकि, हम आपको
+        साइन इन नहीं कर सके क्योंकि आपका खाता लॉक है।
+      signed_up_but_unconfirmed: पुष्टिकरण लिंक के साथ एक संदेश आपके ईमेल पते पर भेजा
+        गया है। कृपया अपना खाता सक्रिय करने के लिए लिंक का पालन करें।
+      update_needs_confirmation: आपने अपना खाता सफलतापूर्वक अपडेट कर लिया है, लेकिन
+        हमें आपके नए ईमेल पते को सत्यापित करने की आवश्यकता है। कृपया अपना ईमेल जांचें
+        और अपने नए ईमेल पते की पुष्टि करने के लिए पुष्टिकरण लिंक का पालन करें।
+      updated: आपका खाता सफलतापूर्वक अपडेट कर दिया गया है।
+      updated_but_not_signed_in: आपका खाता सफलतापूर्वक अपडेट कर दिया गया है, लेकिन
+        चूंकि आपका पासवर्ड बदल दिया गया था, इसलिए आपको फिर से साइन इन करने की आवश्यकता
+        है।
+    sessions:
+      signed_in: सफलतापूर्वक साइन इन किया गया।
+      signed_out: सफलतापूर्वक साइन आउट किया गया।
+      already_signed_out: सफलतापूर्वक साइन आउट किया गया।
+    unlocks:
+      send_instructions: आपको कुछ ही मिनटों में अपना खाता अनलॉक करने के तरीके के बारे
+        में निर्देशों के साथ एक ईमेल प्राप्त होगा।
+      send_paranoid_instructions: यदि आपका खाता मौजूद है, तो आपको कुछ ही मिनटों में
+        इसे अनलॉक करने के तरीके के बारे में निर्देशों के साथ एक ईमेल प्राप्त होगा।
+      unlocked: आपका खाता सफलतापूर्वक अनलॉक कर दिया गया है। जारी रखने के लिए कृपया
+        साइन इन करें।
   landing:
     hero:
-      headline: ज्यादा बनाएं, कम गिनती करें
-      subheadline: Spreadsheets और झंझट भरी calculations को छोड़ें। Pricing को automatic
-        बनाएं ताकि आप सबसे मजेदार हिस्से पर ध्यान दे सकें।
-      cta_primary: Free में Calculate करना शुरू करें
-      cta_demo: Demo देखें
-      trust_signal: Credit card की जरूरत नहीं - 30 दिन तक पूरे Startup features के
-        साथ शुरू करें
-      preview_title: Quick Cost Preview
-      preview_filament_weight: Filament Weight
-      preview_print_time: Print Time
-      preview_total_cost: Total Cost
-      preview_cost_breakdown: Electricity + Filament + Labor
+      headline: अधिक निर्माण, कम गणना
+      subheadline: स्प्रेडशीट और थकाऊ गणनाओं को छोड़ें। स्वचालित रूप से मूल्य निर्धारण
+        को संभालें ताकि आप मजेदार हिस्से पर ध्यान केंद्रित कर सकें।
+      cta_primary: मुफ्त में गणना शुरू करें
+      cta_demo: डेमो देखें
+      trust_signal: किसी क्रेडिट कार्ड की आवश्यकता नहीं है - 30 दिनों के लिए पूर्ण
+        स्टार्टअप सुविधाओं के साथ शुरू करें
+      preview_title: त्वरित लागत पूर्वावलोकन
+      preview_filament_weight: फिलामेंट का वज़न
+      preview_print_time: प्रिंट का समय
+      preview_total_cost: कुल लागत
+      preview_cost_breakdown: बिजली + फिलामेंट + श्रम
     problem:
-      headline: क्या आप 3D prints पर पैसा खो रहे हैं?
-      manual_errors: Manual Calculation की Errors
-      manual_errors_desc: Spreadsheets और mental math से costly mistakes और undercharging
-        होती है।
-      electricity_costs: भूली हुई Electricity Costs
-      electricity_costs_desc: Power consumption आपकी actual costs में 20-40% तक जोड़
-        सकता है लेकिन अक्सर ignore किया जाता है।
-      inconsistent_pricing: Inconsistent Pricing
-      inconsistent_pricing_desc: Similar jobs के लिए अलग calculations से customers
-        confuse होते हैं और profits hurt होते हैं।
-      time_wasted: Spreadsheets में Time Waste
-      time_wasted_desc: Printing business grow करने के बजाय manual calculations में
-        घंटे बर्बाद।
+      headline: क्या आप 3D प्रिंट के लिए मूल्य निर्धारण की गणना करने में समय बर्बाद
+        कर रहे हैं?
+      manual_errors: मैनुअल गणना त्रुटियां
+      manual_errors_desc: स्प्रेडशीट और मानसिक गणित से महंगी गलतियाँ होती हैं और कम
+        शुल्क लिया जाता है।
+      electricity_costs: भूली हुई बिजली लागत
+      electricity_costs_desc: बिजली की खपत आपकी वास्तविक लागतों में 20-40% जोड़ सकती
+        है, लेकिन अक्सर इसे अनदेखा किया जाता है।
+      inconsistent_pricing: असंगत मूल्य निर्धारण
+      inconsistent_pricing_desc: समान नौकरियों के लिए अलग-अलग गणनाएँ ग्राहकों को भ्रमित
+        करती हैं और मुनाफे को नुकसान पहुँचाती हैं।
+      time_wasted: स्प्रेडशीट पर बर्बाद समय
+      time_wasted_desc: अपने प्रिंटिंग व्यवसाय को बढ़ाने के बजाय मैनुअल गणना पर घंटों
+        खर्च होते हैं।
     solution:
-      headline: Serious Makers के लिए Professional Tools
-      subheadline: Accurate pricing और 3D printing projects को professionally manage
-        करने के लिए सब कुछ।
+      headline: गंभीर निर्माताओं के लिए पेशेवर उपकरण
+      subheadline: आपको सटीक मूल्य निर्धारण करने और अपनी 3D प्रिंटिंग परियोजनाओं को
+        एक पेशेवर की तरह प्रबंधित करने के लिए आवश्यक सब कुछ।
     features:
       accurate_calculation:
-        title: Accurate Cost Calculation
-        desc: सभी hidden expenses के साथ comprehensive calculation से हर बार precise
-          costs पाएं।
-        filament: Filament weight + spool cost
-        electricity: Electricity consumption tracking
-        labor: Labor time (prep + post-processing)
-        depreciation: Machine depreciation
+        title: सटीक लागत गणना
+        desc: सभी छिपे हुए खर्चों सहित व्यापक गणना के साथ हर बार सटीक लागत प्राप्त
+          करें।
+        filament: फिलामेंट का वज़न + स्पूल लागत
+        electricity: बिजली की खपत ट्रैकिंग
+        labor: श्रम समय (तैयारी + पोस्ट-प्रोसेसिंग)
+        depreciation: मशीन का मूल्यह्रास
       multi_printer:
-        title: Multi-Printer Management
-        desc: Different printer specifications track करें और अपने पूरे fleet में return
-          on investment monitor करें।
-        power: Individual power consumption tracking
-        roi: Printer के हिसाब से ROI tracking
-        organization: Organized print job management
+        title: मल्टी-प्रिंटर प्रबंधन
+        desc: विभिन्न प्रिंटर विशिष्टताओं को ट्रैक करें और अपने पूरे बेड़े में निवेश
+          पर अपनी वापसी की निगरानी करें।
+        power: व्यक्तिगत बिजली खपत ट्रैकिंग
+        roi: प्रति प्रिंटर आरओआई ट्रैकिंग
+        organization: संगठित प्रिंट जॉब प्रबंधन
       invoicing:
-        title: Professional Invoicing
-        desc: Company branding और multi-currency support के साथ professional PDF invoices
-          generate करें।
-        pdf: Auto-generated PDF invoices
-        branding: Custom company branding
-        currency: Multi-currency support
+        title: पेशेवर इनवॉइसिंग
+        desc: अपनी कंपनी ब्रांडिंग और बहु-मुद्रा समर्थन के साथ पेशेवर पीडीएफ इनवॉइस
+          जेनरेट करें।
+        pdf: ऑटो-जेनरेटेड पीडीएफ इनवॉइस
+        branding: कस्टम कंपनी ब्रांडिंग
+        currency: बहु-मुद्रा समर्थन
       organization:
-        title: Project Organization
-        desc: Powerful search, filtering, और project management tools के साथ print
-          jobs को organized रखें।
-        search: Print jobs search और filter करें
-        duplicate: Similar projects duplicate करें
-        history: Complete print history tracking
+        title: परियोजना संगठन
+        desc: शक्तिशाली खोज, फ़िल्टरिंग और परियोजना प्रबंधन उपकरणों के साथ अपने प्रिंट
+          जॉब को व्यवस्थित रखें।
+        search: प्रिंट जॉब खोजें और फ़िल्टर करें
+        duplicate: समान परियोजनाओं को डुप्लिकेट करें
+        history: पूरी प्रिंट इतिहास ट्रैकिंग
     pricing:
-      headline: Simple, Transparent Pricing
-      subheadline: अपने printing volume के हिसाब से plan choose करें। कभी भी upgrade
-        या downgrade करें।
-      cta: Free में शुरू करें
+      headline: सरल, पारदर्शी मूल्य निर्धारण
+      subheadline: वह योजना चुनें जो आपके प्रिंटिंग वॉल्यूम के लिए उपयुक्त हो। कभी
+        भी अपग्रेड या डाउनग्रेड करें।
+      cta: मुफ्त में शुरू करें
       free:
-        title: Free
-        trial_notice: पहले महीने में full Startup features शामिल!
-        calculations: महीने में 5 calculations (trial के बाद)
-        printers: 1 printer profile
-        filaments: 4 filament types
-        invoices: महीने में 5 invoices
-        branding: Invoices पर CalcuMake branding
+        title: मुफ्त
+        trial_notice: पहले महीने में स्टार्टअप की पूरी सुविधाएँ शामिल हैं!
+        calculations: प्रति माह 5 गणनाएँ (ट्रायल के बाद)
+        printers: 1 प्रिंटर प्रोफाइल
+        filaments: 4 फिलामेंट प्रकार
+        invoices: प्रति माह 5 इनवॉइस
+        branding: इनवॉइस पर CalcuMake ब्रांडिंग
       startup:
-        title: Startup
-        badge: सबसे Popular
-        calculations: महीने में 50 calculations
-        printers: 10 printer profiles
-        filaments: 16 filament types
-        branding: CalcuMake branding remove करें
-        ads: No ads
+        title: स्टार्टअप
+        badge: सबसे लोकप्रिय
+        calculations: प्रति माह 50 गणनाएँ
+        printers: 10 प्रिंटर प्रोफाइल
+        filaments: 16 फिलामेंट प्रकार
+        branding: CalcuMake ब्रांडिंग हटाएं
+        ads: कोई विज्ञापन नहीं
       pro:
-        title: Pro
-        unlimited: सब कुछ unlimited
-        branding: CalcuMake branding remove करें
-        ads: No ads
-        support: Priority support
-        analytics: Advanced analytics
-        features: Future premium features
+        title: प्रो
+        unlimited: सब कुछ असीमित
+        branding: CalcuMake ब्रांडिंग हटाएं
+        ads: कोई विज्ञापन नहीं
+        support: प्राथमिकता समर्थन
+        analytics: उन्नत विश्लेषिकी
+        features: भविष्य की प्रीमियम सुविधाएँ
       trust_signals:
-        no_credit_card: Credit card की जरूरत नहीं - 30 दिन तक पूरे Startup features
-          के साथ शुरू करें
-        cancel_anytime: कभी भी cancel करें
-        data_private: आपका data private रहता है
+        no_credit_card: किसी क्रेडिट कार्ड की आवश्यकता नहीं है - 30 दिनों के लिए स्टार्टअप
+          की पूरी सुविधाओं के साथ शुरुआत करें
+        cancel_anytime: कभी भी रद्द करें
+        data_private: आपका डेटा निजी रहता है
     faq:
-      headline: Frequently Asked Questions
+      headline: अक्सर पूछे जाने वाले प्रश्न
       accuracy:
-        question: Calculations कितनी accurate हैं?
-        answer: CalcuMake simple formulas use करता है और filament, electricity, labor
-          time, और machine depreciation सहित सभी cost factors को account करता है।
+        question: गणनाएँ कितनी सटीक हैं?
+        answer: CalcuMake सरल सूत्रों का उपयोग करता है और फिलामेंट, बिजली, श्रम समय
+          और मशीन मूल्यह्रास सहित सभी लागत कारकों को ध्यान में रखता है।
       currencies:
-        question: CalcuMake कौन सी currencies support करता है?
-        answer: CalcuMake currently USD, EUR, GBP, JPY, CAD, और AUD support करता है
-          automatic formatting और हर currency के लिए precision के साथ। आप profile
-          settings में कभी भी currencies switch कर सकते हैं।
+        question: CalcuMake किन मुद्राओं का समर्थन करता है?
+        answer: CalcuMake वर्तमान में USD, EUR, GBP, JPY, CAD और AUD को प्रत्येक मुद्रा
+          के लिए स्वचालित फ़ॉर्मेटिंग और परिशुद्धता के साथ समर्थन करता है। आप अपनी
+          प्रोफ़ाइल सेटिंग्स में कभी भी मुद्राएँ बदल सकते हैं।
       printers:
-        question: क्या CalcuMake मेरे 3D printer को support करता है?
-        answer: CalcuMake किसी भी 3D printer के साथ काम करता है! आपको बस अपने printer
-          का power consumption और other specifications enter करना है। Resin printers
-          के लिए support भी जल्दी आ रहा है!
+        question: क्या CalcuMake मेरे 3D प्रिंटर का समर्थन करता है?
+        answer: CalcuMake किसी भी 3D प्रिंटर के साथ काम करता है! आप बस अपने प्रिंटर
+          की बिजली खपत और अन्य विशिष्टताओं को दर्ज करते हैं। हम जल्द ही रेजिन प्रिंटर
+          के लिए समर्थन की योजना बना रहे हैं!
       electricity:
-        question: Electricity costs कैसे काम करती हैं?
-        answer: CalcuMake आपके printer के power consumption (watts में), print duration,
-          और local energy rate per kWh के base पर electricity costs automatically
-          calculate करता है। इससे यह often-overlooked cost factor कभी नहीं भूलता।
+        question: बिजली की लागत कैसे काम करती है?
+        answer: CalcuMake स्वचालित रूप से आपके प्रिंटर की बिजली खपत (वाट में), प्रिंट
+          अवधि और kWh प्रति आपकी स्थानीय ऊर्जा दर के आधार पर बिजली की लागत की गणना
+          करता है। यह सुनिश्चित करता है कि आप इस अक्सर अनदेखे लागत कारक को कभी न भूलें।
       invoices:
-        question: क्या मैं अपने invoices customize कर सकता हूं?
-        answer: हां! आप अपना company logo add कर सकते हैं, colors customize कर सकते
-          हैं, और business information include कर सकते हैं। Paid plans में CalcuMake
-          branding remove हो जाती है completely professional look के लिए।
+        question: क्या मैं अपने इनवॉइस को अनुकूलित कर सकता हूँ?
+        answer: हाँ! आप अपनी कंपनी का लोगो जोड़ सकते हैं, रंगों को अनुकूलित कर सकते
+          हैं और अपनी व्यावसायिक जानकारी शामिल कर सकते हैं. भुगतान किए गए प्लान पूरी
+          तरह से पेशेवर लुक के लिए CalcuMake ब्रांडिंग को हटा देते हैं.
     final_cta:
-      headline: 3D prints पर पैसा खोना बंद करने के लिए ready हैं?
-      subheadline: हजारों makers के साथ join हों जो accurate pricing और professional
-        project management के लिए CalcuMake पर trust करते हैं।
-      button: अपना Free Trial शुरू करें
+      headline: क्या आप 3D प्रिंट पर पैसे खोना बंद करने के लिए तैयार हैं?
+      subheadline: हजारों निर्माताओं से जुड़ें जो सटीक मूल्य निर्धारण और पेशेवर परियोजना
+        प्रबंधन के लिए CalcuMake पर भरोसा करते हैं.
+      button: अपना निःशुल्क परीक्षण शुरू करें
+  demo:
+    title: CalcuMake डेमो आज़माएं
+    subtitle: नमूना डेटा के साथ हमारे 3D प्रिंट लागत कैलकुलेटर का परीक्षण करें. किसी
+      खाते की आवश्यकता नहीं है!
+    sign_up_full_version: पूर्ण संस्करण के लिए साइन अप करें
+    start_free_trial: निःशुल्क परीक्षण शुरू करें
+    limitations:
+      title: यह एक डेमो संस्करण है
+      description: 'पूर्ण CalcuMake ऐप में शामिल हैं:'
+      features: '["स्वचालित विशिष्टताओं के साथ एकाधिक प्रिंटर प्रोफाइल", "सामग्री
+        गुणों के साथ व्यापक फिलामेंट लाइब्रेरी", "पेशेवर पीडीएफ इनवॉइस पीढ़ी", "परियोजना
+        इतिहास और डुप्लिकेट कार्यक्षमता", "बहु-मुद्रा समर्थन", "मशीन मूल्यह्रास गणना"]'
+  locale_suggestion:
+    banner:
+      title: ऐसा लगता है कि आप किसी भिन्न क्षेत्र से एक्सेस कर रहे हैं.
+      switch_to: बेहतर अनुभव के लिए %{language} पर स्विच करें?
+      currently_viewing: वर्तमान में %{language} में देख रहे हैं
+      switch_button: भाषा बदलें
+      stay_button: ठहरें
+      close: बंद करें
   calculators:
     quick_cost_calculator: त्वरित लागत कैलकुलेटर
     print_time_hours: प्रिंट समय (घंटे)
     filament_weight_grams: फिलामेंट वजन (ग्राम)
-    filament_price_per_kg: फिलामेंट मूल्य प्रति किग्रा (₹)
-    labor_rate_per_hour: श्रम दर प्रति घंटा (₹)
-    create_full_calculation: पूर्ण गणना बनाएं
-    includes_defaults: 'डिफ़ॉल्ट लागत शामिल:'
+    filament_price_per_kg: फिलामेंट मूल्य प्रति किलोग्राम (<%= %>)
+    labor_rate_per_hour: श्रम दर प्रति घंटा (<%= %>)
+    create_full_calculation: पूर्ण गणना बनाएँ
+    includes_defaults: 'शामिल डिफ़ॉल्ट लागतें:'
     defaults:
       filament_price: फिलामेंट
       labor_rate: श्रम
       energy_cost: ऊर्जा
-      power_consumption: बिजली खपत
-      machine_payoff: मशीन मूल्यह्रास
+      power_consumption: बिजली की खपत
+      machine_payoff: मशीन भुगतान
     features:
-      real_time: टाइप करते समय तत्काल गणना
-      includes_costs: बिजली और श्रम लागत शामिल
+      real_time: टाइप करते ही रीयल-टाइम गणना
+      includes_costs: बिजली और श्रम लागत शामिल हैं
     results:
       filament_cost: फिलामेंट लागत
       electricity_cost: बिजली लागत
       labor_cost: श्रम लागत
       total_cost: कुल लागत
       estimated_cost: 'अनुमानित लागत:'
-  demo:
-    title: CalcuMake डेमो आज़माएं
-    subtitle: नमूना डेटा के साथ हमारी 3D प्रिंट लागत कैलकुलेटर का परीक्षण करें। कोई
-      खाता आवश्यक नहीं!
-    sign_up_full_version: पूर्ण संस्करण के लिए साइन अप करें
-    start_free_trial: निःशुल्क परीक्षण शुरू करें
-    limitations:
-      title: यह एक डेमो संस्करण है
-      description: 'पूर्ण CalcuMake एप्लिकेशन में शामिल है:'
-      features:
-      - स्वचालित विनिर्देशों के साथ एकाधिक प्रिंटर प्रोफाइल
-      - सामग्री गुणों के साथ व्यापक फिलामेंट लाइब्रेरी
-      - पेशेवर PDF चालान जनरेशन
-      - परियोजना इतिहास और डुप्लिकेट कार्यक्षमता
-      - बहु-मुद्रा समर्थन
-      - मशीन मूल्यह्रास गणना
   usage_limits:
-    limit_reached: आप %{plan} योजना की %{limit} %{resource} सीमा तक पहुंच गए हैं।
-      जारी रखने के लिए कृपया अपग्रेड करें।
-    approaching_limit: आप %{resource} की योजना सीमा के करीब पहुंच रहे हैं
     usage_summary: उपयोग सारांश
-    current_usage: "%{limit} में से %{current} उपयोग किया गया"
-    unlimited: असीमित
+    limit_reached: आपने अपनी योजना के लिए %{resource} सीमा पार कर ली है
+    approaching_limits_message: आप अपनी योजना की सीमाओं के करीब पहुंच रहे हैं
   subscriptions:
-    title: सदस्यता और मूल्य निर्धारण
+    title: सदस्यता
     current_plan: वर्तमान योजना
-    upgrade: योजना अपग्रेड करें
-    manage: सदस्यता प्रबंधित करें
-    cancel: सदस्यता रद्द करें
-    invalid_plan: अमान्य सदस्यता योजना चुनी गई
-    checkout_error: चेकआउट सत्र बनाने में असमर्थ। कृपया पुनः प्रयास करें।
-    verification_error: सदस्यता सत्यापित करने में असमर्थ। कृपया सहायता से संपर्क करें।
-    portal_error: सदस्यता प्रबंधन तक पहुंचने में असमर्थ। कृपया पुनः प्रयास करें।
-    no_subscription: आपके पास कोई सक्रिय सदस्यता नहीं है
-    upgrade_successful: "%{plan} योजना में सफलतापूर्वक अपग्रेड किया गया!"
-    cancel_scheduled: आपकी सदस्यता बिलिंग अवधि के अंत में रद्द कर दी जाएगी
-    cancel_error: सदस्यता रद्द करने में असमर्थ। कृपया पुनः प्रयास करें।
-    trial_badge: 30 दिन का निःशुल्क परीक्षण
-    trial_remaining: "%{days} दिन शेष"
+    upgrade: अपग्रेड करें
+    upgrade_successful: सदस्यता सफलतापूर्वक अपग्रेड की गई
+    already_subscribed: आपके पास पहले से ही एक सक्रिय सदस्यता है
+    invalid_plan: अमान्य सदस्यता योजना
+    no_subscription: कोई सक्रिय सदस्यता नहीं मिली
+    cancel_scheduled: सदस्यता रद्द करने का समय निर्धारित है
     features:
-      calculations: प्रति माह %{count} प्रिंट गणनाएँ
-      printers: "%{count} प्रिंटर प्रोफाइल"
-      filaments: "%{count} फिलामेंट प्रकार"
-      invoices: प्रति माह %{count} चालान
-      unlimited_calculations: असीमित प्रिंट गणनाएँ
-      unlimited_printers: असीमित प्रिंटर
-      unlimited_filaments: असीमित फिलामेंट
-      unlimited_invoices: असीमित चालान
-      no_branding: CalcuMake ब्रांडिंग हटाएं
-      no_ads: विज्ञापन-मुक्त अनुभव
-      priority_support: प्राथमिकता समर्थन
-      analytics: उन्नत विश्लेषण
-      import_export: थोक आयात/निर्यात
-    plans:
-      subtitle: अपने लिए सबसे उपयुक्त योजना चुनें
-      free:
-        name: निःशुल्क
-        price: "₹0"
-        description: CalcuMake आज़माने के लिए बिल्कुल सही
-      startup:
-        name: स्टार्टअप
-        price: "₹80/माह"
-        description: शौक़ीनों और छोटी परियोजनाओं के लिए बढ़िया
-      pro:
-        name: प्रो
-        price: "₹800/माह"
-        description: पेशेवरों के लिए असीमित शक्ति
-    most_popular: सबसे लोकप्रिय
-    month: माह
-    your_plan: आपकी वर्तमान योजना
-    remaining: शेष
-    renews_on: नवीनीकरण तिथि
-    trial_ends_on: परीक्षण समाप्ति तिथि
+      calculations: प्रिंट गणनाएँ
+      printers: प्रिंटर
     upgrade_now: अभी अपग्रेड करें
-    upgrade_to_plan: "%{plan} में अपग्रेड करें"
-    downgrade_to_free: निःशुल्क योजना में डाउनग्रेड करें
-    confirm_downgrade: क्या आप वाकई डाउनग्रेड करना चाहते हैं? आप प्रीमियम सुविधाओं
-      तक पहुंच खो देंगे।
-    manage_subscription: अपनी सदस्यता प्रबंधित करें
-    manage_description: हमारे सुरक्षित बिलिंग पोर्टल के माध्यम से अपनी भुगतान विधि
-      अपडेट करें, बिलिंग इतिहास देखें, या सदस्यता रद्द करें।
-    open_billing_portal: बिलिंग पोर्टल खोलें
-    cancel_subscription: सदस्यता रद्द करें
-    cancel_confirmation: क्या आप वाकई अपनी सदस्यता रद्द करना चाहते हैं? आप अपनी बिलिंग
-      अवधि के अंत तक पहुंच बनाए रखेंगे।
-    manage_note: सभी बिलिंग Stripe द्वारा सुरक्षित रूप से संभाली जाती है। आपकी भुगतान
-      जानकारी कभी भी हमारे सर्वर पर संग्रहीत नहीं की जाती है।
+  gdpr:
+    cookie_consent:
+      title: कुकी सहमति
+      message: हम आपके अनुभव को बेहतर बनाने के लिए कुकीज़ का उपयोग करते हैं। इस साइट
+        का उपयोग जारी रखकर, आप हमारी कुकी नीति से सहमत हैं।
+      message_html: हम आपके अनुभव को बेहतर बनाने के लिए कुकीज़ का उपयोग करते हैं।
+        इस साइट का उपयोग जारी रखकर, आप हमारी %{cookie_policy_link} से सहमत हैं। हमारी
+        %{privacy_policy_link} पढ़ें।
+      accept: स्वीकार करें
+      decline: अस्वीकार करें
+      reject: खारिज करें
+    cookie_policy_title: कुकी नीति
+    cookie_policy: हम आपके अनुभव को बेहतर बनाने के लिए कुकीज़ का उपयोग करते हैं। हमारी
+      साइट का उपयोग करके, आप कुकीज़ के लिए सहमति देते हैं।
+    privacy_policy: गोपनीयता नीति
+    terms_of_service_title: सेवा की शर्तें
+    last_updated: अंतिम बार अपडेट किया गया
+    data_export:
+      title: अपना डेटा निर्यात करें
+      description: JSON प्रारूप में अपना सारा डेटा डाउनलोड करें
+      button: डेटा डाउनलोड करें
+      what_included: आपके डेटा निर्यात में क्या शामिल है
+      items:
+        account_info: खाता जानकारी
+    data_deletion:
+      title: अपना खाता हटाएं
+      description: स्थायी रूप से अपना खाता और सभी संबंधित डेटा हटाएं
+      warning: इस क्रिया को पूर्ववत नहीं किया जा सकता
+      warning_title: 'चेतावनी: यह क्रिया स्थायी है'
+      warning_message: आपका सारा डेटा स्थायी रूप से हटा दिया जाएगा और इसे पुनर्प्राप्त
+        नहीं किया जा सकता है
+      button: खाता हटाएं
+      what_deleted: क्या हटाया जाएगा
+    tos_sections:
+      acceptance:
+        title: शर्तों की स्वीकृति
+        content: CalcuMake का उपयोग करके, आप सेवा की इन शर्तों से सहमत हैं
+    cookie_sections:
+      what_are_cookies:
+        title: कुकीज़ क्या हैं?
+    consent_recorded: आपकी प्राथमिकताएँ सहेज ली गई हैं
+    account_deleted: आपका खाता सफलतापूर्वक हटा दिया गया है
+  errors:
+    messages:
+      already_confirmed: पहले ही पुष्टि हो चुकी है, कृपया साइन इन करने का प्रयास करें
+      confirmation_period_expired: को %{period} के भीतर पुष्टि करने की आवश्यकता है,
+        कृपया एक नया अनुरोध करें
+      expired: की समय सीमा समाप्त हो गई है, कृपया एक नया अनुरोध करें
+      not_found: नहीं मिला
+      not_locked: लॉक नहीं किया गया था
+      not_saved:
+        one: '1 त्रुटि ने इस %{resource} को सहेजे जाने से रोक दिया:'
+        other: "%{count} त्रुटियों ने इस %{resource} को सहेजे जाने से रोक दिया:"

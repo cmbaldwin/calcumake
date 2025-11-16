@@ -1,0 +1,11 @@
+---
+en:
+  currency:
+    usd: US Dollar
+    eur: Euro
+    gbp: British Pound
+    jpy: Japanese Yen
+    cad: Canadian Dollar
+    aud: Australian Dollar
+  energy:
+    cost_per_kwh: Energy Cost per kWh

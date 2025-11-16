@@ -1,28 +1,117 @@
 ---
 ar:
   language_name: العربية
+  activerecord:
+    errors:
+      messages:
+        blank: لا يمكن أن يكون فارغًا
+        taken: تم أخذه بالفعل
+        too_short: قصير جدًا (الحد الأدنى هو %{count} حرفًا)
+        too_long: طويل جدًا (الحد الأقصى هو %{count} حرفًا)
+        invalid: غير صالح
+        greater_than: يجب أن يكون أكبر من %{count}
+        greater_than_or_equal_to: يجب أن يكون أكبر من أو يساوي %{count}
+        less_than: يجب أن يكون أقل من %{count}
+        less_than_or_equal_to: يجب أن يكون أقل من أو يساوي %{count}
+        not_a_number: ليس رقمًا
+        inclusion: غير مدرج في القائمة
+        exclusion: محجوز
+        accepted: يجب قبوله
+        present: يجب أن يكون فارغًا
+        confirmation: لا يتطابق مع %{attribute}
+        empty: لا يمكن أن يكون فارغًا
+      models:
+        filament:
+          attributes:
+            name:
+              blank: الرجاء إدخال اسم الفتيل
+              taken: لديك بالفعل فتيل بهذا الاسم
+            material_type:
+              blank: الرجاء تحديد نوع المادة
+              inclusion: الرجاء تحديد نوع مادة صالح
+            diameter:
+              blank: الرجاء تحديد قطر
+              inclusion: الرجاء تحديد قطر صالح (1.75 مم أو 2.85 مم أو 3.0 مم)
+            spool_weight:
+              greater_than: يجب أن يكون وزن البكرة أكبر من 0
+              not_a_number: يجب أن يكون وزن البكرة رقمًا
+            spool_price:
+              greater_than: يجب أن يكون سعر البكرة أكبر من 0
+              not_a_number: يجب أن يكون سعر البكرة رقمًا
+            print_temperature_min:
+              greater_than: يجب أن تكون درجة الحرارة الدنيا أكبر من 0 درجة مئوية
+              less_than: يجب أن تكون درجة الحرارة الدنيا أقل من 500 درجة مئوية
+              not_a_number: يجب أن تكون درجة الحرارة الدنيا رقمًا
+            print_temperature_max:
+              greater_than: يجب أن تكون درجة الحرارة القصوى أكبر من 0 درجة مئوية
+              less_than: يجب أن تكون درجة الحرارة القصوى أقل من 500 درجة مئوية
+              not_a_number: يجب أن تكون درجة الحرارة القصوى رقمًا
+              temperature_range: يجب أن تكون أكبر من درجة الحرارة الدنيا
+            heated_bed_temperature:
+              greater_than: يجب أن تكون درجة حرارة السرير أكبر من 0 درجة مئوية
+              less_than: يجب أن تكون درجة حرارة السرير أقل من 500 درجة مئوية
+              not_a_number: يجب أن تكون درجة حرارة السرير رقمًا
+            print_speed_max:
+              greater_than: يجب أن تكون سرعة الطباعة أكبر من 0
+              less_than: يجب أن تكون سرعة الطباعة أقل من 1000
+              not_a_number: يجب أن تكون سرعة الطباعة رقمًا
+            storage_temperature_max:
+              greater_than: يجب أن تكون درجة حرارة التخزين أكبر من -50 درجة مئوية
+              less_than: يجب أن تكون درجة حرارة التخزين أقل من 100 درجة مئوية
+              not_a_number: يجب أن تكون درجة حرارة التخزين رقمًا
+            density:
+              greater_than: يجب أن تكون الكثافة أكبر من 0
+              less_than: يجب أن تكون الكثافة أقل من 10
+              not_a_number: يجب أن تكون الكثافة رقمًا
+        plate_filament:
+          attributes:
+            filament_weight:
+              blank: الرجاء إدخال وزن الفتيل
+              greater_than: يجب أن يكون وزن الفتيل أكبر من 0
+              not_a_number: يجب أن يكون وزن الفتيل رقمًا
+            filament_id:
+              blank: الرجاء تحديد فتيل
+              already_added: تمت إضافة هذا الفتيل بالفعل إلى هذه اللوحة
+        plate:
+          attributes:
+            base:
+              no_filaments: يجب أن تحتوي على فتيل واحد على الأقل
+              duplicate_filaments: لا يمكن استخدام نفس الفتيل عدة مرات على لوحة واحدة
+        print_pricing:
+          attributes:
+            base:
+              no_plates: يجب أن تحتوي على لوحة واحدة على الأقل
+              too_many_plates: لا يمكن أن تحتوي على أكثر من 10 لوحات
+              duplicate_filaments_on_plate: لا يمكن استخدام نفس الفتيل عدة مرات على
+                نفس اللوحة
   nav:
     brand: CalcuMake
-    print_pricings: أسعاري
-    my_pricings: أسعاري
-    new_pricing: سعر جديد
+    print_pricings: تسعيراتي
+    my_pricings: تسعيراتي
+    new_pricing: تسعيرة جديدة
     my_printers: طابعاتي
-    my_filaments: خيوط الطباعة
+    my_filaments: فُتُلي
+    clients: عملائي
+    invoices: فواتير
     profile: الملف الشخصي
     help: مساعدة
     sign_out: تسجيل الخروج
     sign_in: تسجيل الدخول
-    sign_up: إنشاء حساب
+    sign_up: تسجيل
     language: اللغة
-    clients: My Clients
-    invoices: Invoices
+    usage_and_subscription: الاستخدام والاشتراك
+    legal_header: الشؤون القانونية والخصوصية
+    data_rights_header: حقوق بياناتك
+    export_data: تصدير بياناتي
+    delete_account: حذف حسابي
   actions:
+    title: إجراءات
     save: حفظ
     cancel: إلغاء
     edit: تعديل
     delete: حذف
-    duplicate: نسخ
-    copy: نسخة
+    duplicate: تكرار
+    copy: نسخ
     create: إنشاء
     update: تحديث
     new: جديد
@@ -30,92 +119,113 @@ ar:
     back: رجوع
     submit: إرسال
     view: عرض
-    actions: الإجراءات
-    title: Actions
-    print: Print
-    more: More
-    search: Search
+    actions: إجراءات
+    print: طباعة
+    more: المزيد
+    search: بحث
   flash:
-    success: نجح
+    success: نجاح
     error: خطأ
     alert: تنبيه
-    notice: إشعار
+    notice: ملاحظة
     created: تم إنشاء %{model} بنجاح
     updated: تم تحديث %{model} بنجاح
     deleted: تم حذف %{model} بنجاح
-    duplicated: تم نسخ %{model} بنجاح
-    duplicate_failed: فشل نسخ %{model}
+    duplicated: تم تكرار %{model} بنجاح
+    duplicate_failed: فشل تكرار %{model}
   models:
-    user: المستخدم
-    printer: الطابعة
+    user: مستخدم
+    printer: طابعة
     print_pricing: تسعير الطباعة
-    filament: خيط الطباعة
-    client: العميل
-    print_pricing_plural: تسعيرات الطباعة
-    printer_plural: الطابعات
-    filament_plural: خيوط الطباعة
-    invoice_plural: الفواتير
-  printer:
-    name: اسم الطابعة
-    manufacturer: الشركة المصنعة
-    model: الطراز
-    purchase_price: سعر الشراء
-    purchase_date: تاريخ الشراء
-    power_consumption: استهلاك الطاقة (واط)
-    hourly_cost: التكلفة بالساعة
-    depreciation_years: فترة الاستهلاك (سنوات)
-    repair_factor: عامل الإصلاح (%)
-    paid_off: مسدد
-    months_to_payoff: أشهر للسداد
+    filament: خيوط الطابعة (Filament)
+    client: عميل
+    print_pricing_plural: تقديرات أسعار الطباعة
+    printer_plural: طابعات
+    filament_plural: خيوط الطابعة
+    invoice_plural: فواتير
+  common:
+    created: تم الإنشاء
+    currency: العملة
+    hours: ساعات
+    minutes: دقائق
+    grams: غ
+    watts: واط
+    kwh: كيلوواط ساعة
+    percentage: "%"
+    years: سنوات
+    'yes': نعم
+    'no': لا
+    are_you_sure: هل أنت متأكد؟
+    errors_prohibited: "%{count} %{errors} منعت حفظ هذا الـ %{model}:"
+    error_count:
+      one: خطأ
+      other: أخطاء
+  date:
+    formats:
+      month_day_year: "%B %d, %Y"
+  time:
+    at: في
+    formats:
+      month_day_year: "%B %d, %Y"
+      month_day_year_time: "%B %d, %Y في %I:%M %p"
   print_pricing:
     index:
-      title: حسابات الطباعة الخاصة بي
+      title: حسابات أسعار الطباعة الخاصة بي
       subtitle: تتبع وإدارة حسابات تكلفة الطباعة ثلاثية الأبعاد
-      create_new: حساب طباعة جديدة
+      create_new: حساب سعر طباعة جديد
       total_calculations: إجمالي الحسابات
       total_print_time: إجمالي وقت الطباعة
-      search_placeholder: البحث حسب اسم المهمة أو نوع الفيلامنت...
+      search_placeholder: البحث عن طريق اسم المهمة أو نوع خيوط الطابعة...
       empty_state:
-        title: لا توجد حسابات بعد
-        description: ابدأ بإنشاء أول حساب تكلفة طباعة لتتبع النفقات والتسعير لمشاريع
+        title: لا توجد حسابات حتى الآن
+        description: ابدأ بإنشاء أول حساب لتكلفة الطباعة لتتبع النفقات والتسعير لمشاريع
           الطباعة ثلاثية الأبعاد الخاصة بك.
       no_results:
         title: لم يتم العثور على نتائج
-        description: لا توجد حسابات طباعة تطابق '%{query}'. جرب مصطلح بحث مختلف.
+        description: لا توجد حسابات طباعة تطابق '%{query}'. حاول استخدام مصطلح بحث
+          مختلف.
+      total_filament_used: إجمالي خيوط الطابعة المستخدمة
+      total_estimated_sales: إجمالي المبيعات المقدرة
+      total_estimated_profit: إجمالي الأرباح المقدرة
     job_name: اسم المهمة
     print_time: وقت الطباعة
     times_printed: عدد مرات الطباعة
-    final_price: السعر النهائي
-    confirm_delete: هل أنت متأكد من أنك تريد حذف '%{name}'؟
-    times_printed_incremented: تم زيادة عدد مرات الطباعة بنجاح
-    times_printed_decremented: تم تقليل عدد مرات الطباعة بنجاح
     times_printed_decrease: تقليل عدد مرات الطباعة
     times_printed_increase: زيادة عدد مرات الطباعة
     printed_times: عدد مرات الطباعة
+    final_price: السعر النهائي
+    overdue: متأخر
+    confirm_delete: هل أنت متأكد أنك تريد حذف '%{name}'؟
+    times_printed_incremented: تمت زيادة عدد مرات الطباعة بنجاح
+    times_printed_decremented: تم تقليل عدد مرات الطباعة بنجاح
+    duplicated_successfully: تم تكرار تقدير سعر الطباعة بنجاح
+    duplicate_failed: فشل تكرار تسعير الطباعة
     title: تسعير الطباعة
     cost_summary: ملخص التكلفة
+    back_to_all: "← العودة إلى جميع الأسعار"
+    create_new: إنشاء تسعير جديد
     cost_breakdown:
-      filament: تكلفة الخيط
-      electricity: Electricity Cost
-      labor: Labor Cost
-      machine: Machine Cost
-      other: Other Costs
-      vat: VAT
+      filament: تكلفة الفتيل
+      electricity: تكلفة الكهرباء
+      labor: تكلفة العمالة
+      machine: تكلفة الآلة
+      other: تكاليف أخرى
+      vat: ضريبة القيمة المضافة
     invoice: فاتورة
     invoice_number: رقم الفاتورة
     invoice_date: تاريخ الفاتورة
     from: من
     3d_printing_services: خدمات الطباعة ثلاثية الأبعاد
     job_details: تفاصيل العمل
-    filament_type: نوع الخيط
-    filament_types: أنواع الخيوط
+    filament_type: نوع الفتيل
+    filament_types_label: أنواع الفتيل
     weight: الوزن
     total_weight: الوزن الإجمالي
-    total_print_time: وقت الطباعة الإجمالي
+    total_print_time: إجمالي وقت الطباعة
     cost_breakdown_label: تفصيل التكلفة
     description: الوصف
     amount: المبلغ
-    filament_cost: تكلفة الخيط
+    filament_cost: تكلفة الفتيل
     markup: هامش الربح
     electricity_cost: تكلفة الكهرباء
     labor_cost: تكلفة العمالة
@@ -126,187 +236,335 @@ ar:
     other_costs: تكاليف أخرى
     subtotal: المجموع الفرعي
     vat: ضريبة القيمة المضافة
-    total: الإجمالي
+    total: المجموع
     notes: ملاحظات
-    invoice_notes_text: شكراً لك على عملك. يرجى الاحتفاظ بهذه الفاتورة لسجلاتك.
+    invoice_notes_text: شكرا لتعاملكم معنا. يرجى الاحتفاظ بهذه الفاتورة لسجلاتكم.
     payment_info: معلومات الدفع
-    payment_info_text: سيتم إبلاغك بشروط وتفاصيل الدفع بشكل منفصل.
+    payment_info_text: سيتم إبلاغكم بشروط وتفاصيل الدفع بشكل منفصل.
     download_pdf: تنزيل PDF
     calculator:
-      title: آلة حاسبة الطباعة ثلاثية الأبعاد
+      title: حاسبة الطباعة ثلاثية الأبعاد
       subtitle: احسب تكاليف الطباعة ثلاثية الأبعاد بدقة
       edit_title: تعديل حساب الطباعة
-      edit_subtitle: قم بتحديث حساب تكلفة الطباعة ثلاثية الأبعاد
+      edit_subtitle: تحديث حساب تكلفة الطباعة ثلاثية الأبعاد
     edit:
       title: تعديل تسعير الطباعة
-      subtitle: حدِّث حساب تكلفة الطباعة ثلاثية الأبعاد
+      subtitle: تحديث حساب تكلفة الطباعة ثلاثية الأبعاد
     sections:
-      basic_info: المعلومات الأساسية
+      basic_info: معلومات أساسية
       print_time_material: وقت الطباعة والمواد
-      filament_details: تفاصيل الخيط
+      filament_details: تفاصيل الفتيل
       electricity: الكهرباء
-      electricity_auto_calculated: الكهرباء (حساب تلقائي)
+      electricity_auto_calculated: الكهرباء (محسوبة تلقائيًا)
       electricity_power_consumption: الكهرباء واستهلاك الطاقة
       electricity_print_time: الكهرباء ووقت الطباعة
       electricity_energy_cost: الكهرباء وتكلفة الطاقة
-      electricity_settings_link_html: قم بتكوين إعدادات الكهرباء في %{link} الخاص
-        بك
+      electricity_settings_link_html: قم بتكوين إعدادات الكهرباء في %{link}
       profile_settings: إعدادات الملف الشخصي
-      labor: العمل
-      machine_upkeep: صيانة الآلة
-      other_costs_tax: تكاليف أخرى والضرائب
+      labor: العمالة
+      machine_upkeep: الآلة والصيانة
+      machine_auto_calculated: الآلة (محسوبة تلقائيًا)
+      machine_cost_usage: تكلفة الآلة والاستخدام
+      machine_return_period: فترة استرداد الآلة
+      machine_repair_factor: عامل إصلاح الآلة
+      add_edit_printer: إضافة أو تعديل طابعة
+      machine_printer_config_html: قم بتكوين مواصفات الطابعة عندما %{link}
+      unsaved_progress_warning: تحذير بشأن التقدم غير المحفوظ
+      other_costs_tax: تكاليف أخرى والضريبة
       final_price: السعر النهائي
-      plates: الألواح
+      plates: اللوحات
       plate: لوحة
-      machine_auto_calculated: Machine (Auto-calculated)
-      machine_cost_usage: Machine Cost & Usage
-      machine_return_period: Machine Return Period
-      machine_repair_factor: Machine Repair Factor
-      add_edit_printer: add or edit a printer
-      machine_printer_config_html: Configure printer specifications when you %{link}
-      unsaved_progress_warning: Unsaved Progress Warning
-      filaments: Filaments
+      filaments: الفتائل
+    fields:
+      job_name: اسم المهمة
+      job_name_placeholder: 'مثال: نموذج مصغر'
+      select_printer: اختر طابعة
+      select_printer_prompt: اختر طابعة
+      no_printer_help: ليس لديك طابعة مسجلة؟
+      add_printer_link: إضافة طابعة جديدة
+      print_time_hours: ساعات
+      print_time_minutes: دقائق
+      filament_weight: وزن الفتيل (جم)
+      filament_weight_placeholder: '36'
+      filament_type: نوع الفتيل
+      filament_type_prompt: اختر نوع
+      spool_price: سعر البكرة
+      spool_price_placeholder: '25.00'
+      spool_weight: وزن البكرة (جم)
+      spool_weight_placeholder: '1000'
+      markup: هامش الربح (%)
+      markup_placeholder: '20'
+      markup_percentage: نسبة هامش الربح
+      filament_markup: هامش ربح الفتيل (%)
+      prep_time: وقت التحضير (دقيقة)
+      prep_time_placeholder: '30'
+      prep_time_minutes: وقت التحضير (دقائق)
+      prep_cost_hour: تكلفة التحضير/ساعة
+      prep_cost_placeholder: '20.00'
+      prep_cost_per_hour: تكلفة التحضير لكل ساعة
+      post_time: وقت المعالجة اللاحقة (دقيقة)
+      post_time_placeholder: '30'
+      postprocessing_time_minutes: وقت المعالجة اللاحقة (بالدقائق)
+      postprocessing_time_placeholder: '30'
+      postprocessing_cost_per_hour: تكلفة المعالجة اللاحقة في الساعة
+      postprocessing_cost_placeholder: '20.00'
+      post_cost_hour: تكلفة المعالجة اللاحقة/ساعة
+      post_cost_placeholder: '20.00'
+      other_costs: تكاليف أخرى
+      other_costs_placeholder: '0.00'
+      vat: ضريبة القيمة المضافة (%)
+      vat_placeholder: '10'
+      vat_percentage: نسبة ضريبة القيمة المضافة
+      power_consumption: استهلاك الطاقة (واط)
+      power_consumption_placeholder: '200'
+      energy_cost_kwh: تكلفة الطاقة لكل كيلوواط ساعة
+      energy_cost_placeholder: '0.12'
+      printer_cost: تكلفة الطابعة
+      printer_cost_placeholder: '500.00'
+      payoff_goal: هدف السداد (سنوات)
+      payoff_goal_placeholder: '3'
+      daily_usage: الاستخدام اليومي (ساعات)
+      daily_usage_placeholder: '8'
+      repair_cost: تكلفة الإصلاح (%)
+      repair_cost_placeholder: '5'
+      currency: العملة
+      currency_prompt: اختر العملة
+      start_with_one_print: ابدأ بطباعة واحدة
+      start_with_one_print_help: قم بتمكين هذا لتعيين هذا السعر تلقائيًا على أنه تمت
+        طباعته مرة واحدة
+    filament_types:
+      pla: PLA
+      abs: ABS
+      petg: PETG
+      tpu: TPU
+      asa: ASA
+      other: أخرى
+    calculations:
+      filament_cost: تكلفة الفتيل
+      electricity_cost: تكلفة الكهرباء
+      labor_cost: تكلفة العمالة
+      machine_cost: تكلفة الآلة
+      estimated_price: السعر المقدر
+    info:
+      electricity_auto: 'سيتم حساب تكلفة الكهرباء تلقائيًا بناءً على:'
+      printer_power: استهلاك الطاقة للطابعة المحددة
+      print_duration: مدة الطباعة
+      energy_cost_setting: 'تكلفة الطاقة الافتراضية الخاصة بك: %{cost}/كيلوواط ساعة'
+      update_energy_cost: يمكنك تحديث تكلفة الطاقة الافتراضية الخاصة بك في
+      profile_settings: إعدادات ملف التعريف
+      machine_auto: 'سيتم حساب تكلفة إهلاك الآلة وصيانتها من مواصفات الطابعة المحددة:'
+      printer_cost_usage: تكلفة الطابعة وساعات الاستخدام
+      investment_return: فترة عائد الاستثمار
+      repair_factor: عامل تكلفة الإصلاح
+      configure_printer: يتم تكوين هذه القيم عندما تقوم
+      add_edit_printer: بإضافة أو تعديل طابعة
+    buttons:
+      calculate_save: حساب وحفظ
+      update_pricing: تحديث التسعير
+      update: تحديث
+      cancel: إلغاء
+      add_plate: إضافة لوحة
     show:
+      created_on: تم الإنشاء في %{date}
+      edit_calculation: تعديل الحساب
+      delete: حذف
       cost_summary: ملخص التكلفة
       print_information: معلومات الطباعة
+      filament_details: تفاصيل الفتيل
+      electricity_cost: تكلفة الكهرباء
+      labor_cost: تكلفة العمالة
+      machine_upkeep_cost: تكلفة الصيانة والآلة
       costs:
-        filament: تكلفة الخيط
+        filament: تكلفة الفتيل
         electricity: تكلفة الكهرباء
-        labor: تكلفة العمل
+        labor: تكلفة العمالة
         machine: تكلفة الآلة
         other: تكاليف أخرى
         subtotal: المجموع الفرعي
+        vat: ضريبة القيمة المضافة (%{rate}%)
         final_price: السعر النهائي
-        vat: VAT (%{rate}%)
-      created_on: Created on %{date}
-      edit_calculation: Edit Calculation
-      delete: Delete
-      filament_details: Filament Details
-      electricity_cost: Electricity Cost
-      labor_cost: Labor Cost
-      machine_upkeep_cost: Machine & Upkeep Cost
       details:
-        currency: Currency
-        printing_time: Printing Time
-        filament_weight: Filament Weight
-        filament_type: Filament Type
-        spool_price: Spool Price
-        spool_weight: Spool Weight
-        markup: Markup
-        power_consumption: Power Consumption
-        energy_cost_kwh: Energy Cost per kWh
-        total_electricity_cost: Total Electricity Cost
-        prep_time: Prep Time
-        postprocessing_time: Postprocessing Time
-        total_labor_cost: Total Labor Cost
-        printer_cost: Printer Cost
-        payoff_goal: Payoff Goal
-        daily_usage: Daily Usage
-        repair_cost: Repair Cost
-        total_machine_cost: Total Machine Cost
+        currency: العملة
+        printing_time: وقت الطباعة
+        filament_weight: وزن الفتيل
+        filament_type: نوع الفتيل
+        spool_price: سعر البكرة
+        spool_weight: وزن البكرة
+        markup: هامش الربح
+        power_consumption: استهلاك الطاقة
+        energy_cost_kwh: تكلفة الطاقة لكل كيلوواط ساعي
+        total_electricity_cost: إجمالي تكلفة الكهرباء
+        prep_time: وقت التحضير
+        postprocessing_time: وقت المعالجة اللاحقة
+        total_labor_cost: إجمالي تكلفة العمالة
+        printer_cost: تكلفة الطابعة
+        payoff_goal: هدف السداد
+        daily_usage: الاستخدام اليومي
+        repair_cost: تكلفة الإصلاح
+        total_machine_cost: إجمالي تكلفة الآلة
       actions:
-        back_to_all: "← Back to All Pricings"
-        create_new: Create New Pricing
-        confirm_delete: Are you sure you want to delete '%{name}'?
-    buttons:
-      add_plate: إضافة لوحة
-      calculate_save: Calculate
-      update_pricing: Update Pricing
-      update: Update
-      cancel: Cancel
+        back_to_all: "← العودة إلى جميع التسعيرات"
+        create_new: إنشاء تسعيرة جديدة
+        confirm_delete: هل أنت متأكد أنك تريد حذف '%{name}'؟
     help:
-      plates_limit: يمكنك إضافة ما يصل إلى 10 ألواح لكل مهمة طباعة.
-      filaments_limit: You can add up to 5 different filaments per plate.
-    overdue: Overdue
-    duplicated_successfully: Print pricing duplicated successfully
-    duplicate_failed: Failed to duplicate print pricing
-    back_to_all: "← Back to All Pricings"
-    create_new: Create New Pricing
-    filament_types_label: Filament Types
+      plates_limit: يمكنك إضافة ما يصل إلى 10 لوحات لكل مهمة طباعة.
+      filaments_limit: يمكنك إضافة ما يصل إلى 5 فتائل مختلفة لكل لوحة.
+  printers:
+    index:
+      title: طابعاتي
+      subtitle: إدارة طابعاتك ثلاثية الأبعاد ومواصفاتها
+      add_new: إضافة طابعة جديدة
+      empty_state:
+        title: لم يتم تسجيل أي طابعات حتى الآن
+        description: أضف طابعتك ثلاثية الأبعاد الأولى لبدء حساب تكاليف الطباعة بدقة.
+        add_first: أضف طابعتك الأولى
+    card:
+      power_consumption: استهلاك الطاقة
+      cost: التكلفة
+      daily_usage: الاستخدام اليومي
+      payoff_goal: هدف السداد
+      repair_cost_percentage: تكلفة الصيانة
+      paid_off: "✓ تم السداد"
+      months_to_payoff: "%{months} أشهر حتى السداد"
+      hours: ساعات
+      years: سنوات
+    new:
+      title: إضافة طابعة جديدة
+      subtitle: سجل مواصفات طابعتك ثلاثية الأبعاد لحسابات التكلفة الدقيقة
+    edit:
+      title: تعديل الطابعة
+      subtitle: تحديث مواصفات طابعتك ثلاثية الأبعاد
+    show:
+      specifications: المواصفات
+      financial_status: الوضع المالي
+      print_jobs: مهام الطباعة
+      new_print_job: مهمة طباعة جديدة
+      repair_cost: تكلفة الصيانة
+      date_added: تاريخ الإضافة
+      not_set: غير محدد
+      fully_paid_off: تم سداد قيمة هذه الطابعة بالكامل بناءً على أهداف السداد الخاصة
+        بك.
+      payoff_progress: تقدم السداد
+      no_print_jobs: لا توجد مهام طباعة حتى الآن
+      no_print_jobs_description: أنشئ أول حساب لتسعير الطباعة لهذه الطابعة.
+      create_first_job: إنشاء أول مهمة طباعة
+      view_all_jobs: عرض جميع %{count} المهام
+    sections:
+      basic_info: معلومات أساسية
+      technical_specs: المواصفات الفنية
+      financial_info: معلومات مالية
+      usage_info: معلومات الاستخدام
     fields:
-      job_name: Job Name
-      job_name_placeholder: e.g., Miniature Model
-      select_printer: Select Printer
-      select_printer_prompt: Select a printer
-      no_printer_help: Don't have a printer registered?
-      add_printer_link: Add a new printer
-      print_time_hours: Hours
-      print_time_minutes: Minutes
-      filament_weight: Filament Weight (g)
-      filament_weight_placeholder: '36'
-      filament_type: Filament Type
-      filament_type_prompt: Select type
-      spool_price: Spool Price
-      spool_price_placeholder: '25.00'
-      spool_weight: Spool Weight (g)
-      spool_weight_placeholder: '1000'
-      markup: Markup (%)
-      markup_placeholder: '20'
-      markup_percentage: Markup Percentage
-      filament_markup: Filament Markup (%)
-      prep_time: Prep Time (min)
-      prep_time_placeholder: '30'
-      prep_time_minutes: Prep Time (minutes)
-      prep_cost_hour: Prep Cost/Hour
-      prep_cost_placeholder: '20.00'
-      prep_cost_per_hour: Prep Cost per Hour
-      post_time: Post-Process Time (min)
-      post_time_placeholder: '30'
-      postprocessing_time_minutes: Post-processing Time (minutes)
-      postprocessing_time_placeholder: '30'
-      postprocessing_cost_per_hour: Post-processing Cost per Hour
-      postprocessing_cost_placeholder: '20.00'
-      post_cost_hour: Post-Process Cost/Hour
-      post_cost_placeholder: '20.00'
-      other_costs: Other Costs
-      other_costs_placeholder: '0.00'
-      vat: VAT (%)
-      vat_placeholder: '10'
-      vat_percentage: VAT Percentage
-      power_consumption: Power Consumption (W)
+      name: اسم الطابعة
+      name_placeholder: 'مثال: My Prusa i3 MK3S+'
+      manufacturer: الشركة المصنعة
+      manufacturer_prompt: اختر الشركة المصنعة
+      power_consumption: استهلاك الطاقة (واط)
       power_consumption_placeholder: '200'
-      energy_cost_kwh: Energy Cost per kWh
-      energy_cost_placeholder: '0.12'
-      printer_cost: Printer Cost
-      printer_cost_placeholder: '500.00'
-      payoff_goal: Payoff Goal (Years)
+      power_consumption_help: 'المدى النموذجي: 50 واط (طابعات صغيرة) إلى 500 واط (طابعات
+        كبيرة)'
+      cost: تكلفة الطابعة
+      cost_placeholder: '500.00'
+      payoff_goal: هدف السداد (سنوات)
       payoff_goal_placeholder: '3'
-      daily_usage: Daily Usage (Hours)
+      payoff_goal_help: كم عدد السنوات التي تريد استرداد تكلفة الطابعة فيها؟
+      daily_usage: الاستخدام اليومي (ساعات)
       daily_usage_placeholder: '8'
-      repair_cost: Repair Cost (%)
-      repair_cost_placeholder: '5'
-      currency: Currency
-      currency_prompt: Select currency
-      start_with_one_print: Start with 1 times printed
-      start_with_one_print_help: Enable this to automatically set this pricing as
-        printed once
-    calculations:
-      filament_cost: Filament cost
-      electricity_cost: Electricity cost
-      labor_cost: Labor cost
-      machine_cost: Machine cost
-      estimated_price: Estimated Price
-    info:
-      electricity_auto: 'Electricity cost will be automatically calculated based on:'
-      printer_power: Selected printer's power consumption
-      print_duration: Print time duration
-      energy_cost_setting: 'Your default energy cost: %{cost}/kWh'
-      update_energy_cost: You can update your default energy cost in your
-      profile_settings: profile settings
-      machine_auto: 'Machine depreciation and upkeep cost will be calculated from
-        your selected printer''s specifications:'
-      printer_cost_usage: Printer cost and usage hours
-      investment_return: Investment return period
-      repair_factor: Repair cost factor
-      configure_printer: These values are configured when you
-      add_edit_printer: add or edit a printer
-  currency:
-    usd: الدولار الأمريكي
-    eur: اليورو
-    gbp: الجنيه الإسترليني
-    jpy: الين الياباني
-    cad: الدولار الكندي
-    aud: الدولار الأسترالي
+      daily_usage_help: متوسط الساعات في اليوم التي تخطط لاستخدام هذه الطابعة فيها
+      repair_factor: عامل تكلفة الصيانة (%)
+      repair_factor_placeholder: '5.0'
+      repair_factor_help: عامل تكلفة إضافي للصيانة والإصلاحات
+    buttons:
+      add_printer: إضافة طابعة
+      update_printer: تحديث الطابعة
+      cancel: إلغاء
+  profile:
+    show:
+      title: الملف الشخصي للمستخدم
+      subtitle: إعدادات وتفضيلات حسابك
+      account_info: معلومات الحساب
+      email: البريد الإلكتروني
+      member_since: عضو منذ
+      default_preferences: التفضيلات الافتراضية
+      labor_defaults: الافتراضيات الخاصة بالعمالة والتكلفة
+      labor_defaults_description: سيتم ملء هذه القيم مسبقًا عند إنشاء حسابات تسعير
+        طباعة جديدة
+      company_info: معلومات الشركة للفواتير
+      company_info_description: سيتم استخدام هذه المعلومات كافتراضي لجميع الفواتير
+        التي تنشئها
+      company_info_help: سيتم استخدام هذه المعلومات في جميع الفواتير التي تنشئها
+      back_to_calculations: العودة إلى الحسابات
+    edit:
+      title: إعدادات الملف الشخصي للمستخدم
+      subtitle: تكوين تفضيلاتك الافتراضية
+      default_settings: الإعدادات الافتراضية
+    fields:
+      default_currency: العملة الافتراضية
+      default_currency_help: تستخدم كافتراضي لحسابات التسعير الجديدة
+      energy_cost: تكلفة الطاقة لكل كيلوواط/ساعة
+      energy_cost_placeholder: '0.120'
+      energy_cost_help: تكلفة الكهرباء المحلية لكل كيلوواط/ساعة
+      energy_cost_help_extended: تكلفة الكهرباء المحلية لكل كيلوواط/ساعة. سيتم استخدام
+        هذا كافتراضي للحسابات الجديدة.
+      prep_time: وقت التحضير (بالدقائق)
+      prep_time_help: الوقت المستغرق في إعداد المطبوعات قبل البدء
+      prep_cost: تكلفة التحضير في الساعة
+      prep_cost_help: المعدل بالساعة لأعمال التحضير
+      postprocessing_time: وقت المعالجة اللاحقة (بالدقائق)
+      postprocessing_time_help: الوقت المستغرق في المعالجة اللاحقة (التنظيف وإزالة
+        الدعامات وما إلى ذلك)
+      postprocessing_cost: تكلفة المعالجة اللاحقة في الساعة
+      postprocessing_cost_help: المعدل بالساعة لأعمال المعالجة اللاحقة
+      other_costs: تكاليف أخرى
+      other_costs_help: تكاليف إضافية مثل التعبئة وتجهيز الشحن وما إلى ذلك
+      vat_percentage: نسبة ضريبة القيمة المضافة
+      vat_percentage_help: النسبة المئوية الافتراضية لضريبة القيمة المضافة/الضريبة
+        لموقعك
+      default_filament_markup: هامش الربح الافتراضي للخيوط
+      default_filament_markup_help: النسبة المئوية الافتراضية لهامش الربح المضاف إلى
+        تكاليف الخيوط (على سبيل المثال، هامش ربح بنسبة 20٪)
+      company_name: اسم الشركة
+      company_name_placeholder: مؤسسة Acme
+      company_email: البريد الإلكتروني للشركة
+      company_email_placeholder: billing@example.com
+      company_phone: هاتف الشركة
+      company_phone_placeholder: "+1 (555) 123-4567"
+      company_logo: شعار الشركة
+      company_address: عنوان الشركة
+      company_address_placeholder: |-
+        123 Main Street
+        City, State 12345
+        Country
+      payment_details: تفاصيل الدفع
+      payment_details_placeholder: |-
+        البنك: بنك المثال
+        رقم الحساب: 123456789
+        رقم التوجيه: 987654321
+        سويفت/BIC: EXAMPUS33
+      payment_details_help: معلومات الحساب المصرفي أو الدفع للفواتير
+      invoice_notes: ملاحظات الفاتورة الافتراضية
+      invoice_notes_placeholder: يجب الدفع خلال 30 يومًا. شكرًا لتعاملكم!
+      invoice_notes_help: ملاحظات افتراضية ستظهر على جميع فواتيرك
+    buttons:
+      update_settings: تحديث الإعدادات
+      update_profile: تحديث الملف الشخصي
+      cancel: إلغاء
+    image_upload:
+      help_text: 'الحد الأقصى لحجم الملف: 5 ميجابايت. التنسيقات المدعومة: PNG، JPG،
+        GIF، WebP'
+    delete_account:
+      title: حذف الحساب
+      warning_title: تحذير
+      warning_message: حذف حسابك دائم ولا يمكن التراجع عنه. سيتم حذف جميع بياناتك
+        نهائيًا.
+      description: إذا لم تعد ترغب في استخدام CalcuMake، يمكنك حذف حسابك. يرجى قراءة
+        قسم الأسئلة الشائعة في صفحة الدعم لمزيد من المعلومات.
+      unlock_checkbox: أنا أفهم أن حذف حسابي دائم
+      confirm_checkbox: أؤكد أنني أريد حذف حسابي وجميع البيانات المرتبطة به
+      button: حذف حسابي
+      final_confirmation: هل أنت متأكد تمامًا من أنك تريد حذف حسابك؟ لا يمكن التراجع
+        عن هذا الإجراء وسيتم حذف جميع بياناتك نهائيًا.
+      success: تم حذف حسابك بنجاح. شكرًا لك على استخدام CalcuMake.
   clients:
     index:
       title: عملائي
@@ -315,12 +573,12 @@ ar:
       search_placeholder: البحث بالاسم أو الشركة أو البريد الإلكتروني...
       clear_search: مسح البحث
       empty_state:
-        title: لا يوجد عملاء بعد
+        title: لا يوجد عملاء حتى الآن
         description: أضف عميلك الأول لبدء إدارة معلومات العملاء.
         add_first: أضف عميلك الأول
       no_results:
         title: لم يتم العثور على نتائج
-        description: لا يوجد عملاء يطابقون بحثك. جرب مصطلح بحث مختلف.
+        description: لا يوجد عملاء يطابقون بحثك. حاول استخدام مصطلح بحث مختلف.
     new:
       title: إضافة عميل جديد
       subtitle: إنشاء ملف تعريف عميل جديد
@@ -331,425 +589,307 @@ ar:
       title: تفاصيل العميل
       member_since: عضو منذ
       invoices: الفواتير
-      print_pricings: أسعار الطباعة
-      no_invoices: لا توجد فواتير بعد
-      no_print_pricings: لا توجد أسعار طباعة بعد
+      print_pricings: تسعير الطباعة
+      no_invoices: لا توجد فواتير حتى الآن
+      no_print_pricings: لا يوجد تسعير طباعة حتى الآن
     sections:
-      basic_info: المعلومات الأساسية
+      basic_info: معلومات أساسية
       contact_info: معلومات الاتصال
       additional_info: معلومات إضافية
     fields:
       name: الاسم
-      name_placeholder: أحمد محمد
+      name_placeholder: John Doe
       company_name: اسم الشركة
-      company_name_placeholder: شركة أكمي
+      company_name_placeholder: Acme Corporation
       email: البريد الإلكتروني
-      email_placeholder: ahmed@example.com
+      email_placeholder: john@example.com
       phone: الهاتف
-      phone_placeholder: "+966 50 000 0000"
+      phone_placeholder: "+1 (555) 123-4567"
       address: العنوان
       address_placeholder: |-
-        123 الشارع الرئيسي
-        المدينة، المنطقة 12345
+        123 Main Street
+        City, State 12345
       tax_id: الرقم الضريبي / رقم ضريبة القيمة المضافة
       tax_id_placeholder: 12-3456789
       notes: ملاحظات
       notes_placeholder: ملاحظات إضافية حول هذا العميل...
       select_client: اختر عميلاً
       no_client_selected: لم يتم اختيار عميل
-      client_help_text: اختر عميلاً موجوداً أو
-      client: العميل
+      client_help_text: اختر عميلاً موجودًا أو
+      client: عميل
     card:
       view_details: عرض التفاصيل
       edit: تعديل
       delete: حذف
-      confirm_delete: هل أنت متأكد من رغبتك في حذف هذا العميل؟
-      invoices: Invoices
+      confirm_delete: هل أنت متأكد أنك تريد حذف هذا العميل؟
+      invoices: فواتير
     buttons:
       create: إنشاء عميل
       update: تحديث العميل
-    created_successfully: Client created successfully
-    updated_successfully: Client updated successfully
-    deleted_successfully: Client deleted successfully
-    confirm_delete: Are you sure you want to delete this client?
+    created_successfully: تم إنشاء العميل بنجاح
+    updated_successfully: تم تحديث العميل بنجاح
+    deleted_successfully: تم حذف العميل بنجاح
+    confirm_delete: هل أنت متأكد أنك تريد حذف هذا العميل؟
+  currency:
+    usd: دولار أمريكي
+    eur: يورو
+    gbp: جنيه إسترليني
+    jpy: ين ياباني
+    cad: دولار كندي
+    aud: دولار أسترالي
   energy:
-    cost_per_kwh: تكلفة الكيلوواط/ساعة
-  printers:
-    index:
-      title: طابعاتي
-      subtitle: إدارة طابعاتك ثلاثية الأبعاد ومواصفاتها
-      add_new: إضافة طابعة جديدة
-      empty_state:
-        title: لا توجد طابعات مسجلة بعد
-        description: أضف أول طابعة ثلاثية الأبعاد لبدء حساب تكاليف الطباعة بدقة.
-        add_first: Add Your First Printer
-    new:
-      title: إضافة طابعة جديدة
-      subtitle: سجل مواصفات طابعتك ثلاثية الأبعاد لحسابات تكلفة دقيقة
-    card:
-      power_consumption: Power Consumption
-      cost: Cost
-      daily_usage: Daily Usage
-      payoff_goal: Payoff Goal
-      repair_cost_percentage: Repair Cost
-      paid_off: "✓ Paid Off"
-      months_to_payoff: "%{months} months to payoff"
-      hours: hours
-      years: years
-    edit:
-      title: Edit Printer
-      subtitle: Update your 3D printer specifications
-    show:
-      specifications: Specifications
-      financial_status: Financial Status
-      print_jobs: Print Jobs
-      new_print_job: New Print Job
-      repair_cost: Repair Cost
-      date_added: Date Added
-      not_set: Not set
-      fully_paid_off: This printer has been fully paid off based on your payoff goals.
-      payoff_progress: Payoff Progress
-      no_print_jobs: No print jobs yet
-      no_print_jobs_description: Create your first print pricing calculation for this
-        printer.
-      create_first_job: Create First Print Job
-      view_all_jobs: View All %{count} Jobs
-    sections:
-      basic_info: Basic Information
-      technical_specs: Technical Specifications
-      financial_info: Financial Information
-      usage_info: Usage Information
-    fields:
-      name: Printer Name
-      name_placeholder: e.g., My Prusa i3 MK3S+
-      manufacturer: Manufacturer
-      manufacturer_prompt: Select manufacturer
-      power_consumption: Power Consumption (Watts)
-      power_consumption_placeholder: '200'
-      power_consumption_help: 'Typical range: 50W (small printers) to 500W (large
-        printers)'
-      cost: Printer Cost
-      cost_placeholder: '500.00'
-      payoff_goal: Payoff Goal (Years)
-      payoff_goal_placeholder: '3'
-      payoff_goal_help: How many years do you want to recoup the printer cost?
-      daily_usage: Daily Usage (Hours)
-      daily_usage_placeholder: '8'
-      daily_usage_help: Average hours per day you plan to use this printer
-      repair_factor: Repair Cost Factor (%)
-      repair_factor_placeholder: '5.0'
-      repair_factor_help: Additional cost factor for maintenance and repairs
-    buttons:
-      add_printer: Add Printer
-      update_printer: Update Printer
-      cancel: Cancel
-  profile:
-    show:
-      title: ملف المستخدم
-      subtitle: إعدادات حسابك وتفضيلاتك
-      account_info: معلومات الحساب
-      email: البريد الإلكتروني
-      member_since: عضو منذ
-      default_preferences: التفضيلات الافتراضية
-      labor_defaults: Labor & Cost Defaults
-      labor_defaults_description: These values will be pre-filled when creating new
-        print pricing calculations
-      company_info: Company Information for Invoices
-      company_info_description: This information will be used as the default for all
-        invoices you create
-      company_info_help: This information will be used on all invoices you create
-      back_to_calculations: Back to Calculations
-    fields:
-      default_currency: العملة الافتراضية
-      energy_cost: تكلفة الطاقة لكل كيلوواط ساعة
-      energy_cost_help: تكلفة الكهرباء المحلية لكل كيلوواط ساعة
-      default_currency_help: Used as default for new pricing calculations
-      energy_cost_placeholder: '0.120'
-      energy_cost_help_extended: Your local electricity cost per kilowatt-hour. This
-        will be used as the default for new calculations.
-      prep_time: Prep Time (minutes)
-      prep_time_help: Time spent preparing prints before starting
-      prep_cost: Prep Cost per Hour
-      prep_cost_help: Hourly rate for preparation work
-      postprocessing_time: Post-processing Time (minutes)
-      postprocessing_time_help: Time spent on post-processing (cleaning, support removal,
-        etc.)
-      postprocessing_cost: Post-processing Cost per Hour
-      postprocessing_cost_help: Hourly rate for post-processing work
-      other_costs: Other Costs
-      other_costs_help: Additional costs like packaging, shipping preparation, etc.
-      vat_percentage: VAT Percentage
-      vat_percentage_help: Default VAT/tax percentage for your location
-      default_filament_markup: Default Filament Markup
-      default_filament_markup_help: Default markup percentage added to filament costs
-        (e.g. 20% markup for profit margin)
-      company_name: Company Name
-      company_name_placeholder: Acme Corporation
-      company_email: Company Email
-      company_email_placeholder: billing@example.com
-      company_phone: Company Phone
-      company_phone_placeholder: "+1 (555) 123-4567"
-      company_logo: Company Logo
-      company_address: Company Address
-      company_address_placeholder: |-
-        123 Main Street
-        City, State 12345
-        Country
-      payment_details: Payment Details
-      payment_details_placeholder: |-
-        Bank: Example Bank
-        Account Number: 123456789
-        Routing Number: 987654321
-        SWIFT/BIC: EXAMPUS33
-      payment_details_help: Bank account or payment information for invoices
-      invoice_notes: Default Invoice Notes
-      invoice_notes_placeholder: |-
-        Payment due within 30 days.
-        Thank you for your business!
-      invoice_notes_help: Default notes that will appear on all your invoices
-    buttons:
-      update_settings: تحديث الإعدادات
-      update_profile: تحديث الملف الشخصي
-      cancel: Cancel
-    image_upload:
-      help_text: 'الحد الأقصى لحجم الملف: 5 ميجابايت. التنسيقات المدعومة: PNG، JPG،
-        GIF، WebP'
-    delete_account:
-      title: حذف الحساب
-      warning_title: تحذير
-      warning_message: حذف حسابك نهائي ولا يمكن التراجع عنه. سيتم حذف جميع بياناتك
-        نهائياً.
-      description: إذا لم تعد ترغب في استخدام CalcuMake، يمكنك حذف حسابك. يرجى قراءة
-        قسم الأسئلة الشائعة في صفحة الدعم لمزيد من المعلومات.
-      unlock_checkbox: أفهم أن حذف حسابي نهائي
-      confirm_checkbox: أؤكد أنني أريد حذف حسابي وجميع البيانات المرتبطة به
-      button: حذف حسابي
-      final_confirmation: هل أنت متأكد تماماً من رغبتك في حذف حسابك؟ لا يمكن التراجع
-        عن هذا الإجراء وسيتم حذف جميع بياناتك نهائياً.
-      success: تم حذف حسابك بنجاح. شكراً لاستخدام CalcuMake.
-    default_currency: العملة الافتراضية
-    default_energy_cost: تكلفة الطاقة الافتراضية
-    settings: الإعدادات
-    edit:
-      title: User Profile Settings
-      subtitle: Configure your default preferences
-      default_settings: Default Settings
+    cost_per_kwh: تكلفة الطاقة لكل كيلوواط ساعي
   app:
-    title: CalcuMake
-    title_default: CalcuMake
+    title: CalcuMake - حاسبة تكلفة الطباعة ثلاثية الأبعاد
+    title_default: CalcuMake - حاسبة تكلفة الطباعة ثلاثية الأبعاد
   footer:
-    copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
-    description: Professional 3D printing cost calculation and project management
+    description: حساب احترافي لتكلفة الطباعة ثلاثية الأبعاد وإدارة المشاريع
+    copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - جميع الحقوق محفوظة"
+  support:
+    title: الدعم
+    nav_title: الدعم
+    contact_us: اتصل بنا
+    description: هل تحتاج إلى مساعدة في CalcuMake؟ هل لديك سؤال أو اقتراح؟ نحن هنا
+      للمساعدة!
+    email_label: الدعم عبر البريد الإلكتروني
+    response_time: عادة ما نرد في غضون 24-48 ساعة
+    faq:
+      title: الأسئلة الشائعة
+      delete_account:
+        question: كيف يمكنني حذف حسابي؟
+        answer: 'لحذف حسابك، اتبع الخطوات التالية:'
+        step1: انتقل إلى صفحة ملفك الشخصي من قائمة التنقل
+        step2: قم بالتمرير لأسفل إلى قسم "حذف الحساب" في أسفل الصفحة
+        step3: ضع علامة في المربع "أنا أفهم أن حذف حسابي دائم"
+        step4: ضع علامة في المربع "أؤكد أنني أرغب في حذف حسابي وجميع البيانات المرتبطة
+          به"
+        step5: انقر فوق الزر "حذف حسابي" وقم بتأكيد التحذير النهائي
+        warning_title: هام
+        warning_message: حذف الحساب دائم ولا يمكن التراجع عنه. سيتم حذف جميع بياناتك
+          نهائيًا.
+      data_recovery:
+        question: هل يمكنني استعادة حسابي بعد الحذف؟
+        answer: لا، حذف الحساب دائم ولا رجعة فيه. بمجرد حذفه، لا يمكن استعادة حسابك
+          وجميع البيانات المرتبطة به. إذا كنت تعتقد أنك قد ترغب في استخدام CalcuMake
+          مرة أخرى في المستقبل، ففكر في عدم استخدام حسابك بدلاً من حذفه.
+      what_deleted:
+        question: ما هي البيانات التي يتم حذفها عند حذف حسابي؟
+        intro: 'عند حذف حسابك، يتم حذف جميع البيانات التالية نهائيًا:'
+        item1: حساب المستخدم الخاص بك وبيانات اعتماد تسجيل الدخول
+        item2: جميع حسابات تسعير الطباعة الخاصة بك
+        item3: جميع طابعاتك وتكويناتها
+        item4: جميع ملفات تعريف الفتيل الخاصة بك
+        item5: جميع فواتيرك
+        item6: جميع معلومات شركتك وتفضيلاتها
+    billing_support:
+      title: دعم الفوترة والاشتراك
+      description: للاستفسارات المتعلقة بالفوترة أو تغييرات الاشتراك أو طلبات استرداد
+        الأموال أو مشكلات الدفع، يرجى الاتصال بنا عبر البريد الإلكتروني لحسابك.
+      priority_note: يحصل مشتركو المستويين Pro و Enterprise على أوقات استجابة دعم
+        ذات أولوية.
   legal:
     last_updated: آخر تحديث
     privacy_policy:
       title: سياسة الخصوصية
       nav_title: سياسة الخصوصية
-      advertising:
-        title: الإعلانات
-        content: يعرض مستوانا المجاني إعلانات من خلال Google AdSense. تستند هذه الإعلانات
-          إلى اهتماماتك وسلوك التصفح الخاص بك. مستويات الاشتراك المدفوعة لا تعرض إعلانات.
-        google_adsense: يستخدم Google AdSense ملفات تعريف الارتباط وتقنيات التتبع
-          الأخرى لعرض إعلانات ذات صلة. ينطبق هذا فقط على مستخدمي المستوى المجاني.
-        opt_out: يمكنك التحكم في تخصيص الإعلانات وإلغاء الاشتراك في الإعلانات المخصصة
-          عن طريق زيارة
-        google_ad_settings: إعدادات إعلانات Google
-        upgrade_note: لإزالة جميع الإعلانات، قم بالترقية إلى مستوى اشتراك مدفوع.
       information_we_collect:
         title: المعلومات التي نجمعها
-        content: نجمع المعلومات التي تقدمها لنا مباشرة والمعلومات التي قد نجمعها تلقائيًا
-          عند استخدامك لخدمتنا.
+        content: نجمع المعلومات التي تقدمها لنا مباشرةً والمعلومات التي قد نجمعها
+          تلقائيًا عند استخدامك لخدمتنا.
         account_info:
           title: معلومات الحساب
-          email: عنوان البريد الإلكتروني للمصادقة على الحساب
+          email: عنوان البريد الإلكتروني لمصادقة الحساب
           preferences: تفضيلات المستخدم مثل العملة واللغة الافتراضية
           usage_data: أنماط الاستخدام وتفضيلات الميزات
         project_data:
           title: بيانات المشروع
           pricing_calculations: حسابات تكلفة الطباعة ثلاثية الأبعاد وبيانات المشروع
-          printer_specifications: مواصفات الطابعة والإعدادات
-          project_metadata: أسماء المشاريع والتواريخ والبيانات الوصفية
+          printer_specifications: مواصفات الطابعة وإعداداتها
+          project_metadata: أسماء المشاريع وتواريخها وبياناتها الوصفية
         payment_info:
           title: معلومات الدفع والفوترة
           payment_details: تفاصيل طريقة الدفع (تتم معالجتها بشكل آمن بواسطة معالج
             الدفع الخاص بنا)
-          billing_address: عنوان الفوترة ومعلومات الاتصال
+          billing_address: عنوان إرسال الفواتير ومعلومات الاتصال
           transaction_history: سجل المعاملات والاشتراكات
-          subscription_tier: مستوى الاشتراك والميزات المحددة
+          subscription_tier: مستوى الاشتراك والميزات التي اخترتها
+      how_we_use_info:
+        title: كيف نستخدم معلوماتك
+        provide_service: توفير خدمة حسابات الطباعة ثلاثية الأبعاد وصيانتها وتحسينها
+        improve_features: تطوير ميزات جديدة وتحسين الوظائف الحالية
+        customer_support: تقديم دعم العملاء والرد على استفساراتك
+        security: الحماية من الاحتيال وإساءة الاستخدام والتهديدات الأمنية
       data_sharing:
         title: مشاركة المعلومات
-        content: 'لا نبيع أو نتاجر أو نؤجر معلوماتك الشخصية لأطراف ثالثة. نشارك معلوماتك
-          فقط في الظروف التالية:'
+        content: 'نحن لا نبيع أو نتاجر أو نؤجر معلوماتك الشخصية لأطراف ثالثة. قد نشارك
+          معلوماتك فقط في الحالات التالية:'
         legal_requirements: عندما يقتضي القانون ذلك أو لحماية حقوقنا القانونية
-        service_providers: مع مقدمي الخدمات الموثوق بهم الذين يساعدون في تشغيل خدمتنا
-          (بما في ذلك مقدمو الاستضافة السحابية والبنية التحتية)
-        payment_processors: مع معالجي الدفع (مثل Stripe) لمعالجة مدفوعات الاشتراك
+        service_providers: مع مزودي الخدمة الموثوق بهم الذين يساعدون في تشغيل خدمتنا
+          (بما في ذلك موفري الاستضافة السحابية والبنية التحتية)
+        payment_processors: مع معالجات الدفع (مثل Stripe) لمعالجة مدفوعات الاشتراك
           وإدارة الفوترة
         advertising_partners: مع شركاء الإعلان (مثل Google AdSense) لعرض إعلانات ذات
           صلة لمستخدمي المستوى المجاني
         business_transfer: فيما يتعلق بنقل الأعمال أو الاستحواذ
-      how_we_use_info:
-        title: How We Use Your Information
-        provide_service: Provide, maintain, and improve our 3D printing calculation
-          service
-        improve_features: Develop new features and enhance existing functionality
-        customer_support: Provide customer support and respond to your inquiries
-        security: Protect against fraud, abuse, and security threats
+      advertising:
+        title: الإعلانات
+        content: يعرض المستوى المجاني لدينا إعلانات من خلال Google AdSense. تستند
+          هذه الإعلانات إلى اهتماماتك وسلوك التصفح الخاص بك. لا تعرض مستويات الاشتراك
+          المدفوعة إعلانات.
+        google_adsense: يستخدم Google AdSense ملفات تعريف الارتباط وتقنيات التتبع
+          الأخرى لتقديم إعلانات ذات صلة. ينطبق هذا فقط على مستخدمي المستوى المجاني.
+        opt_out: يمكنك التحكم في تخصيص الإعلانات وإلغاء الاشتراك في الإعلانات المخصصة
+          عن طريق زيارة
+        google_ad_settings: إعدادات إعلانات Google
+        upgrade_note: لإزالة جميع الإعلانات، قم بالترقية إلى مستوى اشتراك مدفوع.
       data_security:
-        title: Data Security
-        content: We implement appropriate technical and organizational security measures
-          to protect your personal information against unauthorized access, alteration,
-          disclosure, or destruction.
+        title: أمن البيانات
+        content: ننفيذ تدابير أمنية تقنية وتنظيمية مناسبة لحماية معلوماتك الشخصية
+          ضد الوصول غير المصرح به أو التعديل أو الإفشاء أو التدمير.
       your_rights:
-        title: Your Rights
-        access: Access and review your personal information
-        correction: Correct inaccurate or incomplete information
-        deletion: Request deletion of your personal information
-        portability: Export your data in a portable format
+        title: حقوقك
+        access: الوصول إلى معلوماتك الشخصية ومراجعتها
+        correction: تصحيح المعلومات غير الدقيقة أو غير الكاملة
+        deletion: طلب حذف معلوماتك الشخصية
+        portability: تصدير بياناتك بتنسيق قابل للنقل
       cookies:
-        title: Cookies and Tracking
-        content: We use cookies and similar technologies to enhance your experience,
-          remember your preferences, and provide personalized content and advertisements.
+        title: ملفات تعريف الارتباط والتتبع
+        content: نحن نستخدم ملفات تعريف الارتباط وتقنيات مماثلة لتحسين تجربتك، وتذكر
+          تفضيلاتك، وتقديم محتوى وإعلانات مخصصة.
       changes:
-        title: Changes to This Policy
-        content: We may update this privacy policy from time to time. We will notify
-          you of any material changes by posting the new policy on this page with
-          an updated effective date.
+        title: تغييرات في هذه السياسة
+        content: قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سنقوم بإعلامك بأي
+          تغييرات جوهرية عن طريق نشر السياسة الجديدة على هذه الصفحة مع تاريخ سريان
+          محدث.
       contact:
-        title: Contact Us
-        content: If you have any questions about this privacy policy, please contact
-          us through the support channels available in the application.
+        title: اتصل بنا
+        content: إذا كانت لديك أي أسئلة حول سياسة الخصوصية هذه، فيرجى الاتصال بنا
+          من خلال قنوات الدعم المتاحة في التطبيق.
     user_agreement:
       title: اتفاقية المستخدم
       nav_title: شروط الخدمة
+      acceptance:
+        title: قبول الشروط
+        content: من خلال الوصول إلى CalcuMake واستخدامه، فإنك تقبل وتوافق على الالتزام
+          بشروط وأحكام هذه الاتفاقية.
+      description:
+        title: وصف الخدمة
+        content: 'CalcuMake هو تطبيق قائم على الويب يوفر حساب تكلفة الطباعة ثلاثية
+          الأبعاد وأدوات إدارة المشاريع. تشمل خدمتنا:'
+        cost_calculations: حسابات شاملة لتكلفة مشاريع الطباعة ثلاثية الأبعاد
+        project_management: ميزات تتبع وإدارة المشاريع
+        invoice_generation: إنشاء الفواتير وقدرات تصدير PDF
+        printer_tracking: مواصفات الطابعة وتتبع الاستخدام
       subscription_tiers:
-        title: مستويات الاشتراك والتسعير
+        title: مستويات الاشتراك والأسعار
         content: 'يقدم CalcuMake ثلاثة مستويات اشتراك:'
-        free_tier: 'المستوى المجاني: ميزات أساسية مع عرض إعلانات'
-        pro_tier: 'مستوى Pro: ميزات متقدمة، بدون إعلانات، دعم ذو أولوية (اشتراك مدفوع)'
-        enterprise_tier: 'مستوى Enterprise: جميع الميزات، دعم متميز، تكاملات مخصصة
+        free_tier: 'المستوى المجاني: ميزات أساسية مع عرض الإعلانات'
+        pro_tier: 'المستوى الاحترافي: ميزات متقدمة، بدون إعلانات، دعم ذو أولوية (اشتراك
+          مدفوع)'
+        enterprise_tier: 'مستوى المؤسسة: جميع الميزات، دعم متميز، عمليات تكامل مخصصة
           (اشتراك مدفوع)'
-        pricing_note: التسعير الحالي متاح على موقعنا الإلكتروني وقد يتم تحديثه مع
-          إشعار للمشتركين الحاليين.
+        pricing_note: الأسعار الحالية متاحة على موقعنا الإلكتروني وقد يتم تحديثها
+          مع إشعار للمشتركين الحاليين.
       payment_terms:
         title: الدفع والفوترة
-        content: 'إذا اشتركت في مستوى مدفوع، فإنك توافق على شروط الدفع التالية:'
-        subscription_fee: سيتم تحصيل رسوم الاشتراك في بداية كل دورة فوترة
-        billing_cycles: دورات الفوترة شهرية أو سنوية، اعتمادًا على اختيارك
+        content: 'إذا اشتركت في مستوى مدفوع، فأنت توافق على شروط الدفع التالية:'
+        subscription_fee: سيتم محاسبتك على رسوم الاشتراك في بداية كل دورة فوترة
+        billing_cycles: تكون دورات الفوترة شهرية أو سنوية، حسب اختيارك
         payment_method: يجب عليك تقديم طريقة دفع صالحة للاشتراك في المستويات المدفوعة
-        automatic_renewal: تتجدد الاشتراكات تلقائيًا ما لم يتم إلغاؤها قبل تاريخ التجديد
-        price_changes: قد نغير التسعير مع إشعار مدته 30 يومًا للمشتركين الحاليين
+        automatic_renewal: يتم تجديد الاشتراكات تلقائيًا ما لم يتم إلغاؤها قبل تاريخ
+          التجديد
+        price_changes: قد نغير الأسعار مع إشعار مدته 30 يومًا للمشتركين الحاليين
         payment_processor: تتم معالجة المدفوعات بشكل آمن من خلال معالج الدفع التابع
           لجهة خارجية (Stripe)
-        failed_payments: قد تؤدي المدفوعات الفاشلة إلى خفض الخدمة أو تعليقها
-        currency: تُعرض الأسعار بالعملة المحددة
+        failed_payments: قد تؤدي المدفوعات الفاشلة إلى تخفيض مستوى الخدمة أو تعليقها
+        currency: يتم عرض الأسعار بالعملة التي اخترتها
       cancellation_refunds:
         title: الإلغاء والاسترداد
         content: 'يمكنك إلغاء اشتراكك في أي وقت:'
-        cancellation_process: قم بالإلغاء من خلال إعدادات حسابك أو عن طريق الاتصال
-          بالدعم
+        cancellation_process: الإلغاء من خلال إعدادات حسابك أو عن طريق الاتصال بالدعم
         cancellation_effect: يسري الإلغاء في نهاية فترة الفوترة الحالية
         access_until_end: تحتفظ بالوصول إلى الميزات المدفوعة حتى نهاية الفترة المدفوعة
-        refund_policy: نقدم ضمان استرداد الأموال لمدة 14 يومًا للمشتركين لأول مرة
-        no_partial_refunds: لا يتم توفير استرداد جزئي لوقت الاشتراك المتبقي إلا إذا
-          كان مطلوبًا بموجب القانون
-        downgrade_option: يمكنك الانتقال إلى مستوى أدنى في نهاية دورة الفوترة
+        refund_policy: نحن نقدم ضمان استعادة الأموال لمدة 14 يومًا للمشتركين لأول
+          مرة
+        no_partial_refunds: لا يتم توفير استرداد جزئي للوقت المتبقي من الاشتراك إلا
+          إذا كان ذلك مطلوبًا بموجب القانون
+        downgrade_option: يمكنك الرجوع إلى مستوى أقل في نهاية دورة الفوترة
       free_tier_limitations:
         title: قيود المستوى المجاني
-        content: 'يتضمن المستوى المجاني عرض إعلانات وقد يكون له قيود استخدام:'
+        content: 'يتضمن المستوى المجاني عرض الإعلانات وقد يكون له قيود على الاستخدام:'
         advertisements: سيرى مستخدمو المستوى المجاني إعلانات في جميع أنحاء التطبيق
-        feature_limits: بعض الميزات المتقدمة مقصورة على المستويات المدفوعة
-        support_priority: يتم تقديم دعم المستوى المجاني على أساس أفضل جهد
+        feature_limits: تقتصر بعض الميزات المتقدمة على المستويات المدفوعة
+        support_priority: يتم توفير دعم المستوى المجاني على أساس بذل قصارى جهد
         upgrade_anytime: يمكنك الترقية إلى مستوى مدفوع في أي وقت
-      acceptance:
-        title: Acceptance of Terms
-        content: By accessing and using CalcuMake, you accept and agree to be bound
-          by the terms and provision of this agreement.
-      description:
-        title: Service Description
-        content: 'CalcuMake is a web-based application that provides 3D printing cost
-          calculation and project management tools. Our service includes:'
-        cost_calculations: Comprehensive cost calculations for 3D printing projects
-        project_management: Project tracking and management features
-        invoice_generation: Invoice generation and PDF export capabilities
-        printer_tracking: Printer specifications and usage tracking
       user_accounts:
-        title: User Accounts
-        content: 'To use our service, you must create an account. You are responsible
-          for:'
-        accurate_info: Providing accurate and complete account information
-        secure_credentials: Maintaining the security of your account credentials
-        responsible_use: All activities that occur under your account
-        notify_breaches: Notifying us immediately of any suspected security breaches
+        title: حسابات المستخدم
+        content: 'لاستخدام خدمتنا، يجب عليك إنشاء حساب. أنت مسؤول عن:'
+        accurate_info: تقديم معلومات حساب دقيقة وكاملة
+        secure_credentials: الحفاظ على أمان بيانات اعتماد حسابك
+        responsible_use: جميع الأنشطة التي تتم تحت حسابك
+        notify_breaches: إخطارنا على الفور بأي خروقات أمنية مشتبه بها
       acceptable_use:
-        title: Acceptable Use
-        content: 'You agree to use our service only for lawful purposes and in accordance
-          with this agreement. You agree not to:'
-        lawful_purposes: Use the service for any unlawful or prohibited purposes
-        respect_rights: Violate any applicable laws or regulations
-        no_harmful_content: Upload or transmit harmful, offensive, or inappropriate
-          content
-        no_interference: Interfere with or disrupt the service or servers
-        no_unauthorized_access: Attempt to gain unauthorized access to any part of
-          the service
+        title: الاستخدام المقبول
+        content: 'أنت توافق على استخدام خدمتنا فقط للأغراض القانونية ووفقًا لهذه الاتفاقية.
+          أنت توافق على عدم:'
+        lawful_purposes: استخدام الخدمة لأي أغراض غير قانونية أو محظورة
+        respect_rights: انتهاك أي قوانين أو لوائح معمول بها
+        no_harmful_content: تحميل أو نقل محتوى ضار أو مسيء أو غير لائق
+        no_interference: التدخل في الخدمة أو الخوادم أو تعطيلها
+        no_unauthorized_access: محاولة الوصول غير المصرح به إلى أي جزء من الخدمة
       data_accuracy:
-        title: Data Accuracy and Calculations
-        content: While we strive to provide accurate calculation tools, you are responsible
-          for verifying the accuracy of all calculations and data. Our calculations
-          are estimates and should be validated against your specific requirements
-          and local conditions.
+        title: دقة البيانات والحسابات
+        content: بينما نسعى جاهدين لتوفير أدوات حساب دقيقة، فأنت مسؤول عن التحقق من
+          دقة جميع الحسابات والبيانات. حساباتنا هي تقديرات ويجب التحقق منها مقابل
+          متطلباتك الخاصة والظروف المحلية.
       intellectual_property:
-        title: Intellectual Property
-        our_content: The service and its original content, features, and functionality
-          are owned by us and are protected by international copyright, trademark,
-          and other intellectual property laws.
-        your_content: You retain ownership of any data, calculations, or content you
-          create using our service. You grant us a limited license to use this content
-          solely to provide the service to you.
+        title: الملكية الفكرية
+        our_content: الخدمة ومحتواها الأصلي وميزاتها ووظائفها مملوكة لنا ومحمية بموجب
+          حقوق النشر والعلامات التجارية الدولية وقوانين الملكية الفكرية الأخرى.
+        your_content: أنت تحتفظ بملكية أي بيانات أو حسابات أو محتوى تقوم بإنشائه باستخدام
+          خدمتنا. أنت تمنحنا ترخيصًا محدودًا لاستخدام هذا المحتوى فقط لتقديم الخدمة
+          لك.
       disclaimers:
-        title: Disclaimers
-        important: Important Notice
-        calculations_estimates: All cost calculations and estimates are for informational
-          purposes only
-        verify_accuracy: You must verify all calculations and data for accuracy
-        no_guarantee: We do not guarantee the accuracy, completeness, or reliability
-          of any calculations
-        as_is_basis: The service is provided on an 'as is' and 'as available' basis
+        title: إخلاء المسؤولية
+        important: إشعار هام
+        calculations_estimates: جميع حسابات التكلفة والتقديرات هي لأغراض إعلامية فقط
+        verify_accuracy: يجب عليك التحقق من جميع الحسابات والبيانات للتأكد من دقتها
+        no_guarantee: نحن لا نضمن دقة أو اكتمال أو موثوقية أي حسابات
+        as_is_basis: يتم توفير الخدمة على أساس "كما هي" و "كما هي متاحة"
       limitation_liability:
-        title: Limitation of Liability
-        content: To the maximum extent permitted by law, we shall not be liable for
-          any indirect, incidental, special, consequential, or punitive damages, including
-          without limitation, loss of profits, data, use, goodwill, or other intangible
-          losses.
+        title: تحديد المسؤولية
+        content: إلى أقصى حد يسمح به القانون، لن نكون مسؤولين عن أي أضرار غير مباشرة
+          أو عرضية أو خاصة أو تبعية أو عقابية، بما في ذلك على سبيل المثال لا الحصر،
+          خسارة الأرباح أو البيانات أو الاستخدام أو الشهرة أو الخسائر غير الملموسة
+          الأخرى.
       termination:
-        title: Termination
-        content: We may terminate or suspend your account and access to the service
-          immediately, without prior notice, for conduct that we believe violates
-          this agreement or is harmful to other users, us, or third parties.
+        title: الإنهاء
+        content: يجوز لنا إنهاء أو تعليق حسابك ووصولك إلى الخدمة على الفور، دون إشعار
+          مسبق، بسبب سلوك نعتقد أنه ينتهك هذه الاتفاقية أو يضر بالمستخدمين الآخرين
+          أو بنا أو بأطراف ثالثة.
       governing_law:
-        title: Governing Law
-        content: This agreement shall be governed by and construed in accordance with
-          the laws of the jurisdiction in which our service operates, without regard
-          to its conflict of law provisions.
+        title: القانون الحاكم
+        content: تخضع هذه الاتفاقية وتفسر وفقًا لقوانين الولاية القضائية التي تعمل
+          فيها خدمتنا، دون النظر إلى تعارضها مع أحكام القانون.
       changes:
-        title: Changes to Agreement
-        content: We reserve the right to modify this agreement at any time. We will
-          notify users of any material changes by posting the updated agreement on
-          our website with a new effective date.
+        title: تغييرات في الاتفاقية
+        content: نحن نحتفظ بالحق في تعديل هذه الاتفاقية في أي وقت. سنقوم بإخطار المستخدمين
+          بأي تغييرات جوهرية عن طريق نشر الاتفاقية المحدثة على موقعنا على الويب مع
+          تاريخ سريان جديد.
       contact:
-        title: Contact Information
-        content: If you have any questions about this agreement, please contact us
-          through the support channels available in the application.
+        title: معلومات الاتصال
+        content: إذا كانت لديك أي أسئلة حول هذه الاتفاقية، فيرجى الاتصال بنا من خلال
+          قنوات الدعم المتاحة في التطبيق.
     commerce_disclosure:
       title: الإفصاح التجاري (特定商取引法に基づく表記)
       nav_title: الإفصاح التجاري
       business_operator:
-        title: المشغل التجاري
+        title: الشركة المشغلة
         name: 'اسم الشركة: 株式会社モアブ (MOAB Co., Ltd.)'
         representative: 'الممثل: Cody Baldwin'
       business_address:
-        title: العنوان التجاري
-        address: اليابان (اتصل بنا للحصول على معلومات مفصلة عن العنوان)
+        title: عنوان العمل
+        address: اليابان (اتصل بنا للحصول على معلومات تفصيلية حول العنوان)
       contact:
         title: معلومات الاتصال
         email_label: البريد الإلكتروني
@@ -757,641 +897,76 @@ ar:
         phone_label: الهاتف
         phone: متاح عند الطلب عبر البريد الإلكتروني
         hours_label: ساعات الدعم
-        hours: الاثنين - الجمعة، 9:00 صباحًا - 6:00 مساءً بتوقيت اليابان (باستثناء
-          العطلات اليابانية)
+        hours: من الاثنين إلى الجمعة، من الساعة 9:00 صباحًا حتى 6:00 مساءً بتوقيت
+          اليابان (باستثناء أيام العطلات اليابانية)
       service_description:
         title: وصف الخدمة
-        content: 'CalcuMake هو تطبيق ويب يوفر أدوات حساب التكلفة وإدارة المشاريع للطباعة
-          ثلاثية الأبعاد. تشمل خدمتنا:'
-        cost_calculations: حسابات تكلفة شاملة لمشاريع الطباعة ثلاثية الأبعاد
+        content: 'CalcuMake هو تطبيق قائم على الويب يوفر حساب تكلفة الطباعة ثلاثية
+          الأبعاد وأدوات إدارة المشاريع. تشمل خدمتنا:'
+        cost_calculations: حسابات شاملة لتكلفة مشاريع الطباعة ثلاثية الأبعاد
         project_management: ميزات تتبع وإدارة المشاريع
-        invoice_generation: قدرات إنشاء الفواتير والتصدير إلى PDF
-        printer_tracking: تتبع مواصفات واستخدام الطابعات
+        invoice_generation: إنشاء الفواتير وقدرات تصدير PDF
+        printer_tracking: مواصفات الطابعة وتتبع الاستخدام
       pricing:
         title: التسعير
-        content: 'يقدم CalcuMake ثلاثة مستويات اشتراك:'
-        free_tier: 'المستوى المجاني: ¥0/شهر - ميزات أساسية مع إعلانات'
-        pro_tier: 'مستوى Pro: اشتراك شهري أو سنوي مدفوع - ميزات متقدمة، بدون إعلانات،
-          دعم ذو أولوية'
-        enterprise_tier: 'مستوى Enterprise: اشتراك شهري أو سنوي مدفوع - جميع الميزات،
-          دعم متميز، تكاملات مخصصة'
-        pricing_details: يتم عرض التسعير الدقيق على موقعنا الإلكتروني وفي التطبيق
+        content: 'تقدم CalcuMake ثلاثة مستويات اشتراك:'
+        free_tier: 'المستوى المجاني: 0 ين ياباني/الشهر - ميزات أساسية مع إعلانات'
+        pro_tier: 'المستوى الاحترافي: اشتراك شهري أو سنوي مدفوع - ميزات متقدمة، بدون
+          إعلانات، دعم ذو أولوية'
+        enterprise_tier: 'مستوى المؤسسة: اشتراك شهري أو سنوي مدفوع - جميع الميزات،
+          دعم ممتاز، تكاملات مخصصة'
+        pricing_details: يتم عرض الأسعار الدقيقة على موقعنا الإلكتروني وفي التطبيق
           أثناء اختيار الاشتراك.
         price_changes: قد يتم تعديل الأسعار مع إشعار مسبق مدته 30 يومًا للمشتركين
           الحاليين.
       payment_methods:
         title: طرق الدفع
-        content: 'للاشتراكات المدفوعة، نقبل طرق الدفع التالية:'
+        content: 'بالنسبة للاشتراكات المدفوعة، نقبل طرق الدفع التالية:'
         credit_cards: 'بطاقات الائتمان: Visa، Mastercard، American Express، JCB'
-        payment_processor: تتم معالجة جميع المدفوعات بشكل آمن من خلال Stripe، شريك
-          معالجة الدفع لدينا.
-        secure_processing: نحن لا نخزن معلومات بطاقة الائتمان الكاملة على خوادمنا.
-        free_tier_note: مستخدمو المستوى المجاني لا يحتاجون إلى تقديم معلومات الدفع.
+        payment_processor: تتم معالجة جميع المدفوعات بشكل آمن من خلال Stripe، شريكنا
+          في معالجة الدفع.
+        secure_processing: نحن لا نخزن معلومات بطاقتك الائتمانية الكاملة على خوادمنا.
+        free_tier_note: لا يحتاج مستخدمو المستوى المجاني إلى تقديم معلومات الدفع.
       payment_timing:
         title: توقيت الدفع
-        content: 'يتم تحصيل الدفع وفقًا لدورة الفوترة المحددة:'
-        initial_payment: يتم تحصيل الدفعة الأولى فورًا عند الاشتراك
+        content: 'يتم تحصيل الدفع وفقًا لدورة الفوترة التي اخترتها:'
+        initial_payment: يتم تحصيل الدفعة الأولية فور الاشتراك
         recurring_payments: يتم تحصيل المدفوعات المتكررة في بداية كل فترة فوترة (شهرية
           أو سنوية)
-        automatic_renewal: تتجدد الاشتراكات تلقائيًا ما لم يتم إلغاؤها
+        automatic_renewal: يتم تجديد الاشتراكات تلقائيًا ما لم يتم إلغاؤها
         cancellation_timing: يسري الإلغاء في نهاية فترة الفوترة الحالية
       delivery:
-        title: تقديم الخدمة
-        content: CalcuMake هي خدمة ويب يمكن الوصول إليها فورًا بعد إنشاء الحساب. لا
-          توجد منتجات مادية أو شحن متضمن.
+        title: تسليم الخدمة
+        content: CalcuMake هي خدمة قائمة على الويب يمكن الوصول إليها فور إنشاء الحساب.
+          لا توجد منتجات مادية أو شحن.
       returns:
-        title: الإرجاع والاسترداد
-        content: 'كخدمة اشتراك رقمية، سياسة الاسترداد الخاصة بنا هي كما يلي:'
-        money_back_guarantee: ضمان استرداد الأموال لمدة 14 يومًا للمشتركين المدفوعين
+        title: المرتجعات والمبالغ المستردة
+        content: 'نظرًا لأن CalcuMake هي خدمة اشتراك رقمية، فإن سياسة الاسترداد الخاصة
+          بنا هي كما يلي:'
+        money_back_guarantee: ضمان استعادة الأموال لمدة 14 يومًا للمشتركين المدفوعين
           لأول مرة
-        refund_process: اتصل بالدعم في غضون 14 يومًا من اشتراكك الأولي للحصول على
-          استرداد كامل
-        no_partial_refunds: لا يتم توفير استرداد جزئي لوقت الاشتراك المتبقي إلا إذا
-          كان مطلوبًا بموجب القانون
+        refund_process: اتصل بالدعم في غضون 14 يومًا من اشتراكك الأولي لاسترداد كامل
+          المبلغ
+        no_partial_refunds: لا يتم تقديم مبالغ مستردة جزئية لوقت الاشتراك المتبقي
+          إلا إذا كان ذلك مطلوبًا بموجب القانون
         renewal_refunds: مدفوعات التجديد غير قابلة للاسترداد ما لم يكن ذلك مطلوبًا
-          بموجب القانون
-        free_tier_refunds: لا يتضمن استخدام المستوى المجاني مدفوعات ولا يوجد استرداد
+          بخلاف ذلك بموجب القانون
+        free_tier_refunds: لا يتضمن استخدام المستوى المجاني مدفوعات ولا تنطبق أي مبالغ
+          مستردة
       cancellation:
         title: سياسة الإلغاء
         content: 'شروط إلغاء الاشتراك:'
-        cancellation_method: قم بالإلغاء في أي وقت من خلال إعدادات حسابك أو عن طريق
+        cancellation_method: يمكنك الإلغاء في أي وقت من خلال إعدادات حسابك أو عن طريق
           الاتصال بالدعم على cody@moab.jp
         cancellation_effect: يسري الإلغاء في نهاية فترة الفوترة الحالية
         access_retention: تحتفظ بالوصول الكامل إلى الميزات المدفوعة حتى نهاية الفترة
           المدفوعة
         data_retention: يتم الاحتفاظ ببيانات الحساب وفقًا لسياسة الخصوصية الخاصة بنا
         resubscription: يمكنك إعادة الاشتراك في أي وقت بعد الإلغاء
-  support:
-    title: الدعم
-    nav_title: الدعم
-    contact_us: Contact Us
-    description: Need help with CalcuMake? Have a question or suggestion? We're here
-      to help!
-    email_label: Email Support
-    response_time: We typically respond within 24-48 hours
-    faq:
-      title: الأسئلة الشائعة
-      delete_account:
-        question: كيف أحذف حسابي؟
-        answer: 'لحذف حسابك، اتبع هذه الخطوات:'
-        step1: انتقل إلى صفحة ملفك الشخصي من قائمة التنقل
-        step2: قم بالتمرير إلى قسم "حذف الحساب" في أسفل الصفحة
-        step3: ضع علامة في المربع "أفهم أن حذف حسابي دائم"
-        step4: ضع علامة في المربع "أؤكد أنني أريد حذف حسابي وجميع البيانات المرتبطة"
-        step5: انقر فوق زر "حذف حسابي" وأكد التحذير النهائي
-        warning_title: مهم
-        warning_message: حذف الحساب دائم ولا يمكن التراجع عنه. سيتم حذف جميع بياناتك
-          بشكل دائم.
-      data_recovery:
-        question: هل يمكنني استرداد حسابي بعد الحذف؟
-        answer: لا، حذف الحساب دائم ولا رجعة فيه. بمجرد الحذف، لا يمكن استرداد حسابك
-          وجميع البيانات المرتبطة. إذا كنت تعتقد أنك قد ترغب في استخدام CalcuMake
-          مرة أخرى في المستقبل، ففكر في عدم استخدام حسابك بدلاً من حذفه.
-      what_deleted:
-        question: ما هي البيانات التي يتم حذفها عند حذف حسابي؟
-        intro: 'عند حذف حسابك، يتم حذف جميع البيانات التالية بشكل دائم:'
-        item1: حساب المستخدم وبيانات تسجيل الدخول الخاصة بك
-        item2: جميع حسابات تسعير الطباعة الخاصة بك
-        item3: جميع الطابعات وتكويناتها
-        item4: جميع ملفات تعريف الخيوط الخاصة بك
-        item5: جميع فواتيرك
-        item6: جميع معلومات شركتك وتفضيلاتك
-    billing_support:
-      title: دعم الفوترة والاشتراك
-      description: لاستفسارات الفوترة أو تغييرات الاشتراك أو طلبات الاسترداد أو مشاكل
-        الدفع، يرجى الاتصال بنا مع البريد الإلكتروني لحسابك.
-      priority_note: يحصل المشتركون في مستويات Pro وEnterprise على أوقات استجابة دعم
-        ذات أولوية.
-  activerecord:
-    errors:
-      messages:
-        blank: can't be blank
-        taken: has already been taken
-        too_short: is too short (minimum is %{count} characters)
-        too_long: is too long (maximum is %{count} characters)
-        invalid: is invalid
-        greater_than: must be greater than %{count}
-        greater_than_or_equal_to: must be greater than or equal to %{count}
-        less_than: must be less than %{count}
-        less_than_or_equal_to: must be less than or equal to %{count}
-        not_a_number: is not a number
-        inclusion: is not included in the list
-        exclusion: is reserved
-        accepted: must be accepted
-        present: must be blank
-        confirmation: doesn't match %{attribute}
-        empty: can't be empty
-      models:
-        filament:
-          attributes:
-            name:
-              blank: Please enter a filament name
-              taken: You already have a filament with this name
-            material_type:
-              blank: Please select a material type
-              inclusion: Please select a valid material type
-            diameter:
-              blank: Please select a diameter
-              inclusion: Please select a valid diameter (1.75mm, 2.85mm, or 3.0mm)
-            spool_weight:
-              greater_than: Spool weight must be greater than 0
-              not_a_number: Spool weight must be a number
-            spool_price:
-              greater_than: Spool price must be greater than 0
-              not_a_number: Spool price must be a number
-            print_temperature_min:
-              greater_than: Minimum temperature must be greater than 0°C
-              less_than: Minimum temperature must be less than 500°C
-              not_a_number: Minimum temperature must be a number
-            print_temperature_max:
-              greater_than: Maximum temperature must be greater than 0°C
-              less_than: Maximum temperature must be less than 500°C
-              not_a_number: Maximum temperature must be a number
-              temperature_range: must be greater than minimum temperature
-            heated_bed_temperature:
-              greater_than: Bed temperature must be greater than 0°C
-              less_than: Bed temperature must be less than 500°C
-              not_a_number: Bed temperature must be a number
-            print_speed_max:
-              greater_than: Print speed must be greater than 0
-              less_than: Print speed must be less than 1000
-              not_a_number: Print speed must be a number
-            storage_temperature_max:
-              greater_than: Storage temperature must be greater than -50°C
-              less_than: Storage temperature must be less than 100°C
-              not_a_number: Storage temperature must be a number
-            density:
-              greater_than: Density must be greater than 0
-              less_than: Density must be less than 10
-              not_a_number: Density must be a number
-        plate_filament:
-          attributes:
-            filament_weight:
-              blank: Please enter the filament weight
-              greater_than: Filament weight must be greater than 0
-              not_a_number: Filament weight must be a number
-            filament_id:
-              blank: Please select a filament
-              already_added: This filament has already been added to this plate
-        plate:
-          attributes:
-            base:
-              no_filaments: Must have at least one filament
-              duplicate_filaments: Cannot use the same filament multiple times on
-                one plate
-        print_pricing:
-          attributes:
-            base:
-              no_plates: Must have at least one plate
-              too_many_plates: Cannot have more than 10 plates
-              duplicate_filaments_on_plate: Cannot use the same filament multiple
-                times on the same plate
-  common:
-    created: Created
-    currency: Currency
-    hours: Hours
-    minutes: Minutes
-    grams: g
-    watts: W
-    kwh: kWh
-    percentage: "%"
-    years: years
-    'yes': 'Yes'
-    'no': 'No'
-    are_you_sure: Are you sure?
-    errors_prohibited: "%{count} %{errors} prohibited this %{model} from being saved:"
-    error_count:
-      one: error
-      other: errors
-  date:
-    formats:
-      month_day_year: "%B %d, %Y"
-  time:
-    at: at
-    formats:
-      month_day_year: "%B %d, %Y"
-      month_day_year_time: "%B %d, %Y at %I:%M %p"
   print_pricings:
     form:
-      filament_weight: Filament Weight
-      print_time_hours: Print Time Hours
-  invoices:
-    title: Invoices
-    new_invoice: New Invoice
-    edit_invoice: Edit Invoice
-    create_invoice: Create Invoice
-    index:
-      title: My Invoices
-      subtitle: Track and manage all your invoices across projects
-      search_placeholder: Search by job name...
-      empty_state:
-        title: No invoices yet
-        description: Start by creating invoices for your print calculations.
-      no_results:
-        title: No results found
-        description: No invoices match '%{query}'. Try a different search term.
-    download_pdf: Download PDF
-    print: Print
-    bill_to: Bill To
-    mark_as_sent: Mark as Sent
-    mark_as_paid: Mark as Paid
-    created_successfully: Invoice created successfully
-    updated_successfully: Invoice updated successfully
-    deleted_successfully: Invoice deleted successfully
-    cannot_delete_non_draft: Only draft invoices can be deleted
-    marked_as_sent: Invoice marked as sent
-    marked_as_paid: Invoice marked as paid
-    marked_as_cancelled: Invoice marked as cancelled
-    failed_to_update: Failed to update invoice
-    confirm_delete: Are you sure you want to delete this invoice?
-    no_invoices: No invoices yet
-    create_first_invoice: Create your first invoice for this print calculation
-    company_info_card_text: Invoice company information is managed in your profile
-      settings. Update your company details there to use them in all your invoices.
-    no_company_info: No company information set. Please update your profile to add
-      company details.
-    edit_company_info: Edit Company Info in Profile
-    status:
-      draft: Draft
-      sent: Sent
-      paid: Paid
-      cancelled: Cancelled
-    fields:
-      invoice_details: Invoice Details
-      company_info: Company Info
-      company_name: Company Name
-      company_address: Company Address
-      company_email: Company Email
-      company_phone: Company Phone
-      payment_details: Payment Details
-      notes: Notes
-      invoice_number: Invoice Number
-      job_name: Job Name
-      invoice_number_help: Automatically generated when invoices are created (cannot
-        be edited)
-      invoice_date: Invoice Date
-      due_date: Due Date
-      status: Status
-      currency: Currency
-      currency_help: Determines decimal places and formatting for all amounts on this
-        invoice
-      company_logo: Company Logo
-    line_items:
-      title: Line Items
-      add_line_item: Add Line Item
-      description: Description
-      quantity: Quantity
-      unit_price: Unit Price
-      total: Total
-      remove: Remove
-  filaments:
-    index:
-      title: My Filaments
-      subtitle: Manage your 3D printing filament inventory
-      add_new: Add New Filament
-      search_placeholder: Search by name, brand, material, or color...
-      clear_search: Clear Search
-      empty_state:
-        title: No filaments registered yet
-        description: Add your first filament to start building your material library
-          for print calculations.
-        add_first: Add Your First Filament
-      no_results:
-        title: No results found
-        description: No filaments match '%{query}'. Try a different search term.
-    new:
-      title: Add New Filament
-      subtitle: Register a new filament for your material library
-    edit:
-      title: Edit Filament
-      subtitle: Update filament specifications
-    show:
-      usage_history: Usage History
-      times_used: Times Used
-      total_weight_used: Total Weight Used
-      new_print_with_filament: New Print with this Filament
-      recent_prints: Recent Prints
-      not_used_yet: This filament hasn't been used yet
-      create_first_print: Create Your First Print
-      no_cost_info: No cost information available
-    sections:
-      basic_info: Basic Information
-      cost_info: Cost Information
-      properties: Properties
-      technical_specs: Technical Specifications
-    fields:
-      name: Filament Name
-      name_placeholder: e.g., Basic PLA, Premium PETG
-      brand: Brand
-      brand_placeholder: e.g., Hatchbox, Prusa, eSUN
-      material_type: Material Type
-      material_type_prompt: Select material type
-      diameter: Diameter
-      color: Color
-      color_placeholder: e.g., Red, Natural, Transparent
-      finish: Finish
-      finish_placeholder: e.g., Matte, Glossy, Silk
-      spool_weight: Spool Weight
-      spool_weight_placeholder: '1000'
-      spool_price: Spool Price
-      spool_price_placeholder: '25.00'
-      density: Density
-      density_placeholder: '1.24'
-      cost_per_gram: Cost per Gram
-      temperature_range: Temperature Range
-      moisture_sensitive: Moisture Sensitive
-      notes: Notes
-      notes_placeholder: Additional information about this filament...
-      filament: Filament
-      select_filament: Select a filament
-      weight_used: Weight Used
-      selected: Selected
-      none_selected: None selected
-      not_set: Not set
-      total_cost: Total Cost
-      no_filament_registered: No filament registered?
-      add_new_filament: Add New Filament
-      bed_temperature: Bed Temperature
-      max_print_speed: Max Print Speed
-      storage_temp: Storage Temperature
-    properties:
-      moisture_sensitive: Moisture Sensitive
-    buttons:
-      add_filament: Add Filament
-      update_filament: Update Filament
-    confirm_delete: Are you sure you want to delete '%{name}'?
-  devise:
-    shared:
-      oauth_signin_options: Sign in with social accounts
-      alternative_signin_method: Alternative signin method
-      or_sign_in_with_email: Or Sign In With Email
-      sign_in_with_provider: Sign in with %{provider}
-      sign_in_with_provider_aria: Sign in with %{provider}
-    confirmations:
-      confirmed: Your email address has been successfully confirmed.
-      send_instructions: You will receive an email with instructions for how to confirm
-        your email address in a few minutes.
-      send_paranoid_instructions: If your email address exists in our database, you
-        will receive an email with instructions for how to confirm your email address
-        in a few minutes.
-    failure:
-      already_authenticated: You are already signed in.
-      inactive: Your account is not activated yet.
-      invalid: Invalid %{authentication_keys} or password.
-      locked: Your account is locked.
-      last_attempt: You have one more attempt before your account is locked.
-      not_found_in_database: Invalid %{authentication_keys} or password.
-      timeout: Your session expired. Please sign in again to continue.
-      unauthenticated: You need to sign in or sign up before continuing.
-      unconfirmed: You have to confirm your email address before continuing.
-    mailer:
-      confirmation_instructions:
-        subject: Confirmation instructions
-      reset_password_instructions:
-        subject: Reset password instructions
-      unlock_instructions:
-        subject: Unlock instructions
-      email_changed:
-        subject: Email Changed
-      password_change:
-        subject: Password Changed
-    omniauth_callbacks:
-      failure: Could not authenticate you from %{kind} because "%{reason}".
-      success: Successfully authenticated from %{kind} account.
-    passwords:
-      no_token: You can't access this page without coming from a password reset email.
-        If you do come from a password reset email, please make sure you used the
-        full URL provided.
-      send_instructions: You will receive an email with instructions on how to reset
-        your password in a few minutes.
-      send_paranoid_instructions: If your email address exists in our database, you
-        will receive a password recovery link at your email address in a few minutes.
-      updated: Your password has been changed successfully. You are now signed in.
-      updated_not_active: Your password has been changed successfully.
-    registrations:
-      destroyed: Bye! Your account has been successfully cancelled. We hope to see
-        you again soon.
-      signed_up: Welcome! You have signed up successfully.
-      signed_up_but_inactive: You have signed up successfully. However, we could not
-        sign you in because your account is not yet activated.
-      signed_up_but_locked: You have signed up successfully. However, we could not
-        sign you in because your account is locked.
-      signed_up_but_unconfirmed: A message with a confirmation link has been sent
-        to your email address. Please follow the link to activate your account.
-      update_needs_confirmation: You updated your account successfully, but we need
-        to verify your new email address. Please check your email and follow the confirmation
-        link to confirm your new email address.
-      updated: Your account has been updated successfully.
-      updated_but_not_signed_in: Your account has been updated successfully, but since
-        your password was changed, you need to sign in again.
-    sessions:
-      signed_in: Signed in successfully.
-      signed_out: Signed out successfully.
-      already_signed_out: Signed out successfully.
-    unlocks:
-      send_instructions: You will receive an email with instructions for how to unlock
-        your account in a few minutes.
-      send_paranoid_instructions: If your account exists, you will receive an email
-        with instructions for how to unlock it in a few minutes.
-      unlocked: Your account has been unlocked successfully. Please sign in to continue.
-  landing:
-    hero:
-      headline: More creating, less calculating
-      subheadline: Skip the spreadsheets and tedious calculations. Handle pricing
-        automatically so you can focus on the fun part.
-      cta_primary: Start Calculating Free
-      cta_demo: See Demo
-      trust_signal: No credit card required - start with full Startup features for
-        30 days
-      preview_title: Quick Cost Preview
-      preview_filament_weight: Filament Weight
-      preview_print_time: Print Time
-      preview_total_cost: Total Cost
-      preview_cost_breakdown: Electricity + Filament + Labor
-    problem:
-      headline: Are you wasting time calculating pricing for 3D prints?
-      manual_errors: Manual Calculation Errors
-      manual_errors_desc: Spreadsheets and mental math lead to costly mistakes and
-        undercharging.
-      electricity_costs: Forgotten Electricity Costs
-      electricity_costs_desc: Power consumption can add 20-40% to your actual costs
-        but is often ignored.
-      inconsistent_pricing: Inconsistent Pricing
-      inconsistent_pricing_desc: Different calculations for similar jobs confuse customers
-        and hurt profits.
-      time_wasted: Time Wasted on Spreadsheets
-      time_wasted_desc: Hours spent on manual calculations instead of growing your
-        printing business.
-    solution:
-      headline: Professional Tools for Serious Makers
-      subheadline: Everything you need to price accurately and manage your 3D printing
-        projects like a pro.
-    features:
-      accurate_calculation:
-        title: Accurate Cost Calculation
-        desc: Get precise costs every time with comprehensive calculation including
-          all hidden expenses.
-        filament: Filament weight + spool cost
-        electricity: Electricity consumption tracking
-        labor: Labor time (prep + post-processing)
-        depreciation: Machine depreciation
-      multi_printer:
-        title: Multi-Printer Management
-        desc: Track different printer specifications and monitor your return on investment
-          across your entire fleet.
-        power: Individual power consumption tracking
-        roi: ROI tracking per printer
-        organization: Organized print job management
-      invoicing:
-        title: Professional Invoicing
-        desc: Generate professional PDF invoices with your company branding and multi-currency
-          support.
-        pdf: Auto-generated PDF invoices
-        branding: Custom company branding
-        currency: Multi-currency support
-      organization:
-        title: Project Organization
-        desc: Keep your print jobs organized with powerful search, filtering, and
-          project management tools.
-        search: Search and filter print jobs
-        duplicate: Duplicate similar projects
-        history: Complete print history tracking
-    pricing:
-      headline: Simple, Transparent Pricing
-      subheadline: Choose the plan that fits your printing volume. Upgrade or downgrade
-        anytime.
-      cta: Get Started Free
-      free:
-        title: Free
-        trial_notice: First month includes full Startup features!
-        calculations: 5 calculations per month (after trial)
-        printers: 1 printer profile
-        filaments: 4 filament types
-        invoices: 5 invoices per month
-        branding: CalcuMake branding on invoices
-      startup:
-        title: Startup
-        badge: Most Popular
-        calculations: 50 calculations per month
-        printers: 10 printer profiles
-        filaments: 16 filament types
-        branding: Remove CalcuMake branding
-        ads: No ads
-      pro:
-        title: Pro
-        unlimited: Unlimited everything
-        branding: Remove CalcuMake branding
-        ads: No ads
-        support: Priority support
-        analytics: Advanced analytics
-        features: Future premium features
-      trust_signals:
-        no_credit_card: No credit card required - start with full Startup features
-          for 30 days
-        cancel_anytime: Cancel anytime
-        data_private: Your data stays private
-    faq:
-      headline: Frequently Asked Questions
-      accuracy:
-        question: How accurate are the calculations?
-        answer: CalcuMake uses simple formulas and accounts for all cost factors including
-          filament, electricity, labor time, and machine depreciation.
-      currencies:
-        question: What currencies does CalcuMake support?
-        answer: CalcuMake currently supports USD, EUR, GBP, JPY, CAD, and AUD with
-          automatic formatting and precision for each currency. You can switch currencies
-          anytime in your profile settings.
-      printers:
-        question: Does CalcuMake support my 3D printer?
-        answer: CalcuMake works with any 3D printer! You simply enter your printer's
-          power consumption and other specifications. We're planning support for resin
-          printers soon!
-      electricity:
-        question: How do electricity costs work?
-        answer: CalcuMake automatically calculates electricity costs based on your
-          printer's power consumption (in watts), print duration, and your local energy
-          rate per kWh. This ensures you never forget this often-overlooked cost factor.
-      invoices:
-        question: Can I customize my invoices?
-        answer: Yes! You can add your company logo, customize colors, and include
-          your business information. Paid plans remove the CalcuMake branding for
-          a completely professional look.
-    final_cta:
-      headline: Ready to stop losing money on 3D prints?
-      subheadline: Join thousands of makers who trust CalcuMake for accurate pricing
-        and professional project management.
-      button: Start Your Free Trial
-  demo:
-    title: Try CalcuMake Demo
-    subtitle: Test our 3D print cost calculator with sample data. No account required!
-    sign_up_full_version: Sign Up for Full Version
-    start_free_trial: Start Free Trial
-    limitations:
-      title: This is a Demo Version
-      description: 'The full CalcuMake app includes:'
-      features:
-      - Multiple printer profiles with automatic specifications
-      - Comprehensive filament library with material properties
-      - Professional PDF invoice generation
-      - Project history and duplicate functionality
-      - Multi-currency support
-      - Machine depreciation calculations
-  locale_suggestion:
-    banner:
-      title: It looks like you're accessing from a different region.
-      switch_to: Switch to %{language} for a better experience?
-      currently_viewing: Currently viewing in %{language}
-      switch_button: Switch Language
-      stay_button: Stay
-      close: Close
-  calculators:
-    quick_cost_calculator: Quick Cost Calculator
-    print_time_hours: Print Time (hours)
-    filament_weight_grams: Filament Weight (grams)
-    filament_price_per_kg: Filament Price per KG ($)
-    labor_rate_per_hour: Labor Rate per Hour ($)
-    create_full_calculation: Create Full Calculation
-    includes_defaults: 'Includes Default Costs:'
-    defaults:
-      filament_price: Filament
-      labor_rate: Labor
-      energy_cost: Energy
-      power_consumption: Power
-      machine_payoff: Machine Payoff
-    features:
-      real_time: Real-time calculation as you type
-      includes_costs: Includes electricity and labor costs
-    results:
-      filament_cost: Filament Cost
-      electricity_cost: Electricity Cost
-      labor_cost: Labor Cost
-      total_cost: Total Cost
-      estimated_cost: 'Estimated Cost:'
-  errors:
-    messages:
-      already_confirmed: was already confirmed, please try signing in
-      confirmation_period_expired: needs to be confirmed within %{period}, please
-        request a new one
-      expired: has expired, please request a new one
-      not_found: not found
-      not_locked: was not locked
-      not_saved:
-        one: '1 error prohibited this %{resource} from being saved:'
-        other: "%{count} errors prohibited this %{resource} from being saved:"
-filaments:
-  index:
-    title: خيوط الطباعة
-    subtitle: إدارة مخزون خيوط الطباعة ثلاثية الأبعاد
-    add_new: إضافة خيط جديد
-  fields:
-    name: اسم الخيط
-    brand: العلامة التجارية
-    material_type: نوع المادة
-    filament: خيط الطباعة
-    select_filament: اختر خيط طباعة
-  buttons:
-    add_filament: إضافة خيط
-    update_filament: تحديث الخيط
+      filament_weight: وزن الفتيل
+      print_time_hours: ساعات وقت الطباعة
   invoices:
     title: الفواتير
     new_invoice: فاتورة جديدة
@@ -1400,270 +975,453 @@ filaments:
     index:
       title: فواتيري
       subtitle: تتبع وإدارة جميع فواتيرك عبر المشاريع
-      search_placeholder: البحث باسم المهمة...
+      search_placeholder: البحث عن طريق اسم المهمة...
       empty_state:
         title: لا توجد فواتير حتى الآن
         description: ابدأ بإنشاء فواتير لحسابات الطباعة الخاصة بك.
       no_results:
         title: لم يتم العثور على نتائج
-        description: لا توجد فواتير تطابق '%{query}'. جرب مصطلح بحث مختلف.
-    download_pdf: تحميل PDF
+        description: لا توجد فواتير تطابق '%{query}'. حاول استخدام مصطلح بحث مختلف.
+    download_pdf: تنزيل PDF
     print: طباعة
     bill_to: فاتورة إلى
-    mark_as_sent: وضع علامة كمرسلة
-    mark_as_paid: وضع علامة كمدفوعة
+    mark_as_sent: وضع علامة كمرسل
+    mark_as_paid: وضع علامة كمدفوع
     created_successfully: تم إنشاء الفاتورة بنجاح
     updated_successfully: تم تحديث الفاتورة بنجاح
     deleted_successfully: تم حذف الفاتورة بنجاح
-    cannot_delete_non_draft: يمكن حذف المسودات فقط
+    cannot_delete_non_draft: لا يمكن حذف إلا الفواتير المسودة
     marked_as_sent: تم وضع علامة على الفاتورة كمرسلة
     marked_as_paid: تم وضع علامة على الفاتورة كمدفوعة
     marked_as_cancelled: تم وضع علامة على الفاتورة كملغاة
-    failed_to_update: فشل في تحديث الفاتورة
-    confirm_delete: هل أنت متأكد من أنك تريد حذف هذه الفاتورة؟
+    failed_to_update: فشل تحديث الفاتورة
+    confirm_delete: هل أنت متأكد أنك تريد حذف هذه الفاتورة؟
     no_invoices: لا توجد فواتير حتى الآن
     create_first_invoice: أنشئ فاتورتك الأولى لحساب الطباعة هذا
-    company_info_card_text: يتم إدارة معلومات شركة الفاتورة في إعدادات ملفك الشخصي.
+    company_info_card_text: تتم إدارة معلومات شركة الفاتورة في إعدادات ملفك الشخصي.
       قم بتحديث تفاصيل شركتك هناك لاستخدامها في جميع فواتيرك.
-    no_company_info: لم يتم تعيين معلومات الشركة. يرجى تحديث ملفك الشخصي لإضافة تفاصيل
-      الشركة.
+    no_company_info: لم يتم تعيين معلومات الشركة. يرجى تحديث ملف التعريف الخاص بك
+      لإضافة تفاصيل الشركة.
     edit_company_info: تعديل معلومات الشركة في الملف الشخصي
     status:
       draft: مسودة
-      sent: مرسلة
-      paid: مدفوعة
+      sent: مرسل
+      paid: مدفوع
       cancelled: ملغاة
     fields:
       invoice_details: تفاصيل الفاتورة
       company_info: معلومات الشركة
       company_name: اسم الشركة
       company_address: عنوان الشركة
-      company_email: بريد الشركة الإلكتروني
+      company_email: البريد الإلكتروني للشركة
       company_phone: هاتف الشركة
       payment_details: تفاصيل الدفع
       notes: ملاحظات
       invoice_number: رقم الفاتورة
-      invoice_number_help: يتم إنشاؤه تلقائياً عند إنشاء الفواتير (لا يمكن تعديله)
+      job_name: اسم المهمة
+      invoice_number_help: يتم إنشاؤه تلقائيًا عند إنشاء الفواتير (لا يمكن تعديله)
       invoice_date: تاريخ الفاتورة
       due_date: تاريخ الاستحقاق
       status: الحالة
       currency: العملة
-      currency_help: يحدد الأماكن العشرية والتنسيق لجميع المبالغ في هذه الفاتورة
+      currency_help: يحدد المنازل العشرية وتنسيق جميع المبالغ في هذه الفاتورة
       company_logo: شعار الشركة
+      client: العميل
+      project: المشروع
+      select_client: اختر عميلًا
+      no_client_selected: لم يتم اختيار عميل
+      client_help_text: اختر عميلًا لهذه الفاتورة
     line_items:
-      title: عناصر السطر
-      add_line_item: إضافة عنصر سطر
+      title: بنود الفاتورة
+      add_line_item: إضافة بند
       description: الوصف
       quantity: الكمية
       unit_price: سعر الوحدة
       total: المجموع
       remove: إزالة
-print_pricings:
-  form:
-    filament_weight: وزن الخيط
-    print_time_hours: ساعات وقت الطباعة
+      round_all_down_help: تقريب جميع المبالغ إلى الأدنى لتجنب المغالاة في الرسوم
+      round_all_down: تقريب الكل إلى الأدنى
+  filaments:
+    index:
+      title: خيوطي
+      subtitle: إدارة مخزون خيوط الطباعة ثلاثية الأبعاد
+      add_new: إضافة خيط جديد
+      search_placeholder: البحث بالاسم أو العلامة التجارية أو المادة أو اللون...
+      clear_search: مسح البحث
+      empty_state:
+        title: لم يتم تسجيل أي خيوط حتى الآن
+        description: أضف أول خيط لبدء بناء مكتبة المواد الخاصة بك لحسابات الطباعة.
+        add_first: أضف أول خيط لك
+      no_results:
+        title: لم يتم العثور على نتائج
+        description: لا توجد خيوط تطابق '%{query}'. حاول استخدام مصطلح بحث مختلف.
+    new:
+      title: إضافة خيط جديد
+      subtitle: تسجيل خيط جديد لمكتبة المواد الخاصة بك
+    edit:
+      title: تعديل الخيط
+      subtitle: تحديث مواصفات الخيط
+    show:
+      title: تفاصيل الخيط
+      usage_history: سجل الاستخدام
+      times_used: عدد مرات الاستخدام
+      total_weight_used: إجمالي الوزن المستخدم
+      new_print_with_filament: طباعة جديدة بهذا الخيط
+      recent_prints: أحدث المطبوعات
+      not_used_yet: لم يتم استخدام هذا الخيط بعد
+      create_first_print: إنشاء أول طباعة لك
+      no_cost_info: لا تتوفر معلومات التكلفة
+    sections:
+      basic_info: معلومات أساسية
+      cost_info: معلومات التكلفة
+      properties: الخصائص
+      technical_specs: المواصفات الفنية
+    fields:
+      name: اسم الخيط
+      name_placeholder: مثل PLA أساسي، PETG ممتاز
+      brand: العلامة التجارية
+      brand_placeholder: مثل Hatchbox، Prusa، eSUN
+      material_type: نوع المادة
+      material_type_prompt: اختر نوع المادة
+      diameter: القطر
+      color: اللون
+      color_placeholder: مثل أحمر، طبيعي، شفاف
+      finish: اللمسة النهائية
+      finish_placeholder: مثل غير لامع، لامع، حريري
+      spool_weight: وزن البكرة
+      spool_weight_placeholder: '1000'
+      spool_price: سعر البكرة
+      spool_price_placeholder: '25.00'
+      density: الكثافة
+      density_placeholder: '1.24'
+      cost_per_gram: التكلفة لكل جرام
+      temperature_range: نطاق درجة الحرارة
+      moisture_sensitive: حساس للرطوبة
+      notes: ملاحظات
+      notes_placeholder: معلومات إضافية حول هذا الفتيل...
+      filament: فتيل
+      select_filament: اختر فتيلًا
+      weight_used: الوزن المستخدم
+      selected: محدد
+      none_selected: لم يتم تحديد شيء
+      not_set: غير مُعيَّن
+      total_cost: التكلفة الإجمالية
+      no_filament_registered: لم يتم تسجيل أي فتيل؟
+      add_new_filament: إضافة فتيل جديد
+      bed_temperature: درجة حرارة السرير
+      max_print_speed: أقصى سرعة طباعة
+      storage_temp: درجة حرارة التخزين
+    properties:
+      moisture_sensitive: حساس للرطوبة
+    buttons:
+      add_filament: إضافة فتيل
+      update_filament: تحديث الفتيل
+    confirm_delete: هل أنت متأكد أنك تريد حذف '%{name}'؟
   devise:
     shared:
-      sign_in_with_provider: تسجيل الدخول باستخدام %{provider}
-      sign_in_with_provider_aria: تسجيل الدخول باستخدام حساب %{provider} الخاص بك
-      or_sign_in_with_email: أو تسجيل الدخول بالبريد الإلكتروني
-      oauth_signin_options: خيارات تسجيل الدخول من طرف ثالث
+      oauth_signin_options: تسجيل الدخول باستخدام حسابات التواصل الاجتماعي
       alternative_signin_method: طريقة تسجيل دخول بديلة
+      or_sign_in_with_email: أو سجل الدخول باستخدام البريد الإلكتروني
+      sign_in_with_provider: تسجيل الدخول باستخدام %{provider}
+      sign_in_with_provider_aria: تسجيل الدخول باستخدام %{provider}
+    confirmations:
+      confirmed: تم تأكيد عنوان بريدك الإلكتروني بنجاح.
+      send_instructions: ستتلقى رسالة بريد إلكتروني تحتوي على إرشادات حول كيفية تأكيد
+        عنوان بريدك الإلكتروني في غضون دقائق قليلة.
+      send_paranoid_instructions: إذا كان عنوان بريدك الإلكتروني موجودًا في قاعدة
+        بياناتنا، فستتلقى رسالة بريد إلكتروني تحتوي على إرشادات حول كيفية تأكيد عنوان
+        بريدك الإلكتروني في غضون دقائق قليلة.
+    failure:
+      already_authenticated: لقد قمت بتسجيل الدخول بالفعل.
+      inactive: حسابك غير نشط حتى الآن.
+      invalid: "%{authentication_keys} أو كلمة المرور غير صالحة."
+      locked: حسابك مقفل.
+      last_attempt: لديك محاولة أخرى واحدة قبل قفل حسابك.
+      not_found_in_database: "%{authentication_keys} أو كلمة المرور غير صالحة."
+      timeout: انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى للمتابعة.
+      unauthenticated: تحتاج إلى تسجيل الدخول أو الاشتراك قبل المتابعة.
+      unconfirmed: يجب عليك تأكيد عنوان بريدك الإلكتروني قبل المتابعة.
+    mailer:
+      confirmation_instructions:
+        subject: تعليمات التأكيد
+      reset_password_instructions:
+        subject: تعليمات إعادة تعيين كلمة المرور
+      unlock_instructions:
+        subject: تعليمات فتح القفل
+      email_changed:
+        subject: تم تغيير البريد الإلكتروني
+      password_change:
+        subject: تم تغيير كلمة المرور
     omniauth_callbacks:
-      success: تم التحقق بنجاح من حساب %{kind}.
+      failure: تعذر مصادقتك من %{kind} بسبب "%{reason}".
+      success: تمت المصادقة بنجاح من حساب %{kind}.
+    passwords:
+      no_token: لا يمكنك الوصول إلى هذه الصفحة دون القدوم من رسالة بريد إلكتروني لإعادة
+        تعيين كلمة المرور. إذا كنت قادمًا من رسالة بريد إلكتروني لإعادة تعيين كلمة
+        المرور، فيرجى التأكد من استخدام عنوان URL الكامل المقدم.
+      send_instructions: ستتلقى رسالة بريد إلكتروني تحتوي على إرشادات حول كيفية إعادة
+        تعيين كلمة المرور الخاصة بك في غضون دقائق قليلة.
+      send_paranoid_instructions: إذا كان عنوان بريدك الإلكتروني موجودًا في قاعدة
+        بياناتنا، فستتلقى رابط استعادة كلمة المرور على عنوان بريدك الإلكتروني في غضون
+        دقائق قليلة.
+      updated: تم تغيير كلمة مرورك بنجاح. أنت الآن مسجل الدخول.
+      updated_not_active: تم تغيير كلمة مرورك بنجاح.
+    registrations:
+      destroyed: وداعا! تم إلغاء حسابك بنجاح. نأمل أن نراك مرة أخرى قريبًا.
+      signed_up: مرحبا! لقد قمت بالتسجيل بنجاح.
+      signed_up_but_inactive: لقد قمت بالتسجيل بنجاح. ومع ذلك، لم نتمكن من تسجيل دخولك
+        لأن حسابك لم يتم تفعيله بعد.
+      signed_up_but_locked: لقد قمت بالتسجيل بنجاح. ومع ذلك، لم نتمكن من تسجيل دخولك
+        لأن حسابك مقفل.
+      signed_up_but_unconfirmed: تم إرسال رسالة تحتوي على رابط تأكيد إلى عنوان بريدك
+        الإلكتروني. يرجى اتباع الرابط لتفعيل حسابك.
+      update_needs_confirmation: تم تحديث حسابك بنجاح، ولكننا نحتاج إلى التحقق من
+        عنوان بريدك الإلكتروني الجديد. يرجى التحقق من بريدك الإلكتروني واتباع رابط
+        التأكيد لتأكيد عنوان بريدك الإلكتروني الجديد.
+      updated: تم تحديث حسابك بنجاح.
+      updated_but_not_signed_in: تم تحديث حسابك بنجاح، ولكن نظرًا لتغيير كلمة مرورك،
+        تحتاج إلى تسجيل الدخول مرة أخرى.
+    sessions:
+      signed_in: تم تسجيل الدخول بنجاح.
+      signed_out: تم تسجيل الخروج بنجاح.
+      already_signed_out: تم تسجيل الخروج بنجاح.
+    unlocks:
+      send_instructions: ستتلقى رسالة بريد إلكتروني تحتوي على إرشادات حول كيفية إلغاء
+        قفل حسابك في غضون دقائق قليلة.
+      send_paranoid_instructions: إذا كان حسابك موجودًا، فستتلقى رسالة بريد إلكتروني
+        تحتوي على إرشادات حول كيفية إلغاء قفله في غضون دقائق قليلة.
+      unlocked: تم إلغاء قفل حسابك بنجاح. يرجى تسجيل الدخول للمتابعة.
   landing:
     hero:
-      headline: أكثر إبداعاً، أقل حساباً
-      subheadline: تخلّص من جداول البيانات والحسابات المملة. اجعل التسعير تلقائياً
-        لتركز على الجزء الممتع.
-      cta_primary: ابدأ الحساب مجاناً
+      headline: المزيد من الإبداع، أقل من الحسابات
+      subheadline: تخطَّ الجداول الحسابية والحسابات المملة. تعامل مع التسعير تلقائيًا
+        حتى تتمكن من التركيز على الجزء الممتع.
+      cta_primary: ابدأ الحساب مجانًا
       cta_demo: شاهد العرض التوضيحي
-      trust_signal: لا حاجة لبطاقة ائتمان - ابدأ بجميع ميزات Startup كاملة لمدة 30
-        يوماً
+      trust_signal: لا توجد حاجة لبطاقة ائتمان - ابدأ بميزات Startup الكاملة لمدة
+        30 يومًا
       preview_title: معاينة سريعة للتكلفة
-      preview_filament_weight: وزن الخيط
+      preview_filament_weight: وزن الفتيل
       preview_print_time: وقت الطباعة
       preview_total_cost: التكلفة الإجمالية
-      preview_cost_breakdown: الكهرباء + الخيط + العمالة
+      preview_cost_breakdown: كهرباء + فتيل + عمل
     problem:
-      headline: هل تخسر المال في الطباعة ثلاثية الأبعاد؟
+      headline: هل تضيع وقتك في حساب أسعار الطباعة ثلاثية الأبعاد؟
       manual_errors: أخطاء الحساب اليدوي
-      manual_errors_desc: جداول البيانات والحساب الذهني يؤديان إلى أخطاء مكلفة وتسعير
-        منخفض.
+      manual_errors_desc: تؤدي الجداول الحسابية والحسابات الذهنية إلى أخطاء مكلفة
+        ونقص في الرسوم.
       electricity_costs: تكاليف الكهرباء المنسية
-      electricity_costs_desc: استهلاك الطاقة قد يضيف 20-40% إلى تكاليفك الفعلية لكنه
-        غالباً ما يُتجاهل.
-      inconsistent_pricing: التسعير غير المتسق
-      inconsistent_pricing_desc: الحسابات المختلفة للمهام المتشابهة تربك العملاء وتضر
-        بالأرباح.
-      time_wasted: الوقت المهدر في جداول البيانات
-      time_wasted_desc: ساعات تُقضى في الحسابات اليدوية بدلاً من تنمية أعمال الطباعة.
+      electricity_costs_desc: يمكن أن يضيف استهلاك الطاقة 20-40٪ إلى التكاليف الفعلية
+        الخاصة بك ولكن غالبًا ما يتم تجاهله.
+      inconsistent_pricing: تسعير غير متناسق
+      inconsistent_pricing_desc: تؤدي الحسابات المختلفة للوظائف المماثلة إلى إرباك
+        العملاء والإضرار بالأرباح.
+      time_wasted: الوقت الضائع في الجداول الحسابية
+      time_wasted_desc: ساعات تقضى في الحسابات اليدوية بدلاً من تنمية أعمال الطباعة
+        الخاصة بك.
     solution:
-      headline: أدوات احترافية للصُنّاع الجادين
-      subheadline: كل ما تحتاجه للتسعير الدقيق وإدارة مشاريع الطباعة ثلاثية الأبعاد
-        بطريقة احترافية.
+      headline: أدوات احترافية لصناع جادين
+      subheadline: كل ما تحتاجه لتسعير مشاريع الطباعة ثلاثية الأبعاد وإدارتها بدقة
+        مثل المحترفين.
     features:
       accurate_calculation:
         title: حساب دقيق للتكلفة
-        desc: احصل على تكاليف دقيقة في كل مرة مع حساب شامل يشمل جميع النفقات المخفية.
-        filament: وزن الفيلامنت + تكلفة البكرة
+        desc: احصل على تكاليف دقيقة في كل مرة مع حساب شامل يتضمن جميع النفقات الخفية.
+        filament: وزن الفتيل + تكلفة البكرة
         electricity: تتبع استهلاك الكهرباء
-        labor: وقت العمل (التحضير + المعالجة اللاحقة)
+        labor: وقت العمل (الإعداد + المعالجة اللاحقة)
         depreciation: إهلاك الآلة
       multi_printer:
-        title: إدارة متعددة الطابعات
-        desc: تتبع مواصفات الطابعات المختلفة وراقب عائد الاستثمار عبر أسطولك بالكامل.
+        title: إدارة طابعات متعددة
+        desc: تتبع مواصفات الطابعات المختلفة وراقب عائد استثمارك عبر أسطولك بأكمله.
         power: تتبع استهلاك الطاقة الفردي
         roi: تتبع عائد الاستثمار لكل طابعة
         organization: إدارة منظمة لمهام الطباعة
       invoicing:
-        title: فوترة احترافية
-        desc: أنشئ فواتير PDF احترافية بعلامتك التجارية ودعم متعدد العملات.
-        pdf: فواتير PDF مُولّدة تلقائياً
+        title: الفواتير الاحترافية
+        desc: أنشئ فواتير PDF احترافية تحمل العلامة التجارية لشركتك وتدعم عملات متعددة.
+        pdf: فواتير PDF يتم إنشاؤها تلقائيًا
         branding: علامة تجارية مخصصة للشركة
-        currency: دعم متعدد العملات
+        currency: دعم عملات متعددة
       organization:
         title: تنظيم المشاريع
-        desc: حافظ على تنظيم مهام الطباعة بأدوات بحث وفلترة وإدارة مشاريع قوية.
-        search: البحث والفلترة في مهام الطباعة
-        duplicate: نسخ المشاريع المتشابهة
-        history: تتبع كامل لتاريخ الطباعة
+        desc: حافظ على تنظيم مهام الطباعة الخاصة بك باستخدام أدوات بحث وتصفية وإدارة
+          مشاريع قوية.
+        search: البحث عن مهام الطباعة وتصفيتها
+        duplicate: تكرار المشاريع المماثلة
+        history: تتبع كامل لسجل الطباعة
     pricing:
-      headline: تسعير بسيط وشفاف
-      subheadline: اختر الخطة التي تناسب حجم طباعتك. يمكن الترقية أو التخفيض في أي
-        وقت.
-      cta: ابدأ مجاناً
+      headline: أسعار بسيطة وشفافة
+      subheadline: اختر الخطة التي تناسب حجم الطباعة الخاص بك. قم بالترقية أو الرجوع
+        إلى إصدار أقدم في أي وقت.
+      cta: ابدأ مجانًا
       free:
         title: مجاني
-        trial_notice: الشهر الأول يشمل جميع ميزات Startup كاملة!
-        calculations: 5 حسابات شهرياً (بعد التجربة)
-        printers: ملف طابعة واحد
-        filaments: 4 أنواع فيلامنت
-        invoices: 5 فواتير شهرياً
+        trial_notice: الشهر الأول يتضمن ميزات Startup كاملة!
+        calculations: 5 عمليات حسابية شهريًا (بعد الفترة التجريبية)
+        printers: ملف تعريف طابعة واحد
+        filaments: 4 أنواع من الفتيل
+        invoices: 5 فواتير شهريًا
         branding: علامة CalcuMake التجارية على الفواتير
       startup:
-        title: Startup
-        badge: الأكثر شعبية
-        calculations: 50 حساباً شهرياً
-        printers: 10 ملفات طابعات
-        filaments: 16 نوع فيلامنت
-        branding: إزالة علامة CalcuMake التجارية
-        ads: بدون إعلانات
+        title: بدء التشغيل
+        badge: الأكثر شيوعًا
+        calculations: 50 عملية حسابية شهريًا
+        printers: 10 ملفات تعريف للطابعة
+        filaments: 16 نوعًا من الفتيل
+        branding: إزالة العلامة التجارية CalcuMake
+        ads: لا توجد إعلانات
       pro:
-        title: Pro
+        title: احترافي
         unlimited: كل شيء غير محدود
-        branding: إزالة علامة CalcuMake التجارية
-        ads: بدون إعلانات
-        support: دعم أولوي
+        branding: إزالة العلامة التجارية CalcuMake
+        ads: لا توجد إعلانات
+        support: دعم ذو أولوية
         analytics: تحليلات متقدمة
-        features: ميزات مستقبلية مدفوعة
+        features: ميزات مميزة مستقبلية
       trust_signals:
-        no_credit_card: لا حاجة لبطاقة ائتمان - ابدأ بجميع ميزات Startup لمدة 30 يوماً
+        no_credit_card: لا توجد بطاقة ائتمان مطلوبة - ابدأ بميزات Startup كاملة لمدة
+          30 يومًا
         cancel_anytime: إلغاء في أي وقت
-        data_private: بياناتك تبقى خاصة
+        data_private: بياناتك تظل خاصة
     faq:
       headline: الأسئلة الشائعة
       accuracy:
         question: ما مدى دقة الحسابات؟
-        answer: تستخدم CalcuMake معادلات بسيطة وتحسب جميع عوامل التكلفة بما في ذلك
-          الفيلامنت والكهرباء ووقت العمل وإهلاك الآلة.
+        answer: يستخدم CalcuMake صيغًا بسيطة ويراعي جميع عوامل التكلفة بما في ذلك
+          الفتيل والكهرباء ووقت العمل واستهلاك الآلة.
       currencies:
-        question: ما العملات التي تدعمها CalcuMake؟
-        answer: تدعم CalcuMake حالياً USD و EUR و GBP و JPY و CAD و AUD مع التنسيق
-          التلقائي والدقة لكل عملة. يمكنك تغيير العملات في أي وقت في إعدادات ملفك
-          الشخصي.
+        question: ما هي العملات التي يدعمها CalcuMake؟
+        answer: يدعم CalcuMake حاليًا USD و EUR و GBP و JPY و CAD و AUD مع تنسيق ودقة
+          تلقائيين لكل عملة. يمكنك تبديل العملات في أي وقت في إعدادات ملف التعريف
+          الخاص بك.
       printers:
-        question: هل تدعم CalcuMake طابعتي ثلاثية الأبعاد؟
-        answer: تعمل CalcuMake مع أي طابعة ثلاثية الأبعاد! ما عليك سوى إدخال استهلاك
-          طابعتك للطاقة والمواصفات الأخرى. نخطط لدعم طابعات الراتنج قريباً!
+        question: هل يدعم CalcuMake طابعتي ثلاثية الأبعاد؟
+        answer: يعمل CalcuMake مع أي طابعة ثلاثية الأبعاد! ما عليك سوى إدخال استهلاك
+          الطاقة للطابعة الخاصة بك والمواصفات الأخرى. نحن نخطط لدعم طابعات الراتنج
+          قريبًا!
       electricity:
         question: كيف تعمل تكاليف الكهرباء؟
-        answer: تحسب CalcuMake تلقائياً تكاليف الكهرباء بناءً على استهلاك طابعتك للطاقة
-          (بالواط) ومدة الطباعة وتعرفة الطاقة المحلية لكل كيلوواط ساعة. هذا يضمن عدم
-          نسيان عامل التكلفة المُتجاهل غالباً.
+        answer: يحسب CalcuMake تلقائيًا تكاليف الكهرباء بناءً على استهلاك الطاقة للطابعة
+          الخاصة بك (بالواط) ومدة الطباعة وسعر الطاقة المحلي لكل كيلو وات في الساعة.
+          هذا يضمن أنك لن تنسى أبدًا عامل التكلفة الذي غالبًا ما يتم تجاهله.
       invoices:
         question: هل يمكنني تخصيص فواتيري؟
-        answer: نعم! يمكنك إضافة شعار شركتك وتخصيص الألوان وتضمين معلومات أعمالك.
-          الخطط المدفوعة تزيل علامة CalcuMake التجارية للحصول على مظهر احترافي كامل.
+        answer: نعم! يمكنك إضافة شعار شركتك، وتخصيص الألوان، وتضمين معلومات عملك.
+          تزيل الخطط المدفوعة العلامة التجارية CalcuMake للحصول على مظهر احترافي بالكامل.
     final_cta:
-      headline: مستعد للتوقف عن خسارة المال في الطباعة ثلاثية الأبعاد؟
-      subheadline: انضم لآلاف الصُنّاع الذين يثقون في CalcuMake للتسعير الدقيق وإدارة
-        المشاريع الاحترافية.
+      headline: هل أنت مستعد للتوقف عن خسارة المال في عمليات الطباعة ثلاثية الأبعاد؟
+      subheadline: انضم إلى آلاف الصانعين الذين يثقون في CalcuMake للحصول على أسعار
+        دقيقة وإدارة احترافية للمشاريع.
       button: ابدأ تجربتك المجانية
+  demo:
+    title: جرب عرض CalcuMake التوضيحي
+    subtitle: اختبر حاسبة تكلفة الطباعة ثلاثية الأبعاد الخاصة بنا مع بيانات نموذجية.
+      لا يلزم وجود حساب!
+    sign_up_full_version: اشترك للحصول على النسخة الكاملة
+    start_free_trial: ابدأ التجربة المجانية
+    limitations:
+      title: هذه نسخة تجريبية
+      description: 'يتضمن تطبيق CalcuMake الكامل:'
+      features: '["ملفات تعريف طابعة متعددة مع مواصفات تلقائية", "مكتبة شاملة من خيوط
+        الطباعة مع خصائص المواد", "إنشاء فواتير PDF احترافية", "سجل المشروع ووظيفة
+        التكرار", "دعم متعدد للعملات", "حسابات إهلاك الآلة"]'
+  locale_suggestion:
+    banner:
+      title: يبدو أنك تتصفح من منطقة مختلفة.
+      switch_to: التبديل إلى %{language} للحصول على تجربة أفضل؟
+      currently_viewing: أنت تشاهد حاليًا باللغة %{language}
+      switch_button: تبديل اللغة
+      stay_button: البقاء
+      close: إغلاق
   calculators:
-    quick_cost_calculator: آلة حاسبة التكلفة السريعة
-    print_time_hours: وقت الطباعة (ساعات)
-    filament_weight_grams: وزن الخيط (جرام)
-    filament_price_per_kg: سعر الخيط لكل كيلوجرام (ريال)
-    labor_rate_per_hour: معدل العمالة لكل ساعة (ريال)
+    quick_cost_calculator: حاسبة التكلفة السريعة
+    print_time_hours: وقت الطباعة (بالساعات)
+    filament_weight_grams: وزن خيوط الطباعة (بالجرام)
+    filament_price_per_kg: سعر خيوط الطباعة للكيلو جرام الواحد ($)
+    labor_rate_per_hour: معدل أجور العمالة في الساعة ($)
     create_full_calculation: إنشاء حساب كامل
-    includes_defaults: 'يتضمن التكاليف الافتراضية:'
+    includes_defaults: 'يشمل التكاليف الافتراضية:'
     defaults:
-      filament_price: الخيط
+      filament_price: خيوط الطباعة
       labor_rate: العمالة
       energy_cost: الطاقة
       power_consumption: استهلاك الطاقة
-      machine_payoff: استهلاك الآلة
+      machine_payoff: تسديد قيمة الآلة
     features:
-      real_time: حساب فوري أثناء الكتابة
+      real_time: حساب في الوقت الفعلي أثناء الكتابة
       includes_costs: يشمل تكاليف الكهرباء والعمالة
     results:
-      filament_cost: تكلفة الخيط
+      filament_cost: تكلفة خيوط الطباعة
       electricity_cost: تكلفة الكهرباء
       labor_cost: تكلفة العمالة
       total_cost: التكلفة الإجمالية
       estimated_cost: 'التكلفة المقدرة:'
-  demo:
-    title: جرب عرض CalcuMake التوضيحي
-    subtitle: اختبر آلة حاسبة تكلفة الطباعة ثلاثية الأبعاد مع بيانات تجريبية. لا حاجة
-      لحساب!
-    sign_up_full_version: تسجيل للنسخة الكاملة
-    start_free_trial: بدء التجربة المجانية
-    limitations:
-      title: هذه نسخة تجريبية
-      description: 'تطبيق CalcuMake الكامل يشمل:'
-      features:
-      - ملفات طابعات متعددة مع مواصفات تلقائية
-      - مكتبة شاملة للخيوط مع خصائص المواد
-      - توليد فواتير PDF احترافية
-      - تاريخ المشاريع ووظيفة النسخ
-      - دعم العملات المتعددة
-      - حسابات إهلاك الآلات
   usage_limits:
-    limit_reached: لقد وصلت إلى حد خطة %{plan} البالغ %{limit} %{resource}. يرجى الترقية
-      للمتابعة.
-    approaching_limit: أنت تقترب من حد خطتك لـ %{resource}
     usage_summary: ملخص الاستخدام
-    current_usage: تم استخدام %{current} من %{limit}
-    unlimited: غير محدود
+    limit_reached: لقد وصلت إلى حد %{resource} لخطة اشتراكك
+    approaching_limits_message: أنت تقترب من حدود خطة اشتراكك
   subscriptions:
-    title: الاشتراك والتسعير
+    title: الاشتراك
     current_plan: الخطة الحالية
-    upgrade: ترقية الخطة
-    manage: إدارة الاشتراك
-    cancel: إلغاء الاشتراك
-    invalid_plan: تم تحديد خطة اشتراك غير صالحة
-    checkout_error: تعذر إنشاء جلسة الدفع. يرجى المحاولة مرة أخرى.
-    verification_error: تعذر التحقق من الاشتراك. يرجى الاتصال بالدعم.
-    portal_error: تعذر الوصول إلى إدارة الاشتراكات. يرجى المحاولة مرة أخرى.
-    no_subscription: ليس لديك اشتراك نشط
-    upgrade_successful: تمت الترقية بنجاح إلى خطة %{plan}!
-    cancel_scheduled: سيتم إلغاء اشتراكك في نهاية فترة الفوترة
-    cancel_error: تعذر إلغاء الاشتراك. يرجى المحاولة مرة أخرى.
-    trial_badge: تجربة مجانية لمدة 30 يومًا
-    trial_remaining: "%{days} يوم متبقي"
+    upgrade: ترقية
+    upgrade_successful: تمت ترقية الاشتراك بنجاح
+    already_subscribed: لديك بالفعل اشتراك نشط
+    invalid_plan: خطة اشتراك غير صالحة
+    no_subscription: لم يتم العثور على اشتراك نشط
+    cancel_scheduled: تم جدولة إلغاء الاشتراك
     features:
-      calculations: "%{count} حساب طباعة/شهر"
-      printers: "%{count} ملف تعريف طابعة"
-      filaments: "%{count} نوع خيوط"
-      invoices: "%{count} فاتورة/شهر"
-      unlimited_calculations: حسابات طباعة غير محدودة
-      unlimited_printers: طابعات غير محدودة
-      unlimited_filaments: خيوط غير محدودة
-      unlimited_invoices: فواتير غير محدودة
-      no_branding: إزالة علامة CalcuMake التجارية
-      no_ads: تجربة خالية من الإعلانات
-      alternative_signin_method: Alternative signin method
-      or_sign_in_with_email: Or Sign In With Email
-      sign_in_with_provider: Sign in with %{provider}
-      sign_in_with_provider_aria: Sign in with %{provider}
+      calculations: حسابات الطباعة
+      printers: الطابعات
+    upgrade_now: ترقية الآن
+  gdpr:
+    cookie_consent:
+      title: الموافقة على استخدام ملفات تعريف الارتباط
+      message: نحن نستخدم ملفات تعريف الارتباط لتحسين تجربتك. من خلال الاستمرار في
+        استخدام هذا الموقع، فإنك توافق على سياسة ملفات تعريف الارتباط الخاصة بنا.
+      message_html: نحن نستخدم ملفات تعريف الارتباط لتحسين تجربتك. من خلال الاستمرار
+        في استخدام هذا الموقع، فإنك توافق على %{cookie_policy_link} الخاصة بنا. اقرأ
+        %{privacy_policy_link} الخاصة بنا.
+      accept: قبول
+      decline: رفض
+      reject: رفض
+    cookie_policy_title: سياسة ملفات تعريف الارتباط
+    cookie_policy: نحن نستخدم ملفات تعريف الارتباط لتحسين تجربتك. باستخدام موقعنا،
+      فإنك توافق على استخدام ملفات تعريف الارتباط.
+    privacy_policy: سياسة الخصوصية
+    terms_of_service_title: شروط الخدمة
+    last_updated: آخر تحديث
+    data_export:
+      title: تصدير بياناتك
+      description: قم بتنزيل جميع بياناتك بتنسيق JSON
+      button: تنزيل البيانات
+      what_included: ما الذي يتضمنه تصدير بياناتك
+      items:
+        account_info: معلومات الحساب
+    data_deletion:
+      title: حذف حسابك
+      description: حذف حسابك وجميع البيانات المرتبطة به نهائيًا
+      warning: لا يمكن التراجع عن هذا الإجراء
+      warning_title: 'تحذير: هذا الإجراء دائم'
+      warning_message: سيتم حذف جميع بياناتك نهائيًا ولا يمكن استعادتها
+      button: حذف الحساب
+      what_deleted: ما الذي سيتم حذفه
+    tos_sections:
+      acceptance:
+        title: قبول الشروط
+        content: باستخدام CalcuMake، فإنك توافق على شروط الخدمة هذه
+    cookie_sections:
+      what_are_cookies:
+        title: ما هي ملفات تعريف الارتباط؟
+    consent_recorded: تم حفظ تفضيلاتك
+    account_deleted: تم حذف حسابك بنجاح
+  errors:
+    messages:
+      already_confirmed: تم تأكيده بالفعل، يرجى محاولة تسجيل الدخول
+      confirmation_period_expired: يجب تأكيده خلال %{period}، يرجى طلب واحد جديد
+      expired: انتهت صلاحيته، يرجى طلب واحد جديد
+      not_found: غير موجود
+      not_locked: لم يكن مقفلاً
+      not_saved:
+        one: '1 خطأ منع حفظ %{resource}:'
+        other: "%{count} أخطاء منعت حفظ %{resource}:"

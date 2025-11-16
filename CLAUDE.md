@@ -130,13 +130,40 @@ Never replace frames directly - wrap content:
 ## Internationalization
 Supports 7 languages: en, ja, zh-CN, hi, es, fr, ar
 
-**CRITICAL**: Only maintain `en.yml` and `devise.en.yml` - all other locales are auto-translated.
+**CRITICAL**: Only maintain English source files in `config/locales/en/` and `config/locales/devise.en.yml` - all other locales are auto-translated.
+
+### Translation File Structure
+
+**English Source Files** (manually maintained):
+```
+config/locales/
+├── en/                          # Split by domain for maintainability
+│   ├── activerecord.yml         # Model validations & errors
+│   ├── navigation.yml           # Nav, actions, flash, common
+│   ├── print_pricings.yml       # Print pricing features
+│   ├── printers.yml             # Printer management
+│   ├── invoices.yml             # Invoice features
+│   ├── filaments.yml            # Filament management
+│   ├── clients.yml              # Client management
+│   ├── profile.yml              # User profile & settings
+│   ├── currency.yml             # Currency & energy
+│   ├── application.yml          # App-wide strings
+│   ├── support.yml              # Support page
+│   ├── legal.yml                # Legal pages
+│   ├── landing.yml              # Landing page & marketing
+│   ├── subscriptions.yml        # Subscription features
+│   └── gdpr.yml                 # GDPR & privacy
+└── devise.en.yml                # Devise authentication
+```
+
+**Auto-Generated Files** (single file per language):
+- `ja.yml`, `es.yml`, `fr.yml`, `ar.yml`, `hi.yml`, `zh-CN.yml`
 
 ### Automated Translation System
 
 **Development Workflow** (Local):
-1. Add new keys to `config/locales/en.yml` or `config/locales/devise.en.yml`
-2. Run `bin/sync-translations` (uses English placeholders without API key)
+1. Add new keys to files in `config/locales/en/` or `config/locales/devise.en.yml`
+2. Run `bin/sync-translations` (requires API key for automated translation)
 3. Test with `bin/rails test` to ensure nothing broke
 
 **Production Workflow** (Deployment):
@@ -149,17 +176,19 @@ Supports 7 languages: en, ja, zh-CN, hi, es, fr, ar
 
 `bin/sync-translations` - Intelligent wrapper script:
 - **With API key**: Calls `bin/translate-locales` for automated translation
-- **Without API key**: Falls back to English placeholder sync
-- Compares `en.yml` + `devise.en.yml` against all target locales
+- **Without API key**: Exits with error (we no longer use English placeholders)
+- Merges all `en/*.yml` files before translation
 - Auto-detects missing keys across all 6 languages
 
-`bin/translate-locales` - OpenRouter API integration:
-- **Model**: Google Gemini Flash 1.5 (8B) - extremely fast and cost-effective (~$0.00001875/1M tokens)
+`bin/translate-locales` - OpenRouter API integration via `open_router` gem:
+- **Model**: Google Gemini 2.0 Flash (`google/gemini-2.0-flash-001`) - extremely fast and cost-effective
+- **Implementation**: Uses official `open_router` Ruby gem (v0.3.3) for clean, maintainable API calls
 - **Batch processing**: 50 keys per request for optimal performance
 - **Smart caching**: Stores translations in `tmp/translation_cache/` to avoid re-translating
 - **Validation**: Ensures interpolation variables (%{name}, etc.) are preserved
+- **JSON parsing**: Handles both JSON and plain-text translation responses
 - **Resume capability**: Can restart from cache if interrupted
-- **Cost**: ~$0.10 for full translation of all 1265+ keys across 6 languages
+- **Total keys**: 1,074 keys across 6 languages (ja, es, fr, ar, hi, zh-CN)
 
 **Key Features**:
 - Preserves interpolation variables (`%{variable}`)
@@ -189,7 +218,7 @@ Devise with confirmable and omniauthable modules. OAuth providers: Google, GitHu
 - Routes: `/manifest` and `/service-worker`
 
 ## Subscription System (Stripe)
-- **Plans**: Free (trial), Startup ($0.99/mo), Pro ($9.99/mo)
+- **Plans**: Free (trial), Startup (¥150/mo), Pro (¥1,500/mo)
 - **Implementation**: PR #26 merged - Stripe Checkout with webhooks
 - **Status**: ~95% complete, needs API credentials configuration
 - **Controllers**: `SubscriptionsController`, `Webhooks::StripeController`
@@ -240,11 +269,12 @@ Minitest with Turbo Stream tests. Test both HTML and turbo_stream formats.
 - `app/views/shared/_modal.html.erb` - Reusable modal component
 - `app/helpers/print_pricings_helper.rb` - View formatting
 - `app/assets/stylesheets/application.css` - Moab theme styling
-- `config/locales/en.yml` - English master locale (only file to manually maintain)
-- `config/locales/devise.en.yml` - English Devise translations (only file to manually maintain)
-- `config/locales/*.yml` - Auto-translated locale files (ja, es, fr, ar, hi, zh-CN)
+- `config/locales/en/*.yml` - English master translations split by domain (manually maintained)
+- `config/locales/devise.en.yml` - English Devise translations (manually maintained)
+- `config/locales/*.yml` - Auto-translated locale files (ja, es, fr, ar, hi, zh-CN) - single combined files
+- `bin/split-translations` - Helper to split en.yml into domain files (one-time use)
 - `bin/sync-translations` - Translation wrapper (auto-detects API key)
-- `bin/translate-locales` - Automated translation via OpenRouter API
+- `bin/translate-locales` - Automated translation via OpenRouter API (merges en/ files before translating)
 - `.kamal/hooks/pre-build` - Deployment hook (runs translations + tests + auto-commit)
 - `.env.local` - OAuth credentials (gitignored, see `.env.local.example`)
 
@@ -266,3 +296,31 @@ When additional context is needed for historical decisions or completed features
 - **Future Plans:** `docs/archive/ADSENSE_PREPARATION.md` - Prepared but not implemented features
 
 *Reference documentation only when specific context is required.*
+## Recent Updates
+
+### 2025-11-16: Translation Files Refactored
+- **Split English translations** from single `en.yml` (1,365 lines) into 15 domain-specific files in `config/locales/en/`
+- **Updated `bin/translate-locales`** to automatically merge all `en/*.yml` files before translation
+- **Backward compatible** - falls back to single `en.yml` if `en/` directory doesn't exist
+- **Same structure for other locales** - ja, es, fr, ar, hi, zh-CN remain as single combined files
+- **Benefits**: Easier to edit, less prone to YAML corruption, better organization, easier code reviews
+- **File sizes**: Largest split file is 16KB (legal.yml), down from 60KB monolithic file
+
+### 2025-01-16: Translation System Refactored to use `open_router` Gem
+- Replaced manual HTTP calls with official `open_router` Ruby gem (v0.3.3)
+- Switched from Gemini Flash 1.5 (8B) to **Gemini 2.0 Flash** (`google/gemini-2.0-flash-001`)
+- All 1,074 keys successfully translated across 6 languages (ja, es, fr, ar, hi, zh-CN)
+- Translation cache rebuilt in `tmp/translation_cache/` for efficiency
+- Script now properly handles JSON responses from Gemini (wraps in markdown code blocks)
+
+### Navigation Menu Translations Completed
+- Added missing nav keys: `usage_and_subscription`, `legal_header`, `data_rights_header`, `export_data`, `delete_account`
+- All help menu items now properly translated in all 7 supported languages
+- Fixed locale suggestion banner controller error (missing `banner` target)
+
+### Key Implementation Details
+- `bin/translate-locales` uses `OpenRouter::Client.new` with configuration block
+- Model parameter: `google/gemini-2.0-flash-001` (most popular translation model)
+- API calls: 132 batches to translate full set from scratch
+- Fail-fast: exits with error code 1 if translations fail (no silent fallbacks)
+- Credit check: handles both provisioning keys and per-key limits gracefully

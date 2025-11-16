@@ -114,8 +114,8 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_includes @response.body, "Free"
     assert_includes @response.body, "Startup"
     assert_includes @response.body, "Pro"
-    assert_includes @response.body, "$0.99"
-    assert_includes @response.body, "$9.99"
+    assert_includes @response.body, "¥150"
+    assert_includes @response.body, "¥1,500"
   end
 
   test "landing page FAQ section should be present" do

@@ -27,7 +27,9 @@ class PrintersControllerTest < ActionDispatch::IntegrationTest
           manufacturer: "Prusa",
           power_consumption: 200,
           cost: 500,
-          payoff_goal_years: 3
+          payoff_goal_years: 3,
+          daily_usage_hours: 8,
+          repair_cost_percentage: 5.0
         }
       }
     end
@@ -86,7 +88,9 @@ class PrintersControllerTest < ActionDispatch::IntegrationTest
           manufacturer: "Prusa",
           power_consumption: 200,
           cost: 500,
-          payoff_goal_years: 3
+          payoff_goal_years: 3,
+          daily_usage_hours: 8,
+          repair_cost_percentage: 5.0
         }
       }, as: :turbo_stream
     end

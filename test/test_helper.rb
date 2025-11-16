@@ -14,6 +14,11 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
+    # Force all tests to run in English locale for consistency
+    setup do
+      I18n.locale = :en
+    end
+
     # Add more helper methods to be used by all tests here...
 
     # Helper to stub successful Stripe customer creation

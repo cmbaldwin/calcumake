@@ -1,0 +1,296 @@
+---
+en:
+  legal:
+    last_updated: Last updated
+    privacy_policy:
+      title: Privacy Policy
+      nav_title: Privacy Policy
+      information_we_collect:
+        title: Information We Collect
+        content: We collect information you provide directly to us and information
+          we may collect automatically when you use our service.
+        account_info:
+          title: Account Information
+          email: Email address for account authentication
+          preferences: User preferences such as default currency and language
+          usage_data: Usage patterns and feature preferences
+        project_data:
+          title: Project Data
+          pricing_calculations: 3D printing cost calculations and project data
+          printer_specifications: Printer specifications and settings
+          project_metadata: Project names, dates, and metadata
+        payment_info:
+          title: Payment and Billing Information
+          payment_details: Payment method details (processed securely by our payment
+            processor)
+          billing_address: Billing address and contact information
+          transaction_history: Transaction and subscription history
+          subscription_tier: Your selected subscription tier and features
+      how_we_use_info:
+        title: How We Use Your Information
+        provide_service: Provide, maintain, and improve our 3D printing calculation
+          service
+        improve_features: Develop new features and enhance existing functionality
+        customer_support: Provide customer support and respond to your inquiries
+        security: Protect against fraud, abuse, and security threats
+      data_sharing:
+        title: Information Sharing
+        content: 'We do not sell, trade, or rent your personal information to third
+          parties. We may share your information only in the following circumstances:'
+        legal_requirements: When required by law or to protect our legal rights
+        service_providers: With trusted service providers who assist in operating
+          our service (including cloud hosting and infrastructure providers)
+        payment_processors: With payment processors (such as Stripe) to process subscription
+          payments and manage billing
+        advertising_partners: With advertising partners (such as Google AdSense) to
+          display relevant advertisements to Free tier users
+        business_transfer: In connection with a business transfer or acquisition
+      advertising:
+        title: Advertising
+        content: Our Free tier displays advertisements through Google AdSense. These
+          ads are based on your interests and browsing behavior. Paid subscription
+          tiers do not display advertisements.
+        google_adsense: Google AdSense uses cookies and other tracking technologies
+          to serve relevant advertisements. This applies only to Free tier users.
+        opt_out: You can control ad personalization and opt out of personalized advertising
+          by visiting
+        google_ad_settings: Google Ad Settings
+        upgrade_note: To remove all advertisements, upgrade to a paid subscription
+          tier.
+      data_security:
+        title: Data Security
+        content: We implement appropriate technical and organizational security measures
+          to protect your personal information against unauthorized access, alteration,
+          disclosure, or destruction.
+      your_rights:
+        title: Your Rights
+        access: Access and review your personal information
+        correction: Correct inaccurate or incomplete information
+        deletion: Request deletion of your personal information
+        portability: Export your data in a portable format
+      cookies:
+        title: Cookies and Tracking
+        content: We use cookies and similar technologies to enhance your experience,
+          remember your preferences, and provide personalized content and advertisements.
+      changes:
+        title: Changes to This Policy
+        content: We may update this privacy policy from time to time. We will notify
+          you of any material changes by posting the new policy on this page with
+          an updated effective date.
+      contact:
+        title: Contact Us
+        content: If you have any questions about this privacy policy, please contact
+          us through the support channels available in the application.
+    user_agreement:
+      title: User Agreement
+      nav_title: Terms of Service
+      acceptance:
+        title: Acceptance of Terms
+        content: By accessing and using CalcuMake, you accept and agree to be bound
+          by the terms and provision of this agreement.
+      description:
+        title: Service Description
+        content: 'CalcuMake is a web-based application that provides 3D printing cost
+          calculation and project management tools. Our service includes:'
+        cost_calculations: Comprehensive cost calculations for 3D printing projects
+        project_management: Project tracking and management features
+        invoice_generation: Invoice generation and PDF export capabilities
+        printer_tracking: Printer specifications and usage tracking
+      subscription_tiers:
+        title: Subscription Tiers and Pricing
+        content: 'CalcuMake offers three subscription tiers:'
+        free_tier: 'Free Tier: Basic features with advertisement display'
+        pro_tier: 'Pro Tier: Advanced features, no ads, priority support (paid subscription)'
+        enterprise_tier: 'Enterprise Tier: All features, premium support, custom integrations
+          (paid subscription)'
+        pricing_note: Current pricing is available on our website and may be updated
+          with notice to existing subscribers.
+      payment_terms:
+        title: Payment and Billing
+        content: 'If you subscribe to a paid tier, you agree to the following payment
+          terms:'
+        subscription_fee: You will be charged the subscription fee at the start of
+          each billing cycle
+        billing_cycles: Billing cycles are monthly or annual, depending on your selection
+        payment_method: You must provide a valid payment method to subscribe to paid
+          tiers
+        automatic_renewal: Subscriptions automatically renew unless canceled before
+          the renewal date
+        price_changes: We may change pricing with 30 days notice to existing subscribers
+        payment_processor: Payments are processed securely through our third-party
+          payment processor (Stripe)
+        failed_payments: Failed payments may result in service downgrade or suspension
+        currency: Prices are displayed in your selected currency
+      cancellation_refunds:
+        title: Cancellation and Refunds
+        content: 'You may cancel your subscription at any time:'
+        cancellation_process: Cancel through your account settings or by contacting
+          support
+        cancellation_effect: Cancellation takes effect at the end of your current
+          billing period
+        access_until_end: You retain access to paid features until the end of the
+          paid period
+        refund_policy: We offer a 14-day money-back guarantee for first-time subscribers
+        no_partial_refunds: Partial refunds for remaining subscription time are not
+          provided except as required by law
+        downgrade_option: You may downgrade to a lower tier at the end of your billing
+          cycle
+      free_tier_limitations:
+        title: Free Tier Limitations
+        content: 'The Free tier includes advertisement display and may have usage
+          limitations:'
+        advertisements: Free tier users will see advertisements throughout the application
+        feature_limits: Some advanced features are restricted to paid tiers
+        support_priority: Free tier support is provided on a best-effort basis
+        upgrade_anytime: You may upgrade to a paid tier at any time
+      user_accounts:
+        title: User Accounts
+        content: 'To use our service, you must create an account. You are responsible
+          for:'
+        accurate_info: Providing accurate and complete account information
+        secure_credentials: Maintaining the security of your account credentials
+        responsible_use: All activities that occur under your account
+        notify_breaches: Notifying us immediately of any suspected security breaches
+      acceptable_use:
+        title: Acceptable Use
+        content: 'You agree to use our service only for lawful purposes and in accordance
+          with this agreement. You agree not to:'
+        lawful_purposes: Use the service for any unlawful or prohibited purposes
+        respect_rights: Violate any applicable laws or regulations
+        no_harmful_content: Upload or transmit harmful, offensive, or inappropriate
+          content
+        no_interference: Interfere with or disrupt the service or servers
+        no_unauthorized_access: Attempt to gain unauthorized access to any part of
+          the service
+      data_accuracy:
+        title: Data Accuracy and Calculations
+        content: While we strive to provide accurate calculation tools, you are responsible
+          for verifying the accuracy of all calculations and data. Our calculations
+          are estimates and should be validated against your specific requirements
+          and local conditions.
+      intellectual_property:
+        title: Intellectual Property
+        our_content: The service and its original content, features, and functionality
+          are owned by us and are protected by international copyright, trademark,
+          and other intellectual property laws.
+        your_content: You retain ownership of any data, calculations, or content you
+          create using our service. You grant us a limited license to use this content
+          solely to provide the service to you.
+      disclaimers:
+        title: Disclaimers
+        important: Important Notice
+        calculations_estimates: All cost calculations and estimates are for informational
+          purposes only
+        verify_accuracy: You must verify all calculations and data for accuracy
+        no_guarantee: We do not guarantee the accuracy, completeness, or reliability
+          of any calculations
+        as_is_basis: The service is provided on an 'as is' and 'as available' basis
+      limitation_liability:
+        title: Limitation of Liability
+        content: To the maximum extent permitted by law, we shall not be liable for
+          any indirect, incidental, special, consequential, or punitive damages, including
+          without limitation, loss of profits, data, use, goodwill, or other intangible
+          losses.
+      termination:
+        title: Termination
+        content: We may terminate or suspend your account and access to the service
+          immediately, without prior notice, for conduct that we believe violates
+          this agreement or is harmful to other users, us, or third parties.
+      governing_law:
+        title: Governing Law
+        content: This agreement shall be governed by and construed in accordance with
+          the laws of the jurisdiction in which our service operates, without regard
+          to its conflict of law provisions.
+      changes:
+        title: Changes to Agreement
+        content: We reserve the right to modify this agreement at any time. We will
+          notify users of any material changes by posting the updated agreement on
+          our website with a new effective date.
+      contact:
+        title: Contact Information
+        content: If you have any questions about this agreement, please contact us
+          through the support channels available in the application.
+    commerce_disclosure:
+      title: Commerce Disclosure (特定商取引法に基づく表記)
+      nav_title: Commerce Disclosure
+      business_operator:
+        title: Business Operator
+        name: 'Company Name: 株式会社モアブ (MOAB Co., Ltd.)'
+        representative: 'Representative: Cody Baldwin'
+      business_address:
+        title: Business Address
+        address: Japan (Contact us for detailed address information)
+      contact:
+        title: Contact Information
+        email_label: Email
+        email: cody@moab.jp
+        phone_label: Phone
+        phone: Available upon request via email
+        hours_label: Support Hours
+        hours: Monday - Friday, 9:00 AM - 6:00 PM JST (excluding Japanese holidays)
+      service_description:
+        title: Service Description
+        content: 'CalcuMake is a web-based application providing 3D printing cost
+          calculation and project management tools. Our service includes:'
+        cost_calculations: Comprehensive cost calculations for 3D printing projects
+        project_management: Project tracking and management features
+        invoice_generation: Invoice generation and PDF export capabilities
+        printer_tracking: Printer specifications and usage tracking
+      pricing:
+        title: Pricing
+        content: 'CalcuMake offers three subscription tiers:'
+        free_tier: 'Free Tier: ¥0/month - Basic features with advertisements'
+        pro_tier: 'Pro Tier: Paid monthly or annual subscription - Advanced features,
+          no ads, priority support'
+        enterprise_tier: 'Enterprise Tier: Paid monthly or annual subscription - All
+          features, premium support, custom integrations'
+        pricing_details: Exact pricing is displayed on our website and in the application
+          during subscription selection.
+        price_changes: Prices may be adjusted with 30 days advance notice to existing
+          subscribers.
+      payment_methods:
+        title: Payment Methods
+        content: 'For paid subscriptions, we accept the following payment methods:'
+        credit_cards: 'Credit Cards: Visa, Mastercard, American Express, JCB'
+        payment_processor: All payments are securely processed through Stripe, our
+          payment processing partner.
+        secure_processing: We do not store your complete credit card information on
+          our servers.
+        free_tier_note: Free tier users do not need to provide payment information.
+      payment_timing:
+        title: Payment Timing
+        content: 'Payment is charged according to your selected billing cycle:'
+        initial_payment: Initial payment is charged immediately upon subscription
+        recurring_payments: Recurring payments are charged at the start of each billing
+          period (monthly or annually)
+        automatic_renewal: Subscriptions renew automatically unless canceled
+        cancellation_timing: Cancellations take effect at the end of the current billing
+          period
+      delivery:
+        title: Service Delivery
+        content: CalcuMake is a web-based service accessible immediately upon account
+          creation. There are no physical products or shipping involved.
+      returns:
+        title: Returns and Refunds
+        content: 'As CalcuMake is a digital subscription service, our refund policy
+          is as follows:'
+        money_back_guarantee: 14-day money-back guarantee for first-time paid subscribers
+        refund_process: Contact support within 14 days of your initial subscription
+          for a full refund
+        no_partial_refunds: Partial refunds for remaining subscription time are not
+          provided except as required by law
+        renewal_refunds: Renewal payments are non-refundable unless otherwise required
+          by law
+        free_tier_refunds: Free tier usage does not involve payments and no refunds
+          apply
+      cancellation:
+        title: Cancellation Policy
+        content: 'Subscription cancellation terms:'
+        cancellation_method: Cancel anytime through your account settings or by contacting
+          support at cody@moab.jp
+        cancellation_effect: Cancellation takes effect at the end of your current
+          billing period
+        access_retention: You retain full access to paid features until the end of
+          the paid period
+        data_retention: Account data is retained according to our Privacy Policy
+        resubscription: You may resubscribe at any time after cancellation

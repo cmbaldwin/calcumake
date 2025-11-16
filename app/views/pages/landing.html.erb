@@ -8,7 +8,7 @@
 <%# Add landing page specific structured data %>
 <% content_for :structured_data do %>
 <script type="application/ld+json">
-    < %= @structured_data.to_json.html_safe % >
+    <%= @structured_data.to_json.html_safe %>
 </script>
 <% end %>
 
