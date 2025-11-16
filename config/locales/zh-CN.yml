@@ -1,28 +1,116 @@
 ---
 zh-CN:
-  language_name: 中文（简体）
+  language_name: 简体中文
+  activerecord:
+    errors:
+      messages:
+        blank: 不能为空
+        taken: 已被占用
+        too_short: 太短 (最短为 %{count} 个字符)
+        too_long: 太长 (最长为 %{count} 个字符)
+        invalid: 无效
+        greater_than: 必须大于 %{count}
+        greater_than_or_equal_to: 必须大于或等于 %{count}
+        less_than: 必须小于 %{count}
+        less_than_or_equal_to: 必须小于或等于 %{count}
+        not_a_number: 不是一个数字
+        inclusion: 不在列表中
+        exclusion: 已被保留
+        accepted: 必须被接受
+        present: 必须为空
+        confirmation: 与 %{attribute} 不匹配
+        empty: 不能为空
+      models:
+        filament:
+          attributes:
+            name:
+              blank: 请输入线材名称
+              taken: 您已存在同名的线材
+            material_type:
+              blank: 请选择材料类型
+              inclusion: 请选择有效的材料类型
+            diameter:
+              blank: 请选择直径
+              inclusion: 请选择有效的直径 (1.75mm, 2.85mm, 或 3.0mm)
+            spool_weight:
+              greater_than: 线轴重量必须大于 0
+              not_a_number: 线轴重量必须是一个数字
+            spool_price:
+              greater_than: 线轴价格必须大于 0
+              not_a_number: 线轴价格必须是一个数字
+            print_temperature_min:
+              greater_than: 最低温度必须大于 0°C
+              less_than: 最低温度必须小于 500°C
+              not_a_number: 最低温度必须是一个数字
+            print_temperature_max:
+              greater_than: 最高温度必须大于 0°C
+              less_than: 最高温度必须小于 500°C
+              not_a_number: 最高温度必须是一个数字
+              temperature_range: 必须大于最低温度
+            heated_bed_temperature:
+              greater_than: 热床温度必须大于 0°C
+              less_than: 热床温度必须小于 500°C
+              not_a_number: 热床温度必须是一个数字
+            print_speed_max:
+              greater_than: 打印速度必须大于 0
+              less_than: 打印速度必须小于 1000
+              not_a_number: 打印速度必须是一个数字
+            storage_temperature_max:
+              greater_than: 存储温度必须大于 -50°C
+              less_than: 存储温度必须小于 100°C
+              not_a_number: 存储温度必须是一个数字
+            density:
+              greater_than: 密度必须大于 0
+              less_than: 密度必须小于 10
+              not_a_number: 密度必须是一个数字
+        plate_filament:
+          attributes:
+            filament_weight:
+              blank: 请输入线材重量
+              greater_than: 线材重量必须大于 0
+              not_a_number: 线材重量必须是一个数字
+            filament_id:
+              blank: 请选择线材
+              already_added: 此线材已添加到此板上
+        plate:
+          attributes:
+            base:
+              no_filaments: 必须至少有一种线材
+              duplicate_filaments: 同一板上不能多次使用相同的线材
+        print_pricing:
+          attributes:
+            base:
+              no_plates: 必须至少有一个板
+              too_many_plates: 不能超过 10 个板
+              duplicate_filaments_on_plate: 同一板上不能多次使用相同的线材
   nav:
     brand: CalcuMake
     print_pricings: 我的定价
     my_pricings: 我的定价
     new_pricing: 新建定价
     my_printers: 我的打印机
-    my_filaments: 我的材料
+    my_filaments: 我的线材
+    clients: 我的客户
+    invoices: 发票
     profile: 个人资料
     help: 帮助
-    sign_out: 退出登录
+    sign_out: 退出
     sign_in: 登录
     sign_up: 注册
     language: 语言
-    clients: My Clients
-    invoices: Invoices
+    usage_and_subscription: 使用情况 & 订阅
+    legal_header: 法律 & 隐私
+    data_rights_header: 您的数据权利
+    export_data: 导出我的数据
+    delete_account: 删除我的帐户
   actions:
+    title: 操作
     save: 保存
     cancel: 取消
     edit: 编辑
     delete: 删除
     duplicate: 复制
-    copy: 副本
+    copy: 复制
     create: 创建
     update: 更新
     new: 新建
@@ -31,32 +119,31 @@ zh-CN:
     submit: 提交
     view: 查看
     actions: 操作
-    title: Actions
-    print: Print
-    more: More
-    search: Search
+    print: 打印
+    more: 更多
+    search: 搜索
   flash:
     success: 成功
     error: 错误
     alert: 警告
-    notice: 通知
-    created: 成功创建%{model}
-    updated: 成功更新%{model}
-    deleted: 成功删除%{model}
-    duplicated: 成功复制%{model}
-    duplicate_failed: 复制%{model}失败
+    notice: 注意
+    created: 成功创建 %{model}
+    updated: 成功更新 %{model}
+    deleted: 成功删除 %{model}
+    duplicated: 成功复制 %{model}
+    duplicate_failed: 复制 %{model} 失败
   models:
     user: 用户
     printer: 打印机
     print_pricing: 打印定价
-    filament: 材料
-    client: Client
-    print_pricing_plural: Print Pricings
-    printer_plural: Printers
-    filament_plural: Filaments
-    invoice_plural: Invoices
+    filament: 线材
+    client: 客户
+    print_pricing_plural: 打印定价
+    printer_plural: 打印机
+    filament_plural: 线材
+    invoice_plural: 发票
   common:
-    created: 创建于
+    created: 已创建
     currency: 货币
     hours: 小时
     minutes: 分钟
@@ -67,467 +154,451 @@ zh-CN:
     years: 年
     'yes': 是
     'no': 否
-    are_you_sure: 您确定吗？
-    errors_prohibited: "%{count}个%{errors}阻止了%{model}保存："
+    are_you_sure: 你确定吗？
+    errors_prohibited: "%{count} 个%{errors} 阻止了保存此 %{model}："
     error_count:
       one: 错误
       other: 错误
+  date:
+    formats:
+      month_day_year: "%B %d, %Y"
+  time:
+    at: 于
+    formats:
+      month_day_year: "%B %d, %Y"
+      month_day_year_time: "%B %d, %Y 于 %I:%M %p"
   print_pricing:
     index:
       title: 我的打印计算
-      subtitle: 跟踪和管理3D打印成本计算
-      create_new: 计算新打印
-      total_calculations: 总计算数
+      subtitle: 跟踪和管理您的 3D 打印成本计算
+      create_new: 计算新的打印成本
+      total_calculations: 总计算量
       total_print_time: 总打印时间
-      total_filament_used: 总耗材使用量
-      total_estimated_sales: 总预估销售额
-      total_estimated_profit: 总预估利润
-      search_placeholder: 按作业名称或材料类型搜索...
+      search_placeholder: 按作业名称或线材类型搜索...
       empty_state:
-        title: 暂无计算记录
-        description: 开始创建您的第一个打印成本计算，跟踪3D打印项目的费用和定价。
+        title: 还没有计算
+        description: 首先创建您的第一个打印成本计算，以跟踪 3D 打印项目的费用和定价。
       no_results:
         title: 未找到结果
-        description: 没有与'%{query}'匹配的打印计算。请尝试不同的搜索词。
+        description: 没有打印计算匹配 '%{query}'。请尝试其他搜索词。
+      total_filament_used: 总线材用量
+      total_estimated_sales: 总预计销售额
+      total_estimated_profit: 总预计利润
     job_name: 作业名称
     print_time: 打印时间
     times_printed: 打印次数
-    final_price: 最终价格
-    confirm_delete: 您确定要删除'%{name}'吗？
-    times_printed_incremented: 打印次数增加成功
-    times_printed_decremented: 打印次数减少成功
-    times_printed_decrease: 打印次数减少
+    times_printed_decrease: 减少打印次数
     times_printed_increase: 增加打印次数
     printed_times: 打印次数
+    final_price: 最终价格
+    overdue: 过期
+    confirm_delete: 您确定要删除 '%{name}' 吗？
+    times_printed_incremented: 打印次数增加成功
+    times_printed_decremented: 打印次数减少成功
+    duplicated_successfully: 打印定价复制成功
+    duplicate_failed: 复制打印定价失败
     title: 打印定价
     cost_summary: 成本摘要
+    back_to_all: "← 返回所有定价"
+    create_new: 创建新定价
     cost_breakdown:
       filament: 耗材成本
-      electricity: Electricity Cost
-      labor: Labor Cost
-      machine: Machine Cost
-      other: Other Costs
-      vat: VAT
+      electricity: 电力成本
+      labor: 人工成本
+      machine: 机器成本
+      other: 其他成本
+      vat: 增值税
     invoice: 发票
     invoice_number: 发票号码
     invoice_date: 发票日期
-    from: 发票人
-    3d_printing_services: 3D打印服务
+    from: 发件人
+    3d_printing_services: 3D 打印服务
     job_details: 作业详情
     filament_type: 耗材类型
-    filament_types: 耗材类型
+    filament_types_label: 耗材类型
     weight: 重量
     total_weight: 总重量
     total_print_time: 总打印时间
-    cost_breakdown_label: 成本明细
+    cost_breakdown_label: 成本细目
     description: 描述
     amount: 金额
     filament_cost: 耗材成本
     markup: 加价
-    electricity_cost: 电费
+    electricity_cost: 电力成本
     labor_cost: 人工成本
     prep_time: 准备时间
     postprocessing_time: 后处理时间
     machine_upkeep: 机器维护
     depreciation_and_maintenance: 折旧和维护
-    other_costs: 其他费用
+    other_costs: 其他成本
     subtotal: 小计
-    vat: 销售税 (VAT)
+    vat: 增值税
     total: 总计
     notes: 备注
-    invoice_notes_text: 感谢您的惠顾。请保留此发票作为记录。
+    invoice_notes_text: 感谢您的惠顾。请保留此发票以作记录。
     payment_info: 付款信息
     payment_info_text: 付款条款和详细信息将另行通知。
-    download_pdf: 下载PDF
+    download_pdf: 下载 PDF
     calculator:
-      title: 3D打印计算器
-      subtitle: 精确计算您的3D打印成本
+      title: 3D 打印计算器
+      subtitle: 精确计算您的 3D 打印成本
       edit_title: 编辑打印计算
-      edit_subtitle: 更新您的3D打印成本计算
+      edit_subtitle: 更新您的 3D 打印成本计算
     edit:
       title: 编辑打印定价
-      subtitle: 更新您的3D打印成本计算
+      subtitle: 更新您的 3D 打印成本计算
     sections:
       basic_info: 基本信息
-      print_time_material: 打印时间与材料
+      print_time_material: 打印时间 & 材料
       filament_details: 耗材详情
-      electricity: 电力
-      electricity_auto_calculated: 电力（自动计算）
-      electricity_power_consumption: 电力与功耗
-      electricity_print_time: 电力与打印时间
-      electricity_energy_cost: 电力与能源成本
-      electricity_settings_link_html: 在您的%{link}中配置电力设置
+      electricity: 电费
+      electricity_auto_calculated: 电费 (自动计算)
+      electricity_power_consumption: 电费 & 功耗
+      electricity_print_time: 电费 & 打印时间
+      electricity_energy_cost: 电费 & 能源成本
+      electricity_settings_link_html: 在您的 %{link} 中配置电费设置
       profile_settings: 配置文件设置
       labor: 人工
-      machine_upkeep: 机器与维护
-      other_costs_tax: 其他费用与税费
+      machine_upkeep: 机器 & 维护
+      machine_auto_calculated: 机器 (自动计算)
+      machine_cost_usage: 机器成本 & 使用
+      machine_return_period: 机器回报周期
+      machine_repair_factor: 机器维修系数
+      add_edit_printer: 添加或编辑打印机
+      machine_printer_config_html: 当您 %{link} 时，配置打印机规格
+      unsaved_progress_warning: 未保存的进度警告
+      other_costs_tax: 其他成本 & 税费
       final_price: 最终价格
-      plates: 打印板
-      plate: 打印板
-      machine_auto_calculated: Machine (Auto-calculated)
-      machine_cost_usage: Machine Cost & Usage
-      machine_return_period: Machine Return Period
-      machine_repair_factor: Machine Repair Factor
-      add_edit_printer: add or edit a printer
-      machine_printer_config_html: Configure printer specifications when you %{link}
-      unsaved_progress_warning: Unsaved Progress Warning
-      filaments: Filaments
+      plates: 板
+      plate: 板
+      filaments: 耗材
+    fields:
+      job_name: 作业名称
+      job_name_placeholder: 例如，微型模型
+      select_printer: 选择打印机
+      select_printer_prompt: 选择一台打印机
+      no_printer_help: 没有注册打印机？
+      add_printer_link: 添加新打印机
+      print_time_hours: 小时
+      print_time_minutes: 分钟
+      filament_weight: 耗材重量 (g)
+      filament_weight_placeholder: '36'
+      filament_type: 耗材类型
+      filament_type_prompt: 选择类型
+      spool_price: 线轴价格
+      spool_price_placeholder: '25.00'
+      spool_weight: 线轴重量 (g)
+      spool_weight_placeholder: '1000'
+      markup: 加价 (%)
+      markup_placeholder: '20'
+      markup_percentage: 加价百分比
+      filament_markup: 耗材加价 (%)
+      prep_time: 准备时间 (分钟)
+      prep_time_placeholder: '30'
+      prep_time_minutes: 准备时间 (分钟)
+      prep_cost_hour: 准备成本/小时
+      prep_cost_placeholder: '20.00'
+      prep_cost_per_hour: 每小时准备成本
+      post_time: 后处理时间 (分钟)
+      post_time_placeholder: '30'
+      postprocessing_time_minutes: 后处理时间（分钟）
+      postprocessing_time_placeholder: '30'
+      postprocessing_cost_per_hour: 每小时后处理成本
+      postprocessing_cost_placeholder: '20.00'
+      post_cost_hour: 后处理成本/小时
+      post_cost_placeholder: '20.00'
+      other_costs: 其他成本
+      other_costs_placeholder: '0.00'
+      vat: 增值税 (%)
+      vat_placeholder: '10'
+      vat_percentage: 增值税百分比
+      power_consumption: 功耗 (W)
+      power_consumption_placeholder: '200'
+      energy_cost_kwh: 每千瓦时能源成本
+      energy_cost_placeholder: '0.12'
+      printer_cost: 打印机成本
+      printer_cost_placeholder: '500.00'
+      payoff_goal: 投资回报目标（年）
+      payoff_goal_placeholder: '3'
+      daily_usage: 每日使用时长（小时）
+      daily_usage_placeholder: '8'
+      repair_cost: 维修成本 (%)
+      repair_cost_placeholder: '5'
+      currency: 货币
+      currency_prompt: 选择货币
+      start_with_one_print: 从打印 1 次开始
+      start_with_one_print_help: 启用此选项可自动将此定价设置为已打印一次
+    filament_types:
+      pla: PLA
+      abs: ABS
+      petg: PETG
+      tpu: TPU
+      asa: ASA
+      other: 其他
+    calculations:
+      filament_cost: 耗材成本
+      electricity_cost: 电力成本
+      labor_cost: 人工成本
+      machine_cost: 机器成本
+      estimated_price: 预估价格
+    info:
+      electricity_auto: 电力成本将根据以下内容自动计算：
+      printer_power: 所选打印机的功耗
+      print_duration: 打印时长
+      energy_cost_setting: 您的默认能源成本：%{cost}/千瓦时
+      update_energy_cost: 您可以在您的
+      profile_settings: 个人资料设置中更新您的默认能源成本
+      machine_auto: 机器折旧和维护成本将根据您选择的打印机的规格计算：
+      printer_cost_usage: 打印机成本和使用时长
+      investment_return: 投资回报期
+      repair_factor: 维修成本系数
+      configure_printer: 这些值在您
+      add_edit_printer: 添加或编辑打印机时配置
+    buttons:
+      calculate_save: 计算并保存
+      update_pricing: 更新定价
+      update: 更新
+      cancel: 取消
+      add_plate: 添加板
     show:
-      created_on: 创建于%{date}
+      created_on: 创建于 %{date}
       edit_calculation: 编辑计算
       delete: 删除
-      cost_summary: 成本摘要
+      cost_summary: 成本汇总
       print_information: 打印信息
       filament_details: 耗材详情
+      electricity_cost: 电力成本
+      labor_cost: 人工成本
+      machine_upkeep_cost: 机器及维护成本
       costs:
         filament: 耗材成本
         electricity: 电力成本
         labor: 人工成本
         machine: 机器成本
         other: 其他成本
-        listing: 平台费用
-        payment_processing: 支付处理费
         subtotal: 小计
-        vat: 销售税 (VAT) (%{rate}%)
+        vat: 增值税 (%{rate}%)
         final_price: 最终价格
-      electricity_cost: Electricity Cost
-      labor_cost: Labor Cost
-      machine_upkeep_cost: Machine & Upkeep Cost
       details:
-        currency: Currency
-        printing_time: Printing Time
-        filament_weight: Filament Weight
-        filament_type: Filament Type
-        spool_price: Spool Price
-        spool_weight: Spool Weight
-        markup: Markup
-        power_consumption: Power Consumption
-        energy_cost_kwh: Energy Cost per kWh
-        total_electricity_cost: Total Electricity Cost
-        prep_time: Prep Time
-        postprocessing_time: Postprocessing Time
-        total_labor_cost: Total Labor Cost
-        printer_cost: Printer Cost
-        payoff_goal: Payoff Goal
-        daily_usage: Daily Usage
-        repair_cost: Repair Cost
-        total_machine_cost: Total Machine Cost
+        currency: 货币
+        printing_time: 打印时间
+        filament_weight: 耗材重量
+        filament_type: 耗材类型
+        spool_price: 线轴价格
+        spool_weight: 线轴重量
+        markup: 加价
+        power_consumption: 功率消耗
+        energy_cost_kwh: 每千瓦时能源成本
+        total_electricity_cost: 总电力成本
+        prep_time: 准备时间
+        postprocessing_time: 后处理时间
+        total_labor_cost: 总人工成本
+        printer_cost: 打印机成本
+        payoff_goal: 投资回报目标
+        daily_usage: 日均使用量
+        repair_cost: 维修成本
+        total_machine_cost: 总机器成本
       actions:
-        back_to_all: "← Back to All Pricings"
-        create_new: Create New Pricing
-        confirm_delete: Are you sure you want to delete '%{name}'?
-    fields:
-      job_name: 作业名称
-      job_name_placeholder: 例：模型制作
-      select_printer: 选择打印机
-      select_printer_prompt: 选择打印机
-      no_printer_help: 还没有注册打印机？
-      add_printer_link: 添加新打印机
-      print_time_hours: 小时
-      print_time_minutes: 分钟
-      filament_weight: 耗材重量（克）
-      filament_weight_placeholder: '36'
-      filament_type: 耗材类型
-      filament_type_prompt: 选择类型
-      spool_price: 线轴价格
-      spool_price_placeholder: '25.00'
-      spool_weight: 线轴重量（克）
-      spool_weight_placeholder: '1000'
-      markup: 加价（%）
-      markup_placeholder: '20'
-      markup_percentage: 加价百分比
-      prep_time: 准备时间（分钟）
-      prep_time_placeholder: '30'
-      prep_time_minutes: 准备时间（分钟）
-      prep_cost_hour: 准备费用/小时
-      prep_cost_placeholder: '20.00'
-      prep_cost_per_hour: 每小时准备费用
-      post_time: 后处理时间（分钟）
-      post_time_placeholder: '30'
-      postprocessing_time_minutes: 后处理时间（分钟）
-      postprocessing_time_placeholder: '30'
-      postprocessing_cost_per_hour: 每小时后处理费用
-      postprocessing_cost_placeholder: '20.00'
-      post_cost_hour: 后处理费用/小时
-      post_cost_placeholder: '20.00'
-      other_costs: 其他费用
-      other_costs_placeholder: '0.00'
-      vat: 销售税 (VAT) (%)
-      vat_placeholder: '10'
-      vat_percentage: 销售税 (VAT) 百分比
-      listing_cost_percentage: 平台费用百分比 (%)
-      listing_cost_percentage_placeholder: '3'
-      payment_processing_cost_percentage: 支付处理费百分比 (%)
-      payment_processing_cost_percentage_placeholder: '2.9'
-      power_consumption: 功耗（瓦）
-      power_consumption_placeholder: '200'
-      energy_cost_kwh: 每千瓦时电费
-      energy_cost_placeholder: '0.12'
-      printer_cost: 打印机价格
-      printer_cost_placeholder: '500.00'
-      payoff_goal: 回本目标（年）
-      payoff_goal_placeholder: '3'
-      daily_usage: 日使用时间（小时）
-      daily_usage_placeholder: '8'
-      repair_cost: 维修费用（%）
-      repair_cost_placeholder: '5'
-      currency: 货币
-      currency_prompt: 选择货币
-      filament_markup: Filament Markup (%)
-      start_with_one_print: Start with 1 times printed
-      start_with_one_print_help: Enable this to automatically set this pricing as
-        printed once
-    buttons:
-      calculate_save: 计算
-      update_pricing: 更新定价
-      update: 更新
-      cancel: 取消
-      add_plate: 添加打印板
+        back_to_all: "← 返回所有定价"
+        create_new: 创建新定价
+        confirm_delete: 您确定要删除 '%{name}' 吗？
     help:
-      plates_limit: 每个打印作业最多可以添加10个打印板。
-      filaments_limit: You can add up to 5 different filaments per plate.
-    overdue: Overdue
-    duplicated_successfully: Print pricing duplicated successfully
-    duplicate_failed: Failed to duplicate print pricing
-    back_to_all: "← Back to All Pricings"
-    create_new: Create New Pricing
-    filament_types_label: Filament Types
-    calculations:
-      filament_cost: Filament cost
-      electricity_cost: Electricity cost
-      labor_cost: Labor cost
-      machine_cost: Machine cost
-      estimated_price: Estimated Price
-    info:
-      electricity_auto: 'Electricity cost will be automatically calculated based on:'
-      printer_power: Selected printer's power consumption
-      print_duration: Print time duration
-      energy_cost_setting: 'Your default energy cost: %{cost}/kWh'
-      update_energy_cost: You can update your default energy cost in your
-      profile_settings: profile settings
-      machine_auto: 'Machine depreciation and upkeep cost will be calculated from
-        your selected printer''s specifications:'
-      printer_cost_usage: Printer cost and usage hours
-      investment_return: Investment return period
-      repair_factor: Repair cost factor
-      configure_printer: These values are configured when you
-      add_edit_printer: add or edit a printer
+      plates_limit: 每个打印作业最多可以添加 10 个板。
+      filaments_limit: 每个板最多可以添加 5 种不同的耗材。
   printers:
     index:
       title: 我的打印机
-      subtitle: 管理您的3D打印机及其规格
+      subtitle: 管理您的 3D 打印机及其规格
       add_new: 添加新打印机
       empty_state:
         title: 尚未注册打印机
-        description: 添加您的第一台3D打印机，开始精确计算打印成本。
+        description: 添加您的第一台 3D 打印机以开始准确计算打印成本。
         add_first: 添加您的第一台打印机
     card:
       power_consumption: 功耗
       cost: 成本
-      daily_usage: 日使用时间
-      payoff_goal: 回本目标
-      paid_off: "✓ 已回本"
-      months_to_payoff: "%{months}个月回本"
+      daily_usage: 每日使用量
+      payoff_goal: 投资回报目标
+      repair_cost_percentage: 维修成本
+      paid_off: "✓ 已还清"
+      months_to_payoff: "%{months} 个月可收回成本"
       hours: 小时
       years: 年
-      repair_cost_percentage: Repair Cost
     new:
       title: 添加新打印机
-      subtitle: 注册您的3D打印机规格以进行精确成本计算
+      subtitle: 注册您的 3D 打印机规格，以进行准确的成本计算
     edit:
       title: 编辑打印机
-      subtitle: 更新您的3D打印机规格
+      subtitle: 更新您的 3D 打印机规格
     show:
-      specifications: Specifications
-      financial_status: Financial Status
-      print_jobs: Print Jobs
-      new_print_job: New Print Job
-      repair_cost: Repair Cost
-      date_added: Date Added
-      not_set: Not set
-      fully_paid_off: This printer has been fully paid off based on your payoff goals.
-      payoff_progress: Payoff Progress
-      no_print_jobs: No print jobs yet
-      no_print_jobs_description: Create your first print pricing calculation for this
-        printer.
-      create_first_job: Create First Print Job
-      view_all_jobs: View All %{count} Jobs
+      specifications: 规格
+      financial_status: 财务状况
+      print_jobs: 打印作业
+      new_print_job: 新打印作业
+      repair_cost: 维修成本
+      date_added: 添加日期
+      not_set: 未设置
+      fully_paid_off: 根据您的投资回报目标，这台打印机的成本已全部收回。
+      payoff_progress: 投资回报进度
+      no_print_jobs: 还没有打印作业
+      no_print_jobs_description: 为此打印机创建您的第一个打印定价计算。
+      create_first_job: 创建第一个打印作业
+      view_all_jobs: 查看所有 %{count} 个作业
     sections:
-      basic_info: Basic Information
-      technical_specs: Technical Specifications
-      financial_info: Financial Information
-      usage_info: Usage Information
+      basic_info: 基本信息
+      technical_specs: 技术规格
+      financial_info: 财务信息
+      usage_info: 使用信息
     fields:
-      name: Printer Name
-      name_placeholder: e.g., My Prusa i3 MK3S+
-      manufacturer: Manufacturer
-      manufacturer_prompt: Select manufacturer
-      power_consumption: Power Consumption (Watts)
+      name: 打印机名称
+      name_placeholder: 例如，我的 Prusa i3 MK3S+
+      manufacturer: 制造商
+      manufacturer_prompt: 选择制造商
+      power_consumption: 功耗（瓦）
       power_consumption_placeholder: '200'
-      power_consumption_help: 'Typical range: 50W (small printers) to 500W (large
-        printers)'
-      cost: Printer Cost
+      power_consumption_help: 典型范围：50W（小型打印机）到 500W（大型打印机）
+      cost: 打印机成本
       cost_placeholder: '500.00'
-      payoff_goal: Payoff Goal (Years)
+      payoff_goal: 投资回报目标（年）
       payoff_goal_placeholder: '3'
-      payoff_goal_help: How many years do you want to recoup the printer cost?
-      daily_usage: Daily Usage (Hours)
+      payoff_goal_help: 您希望在多少年内收回打印机成本？
+      daily_usage: 每日使用量（小时）
       daily_usage_placeholder: '8'
-      daily_usage_help: Average hours per day you plan to use this printer
-      repair_factor: Repair Cost Factor (%)
+      daily_usage_help: 您计划每天使用此打印机的平均小时数
+      repair_factor: 维修成本系数（%）
       repair_factor_placeholder: '5.0'
-      repair_factor_help: Additional cost factor for maintenance and repairs
+      repair_factor_help: 维护和维修的额外成本系数
     buttons:
-      add_printer: Add Printer
-      update_printer: Update Printer
-      cancel: Cancel
+      add_printer: 添加打印机
+      update_printer: 更新打印机
+      cancel: 取消
   profile:
     show:
       title: 用户资料
-      subtitle: 您的账户设置和偏好
-      account_info: 账户信息
-      email: 邮箱
-      member_since: 注册于
-      default_preferences: 默认偏好
+      subtitle: 您的帐户设置和偏好
+      account_info: 帐户信息
+      email: 电子邮件
+      member_since: 会员起始时间
+      default_preferences: 默认偏好设置
+      labor_defaults: 人工和成本默认值
+      labor_defaults_description: 这些值将在创建新的打印定价计算时预先填充
+      company_info: 发票的公司信息
+      company_info_description: 此信息将用作您创建的所有发票的默认信息
+      company_info_help: 此信息将用于您创建的所有发票
       back_to_calculations: 返回计算
-      labor_defaults: Labor & Cost Defaults
-      labor_defaults_description: These values will be pre-filled when creating new
-        print pricing calculations
-      company_info: Company Information for Invoices
-      company_info_description: This information will be used as the default for all
-        invoices you create
-      company_info_help: This information will be used on all invoices you create
     edit:
       title: 用户资料设置
-      subtitle: 配置您的默认偏好
+      subtitle: 配置您的默认偏好设置
       default_settings: 默认设置
     fields:
       default_currency: 默认货币
       default_currency_help: 用作新定价计算的默认值
-      energy_cost: 每千瓦时电费
+      energy_cost: 每千瓦时能源成本
       energy_cost_placeholder: '0.120'
-      energy_cost_help: 当地每千瓦时电费
-      energy_cost_help_extended: 当地每千瓦时电费。将用作新计算的默认值。
+      energy_cost_help: 您当地的每千瓦时电费
+      energy_cost_help_extended: 您当地的每千瓦时电费。这将用作新计算的默认值。
       prep_time: 准备时间（分钟）
-      prep_time_help: 开始打印前的准备时间
-      prep_cost: 每小时准备费用
-      prep_cost_help: 准备工作的时薪
+      prep_time_help: 开始打印前准备打印所花费的时间
+      prep_cost: 每小时准备成本
+      prep_cost_help: 准备工作的每小时费率
       postprocessing_time: 后处理时间（分钟）
-      postprocessing_time_help: 后处理时间（清洁、支撑移除等）
-      postprocessing_cost: 每小时后处理费用
-      postprocessing_cost_help: 后处理工作的时薪
-      other_costs: 其他费用
-      other_costs_help: 包装、运输准备等附加费用
-      vat_percentage: 销售税 (VAT) 百分比
-      vat_percentage_help: 您所在地区的默认销售税/VAT百分比
-      listing_cost_percentage: 平台费用百分比
-      listing_cost_percentage_help: 默认的市场平台手续费百分比（如淘宝、京东）
-      payment_processing_cost_percentage: 支付处理费百分比
-      payment_processing_cost_percentage_help: 默认的支付处理手续费百分比（如支付宝、微信支付）
-      markup_percentage: 加价百分比
-      prep_time_minutes: 准备时间（分钟）
-      prep_cost_per_hour: 每小时准备成本
-      postprocessing_time_minutes: 后处理时间（分钟）
-      postprocessing_time_placeholder: '30'
-      postprocessing_cost_per_hour: 每小时后处理费用
-      default_filament_markup: Default Filament Markup
-      default_filament_markup_help: Default markup percentage added to filament costs
-        (e.g. 20% markup for profit margin)
-      company_name: Company Name
+      postprocessing_time_help: 后处理（清洁、去除支撑等）所花费的时间
+      postprocessing_cost: 每小时后处理成本
+      postprocessing_cost_help: 后处理工作的每小时费率
+      other_costs: 其他成本
+      other_costs_help: 包装、运输准备等额外费用
+      vat_percentage: 增值税百分比
+      vat_percentage_help: 您所在位置的默认增值税/税率
+      default_filament_markup: 默认耗材加价
+      default_filament_markup_help: 添加到耗材成本的默认加价百分比（例如，20% 的利润率）
+      company_name: 公司名称
       company_name_placeholder: Acme Corporation
-      company_email: Company Email
+      company_email: 公司电子邮件
       company_email_placeholder: billing@example.com
-      company_phone: Company Phone
+      company_phone: 公司电话
       company_phone_placeholder: "+1 (555) 123-4567"
-      company_logo: Company Logo
-      company_address: Company Address
+      company_logo: 公司徽标
+      company_address: 公司地址
       company_address_placeholder: |-
         123 Main Street
         City, State 12345
         Country
-      payment_details: Payment Details
+      payment_details: 付款详情
       payment_details_placeholder: |-
         Bank: Example Bank
         Account Number: 123456789
         Routing Number: 987654321
         SWIFT/BIC: EXAMPUS33
-      payment_details_help: Bank account or payment information for invoices
-      invoice_notes: Default Invoice Notes
+      payment_details_help: 发票的银行帐户或付款信息
+      invoice_notes: 默认发票备注
       invoice_notes_placeholder: |-
-        Payment due within 30 days.
-        Thank you for your business!
-      invoice_notes_help: Default notes that will appear on all your invoices
+        付款应在 30 天内完成。
+        感谢您的惠顾！
+      invoice_notes_help: 将显示在所有发票上的默认备注
     buttons:
       update_settings: 更新设置
-      update_profile: 更新资料
-      cancel: Cancel
+      update_profile: 更新个人资料
+      cancel: 取消
     image_upload:
       help_text: 最大文件大小：5MB。支持的格式：PNG、JPG、GIF、WebP
     delete_account:
-      title: 删除账户
+      title: 删除帐户
       warning_title: 警告
-      warning_message: 删除账户是永久性的，无法撤销。您的所有数据将被永久删除。
-      description: 如果您不再希望使用CalcuMake，可以删除您的账户。请阅读支持页面上的常见问题部分以获取更多信息。
-      unlock_checkbox: 我理解删除账户是永久性的
-      confirm_checkbox: 我确认要删除我的账户和所有相关数据
-      button: 删除我的账户
-      final_confirmation: 您确定要删除您的账户吗？此操作无法撤销，您的所有数据将被永久删除。
-      success: 您的账户已成功删除。感谢您使用CalcuMake。
-  currency:
-    usd: 美元
-    eur: 欧元
-    gbp: 英镑
-    jpy: 日元
-    cad: 加元
-    aud: 澳元
+      warning_message: 删除您的帐户是永久性的，无法撤消。您的所有数据将被永久删除。
+      description: 如果您不再希望使用 CalcuMake，您可以删除您的帐户。请阅读支持页面上的常见问题解答部分以获取更多信息。
+      unlock_checkbox: 我了解删除我的帐户是永久性的
+      confirm_checkbox: 我确认我要删除我的帐户和所有相关数据
+      button: 删除我的帐户
+      final_confirmation: 您确定要删除您的帐户吗？此操作无法撤消，您的所有数据将被永久删除。
+      success: 您的帐户已成功删除。感谢您使用 CalcuMake。
   clients:
     index:
       title: 我的客户
       subtitle: 管理您的客户信息
       add_new: 添加新客户
-      search_placeholder: 按姓名、公司或邮箱搜索...
+      search_placeholder: 按姓名、公司或电子邮件搜索...
       clear_search: 清除搜索
       empty_state:
-        title: 暂无客户
+        title: 还没有客户
         description: 添加您的第一个客户以开始管理客户信息。
         add_first: 添加您的第一个客户
       no_results:
         title: 未找到结果
-        description: 没有与您的搜索匹配的客户。请尝试不同的搜索词。
+        description: 没有客户与您的搜索匹配。请尝试不同的搜索词。
     new:
       title: 添加新客户
       subtitle: 创建新的客户资料
     edit:
       title: 编辑客户
-      subtitle: 更新%{name}的客户信息
+      subtitle: 更新 %{name} 的客户信息
     show:
       title: 客户详情
-      member_since: 注册于
+      member_since: 会员起始时间
       invoices: 发票
       print_pricings: 打印定价
-      no_invoices: 暂无发票
-      no_print_pricings: 暂无打印定价
+      no_invoices: 还没有发票
+      no_print_pricings: 还没有打印定价
     sections:
       basic_info: 基本信息
       contact_info: 联系信息
       additional_info: 附加信息
     fields:
       name: 姓名
-      name_placeholder: 张三
+      name_placeholder: John Doe
       company_name: 公司名称
-      company_name_placeholder: 艾克米公司
-      email: 邮箱
+      company_name_placeholder: Acme Corporation
+      email: 电子邮件
       email_placeholder: john@example.com
       phone: 电话
-      phone_placeholder: "+86 138-0000-0000"
+      phone_placeholder: "+1 (555) 123-4567"
       address: 地址
       address_placeholder: |-
-        北京市朝阳区建国路1号
-        100000
-      tax_id: 税号 / 增值税号
+        123 Main Street
+        City, State 12345
+      tax_id: 税号 / VAT 号码
       tax_id_placeholder: 12-3456789
       notes: 备注
-      notes_placeholder: 关于此客户的附加信息...
+      notes_placeholder: 关于此客户的附加备注...
       select_client: 选择客户
       no_client_selected: 未选择客户
       client_help_text: 选择现有客户或
@@ -537,860 +608,326 @@ zh-CN:
       edit: 编辑
       delete: 删除
       confirm_delete: 您确定要删除此客户吗？
-      invoices: Invoices
+      invoices: 发票
     buttons:
-      create: Create Client
-      update: Update Client
-    created_successfully: Client created successfully
-    updated_successfully: Client updated successfully
-    deleted_successfully: Client deleted successfully
-    confirm_delete: Are you sure you want to delete this client?
+      create: 创建客户
+      update: 更新客户
+    created_successfully: 客户创建成功
+    updated_successfully: 客户更新成功
+    deleted_successfully: 客户删除成功
+    confirm_delete: 您确定要删除此客户吗？
+  currency:
+    usd: 美元
+    eur: 欧元
+    gbp: 英镑
+    jpy: 日元
+    cad: 加拿大元
+    aud: 澳大利亚元
   energy:
-    cost_per_kwh: 每千瓦时电价
-  time:
-    at: 于
-    formats:
-      month_day_year: "%Y年%m月%d日"
-      month_day_year_time: "%Y年%m月%d日 %H:%M"
+    cost_per_kwh: 每千瓦时电费
   app:
-    title: CalcuMake
-    title_default: CalcuMake
+    title: CalcuMake - 3D打印成本计算器
+    title_default: CalcuMake - 3D打印成本计算器
   footer:
-    copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
-    description: Professional 3D printing cost calculation and project management
+    description: 专业的3D打印成本计算和项目管理
+    copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - 版权所有"
+  support:
+    title: 支持
+    nav_title: 支持
+    contact_us: 联系我们
+    description: 需要 CalcuMake 的帮助吗？ 有问题或建议？ 我们随时为您提供帮助！
+    email_label: 电子邮件支持
+    response_time: 我们通常会在 24-48 小时内回复
+    faq:
+      title: 常见问题
+      delete_account:
+        question: 如何删除我的帐户？
+        answer: 要删除您的帐户，请按照以下步骤操作：
+        step1: 从导航菜单转到您的个人资料页面
+        step2: 向下滚动到页面底部的“删除帐户”部分
+        step3: 选中“我了解删除我的帐户是永久性的”复选框
+        step4: 选中“我确认我要删除我的帐户和所有相关数据”复选框
+        step5: 单击“删除我的帐户”按钮并确认最终警告
+        warning_title: 重要提示
+        warning_message: 帐户删除是永久性的，无法撤消。 您的所有数据将被永久删除。
+      data_recovery:
+        question: 删除后我可以恢复我的帐户吗？
+        answer: 不可以，帐户删除是永久性的且不可逆转。 删除后，您的帐户和所有相关数据都无法恢复。 如果您认为将来可能想再次使用 CalcuMake，请考虑不使用您的帐户，而不是删除它。
+      what_deleted:
+        question: 当我删除我的帐户时，哪些数据会被删除？
+        intro: 当您删除您的帐户时，以下所有数据将被永久删除：
+        item1: 您的用户帐户和登录凭据
+        item2: 您的所有打印定价计算
+        item3: 您的所有打印机及其配置
+        item4: 您的所有线材配置文件
+        item5: 您的所有发票
+        item6: 您的所有公司信息和偏好设置
+    billing_support:
+      title: 账单和订阅支持
+      description: 如有账单查询、订阅更改、退款请求或付款问题，请使用您的帐户电子邮件与我们联系。
+      priority_note: Pro 和 Enterprise 订阅用户可获得优先支持响应时间。
   legal:
-    last_updated: 最后更新
+    last_updated: 上次更新
     privacy_policy:
       title: 隐私政策
       nav_title: 隐私政策
       information_we_collect:
         title: 我们收集的信息
-        content: 我们收集您直接提供给我们的信息以及您使用我们服务时自动收集的信息。
+        content: 我们会收集您直接提供给我们的信息，以及您在使用我们的服务时我们可能自动收集的信息。
         account_info:
-          title: 账户信息
-          email: 用于账户认证的电子邮件地址
-          preferences: 用户偏好，如默认货币和语言
+          title: 帐户信息
+          email: 用于帐户验证的电子邮件地址
+          preferences: 用户偏好，例如默认货币和语言
           usage_data: 使用模式和功能偏好
         project_data:
           title: 项目数据
-          pricing_calculations: 3D打印成本计算和项目数据
+          pricing_calculations: 3D 打印成本计算和项目数据
           printer_specifications: 打印机规格和设置
           project_metadata: 项目名称、日期和元数据
         payment_info:
-          title: 支付和账单信息
-          payment_details: 支付方式详情（由我们的支付处理商安全处理）
+          title: 付款和账单信息
+          payment_details: 付款方式详细信息（由我们的付款处理器安全处理）
           billing_address: 账单地址和联系信息
-          transaction_history: 交易和订阅历史
-          subscription_tier: 您选择的订阅层级和功能
+          transaction_history: 交易和订阅历史记录
+          subscription_tier: 您选择的订阅级别和功能
+      how_we_use_info:
+        title: 我们如何使用您的信息
+        provide_service: 提供、维护和改进我们的 3D 打印计算服务
+        improve_features: 开发新功能并增强现有功能
+        customer_support: 提供客户支持并回复您的询问
+        security: 防止欺诈、滥用和安全威胁
       data_sharing:
         title: 信息共享
-        content: 我们不会出售、交易或出租您的个人信息给第三方。我们仅在以下情况下共享您的信息：
-        legal_requirements: 法律要求时或为保护我们的合法权利
-        service_providers: 与协助运营我们服务的可信服务提供商（包括云托管和基础设施提供商）
-        payment_processors: 与支付处理商（如Stripe）共享以处理订阅付款和管理账单
-        advertising_partners: 与广告合作伙伴（如Google AdSense）共享以向免费层用户展示相关广告
-        business_transfer: 与业务转让或收购相关
+        content: 我们不会出售、交易或出租您的个人信息给第三方。我们可能仅在以下情况下共享您的信息：
+        legal_requirements: 当法律要求或为了保护我们的合法权益时
+        service_providers: 与协助运营我们服务的受信任的服务提供商（包括云托管和基础设施提供商）
+        payment_processors: 与付款处理器（例如 Stripe）一起处理订阅付款和管理账单
+        advertising_partners: 与广告合作伙伴（例如 Google AdSense）一起向 Free 级别用户展示相关广告
+        business_transfer: 与业务转移或收购有关
       advertising:
         title: 广告
-        content: 我们的免费层通过Google AdSense展示广告。这些广告基于您的兴趣和浏览行为。付费订阅层不显示广告。
-        google_adsense: Google AdSense使用Cookie和其他跟踪技术来提供相关广告。这仅适用于免费层用户。
-        opt_out: 您可以通过访问以下网址控制广告个性化并选择退出个性化广告
-        google_ad_settings: Google广告设置
-        upgrade_note: 要删除所有广告，请升级到付费订阅层。
-      how_we_use_info:
-        title: How We Use Your Information
-        provide_service: Provide, maintain, and improve our 3D printing calculation
-          service
-        improve_features: Develop new features and enhance existing functionality
-        customer_support: Provide customer support and respond to your inquiries
-        security: Protect against fraud, abuse, and security threats
+        content: 我们的 Free 级别通过 Google AdSense 显示广告。这些广告基于您的兴趣和浏览行为。付费订阅级别不显示广告。
+        google_adsense: Google AdSense 使用 Cookie 和其他跟踪技术来投放相关广告。这仅适用于 Free 级别用户。
+        opt_out: 您可以通过访问来控制广告个性化并选择退出个性化广告
+        google_ad_settings: Google 广告设置
+        upgrade_note: 要删除所有广告，请升级到付费订阅级别。
       data_security:
-        title: Data Security
-        content: We implement appropriate technical and organizational security measures
-          to protect your personal information against unauthorized access, alteration,
-          disclosure, or destruction.
+        title: 数据安全
+        content: 我们实施适当的技术和组织安全措施，以保护您的个人信息免受未经授权的访问、更改、披露或破坏。
       your_rights:
-        title: Your Rights
-        access: Access and review your personal information
-        correction: Correct inaccurate or incomplete information
-        deletion: Request deletion of your personal information
-        portability: Export your data in a portable format
+        title: 您的权利
+        access: 访问和查看您的个人信息
+        correction: 更正不准确或不完整的信息
+        deletion: 请求删除您的个人信息
+        portability: 以可移植格式导出您的数据
       cookies:
-        title: Cookies and Tracking
-        content: We use cookies and similar technologies to enhance your experience,
-          remember your preferences, and provide personalized content and advertisements.
+        title: Cookies 和跟踪
+        content: 我们使用 cookies 和类似技术来改善您的体验、记住您的偏好并提供个性化的内容和广告。
       changes:
-        title: Changes to This Policy
-        content: We may update this privacy policy from time to time. We will notify
-          you of any material changes by posting the new policy on this page with
-          an updated effective date.
+        title: 本政策的变更
+        content: 我们可能会不时更新本隐私政策。 我们将通过在本页面上发布新政策并更新生效日期来通知您任何重大变更。
       contact:
-        title: Contact Us
-        content: If you have any questions about this privacy policy, please contact
-          us through the support channels available in the application.
+        title: 联系我们
+        content: 如果您对本隐私政策有任何疑问，请通过应用程序中提供的支持渠道与我们联系。
     user_agreement:
       title: 用户协议
       nav_title: 服务条款
+      acceptance:
+        title: 接受条款
+        content: 通过访问和使用 CalcuMake，您接受并同意遵守本协议的条款和规定。
+      description:
+        title: 服务描述
+        content: CalcuMake 是一个基于 Web 的应用程序，提供 3D 打印成本计算和项目管理工具。 我们的服务包括：
+        cost_calculations: 3D 打印项目的综合成本计算
+        project_management: 项目跟踪和管理功能
+        invoice_generation: 发票生成和 PDF 导出功能
+        printer_tracking: 打印机规格和使用情况跟踪
       subscription_tiers:
-        title: 订阅层级和定价
-        content: CalcuMake提供三个订阅层级：
-        free_tier: 免费层：带广告的基本功能
-        pro_tier: Pro层：高级功能、无广告、优先支持（付费订阅）
-        enterprise_tier: Enterprise层：所有功能、高级支持、自定义集成（付费订阅）
-        pricing_note: 当前定价可在我们的网站上查看，并可能在通知现有订阅者后更新。
+        title: 订阅级别和定价
+        content: CalcuMake 提供三个订阅级别：
+        free_tier: 免费级别：具有广告展示的基本功能
+        pro_tier: Pro 级别：高级功能，无广告，优先支持（付费订阅）
+        enterprise_tier: 企业级别：所有功能，高级支持，自定义集成（付费订阅）
+        pricing_note: 当前定价可在我们的网站上找到，并且可能会在通知现有订阅者后进行更新。
       payment_terms:
         title: 付款和账单
-        content: 如果您订阅付费层，您同意以下付款条款：
-        subscription_fee: 您将在每个账单周期开始时被收取订阅费
-        billing_cycles: 账单周期根据您的选择为月度或年度
-        payment_method: 您必须提供有效的付款方式才能订阅付费层
-        automatic_renewal: 除非在续订日期前取消，否则订阅将自动续订
-        price_changes: 我们可能会在提前30天通知现有订阅者后更改定价
-        payment_processor: 付款通过我们的第三方支付处理商（Stripe）安全处理
-        failed_payments: 付款失败可能导致服务降级或暂停
+        content: 如果您订阅付费级别，则表示您同意以下付款条款：
+        subscription_fee: 您将在每个结算周期开始时被收取订阅费
+        billing_cycles: 结算周期为每月或每年，具体取决于您的选择
+        payment_method: 您必须提供有效的付款方式才能订阅付费级别
+        automatic_renewal: 订阅会自动续订，除非在续订日期之前取消
+        price_changes: 我们可能会在提前 30 天通知现有订阅者的情况下更改定价
+        payment_processor: 付款通过我们的第三方支付处理商 (Stripe) 安全地处理
+        failed_payments: 付款失败可能会导致服务降级或暂停
         currency: 价格以您选择的货币显示
       cancellation_refunds:
         title: 取消和退款
-        content: 您可以随时取消订阅：
-        cancellation_process: 通过您的账户设置取消或联系支持
-        cancellation_effect: 取消在当前账单期结束时生效
-        access_until_end: 您在付费期结束前保留对付费功能的访问权限
-        refund_policy: 我们为首次订阅者提供14天退款保证
-        no_partial_refunds: 除法律要求外，不提供剩余订阅时间的部分退款
-        downgrade_option: 您可以在账单周期结束时降级到较低层级
+        content: 您可以随时取消您的订阅：
+        cancellation_process: 通过您的帐户设置或联系支持人员取消
+        cancellation_effect: 取消将在您当前结算周期结束时生效
+        access_until_end: 您可以在付费期结束前保留对付费功能的访问权限
+        refund_policy: 我们为首次订阅者提供 14 天的退款保证
+        no_partial_refunds: 除非法律要求，否则不提供剩余订阅时间的按比例退款
+        downgrade_option: 您可以在结算周期结束时降级到较低级别
       free_tier_limitations:
-        title: 免费层限制
-        content: 免费层包括广告显示，可能有使用限制：
-        advertisements: 免费层用户将在整个应用程序中看到广告
-        feature_limits: 某些高级功能仅限于付费层
-        support_priority: 免费层支持以尽力而为的基础提供
-        upgrade_anytime: 您可以随时升级到付费层
-      acceptance:
-        title: Acceptance of Terms
-        content: By accessing and using CalcuMake, you accept and agree to be bound
-          by the terms and provision of this agreement.
-      description:
-        title: Service Description
-        content: 'CalcuMake is a web-based application that provides 3D printing cost
-          calculation and project management tools. Our service includes:'
-        cost_calculations: Comprehensive cost calculations for 3D printing projects
-        project_management: Project tracking and management features
-        invoice_generation: Invoice generation and PDF export capabilities
-        printer_tracking: Printer specifications and usage tracking
+        title: 免费级别限制
+        content: 免费级别包括广告展示，并且可能具有使用限制：
+        advertisements: 免费级别用户将在整个应用程序中看到广告
+        feature_limits: 某些高级功能仅限于付费级别
+        support_priority: 免费级别的支持以尽力而为为基础提供
+        upgrade_anytime: 您可以随时升级到付费级别
       user_accounts:
-        title: User Accounts
-        content: 'To use our service, you must create an account. You are responsible
-          for:'
-        accurate_info: Providing accurate and complete account information
-        secure_credentials: Maintaining the security of your account credentials
-        responsible_use: All activities that occur under your account
-        notify_breaches: Notifying us immediately of any suspected security breaches
+        title: 用户帐户
+        content: 要使用我们的服务，您必须创建一个帐户。 您有责任：
+        accurate_info: 提供准确和完整的帐户信息
+        secure_credentials: 维护您的帐户凭据的安全性
+        responsible_use: 在您的帐户下发生的所有活动
+        notify_breaches: 立即通知我们任何可疑的安全漏洞
       acceptable_use:
-        title: Acceptable Use
-        content: 'You agree to use our service only for lawful purposes and in accordance
-          with this agreement. You agree not to:'
-        lawful_purposes: Use the service for any unlawful or prohibited purposes
-        respect_rights: Violate any applicable laws or regulations
-        no_harmful_content: Upload or transmit harmful, offensive, or inappropriate
-          content
-        no_interference: Interfere with or disrupt the service or servers
-        no_unauthorized_access: Attempt to gain unauthorized access to any part of
-          the service
+        title: 可接受的使用
+        content: 您同意仅将我们的服务用于合法目的，并遵守本协议。您同意不：
+        lawful_purposes: 将服务用于任何非法或禁止的目的
+        respect_rights: 违反任何适用的法律或法规
+        no_harmful_content: 上传或传输有害、冒犯性或不适当的内容
+        no_interference: 干扰或中断服务或服务器
+        no_unauthorized_access: 试图未经授权访问服务的任何部分
       data_accuracy:
-        title: Data Accuracy and Calculations
-        content: While we strive to provide accurate calculation tools, you are responsible
-          for verifying the accuracy of all calculations and data. Our calculations
-          are estimates and should be validated against your specific requirements
-          and local conditions.
+        title: 数据准确性和计算
+        content: 虽然我们努力提供准确的计算工具，但您有责任验证所有计算和数据的准确性。我们的计算是估计值，应根据您的具体要求和当地条件进行验证。
       intellectual_property:
-        title: Intellectual Property
-        our_content: The service and its original content, features, and functionality
-          are owned by us and are protected by international copyright, trademark,
-          and other intellectual property laws.
-        your_content: You retain ownership of any data, calculations, or content you
-          create using our service. You grant us a limited license to use this content
-          solely to provide the service to you.
+        title: 知识产权
+        our_content: 本服务及其原始内容、功能和特性归我们所有，并受国际版权、商标和其他知识产权法律的保护。
+        your_content: 您保留使用我们的服务创建的任何数据、计算或内容的所有权。您授予我们有限的许可，仅使用此内容为您提供服务。
       disclaimers:
-        title: Disclaimers
-        important: Important Notice
-        calculations_estimates: All cost calculations and estimates are for informational
-          purposes only
-        verify_accuracy: You must verify all calculations and data for accuracy
-        no_guarantee: We do not guarantee the accuracy, completeness, or reliability
-          of any calculations
-        as_is_basis: The service is provided on an 'as is' and 'as available' basis
+        title: 免责声明
+        important: 重要提示
+        calculations_estimates: 所有成本计算和估算仅供参考
+        verify_accuracy: 您必须验证所有计算和数据的准确性
+        no_guarantee: 我们不保证任何计算的准确性、完整性或可靠性
+        as_is_basis: 本服务按“原样”和“可用”的基础提供
       limitation_liability:
-        title: Limitation of Liability
-        content: To the maximum extent permitted by law, we shall not be liable for
-          any indirect, incidental, special, consequential, or punitive damages, including
-          without limitation, loss of profits, data, use, goodwill, or other intangible
-          losses.
+        title: 责任限制
+        content: 在法律允许的最大范围内，我们不对任何间接、附带、特殊、后果性或惩罚性损害赔偿负责，包括但不限于利润、数据、使用、商誉或其他无形损失。
       termination:
-        title: Termination
-        content: We may terminate or suspend your account and access to the service
-          immediately, without prior notice, for conduct that we believe violates
-          this agreement or is harmful to other users, us, or third parties.
+        title: 终止
+        content: 对于我们认为违反本协议或对其他用户、我们或第三方有害的行为，我们可能会立即终止或暂停您的帐户以及对服务的访问，恕不另行通知。
       governing_law:
-        title: Governing Law
-        content: This agreement shall be governed by and construed in accordance with
-          the laws of the jurisdiction in which our service operates, without regard
-          to its conflict of law provisions.
+        title: 适用法律
+        content: 本协议应受我们服务运营所在司法管辖区的法律管辖并按其解释，不考虑其法律冲突条款。
       changes:
-        title: Changes to Agreement
-        content: We reserve the right to modify this agreement at any time. We will
-          notify users of any material changes by posting the updated agreement on
-          our website with a new effective date.
+        title: 协议变更
+        content: 我们保留随时修改本协议的权利。我们将通过在我们的网站上发布更新后的协议并附上新的生效日期来通知用户任何重大变更。
       contact:
-        title: Contact Information
-        content: If you have any questions about this agreement, please contact us
-          through the support channels available in the application.
+        title: 联系信息
+        content: 如果您对本协议有任何疑问，请通过应用程序中提供的支持渠道与我们联系。
     commerce_disclosure:
-      title: 商务信息披露 (特定商取引法に基づく表記)
-      nav_title: 商务披露
+      title: 商业披露（特定商取引法に基づく表記）
+      nav_title: 商业披露
       business_operator:
-        title: 经营者
-        name: '公司名称: 株式会社モアブ (MOAB Co., Ltd.)'
-        representative: '代表: Cody Baldwin'
+        title: 业务经营者
+        name: 公司名称：株式会社モアブ (MOAB Co., Ltd.)
+        representative: 代表：Cody Baldwin
       business_address:
         title: 营业地址
-        address: 日本（详细地址信息请联系我们）
+        address: 日本（请联系我们获取详细地址信息）
       contact:
-        title: 联系方式
+        title: 联系信息
         email_label: 电子邮件
         email: cody@moab.jp
         phone_label: 电话
-        phone: 可通过电子邮件索取
+        phone: 通过电子邮件请求提供
         hours_label: 支持时间
-        hours: 周一至周五，上午9:00 - 下午6:00 日本标准时间（日本公共假期除外）
+        hours: 周一至周五，日本标准时间上午 9:00 - 下午 6:00（不包括日本节假日）
       service_description:
         title: 服务说明
-        content: CalcuMake 是一个基于网络的应用程序，提供3D打印成本计算和项目管理工具。我们的服务包括：
-        cost_calculations: 3D打印项目的全面成本计算
+        content: CalcuMake 是一款基于 Web 的应用程序，提供 3D 打印成本计算和项目管理工具。我们的服务包括：
+        cost_calculations: 3D 打印项目的综合成本计算
         project_management: 项目跟踪和管理功能
-        invoice_generation: 发票生成和PDF导出功能
-        printer_tracking: 打印机规格和使用跟踪
+        invoice_generation: 发票生成和 PDF 导出功能
+        printer_tracking: 打印机规格和使用情况跟踪
       pricing:
-        title: 价格
-        content: CalcuMake提供三个订阅层级：
-        free_tier: 免费层：¥0/月 - 带广告的基本功能
-        pro_tier: Pro层：月度或年度付费订阅 - 高级功能、无广告、优先支持
-        enterprise_tier: Enterprise层：月度或年度付费订阅 - 所有功能、高级支持、自定义集成
-        pricing_details: 确切定价在网站和应用程序的订阅选择期间显示。
-        price_changes: 价格可能会在提前30天通知现有订阅者后调整。
+        title: 定价
+        content: CalcuMake 提供三个订阅级别：
+        free_tier: 免费级别：¥0/月 - 具有广告的基本功能
+        pro_tier: 专业级别：按月或按年付费订阅 - 高级功能，无广告，优先支持
+        enterprise_tier: 企业级别：按月或按年付费订阅 - 所有功能，高级支持，自定义集成
+        pricing_details: 确切的定价显示在我们的网站和应用程序中，在选择订阅时可见。
+        price_changes: 价格可能会调整，并提前 30 天通知现有订阅者。
       payment_methods:
-        title: 支付方式
+        title: 付款方式
         content: 对于付费订阅，我们接受以下付款方式：
-        credit_cards: 信用卡：Visa、Mastercard、American Express、JCB
-        payment_processor: 所有付款都通过我们的支付处理合作伙伴Stripe安全处理。
-        secure_processing: 我们不会在服务器上存储您的完整信用卡信息。
-        free_tier_note: 免费层用户无需提供付款信息。
+        credit_cards: 信用卡：Visa，Mastercard，American Express，JCB
+        payment_processor: 所有付款均通过我们的支付处理合作伙伴 Stripe 安全处理。
+        secure_processing: 我们不会在我们的服务器上存储您的完整信用卡信息。
+        free_tier_note: 免费级别的用户无需提供付款信息。
       payment_timing:
         title: 付款时间
-        content: 根据您选择的账单周期收费：
-        initial_payment: 订阅时立即收取初始付款
-        recurring_payments: 定期付款在每个账单期（月度或年度）开始时收取
-        automatic_renewal: 除非取消，否则订阅自动续订
-        cancellation_timing: 取消在当前账单期结束时生效
+        content: 付款将根据您选择的结算周期收取：
+        initial_payment: 首次付款将在订阅后立即收取
+        recurring_payments: 循环付款将在每个结算周期（每月或每年）开始时收取
+        automatic_renewal: 订阅会自动续订，除非取消
+        cancellation_timing: 取消将在当前结算周期结束时生效
       delivery:
         title: 服务交付
-        content: CalcuMake 是一个基于网络的服务，创建账户后即可立即访问。不涉及实物产品或运输。
+        content: CalcuMake 是一项基于 Web 的服务，可在创建帐户后立即访问。不涉及实物产品或运输。
       returns:
         title: 退货和退款
-        content: 作为数字订阅服务，我们的退款政策如下：
-        money_back_guarantee: 首次付费订阅者享有14天退款保证
-        refund_process: 在首次订阅后14天内联系支持以获得全额退款
-        no_partial_refunds: 除法律要求外，不提供剩余订阅时间的部分退款
-        renewal_refunds: 除法律要求外，续订付款不可退款
-        free_tier_refunds: 免费层使用不涉及付款，不适用退款
+        content: 由于 CalcuMake 是一项数字订阅服务，我们的退款政策如下：
+        money_back_guarantee: 首次付费订阅者享有 14 天退款保证
+        refund_process: 在您首次订阅后的 14 天内联系支持部门以获得全额退款
+        no_partial_refunds: 除了法律要求外，不提供剩余订阅时间的按比例退款
+        renewal_refunds: 续订付款不可退款，除非法律另有要求
+        free_tier_refunds: 免费级别的使用不涉及付款，因此不适用退款
       cancellation:
         title: 取消政策
         content: 订阅取消条款：
-        cancellation_method: 通过账户设置或联系support@cody@moab.jp随时取消
-        cancellation_effect: 取消在当前账单期结束时生效
-        access_retention: 您在付费期结束前保留对付费功能的完全访问权限
-        data_retention: 账户数据根据我们的隐私政策保留
+        cancellation_method: 随时通过您的帐户设置取消订阅，或通过 cody@moab.jp 联系支持部门
+        cancellation_effect: 取消将在您当前结算周期结束时生效
+        access_retention: 在付费周期结束之前，您将保留对付费功能的完全访问权限
+        data_retention: 帐户数据将根据我们的隐私政策保留
         resubscription: 您可以在取消后随时重新订阅
-  support:
-    title: 支持
-    nav_title: 支持
-    contact_us: 联系我们
-    description: 需要CalcuMake的帮助吗？有问题或建议吗？我们随时为您提供帮助！
-    email_label: 电子邮件支持
-    response_time: 我们通常在24-48小时内回复
-    faq:
-      title: 常见问题
-      delete_account:
-        question: 如何删除我的账户？
-        answer: 要删除您的账户，请按照以下步骤操作：
-        step1: 从导航菜单转到您的个人资料页面
-        step2: 滚动到页面底部的"删除账户"部分
-        step3: 勾选"我理解删除账户是永久性的"复选框
-        step4: 勾选"我确认要删除我的账户和所有相关数据"复选框
-        step5: 点击"删除我的账户"按钮并确认最终警告
-        warning_title: 重要
-        warning_message: 账户删除是永久性的，无法撤销。您的所有数据将被永久删除。
-      data_recovery:
-        question: 删除后可以恢复我的账户吗？
-        answer: 不可以，账户删除是永久性的且不可逆转。一旦删除，您的账户和所有相关数据将无法恢复。如果您认为将来可能想再次使用CalcuMake，请考虑不使用您的账户而不是删除它。
-      what_deleted:
-        question: 删除账户时会删除哪些数据？
-        intro: 当您删除账户时，以下所有数据将被永久删除：
-        item1: 您的用户账户和登录凭据
-        item2: 您的所有打印定价计算
-        item3: 您的所有打印机及其配置
-        item4: 您的所有材料配置文件
-        item5: 您的所有发票
-        item6: 您的所有公司信息和偏好设置
-    billing_support:
-      title: 账单和订阅支持
-      description: 如有账单咨询、订阅更改、退款请求或付款问题，请提供您的账户电子邮件联系我们。
-      priority_note: Pro和Enterprise层订阅者享有优先支持响应时间。
-  activerecord:
-    errors:
-      messages:
-        blank: can't be blank
-        taken: has already been taken
-        too_short: is too short (minimum is %{count} characters)
-        too_long: is too long (maximum is %{count} characters)
-        invalid: is invalid
-        greater_than: must be greater than %{count}
-        greater_than_or_equal_to: must be greater than or equal to %{count}
-        less_than: must be less than %{count}
-        less_than_or_equal_to: must be less than or equal to %{count}
-        not_a_number: is not a number
-        inclusion: is not included in the list
-        exclusion: is reserved
-        accepted: must be accepted
-        present: must be blank
-        confirmation: doesn't match %{attribute}
-        empty: can't be empty
-      models:
-        filament:
-          attributes:
-            name:
-              blank: Please enter a filament name
-              taken: You already have a filament with this name
-            material_type:
-              blank: Please select a material type
-              inclusion: Please select a valid material type
-            diameter:
-              blank: Please select a diameter
-              inclusion: Please select a valid diameter (1.75mm, 2.85mm, or 3.0mm)
-            spool_weight:
-              greater_than: Spool weight must be greater than 0
-              not_a_number: Spool weight must be a number
-            spool_price:
-              greater_than: Spool price must be greater than 0
-              not_a_number: Spool price must be a number
-            print_temperature_min:
-              greater_than: Minimum temperature must be greater than 0°C
-              less_than: Minimum temperature must be less than 500°C
-              not_a_number: Minimum temperature must be a number
-            print_temperature_max:
-              greater_than: Maximum temperature must be greater than 0°C
-              less_than: Maximum temperature must be less than 500°C
-              not_a_number: Maximum temperature must be a number
-              temperature_range: must be greater than minimum temperature
-            heated_bed_temperature:
-              greater_than: Bed temperature must be greater than 0°C
-              less_than: Bed temperature must be less than 500°C
-              not_a_number: Bed temperature must be a number
-            print_speed_max:
-              greater_than: Print speed must be greater than 0
-              less_than: Print speed must be less than 1000
-              not_a_number: Print speed must be a number
-            storage_temperature_max:
-              greater_than: Storage temperature must be greater than -50°C
-              less_than: Storage temperature must be less than 100°C
-              not_a_number: Storage temperature must be a number
-            density:
-              greater_than: Density must be greater than 0
-              less_than: Density must be less than 10
-              not_a_number: Density must be a number
-        plate_filament:
-          attributes:
-            filament_weight:
-              blank: Please enter the filament weight
-              greater_than: Filament weight must be greater than 0
-              not_a_number: Filament weight must be a number
-            filament_id:
-              blank: Please select a filament
-              already_added: This filament has already been added to this plate
-        plate:
-          attributes:
-            base:
-              no_filaments: Must have at least one filament
-              duplicate_filaments: Cannot use the same filament multiple times on
-                one plate
-        print_pricing:
-          attributes:
-            base:
-              no_plates: Must have at least one plate
-              too_many_plates: Cannot have more than 10 plates
-              duplicate_filaments_on_plate: Cannot use the same filament multiple
-                times on the same plate
-  date:
-    formats:
-      month_day_year: "%B %d, %Y"
   print_pricings:
     form:
-      filament_weight: Filament Weight
-      print_time_hours: Print Time Hours
-  invoices:
-    title: Invoices
-    new_invoice: New Invoice
-    edit_invoice: Edit Invoice
-    create_invoice: Create Invoice
-    index:
-      title: My Invoices
-      subtitle: Track and manage all your invoices across projects
-      search_placeholder: Search by job name...
-      empty_state:
-        title: No invoices yet
-        description: Start by creating invoices for your print calculations.
-      no_results:
-        title: No results found
-        description: No invoices match '%{query}'. Try a different search term.
-    download_pdf: Download PDF
-    print: Print
-    bill_to: Bill To
-    mark_as_sent: Mark as Sent
-    mark_as_paid: Mark as Paid
-    created_successfully: Invoice created successfully
-    updated_successfully: Invoice updated successfully
-    deleted_successfully: Invoice deleted successfully
-    cannot_delete_non_draft: Only draft invoices can be deleted
-    marked_as_sent: Invoice marked as sent
-    marked_as_paid: Invoice marked as paid
-    marked_as_cancelled: Invoice marked as cancelled
-    failed_to_update: Failed to update invoice
-    confirm_delete: Are you sure you want to delete this invoice?
-    no_invoices: No invoices yet
-    create_first_invoice: Create your first invoice for this print calculation
-    company_info_card_text: Invoice company information is managed in your profile
-      settings. Update your company details there to use them in all your invoices.
-    no_company_info: No company information set. Please update your profile to add
-      company details.
-    edit_company_info: Edit Company Info in Profile
-    status:
-      draft: Draft
-      sent: Sent
-      paid: Paid
-      cancelled: Cancelled
-    fields:
-      invoice_details: Invoice Details
-      company_info: Company Info
-      company_name: Company Name
-      company_address: Company Address
-      company_email: Company Email
-      company_phone: Company Phone
-      payment_details: Payment Details
-      notes: Notes
-      invoice_number: Invoice Number
-      job_name: Job Name
-      invoice_number_help: Automatically generated when invoices are created (cannot
-        be edited)
-      invoice_date: Invoice Date
-      due_date: Due Date
-      status: Status
-      currency: Currency
-      currency_help: Determines decimal places and formatting for all amounts on this
-        invoice
-      company_logo: Company Logo
-    line_items:
-      title: Line Items
-      add_line_item: Add Line Item
-      description: Description
-      quantity: Quantity
-      unit_price: Unit Price
-      total: Total
-      remove: Remove
-  filaments:
-    index:
-      title: My Filaments
-      subtitle: Manage your 3D printing filament inventory
-      add_new: Add New Filament
-      search_placeholder: Search by name, brand, material, or color...
-      clear_search: Clear Search
-      empty_state:
-        title: No filaments registered yet
-        description: Add your first filament to start building your material library
-          for print calculations.
-        add_first: Add Your First Filament
-      no_results:
-        title: No results found
-        description: No filaments match '%{query}'. Try a different search term.
-    new:
-      title: Add New Filament
-      subtitle: Register a new filament for your material library
-    edit:
-      title: Edit Filament
-      subtitle: Update filament specifications
-    show:
-      usage_history: Usage History
-      times_used: Times Used
-      total_weight_used: Total Weight Used
-      new_print_with_filament: New Print with this Filament
-      recent_prints: Recent Prints
-      not_used_yet: This filament hasn't been used yet
-      create_first_print: Create Your First Print
-      no_cost_info: No cost information available
-    sections:
-      basic_info: Basic Information
-      cost_info: Cost Information
-      properties: Properties
-      technical_specs: Technical Specifications
-    fields:
-      name: Filament Name
-      name_placeholder: e.g., Basic PLA, Premium PETG
-      brand: Brand
-      brand_placeholder: e.g., Hatchbox, Prusa, eSUN
-      material_type: Material Type
-      material_type_prompt: Select material type
-      diameter: Diameter
-      color: Color
-      color_placeholder: e.g., Red, Natural, Transparent
-      finish: Finish
-      finish_placeholder: e.g., Matte, Glossy, Silk
-      spool_weight: Spool Weight
-      spool_weight_placeholder: '1000'
-      spool_price: Spool Price
-      spool_price_placeholder: '25.00'
-      density: Density
-      density_placeholder: '1.24'
-      cost_per_gram: Cost per Gram
-      temperature_range: Temperature Range
-      moisture_sensitive: Moisture Sensitive
-      notes: Notes
-      notes_placeholder: Additional information about this filament...
-      filament: Filament
-      select_filament: Select a filament
-      weight_used: Weight Used
-      selected: Selected
-      none_selected: None selected
-      not_set: Not set
-      total_cost: Total Cost
-      no_filament_registered: No filament registered?
-      add_new_filament: Add New Filament
-      bed_temperature: Bed Temperature
-      max_print_speed: Max Print Speed
-      storage_temp: Storage Temperature
-    properties:
-      moisture_sensitive: Moisture Sensitive
-    buttons:
-      add_filament: Add Filament
-      update_filament: Update Filament
-    confirm_delete: Are you sure you want to delete '%{name}'?
-  devise:
-    shared:
-      oauth_signin_options: Sign in with social accounts
-      alternative_signin_method: Alternative signin method
-      or_sign_in_with_email: Or Sign In With Email
-      sign_in_with_provider: Sign in with %{provider}
-      sign_in_with_provider_aria: Sign in with %{provider}
-    confirmations:
-      confirmed: Your email address has been successfully confirmed.
-      send_instructions: You will receive an email with instructions for how to confirm
-        your email address in a few minutes.
-      send_paranoid_instructions: If your email address exists in our database, you
-        will receive an email with instructions for how to confirm your email address
-        in a few minutes.
-    failure:
-      already_authenticated: You are already signed in.
-      inactive: Your account is not activated yet.
-      invalid: Invalid %{authentication_keys} or password.
-      locked: Your account is locked.
-      last_attempt: You have one more attempt before your account is locked.
-      not_found_in_database: Invalid %{authentication_keys} or password.
-      timeout: Your session expired. Please sign in again to continue.
-      unauthenticated: You need to sign in or sign up before continuing.
-      unconfirmed: You have to confirm your email address before continuing.
-    mailer:
-      confirmation_instructions:
-        subject: Confirmation instructions
-      reset_password_instructions:
-        subject: Reset password instructions
-      unlock_instructions:
-        subject: Unlock instructions
-      email_changed:
-        subject: Email Changed
-      password_change:
-        subject: Password Changed
-    omniauth_callbacks:
-      failure: Could not authenticate you from %{kind} because "%{reason}".
-      success: Successfully authenticated from %{kind} account.
-    passwords:
-      no_token: You can't access this page without coming from a password reset email.
-        If you do come from a password reset email, please make sure you used the
-        full URL provided.
-      send_instructions: You will receive an email with instructions on how to reset
-        your password in a few minutes.
-      send_paranoid_instructions: If your email address exists in our database, you
-        will receive a password recovery link at your email address in a few minutes.
-      updated: Your password has been changed successfully. You are now signed in.
-      updated_not_active: Your password has been changed successfully.
-    registrations:
-      destroyed: Bye! Your account has been successfully cancelled. We hope to see
-        you again soon.
-      signed_up: Welcome! You have signed up successfully.
-      signed_up_but_inactive: You have signed up successfully. However, we could not
-        sign you in because your account is not yet activated.
-      signed_up_but_locked: You have signed up successfully. However, we could not
-        sign you in because your account is locked.
-      signed_up_but_unconfirmed: A message with a confirmation link has been sent
-        to your email address. Please follow the link to activate your account.
-      update_needs_confirmation: You updated your account successfully, but we need
-        to verify your new email address. Please check your email and follow the confirmation
-        link to confirm your new email address.
-      updated: Your account has been updated successfully.
-      updated_but_not_signed_in: Your account has been updated successfully, but since
-        your password was changed, you need to sign in again.
-    sessions:
-      signed_in: Signed in successfully.
-      signed_out: Signed out successfully.
-      already_signed_out: Signed out successfully.
-    unlocks:
-      send_instructions: You will receive an email with instructions for how to unlock
-        your account in a few minutes.
-      send_paranoid_instructions: If your account exists, you will receive an email
-        with instructions for how to unlock it in a few minutes.
-      unlocked: Your account has been unlocked successfully. Please sign in to continue.
-  landing:
-    hero:
-      headline: More creating, less calculating
-      subheadline: Skip the spreadsheets and tedious calculations. Handle pricing
-        automatically so you can focus on the fun part.
-      cta_primary: Start Calculating Free
-      cta_demo: See Demo
-      trust_signal: No credit card required - start with full Startup features for
-        30 days
-      preview_title: Quick Cost Preview
-      preview_filament_weight: Filament Weight
-      preview_print_time: Print Time
-      preview_total_cost: Total Cost
-      preview_cost_breakdown: Electricity + Filament + Labor
-    problem:
-      headline: Are you wasting time calculating pricing for 3D prints?
-      manual_errors: Manual Calculation Errors
-      manual_errors_desc: Spreadsheets and mental math lead to costly mistakes and
-        undercharging.
-      electricity_costs: Forgotten Electricity Costs
-      electricity_costs_desc: Power consumption can add 20-40% to your actual costs
-        but is often ignored.
-      inconsistent_pricing: Inconsistent Pricing
-      inconsistent_pricing_desc: Different calculations for similar jobs confuse customers
-        and hurt profits.
-      time_wasted: Time Wasted on Spreadsheets
-      time_wasted_desc: Hours spent on manual calculations instead of growing your
-        printing business.
-    solution:
-      headline: Professional Tools for Serious Makers
-      subheadline: Everything you need to price accurately and manage your 3D printing
-        projects like a pro.
-    features:
-      accurate_calculation:
-        title: Accurate Cost Calculation
-        desc: Get precise costs every time with comprehensive calculation including
-          all hidden expenses.
-        filament: Filament weight + spool cost
-        electricity: Electricity consumption tracking
-        labor: Labor time (prep + post-processing)
-        depreciation: Machine depreciation
-      multi_printer:
-        title: Multi-Printer Management
-        desc: Track different printer specifications and monitor your return on investment
-          across your entire fleet.
-        power: Individual power consumption tracking
-        roi: ROI tracking per printer
-        organization: Organized print job management
-      invoicing:
-        title: Professional Invoicing
-        desc: Generate professional PDF invoices with your company branding and multi-currency
-          support.
-        pdf: Auto-generated PDF invoices
-        branding: Custom company branding
-        currency: Multi-currency support
-      organization:
-        title: Project Organization
-        desc: Keep your print jobs organized with powerful search, filtering, and
-          project management tools.
-        search: Search and filter print jobs
-        duplicate: Duplicate similar projects
-        history: Complete print history tracking
-    pricing:
-      headline: Simple, Transparent Pricing
-      subheadline: Choose the plan that fits your printing volume. Upgrade or downgrade
-        anytime.
-      cta: Get Started Free
-      free:
-        title: Free
-        trial_notice: First month includes full Startup features!
-        calculations: 5 calculations per month (after trial)
-        printers: 1 printer profile
-        filaments: 4 filament types
-        invoices: 5 invoices per month
-        branding: CalcuMake branding on invoices
-      startup:
-        title: Startup
-        badge: Most Popular
-        calculations: 50 calculations per month
-        printers: 10 printer profiles
-        filaments: 16 filament types
-        branding: Remove CalcuMake branding
-        ads: No ads
-      pro:
-        title: Pro
-        unlimited: Unlimited everything
-        branding: Remove CalcuMake branding
-        ads: No ads
-        support: Priority support
-        analytics: Advanced analytics
-        features: Future premium features
-      trust_signals:
-        no_credit_card: No credit card required - start with full Startup features
-          for 30 days
-        cancel_anytime: Cancel anytime
-        data_private: Your data stays private
-    faq:
-      headline: Frequently Asked Questions
-      accuracy:
-        question: How accurate are the calculations?
-        answer: CalcuMake uses simple formulas and accounts for all cost factors including
-          filament, electricity, labor time, and machine depreciation.
-      currencies:
-        question: What currencies does CalcuMake support?
-        answer: CalcuMake currently supports USD, EUR, GBP, JPY, CAD, and AUD with
-          automatic formatting and precision for each currency. You can switch currencies
-          anytime in your profile settings.
-      printers:
-        question: Does CalcuMake support my 3D printer?
-        answer: CalcuMake works with any 3D printer! You simply enter your printer's
-          power consumption and other specifications. We're planning support for resin
-          printers soon!
-      electricity:
-        question: How do electricity costs work?
-        answer: CalcuMake automatically calculates electricity costs based on your
-          printer's power consumption (in watts), print duration, and your local energy
-          rate per kWh. This ensures you never forget this often-overlooked cost factor.
-      invoices:
-        question: Can I customize my invoices?
-        answer: Yes! You can add your company logo, customize colors, and include
-          your business information. Paid plans remove the CalcuMake branding for
-          a completely professional look.
-    final_cta:
-      headline: Ready to stop losing money on 3D prints?
-      subheadline: Join thousands of makers who trust CalcuMake for accurate pricing
-        and professional project management.
-      button: Start Your Free Trial
-  demo:
-    title: Try CalcuMake Demo
-    subtitle: Test our 3D print cost calculator with sample data. No account required!
-    sign_up_full_version: Sign Up for Full Version
-    start_free_trial: Start Free Trial
-    limitations:
-      title: This is a Demo Version
-      description: 'The full CalcuMake app includes:'
-      features:
-      - Multiple printer profiles with automatic specifications
-      - Comprehensive filament library with material properties
-      - Professional PDF invoice generation
-      - Project history and duplicate functionality
-      - Multi-currency support
-      - Machine depreciation calculations
-  locale_suggestion:
-    banner:
-      title: It looks like you're accessing from a different region.
-      switch_to: Switch to %{language} for a better experience?
-      currently_viewing: Currently viewing in %{language}
-      switch_button: Switch Language
-      stay_button: Stay
-      close: Close
-  calculators:
-    quick_cost_calculator: Quick Cost Calculator
-    print_time_hours: Print Time (hours)
-    filament_weight_grams: Filament Weight (grams)
-    filament_price_per_kg: Filament Price per KG ($)
-    labor_rate_per_hour: Labor Rate per Hour ($)
-    create_full_calculation: Create Full Calculation
-    includes_defaults: 'Includes Default Costs:'
-    defaults:
-      filament_price: Filament
-      labor_rate: Labor
-      energy_cost: Energy
-      power_consumption: Power
-      machine_payoff: Machine Payoff
-    features:
-      real_time: Real-time calculation as you type
-      includes_costs: Includes electricity and labor costs
-    results:
-      filament_cost: Filament Cost
-      electricity_cost: Electricity Cost
-      labor_cost: Labor Cost
-      total_cost: Total Cost
-      estimated_cost: 'Estimated Cost:'
-  errors:
-    messages:
-      already_confirmed: was already confirmed, please try signing in
-      confirmation_period_expired: needs to be confirmed within %{period}, please
-        request a new one
-      expired: has expired, please request a new one
-      not_found: not found
-      not_locked: was not locked
-      not_saved:
-        one: '1 error prohibited this %{resource} from being saved:'
-        other: "%{count} errors prohibited this %{resource} from being saved:"
-filaments:
-  index:
-    title: 我的材料
-    subtitle: 管理您的3D打印材料库存
-    add_new: 添加新材料
-  fields:
-    name: 材料名称
-    brand: 品牌
-    material_type: 材料类型
-    filament: 材料
-    select_filament: 选择材料
-  buttons:
-    add_filament: 添加材料
-    update_filament: 更新材料
+      filament_weight: 线材重量
+      print_time_hours: 打印时间（小时）
   invoices:
     title: 发票
-    new_invoice: 新建发票
+    new_invoice: 新发票
     edit_invoice: 编辑发票
     create_invoice: 创建发票
     index:
       title: 我的发票
-      subtitle: 跟踪和管理所有项目的发票
+      subtitle: 跟踪和管理您在各个项目中的所有发票
       search_placeholder: 按作业名称搜索...
       empty_state:
-        title: 暂无发票
-        description: 开始为您的打印计算创建发票。
+        title: 还没有发票
+        description: 首先为您的打印计算创建发票。
       no_results:
         title: 未找到结果
-        description: 没有与'%{query}'匹配的发票。请尝试不同的搜索词。
-    download_pdf: 下载PDF
+        description: 没有发票匹配 '%{query}'。请尝试其他搜索词。
+    download_pdf: 下载 PDF
     print: 打印
-    bill_to: 账单地址
+    bill_to: 账单寄送至
     mark_as_sent: 标记为已发送
-    mark_as_paid: 标记为已付款
+    mark_as_paid: 标记为已支付
     created_successfully: 发票创建成功
     updated_successfully: 发票更新成功
     deleted_successfully: 发票删除成功
-    cannot_delete_non_draft: 只能删除草稿发票
+    cannot_delete_non_draft: 只有草稿发票才能被删除
     marked_as_sent: 发票已标记为已发送
-    marked_as_paid: 发票已标记为已付款
+    marked_as_paid: 发票已标记为已支付
     marked_as_cancelled: 发票已标记为已取消
     failed_to_update: 发票更新失败
-    confirm_delete: 您确定要删除此发票吗？
-    no_invoices: 暂无发票
-    create_first_invoice: 为此打印计算创建第一张发票
-    company_info_card_text: 发票公司信息在您的个人资料设置中管理。在那里更新您的公司详细信息以在所有发票中使用。
+    confirm_delete: 确定要删除此发票吗？
+    no_invoices: 还没有发票
+    create_first_invoice: 为此打印计算创建您的第一张发票
+    company_info_card_text: 发票公司信息在您的个人资料设置中管理。请在那里更新您的公司详细信息，以便在所有发票中使用。
     no_company_info: 未设置公司信息。请更新您的个人资料以添加公司详细信息。
     edit_company_info: 在个人资料中编辑公司信息
     status:
       draft: 草稿
       sent: 已发送
-      paid: 已付款
+      paid: 已支付
       cancelled: 已取消
     fields:
       invoice_details: 发票详情
@@ -1399,87 +936,229 @@ filaments:
       company_address: 公司地址
       company_email: 公司邮箱
       company_phone: 公司电话
-      payment_details: 付款详情
+      payment_details: 支付详情
       notes: 备注
       invoice_number: 发票号码
-      invoice_number_help: 创建发票时自动生成（无法编辑）
+      job_name: 作业名称
+      invoice_number_help: 发票创建时自动生成（不可编辑）
       invoice_date: 发票日期
-      due_date: 到期日期
+      due_date: 到期日
       status: 状态
       currency: 货币
       currency_help: 确定此发票上所有金额的小数位数和格式
-      company_logo: 公司徽标
+      company_logo: 公司Logo
+      client: 客户
+      project: 项目
+      select_client: 选择一个客户
+      no_client_selected: 未选择客户
+      client_help_text: 为此发票选择一个客户
     line_items:
-      title: 明细项目
-      add_line_item: 添加明细项目
+      title: 行项目
+      add_line_item: 添加行项目
       description: 描述
       quantity: 数量
       unit_price: 单价
       total: 总计
-      remove: 删除
+      remove: 移除
+      round_all_down_help: 将所有金额向下舍入，以避免多收费
+      round_all_down: 全部向下舍入
+  filaments:
+    index:
+      title: 我的线材
+      subtitle: 管理您的 3D 打印线材库存
+      add_new: 添加新线材
+      search_placeholder: 按名称、品牌、材料或颜色搜索...
+      clear_search: 清除搜索
+      empty_state:
+        title: 尚未注册任何线材
+        description: 添加您的第一个线材，开始构建用于打印计算的材料库。
+        add_first: 添加您的第一个线材
+      no_results:
+        title: 未找到结果
+        description: 没有与 '%{query}' 匹配的线材。请尝试其他搜索词。
+    new:
+      title: 添加新线材
+      subtitle: 为您的材料库注册新线材
+    edit:
+      title: 编辑线材
+      subtitle: 更新线材规格
+    show:
+      title: 线材详情
+      usage_history: 使用历史
+      times_used: 使用次数
+      total_weight_used: 总使用重量
+      new_print_with_filament: 使用此线材的新打印
+      recent_prints: 最近打印
+      not_used_yet: 此线材尚未被使用
+      create_first_print: 创建您的第一次打印
+      no_cost_info: 无成本信息可用
+    sections:
+      basic_info: 基本信息
+      cost_info: 成本信息
+      properties: 属性
+      technical_specs: 技术规格
+    fields:
+      name: 线材名称
+      name_placeholder: 例如，Basic PLA，Premium PETG
+      brand: 品牌
+      brand_placeholder: 例如，Hatchbox，Prusa，eSUN
+      material_type: 材料类型
+      material_type_prompt: 选择材料类型
+      diameter: 直径
+      color: 颜色
+      color_placeholder: 例如，红色，自然色，透明
+      finish: 表面处理
+      finish_placeholder: 例如，哑光，光泽，丝绸
+      spool_weight: 线轴重量
+      spool_weight_placeholder: '1000'
+      spool_price: 线轴价格
+      spool_price_placeholder: '25.00'
+      density: 密度
+      density_placeholder: '1.24'
+      cost_per_gram: 每克成本
+      temperature_range: 温度范围
+      moisture_sensitive: 湿度敏感
+      notes: 备注
+      notes_placeholder: 关于此线材的附加信息...
+      filament: 线材
+      select_filament: 选择线材
+      weight_used: 已用重量
+      selected: 已选择
+      none_selected: 未选择
+      not_set: 未设置
+      total_cost: 总成本
+      no_filament_registered: 没有注册线材？
+      add_new_filament: 添加新线材
+      bed_temperature: 热床温度
+      max_print_speed: 最大打印速度
+      storage_temp: 存储温度
+    properties:
+      moisture_sensitive: 对湿度敏感
+    buttons:
+      add_filament: 添加线材
+      update_filament: 更新线材
+    confirm_delete: 您确定要删除 '%{name}' 吗？
+  devise:
+    shared:
+      oauth_signin_options: 使用社交账号登录
+      alternative_signin_method: 其他登录方式
+      or_sign_in_with_email: 或使用邮箱登录
+      sign_in_with_provider: 使用 %{provider} 登录
+      sign_in_with_provider_aria: 使用 %{provider} 登录
+    confirmations:
+      confirmed: 您的电子邮件地址已成功确认。
+      send_instructions: 您将收到一封电子邮件，其中包含有关如何确认您的电子邮件地址的说明。
+      send_paranoid_instructions: 如果您的电子邮件地址存在于我们的数据库中，您将收到一封电子邮件，其中包含有关如何确认您的电子邮件地址的说明。
+    failure:
+      already_authenticated: 您已登录。
+      inactive: 您的帐户尚未激活。
+      invalid: 无效的 %{authentication_keys} 或密码。
+      locked: 您的帐户已被锁定。
+      last_attempt: 您还有一次尝试机会，之后您的帐户将被锁定。
+      not_found_in_database: 无效的 %{authentication_keys} 或密码。
+      timeout: 您的会话已过期。请重新登录以继续。
+      unauthenticated: 您需要先登录或注册才能继续。
+      unconfirmed: 您必须先确认您的电子邮件地址才能继续。
+    mailer:
+      confirmation_instructions:
+        subject: 确认说明
+      reset_password_instructions:
+        subject: 重置密码说明
+      unlock_instructions:
+        subject: 解锁说明
+      email_changed:
+        subject: 电子邮件已更改
+      password_change:
+        subject: 密码已更改
+    omniauth_callbacks:
+      failure: 无法从 %{kind} 验证您的身份，因为 "%{reason}"。
+      success: 已成功从 %{kind} 帐户验证您的身份。
+    passwords:
+      no_token: 如果您不是从密码重置电子邮件访问此页面，则无法访问。如果您是从密码重置电子邮件访问的，请确保您使用了提供的完整 URL。
+      send_instructions: 您将收到一封电子邮件，其中包含有关如何重置密码的说明。
+      send_paranoid_instructions: 如果您的电子邮件地址存在于我们的数据库中，您将在几分钟内收到一封包含密码重置链接的电子邮件。
+      updated: 您的密码已成功更改。您现在已登录。
+      updated_not_active: 您的密码已成功更改。
+    registrations:
+      destroyed: 再见！您的帐户已成功取消。我们希望很快能再次见到您。
+      signed_up: 欢迎！您已成功注册。
+      signed_up_but_inactive: 您已成功注册。但是，由于您的帐户尚未激活，我们无法让您登录。
+      signed_up_but_locked: 您已成功注册。但是，由于您的帐户已被锁定，我们无法让您登录。
+      signed_up_but_unconfirmed: 一封包含确认链接的消息已发送到您的电子邮件地址。请点击链接以激活您的帐户。
+      update_needs_confirmation: 您的帐户已成功更新，但我们需要验证您的新电子邮件地址。请检查您的电子邮件并点击确认链接以确认您的新电子邮件地址。
+      updated: 您的帐户已成功更新。
+      updated_but_not_signed_in: 您的帐户已成功更新，但由于您的密码已更改，您需要重新登录。
+    sessions:
+      signed_in: 登录成功。
+      signed_out: 已成功登出。
+      already_signed_out: 已成功登出。
+    unlocks:
+      send_instructions: 您将收到一封电子邮件，其中包含有关如何解锁您的帐户的说明，将在几分钟内发送。
+      send_paranoid_instructions: 如果您的帐户存在，您将在几分钟内收到一封包含如何解锁它的说明的电子邮件。
+      unlocked: 您的帐户已成功解锁。请登录以继续。
   landing:
     hero:
-      headline: 专注创造，告别繁琐计算
-      subheadline: 跳过电子表格和复杂计算。自动化定价让您回归最有趣的创作部分。
+      headline: 更多创造，更少计算
+      subheadline: 跳过电子表格和繁琐的计算。自动处理定价，以便您可以专注于有趣的部分。
       cta_primary: 免费开始计算
       cta_demo: 查看演示
-      trust_signal: 无需信用卡 - 免费试用30天，享受所有Startup功能
+      trust_signal: 无需信用卡 - 免费试用完整 Startup 功能 30 天
       preview_title: 快速成本预览
-      preview_filament_weight: 耗材重量
+      preview_filament_weight: 线材重量
       preview_print_time: 打印时间
       preview_total_cost: 总成本
-      preview_cost_breakdown: 电费 + 耗材 + 人工
+      preview_cost_breakdown: 电力 + 线材 + 人工
     problem:
-      headline: 您在3D打印上亏钱了吗？
+      headline: 您是否在浪费时间计算 3D 打印的定价？
       manual_errors: 手动计算错误
-      manual_errors_desc: 电子表格和心算会导致代价高昂的错误和收费过低。
-      electricity_costs: 被遗忘的电费
-      electricity_costs_desc: 功耗可能增加20-40%的实际成本，但经常被忽视。
+      manual_errors_desc: 电子表格和心算会导致代价高昂的错误和收费不足。
+      electricity_costs: 被遗忘的电力成本
+      electricity_costs_desc: 电力消耗可能会增加您实际成本的 20-40%，但经常被忽略。
       inconsistent_pricing: 不一致的定价
-      inconsistent_pricing_desc: 类似工作的不同计算会让客户困惑并损害利润。
-      time_wasted: 在电子表格上浪费时间
-      time_wasted_desc: 花费数小时进行手动计算，而不是发展您的打印业务。
+      inconsistent_pricing_desc: 类似作业的不同计算方式会使客户感到困惑并损害利润。
+      time_wasted: 浪费在电子表格上的时间
+      time_wasted_desc: 花费在手动计算上的时间，本可以用来发展您的打印业务。
     solution:
-      headline: 专业工具为认真的制造商
-      subheadline: 准确定价和专业管理3D打印项目所需的一切。
+      headline: 面向专业创作者的专业工具
+      subheadline: 像专业人士一样准确地定价和管理您的 3D 打印项目所需的一切。
     features:
       accurate_calculation:
-        title: 精确成本计算
-        desc: 通过包含所有隐藏费用的综合计算，每次都能获得精确成本。
-        filament: 耗材重量 + 线轴成本
-        electricity: 功耗跟踪
+        title: 准确的成本计算
+        desc: 通过包括所有隐藏费用的全面计算，每次都能获得精确的成本。
+        filament: 线材重量 + 线轴成本
+        electricity: 电力消耗跟踪
         labor: 人工时间（准备 + 后处理）
         depreciation: 机器折旧
       multi_printer:
         title: 多打印机管理
-        desc: 跟踪不同打印机规格，监控整个设备群的投资回报率。
-        power: 个人功耗跟踪
-        roi: 每台打印机ROI跟踪
+        desc: 追踪不同的打印机规格，并监控整个打印机群的投资回报率。
+        power: 单独的功耗追踪
+        roi: 每台打印机的投资回报率追踪
         organization: 有组织的打印作业管理
       invoicing:
-        title: 专业开票
-        desc: 生成专业PDF发票，支持公司品牌和多货币。
-        pdf: 自动生成PDF发票
+        title: 专业的发票
+        desc: 生成带有公司品牌和多币种支持的专业PDF发票。
+        pdf: 自动生成的PDF发票
         branding: 自定义公司品牌
-        currency: 多货币支持
+        currency: 多币种支持
       organization:
         title: 项目组织
-        desc: 通过强大的搜索、过滤和项目管理工具保持打印作业有序。
+        desc: 使用强大的搜索、过滤和项目管理工具，保持您的打印作业井井有条。
         search: 搜索和过滤打印作业
-        duplicate: 复制类似项目
-        history: 完整打印历史跟踪
+        duplicate: 复制类似的项目
+        history: 完整的打印历史记录追踪
     pricing:
-      headline: 简单透明的定价
+      headline: 简单、透明的定价
       subheadline: 选择适合您打印量的计划。随时升级或降级。
       cta: 免费开始
       free:
         title: 免费
         trial_notice: 第一个月包含完整的Startup功能！
-        calculations: 每月5次计算（试用后）
+        calculations: 每月5次计算（试用期后）
         printers: 1个打印机配置文件
         filaments: 4种耗材类型
         invoices: 每月5张发票
-        branding: 发票上显示CalcuMake品牌
+        branding: 发票上带有CalcuMake品牌
       startup:
         title: Startup
         badge: 最受欢迎
@@ -1490,176 +1169,140 @@ filaments:
         ads: 无广告
       pro:
         title: Pro
-        unlimited: 一切无限制
+        unlimited: 所有功能无限制
         branding: 移除CalcuMake品牌
         ads: 无广告
         support: 优先支持
         analytics: 高级分析
-        features: 未来高级功能
+        features: 未来的高级功能
       trust_signals:
-        no_credit_card: 无需信用卡 - 免费试用30天，享受所有Startup功能
+        no_credit_card: 无需信用卡 - 免费试用包含完整Startup功能的30天
         cancel_anytime: 随时取消
         data_private: 您的数据保持私密
     faq:
       headline: 常见问题
       accuracy:
-        question: 计算的准确性如何？
-        answer: CalcuMake使用简单公式，考虑包括耗材、电力、人工时间和机器折旧在内的所有成本因素。
+        question: 计算有多准确？
+        answer: CalcuMake使用简单的公式，并考虑所有成本因素，包括耗材、电力、人工时间和机器折旧。
       currencies:
         question: CalcuMake支持哪些货币？
-        answer: CalcuMake目前支持USD、EUR、GBP、JPY、CAD和AUD，每种货币都有自动格式化和精度设置。您可以在个人资料设置中随时切换货币。
+        answer: CalcuMake目前支持USD、EUR、GBP、JPY、CAD和AUD，并为每种货币提供自动格式化和精度。您可以随时在您的个人资料设置中切换货币。
       printers:
         question: CalcuMake支持我的3D打印机吗？
-        answer: CalcuMake适用于任何3D打印机！您只需输入打印机的功耗和其他规格。我们很快也会支持树脂打印机！
+        answer: CalcuMake适用于任何3D打印机！您只需输入打印机的功耗和其他规格。我们计划很快支持树脂打印机！
       electricity:
         question: 电费是如何计算的？
-        answer: CalcuMake根据您打印机的功耗（瓦特）、打印时间和当地每千瓦时的能源费率自动计算电费。这确保您永远不会忘记这个经常被忽视的成本因素。
+        answer: CalcuMake根据您打印机的功耗（瓦特）、打印时长以及您当地每千瓦时的能源费率自动计算电费。这确保您永远不会忘记这个经常被忽视的成本因素。
       invoices:
-        question: 我可以自定义发票吗？
-        answer: 可以！您可以添加公司徽标、自定义颜色并包含您的业务信息。付费计划会移除CalcuMake品牌，实现完全专业的外观。
+        question: 我可以自定义我的发票吗？
+        answer: 是的！您可以添加您的公司徽标，自定义颜色，并包含您的业务信息。付费计划会删除 CalcuMake 品牌，以获得完全专业的外观。
     final_cta:
-      headline: 准备停止在3D打印上亏钱了吗？
-      subheadline: 加入成千上万信任CalcuMake进行准确定价和专业项目管理的制造商。
+      headline: 准备好停止在 3D 打印上赔钱了吗？
+      subheadline: 加入成千上万信任 CalcuMake 的创客行列，获得准确的定价和专业的项目管理。
       button: 开始免费试用
-  print_pricings:
-    form:
-      filament_weight: 耗材重量
-      print_time_hours: 打印时间（小时）
-  calculators:
-    quick_cost_calculator: 快速成本计算器
-    print_time_hours: 打印时间（小时）
-    filament_weight_grams: 耗材重量（克）
-    filament_price_per_kg: 耗材价格（元/公斤）
-    labor_rate_per_hour: 人工费率（元/小时）
-    create_full_calculation: 创建完整计算
-    includes_defaults: 包含默认成本：
-    defaults:
-      filament_price: 耗材
-      labor_rate: 人工
-      energy_cost: 能源
-      power_consumption: 功耗
-      machine_payoff: 设备折旧
-    features:
-      real_time: 实时计算
-      includes_costs: 包含电费和人工成本
-    results:
-      filament_cost: 耗材成本
-      electricity_cost: 电费
-      labor_cost: 人工成本
-      total_cost: 总成本
-      estimated_cost: 预估成本：
   demo:
-    title: 试用CalcuMake演示
-    subtitle: 使用示例数据测试我们的3D打印成本计算器。无需注册！
+    title: 试用 CalcuMake 演示
+    subtitle: 使用示例数据测试我们的 3D 打印成本计算器。无需帐户！
     sign_up_full_version: 注册完整版本
     start_free_trial: 开始免费试用
     limitations:
-      title: 这是演示版本
-      description: 完整的CalcuMake应用包括：
-      features:
-      - 具有自动规格的多打印机配置文件
-      - 具有材料属性的综合耗材库
-      - 专业PDF发票生成
-      - 项目历史和复制功能
-      - 多货币支持
-      - 机器折旧计算
-  devise:
-    shared:
-      sign_in_with_provider: 使用 %{provider} 登录
-      sign_in_with_provider_aria: 使用您的 %{provider} 账户登录
-      or_sign_in_with_email: 或使用邮箱登录
-      oauth_signin_options: 第三方登录选项
-      alternative_signin_method: 替代登录方式
-    omniauth_callbacks:
-      success: 已成功通过 %{kind} 账户验证。
-  usage_limits:
-    limit_reached: 您已达到%{plan}计划的%{limit}个%{resource}限制。请升级以继续。
-    approaching_limit: 您正在接近%{resource}的计划限制
-    usage_summary: 使用情况摘要
-    current_usage: 已使用 %{current} / %{limit}
-    unlimited: 无限制
-  subscriptions:
-    title: 订阅和定价
-    current_plan: 当前计划
-    upgrade: 升级计划
-    manage: 管理订阅
-    cancel: 取消订阅
-    invalid_plan: 选择了无效的订阅计划
-    checkout_error: 无法创建结账会话。请重试。
-    verification_error: 无法验证订阅。请联系支持。
-    portal_error: 无法访问订阅管理。请重试。
-    no_subscription: 您没有有效的订阅
-    upgrade_successful: 成功升级到%{plan}计划！
-    cancel_scheduled: 您的订阅将在计费周期结束时取消
-    cancel_error: 无法取消订阅。请重试。
-    trial_badge: 30天免费试用
-    trial_remaining: 剩余%{days}天
+      title: 这是一个演示版本
+      description: 完整的 CalcuMake 应用程序包括：
+      features: '["具有自动规格的多个打印机配置文件", "具有材料属性的综合线材库", "专业的 PDF 发票生成", "项目历史记录和重复功能",
+        "多币种支持", "机器折旧计算"]'
+  locale_suggestion:
+    banner:
+      title: 看起来您正在从不同的地区访问。
+      switch_to: 切换到 %{language} 以获得更好的体验？
+      currently_viewing: 当前以 %{language} 查看
+      switch_button: 切换语言
+      stay_button: 保持
+      close: 关闭
+  calculators:
+    quick_cost_calculator: 快速成本计算器
+    print_time_hours: 打印时间（小时）
+    filament_weight_grams: 线材重量（克）
+    filament_price_per_kg: 每公斤线材价格 ($)
+    labor_rate_per_hour: 每小时人工费 ($)
+    create_full_calculation: 创建完整计算
+    includes_defaults: 包括默认成本：
+    defaults:
+      filament_price: 线材
+      labor_rate: 人工
+      energy_cost: 能源
+      power_consumption: 电力
+      machine_payoff: 机器回报
     features:
-      calculations: 每月%{count}次打印计算
-      printers: "%{count}个打印机配置文件"
-      filaments: "%{count}种耗材类型"
-      invoices: 每月%{count}张发票
-      unlimited_calculations: 无限制打印计算
-      unlimited_printers: 无限制打印机
-      unlimited_filaments: 无限制耗材
-      unlimited_invoices: 无限制发票
-      no_branding: 移除CalcuMake品牌
-      no_ads: 无广告体验
-      priority_support: 优先支持
-      analytics: 高级分析
-      import_export: 批量导入/导出
-    plans:
-      subtitle: 选择最适合您的计划
-      free:
-        name: 免费
-        price: "¥0"
-        description: 非常适合试用CalcuMake
-      startup:
-        name: 初创
-        price: "¥7/月"
-        description: 适合爱好者和小型项目
-      pro:
-        name: 专业
-        price: "¥70/月"
-        description: 为专业人士提供无限能力
-    most_popular: 最受欢迎
-    month: 月
-    your_plan: 您的当前计划
-    remaining: 剩余
-    renews_on: 续订日期
-    trial_ends_on: 试用结束日期
+      real_time: 实时计算，边输入边计算
+      includes_costs: 包括电力和人工成本
+    results:
+      filament_cost: 线材成本
+      electricity_cost: 电力成本
+      labor_cost: 人工成本
+      total_cost: 总成本
+      estimated_cost: 预计成本：
+  usage_limits:
+    usage_summary: 使用情况摘要
+    limit_reached: 您已达到您计划的 %{resource} 限制
+    approaching_limits_message: 您正在接近您的计划限制
+  subscriptions:
+    title: 订阅
+    current_plan: 当前计划
+    upgrade: 升级
+    upgrade_successful: 订阅升级成功
+    already_subscribed: 您已经有一个有效的订阅
+    invalid_plan: 无效的订阅计划
+    no_subscription: 未找到有效的订阅
+    cancel_scheduled: 订阅取消已安排
+    features:
+      calculations: 打印计算
+      printers: 打印机
     upgrade_now: 立即升级
-    upgrade_to_plan: 升级到%{plan}
-    downgrade_to_free: 降级到免费计划
-    confirm_downgrade: 您确定要降级吗？您将失去对高级功能的访问权限。
-    manage_subscription: 管理您的订阅
-    manage_description: 通过我们的安全计费门户更新您的付款方式、查看账单历史记录或取消订阅。
-    open_billing_portal: 打开计费门户
-    cancel_subscription: 取消订阅
-    cancel_confirmation: 您确定要取消订阅吗？您将保留访问权限直到当前计费周期结束。
-    manage_note: 所有计费都由Stripe安全处理。您的支付信息永远不会存储在我们的服务器上。
-    approaching_limits_message: 您正在接近计划限制。考虑升级以避免中断。
-    faq:
-      title: 常见问题
-      trial_question: 30天试用期结束后会怎样？
-      trial_answer: 30天试用期结束后，您的账户将自动切换到免费计划。您可以继续使用CalcuMake的免费计划限制，或随时升级到初创或专业计划。
-      cancel_question: 我可以随时取消订阅吗？
-      cancel_answer: 是的！您可以随时取消订阅。在当前计费周期结束之前，您将保留对付费计划功能的访问权限，然后自动切换到免费计划。
-      data_question: 如果我降级，我的数据会怎样？
-      data_answer: 降级时，您的所有现有数据都会保留。但是，如果您超过免费计划限制，您将无法创建新资源。您现有的项目、打印机、耗材和发票仍可以以只读模式访问。
-      payment_question: 你们接受哪些付款方式？
-      payment_answer: 我们通过Stripe（我们安全的支付处理器）接受所有主要的信用卡和借记卡。这包括Visa、Mastercard、American
-        Express等。所有支付信息都由Stripe安全处理，永远不会存储在我们的服务器上。
-      change_plan_question: 我以后可以更改计划吗？
-      change_plan_answer: 当然可以！您可以随时升级或降级您的计划。升级立即生效，您将按比例收费。降级在当前计费周期结束时生效。
-      reset_question: 我的每月限制何时重置？
-      reset_answer: 打印计算和发票的每月限制在每月1日重置。打印机和耗材限制是总数，不是每月限制。
-  models:
-    print_pricing_plural: 打印计算
-    printer_plural: 打印机
-    filament_plural: 耗材
-    invoice_plural: 发票
-  clients:
-    buttons:
-      create: 创建客户
-      update: 更新客户
+  gdpr:
+    cookie_consent:
+      title: Cookie 同意声明
+      message: 我们使用 Cookie 来改善您的体验。继续使用本网站即表示您同意我们的 Cookie 政策。
+      message_html: 我们使用 Cookie 来改善您的体验。继续使用本网站即表示您同意我们的 %{cookie_policy_link}。阅读我们的
+        %{privacy_policy_link}。
+      accept: 接受
+      decline: 拒绝
+      reject: 拒绝
+    cookie_policy_title: Cookie 政策
+    cookie_policy: 我们使用 Cookie 来改善您的体验。使用我们的网站，即表示您同意使用 Cookie。
+    privacy_policy: 隐私政策
+    terms_of_service_title: 服务条款
+    last_updated: 上次更新
+    data_export:
+      title: 导出您的数据
+      description: 以 JSON 格式下载您的所有数据
+      button: 下载数据
+      what_included: 您的数据导出包含哪些内容
+      items:
+        account_info: 帐户信息
+    data_deletion:
+      title: 删除您的帐户
+      description: 永久删除您的帐户和所有相关数据
+      warning: 此操作无法撤消
+      warning_title: 警告：此操作是永久性的
+      warning_message: 您的所有数据将被永久删除且无法恢复
+      button: 删除帐户
+      what_deleted: 将删除哪些内容
+    tos_sections:
+      acceptance:
+        title: 接受条款
+        content: 使用 CalcuMake 即表示您同意这些服务条款
+    cookie_sections:
+      what_are_cookies:
+        title: 什么是 Cookie？
+    consent_recorded: 您的偏好已保存
+    account_deleted: 您的帐户已成功删除
+  errors:
+    messages:
+      already_confirmed: 已被确认，请尝试登录
+      confirmation_period_expired: 需要在 %{period} 内确认，请申请一个新的
+      expired: 已过期，请申请一个新的
+      not_found: 未找到
+      not_locked: 未被锁定
+      not_saved:
+        one: '有 1 个错误导致无法保存此 %{resource}:'
+        other: '有 %{count} 个错误导致无法保存此 %{resource}:'

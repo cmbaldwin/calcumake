@@ -1,0 +1,86 @@
+---
+en:
+  nav:
+    brand: CalcuMake
+    print_pricings: My Pricings
+    my_pricings: My Pricings
+    new_pricing: New Pricing
+    my_printers: My Printers
+    my_filaments: My Filaments
+    clients: My Clients
+    invoices: Invoices
+    profile: Profile
+    help: Help
+    usage_and_subscription: Usage & Subscription
+    legal_header: Legal & Privacy
+    data_rights_header: Your Data Rights
+    export_data: Export My Data
+    delete_account: Delete My Account
+    sign_out: Sign out
+    sign_in: Sign in
+    sign_up: Sign up
+    language: Language
+  actions:
+    title: Actions
+    save: Save
+    cancel: Cancel
+    edit: Edit
+    delete: Delete
+    duplicate: Duplicate
+    copy: Copy
+    create: Create
+    update: Update
+    new: New
+    show: Show
+    back: Back
+    submit: Submit
+    view: View
+    actions: Actions
+    print: Print
+    more: More
+    search: Search
+  flash:
+    success: Success
+    error: Error
+    alert: Alert
+    notice: Notice
+    created: Successfully created %{model}
+    updated: Successfully updated %{model}
+    deleted: Successfully deleted %{model}
+    duplicated: Successfully duplicated %{model}
+    duplicate_failed: Failed to duplicate %{model}
+  models:
+    user: User
+    printer: Printer
+    print_pricing: Print Pricing
+    filament: Filament
+    client: Client
+    print_pricing_plural: Print Pricings
+    printer_plural: Printers
+    filament_plural: Filaments
+    invoice_plural: Invoices
+  common:
+    created: Created
+    currency: Currency
+    hours: Hours
+    minutes: Minutes
+    grams: g
+    watts: W
+    kwh: kWh
+    percentage: "%"
+    years: years
+    'yes': 'Yes'
+    'no': 'No'
+    are_you_sure: Are you sure?
+    errors_prohibited: "%{count} %{errors} prohibited this %{model} from being saved:"
+    error_count:
+      one: error
+      other: errors
+  date:
+    formats:
+      month_day_year: "%B %d, %Y"
+  time:
+    at: at
+    formats:
+      month_day_year: "%B %d, %Y"
+      month_day_year_time: "%B %d, %Y at %I:%M %p"

@@ -1,12 +1,42 @@
 #!/bin/bash
 
+# Load environment variables from .env.local if it exists (for local testing)
+if [ -f .env.local ]; then
+    echo "Loading environment from .env.local..."
+    set -a
+    source .env.local
+    set +a
+fi
+
+# If still not set, try to fetch from Kamal secrets (for deployment)
+if [ -z "$OPENROUTER_TRANSLATION_KEY" ]; then
+    echo "Loading OpenRouter API key from Kamal secrets..."
+    export OPENROUTER_TRANSLATION_KEY=$(kamal secrets extract CALCUMAKE_OPENROUTER_TRANSLATION_KEY $(kamal secrets fetch --adapter 1password --account CNCYFLWUMZHE7MBS5AAOOSTLTI --from "MOAB/Production" CALCUMAKE_OPENROUTER_TRANSLATION_KEY))
+fi
+
+if [ -z "$OPENROUTER_TRANSLATION_KEY" ]; then
+    echo "❌ Failed to load OPENROUTER_TRANSLATION_KEY"
+    echo "   Make sure it's set in .env.local or Kamal secrets"
+    exit 1
+fi
+
+echo "✓ OpenRouter API key loaded successfully"
+
 # Clear cache for keys with English placeholder values
 echo "Checking for untranslated placeholders..."
-bin/force-retranslate
+if ! bin/force-retranslate; then
+    echo "❌ Failed to clear translation cache"
+    exit 1
+fi
 
-# Sync translations with automated translation if API key available
+# Sync translations with automated translation - MUST have API key
 echo "Syncing and translating all missing keys..."
-bin/sync-translations
+if ! bin/sync-translations; then
+    echo "❌ Translation sync failed!"
+    echo "   This is a critical error - deployment cannot proceed without translations"
+    echo "   Check that OPENROUTER_TRANSLATION_KEY is set in Kamal secrets"
+    exit 1
+fi
 
 # Check if translations created any changes
 if ! git diff-index --quiet HEAD -- config/locales/; then

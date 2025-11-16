@@ -152,6 +152,8 @@ GEM
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
+    faraday-multipart (1.1.1)
+      multipart-post (~> 2.0)
     faraday-net_http (3.4.1)
       net-http (>= 0.5.0)
     fugit (1.11.2)
@@ -225,6 +227,7 @@ GEM
     msgpack (1.8.0)
     multi_xml (0.7.2)
       bigdecimal (~> 3.1)
+    multipart-post (2.4.1)
     nested_form (0.3.2)
     net-http (0.7.0)
       uri
@@ -298,6 +301,11 @@ GEM
       httpauth
       omniauth (>= 1.0)
       omniauth-oauth2 (>= 1.1)
+    open_router (0.3.3)
+      activesupport (>= 6.0)
+      dotenv (>= 2)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     orm_adapter (0.5.0)
     ostruct (0.6.3)
     parallel (1.27.0)
@@ -531,6 +539,7 @@ DEPENDENCIES
   omniauth-microsoft_graph
   omniauth-rails_csrf_protection
   omniauth-yahoojp
+  open_router
   pg (~> 1.1)
   propshaft
   puma (>= 5.0)

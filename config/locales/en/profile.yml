@@ -1,0 +1,90 @@
+---
+en:
+  profile:
+    show:
+      title: User Profile
+      subtitle: Your account settings and preferences
+      account_info: Account Information
+      email: Email
+      member_since: Member since
+      default_preferences: Default Preferences
+      labor_defaults: Labor & Cost Defaults
+      labor_defaults_description: These values will be pre-filled when creating new
+        print pricing calculations
+      company_info: Company Information for Invoices
+      company_info_description: This information will be used as the default for all
+        invoices you create
+      company_info_help: This information will be used on all invoices you create
+      back_to_calculations: Back to Calculations
+    edit:
+      title: User Profile Settings
+      subtitle: Configure your default preferences
+      default_settings: Default Settings
+    fields:
+      default_currency: Default Currency
+      default_currency_help: Used as default for new pricing calculations
+      energy_cost: Energy Cost per kWh
+      energy_cost_placeholder: '0.120'
+      energy_cost_help: Your local electricity cost per kilowatt-hour
+      energy_cost_help_extended: Your local electricity cost per kilowatt-hour. This
+        will be used as the default for new calculations.
+      prep_time: Prep Time (minutes)
+      prep_time_help: Time spent preparing prints before starting
+      prep_cost: Prep Cost per Hour
+      prep_cost_help: Hourly rate for preparation work
+      postprocessing_time: Post-processing Time (minutes)
+      postprocessing_time_help: Time spent on post-processing (cleaning, support removal,
+        etc.)
+      postprocessing_cost: Post-processing Cost per Hour
+      postprocessing_cost_help: Hourly rate for post-processing work
+      other_costs: Other Costs
+      other_costs_help: Additional costs like packaging, shipping preparation, etc.
+      vat_percentage: VAT Percentage
+      vat_percentage_help: Default VAT/tax percentage for your location
+      default_filament_markup: Default Filament Markup
+      default_filament_markup_help: Default markup percentage added to filament costs
+        (e.g. 20% markup for profit margin)
+      company_name: Company Name
+      company_name_placeholder: Acme Corporation
+      company_email: Company Email
+      company_email_placeholder: billing@example.com
+      company_phone: Company Phone
+      company_phone_placeholder: "+1 (555) 123-4567"
+      company_logo: Company Logo
+      company_address: Company Address
+      company_address_placeholder: |-
+        123 Main Street
+        City, State 12345
+        Country
+      payment_details: Payment Details
+      payment_details_placeholder: |-
+        Bank: Example Bank
+        Account Number: 123456789
+        Routing Number: 987654321
+        SWIFT/BIC: EXAMPUS33
+      payment_details_help: Bank account or payment information for invoices
+      invoice_notes: Default Invoice Notes
+      invoice_notes_placeholder: |-
+        Payment due within 30 days.
+        Thank you for your business!
+      invoice_notes_help: Default notes that will appear on all your invoices
+    buttons:
+      update_settings: Update Settings
+      update_profile: Update Profile
+      cancel: Cancel
+    image_upload:
+      help_text: 'Maximum file size: 5MB. Supported formats: PNG, JPG, GIF, WebP'
+    delete_account:
+      title: Delete Account
+      warning_title: Warning
+      warning_message: Deleting your account is permanent and cannot be undone. All
+        your data will be permanently deleted.
+      description: If you no longer wish to use CalcuMake, you can delete your account.
+        Please read the FAQ section on the support page for more information.
+      unlock_checkbox: I understand that deleting my account is permanent
+      confirm_checkbox: I confirm that I want to delete my account and all associated
+        data
+      button: Delete My Account
+      final_confirmation: Are you absolutely sure you want to delete your account?
+        This action cannot be undone and all your data will be permanently deleted.
+      success: Your account has been successfully deleted. Thank you for using CalcuMake.
