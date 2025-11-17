@@ -56,7 +56,7 @@ en:
     shared:
       oauth_signin_options: Sign in with social accounts
       alternative_signin_method: Alternative signin method
-      or_sign_in_with_email: Or Sign In With Email
+      or_sign_in_with_email: or sign in with email
       sign_in_with_provider: Sign in with %{provider}
       sign_in_with_provider_aria: Sign in with %{provider}
   errors:
