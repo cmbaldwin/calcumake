@@ -15,6 +15,14 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
+  # OAuth profile completion (for providers that don't provide email)
+  namespace :users do
+    namespace :omniauth do
+      get "complete_profile", to: "complete_profile#show", as: :complete_profile
+      post "complete_profile", to: "complete_profile#create"
+    end
+  end
+
   resources :print_pricings do
     member do
       patch :increment_times_printed
