@@ -336,4 +336,9 @@ Devise.setup do |config|
                   ENV["YAHOOJP_OAUTH_CLIENT_ID"],
                   ENV["YAHOOJP_OAUTH_CLIENT_SECRET"],
                   scope: "openid,email,profile"
+
+  config.omniauth :line,
+                  ENV["LINE_OAUTH_CHANNEL_ID"],
+                  ENV["LINE_OAUTH_CHANNEL_SECRET"],
+                  scope: "profile openid email"
 end

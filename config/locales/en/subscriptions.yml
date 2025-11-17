@@ -4,9 +4,11 @@ en:
     usage_summary: Usage Summary
     limit_reached: You've reached the %{resource} limit for your plan
     approaching_limits_message: You're approaching your plan limits
+    unlimited: Unlimited
   subscriptions:
     title: Subscription
     current_plan: Current Plan
+    your_plan: Your Plan
     upgrade: Upgrade
     upgrade_to_plan: Upgrade to %{plan}
     downgrade_to_plan: Downgrade to %{plan}
@@ -16,10 +18,74 @@ en:
     no_subscription: No active subscription found
     cancel_scheduled: Subscription cancellation scheduled
     verification_error: Unable to verify your subscription. Please contact support.
+    plans:
+      subtitle: Choose the plan that works best for you
     features:
       calculations: Print Calculations
       printers: Printers
       filaments: Filaments
       invoices: Invoices
+      unlimited_calculations: Unlimited Print Calculations
+      unlimited_printers: Unlimited Printers
+      unlimited_filaments: Unlimited Filaments
       unlimited_invoices: Unlimited Invoices
     upgrade_now: Upgrade Now
+    most_popular: Most Popular
+    monthly_price: "%{price} / month"
+    month: month
+    of: of
+    remaining: remaining
+    active: Active
+    trial_badge: Trial
+    trial_ends_on: Trial ends on %{date}
+    trial_remaining: "%{days} days remaining in trial"
+    renews_on: Renews on %{date}
+    access_until: Access until %{date}
+    canceling: Canceling on %{date}
+    days: days
+    manage: Manage
+    manage_subscription: Manage Subscription
+    manage_description: View your billing history, update payment methods, or cancel your subscription
+    manage_note: Opens Stripe Customer Portal in a new window
+    open_billing_portal: Open Billing Portal
+    cancel_subscription: Cancel Subscription
+    cancel_confirmation: Are you sure you want to cancel your subscription? You will continue to have access until the end of your current billing period.
+    cancel_notice: Your subscription has been scheduled for cancellation
+    subscription_details: Subscription Details
+    status: Status
+    next_billing_date: Next Billing Date
+    period_start: Period Start
+    period_end: Period End
+    billing_period: Billing Period
+    next_bill: Next Bill
+    secure_payment: Secure payment via Stripe
+    immediate_access: Immediate access to all features
+    confirm_upgrade_title: Confirm Upgrade
+    confirm_upgrade_subtitle: Review upgrade details before proceeding
+    upgrade_summary: Upgrade Summary
+    new_plan: New Plan
+    new_plan_price: New Plan Price
+    prorated_charge_today: Prorated Charge Today
+    charge_now: Charge Now
+    days_remaining: Days Remaining
+    days_remaining_in_period: "%{days} days remaining in current period"
+    pricing_breakdown: Pricing Breakdown
+    prorated_explanation: "You will be charged a prorated amount for the remainder of your current billing period. Your next full charge will be on %{date}."
+    what_happens_next: What Happens Next
+    confirm_and_upgrade: Confirm and Upgrade
+    confirm_downgrade: Confirm Downgrade
+    final_confirm_upgrade: "This will immediately upgrade your plan and charge your payment method %{amount}. Continue?"
+    faq:
+      title: Frequently Asked Questions
+      trial_question: How does the trial work?
+      trial_answer: New users get a 14-day free trial of the Startup plan. No credit card required. At the end of the trial, you can choose to upgrade or continue with the free plan.
+      change_plan_question: Can I change plans at any time?
+      change_plan_answer: Yes, you can upgrade or downgrade your plan at any time. Upgrades are prorated and applied immediately. Downgrades take effect at the end of your current billing period.
+      cancel_question: What happens if I cancel?
+      cancel_answer: You will continue to have access to your plan features until the end of your current billing period. After that, you will be downgraded to the free plan.
+      payment_question: What payment methods are accepted?
+      payment_answer: We accept all major credit cards via Stripe. All payments are secure and encrypted.
+      data_question: What happens to my data if I downgrade?
+      data_answer: Your data is never deleted. If you exceed limits on the free plan, you'll need to upgrade or delete some items to add new ones.
+      reset_question: When do usage limits reset?
+      reset_answer: Usage limits do not reset monthly. They represent the total number of items you can have in your account at once. Delete items to free up space.
