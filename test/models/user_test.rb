@@ -159,13 +159,12 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  test "from_omniauth should not create user with invalid email" do
+  test "from_omniauth should return nil when email is missing" do
     auth_hash = create_oauth_hash("", "google_oauth2", "123456")
 
     assert_no_difference "User.count" do
       user = User.from_omniauth(auth_hash)
-      assert_not user.persisted?
-      assert user.errors[:email].present?
+      assert_nil user, "Expected nil when email is blank"
     end
   end
 

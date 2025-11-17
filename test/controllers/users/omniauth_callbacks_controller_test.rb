@@ -84,13 +84,12 @@ class Users::OmniauthCallbacksControllerTest < ActiveSupport::TestCase
     end
   end
 
-  test "User.from_omniauth handles invalid email gracefully" do
+  test "User.from_omniauth handles missing email by returning nil" do
     auth_data = create_google_auth_hash(email: "")
 
     assert_no_difference "User.count" do
       user = User.from_omniauth(auth_data)
-      assert_not user.persisted?
-      assert user.errors[:email].present?
+      assert_nil user, "Expected nil when email is blank"
     end
   end
 
@@ -110,7 +109,7 @@ class Users::OmniauthCallbacksControllerTest < ActiveSupport::TestCase
   end
 
   test "OAuth providers are correctly configured on User model" do
-    expected_providers = [ :google_oauth2, :github, :microsoft_graph, :facebook, :yahoojp ]
+    expected_providers = [ :google_oauth2, :github, :microsoft_graph, :facebook, :yahoojp, :line ]
     assert_equal expected_providers, User.omniauth_providers
   end
 

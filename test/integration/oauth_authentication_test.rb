@@ -156,13 +156,12 @@ class OauthAuthenticationTest < ActiveSupport::TestCase
   end
 
   test "OAuth authentication handles provider-specific errors gracefully" do
-    # Test with invalid email
+    # Test with missing email - should return nil for email collection flow
     auth_data = create_oauth_mock("google_oauth2", "", "invalid123")
 
     assert_no_difference "User.count" do
       user = User.from_omniauth(auth_data)
-      assert_not user.persisted?
-      assert user.errors[:email].present?
+      assert_nil user, "Expected nil when email is blank to trigger email collection flow"
     end
   end
 
