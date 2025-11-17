@@ -34,6 +34,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def handle_auth(kind)
     @user = User.from_omniauth(request.env["omniauth.auth"])
 
+    # Handle missing email (common with LINE)
+    if @user.nil?
+      session["devise.omniauth_data"] = request.env["omniauth.auth"].except("extra")
+      session["devise.omniauth_provider"] = kind
+      redirect_to users_omniauth_complete_profile_path, notice: "Please provide your email to complete registration"
+      return
+    end
+
     if @user.persisted?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", kind: kind
       sign_in_and_redirect @user, event: :authentication
