@@ -2,13 +2,13 @@
 <% oauth_providers = oauth_providers_for_view %>
 
 <% if oauth_providers.any? %>
-  <div class="oauth-buttons mb-4" role="group" aria-labelledby="oauth-signin-heading">
+<div class="oauth-buttons mb-4" role="group" aria-labelledby="oauth-signin-heading">
     <div class="visually-hidden" id="oauth-signin-heading"><%= t('devise.shared.oauth_signin_options') %></div>
 
     <div class="row g-2">
-      <% oauth_providers.each do |provider| %>
+        <% oauth_providers.each do |provider| %>
         <div class="col-12">
-          <%= link_to provider[:path],
+            <%= link_to provider[:path],
               method: :post,
               class: "#{oauth_provider_button_class(provider[:name])} w-100 d-flex align-items-center justify-content-center",
               role: "button",
@@ -22,15 +22,15 @@
               } do %>
             <%= oauth_provider_icon(provider[:name]) %>
             <span><%= t('devise.shared.sign_in_with_provider', provider: provider[:name]) %></span>
-          <% end %>
+            <% end %>
         </div>
-      <% end %>
+        <% end %>
     </div>
 
     <div class="text-center my-3">
-      <small class="text-muted" role="separator" aria-label="<%= t('devise.shared.alternative_signin_method') %>">
-        <%= t('devise.shared.or_sign_in_with_email') %>
-      </small>
+        <small class="text-muted" role="separator" aria-label="<%= t('devise.shared.alternative_signin_method') %>">
+            <%= t('devise.shared.or_sign_in_with_email') %>
+        </small>
     </div>
-  </div>
+</div>
 <% end %>
