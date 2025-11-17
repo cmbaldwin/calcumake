@@ -1,5 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  skip_before_action :verify_authenticity_token, only: [ :google_oauth2, :github, :microsoft_graph, :facebook, :yahoojp ]
+  skip_before_action :verify_authenticity_token, only: [ :google_oauth2, :github, :microsoft_graph, :facebook, :yahoojp, :line ]
 
   def google_oauth2
     handle_auth("Google")
@@ -19,6 +19,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def yahoojp
     handle_auth("Yahoo Japan")
+  end
+
+  def line
+    handle_auth("LINE")
   end
 
   def failure
