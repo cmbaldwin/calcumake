@@ -21,6 +21,7 @@ en:
       title: Export Your Data
       description: Download all your data in JSON format
       button: Download Data
+      download_button: Download My Data
       what_included: What's included in your data export
       format: Data Format
       format_description: Your data will be exported as a JSON file that you can save and review at any time.
@@ -39,6 +40,7 @@ en:
       warning_title: 'Warning: This action is permanent'
       warning_message: All your data will be permanently deleted and cannot be recovered
       button: Delete Account
+      delete_button: Delete My Account
       what_deleted: What will be deleted
       before_deletion: Before You Delete
       export_recommendation_html: We recommend %{link} first so you have a backup before proceeding with deletion.
@@ -71,6 +73,24 @@ en:
           harmful: Uploading malicious code or harmful content
           unauthorized: Attempting to gain unauthorized access to our systems
           interference: Interfering with or disrupting our service or servers
+      intellectual_property:
+        title: Intellectual Property
+        content: All content and materials on CalcuMake are owned by MOAB Co., Ltd. and protected by applicable intellectual property laws
+      payment_terms:
+        title: Payment Terms
+        content: Subscription fees are billed monthly or annually as selected. All payments are processed securely through Stripe
+      termination:
+        title: Termination
+        content: We reserve the right to suspend or terminate your account for violation of these terms. You may cancel your subscription at any time
+      liability:
+        title: Limitation of Liability
+        content: CalcuMake is provided "as is" without warranties. We are not liable for any damages arising from use of our service
+      governing_law:
+        title: Governing Law
+        content: These terms are governed by the laws of Japan. Any disputes will be resolved in the courts of Tokyo, Japan
+      changes:
+        title: Changes to Terms
+        content: We may update these terms at any time. Continued use of CalcuMake after changes constitutes acceptance of the new terms
     cookie_sections:
       what_are_cookies:
         title: What are cookies?
@@ -91,5 +111,27 @@ en:
         analytics:
           title: Analytics Cookies
           description: Help us understand how you use our service so we can improve it
+      cookie_list:
+        title: Cookies We Use
+        table:
+          name: Cookie Name
+          purpose: Purpose
+          duration: Duration
+        cookies:
+          session:
+            purpose: Maintains your login session and authentication state
+            duration: Session (cleared when you close your browser)
+          remember:
+            purpose: Remembers your login preference ("Remember Me")
+            duration: 2 weeks
+          consent:
+            purpose: Stores your cookie consent preferences
+            duration: 1 year
+      managing_cookies:
+        title: Managing Cookies
+        content: You can control and/or delete cookies through your browser settings. Note that disabling cookies may affect the functionality of CalcuMake
+      third_party:
+        title: Third-Party Cookies
+        content: We do not currently use third-party cookies. If this changes, we will update this policy and notify you
     consent_recorded: Your preferences have been saved
     account_deleted: Your account has been deleted successfully

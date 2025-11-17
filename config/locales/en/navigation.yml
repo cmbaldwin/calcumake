@@ -76,6 +76,8 @@ en:
     error_count:
       one: error
       other: errors
+    back: Back
+    cancel: Cancel
   date:
     formats:
       month_day_year: "%B %d, %Y"
