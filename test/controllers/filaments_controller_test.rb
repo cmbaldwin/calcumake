@@ -205,7 +205,7 @@ class FilamentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_content
     assert_match(/modal_content/, response.body)
     # Should show error messages within modal
-    assert_match(/can't be blank|is required/i, response.body)
+    assert_match(/can't be blank|is required|please enter a filament name/i, response.body)
   end
 
   test "should handle modal form with all required fields" do

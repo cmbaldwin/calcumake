@@ -33,7 +33,7 @@ class OauthButtonsViewTest < ActionView::TestCase
 
     # Test Yahoo Japan OAuth button
     assert_select "a[href='#{user_yahoojp_omniauth_authorize_path}']", 1 do
-      assert_select "span", text: I18n.t("devise.shared.sign_in_with_provider", provider: "Yahoo Japan")
+      assert_select "span", text: I18n.t("devise.shared.sign_in_with_provider", provider: "Yahoo! JAPAN")
     end
 
     # Test LINE OAuth button
@@ -51,10 +51,9 @@ class OauthButtonsViewTest < ActionView::TestCase
     rendered = render partial: "devise/shared/oauth_buttons"
 
     # Test button classes are applied correctly through helper methods
-    assert_select "a.btn.btn-outline-danger", 1  # Google
+    assert_select "a.btn.btn-outline-danger", 2  # Google + Yahoo Japan
     assert_select "a.btn.btn-outline-dark", 1    # GitHub
     assert_select "a.btn.btn-outline-primary", 2 # Microsoft + Facebook
-    assert_select "a.btn.btn-outline-secondary", 1 # Yahoo Japan
     assert_select "a.btn.btn-outline-success", 1 # LINE
 
     # Test common button classes
