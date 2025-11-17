@@ -2,9 +2,9 @@ class UserConsentsController < ApplicationController
   before_action :authenticate_user!, only: :create
 
   def create
-    # Validate required parameters
-    raise ActionController::ParameterMissing, :consent_type unless params.has_key?(:consent_type)
-    raise ActionController::ParameterMissing, :accepted unless params.has_key?(:accepted)
+    # Validate required parameters - check key existence, not truthiness
+    raise ActionController::ParameterMissing.new(:consent_type) unless params.key?(:consent_type)
+    raise ActionController::ParameterMissing.new(:accepted) unless params.key?(:accepted)
 
     consent = current_user.record_consent(
       params[:consent_type],
