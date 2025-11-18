@@ -75,11 +75,30 @@ body {
   color: white !important;
 }
 
+/* Cookie consent banner - reduce padding */
+.cookie-consent-banner {
+  padding: 0.75rem 1rem !important;
+}
+
+.cookie-consent-banner h5 {
+  font-size: 1rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.cookie-consent-banner .small {
+  font-size: 0.875rem !important;
+}
+
 /* Navbar responsive fixes to prevent overlap */
 @media (min-width: 992px) {
   .navbar-brand {
     font-size: 1rem;
     margin-right: 0.5rem;
+  }
+
+  .navbar-brand img {
+    height: 28px !important;
+    width: auto !important;
   }
 
   .navbar-nav .nav-link {
