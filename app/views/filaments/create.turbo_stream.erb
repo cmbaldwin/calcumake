@@ -1,46 +1,48 @@
 <%# Success response for filament creation from modal %>
 <%# Update all filament select dropdowns with new filament %>
 <%= turbo_stream.append "modal" do %>
-  <template>
-    <script>
-      // Update all filament select dropdowns on the page
-      const filamentFrames = document.querySelectorAll('[data-filament-select-frame]');
-      const newFilament = {
-        id: <%= @filament.id %>,
-        name: "<%= j @filament.display_name %>",
-        costPerGram: <%= @filament.cost_per_gram || 0 %>,
-        materialType: "<%= j @filament.material_type.to_s %>",
-        diameter: <%= @filament.diameter || 0 %>
-      };
+  <script>
+    // Update all filament select dropdowns on the page
+    const filamentFrames = document.querySelectorAll('[data-filament-select-frame]');
+    const newFilament = {
+      id: <%= @filament.id %>,
+      name: "<%= j @filament.display_name %>",
+      costPerGram: <%= @filament.cost_per_gram || 0 %>,
+      materialType: "<%= j @filament.material_type.to_s %>",
+      diameter: <%= @filament.diameter || 0 %>
+    };
 
-      filamentFrames.forEach(frame => {
-        const select = frame.querySelector('select');
-        if (select) {
-          // Create new option
-          const option = document.createElement('option');
-          option.value = newFilament.id;
-          option.textContent = newFilament.name;
-          option.dataset.costPerGram = newFilament.costPerGram;
-          option.dataset.materialType = newFilament.materialType;
-          option.diameter = newFilament.diameter;
-          option.selected = true;
+    console.log('Found', filamentFrames.length, 'filament select frames');
 
-          // Add option to select
-          select.appendChild(option);
+    filamentFrames.forEach(frame => {
+      const select = frame.querySelector('select');
+      if (select) {
+        console.log('Updating select:', select.id);
 
-          // Trigger change event to update calculations
-          select.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-      });
+        // Create new option
+        const option = document.createElement('option');
+        option.value = newFilament.id;
+        option.textContent = newFilament.name;
+        option.dataset.costPerGram = newFilament.costPerGram;
+        option.dataset.materialType = newFilament.materialType;
+        option.dataset.diameter = newFilament.diameter;
+        option.selected = true;
 
-      // Close modal
-      const modalElement = document.getElementById('modal');
-      const modalInstance = bootstrap.Modal.getInstance(modalElement);
-      if (modalInstance) {
-        modalInstance.hide();
+        // Add option to select
+        select.appendChild(option);
+
+        // Trigger change event to update calculations
+        select.dispatchEvent(new Event('change', { bubbles: true }));
       }
-    </script>
-  </template>
+    });
+
+    // Close modal
+    const modalElement = document.getElementById('modal');
+    const modalInstance = bootstrap.Modal.getInstance(modalElement);
+    if (modalInstance) {
+      modalInstance.hide();
+    }
+  </script>
 <% end %>
 
 <%# Clear modal content %>

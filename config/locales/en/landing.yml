@@ -124,8 +124,7 @@ en:
           a completely professional look.
     final_cta:
       headline: Ready to stop losing money on 3D prints?
-      subheadline: Join thousands of makers who trust CalcuMake for accurate pricing
-        and professional project management.
+      subheadline: "Join %{crossed_out_start}thousands of%{crossed_out_end} at least one other maker (me!) who trusts CalcuMake for accurate pricing and professional project management. You've already read everything so far, you might as well sign up — it's free, check it out!"
       button: Start Your Free Trial
   demo:
     title: Try CalcuMake Demo

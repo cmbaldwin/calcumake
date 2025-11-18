@@ -8,12 +8,14 @@ class Invoice < ApplicationRecord
   accepts_nested_attributes_for :invoice_line_items, allow_destroy: true, reject_if: :all_blank
 
   # Validations
-  validates :invoice_number, presence: true, uniqueness: true
+  validates :invoice_number, presence: true, uniqueness: { scope: :user_id }
   validates :invoice_date, presence: true
   validates :status, presence: true, inclusion: { in: %w[draft sent paid cancelled] }
   validates :currency, presence: true
+  validates :reference_id, presence: true, uniqueness: true
 
   # Callbacks
+  before_validation :generate_reference_id, on: :create, if: -> { reference_id.blank? }
   before_validation :generate_invoice_number, on: :create, if: -> { invoice_number.blank? }
   before_validation :set_defaults, on: :create
 
@@ -25,7 +27,7 @@ class Invoice < ApplicationRecord
   scope :recent, -> { order(invoice_date: :desc) }
 
   def self.ransackable_attributes(auth_object = nil)
-    [ "company_name", "created_at", "currency", "due_date", "id", "invoice_date", "invoice_number", "notes", "status", "updated_at" ]
+    [ "company_name", "created_at", "currency", "due_date", "id", "invoice_date", "invoice_number", "reference_id", "notes", "status", "updated_at" ]
   end
 
   def self.ransackable_associations(auth_object = nil)
@@ -124,6 +126,14 @@ class Invoice < ApplicationRecord
 
   private
 
+  def generate_reference_id
+    # Generate a globally unique reference ID using SecureRandom
+    # Format: CM-YYYYMMDD-XXXXXXXX (e.g., CM-20251118-A3F9D2E1)
+    date_part = Date.current.strftime("%Y%m%d")
+    random_part = SecureRandom.hex(4).upcase
+    self.reference_id = "CM-#{date_part}-#{random_part}"
+  end
+
   def generate_invoice_number
     return unless user # Skip if no user (for validations)
 
@@ -135,9 +145,9 @@ class Invoice < ApplicationRecord
       # Get the next invoice number and increment it
       current_number = user.next_invoice_number || 1
 
-      # Check if this number already exists and sync if needed
+      # Check if this number already exists for this user and sync if needed
       proposed_number = "INV-#{current_number.to_s.rjust(6, '0')}"
-      if Invoice.exists?(invoice_number: proposed_number)
+      if user.invoices.exists?(invoice_number: proposed_number)
         # Synchronize counter with existing invoices
         user.synchronize_invoice_counter!
         current_number = user.reload.next_invoice_number
