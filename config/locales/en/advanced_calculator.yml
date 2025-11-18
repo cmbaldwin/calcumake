@@ -3,6 +3,7 @@ en:
   advanced_calculator:
     title: "Free 3D Print Pricing Calculator"
     subtitle: "Professional multi-plate cost estimator with PDF/CSV export. No signup required."
+    quick_calculator_toggle: "Quick Estimate? Try the Simple Calculator"
     sign_up_to_save: "Sign Up to Save Your Projects"
     input_section: "Calculator Settings"
     job_name: "Job Name"
