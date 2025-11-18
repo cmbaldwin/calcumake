@@ -41,6 +41,10 @@
 
     <%# Google AdSense %>
     <meta name="google-adsense-account" content="ca-pub-5257142454834240">
+    <% if Rails.env.production? %>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5257142454834240"
+         crossorigin="anonymous"></script>
+    <% end %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

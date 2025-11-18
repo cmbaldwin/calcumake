@@ -1,0 +1,11 @@
+<% if show_ads? %>
+  <div class="adsense-banner my-4 text-center">
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="<%= adsense_publisher_id %>"
+         data-ad-slot="<%= ad_slot %>"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+<% end %>
