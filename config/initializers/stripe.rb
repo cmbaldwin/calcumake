@@ -48,7 +48,19 @@ if Rails.env.development? || Rails.env.test?
   end
 else
   # Production: Use Rails credentials
-  if Rails.application.credentials.stripe.present?
+  # Skip during asset precompilation (when SECRET_KEY_BASE_DUMMY is set)
+  if ENV["SECRET_KEY_BASE_DUMMY"].present?
+    # Asset precompilation doesn't need real Stripe credentials
+    Stripe.api_key = "sk_dummy_for_precompile"
+
+    Rails.configuration.stripe = {
+      publishable_key: "pk_dummy_for_precompile",
+      secret_key: "sk_dummy_for_precompile",
+      webhook_secret: "whsec_dummy_for_precompile",
+      startup_price_id: "price_dummy_startup",
+      pro_price_id: "price_dummy_pro"
+    }
+  elsif Rails.application.credentials.stripe.present?
     Stripe.api_key = Rails.application.credentials.stripe[:secret_key]
 
     Rails.configuration.stripe = {
