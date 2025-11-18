@@ -1341,6 +1341,16 @@ ar:
       features: '["ملفات تعريف طابعة متعددة مع مواصفات تلقائية", "مكتبة شاملة من خيوط
         الطباعة مع خصائص المواد", "إنشاء فواتير PDF احترافية", "سجل المشروع ووظيفة
         التكرار", "دعم متعدد للعملات", "حسابات إهلاك الآلة"]'
+    advanced_calculator:
+      title: هل تحتاج إلى المزيد من الميزات؟
+      description: جرّب حاسبة التسعير المتقدمة الخاصة بنا مع دعم الصفائح المتعددة،
+        والخيوط المخصصة، وتصدير فوري بتنسيق PDF/CSV.
+      button: فتح الحاسبة المتقدمة
+      features:
+        multi_plate: دعم ما يصل إلى 10 صفائح بناء
+        multi_filament: اخلط ما يصل إلى 16 خيطًا لكل صفيحة
+        pdf_csv: تصدير فوري إلى PDF أو CSV
+        local_storage: حفظ تلقائي في المتصفح (لا يوجد فقدان للبيانات)
   locale_suggestion:
     banner:
       title: يبدو أنك تتصفح من منطقة مختلفة.
@@ -1629,3 +1639,60 @@ ar:
       not_saved:
         one: '1 خطأ منع حفظ %{resource}:'
         other: "%{count} أخطاء منعت حفظ %{resource}:"
+  advanced_calculator:
+    title: حاسبة تسعير الطباعة ثلاثية الأبعاد المجانية
+    subtitle: تقدير تكلفة احترافي متعدد اللوحات مع تصدير PDF/CSV. لا يتطلب تسجيل.
+    sign_up_to_save: سجل لحفظ مشاريعك
+    input_section: إعدادات الحاسبة
+    job_name: اسم المهمة
+    job_name_placeholder: أدخل اسم المشروع...
+    plates_section: لوحات البناء
+    add_plate: إضافة لوحة
+    plate: لوحة
+    plates_help: أضف ما يصل إلى 10 لوحات بناء. يمكن أن تحتوي كل لوحة على خيوط متعددة
+      وإعدادات مخصصة.
+    other_costs: تكاليف إضافية
+    failure_rate: معدل الفشل
+    failure_rate_help: النسبة المئوية لحساب المطبوعات الفاشلة
+    shipping_cost: تكلفة الشحن
+    other_cost: تكاليف أخرى
+    reset: إعادة تعيين الحاسبة
+    filaments: الخيوط
+    add_filament: إضافة خيط
+    filaments_help: أضف ما يصل إلى 16 خيطًا لكل لوحة. امزج بين المواد والألوان المختلفة.
+    plate_fields:
+      print_time: وقت الطباعة
+      power_consumption: استهلاك الطاقة
+      machine_cost: تكلفة الآلة
+      payoff_years: فترة الاسترداد (سنوات)
+      prep_time: وقت التحضير
+      post_time: وقت المعالجة اللاحقة
+      prep_rate: معدل التحضير
+      post_rate: معدل المعالجة اللاحقة
+    filament_fields:
+      weight: الوزن
+      price_per_kg: السعر للكيلوغرام
+    results:
+      title: ملخص التكلفة
+      filament_cost: الخيوط
+      electricity_cost: الكهرباء
+      labor_cost: العمالة
+      machine_cost: الآلة
+      other_costs: أخرى
+      grand_total: المجموع الكلي
+    export_pdf: تصدير إلى PDF
+    export_csv: تصدير إلى CSV
+    features:
+      title: لماذا CalcuMake؟
+      multi_plate: دعم ما يصل إلى 10 لوحات بناء
+      multi_filament: امزج ما يصل إلى 16 خيطًا لكل لوحة
+      auto_save: حفظ تلقائي في المتصفح (لا يوجد فقدان للبيانات)
+      pdf_csv_export: تصدير إلى PDF أو CSV على الفور
+      real_time: حسابات التكلفة في الوقت الفعلي
+      no_signup: لا يتطلب تسجيل للاستخدام
+    cta:
+      title: هل تريد حفظ مشاريعك؟
+      description: أنشئ حسابًا مجانيًا لحفظ عدد غير محدود من الحسابات وإدارة الطابعات
+        وإنشاء الفواتير والمزيد.
+      button: ابدأ النسخة التجريبية المجانية
+      no_credit_card: لا توجد بطاقة ائتمان مطلوبة
