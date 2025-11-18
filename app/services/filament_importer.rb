@@ -67,9 +67,15 @@ class FilamentImporter
   end
 
   def fetch_url_content
-    # Fetch content from URL
-    URI.open(source_content, redirect: true, &:read)
-  rescue OpenURI::HTTPError, SocketError => e
+    # Fetch content from URL with timeout
+    URI.open(
+      source_content,
+      redirect: true,
+      open_timeout: 10,
+      read_timeout: 30,
+      &:read
+    )
+  rescue OpenURI::HTTPError, SocketError, Net::OpenTimeout, Net::ReadTimeout => e
     @errors << "Failed to fetch URL: #{e.message}"
     nil
   end
