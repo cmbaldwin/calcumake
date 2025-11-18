@@ -66,6 +66,7 @@ Rails.application.routes.draw do
   # Landing page and demo
   get "landing", to: "pages#landing", as: :landing
   get "demo", to: "pages#demo", as: :demo
+  get "3d-print-pricing-calculator", to: "pages#pricing_calculator", as: :pricing_calculator
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "pages#landing"
