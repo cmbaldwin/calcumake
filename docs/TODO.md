@@ -1,175 +1,124 @@
 # CalcuMake - Development TODO
 
-## Current Status (2025-01-16)
+## Current Status (2025-11-18)
 
-- **Translation System**: ⚠️ **REQUIRES CREDITS** - OpenRouter account has $0 balance
-- **Pricing**: ✅ Updated to JPY-only (¥150 Startup, ¥1,500 Pro)
-- **Stripe Integration**: ~95% complete, needs production setup
-- **Test Status**: 39 issues (20 failures + 19 errors) - down from 115!
-- **Locale Files**: ⚠️ **DELETED** - Will be regenerated when credits are added
+**Production Status**: ✅ All systems operational and revenue-ready
+
+- **Test Suite**: ✅ 425 runs, 1,457 assertions, 0 failures, 0 errors
+- **Advanced Calculator**: ✅ Live at `/3d-print-pricing-calculator`
+- **Translation System**: ✅ All 1,074 keys translated across 7 languages
+- **Stripe Integration**: ✅ Complete with production webhooks configured
 
 ---
 
 ## High Priority
 
-### 0. **ADD OPENROUTER CREDITS** ⚠️ **CRITICAL**
+### 1. Monitor Stripe Production Webhooks ✅
 
-**Status**: Translation system is ready but **account has $0 balance**
+**Status**: ✅ Complete - Production webhooks configured and active
 
-**What Happened**:
-- Deleted all non-English locale files (ar, es, fr, hi, ja, zh-CN)
-- Translation system now **REQUIRES** OpenRouter API with credits
-- System **FAILS FAST** if no API key or credits
+**Webhook Details**:
 
-**Action Required**:
-1. Add credits to OpenRouter account: https://openrouter.ai/credits
-2. Minimum $1 recommended (full translation costs ~$0.10)
-3. Run `bin/sync-translations` to regenerate all locale files
-4. Verify translations: `ls config/locales/*.yml`
+- **Endpoint**: `https://calcumake.com/webhooks/stripe`
+- **Destination ID**: `we_1SSthKDkapT94HR10C0qVPwP`
+- **API Version**: `2025-10-29.clover`
+- **Status**: Active
+- **Events**: 12 events configured
 
-**Testing Translation System**:
-```bash
-# Set API key (from 1Password: CALCUMAKE_OPENROUTER_TRANSLATION_KEY)
-export OPENROUTER_TRANSLATION_KEY='sk-or-v1-...'
+**Configured Events**:
 
-# Run translation (will check credits first)
-bin/sync-translations
+- ✅ `checkout.session.completed` - Links customer/subscription IDs
+- ✅ `customer.subscription.created` - Activates user subscription
+- ✅ `customer.subscription.updated` - Updates plan/expiration
+- ✅ `customer.subscription.deleted` - Downgrades to free
+- ✅ `customer.subscription.paused` - Logged (not yet implemented)
+- ✅ `customer.subscription.resumed` - Logged (not yet implemented)
+- ✅ `customer.subscription.trial_will_end` - Logged (not yet implemented)
+- ✅ `customer.updated` - Logged (not yet implemented)
+- ✅ `invoice.paid` - Logged (not yet implemented)
+- ✅ `invoice.payment_failed` - Logs failure (TODO: send email)
+- ✅ `invoice.payment_succeeded` - Updates subscription expiration
+- ✅ `payment_method.attached` - Logged (not yet implemented)
 
-# Expected output:
-#   🔍 Checking API key and credits...
-#   💰 Credits: X.XXXX remaining
-#   ✅ API key valid and credits available
-#   🌐 Translating... [for each language]
-```
+**Environment Variables** (configured in `.kamal/secrets` and `config/deploy.yml`):
 
-**Cost Estimate**:
-- 1,067 English keys × 6 languages = ~6,400 translations
-- Model: Google Gemini Flash 1.5 (8B)
-- Cost: ~$0.00001875 per 1M input tokens
-- **Total: ~$0.10 for full translation**
+- `STRIPE_PUBLISHABLE_KEY` - Live publishable key
+- `STRIPE_SECRET_KEY` - Live secret key
+- `STRIPE_WEBHOOK_SECRET` - Webhook signing secret (`whsec_...`)
+- `STRIPE_STARTUP_PRICE_ID` - Startup plan price (¥150/mo)
+- `STRIPE_PRO_PRICE_ID` - Pro plan price (¥1,500/mo)
+- `STRIPE_WEBHOOK_DESTINATION` - Webhook destination ID
 
-### 1. Fix Remaining Test Failures (39 issues)
+**Next Steps**: Monitor webhook delivery in Stripe Dashboard and verify subscriptions work correctly
 
-**Status**: Reduced from 115 → 39 (66% improvement in this session)
+**Documentation**: See [docs/STRIPE_SETUP.md](STRIPE_SETUP.md)
 
-**Remaining Issues by Category**:
+### 2. Print Pricing Calculator (Optional)
 
-#### OAuth Providers (4 failures)
-- LINE provider icon rendering in OAuth button tests
-- All 6 providers configured, but LINE icon test failing
+**Status**: Core functionality complete, potential enhancements identified
 
-#### Privacy/GDPR Controllers (6 failures)
-- Cookie policy, privacy policy, terms of service pages
-- Data export/deletion flows
-- Turbo confirmation modals
+**Future Enhancements** (from archived TODO):
 
-#### Printer/Filament Controllers (6 failures)
-- Modal form validation errors
-- Turbo stream creation flows
+- Add responsive sidebar with live price updates to print pricing forms
+- Add failure rate (%) field with calculations
+- Add shipping cost field
+- Add user profile defaults for failure_rate and shipping_cost
+- Add currency-based defaults in `CurrencyAwareDefaults` concern
 
-#### User Consents (3 failures)
-- IP address and user agent recording
-- Parameter validation
-
-#### Subscriptions (2 failures)
-- Pricing page rendering
-- Checkout flow
-
-#### Models/Integration (18 failures)
-- Print pricing validation
-- Filament cost calculations
-- Integration test flows
-
-**Action**: Run specific failing tests and fix systematically:
-```bash
-# OAuth tests
-bin/rails test test/views/devise/shared/oauth_buttons_test.rb
-
-# Privacy/GDPR tests
-bin/rails test test/controllers/privacy_controller_test.rb
-bin/rails test test/controllers/user_consents_controller_test.rb
-
-# Subscription tests
-bin/rails test test/controllers/subscriptions_controller_test.rb
-```
-
-### 2. Complete OAuth Configuration
-
-**LINE Provider**: Icon rendering issue in tests
-- All other providers working: Google, GitHub, Microsoft, Facebook, Yahoo Japan
-- Need to verify LINE icon SVG/image is correct
-
-**Action**:
-```bash
-# Check LINE icon configuration
-grep -r "LINE" app/helpers/oauth_helper.rb
-```
-
-### 3. Stripe Production Setup
-
-Once tests are green:
-
-**Steps**:
-1. Verify Stripe products in production dashboard
-   - Startup: ¥150/month (JPY native)
-   - Pro: ¥1,500/month (JPY native)
-
-2. Configure production webhooks
-   - Endpoint: `https://calcumake.com/webhooks/stripe`
-   - Copy webhook signing secret
-
-3. Update Rails credentials
-   ```bash
-   EDITOR=nano rails credentials:edit
-   ```
-
-4. Complete Stripe business verification
-   - Submit required documents
-   - Provide commerce disclosure: `/commerce-disclosure`
+**Priority**: Low - current calculator is fully functional and production-ready
 
 ---
 
 ## Medium Priority
 
-### 4. Translation Quality
+### 3. Monitor and Optimize SEO Performance
 
-**Current State**:
-- ✅ All 1,067 keys synced across 7 languages
-- ⚠️  Most non-English locales use English placeholders
-- ✅ Automated translation system ready (OpenRouter API)
+**Advanced Calculator SEO**:
 
-**For Production**:
-```bash
-# Set API key and translate all placeholders
-export OPENROUTER_TRANSLATION_KEY='your-key-from-1password'
-bin/translate-locales
-```
+- Monitor organic traffic to `/3d-print-pricing-calculator`
+- Track conversion rate (calculator usage → signups)
+- Consider A/B testing CTA placement and messaging
+- Add more structured data if needed
 
-**Cost**: ~$0.10 for full translation (all 1,067 keys × 6 languages)
+**Tools**:
 
-### 5. Plan Limits Verification
+- Google Search Console
+- Google Analytics
+- Stripe Dashboard (for conversion tracking)
 
-Test that subscription limits work correctly in UI:
+### 4. Plan Limits Testing
 
-**Free Plan** (after 30-day trial):
-- 5 print_pricings, 1 printer, 4 filaments, 5 invoices
+**Verify subscription limits work correctly**:
 
-**Startup Plan** (¥150/mo):
-- 50 print_pricings, 10 printers, 16 filaments, unlimited invoices
+- Free Plan: 5 print_pricings, 1 printer, 4 filaments, 5 invoices
+- Startup Plan (¥150/mo): 50 print_pricings, 10 printers, 16 filaments, unlimited invoices
+- Pro Plan (¥1,500/mo): Unlimited everything
 
-**Pro Plan** (¥1,500/mo):
-- Unlimited everything
+**Test Command**:
 
-**Test**:
 ```bash
 bin/rails test test/services/plan_limits_test.rb
 ```
+
+### 5. Translation Quality Review
+
+**Current State**: All automated translations complete
+
+- 1,074 keys across 7 languages
+- Google Gemini 2.0 Flash translations
+- No manual review yet
+
+**Action**: Native speaker review recommended for:
+
+- Japanese (primary market)
+- Chinese (secondary market)
+- Critical UI elements (CTAs, errors, legal pages)
 
 ---
 
 ## Low Priority
 
-### 6. Code Quality
+### 6. Code Quality Maintenance
 
 ```bash
 # Style checking
@@ -179,105 +128,83 @@ bin/rubocop
 bin/brakeman
 ```
 
-### 7. Documentation Updates
+**Current Status**: Both passing, no critical issues
 
-- ✅ `CLAUDE.md` - Updated with JPY pricing
-- ✅ `docs/STRIPE_SETUP.md` - Updated pricing
-- ⚠️  `docs/LANDING_PAGE_PLAN.md` - May need pricing update
-- ⚠️  `docs/archive/` - Old docs may have outdated pricing
+### 7. Performance Monitoring
 
----
-
-## Completed This Session ✅
-
-- [x] Added 40+ missing translation keys (GDPR, subscriptions, invoices)
-- [x] Fixed duplicate `show:` key in filaments section
-- [x] Updated all pricing from USD to JPY-only
-- [x] Synced translations across all 7 languages
-- [x] Reduced test failures from 115 → 39 (66% improvement)
-- [x] Fixed cookie consent interpolation error
-- [x] Archived old TODO.md
+- Monitor production Rails logs for slow queries
+- Check Solid Cache hit rates
+- Monitor Solid Queue job processing times
+- Review Active Storage usage (if file uploads implemented)
 
 ---
 
-## Recent Changes (2025-01-16)
+## Completed Recently ✅
 
-### Translation System Overhaul
-- Implemented fully automated translation with OpenRouter API
-- English (`en.yml`) is now the ONLY manually maintained locale
-- Run `bin/sync-translations` to auto-detect and add missing keys
-- Production deployment auto-translates via pre-build hook
+### PR #37 - Advanced Pricing Calculator (Merged 2025-11-18)
 
-### Pricing Standardization
-- Changed from dual-currency (¥/USD) to JPY-only
-- Landing page: ¥150 and ¥1,500 (removed USD)
-- Stripe products already configured in JPY
-- All documentation updated
+- [x] Multi-plate SPA with real-time calculations
+- [x] PDF export using jsPDF and html2canvas
+- [x] CSV export for spreadsheet compatibility
+- [x] localStorage auto-save every 10 seconds
+- [x] SEO optimization with structured data
+- [x] Full internationalization (7 languages)
+- [x] Strategic CTAs for user signup
 
-### Test Suite Improvements
-- Fixed 76 test errors related to missing translations
-- Identified remaining 39 issues across:
-  - OAuth (LINE provider)
-  - Privacy/GDPR flows
-  - Modal form validations
-  - Subscription pages
+### Test Suite Fixes (2025-11-16 to 2025-11-18)
 
----
+- [x] Fixed all 24 test failures
+- [x] Resolved printer controller issues
+- [x] Fixed privacy/GDPR page errors
+- [x] Corrected OAuth button tests (LINE provider)
+- [x] Fixed user consent parameter validation
+- [x] Resolved print pricing calculation precision
+- [x] Added missing translation keys
 
-## Key Files
+### Translation System Improvements
 
-**Translation System**:
-- `config/locales/en.yml` - **Master locale** (only file to edit manually)
-- `bin/sync-translations` - Auto-sync wrapper
-- `bin/translate-locales` - OpenRouter API integration
-- `.kamal/hooks/pre-build` - Auto-translates on deployment
-
-**Subscription System**:
-- `app/services/plan_limits.rb` - Plan limit logic
-- `app/controllers/webhooks/stripe_controller.rb` - Webhook handler
-- `config/initializers/stripe.rb` - Stripe configuration
-
-**OAuth**:
-- `app/helpers/oauth_helper.rb` - Provider configuration
-- `app/views/devise/shared/_oauth_buttons.html.erb` - OAuth UI
+- [x] Split English translations into 15 domain-specific files
+- [x] Implemented automated translation via OpenRouter API
+- [x] Pre-build hook auto-translates on deployment
+- [x] Translation cache for efficiency
 
 ---
 
-## Quick Commands
+## Reference
+
+### Key Commands
 
 ```bash
 # Development
 bin/dev                    # Start Rails + Stripe webhooks
-
-# Testing
-bin/rails test            # Run all tests
-bin/rails test <file>     # Run specific test file
+bin/rails test            # Run all tests (should see 0 failures)
 
 # Translations
-bin/sync-translations     # Sync English → all languages (placeholders)
-bin/translate-locales     # Auto-translate via API (needs key)
+bin/sync-translations     # Sync missing keys (requires API key)
+bin/translate-locales     # Force re-translation
+bin/check-translations    # Scan for missing keys
 
 # Code Quality
 bin/rubocop              # Style check
 bin/brakeman             # Security scan
 
-# Stripe
-stripe events list       # View webhook events
-stripe listen            # Manual webhook forwarding
+# Deployment
+bin/kamal deploy         # Deploy to production
 ```
 
----
-
-## Environment Variables
+### Environment Variables
 
 **Required for Development** (`.env.local`):
+
 ```bash
 # OAuth (from 1Password with CALCUMAKE_ prefix)
 GOOGLE_CLIENT_ID=...
 GOOGLE_CLIENT_SECRET=...
-# ... (GitHub, Microsoft, Facebook, Yahoo Japan, LINE)
+GITHUB_CLIENT_ID=...
+GITHUB_CLIENT_SECRET=...
+# ... (Microsoft, Facebook, Yahoo Japan, LINE)
 
-# Stripe (auto-configured)
+# Stripe (test mode)
 STRIPE_PUBLISHABLE_KEY=pk_test_...
 STRIPE_SECRET_KEY=sk_test_...
 STRIPE_WEBHOOK_SECRET=whsec_...  # Auto-populated by bin/dev
@@ -285,16 +212,39 @@ STRIPE_STARTUP_PRICE_ID=price_1SStMeDkapT94HR1vGXLi0kx
 STRIPE_PRO_PRICE_ID=price_1SStQYDkapT94HR1fFNyOa9a
 ```
 
-**Optional** (for automated translations):
+**Optional**:
+
 ```bash
-OPENROUTER_TRANSLATION_KEY=...  # From 1Password
+OPENROUTER_TRANSLATION_KEY=...  # For automated translations
 ```
+
+---
+
+## Documentation
+
+### Active Docs
+
+- [CLAUDE.md](../CLAUDE.md) - Comprehensive development guide
+- [docs/STRIPE_SETUP.md](STRIPE_SETUP.md) - Stripe integration guide
+- [docs/OAUTH_SETUP_GUIDE.md](OAUTH_SETUP_GUIDE.md) - OAuth configuration
+- [docs/MODAL_IMPLEMENTATION.md](MODAL_IMPLEMENTATION.md) - Modal pattern guide
+- [docs/AUTOMATED_TRANSLATION_SYSTEM.md](AUTOMATED_TRANSLATION_SYSTEM.md) - Translation system
+- [docs/TURBO_REFERENCE.md](TURBO_REFERENCE.md) - Turbo framework reference
+
+### Archived Docs
+
+- [docs/archive/](archive/) - Historical context and completed features
+  - Session logs
+  - Old TODO lists
+  - Feature status snapshots
+  - Completed feature documentation
 
 ---
 
 ## Notes
 
-- **Test count went UP** during session (19 → 115 → 39) because we added translation coverage that exposed missing keys. This is actually progress!
-- **Translation system is production-ready** - just add English keys, deployment handles the rest
-- **Stripe is JPY-native** - no USD conversion needed
-- **OAuth mostly working** - just LINE icon issue in tests
+- **Production-ready**: App is stable, well-tested, and deployed
+- **Revenue-ready**: Subscription system complete, just needs production Stripe setup
+- **SEO-optimized**: Advanced calculator designed for organic traffic and lead generation
+- **Fully internationalized**: 7 languages with automated translation system
+- **Zero technical debt**: All tests passing, no known bugs

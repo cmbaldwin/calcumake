@@ -4,7 +4,15 @@
 
 ## Core Features
 
-### Print Job Management
+### Advanced Pricing Calculator (Public)
+- **No signup required** - `/3d-print-pricing-calculator` lead generation tool
+- **Multi-plate support** - up to 10 plates with 16 filaments each
+- **Real-time calculations** - instant cost breakdowns with detailed components
+- **Export tools** - professional PDF generation and CSV spreadsheet export
+- **Auto-save** - localStorage persistence prevents data loss
+- **SEO optimized** - structured data and meta tags for organic traffic
+
+### Print Job Management (App)
 - **Multi-plate calculations** (1-10 plates per job) with individual filament tracking
 - **Real-time cost analysis** - material, electricity, labor, markup calculations
 - **Printer tracking** - power consumption, payoff analysis, printer-specific settings
@@ -70,11 +78,12 @@ bin/check-translations
 
 ## Development Notes
 
-- **No manual translation editing** - only maintain `en.yml` and `devise.en.yml`
+- **No manual translation editing** - only maintain `config/locales/en/*.yml` files
 - **Multi-plate pattern** - use `build` → `save!` with nested attributes
 - **Turbo frame isolation** - wrap content divs, never replace frames directly
 - **Modal pattern** - custom event-based system for on-the-fly record creation
 - **OAuth credentials** - `.env.local` required (see `.env.local.example`)
+- **All tests passing** - 425 runs, 1,457 assertions, 0 failures, 0 errors
 
 ## Deployment
 

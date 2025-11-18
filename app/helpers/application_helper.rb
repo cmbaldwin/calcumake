@@ -104,4 +104,16 @@ module ApplicationHelper
   def user_oauth_path(provider)
     "/users/auth/#{provider}"
   end
+
+  # AdSense helpers - only display ads for Free tier users
+  def show_ads?
+    return false unless Rails.env.production?
+    return true unless user_signed_in?
+
+    current_user.free_plan?
+  end
+
+  def adsense_publisher_id
+    "ca-pub-5257142454834240"
+  end
 end
