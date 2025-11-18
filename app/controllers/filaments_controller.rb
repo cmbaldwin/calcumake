@@ -74,6 +74,26 @@ class FilamentsController < ApplicationController
     end
   end
 
+  def import_form
+    # Show the import form
+  end
+
+  def import
+    source_type = params[:source_type] # "url" or "text"
+    source_content = params[:source_content]
+
+    importer = FilamentImporter.new(current_user, source_type: source_type, source_content: source_content)
+    filaments = importer.import
+
+    if filaments.present?
+      flash[:notice] = t("filaments.import.success", count: filaments.count)
+      redirect_to filaments_path
+    else
+      flash.now[:alert] = t("filaments.import.failure", errors: importer.errors.join(", "))
+      render :import_form, status: :unprocessable_entity
+    end
+  end
+
   private
 
   # Filaments use total count, not monthly tracking

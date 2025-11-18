@@ -2,7 +2,10 @@
 <div class="text-center mb-5">
     <h3 class="display-5 fw-bold text-primary mb-3"><%= t('filaments.index.title') %></h3>
     <p class="lead text-muted mb-4"><%= t('filaments.index.subtitle') %></p>
-    <%= link_to t('filaments.index.add_new'), new_filament_path, class: "btn btn-primary btn-lg" %>
+    <div class="d-flex gap-3 justify-content-center">
+        <%= link_to t('filaments.index.add_new'), new_filament_path, class: "btn btn-primary btn-lg" %>
+        <%= link_to t('filaments.import.button'), import_form_filaments_path, class: "btn btn-outline-primary btn-lg" %>
+    </div>
 </div>
 
 <!-- Search and Filter Section with Typehead -->

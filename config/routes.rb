@@ -122,6 +122,10 @@ Rails.application.routes.draw do
   resources :printer_profiles, only: [ :index ]
   resources :clients
   resources :filaments do
+    collection do
+      get :import_form
+      post :import
+    end
     member do
       post :duplicate
     end

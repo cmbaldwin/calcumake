@@ -1,0 +1,111 @@
+<!-- Hero Section -->
+<div class="text-center mb-5">
+    <h3 class="display-5 fw-bold text-primary mb-3"><%= t('filaments.import.title') %></h3>
+    <p class="lead text-muted mb-4"><%= t('filaments.import.subtitle') %></p>
+</div>
+
+<!-- Alert for errors -->
+<% if flash[:alert] %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%= flash[:alert] %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<% end %>
+
+<!-- Import Form -->
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><%= t('filaments.import.form_title') %></h5>
+            </div>
+            <div class="card-body">
+                <%= form_with url: import_filaments_path, method: :post, class: "needs-validation", data: { controller: "import-form" } do |form| %>
+                    <!-- Source Type Selection -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold"><%= t('filaments.import.source_type') %></label>
+
+                        <div class="btn-group w-100" role="group" data-import-form-target="sourceTypeButtons">
+                            <input type="radio" class="btn-check" name="source_type" id="source_type_url" value="url"
+                                   data-action="change->import-form#toggleSourceType" checked>
+                            <label class="btn btn-outline-primary" for="source_type_url">
+                                <i class="bi bi-link-45deg"></i> <%= t('filaments.import.source_types.url') %>
+                            </label>
+
+                            <input type="radio" class="btn-check" name="source_type" id="source_type_text" value="text"
+                                   data-action="change->import-form#toggleSourceType">
+                            <label class="btn btn-outline-primary" for="source_type_text">
+                                <i class="bi bi-file-text"></i> <%= t('filaments.import.source_types.text') %>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- URL Input (shown by default) -->
+                    <div class="mb-4" data-import-form-target="urlInput">
+                        <label for="url_content" class="form-label fw-bold">
+                            <%= t('filaments.import.url_label') %>
+                        </label>
+                        <%= text_field_tag :source_content, "",
+                            class: "form-control",
+                            id: "url_content",
+                            placeholder: t('filaments.import.url_placeholder'),
+                            data: { import_form_target: "urlField" } %>
+                        <div class="form-text">
+                            <%= t('filaments.import.url_help') %>
+                        </div>
+                    </div>
+
+                    <!-- Text Input (hidden by default) -->
+                    <div class="mb-4 d-none" data-import-form-target="textInput">
+                        <label for="text_content" class="form-label fw-bold">
+                            <%= t('filaments.import.text_label') %>
+                        </label>
+                        <%= text_area_tag :source_content_text, "",
+                            class: "form-control",
+                            id: "text_content",
+                            rows: 10,
+                            placeholder: t('filaments.import.text_placeholder'),
+                            data: { import_form_target: "textField" } %>
+                        <div class="form-text">
+                            <%= t('filaments.import.text_help') %>
+                        </div>
+                    </div>
+
+                    <!-- Example Section -->
+                    <div class="alert alert-info">
+                        <h6 class="alert-heading"><%= t('filaments.import.examples.title') %></h6>
+                        <p class="mb-2"><%= t('filaments.import.examples.intro') %></p>
+                        <ul class="mb-0">
+                            <li><%= t('filaments.import.examples.invoice') %></li>
+                            <li><%= t('filaments.import.examples.product_page') %></li>
+                            <li><%= t('filaments.import.examples.receipt') %></li>
+                            <li><%= t('filaments.import.examples.plain_text') %></li>
+                        </ul>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex gap-3 justify-content-end">
+                        <%= link_to t('actions.cancel'), filaments_path, class: "btn btn-secondary" %>
+                        <%= submit_tag t('filaments.import.submit'), class: "btn btn-primary", data: { disable_with: t('filaments.import.processing') } %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+
+        <!-- Info Card -->
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">
+                <h6 class="mb-0"><i class="bi bi-info-circle"></i> <%= t('filaments.import.info.title') %></h6>
+            </div>
+            <div class="card-body">
+                <p><%= t('filaments.import.info.description') %></p>
+                <ul class="mb-0">
+                    <li><%= t('filaments.import.info.point_1') %></li>
+                    <li><%= t('filaments.import.info.point_2') %></li>
+                    <li><%= t('filaments.import.info.point_3') %></li>
+                    <li><%= t('filaments.import.info.point_4') %></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -216,4 +216,48 @@ class FilamentsControllerTest < ActionDispatch::IntegrationTest
     assert_match(/material_type/, response.body)
     assert_match(/diameter/, response.body)
   end
+
+  # Import functionality tests
+  test "should get import_form" do
+    get import_form_filaments_url
+    assert_response :success
+    assert_match(/Import Filaments/, response.body)
+  end
+
+  test "should show error when importing without API key" do
+    post import_filaments_url, params: {
+      source_type: "text",
+      source_content: "eSun PLA+ Red 1.75mm 1000g $25.99"
+    }
+    assert_response :unprocessable_entity
+    assert_match(/API key not configured/i, response.body)
+  end
+
+  test "should show error when importing with blank content" do
+    post import_filaments_url, params: {
+      source_type: "text",
+      source_content: ""
+    }
+    assert_response :unprocessable_entity
+    assert_match(/cannot be blank/i, response.body)
+  end
+
+  test "should show error when importing with invalid URL" do
+    post import_filaments_url, params: {
+      source_type: "url",
+      source_content: "not-a-valid-url"
+    }
+    assert_response :unprocessable_entity
+    assert_match(/Invalid URL/i, response.body)
+  end
+
+  test "should require authentication for import actions" do
+    sign_out @user
+
+    get import_form_filaments_url
+    assert_redirected_to new_user_session_url
+
+    post import_filaments_url, params: { source_type: "text", source_content: "test" }
+    assert_redirected_to new_user_session_url
+  end
 end
