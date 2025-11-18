@@ -14,7 +14,7 @@
 </nav>
 
 <% content_for :structured_data do %>
-  <script type="application/ld+json" nonce="<%= content_security_policy_nonce %>">
+  <script type="application/ld+json">
     <%= breadcrumb_structured_data(items).html_safe %>
   </script>
 <% end %>
