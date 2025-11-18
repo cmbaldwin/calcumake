@@ -43,7 +43,7 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    @invoice = @print_pricing.invoices.build(invoice_params)
+    @invoice = @print_pricing.invoices.build(invoice_params_for_create)
     @invoice.user = current_user
 
     if @invoice.save
@@ -136,5 +136,12 @@ class InvoicesController < ApplicationController
         :id, :description, :quantity, :unit_price, :line_item_type, :order_position, :_destroy
       ]
     )
+  end
+
+  def invoice_params_for_create
+    permitted_params = invoice_params
+    # Convert empty invoice_number to nil so auto-generation triggers on create
+    permitted_params[:invoice_number] = nil if permitted_params[:invoice_number].blank?
+    permitted_params
   end
 end

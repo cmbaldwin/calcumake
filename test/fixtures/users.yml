@@ -4,7 +4,7 @@ one:
   default_currency: USD
   default_energy_cost_per_kwh: 0.12
   locale: en
-  next_invoice_number: 1
+  next_invoice_number: 3
 
 two:
   email: user2@example.com
@@ -12,7 +12,7 @@ two:
   default_currency: EUR
   default_energy_cost_per_kwh: 0.10
   locale: es
-  next_invoice_number: 1
+  next_invoice_number: 3
 
 oauth_google:
   email: googleuser@gmail.com
@@ -20,7 +20,7 @@ oauth_google:
   default_currency: USD
   default_energy_cost_per_kwh: 0.12
   locale: en
-  next_invoice_number: 1
+  next_invoice_number: 3
   provider: google_oauth2
   uid: "google_123456789"
 
@@ -30,7 +30,7 @@ oauth_github:
   default_currency: USD
   default_energy_cost_per_kwh: 0.12
   locale: en
-  next_invoice_number: 1
+  next_invoice_number: 3
   provider: github
   uid: "github_987654321"
 
@@ -40,7 +40,7 @@ oauth_microsoft:
   default_currency: USD
   default_energy_cost_per_kwh: 0.12
   locale: en
-  next_invoice_number: 1
+  next_invoice_number: 3
   provider: microsoft_graph
   uid: "ms_555666777"
 
@@ -50,7 +50,7 @@ oauth_facebook:
   default_currency: USD
   default_energy_cost_per_kwh: 0.12
   locale: en
-  next_invoice_number: 1
+  next_invoice_number: 3
   provider: facebook
   uid: "facebook_888999000"
 
@@ -60,6 +60,6 @@ oauth_yahoojp:
   default_currency: JPY
   default_energy_cost_per_kwh: 0.25
   locale: ja
-  next_invoice_number: 1
+  next_invoice_number: 3
   provider: yahoojp
   uid: "yahoojp_111222333"

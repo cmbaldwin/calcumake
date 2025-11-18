@@ -30,6 +30,7 @@ CalcuMake uses an automated translation system powered by OpenRouter API (Google
 **Model**: `google/gemini-flash-1.5-8b`
 
 **Why Gemini Flash?**
+
 - Extremely fast response times (~500ms per batch)
 - Very cost-effective (~$0.00001875 per 1M tokens)
 - Excellent at structured translation tasks
@@ -86,13 +87,42 @@ git push
 bin/kamal deploy
 ```
 
-**Pre-build hook sequence:**
-1. Runs `bin/sync-translations` (with OPENROUTER_TRANSLATION_KEY from secrets)
-2. Automatically translates missing keys across all 6 languages
-3. Stages translation changes
-4. Runs tests
-5. Auto-commits if tests pass
-6. Builds and deploys
+**Pre-build hook behavior:**
+
+By default, the pre-build hook only translates **NEW/MISSING keys** (uses cache):
+
+1. Loads OPENROUTER_TRANSLATION_KEY from Kamal secrets
+2. Skips `force-retranslate` (cache preserved)
+3. Runs `bin/sync-translations` - only translates missing keys
+4. Stages translation changes
+5. Runs tests
+6. Auto-commits if tests pass
+7. Builds and deploys
+
+**Force retranslation** (when needed):
+
+To force retranslation of ALL keys (clears cache):
+
+```bash
+# Deploy with force retranslate flag
+kamal deploy -e FORCE_RETRANSLATE=1
+```
+
+This is useful when:
+
+- Translation quality needs improvement
+- You want to update all translations to a new model/version
+- English placeholder values slipped through and need fixing
+
+**Pre-build hook sequence (with FORCE_RETRANSLATE=1):**
+
+1. Loads OPENROUTER_TRANSLATION_KEY from Kamal secrets
+2. Runs `bin/force-retranslate` - clears cache for English placeholders
+3. Runs `bin/sync-translations` - retranslates all cleared keys
+4. Stages translation changes
+5. Runs tests
+6. Auto-commits if tests pass
+7. Builds and deploys
 
 ## Scripts
 
@@ -116,11 +146,70 @@ bin/sync-translations
 # [executes bin/translate-locales]
 ```
 
+### `bin/force-retranslate`
+
+Clears translation cache for keys with English placeholder values:
+
+**Purpose:**
+
+- Detects keys in non-English locales that contain English text
+- Removes these keys from the translation cache
+- Allows `bin/translate-locales` to retranslate them
+
+**Usage:**
+
+```bash
+# Clear cache for English placeholders
+bin/force-retranslate
+
+# Then run translation
+bin/sync-translations
+```
+
+**When to use:**
+
+- English placeholder values slipped into translated files
+- You want to force retranslation of specific keys
+- Translation quality needs improvement
+
+**Output:**
+
+```
+================================================================================
+Force Re-Translation Tool
+================================================================================
+
+📖 Loaded 1330 English keys
+
+🌍 Processing ja...
+   📝 Found 12 keys with English values
+   🗑️  Removed 12 cached translations
+   📋 Sample keys to re-translate:
+      - print_pricing.job_name: "Job Name"
+      - invoices.invoice_number: "Invoice Number"
+      ... and 10 more
+
+🌍 Processing es...
+   ✅ No English values found (1330 keys)
+
+================================================================================
+✨ Cache cleared for English values!
+================================================================================
+
+💡 Next steps:
+   1. Run 'bin/sync-translations' with OPENROUTER_TRANSLATION_KEY set
+   2. Or run 'bin/translate-locales' directly
+   3. Keys with English values will be re-translated
+```
+
+**Note:** This script is automatically run during `kamal deploy` when `FORCE_RETRANSLATE=1` is set.
+
 ### `bin/translate-locales`
 
 Direct OpenRouter API integration:
 
 **Features:**
+
 - Loads `en.yml` + `devise.en.yml` as master sources
 - Compares against all target locale files
 - Batches translations (50 keys per request)
@@ -184,11 +273,13 @@ Using OpenRouter API with Google Gemini Flash 1.5
 ### Validation Features
 
 1. **Interpolation Variable Preservation**
+
    - Ensures `%{name}`, `%{count}`, etc. are preserved exactly
    - Validates before writing to locale files
    - Falls back to English if validation fails
 
 2. **HTML/ERB Tag Preservation**
+
    - Maintains `<%= %>` tags
    - Preserves HTML structure
    - Keeps formatting intact
@@ -266,17 +357,20 @@ rm tmp/translation_cache/*.json && bin/translate-locales
 ### Environment Variables
 
 **Development** (`.env.local`):
+
 ```bash
 OPENROUTER_TRANSLATION_KEY=sk-or-v1-xxxxx
 ```
 
 **Production** (Kamal secrets):
+
 ```ruby
 # .kamal/secrets
 OPENROUTER_TRANSLATION_KEY=$(kamal secrets extract CALCUMAKE_OPENROUTER_TRANSLATION_KEY ${SECRETS})
 ```
 
 **Deployment** (`config/deploy.yml`):
+
 ```yaml
 env:
   secret:
@@ -294,16 +388,19 @@ env:
 ### Typical Translation Costs
 
 **Full translation** (1265 keys × 6 languages = 7,590 translations):
+
 - Input tokens: ~50,000 (prompts + keys)
 - Output tokens: ~40,000 (translations)
 - **Total cost**: ~$0.08 - $0.10
 
 **Incremental updates** (10 new keys × 6 languages = 60 translations):
+
 - Input tokens: ~4,000
 - Output tokens: ~3,000
 - **Total cost**: ~$0.006 - $0.01
 
 **Monthly estimate** (assuming 50 keys added per month):
+
 - **Total cost**: ~$0.05 per month
 
 ### Cost Optimization
@@ -320,6 +417,7 @@ env:
 **Problem**: Deployment doesn't translate
 
 **Solutions**:
+
 1. Check API key is in 1Password: `CALCUMAKE_OPENROUTER_TRANSLATION_KEY`
 2. Verify secrets extraction in `.kamal/secrets`
 3. Confirm env variable in `config/deploy.yml`
@@ -330,6 +428,7 @@ env:
 **Problem**: Variables not preserved
 
 **Symptoms**:
+
 ```
 ⚠️  Variable mismatch in users.welcome:
     Original: %{name}
@@ -337,6 +436,7 @@ env:
 ```
 
 **Solution**: Falls back to English automatically, but you can:
+
 1. Check cache file for incorrect translation
 2. Delete cache file and re-translate
 3. Manually fix in locale file if needed
@@ -346,11 +446,13 @@ env:
 **Problem**: API request failed
 
 **Common causes**:
+
 1. Invalid API key
 2. Rate limiting (wait 1 second between batches)
 3. Network issues
 
 **Debug**:
+
 ```bash
 # Test API key manually
 export OPENROUTER_TRANSLATION_KEY='your-key'
@@ -362,6 +464,7 @@ bin/translate-locales
 **Problem**: "Cannot set key - target is not a hash"
 
 **Example**:
+
 ```
 ⚠️  Cannot set print_pricing.filament_types.pla - target is not a hash
 ```
@@ -375,12 +478,14 @@ bin/translate-locales
 ### 1. Only Edit English Files
 
 ❌ **Don't**:
+
 ```bash
 # Editing translated files directly
 vim config/locales/ja.yml  # BAD!
 ```
 
 ✅ **Do**:
+
 ```bash
 # Only edit English master
 vim config/locales/en.yml  # GOOD!
@@ -390,6 +495,7 @@ vim config/locales/devise.en.yml  # GOOD!
 ### 2. Use Descriptive Keys
 
 ❌ **Don't**:
+
 ```yaml
 users:
   msg1: "Welcome"
@@ -397,6 +503,7 @@ users:
 ```
 
 ✅ **Do**:
+
 ```yaml
 users:
   welcome_message: "Welcome to CalcuMake"
