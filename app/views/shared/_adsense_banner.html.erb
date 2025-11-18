@@ -4,7 +4,7 @@
          style="display:inline-block;width:728px;height:90px"
          data-ad-client="<%= adsense_publisher_id %>"
          data-ad-slot="<%= ad_slot %>"></ins>
-    <script>
+    <script nonce="<%= content_security_policy_nonce %>">
          (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
   </div>
