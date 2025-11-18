@@ -22,12 +22,26 @@ export default class extends Controller {
     dynamicListController.itemNameValue = "filament-item" // Use our custom selector
     dynamicListController.addButtonTextValue = this.addButtonTextValue
 
+    // Store bound functions for proper cleanup
+    this.boundHandleItemAdded = this.handleItemAdded.bind(this)
+    this.boundHandleItemRemoved = this.handleItemRemoved.bind(this)
+
     // Listen for dynamic list events
-    this.element.addEventListener('dynamic-list:item-added', this.handleItemAdded.bind(this))
-    this.element.addEventListener('dynamic-list:item-removed', this.handleItemRemoved.bind(this))
+    this.element.addEventListener('dynamic-list:item-added', this.boundHandleItemAdded)
+    this.element.addEventListener('dynamic-list:item-removed', this.boundHandleItemRemoved)
 
     // Now that outlet is connected, update filament selects
     this.updateFilamentSelects()
+  }
+
+  disconnect() {
+    // Clean up event listeners
+    if (this.boundHandleItemAdded) {
+      this.element.removeEventListener('dynamic-list:item-added', this.boundHandleItemAdded)
+    }
+    if (this.boundHandleItemRemoved) {
+      this.element.removeEventListener('dynamic-list:item-removed', this.boundHandleItemRemoved)
+    }
   }
 
   handleItemAdded(event) {

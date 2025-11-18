@@ -13,18 +13,22 @@ export default class extends Controller {
       focus: true
     })
 
+    // Store bound functions for proper cleanup
+    this.boundHandleHidden = this.handleHidden.bind(this)
+    this.boundHandleOpenModal = this.handleOpenModal.bind(this)
+
     // Listen for Bootstrap's hidden event to clean up
-    this.element.addEventListener('hidden.bs.modal', this.handleHidden.bind(this))
+    this.element.addEventListener('hidden.bs.modal', this.boundHandleHidden)
 
     // Listen for custom open-modal event from anywhere in the document
-    document.addEventListener('open-modal', this.handleOpenModal.bind(this))
+    document.addEventListener('open-modal', this.boundHandleOpenModal)
   }
 
   disconnect() {
     // Clean up when controller is disconnected
     if (this.modal) {
-      this.element.removeEventListener('hidden.bs.modal', this.handleHidden.bind(this))
-      document.removeEventListener('open-modal', this.handleOpenModal.bind(this))
+      this.element.removeEventListener('hidden.bs.modal', this.boundHandleHidden)
+      document.removeEventListener('open-modal', this.boundHandleOpenModal)
       this.modal.dispose()
     }
   }

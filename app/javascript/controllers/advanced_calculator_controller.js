@@ -56,7 +56,7 @@ export default class extends Controller {
     }, 10000)
   }
 
-  addPlate(event) {
+  addPlate(event = null) {
     if (event) event.preventDefault()
 
     const plates = this.getPlates()
@@ -83,7 +83,8 @@ export default class extends Controller {
     this.updateAddPlateButton()
 
     // Add first filament to new plate
-    this.addFilament({ target: plateDiv.querySelector('[data-action*="addFilament"]') })
+    const addFilamentBtn = plateDiv.querySelector('[data-action*="addFilament"]')
+    this.addFilamentToPlate(plateDiv)
 
     // Recalculate
     this.calculate()
@@ -106,8 +107,12 @@ export default class extends Controller {
   }
 
   addFilament(event) {
-    event.preventDefault()
+    if (event) event.preventDefault()
     const plateDiv = event.target.closest('[data-plate-index]')
+    this.addFilamentToPlate(plateDiv)
+  }
+
+  addFilamentToPlate(plateDiv) {
     const filamentsContainer = plateDiv.querySelector('[data-filaments-container]')
     const filaments = filamentsContainer.querySelectorAll('[data-filament-index]')
 
