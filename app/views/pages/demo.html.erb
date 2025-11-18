@@ -17,6 +17,41 @@
 
           <!-- Demo Limitations Notice -->
           <%= render "demo/limitations_notice" %>
+
+          <!-- Advanced Calculator CTA -->
+          <div class="card mt-4 border-primary shadow-sm">
+            <div class="card-body text-center p-4">
+              <h4 class="mb-3">
+                <i class="bi bi-stars text-warning me-2"></i>
+                <%= t('demo.advanced_calculator.title') %>
+              </h4>
+              <p class="lead mb-3">
+                <%= t('demo.advanced_calculator.description') %>
+              </p>
+              <ul class="list-unstyled mb-4">
+                <li class="mb-2">
+                  <i class="bi bi-check-circle-fill text-success me-2"></i>
+                  <%= t('demo.advanced_calculator.features.multi_plate') %>
+                </li>
+                <li class="mb-2">
+                  <i class="bi bi-check-circle-fill text-success me-2"></i>
+                  <%= t('demo.advanced_calculator.features.multi_filament') %>
+                </li>
+                <li class="mb-2">
+                  <i class="bi bi-check-circle-fill text-success me-2"></i>
+                  <%= t('demo.advanced_calculator.features.pdf_csv') %>
+                </li>
+                <li class="mb-2">
+                  <i class="bi bi-check-circle-fill text-success me-2"></i>
+                  <%= t('demo.advanced_calculator.features.local_storage') %>
+                </li>
+              </ul>
+              <%= link_to pricing_calculator_path, class: "btn btn-primary btn-lg px-5" do %>
+                <i class="bi bi-calculator-fill me-2"></i>
+                <%= t('demo.advanced_calculator.button') %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

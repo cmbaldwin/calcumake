@@ -141,6 +141,15 @@ en:
       - Project history and duplicate functionality
       - Multi-currency support
       - Machine depreciation calculations
+    advanced_calculator:
+      title: Need More Features?
+      description: Try our advanced pricing calculator with multi-plate support, custom filaments, and instant PDF/CSV export.
+      button: Open Advanced Calculator
+      features:
+        multi_plate: Support for up to 10 build plates
+        multi_filament: Mix up to 16 filaments per plate
+        pdf_csv: Export to PDF or CSV instantly
+        local_storage: Auto-save in browser (no data loss)
   locale_suggestion:
     banner:
       title: It looks like you're accessing from a different region.
