@@ -32,7 +32,7 @@ class InvoiceTest < ActiveSupport::TestCase
 
   # Validations
   test "should be valid with valid attributes" do
-    @invoice.invoice_number = "INV-000001"
+    @invoice.invoice_number = "INV-999999"
     assert @invoice.valid?
   end
 
@@ -56,13 +56,13 @@ class InvoiceTest < ActiveSupport::TestCase
   end
 
   test "should require unique invoice_number" do
-    @invoice.invoice_number = "INV-000001"
+    @invoice.invoice_number = "INV-999998"
     @invoice.save!
 
     duplicate_invoice = Invoice.new(
       print_pricing: @print_pricing,
       user: @user,
-      invoice_number: "INV-000001",
+      invoice_number: "INV-999998",
       invoice_date: Date.current,
       currency: "USD"
     )
@@ -117,7 +117,6 @@ class InvoiceTest < ActiveSupport::TestCase
 
   # Instance methods
   test "subtotal should sum line item totals" do
-    @invoice.invoice_number = "INV-000001"
     @invoice.save!
 
     @invoice.invoice_line_items.create!(
@@ -140,7 +139,6 @@ class InvoiceTest < ActiveSupport::TestCase
   end
 
   test "total should equal subtotal" do
-    @invoice.invoice_number = "INV-000001"
     @invoice.save!
 
     @invoice.invoice_line_items.create!(
@@ -155,7 +153,6 @@ class InvoiceTest < ActiveSupport::TestCase
   end
 
   test "overdue? should return true when due_date is past and status is not paid" do
-    @invoice.invoice_number = "INV-000001"
     @invoice.due_date = 1.day.ago
     @invoice.status = "sent"
     @invoice.save!
@@ -164,7 +161,6 @@ class InvoiceTest < ActiveSupport::TestCase
   end
 
   test "overdue? should return false when due_date is future" do
-    @invoice.invoice_number = "INV-000001"
     @invoice.due_date = 1.day.from_now
     @invoice.status = "sent"
     @invoice.save!
@@ -173,7 +169,6 @@ class InvoiceTest < ActiveSupport::TestCase
   end
 
   test "overdue? should return false when status is paid" do
-    @invoice.invoice_number = "INV-000001"
     @invoice.due_date = 1.day.ago
     @invoice.status = "paid"
     @invoice.save!
@@ -182,7 +177,6 @@ class InvoiceTest < ActiveSupport::TestCase
   end
 
   test "mark_as_sent! should update status to sent" do
-    @invoice.invoice_number = "INV-000001"
     @invoice.save!
 
     @invoice.mark_as_sent!
@@ -190,7 +184,6 @@ class InvoiceTest < ActiveSupport::TestCase
   end
 
   test "mark_as_paid! should update status to paid" do
-    @invoice.invoice_number = "INV-000001"
     @invoice.save!
 
     @invoice.mark_as_paid!
@@ -198,7 +191,6 @@ class InvoiceTest < ActiveSupport::TestCase
   end
 
   test "mark_as_cancelled! should update status to cancelled" do
-    @invoice.invoice_number = "INV-000001"
     @invoice.save!
 
     @invoice.mark_as_cancelled!
@@ -207,7 +199,6 @@ class InvoiceTest < ActiveSupport::TestCase
 
   # Scopes
   test "draft scope should return draft invoices" do
-    @invoice.invoice_number = "INV-000001"
     @invoice.status = "draft"
     @invoice.save!
 
@@ -215,7 +206,6 @@ class InvoiceTest < ActiveSupport::TestCase
   end
 
   test "sent scope should return sent invoices" do
-    @invoice.invoice_number = "INV-000001"
     @invoice.status = "sent"
     @invoice.save!
 
@@ -223,7 +213,6 @@ class InvoiceTest < ActiveSupport::TestCase
   end
 
   test "paid scope should return paid invoices" do
-    @invoice.invoice_number = "INV-000001"
     @invoice.status = "paid"
     @invoice.save!
 
@@ -231,7 +220,6 @@ class InvoiceTest < ActiveSupport::TestCase
   end
 
   test "cancelled scope should return cancelled invoices" do
-    @invoice.invoice_number = "INV-000001"
     @invoice.status = "cancelled"
     @invoice.save!
 

@@ -1,4 +1,16 @@
 #!/bin/bash
+# Kamal pre-build hook
+#
+# Translation behavior:
+#   - By default: Only translates NEW/MISSING keys (uses cache)
+#   - To force retranslation: kamal deploy -e FORCE_RETRANSLATE=1
+#
+# This hook will:
+#   1. Load OpenRouter API key from .env.local or Kamal secrets
+#   2. Optionally clear cache for English placeholders (if FORCE_RETRANSLATE=1)
+#   3. Sync and translate missing keys only
+#   4. Run tests
+#   5. Commit and push changes if any
 
 # Load environment variables from .env.local if it exists (for local testing)
 if [ -f .env.local ]; then
@@ -22,15 +34,20 @@ fi
 
 echo "✓ OpenRouter API key loaded successfully"
 
-# Clear cache for keys with English placeholder values
-echo "Checking for untranslated placeholders..."
-if ! bin/force-retranslate; then
-    echo "❌ Failed to clear translation cache"
-    exit 1
+# Check if FORCE_RETRANSLATE flag is set (e.g., kamal deploy --env FORCE_RETRANSLATE=1)
+if [ "$FORCE_RETRANSLATE" = "1" ] || [ "$FORCE_RETRANSLATE" = "true" ]; then
+    echo "🔄 FORCE_RETRANSLATE flag detected - clearing cache for English placeholders..."
+    if ! bin/force-retranslate; then
+        echo "❌ Failed to clear translation cache"
+        exit 1
+    fi
+else
+    echo "ℹ️  Skipping force-retranslate (set FORCE_RETRANSLATE=1 to force retranslation)"
 fi
 
 # Sync translations with automated translation - MUST have API key
-echo "Syncing and translating all missing keys..."
+# This will only translate NEW/MISSING keys, not re-translate cached ones
+echo "Syncing and translating missing keys..."
 if ! bin/sync-translations; then
     echo "❌ Translation sync failed!"
     echo "   This is a critical error - deployment cannot proceed without translations"
@@ -40,8 +57,11 @@ fi
 
 # Check if translations created any changes
 if ! git diff-index --quiet HEAD -- config/locales/; then
-    echo "Translation sync created changes. Staging locale files..."
+    echo "✅ Translation sync created changes. Staging locale files..."
     git add config/locales/
+else
+    echo "✅ No new translations needed (all keys cached)"
+    echo "💡 Tip: To force retranslation of all keys, run: kamal deploy -e FORCE_RETRANSLATE=1"
 fi
 
 # Run tests first - ensure they pass before proceeding

@@ -159,6 +159,8 @@ zh-CN:
     error_count:
       one: 错误
       other: 错误
+    back: 返回
+    cancel: 取消
   date:
     formats:
       month_day_year: "%B %d, %Y"
@@ -962,6 +964,9 @@ zh-CN:
       remove: 移除
       round_all_down_help: 将所有金额向下舍入，以避免多收费
       round_all_down: 全部向下舍入
+      round_all_up_help: 将所有金额向上舍入以留出缓冲
+      round_all_up: 全部向上舍入
+    made_with_calcumake: 使用 CalcuMake 制作
   filaments:
     index:
       title: 我的线材
@@ -1096,6 +1101,15 @@ zh-CN:
       send_instructions: 您将收到一封电子邮件，其中包含有关如何解锁您的帐户的说明，将在几分钟内发送。
       send_paranoid_instructions: 如果您的帐户存在，您将在几分钟内收到一封包含如何解锁它的说明的电子邮件。
       unlocked: 您的帐户已成功解锁。请登录以继续。
+    omniauth_complete_profile:
+      title: 完善您的个人资料
+      subtitle: 要完成您的 %{provider} 登录，请提供您的电子邮件地址
+      email_label: 电子邮件地址
+      email_placeholder: your@email.com
+      email_help: 我们将使用此地址向您发送重要的帐户通知
+      submit: 完成注册
+      cancel: 取消并返回
+      privacy_notice: 我们尊重您的隐私。您的电子邮件仅用于帐户管理。
   landing:
     hero:
       headline: 更多创造，更少计算
@@ -1245,6 +1259,7 @@ zh-CN:
     usage_summary: 使用情况摘要
     limit_reached: 您已达到您计划的 %{resource} 限制
     approaching_limits_message: 您正在接近您的计划限制
+    unlimited: 无限制
   subscriptions:
     title: 订阅
     current_plan: 当前计划
@@ -1257,7 +1272,78 @@ zh-CN:
     features:
       calculations: 打印计算
       printers: 打印机
+      filaments: 线材
+      invoices: 发票
+      unlimited_calculations: 无限打印计算
+      unlimited_printers: 无限打印机
+      unlimited_filaments: 无限线材
+      unlimited_invoices: 无限发票
     upgrade_now: 立即升级
+    your_plan: 您的套餐
+    upgrade_to_plan: 升级到 %{plan}
+    downgrade_to_plan: 降级到 %{plan}
+    verification_error: 无法验证您的订阅。请联系支持。
+    plans:
+      subtitle: 选择最适合您的套餐
+    most_popular: 最受欢迎
+    monthly_price: "%{price} / 月"
+    month: 月
+    of: 的
+    remaining: 剩余
+    active: 激活
+    trial_badge: 试用
+    trial_ends_on: 试用期于 %{date} 结束
+    trial_remaining: 试用期还剩 %{days} 天
+    renews_on: 续订于 %{date}
+    access_until: 访问权限至 %{date}
+    canceling: 将于 %{date} 取消
+    days: 天
+    manage: 管理
+    manage_subscription: 管理订阅
+    manage_description: 查看您的账单历史记录、更新付款方式或取消您的订阅
+    manage_note: 在新窗口中打开 Stripe 客户门户
+    open_billing_portal: 打开账单门户
+    cancel_subscription: 取消订阅
+    cancel_confirmation: 您确定要取消您的订阅吗？您将继续拥有访问权限，直到当前结算周期结束。
+    cancel_notice: 您的订阅已安排取消
+    subscription_details: 订阅详情
+    status: 状态
+    next_billing_date: 下次账单日期
+    period_start: 周期开始
+    period_end: 周期结束
+    billing_period: 结算周期
+    next_bill: 下次账单
+    secure_payment: 通过 Stripe 安全支付
+    immediate_access: 立即访问所有功能
+    confirm_upgrade_title: 确认升级
+    confirm_upgrade_subtitle: 在继续之前查看升级详情
+    upgrade_summary: 升级摘要
+    new_plan: 新套餐
+    new_plan_price: 新套餐价格
+    prorated_charge_today: 今日按比例收费
+    charge_now: 立即收费
+    days_remaining: 剩余天数
+    days_remaining_in_period: 当前周期还剩 %{days} 天
+    pricing_breakdown: 价格明细
+    prorated_explanation: 您将被收取当前结算周期剩余时间的按比例计算的费用。您的下一次全额收费将在 %{date} 进行。
+    what_happens_next: 接下来会发生什么
+    confirm_and_upgrade: 确认并升级
+    confirm_downgrade: 确认降级
+    final_confirm_upgrade: 这将立即升级您的套餐，并从您的付款方式中扣除 %{amount}。继续吗？
+    faq:
+      title: 常见问题
+      trial_question: 试用版如何运作？
+      trial_answer: 新用户可获得 14 天的 Startup 套餐免费试用。无需信用卡。试用期结束后，您可以选择升级或继续使用免费套餐。
+      change_plan_question: 我可以随时更改套餐吗？
+      change_plan_answer: 是的，您可以随时升级或降级您的套餐。升级会按比例计算并立即生效。降级将在您当前结算周期结束时生效。
+      cancel_question: 如果我取消会发生什么？
+      cancel_answer: 您将继续拥有访问您套餐功能的权限，直到当前结算周期结束。之后，您将被降级到免费套餐。
+      payment_question: 接受哪些付款方式？
+      payment_answer: 我们接受通过 Stripe 支付的所有主要信用卡。所有付款都是安全且加密的。
+      data_question: 如果我降级，我的数据会怎样？
+      data_answer: 您的数据永远不会被删除。如果您超出免费套餐的限制，您需要升级或删除一些项目才能添加新项目。
+      reset_question: 使用限制何时重置？
+      reset_answer: 使用限制不会每月重置。它们代表您可以同时在您的帐户中拥有的项目总数。删除项目以释放空间。
   gdpr:
     cookie_consent:
       title: Cookie 同意声明
@@ -1279,6 +1365,15 @@ zh-CN:
       what_included: 您的数据导出包含哪些内容
       items:
         account_info: 帐户信息
+        print_pricings: 打印定价计算
+        printers: 打印机配置文件
+        filaments: 线材库
+        invoices: 发票
+        clients: 客户信息
+        consents: 用户同意和隐私偏好
+      download_button: 下载我的数据
+      format: 数据格式
+      format_description: 您的数据将导出为 JSON 文件，您可以随时保存和查看。
     data_deletion:
       title: 删除您的帐户
       description: 永久删除您的帐户和所有相关数据
@@ -1287,15 +1382,98 @@ zh-CN:
       warning_message: 您的所有数据将被永久删除且无法恢复
       button: 删除帐户
       what_deleted: 将删除哪些内容
+      delete_button: 删除我的帐户
+      before_deletion: 删除前须知
+      export_recommendation_html: 我们建议先 %{link}，以便在继续删除之前进行备份。
+      export_link: 导出您的数据
+      confirm_message: 您确定要永久删除您的帐户吗？此操作无法撤消。
+      items:
+        account: 您的用户帐户和登录凭据
+        print_pricings: 所有打印定价计算
+        printers: 所有打印机配置文件
+        filaments: 所有线材配置文件
+        invoices: 所有发票
+        clients: 所有客户信息
+        uploaded_files: 所有上传的文件和附件
     tos_sections:
       acceptance:
         title: 接受条款
         content: 使用 CalcuMake 即表示您同意这些服务条款
+      service_description:
+        title: 服务描述
+        content: CalcuMake 是一款 3D 打印成本计算和项目管理工具
+      user_accounts:
+        title: 用户帐户
+        content: 您有责任维护您的帐户安全以及您帐户下的所有活动
+      acceptable_use:
+        title: 可接受的使用
+        intro: 您同意不将我们的服务用于以下任何目的
+        items:
+          illegal: 非法活动或违反任何法律
+          harmful: 上传恶意代码或有害内容
+          unauthorized: 试图未经授权访问我们的系统
+          interference: 干扰或中断我们的服务或服务器
+      intellectual_property:
+        title: 知识产权
+        content: CalcuMake 上的所有内容和材料均归 MOAB Co., Ltd. 所有，并受适用的知识产权法保护
+      payment_terms:
+        title: 付款条款
+        content: 订阅费用按月或按年收取，具体取决于您的选择。所有付款均通过 Stripe 安全处理
+      termination:
+        title: 终止
+        content: 我们保留因违反这些条款而暂停或终止您的帐户的权利。您可以随时取消您的订阅
+      liability:
+        title: 责任限制
+        content: CalcuMake 按“原样”提供，不提供任何保证。我们不对因使用我们的服务而造成的任何损害负责
+      governing_law:
+        title: 适用法律
+        content: 这些条款受日本法律管辖。任何争议将在日本东京的法院解决
+      changes:
+        title: 条款变更
+        content: 我们可能随时更新这些条款。在更改后继续使用 CalcuMake 即表示接受新条款
     cookie_sections:
       what_are_cookies:
         title: 什么是 Cookie？
+        content: Cookie 是存储在您设备上的小型文本文件，可帮助我们提供更好的体验。我们使用必要的 Cookie 来实现功能，并使用分析 Cookie
+          来改进我们的服务。
+      how_we_use:
+        title: 我们如何使用 Cookie
+        intro: 我们使用不同类型的 Cookie 来改善您的体验并提供基本功能
+        content: 我们使用 Cookie 来记住您的偏好、验证您的会话以及分析网站使用情况以改进我们的服务
+        essential:
+          title: 必要的 Cookie
+          description: 身份验证、安全性和基本网站功能所必需
+        functional:
+          title: 功能性 Cookie
+          description: 记住您的偏好和设置，以提供个性化的体验
+        analytics:
+          title: 分析 Cookie
+          description: 帮助我们了解您如何使用我们的服务，以便我们改进它
+      cookie_list:
+        title: 我们使用的 Cookie
+        table:
+          name: Cookie 名称
+          purpose: 用途
+          duration: 有效期
+        cookies:
+          session:
+            purpose: 维护您的登录会话和身份验证状态
+            duration: 会话（关闭浏览器时清除）
+          remember:
+            purpose: 记住您的登录偏好（“记住我”）
+            duration: 2 周
+          consent:
+            purpose: 存储您的 Cookie 同意偏好
+            duration: 1 年
+      managing_cookies:
+        title: 管理 Cookie
+        content: 您可以通过浏览器设置控制和/或删除 Cookie。请注意，禁用 Cookie 可能会影响 CalcuMake 的功能
+      third_party:
+        title: 第三方 Cookie
+        content: 我们目前不使用第三方 Cookie。如果发生变化，我们将更新此政策并通知您
     consent_recorded: 您的偏好已保存
     account_deleted: 您的帐户已成功删除
+    privacy_policy_title: 隐私政策
   errors:
     messages:
       already_confirmed: 已被确认，请尝试登录
