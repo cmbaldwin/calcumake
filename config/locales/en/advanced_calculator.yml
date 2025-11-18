@@ -1,0 +1,63 @@
+---
+en:
+  advanced_calculator:
+    title: "Free 3D Print Pricing Calculator"
+    subtitle: "Professional multi-plate cost estimator with PDF/CSV export. No signup required."
+    sign_up_to_save: "Sign Up to Save Your Projects"
+    input_section: "Calculator Settings"
+    job_name: "Job Name"
+    job_name_placeholder: "Enter project name..."
+    plates_section: "Build Plates"
+    add_plate: "Add Plate"
+    plate: "Plate"
+    plates_help: "Add up to 10 build plates. Each plate can have multiple filaments and custom settings."
+    other_costs: "Additional Costs"
+    failure_rate: "Failure Rate"
+    failure_rate_help: "Percentage to account for failed prints"
+    shipping_cost: "Shipping Cost"
+    other_cost: "Other Costs"
+    reset: "Reset Calculator"
+    filaments: "Filaments"
+    add_filament: "Add Filament"
+    filaments_help: "Add up to 16 filaments per plate. Mix different materials and colors."
+
+    plate_fields:
+      print_time: "Print Time"
+      power_consumption: "Power Consumption"
+      machine_cost: "Machine Cost"
+      payoff_years: "Payoff Period (years)"
+      prep_time: "Prep Time"
+      post_time: "Post-Processing Time"
+      prep_rate: "Prep Rate"
+      post_rate: "Post Rate"
+
+    filament_fields:
+      weight: "Weight"
+      price_per_kg: "Price per kg"
+
+    results:
+      title: "Cost Summary"
+      filament_cost: "Filament"
+      electricity_cost: "Electricity"
+      labor_cost: "Labor"
+      machine_cost: "Machine"
+      other_costs: "Other"
+      grand_total: "Grand Total"
+
+    export_pdf: "Export to PDF"
+    export_csv: "Export to CSV"
+
+    features:
+      title: "Why CalcuMake?"
+      multi_plate: "Support for up to 10 build plates"
+      multi_filament: "Mix up to 16 filaments per plate"
+      auto_save: "Auto-save to browser (no data loss)"
+      pdf_csv_export: "Export to PDF or CSV instantly"
+      real_time: "Real-time cost calculations"
+      no_signup: "No signup required to use"
+
+    cta:
+      title: "Want to Save Your Projects?"
+      description: "Create a free account to save unlimited calculations, manage printers, create invoices, and more."
+      button: "Start Free Trial"
+      no_credit_card: "No credit card required"

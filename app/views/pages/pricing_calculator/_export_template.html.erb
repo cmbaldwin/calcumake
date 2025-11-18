@@ -1,0 +1,160 @@
+<%# Export Template - Used for PDF generation %>
+
+<div class="export-content bg-white p-4" style="max-width: 800px; font-family: Arial, sans-serif;">
+  <!-- Header -->
+  <div class="text-center mb-4 pb-3 border-bottom">
+    <h1 style="color: #c8102e; font-size: 24px; margin-bottom: 0.5rem;">
+      CalcuMake 3D Print Cost Estimate
+    </h1>
+    <p style="color: #6c757d; margin: 0;">
+      Generated <%= Time.current.strftime("%B %d, %Y") %>
+    </p>
+  </div>
+
+  <!-- Job Information -->
+  <div class="mb-4">
+    <h2 style="color: #333; font-size: 18px; margin-bottom: 1rem;">
+      Job Information
+    </h2>
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr>
+        <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6; font-weight: bold;">
+          Job Name:
+        </td>
+        <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6;" id="export-job-name">
+          -
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6; font-weight: bold;">
+          Date:
+        </td>
+        <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6;">
+          <%= Time.current.strftime("%Y-%m-%d") %>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Cost Breakdown -->
+  <div class="mb-4">
+    <h2 style="color: #333; font-size: 18px; margin-bottom: 1rem;">
+      Cost Breakdown
+    </h2>
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background-color: #f8f9fa;">
+          <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #dee2e6;">
+            Item
+          </th>
+          <th style="padding: 0.75rem; text-align: right; border-bottom: 2px solid #dee2e6;">
+            Cost
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6;">
+            Filament Cost
+          </td>
+          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" id="export-filament-cost">
+            $0.00
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6;">
+            Electricity Cost
+          </td>
+          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" id="export-electricity-cost">
+            $0.00
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6;">
+            Labor Cost
+          </td>
+          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" id="export-labor-cost">
+            $0.00
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6;">
+            Machine Cost
+          </td>
+          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" id="export-machine-cost">
+            $0.00
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6;">
+            Other Costs
+          </td>
+          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" id="export-other-costs">
+            $0.00
+          </td>
+        </tr>
+        <tr style="background-color: #f8f9fa; font-weight: bold; font-size: 16px;">
+          <td style="padding: 0.75rem; border-top: 2px solid #dee2e6;">
+            GRAND TOTAL
+          </td>
+          <td style="padding: 0.75rem; text-align: right; border-top: 2px solid #dee2e6; color: #28a745;" id="export-grand-total">
+            $0.00
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <div class="text-center mt-4 pt-3 border-top">
+    <p style="color: #6c757d; margin: 0; font-size: 14px;">
+      Created with CalcuMake - Professional 3D Print Cost Calculator
+    </p>
+    <p style="color: #6c757d; margin: 0.5rem 0 0 0; font-size: 12px;">
+      Visit <strong>calcumake.com</strong> to save and manage your projects
+    </p>
+  </div>
+</div>
+
+<script>
+  // Populate export template with current values
+  document.addEventListener('DOMContentLoaded', function() {
+    const controller = document.querySelector('[data-controller="advanced-calculator"]')
+    if (!controller) return
+
+    const observer = new MutationObserver(function() {
+      updateExportContent()
+    })
+
+    observer.observe(controller, {
+      subtree: true,
+      characterData: true,
+      childList: true
+    })
+
+    function updateExportContent() {
+      // Update job name
+      const jobName = controller.querySelector('[data-advanced-calculator-target="jobName"]')?.value || 'Untitled'
+      const exportJobName = document.getElementById('export-job-name')
+      if (exportJobName) exportJobName.textContent = jobName
+
+      // Update costs
+      const filamentCost = controller.querySelector('[data-advanced-calculator-target="totalFilamentCost"]')?.textContent || '$0.00'
+      const electricityCost = controller.querySelector('[data-advanced-calculator-target="totalElectricityCost"]')?.textContent || '$0.00'
+      const laborCost = controller.querySelector('[data-advanced-calculator-target="totalLaborCost"]')?.textContent || '$0.00'
+      const machineCost = controller.querySelector('[data-advanced-calculator-target="totalMachineCost"]')?.textContent || '$0.00'
+      const otherCosts = controller.querySelector('[data-advanced-calculator-target="totalOtherCosts"]')?.textContent || '$0.00'
+      const grandTotal = controller.querySelector('[data-advanced-calculator-target="grandTotal"]')?.textContent || '$0.00'
+
+      document.getElementById('export-filament-cost').textContent = filamentCost
+      document.getElementById('export-electricity-cost').textContent = electricityCost
+      document.getElementById('export-labor-cost').textContent = laborCost
+      document.getElementById('export-machine-cost').textContent = machineCost
+      document.getElementById('export-other-costs').textContent = otherCosts
+      document.getElementById('export-grand-total').textContent = grandTotal
+    }
+
+    // Initial update
+    setTimeout(updateExportContent, 500)
+  })
+</script>
