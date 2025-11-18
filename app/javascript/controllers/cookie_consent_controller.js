@@ -44,8 +44,8 @@ export default class extends Controller {
     // Set cookie for non-authenticated users
     this.setCookie("cookie_consent", accepted ? "accepted" : "rejected", 365)
 
-    // Send to server if user is authenticated
-    if (this.hasConsentUrlValue) {
+    // Send to server if user is authenticated and URL is present
+    if (this.hasConsentUrlValue && this.consentUrlValue !== '') {
       const csrfToken = document.querySelector("[name='csrf-token']").content
 
       fetch(this.consentUrlValue, {
@@ -69,6 +69,7 @@ export default class extends Controller {
         this.hideBanner()
       })
     } else {
+      // No URL means not authenticated - just hide the banner
       this.hideBanner()
     }
   }
