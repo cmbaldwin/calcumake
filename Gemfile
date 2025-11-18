@@ -39,7 +39,7 @@ gem "omniauth-rails_csrf_protection"
 # Payment processing
 gem "stripe"
 
-# Translation API
+# Translation API and LLM integration for filament import
 gem "open_router"
 
 # Admin interface

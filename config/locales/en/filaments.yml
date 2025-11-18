@@ -77,3 +77,45 @@ en:
       add_filament: Add Filament
       update_filament: Update Filament
     confirm_delete: Are you sure you want to delete '%{name}'?
+    import:
+      button: Import from URL/Text
+      title: Import Filaments
+      subtitle: Import filament data from URLs, invoices, receipts, or plain text using AI
+      form_title: Import Source
+      source_type: Select Import Source
+      source_types:
+        url: From URL
+        text: From Text
+      url_label: Product Page or Invoice URL
+      url_placeholder: https://example.com/product-page
+      url_help: Paste a link to a product page, online invoice, or receipt
+      text_label: Invoice, Receipt, or Product Details
+      text_placeholder: |
+        Paste invoice text, receipt details, or product specifications here...
+
+        Example:
+        eSun PLA+ Filament
+        Material: PLA
+        Diameter: 1.75mm
+        Color: Red
+        Weight: 1000g
+        Price: $25.99
+      text_help: Paste text from invoices, receipts, product descriptions, or any filament-related content
+      submit: Import Filaments
+      processing: Analyzing...
+      success: Successfully imported %{count} filament(s)
+      failure: Failed to import filaments. Errors: %{errors}
+      examples:
+        title: What can I import?
+        intro: The AI can extract filament data from various sources
+        invoice: Online shop invoices or order confirmations
+        product_page: Product pages from filament manufacturers
+        receipt: Email receipts or order summaries
+        plain_text: Plain text descriptions of filament specifications
+      info:
+        title: How it works
+        description: Our AI analyzes the content you provide and automatically extracts filament information.
+        point_1: The AI identifies filament names, brands, materials, and specifications
+        point_2: Multiple filaments from a single source (like bulk orders) are detected automatically
+        point_3: Duplicate names are handled automatically with numbered suffixes
+        point_4: Extracted data is validated before being added to your library

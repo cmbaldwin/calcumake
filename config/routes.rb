@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get "data-deletion", to: "privacy#data_deletion"
   resources :clients
   resources :filaments do
+    collection do
+      get :import_form
+      post :import
+    end
     member do
       post :duplicate
     end
