@@ -10,17 +10,19 @@ Rails.application.configure do
     policy.font_src    :self, :https, :data
     policy.img_src     :self, :https, :data, "*.googleusercontent.com", "*.google.com", "*.gstatic.com", "*.doubleclick.net"
     policy.object_src  :none
-    policy.script_src  :self, :https, :unsafe_inline, "*.googletagmanager.com", "*.google-analytics.com", "*.googlesyndication.com", "*.googleadservices.com", "pagead2.googlesyndication.com"
+    policy.script_src  :self, :https, :unsafe_inline, "*.googletagmanager.com", "*.google-analytics.com", "*.googlesyndication.com", "*.googleadservices.com", "pagead2.googlesyndication.com", "*.adtrafficquality.google"
     policy.style_src   :self, :https, :unsafe_inline
-    policy.frame_src   :self, "*.google.com", "*.doubleclick.net", "*.googlesyndication.com"
+    policy.frame_src   :self, "*.google.com", "*.doubleclick.net", "*.googlesyndication.com", "*.adtrafficquality.google"
     policy.connect_src :self, :https, "*.google-analytics.com", "*.analytics.google.com", "*.googletagmanager.com"
     # Specify URI for violation reports
     # policy.report_uri "/csp-violation-report-endpoint"
   end
 
-  # Generate session nonces for permitted importmap, inline scripts, and inline styles.
+  # Generate session nonces for permitted importmap and inline scripts.
+  # Note: style-src is not included to allow inline styles (style attributes)
+  # while still protecting scripts with nonces.
   config.content_security_policy_nonce_generator = ->(request) { request.session.id.to_s }
-  config.content_security_policy_nonce_directives = %w(script-src style-src)
+  config.content_security_policy_nonce_directives = %w(script-src)
 
   # Report violations without enforcing the policy.
   # config.content_security_policy_report_only = true
