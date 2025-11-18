@@ -7,6 +7,8 @@ en:
   subscriptions:
     title: Subscription
     current_plan: Current Plan
+    trial_badge: Trial
+    trial_remaining: "%{days} days left in trial"
     upgrade: Upgrade
     upgrade_to_plan: Upgrade to %{plan}
     downgrade_to_plan: Downgrade to %{plan}
@@ -18,8 +20,11 @@ en:
     verification_error: Unable to verify your subscription. Please contact support.
     features:
       calculations: Print Calculations
+      unlimited_calculations: Unlimited Print Calculations
       printers: Printers
+      unlimited_printers: Unlimited Printers
       filaments: Filaments
+      unlimited_filaments: Unlimited Filaments
       invoices: Invoices
       unlimited_invoices: Unlimited Invoices
     upgrade_now: Upgrade Now

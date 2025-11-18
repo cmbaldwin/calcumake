@@ -18,11 +18,12 @@ class UserConsentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should record IP address and user agent" do
-    post user_consents_url, params: { consent_type: "cookies", accepted: true }, as: :json
+    post user_consents_url, params: { consent_type: "cookies", accepted: true }, as: :json, headers: { "REMOTE_ADDR" => "127.0.0.1", "HTTP_USER_AGENT" => "TestAgent/1.0" }
 
     consent = UserConsent.last
-    assert_not_nil consent.ip_address
-    assert_not_nil consent.user_agent
+    # IP and user agent should be recorded from request
+    assert consent.ip_address.present? || consent.ip_address == "127.0.0.1"
+    assert consent.user_agent.present? || consent.user_agent == "TestAgent/1.0"
   end
 
   test "should fail without authentication" do
@@ -41,15 +42,17 @@ class UserConsentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should fail without consent_type" do
-    assert_raises(ActionController::ParameterMissing) do
+    assert_no_difference("UserConsent.count") do
       post user_consents_url, params: { accepted: true }, as: :json
     end
+    assert_response :bad_request
   end
 
   test "should fail without accepted parameter" do
-    assert_raises(ActionController::ParameterMissing) do
+    assert_no_difference("UserConsent.count") do
       post user_consents_url, params: { consent_type: "cookies" }, as: :json
     end
+    assert_response :bad_request
   end
 
   test "should accept consent as false" do

@@ -22,6 +22,9 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to root_path
     follow_redirect!
+    # Authenticated users are redirected from landing to print_pricings_path
+    assert_redirected_to print_pricings_path
+    follow_redirect!
     assert_response :success
 
     # First create a printer and filament for the user
@@ -101,6 +104,9 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
 
     # Test accessing index page
     get root_path
+    # Authenticated users are redirected from landing to print_pricings_path
+    assert_redirected_to print_pricings_path
+    follow_redirect!
     assert_response :success
     assert_select "h3.display-5", text: /My Print Calculations/
 

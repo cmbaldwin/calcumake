@@ -110,7 +110,7 @@ class Users::OmniauthCallbacksControllerTest < ActiveSupport::TestCase
   end
 
   test "OAuth providers are correctly configured on User model" do
-    expected_providers = [ :google_oauth2, :github, :microsoft_graph, :facebook, :yahoojp ]
+    expected_providers = [ :google_oauth2, :github, :microsoft_graph, :facebook, :yahoojp, :line ]
     assert_equal expected_providers, User.omniauth_providers
   end
 

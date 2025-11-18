@@ -75,7 +75,11 @@ class PrintPricingTest < ActiveSupport::TestCase
   end
 
   test "should calculate total_filament_cost correctly" do
-    expected_cost = 50.0 * (@filament.cost_per_gram)
+    # Base cost: 50g * $0.025/g = $1.25
+    # With default 20% markup: $1.25 * 1.2 = $1.50
+    base_cost = 50.0 * @filament.cost_per_gram
+    markup_multiplier = 1 + (20.0 / 100.0) # Default markup_percentage is 20%
+    expected_cost = base_cost * markup_multiplier
     assert_in_delta expected_cost, @print_pricing.total_filament_cost, 0.01
   end
 
