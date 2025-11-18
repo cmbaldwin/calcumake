@@ -22,7 +22,9 @@
     <div class="text-center mb-3">
       <h3 class="h5 mb-1"><%= features[:name] %></h3>
       <div class="plan-price mb-2">
-        <span class="price-amount"><%= features[:price] %></span>
+        <span class="price-amount">
+          <%= format_price_with_usd(features[:price_amount], features[:price_currency]) %>
+        </span>
         <% unless plan == 'free' %>
           <span class="price-period">/<%= t('subscriptions.month', default: 'month') %></span>
         <% end %>
