@@ -2,11 +2,12 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="locale-suggestion"
 export default class extends Controller {
-  static targets = ["banner", "suggestedLocale", "currentLocale", "switchButton", "dismissButton"]
+  static targets = ["banner", "messageText", "switchButton", "dismissButton"]
   static values = {
     currentLocale: String,
     apiUrl: String,
-    dismissedKey: String
+    dismissedKey: String,
+    translations: Object
   }
 
   // Language to locale mapping with country preferences
@@ -129,9 +130,33 @@ export default class extends Controller {
   }
 
   showSuggestionBanner(suggestedLocale) {
+    // Get translations for the suggested locale
+    const translations = this.translationsValue[suggestedLocale]
+    if (!translations) {
+      console.warn(`No translations found for locale: ${suggestedLocale}`)
+      return
+    }
+
+    // Get native language names
+    const suggestedLanguageName = this.getNativeLocaleName(suggestedLocale)
+    const currentLanguageName = this.getNativeLocaleName(this.currentLocaleValue)
+
+    // Build message in the suggested language
+    const message = `
+      <strong>${translations.title}</strong>
+      ${translations.switch_to.replace('__LANGUAGE__', `<span class="fw-bold text-primary">${suggestedLanguageName}</span>`)}
+      <small class="text-muted d-block">
+        ${translations.currently_viewing.replace('__CURRENT__', currentLanguageName)}
+      </small>
+    `
+
     // Update banner content
-    this.suggestedLocaleTarget.textContent = this.getLocaleName(suggestedLocale)
-    this.currentLocaleTarget.textContent = this.getLocaleName(this.currentLocaleValue)
+    this.messageTextTarget.innerHTML = message
+    this.switchButtonTarget.textContent = translations.switch_button
+
+    // Stay button should be in the current locale's native language
+    const currentTranslations = this.translationsValue[this.currentLocaleValue]
+    this.dismissButtonTarget.textContent = currentTranslations ? currentTranslations.stay_button : 'Stay'
 
     // Set up switch button
     this.switchButtonTarget.onclick = () => this.switchToLocale(suggestedLocale)
@@ -199,7 +224,8 @@ export default class extends Controller {
     return document.cookie.includes('locale=') || sessionStorage.getItem('locale')
   }
 
-  getLocaleName(locale) {
+  getNativeLocaleName(locale) {
+    // Always return language names in their native language
     const names = {
       'en': 'English',
       'ja': '日本語',
@@ -210,5 +236,10 @@ export default class extends Controller {
       'ar': 'العربية'
     }
     return names[locale] || locale
+  }
+
+  // Deprecated: kept for backwards compatibility
+  getLocaleName(locale) {
+    return this.getNativeLocaleName(locale)
   }
 }

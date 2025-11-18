@@ -5,8 +5,8 @@ export default class extends Controller {
   static targets = ["button"]
 
   connect() {
-    // Listen for the beforeinstallprompt event
-    window.addEventListener('beforeinstallprompt', (e) => {
+    // Store bound functions for proper cleanup
+    this.boundHandleBeforeInstall = (e) => {
       // Prevent the mini-infobar from appearing on mobile
       e.preventDefault()
       // Stash the event so it can be triggered later
@@ -15,7 +15,18 @@ export default class extends Controller {
       if (this.hasButtonTarget) {
         this.buttonTarget.style.display = 'block'
       }
-    })
+    }
+
+    this.boundHandleAppInstalled = () => {
+      console.log('CalcuMake has been installed')
+      if (this.hasButtonTarget) {
+        this.buttonTarget.style.display = 'none'
+      }
+      this.deferredPrompt = null
+    }
+
+    // Listen for the beforeinstallprompt event
+    window.addEventListener('beforeinstallprompt', this.boundHandleBeforeInstall)
 
     // Hide button if already installed
     if (window.matchMedia('(display-mode: standalone)').matches) {
@@ -25,13 +36,17 @@ export default class extends Controller {
     }
 
     // Listen for successful installation
-    window.addEventListener('appinstalled', () => {
-      console.log('CalcuMake has been installed')
-      if (this.hasButtonTarget) {
-        this.buttonTarget.style.display = 'none'
-      }
-      this.deferredPrompt = null
-    })
+    window.addEventListener('appinstalled', this.boundHandleAppInstalled)
+  }
+
+  disconnect() {
+    // Clean up event listeners
+    if (this.boundHandleBeforeInstall) {
+      window.removeEventListener('beforeinstallprompt', this.boundHandleBeforeInstall)
+    }
+    if (this.boundHandleAppInstalled) {
+      window.removeEventListener('appinstalled', this.boundHandleAppInstalled)
+    }
   }
 
   install() {

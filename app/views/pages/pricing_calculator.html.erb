@@ -8,27 +8,36 @@
 <div class="pricing-calculator-page" data-controller="advanced-calculator" data-advanced-calculator-energy-cost-value="0.12" data-advanced-calculator-currency-value="USD" data-advanced-calculator-locale-value="en-US" data-advanced-calculator-max-plates-value="10">
 
     <!-- Quick Calculator Section -->
-    <section class="quick-calculator-section p-4 mb-4 bg-light">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="text-center mb-4">
-                        <h1 class="h2 mb-2">
-                            <i class="bi bi-calculator-fill me-2"></i>
-                            <%= t('advanced_calculator.title') %>
-                        </h1>
-                        <p class="mb-0">
-                            <%= t('advanced_calculator.subtitle') %>
-                        </p>
-                    </div>
+    <section class="quick-calculator-section mb-4 bg-light rounded-3" data-controller="collapse">
+        <div class="text-center py-2">
+            <button class="btn btn-outline-secondary" type="button" data-action="click->collapse#toggle" style="font-size: 1.05rem;">
+                <i class="bi bi-calculator me-2"></i>
+                <%= t('advanced_calculator.quick_calculator_toggle') %>
+            </button>
+        </div>
 
-                    <%= quick_calculator(energy_cost: 0.12) %>
+        <div class="collapse" data-collapse-target="content">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="text-center mb-4">
+                            <h1 class="h2 mb-2">
+                                <i class="bi bi-calculator-fill me-2"></i>
+                                <%= t('advanced_calculator.title') %>
+                            </h1>
+                            <p class="mb-0">
+                                <%= t('advanced_calculator.subtitle') %>
+                            </p>
+                        </div>
 
-                    <div class="text-center mt-3">
-                        <%= link_to new_user_registration_path, class: "btn btn-primary btn-lg" do %>
-                        <i class="bi bi-person-plus me-2"></i>
-                        <%= t('advanced_calculator.sign_up_to_save') %>
-                        <% end %>
+                        <%= quick_calculator(energy_cost: 0.12) %>
+
+                        <div class="text-center mt-3 mb-4">
+                            <%= link_to new_user_registration_path, class: "btn btn-primary btn-lg" do %>
+                            <i class="bi bi-person-plus me-2"></i>
+                            <%= t('advanced_calculator.sign_up_to_save') %>
+                            <% end %>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -219,7 +219,11 @@ export default class extends Controller {
   attachRoundingListeners() {
     // Add blur listeners to round values when user finishes editing
     this.lineItemsTarget.querySelectorAll('.line-item-price').forEach(input => {
-      input.addEventListener('blur', (e) => this.roundValue(e))
+      // Use data-action to avoid duplicate listeners (Stimulus handles cleanup)
+      if (!input.dataset.action || !input.dataset.action.includes('blur->invoice-form#roundValue')) {
+        const existingAction = input.dataset.action || ''
+        input.dataset.action = existingAction ? `${existingAction} blur->invoice-form#roundValue` : 'blur->invoice-form#roundValue'
+      }
       // Also update the step attribute to match currency
       input.step = this.priceStep
 
