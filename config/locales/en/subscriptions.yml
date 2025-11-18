@@ -9,6 +9,8 @@ en:
     title: Subscription
     current_plan: Current Plan
     your_plan: Your Plan
+    trial_badge: Trial
+    trial_remaining: "%{days} days left in trial"
     upgrade: Upgrade
     upgrade_to_plan: Upgrade to %{plan}
     downgrade_to_plan: Downgrade to %{plan}
@@ -22,12 +24,12 @@ en:
       subtitle: Choose the plan that works best for you
     features:
       calculations: Print Calculations
-      printers: Printers
-      filaments: Filaments
-      invoices: Invoices
       unlimited_calculations: Unlimited Print Calculations
+      printers: Printers
       unlimited_printers: Unlimited Printers
+      filaments: Filaments
       unlimited_filaments: Unlimited Filaments
+      invoices: Invoices
       unlimited_invoices: Unlimited Invoices
     upgrade_now: Upgrade Now
     most_popular: Most Popular
@@ -36,9 +38,7 @@ en:
     of: of
     remaining: remaining
     active: Active
-    trial_badge: Trial
     trial_ends_on: Trial ends on %{date}
-    trial_remaining: "%{days} days remaining in trial"
     renews_on: Renews on %{date}
     access_until: Access until %{date}
     canceling: Canceling on %{date}

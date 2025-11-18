@@ -6,7 +6,7 @@ class PrintersController < ApplicationController
 
   private
 
-  # Printers use total count, not monthly tracking
+    # Skip usage tracking for printers (they use total count, not monthly limits)
   def skip_usage_tracking?
     true
   end

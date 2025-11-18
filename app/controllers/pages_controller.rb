@@ -18,19 +18,10 @@ class PagesController < ApplicationController
     @structured_data = landing_page_structured_data
   end
 
-  def demo
-    # Demo page with sample calculator - no authentication required
-    @page_title = "CalcuMake Demo - Try Our 3D Print Cost Calculator"
-    @meta_description = "Try CalcuMake's 3D print cost calculator with sample data. See how easy it is to calculate accurate pricing for your 3D printing projects."
-
-    # Sample data for demo
-    @demo_printer = OpenStruct.new(
-      name: "Sample Printer",
-      power_consumption: 200,
-      cost: 500.00,
-      payoff_goal: 3,
-      daily_usage: 8,
-      repair_factor: 5.0
-    )
+  def pricing_calculator
+    # Advanced SPA pricing calculator with quick calculator at top - no authentication required
+    @page_title = "Free 3D Print Pricing Calculator | Multi-Plate Cost Estimator"
+    @meta_description = "Professional 3D print pricing calculator with multi-plate support, filament tracking, labor costs, and instant PDF/CSV export. Free to use, no signup required."
+    @meta_keywords = "3d print calculator, 3d printing cost calculator, filament calculator, multi-plate calculator, 3d printing pricing tool, print cost estimator"
   end
 end
