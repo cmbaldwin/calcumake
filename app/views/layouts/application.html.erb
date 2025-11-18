@@ -16,7 +16,7 @@
     <% if Rails.env.production? %>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
+    <script nonce="<%= content_security_policy_nonce %>">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -54,16 +54,16 @@
     <%= yield :head %>
 
     <%# Structured Data %>
-    <script type="application/ld+json">
+    <script type="application/ld+json" nonce="<%= content_security_policy_nonce %>">
       <%= structured_data_organization.html_safe %>
     </script>
-    <script type="application/ld+json">
+    <script type="application/ld+json" nonce="<%= content_security_policy_nonce %>">
       <%= structured_data_web_application.html_safe %>
     </script>
-    <script type="application/ld+json">
+    <script type="application/ld+json" nonce="<%= content_security_policy_nonce %>">
       <%= structured_data_calculator.html_safe %>
     </script>
-    <script type="application/ld+json">
+    <script type="application/ld+json" nonce="<%= content_security_policy_nonce %>">
       <%= structured_data_faq.html_safe %>
     </script>
     <%= yield :structured_data %>
