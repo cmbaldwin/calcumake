@@ -71,9 +71,9 @@ Rails.application.routes.draw do
   # Locale switching
   post "switch_locale", to: "application#switch_locale"
 
-  # Landing page and demo
+  # Landing page and pricing calculator
   get "landing", to: "pages#landing", as: :landing
-  get "demo", to: "pages#demo", as: :demo
+  get "3d-print-pricing-calculator", to: "pages#pricing_calculator", as: :pricing_calculator
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "pages#landing"
