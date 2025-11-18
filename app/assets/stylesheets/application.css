@@ -75,6 +75,34 @@ body {
   color: white !important;
 }
 
+/* Navbar responsive fixes to prevent overlap */
+@media (min-width: 992px) {
+  .navbar-brand {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0.5rem 0.4rem !important;
+    font-size: 0.9rem;
+  }
+
+  .navbar .navbar-text {
+    padding-left: 0.5rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .navbar-brand span {
+    font-size: 0.85rem;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0.5rem 0.3rem !important;
+    font-size: 0.85rem;
+  }
+}
+
 /* Custom button styling */
 .btn-primary {
   background: linear-gradient(
