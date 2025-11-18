@@ -1225,6 +1225,15 @@ ja:
       description: CalcuMakeのフルバージョンには以下が含まれます：
       features: '["自動仕様による複数のプリンタープロファイル", "材料特性を備えた包括的なフィラメントライブラリ", "プロフェッショナルなPDF請求書生成",
         "プロジェクト履歴と複製機能", "多通貨サポート", "機械の減価償却計算"]'
+    advanced_calculator:
+      title: さらに機能が必要ですか？
+      description: マルチプレート対応、カスタムフィラメント、PDF/CSV即時エクスポートが可能な高度な価格計算ツールをお試しください。
+      button: 高度な計算ツールを開く
+      features:
+        multi_plate: 最大10枚のビルドプレートをサポート
+        multi_filament: プレートあたり最大16種類のフィラメントを混合可能
+        pdf_csv: PDFまたはCSVに即座にエクスポート
+        local_storage: ブラウザに自動保存（データ損失なし）
   locale_suggestion:
     banner:
       title: 別の地域からアクセスしているようです。
@@ -1484,3 +1493,58 @@ ja:
       not_saved:
         one: '1件のエラーにより、この%{resource}を保存できませんでした:'
         other: "%{count}件のエラーにより、この%{resource}を保存できませんでした:"
+  advanced_calculator:
+    title: 無料3Dプリント価格計算ツール
+    subtitle: PDF/CSVエクスポート機能を備えたプロフェッショナルなマルチプレートコスト見積もりツール。サインアップは不要です。
+    sign_up_to_save: サインアップしてプロジェクトを保存
+    input_section: 計算機の設定
+    job_name: ジョブ名
+    job_name_placeholder: プロジェクト名を入力...
+    plates_section: ビルドプレート
+    add_plate: プレートを追加
+    plate: プレート
+    plates_help: 最大10枚のビルドプレートを追加できます。各プレートには複数のフィラメントとカスタム設定を使用できます。
+    other_costs: その他の費用
+    failure_rate: 不良率
+    failure_rate_help: プリントの失敗を考慮するための割合
+    shipping_cost: 配送料
+    other_cost: その他の費用
+    reset: 計算機をリセット
+    filaments: フィラメント
+    add_filament: フィラメントを追加
+    filaments_help: プレートごとに最大16個のフィラメントを追加できます。異なる素材と色を混ぜてください。
+    plate_fields:
+      print_time: プリント時間
+      power_consumption: 消費電力
+      machine_cost: 機械費用
+      payoff_years: 回収期間（年）
+      prep_time: 準備時間
+      post_time: 後処理時間
+      prep_rate: 準備レート
+      post_rate: 後処理レート
+    filament_fields:
+      weight: 重量
+      price_per_kg: 1kgあたりの価格
+    results:
+      title: コスト概要
+      filament_cost: フィラメント
+      electricity_cost: 電気代
+      labor_cost: 人件費
+      machine_cost: 機械費用
+      other_costs: その他
+      grand_total: 総合計
+    export_pdf: PDFにエクスポート
+    export_csv: CSVにエクスポート
+    features:
+      title: CalcuMakeを選ぶ理由
+      multi_plate: 最大10枚のビルドプレートをサポート
+      multi_filament: プレートごとに最大16個のフィラメントを混合
+      auto_save: ブラウザに自動保存（データ損失なし）
+      pdf_csv_export: PDFまたはCSVに即座にエクスポート
+      real_time: リアルタイムのコスト計算
+      no_signup: 使用にサインアップは不要
+    cta:
+      title: プロジェクトを保存したいですか？
+      description: 無料アカウントを作成して、無制限の計算を保存し、プリンターを管理し、請求書を作成するなど、さまざまな機能を利用できます。
+      button: 無料トライアルを開始
+      no_credit_card: クレジットカードは不要です
