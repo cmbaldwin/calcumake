@@ -33,4 +33,11 @@ class PagesController < ApplicationController
       repair_factor: 5.0
     )
   end
+
+  def pricing_calculator
+    # Advanced SPA pricing calculator - no authentication required
+    @page_title = "Free 3D Print Pricing Calculator | Multi-Plate Cost Estimator"
+    @meta_description = "Professional 3D print pricing calculator with multi-plate support, filament tracking, labor costs, and instant PDF/CSV export. Free to use, no signup required."
+    @meta_keywords = "3d print calculator, 3d printing cost calculator, filament calculator, multi-plate calculator, 3d printing pricing tool, print cost estimator"
+  end
 end
