@@ -11,6 +11,11 @@ class PrintersController < ApplicationController
     true
   end
 
+  # Printers use total count, not per-create limits
+  def skip_limit_check?
+    true
+  end
+
   public
 
   def index
@@ -43,8 +48,8 @@ class PrintersController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render :new, status: :unprocessable_content }
-        format.turbo_stream { render :modal_form, status: :unprocessable_content }
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :modal_form, status: :unprocessable_entity }
       end
     end
   end
@@ -62,7 +67,7 @@ class PrintersController < ApplicationController
         }
       end
     else
-      render :edit, status: :unprocessable_content
+      render :edit, status: :unprocessable_entity
     end
   end
 

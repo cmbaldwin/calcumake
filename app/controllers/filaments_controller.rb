@@ -38,8 +38,8 @@ class FilamentsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render :new, status: :unprocessable_content }
-        format.turbo_stream { render :modal_form, status: :unprocessable_content }
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :modal_form, status: :unprocessable_entity }
       end
     end
   end
@@ -51,7 +51,7 @@ class FilamentsController < ApplicationController
     if @filament.update(filament_params)
       redirect_to @filament, notice: t("flash.updated", model: t("models.filament"))
     else
-      render :edit, status: :unprocessable_content
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -78,6 +78,11 @@ class FilamentsController < ApplicationController
 
   # Filaments use total count, not monthly tracking
   def skip_usage_tracking?
+    true
+  end
+
+  # Filaments use total count, not per-create limits
+  def skip_limit_check?
     true
   end
 

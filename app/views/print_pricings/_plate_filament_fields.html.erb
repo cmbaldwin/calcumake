@@ -7,7 +7,7 @@
       <%= turbo_frame_tag dom_id(f.object, :filament_select), data: { filament_select_frame: true } do %>
         <%= f.label :filament_id, t('filaments.fields.filament'), class: "form-label" %>
         <%= f.select :filament_id,
-            options_for_select([['', '']] + user_filaments.map do |filament|
+            options_for_select(user_filaments.map do |filament|
               [
                 filament.display_name,
                 filament.id,
