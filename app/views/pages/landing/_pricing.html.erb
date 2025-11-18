@@ -47,7 +47,7 @@
                             </div>
                             <h4 class="text-primary"><%= t('landing.pricing.startup.title') %></h4>
                             <div class="price-display mb-3">
-                                <span class="h2 text-primary">¥150</span>
+                                <span class="h2 text-primary"><%= format_price_with_usd(150, 'JPY') %></span>
                                 <span class="text-muted">/month</span>
                             </div>
                             <ul class="list-unstyled text-start mb-4 flex-grow-1">
@@ -72,7 +72,7 @@
                         <div class="card-body p-4 text-center d-flex flex-column">
                             <h4 class="text-primary"><%= t('landing.pricing.pro.title') %></h4>
                             <div class="price-display mb-3">
-                                <span class="h2 text-primary">¥1,500</span>
+                                <span class="h2 text-primary"><%= format_price_with_usd(1500, 'JPY') %></span>
                                 <span class="text-muted">/month</span>
                             </div>
                             <ul class="list-unstyled text-start mb-4 flex-grow-1">
