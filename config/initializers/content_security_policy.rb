@@ -18,11 +18,10 @@ Rails.application.configure do
     # policy.report_uri "/csp-violation-report-endpoint"
   end
 
-  # Generate session nonces for permitted importmap and inline scripts.
-  # Note: style-src is not included to allow inline styles (style attributes)
-  # while still protecting scripts with nonces.
-  config.content_security_policy_nonce_generator = ->(request) { request.session.id.to_s }
-  config.content_security_policy_nonce_directives = %w(script-src)
+  # Nonce configuration removed to allow 'unsafe-inline' for scripts and styles.
+  # This is needed for compatibility with inline event handlers and third-party scripts.
+  # config.content_security_policy_nonce_generator = ->(request) { request.session.id.to_s }
+  # config.content_security_policy_nonce_directives = %w(script-src style-src)
 
   # Report violations without enforcing the policy.
   # config.content_security_policy_report_only = true
