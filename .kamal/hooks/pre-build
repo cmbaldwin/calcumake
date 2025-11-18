@@ -12,6 +12,12 @@
 #   4. Run tests
 #   5. Commit and push changes if any
 
+# Redirect all output to stderr so Kamal shows it
+exec 1>&2
+
+# Enable verbose output
+set -x
+
 # Load environment variables from .env.local if it exists (for local testing)
 if [ -f .env.local ]; then
     echo "Loading environment from .env.local..."
