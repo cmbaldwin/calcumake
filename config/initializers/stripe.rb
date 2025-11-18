@@ -1,6 +1,5 @@
 # Stripe payment processing configuration
-# For development/test: Use ENV variables from .env.local (loaded by dotenv-rails)
-# For production: Use Rails credentials (encrypted)
+# Uses ENV variables for all environments (loaded by dotenv-rails in dev/test, Kamal in production)
 #
 # Development setup (.env.local):
 #   STRIPE_PUBLISHABLE_KEY=pk_test_...
@@ -9,70 +8,51 @@
 #   STRIPE_STARTUP_PRICE_ID=price_...
 #   STRIPE_PRO_PRICE_ID=price_...
 #
-# Production setup:
-#   Run: EDITOR=nano rails credentials:edit
-#   Add:
-#     stripe:
-#       publishable_key: pk_live_...
-#       secret_key: sk_live_...
-#       webhook_secret: whsec_...
-#       startup_price_id: price_...
-#       pro_price_id: price_...
+# Production setup (Kamal):
+#   Configure in .kamal/secrets (pulls from 1Password)
+#   ENV variables are injected via config/deploy.yml
 
-# Determine source: ENV vars (dev/test) or credentials (production)
-if Rails.env.development? || Rails.env.test?
-  # Use ENV variables from .env.local
-  if ENV["STRIPE_SECRET_KEY"].present?
-    Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
+# Use ENV variables for all environments
+# Development: from .env.local (loaded by dotenv-rails)
+# Production: from Kamal secrets (injected via deploy.yml)
+if ENV["STRIPE_SECRET_KEY"].present?
+  Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
 
-    Rails.configuration.stripe = {
-      publishable_key: ENV["STRIPE_PUBLISHABLE_KEY"],
-      secret_key: ENV["STRIPE_SECRET_KEY"],
-      webhook_secret: ENV["STRIPE_WEBHOOK_SECRET"],
-      startup_price_id: ENV["STRIPE_STARTUP_PRICE_ID"],
-      pro_price_id: ENV["STRIPE_PRO_PRICE_ID"]
-    }
-  else
-    Rails.logger.warn "⚠️  Stripe ENV variables not configured. Add them to .env.local"
+  Rails.configuration.stripe = {
+    publishable_key: ENV["STRIPE_PUBLISHABLE_KEY"],
+    secret_key: ENV["STRIPE_SECRET_KEY"],
+    webhook_secret: ENV["STRIPE_WEBHOOK_SECRET"],
+    startup_price_id: ENV["STRIPE_STARTUP_PRICE_ID"],
+    pro_price_id: ENV["STRIPE_PRO_PRICE_ID"]
+  }
+elsif ENV["SECRET_KEY_BASE_DUMMY"].present?
+  # Asset precompilation doesn't need real Stripe credentials
+  Stripe.api_key = "sk_dummy_for_precompile"
 
-    # Set dummy values if not configured
-    Stripe.api_key = "sk_test_dummy_key_for_development"
-
-    Rails.configuration.stripe = {
-      publishable_key: "pk_test_dummy_key_for_development",
-      secret_key: "sk_test_dummy_key_for_development",
-      webhook_secret: "whsec_dummy_secret_for_development",
-      startup_price_id: "price_dummy_startup",
-      pro_price_id: "price_dummy_pro"
-    }
-  end
+  Rails.configuration.stripe = {
+    publishable_key: "pk_dummy_for_precompile",
+    secret_key: "sk_dummy_for_precompile",
+    webhook_secret: "whsec_dummy_for_precompile",
+    startup_price_id: "price_dummy_startup",
+    pro_price_id: "price_dummy_pro"
+  }
 else
-  # Production: Use Rails credentials
-  # Skip during asset precompilation (when SECRET_KEY_BASE_DUMMY is set)
-  if ENV["SECRET_KEY_BASE_DUMMY"].present?
-    # Asset precompilation doesn't need real Stripe credentials
-    Stripe.api_key = "sk_dummy_for_precompile"
+  # Allow app to boot for tasks like db:prepare, but log warning
+  warning_msg = Rails.env.development? ?
+    "⚠️  Stripe ENV variables not configured. Add them to .env.local" :
+    "⚠️  Stripe ENV variables not configured. Set via Kamal secrets"
+  Rails.logger.warn warning_msg
 
-    Rails.configuration.stripe = {
-      publishable_key: "pk_dummy_for_precompile",
-      secret_key: "sk_dummy_for_precompile",
-      webhook_secret: "whsec_dummy_for_precompile",
-      startup_price_id: "price_dummy_startup",
-      pro_price_id: "price_dummy_pro"
-    }
-  elsif Rails.application.credentials.stripe.present?
-    Stripe.api_key = Rails.application.credentials.stripe[:secret_key]
+  # Set dummy values to allow boot
+  Stripe.api_key = "sk_dummy_for_boot"
 
-    Rails.configuration.stripe = {
-      publishable_key: Rails.application.credentials.stripe[:publishable_key],
-      secret_key: Rails.application.credentials.stripe[:secret_key],
-      webhook_secret: Rails.application.credentials.stripe[:webhook_secret],
-      startup_price_id: Rails.application.credentials.stripe[:startup_price_id],
-      pro_price_id: Rails.application.credentials.stripe[:pro_price_id]
-    }
-  else
-    raise "Stripe credentials not configured for production. Run: EDITOR=nano rails credentials:edit"
-  end
+  Rails.configuration.stripe = {
+    publishable_key: "pk_dummy_for_boot",
+    secret_key: "sk_dummy_for_boot",
+    webhook_secret: "whsec_dummy_for_boot",
+    startup_price_id: "price_dummy_startup",
+    pro_price_id: "price_dummy_pro"
+  }
 end
 
 # Stripe API version (update as needed)
