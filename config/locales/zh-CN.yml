@@ -1224,6 +1224,15 @@ zh-CN:
       description: 完整的 CalcuMake 应用程序包括：
       features: '["具有自动规格的多个打印机配置文件", "具有材料属性的综合线材库", "专业的 PDF 发票生成", "项目历史记录和重复功能",
         "多币种支持", "机器折旧计算"]'
+    advanced_calculator:
+      title: 需要更多功能？
+      description: 试用我们的高级定价计算器，支持多板打印、自定义耗材以及即时 PDF/CSV 导出。
+      button: 打开高级计算器
+      features:
+        multi_plate: 支持最多 10 个构建板
+        multi_filament: 每个板最多混合 16 种耗材
+        pdf_csv: 即时导出为 PDF 或 CSV
+        local_storage: 在浏览器中自动保存（无数据丢失）
   locale_suggestion:
     banner:
       title: 看起来您正在从不同的地区访问。
@@ -1484,3 +1493,58 @@ zh-CN:
       not_saved:
         one: '有 1 个错误导致无法保存此 %{resource}:'
         other: '有 %{count} 个错误导致无法保存此 %{resource}:'
+  advanced_calculator:
+    title: 免费 3D 打印定价计算器
+    subtitle: 专业的包含 PDF/CSV 导出的多板成本估算器。无需注册。
+    sign_up_to_save: 注册以保存您的项目
+    input_section: 计算器设置
+    job_name: 作业名称
+    job_name_placeholder: 输入项目名称...
+    plates_section: 构建板
+    add_plate: 添加板
+    plate: 板
+    plates_help: 最多添加 10 个构建板。每个板可以有多个耗材和自定义设置。
+    other_costs: 其他成本
+    failure_rate: 失败率
+    failure_rate_help: 用于计算打印失败的百分比
+    shipping_cost: 运费
+    other_cost: 其他成本
+    reset: 重置计算器
+    filaments: 耗材
+    add_filament: 添加耗材
+    filaments_help: 每个板最多添加 16 种耗材。混合不同的材料和颜色。
+    plate_fields:
+      print_time: 打印时间
+      power_consumption: 功耗
+      machine_cost: 机器成本
+      payoff_years: 投资回收期（年）
+      prep_time: 准备时间
+      post_time: 后处理时间
+      prep_rate: 准备费率
+      post_rate: 后处理费率
+    filament_fields:
+      weight: 重量
+      price_per_kg: 每公斤价格
+    results:
+      title: 成本汇总
+      filament_cost: 耗材
+      electricity_cost: 电力
+      labor_cost: 人工
+      machine_cost: 机器
+      other_costs: 其他
+      grand_total: 总计
+    export_pdf: 导出为 PDF
+    export_csv: 导出为 CSV
+    features:
+      title: 为什么选择 CalcuMake？
+      multi_plate: 支持最多 10 个构建板
+      multi_filament: 每个板最多混合 16 种耗材
+      auto_save: 自动保存到浏览器（无数据丢失）
+      pdf_csv_export: 立即导出为 PDF 或 CSV
+      real_time: 实时成本计算
+      no_signup: 无需注册即可使用
+    cta:
+      title: 想要保存您的项目吗？
+      description: 创建一个免费帐户以保存无限的计算，管理打印机，创建发票等等。
+      button: 开始免费试用
+      no_credit_card: 无需信用卡

@@ -1448,6 +1448,17 @@ fr:
       - Historique des projets et fonctionnalité de duplication
       - Prise en charge de plusieurs devises
       - Calculs d'amortissement des machines
+    advanced_calculator:
+      title: Besoin de plus de fonctionnalités ?
+      description: Essayez notre calculateur de prix avancé avec prise en charge multi-plateaux,
+        filaments personnalisés et exportation PDF/CSV instantanée.
+      button: Ouvrir le calculateur avancé
+      features:
+        multi_plate: Prise en charge de jusqu'à 10 plateaux de construction
+        multi_filament: Mélangez jusqu'à 16 filaments par plateau
+        pdf_csv: Exportation instantanée au format PDF ou CSV
+        local_storage: Sauvegarde automatique dans le navigateur (aucune perte de
+          données)
   locale_suggestion:
     banner:
       title: Il semble que vous accédiez depuis une région différente.
@@ -1757,3 +1768,62 @@ fr:
       not_saved:
         one: '1 erreur a empêché l''enregistrement de ce %{resource} :'
         other: "%{count} erreurs ont empêché l'enregistrement de ce %{resource} :"
+  advanced_calculator:
+    title: Calculateur de Prix d'Impression 3D Gratuit
+    subtitle: Estimateur de coûts multi-plateaux professionnel avec exportation PDF/CSV.
+      Aucune inscription requise.
+    sign_up_to_save: Inscrivez-vous pour sauvegarder vos projets
+    input_section: Paramètres du calculateur
+    job_name: Nom du projet
+    job_name_placeholder: Entrez le nom du projet...
+    plates_section: Plateaux de construction
+    add_plate: Ajouter un plateau
+    plate: Plateau
+    plates_help: Ajoutez jusqu'à 10 plateaux de construction. Chaque plateau peut
+      avoir plusieurs filaments et des paramètres personnalisés.
+    other_costs: Coûts supplémentaires
+    failure_rate: Taux d'échec
+    failure_rate_help: Pourcentage à prendre en compte pour les impressions ratées
+    shipping_cost: Frais de port
+    other_cost: Autres coûts
+    reset: Réinitialiser le calculateur
+    filaments: Filaments
+    add_filament: Ajouter un filament
+    filaments_help: Ajoutez jusqu'à 16 filaments par plateau. Mélangez différents
+      matériaux et couleurs.
+    plate_fields:
+      print_time: Temps d'impression
+      power_consumption: Consommation électrique
+      machine_cost: Coût de la machine
+      payoff_years: Période d'amortissement (années)
+      prep_time: Temps de préparation
+      post_time: Temps de post-traitement
+      prep_rate: Tarif de préparation
+      post_rate: Tarif de post-traitement
+    filament_fields:
+      weight: Poids
+      price_per_kg: Prix par kg
+    results:
+      title: Récapitulatif des coûts
+      filament_cost: Filament
+      electricity_cost: Électricité
+      labor_cost: Main d'œuvre
+      machine_cost: Machine
+      other_costs: Autres
+      grand_total: Total
+    export_pdf: Exporter en PDF
+    export_csv: Exporter en CSV
+    features:
+      title: Pourquoi CalcuMake ?
+      multi_plate: Prise en charge de jusqu'à 10 plateaux de construction
+      multi_filament: Mélangez jusqu'à 16 filaments par plateau
+      auto_save: Sauvegarde automatique dans le navigateur (aucune perte de données)
+      pdf_csv_export: Exportez instantanément en PDF ou CSV
+      real_time: Calculs de coûts en temps réel
+      no_signup: Aucune inscription requise pour utiliser
+    cta:
+      title: Vous voulez sauvegarder vos projets ?
+      description: Créez un compte gratuit pour enregistrer un nombre illimité de
+        calculs, gérer les imprimantes, créer des factures, et plus encore.
+      button: Démarrer l'essai gratuit
+      no_credit_card: Aucune carte de crédit requise

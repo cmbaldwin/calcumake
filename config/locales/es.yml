@@ -1435,6 +1435,16 @@ es:
       - Historial de proyectos y funcionalidad de duplicado
       - Soporte multi-divisa
       - Cálculos de depreciación de la máquina
+    advanced_calculator:
+      title: "¿Necesita más funciones?"
+      description: Pruebe nuestra calculadora de precios avanzada con soporte multi-plataforma,
+        filamentos personalizados y exportación instantánea a PDF/CSV.
+      button: Abrir Calculadora Avanzada
+      features:
+        multi_plate: Soporte para hasta 10 plataformas de impresión
+        multi_filament: Mezcle hasta 16 filamentos por plataforma
+        pdf_csv: Exportar a PDF o CSV al instante
+        local_storage: Guardado automático en el navegador (sin pérdida de datos)
   locale_suggestion:
     banner:
       title: Parece que estás accediendo desde una región diferente.
@@ -1738,3 +1748,62 @@ es:
       not_saved:
         one: '1 error impidió que este %{resource} se guardara:'
         other: "%{count} errores impidieron que este %{resource} se guardara:"
+  advanced_calculator:
+    title: Calculadora de Precios de Impresión 3D Gratuita
+    subtitle: Estimador de costos profesional para múltiples placas con exportación
+      a PDF/CSV. No se requiere registro.
+    sign_up_to_save: Regístrese para guardar sus proyectos
+    input_section: Configuración de la Calculadora
+    job_name: Nombre del Trabajo
+    job_name_placeholder: Ingrese el nombre del proyecto...
+    plates_section: Placas de Construcción
+    add_plate: Añadir Placa
+    plate: Placa
+    plates_help: Añada hasta 10 placas de construcción. Cada placa puede tener múltiples
+      filamentos y configuraciones personalizadas.
+    other_costs: Costos Adicionales
+    failure_rate: Tasa de Fallo
+    failure_rate_help: Porcentaje para tener en cuenta las impresiones fallidas
+    shipping_cost: Costo de Envío
+    other_cost: Otros Costos
+    reset: Restablecer Calculadora
+    filaments: Filamentos
+    add_filament: Añadir Filamento
+    filaments_help: Añada hasta 16 filamentos por placa. Mezcle diferentes materiales
+      y colores.
+    plate_fields:
+      print_time: Tiempo de Impresión
+      power_consumption: Consumo de Energía
+      machine_cost: Costo de la Máquina
+      payoff_years: Período de Amortización (años)
+      prep_time: Tiempo de Preparación
+      post_time: Tiempo de Post-Procesamiento
+      prep_rate: Tarifa de Preparación
+      post_rate: Tarifa de Post-Procesamiento
+    filament_fields:
+      weight: Peso
+      price_per_kg: Precio por kg
+    results:
+      title: Resumen de Costos
+      filament_cost: Filamento
+      electricity_cost: Electricidad
+      labor_cost: Mano de Obra
+      machine_cost: Máquina
+      other_costs: Otros
+      grand_total: Total General
+    export_pdf: Exportar a PDF
+    export_csv: Exportar a CSV
+    features:
+      title: "¿Por qué CalcuMake?"
+      multi_plate: Soporte para hasta 10 placas de construcción
+      multi_filament: Mezcle hasta 16 filamentos por placa
+      auto_save: Guardado automático en el navegador (sin pérdida de datos)
+      pdf_csv_export: Exportar a PDF o CSV al instante
+      real_time: Cálculos de costos en tiempo real
+      no_signup: No se requiere registro para usar
+    cta:
+      title: "¿Quiere guardar sus proyectos?"
+      description: Cree una cuenta gratuita para guardar cálculos ilimitados, administrar
+        impresoras, crear facturas y más.
+      button: Comience la prueba gratuita
+      no_credit_card: No se requiere tarjeta de crédito
