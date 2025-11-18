@@ -413,6 +413,6 @@ class SubscriptionsController < ApplicationController
     remaining_new = (target_amount * days_remaining.to_f / total_days).round
 
     # Prorated charge is the difference
-    [remaining_new - remaining_current, 0].max
+    [ remaining_new - remaining_current, 0 ].max
   end
 end

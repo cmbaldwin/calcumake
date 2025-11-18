@@ -65,14 +65,14 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
     assert_match(/modal_content/, response.body)
     # Should show error messages within modal
-    assert_match(/can't be blank|is required/i, response.body)
+    assert_match(/can&#39;t be blank/, response.body)
   end
 
   test "should load client form with all sections in modal" do
     get new_client_url, as: :turbo_stream
     assert_response :success
     # Check for form sections
-    assert_match(/basic_info|contact_info|additional_info/, response.body)
+    assert_match(/Basic Information|Contact Information|Additional Information/, response.body)
     assert_match(/name/, response.body)
     assert_match(/email/, response.body)
   end

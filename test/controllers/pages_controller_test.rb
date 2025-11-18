@@ -56,11 +56,12 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to print_pricings_path
   end
 
-  test "demo page should show functional calculator" do
-    get demo_path
+  test "pricing calculator page should show quick calculator" do
+    get pricing_calculator_path
     assert_response :success
-    assert_select "h1", text: /Try CalcuMake Demo/
-    assert_select "[data-controller='demo-calculator']"
+    assert_select "h1", text: /3D Print Pricing Calculator/i
+    assert_select "[data-controller='quick-calculator']"
+    assert_select "[data-controller='advanced-calculator']"
   end
 
   test "landing page works in different locales" do
