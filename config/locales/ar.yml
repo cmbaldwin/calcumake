@@ -160,6 +160,8 @@ ar:
     error_count:
       one: خطأ
       other: أخطاء
+    back: رجوع
+    cancel: إلغاء
   date:
     formats:
       month_day_year: "%B %d, %Y"
@@ -1041,6 +1043,9 @@ ar:
       remove: إزالة
       round_all_down_help: تقريب جميع المبالغ إلى الأدنى لتجنب المغالاة في الرسوم
       round_all_down: تقريب الكل إلى الأدنى
+      round_all_up_help: تقريب جميع المبالغ لزيادة الاحتياط
+      round_all_up: تقريب الكل
+    made_with_calcumake: صنع بواسطة CalcuMake
   filaments:
     index:
       title: خيوطي
@@ -1191,6 +1196,16 @@ ar:
       send_paranoid_instructions: إذا كان حسابك موجودًا، فستتلقى رسالة بريد إلكتروني
         تحتوي على إرشادات حول كيفية إلغاء قفله في غضون دقائق قليلة.
       unlocked: تم إلغاء قفل حسابك بنجاح. يرجى تسجيل الدخول للمتابعة.
+    omniauth_complete_profile:
+      title: أكمل ملفك الشخصي
+      subtitle: لإكمال تسجيل الدخول باستخدام %{provider}، يرجى تقديم عنوان بريدك الإلكتروني
+      email_label: عنوان البريد الإلكتروني
+      email_placeholder: your@email.com
+      email_help: سنستخدم هذا لإرسال إشعارات مهمة لحسابك
+      submit: إكمال التسجيل
+      cancel: إلغاء والعودة
+      privacy_notice: نحن نحترم خصوصيتك. سيتم استخدام بريدك الإلكتروني فقط لإدارة
+        الحساب.
   landing:
     hero:
       headline: المزيد من الإبداع، أقل من الحسابات
@@ -1361,6 +1376,7 @@ ar:
     usage_summary: ملخص الاستخدام
     limit_reached: لقد وصلت إلى حد %{resource} لخطة اشتراكك
     approaching_limits_message: أنت تقترب من حدود خطة اشتراكك
+    unlimited: غير محدود
   subscriptions:
     title: الاشتراك
     current_plan: الخطة الحالية
@@ -1373,7 +1389,90 @@ ar:
     features:
       calculations: حسابات الطباعة
       printers: الطابعات
+      filaments: خيوط الطباعة (Filaments)
+      invoices: الفواتير
+      unlimited_calculations: حسابات طباعة غير محدودة
+      unlimited_printers: طابعات غير محدودة
+      unlimited_filaments: خيوط طباعة غير محدودة
+      unlimited_invoices: فواتير غير محدودة
     upgrade_now: ترقية الآن
+    your_plan: خطتك
+    upgrade_to_plan: الترقية إلى %{plan}
+    downgrade_to_plan: الرجوع إلى %{plan}
+    verification_error: تعذر التحقق من اشتراكك. يرجى الاتصال بالدعم.
+    plans:
+      subtitle: اختر الخطة التي تناسبك
+    most_popular: الأكثر شيوعًا
+    monthly_price: "%{price} / شهر"
+    month: شهر
+    of: من
+    remaining: المتبقي
+    active: نشط
+    trial_badge: تجربة
+    trial_ends_on: تنتهي الفترة التجريبية في %{date}
+    trial_remaining: "%{days} يومًا متبقية في الفترة التجريبية"
+    renews_on: يتجدد في %{date}
+    access_until: الوصول حتى %{date}
+    canceling: إلغاء في %{date}
+    days: أيام
+    manage: إدارة
+    manage_subscription: إدارة الاشتراك
+    manage_description: اعرض سجل فواتيرك، أو حدّث طرق الدفع، أو ألغِ اشتراكك.
+    manage_note: يفتح بوابة عملاء Stripe في نافذة جديدة
+    open_billing_portal: فتح بوابة الفوترة
+    cancel_subscription: إلغاء الاشتراك
+    cancel_confirmation: هل أنت متأكد أنك تريد إلغاء اشتراكك؟ سيستمر وصولك حتى نهاية
+      فترة الفوترة الحالية.
+    cancel_notice: تمت جدولة اشتراكك للإلغاء
+    subscription_details: تفاصيل الاشتراك
+    status: الحالة
+    next_billing_date: تاريخ الفوترة التالي
+    period_start: بداية الفترة
+    period_end: نهاية الفترة
+    billing_period: فترة الفوترة
+    next_bill: الدفعة التالية
+    secure_payment: دفع آمن عبر Stripe
+    immediate_access: وصول فوري إلى جميع الميزات
+    confirm_upgrade_title: تأكيد الترقية
+    confirm_upgrade_subtitle: راجع تفاصيل الترقية قبل المتابعة
+    upgrade_summary: ملخص الترقية
+    new_plan: الخطة الجديدة
+    new_plan_price: سعر الخطة الجديدة
+    prorated_charge_today: رسوم تناسبية اليوم
+    charge_now: الدفع الآن
+    days_remaining: الأيام المتبقية
+    days_remaining_in_period: "%{days} أيام متبقية في الفترة الحالية"
+    pricing_breakdown: تفاصيل التسعير
+    prorated_explanation: سيتم محاسبتك بمبلغ تناسبي للفترة المتبقية من فترة الفوترة
+      الحالية. ستكون دفعتك الكاملة التالية في %{date}.
+    what_happens_next: ماذا سيحدث بعد ذلك
+    confirm_and_upgrade: تأكيد وترقية
+    confirm_downgrade: تأكيد الرجوع إلى إصدار أقدم
+    final_confirm_upgrade: سيؤدي هذا إلى ترقية خطتك على الفور وتحصيل %{amount} من
+      طريقة الدفع الخاصة بك. هل تريد المتابعة؟
+    faq:
+      title: الأسئلة الشائعة
+      trial_question: كيف يعمل الإصدار التجريبي؟
+      trial_answer: يحصل المستخدمون الجدد على نسخة تجريبية مجانية لمدة 14 يومًا لخطة
+        Startup. لا توجد حاجة لبطاقة ائتمان. في نهاية الفترة التجريبية، يمكنك اختيار
+        الترقية أو الاستمرار في الخطة المجانية.
+      change_plan_question: هل يمكنني تغيير الخطط في أي وقت؟
+      change_plan_answer: نعم، يمكنك ترقية أو الرجوع إلى إصدار أقدم من خطتك في أي
+        وقت. تتم الترقية بشكل تناسبي وتطبيقها على الفور. يسري الرجوع إلى إصدار أقدم
+        في نهاية فترة الفوترة الحالية.
+      cancel_question: ماذا يحدث إذا قمت بالإلغاء؟
+      cancel_answer: سيستمر وصولك إلى ميزات خطتك حتى نهاية فترة الفوترة الحالية. بعد
+        ذلك، سيتم الرجوع إلى الخطة المجانية.
+      payment_question: ما هي طرق الدفع المقبولة؟
+      payment_answer: نحن نقبل جميع بطاقات الائتمان الرئيسية عبر Stripe. جميع المدفوعات
+        آمنة ومشفرة.
+      data_question: ماذا يحدث لبياناتي إذا قمت بالرجوع إلى إصدار أقدم؟
+      data_answer: لا يتم حذف بياناتك أبدًا. إذا تجاوزت الحدود المفروضة على الخطة
+        المجانية، فستحتاج إلى الترقية أو حذف بعض العناصر لإضافة عناصر جديدة.
+      reset_question: متى يتم إعادة تعيين حدود الاستخدام؟
+      reset_answer: لا يتم إعادة تعيين حدود الاستخدام شهريًا. إنها تمثل العدد الإجمالي
+        للعناصر التي يمكنك الاحتفاظ بها في حسابك في وقت واحد. احذف العناصر لتحرير
+        مساحة.
   gdpr:
     cookie_consent:
       title: الموافقة على استخدام ملفات تعريف الارتباط
@@ -1398,6 +1497,15 @@ ar:
       what_included: ما الذي يتضمنه تصدير بياناتك
       items:
         account_info: معلومات الحساب
+        print_pricings: حسابات تسعير الطباعة
+        printers: ملفات تعريف الطابعات
+        filaments: مكتبة الفتيل
+        invoices: الفواتير
+        clients: معلومات العملاء
+        consents: موافقات المستخدم وتفضيلات الخصوصية
+      download_button: تنزيل بياناتي
+      format: صيغة البيانات
+      format_description: سيتم تصدير بياناتك كملف JSON يمكنك حفظه ومراجعته في أي وقت.
     data_deletion:
       title: حذف حسابك
       description: حذف حسابك وجميع البيانات المرتبطة به نهائيًا
@@ -1406,15 +1514,111 @@ ar:
       warning_message: سيتم حذف جميع بياناتك نهائيًا ولا يمكن استعادتها
       button: حذف الحساب
       what_deleted: ما الذي سيتم حذفه
+      delete_button: حذف حسابي
+      before_deletion: قبل الحذف
+      export_recommendation_html: نوصي %{link} أولاً حتى يكون لديك نسخة احتياطية قبل
+        المتابعة في الحذف.
+      export_link: بتصدير بياناتك
+      confirm_message: هل أنت متأكد أنك تريد حذف حسابك نهائيًا؟ لا يمكن التراجع عن
+        هذا الإجراء.
+      items:
+        account: حساب المستخدم الخاص بك وبيانات اعتماد تسجيل الدخول
+        print_pricings: جميع حسابات تسعير الطباعة
+        printers: جميع ملفات تعريف الطابعات
+        filaments: جميع ملفات تعريف الفتيل
+        invoices: جميع الفواتير
+        clients: جميع معلومات العملاء
+        uploaded_files: جميع الملفات والمرفقات التي تم تحميلها
     tos_sections:
       acceptance:
         title: قبول الشروط
         content: باستخدام CalcuMake، فإنك توافق على شروط الخدمة هذه
+      service_description:
+        title: وصف الخدمة
+        content: CalcuMake هو أداة لحساب تكلفة الطباعة ثلاثية الأبعاد وإدارة المشاريع
+      user_accounts:
+        title: حسابات المستخدمين
+        content: أنت مسؤول عن الحفاظ على أمان حسابك وجميع الأنشطة التي تتم ضمن حسابك
+      acceptable_use:
+        title: الاستخدام المقبول
+        intro: أنت توافق على عدم استخدام خدمتنا لأي من الأغراض التالية
+        items:
+          illegal: الأنشطة غير القانونية أو انتهاك أي قوانين
+          harmful: تحميل التعليمات البرمجية الخبيثة أو المحتوى الضار
+          unauthorized: محاولة الوصول غير المصرح به إلى أنظمتنا
+          interference: التدخل في خدمتنا أو خوادمنا أو تعطيلها
+      intellectual_property:
+        title: الملكية الفكرية
+        content: جميع المحتويات والمواد الموجودة على CalcuMake مملوكة لشركة MOAB Co.,
+          Ltd. ومحمية بموجب قوانين الملكية الفكرية المعمول بها
+      payment_terms:
+        title: شروط الدفع
+        content: يتم تحصيل رسوم الاشتراك شهريًا أو سنويًا حسب الاختيار. تتم معالجة
+          جميع المدفوعات بشكل آمن من خلال Stripe
+      termination:
+        title: الإنهاء
+        content: نحتفظ بالحق في تعليق أو إنهاء حسابك بسبب انتهاك هذه الشروط. يمكنك
+          إلغاء اشتراكك في أي وقت
+      liability:
+        title: تحديد المسؤولية
+        content: يتم توفير CalcuMake "كما هو" بدون ضمانات. نحن لسنا مسؤولين عن أي
+          أضرار تنشأ عن استخدام خدمتنا
+      governing_law:
+        title: القانون الحاكم
+        content: تخضع هذه الشروط لقوانين اليابان. سيتم حل أي نزاعات في محاكم طوكيو،
+          اليابان
+      changes:
+        title: تغييرات في الشروط
+        content: قد نقوم بتحديث هذه الشروط في أي وقت. استمرار استخدام CalcuMake بعد
+          التغييرات يشكل قبولًا للشروط الجديدة
     cookie_sections:
       what_are_cookies:
         title: ما هي ملفات تعريف الارتباط؟
+        content: ملفات تعريف الارتباط هي ملفات نصية صغيرة يتم تخزينها على جهازك وتساعدنا
+          في توفير تجربة أفضل. نحن نستخدم ملفات تعريف الارتباط الأساسية للوظائف وملفات
+          تعريف الارتباط التحليلية لتحسين خدمتنا.
+      how_we_use:
+        title: كيف نستخدم ملفات تعريف الارتباط
+        intro: نحن نستخدم أنواعًا مختلفة من ملفات تعريف الارتباط لتحسين تجربتك وتوفير
+          وظائف أساسية
+        content: نحن نستخدم ملفات تعريف الارتباط لتذكر تفضيلاتك، ومصادقة جلساتك، وتحليل
+          استخدام الموقع لتحسين خدمتنا
+        essential:
+          title: ملفات تعريف الارتباط الأساسية
+          description: مطلوبة للمصادقة والأمان ووظائف الموقع الأساسية
+        functional:
+          title: ملفات تعريف الارتباط الوظيفية
+          description: تذكر تفضيلاتك وإعداداتك لتوفير تجربة مخصصة
+        analytics:
+          title: ملفات تعريف الارتباط التحليلية
+          description: تساعدنا على فهم كيفية استخدامك لخدمتنا حتى نتمكن من تحسينها
+      cookie_list:
+        title: ملفات تعريف الارتباط التي نستخدمها
+        table:
+          name: اسم ملف تعريف الارتباط
+          purpose: الغرض
+          duration: المدة
+        cookies:
+          session:
+            purpose: يحافظ على جلسة تسجيل الدخول وحالة المصادقة
+            duration: جلسة (تمحى عند إغلاق المتصفح)
+          remember:
+            purpose: يتذكر تفضيل تسجيل الدخول الخاص بك ("تذكرني")
+            duration: أسبوعان
+          consent:
+            purpose: يخزن تفضيلات الموافقة على ملفات تعريف الارتباط الخاصة بك
+            duration: سنة واحدة
+      managing_cookies:
+        title: إدارة ملفات تعريف الارتباط
+        content: يمكنك التحكم في ملفات تعريف الارتباط و/أو حذفها من خلال إعدادات المتصفح
+          الخاص بك. لاحظ أن تعطيل ملفات تعريف الارتباط قد يؤثر على وظائف CalcuMake
+      third_party:
+        title: ملفات تعريف ارتباط الطرف الثالث
+        content: نحن لا نستخدم حاليًا ملفات تعريف ارتباط الطرف الثالث. إذا تغير هذا،
+          فسنقوم بتحديث هذه السياسة وإعلامك
     consent_recorded: تم حفظ تفضيلاتك
     account_deleted: تم حذف حسابك بنجاح
+    privacy_policy_title: سياسة الخصوصية
   errors:
     messages:
       already_confirmed: تم تأكيده بالفعل، يرجى محاولة تسجيل الدخول

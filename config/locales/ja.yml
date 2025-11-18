@@ -159,6 +159,8 @@ ja:
     error_count:
       one: エラー
       other: エラー
+    back: 戻る
+    cancel: キャンセル
   date:
     formats:
       month_day_year: "%Y年%B%d日"
@@ -963,6 +965,9 @@ ja:
       remove: 削除
       round_all_down_help: 過剰請求を避けるために、すべての金額を切り下げます
       round_all_down: すべて切り下げ
+      round_all_up_help: バッファのためにすべての金額を切り上げます
+      round_all_up: すべて切り上げ
+    made_with_calcumake: CalcuMakeで作成
   filaments:
     index:
       title: マイフィラメント
@@ -1097,6 +1102,15 @@ ja:
       send_instructions: アカウントのロックを解除する方法を記載したメールを数分以内に送信します。
       send_paranoid_instructions: アカウントが存在する場合、アカウントのロックを解除する方法を記載したメールを数分以内に送信します。
       unlocked: アカウントのロックが正常に解除されました。サインインして続行してください。
+    omniauth_complete_profile:
+      title: プロフィールの完了
+      subtitle: "%{provider}でのサインインを完了するには、メールアドレスを入力してください"
+      email_label: メールアドレス
+      email_placeholder: your@email.com
+      email_help: これは、重要なアカウント通知を送信するために使用されます
+      submit: 登録を完了
+      cancel: キャンセルして戻る
+      privacy_notice: CalcuMakeは、お客様のプライバシーを尊重します。お客様のメールアドレスは、アカウント管理のみに使用されます。
   landing:
     hero:
       headline: 創造をもっと、計算をもっと少なく
@@ -1246,6 +1260,7 @@ ja:
     usage_summary: 使用状況の概要
     limit_reached: プランの%{resource}制限に達しました
     approaching_limits_message: プランの制限に近づいています
+    unlimited: 無制限
   subscriptions:
     title: サブスクリプション
     current_plan: 現在のプラン
@@ -1258,7 +1273,79 @@ ja:
     features:
       calculations: プリント計算
       printers: プリンター
+      filaments: フィラメント
+      invoices: 請求書
+      unlimited_calculations: 無制限のプリント計算
+      unlimited_printers: 無制限のプリンター
+      unlimited_filaments: 無制限のフィラメント
+      unlimited_invoices: 無制限の請求書
     upgrade_now: 今すぐアップグレード
+    your_plan: 現在のプラン
+    upgrade_to_plan: "%{plan}にアップグレード"
+    downgrade_to_plan: "%{plan}にダウングレード"
+    verification_error: サブスクリプションを確認できません。サポートにお問い合わせください。
+    plans:
+      subtitle: 最適なプランをお選びください
+    most_popular: 一番人気
+    monthly_price: "%{price} / 月"
+    month: 月
+    of: "/"
+    remaining: 残り
+    active: アクティブ
+    trial_badge: トライアル
+    trial_ends_on: 'トライアル終了日: %{date}'
+    trial_remaining: トライアル期間残り%{days}日
+    renews_on: '更新日: %{date}'
+    access_until: 'アクセス期限: %{date}'
+    canceling: "%{date}にキャンセル予定"
+    days: 日
+    manage: 管理
+    manage_subscription: サブスクリプションの管理
+    manage_description: 請求履歴の表示、支払い方法の更新、またはサブスクリプションのキャンセルを行います
+    manage_note: Stripeカスタマーポータルが新しいウィンドウで開きます
+    open_billing_portal: 請求ポータルを開く
+    cancel_subscription: サブスクリプションをキャンセル
+    cancel_confirmation: 本当にサブスクリプションをキャンセルしますか？ 現在の請求期間の終了までは引き続きアクセスできます。
+    cancel_notice: サブスクリプションのキャンセルが予約されました
+    subscription_details: サブスクリプションの詳細
+    status: ステータス
+    next_billing_date: 次回の請求日
+    period_start: 期間開始日
+    period_end: 期間終了日
+    billing_period: 請求期間
+    next_bill: 次回の請求
+    secure_payment: Stripeによる安全な支払い
+    immediate_access: すべての機能への即時アクセス
+    confirm_upgrade_title: アップグレードの確認
+    confirm_upgrade_subtitle: 続行する前にアップグレードの詳細を確認してください
+    upgrade_summary: アップグレードの概要
+    new_plan: 新しいプラン
+    new_plan_price: 新しいプランの価格
+    prorated_charge_today: 本日発生する日割り料金
+    charge_now: 今すぐ請求
+    days_remaining: 残り日数
+    days_remaining_in_period: 現在の期間の残り%{days}日
+    pricing_breakdown: 料金の内訳
+    prorated_explanation: 現在の請求期間の残りの日数に対して日割り計算された金額が請求されます。 次回の全額請求は%{date}に行われます。
+    what_happens_next: 次に何が起こるか
+    confirm_and_upgrade: 確認してアップグレード
+    confirm_downgrade: ダウングレードの確認
+    final_confirm_upgrade: これにより、プランがすぐにアップグレードされ、%{amount}が支払い方法に請求されます。 続行しますか？
+    faq:
+      title: よくある質問
+      trial_question: トライアルはどのように機能しますか？
+      trial_answer: 新規ユーザーは、Startupプランの14日間の無料トライアルを利用できます。 クレジットカードは必要ありません。 トライアル期間の終了時に、アップグレードするか、無料プランを継続するかを選択できます。
+      change_plan_question: プランはいつでも変更できますか？
+      change_plan_answer: はい、いつでもプランをアップグレードまたはダウングレードできます。 アップグレードは日割り計算され、すぐに適用されます。
+        ダウングレードは、現在の請求期間の終了時に有効になります。
+      cancel_question: キャンセルするとどうなりますか？
+      cancel_answer: 現在の請求期間の終了までは、プランの機能に引き続きアクセスできます。 その後、無料プランにダウングレードされます。
+      payment_question: どのような支払い方法が利用できますか？
+      payment_answer: Stripe経由ですべての主要なクレジットカードをご利用いただけます。 すべての支払いは安全に暗号化されています。
+      data_question: ダウングレードするとデータはどうなりますか？
+      data_answer: データが削除されることはありません。 無料プランの制限を超えた場合は、アップグレードするか、新しいアイテムを追加するために一部のアイテムを削除する必要があります。
+      reset_question: 使用制限はいつリセットされますか？
+      reset_answer: 使用制限は毎月リセットされません。 それらは、アカウントに一度に持つことができるアイテムの総数を表します。 スペースを空けるには、アイテムを削除してください。
   gdpr:
     cookie_consent:
       title: Cookieの同意
@@ -1279,6 +1366,15 @@ ja:
       what_included: データエクスポートに含まれるもの
       items:
         account_info: アカウント情報
+        print_pricings: プリント価格計算
+        printers: プリンタープロファイル
+        filaments: フィラメントライブラリ
+        invoices: 請求書
+        clients: 顧客情報
+        consents: ユーザーの同意とプライバシー設定
+      download_button: データをダウンロード
+      format: データ形式
+      format_description: データはJSONファイルとしてエクスポートされ、いつでも保存および確認できます。
     data_deletion:
       title: アカウントの削除
       description: アカウントと関連するすべてのデータを完全に削除します
@@ -1287,15 +1383,97 @@ ja:
       warning_message: すべてのデータが完全に削除され、復元することはできません
       button: アカウントを削除
       what_deleted: 削除されるもの
+      delete_button: アカウントを削除
+      before_deletion: 削除する前に
+      export_recommendation_html: 削除する前に、バックアップとして%{link}することをお勧めします。
+      export_link: データのエクスポート
+      confirm_message: アカウントを完全に削除してもよろしいですか？この操作は元に戻せません。
+      items:
+        account: ユーザーアカウントとログイン情報
+        print_pricings: すべてのプリント価格計算
+        printers: すべてのプリンタープロファイル
+        filaments: すべてのフィラメントプロファイル
+        invoices: すべての請求書
+        clients: すべての顧客情報
+        uploaded_files: すべてのアップロードされたファイルと添付ファイル
     tos_sections:
       acceptance:
         title: 利用規約の承諾
         content: CalcuMakeを使用することにより、これらの利用規約に同意するものとします
+      service_description:
+        title: サービス概要
+        content: CalcuMakeは、3Dプリントのコスト計算とプロジェクト管理ツールです。
+      user_accounts:
+        title: ユーザーアカウント
+        content: お客様は、アカウントのセキュリティとアカウント下でのすべてのアクティビティを維持する責任があります。
+      acceptable_use:
+        title: 利用規約
+        intro: お客様は、当社のサービスを以下の目的で使用しないことに同意するものとします。
+        items:
+          illegal: 違法行為または法律違反
+          harmful: 悪意のあるコードまたは有害なコンテンツのアップロード
+          unauthorized: 当社のシステムへの不正アクセスを試みること
+          interference: 当社のサービスまたはサーバーの妨害または中断
+      intellectual_property:
+        title: 知的財産
+        content: CalcuMake上のすべてのコンテンツおよび素材は、MOAB Co., Ltd.が所有しており、適用される知的財産法によって保護されています。
+      payment_terms:
+        title: 支払い条件
+        content: サブスクリプション料金は、選択したとおりに月単位または年単位で請求されます。すべての支払いは、Stripeを通じて安全に処理されます。
+      termination:
+        title: 契約解除
+        content: 当社は、本規約の違反に対してお客様のアカウントを一時停止または解除する権利を留保します。お客様はいつでもサブスクリプションをキャンセルできます。
+      liability:
+        title: 責任の制限
+        content: CalcuMakeは、保証なしに「現状のまま」で提供されます。当社は、当社のサービスの使用から生じるいかなる損害についても責任を負いません。
+      governing_law:
+        title: 準拠法
+        content: 本規約は、日本法に準拠します。紛争は、日本の東京の裁判所で解決されます。
+      changes:
+        title: 規約の変更
+        content: 当社は、いつでも本規約を更新する場合があります。変更後もCalcuMakeを継続して使用すると、新しい規約に同意したことになります。
     cookie_sections:
       what_are_cookies:
         title: Cookieとは？
+        content: Cookieは、お客様のデバイスに保存される小さなテキストファイルであり、より良いエクスペリエンスを提供するのに役立ちます。機能に必要なCookieと、サービスを改善するための分析Cookieを使用します。
+      how_we_use:
+        title: Cookieの使用方法
+        intro: お客様のエクスペリエンスを向上させ、不可欠な機能を提供するために、さまざまな種類のCookieを使用しています。
+        content: Cookieを使用して、お客様の好みを記憶し、セッションを認証し、サイトの使用状況を分析してサービスを改善します。
+        essential:
+          title: 必須Cookie
+          description: 認証、セキュリティ、および基本的なサイト機能に必要です。
+        functional:
+          title: 機能性Cookie
+          description: お客様の好みや設定を記憶し、パーソナライズされた体験を提供します
+        analytics:
+          title: 分析Cookie
+          description: サービスの利用状況を把握し、改善に役立てます
+      cookie_list:
+        title: 使用しているCookie
+        table:
+          name: Cookie名
+          purpose: 目的
+          duration: 期間
+        cookies:
+          session:
+            purpose: ログインセッションと認証状態を維持します
+            duration: セッション（ブラウザを閉じるとクリアされます）
+          remember:
+            purpose: ログイン設定（「ログイン状態を保存する」）を記憶します
+            duration: 2週間
+          consent:
+            purpose: Cookieの同意設定を保存します
+            duration: 1年
+      managing_cookies:
+        title: Cookieの管理
+        content: ブラウザの設定でCookieを制御または削除できます。Cookieを無効にすると、CalcuMakeの機能に影響を与える可能性があることに注意してください
+      third_party:
+        title: サードパーティCookie
+        content: 現在、サードパーティCookieは使用していません。変更がある場合は、このポリシーを更新し、通知します
     consent_recorded: 設定が保存されました
     account_deleted: アカウントは正常に削除されました
+    privacy_policy_title: プライバシーポリシー
   errors:
     messages:
       already_confirmed: はすでに確認済みです。サインインしてください

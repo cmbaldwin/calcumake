@@ -162,6 +162,8 @@ es:
     error_count:
       one: error
       other: errores
+    back: Atrás
+    cancel: Cancelar
   date:
     formats:
       month_day_year: "%B %d, %Y"
@@ -1116,6 +1118,9 @@ es:
       round_all_down_help: Redondear todos los importes hacia abajo para evitar cobrar
         de más
       round_all_down: Redondear todo hacia abajo
+      round_all_up_help: Redondear todos los importes para obtener un margen
+      round_all_up: Redondear todo
+    made_with_calcumake: Hecho con CalcuMake
   filaments:
     index:
       title: Mis Filamentos
@@ -1273,6 +1278,17 @@ es:
         con instrucciones sobre cómo desbloquearla en unos minutos.
       unlocked: Su cuenta ha sido desbloqueada exitosamente. Por favor, inicie sesión
         para continuar.
+    omniauth_complete_profile:
+      title: Complete Su Perfil
+      subtitle: Para completar su inicio de sesión de %{provider}, por favor proporcione
+        su dirección de correo electrónico
+      email_label: Dirección de Correo Electrónico
+      email_placeholder: su@correo.com
+      email_help: Usaremos esto para enviarle notificaciones importantes de la cuenta
+      submit: Completar Registro
+      cancel: Cancelar y volver
+      privacy_notice: Respetamos su privacidad. Su correo electrónico solo se utilizará
+        para la gestión de la cuenta.
   landing:
     hero:
       headline: Más creación, menos cálculos
@@ -1454,6 +1470,7 @@ es:
     usage_summary: Resumen de Uso
     limit_reached: Has alcanzado el límite de %{resource} para tu plan
     approaching_limits_message: Te estás acercando a los límites de tu plan
+    unlimited: Ilimitado
   subscriptions:
     title: Suscripción
     current_plan: Plan Actual
@@ -1466,7 +1483,93 @@ es:
     features:
       calculations: Cálculos de Impresión
       printers: Impresoras
+      filaments: Filamentos
+      invoices: Facturas
+      unlimited_calculations: Cálculos de Impresión Ilimitados
+      unlimited_printers: Impresoras Ilimitadas
+      unlimited_filaments: Filamentos Ilimitados
+      unlimited_invoices: Facturas Ilimitadas
     upgrade_now: Actualizar Ahora
+    your_plan: Tu Plan
+    upgrade_to_plan: Actualizar a %{plan}
+    downgrade_to_plan: Cambiar a %{plan}
+    verification_error: No se puede verificar tu suscripción. Por favor, contacta
+      con el soporte.
+    plans:
+      subtitle: Elige el plan que mejor se adapte a tus necesidades
+    most_popular: Más Popular
+    monthly_price: "%{price} / mes"
+    month: mes
+    of: de
+    remaining: restante
+    active: Activo
+    trial_badge: Prueba
+    trial_ends_on: La prueba finaliza el %{date}
+    trial_remaining: "%{days} días restantes en la prueba"
+    renews_on: Se renueva el %{date}
+    access_until: Acceso hasta el %{date}
+    canceling: Cancelando el %{date}
+    days: días
+    manage: Gestionar
+    manage_subscription: Gestionar Suscripción
+    manage_description: Vea su historial de facturación, actualice los métodos de
+      pago o cancele su suscripción
+    manage_note: Abre el portal de clientes de Stripe en una nueva ventana
+    open_billing_portal: Abrir el Portal de Facturación
+    cancel_subscription: Cancelar Suscripción
+    cancel_confirmation: "¿Está seguro de que desea cancelar su suscripción? Continuará
+      teniendo acceso hasta el final de su período de facturación actual."
+    cancel_notice: Su suscripción ha sido programada para su cancelación
+    subscription_details: Detalles de la Suscripción
+    status: Estado
+    next_billing_date: Próxima Fecha de Facturación
+    period_start: Inicio del Período
+    period_end: Fin del Período
+    billing_period: Período de Facturación
+    next_bill: Próxima Factura
+    secure_payment: Pago seguro a través de Stripe
+    immediate_access: Acceso inmediato a todas las funciones
+    confirm_upgrade_title: Confirmar Actualización
+    confirm_upgrade_subtitle: Revise los detalles de la actualización antes de continuar
+    upgrade_summary: Resumen de la Actualización
+    new_plan: Nuevo Plan
+    new_plan_price: Precio del Nuevo Plan
+    prorated_charge_today: Cargo Prorrateado Hoy
+    charge_now: Cobrar Ahora
+    days_remaining: Días Restantes
+    days_remaining_in_period: "%{days} días restantes en el período actual"
+    pricing_breakdown: Desglose de Precios
+    prorated_explanation: Se le cobrará un monto prorrateado por el resto de su período
+      de facturación actual. Su próximo cargo completo será el %{date}.
+    what_happens_next: Qué Sucede Después
+    confirm_and_upgrade: Confirmar y Actualizar
+    confirm_downgrade: Confirmar Degradación
+    final_confirm_upgrade: Esto actualizará inmediatamente su plan y cargará a su
+      método de pago %{amount}. ¿Continuar?
+    faq:
+      title: Preguntas Frecuentes
+      trial_question: "¿Cómo funciona la prueba gratuita?"
+      trial_answer: Los nuevos usuarios obtienen una prueba gratuita de 14 días del
+        plan Startup. No se requiere tarjeta de crédito. Al final de la prueba, puede
+        optar por actualizar o continuar con el plan gratuito.
+      change_plan_question: "¿Puedo cambiar de plan en cualquier momento?"
+      change_plan_answer: Sí, puede actualizar o degradar su plan en cualquier momento.
+        Las actualizaciones se prorratean y se aplican inmediatamente. Las degradaciones
+        entran en vigor al final de su período de facturación actual.
+      cancel_question: "¿Qué sucede si cancelo?"
+      cancel_answer: Continuará teniendo acceso a las funciones de su plan hasta el
+        final de su período de facturación actual. Después de eso, se le degradará
+        al plan gratuito.
+      payment_question: "¿Qué métodos de pago se aceptan?"
+      payment_answer: Aceptamos todas las principales tarjetas de crédito a través
+        de Stripe. Todos los pagos son seguros y están encriptados.
+      data_question: "¿Qué sucede con mis datos si degrado mi plan?"
+      data_answer: Sus datos nunca se eliminan. Si excede los límites del plan gratuito,
+        deberá actualizar o eliminar algunos elementos para agregar otros nuevos.
+      reset_question: "¿Cuándo se restablecen los límites de uso?"
+      reset_answer: Los límites de uso no se restablecen mensualmente. Representan
+        el número total de elementos que puede tener en su cuenta a la vez. Elimine
+        elementos para liberar espacio.
   gdpr:
     cookie_consent:
       title: Consentimiento de Cookies
@@ -1490,6 +1593,16 @@ es:
       what_included: Qué se incluye en su exportación de datos
       items:
         account_info: Información de la cuenta
+        print_pricings: Cálculos de precios de impresión
+        printers: Perfiles de impresora
+        filaments: Biblioteca de filamentos
+        invoices: Facturas
+        clients: Información del cliente
+        consents: Consentimientos del usuario y preferencias de privacidad
+      download_button: Descargar Mis Datos
+      format: Formato de Datos
+      format_description: Sus datos se exportarán como un archivo JSON que puede guardar
+        y revisar en cualquier momento.
     data_deletion:
       title: Eliminar Su Cuenta
       description: Elimine permanentemente su cuenta y todos los datos asociados
@@ -1499,15 +1612,121 @@ es:
         recuperar
       button: Eliminar Cuenta
       what_deleted: Qué se eliminará
+      delete_button: Eliminar Mi Cuenta
+      before_deletion: Antes de Eliminar
+      export_recommendation_html: Recomendamos %{link} primero para que tenga una
+        copia de seguridad antes de proceder con la eliminación.
+      export_link: exportar sus datos
+      confirm_message: "¿Está seguro de que desea eliminar permanentemente su cuenta?
+        Esta acción no se puede deshacer."
+      items:
+        account: Su cuenta de usuario y credenciales de inicio de sesión
+        print_pricings: Todos los cálculos de precios de impresión
+        printers: Todos los perfiles de impresora
+        filaments: Todos los perfiles de filamento
+        invoices: Todas las facturas
+        clients: Toda la información del cliente
+        uploaded_files: Todos los archivos y adjuntos cargados
     tos_sections:
       acceptance:
         title: Aceptación de los Términos
         content: Al utilizar CalcuMake, usted acepta estos términos de servicio
+      service_description:
+        title: Descripción del Servicio
+        content: CalcuMake es una herramienta de cálculo de costos de impresión 3D
+          y gestión de proyectos
+      user_accounts:
+        title: Cuentas de Usuario
+        content: Usted es responsable de mantener la seguridad de su cuenta y todas
+          las actividades realizadas bajo su cuenta
+      acceptable_use:
+        title: Uso Aceptable
+        intro: Usted acepta no utilizar nuestro servicio para ninguno de los siguientes
+          propósitos
+        items:
+          illegal: Actividades ilegales o violación de cualquier ley
+          harmful: Cargar código malicioso o contenido dañino
+          unauthorized: Intentar obtener acceso no autorizado a nuestros sistemas
+          interference: Interferir o interrumpir nuestro servicio o servidores
+      intellectual_property:
+        title: Propiedad Intelectual
+        content: Todo el contenido y los materiales en CalcuMake son propiedad de
+          MOAB Co., Ltd. y están protegidos por las leyes de propiedad intelectual
+          aplicables
+      payment_terms:
+        title: Términos de Pago
+        content: Las tarifas de suscripción se facturan mensual o anualmente según
+          lo seleccionado. Todos los pagos se procesan de forma segura a través de
+          Stripe
+      termination:
+        title: Terminación
+        content: Nos reservamos el derecho de suspender o cancelar su cuenta por violación
+          de estos términos. Puede cancelar su suscripción en cualquier momento
+      liability:
+        title: Limitación de Responsabilidad
+        content: CalcuMake se proporciona "tal cual" sin garantías. No somos responsables
+          de ningún daño que surja del uso de nuestro servicio
+      governing_law:
+        title: Ley Aplicable
+        content: Estos términos se rigen por las leyes de Japón. Cualquier disputa
+          se resolverá en los tribunales de Tokio, Japón
+      changes:
+        title: Cambios en los Términos
+        content: Podemos actualizar estos términos en cualquier momento. El uso continuado
+          de CalcuMake después de los cambios constituye la aceptación de los nuevos
+          términos
     cookie_sections:
       what_are_cookies:
         title: "¿Qué son las cookies?"
+        content: Las cookies son pequeños archivos de texto almacenados en su dispositivo
+          que nos ayudan a brindar una mejor experiencia. Utilizamos cookies esenciales
+          para la funcionalidad y cookies de análisis para mejorar nuestro servicio.
+      how_we_use:
+        title: Cómo Usamos las Cookies
+        intro: Utilizamos diferentes tipos de cookies para mejorar su experiencia
+          y proporcionar funcionalidad esencial
+        content: Utilizamos cookies para recordar sus preferencias, autenticar sus
+          sesiones y analizar el uso del sitio para mejorar nuestro servicio
+        essential:
+          title: Cookies Esenciales
+          description: Requeridas para la autenticación, la seguridad y la funcionalidad
+            básica del sitio
+        functional:
+          title: Cookies Funcionales
+          description: Recuerdan tus preferencias y ajustes para proporcionarte una
+            experiencia personalizada
+        analytics:
+          title: Cookies de Analítica
+          description: Nos ayudan a comprender cómo utilizas nuestro servicio para
+            que podamos mejorarlo
+      cookie_list:
+        title: Cookies que Utilizamos
+        table:
+          name: Nombre de la Cookie
+          purpose: Propósito
+          duration: Duración
+        cookies:
+          session:
+            purpose: Mantiene tu sesión de inicio de sesión y estado de autenticación
+            duration: Sesión (se borra al cerrar el navegador)
+          remember:
+            purpose: Recuerda tu preferencia de inicio de sesión ("Recordarme")
+            duration: 2 semanas
+          consent:
+            purpose: Almacena tus preferencias de consentimiento de cookies
+            duration: 1 año
+      managing_cookies:
+        title: Gestión de Cookies
+        content: Puedes controlar y/o eliminar las cookies a través de la configuración
+          de tu navegador. Ten en cuenta que deshabilitar las cookies puede afectar
+          la funcionalidad de CalcuMake
+      third_party:
+        title: Cookies de Terceros
+        content: Actualmente no utilizamos cookies de terceros. Si esto cambia, actualizaremos
+          esta política y te lo notificaremos
     consent_recorded: Sus preferencias han sido guardadas
     account_deleted: Su cuenta ha sido eliminada con éxito
+    privacy_policy_title: Política de Privacidad
   errors:
     messages:
       already_confirmed: ya ha sido confirmado, por favor intente iniciar sesión
