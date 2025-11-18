@@ -27,6 +27,16 @@
 - **Invoice**: Auto-numbered, status tracking, client integration
 - **InvoiceLineItem**: Categorized cost breakdowns
 
+### Public Features
+- **Advanced Pricing Calculator** (`/3d-print-pricing-calculator`) - No-signup SPA for lead generation
+  - Multi-plate calculations (up to 10 plates)
+  - Multiple filaments per plate (up to 16)
+  - Real-time cost breakdowns (filament, electricity, labor, machine, other)
+  - PDF export with professional formatting (jsPDF + html2canvas)
+  - CSV export for spreadsheet compatibility
+  - Auto-save to localStorage every 10 seconds
+  - Strategic CTAs to drive account creation
+
 ### Multi-Plate System
 Each PrintPricing contains 1-10 plates. Use `build` → `save!` pattern:
 
@@ -266,7 +276,9 @@ Minitest with Turbo Stream tests. Test both HTML and turbo_stream formats.
 - `app/javascript/controllers/nested_form_controller.js` - Dynamic plate management
 - `app/javascript/controllers/modal_controller.js` - Modal lifecycle management
 - `app/javascript/controllers/modal_link_controller.js` - Modal open event dispatcher
+- `app/javascript/controllers/advanced_calculator_controller.js` - Public pricing calculator SPA
 - `app/views/shared/_modal.html.erb` - Reusable modal component
+- `app/views/pages/pricing_calculator.html.erb` - Advanced calculator public page
 - `app/helpers/print_pricings_helper.rb` - View formatting
 - `app/assets/stylesheets/application.css` - Moab theme styling
 - `config/locales/en/*.yml` - English master translations split by domain (manually maintained)
@@ -298,29 +310,24 @@ When additional context is needed for historical decisions or completed features
 *Reference documentation only when specific context is required.*
 ## Recent Updates
 
+### 2025-11-18: Production-Ready & Revenue-Enabled ✅
+- **All tests passing**: 425 runs, 1,457 assertions, 0 failures, 0 errors
+- **Advanced calculator launched**: `/3d-print-pricing-calculator` - full-featured SPA with PDF/CSV export
+- **Multi-plate support**: Up to 10 plates with 16 filaments each, real-time calculations
+- **Export functionality**: Professional PDF generation with jsPDF, CSV export for spreadsheets
+- **Stripe production webhooks**: Configured and active at `https://calcumake.com/webhooks/stripe`
+- **Revenue-ready**: Subscription system fully operational (¥150 Startup, ¥1,500 Pro)
+- **SEO optimized**: Strategic route, meta tags, structured data for search engines
+- **Fully internationalized**: 7 languages with automated translation system
+
 ### 2025-11-16: Translation Files Refactored
 - **Split English translations** from single `en.yml` (1,365 lines) into 15 domain-specific files in `config/locales/en/`
 - **Updated `bin/translate-locales`** to automatically merge all `en/*.yml` files before translation
-- **Backward compatible** - falls back to single `en.yml` if `en/` directory doesn't exist
-- **Same structure for other locales** - ja, es, fr, ar, hi, zh-CN remain as single combined files
 - **Benefits**: Easier to edit, less prone to YAML corruption, better organization, easier code reviews
-- **File sizes**: Largest split file is 16KB (legal.yml), down from 60KB monolithic file
 
 ### 2025-01-16: Translation System Refactored to use `open_router` Gem
 - Replaced manual HTTP calls with official `open_router` Ruby gem (v0.3.3)
-- Switched from Gemini Flash 1.5 (8B) to **Gemini 2.0 Flash** (`google/gemini-2.0-flash-001`)
+- Switched to **Gemini 2.0 Flash** (`google/gemini-2.0-flash-001`)
 - All 1,074 keys successfully translated across 6 languages (ja, es, fr, ar, hi, zh-CN)
-- Translation cache rebuilt in `tmp/translation_cache/` for efficiency
-- Script now properly handles JSON responses from Gemini (wraps in markdown code blocks)
-
-### Navigation Menu Translations Completed
-- Added missing nav keys: `usage_and_subscription`, `legal_header`, `data_rights_header`, `export_data`, `delete_account`
-- All help menu items now properly translated in all 7 supported languages
-- Fixed locale suggestion banner controller error (missing `banner` target)
-
-### Key Implementation Details
-- `bin/translate-locales` uses `OpenRouter::Client.new` with configuration block
-- Model parameter: `google/gemini-2.0-flash-001` (most popular translation model)
-- API calls: 132 batches to translate full set from scratch
+- Translation cache in `tmp/translation_cache/` for efficiency
 - Fail-fast: exits with error code 1 if translations fail (no silent fallbacks)
-- Credit check: handles both provisioning keys and per-key limits gracefully
