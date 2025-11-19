@@ -867,15 +867,15 @@ ja:
         price_changes: 価格は、既存のサブスクライバーに30日前に通知することで調整される場合があります。
         intro: CalcuMakeは、以下のサブスクリプションプランを提供しています。
         free_tier_title: 無料プラン
-        free_tier_price: 月額¥0
+        free_tier_price: 月額<%= %>0
         free_tier_features: 広告サポート付きの基本的なコスト計算機能
         free_tier_payment: 支払いは不要です
         startup_tier_title: スタートアッププラン
-        startup_tier_price: 月額¥150 (税込)
+        startup_tier_price: 月額<%= %>150 (税込)
         startup_tier_features: 高度な機能、広告なしのエクスペリエンス、優先メールサポート
         startup_tier_billing: サブスクリプション日に毎月請求
         pro_tier_title: プロプラン
-        pro_tier_price: 月額¥1,500 (税込)
+        pro_tier_price: 月額<%= %>1,500 (税込)
         pro_tier_features: すべての高度な機能、広告なしのエクスペリエンス、優先メールサポート、強化された計算機能、無制限のプロジェクト
         pro_tier_billing: サブスクリプション日に毎月請求
         annual_options: 年間プランは割引料金でご利用いただける場合があります。年間サブスクリプションは、サブスクリプションの更新日に年1回請求されます。
