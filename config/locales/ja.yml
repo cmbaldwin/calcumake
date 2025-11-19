@@ -823,6 +823,161 @@ ja:
       contact:
         title: お問い合わせ
         content: 本規約についてご質問がある場合は、アプリケーションで利用可能なサポートチャネルを通じてお問い合わせください。
+    commerce_disclosure:
+      title: 特定商取引法に基づく表記
+      nav_title: 特定商取引法に基づく表記
+      business_operator:
+        title: 事業者
+        company_name: 株式会社モアブ (MOAB Co., Ltd.)
+        representative: Cody Baldwin
+        corporate_number: '6140001137045'
+      business_address:
+        title: 事業者の所在地
+        address: 日本 (詳細な住所情報についてはお問い合わせください)
+        postal_code: "〒678-0215"
+        address_ja: 兵庫県赤穂市御崎151-2
+        company_name: 株式会社 MOAB
+        address_en: 151-2 Misaki, Ako City, Hyogo Prefecture 678-0215, Japan
+      contact:
+        title: お問い合わせ
+        email_label: メール
+        phone_label: 電話
+        phone: メールにてご要望に応じて開示
+        hours_label: サポート時間
+        email: cody@moab.jp
+        hours: 月曜日 - 金曜日、日本時間午前9時 - 午後6時 (日本の祝日を除く)
+      service_description:
+        title: サービス内容
+        cost_calculations: 3Dプリンティングプロジェクトの包括的なコスト計算
+        project_management: プロジェクトの追跡および管理機能
+        printer_tracking: プリンターの仕様および使用状況の追跡
+        intro: CalcuMakeは、3Dプリンティングのコスト計算およびプロジェクト管理ツールを提供するウェブベースのサービスとしてのソフトウェア（SaaS）アプリケーションです。サービスへのアクセスは、アカウント作成およびサブスクリプションのアクティベーション後、直ちに開始されます。
+        features_title: サービス機能
+        feature_1: 材料費、時間、間接費を含む3Dプリンティングプロジェクトの包括的なコスト計算
+        feature_2: プロジェクトの追跡および管理機能
+        feature_3: PDFエクスポート機能を備えた請求書作成
+        feature_4: プリンター仕様データベースおよび使用状況の追跡
+        feature_5: プロジェクトデータ用のクラウドベースストレージ
+      pricing:
+        title: 価格
+        free_tier: フリーティア：¥0/月 - 広告付きの基本機能
+        pro_tier: プロティア：月額または年額の有料サブスクリプション - 高度な機能、広告なし、優先サポート
+        enterprise_tier: エンタープライズティア：月額または年額の有料サブスクリプション - すべての機能、プレミアムサポート、カスタム統合
+        pricing_details: 正確な価格は、当社のウェブサイトおよびサブスクリプション選択時のアプリケーションに表示されます。
+        price_changes: 価格は、既存のサブスクライバーに30日前に通知することで調整される場合があります。
+        intro: CalcuMakeは、以下のサブスクリプションプランを提供しています。
+        free_tier_title: 無料プラン
+        free_tier_price: 月額<%= %>0
+        free_tier_features: 広告サポート付きの基本的なコスト計算機能
+        free_tier_payment: 支払いは不要です
+        startup_tier_title: スタートアッププラン
+        startup_tier_price: 月額<%= %>150 (税込)
+        startup_tier_features: 高度な機能、広告なしのエクスペリエンス、優先メールサポート
+        startup_tier_billing: サブスクリプション日に毎月請求
+        pro_tier_title: プロプラン
+        pro_tier_price: 月額<%= %>1,500 (税込)
+        pro_tier_features: すべての高度な機能、広告なしのエクスペリエンス、優先メールサポート、強化された計算機能、無制限のプロジェクト
+        pro_tier_billing: サブスクリプション日に毎月請求
+        annual_options: 年間プランは割引料金でご利用いただける場合があります。年間サブスクリプションは、サブスクリプションの更新日に年1回請求されます。
+      payment_methods:
+        title: 支払い方法
+        content: 有料サブスクリプションの場合、以下の支払い方法をご利用いただけます。
+        secure_processing: 当社のサーバーにお客様の完全なクレジットカード情報を保存することはありません。
+        free_tier_note: フリーティアのユーザーは、支払い情報を提供する必要はありません。
+        accepted_title: 利用可能な支払い方法
+        credit_cards: クレジットカード：Visa、Mastercard、American Express、JCB、Diners Club、Discover
+        debit_cards: デビットカード：Visa Debit、Mastercard Debit
+        processing_title: 支払い処理
+        processing_details: すべての支払いは、当社のPCI DSSレベル1認定決済プロセッサであるStripe, Inc.を通じて安全に処理されます。お客様の完全な支払いカード情報は、CalcuMakeサーバーに保存されることはありません。すべての支払いデータは暗号化され、Stripeの安全なインフラストラクチャによってのみ処理されます。
+        security_title: 支払いセキュリティ
+        security_details: すべてのデータ伝送に業界標準のSSL/TLS暗号化を使用しています。支払い情報はトークン化され、国際的なペイメントカード業界標準に準拠して処理されます。
+      payment_timing:
+        title: 支払いタイミング
+        content: 支払いは、選択した請求サイクルに従って請求されます。
+        initial_payment: 初回支払いは、サブスクリプション時に即座に請求されます
+        recurring_payments: 継続支払いは、各請求期間の開始時（月単位または年単位）に請求されます
+        automatic_renewal: サブスクリプションは、キャンセルされない限り自動的に更新されます
+        cancellation_timing: キャンセルは、現在の請求期間の終了時に有効になります
+        monthly_title: 月額サブスクリプションの場合
+        monthly_initial: 初回のお支払いは、サブスクリプション購入時に即座に請求されます
+        monthly_recurring: 定期支払いは、毎月同じ日付に自動的に請求されます。
+        monthly_note: 購読日に該当する日がその月にない場合、支払いはその月の最終日に行われます。
+        annual_title: 年間購読について
+        annual_payment: 年間購読料は、購読購入時に全額請求されます。
+        annual_renewal: キャンセルされない限り、1年後の同じ日に自動的に更新されます。
+        failed_payments_title: 支払い失敗について
+        failed_payments_details: 支払いが失敗した場合、7日間で最大3回まで支払いを試みます。すべての試みが失敗した場合、購読は自動的に無料プランにダウングレードされ、有料機能へのアクセスを失います。
+      delivery:
+        title: サービスの提供
+        intro: CalcuMakeは、すぐにアクセスできるウェブベースのデジタルサービスです。
+        free_tier: 無料プラン：アカウント作成後すぐにアクセスを開始できます。
+        paid_tiers: 有料プラン：有料機能へのアクセスは、支払い処理が正常に完了するとすぐに開始されます（通常は数秒以内）。
+        no_physical: 物理的な製品、配送、または配達の遅延はありません。サービスは、https://calcumake.com でインターネット接続を介して24時間365日アクセスできます。
+      returns:
+        title: 返品と払い戻し
+        money_back_guarantee: 初めて有料サブスクリプションに登録した場合は、14日間の返金保証
+        refund_process: 全額払い戻しについては、最初のサブスクリプションから14日以内にサポートにご連絡ください
+        no_partial_refunds: 残りのサブスクリプション期間に対する一部払い戻しは、法律で義務付けられている場合を除き、提供されません
+        renewal_refunds: 更新支払いは、法律で別途義務付けられている場合を除き、払い戻しできません
+        free_tier_refunds: フリーティアの使用には支払いは伴わず、払い戻しは適用されません
+        intro: CalcuMakeは電子的に提供されるデジタルサブスクリプションサービスであるため、以下の払い戻しポリシーが適用されます。
+        eligibility_title: 払い戻し資格
+        eligibility_initial: サービスを広範囲に使用していない場合（3つ未満のプロジェクトを作成した場合）、最初のサブスクリプション購入から7日以内に払い戻しが発行される場合があります。
+        eligibility_renewals: サブスクリプションの更新に対する払い戻しはできません。
+        eligibility_partial: 未使用のサブスクリプション時間に対する一部払い戻しはできません。
+        eligibility_discretion: 払い戻しは、個々のケースに基づいて当社の裁量で処理されます。
+        request_title: 払い戻しをリクエストする方法
+        request_contact: 購入から7日以内に cody@moab.jp までご連絡ください。
+        request_info: アカウントのメールアドレスと払い戻しをリクエストする理由を含めてください。
+        request_response: 3営業日以内に確認して返信します。
+        processing_title: 払い戻し処理
+        processing_details: 承認された払い戻しはStripeを通じて処理され、通常、カード発行会社に応じて5〜10営業日以内に支払い方法に表示されます。
+        technical_title: 技術的な問題
+        technical_details: サービスへのアクセスを妨げる技術的な問題が発生した場合は、すぐにサポートにご連絡ください。問題の解決に努めるか、サービスクレジットや払い戻しなどの適切な補償を提供します。
+      cancellation:
+        title: キャンセルポリシー
+        content: サブスクリプションのキャンセル条件：
+        cancellation_effect: キャンセルは、現在の請求期間の終了時に有効になります
+        access_retention: 有料期間の終了まで、有料機能へのフルアクセスを保持します
+        data_retention: アカウントデータは、当社のプライバシーポリシーに従って保持されます
+        resubscription: キャンセル後、いつでも再サブスクライブできます
+        how_to_title: キャンセル方法
+        how_to_step1: CalcuMakeアカウントにログインします
+        how_to_step2: アカウント設定 > サブスクリプション に移動します
+        how_to_step3: "「サブスクリプションをキャンセル」をクリックして確定します"
+        how_to_step4: キャンセルの確認メールが届きます
+        timing_title: キャンセルのタイミング
+        timing_anytime: サブスクリプションはいつでもキャンセルできます
+        timing_effect: キャンセルは、現在の請求期間の終了時に有効になります
+        timing_access: 有料期間の終了まで、有料機能へのアクセスを保持します
+        timing_refunds: 現在の請求期間の残りの日数に対する払い戻しは提供されません
+        after_title: キャンセル後
+        after_conversion: アカウントは、請求期間の終了時に自動的に無料プランに変換されます
+        after_data: プロジェクトデータは保持され、機能制限付きで無料プランでアクセスできます
+        after_resubscribe: いつでも再購読して、有料機能を取り戻すことができます
+        deletion_title: アカウントの削除
+        deletion_details: アカウントと関連するすべてのデータを完全に削除したい場合は、cody@moab.jp までご連絡ください。アカウントの削除は永続的であり、元に戻すことはできません。
+      data_retention:
+        title: データ保持
+        content: プロジェクトデータとアカウント情報は、アカウントの有効期間中保持されます。アカウントを削除すると、プライバシーポリシーに従って、すべてのデータは30日以内に完全に削除されます。
+      limitation_liability:
+        title: 責任の制限
+        content: CalcuMakeは、コスト見積もりを目的として「現状のまま」で提供されます。正確性を期していますが、すべての計算は、商用または重要なアプリケーションで使用する前に検証する必要があります。MOAB
+          Co., Ltd.は、CalcuMakeを使用して実行された計算に基づいて行われたビジネス上の決定について責任を負いません。
+      dispute_resolution:
+        title: 紛争解決
+        contact: まず cody@moab.jp までご連絡ください
+        response: 3営業日以内に対応いたします。
+        jurisdiction: 解決に至らない場合、紛争は日本の法律および管轄に従って処理されます。
+      changes:
+        title: 本表示の変更
+        content: このコマース表示は定期的に更新される場合があります。重大な変更は、発効日の少なくとも30日前に、アクティブなサブスクライバーにメールで通知されます。変更後もサービスを継続して使用すると、更新された条件に同意したことになります。
+      questions:
+        title: ご質問
+        intro: このコマース表示、価格設定、または当社のサービスについてご質問がある場合は、お問い合わせください。
+        email: cody@moab.jp
+        phone: '0791-25-4986 (月曜日 - 金曜日、午前9時 - 午後6時 JST)'
+      compliance_note: この表示は、日本の特定商取引法に準拠しています。
   print_pricings:
     form:
       filament_weight: フィラメント重量
@@ -1050,7 +1205,7 @@ ja:
       headline: 創造をもっと、計算をもっと少なく
       subheadline: スプレッドシートや面倒な計算は不要です。自動的に価格を処理して、楽しい部分に集中できます。
       cta_primary: 無料で計算を始める
-      cta_demo: 計算機を無料で試す
+      cta_demo: デモを見る
       trust_signal: クレジットカードは不要 - 30日間、すべてのスタートアップ機能をご利用いただけます
       preview_title: クイックコストプレビュー
       preview_filament_weight: フィラメント重量
