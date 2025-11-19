@@ -822,6 +822,173 @@ zh-CN:
       contact:
         title: 联系信息
         content: 如果您对本协议有任何疑问，请通过应用程序中提供的支持渠道与我们联系。
+    commerce_disclosure:
+      title: 商业披露（特定商取引法に基づく表記）
+      nav_title: 商业披露
+      business_operator:
+        title: 业务经营者
+        company_name: 株式会社モアブ (MOAB Co., Ltd.)
+        representative: Cody Baldwin
+        corporate_number: '6140001137045'
+      business_address:
+        title: 营业地址
+        address: 日本（请联系我们获取详细地址信息）
+        postal_code: "〒678-0215"
+        address_ja: 兵庫県赤穂市御崎151-2
+        company_name: 株式会社 MOAB
+        address_en: 151-2 Misaki, Ako City, Hyogo Prefecture 678-0215, Japan
+      contact:
+        title: 联系信息
+        email_label: 电子邮件
+        phone_label: 电话
+        phone: 通过电子邮件请求提供
+        hours_label: 支持时间
+        hours: 周一至周五，日本标准时间上午 9:00 - 下午 6:00（不包括日本节假日）
+        email: cody@moab.jp
+      service_description:
+        title: 服务说明
+        cost_calculations: 3D 打印项目的综合成本计算
+        project_management: 项目跟踪和管理功能
+        printer_tracking: 打印机规格和使用情况跟踪
+        intro: CalcuMake是一个基于Web的软件即服务（SaaS）应用程序，提供3D打印成本计算和项目管理工具。 帐户创建和订阅激活后，即可立即访问该服务。
+        features_title: 服务功能包括
+        feature_1: 全面的3D打印项目成本计算，包括材料、时间和管理费用
+        feature_2: 项目跟踪和管理功能
+        feature_3: 具有PDF导出功能的发票生成
+        feature_4: 打印机规格数据库和使用情况跟踪
+        feature_5: 基于云的项目数据存储
+      pricing:
+        title: 定价
+        free_tier: 免费级别：¥0/月 - 具有广告的基本功能
+        pro_tier: 专业级别：按月或按年付费订阅 - 高级功能，无广告，优先支持
+        enterprise_tier: 企业级别：按月或按年付费订阅 - 所有功能，高级支持，自定义集成
+        pricing_details: 确切的定价显示在我们的网站和应用程序中，在选择订阅时可见。
+        price_changes: 价格可能会调整，并提前 30 天通知现有订阅者。
+        intro: CalcuMake提供以下订阅计划
+        free_tier_title: 免费套餐
+        free_tier_price: 每月¥0
+        free_tier_features: 具有广告支持的基本成本计算功能
+        free_tier_payment: 无需付款
+        startup_tier_title: 创业套餐
+        startup_tier_price: 每月¥150（含税）
+        startup_tier_features: 高级功能、无广告体验、优先电子邮件支持
+        startup_tier_billing: 在订阅日期按月收费
+        pro_tier_title: 专业套餐
+        pro_tier_price: 每月¥1,500（含税）
+        pro_tier_features: 所有高级功能、无广告体验、优先电子邮件支持、增强的计算能力、无限项目
+        pro_tier_billing: 在订阅日期按月收费
+        annual_options: 年度计划可能以折扣价提供。 年度订阅每年在订阅周年纪念日收取一次费用。
+      payment_methods:
+        title: 付款方式
+        content: 对于付费订阅，我们接受以下付款方式：
+        secure_processing: 我们不会在我们的服务器上存储您的完整信用卡信息。
+        free_tier_note: 免费级别的用户无需提供付款信息。
+        accepted_title: 接受的付款方式
+        credit_cards: 信用卡：Visa、Mastercard、American Express、JCB、Diners Club、Discover
+        debit_cards: 借记卡：Visa Debit、Mastercard Debit
+        processing_title: 付款处理
+        processing_details: 所有付款均通过我们的PCI DSS 1级认证付款处理商Stripe, Inc.安全处理。 您的完整支付卡信息永远不会存储在CalcuMake服务器上。
+          所有付款数据均经过加密，并由Stripe的安全基础设施独家处理。
+        security_title: 付款安全
+        security_details: 我们对所有数据传输使用行业标准的SSL/TLS加密。 付款信息已令牌化，并按照国际支付卡行业标准进行处理。
+      payment_timing:
+        title: 付款时间
+        content: 付款将根据您选择的结算周期收取：
+        initial_payment: 首次付款将在订阅后立即收取
+        recurring_payments: 循环付款将在每个结算周期（每月或每年）开始时收取
+        automatic_renewal: 订阅会自动续订，除非取消
+        cancellation_timing: 取消将在当前结算周期结束时生效
+        monthly_title: 对于每月订阅
+        monthly_initial: 首次付款在购买订阅后立即收取
+        monthly_recurring: 循环付款将在每个月的同一日历日期自动扣款
+        monthly_note: 如果某个月的天数少于您的订阅日期，则付款将在该月的最后一天进行
+        annual_title: 年度订阅
+        annual_payment: 年度订阅费用将在购买时立即全额收取
+        annual_renewal: 续订将在一年后的同一日期自动进行，除非已取消
+        failed_payments_title: 付款失败
+        failed_payments_details: 如果付款失败，我们将在 7 天内尝试最多 3 次付款。如果所有尝试都失败，您的订阅将自动降级到免费层级，并且您将失去对付费功能的访问权限。
+      delivery:
+        title: 服务交付
+        intro: CalcuMake 是一种基于网络的数字服务，可立即访问
+        free_tier: 免费层级：帐户创建后立即开始访问
+        paid_tiers: 付费层级：成功处理付款后立即开始访问付费功能（通常在几秒钟内）
+        no_physical: 没有实体产品、运输或交付延迟。可通过互联网连接在 https://calcumake.com 全天候 24/7 访问该服务
+      returns:
+        title: 退货和退款
+        money_back_guarantee: 首次付费订阅者享有 14 天退款保证
+        refund_process: 在您首次订阅后的 14 天内联系支持部门以获得全额退款
+        no_partial_refunds: 除了法律要求外，不提供剩余订阅时间的按比例退款
+        renewal_refunds: 续订付款不可退款，除非法律另有要求
+        free_tier_refunds: 免费级别的使用不涉及付款，因此不适用退款
+        intro: 由于 CalcuMake 是一种以电子方式提供的数字订阅服务，因此适用以下退款政策
+        eligibility_title: 退款资格
+        eligibility_initial: 如果您没有大量使用该服务（定义为创建少于 3 个项目），则可以在首次购买订阅后的 7 天内申请退款
+        eligibility_renewals: 订阅续订不提供退款
+        eligibility_partial: 不提供对未使用订阅时间的退款
+        eligibility_discretion: 退款将根据具体情况由我们酌情处理
+        request_title: 如何申请退款
+        request_contact: 请在购买后的 7 天内通过 cody@moab.jp 与我们联系
+        request_info: 请提供您的帐户电子邮件和退款原因
+        request_response: 我们将在 3 个工作日内审核并回复
+        processing_title: 退款处理
+        processing_details: 批准的退款通过 Stripe 处理，通常会在 5-10 个工作日内显示在您的付款方式中，具体取决于您的发卡行。
+        technical_title: 技术问题
+        technical_details: 如果您遇到阻止服务访问的技术问题，请立即联系支持。我们将努力解决问题或提供适当的补偿，其中可能包括服务积分或退款。
+      cancellation:
+        title: 取消政策
+        content: 订阅取消条款：
+        cancellation_effect: 取消将在您当前结算周期结束时生效
+        access_retention: 在付费周期结束之前，您将保留对付费功能的完全访问权限
+        data_retention: 帐户数据将根据我们的隐私政策保留
+        resubscription: 您可以在取消后随时重新订阅
+        how_to_title: 如何取消
+        how_to_step1: 登录您的 CalcuMake 帐户
+        how_to_step2: 导航到帐户设置 > 订阅
+        how_to_step3: 单击“取消订阅”并确认
+        how_to_step4: 您将收到取消的电子邮件确认
+        timing_title: 取消时间
+        timing_anytime: 您可以随时取消订阅
+        timing_effect: 取消将在您当前结算周期结束时生效
+        timing_access: 您将保留对付费功能的访问权限，直到付费周期结束
+        timing_refunds: 当前结算周期剩余天数不提供退款
+        after_title: 取消后
+        after_conversion: 您的帐户将在结算周期结束时自动转换为免费层级
+        after_data: 您的项目数据将被保留，并且可以在具有功能限制的免费层级中访问
+        after_resubscribe: 您可以随时重新订阅以重新获得付费功能
+        deletion_title: 帐户删除
+        deletion_details: 如果您希望完全删除您的帐户和所有相关数据，请联系 cody@moab.jp。帐户删除是永久性的，无法撤消。
+      data_retention:
+        title: 数据保留
+        content: 项目数据和帐户信息将在您的帐户的整个生命周期内保留。如果您删除您的帐户，所有数据将在 30 天内根据我们的隐私政策永久删除。
+      limitation_liability:
+        title: 责任限制
+        content: CalcuMake 按“原样”提供，用于成本估算目的。虽然我们力求准确，但在商业或关键应用中使用之前，应验证所有计算。MOAB Co.,
+          Ltd. 不对基于使用 CalcuMake 执行的计算做出的业务决策负责。
+      dispute_resolution:
+        title: 争议解决
+        contact: 请先通过 cody@moab.jp 与我们联系
+        response: 我们将在 3 个工作日内回复
+        jurisdiction: 如果无法达成解决方案，争议将根据日本法律和管辖权处理
+      changes:
+        title: 本披露的变更
+        content: 本商业披露可能会定期更新。重大变更将在生效前至少 30 天通过电子邮件通知活跃订阅者。在变更后继续使用本服务即表示接受更新后的条款。
+      questions:
+        title: 有问题吗？
+        intro: 如果您对本商业披露、定价或我们的服务有任何疑问，请联系我们
+        email: cody@moab.jp
+        phone: '0791-25-4986（周一至周五，日本标准时间上午 9:00 - 下午 6:00）'
+      compliance_note: 本披露符合日本的特定商业交易法（特定商取引法）。
+      labels:
+        representative: 代表
+        corporate_number: 法人番号
+        email: 邮箱
+        phone: 电话
+        hours: 营业时间
+        price: 价格
+        features: 功能
+        payment: 支付
+        billing: 账单
+        price_changes: 价格变动
   print_pricings:
     form:
       filament_weight: 线材重量
