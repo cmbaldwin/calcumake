@@ -1,7 +1,7 @@
 <% content_for :title, t('legal.commerce_disclosure.title') %>
 
 <div class="row justify-content-center">
-  <div class="col-lg-8">
+  <div class="col-lg-10">
     <div class="card">
       <div class="card-header">
         <h1 class="h2 mb-0"><%= t('legal.commerce_disclosure.title') %></h1>
@@ -9,73 +9,218 @@
       </div>
       <div class="card-body">
         <div class="legal-content">
+          <!-- Business Operator -->
           <section class="mb-4">
             <h3><%= t('legal.commerce_disclosure.business_operator.title') %></h3>
-            <p><%= t('legal.commerce_disclosure.business_operator.name') %></p>
+            <p><strong><%= t('legal.commerce_disclosure.business_operator.company_name') %></strong></p>
             <p><%= t('legal.commerce_disclosure.business_operator.representative') %></p>
+            <p><%= t('legal.commerce_disclosure.business_operator.corporate_number') %></p>
           </section>
 
+          <!-- Business Address -->
           <section class="mb-4">
             <h3><%= t('legal.commerce_disclosure.business_address.title') %></h3>
-            <p><%= t('legal.commerce_disclosure.business_address.address') %></p>
+            <p>
+              <%= t('legal.commerce_disclosure.business_address.postal_code') %><br>
+              <%= t('legal.commerce_disclosure.business_address.address_ja') %><br>
+              <%= t('legal.commerce_disclosure.business_address.company_name') %><br>
+              <em><%= t('legal.commerce_disclosure.business_address.address_en') %></em>
+            </p>
           </section>
 
+          <!-- Contact Information -->
           <section class="mb-4">
             <h3><%= t('legal.commerce_disclosure.contact.title') %></h3>
-            <p><strong><%= t('legal.commerce_disclosure.contact.email_label') %>:</strong> <%= t('legal.commerce_disclosure.contact.email') %></p>
-            <p><strong><%= t('legal.commerce_disclosure.contact.phone_label') %>:</strong> <%= t('legal.commerce_disclosure.contact.phone') %></p>
-            <p><strong><%= t('legal.commerce_disclosure.contact.hours_label') %>:</strong> <%= t('legal.commerce_disclosure.contact.hours') %></p>
+            <p><strong>Email:</strong> <%= t('legal.commerce_disclosure.contact.email') %></p>
+            <p><strong>Phone:</strong> <%= t('legal.commerce_disclosure.contact.phone') %></p>
+            <p><strong>Hours:</strong> <%= t('legal.commerce_disclosure.contact.hours') %></p>
           </section>
 
+          <!-- Service Description -->
           <section class="mb-4">
             <h3><%= t('legal.commerce_disclosure.service_description.title') %></h3>
-            <p><%= t('legal.commerce_disclosure.service_description.content') %></p>
+            <p><%= t('legal.commerce_disclosure.service_description.intro') %></p>
+            <p><strong><%= t('legal.commerce_disclosure.service_description.features_title') %>:</strong></p>
             <ul>
-              <li><%= t('legal.commerce_disclosure.service_description.cost_calculations') %></li>
-              <li><%= t('legal.commerce_disclosure.service_description.project_management') %></li>
-              <li><%= t('legal.commerce_disclosure.service_description.invoice_generation') %></li>
-              <li><%= t('legal.commerce_disclosure.service_description.printer_tracking') %></li>
+              <li><%= t('legal.commerce_disclosure.service_description.feature_1') %></li>
+              <li><%= t('legal.commerce_disclosure.service_description.feature_2') %></li>
+              <li><%= t('legal.commerce_disclosure.service_description.feature_3') %></li>
+              <li><%= t('legal.commerce_disclosure.service_description.feature_4') %></li>
+              <li><%= t('legal.commerce_disclosure.service_description.feature_5') %></li>
             </ul>
           </section>
 
+          <!-- Pricing -->
           <section class="mb-4">
             <h3><%= t('legal.commerce_disclosure.pricing.title') %></h3>
-            <p><%= t('legal.commerce_disclosure.pricing.content') %></p>
-            <ul>
-              <li><%= t('legal.commerce_disclosure.pricing.free_tier') %></li>
-              <li><%= t('legal.commerce_disclosure.pricing.startup_tier') %></li>
-              <li><%= t('legal.commerce_disclosure.pricing.pro_tier') %></li>
-            </ul>
-            <p><%= t('legal.commerce_disclosure.pricing.pricing_details') %></p>
-            <p><%= t('legal.commerce_disclosure.pricing.price_changes') %></p>
-            <p class="text-muted"><%= t('legal.commerce_disclosure.pricing.future_note') %></p>
+            <p><%= t('legal.commerce_disclosure.pricing.intro') %>:</p>
+
+            <div class="pricing-tier mb-3">
+              <h4><%= t('legal.commerce_disclosure.pricing.free_tier_title') %></h4>
+              <p><strong>Price:</strong> <%= t('legal.commerce_disclosure.pricing.free_tier_price') %></p>
+              <p><strong>Features:</strong> <%= t('legal.commerce_disclosure.pricing.free_tier_features') %></p>
+              <p><strong>Payment:</strong> <%= t('legal.commerce_disclosure.pricing.free_tier_payment') %></p>
+            </div>
+
+            <div class="pricing-tier mb-3">
+              <h4><%= t('legal.commerce_disclosure.pricing.startup_tier_title') %></h4>
+              <p><strong>Price:</strong> <%= t('legal.commerce_disclosure.pricing.startup_tier_price') %></p>
+              <p><strong>Features:</strong> <%= t('legal.commerce_disclosure.pricing.startup_tier_features') %></p>
+              <p><strong>Billing:</strong> <%= t('legal.commerce_disclosure.pricing.startup_tier_billing') %></p>
+            </div>
+
+            <div class="pricing-tier mb-3">
+              <h4><%= t('legal.commerce_disclosure.pricing.pro_tier_title') %></h4>
+              <p><strong>Price:</strong> <%= t('legal.commerce_disclosure.pricing.pro_tier_price') %></p>
+              <p><strong>Features:</strong> <%= t('legal.commerce_disclosure.pricing.pro_tier_features') %></p>
+              <p><strong>Billing:</strong> <%= t('legal.commerce_disclosure.pricing.pro_tier_billing') %></p>
+            </div>
+
+            <p><%= t('legal.commerce_disclosure.pricing.annual_options') %></p>
+            <p><strong>Price Changes:</strong> <%= t('legal.commerce_disclosure.pricing.price_changes') %></p>
           </section>
 
+          <!-- Payment Methods -->
           <section class="mb-4">
             <h3><%= t('legal.commerce_disclosure.payment_methods.title') %></h3>
-            <p><%= t('legal.commerce_disclosure.payment_methods.content') %></p>
-            <p><%= t('legal.commerce_disclosure.payment_methods.future_note') %></p>
+            <p><strong><%= t('legal.commerce_disclosure.payment_methods.accepted_title') %>:</strong></p>
+            <ul>
+              <li><%= t('legal.commerce_disclosure.payment_methods.credit_cards') %></li>
+              <li><%= t('legal.commerce_disclosure.payment_methods.debit_cards') %></li>
+            </ul>
+            <p><strong><%= t('legal.commerce_disclosure.payment_methods.processing_title') %>:</strong><br>
+            <%= t('legal.commerce_disclosure.payment_methods.processing_details') %></p>
+            <p><strong><%= t('legal.commerce_disclosure.payment_methods.security_title') %>:</strong><br>
+            <%= t('legal.commerce_disclosure.payment_methods.security_details') %></p>
           </section>
 
+          <!-- Payment Timing -->
           <section class="mb-4">
             <h3><%= t('legal.commerce_disclosure.payment_timing.title') %></h3>
-            <p><%= t('legal.commerce_disclosure.payment_timing.content') %></p>
+            <p><strong><%= t('legal.commerce_disclosure.payment_timing.monthly_title') %>:</strong></p>
+            <ul>
+              <li><%= t('legal.commerce_disclosure.payment_timing.monthly_initial') %></li>
+              <li><%= t('legal.commerce_disclosure.payment_timing.monthly_recurring') %></li>
+              <li><%= t('legal.commerce_disclosure.payment_timing.monthly_note') %></li>
+            </ul>
+            <p><strong><%= t('legal.commerce_disclosure.payment_timing.annual_title') %>:</strong></p>
+            <ul>
+              <li><%= t('legal.commerce_disclosure.payment_timing.annual_payment') %></li>
+              <li><%= t('legal.commerce_disclosure.payment_timing.annual_renewal') %></li>
+            </ul>
+            <p><strong><%= t('legal.commerce_disclosure.payment_timing.failed_payments_title') %>:</strong><br>
+            <%= t('legal.commerce_disclosure.payment_timing.failed_payments_details') %></p>
           </section>
 
+          <!-- Service Delivery -->
           <section class="mb-4">
             <h3><%= t('legal.commerce_disclosure.delivery.title') %></h3>
-            <p><%= t('legal.commerce_disclosure.delivery.content') %></p>
+            <p><%= t('legal.commerce_disclosure.delivery.intro') %>:</p>
+            <ul>
+              <li><%= t('legal.commerce_disclosure.delivery.free_tier') %></li>
+              <li><%= t('legal.commerce_disclosure.delivery.paid_tiers') %></li>
+            </ul>
+            <p><%= t('legal.commerce_disclosure.delivery.no_physical') %></p>
           </section>
 
+          <!-- Returns and Refunds -->
           <section class="mb-4">
             <h3><%= t('legal.commerce_disclosure.returns.title') %></h3>
-            <p><%= t('legal.commerce_disclosure.returns.content') %></p>
+            <p><%= t('legal.commerce_disclosure.returns.intro') %>:</p>
+
+            <p><strong><%= t('legal.commerce_disclosure.returns.eligibility_title') %>:</strong></p>
+            <ul>
+              <li><%= t('legal.commerce_disclosure.returns.eligibility_initial') %></li>
+              <li><%= t('legal.commerce_disclosure.returns.eligibility_renewals') %></li>
+              <li><%= t('legal.commerce_disclosure.returns.eligibility_partial') %></li>
+              <li><%= t('legal.commerce_disclosure.returns.eligibility_discretion') %></li>
+            </ul>
+
+            <p><strong><%= t('legal.commerce_disclosure.returns.request_title') %>:</strong></p>
+            <ul>
+              <li><%= t('legal.commerce_disclosure.returns.request_contact') %></li>
+              <li><%= t('legal.commerce_disclosure.returns.request_info') %></li>
+              <li><%= t('legal.commerce_disclosure.returns.request_response') %></li>
+            </ul>
+
+            <p><strong><%= t('legal.commerce_disclosure.returns.processing_title') %>:</strong><br>
+            <%= t('legal.commerce_disclosure.returns.processing_details') %></p>
+
+            <p><strong><%= t('legal.commerce_disclosure.returns.technical_title') %>:</strong><br>
+            <%= t('legal.commerce_disclosure.returns.technical_details') %></p>
           </section>
 
+          <!-- Cancellation Policy -->
           <section class="mb-4">
             <h3><%= t('legal.commerce_disclosure.cancellation.title') %></h3>
-            <p><%= t('legal.commerce_disclosure.cancellation.content') %></p>
+
+            <p><strong><%= t('legal.commerce_disclosure.cancellation.how_to_title') %>:</strong></p>
+            <ol>
+              <li><%= t('legal.commerce_disclosure.cancellation.how_to_step1') %></li>
+              <li><%= t('legal.commerce_disclosure.cancellation.how_to_step2') %></li>
+              <li><%= t('legal.commerce_disclosure.cancellation.how_to_step3') %></li>
+              <li><%= t('legal.commerce_disclosure.cancellation.how_to_step4') %></li>
+            </ol>
+
+            <p><strong><%= t('legal.commerce_disclosure.cancellation.timing_title') %>:</strong></p>
+            <ul>
+              <li><%= t('legal.commerce_disclosure.cancellation.timing_anytime') %></li>
+              <li><%= t('legal.commerce_disclosure.cancellation.timing_effect') %></li>
+              <li><%= t('legal.commerce_disclosure.cancellation.timing_access') %></li>
+              <li><%= t('legal.commerce_disclosure.cancellation.timing_refunds') %></li>
+            </ul>
+
+            <p><strong><%= t('legal.commerce_disclosure.cancellation.after_title') %>:</strong></p>
+            <ul>
+              <li><%= t('legal.commerce_disclosure.cancellation.after_conversion') %></li>
+              <li><%= t('legal.commerce_disclosure.cancellation.after_data') %></li>
+              <li><%= t('legal.commerce_disclosure.cancellation.after_resubscribe') %></li>
+            </ul>
+
+            <p><strong><%= t('legal.commerce_disclosure.cancellation.deletion_title') %>:</strong><br>
+            <%= t('legal.commerce_disclosure.cancellation.deletion_details') %></p>
           </section>
+
+          <!-- Data Retention -->
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.data_retention.title') %></h3>
+            <p><%= t('legal.commerce_disclosure.data_retention.content') %></p>
+          </section>
+
+          <!-- Limitation of Liability -->
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.limitation_liability.title') %></h3>
+            <p><%= t('legal.commerce_disclosure.limitation_liability.content') %></p>
+          </section>
+
+          <!-- Dispute Resolution -->
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.dispute_resolution.title') %></h3>
+            <ul>
+              <li><%= t('legal.commerce_disclosure.dispute_resolution.contact') %></li>
+              <li><%= t('legal.commerce_disclosure.dispute_resolution.response') %></li>
+              <li><%= t('legal.commerce_disclosure.dispute_resolution.jurisdiction') %></li>
+            </ul>
+          </section>
+
+          <!-- Changes to This Disclosure -->
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.changes.title') %></h3>
+            <p><%= t('legal.commerce_disclosure.changes.content') %></p>
+          </section>
+
+          <!-- Questions -->
+          <section class="mb-4">
+            <h3><%= t('legal.commerce_disclosure.questions.title') %></h3>
+            <p><%= t('legal.commerce_disclosure.questions.intro') %>:</p>
+            <p><strong>Email:</strong> <%= t('legal.commerce_disclosure.questions.email') %><br>
+            <strong>Phone:</strong> <%= t('legal.commerce_disclosure.questions.phone') %></p>
+          </section>
+
+          <!-- Compliance Note -->
+          <div class="alert alert-info mt-4">
+            <%= t('legal.commerce_disclosure.compliance_note') %>
+          </div>
         </div>
       </div>
     </div>
@@ -88,9 +233,16 @@
     border-bottom: 2px solid var(--bs-primary);
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
+    margin-top: 1.5rem;
   }
 
-  .legal-content ul {
+  .legal-content h4 {
+    color: var(--bs-secondary);
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+
+  .legal-content ul, .legal-content ol {
     margin-bottom: 1rem;
   }
 
@@ -99,11 +251,31 @@
   }
 
   .legal-content section {
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
     border-bottom: 1px solid #e9ecef;
   }
 
-  .legal-content section:last-child {
+  .legal-content section:last-of-type {
     border-bottom: none;
+  }
+
+  .pricing-tier {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--bs-primary);
+  }
+
+  .pricing-tier h4 {
+    margin-top: 0;
+    color: var(--bs-primary);
+  }
+
+  .pricing-tier p {
+    margin-bottom: 0.5rem;
+  }
+
+  .pricing-tier p:last-child {
+    margin-bottom: 0;
   }
 </style>
