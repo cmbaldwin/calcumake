@@ -280,7 +280,7 @@ Using OpenRouter API with Google Gemini Flash 1.5
 
 2. **HTML/ERB Tag Preservation**
 
-   - Maintains `<%= %>` tags
+   - Maintains `%{}` tags
    - Preserves HTML structure
    - Keeps formatting intact
 
@@ -303,7 +303,7 @@ CRITICAL RULES:
 2. Preserve HTML tags if present
 3. Keep technical terms accurate (e.g., "filament", "printer", "STL file")
 4. Use natural, professional language for UI elements
-5. For currency symbols, keep <%= %> tags intact
+5. For currency symbols, keep %{} tags intact
 6. Return ONLY the translations in the same key: value format, nothing else
 ```
 

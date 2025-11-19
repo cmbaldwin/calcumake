@@ -1567,8 +1567,8 @@ es:
     quick_cost_calculator: Calculadora Rápida de Costes
     print_time_hours: Tiempo de Impresión (horas)
     filament_weight_grams: Peso del Filamento (gramos)
-    filament_price_per_kg: Precio del Filamento por KG (<%= %>)
-    labor_rate_per_hour: Tarifa de Mano de Obra por Hora (<%= %>)
+    filament_price_per_kg: Precio del Filamento por KG ($)
+    labor_rate_per_hour: Tarifa de Mano de Obra por Hora ($)
     create_full_calculation: Crear Cálculo Completo
     includes_defaults: 'Incluye Costes Predeterminados:'
     defaults:

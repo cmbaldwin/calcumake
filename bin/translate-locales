@@ -133,7 +133,7 @@ def call_openrouter_api(keys_to_translate, target_language, client)
     2. Preserve HTML tags if present
     3. Keep technical terms accurate (e.g., "filament", "printer", "STL file")
     4. Use natural, professional language for UI elements
-    5. For currency symbols, keep <%= %> tags intact
+    5. Preserve currency symbols EXACTLY (¥, $, €, etc.) - DO NOT convert them to any other format
     6. Return ONLY the translations in the same key: value format, nothing else
 
     English strings to translate:
