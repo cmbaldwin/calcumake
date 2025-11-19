@@ -17,7 +17,8 @@
 
           <section class="mb-4">
             <h3><%= t('legal.commerce_disclosure.business_address.title') %></h3>
-            <p><%= t('legal.commerce_disclosure.business_address.address') %></p>
+            <p><%= t('legal.commerce_disclosure.business_address.address') %><br>
+            <%= t('legal.commerce_disclosure.business_address.address_english') %></p>
           </section>
 
           <section class="mb-4">
@@ -46,7 +47,6 @@
               <li><%= t('legal.commerce_disclosure.pricing.startup_tier') %></li>
               <li><%= t('legal.commerce_disclosure.pricing.pro_tier') %></li>
             </ul>
-            <p><%= t('legal.commerce_disclosure.pricing.pricing_details') %></p>
             <p><%= t('legal.commerce_disclosure.pricing.price_changes') %></p>
             <p class="text-muted"><%= t('legal.commerce_disclosure.pricing.future_note') %></p>
           </section>
@@ -54,7 +54,12 @@
           <section class="mb-4">
             <h3><%= t('legal.commerce_disclosure.payment_methods.title') %></h3>
             <p><%= t('legal.commerce_disclosure.payment_methods.content') %></p>
-            <p><%= t('legal.commerce_disclosure.payment_methods.future_note') %></p>
+            <ul>
+              <li><%= t('legal.commerce_disclosure.payment_methods.accepted_cards') %></li>
+            </ul>
+            <p><%= t('legal.commerce_disclosure.payment_methods.payment_processor') %></p>
+            <p><%= t('legal.commerce_disclosure.payment_methods.secure_processing') %></p>
+            <p class="text-muted"><%= t('legal.commerce_disclosure.payment_methods.free_tier_note') %></p>
           </section>
 
           <section class="mb-4">

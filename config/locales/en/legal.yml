@@ -219,13 +219,14 @@ en:
         representative: 'Representative: Cody Baldwin'
       business_address:
         title: Business Address
-        address: Japan (Contact us for detailed address information)
+        address: "〒678-0215 兵庫県赤穂市御崎151-2"
+        address_english: "151-2 Misaki, Ako City, Hyogo Prefecture 678-0215, Japan"
       contact:
         title: Contact Information
         email_label: Email
         email: cody@moab.jp
         phone_label: Phone
-        phone: Available upon request via email
+        phone: 0791-25-4986
         hours_label: Support Hours
         hours: Monday - Friday, 9:00 AM - 6:00 PM JST (excluding Japanese holidays)
       service_description:
@@ -240,22 +241,17 @@ en:
         title: Pricing
         content: 'CalcuMake offers three subscription tiers:'
         free_tier: 'Free Tier: ¥0/month - Basic features with advertisements'
-        pro_tier: 'Pro Tier: Paid monthly or annual subscription - Advanced features,
-          no ads, priority support'
-        enterprise_tier: 'Enterprise Tier: Paid monthly or annual subscription - All
-          features, premium support, custom integrations'
-        pricing_details: Exact pricing is displayed on our website and in the application
-          during subscription selection.
+        startup_tier: 'Startup Tier: ¥150/month - Advanced features, no advertisements, priority support'
+        pro_tier: 'Pro Tier: ¥1,500/month - All advanced features, no advertisements, priority support, enhanced capabilities'
         price_changes: Prices may be adjusted with 30 days advance notice to existing
           subscribers.
+        future_note: 'Prices listed are for monthly subscriptions. Annual subscription options may be available at discounted rates.'
       payment_methods:
         title: Payment Methods
-        content: 'For paid subscriptions, we accept the following payment methods:'
-        credit_cards: 'Credit Cards: Visa, Mastercard, American Express, JCB'
-        payment_processor: All payments are securely processed through Stripe, our
-          payment processing partner.
-        secure_processing: We do not store your complete credit card information on
-          our servers.
+        content: 'For paid subscriptions (Startup and Pro tiers), we accept the following payment methods:'
+        accepted_cards: 'Credit Cards: Visa, Mastercard, American Express, JCB, Diners Club, Discover'
+        payment_processor: All payments are securely processed through Stripe, Inc., our certified payment processing partner.
+        secure_processing: Your complete credit card information is never stored on our servers. All payment data is encrypted and handled by Stripe's PCI DSS Level 1 certified infrastructure.
         free_tier_note: Free tier users do not need to provide payment information.
       payment_timing:
         title: Payment Timing
