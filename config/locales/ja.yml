@@ -823,72 +823,6 @@ ja:
       contact:
         title: お問い合わせ
         content: 本規約についてご質問がある場合は、アプリケーションで利用可能なサポートチャネルを通じてお問い合わせください。
-    commerce_disclosure:
-      title: 特定商取引法に基づく表記
-      nav_title: 特定商取引法に基づく表記
-      business_operator:
-        title: 事業者
-        name: '会社名: 株式会社モアブ (MOAB Co., Ltd.)'
-        representative: '代表者: Cody Baldwin'
-      business_address:
-        title: 事業者の所在地
-        address: 日本 (詳細な住所情報についてはお問い合わせください)
-      contact:
-        title: お問い合わせ
-        email_label: メール
-        email: cody@moab.jp
-        phone_label: 電話
-        phone: メールにてご要望に応じて開示
-        hours_label: サポート時間
-        hours: 月曜日 - 金曜日、午前9:00 - 午後6:00 JST (日本の祝日を除く)
-      service_description:
-        title: サービス内容
-        content: CalcuMakeは、3Dプリンティングのコスト計算およびプロジェクト管理ツールを提供するWebベースのアプリケーションです。当社のサービスには以下が含まれます。
-        cost_calculations: 3Dプリンティングプロジェクトの包括的なコスト計算
-        project_management: プロジェクトの追跡および管理機能
-        invoice_generation: 請求書の生成およびPDFエクスポート機能
-        printer_tracking: プリンターの仕様および使用状況の追跡
-      pricing:
-        title: 価格
-        content: CalcuMakeは3つのサブスクリプションティアを提供しています。
-        free_tier: フリーティア：¥0/月 - 広告付きの基本機能
-        pro_tier: プロティア：月額または年額の有料サブスクリプション - 高度な機能、広告なし、優先サポート
-        enterprise_tier: エンタープライズティア：月額または年額の有料サブスクリプション - すべての機能、プレミアムサポート、カスタム統合
-        pricing_details: 正確な価格は、当社のウェブサイトおよびサブスクリプション選択時のアプリケーションに表示されます。
-        price_changes: 価格は、既存のサブスクライバーに30日前に通知することで調整される場合があります。
-      payment_methods:
-        title: 支払い方法
-        content: 有料サブスクリプションの場合、以下の支払い方法をご利用いただけます。
-        credit_cards: クレジットカード：Visa、Mastercard、American Express、JCB
-        payment_processor: すべての支払いは、当社の決済処理パートナーであるStripeを通じて安全に処理されます。
-        secure_processing: 当社のサーバーにお客様の完全なクレジットカード情報を保存することはありません。
-        free_tier_note: フリーティアのユーザーは、支払い情報を提供する必要はありません。
-      payment_timing:
-        title: 支払いタイミング
-        content: 支払いは、選択した請求サイクルに従って請求されます。
-        initial_payment: 初回支払いは、サブスクリプション時に即座に請求されます
-        recurring_payments: 継続支払いは、各請求期間の開始時（月単位または年単位）に請求されます
-        automatic_renewal: サブスクリプションは、キャンセルされない限り自動的に更新されます
-        cancellation_timing: キャンセルは、現在の請求期間の終了時に有効になります
-      delivery:
-        title: サービスの提供
-        content: CalcuMakeは、アカウント作成後すぐにアクセスできるウェブベースのサービスです。物理的な製品や配送は伴いません。
-      returns:
-        title: 返品と払い戻し
-        content: CalcuMakeはデジタルサブスクリプションサービスであるため、当社の払い戻しポリシーは次のとおりです。
-        money_back_guarantee: 初めて有料サブスクリプションに登録した場合は、14日間の返金保証
-        refund_process: 全額払い戻しについては、最初のサブスクリプションから14日以内にサポートにご連絡ください
-        no_partial_refunds: 残りのサブスクリプション期間に対する一部払い戻しは、法律で義務付けられている場合を除き、提供されません
-        renewal_refunds: 更新支払いは、法律で別途義務付けられている場合を除き、払い戻しできません
-        free_tier_refunds: フリーティアの使用には支払いは伴わず、払い戻しは適用されません
-      cancellation:
-        title: キャンセルポリシー
-        content: サブスクリプションのキャンセル条件：
-        cancellation_method: アカウント設定から、またはcody@moab.jpのサポートに連絡して、いつでもキャンセルできます
-        cancellation_effect: キャンセルは、現在の請求期間の終了時に有効になります
-        access_retention: 有料期間の終了まで、有料機能へのフルアクセスを保持します
-        data_retention: アカウントデータは、当社のプライバシーポリシーに従って保持されます
-        resubscription: キャンセル後、いつでも再サブスクライブできます
   print_pricings:
     form:
       filament_weight: フィラメント重量
@@ -1116,7 +1050,7 @@ ja:
       headline: 創造をもっと、計算をもっと少なく
       subheadline: スプレッドシートや面倒な計算は不要です。自動的に価格を処理して、楽しい部分に集中できます。
       cta_primary: 無料で計算を始める
-      cta_demo: デモを見る
+      cta_demo: 計算機を無料で試す
       trust_signal: クレジットカードは不要 - 30日間、すべてのスタートアップ機能をご利用いただけます
       preview_title: クイックコストプレビュー
       preview_filament_weight: フィラメント重量

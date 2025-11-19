@@ -822,72 +822,6 @@ zh-CN:
       contact:
         title: 联系信息
         content: 如果您对本协议有任何疑问，请通过应用程序中提供的支持渠道与我们联系。
-    commerce_disclosure:
-      title: 商业披露（特定商取引法に基づく表記）
-      nav_title: 商业披露
-      business_operator:
-        title: 业务经营者
-        name: 公司名称：株式会社モアブ (MOAB Co., Ltd.)
-        representative: 代表：Cody Baldwin
-      business_address:
-        title: 营业地址
-        address: 日本（请联系我们获取详细地址信息）
-      contact:
-        title: 联系信息
-        email_label: 电子邮件
-        email: cody@moab.jp
-        phone_label: 电话
-        phone: 通过电子邮件请求提供
-        hours_label: 支持时间
-        hours: 周一至周五，日本标准时间上午 9:00 - 下午 6:00（不包括日本节假日）
-      service_description:
-        title: 服务说明
-        content: CalcuMake 是一款基于 Web 的应用程序，提供 3D 打印成本计算和项目管理工具。我们的服务包括：
-        cost_calculations: 3D 打印项目的综合成本计算
-        project_management: 项目跟踪和管理功能
-        invoice_generation: 发票生成和 PDF 导出功能
-        printer_tracking: 打印机规格和使用情况跟踪
-      pricing:
-        title: 定价
-        content: CalcuMake 提供三个订阅级别：
-        free_tier: 免费级别：¥0/月 - 具有广告的基本功能
-        pro_tier: 专业级别：按月或按年付费订阅 - 高级功能，无广告，优先支持
-        enterprise_tier: 企业级别：按月或按年付费订阅 - 所有功能，高级支持，自定义集成
-        pricing_details: 确切的定价显示在我们的网站和应用程序中，在选择订阅时可见。
-        price_changes: 价格可能会调整，并提前 30 天通知现有订阅者。
-      payment_methods:
-        title: 付款方式
-        content: 对于付费订阅，我们接受以下付款方式：
-        credit_cards: 信用卡：Visa，Mastercard，American Express，JCB
-        payment_processor: 所有付款均通过我们的支付处理合作伙伴 Stripe 安全处理。
-        secure_processing: 我们不会在我们的服务器上存储您的完整信用卡信息。
-        free_tier_note: 免费级别的用户无需提供付款信息。
-      payment_timing:
-        title: 付款时间
-        content: 付款将根据您选择的结算周期收取：
-        initial_payment: 首次付款将在订阅后立即收取
-        recurring_payments: 循环付款将在每个结算周期（每月或每年）开始时收取
-        automatic_renewal: 订阅会自动续订，除非取消
-        cancellation_timing: 取消将在当前结算周期结束时生效
-      delivery:
-        title: 服务交付
-        content: CalcuMake 是一项基于 Web 的服务，可在创建帐户后立即访问。不涉及实物产品或运输。
-      returns:
-        title: 退货和退款
-        content: 由于 CalcuMake 是一项数字订阅服务，我们的退款政策如下：
-        money_back_guarantee: 首次付费订阅者享有 14 天退款保证
-        refund_process: 在您首次订阅后的 14 天内联系支持部门以获得全额退款
-        no_partial_refunds: 除了法律要求外，不提供剩余订阅时间的按比例退款
-        renewal_refunds: 续订付款不可退款，除非法律另有要求
-        free_tier_refunds: 免费级别的使用不涉及付款，因此不适用退款
-      cancellation:
-        title: 取消政策
-        content: 订阅取消条款：
-        cancellation_method: 随时通过您的帐户设置取消订阅，或通过 cody@moab.jp 联系支持部门
-        cancellation_effect: 取消将在您当前结算周期结束时生效
-        access_retention: 在付费周期结束之前，您将保留对付费功能的完全访问权限
-        data_retention: 帐户数据将根据我们的隐私政策保留
-        resubscription: 您可以在取消后随时重新订阅
   print_pricings:
     form:
       filament_weight: 线材重量
@@ -1115,7 +1049,7 @@ zh-CN:
       headline: 更多创造，更少计算
       subheadline: 跳过电子表格和繁琐的计算。自动处理定价，以便您可以专注于有趣的部分。
       cta_primary: 免费开始计算
-      cta_demo: 查看演示
+      cta_demo: 免费试用计算器
       trust_signal: 无需信用卡 - 免费试用完整 Startup 功能 30 天
       preview_title: 快速成本预览
       preview_filament_weight: 线材重量

@@ -951,98 +951,6 @@ fr:
         title: Coordonnées
         content: Si vous avez des questions concernant cet accord, veuillez nous contacter
           via les canaux d'assistance disponibles dans l'application.
-    commerce_disclosure:
-      title: Divulgation Commerciale (特定商取引法に基づく表記)
-      nav_title: Divulgation Commerciale
-      business_operator:
-        title: Exploitant Commercial
-        name: 'Nom de l''entreprise : 株式会社モアブ (MOAB Co., Ltd.)'
-        representative: 'Représentant : Cody Baldwin'
-      business_address:
-        title: Adresse Commerciale
-        address: Japon (Contactez-nous pour des informations d'adresse détaillées)
-      contact:
-        title: Informations de Contact
-        email_label: Email
-        email: cody@moab.jp
-        phone_label: Téléphone
-        phone: Disponible sur demande par email
-        hours_label: Heures de Support
-        hours: Du lundi au vendredi, de 9h00 à 18h00 JST (hors jours fériés japonais)
-      service_description:
-        title: Description du Service
-        content: 'CalcuMake est une application web fournissant des outils de calcul
-          des coûts d''impression 3D et de gestion de projet. Notre service comprend :'
-        cost_calculations: Calculs de coûts complets pour les projets d'impression
-          3D
-        project_management: Fonctionnalités de suivi et de gestion de projet
-        invoice_generation: Génération de factures et fonctionnalités d'exportation
-          PDF
-        printer_tracking: Spécifications de l'imprimante et suivi de l'utilisation
-      pricing:
-        title: Tarification
-        content: 'CalcuMake propose trois niveaux d''abonnement :'
-        free_tier: 'Niveau Gratuit : ¥0/mois - Fonctionnalités de base avec publicités'
-        pro_tier: 'Niveau Pro : Abonnement mensuel ou annuel payant - Fonctionnalités
-          avancées, sans publicité, support prioritaire'
-        enterprise_tier: 'Niveau Entreprise : Abonnement mensuel ou annuel payant
-          - Toutes les fonctionnalités, support premium, intégrations personnalisées'
-        pricing_details: Les prix exacts sont affichés sur notre site web et dans
-          l'application lors de la sélection de l'abonnement.
-        price_changes: Les prix peuvent être ajustés avec un préavis de 30 jours aux
-          abonnés existants.
-      payment_methods:
-        title: Méthodes de paiement
-        content: 'Pour les abonnements payants, nous acceptons les méthodes de paiement
-          suivantes :'
-        credit_cards: 'Cartes de crédit : Visa, Mastercard, American Express, JCB'
-        payment_processor: Tous les paiements sont traités de manière sécurisée via
-          Stripe, notre partenaire de traitement des paiements.
-        secure_processing: Nous ne stockons pas les informations complètes de votre
-          carte de crédit sur nos serveurs.
-        free_tier_note: Les utilisateurs du niveau gratuit n'ont pas besoin de fournir
-          d'informations de paiement.
-      payment_timing:
-        title: Calendrier de paiement
-        content: 'Le paiement est facturé selon votre cycle de facturation sélectionné
-          :'
-        initial_payment: Le paiement initial est facturé immédiatement après l'abonnement
-        recurring_payments: Les paiements récurrents sont facturés au début de chaque
-          période de facturation (mensuelle ou annuelle)
-        automatic_renewal: Les abonnements sont renouvelés automatiquement sauf en
-          cas d'annulation
-        cancellation_timing: Les annulations prennent effet à la fin de la période
-          de facturation en cours
-      delivery:
-        title: Prestation de service
-        content: CalcuMake est un service web accessible immédiatement après la création
-          du compte. Il n'y a pas de produits physiques ou d'expédition impliqués.
-      returns:
-        title: Retours et remboursements
-        content: 'CalcuMake étant un service d''abonnement numérique, notre politique
-          de remboursement est la suivante :'
-        money_back_guarantee: Garantie de remboursement de 14 jours pour les nouveaux
-          abonnés payants
-        refund_process: Contactez le support dans les 14 jours suivant votre abonnement
-          initial pour un remboursement complet
-        no_partial_refunds: Les remboursements partiels pour le temps d'abonnement
-          restant ne sont pas fournis, sauf si la loi l'exige
-        renewal_refunds: Les paiements de renouvellement ne sont pas remboursables,
-          sauf si la loi l'exige
-        free_tier_refunds: L'utilisation du niveau gratuit n'implique pas de paiements
-          et aucun remboursement ne s'applique
-      cancellation:
-        title: Politique d'annulation
-        content: 'Conditions d''annulation de l''abonnement :'
-        cancellation_method: Annulez à tout moment via les paramètres de votre compte
-          ou en contactant le support à cody@moab.jp
-        cancellation_effect: L'annulation prend effet à la fin de votre période de
-          facturation en cours
-        access_retention: Vous conservez un accès complet aux fonctionnalités payantes
-          jusqu'à la fin de la période payée
-        data_retention: Les données du compte sont conservées conformément à notre
-          politique de confidentialité
-        resubscription: Vous pouvez vous réabonner à tout moment après l'annulation
   print_pricings:
     form:
       filament_weight: Poids du filament
@@ -1306,7 +1214,7 @@ fr:
         la tarification automatiquement pour pouvoir vous concentrer sur la partie
         amusante.
       cta_primary: Commencer à calculer gratuitement
-      cta_demo: Voir la démo
+      cta_demo: Essayer le calculateur
       trust_signal: Aucune carte de crédit requise - commencez avec toutes les fonctionnalités
         Startup pendant 30 jours
       preview_title: Aperçu rapide des coûts
