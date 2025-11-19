@@ -939,6 +939,211 @@ es:
         title: Información de Contacto
         content: Si tiene alguna pregunta sobre este acuerdo, contáctenos a través
           de los canales de soporte disponibles en la aplicación.
+    commerce_disclosure:
+      contact:
+        email: cody@moab.jp
+        title: Información de Contacto
+        phone: '0791-25-4986'
+        hours: Lunes a Viernes, 9:00 AM - 6:00 PM JST, excluyendo los días festivos
+          nacionales japoneses
+      title: Divulgación Comercial (特定商取引法に基づく表記)
+      nav_title: Divulgación Comercial
+      business_operator:
+        title: Información del Operador Comercial
+        company_name: 株式会社モアブ (MOAB Co., Ltd.)
+        representative: Cody Baldwin
+        corporate_number: '6140001137045'
+      business_address:
+        title: Dirección Comercial
+        postal_code: "〒678-0215"
+        address_ja: 兵庫県赤穂市御崎151-2
+        company_name: 株式会社 MOAB
+        address_en: 151-2 Misaki, Ako City, Hyogo Prefecture 678-0215, Japan
+      service_description:
+        title: Descripción del Servicio
+        intro: CalcuMake es una aplicación web de Software como Servicio (SaaS) que
+          proporciona herramientas de cálculo de costos de impresión 3D y gestión
+          de proyectos. El acceso al servicio comienza inmediatamente después de la
+          creación de la cuenta y la activación de la suscripción.
+        features_title: Las características del servicio incluyen
+        feature_1: Cálculos de costos integrales para proyectos de impresión 3D, incluyendo
+          materiales, tiempo y costos generales
+        feature_2: Capacidades de seguimiento y gestión de proyectos
+        feature_3: Generación de facturas con funcionalidad de exportación a PDF
+        feature_4: Base de datos de especificaciones de impresoras y seguimiento del
+          uso
+        feature_5: Almacenamiento basado en la nube para datos de proyectos
+      pricing:
+        title: Precios
+        intro: CalcuMake ofrece los siguientes planes de suscripción
+        free_tier_title: Nivel Gratuito
+        free_tier_price: "¥0 por mes"
+        free_tier_features: Funciones básicas de cálculo de costos con soporte publicitario
+        free_tier_payment: No se requiere pago
+        startup_tier_title: Nivel Startup
+        startup_tier_price: "¥150 por mes (impuestos incluidos)"
+        startup_tier_features: Funciones avanzadas, experiencia sin publicidad, soporte
+          prioritario por correo electrónico
+        startup_tier_billing: Se cobra mensualmente en la fecha de suscripción
+        pro_tier_title: Nivel Pro
+        pro_tier_price: "¥1,500 por mes (impuestos incluidos)"
+        pro_tier_features: Todas las funciones avanzadas, experiencia sin publicidad,
+          soporte prioritario por correo electrónico, capacidades de cálculo mejoradas,
+          proyectos ilimitados
+        pro_tier_billing: Se cobra mensualmente en la fecha de suscripción
+        annual_options: Los planes anuales pueden estar disponibles a tarifas con
+          descuento. Las suscripciones anuales se facturan una vez al año en la fecha
+          de aniversario de la suscripción.
+        price_changes: Los precios están sujetos a cambios. Los suscriptores existentes
+          recibirán un aviso con 30 días de anticipación antes de que entre en vigor
+          cualquier aumento de precio. Los nuevos precios se aplican a las renovaciones
+          después del período de notificación.
+      payment_methods:
+        title: Métodos de Pago
+        accepted_title: Métodos de Pago Aceptados
+        credit_cards: 'Tarjetas de crédito: Visa, Mastercard, American Express, JCB,
+          Diners Club, Discover'
+        debit_cards: 'Tarjetas de débito: Visa Débito, Mastercard Débito'
+        processing_title: Procesamiento de Pagos
+        processing_details: Todos los pagos se procesan de forma segura a través de
+          Stripe, Inc., nuestro procesador de pagos certificado PCI DSS Nivel 1. La
+          información completa de su tarjeta de pago nunca se almacena en los servidores
+          de CalcuMake. Todos los datos de pago se cifran y se gestionan exclusivamente
+          en la infraestructura segura de Stripe.
+        security_title: Seguridad de Pago
+        security_details: Utilizamos el cifrado SSL/TLS estándar de la industria para
+          toda la transmisión de datos. La información de pago se tokeniza y se procesa
+          de acuerdo con los estándares internacionales de la industria de tarjetas
+          de pago.
+      payment_timing:
+        title: Tiempo de Pago
+        monthly_title: Para Suscripciones Mensuales
+        monthly_initial: El pago inicial se cobra inmediatamente después de la compra
+          de la suscripción
+        monthly_recurring: Los pagos recurrentes se cargan automáticamente en la misma
+          fecha del calendario cada mes.
+        monthly_note: Si un mes tiene menos días que la fecha de su suscripción, el
+          pago se realiza el último día de ese mes.
+        annual_title: Para Suscripciones Anuales
+        annual_payment: El pago anual completo se carga inmediatamente después de
+          la compra de la suscripción.
+        annual_renewal: La renovación se produce automáticamente en la misma fecha
+          un año después, a menos que se cancele.
+        failed_payments_title: Pagos Fallidos
+        failed_payments_details: Si un pago falla, intentaremos procesar el pago hasta
+          3 veces durante un período de 7 días. Si todos los intentos fallan, su suscripción
+          se degradará automáticamente al nivel Gratuito y perderá el acceso a las
+          funciones de pago.
+      delivery:
+        title: Tiempo de Entrega del Servicio
+        intro: CalcuMake es un servicio digital basado en la web con acceso inmediato.
+        free_tier: 'Nivel Gratuito: El acceso comienza inmediatamente después de la
+          creación de la cuenta.'
+        paid_tiers: 'Niveles de Pago: El acceso a las funciones de pago comienza inmediatamente
+          después del procesamiento exitoso del pago (normalmente en cuestión de segundos).'
+        no_physical: No hay productos físicos, envíos ni retrasos en la entrega. Se
+          puede acceder al servicio las 24 horas del día, los 7 días de la semana
+          a través de una conexión a Internet en https://calcumake.com
+      returns:
+        title: Devoluciones y Reembolsos
+        intro: 'Como CalcuMake es un servicio de suscripción digital proporcionado
+          electrónicamente, se aplica la siguiente política de reembolso:'
+        eligibility_title: Elegibilidad para el Reembolso
+        eligibility_initial: Se pueden emitir reembolsos dentro de los 7 días posteriores
+          a la compra inicial de la suscripción si no ha utilizado el servicio de
+          forma extensiva (definido como la creación de menos de 3 proyectos).
+        eligibility_renewals: Los reembolsos no están disponibles para las renovaciones
+          de suscripciones.
+        eligibility_partial: No se ofrecen reembolsos parciales por el tiempo de suscripción
+          no utilizado.
+        eligibility_discretion: Los reembolsos se procesan a nuestra discreción caso
+          por caso.
+        request_title: Cómo Solicitar un Reembolso
+        request_contact: Póngase en contacto con nosotros en cody@moab.jp dentro de
+          los 7 días posteriores a la compra.
+        request_info: Incluya el correo electrónico de su cuenta y el motivo de la
+          solicitud de reembolso.
+        request_response: Revisaremos y responderemos en un plazo de 3 días hábiles.
+        processing_title: Procesamiento del Reembolso
+        processing_details: Los reembolsos aprobados se procesan a través de Stripe
+          y normalmente aparecen en su método de pago en un plazo de 5 a 10 días hábiles,
+          según el emisor de su tarjeta.
+        technical_title: Problemas Técnicos
+        technical_details: Si experimenta problemas técnicos que impiden el acceso
+          al servicio, póngase en contacto con el soporte técnico inmediatamente.
+          Trabajaremos para resolver los problemas o proporcionar una compensación
+          adecuada, que puede incluir crédito de servicio o reembolsos.
+      cancellation:
+        title: Política de Cancelación
+        how_to_title: Cómo Cancelar
+        how_to_step1: Inicie sesión en su cuenta de CalcuMake.
+        how_to_step2: Vaya a Configuración de la cuenta > Suscripción.
+        how_to_step3: Haga clic en "Cancelar Suscripción" y confirme.
+        how_to_step4: Recibirá una confirmación por correo electrónico de la cancelación.
+        timing_title: Tiempo de Cancelación
+        timing_anytime: Puede cancelar su suscripción en cualquier momento.
+        timing_effect: La cancelación entra en vigor al final de su período de facturación
+          actual.
+        timing_access: Conservará el acceso a las funciones de pago hasta el final
+          del período pagado.
+        timing_refunds: No se proporcionan reembolsos por los días restantes del período
+          de facturación actual.
+        after_title: Después de la Cancelación
+        after_conversion: Su cuenta se convierte automáticamente al nivel Gratuito
+          al final del período de facturación.
+        after_data: Los datos de su proyecto se conservan y son accesibles en el nivel
+          Gratuito con limitaciones de funciones.
+        after_resubscribe: Puede volver a suscribirse en cualquier momento para recuperar
+          las funciones de pago.
+        deletion_title: Eliminación de la Cuenta
+        deletion_details: Si desea eliminar por completo su cuenta y todos los datos
+          asociados, póngase en contacto con cody@moab.jp. La eliminación de la cuenta
+          es permanente y no se puede revertir.
+      data_retention:
+        title: Retención de Datos
+        content: Los datos del proyecto y la información de la cuenta se conservan
+          durante la vida útil de su cuenta. Si elimina su cuenta, todos los datos
+          se eliminarán permanentemente en un plazo de 30 días de acuerdo con nuestra
+          Política de Privacidad.
+      limitation_liability:
+        title: Limitación de Responsabilidad
+        content: CalcuMake se proporciona "tal cual" para fines de estimación de costos.
+          Si bien nos esforzamos por la precisión, todos los cálculos deben verificarse
+          antes de su uso en aplicaciones comerciales o críticas. MOAB Co., Ltd. no
+          se hace responsable de las decisiones comerciales tomadas en base a los
+          cálculos realizados con CalcuMake.
+      dispute_resolution:
+        title: Resolución de Disputas
+        contact: Póngase en contacto con nosotros primero en cody@moab.jp
+        response: Responderemos en un plazo de 3 días hábiles.
+        jurisdiction: Si no se puede llegar a una resolución, las disputas se resolverán
+          de acuerdo con la ley y la jurisdicción japonesas.
+      changes:
+        title: Cambios en esta Declaración
+        content: Esta declaración comercial puede actualizarse periódicamente. Los
+          cambios importantes se anunciarán por correo electrónico a los suscriptores
+          activos al menos 30 días antes de que entren en vigor. El uso continuado
+          del servicio después de los cambios constituye la aceptación de los términos
+          actualizados.
+      questions:
+        title: "¿Preguntas?"
+        intro: Si tiene preguntas sobre esta declaración comercial, los precios o
+          nuestros servicios, póngase en contacto con nosotros.
+        email: cody@moab.jp
+        phone: '0791-25-4986 (Lunes - Viernes, 9:00 AM - 6:00 PM JST)'
+      compliance_note: Esta declaración cumple con la Ley de Transacciones Comerciales
+        Especificadas (特定商取引法) de Japón.
+      labels:
+        representative: Representante
+        corporate_number: Número de Identificación Corporativa (法人番号)
+        email: Correo electrónico
+        phone: Teléfono
+        hours: Horario
+        price: Precio
+        features: Características
+        payment: Pago
+        billing: Facturación
+        price_changes: Cambios de Precio
   print_pricings:
     form:
       filament_weight: Peso del Filamento
