@@ -213,6 +213,17 @@ en:
     commerce_disclosure:
       title: Commerce Disclosure (特定商取引法に基づく表記)
       nav_title: Commerce Disclosure
+      labels:
+        representative: Representative
+        corporate_number: Corporate Number (法人番号)
+        email: Email
+        phone: Phone
+        hours: Hours
+        price: Price
+        features: Features
+        payment: Payment
+        billing: Billing
+        price_changes: Price Changes
       business_operator:
         title: Business Operator Information
         company_name: 株式会社モアブ (MOAB Co., Ltd.)
