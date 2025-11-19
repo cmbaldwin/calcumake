@@ -214,83 +214,124 @@ en:
       title: Commerce Disclosure (特定商取引法に基づく表記)
       nav_title: Commerce Disclosure
       business_operator:
-        title: Business Operator
-        name: 'Company Name: 株式会社モアブ (MOAB Co., Ltd.)'
-        representative: 'Representative: Cody Baldwin'
+        title: Business Operator Information
+        company_name: 株式会社モアブ (MOAB Co., Ltd.)
+        representative: Cody Baldwin
+        corporate_number: '6140001137045'
       business_address:
         title: Business Address
-        address: Japan (Contact us for detailed address information)
+        postal_code: '〒678-0215'
+        address_ja: 兵庫県赤穂市御崎151-2
+        company_name: 株式会社 MOAB
+        address_en: 151-2 Misaki, Ako City, Hyogo Prefecture 678-0215, Japan
       contact:
         title: Contact Information
-        email_label: Email
         email: cody@moab.jp
-        phone_label: Phone
-        phone: Available upon request via email
-        hours_label: Support Hours
-        hours: Monday - Friday, 9:00 AM - 6:00 PM JST (excluding Japanese holidays)
+        phone: 0791-25-4986
+        hours: Monday - Friday, 9:00 AM - 6:00 PM JST, excluding Japanese national holidays
       service_description:
         title: Service Description
-        content: 'CalcuMake is a web-based application providing 3D printing cost
-          calculation and project management tools. Our service includes:'
-        cost_calculations: Comprehensive cost calculations for 3D printing projects
-        project_management: Project tracking and management features
-        invoice_generation: Invoice generation and PDF export capabilities
-        printer_tracking: Printer specifications and usage tracking
+        intro: CalcuMake is a web-based Software-as-a-Service (SaaS) application providing 3D printing cost calculation and project management tools. Access to the service begins immediately upon account creation and subscription activation.
+        features_title: Service Features Include
+        feature_1: Comprehensive cost calculations for 3D printing projects including material, time, and overhead costs
+        feature_2: Project tracking and management capabilities
+        feature_3: Invoice generation with PDF export functionality
+        feature_4: Printer specifications database and usage tracking
+        feature_5: Cloud-based storage for project data
       pricing:
         title: Pricing
-        content: 'CalcuMake offers three subscription tiers:'
-        free_tier: 'Free Tier: ¥0/month - Basic features with advertisements'
-        pro_tier: 'Pro Tier: Paid monthly or annual subscription - Advanced features,
-          no ads, priority support'
-        enterprise_tier: 'Enterprise Tier: Paid monthly or annual subscription - All
-          features, premium support, custom integrations'
-        pricing_details: Exact pricing is displayed on our website and in the application
-          during subscription selection.
-        price_changes: Prices may be adjusted with 30 days advance notice to existing
-          subscribers.
+        intro: CalcuMake offers the following subscription plans
+        free_tier_title: Free Tier
+        free_tier_price: ¥0 per month
+        free_tier_features: Basic cost calculation features with advertising support
+        free_tier_payment: No payment required
+        startup_tier_title: Startup Tier
+        startup_tier_price: ¥150 per month (tax included)
+        startup_tier_features: Advanced features, ad-free experience, priority email support
+        startup_tier_billing: Charged monthly on subscription date
+        pro_tier_title: Pro Tier
+        pro_tier_price: ¥1,500 per month (tax included)
+        pro_tier_features: All advanced features, ad-free experience, priority email support, enhanced calculation capabilities, unlimited projects
+        pro_tier_billing: Charged monthly on subscription date
+        annual_options: Annual plans may be available at discounted rates. Annual subscriptions are billed once per year on the subscription anniversary date.
+        price_changes: Prices are subject to change. Existing subscribers will receive 30 days advance notice before any price increase takes effect. New prices apply to renewals after the notice period.
       payment_methods:
         title: Payment Methods
-        content: 'For paid subscriptions, we accept the following payment methods:'
-        credit_cards: 'Credit Cards: Visa, Mastercard, American Express, JCB'
-        payment_processor: All payments are securely processed through Stripe, our
-          payment processing partner.
-        secure_processing: We do not store your complete credit card information on
-          our servers.
-        free_tier_note: Free tier users do not need to provide payment information.
+        accepted_title: Accepted Payment Methods
+        credit_cards: 'Credit Cards: Visa, Mastercard, American Express, JCB, Diners Club, Discover'
+        debit_cards: 'Debit Cards: Visa Debit, Mastercard Debit'
+        processing_title: Payment Processing
+        processing_details: All payments are securely processed through Stripe, Inc., our PCI DSS Level 1 certified payment processor. Your complete payment card information is never stored on CalcuMake servers. All payment data is encrypted and handled exclusively by Stripe's secure infrastructure.
+        security_title: Payment Security
+        security_details: We use industry-standard SSL/TLS encryption for all data transmission. Payment information is tokenized and processed in compliance with international payment card industry standards.
       payment_timing:
         title: Payment Timing
-        content: 'Payment is charged according to your selected billing cycle:'
-        initial_payment: Initial payment is charged immediately upon subscription
-        recurring_payments: Recurring payments are charged at the start of each billing
-          period (monthly or annually)
-        automatic_renewal: Subscriptions renew automatically unless canceled
-        cancellation_timing: Cancellations take effect at the end of the current billing
-          period
+        monthly_title: For Monthly Subscriptions
+        monthly_initial: Initial payment is charged immediately upon subscription purchase
+        monthly_recurring: Recurring payments are automatically charged on the same calendar date each month
+        monthly_note: If a month has fewer days than your subscription date, payment occurs on the last day of that month
+        annual_title: For Annual Subscriptions
+        annual_payment: Full annual payment is charged immediately upon subscription purchase
+        annual_renewal: Renewal occurs automatically on the same date one year later unless cancelled
+        failed_payments_title: Failed Payments
+        failed_payments_details: If a payment fails, we will attempt to process payment up to 3 times over a 7-day period. If all attempts fail, your subscription will be automatically downgraded to the Free tier, and you will lose access to paid features.
       delivery:
-        title: Service Delivery
-        content: CalcuMake is a web-based service accessible immediately upon account
-          creation. There are no physical products or shipping involved.
+        title: Service Delivery Timing
+        intro: CalcuMake is a web-based digital service with immediate access
+        free_tier: 'Free Tier: Access begins immediately upon account creation'
+        paid_tiers: 'Paid Tiers: Access to paid features begins immediately upon successful payment processing (typically within seconds)'
+        no_physical: There are no physical products, shipping, or delivery delays. Service is accessible 24/7 via internet connection at https://calcumake.com
       returns:
         title: Returns and Refunds
-        content: 'As CalcuMake is a digital subscription service, our refund policy
-          is as follows:'
-        money_back_guarantee: 14-day money-back guarantee for first-time paid subscribers
-        refund_process: Contact support within 14 days of your initial subscription
-          for a full refund
-        no_partial_refunds: Partial refunds for remaining subscription time are not
-          provided except as required by law
-        renewal_refunds: Renewal payments are non-refundable unless otherwise required
-          by law
-        free_tier_refunds: Free tier usage does not involve payments and no refunds
-          apply
+        intro: As CalcuMake is a digital subscription service provided electronically, the following refund policy applies
+        eligibility_title: Refund Eligibility
+        eligibility_initial: Refunds may be issued within 7 days of initial subscription purchase if you have not used the service extensively (defined as creating fewer than 3 projects)
+        eligibility_renewals: Refunds are not available for subscription renewals
+        eligibility_partial: Partial refunds for unused subscription time are not available
+        eligibility_discretion: Refunds are processed at our discretion on a case-by-case basis
+        request_title: How to Request a Refund
+        request_contact: Contact us at cody@moab.jp within 7 days of purchase
+        request_info: Include your account email and reason for refund request
+        request_response: We will review and respond within 3 business days
+        processing_title: Refund Processing
+        processing_details: Approved refunds are processed through Stripe and typically appear on your payment method within 5-10 business days, depending on your card issuer.
+        technical_title: Technical Issues
+        technical_details: If you experience technical problems preventing service access, please contact support immediately. We will work to resolve issues or provide appropriate compensation, which may include service credit or refunds.
       cancellation:
         title: Cancellation Policy
-        content: 'Subscription cancellation terms:'
-        cancellation_method: Cancel anytime through your account settings or by contacting
-          support at cody@moab.jp
-        cancellation_effect: Cancellation takes effect at the end of your current
-          billing period
-        access_retention: You retain full access to paid features until the end of
-          the paid period
-        data_retention: Account data is retained according to our Privacy Policy
-        resubscription: You may resubscribe at any time after cancellation
+        how_to_title: How to Cancel
+        how_to_step1: Log into your CalcuMake account
+        how_to_step2: Navigate to Account Settings > Subscription
+        how_to_step3: Click "Cancel Subscription" and confirm
+        how_to_step4: You will receive email confirmation of cancellation
+        timing_title: Cancellation Timing
+        timing_anytime: You may cancel your subscription at any time
+        timing_effect: Cancellation takes effect at the end of your current billing period
+        timing_access: You will retain access to paid features until the end of the paid period
+        timing_refunds: No refunds are provided for the remaining days of the current billing period
+        after_title: After Cancellation
+        after_conversion: Your account automatically converts to Free tier at the end of the billing period
+        after_data: Your project data is retained and accessible in Free tier with feature limitations
+        after_resubscribe: You may resubscribe at any time to regain paid features
+        deletion_title: Account Deletion
+        deletion_details: If you wish to completely delete your account and all associated data, please contact cody@moab.jp. Account deletion is permanent and cannot be reversed.
+      data_retention:
+        title: Data Retention
+        content: Project data and account information are retained for the lifetime of your account. If you delete your account, all data is permanently removed within 30 days in accordance with our Privacy Policy.
+      limitation_liability:
+        title: Limitation of Liability
+        content: CalcuMake is provided "as is" for cost estimation purposes. While we strive for accuracy, all calculations should be verified before use in commercial or critical applications. MOAB Co., Ltd. is not liable for business decisions made based on calculations performed using CalcuMake.
+      dispute_resolution:
+        title: Dispute Resolution
+        contact: Contact us first at cody@moab.jp
+        response: We will respond within 3 business days
+        jurisdiction: If resolution cannot be reached, disputes will be handled according to Japanese law and jurisdiction
+      changes:
+        title: Changes to This Disclosure
+        content: This commerce disclosure may be updated periodically. Material changes will be announced via email to active subscribers at least 30 days before taking effect. Continued use of the service after changes constitutes acceptance of updated terms.
+      questions:
+        title: Questions?
+        intro: If you have questions about this commerce disclosure, pricing, or our services, please contact us
+        email: cody@moab.jp
+        phone: 0791-25-4986 (Monday - Friday, 9:00 AM - 6:00 PM JST)
+      compliance_note: This disclosure complies with Japan's Act on Specified Commercial Transactions (特定商取引法).
