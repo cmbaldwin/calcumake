@@ -137,6 +137,308 @@ Never replace frames directly - wrap content:
 - Printers in print pricing forms → updates `printer_select_frame`
 - Filaments in plate fields → updates all `[data-filament-select-frame]` (multiple instances)
 
+## Performance & Caching
+
+### Caching Strategy
+CalcuMake uses multi-layer caching for optimal performance:
+- **Rails Fragment Caching**: View components and expensive calculations
+- **SolidCache**: Production-ready database-backed cache (via Mission Control)
+- **Cloudflare CDN**: Static assets and page caching
+- **Browser Caching**: Long-term asset storage
+
+See [docs/CACHING_STRATEGY.md](docs/CACHING_STRATEGY.md) for comprehensive guide.
+
+### Critical Caching Patterns
+
+**1. Always Eager Load Associations:**
+```ruby
+# ❌ BAD - N+1 queries
+@print_pricings = current_user.print_pricings.all
+
+# ✅ GOOD - Single query
+@print_pricings = current_user.print_pricings.includes(:plates, :printer, :client)
+```
+
+**2. Cache Expensive Calculations with Automatic Invalidation:**
+```ruby
+# ❌ BAD - Recalculate every render
+def total_filament_cost
+  plates.sum { |p| p.filament_weight * p.filament_cost_per_gram }
+end
+
+# ❌ BAD - Time-based expiration doesn't reflect changes
+def total_filament_cost
+  Rails.cache.fetch("print_pricing/#{id}/filament_cost", expires_in: 1.hour) do
+    plates.sum { |p| p.filament_weight * p.filament_cost_per_gram }
+  end
+end
+
+# ✅ GOOD - Cache key includes record state for automatic invalidation
+def total_filament_cost
+  # Cache key includes id + updated_at so any change to the record invalidates cache
+  Rails.cache.fetch(["print_pricing", id, "filament_cost", updated_at]) do
+    plates.sum { |p| p.filament_weight * p.filament_cost_per_gram }
+  end
+end
+
+# ✅ BEST - Include dependent records in cache key
+def total_filament_cost
+  # Invalidates when pricing OR any plate OR any filament changes
+  cache_key = [
+    "print_pricing", id, updated_at,
+    plates.maximum(:updated_at),
+    plates.joins(:plate_filaments).maximum("plate_filaments.updated_at")
+  ]
+  Rails.cache.fetch(cache_key) do
+    plates.sum { |p| p.filament_weight * p.filament_cost_per_gram }
+  end
+end
+```
+
+**3. Fragment Cache View Components with Proper Cache Keys:**
+```erb
+<%# ❌ BAD - Render expensive component every time %>
+<%= render "stats_cards" %>
+
+<%# ❌ BAD - Time-based expiration doesn't reflect changes %>
+<% cache "stats_cards", expires_in: 1.hour do %>
+  <%= render "stats_cards" %>
+<% end %>
+
+<%# ✅ GOOD - Cache key includes user and dependent record timestamps %>
+<% cache ["stats_cards", current_user.id, current_user.updated_at, current_user.print_pricings.maximum(:updated_at)] do %>
+  <%= render "stats_cards" %>
+<% end %>
+
+<%# ✅ BEST - Use cache_key_with_version for automatic invalidation %>
+<% cache [current_user, "stats_cards", current_user.print_pricings.maximum(:updated_at)] do %>
+  <%= render "stats_cards" %>
+<% end %>
+```
+
+**4. Cache Invalidation Strategy:**
+
+**Preferred: Automatic Invalidation via Cache Keys (No Manual Clearing Needed)**
+```ruby
+# When using cache keys with updated_at, no manual clearing needed!
+# The timestamp changes automatically trigger new cache keys
+
+class PrintPricing < ApplicationRecord
+  # Touch parent records to cascade cache invalidation
+  belongs_to :user, touch: true
+  has_many :plates, dependent: :destroy
+
+  # No after_save callback needed - cache keys handle it
+end
+
+class Plate < ApplicationRecord
+  belongs_to :print_pricing, touch: true  # Updates print_pricing.updated_at
+  has_many :plate_filaments, dependent: :destroy
+end
+
+class PlateFilament < ApplicationRecord
+  belongs_to :plate, touch: true  # Updates plate.updated_at → print_pricing.updated_at
+end
+```
+
+**Alternative: Manual Cache Clearing (Only When Necessary)**
+```ruby
+# Use only when automatic cache keys aren't practical
+class PrintPricing < ApplicationRecord
+  after_save :clear_cost_cache
+  after_touch :clear_cost_cache
+
+  private
+
+  def clear_cost_cache
+    # Clear specific cache key (must match fetch key exactly)
+    Rails.cache.delete(["print_pricing", id, "filament_cost", updated_at])
+    # Problem: This won't work because updated_at changes on save!
+    # Better to use the automatic approach above
+  end
+end
+```
+
+**Best Practice: Touch Associations**
+```ruby
+# Always use touch: true to cascade invalidation
+class Filament < ApplicationRecord
+  has_many :plate_filaments
+
+  after_update :touch_related_print_pricings
+
+  private
+
+  def touch_related_print_pricings
+    # When filament price changes, invalidate all print pricings using it
+    plate_filaments.each { |pf| pf.plate.touch }
+  end
+end
+```
+
+### Performance Benchmarks
+Target metrics after caching implementation:
+- Dashboard load: <200ms (from 500-800ms)
+- Index pages: <150ms (from 300-500ms)
+- Cache hit rate: >85%
+- Database queries per page: <20 (from 100+)
+
+---
+
+## ViewComponent Standards
+
+### When to Use ViewComponents
+
+**✅ Use ViewComponents for:**
+1. Repeated UI patterns (cards, badges, buttons)
+2. Components with conditional logic
+3. Testable view logic
+4. Shared components across features
+5. Components with complex HTML structure
+
+**❌ Don't Use ViewComponents for:**
+1. One-off simple partials
+2. Pure content pages
+3. Form fields (use form builders)
+4. Trivial wrappers around single HTML tags
+
+### ViewComponent Structure
+
+```ruby
+# app/components/stats_card_component.rb
+class StatsCardComponent < ViewComponent::Base
+  def initialize(title:, value:, icon: nil, trend: nil)
+    @title = title
+    @value = value
+    @icon = icon
+    @trend = trend
+  end
+
+  # Add helper methods for view logic
+  def trend_class
+    return unless @trend
+    @trend.positive? ? "text-success" : "text-danger"
+  end
+end
+```
+
+```erb
+<%# app/components/stats_card_component.html.erb %>
+<div class="card stat-card">
+  <div class="card-body">
+    <% if @icon %>
+      <i class="<%= @icon %> stat-icon"></i>
+    <% end %>
+    <h6 class="text-muted"><%= @title %></h6>
+    <h3 class="mb-0"><%= @value %></h3>
+    <% if @trend %>
+      <small class="<%= trend_class %>">
+        <%= number_to_percentage(@trend, precision: 1) %>
+      </small>
+    <% end %>
+  </div>
+</div>
+```
+
+```ruby
+# test/components/stats_card_component_test.rb
+require "test_helper"
+
+class StatsCardComponentTest < ViewComponent::TestCase
+  test "renders with required attributes" do
+    render_inline(StatsCardComponent.new(title: "Revenue", value: "$1,234"))
+
+    assert_selector "h6", text: "Revenue"
+    assert_selector "h3", text: "$1,234"
+  end
+
+  test "shows positive trend in green" do
+    render_inline(StatsCardComponent.new(title: "Growth", value: "10%", trend: 5.2))
+
+    assert_selector "small.text-success"
+  end
+end
+```
+
+### Component Organization
+
+```
+app/
+├── components/
+│   ├── shared/              # App-wide components
+│   │   ├── stats_card_component.rb
+│   │   ├── stats_card_component.html.erb
+│   │   └── modal_component.rb
+│   ├── print_pricings/      # Feature-specific components
+│   │   ├── plate_card_component.rb
+│   │   └── cost_breakdown_component.rb
+│   └── invoices/
+│       └── line_item_component.rb
+test/
+└── components/              # Component tests (required!)
+    ├── shared/
+    │   └── stats_card_component_test.rb
+    └── print_pricings/
+        └── plate_card_component_test.rb
+```
+
+### Migration Priority
+
+**Phase 1 (Quick Wins):**
+1. `StatsCardComponent` - 5x repetition eliminated
+2. `UsageStatsComponent` - 4x repetition eliminated
+3. `BadgeComponent` - Universal badge patterns
+4. `ButtonComponent` - Consistent button styling
+5. `OAuthIconComponent` - Replace 35-line SVG helper
+
+**Phase 2 (Helper Refactoring):**
+6. Migrate `content_tag` calls to components
+7. Form helpers to components
+
+**Phase 3 (Complex Features):**
+8. Advanced calculator components
+9. Invoice line item components
+10. Print pricing form components
+
+### Testing Requirements
+
+**CRITICAL:** All ViewComponents MUST have corresponding tests.
+
+```ruby
+# Minimum test coverage:
+# 1. Render with required attributes
+# 2. Conditional logic branches
+# 3. Helper method behavior
+# 4. Edge cases (nil, empty, invalid)
+
+class MyComponentTest < ViewComponent::TestCase
+  test "renders successfully" do
+    render_inline(MyComponent.new(required: "value"))
+    assert_selector "div.my-component"
+  end
+
+  test "handles nil optional attributes" do
+    render_inline(MyComponent.new(required: "value", optional: nil))
+    refute_selector ".optional-content"
+  end
+end
+```
+
+### ViewComponent Caching
+
+Combine ViewComponents with fragment caching:
+
+```erb
+<% cache [@user, @print_pricing] do %>
+  <%= render StatsCardComponent.new(
+    title: "Total Cost",
+    value: number_to_currency(@print_pricing.total_cost)
+  ) %>
+<% end %>
+```
+
+---
+
 ## Internationalization
 Supports 7 languages: en, ja, zh-CN, hi, es, fr, ar
 
@@ -293,6 +595,9 @@ Minitest with Turbo Stream tests. Test both HTML and turbo_stream formats.
 ## Documentation Context Reference
 
 ### Active Documentation
+**Performance & Caching:** `docs/CACHING_STRATEGY.md` | `docs/CACHING_PHASE_1_PLAN.md` - Multi-layer caching architecture and implementation guide
+**ViewComponents:** `docs/VIEWCOMPONENT_RESEARCH.md` | `docs/VIEWCOMPONENT_MIGRATION_ROADMAP.md` - Component architecture and migration plan
+**PR Merge Strategy:** `docs/PR_MERGE_STRATEGY.md` - Systematic testing and production deployment plan
 **OAuth Setup:** `docs/OAUTH_SETUP_GUIDE.md`
 **Stripe Integration:** `docs/STRIPE_SETUP.md`
 **Landing Page:** `docs/LANDING_PAGE_PLAN.md`
