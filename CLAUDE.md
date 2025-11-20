@@ -217,6 +217,99 @@ config/locales/
 ## Database
 PostgreSQL with plates table storing per-plate data. Always test with fixtures for both `print_pricings.yml` and `plates.yml`.
 
+## Performance & Caching
+**Multi-Layer Caching Strategy** for maximum performance:
+
+### Cache Infrastructure
+- **SolidCache** - Database-backed cache store (production)
+- **Cloudflare CDN** - Edge caching for static assets and public pages
+- **Fragment Caching** - View-level caching for expensive components
+- **Counter Caches** - Eliminate COUNT(*) queries on models
+- **HTTP Caching** - Browser and CDN caching via headers
+
+### Critical Caching Patterns
+
+**1. Usage Dashboard Caching** (Every authenticated page)
+```ruby
+# Cache user stats for 5 minutes
+user.cached_usage_stats  # Returns { print_pricings: 10, invoices: 5, ... }
+```
+
+**2. Fragment Caching** (Expensive components)
+```erb
+<%# Cache with auto-invalidation on model changes %>
+<% cache ["stats_cards", current_user, @pricings.maximum(:updated_at)] do %>
+  <%= render "shared/components/stats_cards" %>
+<% end %>
+
+<%# Cache individual cards %>
+<% cache ["pricing_card", pricing] do %>
+  <%= render "shared/components/pricing_card", pricing: pricing %>
+<% end %>
+```
+
+**3. Eager Loading** (Prevent N+1 queries)
+```ruby
+# ALWAYS eager load associations
+@pricings = current_user.print_pricings
+  .includes(plates: [:plate_filaments, :filament])
+  .order(created_at: :desc)
+```
+
+**4. Counter Caches** (Eliminate COUNT queries)
+```ruby
+# Use counter_cache: true on associations
+belongs_to :user, counter_cache: true
+has_many :plates, counter_cache: true
+
+# Access via cached column instead of .count
+user.print_pricings_count  # ← Fast (column read)
+user.print_pricings.count   # ← Slow (SELECT COUNT(*))
+```
+
+### Developer Guidelines
+
+**When to Cache:**
+✅ Expensive calculations (> 50ms)
+✅ COUNT/SUM/AVG aggregations
+✅ Collections that rarely change
+✅ Public pages and static content
+✅ User-specific stats with 5-10 minute TTL
+
+**Cache Key Patterns:**
+```ruby
+# Fragment cache
+cache [model]  # Uses cache_key_with_version (auto-invalidates)
+cache ["namespace", model, timestamp], expires_in: 5.minutes
+
+# Application cache
+Rails.cache.fetch("key", expires_in: 5.minutes) { expensive_operation }
+```
+
+**Invalidation Strategy:**
+- **Automatic**: Rails invalidates when `updated_at` changes
+- **Touch associations**: Add `touch: true` to invalidate parent caches
+- **Manual**: Use callbacks for complex invalidation
+- **Versioning**: Change cache key for structural changes (`_v2`)
+
+### Common Pitfalls
+
+❌ **Don't** cache frequently changing data
+❌ **Don't** cache without expiration (memory bloat)
+❌ **Don't** forget to eager load associations
+❌ **Don't** use `.count` when counter cache exists
+
+**Testing Caches:**
+```bash
+# Enable caching in development
+rails dev:cache
+
+# Check fragment cache logging (already enabled)
+# Logs show: "Read fragment views/..." or "Write fragment views/..."
+```
+
+**Reference:** See `docs/CACHING_STRATEGY.md` for comprehensive implementation guide.
+
 ## Authentication
 Devise with confirmable and omniauthable modules. OAuth providers: Google, GitHub, Microsoft, Facebook, Yahoo Japan, LINE. Email confirmation via Resend (noreply@calcumake.com). Rails Admin at `/admin` (requires `admin: true`).
 
@@ -300,6 +393,7 @@ Minitest with Turbo Stream tests. Test both HTML and turbo_stream formats.
 **Modal Pattern:** `docs/MODAL_IMPLEMENTATION.md` - Complete guide for custom event-based modal system
 **Translation System:** `docs/AUTOMATED_TRANSLATION_SYSTEM.md` - OpenRouter API automated translations
 **Translation Workflow:** `docs/TRANSLATION_MERGE_WORKFLOW.md` - Locale file merging and sync procedures
+**Caching Strategy:** `docs/CACHING_STRATEGY.md` - Comprehensive multi-layer caching implementation guide
 
 ### Historical Context (Archive)
 When additional context is needed for historical decisions or completed features:
