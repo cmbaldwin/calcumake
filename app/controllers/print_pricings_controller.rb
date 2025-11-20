@@ -7,7 +7,9 @@ class PrintPricingsController < ApplicationController
 
   def index
     @q = current_user.print_pricings.ransack(params[:q])
-    @print_pricings = @q.result.order(created_at: :desc)
+    @print_pricings = @q.result
+                        .includes(:plates, :printer, :client)
+                        .order(created_at: :desc)
   end
 
   def show

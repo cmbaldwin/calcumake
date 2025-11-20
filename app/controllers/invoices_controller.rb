@@ -12,12 +12,12 @@ class InvoicesController < ApplicationController
   def index
     if params[:print_pricing_id].present?
       # Nested route: show invoices for specific print pricing
-      @invoices = @print_pricing.invoices.recent
+      @invoices = @print_pricing.invoices.includes(:client, :invoice_line_items).recent
       @nested_view = true
     else
       # Standalone route: show all user's invoices with search
       @q = current_user.invoices.ransack(params[:q])
-      @invoices = @q.result.includes(:print_pricing).recent
+      @invoices = @q.result.includes(:print_pricing, :client, :invoice_line_items).recent
       @nested_view = false
     end
   end
