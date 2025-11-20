@@ -1,5 +1,5 @@
 class Printer < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, touch: true
   has_many :print_pricings, dependent: :destroy
 
   MANUFACTURERS = [
