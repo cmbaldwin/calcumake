@@ -1,5 +1,5 @@
 class Client < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, touch: true
   has_many :invoices, dependent: :nullify
   has_many :print_pricings, dependent: :nullify
 

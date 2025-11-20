@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Filament < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, touch: true
   has_many :plate_filaments, dependent: :destroy
   has_many :plates, through: :plate_filaments
 
