@@ -228,6 +228,27 @@ class User < ApplicationRecord
     }
   end
 
+  # Cache user usage stats to avoid repeated COUNT queries
+  # Called by PlanLimits service on every authenticated page
+  # Cache key includes updated_at for automatic invalidation when user changes
+  def cached_usage_stats
+    Rails.cache.fetch(["user", id, "usage_stats", updated_at]) do
+      {
+        print_pricings: print_pricings.count,
+        printers: printers.count,
+        filaments: filaments.count,
+        invoices: invoices.count,
+        clients: clients.count
+      }
+    end
+  end
+
+  # Clear usage cache when resources change via touch
+  def clear_usage_cache
+    # Note: Not needed when using updated_at in cache key, but keeping for explicit clearing if needed
+    Rails.cache.delete_matched("user/#{id}/usage_stats/*")
+  end
+
   private
 
   def set_default_locale

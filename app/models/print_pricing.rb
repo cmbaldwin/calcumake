@@ -1,5 +1,5 @@
 class PrintPricing < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, touch: true
   belongs_to :printer, optional: true
   belongs_to :client, optional: true
   has_many :plates, dependent: :destroy

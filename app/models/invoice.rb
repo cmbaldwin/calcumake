@@ -1,6 +1,6 @@
 class Invoice < ApplicationRecord
   belongs_to :print_pricing
-  belongs_to :user
+  belongs_to :user, touch: true
   belongs_to :client, optional: true
   has_many :invoice_line_items, -> { order(:order_position) }, dependent: :destroy
   has_one_attached :company_logo
