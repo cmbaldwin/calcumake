@@ -1,0 +1,9 @@
+<div class="<%= css_classes %>" <%= tag.attributes(html_attrs) %>>
+  <% if icon? %>
+    <%= render Shared::IconComponent.new(name: @icon, size: "sm", html_options: { class: "me-2" }) %>
+  <% end %>
+  <%= alert_content %>
+  <% if @dismissible %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  <% end %>
+</div>

@@ -68,7 +68,7 @@ module Shared
     # Returns CSS classes for card header
     # @return [String]
     def header_classes
-      classes = ["card-header"]
+      classes = [ "card-header" ]
       classes << "bg-#{@variant}" if @variant
       classes << "text-white" if @variant && text_white_variants.include?(@variant)
       classes.compact.join(" ")
@@ -77,13 +77,13 @@ module Shared
     # Returns CSS classes for card body
     # @return [String]
     def body_classes
-      ["card-body"].join(" ")
+      [ "card-body" ].join(" ")
     end
 
     # Returns CSS classes for card footer
     # @return [String]
     def footer_classes
-      ["card-footer"].join(" ")
+      [ "card-footer" ].join(" ")
     end
 
     private
