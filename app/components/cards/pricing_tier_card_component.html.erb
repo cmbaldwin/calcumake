@@ -1,12 +1,13 @@
 <div class="col-lg-4 col-md-6">
   <div class="<%= card_classes %>">
-    <% if show_popular_badge? %>
-      <div class="badge bg-primary mb-3 px-3 py-2">
-        <%= I18n.t('landing.pricing.startup.badge') %>
-      </div>
-    <% end %>
-
     <div class="card-body p-4 text-center d-flex flex-column">
+      <%# Popular Badge %>
+      <% if show_popular_badge? %>
+        <div class="badge bg-primary mb-3 px-3 py-2">
+          <%= I18n.t('landing.pricing.startup.badge') %>
+        </div>
+      <% end %>
+
       <%# Plan Header %>
       <h4 class="text-primary"><%= features[:name] %></h4>
       <div class="price-display mb-3">
@@ -34,22 +35,22 @@
       <ul class="list-unstyled text-start mb-4 flex-grow-1">
         <% if has_limits? %>
           <%# Resource Limits %>
-          <li class="mb-2">
+          <li class="mb-1">
             <i class="bi bi-check-circle text-success me-2"></i>
             <%= limit_text(:calculations, features[:limits][:print_pricings]) %>
           </li>
 
-          <li class="mb-2">
+          <li class="mb-1">
             <i class="bi bi-check-circle text-success me-2"></i>
             <%= limit_text(:printers, features[:limits][:printers]) %>
           </li>
 
-          <li class="mb-2">
+          <li class="mb-1">
             <i class="bi bi-check-circle text-success me-2"></i>
             <%= limit_text(:filaments, features[:limits][:filaments]) %>
           </li>
 
-          <li class="mb-2">
+          <li class="mb-1">
             <i class="bi bi-check-circle text-success me-2"></i>
             <%= limit_text(:invoices, features[:limits][:invoices]) %>
           </li>
@@ -57,7 +58,7 @@
 
         <%# Additional Features %>
         <% additional_features.each do |feature| %>
-          <li class="mb-2">
+          <li class="mb-1">
             <i class="bi bi-check-circle text-success me-2"></i>
             <%= feature %>
           </li>
