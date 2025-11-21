@@ -50,7 +50,7 @@
 
         <div class="row g-3">
             <% @print_pricings.each do |pricing| %>
-                <%= render PricingCardComponent.new(pricing: pricing) %>
+                <%= render Cards::PricingCardComponent.new(pricing: pricing) %>
             <% end %>
         </div>
     <% else %>

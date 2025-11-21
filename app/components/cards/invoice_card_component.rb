@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class InvoiceCardComponent < ViewComponent::Base
+class Cards::InvoiceCardComponent < ViewComponent::Base
   def initialize(invoice:, html_options: {})
     @invoice = invoice
     @html_options = html_options
@@ -11,7 +11,7 @@ class InvoiceCardComponent < ViewComponent::Base
   attr_reader :invoice, :html_options
 
   def card_classes
-    classes = ["card", "mb-3"]
+    classes = [ "card", "mb-3" ]
     classes.concat(Array(html_options[:class])) if html_options[:class]
     classes.join(" ")
   end

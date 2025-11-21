@@ -109,7 +109,7 @@
     <div class="card-body">
         <% if @print_pricing.invoices.any? %>
         <% @print_pricing.invoices.recent.each do |invoice| %>
-            <%= render InvoiceCardComponent.new(invoice: invoice) %>
+            <%= render Cards::InvoiceCardComponent.new(invoice: invoice) %>
         <% end %>
         <% else %>
         <div class="text-center py-4">

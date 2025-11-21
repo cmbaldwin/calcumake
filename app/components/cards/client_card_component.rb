@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ClientCardComponent < ViewComponent::Base
+class Cards::ClientCardComponent < ViewComponent::Base
   def initialize(client:, html_options: {})
     @client = client
     @html_options = html_options

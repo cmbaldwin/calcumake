@@ -8,7 +8,7 @@
 <% if @printers.any? %>
 <div class="row g-4">
     <% @printers.each do |printer| %>
-        <%= render PrinterCardComponent.new(printer: printer, current_user: current_user) %>
+        <%= render Cards::PrinterCardComponent.new(printer: printer, current_user: current_user) %>
     <% end %>
 </div>
 <% else %>

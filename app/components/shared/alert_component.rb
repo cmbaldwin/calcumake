@@ -33,7 +33,7 @@ module Shared
     # Returns combined CSS classes for the alert
     # @return [String]
     def css_classes
-      classes = ["alert", "alert-#{@variant}"]
+      classes = [ "alert", "alert-#{@variant}" ]
       classes << "alert-dismissible fade show" if @dismissible
       classes << @html_options[:class] if @html_options[:class]
       classes.compact.join(" ")

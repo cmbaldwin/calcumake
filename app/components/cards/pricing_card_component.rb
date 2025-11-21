@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PricingCardComponent < ViewComponent::Base
+class Cards::PricingCardComponent < ViewComponent::Base
   def initialize(pricing:, html_options: {})
     @pricing = pricing
     @html_options = html_options

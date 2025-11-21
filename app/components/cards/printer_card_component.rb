@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PrinterCardComponent < ViewComponent::Base
+class Cards::PrinterCardComponent < ViewComponent::Base
   def initialize(printer:, current_user:, html_options: {})
     @printer = printer
     @current_user = current_user
@@ -12,7 +12,7 @@ class PrinterCardComponent < ViewComponent::Base
   attr_reader :printer, :current_user, :html_options
 
   def col_classes
-    classes = ["col-lg-4", "col-md-6"]
+    classes = [ "col-lg-4", "col-md-6" ]
     classes.concat(Array(html_options[:class])) if html_options[:class]
     classes.join(" ")
   end
@@ -46,11 +46,11 @@ class PrinterCardComponent < ViewComponent::Base
   end
 
   def paid_off_alert_text
-    I18n.t('printers.card.paid_off')
+    I18n.t("printers.card.paid_off")
   end
 
   def months_to_payoff_alert_text
-    I18n.t('printers.card.months_to_payoff', months: printer.months_to_payoff)
+    I18n.t("printers.card.months_to_payoff", months: printer.months_to_payoff)
   end
 
   def dropdown_button_attrs
