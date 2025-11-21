@@ -40,6 +40,6 @@ class Cards::FilamentCardComponent < ViewComponent::Base
   end
 
   def confirm_delete_message
-    I18n.t('filaments.confirm_delete', name: filament.name)
+    I18n.t("filaments.confirm_delete", name: filament.name)
   end
 end

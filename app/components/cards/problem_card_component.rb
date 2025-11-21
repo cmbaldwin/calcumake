@@ -14,7 +14,7 @@ class Cards::ProblemCardComponent < ViewComponent::Base
   attr_reader :icon, :icon_color, :title, :description, :html_options
 
   def card_classes
-    ["card", "h-100", "border-0", "shadow-sm", html_options[:class]].compact.join(" ")
+    [ "card", "h-100", "border-0", "shadow-sm", html_options[:class] ].compact.join(" ")
   end
 
   def icon_class
