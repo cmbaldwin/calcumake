@@ -1,0 +1,83 @@
+<div class="col-lg-4 col-md-6">
+  <div class="<%= card_classes %>">
+    <% if show_popular_badge? %>
+      <div class="badge bg-primary mb-3 px-3 py-2">
+        <%= I18n.t('landing.pricing.startup.badge') %>
+      </div>
+    <% end %>
+
+    <div class="card-body p-4 text-center d-flex flex-column">
+      <%# Plan Header %>
+      <h4 class="text-primary"><%= features[:name] %></h4>
+      <div class="price-display mb-3">
+        <span class="h2 text-primary"><%= features[:price].split('/').first %></span>
+        <% unless plan == 'free' %>
+          <span class="text-muted">/month</span>
+        <% end %>
+      </div>
+
+      <%# Trial Badge for Free Plan %>
+      <% if show_trial_badge? %>
+        <div class="alert alert-info mb-4">
+          <strong><%= I18n.t('landing.pricing.free.trial_notice') %></strong>
+        </div>
+      <% end %>
+
+      <%# Current Plan Badge %>
+      <% if current %>
+        <div class="alert alert-success py-2 px-3 mb-3 text-center">
+          <small><i class="bi bi-check-circle"></i> <%= I18n.t('subscriptions.current_plan') %></small>
+        </div>
+      <% end %>
+
+      <%# Features List %>
+      <ul class="list-unstyled text-start mb-4 flex-grow-1">
+        <% if has_limits? %>
+          <%# Resource Limits %>
+          <li class="mb-2">
+            <i class="bi bi-check-circle text-success me-2"></i>
+            <%= limit_text(:calculations, features[:limits][:print_pricings]) %>
+          </li>
+
+          <li class="mb-2">
+            <i class="bi bi-check-circle text-success me-2"></i>
+            <%= limit_text(:printers, features[:limits][:printers]) %>
+          </li>
+
+          <li class="mb-2">
+            <i class="bi bi-check-circle text-success me-2"></i>
+            <%= limit_text(:filaments, features[:limits][:filaments]) %>
+          </li>
+
+          <li class="mb-2">
+            <i class="bi bi-check-circle text-success me-2"></i>
+            <%= limit_text(:invoices, features[:limits][:invoices]) %>
+          </li>
+        <% end %>
+
+        <%# Additional Features %>
+        <% additional_features.each do |feature| %>
+          <li class="mb-2">
+            <i class="bi bi-check-circle text-success me-2"></i>
+            <%= feature %>
+          </li>
+        <% end %>
+      </ul>
+
+      <%# Action Button %>
+      <% if show_cta %>
+        <div class="mt-auto">
+          <% if cta_disabled? %>
+            <button class="<%= cta_button_class %>" disabled>
+              <%= cta_text %>
+            </button>
+          <% else %>
+            <%= link_to cta_text, cta_path,
+                  class: cta_button_class,
+                  onclick: "if(typeof trackSignupStart === 'function') trackSignupStart();" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
