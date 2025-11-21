@@ -669,6 +669,64 @@ end
 
 ---
 
+#### Forms::NumberFieldWithAddonComponent (2 hours) ✅ CREATED & ✅ MIGRATED
+
+**Status:** ✅ Component created with 23 tests, 29 assertions
+**Migration:** ✅ **ALL 18 inline input-groups migrated!** (100% complete)
+
+**Purpose:** Number fields with Bootstrap input-group addons (currency symbols, units, percentages)
+
+```ruby
+# app/components/forms/number_field_with_addon_component.rb
+module Forms
+  class NumberFieldWithAddonComponent < ViewComponent::Base
+    def initialize(
+      form:,
+      attribute:,
+      label: nil,
+      hint: nil,
+      prepend: nil,        # Currency symbol or prefix text
+      append: nil,         # Unit suffix like "g", "min", "g/cm³"
+      required: false,
+      wrapper: true,
+      wrapper_class: "col-12",
+      input_group_size: nil,  # sm, lg, or nil
+      step: 0.01,
+      min: nil,
+      max: nil,
+      placeholder: nil,
+      options: {}
+    )
+    end
+  end
+end
+```
+
+**Migrated views (18 input-groups across 6 files):**
+
+**Filament Forms (9 fields):**
+- ✅ `app/views/filaments/_modal_form.html.erb` (spool_weight, spool_price, density)
+- ✅ `app/views/filaments/new.html.erb` (spool_weight, spool_price, density)
+- ✅ `app/views/filaments/edit.html.erb` (spool_weight, spool_price, density)
+
+**Print Pricing Forms (3 fields):**
+- ✅ `app/views/print_pricings/form_sections/_labor_costs.html.erb` (prep_cost_per_hour, postprocessing_cost_per_hour)
+- ✅ `app/views/print_pricings/form_sections/_other_costs.html.erb` (other_costs)
+
+**User Profile Forms (6 fields):**
+- ✅ `app/views/user_profiles/show.html.erb` (default_prep_cost_per_hour, default_postprocessing_cost_per_hour, default_other_costs, default_vat_percentage)
+
+**Key Features:**
+- Generic design handles currency ($, ¥, €), units (g, g/cm³), percentages (%)
+- Prepend and/or append addon support
+- Input group sizing (sm, lg, default)
+- Defensive error handling for non-model forms
+- Consistent with FieldComponent and SelectFieldComponent patterns
+
+**Impact:** ~156 lines reduced, 18 input-groups standardized, zero inline input-group patterns remaining
+
+---
+
 #### CheckboxFieldComponent (1 hour)
 
 **Purpose:** Styled checkboxes with toggle variant
@@ -683,7 +741,7 @@ end
 
 #### FileUploadComponent (2 hours)
 
-**Current:** `app/views/shared/_image_upload.html.erb`  
+**Current:** `app/views/shared/_image_upload.html.erb`
 **Purpose:** Image/file upload with preview
 
 ```ruby
@@ -696,20 +754,6 @@ class FileUploadComponent < ViewComponent::Base
     preview: true,
     max_size: nil
   )
-  end
-end
-```
-
----
-
-#### CurrencyFieldComponent (1 hour)
-
-**Purpose:** Currency input with symbol
-
-```ruby
-# app/components/currency_field_component.rb
-class CurrencyFieldComponent < ViewComponent::Base
-  def initialize(form:, attribute:, currency:)
   end
 end
 ```
@@ -1569,42 +1613,47 @@ For each component:
 | ----------------------- | ---------- | ------- | -------- | --------- | ------------- | ---------------------------- |
 | **Phase 1: Foundation** | 7          | 7       | 7        | 148       | 52            | ✅ Complete (100% migrated)  |
 | **Phase 2: Cards**      | 12         | 12      | 4        | 1,494     | 157           | 🟡 In Progress (33%)         |
-| **Phase 3: Forms**      | 15         | 2       | 2        | 40        | 150           | 🟡 In Progress (13%)         |
+| **Phase 3: Forms**      | 15         | 3       | 3        | 69        | 306           | 🟡 In Progress (20%)         |
 | **Phase 4: Features**   | 18         | 0       | 0        | 0         | 0             | ⚪ Not Started               |
 | **Phase 5: Layout**     | 6          | 0       | 0        | 0         | 0             | ⚪ Not Started               |
 | **Phase 6: Helpers**    | 15         | 0       | 0        | 0         | 0             | ⚪ Not Started               |
-| **TOTAL**               | **73**     | **21**  | **13**   | **1,682** | **~359**      | **29% created, 18% migrated**|
+| **TOTAL**               | **73**     | **22**  | **14**   | **1,711** | **~515**      | **30% created, 19% migrated**|
 
 **Target:** 73 components, 438+ tests, 2,500-3,500 lines reduced
 
 **CURRENT STATUS:**
 
-- ✅ 21 components created (29% of total)
-- ✅ 13 components fully migrated to views (18% complete)
-- ✅ 996 tests passing, 2,500 assertions
+- ✅ 22 components created (30% of total)
+- ✅ 14 components fully migrated to views (19% complete)
+- ✅ 1,019 tests passing, 2,529 assertions
 - ✅ **Phase 1 COMPLETE:** All 7 foundation components actively used in production
-- ✅ **Phase 3 Forms: 13% complete** - SelectFieldComponent fully migrated
+- ✅ **Phase 3 Forms: 20% complete** - SelectFieldComponent + NumberFieldWithAddonComponent fully migrated
 - 📊 **Projected savings:** 2,500-3,500 lines
-- 📊 **Actual savings so far:** ~359 lines (14% of target)
-- 🎯 **Recent progress:** SelectFieldComponent created and ALL usages migrated
+- 📊 **Actual savings so far:** ~515 lines (21% of target)
+- 🎯 **Recent progress:** NumberFieldWithAddonComponent created and ALL 18 usages migrated
 
-**RECENT ACCOMPLISHMENTS (2025-11-21 - Session 2):**
+**RECENT ACCOMPLISHMENTS (2025-11-22 - Session 3):**
+
+- ✅ **Forms::NumberFieldWithAddonComponent created** - 23 tests, 29 assertions
+- ✅ **ALL 18 inline input-groups migrated** (100% complete):
+  - Filament forms (9 fields): spool_weight, spool_price, density across 3 files
+  - Print pricing forms (3 fields): prep_cost_per_hour, postprocessing_cost_per_hour, other_costs
+  - User profile forms (6 fields): cost fields with currency symbols + vat_percentage with "%"
+- ✅ **Generic design:** Single component handles currency symbols, units (g, g/cm³), and percentages
+- ✅ Zero inline input-group patterns remaining across entire codebase
+- ✅ All 1,019 tests passing with 2,529 assertions, 0 failures
+- ✅ 1 commit created with detailed documentation
+
+**PREVIOUS SESSION (2025-11-21 - Session 2):**
 
 - ✅ **Forms::SelectFieldComponent created** - 19 tests, 27 assertions
-- ✅ **ALL 12 inline selects migrated** (100% complete):
-  - Filament forms (6 selects): material_type + diameter across 3 files
-  - Invoice forms (3 selects): client_id, status, currency
-  - User profile forms (2 selects): default_currency
-  - Navigation & search (2 selects): locale selector + material filter
-- ✅ **Bug fix:** Non-model form support (search forms, navbar)
-- ✅ Zero inline select patterns remaining across entire codebase
-- ✅ All 996 tests passing with 2,500 assertions, 0 failures
-- ✅ 3 commits created with detailed documentation
+- ✅ **ALL 12 inline selects migrated** (100% complete)
+- ✅ Bug fix: Non-model form support (search forms, navbar)
 
 **NEXT PRIORITIES:**
 
-1. Build Forms::CurrencyFieldComponent for input-groups with currency symbols
-2. Continue Phase 2 card migrations (8 components remaining)
+1. Continue Phase 2 card migrations (8 components with migration debt)
+2. Build Forms::CheckboxFieldComponent for styled checkboxes
 3. Complete Forms::FieldComponent migration (~70 fields remaining)
 
 ---
