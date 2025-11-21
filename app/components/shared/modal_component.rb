@@ -59,7 +59,7 @@ module Shared
     # Returns combined CSS classes for the modal wrapper
     # @return [String]
     def modal_classes
-      classes = ["modal", "fade"]
+      classes = [ "modal", "fade" ]
       classes << @html_options[:class] if @html_options[:class]
       classes.compact.join(" ")
     end
@@ -67,7 +67,7 @@ module Shared
     # Returns combined CSS classes for the modal dialog
     # @return [String]
     def dialog_classes
-      classes = ["modal-dialog"]
+      classes = [ "modal-dialog" ]
       classes << size_class if @size != "md"
       classes << "modal-dialog-centered" if @centered
       classes << "modal-dialog-scrollable" if @scrollable

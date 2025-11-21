@@ -35,7 +35,7 @@
     <% if @clients.any? %>
         <div class="row g-4">
             <% @clients.each do |client| %>
-                <%= render ClientCardComponent.new(client: client) %>
+                <%= render Cards::ClientCardComponent.new(client: client) %>
             <% end %>
         </div>
     <% elsif @q.present? %>

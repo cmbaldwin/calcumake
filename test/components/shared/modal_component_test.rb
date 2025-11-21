@@ -8,7 +8,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "test-modal", title: "Test Modal")) do |c|
         c.with_body { "Modal content" }
       end
-      
+
       assert_selector "div.modal.fade#test-modal[role='dialog'][tabindex='-1']"
       assert_selector "h5.modal-title", text: "Test Modal"
       assert_selector "div.modal-body", text: "Modal content"
@@ -18,7 +18,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "aria-modal", title: "Title")) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal[aria-labelledby='aria-modalTitle'][aria-hidden='true']"
       assert_selector "h5#aria-modalTitle"
     end
@@ -28,7 +28,7 @@ module Shared
         c.with_body { "Body" }
         c.with_footer { "Footer content" }
       end
-      
+
       assert_selector "div.modal-footer", text: "Footer content"
     end
 
@@ -36,7 +36,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "no-footer", title: "Title")) do |c|
         c.with_body { "Body" }
       end
-      
+
       assert_no_selector "div.modal-footer"
     end
 
@@ -44,7 +44,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "closable", title: "Title")) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal-header" do
         assert_selector "button.btn-close[type='button'][data-bs-dismiss='modal'][aria-label='Close']"
       end
@@ -54,7 +54,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "small", title: "Title", size: "sm")) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal-dialog.modal-sm"
     end
 
@@ -62,7 +62,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "medium", title: "Title", size: "md")) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal-dialog"
       assert_no_selector "div.modal-sm"
       assert_no_selector "div.modal-lg"
@@ -73,7 +73,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "large", title: "Title", size: "lg")) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal-dialog.modal-lg"
     end
 
@@ -81,7 +81,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "xlarge", title: "Title", size: "xl")) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal-dialog.modal-xl"
     end
 
@@ -89,7 +89,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "full", title: "Title", size: "fullscreen")) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal-dialog.modal-fullscreen"
     end
 
@@ -97,7 +97,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "centered", title: "Title", centered: true)) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal-dialog.modal-dialog-centered"
     end
 
@@ -105,7 +105,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "scrollable", title: "Title", scrollable: true)) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal-dialog.modal-dialog-scrollable"
     end
 
@@ -113,7 +113,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "static", title: "Title", static_backdrop: true)) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal[data-bs-backdrop='static'][data-bs-keyboard='false']"
     end
 
@@ -127,7 +127,7 @@ module Shared
       )) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal-dialog.modal-lg.modal-dialog-centered.modal-dialog-scrollable"
     end
 
@@ -139,7 +139,7 @@ module Shared
       )) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal#custom[data-controller='modal-custom']"
     end
 
@@ -151,7 +151,7 @@ module Shared
       )) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal.fade.custom-modal"
     end
 
@@ -159,7 +159,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "structure", title: "Title")) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal > div.modal-dialog > div.modal-content"
       assert_selector "div.modal-content > div.modal-header"
       assert_selector "div.modal-content > div.modal-body"
@@ -169,7 +169,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "html-body", title: "Title")) do |c|
         c.with_body { "<strong>Bold</strong> text".html_safe }
       end
-      
+
       assert_selector "div.modal-body" do
         assert_selector "strong", text: "Bold"
         assert_text "text"
@@ -181,13 +181,13 @@ module Shared
         c.with_body { "Body" }
         c.with_footer { "<button class='btn btn-primary'>Save</button>".html_safe }
       end
-      
+
       assert_selector "div.modal-footer button.btn.btn-primary", text: "Save"
     end
 
     test "modal without body slot" do
       render_inline(Shared::ModalComponent.new(id: "no-body", title: "Title"))
-      
+
       assert_selector "div.modal"
       assert_selector "div.modal-header"
       assert_no_selector "div.modal-body"
@@ -207,7 +207,7 @@ module Shared
         c.with_body { "Body content" }
         c.with_footer { "Footer content" }
       end
-      
+
       assert_selector "div.modal.fade.custom#full-featured[data-test='value'][data-bs-backdrop='static']"
       assert_selector "div.modal-dialog.modal-lg.modal-dialog-centered.modal-dialog-scrollable"
       assert_selector "h5.modal-title", text: "Complete Modal"
@@ -219,7 +219,7 @@ module Shared
       render_inline(Shared::ModalComponent.new(id: "aria-test", title: "Test")) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.modal[aria-labelledby='aria-testTitle']"
       assert_selector "h5.modal-title#aria-testTitle"
     end
