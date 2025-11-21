@@ -564,23 +564,24 @@ end
 ```
 
 **Status:** ✅ Component created with 21 tests, 26 assertions  
-**Migration:** 🟢 **31 fields migrated!** Continuing migration...
+**Migration:** 🟢 **45 fields migrated!** Continuing migration...
 
-**Migrated views (31 fields):**
+**Migrated views (45 fields):**
 
 - ✅ `app/views/filaments/_modal_form.html.erb` (5 text + 1 textarea)
 - ✅ `app/views/filaments/new.html.erb` (5 text + 1 textarea)
 - ✅ `app/views/filaments/edit.html.erb` (5 text + 1 textarea)
 - ✅ `app/views/user_profiles/show.html.erb` (2 text + 1 email + 3 textarea - partial)
 - ✅ `app/views/invoices/partials/form/_payment_notes.html.erb` (2 textarea)
+- ✅ `app/views/clients/_form.html.erb` (2 text + 1 email + 1 textarea + 1 address + 1 tax_id + 1 notes)
+- ✅ `app/views/clients/_modal_form.html.erb` (2 text + 1 email + 1 textarea + 1 address + 1 tax_id + 1 notes)
 
 **Remaining target views:**
 
-- `app/views/clients/_form.html.erb` (~10 fields)
-- `app/views/clients/_modal_form.html.erb` (~10 fields)
-- `app/views/printers/` form views (~20 fields)
-- `app/views/print_pricings/` form views (~30 fields - complex)
-- `app/views/user_profiles/show.html.erb` (remaining number fields with input-groups)
+- `app/views/printers/` form views (use helpers - need to refactor helpers first)
+- `app/views/print_pricings/` form views (~30 fields - complex, many select/number)
+- `app/views/user_profiles/show.html.erb` (number fields with input-groups - need CurrencyFieldComponent)
+- `app/views/users/omniauth/complete_profile/show.html.erb` (1 email field - custom error handling)
 
 **Search patterns to find remaining fields:**
 
@@ -588,8 +589,14 @@ end
 git grep "form\.(text_field|email_field|number_field|text_area|password_field)" app/views/
 ```
 
-**Impact so far:** ~60 lines reduced, 31 fields standardized  
+**Impact so far:** ~90 lines reduced, 45 fields standardized  
 **Expected total impact:** 200-300 lines reduction across all form views
+
+**Next steps:**
+1. Build Forms::SelectFieldComponent for dropdown fields (material_type, diameter, currency, etc.)
+2. Build Forms::CurrencyFieldComponent for input-group fields with currency symbols
+3. Migrate remaining user_profile number fields (requires CurrencyFieldComponent)
+4. Audit and migrate Phase 2 card components (8 components with migration debt)
 
 ---
 
