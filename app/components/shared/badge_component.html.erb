@@ -1,0 +1,6 @@
+<span class="<%= css_classes %>" <%= tag.attributes(html_attrs) %>>
+  <% if icon? %>
+    <%= render Shared::IconComponent.new(name: @icon, size: "sm") %>
+  <% end %>
+  <%= @text %>
+</span>
