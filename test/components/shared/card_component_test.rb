@@ -8,7 +8,7 @@ module Shared
       render_inline(Shared::CardComponent.new) do |c|
         c.with_body { "Card content" }
       end
-      
+
       assert_selector "div.card" do
         assert_selector "div.card-body", text: "Card content"
       end
@@ -19,7 +19,7 @@ module Shared
         c.with_header { "Card Title" }
         c.with_body { "Card content" }
       end
-      
+
       assert_selector "div.card" do
         assert_selector "div.card-header", text: "Card Title"
         assert_selector "div.card-body", text: "Card content"
@@ -31,7 +31,7 @@ module Shared
         c.with_body { "Card content" }
         c.with_footer { "Footer actions" }
       end
-      
+
       assert_selector "div.card" do
         assert_selector "div.card-body", text: "Card content"
         assert_selector "div.card-footer", text: "Footer actions"
@@ -44,7 +44,7 @@ module Shared
         c.with_body { "Body" }
         c.with_footer { "Footer" }
       end
-      
+
       assert_selector "div.card" do
         assert_selector "div.card-header", text: "Header"
         assert_selector "div.card-body", text: "Body"
@@ -56,7 +56,7 @@ module Shared
       render_inline(Shared::CardComponent.new(variant: "primary")) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.card.bg-primary.text-white" do
         assert_selector "div.card-body"
       end
@@ -66,7 +66,7 @@ module Shared
       render_inline(Shared::CardComponent.new(variant: "success")) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.card.bg-success.text-white"
     end
 
@@ -74,7 +74,7 @@ module Shared
       render_inline(Shared::CardComponent.new(variant: "danger")) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.card.bg-danger.text-white"
     end
 
@@ -82,7 +82,7 @@ module Shared
       render_inline(Shared::CardComponent.new(variant: "warning")) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.card.bg-warning"
       assert_no_selector "div.card.text-white"
     end
@@ -91,7 +91,7 @@ module Shared
       render_inline(Shared::CardComponent.new(shadow: true)) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.card.shadow-sm"
     end
 
@@ -99,7 +99,7 @@ module Shared
       render_inline(Shared::CardComponent.new(shadow: "lg")) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.card.shadow-lg"
     end
 
@@ -107,7 +107,7 @@ module Shared
       render_inline(Shared::CardComponent.new) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.card"
       assert_no_selector "div.shadow-sm"
       assert_no_selector "div.shadow-lg"
@@ -117,7 +117,7 @@ module Shared
       render_inline(Shared::CardComponent.new(border: false)) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.card.border-0"
     end
 
@@ -125,7 +125,7 @@ module Shared
       render_inline(Shared::CardComponent.new) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.card"
       assert_no_selector "div.border-0"
     end
@@ -135,7 +135,7 @@ module Shared
         c.with_header { "Header" }
         c.with_body { "Body" }
       end
-      
+
       assert_selector "div.card.bg-primary.text-white"
       assert_selector "div.card-header.bg-primary.text-white"
     end
@@ -146,7 +146,7 @@ module Shared
       )) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.card#custom-card[data-controller='example']"
     end
 
@@ -156,7 +156,7 @@ module Shared
       )) do |c|
         c.with_body { "Content" }
       end
-      
+
       assert_selector "div.card.my-custom-card"
     end
 
@@ -171,7 +171,7 @@ module Shared
         c.with_body { "Centered content" }
         c.with_footer { "Footer" }
       end
-      
+
       assert_selector "div.card.bg-success.text-white.shadow-lg.border-0.mb-4" do
         assert_selector "div.card-header.bg-success.text-white"
         assert_selector "div.card-body"
@@ -181,7 +181,7 @@ module Shared
 
     test "renders empty card without slots" do
       render_inline(Shared::CardComponent.new)
-      
+
       assert_selector "div.card"
       assert_no_selector "div.card-header"
       assert_no_selector "div.card-body"
@@ -192,7 +192,7 @@ module Shared
       render_inline(Shared::CardComponent.new) do |c|
         c.with_header { "Header Only" }
       end
-      
+
       assert_selector "div.card" do
         assert_selector "div.card-header", text: "Header Only"
       end
@@ -204,7 +204,7 @@ module Shared
       render_inline(Shared::CardComponent.new) do |c|
         c.with_body { "<strong>Bold</strong> text".html_safe }
       end
-      
+
       assert_selector "div.card-body" do
         assert_selector "strong", text: "Bold"
         assert_text "text"
