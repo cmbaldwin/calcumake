@@ -27,14 +27,23 @@
                 </div>
                 <div class="card-body">
                     <div class="row g-3">
-                        <div class="col-md-6">
-                            <%= form.label :name, t('filaments.fields.name'), class: "form-label" %>
-                            <%= form.text_field :name, class: "form-control", placeholder: t('filaments.fields.name_placeholder'), required: true %>
-                        </div>
-                        <div class="col-md-6">
-                            <%= form.label :brand, t('filaments.fields.brand'), class: "form-label" %>
-                            <%= form.text_field :brand, class: "form-control", placeholder: t('filaments.fields.brand_placeholder') %>
-                        </div>
+                        <%= render Forms::FieldComponent.new(
+                          form: form,
+                          attribute: :name,
+                          type: :text,
+                          label: t('filaments.fields.name'),
+                          required: true,
+                          wrapper_class: "col-md-6",
+                          options: { placeholder: t('filaments.fields.name_placeholder') }
+                        ) %>
+                        <%= render Forms::FieldComponent.new(
+                          form: form,
+                          attribute: :brand,
+                          type: :text,
+                          label: t('filaments.fields.brand'),
+                          wrapper_class: "col-md-6",
+                          options: { placeholder: t('filaments.fields.brand_placeholder') }
+                        ) %>
                         <div class="col-md-6">
                             <%= form.label :material_type, t('filaments.fields.material_type'), class: "form-label" %>
                             <%= form.select :material_type,
@@ -62,14 +71,22 @@
                                 {},
                                 { class: "form-select", required: true } %>
                         </div>
-                        <div class="col-md-6">
-                            <%= form.label :color, t('filaments.fields.color'), class: "form-label" %>
-                            <%= form.text_field :color, class: "form-control", placeholder: t('filaments.fields.color_placeholder') %>
-                        </div>
-                        <div class="col-md-6">
-                            <%= form.label :finish, t('filaments.fields.finish'), class: "form-label" %>
-                            <%= form.text_field :finish, class: "form-control", placeholder: t('filaments.fields.finish_placeholder') %>
-                        </div>
+                        <%= render Forms::FieldComponent.new(
+                          form: form,
+                          attribute: :color,
+                          type: :text,
+                          label: t('filaments.fields.color'),
+                          wrapper_class: "col-md-6",
+                          options: { placeholder: t('filaments.fields.color_placeholder') }
+                        ) %>
+                        <%= render Forms::FieldComponent.new(
+                          form: form,
+                          attribute: :finish,
+                          type: :text,
+                          label: t('filaments.fields.finish'),
+                          wrapper_class: "col-md-6",
+                          options: { placeholder: t('filaments.fields.finish_placeholder') }
+                        ) %>
                     </div>
                 </div>
             </div>
@@ -129,7 +146,14 @@
                     <h5 class="mb-0"><%= t('filaments.fields.notes') %></h5>
                 </div>
                 <div class="card-body">
-                    <%= form.text_area :notes, class: "form-control", rows: 4, placeholder: t('filaments.fields.notes_placeholder') %>
+                    <%= render Forms::FieldComponent.new(
+                      form: form,
+                      attribute: :notes,
+                      type: :textarea,
+                      label: false,
+                      wrapper: false,
+                      options: { rows: 4, placeholder: t('filaments.fields.notes_placeholder') }
+                    ) %>
                 </div>
             </div>
 

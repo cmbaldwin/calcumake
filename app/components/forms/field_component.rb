@@ -25,7 +25,12 @@ module Forms
     end
 
     def label_text
+      return nil if @label == false
       @label || @attribute.to_s.humanize
+    end
+
+    def show_label?
+      @label != false
     end
 
     def field_options
