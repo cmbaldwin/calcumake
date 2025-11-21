@@ -10,82 +10,50 @@
             </div>
 
             <div class="row g-4">
-                <div class="col-lg-6">
-                    <div class="feature-card h-100">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-body p-4">
-                                <div class="feature-icon text-primary mb-3">
-                                    <i class="bi bi-calculator-fill fs-1"></i>
-                                </div>
-                                <h4 class="text-primary"><%= t('landing.features.accurate_calculation.title') %></h4>
-                                <p class="text-muted mb-3"><%= t('landing.features.accurate_calculation.desc') %></p>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.accurate_calculation.filament') %></li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.accurate_calculation.electricity') %></li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.accurate_calculation.labor') %></li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.accurate_calculation.depreciation') %></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%= render Cards::FeatureCardComponent.new(
+                    icon: "calculator",
+                    title: t('landing.features.accurate_calculation.title'),
+                    description: t('landing.features.accurate_calculation.desc'),
+                    features: [
+                        t('landing.features.accurate_calculation.filament'),
+                        t('landing.features.accurate_calculation.electricity'),
+                        t('landing.features.accurate_calculation.labor'),
+                        t('landing.features.accurate_calculation.depreciation')
+                    ]
+                ) %>
 
-                <div class="col-lg-6">
-                    <div class="feature-card h-100">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-body p-4">
-                                <div class="feature-icon text-primary mb-3">
-                                    <i class="bi bi-printer-fill fs-1"></i>
-                                </div>
-                                <h4 class="text-primary"><%= t('landing.features.multi_printer.title') %></h4>
-                                <p class="text-muted mb-3"><%= t('landing.features.multi_printer.desc') %></p>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.multi_printer.power') %></li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.multi_printer.roi') %></li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.multi_printer.organization') %></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%= render Cards::FeatureCardComponent.new(
+                    icon: "printer",
+                    title: t('landing.features.multi_printer.title'),
+                    description: t('landing.features.multi_printer.desc'),
+                    features: [
+                        t('landing.features.multi_printer.power'),
+                        t('landing.features.multi_printer.roi'),
+                        t('landing.features.multi_printer.organization')
+                    ]
+                ) %>
 
-                <div class="col-lg-6">
-                    <div class="feature-card h-100">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-body p-4">
-                                <div class="feature-icon text-primary mb-3">
-                                    <i class="bi bi-file-earmark-pdf-fill fs-1"></i>
-                                </div>
-                                <h4 class="text-primary"><%= t('landing.features.invoicing.title') %></h4>
-                                <p class="text-muted mb-3"><%= t('landing.features.invoicing.desc') %></p>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.invoicing.pdf') %></li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.invoicing.branding') %></li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.invoicing.currency') %></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%= render Cards::FeatureCardComponent.new(
+                    icon: "file-earmark-pdf",
+                    title: t('landing.features.invoicing.title'),
+                    description: t('landing.features.invoicing.desc'),
+                    features: [
+                        t('landing.features.invoicing.pdf'),
+                        t('landing.features.invoicing.branding'),
+                        t('landing.features.invoicing.currency')
+                    ]
+                ) %>
 
-                <div class="col-lg-6">
-                    <div class="feature-card h-100">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-body p-4">
-                                <div class="feature-icon text-primary mb-3">
-                                    <i class="bi bi-folder-fill fs-1"></i>
-                                </div>
-                                <h4 class="text-primary"><%= t('landing.features.organization.title') %></h4>
-                                <p class="text-muted mb-3"><%= t('landing.features.organization.desc') %></p>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.organization.search') %></li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.organization.duplicate') %></li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.features.organization.history') %></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%= render Cards::FeatureCardComponent.new(
+                    icon: "folder",
+                    title: t('landing.features.organization.title'),
+                    description: t('landing.features.organization.desc'),
+                    features: [
+                        t('landing.features.organization.search'),
+                        t('landing.features.organization.duplicate'),
+                        t('landing.features.organization.history')
+                    ]
+                ) %>
             </div>
         </div>
     </div>
