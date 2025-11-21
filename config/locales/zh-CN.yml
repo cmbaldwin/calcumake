@@ -887,8 +887,7 @@ zh-CN:
         credit_cards: 信用卡：Visa、Mastercard、American Express、JCB、Diners Club、Discover
         debit_cards: 借记卡：Visa Debit、Mastercard Debit
         processing_title: 付款处理
-        processing_details: 所有付款均通过我们的PCI DSS 1级认证付款处理商Stripe, Inc.安全处理。 您的完整支付卡信息永远不会存储在CalcuMake服务器上。
-          所有付款数据均经过加密，并由Stripe的安全基础设施独家处理。
+        processing_details: 所有付款均通过我们的PCI DSS 1级认证付款处理商Stripe, Inc.安全处理。 您的完整支付卡信息永远不会存储在CalcuMake服务器上。 所有付款数据均经过加密，并由Stripe的安全基础设施独家处理。
         security_title: 付款安全
         security_details: 我们对所有数据传输使用行业标准的SSL/TLS加密。 付款信息已令牌化，并按照国际支付卡行业标准进行处理。
       payment_timing:
@@ -962,8 +961,7 @@ zh-CN:
         content: 项目数据和帐户信息将在您的帐户的整个生命周期内保留。如果您删除您的帐户，所有数据将在 30 天内根据我们的隐私政策永久删除。
       limitation_liability:
         title: 责任限制
-        content: CalcuMake 按“原样”提供，用于成本估算目的。虽然我们力求准确，但在商业或关键应用中使用之前，应验证所有计算。MOAB Co.,
-          Ltd. 不对基于使用 CalcuMake 执行的计算做出的业务决策负责。
+        content: CalcuMake 按“原样”提供，用于成本估算目的。虽然我们力求准确，但在商业或关键应用中使用之前，应验证所有计算。MOAB Co., Ltd. 不对基于使用 CalcuMake 执行的计算做出的业务决策负责。
       dispute_resolution:
         title: 争议解决
         contact: 请先通过 cody@moab.jp 与我们联系
@@ -1323,8 +1321,7 @@ zh-CN:
     limitations:
       title: 这是一个演示版本
       description: 完整的 CalcuMake 应用程序包括：
-      features: '["具有自动规格的多个打印机配置文件", "具有材料属性的综合线材库", "专业的 PDF 发票生成", "项目历史记录和重复功能",
-        "多币种支持", "机器折旧计算"]'
+      features: '["具有自动规格的多个打印机配置文件", "具有材料属性的综合线材库", "专业的 PDF 发票生成", "项目历史记录和重复功能", "多币种支持", "机器折旧计算"]'
     advanced_calculator:
       title: 需要更多功能？
       description: 试用我们的高级定价计算器，支持多板打印、自定义耗材以及即时 PDF/CSV 导出。
@@ -1458,8 +1455,7 @@ zh-CN:
     cookie_consent:
       title: Cookie 同意声明
       message: 我们使用 Cookie 来改善您的体验。继续使用本网站即表示您同意我们的 Cookie 政策。
-      message_html: 我们使用 Cookie 来改善您的体验。继续使用本网站即表示您同意我们的 %{cookie_policy_link}。阅读我们的
-        %{privacy_policy_link}。
+      message_html: 我们使用 Cookie 来改善您的体验。继续使用本网站即表示您同意我们的 %{cookie_policy_link}。阅读我们的 %{privacy_policy_link}。
       accept: 接受
       decline: 拒绝
       reject: 拒绝
@@ -1544,8 +1540,7 @@ zh-CN:
     cookie_sections:
       what_are_cookies:
         title: 什么是 Cookie？
-        content: Cookie 是存储在您设备上的小型文本文件，可帮助我们提供更好的体验。我们使用必要的 Cookie 来实现功能，并使用分析 Cookie
-          来改进我们的服务。
+        content: Cookie 是存储在您设备上的小型文本文件，可帮助我们提供更好的体验。我们使用必要的 Cookie 来实现功能，并使用分析 Cookie 来改进我们的服务。
       how_we_use:
         title: 我们如何使用 Cookie
         intro: 我们使用不同类型的 Cookie 来改善您的体验并提供基本功能

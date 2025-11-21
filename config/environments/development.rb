@@ -37,6 +37,9 @@ Rails.application.configure do
   # Configure Active Storage host for development
   Rails.application.routes.default_url_options[:host] = "localhost:3000"
 
+  # Session configuration for OAuth in development
+  config.session_store :cookie_store, key: "_calcumake_session", same_site: :lax
+
   # Mailer configuration
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
