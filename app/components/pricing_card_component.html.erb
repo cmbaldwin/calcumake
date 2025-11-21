@@ -17,7 +17,7 @@
           <div class="d-flex gap-2 flex-wrap d-lg-none justify-content-center">
             <%= render BadgeComponent.new(text: plate_count_text, variant: "info") %>
             <% filament_types.each do |type| %>
-              <%= render BadgeComponent.new(text: translate_filament_type(type), variant: "secondary") %>
+              <%= render BadgeComponent.new(text: helpers.translate_filament_type(type), variant: "secondary") %>
             <% end %>
             <small class="text-muted"><%= total_filament_weight %>g | <%= formatted_print_time %></small>
           </div>
@@ -35,7 +35,7 @@
         <div class="col-lg-2 d-none d-lg-block text-center">
           <div class="d-flex flex-column gap-1">
             <% filament_types.each do |type| %>
-              <%= render BadgeComponent.new(text: translate_filament_type(type), variant: "secondary") %>
+              <%= render BadgeComponent.new(text: helpers.translate_filament_type(type), variant: "secondary") %>
             <% end %>
             <small class="text-muted"><%= total_filament_weight %>g</small>
           </div>
