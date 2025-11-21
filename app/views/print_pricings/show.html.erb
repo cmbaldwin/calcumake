@@ -108,7 +108,9 @@
     </div>
     <div class="card-body">
         <% if @print_pricing.invoices.any? %>
-        <%= render partial: "invoices/invoice_card", collection: @print_pricing.invoices.recent, as: :invoice %>
+        <% @print_pricing.invoices.recent.each do |invoice| %>
+            <%= render InvoiceCardComponent.new(invoice: invoice) %>
+        <% end %>
         <% else %>
         <div class="text-center py-4">
             <p class="text-muted mt-3 mb-2"><%= t('invoices.no_invoices') %></p>
