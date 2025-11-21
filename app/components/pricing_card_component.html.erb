@@ -1,0 +1,83 @@
+<div class="<%= col_classes %>">
+    <div class="card pricing-card h-100">
+        <div class="card-body">
+            <div class="row align-items-center gy-3 gy-lg-0">
+                <!-- Job Name & Creation Date -->
+                <div class="col-lg-3">
+                    <div class="d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
+                        <h5 class="card-title mb-1">
+                            <%= link_to pricing.job_name, pricing, class: "text-decoration-none text-primary fw-bold", data: { turbo_frame: "_top" } %>
+                        </h5>
+                        <small class="created-date d-block mb-2 text-center text-lg-start">
+                            <%= format_creation_date %>
+                        </small>
+                    </div>
+                    
+                    <!-- Mobile badges (shown only on mobile) -->
+                    <div class="d-flex gap-2 flex-wrap d-lg-none justify-content-center">
+                        <%= render Shared::BadgeComponent.new(text: plate_text, variant: :info) %>
+                        <% filament_types.each do |type| %>
+                            <%= render Shared::BadgeComponent.new(text: translate_filament_type(type), variant: :secondary) %>
+                        <% end %>
+                        <small class="text-muted"><%= total_filament_weight %>g | <%= format_print_time %></small>
+                    </div>
+                </div>
+
+                <!-- Plate Count (desktop only) -->
+                <div class="col-lg-1 d-none d-lg-block text-center">
+                    <div class="d-flex flex-column gap-1">
+                        <%= render Shared::BadgeComponent.new(text: plate_text, variant: :info) %>
+                        <small class="text-muted"><%= format_print_time %></small>
+                    </div>
+                </div>
+
+                <!-- Filament Types (desktop only) -->
+                <div class="col-lg-2 d-none d-lg-block text-center">
+                    <div class="d-flex flex-column gap-1">
+                        <% filament_types.each do |type| %>
+                            <%= render Shared::BadgeComponent.new(text: translate_filament_type(type), variant: :secondary) %>
+                        <% end %>
+                        <small class="text-muted"><%= total_filament_weight %>g</small>
+                    </div>
+                </div>
+
+                <!-- Times Printed Control -->
+                <div class="col-lg-2 text-center">
+                    <div class="d-flex flex-column align-items-center">
+                        <small class="times-printed-label d-lg-none mb-1"><%= t('print_pricing.times_printed') %></small>
+                        <%= render "shared/components/times_printed_control", pricing: pricing %>
+                    </div>
+                </div>
+
+                <!-- Final Price -->
+                <div class="col-lg-2 text-center">
+                    <%= render Shared::BadgeComponent.new(text: formatted_price, variant: :success, html_options: { class: "fs-6" }) %>
+                </div>
+
+                <!-- Actions Dropdown -->
+                <div class="col-lg-2">
+                    <div class="dropdown text-center">
+                        <button <%= tag.attributes(actions_dropdown_button_attrs) %>>
+                            <%= t("actions.actions") %>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <%= link_to t("actions.show"), pricing, class: "dropdown-item", data: { turbo_frame: "_top" } %>
+                            </li>
+                            <li>
+                                <%= link_to t("invoices.title"), print_pricing_invoices_path(pricing), class: "dropdown-item", data: { turbo_frame: "_top" } %>
+                            </li>
+                            <li>
+                                <%= link_to t("actions.edit"), edit_print_pricing_path(pricing), class: "dropdown-item", data: { turbo_frame: "_top" } %>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <%= link_to t("actions.delete"), pricing, **delete_link_attrs %>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
