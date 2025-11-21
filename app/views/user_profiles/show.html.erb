@@ -51,15 +51,15 @@
                   wrapper_class: "col-md-6",
                   select_options: { selected: @user.default_currency }
                 ) %>
-                <div class="col-md-6">
-                    <%= form.label :default_energy_cost_per_kwh, t('profile.fields.energy_cost'), class: "form-label" %>
-                    <%= form.number_field :default_energy_cost_per_kwh,
-                step: 0.001,
-                min: 0.001,
-                placeholder: t('profile.fields.energy_cost_placeholder'),
-                class: "form-control" %>
-                    <div class="form-text"><%= t('profile.fields.energy_cost_help_extended') %></div>
-                </div>
+                <%= render Forms::FieldComponent.new(
+                  form: form,
+                  attribute: :default_energy_cost_per_kwh,
+                  type: :number,
+                  label: t('profile.fields.energy_cost'),
+                  hint: t('profile.fields.energy_cost_help_extended'),
+                  wrapper_class: "col-md-6",
+                  options: { step: 0.001, min: 0.001, placeholder: t('profile.fields.energy_cost_placeholder') }
+                ) %>
             </div>
         </div>
     </div>
