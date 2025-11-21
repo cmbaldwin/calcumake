@@ -564,25 +564,29 @@ end
 ```
 
 **Status:** ✅ Component created with 21 tests, 26 assertions  
-**Migration:** ⚠️ **MUST MIGRATE ~100+ inline form fields before next component**
+**Migration:** 🟢 **31 fields migrated!** Continuing migration...
 
-**Target views for migration:**
+**Migrated views (31 fields):**
+- ✅ `app/views/filaments/_modal_form.html.erb` (5 text + 1 textarea)
+- ✅ `app/views/filaments/new.html.erb` (5 text + 1 textarea)
+- ✅ `app/views/filaments/edit.html.erb` (5 text + 1 textarea)
+- ✅ `app/views/user_profiles/show.html.erb` (2 text + 1 email + 3 textarea - partial)
+- ✅ `app/views/invoices/partials/form/_payment_notes.html.erb` (2 textarea)
 
-- `app/views/filaments/_modal_form.html.erb` (~15 fields)
-- `app/views/filaments/edit.html.erb` (~15 fields)
+**Remaining target views:**
 - `app/views/clients/_form.html.erb` (~10 fields)
 - `app/views/clients/_modal_form.html.erb` (~10 fields)
 - `app/views/printers/` form views (~20 fields)
-- `app/views/print_pricings/` form views (~30 fields)
-- `app/views/invoices/` form views (~10 fields)
+- `app/views/print_pricings/` form views (~30 fields - complex)
+- `app/views/user_profiles/show.html.erb` (remaining number fields with input-groups)
 
-**Search patterns to find fields:**
-
+**Search patterns to find remaining fields:**
 ```bash
-git grep "form\.(text_field|email_field|number_field|text_area|password_field)"
+git grep "form\.(text_field|email_field|number_field|text_area|password_field)" app/views/
 ```
 
-**Expected impact:** 200-300 lines reduction across form views
+**Impact so far:** ~60 lines reduced, 31 fields standardized  
+**Expected total impact:** 200-300 lines reduction across all form views
 
 ---
 
