@@ -15,10 +15,11 @@
     </div>
 
     <% if devise_mapping.rememberable? %>
-      <div class="field checkbox-field mb-3">
-        <%= f.check_box :remember_me, class: "form-check-input" %>
-        <%= f.label :remember_me, class: "form-check-label" %>
-      </div>
+      <%= render Forms::CheckboxFieldComponent.new(
+        form: f,
+        attribute: :remember_me,
+        wrapper: false
+      ) %>
     <% end %>
 
     <div class="actions mb-3">
