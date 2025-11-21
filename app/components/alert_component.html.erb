@@ -1,0 +1,11 @@
+<div class="<%= alert_classes %>" role="alert">
+  <% if default_icon %>
+    <i class="bi bi-<%= default_icon %> me-2"></i>
+  <% end %>
+
+  <%= @message || content %>
+
+  <% if @dismissible %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  <% end %>
+</div>
