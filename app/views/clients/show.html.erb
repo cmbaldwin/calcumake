@@ -84,7 +84,7 @@
     <div class="card">
       <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="mb-0"><%= t('clients.show.invoices') %></h5>
-        <span class="badge bg-primary"><%= @client.invoices.count %></span>
+        <%= render Shared::BadgeComponent.new(text: @client.invoices.count.to_s, variant: "primary") %>
       </div>
       <div class="card-body">
         <% if @client.invoices.any? %>
@@ -106,9 +106,10 @@
                 <td><%= invoice.print_pricing.job_name %></td>
                 <td><%= l(invoice.invoice_date, format: :short) %></td>
                 <td>
-                  <span class="badge bg-<%= invoice.status == 'paid' ? 'success' : invoice.status == 'sent' ? 'warning' : 'secondary' %>">
-                    <%= t("invoices.statuses.#{invoice.status}") %>
-                  </span>
+                  <%= render Shared::BadgeComponent.new(
+                    text: t("invoices.statuses.#{invoice.status}"),
+                    variant: invoice.status == 'paid' ? 'success' : invoice.status == 'sent' ? 'warning' : 'secondary'
+                  ) %>
                 </td>
                 <td>
                   <%= link_to t('actions.view'), print_pricing_invoice_path(invoice.print_pricing, invoice), class: "btn btn-sm btn-outline-primary" %>
@@ -132,7 +133,7 @@
     <div class="card">
       <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="mb-0"><%= t('clients.show.print_pricings') %></h5>
-        <span class="badge bg-primary"><%= @client.print_pricings.count %></span>
+        <%= render Shared::BadgeComponent.new(text: @client.print_pricings.count.to_s, variant: "primary") %>
       </div>
       <div class="card-body">
         <% if @client.print_pricings.any? %>

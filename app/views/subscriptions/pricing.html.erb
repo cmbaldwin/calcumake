@@ -23,7 +23,7 @@
   <% if current_user.free_plan? || current_user.startup_plan? %>
     <div class="row mb-4">
       <div class="col-12">
-        <%= render 'subscriptions/usage_stats', usage: @usage %>
+        <%= render UsageStatsComponent.new(usage: @usage) %>
       </div>
     </div>
   <% end %>

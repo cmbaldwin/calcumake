@@ -11,9 +11,10 @@
                 <h1 class="h2 text-primary mb-2"><%= @print_pricing.job_name %></h1>
                 <div class="text-muted">
                     <span class="me-3"><%= format_detailed_creation_date(@print_pricing) %></span>
-                    <span class="badge bg-secondary">
-                        <%= t('print_pricing.printed_times', count: @print_pricing.times_printed) %>
-                    </span>
+                    <%= render Shared::BadgeComponent.new(
+                      text: t('print_pricing.printed_times', count: @print_pricing.times_printed),
+                      variant: "secondary"
+                    ) %>
                 </div>
             </div>
             <div>
@@ -28,9 +29,11 @@
     <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
             <h3 class="mb-0 h5"><%= t('print_pricing.cost_summary') %></h3>
-            <span class="badge bg-success fs-5">
-                <%= @print_pricing.default_currency %> <%= format_currency(@print_pricing.final_price, @print_pricing.default_currency) %>
-            </span>
+            <%= render Shared::BadgeComponent.new(
+              text: "#{@print_pricing.default_currency} #{format_currency(@print_pricing.final_price, @print_pricing.default_currency)}",
+              variant: "success",
+              size: "lg"
+            ) %>
         </div>
     </div>
     <div class="card-body">

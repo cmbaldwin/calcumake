@@ -29,14 +29,11 @@
           <div class="col-md-4">
             <div class="border rounded p-3 h-100">
               <small class="text-muted d-block mb-1"><%= t('subscriptions.status', default: 'Status') %></small>
-              <% status_class = @subscription_details[:cancel_at_period_end] ? 'warning' : 'success' %>
-              <span class="badge bg-<%= status_class %>">
-                <% if @subscription_details[:cancel_at_period_end] %>
-                  <%= t('subscriptions.canceling', default: 'Canceling') %>
-                <% else %>
-                  <%= t('subscriptions.active', default: 'Active') %>
-                <% end %>
-              </span>
+              <% status_variant = @subscription_details[:cancel_at_period_end] ? 'warning' : 'success' %>
+              <%= render Shared::BadgeComponent.new(
+                text: @subscription_details[:cancel_at_period_end] ? t('subscriptions.canceling', default: 'Canceling') : t('subscriptions.active', default: 'Active'),
+                variant: status_variant
+              ) %>
             </div>
           </div>
 
