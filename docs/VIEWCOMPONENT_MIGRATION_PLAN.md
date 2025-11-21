@@ -567,6 +567,7 @@ end
 **Migration:** 🟢 **31 fields migrated!** Continuing migration...
 
 **Migrated views (31 fields):**
+
 - ✅ `app/views/filaments/_modal_form.html.erb` (5 text + 1 textarea)
 - ✅ `app/views/filaments/new.html.erb` (5 text + 1 textarea)
 - ✅ `app/views/filaments/edit.html.erb` (5 text + 1 textarea)
@@ -574,6 +575,7 @@ end
 - ✅ `app/views/invoices/partials/form/_payment_notes.html.erb` (2 textarea)
 
 **Remaining target views:**
+
 - `app/views/clients/_form.html.erb` (~10 fields)
 - `app/views/clients/_modal_form.html.erb` (~10 fields)
 - `app/views/printers/` form views (~20 fields)
@@ -581,6 +583,7 @@ end
 - `app/views/user_profiles/show.html.erb` (remaining number fields with input-groups)
 
 **Search patterns to find remaining fields:**
+
 ```bash
 git grep "form\.(text_field|email_field|number_field|text_area|password_field)" app/views/
 ```
