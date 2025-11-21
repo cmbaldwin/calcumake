@@ -1,14 +1,18 @@
-<div class="col-md-6">
-  <%= form.label :status, t("invoices.fields.status"), class: "form-label" %>
-  <%= form.select :status, 
-        invoice_status_options(invoice.status),
-        {}, class: "form-select" %>
-</div>
+<%= render Forms::SelectFieldComponent.new(
+  form: form,
+  attribute: :status,
+  choices: invoice_status_options(invoice.status),
+  label: t("invoices.fields.status"),
+  wrapper_class: "col-md-6"
+) %>
 
-<div class="col-md-6">
-  <%= form.label :currency, t("invoices.fields.currency"), class: "form-label" %>
-  <%= form.select :currency,
-        options_for_select(currency_options, invoice.currency || current_user.default_currency),
-        { prompt: "Select currency" }, class: "form-select" %>
-  <div class="form-text"><%= t("invoices.fields.currency_help") %></div>
-</div>
+<%= render Forms::SelectFieldComponent.new(
+  form: form,
+  attribute: :currency,
+  choices: currency_options,
+  label: t("invoices.fields.currency"),
+  prompt: "Select currency",
+  hint: t("invoices.fields.currency_help"),
+  wrapper_class: "col-md-6",
+  select_options: { selected: invoice.currency || current_user.default_currency }
+) %>
