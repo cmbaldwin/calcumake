@@ -41,104 +41,34 @@
 <% end %>
 
 <%= turbo_frame_tag :filament_results do %>
-<% if @filaments.any? %>
-<div class="row g-4">
-    <% @filaments.each do |filament| %>
-    <div class="col-lg-4 col-md-6">
-        <div class="card h-100">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0 text-primary"><%= filament.name %></h5>
-                <span class="badge bg-success"><%= filament.material_type %></span>
-            </div>
-
-            <div class="card-body">
-                <div class="mb-3">
-                    <% if filament.brand.present? %>
-                    <div class="d-flex justify-content-between py-2 border-bottom">
-                        <span class="fw-medium text-muted"><%= t('filaments.fields.brand') %>:</span>
-                        <span class="fw-bold"><%= filament.brand %></span>
-                    </div>
-                    <% end %>
-                    <div class="d-flex justify-content-between py-2 border-bottom">
-                        <span class="fw-medium text-muted"><%= t('filaments.fields.diameter') %>:</span>
-                        <span class="fw-bold"><%= filament.diameter %>mm</span>
-                    </div>
-                    <% if filament.color.present? %>
-                    <div class="d-flex justify-content-between py-2 border-bottom">
-                        <span class="fw-medium text-muted"><%= t('filaments.fields.color') %>:</span>
-                        <span class="fw-bold"><%= filament.color %></span>
-                    </div>
-                    <% end %>
-                    <% if filament.spool_price.present? && filament.spool_weight.present? %>
-                    <div class="d-flex justify-content-between py-2 border-bottom">
-                        <span class="fw-medium text-muted"><%= t('filaments.fields.cost_per_gram') %>:</span>
-                        <span class="fw-bold"><%= currency_symbol(current_user.default_currency) %><%= "%.3f" % filament.cost_per_gram %>/g</span>
-                    </div>
-                    <% end %>
-                    <div class="d-flex justify-content-between py-2">
-                        <span class="fw-medium text-muted"><%= t('filaments.fields.temperature_range') %>:</span>
-                        <span class="fw-bold"><%= filament.temperature_range %></span>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <div class="d-flex flex-wrap gap-1">
-                        <% if filament.moisture_sensitive? %>
-                            <span class="badge bg-warning text-dark"><%= t('filaments.properties.moisture_sensitive') %></span>
-                        <% end %>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-footer">
-                <div class="d-flex justify-content-center">
-                    <div class="dropdown">
-                        <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <%= t('actions.actions') %>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><%= link_to t('actions.view'), filament, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>
-                            <li><%= link_to t('actions.edit'), edit_filament_path(filament), class: "dropdown-item", data: { turbo_frame: "_top" } %></li>
-                            <li><%= link_to t('actions.duplicate'), duplicate_filament_path(filament), method: :post, class: "dropdown-item", data: { turbo_method: :post } %></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><%= link_to t('actions.delete'), filament, method: :delete,
-                          confirm: t('filaments.confirm_delete', name: filament.name),
-                          class: "dropdown-item text-danger",
-                          data: { turbo_method: :delete } %></li>
-                        </ul>
-                    </div>
+    <% if @filaments.any? %>
+        <div class="row g-4">
+            <% @filaments.each do |filament| %>
+                <%= render Cards::FilamentCardComponent.new(filament: filament, current_user: current_user) %>
+            <% end %>
+        </div>
+    <% elsif @q.present? %>
+        <!-- No Search Results -->
+        <div class="text-center py-5">
+            <div class="card border-0 bg-light">
+                <div class="card-body py-5">
+                    <h3 class="text-muted mb-3"><%= t('filaments.index.no_results.title') %></h3>
+                    <p class="text-muted mb-4"><%= t('filaments.index.no_results.description', query: @q) %></p>
+                    <%= link_to t('filaments.index.clear_search'), filaments_path, class: "btn btn-secondary" %>
                 </div>
             </div>
         </div>
-    </div>
+    <% else %>
+        <!-- Empty State -->
+        <div class="text-center py-5">
+            <div class="card border-0 bg-light">
+                <div class="card-body py-5">
+                    <h3 class="text-muted mb-3"><%= t('filaments.index.empty_state.title') %></h3>
+                    <p class="text-muted mb-4"><%= t('filaments.index.empty_state.description') %></p>
+                    <%= link_to t('filaments.index.empty_state.add_first'), new_filament_path, class: "btn btn-primary" %>
+                </div>
+            </div>
+        </div>
     <% end %>
-</div>
-
-<% if @q.present? && @filaments.empty? %>
-<!-- No Search Results -->
-<div class="text-center py-5">
-    <div class="card border-0 bg-light">
-        <div class="card-body py-5">
-            <h3 class="text-muted mb-3"><%= t('filaments.index.no_results.title') %></h3>
-            <p class="text-muted mb-4"><%= t('filaments.index.no_results.description', query: @q) %></p>
-            <%= link_to t('filaments.index.clear_search'), filaments_path, class: "btn btn-secondary" %>
-        </div>
-    </div>
-</div>
 <% end %>
 
-<% else %>
-<!-- Empty State -->
-<div class="text-center py-5">
-    <div class="card border-0 bg-light">
-        <div class="card-body py-5">
-            <h3 class="text-muted mb-3"><%= t('filaments.index.empty_state.title') %></h3>
-            <p class="text-muted mb-4"><%= t('filaments.index.empty_state.description') %></p>
-            <%= link_to t('filaments.index.empty_state.add_first'), new_filament_path, class: "btn btn-primary" %>
-        </div>
-    </div>
-</div>
-<% end %>
-<% end %> <!-- Close turbo_frame_tag -->
