@@ -1,0 +1,22 @@
+<% if @wrapper %>
+<div class="<%= @wrapper_class %>">
+<% end %>
+  <div class="<%= form_check_class %>">
+    <%= @form.check_box @attribute, checkbox_options %>
+    <% if show_label? %>
+      <%= @form.label @attribute, label_text, class: "form-check-label" %>
+    <% end %>
+  </div>
+
+  <% if show_hint? %>
+    <div class="form-text"><%= @hint %></div>
+  <% end %>
+
+  <% if @form.object && @form.object.respond_to?(:errors) && @form.object.errors[@attribute].any? %>
+    <div class="invalid-feedback d-block">
+      <%= @form.object.errors[@attribute].first %>
+    </div>
+  <% end %>
+<% if @wrapper %>
+</div>
+<% end %>
