@@ -5,22 +5,24 @@
     </div>
     <div class="card-body">
       <div class="row g-3">
-        <div class="col-12">
-          <%= f.label :other_costs, t('print_pricing.fields.other_costs'), class: "form-label" %>
-          <div class="input-group">
-            <span class="input-group-text"><%= currency_symbol(current_user.default_currency) %></span>
-            <%= f.number_field :other_costs, step: 0.01,
-                placeholder: t('print_pricing.fields.other_costs_placeholder'),
-                class: "form-control" %>
-          </div>
-        </div>
+        <%= render Forms::NumberFieldWithAddonComponent.new(
+          form: f,
+          attribute: :other_costs,
+          label: t('print_pricing.fields.other_costs'),
+          prepend: currency_symbol(current_user.default_currency),
+          step: 0.01,
+          placeholder: t('print_pricing.fields.other_costs_placeholder'),
+          wrapper_class: "col-12"
+        ) %>
 
-        <div class="col-12">
-          <%= f.label :vat_percentage, t('print_pricing.fields.vat_percentage'), class: "form-label" %>
-          <%= f.number_field :vat_percentage, step: 0.1,
-              placeholder: t('print_pricing.fields.vat_placeholder'),
-              class: "form-control" %>
-        </div>
+        <%= render Forms::FieldComponent.new(
+          form: f,
+          attribute: :vat_percentage,
+          type: :number,
+          label: t('print_pricing.fields.vat_percentage'),
+          wrapper_class: "col-12",
+          options: { step: 0.1, placeholder: t('print_pricing.fields.vat_placeholder') }
+        ) %>
       </div>
     </div>
   </div>
