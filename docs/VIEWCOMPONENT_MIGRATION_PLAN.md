@@ -1,0 +1,1547 @@
+# ViewComponent Systematic Migration Plan
+
+**Created:** 2025-11-21  
+**Status:** Active  
+**Target:** Complete conversion of views to ViewComponents  
+**Estimated Total Effort:** 40-60 hours over 8-12 weeks
+
+---
+
+## Executive Summary
+
+Based on comprehensive codebase analysis:
+
+- **131 total view files** in the application
+- **71 partials** (excluding devise and layouts) ready for conversion
+- **100+ card patterns** identified across views
+- **15+ helper methods** generating HTML with `content_tag`
+- **26 forms** that can benefit from form components
+
+**Expected Benefits:**
+
+- 2,500-3,500 lines of code reduction (15-20% overall view code)
+- 90%+ view test coverage (from current 1.3%)
+- Consistent UI patterns across entire application
+- Elimination of helper bloat
+- Faster feature development with reusable components
+
+---
+
+## Migration Strategy
+
+### Guiding Principles
+
+1. **Start with highest duplication** - Maximum ROI per hour invested
+2. **Work bottom-up** - Small components first, compose into larger ones
+3. **Test everything** - Maintain 100% component test coverage
+4. **One feature at a time** - Complete vertical slices
+5. **Refactor, don't rewrite** - Preserve functionality exactly
+
+### Component Categories
+
+| Category                | Count | Priority | Effort |
+| ----------------------- | ----- | -------- | ------ |
+| **Basic UI Components** | 8     | P0       | 8h     |
+| **Card Components**     | 12    | P0       | 16h    |
+| **Form Components**     | 15    | P1       | 20h    |
+| **Feature Components**  | 18    | P1       | 24h    |
+| **Layout Components**   | 6     | P2       | 8h     |
+| **Helper Migrations**   | 15+   | P2       | 12h    |
+
+**Total:** 74 components, 88 hours estimated
+
+---
+
+## Phase 1: Foundation Components (Week 1-2) ⭐ HIGHEST PRIORITY
+
+**Goal:** Establish reusable UI primitives used everywhere  
+**Effort:** 8-10 hours  
+**Impact:** Reduces 500-800 lines of duplicate code
+
+### 1.1 Already Complete ✅
+
+- **StatsCardComponent** - Dashboard statistics cards
+
+### 1.2 Basic UI Components (6 components, 8 hours)
+
+#### ButtonComponent (1 hour)
+
+**Location:** Throughout application  
+**Duplication:** 50+ instances of styled buttons  
+**Purpose:** Consistent button styling with variants
+
+```ruby
+# app/components/button_component.rb
+class ButtonComponent < ViewComponent::Base
+  def initialize(
+    text:,
+    variant: "primary",      # primary, secondary, success, danger, outline-primary, etc.
+    size: "md",              # sm, md, lg
+    icon: nil,               # Bootstrap icon class
+    url: nil,                # If link
+    method: :get,            # :get, :post, :delete
+    data: {},                # Stimulus controllers, etc.
+    html_options: {}
+  )
+  end
+end
+```
+
+**Variants:**
+
+- Primary action buttons
+- Secondary buttons
+- Danger buttons (delete)
+- Icon buttons
+- Button groups
+- Dropdown buttons
+
+---
+
+#### BadgeComponent (1 hour)
+
+**Current:** 40+ inline badge implementations  
+**Purpose:** Status indicators, counts, labels
+
+```ruby
+# app/components/badge_component.rb
+class BadgeComponent < ViewComponent::Base
+  def initialize(
+    text:,
+    variant: "primary",      # primary, secondary, success, danger, warning, info
+    size: "md",              # sm, md, lg
+    icon: nil,
+    pill: false
+  )
+  end
+end
+```
+
+**Use Cases:**
+
+- Invoice status badges
+- Printer status badges
+- Resource counts
+- Filament type labels
+- Plan tier badges
+
+---
+
+#### AlertComponent (1 hour)
+
+**Current:** Flash messages, form errors, info boxes  
+**Duplication:** 25+ instances
+
+```ruby
+# app/components/alert_component.rb
+class AlertComponent < ViewComponent::Base
+  def initialize(
+    message: nil,
+    variant: "info",         # success, info, warning, danger
+    dismissible: true,
+    icon: nil
+  )
+  end
+
+  # Can accept block for complex content
+end
+```
+
+**Replace:**
+
+- `app/views/layouts/_flash.html.erb`
+- `app/views/shared/_form_errors.html.erb`
+- Inline alert messages in 20+ views
+
+---
+
+#### ModalComponent (2 hours)
+
+**Current:** `app/views/shared/_modal.html.erb` + 8 modal forms  
+**Purpose:** Consistent modal dialogs
+
+```ruby
+# app/components/modal_component.rb
+class ModalComponent < ViewComponent::Base
+  def initialize(
+    id:,
+    title:,
+    size: "md",              # sm, md, lg, xl
+    footer: true,
+    centered: false
+  )
+  end
+
+  # Slots for header, body, footer
+  renders_one :header
+  renders_one :body
+  renders_one :footer
+end
+```
+
+**Replace:**
+
+- Client modal form
+- Printer modal form
+- Filament modal form
+- Generic modal wrapper
+
+---
+
+#### CardComponent (2 hours)
+
+**Current:** 100+ card instances  
+**Purpose:** Base card wrapper with variants
+
+```ruby
+# app/components/card_component.rb
+class CardComponent < ViewComponent::Base
+  def initialize(
+    variant: "default",      # default, primary, success, danger, transparent
+    shadow: true,
+    border: true,
+    header_class: "",
+    body_class: ""
+  )
+  end
+
+  # Slots for header, body, footer
+  renders_one :header
+  renders_one :body
+  renders_one :footer
+end
+```
+
+**Compose with:**
+
+- Specific card types (pricing, invoice, printer, etc.)
+
+---
+
+#### IconComponent (1 hour)
+
+**Current:** Inline Bootstrap icon classes  
+**Purpose:** Consistent icon rendering
+
+```ruby
+# app/components/icon_component.rb
+class IconComponent < ViewComponent::Base
+  def initialize(
+    name:,                   # Bootstrap icon name (without bi- prefix)
+    size: "md",              # sm, md, lg
+    color: nil,
+    spin: false              # For loading states
+  )
+  end
+end
+```
+
+---
+
+## Phase 2: Card Components (Week 3-4) 🃏
+
+**Goal:** Eliminate card pattern duplication  
+**Effort:** 16 hours  
+**Impact:** Reduces 800-1200 lines of duplicate code
+
+### 2.1 Data Display Cards (8 components, 8 hours)
+
+#### PricingCardComponent (2 hours) ⭐ HIGH IMPACT
+
+**Current:** `app/views/shared/components/_pricing_card.html.erb` (52 lines)  
+**Duplication:** Used in index + show views  
+**Complexity:** High - multiple data points, responsive layout
+
+```ruby
+# app/components/pricing_card_component.rb
+class PricingCardComponent < ViewComponent::Base
+  def initialize(pricing:, compact: false)
+    @pricing = pricing
+    @compact = compact
+  end
+
+  # Helper methods for badges, formatting, etc.
+  def plate_count_badge
+  end
+
+  def filament_badges
+  end
+
+  def metadata_badges
+  end
+end
+```
+
+**Compose:**
+
+- BadgeComponent for counts
+- ButtonComponent for actions
+- Dropdown helper
+
+**Test Coverage:**
+
+- Displays job name correctly
+- Shows plate count
+- Renders filament types
+- Times printed control
+- Final price display
+- Actions dropdown
+- Responsive badges (mobile/desktop)
+
+---
+
+#### InvoiceCardComponent (1.5 hours)
+
+**Current:** `app/views/invoices/_invoice_card.html.erb`  
+**Purpose:** Invoice list display
+
+```ruby
+# app/components/invoice_card_component.rb
+class InvoiceCardComponent < ViewComponent::Base
+  def initialize(invoice:)
+  end
+end
+```
+
+**Compose:**
+
+- CardComponent (base)
+- BadgeComponent (status)
+- ButtonComponent (actions)
+
+---
+
+#### UsageStatsComponent (1 hour) ⭐ HIGH IMPACT
+
+**Current:** `app/views/subscriptions/_usage_stats.html.erb` (4x duplication, 120 lines)  
+**Research identified:** 4 identical 30-line blocks
+
+```ruby
+# app/components/usage_stats_component.rb
+class UsageStatsComponent < ViewComponent::Base
+  def initialize(user:)
+    @user = user
+  end
+
+  def resource_usage(resource)
+    # Uses cached_usage_stats from Phase 1 caching
+    @user.cached_usage_stats[resource.to_s]
+  end
+end
+```
+
+**Compose:**
+
+- ProgressBarComponent (new)
+- BadgeComponent
+
+---
+
+#### UsageDashboardWidgetComponent (1 hour)
+
+**Current:** `app/views/shared/_usage_dashboard_widget.html.erb`  
+**Purpose:** Compact usage display in navbar/header
+
+```ruby
+# app/components/usage_dashboard_widget_component.rb
+class UsageDashboardWidgetComponent < ViewComponent::Base
+  def initialize(user:)
+  end
+end
+```
+
+---
+
+#### PrinterCardComponent (1 hour)
+
+**Purpose:** Printer list display (currently inline in index)
+
+```ruby
+# app/components/printer_card_component.rb
+class PrinterCardComponent < ViewComponent::Base
+  def initialize(printer:)
+  end
+end
+```
+
+---
+
+#### ClientCardComponent (0.5 hours)
+
+**Purpose:** Client list display
+
+```ruby
+# app/components/client_card_component.rb
+class ClientCardComponent < ViewComponent::Base
+  def initialize(client:)
+  end
+end
+```
+
+---
+
+#### FilamentCardComponent (0.5 hours)
+
+**Purpose:** Filament list display
+
+```ruby
+# app/components/filament_card_component.rb
+class FilamentCardComponent < ViewComponent::Base
+  def initialize(filament:)
+  end
+end
+```
+
+---
+
+#### FeatureCardComponent (0.5 hours)
+
+**Current:** `app/views/pages/landing/_features.html.erb` (4x duplication)  
+**Purpose:** Landing page feature showcase
+
+```ruby
+# app/components/feature_card_component.rb
+class FeatureCardComponent < ViewComponent::Base
+  def initialize(icon:, title:, description:)
+  end
+end
+```
+
+---
+
+### 2.2 Specialized Cards (4 components, 8 hours)
+
+#### ProblemCardComponent (1 hour)
+
+**Current:** `app/views/pages/landing/_problem.html.erb` (4x identical cards)
+
+```ruby
+# app/components/problem_card_component.rb
+class ProblemCardComponent < ViewComponent::Base
+  def initialize(emoji:, title:, description:)
+  end
+end
+```
+
+---
+
+#### PricingTierCardComponent (2 hours)
+
+**Current:** `app/views/pages/landing/_pricing.html.erb` (3 tiers)  
+**Also:** `app/views/subscriptions/_pricing_card.html.erb`
+
+```ruby
+# app/components/pricing_tier_card_component.rb
+class PricingTierCardComponent < ViewComponent::Base
+  def initialize(
+    tier:,                   # :free, :startup, :pro
+    highlighted: false,
+    show_cta: true,
+    compact: false
+  )
+    @plan = PlanLimits.plan_for(tier)
+  end
+
+  def features
+    PlanLimits.features_for(@plan[:name])
+  end
+end
+```
+
+**Compose:**
+
+- CardComponent
+- BadgeComponent (for "Popular" badge)
+- ButtonComponent (CTA)
+
+---
+
+#### PlateCardComponent (2 hours)
+
+**Current:** `app/views/pages/pricing_calculator/_plate_template.html.erb`  
+**Purpose:** Calculator plate display
+
+```ruby
+# app/components/plate_card_component.rb
+class PlateCardComponent < ViewComponent::Base
+  def initialize(plate:, index:, editable: true)
+  end
+end
+```
+
+**Note:** Complex due to nested form fields and Stimulus integration
+
+---
+
+#### InfoSectionComponent (3 hours)
+
+**Current:** Helper method `form_info_section` in print_pricings_helper.rb  
+**Used:** 5+ times in print pricing form
+
+```ruby
+# app/components/info_section_component.rb
+class InfoSectionComponent < ViewComponent::Base
+  def initialize(title:, items:, link_text: nil, link_url: nil)
+  end
+end
+```
+
+---
+
+## Phase 3: Form Components (Week 5-7) 📝
+
+**Goal:** Standardize form patterns and reduce form duplication  
+**Effort:** 20 hours  
+**Impact:** Reduces 600-900 lines, improves consistency
+
+### 3.1 Form Field Components (7 components, 10 hours)
+
+#### FormFieldComponent (2 hours)
+
+**Purpose:** Standardize form field rendering with labels, errors, hints
+
+```ruby
+# app/components/form_field_component.rb
+class FormFieldComponent < ViewComponent::Base
+  def initialize(
+    form:,
+    attribute:,
+    type: :text,             # text, email, number, select, textarea
+    label: nil,
+    hint: nil,
+    required: false,
+    options: {}
+  )
+  end
+end
+```
+
+**Replace:** 100+ inline form fields
+
+---
+
+#### SelectFieldComponent (1 hour)
+
+**Purpose:** Styled select dropdowns with search
+
+```ruby
+# app/components/select_field_component.rb
+class SelectFieldComponent < ViewComponent::Base
+  def initialize(
+    form:,
+    attribute:,
+    choices:,
+    label: nil,
+    include_blank: false,
+    searchable: false
+  )
+  end
+end
+```
+
+---
+
+#### CheckboxFieldComponent (1 hour)
+
+**Purpose:** Styled checkboxes with toggle variant
+
+---
+
+#### RadioFieldComponent (1 hour)
+
+**Purpose:** Styled radio button groups
+
+---
+
+#### FileUploadComponent (2 hours)
+
+**Current:** `app/views/shared/_image_upload.html.erb`  
+**Purpose:** Image/file upload with preview
+
+```ruby
+# app/components/file_upload_component.rb
+class FileUploadComponent < ViewComponent::Base
+  def initialize(
+    form:,
+    attribute:,
+    accept: "image/*",
+    preview: true,
+    max_size: nil
+  )
+  end
+end
+```
+
+---
+
+#### CurrencyFieldComponent (1 hour)
+
+**Purpose:** Currency input with symbol
+
+```ruby
+# app/components/currency_field_component.rb
+class CurrencyFieldComponent < ViewComponent::Base
+  def initialize(form:, attribute:, currency:)
+  end
+end
+```
+
+---
+
+#### DatePickerComponent (2 hours)
+
+**Purpose:** Date/datetime picker
+
+---
+
+### 3.2 Form Section Components (4 components, 6 hours)
+
+#### FormSectionComponent (2 hours)
+
+**Purpose:** Collapsible form sections with headers
+
+```ruby
+# app/components/form_section_component.rb
+class FormSectionComponent < ViewComponent::Base
+  def initialize(title:, collapsible: false, collapsed: false, icon: nil)
+  end
+
+  renders_one :body
+end
+```
+
+**Replace:**
+
+- `app/views/print_pricings/form_sections/_*.html.erb` (5 files)
+- `app/views/filaments/_modal_form.html.erb` (4 sections)
+
+---
+
+#### NestedFormComponent (2 hours)
+
+**Current:** `_plate_fields.html.erb`, `_plate_filament_fields.html.erb`, `_invoice_line_item_fields.html.erb`  
+**Purpose:** Dynamic nested form fields (add/remove)
+
+```ruby
+# app/components/nested_form_component.rb
+class NestedFormComponent < ViewComponent::Base
+  def initialize(
+    form:,
+    association:,
+    partial: nil,
+    add_text: "Add",
+    remove_text: "Remove"
+  )
+  end
+end
+```
+
+**Uses:** Stimulus for add/remove behavior
+
+---
+
+#### FormActionsComponent (1 hour)
+
+**Purpose:** Standardize form submit/cancel buttons
+
+```ruby
+# app/components/form_actions_component.rb
+class FormActionsComponent < ViewComponent::Base
+  def initialize(
+    submit_text: "Save",
+    cancel_url: nil,
+    delete_url: nil,
+    delete_confirm: nil
+  )
+  end
+end
+```
+
+---
+
+#### FormErrorsComponent (1 hour)
+
+**Current:** `app/views/shared/_form_errors.html.erb`
+
+```ruby
+# app/components/form_errors_component.rb
+class FormErrorsComponent < ViewComponent::Base
+  def initialize(model:)
+  end
+end
+```
+
+---
+
+### 3.3 Specialized Form Components (4 components, 4 hours)
+
+#### ClientFormComponent (1 hour)
+
+**Current:** `app/views/clients/_form.html.erb` + `_modal_form.html.erb`
+
+---
+
+#### FilamentFormComponent (1 hour)
+
+**Current:** `app/views/filaments/_modal_form.html.erb` (4 sections)
+
+---
+
+#### PrinterFormComponent (1 hour)
+
+**Current:** Inline in printers views + helpers
+
+---
+
+#### InvoiceFormComponent (1 hour)
+
+**Current:** `app/views/invoices/_form.html.erb` + 10 form partials
+
+---
+
+## Phase 4: Feature Components (Week 8-10) 🎯
+
+**Goal:** Convert complex features to components  
+**Effort:** 24 hours  
+**Impact:** Major maintainability improvement
+
+### 4.1 Invoice Components (6 components, 8 hours)
+
+#### InvoiceHeaderComponent (2 hours)
+
+**Current:** `app/views/invoices/partials/header/_*.html.erb` (4 partials)
+
+```ruby
+# app/components/invoices/header_component.rb
+class Invoices::HeaderComponent < ViewComponent::Base
+  def initialize(invoice:, show_mode: true)
+  end
+
+  renders_one :company
+  renders_one :metadata
+end
+```
+
+---
+
+#### InvoiceLineItemComponent (2 hours)
+
+**Current:** `app/views/invoices/partials/line_items/_row.html.erb`
+
+```ruby
+# app/components/invoices/line_item_component.rb
+class Invoices::LineItemComponent < ViewComponent::Base
+  def initialize(line_item:, variant: :table)
+  end
+end
+```
+
+**Variants:**
+
+- Table row (show page)
+- Card (mobile view)
+- Form field (edit mode)
+
+---
+
+#### InvoiceLineItemsTableComponent (2 hours)
+
+**Current:** `app/views/invoices/partials/line_items/_table.html.erb`
+
+```ruby
+# app/components/invoices/line_items_table_component.rb
+class Invoices::LineItemsTableComponent < ViewComponent::Base
+  def initialize(invoice:, editable: false)
+  end
+end
+```
+
+**Compose:**
+
+- InvoiceLineItemComponent (for each row)
+- InvoiceLineItemsTotalsComponent (footer)
+
+---
+
+#### InvoiceLineItemsTotalsComponent (1 hour)
+
+**Current:** `app/views/invoices/partials/line_items/_totals.html.erb`
+
+---
+
+#### InvoiceActionsComponent (0.5 hours)
+
+**Current:** `app/views/invoices/partials/display/_actions.html.erb`
+
+---
+
+#### InvoiceStatusBadgeComponent (0.5 hours)
+
+**Current:** Helper method `invoice_status_badge` in invoices_helper.rb
+
+```ruby
+# app/components/invoices/status_badge_component.rb
+class Invoices::StatusBadgeComponent < ViewComponent::Base
+  def initialize(status:, size: "md")
+  end
+
+  def badge_class
+    case @status
+    when "paid" then "success"
+    when "pending" then "warning"
+    when "overdue" then "danger"
+    when "cancelled" then "secondary"
+    end
+  end
+end
+```
+
+---
+
+### 4.2 Print Pricing Components (4 components, 6 hours)
+
+#### PrintPricingFormComponent (3 hours)
+
+**Current:** `app/views/print_pricings/_form.html.erb` + 5 form sections  
+**Complexity:** Very high - 200+ lines total
+
+```ruby
+# app/components/print_pricings/form_component.rb
+class PrintPricings::FormComponent < ViewComponent::Base
+  def initialize(print_pricing:, form:)
+  end
+
+  # Slots for each section
+  renders_one :basic_information
+  renders_one :plates
+  renders_one :labor_costs
+  renders_one :other_costs
+end
+```
+
+---
+
+#### PlateFieldsComponent (2 hours)
+
+**Current:** `app/views/print_pricings/_plate_fields.html.erb`  
+**Complexity:** High - nested forms with Stimulus
+
+```ruby
+# app/components/print_pricings/plate_fields_component.rb
+class PrintPricings::PlateFieldsComponent < ViewComponent::Base
+  def initialize(form:, plate:)
+  end
+end
+```
+
+---
+
+#### PlateFilamentFieldsComponent (0.5 hours)
+
+**Current:** `app/views/print_pricings/_plate_filament_fields.html.erb`
+
+---
+
+#### TimesprintedControlComponent (0.5 hours)
+
+**Current:** `app/views/shared/components/_times_printed_control.html.erb`
+
+```ruby
+# app/components/times_printed_control_component.rb
+class TimesPrintedControlComponent < ViewComponent::Base
+  def initialize(pricing:)
+  end
+end
+```
+
+---
+
+### 4.3 Calculator Components (4 components, 6 hours)
+
+#### AdvancedCalculatorComponent (3 hours)
+
+**Current:** `app/views/pages/pricing_calculator.html.erb` (400+ lines!)  
+**Purpose:** Extract calculator to reusable component
+
+```ruby
+# app/components/calculator/advanced_component.rb
+class Calculator::AdvancedComponent < ViewComponent::Base
+  def initialize(preset_values: {})
+  end
+
+  renders_many :plates, Calculator::PlateComponent
+  renders_one :results, Calculator::ResultsComponent
+end
+```
+
+**Note:** This is the MOST complex component - requires careful Stimulus integration
+
+---
+
+#### CalculatorPlateComponent (1.5 hours)
+
+**Current:** `app/views/pages/pricing_calculator/_plate_template.html.erb`
+
+---
+
+#### CalculatorResultsComponent (1 hour)
+
+**Current:** `app/views/shared/components/calculators/_results.html.erb`
+
+---
+
+#### CalculatorInputFieldComponent (0.5 hours)
+
+**Current:** Helper method `calculator_input_field` in calculators_helper.rb
+
+```ruby
+# app/components/calculator/input_field_component.rb
+class Calculator::InputFieldComponent < ViewComponent::Base
+  def initialize(
+    stimulus_controller:,
+    target:,
+    label:,
+    value:,
+    type: :number,
+    min: nil,
+    max: nil,
+    step: nil
+  )
+  end
+end
+```
+
+---
+
+### 4.4 Printer Components (4 components, 4 hours)
+
+All currently in helpers as `content_tag` methods:
+
+#### PrinterHeaderComponent (1 hour)
+
+**Current:** `printer_header` helper
+
+---
+
+#### PrinterFinancialStatusComponent (1 hour)
+
+**Current:** `printer_financial_status` helper
+
+---
+
+#### PrinterJobsSectionHeaderComponent (1 hour)
+
+**Current:** `printer_jobs_section_header` helper
+
+---
+
+#### PrinterFormSectionsComponent (1 hour)
+
+**Current:** 4 helper methods for form sections
+
+---
+
+## Phase 5: Layout & Navigation Components (Week 11) 🎨
+
+**Goal:** Extract layout components  
+**Effort:** 8 hours  
+**Impact:** Cleaner layout files
+
+### 5.1 Layout Components (6 components, 8 hours)
+
+#### NavbarComponent (2 hours)
+
+**Current:** `app/views/shared/_navbar.html.erb`  
+**Complexity:** High - authentication states, dropdown menus, mobile responsive
+
+```ruby
+# app/components/navbar_component.rb
+class NavbarComponent < ViewComponent::Base
+  def initialize(current_user: nil)
+  end
+
+  renders_many :nav_items
+  renders_one :user_menu
+end
+```
+
+---
+
+#### FooterComponent (1 hour)
+
+**Current:** `app/views/shared/_footer.html.erb`
+
+```ruby
+# app/components/footer_component.rb
+class FooterComponent < ViewComponent::Base
+  def initialize(show_newsletter: false)
+  end
+end
+```
+
+---
+
+#### BreadcrumbsComponent (1 hour)
+
+**Current:** `app/views/shared/_breadcrumbs.html.erb`
+
+```ruby
+# app/components/breadcrumbs_component.rb
+class BreadcrumbsComponent < ViewComponent::Base
+  def initialize(items:)
+  end
+end
+```
+
+---
+
+#### FlashMessagesComponent (1 hour)
+
+**Current:** `app/views/layouts/_flash.html.erb`
+
+```ruby
+# app/components/flash_messages_component.rb
+class FlashMessagesComponent < ViewComponent::Base
+  def initialize(flash:)
+  end
+end
+```
+
+**Compose:** AlertComponent for each flash message
+
+---
+
+#### CookieConsentComponent (1 hour)
+
+**Current:** `app/views/shared/_cookie_consent.html.erb`
+
+---
+
+#### LocaleSuggestionBannerComponent (2 hours)
+
+**Current:** `app/views/shared/_locale_suggestion_banner.html.erb`
+
+```ruby
+# app/components/locale_suggestion_banner_component.rb
+class LocaleSuggestionBannerComponent < ViewComponent::Base
+  def initialize(current_user:, detected_locale:)
+  end
+
+  def should_show?
+    # Logic to determine if banner should display
+  end
+end
+```
+
+---
+
+## Phase 6: Helper Method Migrations (Week 12) 🔧
+
+**Goal:** Convert remaining `content_tag` helpers to components  
+**Effort:** 12 hours  
+**Impact:** Eliminate helper bloat
+
+### Helpers to Migrate (15+ methods, 12 hours)
+
+All helpers that generate HTML with `content_tag`:
+
+#### From invoices_helper.rb
+
+- ✅ `invoice_status_badge` → Invoices::StatusBadgeComponent
+
+#### From print_pricings_helper.rb
+
+- `pricing_card_metadata_badges` → Integrated into PricingCardComponent
+- `pricing_card_actions` → Integrated into PricingCardComponent
+- `pricing_show_actions` → PrintPricings::ActionsComponent
+- `form_info_section` → InfoSectionComponent
+
+#### From printers_helper.rb (10 methods!)
+
+- `printer_header` → PrinterHeaderComponent
+- `printer_financial_status` → PrinterFinancialStatusComponent
+- `printer_jobs_section_header` → PrinterJobsSectionHeaderComponent
+- `printer_form_header` → PrinterFormHeaderComponent
+- `printer_form_basic_information` → FormSectionComponent
+- `printer_form_technical_specs` → FormSectionComponent
+- `printer_form_financial_info` → FormSectionComponent
+- `printer_form_usage_info` → FormSectionComponent
+- `printer_form_actions` → FormActionsComponent
+
+#### From calculators_helper.rb
+
+- `calculator_input_field` → Calculator::InputFieldComponent
+
+---
+
+## Component Organization Structure
+
+```
+app/
+└── components/
+    ├── button_component.rb
+    ├── button_component.html.erb
+    ├── badge_component.rb
+    ├── badge_component.html.erb
+    ├── alert_component.rb
+    ├── alert_component.html.erb
+    ├── modal_component.rb
+    ├── modal_component.html.erb
+    ├── card_component.rb
+    ├── card_component.html.erb
+    ├── icon_component.rb
+    ├── icon_component.html.erb
+    │
+    ├── stats_card_component.rb           # ✅ DONE
+    ├── stats_card_component.html.erb     # ✅ DONE
+    ├── pricing_card_component.rb
+    ├── pricing_card_component.html.erb
+    ├── usage_stats_component.rb
+    ├── usage_stats_component.html.erb
+    ├── usage_dashboard_widget_component.rb
+    ├── usage_dashboard_widget_component.html.erb
+    │
+    ├── form_field_component.rb
+    ├── form_field_component.html.erb
+    ├── select_field_component.rb
+    ├── select_field_component.html.erb
+    ├── form_section_component.rb
+    ├── form_section_component.html.erb
+    ├── nested_form_component.rb
+    ├── nested_form_component.html.erb
+    ├── form_actions_component.rb
+    ├── form_actions_component.html.erb
+    ├── form_errors_component.rb
+    ├── form_errors_component.html.erb
+    │
+    ├── navbar_component.rb
+    ├── navbar_component.html.erb
+    ├── footer_component.rb
+    ├── footer_component.html.erb
+    ├── breadcrumbs_component.rb
+    ├── breadcrumbs_component.html.erb
+    ├── flash_messages_component.rb
+    ├── flash_messages_component.html.erb
+    │
+    ├── invoices/
+    │   ├── header_component.rb
+    │   ├── header_component.html.erb
+    │   ├── line_item_component.rb
+    │   ├── line_item_component.html.erb
+    │   ├── line_items_table_component.rb
+    │   ├── line_items_table_component.html.erb
+    │   ├── status_badge_component.rb
+    │   └── status_badge_component.html.erb
+    │
+    ├── print_pricings/
+    │   ├── form_component.rb
+    │   ├── form_component.html.erb
+    │   ├── plate_fields_component.rb
+    │   ├── plate_fields_component.html.erb
+    │   ├── plate_filament_fields_component.rb
+    │   └── plate_filament_fields_component.html.erb
+    │
+    ├── calculator/
+    │   ├── advanced_component.rb
+    │   ├── advanced_component.html.erb
+    │   ├── plate_component.rb
+    │   ├── plate_component.html.erb
+    │   ├── results_component.rb
+    │   ├── results_component.html.erb
+    │   ├── input_field_component.rb
+    │   └── input_field_component.html.erb
+    │
+    └── printers/
+        ├── header_component.rb
+        ├── header_component.html.erb
+        ├── financial_status_component.rb
+        └── financial_status_component.html.erb
+
+test/
+└── components/
+    ├── button_component_test.rb
+    ├── badge_component_test.rb
+    ├── alert_component_test.rb
+    ├── stats_card_component_test.rb      # ✅ DONE
+    ├── pricing_card_component_test.rb
+    ├── usage_stats_component_test.rb
+    │
+    ├── invoices/
+    │   ├── header_component_test.rb
+    │   ├── line_item_component_test.rb
+    │   └── status_badge_component_test.rb
+    │
+    ├── print_pricings/
+    │   ├── form_component_test.rb
+    │   └── plate_fields_component_test.rb
+    │
+    ├── calculator/
+    │   ├── advanced_component_test.rb
+    │   └── results_component_test.rb
+    │
+    └── printers/
+        └── header_component_test.rb
+```
+
+---
+
+## Testing Strategy
+
+### Test Coverage Requirements
+
+**MANDATORY:** Every component MUST have comprehensive tests
+
+### Standard Test Template
+
+```ruby
+# test/components/example_component_test.rb
+require "test_helper"
+
+class ExampleComponentTest < ViewComponent::TestCase
+  # 1. Basic Rendering
+  test "renders with required attributes" do
+    render_inline(ExampleComponent.new(required: "value"))
+
+    assert_selector "div.example"
+    assert_text "value"
+  end
+
+  # 2. Optional Attributes
+  test "renders with optional attributes" do
+    render_inline(ExampleComponent.new(
+      required: "value",
+      optional: "extra"
+    ))
+
+    assert_selector "div.optional", text: "extra"
+  end
+
+  # 3. Default Values
+  test "uses default values when not provided" do
+    render_inline(ExampleComponent.new(required: "value"))
+
+    assert_selector "div.default-class"
+  end
+
+  # 4. Conditional Logic
+  test "shows conditional content when condition is true" do
+    render_inline(ExampleComponent.new(
+      required: "value",
+      show_optional: true
+    ))
+
+    assert_selector "div.optional-content"
+  end
+
+  test "hides conditional content when condition is false" do
+    render_inline(ExampleComponent.new(
+      required: "value",
+      show_optional: false
+    ))
+
+    refute_selector "div.optional-content"
+  end
+
+  # 5. Helper Methods
+  test "helper method returns correct value" do
+    component = ExampleComponent.new(required: "value")
+
+    assert_equal "expected", component.helper_method
+  end
+
+  # 6. Slots (if applicable)
+  test "renders with slotted content" do
+    render_inline(ExampleComponent.new(required: "value")) do |component|
+      component.with_body { "Body content" }
+    end
+
+    assert_selector "div.body", text: "Body content"
+  end
+
+  # 7. Edge Cases
+  test "handles nil values gracefully" do
+    render_inline(ExampleComponent.new(
+      required: "value",
+      optional: nil
+    ))
+
+    refute_selector "div.optional"
+  end
+
+  test "handles empty strings gracefully" do
+    render_inline(ExampleComponent.new(required: ""))
+
+    assert_selector "div.example"
+  end
+end
+```
+
+### Minimum Test Coverage
+
+For each component, test:
+
+1. ✅ Renders with required attributes
+2. ✅ Renders with optional attributes
+3. ✅ Uses default values correctly
+4. ✅ All conditional branches
+5. ✅ All public helper methods
+6. ✅ All slots (if using ViewComponent slots)
+7. ✅ Edge cases (nil, empty, invalid)
+8. ✅ Different variants/sizes
+9. ✅ Responsive behavior (if applicable)
+10. ✅ Integration with composed components
+
+**Target:** 90%+ code coverage per component
+
+---
+
+## Implementation Workflow
+
+### For Each Component
+
+1. **Create Component Class**
+
+   ```bash
+   touch app/components/example_component.rb
+   ```
+
+2. **Create Component Template**
+
+   ```bash
+   touch app/components/example_component.html.erb
+   ```
+
+3. **Create Component Test**
+
+   ```bash
+   touch test/components/example_component_test.rb
+   ```
+
+4. **Write Tests First (TDD)**
+
+   - Define expected behavior in tests
+   - Run tests (should fail)
+
+5. **Implement Component**
+
+   - Write component class
+   - Write component template
+   - Run tests until passing
+
+6. **Refactor Views**
+
+   - Find all usages of old partial/helper
+   - Replace with component render
+   - Use git grep to find all instances
+
+7. **Run Full Test Suite**
+
+   ```bash
+   bin/rails test
+   ```
+
+8. **Manual Testing**
+
+   - Test in browser for visual accuracy
+   - Test responsive behavior
+   - Test all variants
+
+9. **Commit**
+
+   ```bash
+   git add -A
+   git commit -m "Add ExampleComponent
+
+   - Created ExampleComponent with X variants
+   - Added comprehensive test coverage (Y tests)
+   - Replaced Z usages of old partial/helper
+   - Reduces X lines of duplicate code
+
+   🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+   Co-Authored-By: Claude <noreply@anthropic.com>"
+   ```
+
+---
+
+## Migration Tracking
+
+### Progress Dashboard
+
+| Phase                   | Components | Completed | Tests | Lines Reduced | Status         |
+| ----------------------- | ---------- | --------- | ----- | ------------- | -------------- |
+| **Phase 1: Foundation** | 7          | 1         | 6     | 18            | 🟡 In Progress |
+| **Phase 2: Cards**      | 12         | 0         | 0     | 0             | ⚪ Not Started |
+| **Phase 3: Forms**      | 15         | 0         | 0     | 0             | ⚪ Not Started |
+| **Phase 4: Features**   | 18         | 0         | 0     | 0             | ⚪ Not Started |
+| **Phase 5: Layout**     | 6          | 0         | 0     | 0             | ⚪ Not Started |
+| **Phase 6: Helpers**    | 15         | 0         | 0     | 0             | ⚪ Not Started |
+| **TOTAL**               | **73**     | **1**     | **6** | **18**        | **1.4%**       |
+
+**Target:** 73 components, 438+ tests, 2,500-3,500 lines reduced
+
+---
+
+## Success Metrics
+
+### Quantitative Goals
+
+- ✅ **73 ViewComponents** created
+- ✅ **90%+ view test coverage** (from current 1.3%)
+- ✅ **2,500-3,500 lines** of code reduction (15-20%)
+- ✅ **0 helper methods** generating HTML with `content_tag`
+- ✅ **100% test pass rate** maintained throughout
+- ✅ **No visual regressions** - UI looks identical
+
+### Qualitative Goals
+
+- ✅ Consistent UI patterns across entire application
+- ✅ Faster feature development with reusable components
+- ✅ Easier onboarding for new developers
+- ✅ Better documentation through component examples
+- ✅ Reduced cognitive load when working on views
+
+---
+
+## Risk Mitigation
+
+### Potential Risks
+
+1. **Breaking Existing Functionality**
+   - **Mitigation:** Comprehensive test coverage, manual testing each component
+2. **Stimulus Controller Conflicts**
+   - **Mitigation:** Carefully preserve data attributes, test JavaScript interactions
+3. **Performance Degradation**
+   - **Mitigation:** Benchmark before/after, use fragment caching
+4. **Scope Creep**
+   - **Mitigation:** Stick to plan, don't redesign UI during conversion
+5. **Inconsistent Component API**
+   - **Mitigation:** Establish patterns early, document conventions
+
+---
+
+## Next Steps
+
+### Immediate Actions (This Week)
+
+1. ✅ Complete Phase 1 Foundation Components
+
+   - [ ] ButtonComponent
+   - [ ] BadgeComponent
+   - [ ] AlertComponent
+   - [ ] ModalComponent
+   - [ ] CardComponent
+   - [ ] IconComponent
+
+2. Update CLAUDE.md with component conventions
+
+3. Create component style guide in docs/
+
+### Week 2-3: Cards
+
+Start Phase 2 with highest-impact cards:
+
+- PricingCardComponent
+- UsageStatsComponent
+- InvoiceCardComponent
+
+### Week 4+: Continue with Plan
+
+Follow phases sequentially, maintaining quality and test coverage
+
+---
+
+## Appendix: Component Conventions
+
+### Naming Conventions
+
+- **Component Class:** `ExampleComponent` (singular)
+- **Component File:** `example_component.rb`
+- **Template File:** `example_component.html.erb`
+- **Test File:** `example_component_test.rb`
+- **Namespace:** Use module for feature grouping (e.g., `Invoices::HeaderComponent`)
+
+### Initialization Patterns
+
+```ruby
+# ✅ GOOD: Named parameters with defaults
+def initialize(title:, variant: "primary", size: "md")
+end
+
+# ❌ BAD: Positional parameters
+def initialize(title, variant = "primary")
+end
+
+# ✅ GOOD: Pass model object
+def initialize(invoice:)
+  @invoice = invoice
+end
+
+# ❌ BAD: Pass individual attributes
+def initialize(invoice_number:, invoice_total:, invoice_date:)
+end
+```
+
+### Helper Method Patterns
+
+```ruby
+class ExampleComponent < ViewComponent::Base
+  # ✅ Public helper methods for template logic
+  def badge_class
+    "badge-#{@variant}"
+  end
+
+  # ✅ Private methods for complex calculations
+  private
+
+  def calculate_total
+    # Complex logic
+  end
+end
+```
+
+### Slot Patterns
+
+```ruby
+# For flexible content areas
+class CardComponent < ViewComponent::Base
+  renders_one :header   # Single slot
+  renders_one :body
+  renders_many :actions # Multiple items
+end
+
+# Usage:
+<%= render CardComponent.new do |c| %>
+  <% c.with_header do %>
+    <h3>Title</h3>
+  <% end %>
+  <% c.with_body do %>
+    <p>Content</p>
+  <% end %>
+  <% c.with_action do %>
+    <%= link_to "Action", path %>
+  <% end %>
+<% end %>
+```
+
+### CSS Class Patterns
+
+```ruby
+# ✅ Use consistent class naming
+def card_classes
+  classes = ["card"]
+  classes << "card-#{@variant}" if @variant
+  classes << "shadow" if @shadow
+  classes.join(" ")
+end
+
+# In template:
+<div class="<%= card_classes %>">
+```
+
+---
+
+**Document Status:** READY FOR EXECUTION  
+**Last Updated:** 2025-11-21  
+**Owner:** Development Team  
+**Estimated Completion:** March 2026 (12 weeks)
