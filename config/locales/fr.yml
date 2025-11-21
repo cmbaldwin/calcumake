@@ -31,8 +31,7 @@ fr:
               inclusion: Veuillez sélectionner un type de matériau valide
             diameter:
               blank: Veuillez sélectionner un diamètre
-              inclusion: Veuillez sélectionner un diamètre valide (1.75mm, 2.85mm
-                ou 3.0mm)
+              inclusion: Veuillez sélectionner un diamètre valide (1.75mm, 2.85mm ou 3.0mm)
             spool_weight:
               greater_than: Le poids de la bobine doit être supérieur à 0
               not_a_number: Le poids de la bobine doit être un nombre
@@ -77,15 +76,13 @@ fr:
           attributes:
             base:
               no_filaments: Doit avoir au moins un filament
-              duplicate_filaments: Impossible d'utiliser le même filament plusieurs
-                fois sur une même plaque
+              duplicate_filaments: Impossible d'utiliser le même filament plusieurs fois sur une même plaque
         print_pricing:
           attributes:
             base:
               no_plates: Doit avoir au moins une plaque
               too_many_plates: Impossible d'avoir plus de 10 plaques
-              duplicate_filaments_on_plate: Impossible d'utiliser le même filament
-                plusieurs fois sur la même plaque
+              duplicate_filaments_on_plate: Impossible d'utiliser le même filament plusieurs fois sur la même plaque
   nav:
     brand: CalcuMake
     print_pricings: Mes Tarifications
@@ -158,8 +155,7 @@ fr:
     'yes': Oui
     'no': Non
     are_you_sure: Êtes-vous sûr(e) ?
-    errors_prohibited: "%{count} %{errors} ont empêché l'enregistrement de ce/cette
-      %{model} :"
+    errors_prohibited: "%{count} %{errors} ont empêché l'enregistrement de ce/cette %{model} :"
     error_count:
       one: erreur
       other: erreurs
@@ -183,13 +179,10 @@ fr:
       search_placeholder: Rechercher par nom de tâche ou type de filament...
       empty_state:
         title: Aucun calcul pour le moment
-        description: Commencez par créer votre premier calcul de coût d'impression
-          pour suivre les dépenses et la tarification de vos projets d'impression
-          3D.
+        description: Commencez par créer votre premier calcul de coût d'impression pour suivre les dépenses et la tarification de vos projets d'impression 3D.
       no_results:
         title: Aucun résultat trouvé
-        description: Aucun calcul d'impression ne correspond à '%{query}'. Essayez
-          un terme de recherche différent.
+        description: Aucun calcul d'impression ne correspond à '%{query}'. Essayez un terme de recherche différent.
       total_filament_used: Filament Total Utilisé
       total_estimated_sales: Ventes Totales Estimées
       total_estimated_profit: Bénéfice Total Estimé
@@ -244,8 +237,7 @@ fr:
     vat: TVA
     total: Total
     notes: Notes
-    invoice_notes_text: Merci pour votre confiance. Veuillez conserver cette facture
-      pour vos dossiers.
+    invoice_notes_text: Merci pour votre confiance. Veuillez conserver cette facture pour vos dossiers.
     payment_info: Informations de Paiement
     payment_info_text: Les conditions et détails de paiement seront communiqués séparément.
     download_pdf: Télécharger le PDF
@@ -266,8 +258,7 @@ fr:
       electricity_power_consumption: Électricité et consommation d'énergie
       electricity_print_time: Électricité et temps d'impression
       electricity_energy_cost: Électricité et coût énergétique
-      electricity_settings_link_html: Configurez les paramètres d'électricité dans
-        votre %{link}
+      electricity_settings_link_html: Configurez les paramètres d'électricité dans votre %{link}
       profile_settings: Paramètres de profil
       labor: Main d'œuvre
       machine_upkeep: Machine et entretien
@@ -276,8 +267,7 @@ fr:
       machine_return_period: Période de retour sur investissement de la machine
       machine_repair_factor: Facteur de réparation de la machine
       add_edit_printer: ajouter ou modifier une imprimante
-      machine_printer_config_html: Configurez les spécifications de l'imprimante lorsque
-        vous %{link}
+      machine_printer_config_html: Configurez les spécifications de l'imprimante lorsque vous %{link}
       unsaved_progress_warning: Avertissement de progression non enregistrée
       other_costs_tax: Autres coûts et taxes
       final_price: Prix final
@@ -339,8 +329,7 @@ fr:
       currency: Devise
       currency_prompt: Sélectionner la devise
       start_with_one_print: Commencer avec 1 impression
-      start_with_one_print_help: Activer pour définir automatiquement ce prix comme
-        ayant été imprimé une fois
+      start_with_one_print_help: Activer pour définir automatiquement ce prix comme ayant été imprimé une fois
     filament_types:
       pla: PLA
       abs: ABS
@@ -355,16 +344,13 @@ fr:
       machine_cost: Coût de la machine
       estimated_price: Prix estimé
     info:
-      electricity_auto: 'Le coût de l''électricité sera calculé automatiquement en
-        fonction de:'
+      electricity_auto: 'Le coût de l''électricité sera calculé automatiquement en fonction de:'
       printer_power: La consommation électrique de l'imprimante sélectionnée
       print_duration: La durée d'impression
       energy_cost_setting: 'Votre coût d''énergie par défaut: %{cost}/kWh'
-      update_energy_cost: Vous pouvez mettre à jour votre coût d'énergie par défaut
-        dans vos
+      update_energy_cost: Vous pouvez mettre à jour votre coût d'énergie par défaut dans vos
       profile_settings: paramètres de profil
-      machine_auto: 'L''amortissement de la machine et les coûts d''entretien seront
-        calculés à partir des spécifications de votre imprimante sélectionnée:'
+      machine_auto: 'L''amortissement de la machine et les coûts d''entretien seront calculés à partir des spécifications de votre imprimante sélectionnée:'
       printer_cost_usage: Coût de l'imprimante et heures d'utilisation
       investment_return: Période de retour sur investissement
       repair_factor: Facteur de coût de réparation
@@ -428,8 +414,7 @@ fr:
       add_new: Ajouter une nouvelle imprimante
       empty_state:
         title: Aucune imprimante enregistrée pour le moment
-        description: Ajoutez votre première imprimante 3D pour commencer à calculer
-          les coûts d'impression avec précision.
+        description: Ajoutez votre première imprimante 3D pour commencer à calculer les coûts d'impression avec précision.
         add_first: Ajouter votre première imprimante
     card:
       power_consumption: Consommation électrique
@@ -443,8 +428,7 @@ fr:
       years: années
     new:
       title: Ajouter une nouvelle imprimante
-      subtitle: Enregistrez les spécifications de votre imprimante 3D pour des calculs
-        de coûts précis
+      subtitle: Enregistrez les spécifications de votre imprimante 3D pour des calculs de coûts précis
     edit:
       title: Modifier l'imprimante
       subtitle: Mettez à jour les spécifications de votre imprimante 3D
@@ -456,12 +440,10 @@ fr:
       repair_cost: Coût de réparation
       date_added: Date d'ajout
       not_set: Non défini
-      fully_paid_off: Cette imprimante a été entièrement remboursée selon vos objectifs
-        de rentabilisation.
+      fully_paid_off: Cette imprimante a été entièrement remboursée selon vos objectifs de rentabilisation.
       payoff_progress: Progression de la rentabilisation
       no_print_jobs: Aucun travail d'impression pour le moment
-      no_print_jobs_description: Créez votre premier calcul de prix d'impression pour
-        cette imprimante.
+      no_print_jobs_description: Créez votre premier calcul de prix d'impression pour cette imprimante.
       create_first_job: Créer le premier travail d'impression
       view_all_jobs: Voir les %{count} travaux
     sections:
@@ -476,22 +458,18 @@ fr:
       manufacturer_prompt: Sélectionner un fabricant
       power_consumption: Consommation électrique (Watts)
       power_consumption_placeholder: '200'
-      power_consumption_help: 'Plage typique : 50W (petites imprimantes) à 500W (grandes
-        imprimantes)'
+      power_consumption_help: 'Plage typique : 50W (petites imprimantes) à 500W (grandes imprimantes)'
       cost: Coût de l'imprimante
       cost_placeholder: '500.00'
       payoff_goal: Objectif de rentabilisation (années)
       payoff_goal_placeholder: '3'
-      payoff_goal_help: Dans combien d'années souhaitez-vous récupérer le coût de
-        l'imprimante ?
+      payoff_goal_help: Dans combien d'années souhaitez-vous récupérer le coût de l'imprimante ?
       daily_usage: Utilisation quotidienne (heures)
       daily_usage_placeholder: '8'
-      daily_usage_help: Nombre d'heures moyen par jour que vous prévoyez d'utiliser
-        cette imprimante
+      daily_usage_help: Nombre d'heures moyen par jour que vous prévoyez d'utiliser cette imprimante
       repair_factor: Facteur de coût de réparation (%)
       repair_factor_placeholder: '5.0'
-      repair_factor_help: Facteur de coût supplémentaire pour la maintenance et les
-        réparations
+      repair_factor_help: Facteur de coût supplémentaire pour la maintenance et les réparations
     buttons:
       add_printer: Ajouter une imprimante
       update_printer: Mettre à jour l'imprimante
@@ -505,13 +483,10 @@ fr:
       member_since: Membre depuis
       default_preferences: Préférences par défaut
       labor_defaults: Valeurs par défaut de main-d'œuvre et de coûts
-      labor_defaults_description: Ces valeurs seront pré-remplies lors de la création
-        de nouveaux calculs de prix d'impression
+      labor_defaults_description: Ces valeurs seront pré-remplies lors de la création de nouveaux calculs de prix d'impression
       company_info: Informations de l'entreprise pour les factures
-      company_info_description: Ces informations seront utilisées par défaut pour
-        toutes les factures que vous créez
-      company_info_help: Ces informations seront utilisées sur toutes les factures
-        que vous créez
+      company_info_description: Ces informations seront utilisées par défaut pour toutes les factures que vous créez
+      company_info_help: Ces informations seront utilisées sur toutes les factures que vous créez
       back_to_calculations: Retour aux calculs
     edit:
       title: Paramètres du profil utilisateur
@@ -523,25 +498,21 @@ fr:
       energy_cost: Coût de l'énergie par kWh
       energy_cost_placeholder: '0.120'
       energy_cost_help: Votre coût local d'électricité par kilowatt-heure
-      energy_cost_help_extended: Votre coût local d'électricité par kilowatt-heure.
-        Ceci sera utilisé par défaut pour les nouveaux calculs.
+      energy_cost_help_extended: Votre coût local d'électricité par kilowatt-heure. Ceci sera utilisé par défaut pour les nouveaux calculs.
       prep_time: Temps de préparation (minutes)
       prep_time_help: Temps passé à préparer les impressions avant de commencer
       prep_cost: Coût de préparation par heure
       prep_cost_help: Tarif horaire pour le travail de préparation
       postprocessing_time: Temps de post-traitement (minutes)
-      postprocessing_time_help: Temps passé au post-traitement (nettoyage, retrait
-        des supports, etc.)
+      postprocessing_time_help: Temps passé au post-traitement (nettoyage, retrait des supports, etc.)
       postprocessing_cost: Coût de post-traitement par heure
       postprocessing_cost_help: Tarif horaire pour le travail de post-traitement
       other_costs: Autres coûts
-      other_costs_help: Coûts supplémentaires comme l'emballage, la préparation de
-        l'expédition, etc.
+      other_costs_help: Coûts supplémentaires comme l'emballage, la préparation de l'expédition, etc.
       vat_percentage: Pourcentage de TVA
       vat_percentage_help: Pourcentage de TVA/taxe par défaut pour votre région
       default_filament_markup: Marge par défaut sur le filament
-      default_filament_markup_help: Pourcentage de majoration par défaut ajouté aux
-        coûts du filament (par exemple, une majoration de 20 % pour la marge bénéficiaire)
+      default_filament_markup_help: Pourcentage de majoration par défaut ajouté aux coûts du filament (par exemple, une majoration de 20 % pour la marge bénéficiaire)
       company_name: Nom de l'entreprise
       company_name_placeholder: Acme Corporation
       company_email: Email de l'entreprise
@@ -562,31 +533,23 @@ fr:
         SWIFT/BIC : EXAMPUS33
       payment_details_help: Compte bancaire ou informations de paiement pour les factures
       invoice_notes: Notes de facture par défaut
-      invoice_notes_placeholder: Paiement dû dans les 30 jours. Merci de votre confiance
-        !
+      invoice_notes_placeholder: Paiement dû dans les 30 jours. Merci de votre confiance !
       invoice_notes_help: Notes par défaut qui apparaîtront sur toutes vos factures
     buttons:
       update_settings: Mettre à jour les paramètres
       update_profile: Mettre à jour le profil
       cancel: Annuler
     image_upload:
-      help_text: 'Taille maximale du fichier : 5 Mo. Formats pris en charge : PNG,
-        JPG, GIF, WebP'
+      help_text: 'Taille maximale du fichier : 5 Mo. Formats pris en charge : PNG, JPG, GIF, WebP'
     delete_account:
       title: Supprimer le compte
       warning_title: Attention
-      warning_message: La suppression de votre compte est permanente et irréversible.
-        Toutes vos données seront définitivement supprimées.
-      description: Si vous ne souhaitez plus utiliser CalcuMake, vous pouvez supprimer
-        votre compte. Veuillez consulter la section FAQ sur la page d'assistance pour
-        plus d'informations.
+      warning_message: La suppression de votre compte est permanente et irréversible. Toutes vos données seront définitivement supprimées.
+      description: Si vous ne souhaitez plus utiliser CalcuMake, vous pouvez supprimer votre compte. Veuillez consulter la section FAQ sur la page d'assistance pour plus d'informations.
       unlock_checkbox: Je comprends que la suppression de mon compte est permanente
-      confirm_checkbox: Je confirme que je souhaite supprimer mon compte et toutes
-        les données associées
+      confirm_checkbox: Je confirme que je souhaite supprimer mon compte et toutes les données associées
       button: Supprimer mon compte
-      final_confirmation: Êtes-vous absolument sûr de vouloir supprimer votre compte
-        ? Cette action est irréversible et toutes vos données seront définitivement
-        supprimées.
+      final_confirmation: Êtes-vous absolument sûr de vouloir supprimer votre compte ? Cette action est irréversible et toutes vos données seront définitivement supprimées.
       success: Votre compte a été supprimé avec succès. Merci d'avoir utilisé CalcuMake.
   clients:
     index:
@@ -597,13 +560,11 @@ fr:
       clear_search: Effacer la recherche
       empty_state:
         title: Pas encore de clients
-        description: Ajoutez votre premier client pour commencer à gérer les informations
-          client.
+        description: Ajoutez votre premier client pour commencer à gérer les informations client.
         add_first: Ajouter votre premier client
       no_results:
         title: Aucun résultat trouvé
-        description: Aucun client ne correspond à votre recherche. Essayez un terme
-          de recherche différent.
+        description: Aucun client ne correspond à votre recherche. Essayez un terme de recherche différent.
     new:
       title: Ajouter un nouveau client
       subtitle: Créer un nouveau profil client
@@ -674,8 +635,7 @@ fr:
     title: Support
     nav_title: Support
     contact_us: Nous contacter
-    description: Besoin d'aide avec CalcuMake ? Vous avez une question ou une suggestion
-      ? Nous sommes là pour vous aider !
+    description: Besoin d'aide avec CalcuMake ? Vous avez une question ou une suggestion ? Nous sommes là pour vous aider !
     email_label: Support par e-mail
     response_time: Nous répondons généralement dans les 24 à 48 heures
     faq:
@@ -684,27 +644,18 @@ fr:
         question: Comment supprimer mon compte ?
         answer: 'Pour supprimer votre compte, suivez ces étapes :'
         step1: Accédez à votre page de profil depuis le menu de navigation
-        step2: Faites défiler jusqu'à la section "Supprimer le compte" en bas de la
-          page
+        step2: Faites défiler jusqu'à la section "Supprimer le compte" en bas de la page
         step3: Cochez la case "Je comprends que la suppression de mon compte est permanente"
-        step4: Cochez la case "Je confirme que je souhaite supprimer mon compte et
-          toutes les données associées"
-        step5: Cliquez sur le bouton "Supprimer mon compte" et confirmez l'avertissement
-          final
+        step4: Cochez la case "Je confirme que je souhaite supprimer mon compte et toutes les données associées"
+        step5: Cliquez sur le bouton "Supprimer mon compte" et confirmez l'avertissement final
         warning_title: Important
-        warning_message: La suppression du compte est permanente et ne peut être annulée.
-          Toutes vos données seront définitivement supprimées.
+        warning_message: La suppression du compte est permanente et ne peut être annulée. Toutes vos données seront définitivement supprimées.
       data_recovery:
         question: Puis-je récupérer mon compte après sa suppression ?
-        answer: Non, la suppression du compte est permanente et irréversible. Une
-          fois supprimé, votre compte et toutes les données associées ne peuvent pas
-          être récupérés. Si vous pensez que vous pourriez vouloir utiliser CalcuMake
-          à nouveau à l'avenir, envisagez simplement de ne pas utiliser votre compte
-          au lieu de le supprimer.
+        answer: Non, la suppression du compte est permanente et irréversible. Une fois supprimé, votre compte et toutes les données associées ne peuvent pas être récupérés. Si vous pensez que vous pourriez vouloir utiliser CalcuMake à nouveau à l'avenir, envisagez simplement de ne pas utiliser votre compte au lieu de le supprimer.
       what_deleted:
         question: Quelles données sont supprimées lorsque je supprime mon compte ?
-        intro: 'Lorsque vous supprimez votre compte, toutes les données suivantes
-          sont définitivement supprimées :'
+        intro: 'Lorsque vous supprimez votre compte, toutes les données suivantes sont définitivement supprimées :'
         item1: Votre compte d'utilisateur et vos informations d'identification
         item2: Tous vos calculs de prix d'impression
         item3: Tous vos imprimantes et leurs configurations
@@ -713,11 +664,8 @@ fr:
         item6: Toutes les informations et préférences de votre entreprise
     billing_support:
       title: Assistance pour la facturation et l'abonnement
-      description: Pour toute question concernant la facturation, les modifications
-        d'abonnement, les demandes de remboursement ou les problèmes de paiement,
-        veuillez nous contacter en utilisant l'adresse e-mail de votre compte.
-      priority_note: Les abonnés aux niveaux Pro et Entreprise bénéficient de temps
-        de réponse prioritaires pour l'assistance.
+      description: Pour toute question concernant la facturation, les modifications d'abonnement, les demandes de remboursement ou les problèmes de paiement, veuillez nous contacter en utilisant l'adresse e-mail de votre compte.
+      priority_note: Les abonnés aux niveaux Pro et Entreprise bénéficient de temps de réponse prioritaires pour l'assistance.
   legal:
     last_updated: Dernière mise à jour
     privacy_policy:
@@ -725,14 +673,11 @@ fr:
       nav_title: Politique de confidentialité
       information_we_collect:
         title: Informations que nous collectons
-        content: Nous collectons les informations que vous nous fournissez directement
-          et les informations que nous pouvons collecter automatiquement lorsque vous
-          utilisez notre service.
+        content: Nous collectons les informations que vous nous fournissez directement et les informations que nous pouvons collecter automatiquement lorsque vous utilisez notre service.
         account_info:
           title: Informations de compte
           email: Adresse e-mail pour l'authentification du compte
-          preferences: Préférences de l'utilisateur telles que la devise et la langue
-            par défaut
+          preferences: Préférences de l'utilisateur telles que la devise et la langue par défaut
           usage_data: Modèles d'utilisation et préférences de fonctionnalités
         project_data:
           title: Données de projet
@@ -741,52 +686,34 @@ fr:
           project_metadata: Noms de projet, dates et métadonnées
         payment_info:
           title: Informations de paiement et de facturation
-          payment_details: Détails du mode de paiement (traités en toute sécurité
-            par notre processeur de paiement)
+          payment_details: Détails du mode de paiement (traités en toute sécurité par notre processeur de paiement)
           billing_address: Adresse de facturation et coordonnées
           transaction_history: Historique des transactions et des abonnements
           subscription_tier: Votre niveau d'abonnement sélectionné et ses fonctionnalités
       how_we_use_info:
         title: Comment nous utilisons vos informations
-        provide_service: Fournir, maintenir et améliorer notre service de calcul d'impression
-          3D
-        improve_features: Développer de nouvelles fonctionnalités et améliorer les
-          fonctionnalités existantes
+        provide_service: Fournir, maintenir et améliorer notre service de calcul d'impression 3D
+        improve_features: Développer de nouvelles fonctionnalités et améliorer les fonctionnalités existantes
         customer_support: Fournir un support client et répondre à vos demandes
         security: Protéger contre la fraude, les abus et les menaces de sécurité
       data_sharing:
         title: Partage d'informations
-        content: 'Nous ne vendons, n''échangeons ni ne louons vos informations personnelles
-          à des tiers. Nous pouvons partager vos informations uniquement dans les
-          circonstances suivantes :'
+        content: 'Nous ne vendons, n''échangeons ni ne louons vos informations personnelles à des tiers. Nous pouvons partager vos informations uniquement dans les circonstances suivantes :'
         legal_requirements: Lorsque la loi l'exige ou pour protéger nos droits légaux
-        service_providers: Avec des fournisseurs de services de confiance qui nous
-          aident à exploiter notre service (y compris les fournisseurs d'hébergement
-          cloud et d'infrastructure)
-        payment_processors: Avec des processeurs de paiement (tels que Stripe) pour
-          traiter les paiements d'abonnement et gérer la facturation
-        advertising_partners: Avec des partenaires publicitaires (tels que Google
-          AdSense) pour afficher des publicités pertinentes aux utilisateurs du niveau
-          Gratuit
+        service_providers: Avec des fournisseurs de services de confiance qui nous aident à exploiter notre service (y compris les fournisseurs d'hébergement cloud et d'infrastructure)
+        payment_processors: Avec des processeurs de paiement (tels que Stripe) pour traiter les paiements d'abonnement et gérer la facturation
+        advertising_partners: Avec des partenaires publicitaires (tels que Google AdSense) pour afficher des publicités pertinentes aux utilisateurs du niveau Gratuit
         business_transfer: Dans le cadre d'un transfert ou d'une acquisition d'entreprise
       advertising:
         title: Publicité
-        content: Notre niveau Gratuit affiche des publicités via Google AdSense. Ces
-          publicités sont basées sur vos intérêts et votre comportement de navigation.
-          Les niveaux d'abonnement payants n'affichent pas de publicités.
-        google_adsense: Google AdSense utilise des cookies et d'autres technologies
-          de suivi pour diffuser des publicités pertinentes. Ceci s'applique uniquement
-          aux utilisateurs du niveau Gratuit.
-        opt_out: Vous pouvez contrôler la personnalisation des annonces et désactiver
-          la publicité personnalisée en visitant
+        content: Notre niveau Gratuit affiche des publicités via Google AdSense. Ces publicités sont basées sur vos intérêts et votre comportement de navigation. Les niveaux d'abonnement payants n'affichent pas de publicités.
+        google_adsense: Google AdSense utilise des cookies et d'autres technologies de suivi pour diffuser des publicités pertinentes. Ceci s'applique uniquement aux utilisateurs du niveau Gratuit.
+        opt_out: Vous pouvez contrôler la personnalisation des annonces et désactiver la publicité personnalisée en visitant
         google_ad_settings: Paramètres des annonces Google
-        upgrade_note: Pour supprimer toutes les publicités, passez à un niveau d'abonnement
-          payant.
+        upgrade_note: Pour supprimer toutes les publicités, passez à un niveau d'abonnement payant.
       data_security:
         title: Sécurité des données
-        content: Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles
-          appropriées pour protéger vos informations personnelles contre tout accès,
-          altération, divulgation ou destruction non autorisés.
+        content: Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles appropriées pour protéger vos informations personnelles contre tout accès, altération, divulgation ou destruction non autorisés.
       your_rights:
         title: Vos droits
         access: Accéder à vos informations personnelles et les consulter
@@ -795,32 +722,23 @@ fr:
         portability: Exporter vos données dans un format portable
       cookies:
         title: Cookies et suivi
-        content: Nous utilisons des cookies et des technologies similaires pour améliorer
-          votre expérience, mémoriser vos préférences et fournir du contenu et des
-          publicités personnalisés.
+        content: Nous utilisons des cookies et des technologies similaires pour améliorer votre expérience, mémoriser vos préférences et fournir du contenu et des publicités personnalisés.
       changes:
         title: Modifications de cette politique
-        content: Nous pouvons mettre à jour cette politique de confidentialité de
-          temps à autre. Nous vous informerons de toute modification importante en
-          publiant la nouvelle politique sur cette page avec une date d'entrée en
-          vigueur mise à jour.
+        content: Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Nous vous informerons de toute modification importante en publiant la nouvelle politique sur cette page avec une date d'entrée en vigueur mise à jour.
       contact:
         title: Contactez-nous
-        content: Si vous avez des questions concernant cette politique de confidentialité,
-          veuillez nous contacter via les canaux d'assistance disponibles dans l'application.
+        content: Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter via les canaux d'assistance disponibles dans l'application.
     user_agreement:
       title: Accord d'utilisation
       nav_title: Conditions d'utilisation
       acceptance:
         title: Acceptation des conditions
-        content: En accédant à CalcuMake et en l'utilisant, vous acceptez d'être lié
-          par les termes et dispositions du présent accord.
+        content: En accédant à CalcuMake et en l'utilisant, vous acceptez d'être lié par les termes et dispositions du présent accord.
       description:
         title: Description du service
-        content: 'CalcuMake est une application Web qui fournit des outils de calcul
-          des coûts d''impression 3D et de gestion de projet. Notre service comprend :'
-        cost_calculations: Calculs de coûts complets pour les projets d'impression
-          3D
+        content: 'CalcuMake est une application Web qui fournit des outils de calcul des coûts d''impression 3D et de gestion de projet. Notre service comprend :'
+        cost_calculations: Calculs de coûts complets pour les projets d'impression 3D
         project_management: Fonctionnalités de suivi et de gestion de projet
         invoice_generation: Génération de factures et capacités d'exportation PDF
         printer_tracking: Spécifications de l'imprimante et suivi de l'utilisation
@@ -828,129 +746,80 @@ fr:
         title: Niveaux d'abonnement et tarification
         content: 'CalcuMake propose trois niveaux d''abonnement :'
         free_tier: 'Niveau gratuit : fonctionnalités de base avec affichage de publicités'
-        pro_tier: 'Niveau Pro : fonctionnalités avancées, pas de publicité, support
-          prioritaire (abonnement payant)'
-        enterprise_tier: 'Niveau Entreprise : toutes les fonctionnalités, support
-          premium, intégrations personnalisées (abonnement payant)'
-        pricing_note: Les prix actuels sont disponibles sur notre site Web et peuvent
-          être mis à jour avec un préavis aux abonnés existants.
+        pro_tier: 'Niveau Pro : fonctionnalités avancées, pas de publicité, support prioritaire (abonnement payant)'
+        enterprise_tier: 'Niveau Entreprise : toutes les fonctionnalités, support premium, intégrations personnalisées (abonnement payant)'
+        pricing_note: Les prix actuels sont disponibles sur notre site Web et peuvent être mis à jour avec un préavis aux abonnés existants.
       payment_terms:
         title: Paiement et facturation
-        content: 'Si vous vous abonnez à un niveau payant, vous acceptez les conditions
-          de paiement suivantes :'
-        subscription_fee: Les frais d'abonnement vous seront facturés au début de
-          chaque cycle de facturation
-        billing_cycles: Les cycles de facturation sont mensuels ou annuels, selon
-          votre sélection
-        payment_method: Vous devez fournir un mode de paiement valide pour vous abonner
-          aux niveaux payants
-        automatic_renewal: Les abonnements sont automatiquement renouvelés sauf s'ils
-          sont annulés avant la date de renouvellement
-        price_changes: Nous pouvons modifier les prix avec un préavis de 30 jours
-          aux abonnés existants
-        payment_processor: Les paiements sont traités en toute sécurité via notre
-          processeur de paiement tiers (Stripe)
-        failed_payments: Les paiements échoués peuvent entraîner une dégradation ou
-          une suspension du service
+        content: 'Si vous vous abonnez à un niveau payant, vous acceptez les conditions de paiement suivantes :'
+        subscription_fee: Les frais d'abonnement vous seront facturés au début de chaque cycle de facturation
+        billing_cycles: Les cycles de facturation sont mensuels ou annuels, selon votre sélection
+        payment_method: Vous devez fournir un mode de paiement valide pour vous abonner aux niveaux payants
+        automatic_renewal: Les abonnements sont automatiquement renouvelés sauf s'ils sont annulés avant la date de renouvellement
+        price_changes: Nous pouvons modifier les prix avec un préavis de 30 jours aux abonnés existants
+        payment_processor: Les paiements sont traités en toute sécurité via notre processeur de paiement tiers (Stripe)
+        failed_payments: Les paiements échoués peuvent entraîner une dégradation ou une suspension du service
         currency: Les prix sont affichés dans la devise que vous avez sélectionnée
       cancellation_refunds:
         title: Annulation et remboursements
         content: 'Vous pouvez annuler votre abonnement à tout moment :'
-        cancellation_process: Annulez via les paramètres de votre compte ou en contactant
-          le support
-        cancellation_effect: L'annulation prend effet à la fin de votre période de
-          facturation en cours
-        access_until_end: Vous conservez l'accès aux fonctionnalités payantes jusqu'à
-          la fin de la période payée
-        refund_policy: Nous offrons une garantie de remboursement de 14 jours pour
-          les nouveaux abonnés
-        no_partial_refunds: Les remboursements partiels pour le temps d'abonnement
-          restant ne sont pas fournis, sauf si la loi l'exige
-        downgrade_option: Vous pouvez passer à un niveau inférieur à la fin de votre
-          cycle de facturation
+        cancellation_process: Annulez via les paramètres de votre compte ou en contactant le support
+        cancellation_effect: L'annulation prend effet à la fin de votre période de facturation en cours
+        access_until_end: Vous conservez l'accès aux fonctionnalités payantes jusqu'à la fin de la période payée
+        refund_policy: Nous offrons une garantie de remboursement de 14 jours pour les nouveaux abonnés
+        no_partial_refunds: Les remboursements partiels pour le temps d'abonnement restant ne sont pas fournis, sauf si la loi l'exige
+        downgrade_option: Vous pouvez passer à un niveau inférieur à la fin de votre cycle de facturation
       free_tier_limitations:
         title: Limitations du niveau gratuit
-        content: 'Le niveau gratuit comprend l''affichage de publicités et peut avoir
-          des limitations d''utilisation :'
-        advertisements: Les utilisateurs du niveau gratuit verront des publicités
-          dans toute l'application
-        feature_limits: Certaines fonctionnalités avancées sont réservées aux niveaux
-          payants
+        content: 'Le niveau gratuit comprend l''affichage de publicités et peut avoir des limitations d''utilisation :'
+        advertisements: Les utilisateurs du niveau gratuit verront des publicités dans toute l'application
+        feature_limits: Certaines fonctionnalités avancées sont réservées aux niveaux payants
         support_priority: Le support du niveau gratuit est fourni au mieux
         upgrade_anytime: Vous pouvez passer à un niveau payant à tout moment
       user_accounts:
         title: Comptes d'utilisateur
-        content: 'Pour utiliser notre service, vous devez créer un compte. Vous êtes
-          responsable de :'
+        content: 'Pour utiliser notre service, vous devez créer un compte. Vous êtes responsable de :'
         accurate_info: Fournir des informations de compte exactes et complètes
-        secure_credentials: Maintenir la sécurité de vos informations d'identification
-          de compte
+        secure_credentials: Maintenir la sécurité de vos informations d'identification de compte
         responsible_use: Toutes les activités qui se déroulent sous votre compte
-        notify_breaches: Nous informer immédiatement de toute violation de sécurité
-          suspectée
+        notify_breaches: Nous informer immédiatement de toute violation de sécurité suspectée
       acceptable_use:
         title: Utilisation Acceptable
-        content: 'Vous acceptez d''utiliser notre service uniquement à des fins légales
-          et conformément à cet accord. Vous acceptez de ne pas :'
+        content: 'Vous acceptez d''utiliser notre service uniquement à des fins légales et conformément à cet accord. Vous acceptez de ne pas :'
         lawful_purposes: Utiliser le service à des fins illégales ou interdites
         respect_rights: Enfreindre les lois ou réglementations applicables
-        no_harmful_content: Télécharger ou transmettre du contenu nuisible, offensant
-          ou inapproprié
+        no_harmful_content: Télécharger ou transmettre du contenu nuisible, offensant ou inapproprié
         no_interference: Interférer avec ou perturber le service ou les serveurs
-        no_unauthorized_access: Tenter d'obtenir un accès non autorisé à une partie
-          quelconque du service
+        no_unauthorized_access: Tenter d'obtenir un accès non autorisé à une partie quelconque du service
       data_accuracy:
         title: Exactitude des Données et Calculs
-        content: Bien que nous nous efforcions de fournir des outils de calcul précis,
-          vous êtes responsable de la vérification de l'exactitude de tous les calculs
-          et données. Nos calculs sont des estimations et doivent être validés par
-          rapport à vos exigences spécifiques et aux conditions locales.
+        content: Bien que nous nous efforcions de fournir des outils de calcul précis, vous êtes responsable de la vérification de l'exactitude de tous les calculs et données. Nos calculs sont des estimations et doivent être validés par rapport à vos exigences spécifiques et aux conditions locales.
       intellectual_property:
         title: Propriété Intellectuelle
-        our_content: Le service et son contenu original, ses caractéristiques et ses
-          fonctionnalités sont notre propriété et sont protégés par les lois internationales
-          sur le droit d'auteur, les marques de commerce et autres lois sur la propriété
-          intellectuelle.
-        your_content: Vous conservez la propriété de toutes les données, calculs ou
-          contenus que vous créez en utilisant notre service. Vous nous accordez une
-          licence limitée pour utiliser ce contenu uniquement pour vous fournir le
-          service.
+        our_content: Le service et son contenu original, ses caractéristiques et ses fonctionnalités sont notre propriété et sont protégés par les lois internationales sur le droit d'auteur, les marques de commerce et autres lois sur la propriété intellectuelle.
+        your_content: Vous conservez la propriété de toutes les données, calculs ou contenus que vous créez en utilisant notre service. Vous nous accordez une licence limitée pour utiliser ce contenu uniquement pour vous fournir le service.
       disclaimers:
         title: Avis de Non-Responsabilité
         important: Avis Important
-        calculations_estimates: Tous les calculs de coûts et les estimations sont
-          fournis à titre informatif uniquement
+        calculations_estimates: Tous les calculs de coûts et les estimations sont fournis à titre informatif uniquement
         verify_accuracy: Vous devez vérifier l'exactitude de tous les calculs et données
-        no_guarantee: Nous ne garantissons pas l'exactitude, l'exhaustivité ou la
-          fiabilité des calculs
+        no_guarantee: Nous ne garantissons pas l'exactitude, l'exhaustivité ou la fiabilité des calculs
         as_is_basis: Le service est fourni « tel quel » et « tel que disponible »
       limitation_liability:
         title: Limitation de Responsabilité
-        content: Dans la mesure maximale permise par la loi, nous ne serons pas responsables
-          des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs,
-          y compris, sans limitation, la perte de profits, de données, d'utilisation,
-          de clientèle ou d'autres pertes incorporelles.
+        content: Dans la mesure maximale permise par la loi, nous ne serons pas responsables des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs, y compris, sans limitation, la perte de profits, de données, d'utilisation, de clientèle ou d'autres pertes incorporelles.
       termination:
         title: Résiliation
-        content: Nous pouvons résilier ou suspendre votre compte et votre accès au
-          service immédiatement, sans préavis, en cas de conduite que nous jugeons
-          contraire à cet accord ou préjudiciable à d'autres utilisateurs, à nous-mêmes
-          ou à des tiers.
+        content: Nous pouvons résilier ou suspendre votre compte et votre accès au service immédiatement, sans préavis, en cas de conduite que nous jugeons contraire à cet accord ou préjudiciable à d'autres utilisateurs, à nous-mêmes ou à des tiers.
       governing_law:
         title: Droit Applicable
-        content: Cet accord sera régi et interprété conformément aux lois de la juridiction
-          dans laquelle notre service opère, sans égard à ses dispositions relatives
-          aux conflits de lois.
+        content: Cet accord sera régi et interprété conformément aux lois de la juridiction dans laquelle notre service opère, sans égard à ses dispositions relatives aux conflits de lois.
       changes:
         title: Modifications de l'Accord
-        content: Nous nous réservons le droit de modifier cet accord à tout moment.
-          Nous informerons les utilisateurs de toute modification importante en publiant
-          l'accord mis à jour sur notre site Web avec une nouvelle date d'entrée en
-          vigueur.
+        content: Nous nous réservons le droit de modifier cet accord à tout moment. Nous informerons les utilisateurs de toute modification importante en publiant l'accord mis à jour sur notre site Web avec une nouvelle date d'entrée en vigueur.
       contact:
         title: Coordonnées
-        content: Si vous avez des questions concernant cet accord, veuillez nous contacter
-          via les canaux d'assistance disponibles dans l'application.
+        content: Si vous avez des questions concernant cet accord, veuillez nous contacter via les canaux d'assistance disponibles dans l'application.
     commerce_disclosure:
       title: Divulgation Commerciale (特定商取引法に基づく表記)
       nav_title: Divulgation Commerciale
@@ -977,118 +846,72 @@ fr:
         hours: Du lundi au vendredi, de 9h00 à 18h00 JST (hors jours fériés japonais)
       service_description:
         title: Description du Service
-        intro: CalcuMake est une application web de type Software-as-a-Service (SaaS)
-          fournissant des outils de calcul des coûts d'impression 3D et de gestion
-          de projet. L'accès au service commence immédiatement après la création du
-          compte et l'activation de l'abonnement.
+        intro: CalcuMake est une application web de type Software-as-a-Service (SaaS) fournissant des outils de calcul des coûts d'impression 3D et de gestion de projet. L'accès au service commence immédiatement après la création du compte et l'activation de l'abonnement.
         features_title: Les fonctionnalités du service incluent
-        feature_1: Calculs de coûts complets pour les projets d'impression 3D, y compris
-          les coûts de matériaux, de temps et les frais généraux
+        feature_1: Calculs de coûts complets pour les projets d'impression 3D, y compris les coûts de matériaux, de temps et les frais généraux
         feature_2: Fonctionnalités de suivi et de gestion de projet
         feature_3: Génération de factures avec fonctionnalité d'exportation PDF
-        feature_4: Base de données des spécifications des imprimantes et suivi de
-          l'utilisation
+        feature_4: Base de données des spécifications des imprimantes et suivi de l'utilisation
         feature_5: Stockage basé sur le cloud pour les données de projet
       pricing:
         title: Tarification
         intro: CalcuMake propose les plans d'abonnement suivants
         free_tier_title: Niveau Gratuit
         free_tier_price: "¥0 par mois"
-        free_tier_features: Fonctionnalités de base de calcul des coûts avec support
-          publicitaire
+        free_tier_features: Fonctionnalités de base de calcul des coûts avec support publicitaire
         free_tier_payment: Aucun paiement requis
         startup_tier_title: Niveau Startup
         startup_tier_price: "¥150 par mois (taxes incluses)"
-        startup_tier_features: Fonctionnalités avancées, expérience sans publicité,
-          support prioritaire par e-mail
+        startup_tier_features: Fonctionnalités avancées, expérience sans publicité, support prioritaire par e-mail
         startup_tier_billing: Facturé mensuellement à la date d'abonnement
         pro_tier_title: Niveau Pro
         pro_tier_price: "¥1,500 par mois (taxes incluses)"
-        pro_tier_features: Toutes les fonctionnalités avancées, expérience sans publicité,
-          support prioritaire par e-mail, capacités de calcul améliorées, projets
-          illimités
+        pro_tier_features: Toutes les fonctionnalités avancées, expérience sans publicité, support prioritaire par e-mail, capacités de calcul améliorées, projets illimités
         pro_tier_billing: Facturé mensuellement à la date d'abonnement
-        annual_options: Des plans annuels peuvent être disponibles à des tarifs réduits.
-          Les abonnements annuels sont facturés une fois par an à la date anniversaire
-          de l'abonnement.
-        price_changes: Les prix sont sujets à changement. Les abonnés existants recevront
-          un préavis de 30 jours avant toute augmentation de prix. Les nouveaux prix
-          s'appliquent aux renouvellements après la période de préavis.
+        annual_options: Des plans annuels peuvent être disponibles à des tarifs réduits. Les abonnements annuels sont facturés une fois par an à la date anniversaire de l'abonnement.
+        price_changes: Les prix sont sujets à changement. Les abonnés existants recevront un préavis de 30 jours avant toute augmentation de prix. Les nouveaux prix s'appliquent aux renouvellements après la période de préavis.
       payment_methods:
         title: Méthodes de paiement
         accepted_title: Méthodes de paiement acceptées
-        credit_cards: 'Cartes de crédit : Visa, Mastercard, American Express, JCB,
-          Diners Club, Discover'
+        credit_cards: 'Cartes de crédit : Visa, Mastercard, American Express, JCB, Diners Club, Discover'
         debit_cards: 'Cartes de débit : Visa Debit, Mastercard Debit'
         processing_title: Traitement des paiements
-        processing_details: Tous les paiements sont traités de manière sécurisée via
-          Stripe, Inc., notre processeur de paiement certifié PCI DSS niveau 1. Les
-          informations complètes de votre carte de paiement ne sont jamais stockées
-          sur les serveurs CalcuMake. Toutes les données de paiement sont cryptées
-          et traitées exclusivement par l'infrastructure sécurisée de Stripe.
+        processing_details: Tous les paiements sont traités de manière sécurisée via Stripe, Inc., notre processeur de paiement certifié PCI DSS niveau 1. Les informations complètes de votre carte de paiement ne sont jamais stockées sur les serveurs CalcuMake. Toutes les données de paiement sont cryptées et traitées exclusivement par l'infrastructure sécurisée de Stripe.
         security_title: Sécurité des paiements
-        security_details: Nous utilisons le cryptage SSL/TLS standard de l'industrie
-          pour toutes les transmissions de données. Les informations de paiement sont
-          tokenisées et traitées conformément aux normes internationales de l'industrie
-          des cartes de paiement.
+        security_details: Nous utilisons le cryptage SSL/TLS standard de l'industrie pour toutes les transmissions de données. Les informations de paiement sont tokenisées et traitées conformément aux normes internationales de l'industrie des cartes de paiement.
       payment_timing:
         title: Calendrier des paiements
         monthly_title: Pour les abonnements mensuels
-        monthly_initial: Le paiement initial est débité immédiatement après l'achat
-          de l'abonnement
-        monthly_recurring: Les paiements récurrents sont automatiquement débités à
-          la même date calendaire chaque mois.
-        monthly_note: Si un mois a moins de jours que la date de votre abonnement,
-          le paiement a lieu le dernier jour de ce mois.
+        monthly_initial: Le paiement initial est débité immédiatement après l'achat de l'abonnement
+        monthly_recurring: Les paiements récurrents sont automatiquement débités à la même date calendaire chaque mois.
+        monthly_note: Si un mois a moins de jours que la date de votre abonnement, le paiement a lieu le dernier jour de ce mois.
         annual_title: Pour les abonnements annuels
-        annual_payment: Le paiement annuel complet est débité immédiatement après
-          l'achat de l'abonnement.
-        annual_renewal: Le renouvellement a lieu automatiquement à la même date un
-          an plus tard, sauf en cas d'annulation.
+        annual_payment: Le paiement annuel complet est débité immédiatement après l'achat de l'abonnement.
+        annual_renewal: Le renouvellement a lieu automatiquement à la même date un an plus tard, sauf en cas d'annulation.
         failed_payments_title: Paiements échoués
-        failed_payments_details: En cas d'échec d'un paiement, nous tenterons de traiter
-          le paiement jusqu'à 3 fois sur une période de 7 jours. Si toutes les tentatives
-          échouent, votre abonnement sera automatiquement rétrogradé au niveau gratuit
-          et vous perdrez l'accès aux fonctionnalités payantes.
+        failed_payments_details: En cas d'échec d'un paiement, nous tenterons de traiter le paiement jusqu'à 3 fois sur une période de 7 jours. Si toutes les tentatives échouent, votre abonnement sera automatiquement rétrogradé au niveau gratuit et vous perdrez l'accès aux fonctionnalités payantes.
       delivery:
         title: Délai de livraison du service
         intro: CalcuMake est un service numérique en ligne avec un accès immédiat.
-        free_tier: 'Niveau gratuit : l''accès commence immédiatement après la création
-          du compte.'
-        paid_tiers: 'Niveaux payants : l''accès aux fonctionnalités payantes commence
-          immédiatement après le traitement réussi du paiement (généralement en quelques
-          secondes).'
-        no_physical: Il n'y a pas de produits physiques, d'expédition ou de retards
-          de livraison. Le service est accessible 24h/24 et 7j/7 via une connexion
-          Internet à l'adresse https://calcumake.com
+        free_tier: 'Niveau gratuit : l''accès commence immédiatement après la création du compte.'
+        paid_tiers: 'Niveaux payants : l''accès aux fonctionnalités payantes commence immédiatement après le traitement réussi du paiement (généralement en quelques secondes).'
+        no_physical: Il n'y a pas de produits physiques, d'expédition ou de retards de livraison. Le service est accessible 24h/24 et 7j/7 via une connexion Internet à l'adresse https://calcumake.com
       returns:
         title: Retours et remboursements
-        intro: 'CalcuMake étant un service d''abonnement numérique fourni électroniquement,
-          la politique de remboursement suivante s''applique :'
+        intro: 'CalcuMake étant un service d''abonnement numérique fourni électroniquement, la politique de remboursement suivante s''applique :'
         eligibility_title: Admissibilité au remboursement
-        eligibility_initial: Des remboursements peuvent être émis dans les 7 jours
-          suivant l'achat initial de l'abonnement si vous n'avez pas utilisé le service
-          de manière intensive (défini comme la création de moins de 3 projets).
-        eligibility_renewals: Les remboursements ne sont pas disponibles pour les
-          renouvellements d'abonnement.
-        eligibility_partial: Les remboursements partiels pour la durée d'abonnement
-          inutilisée ne sont pas disponibles.
-        eligibility_discretion: Les remboursements sont traités à notre discrétion
-          au cas par cas.
+        eligibility_initial: Des remboursements peuvent être émis dans les 7 jours suivant l'achat initial de l'abonnement si vous n'avez pas utilisé le service de manière intensive (défini comme la création de moins de 3 projets).
+        eligibility_renewals: Les remboursements ne sont pas disponibles pour les renouvellements d'abonnement.
+        eligibility_partial: Les remboursements partiels pour la durée d'abonnement inutilisée ne sont pas disponibles.
+        eligibility_discretion: Les remboursements sont traités à notre discrétion au cas par cas.
         request_title: Comment demander un remboursement
         request_contact: Contactez-nous à cody@moab.jp dans les 7 jours suivant l'achat.
-        request_info: Indiquez l'adresse e-mail de votre compte et le motif de la
-          demande de remboursement.
+        request_info: Indiquez l'adresse e-mail de votre compte et le motif de la demande de remboursement.
         request_response: Nous examinerons et répondrons dans les 3 jours ouvrables.
         processing_title: Traitement du remboursement
-        processing_details: Les remboursements approuvés sont traités via Stripe et
-          apparaissent généralement sur votre mode de paiement dans les 5 à 10 jours
-          ouvrables, selon l'émetteur de votre carte.
+        processing_details: Les remboursements approuvés sont traités via Stripe et apparaissent généralement sur votre mode de paiement dans les 5 à 10 jours ouvrables, selon l'émetteur de votre carte.
         technical_title: Problèmes techniques
-        technical_details: Si vous rencontrez des problèmes techniques empêchant l'accès
-          au service, veuillez contacter immédiatement l'assistance. Nous nous efforcerons
-          de résoudre les problèmes ou de fournir une compensation appropriée, qui
-          peut inclure un crédit de service ou des remboursements.
+        technical_details: Si vous rencontrez des problèmes techniques empêchant l'accès au service, veuillez contacter immédiatement l'assistance. Nous nous efforcerons de résoudre les problèmes ou de fournir une compensation appropriée, qui peut inclure un crédit de service ou des remboursements.
       cancellation:
         title: Politique d'annulation
         how_to_title: Comment annuler
@@ -1098,57 +921,35 @@ fr:
         how_to_step4: Vous recevrez un e-mail de confirmation d'annulation.
         timing_title: Délai d'annulation
         timing_anytime: Vous pouvez annuler votre abonnement à tout moment.
-        timing_effect: L'annulation prend effet à la fin de votre période de facturation
-          en cours.
-        timing_access: Vous conserverez l'accès aux fonctionnalités payantes jusqu'à
-          la fin de la période payée.
-        timing_refunds: Aucun remboursement n'est fourni pour les jours restants de
-          la période de facturation en cours.
+        timing_effect: L'annulation prend effet à la fin de votre période de facturation en cours.
+        timing_access: Vous conserverez l'accès aux fonctionnalités payantes jusqu'à la fin de la période payée.
+        timing_refunds: Aucun remboursement n'est fourni pour les jours restants de la période de facturation en cours.
         after_title: Après l'annulation
-        after_conversion: Votre compte passe automatiquement au niveau gratuit à la
-          fin de la période de facturation.
-        after_data: Les données de votre projet sont conservées et accessibles au
-          niveau gratuit avec des limitations de fonctionnalités.
-        after_resubscribe: Vous pouvez vous réabonner à tout moment pour retrouver
-          les fonctionnalités payantes.
+        after_conversion: Votre compte passe automatiquement au niveau gratuit à la fin de la période de facturation.
+        after_data: Les données de votre projet sont conservées et accessibles au niveau gratuit avec des limitations de fonctionnalités.
+        after_resubscribe: Vous pouvez vous réabonner à tout moment pour retrouver les fonctionnalités payantes.
         deletion_title: Suppression de compte
-        deletion_details: Si vous souhaitez supprimer complètement votre compte et
-          toutes les données associées, veuillez contacter cody@moab.jp. La suppression
-          du compte est permanente et ne peut pas être annulée.
+        deletion_details: Si vous souhaitez supprimer complètement votre compte et toutes les données associées, veuillez contacter cody@moab.jp. La suppression du compte est permanente et ne peut pas être annulée.
       data_retention:
         title: Conservation des données
-        content: Les données du projet et les informations de compte sont conservées
-          pendant toute la durée de vie de votre compte. Si vous supprimez votre compte,
-          toutes les données sont définitivement supprimées dans les 30 jours conformément
-          à notre politique de confidentialité.
+        content: Les données du projet et les informations de compte sont conservées pendant toute la durée de vie de votre compte. Si vous supprimez votre compte, toutes les données sont définitivement supprimées dans les 30 jours conformément à notre politique de confidentialité.
       limitation_liability:
         title: Limitation de responsabilité
-        content: CalcuMake est fourni « en l'état » à des fins d'estimation des coûts.
-          Bien que nous nous efforcions d'être précis, tous les calculs doivent être
-          vérifiés avant d'être utilisés dans des applications commerciales ou critiques.
-          MOAB Co., Ltd. n'est pas responsable des décisions commerciales prises sur
-          la base de calculs effectués à l'aide de CalcuMake.
+        content: CalcuMake est fourni « en l'état » à des fins d'estimation des coûts. Bien que nous nous efforcions d'être précis, tous les calculs doivent être vérifiés avant d'être utilisés dans des applications commerciales ou critiques. MOAB Co., Ltd. n'est pas responsable des décisions commerciales prises sur la base de calculs effectués à l'aide de CalcuMake.
       dispute_resolution:
         title: Résolution des litiges
         contact: Contactez-nous d'abord à cody@moab.jp.
         response: Nous répondrons dans un délai de 3 jours ouvrables.
-        jurisdiction: Si aucune résolution ne peut être trouvée, les litiges seront
-          traités conformément au droit et à la juridiction japonais.
+        jurisdiction: Si aucune résolution ne peut être trouvée, les litiges seront traités conformément au droit et à la juridiction japonais.
       changes:
         title: Modifications de cette divulgation
-        content: Cette divulgation commerciale peut être mise à jour périodiquement.
-          Les modifications importantes seront annoncées par e-mail aux abonnés actifs
-          au moins 30 jours avant leur entrée en vigueur. L'utilisation continue du
-          service après les modifications constitue une acceptation des conditions
-          mises à jour.
+        content: Cette divulgation commerciale peut être mise à jour périodiquement. Les modifications importantes seront annoncées par e-mail aux abonnés actifs au moins 30 jours avant leur entrée en vigueur. L'utilisation continue du service après les modifications constitue une acceptation des conditions mises à jour.
       questions:
         title: Des questions ?
-        intro: Si vous avez des questions concernant cette divulgation commerciale,
-          les prix ou nos services, veuillez nous contacter.
+        intro: Si vous avez des questions concernant cette divulgation commerciale, les prix ou nos services, veuillez nous contacter.
         email: cody@moab.jp
         phone: '0791-25-4986 (du lundi au vendredi, de 9h00 à 18h00 JST)'
-      compliance_note: Cette divulgation est conforme à la loi japonaise sur les transactions
-        commerciales spécifiées (特定商取引法).
+      compliance_note: Cette divulgation est conforme à la loi japonaise sur les transactions commerciales spécifiées (特定商取引法).
       labels:
         representative: Représentant
         corporate_number: Numéro d'entreprise (法人番号)
@@ -1178,8 +979,7 @@ fr:
         description: Commencez par créer des factures pour vos calculs d'impression.
       no_results:
         title: Aucun résultat trouvé
-        description: Aucune facture ne correspond à '%{query}'. Essayez un autre terme
-          de recherche.
+        description: Aucune facture ne correspond à '%{query}'. Essayez un autre terme de recherche.
     download_pdf: Télécharger le PDF
     print: Imprimer
     bill_to: Facturer à
@@ -1196,11 +996,8 @@ fr:
     confirm_delete: Êtes-vous sûr de vouloir supprimer cette facture ?
     no_invoices: Aucune facture pour le moment
     create_first_invoice: Créez votre première facture pour ce calcul d'impression
-    company_info_card_text: Les informations de l'entreprise pour la facturation sont
-      gérées dans les paramètres de votre profil. Mettez à jour les informations de
-      votre entreprise à cet endroit pour les utiliser dans toutes vos factures.
-    no_company_info: Aucune information d'entreprise définie. Veuillez mettre à jour
-      votre profil pour ajouter les informations de l'entreprise.
+    company_info_card_text: Les informations de l'entreprise pour la facturation sont gérées dans les paramètres de votre profil. Mettez à jour les informations de votre entreprise à cet endroit pour les utiliser dans toutes vos factures.
+    no_company_info: Aucune information d'entreprise définie. Veuillez mettre à jour votre profil pour ajouter les informations de l'entreprise.
     edit_company_info: Modifier les informations de l'entreprise dans le profil
     status:
       draft: Brouillon
@@ -1218,14 +1015,12 @@ fr:
       notes: Remarques
       invoice_number: Numéro de facture
       job_name: Nom du travail
-      invoice_number_help: Généré automatiquement lors de la création des factures
-        (ne peut pas être modifié)
+      invoice_number_help: Généré automatiquement lors de la création des factures (ne peut pas être modifié)
       invoice_date: Date de la facture
       due_date: Date d'échéance
       status: Statut
       currency: Devise
-      currency_help: Détermine le nombre de décimales et le formatage de tous les
-        montants sur cette facture
+      currency_help: Détermine le nombre de décimales et le formatage de tous les montants sur cette facture
       company_logo: Logo de l'entreprise
       client: Client
       project: Projet
@@ -1240,8 +1035,7 @@ fr:
       unit_price: Prix unitaire
       total: Total
       remove: Supprimer
-      round_all_down_help: Arrondir tous les montants à l'inférieur pour éviter de
-        surfacturer
+      round_all_down_help: Arrondir tous les montants à l'inférieur pour éviter de surfacturer
       round_all_down: Arrondir à l'inférieur
       round_all_up_help: Arrondir tous les montants pour une marge de sécurité
       round_all_up: Arrondir tout
@@ -1255,13 +1049,11 @@ fr:
       clear_search: Effacer la recherche
       empty_state:
         title: Aucun filament enregistré pour le moment
-        description: Ajoutez votre premier filament pour commencer à construire votre
-          bibliothèque de matériaux pour les calculs d'impression.
+        description: Ajoutez votre premier filament pour commencer à construire votre bibliothèque de matériaux pour les calculs d'impression.
         add_first: Ajouter votre premier filament
       no_results:
         title: Aucun résultat trouvé
-        description: Aucun filament ne correspond à '%{query}'. Essayez un autre terme
-          de recherche.
+        description: Aucun filament ne correspond à '%{query}'. Essayez un autre terme de recherche.
     new:
       title: Ajouter un nouveau filament
       subtitle: Enregistrer un nouveau filament pour votre bibliothèque de matériaux
@@ -1333,11 +1125,8 @@ fr:
       sign_in_with_provider_aria: Se connecter avec %{provider}
     confirmations:
       confirmed: Votre adresse e-mail a été confirmée avec succès.
-      send_instructions: Vous allez recevoir un e-mail contenant les instructions
-        pour confirmer votre adresse e-mail dans quelques minutes.
-      send_paranoid_instructions: Si votre adresse e-mail existe dans notre base de
-        données, vous allez recevoir un e-mail contenant les instructions pour confirmer
-        votre adresse e-mail dans quelques minutes.
+      send_instructions: Vous allez recevoir un e-mail contenant les instructions pour confirmer votre adresse e-mail dans quelques minutes.
+      send_paranoid_instructions: Si votre adresse e-mail existe dans notre base de données, vous allez recevoir un e-mail contenant les instructions pour confirmer votre adresse e-mail dans quelques minutes.
     failure:
       already_authenticated: Vous êtes déjà connecté(e).
       inactive: Votre compte n'est pas encore activé.
@@ -1360,72 +1149,47 @@ fr:
       password_change:
         subject: Mot de passe modifié
     omniauth_callbacks:
-      failure: Impossible de vous authentifier depuis %{kind} à cause de « %{reason}
-        ».
+      failure: Impossible de vous authentifier depuis %{kind} à cause de « %{reason} ».
       success: Authentification réussie depuis le compte %{kind}.
     passwords:
-      no_token: Vous ne pouvez pas accéder à cette page sans passer par un e-mail
-        de réinitialisation du mot de passe. Si vous venez d'un e-mail de réinitialisation
-        du mot de passe, veuillez vous assurer que vous avez utilisé l'URL complète
-        fournie.
-      send_instructions: Vous allez recevoir un e-mail contenant les instructions
-        pour réinitialiser votre mot de passe dans quelques minutes.
-      send_paranoid_instructions: Si votre adresse e-mail existe dans notre base de
-        données, vous recevrez un lien de récupération de mot de passe à votre adresse
-        e-mail dans quelques minutes.
-      updated: Votre mot de passe a été modifié avec succès. Vous êtes maintenant
-        connecté(e).
+      no_token: Vous ne pouvez pas accéder à cette page sans passer par un e-mail de réinitialisation du mot de passe. Si vous venez d'un e-mail de réinitialisation du mot de passe, veuillez vous assurer que vous avez utilisé l'URL complète fournie.
+      send_instructions: Vous allez recevoir un e-mail contenant les instructions pour réinitialiser votre mot de passe dans quelques minutes.
+      send_paranoid_instructions: Si votre adresse e-mail existe dans notre base de données, vous recevrez un lien de récupération de mot de passe à votre adresse e-mail dans quelques minutes.
+      updated: Votre mot de passe a été modifié avec succès. Vous êtes maintenant connecté(e).
       updated_not_active: Votre mot de passe a été modifié avec succès.
     registrations:
-      destroyed: Au revoir ! Votre compte a été supprimé avec succès. Nous espérons
-        vous revoir bientôt.
+      destroyed: Au revoir ! Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt.
       signed_up: Bienvenue ! Votre inscription a été effectuée avec succès.
-      signed_up_but_inactive: Votre inscription a été effectuée avec succès. Cependant,
-        nous n'avons pas pu vous connecter car votre compte n'est pas encore activé.
-      signed_up_but_locked: Votre inscription a été effectuée avec succès. Cependant,
-        nous n'avons pas pu vous connecter car votre compte est bloqué.
-      signed_up_but_unconfirmed: Un message contenant un lien de confirmation a été
-        envoyé à votre adresse e-mail. Veuillez suivre le lien pour activer votre
-        compte.
-      update_needs_confirmation: Votre compte a été mis à jour avec succès, mais nous
-        devons vérifier votre nouvelle adresse e-mail. Veuillez consulter votre e-mail
-        et suivre le lien de confirmation pour confirmer votre nouvelle adresse e-mail.
+      signed_up_but_inactive: Votre inscription a été effectuée avec succès. Cependant, nous n'avons pas pu vous connecter car votre compte n'est pas encore activé.
+      signed_up_but_locked: Votre inscription a été effectuée avec succès. Cependant, nous n'avons pas pu vous connecter car votre compte est bloqué.
+      signed_up_but_unconfirmed: Un message contenant un lien de confirmation a été envoyé à votre adresse e-mail. Veuillez suivre le lien pour activer votre compte.
+      update_needs_confirmation: Votre compte a été mis à jour avec succès, mais nous devons vérifier votre nouvelle adresse e-mail. Veuillez consulter votre e-mail et suivre le lien de confirmation pour confirmer votre nouvelle adresse e-mail.
       updated: Votre compte a été mis à jour avec succès.
-      updated_but_not_signed_in: Votre compte a été mis à jour avec succès, mais comme
-        votre mot de passe a été modifié, vous devez vous reconnecter.
+      updated_but_not_signed_in: Votre compte a été mis à jour avec succès, mais comme votre mot de passe a été modifié, vous devez vous reconnecter.
     sessions:
       signed_in: Connexion réussie.
       signed_out: Déconnexion réussie.
       already_signed_out: Déconnexion réussie.
     unlocks:
-      send_instructions: Vous recevrez un e-mail contenant des instructions pour déverrouiller
-        votre compte dans quelques minutes.
-      send_paranoid_instructions: Si votre compte existe, vous recevrez un e-mail
-        contenant des instructions pour le déverrouiller dans quelques minutes.
-      unlocked: Votre compte a été déverrouillé avec succès. Veuillez vous connecter
-        pour continuer.
+      send_instructions: Vous recevrez un e-mail contenant des instructions pour déverrouiller votre compte dans quelques minutes.
+      send_paranoid_instructions: Si votre compte existe, vous recevrez un e-mail contenant des instructions pour le déverrouiller dans quelques minutes.
+      unlocked: Votre compte a été déverrouillé avec succès. Veuillez vous connecter pour continuer.
     omniauth_complete_profile:
       title: Complétez votre profil
-      subtitle: Pour terminer votre inscription %{provider}, veuillez fournir votre
-        adresse e-mail
+      subtitle: Pour terminer votre inscription %{provider}, veuillez fournir votre adresse e-mail
       email_label: Adresse e-mail
       email_placeholder: votre@email.com
-      email_help: Nous l'utiliserons pour vous envoyer des notifications importantes
-        concernant votre compte
+      email_help: Nous l'utiliserons pour vous envoyer des notifications importantes concernant votre compte
       submit: Terminer l'inscription
       cancel: Annuler et revenir en arrière
-      privacy_notice: Nous respectons votre vie privée. Votre adresse e-mail sera
-        uniquement utilisée pour la gestion de votre compte.
+      privacy_notice: Nous respectons votre vie privée. Votre adresse e-mail sera uniquement utilisée pour la gestion de votre compte.
   landing:
     hero:
       headline: Plus de création, moins de calcul
-      subheadline: Oubliez les feuilles de calcul et les calculs fastidieux. Gérez
-        la tarification automatiquement pour pouvoir vous concentrer sur la partie
-        amusante.
+      subheadline: Oubliez les feuilles de calcul et les calculs fastidieux. Gérez la tarification automatiquement pour pouvoir vous concentrer sur la partie amusante.
       cta_primary: Commencer à calculer gratuitement
       cta_demo: Essayer le calculateur
-      trust_signal: Aucune carte de crédit requise - commencez avec toutes les fonctionnalités
-        Startup pendant 30 jours
+      trust_signal: Aucune carte de crédit requise - commencez avec toutes les fonctionnalités Startup pendant 30 jours
       preview_title: Aperçu rapide des coûts
       preview_filament_weight: Poids du filament
       preview_print_time: Temps d'impression
@@ -1434,60 +1198,49 @@ fr:
     problem:
       headline: Perdez-vous du temps à calculer le prix des impressions 3D ?
       manual_errors: Erreurs de calcul manuel
-      manual_errors_desc: Les feuilles de calcul et le calcul mental entraînent des
-        erreurs coûteuses et une sous-facturation.
+      manual_errors_desc: Les feuilles de calcul et le calcul mental entraînent des erreurs coûteuses et une sous-facturation.
       electricity_costs: Coûts d'électricité oubliés
-      electricity_costs_desc: La consommation d'énergie peut ajouter 20 à 40 % à vos
-        coûts réels, mais elle est souvent ignorée.
+      electricity_costs_desc: La consommation d'énergie peut ajouter 20 à 40 % à vos coûts réels, mais elle est souvent ignorée.
       inconsistent_pricing: Tarification incohérente
-      inconsistent_pricing_desc: Différents calculs pour des travaux similaires déroutent
-        les clients et nuisent aux bénéfices.
+      inconsistent_pricing_desc: Différents calculs pour des travaux similaires déroutent les clients et nuisent aux bénéfices.
       time_wasted: Temps perdu sur les feuilles de calcul
-      time_wasted_desc: Des heures passées sur des calculs manuels au lieu de développer
-        votre entreprise d'impression.
+      time_wasted_desc: Des heures passées sur des calculs manuels au lieu de développer votre entreprise d'impression.
     solution:
       headline: Outils professionnels pour les créateurs sérieux
-      subheadline: Tout ce dont vous avez besoin pour établir des prix précis et gérer
-        vos projets d'impression 3D comme un pro.
+      subheadline: Tout ce dont vous avez besoin pour établir des prix précis et gérer vos projets d'impression 3D comme un pro.
     features:
       accurate_calculation:
         title: Calcul précis des coûts
-        desc: Obtenez des coûts précis à chaque fois grâce à un calcul complet incluant
-          toutes les dépenses cachées.
+        desc: Obtenez des coûts précis à chaque fois grâce à un calcul complet incluant toutes les dépenses cachées.
         filament: Poids du filament + coût de la bobine
         electricity: Suivi de la consommation d'électricité
         labor: Temps de travail (préparation + post-traitement)
         depreciation: Amortissement de la machine
       multi_printer:
         title: Gestion multi-imprimantes
-        desc: Suivez les spécifications de différentes imprimantes et surveillez votre
-          retour sur investissement pour l'ensemble de votre parc.
+        desc: Suivez les spécifications de différentes imprimantes et surveillez votre retour sur investissement pour l'ensemble de votre parc.
         power: Suivi individuel de la consommation d'énergie
         roi: Suivi du ROI par imprimante
         organization: Gestion organisée des tâches d'impression
       invoicing:
         title: Facturation professionnelle
-        desc: Générez des factures PDF professionnelles avec votre image de marque
-          et la prise en charge de plusieurs devises.
+        desc: Générez des factures PDF professionnelles avec votre image de marque et la prise en charge de plusieurs devises.
         pdf: Factures PDF générées automatiquement
         branding: Image de marque personnalisée
         currency: Prise en charge de plusieurs devises
       organization:
         title: Organisation des projets
-        desc: Gardez vos tâches d'impression organisées grâce à de puissants outils
-          de recherche, de filtrage et de gestion de projet.
+        desc: Gardez vos tâches d'impression organisées grâce à de puissants outils de recherche, de filtrage et de gestion de projet.
         search: Rechercher et filtrer les tâches d'impression
         duplicate: Dupliquer des projets similaires
         history: Suivi complet de l'historique d'impression
     pricing:
       headline: Tarification simple et transparente
-      subheadline: Choisissez le plan qui correspond à votre volume d'impression.
-        Mettez à niveau ou rétrogradez à tout moment.
+      subheadline: Choisissez le plan qui correspond à votre volume d'impression. Mettez à niveau ou rétrogradez à tout moment.
       cta: Commencer gratuitement
       free:
         title: Gratuit
-        trial_notice: Le premier mois comprend toutes les fonctionnalités Startup
-          !
+        trial_notice: Le premier mois comprend toutes les fonctionnalités Startup !
         calculations: 5 calculs par mois (après l'essai)
         printers: 1 profil d'imprimante
         filaments: 4 types de filament
@@ -1510,49 +1263,33 @@ fr:
         analytics: Analyses avancées
         features: Futures fonctionnalités premium
       trust_signals:
-        no_credit_card: Aucune carte de crédit requise - commencez avec toutes les
-          fonctionnalités Startup pendant 30 jours
+        no_credit_card: Aucune carte de crédit requise - commencez avec toutes les fonctionnalités Startup pendant 30 jours
         cancel_anytime: Annulez à tout moment
         data_private: Vos données restent privées
     faq:
       headline: Foire aux questions
       accuracy:
         question: Quelle est la précision des calculs ?
-        answer: CalcuMake utilise des formules simples et tient compte de tous les
-          facteurs de coûts, y compris le filament, l'électricité, le temps de travail
-          et l'amortissement de la machine.
+        answer: CalcuMake utilise des formules simples et tient compte de tous les facteurs de coûts, y compris le filament, l'électricité, le temps de travail et l'amortissement de la machine.
       currencies:
         question: Quelles devises CalcuMake prend-il en charge ?
-        answer: CalcuMake prend actuellement en charge les devises USD, EUR, GBP,
-          JPY, CAD et AUD avec un formatage et une précision automatiques pour chaque
-          devise. Vous pouvez changer de devise à tout moment dans les paramètres
-          de votre profil.
+        answer: CalcuMake prend actuellement en charge les devises USD, EUR, GBP, JPY, CAD et AUD avec un formatage et une précision automatiques pour chaque devise. Vous pouvez changer de devise à tout moment dans les paramètres de votre profil.
       printers:
         question: CalcuMake prend-il en charge mon imprimante 3D ?
-        answer: CalcuMake fonctionne avec n'importe quelle imprimante 3D ! Il vous
-          suffit d'entrer la consommation électrique de votre imprimante et d'autres
-          spécifications. Nous prévoyons bientôt la prise en charge des imprimantes
-          à résine !
+        answer: CalcuMake fonctionne avec n'importe quelle imprimante 3D ! Il vous suffit d'entrer la consommation électrique de votre imprimante et d'autres spécifications. Nous prévoyons bientôt la prise en charge des imprimantes à résine !
       electricity:
         question: Comment fonctionnent les coûts d'électricité ?
-        answer: CalcuMake calcule automatiquement les coûts d'électricité en fonction
-          de la consommation électrique de votre imprimante (en watts), de la durée
-          d'impression et de votre tarif énergétique local par kWh. Cela garantit
-          que vous n'oubliez jamais ce facteur de coût souvent négligé.
+        answer: CalcuMake calcule automatiquement les coûts d'électricité en fonction de la consommation électrique de votre imprimante (en watts), de la durée d'impression et de votre tarif énergétique local par kWh. Cela garantit que vous n'oubliez jamais ce facteur de coût souvent négligé.
       invoices:
         question: Puis-je personnaliser mes factures ?
-        answer: Oui ! Vous pouvez ajouter le logo de votre entreprise, personnaliser
-          les couleurs et inclure vos informations commerciales. Les plans payants
-          suppriment la marque CalcuMake pour un aspect totalement professionnel.
+        answer: Oui ! Vous pouvez ajouter le logo de votre entreprise, personnaliser les couleurs et inclure vos informations commerciales. Les plans payants suppriment la marque CalcuMake pour un aspect totalement professionnel.
     final_cta:
       headline: Prêt à ne plus perdre d'argent sur vos impressions 3D ?
-      subheadline: Rejoignez des milliers de créateurs qui font confiance à CalcuMake
-        pour une tarification précise et une gestion de projet professionnelle.
+      subheadline: Rejoignez des milliers de créateurs qui font confiance à CalcuMake pour une tarification précise et une gestion de projet professionnelle.
       button: Démarrer votre essai gratuit
   demo:
     title: Essayer la démo de CalcuMake
-    subtitle: Testez notre calculateur de coût d'impression 3D avec des exemples de
-      données. Aucun compte requis !
+    subtitle: Testez notre calculateur de coût d'impression 3D avec des exemples de données. Aucun compte requis !
     sign_up_full_version: S'inscrire à la version complète
     start_free_trial: Démarrer l'essai gratuit
     limitations:
@@ -1567,15 +1304,13 @@ fr:
       - Calculs d'amortissement des machines
     advanced_calculator:
       title: Besoin de plus de fonctionnalités ?
-      description: Essayez notre calculateur de prix avancé avec prise en charge multi-plateaux,
-        filaments personnalisés et exportation PDF/CSV instantanée.
+      description: Essayez notre calculateur de prix avancé avec prise en charge multi-plateaux, filaments personnalisés et exportation PDF/CSV instantanée.
       button: Ouvrir le calculateur avancé
       features:
         multi_plate: Prise en charge de jusqu'à 10 plateaux de construction
         multi_filament: Mélangez jusqu'à 16 filaments par plateau
         pdf_csv: Exportation instantanée au format PDF ou CSV
-        local_storage: Sauvegarde automatique dans le navigateur (aucune perte de
-          données)
+        local_storage: Sauvegarde automatique dans le navigateur (aucune perte de données)
   locale_suggestion:
     banner:
       title: Il semble que vous accédiez depuis une région différente.
@@ -1634,8 +1369,7 @@ fr:
     your_plan: Votre Abonnement
     upgrade_to_plan: Passer à l'abonnement %{plan}
     downgrade_to_plan: Revenir à l'abonnement %{plan}
-    verification_error: Impossible de vérifier votre abonnement. Veuillez contacter
-      le support.
+    verification_error: Impossible de vérifier votre abonnement. Veuillez contacter le support.
     plans:
       subtitle: Choisissez l'abonnement qui vous convient le mieux
     most_popular: Le plus populaire
@@ -1653,13 +1387,11 @@ fr:
     days: jours
     manage: Gérer
     manage_subscription: Gérer l'abonnement
-    manage_description: Consultez votre historique de facturation, mettez à jour vos
-      méthodes de paiement ou annulez votre abonnement.
+    manage_description: Consultez votre historique de facturation, mettez à jour vos méthodes de paiement ou annulez votre abonnement.
     manage_note: Ouvre le portail client Stripe dans une nouvelle fenêtre
     open_billing_portal: Ouvrir le portail de facturation
     cancel_subscription: Annuler l'abonnement
-    cancel_confirmation: Êtes-vous sûr de vouloir annuler votre abonnement ? Vous
-      continuerez d'y avoir accès jusqu'à la fin de votre période de facturation actuelle.
+    cancel_confirmation: Êtes-vous sûr de vouloir annuler votre abonnement ? Vous continuerez d'y avoir accès jusqu'à la fin de votre période de facturation actuelle.
     cancel_notice: Votre abonnement a été programmé pour être annulé
     subscription_details: Détails de l'abonnement
     status: Statut
@@ -1680,54 +1412,35 @@ fr:
     days_remaining: Jours restants
     days_remaining_in_period: "%{days} jours restants dans la période actuelle"
     pricing_breakdown: Répartition des prix
-    prorated_explanation: Un montant au prorata vous sera facturé pour le reste de
-      votre période de facturation actuelle. Votre prochaine facture complète sera
-      le %{date}.
+    prorated_explanation: Un montant au prorata vous sera facturé pour le reste de votre période de facturation actuelle. Votre prochaine facture complète sera le %{date}.
     what_happens_next: Que se passe-t-il ensuite ?
     confirm_and_upgrade: Confirmer et mettre à niveau
     confirm_downgrade: Confirmer la rétrogradation
-    final_confirm_upgrade: Cela mettra immédiatement à niveau votre plan et facturera
-      votre méthode de paiement de <%= %{amount} %>. Continuer ?
+    final_confirm_upgrade: Cela mettra immédiatement à niveau votre plan et facturera votre méthode de paiement de <%= %{amount} %>. Continuer ?
     faq:
       title: Foire aux questions
       trial_question: Comment fonctionne l'essai ?
-      trial_answer: Les nouveaux utilisateurs bénéficient d'un essai gratuit de 14
-        jours du plan Startup. Aucune carte de crédit n'est requise. À la fin de l'essai,
-        vous pouvez choisir de mettre à niveau ou de continuer avec le plan gratuit.
+      trial_answer: Les nouveaux utilisateurs bénéficient d'un essai gratuit de 14 jours du plan Startup. Aucune carte de crédit n'est requise. À la fin de l'essai, vous pouvez choisir de mettre à niveau ou de continuer avec le plan gratuit.
       change_plan_question: Puis-je changer de plan à tout moment ?
-      change_plan_answer: Oui, vous pouvez mettre à niveau ou rétrograder votre plan
-        à tout moment. Les mises à niveau sont calculées au prorata et appliquées
-        immédiatement. Les rétrogradations prennent effet à la fin de votre période
-        de facturation actuelle.
+      change_plan_answer: Oui, vous pouvez mettre à niveau ou rétrograder votre plan à tout moment. Les mises à niveau sont calculées au prorata et appliquées immédiatement. Les rétrogradations prennent effet à la fin de votre période de facturation actuelle.
       cancel_question: Que se passe-t-il si j'annule ?
-      cancel_answer: Vous continuerez d'avoir accès aux fonctionnalités de votre plan
-        jusqu'à la fin de votre période de facturation actuelle. Après cela, vous
-        serez rétrogradé au plan gratuit.
+      cancel_answer: Vous continuerez d'avoir accès aux fonctionnalités de votre plan jusqu'à la fin de votre période de facturation actuelle. Après cela, vous serez rétrogradé au plan gratuit.
       payment_question: Quels modes de paiement sont acceptés ?
-      payment_answer: Nous acceptons toutes les principales cartes de crédit via Stripe.
-        Tous les paiements sont sécurisés et cryptés.
+      payment_answer: Nous acceptons toutes les principales cartes de crédit via Stripe. Tous les paiements sont sécurisés et cryptés.
       data_question: Qu'advient-il de mes données si je rétrograde ?
-      data_answer: Vos données ne sont jamais supprimées. Si vous dépassez les limites
-        du plan gratuit, vous devrez mettre à niveau ou supprimer certains éléments
-        pour en ajouter de nouveaux.
+      data_answer: Vos données ne sont jamais supprimées. Si vous dépassez les limites du plan gratuit, vous devrez mettre à niveau ou supprimer certains éléments pour en ajouter de nouveaux.
       reset_question: Quand les limites d'utilisation sont-elles réinitialisées ?
-      reset_answer: Les limites d'utilisation ne sont pas réinitialisées mensuellement.
-        Elles représentent le nombre total d'éléments que vous pouvez avoir dans votre
-        compte en même temps. Supprimez des éléments pour libérer de l'espace.
+      reset_answer: Les limites d'utilisation ne sont pas réinitialisées mensuellement. Elles représentent le nombre total d'éléments que vous pouvez avoir dans votre compte en même temps. Supprimez des éléments pour libérer de l'espace.
   gdpr:
     cookie_consent:
       title: Consentement aux cookies
-      message: Nous utilisons des cookies pour améliorer votre expérience. En continuant
-        à utiliser ce site, vous acceptez notre politique en matière de cookies.
-      message_html: Nous utilisons des cookies pour améliorer votre expérience. En
-        continuant à utiliser ce site, vous acceptez notre %{cookie_policy_link}.
-        Consultez notre %{privacy_policy_link}.
+      message: Nous utilisons des cookies pour améliorer votre expérience. En continuant à utiliser ce site, vous acceptez notre politique en matière de cookies.
+      message_html: Nous utilisons des cookies pour améliorer votre expérience. En continuant à utiliser ce site, vous acceptez notre %{cookie_policy_link}. Consultez notre %{privacy_policy_link}.
       accept: Accepter
       decline: Refuser
       reject: Rejeter
     cookie_policy_title: Politique en matière de cookies
-    cookie_policy: Nous utilisons des cookies pour améliorer votre expérience. En
-      utilisant notre site, vous consentez à l'utilisation de cookies.
+    cookie_policy: Nous utilisons des cookies pour améliorer votre expérience. En utilisant notre site, vous consentez à l'utilisation de cookies.
     privacy_policy: Politique de confidentialité
     terms_of_service_title: Conditions d'utilisation
     last_updated: Dernière mise à jour
@@ -1746,24 +1459,20 @@ fr:
         consents: Consentements des utilisateurs et préférences de confidentialité
       download_button: Télécharger mes données
       format: Format des données
-      format_description: Vos données seront exportées sous forme de fichier JSON
-        que vous pourrez enregistrer et consulter à tout moment.
+      format_description: Vos données seront exportées sous forme de fichier JSON que vous pourrez enregistrer et consulter à tout moment.
     data_deletion:
       title: Supprimer votre compte
       description: Supprimez définitivement votre compte et toutes les données associées
       warning: Cette action est irréversible
       warning_title: 'Avertissement : Cette action est permanente'
-      warning_message: Toutes vos données seront définitivement supprimées et ne pourront
-        pas être récupérées
+      warning_message: Toutes vos données seront définitivement supprimées et ne pourront pas être récupérées
       button: Supprimer le compte
       what_deleted: Ce qui sera supprimé
       delete_button: Supprimer mon compte
       before_deletion: Avant de supprimer
-      export_recommendation_html: Nous vous recommandons de %{link} d'abord afin d'avoir
-        une sauvegarde avant de procéder à la suppression.
+      export_recommendation_html: Nous vous recommandons de %{link} d'abord afin d'avoir une sauvegarde avant de procéder à la suppression.
       export_link: exporter vos données
-      confirm_message: Êtes-vous sûr de vouloir supprimer définitivement votre compte ?
-        Cette action est irréversible.
+      confirm_message: Êtes-vous sûr de vouloir supprimer définitivement votre compte ? Cette action est irréversible.
       items:
         account: Votre compte utilisateur et vos identifiants de connexion
         print_pricings: Tous les calculs de prix d'impression
@@ -1778,16 +1487,13 @@ fr:
         content: En utilisant CalcuMake, vous acceptez ces conditions d'utilisation
       service_description:
         title: Description du service
-        content: CalcuMake est un outil de calcul des coûts d'impression 3D et de
-          gestion de projet
+        content: CalcuMake est un outil de calcul des coûts d'impression 3D et de gestion de projet
       user_accounts:
         title: Comptes utilisateurs
-        content: Vous êtes responsable du maintien de la sécurité de votre compte
-          et de toutes les activités effectuées sous votre compte
+        content: Vous êtes responsable du maintien de la sécurité de votre compte et de toutes les activités effectuées sous votre compte
       acceptable_use:
         title: Utilisation acceptable
-        intro: Vous vous engagez à ne pas utiliser notre service à l'une des fins
-          suivantes
+        intro: Vous vous engagez à ne pas utiliser notre service à l'une des fins suivantes
         items:
           illegal: Activités illégales ou violation de toute loi
           harmful: Téléchargement de code malveillant ou de contenu nuisible
@@ -1795,57 +1501,39 @@ fr:
           interference: Interférence ou perturbation de notre service ou de nos serveurs
       intellectual_property:
         title: Propriété intellectuelle
-        content: Tout le contenu et les éléments de CalcuMake sont la propriété de
-          MOAB Co., Ltd. et sont protégés par les lois applicables en matière de propriété
-          intellectuelle
+        content: Tout le contenu et les éléments de CalcuMake sont la propriété de MOAB Co., Ltd. et sont protégés par les lois applicables en matière de propriété intellectuelle
       payment_terms:
         title: Conditions de paiement
-        content: Les frais d'abonnement sont facturés mensuellement ou annuellement,
-          selon votre sélection. Tous les paiements sont traités en toute sécurité
-          via Stripe
+        content: Les frais d'abonnement sont facturés mensuellement ou annuellement, selon votre sélection. Tous les paiements sont traités en toute sécurité via Stripe
       termination:
         title: Résiliation
-        content: Nous nous réservons le droit de suspendre ou de résilier votre compte
-          en cas de violation de ces conditions. Vous pouvez annuler votre abonnement
-          à tout moment
+        content: Nous nous réservons le droit de suspendre ou de résilier votre compte en cas de violation de ces conditions. Vous pouvez annuler votre abonnement à tout moment
       liability:
         title: Limitation de responsabilité
-        content: CalcuMake est fourni « tel quel » sans garantie. Nous ne sommes pas
-          responsables des dommages résultant de l'utilisation de notre service
+        content: CalcuMake est fourni « tel quel » sans garantie. Nous ne sommes pas responsables des dommages résultant de l'utilisation de notre service
       governing_law:
         title: Droit applicable
-        content: Ces conditions sont régies par les lois du Japon. Tout litige sera
-          résolu devant les tribunaux de Tokyo, au Japon
+        content: Ces conditions sont régies par les lois du Japon. Tout litige sera résolu devant les tribunaux de Tokyo, au Japon
       changes:
         title: Modifications des conditions
-        content: Nous pouvons mettre à jour ces conditions à tout moment. L'utilisation
-          continue de CalcuMake après les modifications constitue une acceptation
-          des nouvelles conditions
+        content: Nous pouvons mettre à jour ces conditions à tout moment. L'utilisation continue de CalcuMake après les modifications constitue une acceptation des nouvelles conditions
     cookie_sections:
       what_are_cookies:
         title: Que sont les cookies ?
-        content: Les cookies sont de petits fichiers texte stockés sur votre appareil
-          qui nous aident à vous offrir une meilleure expérience. Nous utilisons des
-          cookies essentiels pour la fonctionnalité et des cookies analytiques pour
-          améliorer notre service.
+        content: Les cookies sont de petits fichiers texte stockés sur votre appareil qui nous aident à vous offrir une meilleure expérience. Nous utilisons des cookies essentiels pour la fonctionnalité et des cookies analytiques pour améliorer notre service.
       how_we_use:
         title: Comment nous utilisons les cookies
-        intro: Nous utilisons différents types de cookies pour améliorer votre expérience
-          et fournir des fonctionnalités essentielles
-        content: Nous utilisons des cookies pour mémoriser vos préférences, authentifier
-          vos sessions et analyser l'utilisation du site afin d'améliorer notre service
+        intro: Nous utilisons différents types de cookies pour améliorer votre expérience et fournir des fonctionnalités essentielles
+        content: Nous utilisons des cookies pour mémoriser vos préférences, authentifier vos sessions et analyser l'utilisation du site afin d'améliorer notre service
         essential:
           title: Cookies essentiels
-          description: Nécessaires pour l'authentification, la sécurité et les fonctionnalités
-            de base du site
+          description: Nécessaires pour l'authentification, la sécurité et les fonctionnalités de base du site
         functional:
           title: Cookies Fonctionnels
-          description: Mémorise vos préférences et paramètres pour vous offrir une
-            expérience personnalisée
+          description: Mémorise vos préférences et paramètres pour vous offrir une expérience personnalisée
         analytics:
           title: Cookies Analytiques
-          description: Nous aide à comprendre comment vous utilisez notre service
-            afin que nous puissions l'améliorer
+          description: Nous aide à comprendre comment vous utilisez notre service afin que nous puissions l'améliorer
       cookie_list:
         title: Cookies que nous utilisons
         table:
@@ -1864,21 +1552,17 @@ fr:
             duration: 1 an
       managing_cookies:
         title: Gestion des cookies
-        content: Vous pouvez contrôler et/ou supprimer les cookies via les paramètres
-          de votre navigateur. Notez que la désactivation des cookies peut affecter
-          la fonctionnalité de CalcuMake
+        content: Vous pouvez contrôler et/ou supprimer les cookies via les paramètres de votre navigateur. Notez que la désactivation des cookies peut affecter la fonctionnalité de CalcuMake
       third_party:
         title: Cookies tiers
-        content: Nous n'utilisons actuellement pas de cookies tiers. Si cela change,
-          nous mettrons à jour cette politique et vous en informerons
+        content: Nous n'utilisons actuellement pas de cookies tiers. Si cela change, nous mettrons à jour cette politique et vous en informerons
     consent_recorded: Vos préférences ont été enregistrées
     account_deleted: Votre compte a été supprimé avec succès
     privacy_policy_title: Politique de confidentialité
   errors:
     messages:
       already_confirmed: a déjà été confirmé, veuillez essayer de vous connecter
-      confirmation_period_expired: doit être confirmé dans les %{period}, veuillez
-        en demander un nouveau
+      confirmation_period_expired: doit être confirmé dans les %{period}, veuillez en demander un nouveau
       expired: a expiré, veuillez en demander un nouveau
       not_found: introuvable
       not_locked: n'était pas bloqué
@@ -1887,8 +1571,7 @@ fr:
         other: "%{count} erreurs ont empêché l'enregistrement de ce %{resource} :"
   advanced_calculator:
     title: Calculateur de Prix d'Impression 3D Gratuit
-    subtitle: Estimateur de coûts multi-plateaux professionnel avec exportation PDF/CSV.
-      Aucune inscription requise.
+    subtitle: Estimateur de coûts multi-plateaux professionnel avec exportation PDF/CSV. Aucune inscription requise.
     sign_up_to_save: Inscrivez-vous pour sauvegarder vos projets
     input_section: Paramètres du calculateur
     job_name: Nom du projet
@@ -1896,8 +1579,7 @@ fr:
     plates_section: Plateaux de construction
     add_plate: Ajouter un plateau
     plate: Plateau
-    plates_help: Ajoutez jusqu'à 10 plateaux de construction. Chaque plateau peut
-      avoir plusieurs filaments et des paramètres personnalisés.
+    plates_help: Ajoutez jusqu'à 10 plateaux de construction. Chaque plateau peut avoir plusieurs filaments et des paramètres personnalisés.
     other_costs: Coûts supplémentaires
     failure_rate: Taux d'échec
     failure_rate_help: Pourcentage à prendre en compte pour les impressions ratées
@@ -1906,8 +1588,7 @@ fr:
     reset: Réinitialiser le calculateur
     filaments: Filaments
     add_filament: Ajouter un filament
-    filaments_help: Ajoutez jusqu'à 16 filaments par plateau. Mélangez différents
-      matériaux et couleurs.
+    filaments_help: Ajoutez jusqu'à 16 filaments par plateau. Mélangez différents matériaux et couleurs.
     plate_fields:
       print_time: Temps d'impression
       power_consumption: Consommation électrique
@@ -1940,8 +1621,7 @@ fr:
       no_signup: Aucune inscription requise pour utiliser
     cta:
       title: Vous voulez sauvegarder vos projets ?
-      description: Créez un compte gratuit pour enregistrer un nombre illimité de
-        calculs, gérer les imprimantes, créer des factures, et plus encore.
+      description: Créez un compte gratuit pour enregistrer un nombre illimité de calculs, gérer les imprimantes, créer des factures, et plus encore.
       button: Démarrer l'essai gratuit
       no_credit_card: Aucune carte de crédit requise
     quick_calculator_toggle: Estimation rapide ? Essayez le calculateur simple
