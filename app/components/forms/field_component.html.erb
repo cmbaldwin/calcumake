@@ -1,6 +1,8 @@
 <% if @wrapper %>
   <div class="<%= @wrapper_class %>">
-    <%= @form.label @attribute, label_text, class: "form-label" %>
+    <% if show_label? %>
+      <%= @form.label @attribute, label_text, class: "form-label" %>
+    <% end %>
     <% case @type %>
     <% when :text %>
       <%= @form.text_field @attribute, field_options %>
@@ -18,7 +20,9 @@
     <% end %>
   </div>
 <% else %>
-  <%= @form.label @attribute, label_text, class: "form-label" %>
+  <% if show_label? %>
+    <%= @form.label @attribute, label_text, class: "form-label" %>
+  <% end %>
   <% case @type %>
   <% when :text %>
     <%= @form.text_field @attribute, field_options %>
