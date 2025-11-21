@@ -8,68 +8,7 @@
 <% if @printers.any? %>
 <div class="row g-4">
     <% @printers.each do |printer| %>
-    <div class="col-lg-4 col-md-6">
-        <div class="card h-100">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0 text-primary"><%= printer.name %></h5>
-                <span class="badge bg-success"><%= printer.manufacturer %></span>
-            </div>
-
-            <div class="card-body">
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between py-2 border-bottom">
-                        <span class="fw-medium text-muted"><%= t('printers.card.power_consumption') %>:</span>
-                        <span class="fw-bold"><%= printer.power_consumption %>W</span>
-                    </div>
-                    <div class="d-flex justify-content-between py-2 border-bottom">
-                        <span class="fw-medium text-muted"><%= t('printers.card.cost') %>:</span>
-                        <span class="fw-bold"><%= currency_symbol(current_user.default_currency) %><%= printer.cost %></span>
-                    </div>
-                    <div class="d-flex justify-content-between py-2 border-bottom">
-                        <span class="fw-medium text-muted"><%= t('printers.card.daily_usage') %>:</span>
-                        <span class="fw-bold"><%= printer.daily_usage_hours %> <%= t('printers.card.hours') %></span>
-                    </div>
-                    <div class="d-flex justify-content-between py-2">
-                        <span class="fw-medium text-muted"><%= t('printers.card.payoff_goal') %>:</span>
-                        <span class="fw-bold"><%= printer.payoff_goal_years %> <%= t('printers.card.years') %></span>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <% if printer.paid_off? %>
-                    <div class="alert alert-success text-center mb-0">
-                        <strong><%= t('printers.card.paid_off') %></strong>
-                    </div>
-                    <% else %>
-                    <div class="alert alert-warning text-center mb-0">
-                        <strong><%= t('printers.card.months_to_payoff', months: printer.months_to_payoff) %></strong>
-                    </div>
-                    <% end %>
-                </div>
-            </div>
-
-            <div class="card-footer">
-                <div class="d-flex justify-content-center">
-                    <div class="dropdown">
-                        <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <%= t('actions.actions') %>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><%= link_to t('actions.view'), printer, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>
-                            <li><%= link_to t('actions.edit'), edit_printer_path(printer), class: "dropdown-item", data: { turbo_frame: "_top" } %></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><%= link_to t('actions.delete'), printer, method: :delete,
-                          confirm: t('common.are_you_sure'),
-                          class: "dropdown-item text-danger",
-                          data: { turbo_method: :delete } %></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <%= render PrinterCardComponent.new(printer: printer, current_user: current_user) %>
     <% end %>
 </div>
 <% else %>
