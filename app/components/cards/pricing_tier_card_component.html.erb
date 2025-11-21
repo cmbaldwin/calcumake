@@ -1,13 +1,13 @@
 <div class="col-lg-4 col-md-6">
-    <div class="<%= card_classes %>" style="overflow: visible;">
-        <%# Popular Badge - positioned absolutely at top center of card %>
-        <% if show_popular_badge? %>
-        <div class="popular-badge">
-            <%= I18n.t('landing.pricing.startup.badge') %>
-        </div>
-        <% end %>
-
+    <div class="<%= card_classes %>">
         <div class="card-body p-4 text-center d-flex flex-column">
+            <%# Popular Badge %>
+            <% if show_popular_badge? %>
+            <div class="badge bg-primary mb-3 px-3 py-2">
+                <%= I18n.t('landing.pricing.startup.badge') %>
+            </div>
+            <% end %>
+
             <%# Plan Header %>
             <h3 class="h5 mb-1"><%= features[:name] %></h3>
             <div class="plan-price mb-2">

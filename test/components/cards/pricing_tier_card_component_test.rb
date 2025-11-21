@@ -84,7 +84,7 @@ module Cards
         popular: true
       ))
 
-      assert_selector "div.popular-badge"
+      assert_selector "div.badge.bg-primary"
       assert_selector "div.card.popular-plan.border-primary.shadow-lg"
     end
 
