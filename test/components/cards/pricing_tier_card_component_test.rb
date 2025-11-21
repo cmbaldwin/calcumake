@@ -14,7 +14,7 @@ module Cards
           filaments: 4,
           invoices: 5
         },
-        features: ["CalcuMake branding on invoices", "Community support"]
+        features: [ "CalcuMake branding on invoices", "Community support" ]
       }
 
       @startup_plan = {
@@ -26,7 +26,7 @@ module Cards
           filaments: 16,
           invoices: Float::INFINITY
         },
-        features: ["Remove CalcuMake branding", "No ads", "Email support"]
+        features: [ "Remove CalcuMake branding", "No ads", "Email support" ]
       }
 
       @pro_plan = {
@@ -38,7 +38,7 @@ module Cards
           filaments: Float::INFINITY,
           invoices: Float::INFINITY
         },
-        features: ["Unlimited everything", "Priority support", "Advanced analytics"]
+        features: [ "Unlimited everything", "Priority support", "Advanced analytics" ]
       }
     end
 
@@ -51,8 +51,8 @@ module Cards
 
       assert_selector "div.col-lg-4.col-md-6"
       assert_selector "div.card.pricing-card"
-      assert_selector "h4.text-primary", text: "Free"
-      assert_selector "span.h2.text-primary", text: "$0"
+      assert_selector "h3.h5", text: "Free"
+      assert_selector "span.price-amount", text: "$0"
     end
 
     test "renders startup plan" do
@@ -61,9 +61,9 @@ module Cards
         features: @startup_plan
       ))
 
-      assert_selector "h4.text-primary", text: "Startup"
-      assert_selector "span.h2.text-primary", text: "$1.50"
-      assert_selector "span.text-muted", text: "/month"
+      assert_selector "h3.h5", text: "Startup"
+      assert_selector "span.price-amount", text: "$1.50"
+      assert_selector "span.price-period", text: "/month"
     end
 
     test "renders pro plan" do
@@ -72,8 +72,8 @@ module Cards
         features: @pro_plan
       ))
 
-      assert_selector "h4.text-primary", text: "Pro"
-      assert_selector "span.h2.text-primary", text: "$15"
+      assert_selector "h3.h5", text: "Pro"
+      assert_selector "span.price-amount", text: "$15"
     end
 
     # Popular Badge
@@ -162,7 +162,7 @@ module Cards
         features: @free_plan
       ))
 
-      assert_selector "li i.bi-check-circle.text-success"
+      assert_selector "li i.bi-check.text-success"
       assert_selector "ul.list-unstyled li", minimum: 4 # At least 4 limit items
     end
 
@@ -172,7 +172,7 @@ module Cards
         features: @pro_plan
       ))
 
-      assert_selector "li i.bi-check-circle.text-success"
+      assert_selector "li i.bi-check.text-success"
       assert_selector "ul.list-unstyled li", minimum: 4
     end
 
@@ -330,7 +330,7 @@ module Cards
       ))
 
       assert_selector "div.card"
-      assert_selector "h4", text: "Custom"
+      assert_selector "h3", text: "Custom"
     end
 
     test "handles empty features array" do
@@ -352,7 +352,7 @@ module Cards
         features: @free_plan
       ))
 
-      refute_selector "span.text-muted", text: "/month"
+      refute_selector "span.price-period", text: "/month"
     end
 
     test "paid plans show per-month text" do
@@ -361,7 +361,7 @@ module Cards
         features: @startup_plan
       ))
 
-      assert_selector "span.text-muted", text: "/month"
+      assert_selector "span.price-period", text: "/month"
     end
   end
 end

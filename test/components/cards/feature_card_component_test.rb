@@ -34,7 +34,7 @@ class Cards::FeatureCardComponentTest < ViewComponent::TestCase
   end
 
   test "renders features list when features provided" do
-    features = ["Feature 1", "Feature 2", "Feature 3"]
+    features = [ "Feature 1", "Feature 2", "Feature 3" ]
 
     render_inline(Cards::FeatureCardComponent.new(
       icon: "calculator",
@@ -51,7 +51,7 @@ class Cards::FeatureCardComponentTest < ViewComponent::TestCase
   end
 
   test "each feature has check circle icon" do
-    features = ["Feature 1", "Feature 2"]
+    features = [ "Feature 1", "Feature 2" ]
 
     render_inline(Cards::FeatureCardComponent.new(
       icon: "calculator",
@@ -165,4 +165,3 @@ class Cards::FeatureCardComponentTest < ViewComponent::TestCase
     assert_selector "p.text-muted.mb-3"
   end
 end
-
