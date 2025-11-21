@@ -145,10 +145,12 @@
           <h6 class="mb-0"><%= t('filaments.sections.properties') %></h6>
         </div>
         <div class="card-body">
-          <div class="form-check">
-            <%= form.check_box :moisture_sensitive, class: "form-check-input" %>
-            <%= form.label :moisture_sensitive, t('filaments.fields.moisture_sensitive'), class: "form-check-label" %>
-          </div>
+          <%= render Forms::CheckboxFieldComponent.new(
+            form: form,
+            attribute: :moisture_sensitive,
+            label: t('filaments.fields.moisture_sensitive'),
+            wrapper: false
+          ) %>
         </div>
       </div>
 

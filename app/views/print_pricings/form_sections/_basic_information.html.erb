@@ -34,17 +34,14 @@
         </div>
 
         <% if f.object.new_record? %>
-          <div class="col-12">
-            <div class="form-check form-switch">
-              <%= f.check_box :start_with_one_print,
-                  { checked: false, class: "form-check-input" },
-                  "1", "0" %>
-              <label class="form-check-label" for="<%= f.field_id(:start_with_one_print) %>">
-                <%= t('print_pricing.fields.start_with_one_print') %>
-              </label>
-              <div class="form-text"><%= t('print_pricing.fields.start_with_one_print_help') %></div>
-            </div>
-          </div>
+          <%= render Forms::CheckboxFieldComponent.new(
+            form: f,
+            attribute: :start_with_one_print,
+            label: t('print_pricing.fields.start_with_one_print'),
+            hint: t('print_pricing.fields.start_with_one_print_help'),
+            wrapper_class: "col-12",
+            options: { checked: false, class: "form-switch" }
+          ) %>
         <% end %>
       </div>
     </div>
