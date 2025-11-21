@@ -1,0 +1,25 @@
+<% if @wrapper %>
+<div class="<%= @wrapper_class %>">
+<% end %>
+  <% if show_label? %>
+    <%= @form.label @attribute, label_text, class: "form-label" %>
+  <% end %>
+
+  <% if using_collection? %>
+    <%= @form.collection_select @attribute, @collection || [], @value_method, @text_method, select_options, html_options %>
+  <% else %>
+    <%= @form.select @attribute, @choices || [], select_options, html_options %>
+  <% end %>
+
+  <% if show_hint? %>
+    <div class="form-text"><%= @hint %></div>
+  <% end %>
+
+  <% if @form.object.errors[@attribute].any? %>
+    <div class="invalid-feedback d-block">
+      <%= @form.object.errors[@attribute].first %>
+    </div>
+  <% end %>
+<% if @wrapper %>
+</div>
+<% end %>
