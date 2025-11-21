@@ -184,22 +184,6 @@ module PrintPricingsHelper
     end
   end
 
-  def form_info_section(title:, items:, link_text: nil, link_url: nil, link_options: {})
-    content_tag :div, class: "alert alert-info" do
-      concat(content_tag(:p, class: "mb-2") do
-        content_tag :strong, title
-      end)
-      concat(content_tag(:ul, class: "mb-2") do
-        items.each { |item| concat(content_tag(:li, item)) }
-      end)
-      if link_text && link_url
-        concat(content_tag(:small) do
-          link_to(link_text, link_url, link_options.merge(class: "text-primary"))
-        end)
-      end
-    end
-  end
-
   def currency_input_group(form, field, label: nil, placeholder: nil, **options)
     label_text = label || t("print_pricing.fields.#{field}")
     content_tag :div, class: "col-12" do
