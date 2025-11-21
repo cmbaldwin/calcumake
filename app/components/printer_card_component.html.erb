@@ -1,0 +1,63 @@
+<div class="<%= col_classes %>">
+    <div class="card h-100">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0 text-primary"><%= printer.name %></h5>
+            <%= render Shared::BadgeComponent.new(text: manufacturer_badge_text, variant: :success) %>
+        </div>
+
+        <div class="card-body">
+            <div class="mb-3">
+                <div class="d-flex justify-content-between py-2 border-bottom">
+                    <span class="fw-medium text-muted"><%= I18n.t('printers.card.power_consumption') %>:</span>
+                    <span class="fw-bold"><%= power_consumption_text %></span>
+                </div>
+                <div class="d-flex justify-content-between py-2 border-bottom">
+                    <span class="fw-medium text-muted"><%= I18n.t('printers.card.cost') %>:</span>
+                    <span class="fw-bold"><%= cost_text %></span>
+                </div>
+                <div class="d-flex justify-content-between py-2 border-bottom">
+                    <span class="fw-medium text-muted"><%= I18n.t('printers.card.daily_usage') %>:</span>
+                    <span class="fw-bold"><%= daily_usage_text %></span>
+                </div>
+                <div class="d-flex justify-content-between py-2">
+                    <span class="fw-medium text-muted"><%= I18n.t('printers.card.payoff_goal') %>:</span>
+                    <span class="fw-bold"><%= payoff_goal_text %></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <% if paid_off? %>
+                    <%= render Shared::AlertComponent.new(variant: :success, html_options: { class: "text-center mb-0" }) do %>
+                        <strong><%= paid_off_alert_text %></strong>
+                    <% end %>
+                <% else %>
+                    <%= render Shared::AlertComponent.new(variant: :warning, html_options: { class: "text-center mb-0" }) do %>
+                        <strong><%= months_to_payoff_alert_text %></strong>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <div class="d-flex justify-content-center">
+                <div class="dropdown">
+                    <button <%= tag.attributes(dropdown_button_attrs) %>>
+                        <%= I18n.t('actions.actions') %>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <%= link_to I18n.t('actions.view'), printer, class: "dropdown-item", data: { turbo_frame: "_top" } %>
+                        </li>
+                        <li>
+                            <%= link_to I18n.t('actions.edit'), helpers.edit_printer_path(printer), class: "dropdown-item", data: { turbo_frame: "_top" } %>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <%= link_to I18n.t('actions.delete'), printer, **delete_link_attrs %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
