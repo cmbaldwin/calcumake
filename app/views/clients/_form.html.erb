@@ -19,14 +19,23 @@
         </div>
         <div class="card-body">
             <div class="row g-3">
-                <div class="col-md-6">
-                    <%= form.label :name, t('clients.fields.name'), class: "form-label" %>
-                    <%= form.text_field :name, class: "form-control", placeholder: t('clients.fields.name_placeholder'), required: true %>
-                </div>
-                <div class="col-md-6">
-                    <%= form.label :company_name, t('clients.fields.company_name'), class: "form-label" %>
-                    <%= form.text_field :company_name, class: "form-control", placeholder: t('clients.fields.company_name_placeholder') %>
-                </div>
+                <%= render Forms::FieldComponent.new(
+                  form: form,
+                  attribute: :name,
+                  type: :text,
+                  label: t('clients.fields.name'),
+                  required: true,
+                  wrapper_class: "col-md-6",
+                  options: { placeholder: t('clients.fields.name_placeholder') }
+                ) %>
+                <%= render Forms::FieldComponent.new(
+                  form: form,
+                  attribute: :company_name,
+                  type: :text,
+                  label: t('clients.fields.company_name'),
+                  wrapper_class: "col-md-6",
+                  options: { placeholder: t('clients.fields.company_name_placeholder') }
+                ) %>
             </div>
         </div>
     </div>
@@ -38,18 +47,30 @@
         </div>
         <div class="card-body">
             <div class="row g-3">
-                <div class="col-md-6">
-                    <%= form.label :email, t('clients.fields.email'), class: "form-label" %>
-                    <%= form.email_field :email, class: "form-control", placeholder: t('clients.fields.email_placeholder') %>
-                </div>
-                <div class="col-md-6">
-                    <%= form.label :phone, t('clients.fields.phone'), class: "form-label" %>
-                    <%= form.text_field :phone, class: "form-control", placeholder: t('clients.fields.phone_placeholder') %>
-                </div>
-                <div class="col-12">
-                    <%= form.label :address, t('clients.fields.address'), class: "form-label" %>
-                    <%= form.text_area :address, class: "form-control", rows: 3, placeholder: t('clients.fields.address_placeholder') %>
-                </div>
+                <%= render Forms::FieldComponent.new(
+                  form: form,
+                  attribute: :email,
+                  type: :email,
+                  label: t('clients.fields.email'),
+                  wrapper_class: "col-md-6",
+                  options: { placeholder: t('clients.fields.email_placeholder') }
+                ) %>
+                <%= render Forms::FieldComponent.new(
+                  form: form,
+                  attribute: :phone,
+                  type: :text,
+                  label: t('clients.fields.phone'),
+                  wrapper_class: "col-md-6",
+                  options: { placeholder: t('clients.fields.phone_placeholder') }
+                ) %>
+                <%= render Forms::FieldComponent.new(
+                  form: form,
+                  attribute: :address,
+                  type: :textarea,
+                  label: t('clients.fields.address'),
+                  wrapper_class: "col-12",
+                  options: { rows: 3, placeholder: t('clients.fields.address_placeholder') }
+                ) %>
             </div>
         </div>
     </div>
@@ -61,10 +82,14 @@
         </div>
         <div class="card-body">
             <div class="row g-3">
-                <div class="col-md-6">
-                    <%= form.label :tax_id, t('clients.fields.tax_id'), class: "form-label" %>
-                    <%= form.text_field :tax_id, class: "form-control", placeholder: t('clients.fields.tax_id_placeholder') %>
-                </div>
+                <%= render Forms::FieldComponent.new(
+                  form: form,
+                  attribute: :tax_id,
+                  type: :text,
+                  label: t('clients.fields.tax_id'),
+                  wrapper_class: "col-md-6",
+                  options: { placeholder: t('clients.fields.tax_id_placeholder') }
+                ) %>
             </div>
         </div>
     </div>
@@ -75,7 +100,14 @@
             <h5 class="mb-0"><%= t('clients.fields.notes') %></h5>
         </div>
         <div class="card-body">
-            <%= form.text_area :notes, class: "form-control", rows: 4, placeholder: t('clients.fields.notes_placeholder') %>
+            <%= render Forms::FieldComponent.new(
+              form: form,
+              attribute: :notes,
+              type: :textarea,
+              label: false,
+              wrapper: false,
+              options: { rows: 4, placeholder: t('clients.fields.notes_placeholder') }
+            ) %>
         </div>
     </div>
 
