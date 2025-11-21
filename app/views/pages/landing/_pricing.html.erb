@@ -11,86 +11,65 @@
 
             <div class="row g-4 justify-content-center">
                 <!-- Free Tier -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4 text-center d-flex flex-column">
-                            <h4 class="text-primary"><%= t('landing.pricing.free.title') %></h4>
-                            <div class="price-display mb-3">
-                                <span class="h2 text-primary">$0</span>
-                                <span class="text-muted">/month</span>
-                            </div>
-                            <div class="alert alert-info mb-4">
-                                <strong><%= t('landing.pricing.free.trial_notice') %></strong>
-                            </div>
-                            <ul class="list-unstyled text-start mb-4 flex-grow-1">
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.free.calculations') %></li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.free.printers') %></li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.free.filaments') %></li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.free.invoices') %></li>
-                                <li class="mb-2"><i class="bi bi-x-circle text-muted me-2"></i><%= t('landing.pricing.free.branding') %></li>
-                            </ul>
-                            <div class="mt-auto">
-                                <%= link_to t('landing.pricing.cta'), new_user_registration_path,
-                  class: "btn btn-outline-primary w-100",
-                  onclick: "if(typeof trackSignupStart === 'function') trackSignupStart();" %>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%= render Cards::PricingTierCardComponent.new(
+                    plan: "free",
+                    features: {
+                        name: t('landing.pricing.free.title'),
+                        price: "$0",
+                        limits: {
+                            print_pricings: 5,
+                            printers: 1,
+                            filaments: 4,
+                            invoices: 5
+                        },
+                        features: [
+                            t('landing.pricing.free.branding')
+                        ]
+                    }
+                ) %>
 
                 <!-- Startup Tier -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card border-primary shadow-lg h-100">
-                        <div class="card-body p-4 text-center d-flex flex-column">
-                            <div class="badge bg-primary mb-3 px-3 py-2">
-                                <%= t('landing.pricing.startup.badge') %>
-                            </div>
-                            <h4 class="text-primary"><%= t('landing.pricing.startup.title') %></h4>
-                            <div class="price-display mb-3">
-                                <span class="h2 text-primary">¥150</span>
-                                <span class="text-muted">/month</span>
-                            </div>
-                            <ul class="list-unstyled text-start mb-4 flex-grow-1">
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.startup.calculations') %></li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.startup.printers') %></li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.startup.filaments') %></li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.startup.branding') %></li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.startup.ads') %></li>
-                            </ul>
-                            <div class="mt-auto">
-                                <%= link_to t('landing.pricing.cta'), new_user_registration_path,
-                  class: "btn btn-primary w-100",
-                  onclick: "if(typeof trackSignupStart === 'function') trackSignupStart();" %>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%= render Cards::PricingTierCardComponent.new(
+                    plan: "startup",
+                    features: {
+                        name: t('landing.pricing.startup.title'),
+                        price: "¥150",
+                        limits: {
+                            print_pricings: 50,
+                            printers: 10,
+                            filaments: 16,
+                            invoices: Float::INFINITY
+                        },
+                        features: [
+                            t('landing.pricing.startup.branding'),
+                            t('landing.pricing.startup.ads')
+                        ]
+                    },
+                    popular: true
+                ) %>
 
                 <!-- Pro Tier -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4 text-center d-flex flex-column">
-                            <h4 class="text-primary"><%= t('landing.pricing.pro.title') %></h4>
-                            <div class="price-display mb-3">
-                                <span class="h2 text-primary">¥1,500</span>
-                                <span class="text-muted">/month</span>
-                            </div>
-                            <ul class="list-unstyled text-start mb-4 flex-grow-1">
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.pro.unlimited') %></li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.pro.branding') %></li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.pro.ads') %></li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.pro.support') %></li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.pro.analytics') %></li>
-                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i><%= t('landing.pricing.pro.features') %></li>
-                            </ul>
-                            <div class="mt-auto">
-                                <%= link_to t('landing.pricing.cta'), new_user_registration_path,
-                  class: "btn btn-outline-primary w-100",
-                  onclick: "if(typeof trackSignupStart === 'function') trackSignupStart();" %>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%= render Cards::PricingTierCardComponent.new(
+                    plan: "pro",
+                    features: {
+                        name: t('landing.pricing.pro.title'),
+                        price: "¥1,500",
+                        limits: {
+                            print_pricings: Float::INFINITY,
+                            printers: Float::INFINITY,
+                            filaments: Float::INFINITY,
+                            invoices: Float::INFINITY
+                        },
+                        features: [
+                            t('landing.pricing.pro.unlimited'),
+                            t('landing.pricing.pro.branding'),
+                            t('landing.pricing.pro.ads'),
+                            t('landing.pricing.pro.support'),
+                            t('landing.pricing.pro.analytics'),
+                            t('landing.pricing.pro.features')
+                        ]
+                    }
+                ) %>
             </div>
 
             <div class="row mt-5">
