@@ -60,7 +60,7 @@ module Shared
     # Returns combined CSS classes for the button
     # @return [String]
     def css_classes
-      classes = ["btn", "btn-#{@variant}"]
+      classes = [ "btn", "btn-#{@variant}" ]
       classes << size_class if @size != "md"
       classes << "disabled" if @disabled
       classes << @html_options[:class] if @html_options[:class]
