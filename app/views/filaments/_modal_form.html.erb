@@ -45,33 +45,36 @@
               wrapper_class: "col-md-6",
               options: { placeholder: t('filaments.fields.brand_placeholder') }
             ) %>
-            <div class="col-md-6">
-              <%= form.label :material_type, t('filaments.fields.material_type'), class: "form-label" %>
-              <%= form.select :material_type,
-                  options_for_select([
-                      ['PLA', 'PLA'],
-                      ['ABS', 'ABS'],
-                      ['PETG', 'PETG'],
-                      ['TPU', 'TPU'],
-                      ['ASA', 'ASA'],
-                      ['HIPS', 'HIPS'],
-                      ['Nylon', 'Nylon'],
-                      ['PC', 'PC'],
-                      ['PVA', 'PVA'],
-                      ['Wood', 'Wood'],
-                      ['Metal', 'Metal'],
-                      ['Carbon', 'Carbon']
-                  ], @filament.material_type),
-                  { prompt: t('filaments.fields.material_type_prompt') },
-                  { class: "form-select", required: true } %>
-            </div>
-            <div class="col-md-6">
-              <%= form.label :diameter, t('filaments.fields.diameter'), class: "form-label" %>
-              <%= form.select :diameter,
-                  options_for_select([['1.75mm', 1.75], ['2.85mm', 2.85], ['3.00mm', 3.0]], @filament.diameter),
-                  {},
-                  { class: "form-select", required: true } %>
-            </div>
+            <%= render Forms::SelectFieldComponent.new(
+              form: form,
+              attribute: :material_type,
+              choices: [
+                ['PLA', 'PLA'],
+                ['ABS', 'ABS'],
+                ['PETG', 'PETG'],
+                ['TPU', 'TPU'],
+                ['ASA', 'ASA'],
+                ['HIPS', 'HIPS'],
+                ['Nylon', 'Nylon'],
+                ['PC', 'PC'],
+                ['PVA', 'PVA'],
+                ['Wood', 'Wood'],
+                ['Metal', 'Metal'],
+                ['Carbon', 'Carbon']
+              ],
+              label: t('filaments.fields.material_type'),
+              prompt: t('filaments.fields.material_type_prompt'),
+              required: true,
+              wrapper_class: "col-md-6"
+            ) %>
+            <%= render Forms::SelectFieldComponent.new(
+              form: form,
+              attribute: :diameter,
+              choices: [['1.75mm', 1.75], ['2.85mm', 2.85], ['3.00mm', 3.0]],
+              label: t('filaments.fields.diameter'),
+              required: true,
+              wrapper_class: "col-md-6"
+            ) %>
             <%= render Forms::FieldComponent.new(
               form: form,
               attribute: :color,
