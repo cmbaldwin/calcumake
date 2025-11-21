@@ -4,8 +4,17 @@
       <h5 class="mb-0"><%= t("invoices.fields.payment_details") %></h5>
     </div>
     <div class="card-body">
-      <%= form.text_area :payment_details, class: "form-control", rows: 5, 
-            placeholder: t("invoices.placeholders.payment_details", default: "Bank Name: Example Bank\nAccount Number: 1234567890\nRouting Number: 987654321") %>
+      <%= render Forms::FieldComponent.new(
+        form: form,
+        attribute: :payment_details,
+        type: :textarea,
+        label: false,
+        wrapper: false,
+        options: { 
+          rows: 5,
+          placeholder: t("invoices.placeholders.payment_details", default: "Bank Name: Example Bank\nAccount Number: 1234567890\nRouting Number: 987654321")
+        }
+      ) %>
     </div>
   </div>
 </div>
@@ -16,8 +25,17 @@
       <h5 class="mb-0"><%= t("invoices.fields.notes") %></h5>
     </div>
     <div class="card-body">
-      <%= form.text_area :notes, class: "form-control", rows: 5, 
-            placeholder: t("invoices.placeholders.notes", default: "Thank you for your business!") %>
+      <%= render Forms::FieldComponent.new(
+        form: form,
+        attribute: :notes,
+        type: :textarea,
+        label: false,
+        wrapper: false,
+        options: { 
+          rows: 5,
+          placeholder: t("invoices.placeholders.notes", default: "Thank you for your business!")
+        }
+      ) %>
     </div>
   </div>
 </div>
