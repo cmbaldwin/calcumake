@@ -1,0 +1,94 @@
+<div class="card mb-3 border-secondary" data-plate-index="<%= @index %>">
+  <div class="card-header bg-light d-flex justify-content-between align-items-center">
+    <strong>
+      <i class="bi bi-square me-1"></i>
+      <span class="plate-number"><%= t('advanced_calculator.plate') %> <span class="plate-index"><%= plate_number %></span></span>
+    </strong>
+    <button type="button"
+            class="btn btn-sm btn-danger"
+            data-action="click->advanced-calculator#removePlate">
+      <i class="bi bi-trash"></i>
+    </button>
+  </div>
+  <div class="card-body">
+    <!-- Print Settings -->
+    <div class="row g-3 mb-3">
+      <% field_config.each do |field_name, config| %>
+        <div class="col-md-<%= [:print_time, :power_consumption, :machine_cost, :payoff_years].include?(field_name) ? '4' : '6' %>">
+          <label class="form-label">
+            <%= t(config[:label]) %> <%= config[:unit] %>
+          </label>
+          <input type="number"
+                 class="form-control"
+                 name="plates[<%= @index %>][<%= field_name %>]"
+                 data-action="input->advanced-calculator#calculate"
+                 value="<%= @defaults[field_name] %>"
+                 min="<%= config[:min] %>"
+                 step="<%= config[:step] %>">
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Filaments Section -->
+    <div class="filaments-section">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <label class="form-label fw-bold mb-0">
+          <i class="bi bi-palette me-1"></i>
+          <%= t('advanced_calculator.filaments') %>
+        </label>
+        <button type="button"
+                class="btn btn-sm btn-outline-success"
+                data-action="click->advanced-calculator#addFilament">
+          <i class="bi bi-plus me-1"></i>
+          <%= t('advanced_calculator.add_filament') %>
+        </button>
+      </div>
+
+      <div data-filaments-container class="filaments-container">
+        <!-- Filaments will be added here -->
+      </div>
+
+      <!-- Filament Template -->
+      <template data-filament-template>
+        <div class="row g-2 mb-2 align-items-end" data-filament-index="0">
+          <div class="col-md-5">
+            <label class="form-label small">
+              <%= t('advanced_calculator.filament_fields.weight') %> (g)
+            </label>
+            <input type="number"
+                   class="form-control form-control-sm"
+                   name="plates[<%= @index %>][filaments][0][filament_weight]"
+                   data-action="input->advanced-calculator#calculate"
+                   value="<%= @defaults[:filament_weight] %>"
+                   min="0.1"
+                   step="0.1">
+          </div>
+          <div class="col-md-5">
+            <label class="form-label small">
+              <%= t('advanced_calculator.filament_fields.price_per_kg') %>
+            </label>
+            <input type="number"
+                   class="form-control form-control-sm"
+                   name="plates[<%= @index %>][filaments][0][filament_price]"
+                   data-action="input->advanced-calculator#calculate"
+                   value="<%= @defaults[:filament_price] %>"
+                   min="0"
+                   step="0.1">
+          </div>
+          <div class="col-md-2">
+            <button type="button"
+                    class="btn btn-sm btn-outline-danger w-100"
+                    data-action="click->advanced-calculator#removeFilament">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </div>
+      </template>
+
+      <small class="text-muted">
+        <i class="bi bi-info-circle me-1"></i>
+        <%= t('advanced_calculator.filaments_help') %>
+      </small>
+    </div>
+  </div>
+</div>
