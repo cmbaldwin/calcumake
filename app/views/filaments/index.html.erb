@@ -26,15 +26,17 @@
                       action: "input->search#search"
                     } %>
             </div>
-            <div class="col-md-6">
-                <%= form.select :material_type_eq,
-                    options_for_select([['All Materials', '']] + @material_types.map { |t| [t, t] }, params.dig(:q, :material_type_eq)),
-                    {},
-                    {
-                      class: "form-select",
-                      data: { action: "change->search#search" }
-                    } %>
-            </div>
+            <%= render Forms::SelectFieldComponent.new(
+              form: form,
+              attribute: :material_type_eq,
+              choices: [['All Materials', '']] + @material_types.map { |t| [t, t] },
+              label: false,
+              wrapper_class: "col-md-6",
+              html_options: {
+                data: { action: "change->search#search" }
+              },
+              select_options: { selected: params.dig(:q, :material_type_eq) }
+            ) %>
         <% end %>
     </div>
 </div>

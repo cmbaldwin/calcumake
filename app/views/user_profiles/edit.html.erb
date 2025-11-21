@@ -25,13 +25,16 @@
     </h3>
     <div class="row">
       <div class="column column-50">
-        <label for="user_default_currency">Default Currency</label>
-        <%= form.select :default_currency, 
-            options_for_select(currency_options, @user.default_currency), 
-            { prompt: "Select currency" } %>
-        <p class="form-text">
-          This will be used as the default currency for new pricing calculations.
-        </p>
+        <%= render Forms::SelectFieldComponent.new(
+          form: form,
+          attribute: :default_currency,
+          choices: currency_options,
+          label: "Default Currency",
+          prompt: "Select currency",
+          hint: "This will be used as the default currency for new pricing calculations.",
+          wrapper: false,
+          select_options: { selected: @user.default_currency }
+        ) %>
       </div>
       <div class="column column-50">
         <label for="user_default_energy_cost_per_kwh">Default Energy Cost per kWh</label>

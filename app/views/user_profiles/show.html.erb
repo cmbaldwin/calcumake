@@ -41,14 +41,16 @@
         </div>
         <div class="card-body">
             <div class="row g-3">
-                <div class="col-md-6">
-                    <%= form.label :default_currency, t('profile.fields.default_currency'), class: "form-label" %>
-                    <%= form.select :default_currency,
-                options_for_select(currency_options, @user.default_currency),
-                { prompt: t('print_pricing.fields.currency_prompt') },
-                { class: "form-select" } %>
-                    <div class="form-text"><%= t('profile.fields.default_currency_help') %></div>
-                </div>
+                <%= render Forms::SelectFieldComponent.new(
+                  form: form,
+                  attribute: :default_currency,
+                  choices: currency_options,
+                  label: t('profile.fields.default_currency'),
+                  prompt: t('print_pricing.fields.currency_prompt'),
+                  hint: t('profile.fields.default_currency_help'),
+                  wrapper_class: "col-md-6",
+                  select_options: { selected: @user.default_currency }
+                ) %>
                 <div class="col-md-6">
                     <%= form.label :default_energy_cost_per_kwh, t('profile.fields.energy_cost'), class: "form-label" %>
                     <%= form.number_field :default_energy_cost_per_kwh,
