@@ -1,0 +1,15 @@
+<div class="alert alert-info">
+  <p class="mb-2"><strong><%= @title %></strong></p>
+  <% if @items.any? %>
+    <ul class="mb-2">
+      <% @items.each do |item| %>
+        <li><%= item %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if show_link? %>
+    <small>
+      <%= link_to @link_text, @link_url, link_html_options %>
+    </small>
+  <% end %>
+</div>
