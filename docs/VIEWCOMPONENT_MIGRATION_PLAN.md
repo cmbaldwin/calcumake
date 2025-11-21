@@ -60,19 +60,22 @@ Based on comprehensive codebase analysis:
 
 ### 1.1 Already Complete ✅
 
-- **StatsCardComponent** - Dashboard statistics cards
+- **Shared::StatsCardComponent** - Dashboard statistics cards (needs namespace update)
 
-### 1.2 Basic UI Components (6 components, 8 hours)
+### 1.2 Shared UI Components (6 components, 8 hours)
 
-#### ButtonComponent (1 hour)
+All components in `app/components/shared/` namespace
+
+#### Shared::ButtonComponent (1 hour)
 
 **Location:** Throughout application  
 **Duplication:** 50+ instances of styled buttons  
 **Purpose:** Consistent button styling with variants
 
 ```ruby
-# app/components/button_component.rb
-class ButtonComponent < ViewComponent::Base
+# app/components/shared/button_component.rb
+module Shared
+  class ButtonComponent < ViewComponent::Base
   def initialize(
     text:,
     variant: "primary",      # primary, secondary, success, danger, outline-primary, etc.
@@ -83,6 +86,7 @@ class ButtonComponent < ViewComponent::Base
     data: {},                # Stimulus controllers, etc.
     html_options: {}
   )
+  end
   end
 end
 ```
@@ -98,14 +102,15 @@ end
 
 ---
 
-#### BadgeComponent (1 hour)
+#### Shared::BadgeComponent (1 hour)
 
 **Current:** 40+ inline badge implementations  
 **Purpose:** Status indicators, counts, labels
 
 ```ruby
-# app/components/badge_component.rb
-class BadgeComponent < ViewComponent::Base
+# app/components/shared/badge_component.rb
+module Shared
+  class BadgeComponent < ViewComponent::Base
   def initialize(
     text:,
     variant: "primary",      # primary, secondary, success, danger, warning, info
@@ -113,6 +118,7 @@ class BadgeComponent < ViewComponent::Base
     icon: nil,
     pill: false
   )
+  end
   end
 end
 ```
@@ -127,14 +133,15 @@ end
 
 ---
 
-#### AlertComponent (1 hour)
+#### Shared::AlertComponent (1 hour)
 
 **Current:** Flash messages, form errors, info boxes  
 **Duplication:** 25+ instances
 
 ```ruby
-# app/components/alert_component.rb
-class AlertComponent < ViewComponent::Base
+# app/components/shared/alert_component.rb
+module Shared
+  class AlertComponent < ViewComponent::Base
   def initialize(
     message: nil,
     variant: "info",         # success, info, warning, danger
@@ -144,6 +151,7 @@ class AlertComponent < ViewComponent::Base
   end
 
   # Can accept block for complex content
+  end
 end
 ```
 
@@ -155,14 +163,15 @@ end
 
 ---
 
-#### ModalComponent (2 hours)
+#### Shared::ModalComponent (2 hours)
 
 **Current:** `app/views/shared/_modal.html.erb` + 8 modal forms  
 **Purpose:** Consistent modal dialogs
 
 ```ruby
-# app/components/modal_component.rb
-class ModalComponent < ViewComponent::Base
+# app/components/shared/modal_component.rb
+module Shared
+  class ModalComponent < ViewComponent::Base
   def initialize(
     id:,
     title:,
@@ -176,6 +185,7 @@ class ModalComponent < ViewComponent::Base
   renders_one :header
   renders_one :body
   renders_one :footer
+  end
 end
 ```
 
@@ -188,14 +198,15 @@ end
 
 ---
 
-#### CardComponent (2 hours)
+#### Shared::CardComponent (2 hours)
 
 **Current:** 100+ card instances  
 **Purpose:** Base card wrapper with variants
 
 ```ruby
-# app/components/card_component.rb
-class CardComponent < ViewComponent::Base
+# app/components/shared/card_component.rb
+module Shared
+  class CardComponent < ViewComponent::Base
   def initialize(
     variant: "default",      # default, primary, success, danger, transparent
     shadow: true,
@@ -209,6 +220,7 @@ class CardComponent < ViewComponent::Base
   renders_one :header
   renders_one :body
   renders_one :footer
+  end
 end
 ```
 
@@ -218,20 +230,22 @@ end
 
 ---
 
-#### IconComponent (1 hour)
+#### Shared::IconComponent (1 hour)
 
 **Current:** Inline Bootstrap icon classes  
 **Purpose:** Consistent icon rendering
 
 ```ruby
-# app/components/icon_component.rb
-class IconComponent < ViewComponent::Base
+# app/components/shared/icon_component.rb
+module Shared
+  class IconComponent < ViewComponent::Base
   def initialize(
     name:,                   # Bootstrap icon name (without bi- prefix)
     size: "md",              # sm, md, lg
     color: nil,
     spin: false              # For loading states
   )
+  end
   end
 end
 ```
@@ -246,15 +260,18 @@ end
 
 ### 2.1 Data Display Cards (8 components, 8 hours)
 
-#### PricingCardComponent (2 hours) ⭐ HIGH IMPACT
+All components in feature-specific namespaces
+
+#### PrintPricings::CardComponent (2 hours) ⭐ HIGH IMPACT
 
 **Current:** `app/views/shared/components/_pricing_card.html.erb` (52 lines)  
 **Duplication:** Used in index + show views  
 **Complexity:** High - multiple data points, responsive layout
 
 ```ruby
-# app/components/pricing_card_component.rb
-class PricingCardComponent < ViewComponent::Base
+# app/components/print_pricings/card_component.rb
+module PrintPricings
+  class CardComponent < ViewComponent::Base
   def initialize(pricing:, compact: false)
     @pricing = pricing
     @compact = compact
@@ -269,13 +286,14 @@ class PricingCardComponent < ViewComponent::Base
 
   def metadata_badges
   end
+  end
 end
 ```
 
 **Compose:**
 
-- BadgeComponent for counts
-- ButtonComponent for actions
+- Shared::BadgeComponent for counts
+- Shared::ButtonComponent for actions
 - Dropdown helper
 
 **Test Coverage:**
@@ -290,35 +308,38 @@ end
 
 ---
 
-#### InvoiceCardComponent (1.5 hours)
+#### Invoices::CardComponent (1.5 hours)
 
 **Current:** `app/views/invoices/_invoice_card.html.erb`  
 **Purpose:** Invoice list display
 
 ```ruby
-# app/components/invoice_card_component.rb
-class InvoiceCardComponent < ViewComponent::Base
-  def initialize(invoice:)
+# app/components/invoices/card_component.rb
+module Invoices
+  class CardComponent < ViewComponent::Base
+    def initialize(invoice:)
+    end
   end
 end
 ```
 
 **Compose:**
 
-- CardComponent (base)
-- BadgeComponent (status)
-- ButtonComponent (actions)
+- Shared::CardComponent (base)
+- Shared::BadgeComponent (status)
+- Shared::ButtonComponent (actions)
 
 ---
 
-#### UsageStatsComponent (1 hour) ⭐ HIGH IMPACT
+#### Cards::UsageStatsComponent (1 hour) ⭐ HIGH IMPACT
 
 **Current:** `app/views/subscriptions/_usage_stats.html.erb` (4x duplication, 120 lines)  
 **Research identified:** 4 identical 30-line blocks
 
 ```ruby
-# app/components/usage_stats_component.rb
-class UsageStatsComponent < ViewComponent::Base
+# app/components/cards/usage_stats_component.rb
+module Cards
+  class UsageStatsComponent < ViewComponent::Base
   def initialize(user:)
     @user = user
   end
@@ -327,82 +348,93 @@ class UsageStatsComponent < ViewComponent::Base
     # Uses cached_usage_stats from Phase 1 caching
     @user.cached_usage_stats[resource.to_s]
   end
+  end
 end
 ```
 
 **Compose:**
 
-- ProgressBarComponent (new)
-- BadgeComponent
+- Shared::ProgressBarComponent (new)
+- Shared::BadgeComponent
 
 ---
 
-#### UsageDashboardWidgetComponent (1 hour)
+#### Cards::UsageDashboardWidgetComponent (1 hour)
 
 **Current:** `app/views/shared/_usage_dashboard_widget.html.erb`  
 **Purpose:** Compact usage display in navbar/header
 
 ```ruby
-# app/components/usage_dashboard_widget_component.rb
-class UsageDashboardWidgetComponent < ViewComponent::Base
-  def initialize(user:)
+# app/components/cards/usage_dashboard_widget_component.rb
+module Cards
+  class UsageDashboardWidgetComponent < ViewComponent::Base
+    def initialize(user:)
+    end
   end
 end
 ```
 
 ---
 
-#### PrinterCardComponent (1 hour)
+#### Printers::CardComponent (1 hour)
 
 **Purpose:** Printer list display (currently inline in index)
 
 ```ruby
-# app/components/printer_card_component.rb
-class PrinterCardComponent < ViewComponent::Base
-  def initialize(printer:)
+# app/components/printers/card_component.rb
+module Printers
+  class CardComponent < ViewComponent::Base
+    def initialize(printer:)
+    end
   end
 end
 ```
 
 ---
 
-#### ClientCardComponent (0.5 hours)
+#### Clients::CardComponent (0.5 hours)
 
 **Purpose:** Client list display
 
 ```ruby
-# app/components/client_card_component.rb
-class ClientCardComponent < ViewComponent::Base
-  def initialize(client:)
+# app/components/clients/card_component.rb
+module Clients
+  class CardComponent < ViewComponent::Base
+    def initialize(client:)
+    end
   end
 end
 ```
 
 ---
 
-#### FilamentCardComponent (0.5 hours)
+#### Filaments::CardComponent (0.5 hours)
 
 **Purpose:** Filament list display
 
 ```ruby
-# app/components/filament_card_component.rb
-class FilamentCardComponent < ViewComponent::Base
-  def initialize(filament:)
+# app/components/filaments/card_component.rb
+module Filaments
+  class CardComponent < ViewComponent::Base
+    def initialize(filament:)
+    end
   end
 end
 ```
 
 ---
 
-#### FeatureCardComponent (0.5 hours)
+#### Cards::FeatureCardComponent (0.5 hours)
 
 **Current:** `app/views/pages/landing/_features.html.erb` (4x duplication)  
 **Purpose:** Landing page feature showcase
 
 ```ruby
-# app/components/feature_card_component.rb
-class FeatureCardComponent < ViewComponent::Base
-  def initialize(icon:, title:, description:)
+# app/components/cards/feature_card_component.rb
+module Cards
+  class FeatureCardComponent < ViewComponent::Base
+    def initialize(icon:, title:, description:)
+    end
   end
 end
 ```
@@ -411,28 +443,31 @@ end
 
 ### 2.2 Specialized Cards (4 components, 8 hours)
 
-#### ProblemCardComponent (1 hour)
+#### Cards::ProblemCardComponent (1 hour)
 
 **Current:** `app/views/pages/landing/_problem.html.erb` (4x identical cards)
 
 ```ruby
-# app/components/problem_card_component.rb
-class ProblemCardComponent < ViewComponent::Base
-  def initialize(emoji:, title:, description:)
+# app/components/cards/problem_card_component.rb
+module Cards
+  class ProblemCardComponent < ViewComponent::Base
+    def initialize(emoji:, title:, description:)
+    end
   end
 end
 ```
 
 ---
 
-#### PricingTierCardComponent (2 hours)
+#### Cards::PricingTierCardComponent (2 hours)
 
 **Current:** `app/views/pages/landing/_pricing.html.erb` (3 tiers)  
 **Also:** `app/views/subscriptions/_pricing_card.html.erb`
 
 ```ruby
-# app/components/pricing_tier_card_component.rb
-class PricingTierCardComponent < ViewComponent::Base
+# app/components/cards/pricing_tier_card_component.rb
+module Cards
+  class PricingTierCardComponent < ViewComponent::Base
   def initialize(
     tier:,                   # :free, :startup, :pro
     highlighted: false,
@@ -445,46 +480,52 @@ class PricingTierCardComponent < ViewComponent::Base
   def features
     PlanLimits.features_for(@plan[:name])
   end
+  end
 end
 ```
 
 **Compose:**
 
-- CardComponent
-- BadgeComponent (for "Popular" badge)
-- ButtonComponent (CTA)
+- Shared::CardComponent
+- Shared::BadgeComponent (for "Popular" badge)
+- Shared::ButtonComponent (CTA)
 
 ---
 
-#### PlateCardComponent (2 hours)
+#### Cards::PlateCardComponent (2 hours) ✅ COMPLETE
 
 **Current:** `app/views/pages/pricing_calculator/_plate_template.html.erb`  
 **Purpose:** Calculator plate display
 
 ```ruby
-# app/components/plate_card_component.rb
-class PlateCardComponent < ViewComponent::Base
-  def initialize(plate:, index:, editable: true)
+# app/components/cards/plate_card_component.rb
+module Cards
+  class PlateCardComponent < ViewComponent::Base
+    def initialize(index:, defaults: {})
+    end
   end
 end
 ```
 
-**Note:** Complex due to nested form fields and Stimulus integration
+**Note:** Complex due to nested form fields and Stimulus integration  
+**Status:** Complete with 26 tests, 91 assertions
 
 ---
 
-#### InfoSectionComponent (3 hours)
+#### InfoSectionComponent (3 hours) ✅ COMPLETE & MIGRATED
 
 **Current:** Helper method `form_info_section` in print_pricings_helper.rb  
-**Used:** 5+ times in print pricing form
+**Used:** 2 times in print pricing form (migrated)
 
 ```ruby
 # app/components/info_section_component.rb
 class InfoSectionComponent < ViewComponent::Base
-  def initialize(title:, items:, link_text: nil, link_url: nil)
+  def initialize(title:, items: [], link_text: nil, link_url: nil, link_options: {})
   end
 end
 ```
+
+**Status:** Complete with 31 tests, 57 assertions, view migrated
 
 ---
 
