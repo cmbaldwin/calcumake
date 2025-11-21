@@ -1,0 +1,96 @@
+<div class="col-12">
+  <div class="card pricing-card h-100">
+    <div class="card-body">
+      <div class="row align-items-center gy-3 gy-lg-0">
+        <!-- Job Name and Creation Date -->
+        <div class="col-lg-3">
+          <div class="d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
+            <h5 class="card-title mb-1">
+              <%= link_to @pricing.job_name, @pricing, class: "text-decoration-none text-primary fw-bold", data: { turbo_frame: "_top" } %>
+            </h5>
+            <small class="created-date d-block mb-2 text-center text-lg-start">
+              <%= formatted_creation_date %>
+            </small>
+          </div>
+
+          <!-- Mobile Metadata Badges -->
+          <div class="d-flex gap-2 flex-wrap d-lg-none justify-content-center">
+            <%= render BadgeComponent.new(text: plate_count_text, variant: "info") %>
+            <% filament_types.each do |type| %>
+              <%= render BadgeComponent.new(text: translate_filament_type(type), variant: "secondary") %>
+            <% end %>
+            <small class="text-muted"><%= total_filament_weight %>g | <%= formatted_print_time %></small>
+          </div>
+        </div>
+
+        <!-- Plate Count (Desktop) -->
+        <div class="col-lg-1 d-none d-lg-block text-center">
+          <div class="d-flex flex-column gap-1">
+            <%= render BadgeComponent.new(text: plate_count_text, variant: "info") %>
+            <small class="text-muted"><%= formatted_print_time %></small>
+          </div>
+        </div>
+
+        <!-- Filament Types (Desktop) -->
+        <div class="col-lg-2 d-none d-lg-block text-center">
+          <div class="d-flex flex-column gap-1">
+            <% filament_types.each do |type| %>
+              <%= render BadgeComponent.new(text: translate_filament_type(type), variant: "secondary") %>
+            <% end %>
+            <small class="text-muted"><%= total_filament_weight %>g</small>
+          </div>
+        </div>
+
+        <!-- Times Printed Control -->
+        <div class="col-lg-2 text-center">
+          <div class="d-flex flex-column align-items-center">
+            <small class="times-printed-label d-lg-none mb-1"><%= t('print_pricing.times_printed') %></small>
+            <%= render "shared/components/times_printed_control", pricing: @pricing %>
+          </div>
+        </div>
+
+        <!-- Final Price -->
+        <div class="col-lg-2 text-center">
+          <%= render BadgeComponent.new(
+            text: "#{@pricing.default_currency} #{formatted_price}",
+            variant: "success",
+            html_options: { class: "fs-6" }
+          ) %>
+        </div>
+
+        <!-- Actions Dropdown -->
+        <div class="col-lg-2">
+          <div class="dropdown text-center">
+            <%= render ButtonComponent.new(
+              text: t("actions.actions"),
+              variant: "outline-secondary",
+              size: "sm",
+              html_options: {
+                type: "button",
+                data: {
+                  "bs-toggle": "dropdown",
+                  "bs-boundary": "viewport",
+                  "bs-container": "body"
+                },
+                "aria-expanded": "false",
+                class: "dropdown-toggle"
+              }
+            ) %>
+
+            <ul class="dropdown-menu">
+              <% action_items.each do |item| %>
+                <% if item == :divider %>
+                  <li><hr class="dropdown-divider"></li>
+                <% else %>
+                  <li>
+                    <%= link_to item[:label], item[:path], { class: "dropdown-item #{item[:options][:class]}", data: { turbo_frame: "_top" } }.merge(item[:options].except(:class)) %>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
