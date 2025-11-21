@@ -25,15 +25,15 @@ class PricingCardComponent < ViewComponent::Base
   end
 
   def formatted_price
-    format_currency(@pricing.final_price, @pricing.default_currency)
+    helpers.format_currency(@pricing.final_price, @pricing.default_currency)
   end
 
   def formatted_creation_date
-    format_creation_date(@pricing)
+    helpers.format_creation_date(@pricing)
   end
 
   def formatted_print_time
-    format_print_time(@pricing)
+    helpers.format_print_time(@pricing)
   end
 
   def action_items
