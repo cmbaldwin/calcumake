@@ -5,21 +5,18 @@
       <h5 class="mb-0"><%= t('print_pricing.sections.electricity') %></h5>
     </div>
     <div class="card-body">
-      <div class="alert alert-info">
-        <p class="mb-2"><strong><%= t('print_pricing.sections.electricity_auto_calculated') %></strong></p>
-        <ul class="mb-2">
-          <li><%= t('print_pricing.sections.electricity_power_consumption') %></li>
-          <li><%= t('print_pricing.sections.electricity_print_time') %></li>
-          <li><%= t('print_pricing.sections.electricity_energy_cost',
-                    cost: "#{currency_symbol(current_user.default_currency)}#{current_user.default_energy_cost_per_kwh}/kWh") %></li>
-        </ul>
-        <small>
-          <%= t('print_pricing.sections.electricity_settings_link_html',
-                link: link_to(t('print_pricing.sections.profile_settings'),
-                              user_profile_path,
-                              class: "text-primary")) %>
-        </small>
-      </div>
+      <%= render InfoSectionComponent.new(
+        title: t('print_pricing.sections.electricity_auto_calculated'),
+        items: [
+          t('print_pricing.sections.electricity_power_consumption'),
+          t('print_pricing.sections.electricity_print_time'),
+          t('print_pricing.sections.electricity_energy_cost',
+            cost: "#{currency_symbol(current_user.default_currency)}#{current_user.default_energy_cost_per_kwh}/kWh")
+        ],
+        link_text: t('print_pricing.sections.electricity_settings_link_html',
+                      link: t('print_pricing.sections.profile_settings')).html_safe,
+        link_url: user_profile_path
+      ) %>
     </div>
   </div>
 </div>
@@ -31,21 +28,18 @@
       <h5 class="mb-0"><%= t('print_pricing.sections.machine_upkeep') %></h5>
     </div>
     <div class="card-body">
-      <div class="alert alert-info">
-        <p class="mb-2"><strong><%= t('print_pricing.sections.machine_auto_calculated') %></strong></p>
-        <ul class="mb-2">
-          <li><%= t('print_pricing.sections.machine_cost_usage') %></li>
-          <li><%= t('print_pricing.sections.machine_return_period') %></li>
-          <li><%= t('print_pricing.sections.machine_repair_factor') %></li>
-        </ul>
-        <small>
-          <%= t('print_pricing.sections.machine_printer_config_html',
-                link: link_to(t('print_pricing.sections.add_edit_printer'),
-                              new_printer_path,
-                              class: "text-primary",
-                              data: { confirm: t('print_pricing.sections.unsaved_progress_warning') })) %>
-        </small>
-      </div>
+      <%= render InfoSectionComponent.new(
+        title: t('print_pricing.sections.machine_auto_calculated'),
+        items: [
+          t('print_pricing.sections.machine_cost_usage'),
+          t('print_pricing.sections.machine_return_period'),
+          t('print_pricing.sections.machine_repair_factor')
+        ],
+        link_text: t('print_pricing.sections.machine_printer_config_html',
+                      link: t('print_pricing.sections.add_edit_printer')).html_safe,
+        link_url: new_printer_path,
+        link_options: { data: { confirm: t('print_pricing.sections.unsaved_progress_warning') } }
+      ) %>
     </div>
   </div>
 </div>
