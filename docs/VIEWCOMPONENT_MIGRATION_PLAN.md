@@ -611,24 +611,61 @@ git grep "form\.(text_field|email_field|number_field|text_area|password_field)" 
 
 ---
 
-#### SelectFieldComponent (1 hour)
+#### Forms::SelectFieldComponent (2 hours) ✅ CREATED & ✅ MIGRATED
 
-**Purpose:** Styled select dropdowns with search
+**Status:** ✅ Component created with 19 tests, 27 assertions
+**Migration:** ✅ **ALL 12 inline selects migrated!** (100% complete)
+
+**Purpose:** Standardize select/dropdown fields across application
 
 ```ruby
-# app/components/select_field_component.rb
-class SelectFieldComponent < ViewComponent::Base
-  def initialize(
-    form:,
-    attribute:,
-    choices:,
-    label: nil,
-    include_blank: false,
-    searchable: false
-  )
+# app/components/forms/select_field_component.rb
+module Forms
+  class SelectFieldComponent < ViewComponent::Base
+    def initialize(
+      form:,
+      attribute:,
+      choices: nil,              # For standard select
+      collection: nil,            # For collection_select
+      value_method: nil,          # For collection_select
+      text_method: nil,           # For collection_select
+      label: nil,
+      hint: nil,
+      prompt: nil,
+      include_blank: false,
+      required: false,
+      wrapper: true,
+      wrapper_class: "col-12",
+      select_options: {},
+      html_options: {}
+    )
+    end
   end
 end
 ```
+
+**Migrated views (12 selects across 9 files):**
+
+**Filament Forms (6 selects):**
+- ✅ `app/views/filaments/_modal_form.html.erb` (material_type + diameter)
+- ✅ `app/views/filaments/edit.html.erb` (material_type + diameter)
+- ✅ `app/views/filaments/new.html.erb` (material_type + diameter)
+
+**Invoice Forms (3 selects):**
+- ✅ `app/views/invoices/partials/form/_client.html.erb` (client_id collection_select)
+- ✅ `app/views/invoices/partials/form/_status_currency.html.erb` (status + currency)
+
+**User Profile Forms (2 selects):**
+- ✅ `app/views/user_profiles/show.html.erb` (default_currency)
+- ✅ `app/views/user_profiles/edit.html.erb` (default_currency)
+
+**Navigation & Search (2 selects):**
+- ✅ `app/views/shared/_navbar.html.erb` (locale selector)
+- ✅ `app/views/filaments/index.html.erb` (material_type filter)
+
+**Bug Fix:** Added defensive nil checks for `@form.object` to support non-model forms (search forms, navbar locale selector)
+
+**Impact:** ~60 lines reduced, 12 selects standardized, zero inline select patterns remaining
 
 ---
 
@@ -1532,39 +1569,42 @@ For each component:
 | ----------------------- | ---------- | ------- | -------- | --------- | ------------- | ---------------------------- |
 | **Phase 1: Foundation** | 7          | 7       | 7        | 148       | 52            | ✅ Complete (100% migrated)  |
 | **Phase 2: Cards**      | 12         | 12      | 4        | 1,494     | 157           | 🟡 In Progress (33%)         |
-| **Phase 3: Forms**      | 15         | 1       | 1        | 21        | 90            | 🟡 In Progress (7%)          |
+| **Phase 3: Forms**      | 15         | 2       | 2        | 40        | 150           | 🟡 In Progress (13%)         |
 | **Phase 4: Features**   | 18         | 0       | 0        | 0         | 0             | ⚪ Not Started               |
 | **Phase 5: Layout**     | 6          | 0       | 0        | 0         | 0             | ⚪ Not Started               |
 | **Phase 6: Helpers**    | 15         | 0       | 0        | 0         | 0             | ⚪ Not Started               |
-| **TOTAL**               | **73**     | **20**  | **12**   | **1,663** | **~299**      | **27% created, 16% migrated**|
+| **TOTAL**               | **73**     | **21**  | **13**   | **1,682** | **~359**      | **29% created, 18% migrated**|
 
 **Target:** 73 components, 438+ tests, 2,500-3,500 lines reduced
 
 **CURRENT STATUS:**
 
-- ✅ 20 components created (27% of total)
-- ✅ 12 components fully migrated to views (16% complete)
-- ✅ 977 tests passing, 2,473 assertions
+- ✅ 21 components created (29% of total)
+- ✅ 13 components fully migrated to views (18% complete)
+- ✅ 996 tests passing, 2,500 assertions
 - ✅ **Phase 1 COMPLETE:** All 7 foundation components actively used in production
+- ✅ **Phase 3 Forms: 13% complete** - SelectFieldComponent fully migrated
 - 📊 **Projected savings:** 2,500-3,500 lines
-- 📊 **Actual savings so far:** ~299 lines (12% of target)
-- 🎯 **Recent progress:** Phase 1 complete with full migration
+- 📊 **Actual savings so far:** ~359 lines (14% of target)
+- 🎯 **Recent progress:** SelectFieldComponent created and ALL usages migrated
 
-**RECENT ACCOMPLISHMENTS (2025-11-21):**
+**RECENT ACCOMPLISHMENTS (2025-11-21 - Session 2):**
 
-- ✅ **Phase 1 Complete:** All foundation components migrated (100%)
-- ✅ Migrated Cards::PricingCardComponent - deleted unused partial (52 lines)
-- ✅ Migrated UsageStatsComponent - eliminated 4x duplication (157 lines)
-- ✅ **Shared::BadgeComponent fully migrated** - replaced ALL 24 inline badges (90 lines)
-  - Migrated views: invoices, filaments, clients, print_pricings, subscriptions, shared
-  - **Zero inline badges remaining** across entire codebase
-- ✅ All 977 tests passing after migration
-- ✅ 244 lines of code deleted, 56 lines added (net: -188 lines)
+- ✅ **Forms::SelectFieldComponent created** - 19 tests, 27 assertions
+- ✅ **ALL 12 inline selects migrated** (100% complete):
+  - Filament forms (6 selects): material_type + diameter across 3 files
+  - Invoice forms (3 selects): client_id, status, currency
+  - User profile forms (2 selects): default_currency
+  - Navigation & search (2 selects): locale selector + material filter
+- ✅ **Bug fix:** Non-model form support (search forms, navbar)
+- ✅ Zero inline select patterns remaining across entire codebase
+- ✅ All 996 tests passing with 2,500 assertions, 0 failures
+- ✅ 3 commits created with detailed documentation
 
 **NEXT PRIORITIES:**
 
-1. Continue Phase 2 card migrations (8 components remaining)
-2. Build Forms::SelectFieldComponent and CurrencyFieldComponent
+1. Build Forms::CurrencyFieldComponent for input-groups with currency symbols
+2. Continue Phase 2 card migrations (8 components remaining)
 3. Complete Forms::FieldComponent migration (~70 fields remaining)
 
 ---
