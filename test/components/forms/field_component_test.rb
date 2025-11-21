@@ -18,7 +18,7 @@ module Forms
     test "renders text field with label" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :name,
@@ -33,7 +33,7 @@ module Forms
     test "renders with custom label" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :name,
@@ -47,7 +47,7 @@ module Forms
     test "renders email field" do
       user = User.new
       form = form_builder_for(user)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :email,
@@ -60,7 +60,7 @@ module Forms
     test "renders number field" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :spool_weight,
@@ -73,7 +73,7 @@ module Forms
     test "renders textarea" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :notes,
@@ -86,7 +86,7 @@ module Forms
     test "renders password field" do
       user = User.new
       form = form_builder_for(user)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :password,
@@ -100,7 +100,7 @@ module Forms
     test "applies placeholder option" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :name,
@@ -114,7 +114,7 @@ module Forms
     test "applies required option" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :name,
@@ -128,7 +128,7 @@ module Forms
     test "applies step and min options for number fields" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :spool_weight,
@@ -142,7 +142,7 @@ module Forms
     test "applies rows option for textarea" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :notes,
@@ -156,7 +156,7 @@ module Forms
     test "applies custom class in addition to form-control" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :name,
@@ -171,7 +171,7 @@ module Forms
     test "renders hint text when provided" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :name,
@@ -185,7 +185,7 @@ module Forms
     test "does not render hint when not provided" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :name,
@@ -199,7 +199,7 @@ module Forms
     test "wraps field in div with default column class" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :name,
@@ -212,7 +212,7 @@ module Forms
     test "applies custom wrapper class" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :name,
@@ -226,7 +226,7 @@ module Forms
     test "does not wrap when wrapper is false" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :name,
@@ -243,7 +243,7 @@ module Forms
     test "field_options merges default class with custom options" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       component = Forms::FieldComponent.new(
         form: form,
         attribute: :name,
@@ -259,7 +259,7 @@ module Forms
     test "label_text returns humanized attribute name by default" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       component = Forms::FieldComponent.new(
         form: form,
         attribute: :spool_weight,
@@ -272,7 +272,7 @@ module Forms
     test "label_text returns custom label when provided" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       component = Forms::FieldComponent.new(
         form: form,
         attribute: :name,
@@ -287,7 +287,7 @@ module Forms
     test "handles nil options gracefully" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :name,
@@ -301,7 +301,7 @@ module Forms
     test "defaults to text type" do
       filament = Filament.new
       form = form_builder_for(filament)
-      
+
       render_inline(Forms::FieldComponent.new(
         form: form,
         attribute: :name
@@ -311,5 +311,3 @@ module Forms
     end
   end
 end
-
-

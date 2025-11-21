@@ -5,6 +5,9 @@ SitemapGenerator::Sitemap.compress = false
 SitemapGenerator::Sitemap.create do
   add root_path, priority: 1.0, changefreq: "daily"
 
+  # Public tools - high value for SEO and lead generation
+  add pricing_calculator_path, priority: 0.9, changefreq: "weekly"
+
   add new_user_session_path, priority: 0.8, changefreq: "monthly"
   add new_user_registration_path, priority: 0.8, changefreq: "monthly"
 
