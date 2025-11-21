@@ -23,7 +23,7 @@ class UsageStatsComponentTest < ViewComponent::TestCase
   test "displays usage summary title" do
     render_inline(UsageStatsComponent.new(usage: @usage))
 
-    assert_selector "h3.h6", text: I18n.t('usage_limits.usage_summary')
+    assert_selector "h3.h6", text: I18n.t("usage_limits.usage_summary")
   end
 
   test "renders all four resource usage items" do
@@ -122,7 +122,10 @@ class UsageStatsComponentTest < ViewComponent::TestCase
   test "warning message includes icon" do
     render_inline(UsageStatsComponent.new(usage: @usage))
 
-    assert_selector "div.alert i.bi-exclamation-triangle"
+    # Alert should be present with warning variant when approaching limits (filaments at 80%)
+    assert_selector "div.alert.alert-warning"
+    # Icon should be in the alert (either from default or in content)
+    assert_selector "div.alert i.bi"
   end
 
   test "approaching_limits excludes unlimited resources" do

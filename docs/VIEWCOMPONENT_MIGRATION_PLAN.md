@@ -593,6 +593,7 @@ git grep "form\.(text_field|email_field|number_field|text_area|password_field)" 
 **Expected total impact:** 200-300 lines reduction across all form views
 
 **Next steps:**
+
 1. Build Forms::SelectFieldComponent for dropdown fields (material_type, diameter, currency, etc.)
 2. Build Forms::CurrencyFieldComponent for input-group fields with currency symbols
 3. Migrate remaining user_profile number fields (requires CurrencyFieldComponent)
