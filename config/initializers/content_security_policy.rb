@@ -8,11 +8,11 @@ Rails.application.configure do
   config.content_security_policy do |policy|
     policy.default_src :self, :https
     policy.font_src    :self, :https, :data
-    policy.img_src     :self, :https, :data, "*.googleusercontent.com", "*.google.com", "*.gstatic.com", "*.doubleclick.net"
+    policy.img_src     :self, :https, :data, "*.googleusercontent.com", "*.google.com", "*.gstatic.com"
     policy.object_src  :none
-    policy.script_src  :self, :https, :unsafe_inline, "*.googletagmanager.com", "*.google-analytics.com", "*.googlesyndication.com", "*.googleadservices.com", "pagead2.googlesyndication.com", "*.adtrafficquality.google"
+    policy.script_src  :self, :https, :unsafe_inline, "*.googletagmanager.com", "*.google-analytics.com"
     policy.style_src   :self, :https, :unsafe_inline
-    policy.frame_src   :self, "*.google.com", "*.doubleclick.net", "*.googlesyndication.com", "*.adtrafficquality.google"
+    policy.frame_src   :self, "*.google.com"
     policy.connect_src :self, :https, "*.google-analytics.com", "*.analytics.google.com", "*.googletagmanager.com"
     # Specify URI for violation reports
     # policy.report_uri "/csp-violation-report-endpoint"
