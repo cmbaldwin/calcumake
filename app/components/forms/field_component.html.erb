@@ -1,0 +1,38 @@
+<% if @wrapper %>
+  <div class="<%= @wrapper_class %>">
+    <%= @form.label @attribute, label_text, class: "form-label" %>
+    <% case @type %>
+    <% when :text %>
+      <%= @form.text_field @attribute, field_options %>
+    <% when :email %>
+      <%= @form.email_field @attribute, field_options %>
+    <% when :number %>
+      <%= @form.number_field @attribute, field_options %>
+    <% when :password %>
+      <%= @form.password_field @attribute, field_options %>
+    <% when :textarea %>
+      <%= @form.text_area @attribute, field_options %>
+    <% end %>
+    <% if show_hint? %>
+      <small class="form-text text-muted"><%= @hint %></small>
+    <% end %>
+  </div>
+<% else %>
+  <%= @form.label @attribute, label_text, class: "form-label" %>
+  <% case @type %>
+  <% when :text %>
+    <%= @form.text_field @attribute, field_options %>
+  <% when :email %>
+    <%= @form.email_field @attribute, field_options %>
+  <% when :number %>
+    <%= @form.number_field @attribute, field_options %>
+  <% when :password %>
+    <%= @form.password_field @attribute, field_options %>
+  <% when :textarea %>
+    <%= @form.text_area @attribute, field_options %>
+  <% end %>
+  <% if show_hint? %>
+    <small class="form-text text-muted"><%= @hint %></small>
+  <% end %>
+<% end %>
+
