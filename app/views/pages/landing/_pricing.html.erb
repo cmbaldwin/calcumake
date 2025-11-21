@@ -1,96 +1,95 @@
-<%# Pricing Section - Three tiers with trust signals %>
-<section class="pricing-section rounded-4 p-3 my-2 bg-light">
-    <div class="container py-4">
-        <div class="bg-white rounded-4 shadow-sm p-4">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center mb-5">
-                    <h2 class="h1 text-primary"><%= t('landing.pricing.headline') %></h2>
-                    <p class="lead text-muted"><%= t('landing.pricing.subheadline') %></p>
-                </div>
+<div class="col-lg-4 col-md-6">
+    <div class="<%= card_classes %>" style="overflow: visible;">
+        <%# Popular Badge - positioned absolutely at top center of card %>
+        <% if show_popular_badge? %>
+        <div class="popular-badge">
+            <%= I18n.t('landing.pricing.startup.badge') %>
+        </div>
+        <% end %>
+
+        <div class="card-body p-4 text-center d-flex flex-column">
+            <%# Plan Header %>
+            <h3 class="h5 mb-1"><%= features[:name] %></h3>
+            <div class="plan-price mb-2">
+                <span class="price-amount"><%= features[:price].split('/').first %></span>
+                <% unless plan == 'free' %>
+                <span class="price-period">/<%= I18n.t('subscriptions.month', default: 'month') %></span>
+                <% end %>
             </div>
+            <% if features[:description].present? %>
+            <p class="text-muted small mb-0"><%= features[:description] %></p>
+            <% end %>
 
-            <div class="row g-4 justify-content-center">
-                <!-- Free Tier -->
-                <%= render Cards::PricingTierCardComponent.new(
-                    plan: "free",
-                    features: {
-                        name: t('landing.pricing.free.title'),
-                        price: "$0",
-                        limits: {
-                            print_pricings: 5,
-                            printers: 1,
-                            filaments: 4,
-                            invoices: 5
-                        },
-                        features: [],
-                        negative_features: [
-                            t('landing.pricing.free.branding')
-                        ]
-                    }
-                ) %>
-
-                <!-- Startup Tier -->
-                <%= render Cards::PricingTierCardComponent.new(
-                    plan: "startup",
-                    features: {
-                        name: t('landing.pricing.startup.title'),
-                        price: "¥150",
-                        limits: {
-                            print_pricings: 50,
-                            printers: 10,
-                            filaments: 16,
-                            invoices: Float::INFINITY
-                        },
-                        features: [
-                            t('landing.pricing.startup.branding'),
-                            t('landing.pricing.startup.ads')
-                        ]
-                    },
-                    popular: true
-                ) %>
-
-                <!-- Pro Tier -->
-                <%= render Cards::PricingTierCardComponent.new(
-                    plan: "pro",
-                    features: {
-                        name: t('landing.pricing.pro.title'),
-                        price: "¥1,500",
-                        limits: {
-                            print_pricings: Float::INFINITY,
-                            printers: Float::INFINITY,
-                            filaments: Float::INFINITY,
-                            invoices: Float::INFINITY
-                        },
-                        features: [
-                            t('landing.pricing.pro.unlimited'),
-                            t('landing.pricing.pro.branding'),
-                            t('landing.pricing.pro.ads'),
-                            t('landing.pricing.pro.support'),
-                            t('landing.pricing.pro.analytics'),
-                            t('landing.pricing.pro.features')
-                        ]
-                    }
-                ) %>
+            <%# Trial Badge for Free Plan %>
+            <% if show_trial_badge? %>
+            <div class="alert alert-info mb-4">
+                <strong><%= I18n.t('landing.pricing.free.trial_notice') %></strong>
             </div>
+            <% end %>
 
-            <div class="row mt-5">
-                <div class="col-lg-8 mx-auto text-center">
-                    <div class="trust-signals">
-                        <p class="text-muted mb-2">
-                            <i class="bi bi-shield-check text-success me-2"></i>
-                            <%= t('landing.pricing.trust_signals.no_credit_card') %>
-                        </p>
-                        <p class="text-muted mb-2">
-                            <i class="bi bi-x-circle text-success me-2"></i>
-                            <%= t('landing.pricing.trust_signals.cancel_anytime') %>
-                        </p>
-                        <p class="text-muted">
-                            <i class="bi bi-lock-fill text-success me-2"></i>
-                            <%= t('landing.pricing.trust_signals.data_private') %>
-                        </p>
-                    </div>
-                </div>
+            <%# Current Plan Badge %>
+            <% if current %>
+            <div class="alert alert-success py-2 px-3 mb-3 text-center">
+                <small><i class="bi bi-check-circle"></i> <%= I18n.t('subscriptions.current_plan') %></small>
             </div>
+            <% end %>
+
+            <%# Features List %>
+            <ul class="list-unstyled text-start mb-4 flex-grow-1">
+                <% if has_limits? %>
+                <%# Resource Limits %>
+                <li class="mb-2">
+                    <i class="bi bi-check text-success"></i>
+                    <%= limit_text(:calculations, features[:limits][:print_pricings]) %>
+                </li>
+
+                <li class="mb-2">
+                    <i class="bi bi-check text-success"></i>
+                    <%= limit_text(:printers, features[:limits][:printers]) %>
+                </li>
+
+                <li class="mb-2">
+                    <i class="bi bi-check text-success"></i>
+                    <%= limit_text(:filaments, features[:limits][:filaments]) %>
+                </li>
+
+                <li class="mb-2">
+                    <i class="bi bi-check text-success"></i>
+                    <%= limit_text(:invoices, features[:limits][:invoices]) %>
+                </li>
+                <% end %>
+
+                <%# Additional Features %>
+                <% additional_features.each do |feature| %>
+                <li class="mb-1">
+                    <i class="bi bi-check text-success"></i>
+                    <%= feature %>
+                </li>
+                <% end %>
+
+                <%# Negative Features (things plan doesn't have) %>
+                <% negative_features.each do |feature| %>
+                <li class="mb-1">
+                    <i class="bi bi-x-circle text-muted me-2"></i>
+                    <%= feature %>
+                </li>
+                <% end %>
+            </ul>
+
+            <%# Action Button %>
+            <% if show_cta %>
+            <div class="mt-auto">
+                <% if cta_disabled? %>
+                <button class="<%= cta_button_class %>" disabled>
+                    <%= cta_text %>
+                </button>
+                <% else %>
+                <%= link_to cta_text, cta_path,
+                  class: cta_button_class,
+                  onclick: "if(typeof trackSignupStart === 'function') trackSignupStart();" %>
+                <% end %>
+            </div>
+            <% end %>
         </div>
     </div>
-</section>
+</div>

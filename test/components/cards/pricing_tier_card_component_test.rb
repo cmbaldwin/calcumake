@@ -84,7 +84,7 @@ module Cards
         popular: true
       ))
 
-      assert_selector "div.badge.bg-primary"
+      assert_selector "div.popular-badge"
       assert_selector "div.card.popular-plan.border-primary.shadow-lg"
     end
 
@@ -95,7 +95,7 @@ module Cards
         popular: false
       ))
 
-      refute_selector "div.badge.bg-primary"
+      refute_selector "div.popular-badge"
       refute_selector "div.card.popular-plan"
       assert_selector "div.card.border-0.shadow-sm"
     end
