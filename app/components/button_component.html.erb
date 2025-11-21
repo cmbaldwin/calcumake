@@ -1,0 +1,15 @@
+<% if link? %>
+  <%= link_to @url, **link_options do %>
+    <% if @icon %>
+      <i class="bi bi-<%= @icon %>"></i>
+    <% end %>
+    <%= @text || content %>
+  <% end %>
+<% else %>
+  <button <%= tag.attributes(button_options) %>>
+    <% if @icon %>
+      <i class="bi bi-<%= @icon %>"></i>
+    <% end %>
+    <%= @text || content %>
+  </button>
+<% end %>
