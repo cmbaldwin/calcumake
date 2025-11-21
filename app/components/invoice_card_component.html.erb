@@ -1,0 +1,50 @@
+<div class="<%= card_classes %>">
+    <div class="card-body">
+        <div class="row g-3">
+            <!-- Invoice Number and Status -->
+            <div class="col-12 col-md-6">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div>
+                        <%= invoice_number_link %>
+                        <div class="text-muted small">
+                            <%= formatted_invoice_date %>
+                        </div>
+                    </div>
+                    <%= render Shared::BadgeComponent.new(text: status_text, variant: status_badge_variant) %>
+                </div>
+            </div>
+
+            <!-- Due Date and Total -->
+            <div class="col-12 col-md-6">
+                <div class="text-md-end">
+                    <div class="mb-2">
+                        <% if invoice.due_date %>
+                            <span class="text-muted small"><%= I18n.t('invoices.fields.due_date') %>:</span>
+                            <span class="fw-medium"><%= formatted_due_date %></span>
+                            <% if overdue? %>
+                                <%= render Shared::BadgeComponent.new(text: I18n.t('print_pricing.overdue'), variant: :danger, html_options: { class: "ms-1" }) %>
+                            <% end %>
+                        <% else %>
+                            <span class="text-muted small"><%= I18n.t('invoices.fields.due_date') %>: -</span>
+                        <% end %>
+                    </div>
+                    <div class="h4 mb-0 text-success">
+                        <%= formatted_total %>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="col-12">
+                <div class="d-flex gap-2 flex-wrap justify-content-end border-top pt-3">
+                    <%= link_to I18n.t('actions.view'), 
+                        helpers.print_pricing_invoice_path(invoice.print_pricing, invoice),
+                        **view_button_attrs %>
+                    <%= link_to I18n.t('actions.edit'),
+                        helpers.edit_print_pricing_invoice_path(invoice.print_pricing, invoice),
+                        **edit_button_attrs %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
