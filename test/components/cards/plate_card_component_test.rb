@@ -80,10 +80,10 @@ class Cards::PlateCardComponentTest < ViewComponent::TestCase
 
     # Print time field
     assert_selector "input[name='plates[0][print_time]'][type='number'][min='0.1'][step='0.1']"
-    
+
     # Power consumption field
     assert_selector "input[name='plates[0][power_consumption]'][type='number'][min='1'][step='1']"
-    
+
     # Prep time field
     assert_selector "input[name='plates[0][prep_time]'][type='number'][min='0'][step='0.05']"
   end
@@ -137,7 +137,7 @@ class Cards::PlateCardComponentTest < ViewComponent::TestCase
     render_inline(Cards::PlateCardComponent.new(index: 0))
 
     # Template tag exists in HTML but not visible to Capybara
-    assert_includes rendered_content, '<template data-filament-template>'
+    assert_includes rendered_content, "<template data-filament-template>"
   end
 
   test "filament template contains correct fields" do
@@ -243,8 +243,8 @@ class Cards::PlateCardComponentTest < ViewComponent::TestCase
     config = component.field_config
 
     print_time_config = config[:print_time]
-    assert_equal 'advanced_calculator.plate_fields.print_time', print_time_config[:label]
-    assert_equal '(hrs)', print_time_config[:unit]
+    assert_equal "advanced_calculator.plate_fields.print_time", print_time_config[:label]
+    assert_equal "(hrs)", print_time_config[:unit]
     assert_equal 0.1, print_time_config[:min]
     assert_equal 0.1, print_time_config[:step]
   end
