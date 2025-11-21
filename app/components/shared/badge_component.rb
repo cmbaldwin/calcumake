@@ -33,7 +33,7 @@ module Shared
     # Returns combined CSS classes for the badge
     # @return [String]
     def css_classes
-      classes = ["badge", "bg-#{@variant}"]
+      classes = [ "badge", "bg-#{@variant}" ]
       classes << "rounded-pill" if @pill
       classes << size_class if @size != "md"
       classes << @html_options[:class] if @html_options[:class]
