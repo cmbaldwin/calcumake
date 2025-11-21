@@ -26,7 +26,7 @@ class Cards::FilamentCardComponentTest < ViewComponent::TestCase
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
     assert_selector ".fw-bold", text: @filament.brand
-    assert_text I18n.t('filaments.fields.brand')
+    assert_text I18n.t("filaments.fields.brand")
   end
 
   test "does not render brand section when brand is blank" do
@@ -34,21 +34,21 @@ class Cards::FilamentCardComponentTest < ViewComponent::TestCase
 
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
-    refute_text I18n.t('filaments.fields.brand')
+    refute_text I18n.t("filaments.fields.brand")
   end
 
   test "renders diameter" do
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
     assert_selector ".fw-bold", text: "#{@filament.diameter}mm"
-    assert_text I18n.t('filaments.fields.diameter')
+    assert_text I18n.t("filaments.fields.diameter")
   end
 
   test "renders color when present" do
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
     assert_selector ".fw-bold", text: @filament.color
-    assert_text I18n.t('filaments.fields.color')
+    assert_text I18n.t("filaments.fields.color")
   end
 
   test "does not render color section when color is blank" do
@@ -56,13 +56,13 @@ class Cards::FilamentCardComponentTest < ViewComponent::TestCase
 
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
-    refute_text I18n.t('filaments.fields.color')
+    refute_text I18n.t("filaments.fields.color")
   end
 
   test "renders cost per gram when spool data available" do
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
-    assert_text I18n.t('filaments.fields.cost_per_gram')
+    assert_text I18n.t("filaments.fields.cost_per_gram")
     assert_text "/g"
   end
 
@@ -71,7 +71,7 @@ class Cards::FilamentCardComponentTest < ViewComponent::TestCase
 
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
-    refute_text I18n.t('filaments.fields.cost_per_gram')
+    refute_text I18n.t("filaments.fields.cost_per_gram")
   end
 
   test "does not render cost per gram when spool weight is blank" do
@@ -79,14 +79,14 @@ class Cards::FilamentCardComponentTest < ViewComponent::TestCase
 
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
-    refute_text I18n.t('filaments.fields.cost_per_gram')
+    refute_text I18n.t("filaments.fields.cost_per_gram")
   end
 
   test "renders temperature range" do
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
     assert_selector ".fw-bold", text: @filament.temperature_range
-    assert_text I18n.t('filaments.fields.temperature_range')
+    assert_text I18n.t("filaments.fields.temperature_range")
   end
 
   test "renders moisture sensitive badge when true" do
@@ -94,7 +94,7 @@ class Cards::FilamentCardComponentTest < ViewComponent::TestCase
 
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
-    assert_selector ".badge.bg-warning", text: I18n.t('filaments.properties.moisture_sensitive')
+    assert_selector ".badge.bg-warning", text: I18n.t("filaments.properties.moisture_sensitive")
   end
 
   test "does not render moisture sensitive badge when false" do
@@ -108,31 +108,31 @@ class Cards::FilamentCardComponentTest < ViewComponent::TestCase
   test "renders actions dropdown" do
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
-    assert_selector ".dropdown-toggle", text: I18n.t('actions.actions')
+    assert_selector ".dropdown-toggle", text: I18n.t("actions.actions")
   end
 
   test "renders view action link" do
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
-    assert_selector "a.dropdown-item[href='#{filament_path(@filament)}']", text: I18n.t('actions.view')
+    assert_selector "a.dropdown-item[href='#{filament_path(@filament)}']", text: I18n.t("actions.view")
   end
 
   test "renders edit action link" do
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
-    assert_selector "a.dropdown-item[href='#{edit_filament_path(@filament)}']", text: I18n.t('actions.edit')
+    assert_selector "a.dropdown-item[href='#{edit_filament_path(@filament)}']", text: I18n.t("actions.edit")
   end
 
   test "renders duplicate action link" do
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
-    assert_selector "a.dropdown-item[href='#{duplicate_filament_path(@filament)}']", text: I18n.t('actions.duplicate')
+    assert_selector "a.dropdown-item[href='#{duplicate_filament_path(@filament)}']", text: I18n.t("actions.duplicate")
   end
 
   test "renders delete action link" do
     render_inline(Cards::FilamentCardComponent.new(filament: @filament, current_user: @user))
 
-    assert_selector "a.dropdown-item.text-danger[href='#{filament_path(@filament)}']", text: I18n.t('actions.delete')
+    assert_selector "a.dropdown-item.text-danger[href='#{filament_path(@filament)}']", text: I18n.t("actions.delete")
   end
 
   test "applies custom html_options class" do

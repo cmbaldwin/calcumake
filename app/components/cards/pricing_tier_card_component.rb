@@ -25,7 +25,7 @@ module Cards
     attr_reader :plan, :features, :current, :popular, :show_cta, :current_user, :html_options
 
     def card_classes
-      classes = ["card", "pricing-card", "h-100"]
+      classes = [ "card", "pricing-card", "h-100" ]
       classes << "popular-plan" if popular
       classes << "current-plan" if current
       classes << "border-primary shadow-lg" if popular
@@ -61,8 +61,12 @@ module Cards
       features[:features] || []
     end
 
+    def negative_features
+      features[:negative_features] || []
+    end
+
     def cta_button_class
-      classes = ["btn", "w-100"]
+      classes = [ "btn", "w-100" ]
       if current
         classes << "btn-outline-secondary"
       elsif popular
@@ -75,13 +79,13 @@ module Cards
 
     def cta_text
       return I18n.t("subscriptions.current_plan") if current
-      
+
       I18n.t("landing.pricing.cta")
     end
 
     def cta_path
       return nil if current
-      
+
       Rails.application.routes.url_helpers.new_user_registration_path
     end
 

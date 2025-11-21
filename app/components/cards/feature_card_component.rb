@@ -18,7 +18,7 @@ class Cards::FeatureCardComponent < ViewComponent::Base
   end
 
   def card_classes
-    ["card", "border-0", "shadow-sm", "h-100", html_options[:class]].compact.join(" ")
+    [ "card", "border-0", "shadow-sm", "h-100", html_options[:class] ].compact.join(" ")
   end
 
   def icon_class
