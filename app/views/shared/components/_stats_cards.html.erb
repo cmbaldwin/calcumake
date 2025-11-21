@@ -1,29 +1,29 @@
 <div id="stats_cards_content" class="row g-3 mb-4">
-  <%= render(StatsCardComponent.new(
+  <%= render(Shared::StatsCardComponent.new(
     value: print_pricings.count,
     label: t('print_pricing.index.total_calculations'),
     color: "success"
   )) %>
 
-  <%= render(StatsCardComponent.new(
+  <%= render(Shared::StatsCardComponent.new(
     value: "#{total_print_time_hours(print_pricings)}h",
     label: t('print_pricing.index.total_print_time'),
     color: "warning"
   )) %>
 
-  <%= render(StatsCardComponent.new(
+  <%= render(Shared::StatsCardComponent.new(
     value: "#{total_filament_weight_grams(print_pricings).round(1)}g",
     label: t('print_pricing.index.total_filament_used'),
     color: "info"
   )) %>
 
-  <%= render(StatsCardComponent.new(
+  <%= render(Shared::StatsCardComponent.new(
     value: format_currency_with_symbol(total_estimated_sales(print_pricings), current_user&.default_currency || 'USD'),
     label: t('print_pricing.index.total_estimated_sales'),
     color: "primary"
   )) %>
 
-  <%= render(StatsCardComponent.new(
+  <%= render(Shared::StatsCardComponent.new(
     value: format_currency_with_symbol(total_estimated_profit(print_pricings), current_user&.default_currency || 'USD'),
     label: t('print_pricing.index.total_estimated_profit'),
     color: "dark",
