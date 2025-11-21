@@ -5,39 +5,43 @@
     </div>
     <div class="card-body">
       <div class="row g-3">
-        <div class="col-6">
-          <%= f.label :prep_time_minutes, t('print_pricing.fields.prep_time_minutes'), class: "form-label" %>
-          <%= f.number_field :prep_time_minutes, min: 0, step: 1,
-              placeholder: t('print_pricing.fields.prep_time_placeholder'),
-              class: "form-control" %>
-        </div>
+        <%= render Forms::FieldComponent.new(
+          form: f,
+          attribute: :prep_time_minutes,
+          type: :number,
+          label: t('print_pricing.fields.prep_time_minutes'),
+          wrapper_class: "col-6",
+          options: { min: 0, step: 1, placeholder: t('print_pricing.fields.prep_time_placeholder') }
+        ) %>
 
-        <div class="col-6">
-          <%= f.label :prep_cost_per_hour, t('print_pricing.fields.prep_cost_per_hour'), class: "form-label" %>
-          <div class="input-group">
-            <span class="input-group-text"><%= currency_symbol(current_user.default_currency) %></span>
-            <%= f.number_field :prep_cost_per_hour, step: 0.01,
-                placeholder: t('print_pricing.fields.prep_cost_placeholder'),
-                class: "form-control" %>
-          </div>
-        </div>
+        <%= render Forms::NumberFieldWithAddonComponent.new(
+          form: f,
+          attribute: :prep_cost_per_hour,
+          label: t('print_pricing.fields.prep_cost_per_hour'),
+          prepend: currency_symbol(current_user.default_currency),
+          step: 0.01,
+          placeholder: t('print_pricing.fields.prep_cost_placeholder'),
+          wrapper_class: "col-6"
+        ) %>
 
-        <div class="col-6">
-          <%= f.label :postprocessing_time_minutes, t('print_pricing.fields.postprocessing_time_minutes'), class: "form-label" %>
-          <%= f.number_field :postprocessing_time_minutes, min: 0, step: 1,
-              placeholder: t('print_pricing.fields.postprocessing_time_placeholder'),
-              class: "form-control" %>
-        </div>
+        <%= render Forms::FieldComponent.new(
+          form: f,
+          attribute: :postprocessing_time_minutes,
+          type: :number,
+          label: t('print_pricing.fields.postprocessing_time_minutes'),
+          wrapper_class: "col-6",
+          options: { min: 0, step: 1, placeholder: t('print_pricing.fields.postprocessing_time_placeholder') }
+        ) %>
 
-        <div class="col-6">
-          <%= f.label :postprocessing_cost_per_hour, t('print_pricing.fields.postprocessing_cost_per_hour'), class: "form-label" %>
-          <div class="input-group">
-            <span class="input-group-text"><%= currency_symbol(current_user.default_currency) %></span>
-            <%= f.number_field :postprocessing_cost_per_hour, step: 0.01,
-                placeholder: t('print_pricing.fields.postprocessing_cost_placeholder'),
-                class: "form-control" %>
-          </div>
-        </div>
+        <%= render Forms::NumberFieldWithAddonComponent.new(
+          form: f,
+          attribute: :postprocessing_cost_per_hour,
+          label: t('print_pricing.fields.postprocessing_cost_per_hour'),
+          prepend: currency_symbol(current_user.default_currency),
+          step: 0.01,
+          placeholder: t('print_pricing.fields.postprocessing_cost_placeholder'),
+          wrapper_class: "col-6"
+        ) %>
       </div>
     </div>
   </div>

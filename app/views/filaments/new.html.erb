@@ -101,27 +101,36 @@
                 </div>
                 <div class="card-body">
                     <div class="row g-3">
-                        <div class="col-md-4">
-                            <%= form.label :spool_weight, t('filaments.fields.spool_weight'), class: "form-label" %>
-                            <div class="input-group">
-                                <%= form.number_field :spool_weight, class: "form-control", step: 0.01, min: 0, placeholder: t('filaments.fields.spool_weight_placeholder') %>
-                                <span class="input-group-text">g</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <%= form.label :spool_price, t('filaments.fields.spool_price'), class: "form-label" %>
-                            <div class="input-group">
-                                <span class="input-group-text"><%= currency_symbol(current_user.default_currency) %></span>
-                                <%= form.number_field :spool_price, class: "form-control", step: 0.01, min: 0, placeholder: t('filaments.fields.spool_price_placeholder') %>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <%= form.label :density, t('filaments.fields.density'), class: "form-label" %>
-                            <div class="input-group">
-                                <%= form.number_field :density, class: "form-control", step: 0.01, min: 0, placeholder: t('filaments.fields.density_placeholder') %>
-                                <span class="input-group-text">g/cm³</span>
-                            </div>
-                        </div>
+                        <%= render Forms::NumberFieldWithAddonComponent.new(
+                          form: form,
+                          attribute: :spool_weight,
+                          label: t('filaments.fields.spool_weight'),
+                          append: "g",
+                          step: 0.01,
+                          min: 0,
+                          placeholder: t('filaments.fields.spool_weight_placeholder'),
+                          wrapper_class: "col-md-4"
+                        ) %>
+                        <%= render Forms::NumberFieldWithAddonComponent.new(
+                          form: form,
+                          attribute: :spool_price,
+                          label: t('filaments.fields.spool_price'),
+                          prepend: currency_symbol(current_user.default_currency),
+                          step: 0.01,
+                          min: 0,
+                          placeholder: t('filaments.fields.spool_price_placeholder'),
+                          wrapper_class: "col-md-4"
+                        ) %>
+                        <%= render Forms::NumberFieldWithAddonComponent.new(
+                          form: form,
+                          attribute: :density,
+                          label: t('filaments.fields.density'),
+                          append: "g/cm³",
+                          step: 0.01,
+                          min: 0,
+                          placeholder: t('filaments.fields.density_placeholder'),
+                          wrapper_class: "col-md-4"
+                        ) %>
                     </div>
                 </div>
             </div>

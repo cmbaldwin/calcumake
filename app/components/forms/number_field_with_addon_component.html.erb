@@ -1,0 +1,31 @@
+<% if @wrapper %>
+<div class="<%= @wrapper_class %>">
+<% end %>
+  <% if show_label? %>
+    <%= @form.label @attribute, label_text, class: "form-label" %>
+  <% end %>
+
+  <div class="<%= input_group_class %>">
+    <% if @prepend %>
+      <span class="input-group-text"><%= @prepend %></span>
+    <% end %>
+
+    <%= @form.number_field @attribute, field_options %>
+
+    <% if @append %>
+      <span class="input-group-text"><%= @append %></span>
+    <% end %>
+  </div>
+
+  <% if show_hint? %>
+    <div class="form-text"><%= @hint %></div>
+  <% end %>
+
+  <% if @form.object && @form.object.respond_to?(:errors) && @form.object.errors[@attribute].any? %>
+    <div class="invalid-feedback d-block">
+      <%= @form.object.errors[@attribute].first %>
+    </div>
+  <% end %>
+<% if @wrapper %>
+</div>
+<% end %>
