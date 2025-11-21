@@ -3,12 +3,12 @@
   <div>
     <h1 class="h2 text-primary mb-2"><%= @filament.name %></h1>
     <div class="d-flex gap-2 mb-3">
-      <span class="badge bg-primary fs-6"><%= @filament.material_type %></span>
+      <%= render Shared::BadgeComponent.new(text: @filament.material_type, variant: "primary", size: "lg") %>
       <% if @filament.color.present? %>
-        <span class="badge bg-secondary fs-6"><%= @filament.color %></span>
+        <%= render Shared::BadgeComponent.new(text: @filament.color, variant: "secondary", size: "lg") %>
       <% end %>
       <% if @filament.brand.present? %>
-        <span class="badge bg-info fs-6"><%= @filament.brand %></span>
+        <%= render Shared::BadgeComponent.new(text: @filament.brand, variant: "info", size: "lg") %>
       <% end %>
     </div>
   </div>
@@ -22,7 +22,11 @@
 <div class="row g-2 mb-4">
   <% if @filament.moisture_sensitive? %>
     <div class="col-auto">
-      <span class="badge bg-warning text-dark"><%= t('filaments.properties.moisture_sensitive') %></span>
+      <%= render Shared::BadgeComponent.new(
+        text: t('filaments.properties.moisture_sensitive'),
+        variant: "warning",
+        html_options: { class: "text-dark" }
+      ) %>
     </div>
   <% end %>
 </div>

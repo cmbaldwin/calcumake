@@ -12,16 +12,16 @@
           <span class="h4 mb-0">
             <%= current_user.plan.titleize %>
             <% if current_user.plan != 'free' %>
-              <span class="badge bg-success ms-2">Active</span>
+              <%= render Shared::BadgeComponent.new(text: "Active", variant: "success", html_options: { class: "ms-2" }) %>
             <% end %>
           </span>
 
           <% if current_user.in_trial_period? %>
-            <span class="badge bg-info">
-              <i class="bi bi-gift"></i>
-              <%= t('subscriptions.trial_badge') %>
-              - <%= pluralize(current_user.trial_days_remaining, 'day') %> <%= t('subscriptions.remaining', default: 'remaining') %>
-            </span>
+            <%= render Shared::BadgeComponent.new(
+              text: "#{t('subscriptions.trial_badge')} - #{pluralize(current_user.trial_days_remaining, 'day')} #{t('subscriptions.remaining', default: 'remaining')}",
+              variant: "info",
+              icon: "gift"
+            ) %>
           <% end %>
         </div>
 

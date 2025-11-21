@@ -8,7 +8,11 @@
         <% if invoice.due_date %>
         <%= l(invoice.due_date, format: :short) %>
         <% if invoice.overdue? %>
-        <span class="badge bg-danger ms-1"><%= t('print_pricing.overdue') %></span>
+        <%= render Shared::BadgeComponent.new(
+          text: t('print_pricing.overdue'),
+          variant: "danger",
+          html_options: { class: "ms-1" }
+        ) %>
         <% end %>
         <% else %>
         <span class="text-muted">-</span>

@@ -16,9 +16,11 @@
             <strong class="d-block" style="font-size: 0.9rem; line-height: 1.2;">
               <%= current_user.plan.titleize %>
               <% if current_user.in_trial_period? %>
-                <span class="badge bg-info" style="font-size: 0.65rem;">
-                  <%= t('subscriptions.trial_badge') %>
-                </span>
+                <%= render Shared::BadgeComponent.new(
+                  text: t('subscriptions.trial_badge'),
+                  variant: "info",
+                  size: "sm"
+                ) %>
               <% end %>
             </strong>
           </div>
