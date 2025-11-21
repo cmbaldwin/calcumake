@@ -83,23 +83,28 @@
             <!-- Language Selector -->
             <div class="navbar-text">
                 <%= form_with url: switch_locale_path, method: :post, local: true, class: "d-flex" do |form| %>
-                <%= form.select :locale,
-                        options_for_select([
-                          [t('language_name', locale: :en), 'en'],
-                          [t('language_name', locale: :ja), 'ja'],
-                          [t('language_name', locale: :'zh-CN'), 'zh-CN'],
-                          [t('language_name', locale: :hi), 'hi'],
-                          [t('language_name', locale: :es), 'es'],
-                          [t('language_name', locale: :fr), 'fr'],
-                          [t('language_name', locale: :ar), 'ar']
-                        ], I18n.locale.to_s),
-                        {},
-                        {
-                          class: "form-select form-select-sm",
-                          onchange: "this.form.submit();",
-                          title: t('nav.language'),
-                          style: "width: auto;"
-                        } %>
+                  <%= render Forms::SelectFieldComponent.new(
+                    form: form,
+                    attribute: :locale,
+                    choices: [
+                      [t('language_name', locale: :en), 'en'],
+                      [t('language_name', locale: :ja), 'ja'],
+                      [t('language_name', locale: :'zh-CN'), 'zh-CN'],
+                      [t('language_name', locale: :hi), 'hi'],
+                      [t('language_name', locale: :es), 'es'],
+                      [t('language_name', locale: :fr), 'fr'],
+                      [t('language_name', locale: :ar), 'ar']
+                    ],
+                    label: false,
+                    wrapper: false,
+                    html_options: {
+                      class: "form-select-sm",
+                      onchange: "this.form.submit();",
+                      title: t('nav.language'),
+                      style: "width: auto;"
+                    },
+                    select_options: { selected: I18n.locale.to_s }
+                  ) %>
                 <% end %>
             </div>
         </div>
