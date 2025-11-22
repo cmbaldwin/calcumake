@@ -727,9 +727,58 @@ end
 
 ---
 
-#### CheckboxFieldComponent (1 hour)
+#### Forms::CheckboxFieldComponent (1 hour) ✅ CREATED & ✅ MIGRATED
 
-**Purpose:** Styled checkboxes with toggle variant
+**Status:** ✅ Component created with 15 tests, 21 assertions
+**Migration:** ✅ **ALL 5 inline checkboxes migrated!** (100% complete)
+
+**Purpose:** Styled checkboxes with Bootstrap form-check and form-switch support
+
+```ruby
+# app/components/forms/checkbox_field_component.rb
+module Forms
+  class CheckboxFieldComponent < ViewComponent::Base
+    def initialize(
+      form:,
+      attribute:,
+      label: nil,
+      hint: nil,
+      wrapper: true,
+      wrapper_class: "col-12",
+      options: {}
+    )
+    end
+
+    # Innovative form-switch support
+    def form_check_class
+      # Automatically detects and applies form-switch to wrapper div
+      merge_classes("form-check", @form_check_class)
+    end
+  end
+end
+```
+
+**Migrated views (5 checkboxes across 5 files):**
+
+**Filament Forms (3 checkboxes):**
+- ✅ `app/views/filaments/_modal_form.html.erb` (moisture_sensitive)
+- ✅ `app/views/filaments/new.html.erb` (moisture_sensitive)
+- ✅ `app/views/filaments/edit.html.erb` (moisture_sensitive)
+
+**Authentication (1 checkbox):**
+- ✅ `app/views/devise/sessions/new.html.erb` (remember_me)
+
+**Print Pricing (1 toggle switch):**
+- ✅ `app/views/print_pricings/form_sections/_basic_information.html.erb` (start_with_one_print with form-switch)
+
+**Key Features:**
+- Standard checkbox and Bootstrap form-switch support
+- Automatic form-switch class detection and proper wrapper application
+- Label and hint text support
+- Defensive error handling for non-model forms
+- Consistent with other Forms components
+
+**Impact:** ~31 lines reduced, 5 checkboxes standardized, zero inline checkbox patterns remaining
 
 ---
 
@@ -1613,38 +1662,46 @@ For each component:
 | ----------------------- | ---------- | ------- | -------- | --------- | ------------- | ---------------------------- |
 | **Phase 1: Foundation** | 7          | 7       | 7        | 148       | 52            | ✅ Complete (100% migrated)  |
 | **Phase 2: Cards**      | 12         | 12      | 4        | 1,494     | 157           | 🟡 In Progress (33%)         |
-| **Phase 3: Forms**      | 15         | 3       | 3        | 69        | 306           | 🟡 In Progress (20%)         |
+| **Phase 3: Forms**      | 15         | 4       | 4        | 84        | 337           | 🟡 In Progress (27%)         |
 | **Phase 4: Features**   | 18         | 0       | 0        | 0         | 0             | ⚪ Not Started               |
 | **Phase 5: Layout**     | 6          | 0       | 0        | 0         | 0             | ⚪ Not Started               |
 | **Phase 6: Helpers**    | 15         | 0       | 0        | 0         | 0             | ⚪ Not Started               |
-| **TOTAL**               | **73**     | **22**  | **14**   | **1,711** | **~515**      | **30% created, 19% migrated**|
+| **TOTAL**               | **73**     | **23**  | **15**   | **1,726** | **~546**      | **32% created, 21% migrated**|
 
 **Target:** 73 components, 438+ tests, 2,500-3,500 lines reduced
 
 **CURRENT STATUS:**
 
-- ✅ 22 components created (30% of total)
-- ✅ 14 components fully migrated to views (19% complete)
-- ✅ 1,019 tests passing, 2,529 assertions
+- ✅ 23 components created (32% of total)
+- ✅ 15 components fully migrated to views (21% complete)
+- ✅ 1,034 tests passing, 2,550 assertions
 - ✅ **Phase 1 COMPLETE:** All 7 foundation components actively used in production
-- ✅ **Phase 3 Forms: 20% complete** - SelectFieldComponent + NumberFieldWithAddonComponent fully migrated
+- ✅ **Phase 3 Forms: 27% complete** - 4 components with 100% migration (Field, Select, NumberWithAddon, Checkbox)
 - 📊 **Projected savings:** 2,500-3,500 lines
-- 📊 **Actual savings so far:** ~515 lines (21% of target)
-- 🎯 **Recent progress:** NumberFieldWithAddonComponent created and ALL 18 usages migrated
+- 📊 **Actual savings so far:** ~546 lines (22% of target)
+- 🎯 **Recent progress:** CheckboxFieldComponent created and ALL 5 usages migrated
 
-**RECENT ACCOMPLISHMENTS (2025-11-22 - Session 3):**
+**RECENT ACCOMPLISHMENTS (2025-11-22 - Session 4):**
+
+- ✅ **Forms::CheckboxFieldComponent created** - 15 tests, 21 assertions
+- ✅ **ALL 5 inline checkboxes migrated** (100% complete):
+  - Filament forms (3 checkboxes): moisture_sensitive across modal, new, edit
+  - Devise login (1 checkbox): remember_me
+  - Print pricing (1 toggle): start_with_one_print with form-switch support
+- ✅ **Innovative form-switch support:** Auto-detects and applies to wrapper div
+- ✅ Zero inline checkbox patterns remaining across entire codebase
+- ✅ All 1,034 tests passing with 2,550 assertions, 0 failures
+- ✅ 1 commit created with detailed documentation
+- ✅ **4 form components now 100% migrated** (Field, Select, NumberWithAddon, Checkbox)
+
+**PREVIOUS SESSION (2025-11-22 - Session 3):**
 
 - ✅ **Forms::NumberFieldWithAddonComponent created** - 23 tests, 29 assertions
-- ✅ **ALL 18 inline input-groups migrated** (100% complete):
-  - Filament forms (9 fields): spool_weight, spool_price, density across 3 files
-  - Print pricing forms (3 fields): prep_cost_per_hour, postprocessing_cost_per_hour, other_costs
-  - User profile forms (6 fields): cost fields with currency symbols + vat_percentage with "%"
-- ✅ **Generic design:** Single component handles currency symbols, units (g, g/cm³), and percentages
-- ✅ Zero inline input-group patterns remaining across entire codebase
-- ✅ All 1,019 tests passing with 2,529 assertions, 0 failures
-- ✅ 1 commit created with detailed documentation
+- ✅ **ALL 18 inline input-groups migrated** (100% complete)
+- ✅ **Forms::FieldComponent migration completed** - Final 2 fields migrated
+- ✅ Generic design for currency, units, and percentages
 
-**PREVIOUS SESSION (2025-11-21 - Session 2):**
+**SESSION 2 (2025-11-21):**
 
 - ✅ **Forms::SelectFieldComponent created** - 19 tests, 27 assertions
 - ✅ **ALL 12 inline selects migrated** (100% complete)
