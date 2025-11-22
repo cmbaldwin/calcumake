@@ -1,9 +1,15 @@
-<div class="col-md-4">
-  <%= form.label :invoice_date, t("invoices.fields.invoice_date"), class: "form-label" %>
-  <%= form.date_field :invoice_date, class: "form-control" %>
-</div>
+<%= render Forms::FieldComponent.new(
+  form: form,
+  attribute: :invoice_date,
+  type: :date,
+  label: t("invoices.fields.invoice_date"),
+  wrapper_class: "col-md-4"
+) %>
 
-<div class="col-md-4">
-  <%= form.label :due_date, t("invoices.fields.due_date"), class: "form-label" %>
-  <%= form.date_field :due_date, class: "form-control" %>
-</div>
+<%= render Forms::FieldComponent.new(
+  form: form,
+  attribute: :due_date,
+  type: :date,
+  label: t("invoices.fields.due_date"),
+  wrapper_class: "col-md-4"
+) %>
