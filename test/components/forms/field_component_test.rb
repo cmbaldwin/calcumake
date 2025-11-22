@@ -96,6 +96,20 @@ module Forms
       assert_selector "input[type='password']"
     end
 
+    test "renders date field" do
+      invoice = invoices(:one)
+      form = form_builder_for(invoice)
+
+      render_inline(Forms::FieldComponent.new(
+        form: form,
+        attribute: :invoice_date,
+        type: :date
+      ))
+
+      assert_selector "input[type='date'].form-control[name='invoice[invoice_date]']"
+      assert_selector "label.form-label", text: "Invoice date"
+    end
+
     # Options tests
     test "applies placeholder option" do
       filament = Filament.new
