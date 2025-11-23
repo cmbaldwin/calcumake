@@ -17,9 +17,21 @@ module ActiveSupport
     # Force all tests to run in English locale for consistency
     setup do
       I18n.locale = :en
+      stub_currency_converter
     end
 
     # Add more helper methods to be used by all tests here...
+
+    # Helper to stub currency converter API (Frankfurter)
+    def stub_currency_converter
+      # Stub JPY to USD conversion (most common in the app)
+      stub_request(:get, "https://api.frankfurter.app/latest?from=JPY&to=USD")
+        .to_return(
+          status: 200,
+          body: { "rates" => { "USD" => 0.0067 } }.to_json,
+          headers: { "Content-Type" => "application/json" }
+        )
+    end
 
     # Helper to stub successful Stripe customer creation
     def stub_stripe_customer_create(email:, customer_id: "cus_test123")
