@@ -6,3 +6,22 @@ inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 # # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 # Layout/SpaceInsideArrayLiteralBrackets:
 #   Enabled: false
+
+# ========================================================================
+# ViewComponent Organization Convention (ENFORCED MANUALLY)
+# ========================================================================
+# ALL new components MUST be created in namespaces (Shared::, Forms::, Cards::, etc.)
+# to prevent duplicate components at root level.
+#
+# Allowed root-level components (grandfathered):
+#   - app/components/application_component.rb (base class)
+#   - app/components/usage_stat_item_component.rb (feature component)
+#   - app/components/usage_stats_component.rb (feature component)
+#
+# Namespace guidelines:
+#   - Shared:: - Reusable UI components (badges, buttons, alerts, icons, modals, cards)
+#   - Forms:: - Form field components (FieldComponent, SelectFieldComponent, etc.)
+#   - Cards:: - Card-style components (PricingCardComponent, StatsCardComponent)
+#
+# Before creating a new component, verify it doesn't already exist in a namespace!
+# ========================================================================
