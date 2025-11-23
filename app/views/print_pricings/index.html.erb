@@ -18,9 +18,6 @@
     </div>
 </div>
 
-<%# AdSense Banner Ad - Free tier only %>
-<%= render 'shared/adsense_banner', ad_slot: 'auto' %>
-
 <!-- Search Section -->
 <div class="mb-4" data-controller="search" data-search-url-value="<%= print_pricings_path %>">
     <%= search_form_for @q, url: print_pricings_path,
