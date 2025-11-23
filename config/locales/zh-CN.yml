@@ -706,6 +706,7 @@ zh-CN:
         payment_processors: 与付款处理器（例如 Stripe）一起处理订阅付款和管理账单
         advertising_partners: 与广告合作伙伴（例如 Google AdSense）一起向 Free 级别用户展示相关广告
         business_transfer: 与业务转移或收购有关
+        analytics_providers: 与分析提供商（例如 Google Analytics）合作，以了解网站使用情况并改进我们的服务
       advertising:
         title: 广告
         content: 我们的 Free 级别通过 Google AdSense 显示广告。这些广告基于您的兴趣和浏览行为。付费订阅级别不显示广告。
@@ -731,6 +732,23 @@ zh-CN:
       contact:
         title: 联系我们
         content: 如果您对本隐私政策有任何疑问，请通过应用程序中提供的支持渠道与我们联系。
+      analytics:
+        title: 分析和使用数据
+        content: 我们使用 Google Analytics 来了解访问者如何与我们的网站和服务互动。这有助于我们改进我们的功能和用户体验。
+        what_we_collect: Google Analytics 可能会收集以下信息：
+        pages_visited: 您访问的页面和您使用的功能
+        time_spent: 在每个页面上花费的时间
+        device_info: 设备类型、浏览器和操作系统信息
+        geographic_location: 一般地理位置（国家和城市级别）
+        referral_source: 您如何找到我们的网站（搜索引擎、直接链接等）
+        interaction_data: 点击、滚动和其他互动模式
+        google_privacy: Google Analytics 使用 Cookie 和类似技术来收集此数据。有关 Google 如何使用来自使用其服务的网站的数据的更多信息，请访问
+          https://policies.google.com/technologies/partner-sites
+        opt_out_analytics: 您可以通过以下方式选择退出 Google Analytics：
+        browser_settings: 调整您的浏览器设置以阻止或删除 Cookie
+        google_opt_out: 安装 Google Analytics Opt-out Browser Add-on，网址为 https://tools.google.com/dlpage/gaoptout
+        do_not_track: 在您的浏览器首选项中启用“请勿跟踪”
+        analytics_retention: 分析数据根据 Google Analytics 数据保留政策进行保留，并且仅用于改进我们的服务。
     user_agreement:
       title: 用户协议
       nav_title: 服务条款
@@ -822,6 +840,9 @@ zh-CN:
       contact:
         title: 联系信息
         content: 如果您对本协议有任何疑问，请通过应用程序中提供的支持渠道与我们联系。
+      analytics_consent:
+        title: 分析和数据收集
+        content: 通过使用我们的服务，您同意通过 Google Analytics 收集和使用匿名使用数据，以改进我们的服务。您可以按照我们的隐私政策中的说明选择退出分析跟踪。
     commerce_disclosure:
       title: 商业披露（特定商取引法に基づく表記）
       nav_title: 商业披露
@@ -857,6 +878,7 @@ zh-CN:
         feature_3: 具有PDF导出功能的发票生成
         feature_4: 打印机规格数据库和使用情况跟踪
         feature_5: 基于云的项目数据存储
+        analytics_notice: 我们使用 Google Analytics 来改进我们的服务。有关数据收集和您的退出权利的详细信息，请参阅我们的隐私政策。
       pricing:
         title: 定价
         free_tier: 免费级别：¥0/月 - 具有广告的基本功能
@@ -887,7 +909,8 @@ zh-CN:
         credit_cards: 信用卡：Visa、Mastercard、American Express、JCB、Diners Club、Discover
         debit_cards: 借记卡：Visa Debit、Mastercard Debit
         processing_title: 付款处理
-        processing_details: 所有付款均通过我们的PCI DSS 1级认证付款处理商Stripe, Inc.安全处理。 您的完整支付卡信息永远不会存储在CalcuMake服务器上。 所有付款数据均经过加密，并由Stripe的安全基础设施独家处理。
+        processing_details: 所有付款均通过我们的PCI DSS 1级认证付款处理商Stripe, Inc.安全处理。 您的完整支付卡信息永远不会存储在CalcuMake服务器上。
+          所有付款数据均经过加密，并由Stripe的安全基础设施独家处理。
         security_title: 付款安全
         security_details: 我们对所有数据传输使用行业标准的SSL/TLS加密。 付款信息已令牌化，并按照国际支付卡行业标准进行处理。
       payment_timing:
@@ -961,7 +984,8 @@ zh-CN:
         content: 项目数据和帐户信息将在您的帐户的整个生命周期内保留。如果您删除您的帐户，所有数据将在 30 天内根据我们的隐私政策永久删除。
       limitation_liability:
         title: 责任限制
-        content: CalcuMake 按“原样”提供，用于成本估算目的。虽然我们力求准确，但在商业或关键应用中使用之前，应验证所有计算。MOAB Co., Ltd. 不对基于使用 CalcuMake 执行的计算做出的业务决策负责。
+        content: CalcuMake 按“原样”提供，用于成本估算目的。虽然我们力求准确，但在商业或关键应用中使用之前，应验证所有计算。MOAB Co.,
+          Ltd. 不对基于使用 CalcuMake 执行的计算做出的业务决策负责。
       dispute_resolution:
         title: 争议解决
         contact: 请先通过 cody@moab.jp 与我们联系
@@ -1321,7 +1345,8 @@ zh-CN:
     limitations:
       title: 这是一个演示版本
       description: 完整的 CalcuMake 应用程序包括：
-      features: '["具有自动规格的多个打印机配置文件", "具有材料属性的综合线材库", "专业的 PDF 发票生成", "项目历史记录和重复功能", "多币种支持", "机器折旧计算"]'
+      features: '["具有自动规格的多个打印机配置文件", "具有材料属性的综合线材库", "专业的 PDF 发票生成", "项目历史记录和重复功能",
+        "多币种支持", "机器折旧计算"]'
     advanced_calculator:
       title: 需要更多功能？
       description: 试用我们的高级定价计算器，支持多板打印、自定义耗材以及即时 PDF/CSV 导出。
@@ -1455,7 +1480,8 @@ zh-CN:
     cookie_consent:
       title: Cookie 同意声明
       message: 我们使用 Cookie 来改善您的体验。继续使用本网站即表示您同意我们的 Cookie 政策。
-      message_html: 我们使用 Cookie 来改善您的体验。继续使用本网站即表示您同意我们的 %{cookie_policy_link}。阅读我们的 %{privacy_policy_link}。
+      message_html: 我们使用 Cookie 来改善您的体验。继续使用本网站即表示您同意我们的 %{cookie_policy_link}。阅读我们的
+        %{privacy_policy_link}。
       accept: 接受
       decline: 拒绝
       reject: 拒绝
@@ -1540,7 +1566,8 @@ zh-CN:
     cookie_sections:
       what_are_cookies:
         title: 什么是 Cookie？
-        content: Cookie 是存储在您设备上的小型文本文件，可帮助我们提供更好的体验。我们使用必要的 Cookie 来实现功能，并使用分析 Cookie 来改进我们的服务。
+        content: Cookie 是存储在您设备上的小型文本文件，可帮助我们提供更好的体验。我们使用必要的 Cookie 来实现功能，并使用分析 Cookie
+          来改进我们的服务。
       how_we_use:
         title: 我们如何使用 Cookie
         intro: 我们使用不同类型的 Cookie 来改善您的体验并提供基本功能
