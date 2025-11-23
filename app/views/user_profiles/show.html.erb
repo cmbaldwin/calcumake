@@ -167,10 +167,14 @@
                   wrapper_class: "col-md-6",
                   options: { placeholder: t('profile.fields.company_email_placeholder') }
                 ) %>
-                <div class="col-md-6">
-                    <%= form.label :default_company_phone, t('profile.fields.company_phone'), class: "form-label" %>
-                    <%= form.telephone_field :default_company_phone, class: "form-control", placeholder: t('profile.fields.company_phone_placeholder') %>
-                </div>
+                <%= render Forms::FieldComponent.new(
+                  form: form,
+                  attribute: :default_company_phone,
+                  type: :tel,
+                  label: t('profile.fields.company_phone'),
+                  wrapper_class: "col-md-6",
+                  options: { placeholder: t('profile.fields.company_phone_placeholder') }
+                ) %>
                 <div class="col-md-6">
                     <%= form.label :company_logo, t('profile.fields.company_logo'), class: "form-label" %>
                     <%= render 'shared/image_upload',

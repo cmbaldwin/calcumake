@@ -110,6 +110,20 @@ module Forms
       assert_selector "label.form-label", text: "Invoice date"
     end
 
+    test "renders telephone field" do
+      user = User.new
+      form = form_builder_for(user)
+
+      render_inline(Forms::FieldComponent.new(
+        form: form,
+        attribute: :default_company_phone,
+        type: :tel
+      ))
+
+      assert_selector "input[type='tel'].form-control[name='user[default_company_phone]']"
+      assert_selector "label.form-label", text: "Default company phone"
+    end
+
     # Options tests
     test "applies placeholder option" do
       filament = Filament.new
