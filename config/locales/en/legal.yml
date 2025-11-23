@@ -42,6 +42,8 @@ en:
           our service (including cloud hosting and infrastructure providers)
         payment_processors: With payment processors (such as Stripe) to process subscription
           payments and manage billing
+        analytics_providers: With analytics providers (such as Google Analytics) to
+          understand website usage and improve our service
         advertising_partners: With advertising partners (such as Google AdSense) if
           we choose to display relevant advertisements to Free tier users
         business_transfer: In connection with a business transfer or acquisition
@@ -74,6 +76,27 @@ en:
         title: Cookies and Tracking
         content: We use cookies and similar technologies to enhance your experience,
           remember your preferences, and provide personalized content and advertisements.
+      analytics:
+        title: Analytics and Usage Data
+        content: We use Google Analytics to understand how visitors interact with our
+          website and service. This helps us improve our features and user experience.
+        what_we_collect: 'Google Analytics may collect information including:'
+        pages_visited: Pages you visit and features you use
+        time_spent: Time spent on each page
+        device_info: Device type, browser, and operating system information
+        geographic_location: General geographic location (country and city level)
+        referral_source: How you found our website (search engines, direct link, etc.)
+        interaction_data: Clicks, scrolls, and other interaction patterns
+        google_privacy: Google Analytics uses cookies and similar technologies to collect
+          this data. For more information about how Google uses data from sites that
+          use their services, please visit https://policies.google.com/technologies/partner-sites
+        opt_out_analytics: 'You can opt out of Google Analytics by:'
+        browser_settings: Adjusting your browser settings to block or delete cookies
+        google_opt_out: Installing the Google Analytics Opt-out Browser Add-on available
+          at https://tools.google.com/dlpage/gaoptout
+        do_not_track: Enabling "Do Not Track" in your browser preferences
+        analytics_retention: Analytics data is retained according to Google Analytics
+          data retention policies and is used solely for improving our service.
       changes:
         title: Changes to This Policy
         content: We may update this privacy policy from time to time. We will notify
@@ -166,6 +189,11 @@ en:
         no_interference: Interfere with or disrupt the service or servers
         no_unauthorized_access: Attempt to gain unauthorized access to any part of
           the service
+      analytics_consent:
+        title: Analytics and Data Collection
+        content: By using our service, you consent to the collection and use of anonymous
+          usage data through Google Analytics for the purpose of improving our service.
+          You may opt out of analytics tracking as described in our Privacy Policy.
       data_accuracy:
         title: Data Accuracy and Calculations
         content: While we strive to provide accurate calculation tools, you are responsible
@@ -253,6 +281,8 @@ en:
         feature_3: Invoice generation with PDF export functionality
         feature_4: Printer specifications database and usage tracking
         feature_5: Cloud-based storage for project data
+        analytics_notice: We use Google Analytics to improve our service. See our Privacy
+          Policy for details on data collection and your opt-out rights.
       pricing:
         title: Pricing
         intro: CalcuMake offers the following subscription plans
