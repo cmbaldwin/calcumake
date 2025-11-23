@@ -104,4 +104,42 @@ module ApplicationHelper
   def user_oauth_path(provider)
     "/users/auth/#{provider}"
   end
+
+  # Format price with USD conversion
+  # @param amount [Numeric] The price amount
+  # @param currency [String] Source currency code (e.g., 'JPY', 'USD')
+  # @return [String] Formatted price with USD conversion (e.g., "¥150 ($1.23)")
+  def format_price_with_usd(amount, currency = "JPY")
+    return "$0" if amount.to_i.zero?
+
+    # Format primary price
+    primary_price = case currency.upcase
+    when "JPY"
+      "¥#{number_with_delimiter(amount)}"
+    when "USD"
+      "$#{number_with_precision(amount, precision: 2)}"
+    else
+      "#{currency} #{number_with_precision(amount, precision: 2)}"
+    end
+
+    # Return primary price only if it's already USD
+    return primary_price if currency.upcase == "USD"
+
+    # Convert to USD
+    usd_amount = CurrencyConverter.convert(amount, from: currency, to: "USD")
+
+    if usd_amount
+      usd_formatted = "$#{number_with_precision(usd_amount, precision: 2)}"
+      content_tag(:span, class: "price-with-conversion") do
+        safe_join([
+          content_tag(:span, primary_price, class: "primary-price"),
+          " ",
+          content_tag(:span, "(~#{usd_formatted})", class: "text-muted small usd-conversion")
+        ])
+      end
+    else
+      # Fallback to primary price only if conversion fails
+      primary_price
+    end
+  end
 end
