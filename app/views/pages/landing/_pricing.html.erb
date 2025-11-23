@@ -34,7 +34,7 @@
                     plan: "startup",
                     features: {
                         name: t('landing.pricing.startup.title'),
-                        price: "¥150",
+                        price: format_price_with_usd(150, 'JPY'),
                         limits: {
                             print_pricings: 50,
                             printers: 10,
@@ -54,7 +54,7 @@
                     plan: "pro",
                     features: {
                         name: t('landing.pricing.pro.title'),
-                        price: "¥1,500",
+                        price: format_price_with_usd(1500, 'JPY'),
                         limits: {
                             print_pricings: Float::INFINITY,
                             printers: Float::INFINITY,

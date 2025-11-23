@@ -108,6 +108,9 @@ class PlanLimits
         {
           name: "Free",
           price: "$0",
+          price_amount: 0,
+          price_currency: "USD",
+          description: "Perfect for trying out CalcuMake",
           limits: FREE_LIMITS,
           features: [ "CalcuMake branding on invoices", "Community support", "Ads displayed" ],
           trial: true
@@ -116,6 +119,9 @@ class PlanLimits
         {
           name: "Startup",
           price: "$1.50/month",
+          price_amount: 150,
+          price_currency: "JPY",
+          description: "Great for small businesses and hobbyists",
           limits: STARTUP_LIMITS,
           features: [ "Remove CalcuMake branding", "No ads", "Email support" ],
           trial: false
@@ -124,6 +130,9 @@ class PlanLimits
         {
           name: "Pro",
           price: "$15/month",
+          price_amount: 1500,
+          price_currency: "JPY",
+          description: "Everything you need for professional printing",
           limits: PRO_LIMITS,
           features: [
             "Unlimited everything",
