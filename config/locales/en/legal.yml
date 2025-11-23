@@ -42,20 +42,22 @@ en:
           our service (including cloud hosting and infrastructure providers)
         payment_processors: With payment processors (such as Stripe) to process subscription
           payments and manage billing
-        advertising_partners: With advertising partners (such as Google AdSense) to
-          display relevant advertisements to Free tier users
+        advertising_partners: With advertising partners (such as Google AdSense) if
+          we choose to display relevant advertisements to Free tier users
         business_transfer: In connection with a business transfer or acquisition
       advertising:
         title: Advertising
-        content: Our Free tier displays advertisements through Google AdSense. These
-          ads are based on your interests and browsing behavior. Paid subscription
-          tiers do not display advertisements.
-        google_adsense: Google AdSense uses cookies and other tracking technologies
-          to serve relevant advertisements. This applies only to Free tier users.
+        content: Our Free tier may display advertisements through third-party advertising
+          networks such as Google AdSense in the future. These ads may be based on
+          your interests and browsing behavior. Paid subscription tiers do not display
+          advertisements.
+        google_adsense: If advertisements are enabled, advertising partners may use
+          cookies and other tracking technologies to serve relevant advertisements.
+          This would apply only to Free tier users.
         opt_out: You can control ad personalization and opt out of personalized advertising
-          by visiting
+          through your advertising partner's settings
         google_ad_settings: Google Ad Settings
-        upgrade_note: To remove all advertisements, upgrade to a paid subscription
+        upgrade_note: To ensure an ad-free experience, upgrade to a paid subscription
           tier.
       data_security:
         title: Data Security
@@ -99,7 +101,8 @@ en:
       subscription_tiers:
         title: Subscription Tiers and Pricing
         content: 'CalcuMake offers three subscription tiers:'
-        free_tier: 'Free Tier: Basic features with advertisement display'
+        free_tier: 'Free Tier: Basic features with possible advertisement display in
+          the future'
         pro_tier: 'Pro Tier: Advanced features, no ads, priority support (paid subscription)'
         enterprise_tier: 'Enterprise Tier: All features, premium support, custom integrations
           (paid subscription)'
@@ -137,9 +140,10 @@ en:
           cycle
       free_tier_limitations:
         title: Free Tier Limitations
-        content: 'The Free tier includes advertisement display and may have usage
-          limitations:'
-        advertisements: Free tier users will see advertisements throughout the application
+        content: 'The Free tier may include advertisement display in the future and
+          may have usage limitations:'
+        advertisements: Free tier users may see advertisements throughout the application
+          if advertising is enabled
         feature_limits: Some advanced features are restricted to paid tiers
         support_priority: Free tier support is provided on a best-effort basis
         upgrade_anytime: You may upgrade to a paid tier at any time
@@ -254,7 +258,8 @@ en:
         intro: CalcuMake offers the following subscription plans
         free_tier_title: Free Tier
         free_tier_price: ¥0 per month
-        free_tier_features: Basic cost calculation features with advertising support
+        free_tier_features: Basic cost calculation features with possible advertising
+          support in the future
         free_tier_payment: No payment required
         startup_tier_title: Startup Tier
         startup_tier_price: ¥150 per month (tax included)
