@@ -11,9 +11,16 @@
             <%# Plan Header %>
             <h3 class="h5 mb-1"><%= features[:name] %></h3>
             <div class="plan-price mb-2">
-                <span class="price-amount"><%= features[:price].split('/').first %></span>
-                <% unless plan == 'free' %>
-                <span class="price-period">/<%= I18n.t('subscriptions.month', default: 'month') %></span>
+                <% if features[:price_amount].present? && features[:price_currency].present? %>
+                    <%= helpers.format_price_with_usd(features[:price_amount], features[:price_currency]) %>
+                    <% unless plan == 'free' %>
+                    <span class="price-period">/<%= I18n.t('subscriptions.month', default: 'month') %></span>
+                    <% end %>
+                <% else %>
+                    <span class="price-amount"><%= features[:price].to_s.split('/').first %></span>
+                    <% unless plan == 'free' %>
+                    <span class="price-period">/<%= I18n.t('subscriptions.month', default: 'month') %></span>
+                    <% end %>
                 <% end %>
             </div>
             <% if features[:description].present? %>
