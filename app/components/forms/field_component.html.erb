@@ -14,6 +14,8 @@
       <%= @form.password_field @attribute, field_options %>
     <% when :date %>
       <%= @form.date_field @attribute, field_options %>
+    <% when :tel %>
+      <%= @form.telephone_field @attribute, field_options %>
     <% when :textarea %>
       <%= @form.text_area @attribute, field_options %>
     <% end %>
@@ -36,6 +38,8 @@
     <%= @form.password_field @attribute, field_options %>
   <% when :date %>
     <%= @form.date_field @attribute, field_options %>
+  <% when :tel %>
+    <%= @form.telephone_field @attribute, field_options %>
   <% when :textarea %>
     <%= @form.text_area @attribute, field_options %>
   <% end %>
