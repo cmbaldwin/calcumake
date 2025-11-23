@@ -37,12 +37,15 @@
         ) %>
       </div>
       <div class="column column-50">
-        <label for="user_default_energy_cost_per_kwh">Default Energy Cost per kWh</label>
-        <%= form.number_field :default_energy_cost_per_kwh, step: 0.001, min: 0.001, 
-            placeholder: "0.120", class: "text-end" %>
-        <p class="form-text">
-          Your local electricity cost per kilowatt-hour. This will be used as the default for new calculations.
-        </p>
+        <%= render Forms::FieldComponent.new(
+          form: form,
+          attribute: :default_energy_cost_per_kwh,
+          type: :number,
+          label: "Default Energy Cost per kWh",
+          hint: "Your local electricity cost per kilowatt-hour. This will be used as the default for new calculations.",
+          wrapper: false,
+          options: { step: 0.001, min: 0.001, placeholder: "0.120", class: "text-end" }
+        ) %>
       </div>
     </div>
   </div>
@@ -53,70 +56,90 @@
 
     <div class="row">
       <div class="column column-50">
-        <label for="user_default_prep_time_minutes">Prep Time (minutes)</label>
-        <%= form.number_field :default_prep_time_minutes, step: 1, min: 0,
-            placeholder: "10", class: "text-end" %>
-        <p class="form-text">Time spent preparing prints before starting.</p>
+        <%= render Forms::FieldComponent.new(
+          form: form,
+          attribute: :default_prep_time_minutes,
+          type: :number,
+          label: "Prep Time (minutes)",
+          hint: "Time spent preparing prints before starting.",
+          wrapper: false,
+          options: { step: 1, min: 0, placeholder: "10", class: "text-end" }
+        ) %>
       </div>
       <div class="column column-50">
-        <label for="user_default_prep_cost_per_hour">Prep Cost per Hour</label>
-        <div class="input-group">
-          <span class="input-group-text"><%= currency_symbol(@user.default_currency) %></span>
-          <%= form.number_field :default_prep_cost_per_hour, step: 0.01, min: 0,
-              placeholder: "1000", class: "text-end" %>
-        </div>
-        <p class="form-text">Hourly rate for preparation work.</p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="column column-50">
-        <label for="user_default_postprocessing_time_minutes">Post-processing Time (minutes)</label>
-        <%= form.number_field :default_postprocessing_time_minutes, step: 1, min: 0,
-            placeholder: "10", class: "text-end" %>
-        <p class="form-text">Time spent on post-processing (cleaning, support removal, etc.).</p>
-      </div>
-      <div class="column column-50">
-        <label for="user_default_postprocessing_cost_per_hour">Post-processing Cost per Hour</label>
-        <div class="input-group">
-          <span class="input-group-text"><%= currency_symbol(@user.default_currency) %></span>
-          <%= form.number_field :default_postprocessing_cost_per_hour, step: 0.01, min: 0,
-              placeholder: "1000", class: "text-end" %>
-        </div>
-        <p class="form-text">Hourly rate for post-processing work.</p>
+        <%= render Forms::NumberFieldWithAddonComponent.new(
+          form: form,
+          attribute: :default_prep_cost_per_hour,
+          label: "Prep Cost per Hour",
+          hint: "Hourly rate for preparation work.",
+          prepend: currency_symbol(@user.default_currency),
+          wrapper: false,
+          options: { step: 0.01, min: 0, placeholder: "1000", class: "text-end" }
+        ) %>
       </div>
     </div>
 
     <div class="row">
       <div class="column column-50">
-        <label for="user_default_other_costs">Other Costs</label>
-        <div class="input-group">
-          <span class="input-group-text"><%= currency_symbol(@user.default_currency) %></span>
-          <%= form.number_field :default_other_costs, step: 0.01, min: 0,
-              placeholder: "450", class: "text-end" %>
-        </div>
-        <p class="form-text">Additional costs like packaging, shipping preparation, etc.</p>
+        <%= render Forms::FieldComponent.new(
+          form: form,
+          attribute: :default_postprocessing_time_minutes,
+          type: :number,
+          label: "Post-processing Time (minutes)",
+          hint: "Time spent on post-processing (cleaning, support removal, etc.).",
+          wrapper: false,
+          options: { step: 1, min: 0, placeholder: "10", class: "text-end" }
+        ) %>
       </div>
       <div class="column column-50">
-        <label for="user_default_vat_percentage">VAT Percentage</label>
-        <div class="input-group">
-          <%= form.number_field :default_vat_percentage, step: 0.01, min: 0, max: 100,
-              placeholder: "20", class: "text-end" %>
-          <span class="input-group-text">%</span>
-        </div>
-        <p class="form-text">Default VAT/tax percentage for your location.</p>
+        <%= render Forms::NumberFieldWithAddonComponent.new(
+          form: form,
+          attribute: :default_postprocessing_cost_per_hour,
+          label: "Post-processing Cost per Hour",
+          hint: "Hourly rate for post-processing work.",
+          prepend: currency_symbol(@user.default_currency),
+          wrapper: false,
+          options: { step: 0.01, min: 0, placeholder: "1000", class: "text-end" }
+        ) %>
       </div>
     </div>
 
     <div class="row">
       <div class="column column-50">
-        <label for="user_default_filament_markup_percentage"><%= t('profile.fields.default_filament_markup') %></label>
-        <div class="input-group">
-          <%= form.number_field :default_filament_markup_percentage, step: 1, min: 0, max: 500,
-              placeholder: "20", class: "text-end" %>
-          <span class="input-group-text">%</span>
-        </div>
-        <p class="form-text"><%= t('profile.fields.default_filament_markup_help') %></p>
+        <%= render Forms::NumberFieldWithAddonComponent.new(
+          form: form,
+          attribute: :default_other_costs,
+          label: "Other Costs",
+          hint: "Additional costs like packaging, shipping preparation, etc.",
+          prepend: currency_symbol(@user.default_currency),
+          wrapper: false,
+          options: { step: 0.01, min: 0, placeholder: "450", class: "text-end" }
+        ) %>
+      </div>
+      <div class="column column-50">
+        <%= render Forms::NumberFieldWithAddonComponent.new(
+          form: form,
+          attribute: :default_vat_percentage,
+          label: "VAT Percentage",
+          hint: "Default VAT/tax percentage for your location.",
+          append: "%",
+          wrapper: false,
+          options: { step: 0.01, min: 0, max: 100, placeholder: "20", class: "text-end" }
+        ) %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column column-50">
+        <%= render Forms::NumberFieldWithAddonComponent.new(
+          form: form,
+          attribute: :default_filament_markup_percentage,
+          label: t('profile.fields.default_filament_markup'),
+          hint: t('profile.fields.default_filament_markup_help'),
+          append: "%",
+          wrapper: false,
+          options: { step: 1, min: 0, max: 500, placeholder: "20", class: "text-end" }
+        ) %>
       </div>
     </div>
   </div>
