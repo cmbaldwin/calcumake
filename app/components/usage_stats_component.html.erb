@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-header">
     <h3 class="h6 mb-0">
-      <%= render IconComponent.new(name: "bar-chart") %>
+      <%= render Shared::IconComponent.new(name: "bar-chart") %>
       <%= t('usage_limits.usage_summary') %>
     </h3>
   </div>
@@ -18,14 +18,14 @@
 
     <%# Warning for approaching limits %>
     <% if has_approaching_limits? %>
-      <%= render AlertComponent.new(
+      <%= render Shared::AlertComponent.new(
         message: t('usage_limits.approaching_limits_message', default: "You're approaching your plan limits. Consider upgrading to avoid interruptions."),
         variant: "warning",
         dismissible: false,
         html_options: { class: "py-2 px-3 mt-3 mb-0" }
       ) do %>
         <small>
-          <%= render IconComponent.new(name: "exclamation-triangle") %>
+          <%= render Shared::IconComponent.new(name: "exclamation-triangle") %>
           <%= t('usage_limits.approaching_limits_message', default: "You're approaching your plan limits. Consider upgrading to avoid interruptions.") %>
         </small>
       <% end %>

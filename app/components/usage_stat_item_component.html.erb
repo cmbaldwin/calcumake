@@ -2,12 +2,12 @@
   <div class="usage-stat">
     <div class="d-flex justify-content-between align-items-center mb-2">
       <span class="text-muted small"><%= resource_label %></span>
-      <%= render BadgeComponent.new(text: badge_text, variant: "secondary") %>
+      <%= render Shared::BadgeComponent.new(text: badge_text, variant: "secondary") %>
     </div>
 
     <% if unlimited? %>
       <div class="text-success small">
-        <%= render IconComponent.new(name: "infinity") %>
+        <%= render Shared::IconComponent.new(name: "infinity") %>
         <%= t('usage_limits.unlimited') %>
       </div>
     <% else %>
