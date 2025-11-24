@@ -10,7 +10,7 @@
 <%= render 'shared/usage_dashboard_widget' %>
 
 <%= form_with model: @user, url: user_profile_path, method: :patch, local: true, html: { class: "row g-3" } do |form| %>
-<%= render 'shared/form_errors', object: @user %>
+<%= render Forms::ErrorsComponent.new(model: @user) %>
 
 <!-- Account Information -->
 <div class="col-12">
