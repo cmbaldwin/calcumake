@@ -1,14 +1,5 @@
 <%= form_with(model: [@print_pricing, @invoice], local: true, data: { controller: "invoice-form", invoice_form_currency_value: @invoice.currency, invoice_form_default_currency_value: @print_pricing.default_currency }) do |form| %>
-<% if @invoice.errors.any? %>
-<div class="alert alert-danger">
-    <h4><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h4>
-    <ul>
-        <% @invoice.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-    </ul>
-</div>
-<% end %>
+<%= render Forms::ErrorsComponent.new(model: @invoice) %>
 
 <div class="row g-3">
     <!-- Company Information Info Card -->
