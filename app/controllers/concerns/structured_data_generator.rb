@@ -15,6 +15,7 @@ module StructuredDataGenerator
       "@type": "Product",
       "name": "CalcuMake",
       "description": "Professional 3D print cost calculator with multi-currency support, printer management, and instant invoicing",
+      "image": view_context.image_url("/icon.png"),
       "brand": {
         "@type": "Brand",
         "name": "CalcuMake"
