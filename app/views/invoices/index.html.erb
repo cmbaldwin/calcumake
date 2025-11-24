@@ -54,9 +54,7 @@
                                     (@nested_view ? print_pricing_invoice_path(@print_pricing, invoice) : print_pricing_invoice_path(invoice.print_pricing, invoice)),
                                     class: "text-decoration-none" %>
                             </h5>
-                            <span class="badge <%= invoice_status_badge_class(invoice) %>">
-                                <%= t("invoices.status.#{invoice.status}") %>
-                            </span>
+                            <%= render Invoices::StatusBadgeComponent.new(invoice: invoice) %>
                         </div>
 
                         <div class="card-body">
