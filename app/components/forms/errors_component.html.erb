@@ -1,0 +1,14 @@
+<div class="<%= alert_classes %>">
+  <h6 class="fw-bold mb-2">
+    <%= errors_prohibited_text %>
+  </h6>
+  <ul class="mb-0 ps-3">
+    <% @model.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+
+  <% if @dismissible %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  <% end %>
+</div>
