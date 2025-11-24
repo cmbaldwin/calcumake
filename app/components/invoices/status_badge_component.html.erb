@@ -1,0 +1,5 @@
+<%= render Shared::BadgeComponent.new(
+  text: status_text,
+  variant: variant_for_status(@invoice.status),
+  html_options: { class: size_class(@size) }
+) %>
