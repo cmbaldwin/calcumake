@@ -25,7 +25,10 @@
     </div>
 </div>
 <% else %>
-<div class="alert alert-warning mt-3 mb-0">
-    <%= t("invoices.no_company_info") %>
-</div>
+<%= render Shared::AlertComponent.new(
+    message: t("invoices.no_company_info"),
+    variant: "warning",
+    dismissible: false,
+    html_options: { class: "mt-3 mb-0" }
+) %>
 <% end %>
