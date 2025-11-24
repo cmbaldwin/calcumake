@@ -8,18 +8,7 @@
                 data: { turbo_frame: "_top" },
                 html: { class: "needs-validation", novalidate: true } do |form| %>
     <div class="modal-body">
-      <% if @client.errors.any? %>
-        <div class="alert alert-danger mb-4">
-          <h6 class="fw-bold mb-2">
-            <%= t('common.errors_prohibited', count: @client.errors.count, errors: t('common.error_count', count: @client.errors.count), model: t('models.client').downcase) %>
-          </h6>
-          <ul class="mb-0 ps-3">
-            <% @client.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <%= render Forms::ErrorsComponent.new(model: @client) %>
 
       <!-- Basic Information -->
       <div class="card mb-3">
