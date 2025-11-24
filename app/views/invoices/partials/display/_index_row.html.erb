@@ -19,7 +19,7 @@
         <% end %>
     </td>
     <td>
-        <%= invoice_status_badge(invoice, size: "") %>
+        <%= render Invoices::StatusBadgeComponent.new(invoice: invoice, size: "") %>
     </td>
     <td class="text-end">
         <%= formatted_currency_amount(invoice.total, invoice.currency) %>
