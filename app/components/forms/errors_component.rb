@@ -13,7 +13,7 @@ module Forms
     end
 
     def alert_classes
-      classes = ["alert", "alert-danger", "mb-4"]
+      classes = [ "alert", "alert-danger", "mb-4" ]
       classes << "alert-dismissible fade show" if @dismissible
       classes << @html_options[:class] if @html_options[:class]
       classes.join(" ")
@@ -24,12 +24,12 @@ module Forms
     end
 
     def error_count_text
-      I18n.t('common.error_count', count: @model.errors.count)
+      I18n.t("common.error_count", count: @model.errors.count)
     end
 
     def errors_prohibited_text
       I18n.t(
-        'common.errors_prohibited',
+        "common.errors_prohibited",
         count: @model.errors.count,
         errors: error_count_text,
         model: model_name
