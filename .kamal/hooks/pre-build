@@ -51,6 +51,21 @@ else
     echo "ℹ️  Skipping force-retranslate (set FORCE_RETRANSLATE=1 to force retranslation)"
 fi
 
+# Regenerate sitemap with latest routes and priorities for SEO
+echo "Regenerating sitemap..."
+if ! bundle exec rake sitemap:refresh; then
+    echo "❌ Sitemap generation failed!"
+    echo "   This is non-critical but should be investigated"
+    # Don't exit - sitemap failure shouldn't block deployment
+else
+    echo "✅ Sitemap regenerated successfully"
+    # Stage sitemap changes if any
+    if ! git diff-index --quiet HEAD -- public/sitemap*; then
+        echo "   Staging updated sitemap files..."
+        git add public/sitemap*
+    fi
+fi
+
 # Sync translations with automated translation - MUST have API key
 # This will only translate NEW/MISSING keys, not re-translate cached ones
 echo "Syncing and translating missing keys..."
