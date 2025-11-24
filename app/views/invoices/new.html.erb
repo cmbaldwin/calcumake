@@ -8,9 +8,9 @@
                 <%= link_to t("actions.back"), print_pricing_path(@print_pricing), class: "btn btn-outline-secondary" %>
             </div>
 
-            <div class="alert alert-info">
+            <%= render Shared::AlertComponent.new(variant: "info", dismissible: false) do %>
                 <strong>Print Pricing:</strong> <%= @print_pricing.job_name %>
-            </div>
+            <% end %>
 
             <%= render "form" %>
         </div>
