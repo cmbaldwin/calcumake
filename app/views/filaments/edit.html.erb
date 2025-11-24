@@ -7,18 +7,7 @@
 <div class="row justify-content-center">
     <div class="col-lg-8">
         <%= form_with model: @filament, local: true, class: "needs-validation", novalidate: true do |form| %>
-            <% if @filament.errors.any? %>
-                <div class="alert alert-danger mb-4">
-                    <h6 class="fw-bold mb-2">
-                        <%= t('common.errors_prohibited', count: @filament.errors.count, errors: t('common.error_count', count: @filament.errors.count), model: t('models.filament').downcase) %>
-                    </h6>
-                    <ul class="mb-0 ps-3">
-                        <% @filament.errors.full_messages.each do |message| %>
-                            <li><%= message %></li>
-                        <% end %>
-                    </ul>
-                </div>
-            <% end %>
+            <%= render Forms::ErrorsComponent.new(model: @filament) %>
 
             <!-- Basic Information -->
             <div class="card mb-4">
