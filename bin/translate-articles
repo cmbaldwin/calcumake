@@ -1,0 +1,310 @@
+#!/usr/bin/env ruby
+# Automated article translation using OpenRouter API
+# Translates article fields and Action Text content across all locales
+
+$stdout.sync = true  # Force immediate output
+$stderr.sync = true
+
+require_relative '../config/environment'
+require 'open_router'
+
+TARGET_LOCALES = ['ja', 'es', 'fr', 'ar', 'hi', 'zh-CN']
+CACHE_DIR = Rails.root.join('tmp', 'article_translation_cache')
+
+# Language name mapping for API prompts
+LANGUAGE_NAMES = {
+  'ja' => 'Japanese',
+  'es' => 'Spanish',
+  'fr' => 'French',
+  'ar' => 'Arabic',
+  'hi' => 'Hindi',
+  'zh-CN' => 'Simplified Chinese'
+}
+
+# Ensure cache directory exists
+FileUtils.mkdir_p(CACHE_DIR)
+
+def setup_openrouter_client
+  api_key = ENV['OPENROUTER_TRANSLATION_KEY'] || ENV['OPENROUTER_API_KEY']
+  unless api_key
+    puts "❌ Error: OPENROUTER_TRANSLATION_KEY environment variable not set"
+    puts
+    puts "To use this script:"
+    puts "  export OPENROUTER_TRANSLATION_KEY='your-api-key'"
+    puts "  bin/translate-articles"
+    exit 1
+  end
+
+  OpenRouter.configure do |config|
+    config.access_token = api_key
+    config.site_name = 'CalcuMake Article Translation'
+    config.site_url = 'https://calcumake.com'
+  end
+
+  OpenRouter::Client.new
+end
+
+def translate_text(text, target_language, client, is_html: false)
+  return nil if text.blank?
+
+  content_type = is_html ? "HTML content" : "text"
+
+  prompt = <<~PROMPT
+    You are a professional translator for a 3D printing management blog called CalcuMake.
+
+    Translate the following English #{content_type} to #{LANGUAGE_NAMES[target_language]}.
+
+    CRITICAL RULES:
+    1. Preserve all HTML tags EXACTLY as shown if present
+    2. Preserve all attributes in HTML tags (class, id, data-*, etc.)
+    3. ONLY translate the text content, NOT the HTML structure
+    4. Keep technical 3D printing terms accurate
+    5. Use natural, professional blog language
+    6. Maintain the same tone and style
+    7. Return ONLY the translated #{content_type}, nothing else
+
+    Original #{content_type}:
+    #{text}
+
+    Translate to #{LANGUAGE_NAMES[target_language]}:
+  PROMPT
+
+  response = client.complete(
+    [
+      {
+        role: 'user',
+        content: prompt
+      }
+    ],
+    model: 'google/gemini-2.0-flash-001',
+    extras: {
+      temperature: 0.3,
+      max_tokens: 8000
+    }
+  )
+
+  content = response.dig('choices', 0, 'message', 'content')
+
+  unless content
+    raise "No content in API response: #{response.inspect}"
+  end
+
+  # Clean up markdown code blocks if present
+  content = content.gsub(/```(?:html)?\s*(.*?)\s*```/m, '\1')
+  content.strip
+rescue StandardError => e
+  puts "   ❌ Translation error: #{e.message}"
+  nil
+end
+
+def cache_key_for_article(article_id, locale, field)
+  "article_#{article_id}_#{locale}_#{field}"
+end
+
+def get_cached_translation(cache_file, key)
+  return nil unless File.exist?(cache_file)
+
+  cache = JSON.parse(File.read(cache_file))
+  cache[key]
+rescue StandardError
+  nil
+end
+
+def save_to_cache(cache_file, key, value)
+  cache = {}
+  cache = JSON.parse(File.read(cache_file)) if File.exist?(cache_file)
+
+  cache[key] = value
+  File.write(cache_file, JSON.pretty_generate(cache))
+rescue StandardError => e
+  puts "   ⚠️  Cache save failed: #{e.message}"
+end
+
+def translate_article_to_locale(article, locale, client, cache_file, force: false)
+  puts "  📝 Translating to #{LANGUAGE_NAMES[locale]}..."
+
+  # Switch to target locale
+  I18n.with_locale(locale) do
+    # Check if translation already exists
+    has_title = article.title.present?
+    has_content = article.content.body.present?
+
+    if has_title && has_content && !force
+      puts "     ✓ Translation already exists, skipping (use --force to retranslate)"
+      return
+    end
+
+    # Translate title
+    unless has_title && !force
+      cache_key = cache_key_for_article(article.id, locale, 'title')
+      cached_title = get_cached_translation(cache_file, cache_key)
+
+      title_translation = if cached_title
+        puts "     📦 Using cached title"
+        cached_title
+      else
+        puts "     🌐 Translating title..."
+        I18n.with_locale(:en) { article.title }
+        translated = translate_text(article.title_en, locale, client)
+        save_to_cache(cache_file, cache_key, translated) if translated
+        translated
+      end
+
+      article.title = title_translation if title_translation
+    end
+
+    # Translate slug (auto-generate from translated title)
+    article.slug = article.title.parameterize if article.title.present?
+
+    # Translate excerpt if present in English
+    if article.excerpt_en.present?
+      cache_key = cache_key_for_article(article.id, locale, 'excerpt')
+      cached_excerpt = get_cached_translation(cache_file, cache_key)
+
+      excerpt_translation = if cached_excerpt
+        puts "     📦 Using cached excerpt"
+        cached_excerpt
+      else
+        puts "     🌐 Translating excerpt..."
+        translated = translate_text(article.excerpt_en, locale, client)
+        save_to_cache(cache_file, cache_key, translated) if translated
+        translated
+      end
+
+      article.excerpt = excerpt_translation if excerpt_translation
+    end
+
+    # Translate Action Text content
+    # Action Text doesn't use Mobility accessors, so we need to get English content differently
+    english_content_html = nil
+    I18n.with_locale(:en) do
+      english_content_html = article.content.body.to_html if article.content.body.present?
+    end
+
+    if english_content_html.present? && (!has_content || force)
+      cache_key = cache_key_for_article(article.id, locale, 'content')
+      cached_content = get_cached_translation(cache_file, cache_key)
+
+      content_translation = if cached_content
+        puts "     📦 Using cached content"
+        cached_content
+      else
+        puts "     🌐 Translating content (HTML-aware)..."
+        translated = translate_text(english_content_html, locale, client, is_html: true)
+        save_to_cache(cache_file, cache_key, translated) if translated
+        translated
+      end
+
+      if content_translation
+        # Update Action Text content with translated HTML
+        article.content = content_translation
+      end
+    end
+
+    # Translate meta description if present
+    if article.meta_description_en.present?
+      cache_key = cache_key_for_article(article.id, locale, 'meta_description')
+      cached_meta = get_cached_translation(cache_file, cache_key)
+
+      meta_translation = if cached_meta
+        puts "     📦 Using cached meta description"
+        cached_meta
+      else
+        puts "     🌐 Translating meta description..."
+        translated = translate_text(article.meta_description_en, locale, client)
+        save_to_cache(cache_file, cache_key, translated) if translated
+        translated
+      end
+
+      article.meta_description = meta_translation if meta_translation
+    end
+
+    # Set translation notice flag
+    article.translation_notice = true
+
+    # Save the article with translations
+    if article.save
+      puts "     ✅ Saved #{LANGUAGE_NAMES[locale]} translation"
+    else
+      puts "     ❌ Failed to save: #{article.errors.full_messages.join(', ')}"
+    end
+  end
+end
+
+# Main execution
+puts "=" * 80
+puts "CalcuMake Article Translation System"
+puts "Using OpenRouter API with Google Gemini 2.0 Flash"
+puts "=" * 80
+puts
+
+# Parse command line options
+force_retranslate = ARGV.include?('--force')
+article_ids = ARGV.reject { |arg| arg.start_with?('--') }.map(&:to_i)
+
+if force_retranslate
+  puts "🔄 Force retranslate mode enabled"
+  puts
+end
+
+# Setup OpenRouter client
+client = setup_openrouter_client
+cache_file = CACHE_DIR.join('articles.json')
+
+# Get articles to translate
+articles = if article_ids.any?
+  Article.where(id: article_ids)
+else
+  Article.all
+end
+
+if articles.empty?
+  puts "❌ No articles found to translate"
+  exit 0
+end
+
+puts "📚 Found #{articles.count} article(s) to process"
+puts
+
+total_translations = 0
+
+articles.each_with_index do |article, index|
+  puts "#{index + 1}/#{articles.count} - Article ##{article.id}: \"#{article.title_en}\""
+
+  # Ensure English content exists
+  unless article.title_en.present?
+    puts "  ⚠️  No English title found, skipping"
+    puts
+    next
+  end
+
+  TARGET_LOCALES.each do |locale|
+    begin
+      translate_article_to_locale(article, locale, client, cache_file, force: force_retranslate)
+      total_translations += 1
+
+      # Small delay to avoid rate limiting
+      sleep 0.5
+    rescue StandardError => e
+      puts "  ❌ Error translating to #{locale}: #{e.message}"
+      puts "     #{e.backtrace.first}"
+    end
+  end
+
+  puts
+end
+
+puts "=" * 80
+puts "✨ Translation Complete!"
+puts "=" * 80
+puts "📊 Statistics:"
+puts "   • Articles processed: #{articles.count}"
+puts "   • Languages: #{TARGET_LOCALES.size}"
+puts "   • Total translations: #{total_translations}"
+puts "   • Cache file: #{cache_file}"
+puts
+puts "💡 Usage:"
+puts "   bin/translate-articles              # Translate all articles"
+puts "   bin/translate-articles 1 2 3        # Translate specific articles"
+puts "   bin/translate-articles --force      # Force retranslate existing translations"
+puts
