@@ -1,0 +1,86 @@
+<% content_for :title, t("articles.meta.title", title: @article.title) %>
+<% content_for :meta_description, article_meta_description(@article) %>
+<% content_for :meta_keywords, article_meta_keywords(@article) %>
+
+<% content_for :head do %>
+  <script type="application/ld+json">
+    <%= article_structured_data(@article) %>
+  </script>
+  <meta property="og:title" content="<%= @article.title %>" />
+  <meta property="og:description" content="<%= article_meta_description(@article) %>" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="<%= article_url(slug: @article.slug, locale: I18n.locale) %>" />
+  <meta property="article:published_time" content="<%= @article.published_at.iso8601 %>" />
+  <meta property="article:modified_time" content="<%= @article.updated_at.iso8601 %>" />
+  <meta property="article:author" content="<%= @article.author %>" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="<%= @article.title %>" />
+  <meta name="twitter:description" content="<%= article_meta_description(@article) %>" />
+<% end %>
+
+<div class="container my-5">
+  <%# Translation notice %>
+  <% if show_translation_notice?(@article) %>
+    <div class="alert alert-info mb-4">
+      <i class="bi bi-translate"></i>
+      <%= t("articles.translation_notice") %>
+    </div>
+  <% end %>
+
+  <article itemscope itemtype="https://schema.org/BlogPosting">
+    <%# Article header %>
+    <header class="mb-5">
+      <div class="mb-3">
+        <%= link_to blog_path(locale: I18n.locale), class: "text-decoration-none text-muted" do %>
+          <%= t("articles.back_to_blog") %>
+        <% end %>
+      </div>
+
+      <h1 class="display-4 mb-3" itemprop="headline">
+        <%= @article.title %>
+      </h1>
+
+      <div class="text-muted mb-4">
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name"><%= t("articles.by_author", author: @article.author) %></span>
+        </span>
+        <span class="mx-2">•</span>
+        <time datetime="<%= @article.published_at.iso8601 %>" itemprop="datePublished">
+          <%= article_published_date(@article) %>
+        </time>
+        <% if @article.reading_time > 0 %>
+          <span class="mx-2">•</span>
+          <span><%= article_reading_time(@article) %></span>
+        <% end %>
+        <meta itemprop="dateModified" content="<%= @article.updated_at.iso8601 %>" />
+      </div>
+
+      <% if @article.excerpt.present? %>
+        <div class="lead text-muted mb-4" itemprop="description">
+          <%= @article.excerpt %>
+        </div>
+      <% end %>
+    </header>
+
+    <%# Article content %>
+    <div class="article-content mb-5" itemprop="articleBody">
+      <%= @article.content %>
+    </div>
+
+    <%# Article footer %>
+    <footer class="mt-5 pt-4 border-top">
+      <div class="row">
+        <div class="col-md-6">
+          <%= link_to blog_path(locale: I18n.locale), class: "btn btn-outline-secondary" do %>
+            <%= t("articles.back_to_blog") %>
+          <% end %>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <small class="text-muted">
+            <%= t("articles.published_on", date: article_published_date(@article)) %>
+          </small>
+        </div>
+      </div>
+    </footer>
+  </article>
+</div>

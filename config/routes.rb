@@ -75,6 +75,12 @@ Rails.application.routes.draw do
   get "landing", to: "pages#landing", as: :landing
   get "3d-print-pricing-calculator", to: "pages#pricing_calculator", as: :pricing_calculator
 
+  # Blog routes with locale support
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+    get "blog", to: "articles#index", as: :blog
+    get "blog/:slug", to: "articles#show", as: :article
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "pages#landing"
 

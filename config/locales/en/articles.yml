@@ -1,0 +1,27 @@
+---
+en:
+  articles:
+    title: Blog
+    blog: Blog
+    articles: Articles
+    by_author: "by %{author}"
+    published_on: "Published on %{date}"
+    reading_time:
+      one: "%{count} min read"
+      other: "%{count} min read"
+    back_to_blog: Back to Blog
+    no_articles: No articles found.
+    translated_from_english: This article is only available in English
+    translation_notice: This article was automatically translated and may contain errors.
+
+    # SEO
+    meta:
+      title: "%{title} - CalcuMake Blog"
+      description: "Read our latest articles about 3D printing, pricing, and manufacturing."
+      keywords: "3D printing, blog, articles, manufacturing, pricing"
+      article_description: "%{excerpt}"
+
+    # Structured data
+    structured_data:
+      organization: CalcuMake
+      publisher: CalcuMake Blog

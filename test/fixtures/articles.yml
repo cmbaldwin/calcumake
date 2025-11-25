@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+published_article:
+  author: "John Doe"
+  published_at: <%= 1.day.ago %>
+  featured: false
+
+featured_article:
+  author: "Jane Smith"
+  published_at: <%= 2.days.ago %>
+  featured: true
+
+unpublished_article:
+  author: "Bob Johnson"
+  published_at: nil
+  featured: false
+
+future_article:
+  author: "Alice Williams"
+  published_at: <%= 1.day.from_now %>
+  featured: false
