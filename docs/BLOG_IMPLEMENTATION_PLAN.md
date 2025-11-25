@@ -3,7 +3,7 @@
 **Date:** November 25, 2025
 **Goal:** Build SEO-optimized blog with Lexxy editor and automated translation to 7 languages
 
-**Current Status:** 🟢 **60% Complete** (Phases 1-7 done, 8-11 remaining)
+**Current Status:** 🟢 **65% Complete** (Phases 1-8 done, 9-11 remaining)
 
 **Test Status:** ✅ **979 tests passing** (2,486 assertions, 0 failures)
 
@@ -12,17 +12,17 @@
 ## Progress Summary
 
 **Completed:**
-- ✅ **Phases 1-7:** Complete blog system with RailsAdmin and automated translation
+- ✅ **Phases 1-8:** Complete blog system with RailsAdmin, translation, and sitemap
 - ✅ **45 new tests:** 28 model tests + 17 controller tests, all passing
 - ✅ **Full i18n support:** Mobility translations configured for all 7 languages with English fallbacks
-- ✅ **SEO-optimized:** JSON-LD structured data, Open Graph, Twitter cards, microdata
+- ✅ **SEO-optimized:** JSON-LD structured data, Open Graph, Twitter cards, microdata, multilingual sitemap
 - ✅ **Performance:** Eager loading to prevent N+1 queries on translations
 - ✅ **Content Management:** RailsAdmin with Lexxy editor and locale switching
 - ✅ **Translation Automation:** OpenRouter API script with HTML preservation and caching
+- ✅ **Sitemap Integration:** All blog pages and articles in 7 languages with proper metadata
 
 **Remaining:**
-- 📋 **Phase 8:** Sitemap integration
-- 📋 **Phases 9-11:** Deployment documentation, testing, user guide
+- 📋 **Phases 9-11:** Deployment documentation, additional testing, user guide
 
 ---
 
@@ -125,12 +125,14 @@
 - [x] Use Mobility locale accessors (title_en, title_ja, etc.)
 - [x] Handle Action Text content via I18n.with_locale context switching
 
-### 📋 Phase 8: Sitemap Integration
+### ✅ Phase 8: Sitemap Integration (COMPLETED)
 
-- [ ] Update config/sitemap.rb to include articles
-- [ ] Add all locale versions with proper lastmod
-- [ ] Set priority to 0.8, changefreq to monthly
-- [ ] Test sitemap generation
+- [x] Update config/sitemap.rb to include articles
+- [x] Add all locale versions with proper lastmod
+- [x] Set priority to 0.9 for blog index, 0.8 for articles
+- [x] Set changefreq to weekly for index, monthly for articles
+- [x] Test sitemap generation (17 base links + N article links per locale)
+- [x] Include article updated_at as lastmod for cache invalidation
 
 ### 📋 Phase 9: Deployment Documentation
 
