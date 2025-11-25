@@ -1958,3 +1958,26 @@ hi:
       button: मुफ्त परीक्षण शुरू करें
       no_credit_card: किसी क्रेडिट कार्ड की आवश्यकता नहीं है
     quick_calculator_toggle: त्वरित अनुमान? सरल कैलकुलेटर आज़माएं
+  articles:
+    title: ब्लॉग
+    blog: ब्लॉग
+    articles: आर्टिकल्स
+    by_author: "%{author} द्वारा"
+    published_on: "%{date} को प्रकाशित"
+    reading_time:
+      one: "%{count} मिनट का पठन"
+      other: "%{count} मिनट का पठन"
+    back_to_blog: ब्लॉग पर वापस जाएँ
+    no_articles: कोई आर्टिकल नहीं मिला।
+    translated_from_english: यह आर्टिकल केवल अंग्रेजी में उपलब्ध है
+    translation_notice: यह आर्टिकल स्वचालित रूप से अनुवादित किया गया था और इसमें त्रुटियां
+      हो सकती हैं।
+    meta:
+      title: "%{title} - CalcuMake ब्लॉग"
+      description: 3D प्रिंटिंग, मूल्य निर्धारण और विनिर्माण के बारे में हमारे नवीनतम
+        आर्टिकल पढ़ें।
+      keywords: 3D प्रिंटिंग, ब्लॉग, आर्टिकल, विनिर्माण, मूल्य निर्धारण
+      article_description: "%{excerpt}"
+    structured_data:
+      organization: CalcuMake
+      publisher: CalcuMake ब्लॉग

@@ -1954,3 +1954,25 @@ es:
       button: Comience la prueba gratuita
       no_credit_card: No se requiere tarjeta de crédito
     quick_calculator_toggle: "¿Estimación rápida? Pruebe la Calculadora Simple"
+  articles:
+    title: Blog
+    blog: Blog
+    articles: Artículos
+    by_author: por %{author}
+    published_on: Publicado el %{date}
+    reading_time:
+      one: "%{count} min de lectura"
+      other: "%{count} min de lectura"
+    back_to_blog: Volver al Blog
+    no_articles: No se encontraron artículos.
+    translated_from_english: Este artículo solo está disponible en inglés
+    translation_notice: Este artículo fue traducido automáticamente y puede contener
+      errores.
+    meta:
+      title: "%{title} - Blog de CalcuMake"
+      description: Lee nuestros últimos artículos sobre impresión 3D, precios y fabricación.
+      keywords: Impresión 3D, blog, artículos, fabricación, precios
+      article_description: "%{excerpt}"
+    structured_data:
+      organization: CalcuMake
+      publisher: Blog de CalcuMake
