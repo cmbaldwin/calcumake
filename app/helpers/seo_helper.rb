@@ -68,10 +68,48 @@ module SeoHelper
       "url": root_url,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
+      "image": image_url("/icon.png"),
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "USD"
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": root_url,
+        "image": image_url("/icon.png"),
+        "priceValidUntil": (Date.current + 1.year).iso8601,
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "applicableCountry": "US",
+          "description": "Digital products are non-refundable. Free version requires no payment."
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "USD"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 0,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 0,
+              "unitCode": "DAY"
+            }
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "US"
+          }
+        }
       },
       "description": "Free 3D printing cost calculator with comprehensive project management features including filament cost calculation, electricity costs, labor tracking, and multi-currency support.",
       "featureList": [
@@ -93,13 +131,52 @@ module SeoHelper
       "name": "3D Print Cost Calculator",
       "applicationCategory": "CalculatorApplication",
       "operatingSystem": "Web",
+      "image": image_url("/icon.png"),
+      "screenshot": image_url("/icon.png"),
+      "url": root_url,
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "USD"
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": root_url,
+        "image": image_url("/icon.png"),
+        "priceValidUntil": (Date.current + 1.year).iso8601,
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "applicableCountry": "US",
+          "description": "Digital calculator is free to use. No refunds applicable."
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "USD"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 0,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 0,
+              "unitCode": "DAY"
+            }
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "US"
+          }
+        }
       },
-      "description": "Calculate accurate 3D printing costs including filament, electricity, labor, and machine upkeep. Supports multiple currencies and custom pricing.",
-      "screenshot": image_url("/icon.png")
+      "description": "Calculate accurate 3D printing costs including filament, electricity, labor, and machine upkeep. Supports multiple currencies and custom pricing."
     }.to_json
   end
 

@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_18_013938) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_25_003559) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.bigint "record_id", null: false
+    t.string "record_type", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
@@ -40,6 +50,32 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_18_013938) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "article_translations", force: :cascade do |t|
+    t.bigint "article_id", null: false
+    t.datetime "created_at", null: false
+    t.text "excerpt"
+    t.string "locale", null: false
+    t.string "meta_description"
+    t.string "meta_keywords"
+    t.string "slug"
+    t.string "title"
+    t.boolean "translation_notice", default: false, null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id", "locale"], name: "index_article_translations_on_article_id_and_locale", unique: true
+    t.index ["locale", "slug"], name: "index_article_translations_on_locale_and_slug", unique: true
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "author"
+    t.datetime "created_at", null: false
+    t.boolean "featured", default: false, null: false
+    t.datetime "published_at"
+    t.datetime "updated_at", null: false
+    t.index ["featured", "published_at"], name: "index_articles_on_featured_and_published_at"
+    t.index ["featured"], name: "index_articles_on_featured"
+    t.index ["published_at"], name: "index_articles_on_published_at"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -114,11 +150,36 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_18_013938) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["client_id"], name: "index_invoices_on_client_id"
-    t.index ["invoice_number"], name: "index_invoices_on_invoice_number", unique: true
     t.index ["print_pricing_id"], name: "index_invoices_on_print_pricing_id"
     t.index ["reference_id"], name: "index_invoices_on_reference_id", unique: true
     t.index ["status"], name: "index_invoices_on_status"
+    t.index ["user_id", "invoice_number"], name: "index_invoices_on_user_id_and_invoice_number", unique: true
     t.index ["user_id"], name: "index_invoices_on_user_id"
+  end
+
+  create_table "mobility_string_translations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "key", null: false
+    t.string "locale", null: false
+    t.bigint "translatable_id"
+    t.string "translatable_type"
+    t.datetime "updated_at", null: false
+    t.string "value"
+    t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_string_translations_on_translatable_attribute"
+    t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_string_translations_on_keys", unique: true
+    t.index ["translatable_type", "key", "value", "locale"], name: "index_mobility_string_translations_on_query_keys"
+  end
+
+  create_table "mobility_text_translations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "key", null: false
+    t.string "locale", null: false
+    t.bigint "translatable_id"
+    t.string "translatable_type"
+    t.datetime "updated_at", null: false
+    t.text "value"
+    t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_text_translations_on_translatable_attribute"
+    t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_text_translations_on_keys", unique: true
   end
 
   create_table "plate_filaments", force: :cascade do |t|
@@ -253,6 +314,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_18_013938) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "article_translations", "articles"
   add_foreign_key "clients", "users"
   add_foreign_key "filaments", "users"
   add_foreign_key "invoice_line_items", "invoices"

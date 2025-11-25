@@ -54,6 +54,12 @@ gem "ransack"
 # View components
 gem "view_component"
 
+# Rich text editor (Lexxy)
+gem "lexxy", "~> 0.1.20.beta"
+
+# Translations for models (better than built-in i18n for rich text)
+gem "mobility", "~> 1.2"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
@@ -103,4 +109,7 @@ group :test do
 
   # Stub HTTP requests for testing external APIs like Stripe
   gem "webmock"
+
+  # Controller testing helpers for assigns and assert_template
+  gem "rails-controller-testing"
 end
