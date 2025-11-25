@@ -1671,3 +1671,24 @@ ja:
       button: 無料トライアルを開始
       no_credit_card: クレジットカードは不要です
     quick_calculator_toggle: 簡易見積もり？ シンプル計算機をお試しください
+  articles:
+    title: ブログ
+    blog: ブログ
+    articles: 記事
+    by_author: "%{author} 著"
+    published_on: '公開日: %{date}'
+    reading_time:
+      one: '読了時間: %{count} 分'
+      other: '読了時間: %{count} 分'
+    back_to_blog: ブログに戻る
+    no_articles: 記事が見つかりませんでした。
+    translated_from_english: この記事は英語版のみです
+    translation_notice: この記事は自動翻訳されたものであり、誤りが含まれている可能性があります。
+    meta:
+      title: "%{title} - CalcuMake ブログ"
+      description: 3Dプリンティング、価格設定、製造に関する最新記事をお読みください。
+      keywords: 3Dプリンティング、ブログ、記事、製造、価格設定
+      article_description: "%{excerpt}"
+    structured_data:
+      organization: CalcuMake
+      publisher: CalcuMake ブログ

@@ -28,7 +28,9 @@ class PlanLimits
 
   class << self
     # Get limits for a specific user
+    # Admin users automatically receive PRO_LIMITS regardless of their plan
     def limits_for(user)
+      return PRO_LIMITS if user.admin? # Admins always get pro limits
       return STARTUP_LIMITS if user.in_trial_period?
 
       case user.plan

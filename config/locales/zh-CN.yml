@@ -1672,3 +1672,24 @@ zh-CN:
       button: 开始免费试用
       no_credit_card: 无需信用卡
     quick_calculator_toggle: 快速估算？试试简易计算器
+  articles:
+    title: 博客
+    blog: 博客
+    articles: 文章
+    by_author: 作者：%{author}
+    published_on: 发布于 %{date}
+    reading_time:
+      one: "%{count} 分钟阅读"
+      other: "%{count} 分钟阅读"
+    back_to_blog: 返回博客
+    no_articles: 未找到文章。
+    translated_from_english: 本文仅提供英文版本
+    translation_notice: 本文为自动翻译，可能包含错误。
+    meta:
+      title: "%{title} - CalcuMake 博客"
+      description: 阅读我们关于 3D 打印、定价和制造的最新文章。
+      keywords: 3D 打印, 博客, 文章, 制造, 定价
+      article_description: "%{excerpt}"
+    structured_data:
+      organization: CalcuMake
+      publisher: CalcuMake 博客

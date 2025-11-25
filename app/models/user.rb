@@ -63,11 +63,14 @@ class User < ApplicationRecord
     plan == "startup"
   end
 
+  # Admin users automatically have pro tier access regardless of their plan setting
   def pro_plan?
-    plan == "pro"
+    admin? || plan == "pro"
   end
 
+  # Admin users automatically have active subscription with pro tier benefits
   def active_subscription?
+    return true if admin? # Admins always have active subscription
     return true if in_trial_period?
     return true if pro_plan? || startup_plan?
 
@@ -232,7 +235,7 @@ class User < ApplicationRecord
   # Called by PlanLimits service on every authenticated page
   # Cache key includes updated_at for automatic invalidation when user changes
   def cached_usage_stats
-    Rails.cache.fetch(["user", id, "usage_stats", updated_at]) do
+    Rails.cache.fetch([ "user", id, "usage_stats", updated_at ]) do
       {
         print_pricings: print_pricings.count,
         printers: printers.count,
