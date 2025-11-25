@@ -159,10 +159,11 @@
             </div>
 
             <!-- Form Actions -->
-            <div class="d-flex justify-content-center gap-3 mb-5">
-                <%= form.submit t('filaments.buttons.add_filament'), class: "btn btn-primary px-4" %>
-                <%= link_to t('actions.cancel'), filaments_path, class: "btn btn-outline-secondary px-4" %>
-            </div>
+            <%= render Forms::FormActionsComponent.new(
+              form: form,
+              submit_text: t('filaments.buttons.add_filament'),
+              cancel_url: filaments_path
+            ) %>
         <% end %>
     </div>
 </div>

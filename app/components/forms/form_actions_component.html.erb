@@ -1,0 +1,7 @@
+<div class="<%= wrapper_class %>">
+  <%= form.submit resolved_submit_text, class: submit_class, data: submit_data %>
+
+  <% if show_cancel? %>
+    <%= link_to resolved_cancel_text, cancel_url, class: cancel_class, data: cancel_data %>
+  <% end %>
+</div>
