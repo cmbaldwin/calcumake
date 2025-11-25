@@ -1,6 +1,7 @@
-<div class="d-flex gap-2">
-    <%= form.submit class: "btn btn-primary" %>
-    <%= link_to t("actions.cancel"), 
-        invoice.persisted? ? print_pricing_invoice_path(print_pricing, invoice) : print_pricing_path(print_pricing), 
-        class: "btn btn-secondary" %>
-</div>
+<%= render Forms::FormActionsComponent.new(
+  form: form,
+  cancel_url: invoice.persisted? ? print_pricing_invoice_path(print_pricing, invoice) : print_pricing_path(print_pricing),
+  cancel_class: "btn btn-secondary",
+  submit_class: "btn btn-primary",
+  wrapper_class: "d-flex gap-2"
+) %>

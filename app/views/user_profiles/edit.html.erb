@@ -144,8 +144,12 @@
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= form.submit "Update Profile", class: "btn button-primary" %>
-    <%= link_to "Cancel", user_profile_path, class: "btn button-clear" %>
-  </div>
+  <%= render Forms::FormActionsComponent.new(
+    form: form,
+    submit_text: "Update Profile",
+    cancel_url: user_profile_path,
+    submit_class: "btn button-primary",
+    cancel_class: "btn button-clear",
+    wrapper_class: "form-actions"
+  ) %>
 <% end %>
