@@ -1865,3 +1865,24 @@ ar:
       button: ابدأ النسخة التجريبية المجانية
       no_credit_card: لا توجد بطاقة ائتمان مطلوبة
     quick_calculator_toggle: تقدير سريع؟ جرب الحاسبة البسيطة
+  articles:
+    title: المدونة
+    blog: المدونة
+    articles: المقالات
+    by_author: بواسطة %{author}
+    published_on: نشرت في %{date}
+    reading_time:
+      one: "%{count} دقيقة قراءة"
+      other: "%{count} دقيقة قراءة"
+    back_to_blog: العودة إلى المدونة
+    no_articles: لم يتم العثور على مقالات.
+    translated_from_english: هذه المقالة متاحة باللغة الإنجليزية فقط
+    translation_notice: تمت ترجمة هذه المقالة تلقائيًا وقد تحتوي على أخطاء.
+    meta:
+      title: "%{title} - مدونة CalcuMake"
+      description: اقرأ أحدث مقالاتنا حول الطباعة ثلاثية الأبعاد والتسعير والتصنيع.
+      keywords: الطباعة ثلاثية الأبعاد، مدونة، مقالات، تصنيع، تسعير
+      article_description: "%{excerpt}"
+    structured_data:
+      organization: CalcuMake
+      publisher: مدونة CalcuMake

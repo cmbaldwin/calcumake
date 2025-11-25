@@ -75,7 +75,7 @@
                     <%= link_to t('nav.sign_in'), new_user_session_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to t('nav.sign_up'), new_user_registration_path, class: "nav-link btn btn-light text-primary ms-2" %>
+                    <%= link_to t('nav.sign_up'), new_user_registration_path, class: "nav-link" %>
                 </li>
                 <% end %>
             </ul>
@@ -83,7 +83,7 @@
             <!-- Language Selector -->
             <div class="navbar-text">
                 <%= form_with url: switch_locale_path, method: :post, local: true, class: "d-flex" do |form| %>
-                  <%= render Forms::SelectFieldComponent.new(
+                <%= render Forms::SelectFieldComponent.new(
                     form: form,
                     attribute: :locale,
                     choices: [

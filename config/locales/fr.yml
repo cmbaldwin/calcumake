@@ -1983,3 +1983,26 @@ fr:
       button: Démarrer l'essai gratuit
       no_credit_card: Aucune carte de crédit requise
     quick_calculator_toggle: Estimation rapide ? Essayez le calculateur simple
+  articles:
+    title: Blog
+    blog: Blog
+    articles: Articles
+    by_author: par %{author}
+    published_on: Publié le %{date}
+    reading_time:
+      one: "%{count} min de lecture"
+      other: "%{count} min de lecture"
+    back_to_blog: Retour au Blog
+    no_articles: Aucun article trouvé.
+    translated_from_english: Cet article est uniquement disponible en anglais
+    translation_notice: Cet article a été traduit automatiquement et peut contenir
+      des erreurs.
+    meta:
+      title: "%{title} - Blog CalcuMake"
+      description: Lisez nos derniers articles sur l'impression 3D, la tarification
+        et la fabrication.
+      keywords: Impression 3D, blog, articles, fabrication, tarification
+      article_description: "%{excerpt}"
+    structured_data:
+      organization: CalcuMake
+      publisher: Blog CalcuMake
