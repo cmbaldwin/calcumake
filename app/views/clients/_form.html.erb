@@ -101,8 +101,9 @@
     </div>
 
     <!-- Form Actions -->
-    <div class="d-flex justify-content-center gap-3 mb-5">
-        <%= form.submit @client.new_record? ? t('clients.buttons.create') : t('clients.buttons.update'), class: "btn btn-primary px-4" %>
-        <%= link_to t('actions.cancel'), clients_path, class: "btn btn-outline-secondary px-4" %>
-    </div>
+    <%= render Forms::FormActionsComponent.new(
+      form: form,
+      submit_text: @client.new_record? ? t('clients.buttons.create') : t('clients.buttons.update'),
+      cancel_url: clients_path
+    ) %>
 <% end %>
