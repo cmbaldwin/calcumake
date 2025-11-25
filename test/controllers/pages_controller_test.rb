@@ -97,7 +97,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   test "landing page should include structured data" do
     get root_path
     assert_response :success
-    assert_includes @response.body, '"@type":"Product"'
+    assert_includes @response.body, '"@type":"SoftwareApplication"'
     assert_includes @response.body, '"name":"CalcuMake"'
   end
 

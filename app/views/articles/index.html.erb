@@ -1,0 +1,58 @@
+<% content_for :title, t("articles.title") %>
+<% content_for :meta_description, t("articles.meta.description") %>
+<% content_for :meta_keywords, t("articles.meta.keywords") %>
+
+<div class="container my-5">
+  <header class="mb-5">
+    <h1 class="display-4 mb-3"><%= t("articles.title") %></h1>
+    <p class="lead text-muted">
+      <%= t("articles.meta.description") %>
+    </p>
+  </header>
+
+  <div class="row">
+    <% if @articles.any? %>
+      <% @articles.each do |article| %>
+        <div class="col-12 mb-4">
+          <article class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h2 class="h3 card-title mb-3">
+                <%= link_to article.title, article_path(slug: article.slug, locale: I18n.locale), class: "text-decoration-none" %>
+              </h2>
+
+              <div class="text-muted mb-3 small">
+                <span>
+                  <%= t("articles.by_author", author: article.author) %>
+                </span>
+                <span class="mx-2">•</span>
+                <time datetime="<%= article.published_at.iso8601 %>">
+                  <%= article_published_date(article) %>
+                </time>
+                <% if article.reading_time > 0 %>
+                  <span class="mx-2">•</span>
+                  <span><%= article_reading_time(article) %></span>
+                <% end %>
+              </div>
+
+              <% if article.excerpt.present? %>
+                <p class="card-text text-muted">
+                  <%= article.excerpt %>
+                </p>
+              <% end %>
+
+              <%= link_to t("actions.read_more", default: "Read more →"),
+                          article_path(slug: article.slug, locale: I18n.locale),
+                          class: "btn btn-link p-0" %>
+            </div>
+          </article>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col-12">
+        <div class="alert alert-info">
+          <%= t("articles.no_articles") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

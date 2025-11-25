@@ -1,0 +1,50 @@
+# Article translations fixtures
+# Mobility doesn't auto-create translations for fixtures, so we need to define them explicitly
+
+published_article_en:
+  article_id: <%= ActiveRecord::FixtureSet.identify(:published_article) %>
+  locale: en
+  title: "Published Article"
+  slug: "published-article"
+  excerpt: "This is a published article excerpt."
+  meta_description: "Meta description for published article"
+  meta_keywords: "published, article, test"
+  translation_notice: false
+  created_at: <%= 1.day.ago %>
+  updated_at: <%= 1.day.ago %>
+
+featured_article_en:
+  article_id: <%= ActiveRecord::FixtureSet.identify(:featured_article) %>
+  locale: en
+  title: "Featured Article"
+  slug: "featured-article"
+  excerpt: "This is a featured article excerpt."
+  meta_description: "Meta description for featured article"
+  meta_keywords: "featured, article, test"
+  translation_notice: false
+  created_at: <%= 2.days.ago %>
+  updated_at: <%= 2.days.ago %>
+
+unpublished_article_en:
+  article_id: <%= ActiveRecord::FixtureSet.identify(:unpublished_article) %>
+  locale: en
+  title: "Unpublished Article"
+  slug: "unpublished-article"
+  excerpt: "This is an unpublished article excerpt."
+  meta_description: null
+  meta_keywords: null
+  translation_notice: false
+  created_at: <%= 3.days.ago %>
+  updated_at: <%= 3.days.ago %>
+
+future_article_en:
+  article_id: <%= ActiveRecord::FixtureSet.identify(:future_article) %>
+  locale: en
+  title: "Future Article"
+  slug: "future-article"
+  excerpt: "This is a future article excerpt."
+  meta_description: null
+  meta_keywords: null
+  translation_notice: false
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
