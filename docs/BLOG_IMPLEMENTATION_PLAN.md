@@ -3,7 +3,7 @@
 **Date:** November 25, 2025
 **Goal:** Build SEO-optimized blog with Lexxy editor and automated translation to 7 languages
 
-**Current Status:** 🟢 **50% Complete** (Phases 1-5 done, 6-11 remaining)
+**Current Status:** 🟢 **55% Complete** (Phases 1-6 done, 7-11 remaining)
 
 **Test Status:** ✅ **979 tests passing** (2,486 assertions, 0 failures)
 
@@ -12,14 +12,14 @@
 ## Progress Summary
 
 **Completed:**
-- ✅ **Phases 1-5:** Complete blog foundation with Article model, controller, views, and comprehensive SEO
+- ✅ **Phases 1-6:** Complete blog system with RailsAdmin content management
 - ✅ **45 new tests:** 28 model tests + 17 controller tests, all passing
 - ✅ **Full i18n support:** Mobility translations configured for all 7 languages with English fallbacks
 - ✅ **SEO-optimized:** JSON-LD structured data, Open Graph, Twitter cards, microdata
 - ✅ **Performance:** Eager loading to prevent N+1 queries on translations
+- ✅ **Content Management:** RailsAdmin with Lexxy editor and locale switching
 
 **Remaining:**
-- 📋 **Phase 6:** RailsAdmin integration with Lexxy editor
 - 📋 **Phase 7:** Automated translation script (bin/translate-articles)
 - 📋 **Phase 8:** Sitemap integration
 - 📋 **Phases 9-11:** Deployment, testing, documentation
@@ -101,12 +101,17 @@
 - [x] Add translation keys to config/locales/en/articles.yml
 - [x] Simple pagination (limit to 20 articles)
 
-### 📋 Phase 6: RailsAdmin Integration
+### ✅ Phase 6: RailsAdmin Integration (COMPLETED)
 
-- [ ] Configure Article model in RailsAdmin
-- [ ] Enable Lexxy editor for rich_text fields
-- [ ] Add locale switcher for editing translations
-- [ ] Configure image upload settings
+- [x] Configure Article model in RailsAdmin config
+- [x] Set up field visibility and grouping (Base, Content, SEO)
+- [x] Configure Lexxy editor for Action Text content field
+- [x] Add Mobility locale switcher in edit form (via URL parameter)
+- [x] Configure image upload via Active Storage (built-in)
+- [x] Add helpful field descriptions and labels
+- [x] Display current editing locale in form
+- [x] Test article creation workflow
+- [x] Add Lexxy to RailsAdmin importmap
 
 ### 📋 Phase 7: Translation Automation ⭐
 

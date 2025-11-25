@@ -23,3 +23,7 @@ pin "jquery-ui/ui/widgets/mouse.js", to: "https://ga.jspm.io/npm:jquery-ui@1.13.
 pin "jquery-ui/ui/widgets/autocomplete.js", to: "https://ga.jspm.io/npm:jquery-ui@1.13.3/ui/widgets/autocomplete.js"
 pin "jquery-ui/ui/effect.js", to: "https://ga.jspm.io/npm:jquery-ui@1.13.3/ui/effect.js"
 pin "jquery-ui/ui/widgets/sortable.js", to: "https://ga.jspm.io/npm:jquery-ui@1.13.3/ui/widgets/sortable.js"
+
+# Lexxy editor for Action Text (replaces Trix)
+pin "lexxy", to: "lexxy.js"
+pin "@rails/activestorage", to: "activestorage.esm.js"
