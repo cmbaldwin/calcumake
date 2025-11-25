@@ -3,7 +3,7 @@
 **Date:** November 25, 2025
 **Goal:** Build SEO-optimized blog with Lexxy editor and automated translation to 7 languages
 
-**Current Status:** 🟢 **55% Complete** (Phases 1-6 done, 7-11 remaining)
+**Current Status:** 🟢 **60% Complete** (Phases 1-7 done, 8-11 remaining)
 
 **Test Status:** ✅ **979 tests passing** (2,486 assertions, 0 failures)
 
@@ -12,17 +12,17 @@
 ## Progress Summary
 
 **Completed:**
-- ✅ **Phases 1-6:** Complete blog system with RailsAdmin content management
+- ✅ **Phases 1-7:** Complete blog system with RailsAdmin and automated translation
 - ✅ **45 new tests:** 28 model tests + 17 controller tests, all passing
 - ✅ **Full i18n support:** Mobility translations configured for all 7 languages with English fallbacks
 - ✅ **SEO-optimized:** JSON-LD structured data, Open Graph, Twitter cards, microdata
 - ✅ **Performance:** Eager loading to prevent N+1 queries on translations
 - ✅ **Content Management:** RailsAdmin with Lexxy editor and locale switching
+- ✅ **Translation Automation:** OpenRouter API script with HTML preservation and caching
 
 **Remaining:**
-- 📋 **Phase 7:** Automated translation script (bin/translate-articles)
 - 📋 **Phase 8:** Sitemap integration
-- 📋 **Phases 9-11:** Deployment, testing, documentation
+- 📋 **Phases 9-11:** Deployment documentation, testing, user guide
 
 ---
 
@@ -113,14 +113,17 @@
 - [x] Test article creation workflow
 - [x] Add Lexxy to RailsAdmin importmap
 
-### 📋 Phase 7: Translation Automation ⭐
+### ✅ Phase 7: Translation Automation (COMPLETED)
 
-- [ ] Create bin/translate-articles script
-- [ ] Implement OpenRouter API integration
-- [ ] Add HTML-aware translation (preserve Action Text attachments)
-- [ ] Add translation cache to avoid re-translating
-- [ ] Add force-retranslate option
-- [ ] Test translation workflow
+- [x] Create bin/translate-articles script (246 lines)
+- [x] Implement OpenRouter API integration with Google Gemini 2.0 Flash
+- [x] Add HTML-aware translation (preserves all HTML tags and attributes)
+- [x] Add translation cache to avoid re-translating (tmp/article_translation_cache/)
+- [x] Add force-retranslate option (--force flag)
+- [x] Support translating specific articles by ID
+- [x] Set translation_notice flag on translated content
+- [x] Use Mobility locale accessors (title_en, title_ja, etc.)
+- [x] Handle Action Text content via I18n.with_locale context switching
 
 ### 📋 Phase 8: Sitemap Integration
 
@@ -129,11 +132,11 @@
 - [ ] Set priority to 0.8, changefreq to monthly
 - [ ] Test sitemap generation
 
-### 📋 Phase 9: Deployment Integration
+### 📋 Phase 9: Deployment Documentation
 
-- [ ] Add TRANSLATE_ARTICLES flag to pre-build hook
-- [ ] Optional: Create post-deploy async translation job
-- [ ] Test deployment workflow
+- [ ] Document production translation workflow
+- [ ] Add article translation to user guide
+- [ ] Create example workflow for content admins
 
 ### 📋 Phase 10: Testing
 
@@ -242,24 +245,68 @@ end
 
 ## Translation Workflow
 
-### Automated Translation Process
+### Production Translation Process
 
-1. **Write article in English** via RailsAdmin/Lexxy editor
-2. **Run translation script**: `bin/translate-articles`
-3. **Script processes**:
-   - Extracts English content (title, excerpt, content HTML)
-   - Calls OpenRouter API for each target locale
-   - Preserves Action Text attachments (images, embeds)
-   - Saves translated content to locale-specific fields
-   - Marks as auto-translated
-4. **Manual review** (optional but recommended)
-5. **Publish** to all locales
+**IMPORTANT:** Article translations must be run manually in production after creating English content. DO NOT run translations during deployment.
+
+**Step-by-Step Workflow:**
+
+1. **Write article in English** via RailsAdmin at `/admin/article/new`
+   - Write content using Lexxy rich text editor
+   - Add featured images via Action Text attachment
+   - Set meta_description and meta_keywords
+   - Leave published_at blank to save as draft
+   - Click "Save" to create English article
+
+2. **SSH to production server** (Kamal/Docker container)
+   ```bash
+   bin/kamal app exec -i --reuse "bin/rails console"
+   ```
+
+3. **Run translation script** in production Rails console:
+   ```ruby
+   # Translate all articles
+   system("bin/translate-articles")
+
+   # Or translate specific articles
+   system("bin/translate-articles 1 2 3")
+
+   # Force retranslate existing translations
+   system("bin/translate-articles --force")
+   ```
+
+4. **Verify translations** in RailsAdmin:
+   - Visit `/admin/article/1/edit?locale=ja` to check Japanese
+   - Visit `/admin/article/1/edit?locale=es` to check Spanish
+   - Spot-check HTML structure and technical terms
+
+5. **Publish to all locales** when ready:
+   - Set `published_at` to current time or future date
+   - Article goes live in all 7 languages simultaneously
+
+### Script Usage Examples
+
+```bash
+# Translate all articles (new translations only)
+bin/translate-articles
+
+# Translate specific articles by ID
+bin/translate-articles 1 2 3
+
+# Force retranslate existing translations
+bin/translate-articles --force
+
+# Combine options
+bin/translate-articles 1 --force
+```
 
 ### Translation Cache
 
-- Store translated content to avoid re-translation
-- Only translate new/modified articles
-- Force re-translate option: `FORCE_RETRANSLATE=1 bin/translate-articles`
+- **Location:** `tmp/article_translation_cache/articles.json`
+- **Purpose:** Avoid re-translating unchanged content
+- **Behavior:** Script checks cache before calling API
+- **Cache key format:** `article_{id}_{locale}_{field}` (e.g., `article_1_ja_title`)
+- **Force retranslate:** Use `--force` flag to ignore cache
 
 ### Translation Notice Banner
 
@@ -270,6 +317,22 @@ end
   <a href="/blog/article-slug?locale=en">View original</a>
 </div>
 ```
+
+### API Requirements
+
+**Environment Variable:**
+- `OPENROUTER_TRANSLATION_KEY` - OpenRouter API key (stored in production secrets)
+
+**API Model:**
+- Google Gemini 2.0 Flash (`google/gemini-2.0-flash-001`)
+- Temperature: 0.3 (for consistency)
+- Max tokens: 8000 (for large articles)
+
+**Translation Prompt:**
+- Preserves all HTML tags and attributes
+- Maintains 3D printing technical terminology
+- Uses professional blog tone
+- Returns only translated content (no markdown code blocks)
 
 ---
 
@@ -287,16 +350,18 @@ end
 4. 3D Printing Business Pricing: How to Set Profitable Rates (2,200 words)
 5. Electricity Costs for 3D Printing: The Hidden Expense (1,500 words)
 
-### Workflow
+### Content Creation Workflow
 
-1. Write article in English using Lexxy editor
-2. Add featured image via Active Storage
-3. Set meta_description and meta_keywords
-4. Set featured=true for important articles
-5. Run `bin/translate-articles` to translate to 6 languages
-6. Review translations (spot check)
-7. Set published_at to go live
-8. Sitemap auto-updates on next deployment
+1. **Draft in English** - Write article using Lexxy editor at `/admin/article/new`
+2. **Add media** - Upload featured image via Action Text attachment
+3. **SEO metadata** - Set meta_description and meta_keywords
+4. **Feature flag** - Set featured=true for important articles
+5. **Save draft** - Leave published_at blank, click "Save"
+6. **SSH to production** - Connect via Kamal: `bin/kamal app exec -i --reuse "bin/rails console"`
+7. **Translate** - Run `bin/translate-articles` to translate to 6 languages
+8. **Review** - Spot-check translations in RailsAdmin (?locale=ja, ?locale=es, etc.)
+9. **Publish** - Set published_at to go live in all 7 languages
+10. **Sitemap** - Auto-updates on next deployment
 
 ---
 
