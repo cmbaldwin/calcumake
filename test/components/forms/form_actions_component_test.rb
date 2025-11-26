@@ -23,14 +23,14 @@ module Forms
 
       render_inline(FormActionsComponent.new(form: form))
 
-      assert_selector 'input[type="submit"]', text: "Create"
+      assert_selector 'input[type="submit"][value="Create"]'
       assert_selector "input.btn.btn-primary"
     end
 
     test "renders submit button with default text for persisted record" do
       render_inline(FormActionsComponent.new(form: @form_builder))
 
-      assert_selector 'input[type="submit"]', text: "Update"
+      assert_selector 'input[type="submit"][value="Update"]'
       assert_selector "input.btn.btn-primary"
     end
 
@@ -40,7 +40,7 @@ module Forms
         submit_text: "Save Changes"
       ))
 
-      assert_selector 'input[type="submit"]', text: "Save Changes"
+      assert_selector 'input[type="submit"][value="Save Changes"]'
     end
 
     test "renders without cancel link when no cancel_url provided" do
@@ -109,8 +109,8 @@ module Forms
         submit_data: { turbo_confirm: "Are you sure?", action: "click->form#submit" }
       ))
 
-      assert_selector "button[data-turbo-confirm='Are you sure?']"
-      assert_selector "button[data-action='click->form#submit']"
+      assert_selector "input[data-turbo-confirm='Are you sure?']"
+      assert_selector "input[data-action='click->form#submit']"
     end
 
     test "applies data attributes to cancel link" do
@@ -160,7 +160,7 @@ module Forms
 
     test "handles form without object method" do
       mock_form = Minitest::Mock.new
-      mock_form.expect :submit, "<button>Submit</button>".html_safe, [String, Hash]
+      mock_form.expect :submit, "<input type='submit' value='Create'>".html_safe, [String]
 
       render_inline(FormActionsComponent.new(form: mock_form))
 
