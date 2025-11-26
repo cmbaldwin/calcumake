@@ -3,6 +3,9 @@
     <%= link_to t('actions.back'), print_pricing_path(print_pricing), class: "btn btn-outline-secondary" %>
   </div>
   <div class="d-flex gap-2">
-    <%= render "invoices/partials/display/actions", invoice: invoice, print_pricing: print_pricing %>
+    <%= render Invoices::ActionsComponent.new(
+      invoice: invoice,
+      print_pricing: print_pricing
+    ) %>
   </div>
 </div>
