@@ -7,7 +7,7 @@ module Invoices
     # Basic Rendering Tests
 
     test "renders with required attributes" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       print_pricing = invoice.print_pricing
 
       render_inline(ActionsComponent.new(
@@ -21,7 +21,7 @@ module Invoices
     # Status Actions Tests
 
     test "shows status actions for draft invoice" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :status, "draft" do
         print_pricing = invoice.print_pricing
 
@@ -36,7 +36,7 @@ module Invoices
     end
 
     test "shows status actions for sent invoice" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :status, "sent" do
         print_pricing = invoice.print_pricing
 
@@ -51,7 +51,7 @@ module Invoices
     end
 
     test "hides status actions for paid invoice" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :status, "paid" do
         print_pricing = invoice.print_pricing
 
@@ -66,7 +66,7 @@ module Invoices
     end
 
     test "hides status actions when show_status_actions is false" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :status, "draft" do
         print_pricing = invoice.print_pricing
 
@@ -84,7 +84,7 @@ module Invoices
     # Button Disabled States Tests
 
     test "disables mark as sent when invoice is sent" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :status, "sent" do
         print_pricing = invoice.print_pricing
 
@@ -98,7 +98,7 @@ module Invoices
     end
 
     test "enables mark as sent when invoice is draft" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :status, "draft" do
         print_pricing = invoice.print_pricing
 
@@ -112,7 +112,7 @@ module Invoices
     end
 
     test "disables mark as paid when invoice is draft" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :status, "draft" do
         print_pricing = invoice.print_pricing
 
@@ -126,7 +126,7 @@ module Invoices
     end
 
     test "enables mark as paid when invoice is sent" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :status, "sent" do
         print_pricing = invoice.print_pricing
 
@@ -142,7 +142,7 @@ module Invoices
     # Individual Button Toggle Tests
 
     test "shows edit button by default" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       print_pricing = invoice.print_pricing
 
       render_inline(ActionsComponent.new(
@@ -154,7 +154,7 @@ module Invoices
     end
 
     test "hides edit button when show_edit is false" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       print_pricing = invoice.print_pricing
 
       render_inline(ActionsComponent.new(
@@ -167,7 +167,7 @@ module Invoices
     end
 
     test "shows PDF button by default" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       print_pricing = invoice.print_pricing
 
       render_inline(ActionsComponent.new(
@@ -180,7 +180,7 @@ module Invoices
     end
 
     test "hides PDF button when show_pdf is false" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       print_pricing = invoice.print_pricing
 
       render_inline(ActionsComponent.new(
@@ -193,7 +193,7 @@ module Invoices
     end
 
     test "shows print button by default" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       print_pricing = invoice.print_pricing
 
       render_inline(ActionsComponent.new(
@@ -206,7 +206,7 @@ module Invoices
     end
 
     test "hides print button when show_print is false" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       print_pricing = invoice.print_pricing
 
       render_inline(ActionsComponent.new(
@@ -221,7 +221,7 @@ module Invoices
     # Wrapper Class Tests
 
     test "renders without wrapper by default" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       print_pricing = invoice.print_pricing
 
       render_inline(ActionsComponent.new(
@@ -236,7 +236,7 @@ module Invoices
     end
 
     test "applies wrapper class when provided" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       print_pricing = invoice.print_pricing
 
       render_inline(ActionsComponent.new(
@@ -251,7 +251,7 @@ module Invoices
     # URL Generation Tests
 
     test "generates correct mark as sent URL" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :status, "draft" do
         print_pricing = invoice.print_pricing
 
@@ -265,7 +265,7 @@ module Invoices
     end
 
     test "generates correct mark as paid URL" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :status, "sent" do
         print_pricing = invoice.print_pricing
 
@@ -279,7 +279,7 @@ module Invoices
     end
 
     test "generates correct edit URL" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       print_pricing = invoice.print_pricing
 
       render_inline(ActionsComponent.new(
@@ -293,7 +293,7 @@ module Invoices
     # Translation Tests
 
     test "uses translations for button labels" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :status, "draft" do
         print_pricing = invoice.print_pricing
 
@@ -313,7 +313,7 @@ module Invoices
     # Edge Cases
 
     test "handles all buttons hidden" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :status, "paid" do
         print_pricing = invoice.print_pricing
 
@@ -333,7 +333,7 @@ module Invoices
     end
 
     test "handles minimal configuration with only edit button" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :status, "paid" do
         print_pricing = invoice.print_pricing
 
