@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
+require "minitest/mock"
 
 module Forms
   class FormActionsComponentTest < ViewComponent::TestCase
@@ -22,15 +23,15 @@ module Forms
 
       render_inline(FormActionsComponent.new(form: form))
 
-      assert_selector "button[type='submit']", text: "Create"
-      assert_selector "button.btn.btn-primary"
+      assert_selector "input[type="submit"]", text: "Create"
+      assert_selector "input.btn.btn-primary"
     end
 
     test "renders submit button with default text for persisted record" do
       render_inline(FormActionsComponent.new(form: @form_builder))
 
-      assert_selector "button[type='submit']", text: "Update"
-      assert_selector "button.btn.btn-primary"
+      assert_selector "input[type="submit"]", text: "Update"
+      assert_selector "input.btn.btn-primary"
     end
 
     test "renders submit button with custom text" do
@@ -39,7 +40,7 @@ module Forms
         submit_text: "Save Changes"
       ))
 
-      assert_selector "button[type='submit']", text: "Save Changes"
+      assert_selector "input[type="submit"]", text: "Save Changes"
     end
 
     test "renders without cancel link when no cancel_url provided" do
@@ -75,7 +76,7 @@ module Forms
         submit_class: "btn btn-success btn-lg"
       ))
 
-      assert_selector "button.btn.btn-success.btn-lg"
+      assert_selector "input.btn.btn-success.btn-lg"
       refute_selector "button.btn-primary"
     end
 
@@ -141,7 +142,7 @@ module Forms
       ))
 
       html = page.native.to_html
-      submit_index = html.index('<button')
+      submit_index = html.index('<input')
       cancel_index = html.index('<a')
 
       assert submit_index < cancel_index, "Submit button should appear before cancel link"
@@ -154,7 +155,7 @@ module Forms
 
       render_inline(FormActionsComponent.new(form: form))
 
-      assert_selector "button[type='submit']"
+      assert_selector "input[type="submit"]"
     end
 
     test "handles form without object method" do
@@ -163,7 +164,7 @@ module Forms
 
       render_inline(FormActionsComponent.new(form: mock_form))
 
-      assert_selector "button[type='submit']"
+      assert_selector "input[type="submit"]"
 
       mock_form.verify
     end
