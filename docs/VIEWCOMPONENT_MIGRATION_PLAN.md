@@ -1096,9 +1096,54 @@ end
 
 ---
 
-#### InvoiceActionsComponent (0.5 hours)
+#### Invoices::ActionsComponent (0.5 hours) ✅ COMPLETE & ✅ MIGRATED
 
-**Current:** `app/views/invoices/partials/display/_actions.html.erb`
+**Status:** ✅ Component created with 25 tests, 368 lines, ✅ **1 file migrated**
+
+**Purpose:** Display action buttons for invoice show page (status changes, edit, PDF, print)
+
+```ruby
+# app/components/invoices/actions_component.rb
+module Invoices
+  class ActionsComponent < ViewComponent::Base
+    def initialize(
+      invoice:,
+      print_pricing:,
+      wrapper_class: nil,
+      show_status_actions: true,
+      show_edit: true,
+      show_pdf: true,
+      show_print: true
+    )
+    end
+
+    def show_status_actions?
+      @show_status_actions && @invoice.status != "paid"
+    end
+
+    def mark_as_sent_disabled?
+      @invoice.status != "draft"
+    end
+
+    def mark_as_paid_disabled?
+      @invoice.status == "draft"
+    end
+  end
+end
+```
+
+**Key Features:**
+- Status-aware action visibility (hides status buttons when invoice is paid)
+- Smart disabled states (mark as sent only enabled for drafts, mark as paid only for sent invoices)
+- Flexible button toggles (show/hide edit, PDF, print individually)
+- Optional wrapper class for layout control
+- Full Stimulus integration for PDF generation and printing
+- Bootstrap icon support (bi-file-pdf, bi-printer)
+
+**Migrated views (1 file):**
+- ✅ `app/views/invoices/partials/header/_show.html.erb` (replaced partial render)
+
+**Impact:** ~14 lines reduced, invoice actions standardized across all invoice show pages
 
 ---
 
@@ -1775,25 +1820,25 @@ For each component:
 | **Phase 1: Foundation** | 7          | 7       | 7        | 148       | 52            | ✅ Complete (100% migrated)  |
 | **Phase 2: Cards**      | 12         | 12      | 12       | 1,494     | 499           | ✅ COMPLETE (100%)           |
 | **Phase 3: Forms**      | 15         | 7       | 7        | 297       | 699           | 🟡 In Progress (47%)         |
-| **Phase 4: Features**   | 18         | 2       | 2        | 19        | 15            | 🟡 In Progress (11%)         |
+| **Phase 4: Features**   | 18         | 3       | 3        | 44        | 29            | 🟡 In Progress (17%)         |
 | **Phase 5: Layout**     | 6          | 0       | 0        | 0         | 0             | ⚪ Not Started               |
 | **Phase 6: Helpers**    | 15         | 0       | 0        | 0         | 0             | ⚪ Not Started               |
-| **TOTAL**               | **73**     | **28**  | **28**   | **1,958** | **~1,265**    | **38% created, 38% migrated**|
+| **TOTAL**               | **73**     | **29**  | **29**   | **1,983** | **~1,279**    | **40% created, 40% migrated**|
 
 **Target:** 73 components, 438+ tests, 2,500-3,500 lines reduced
 
 **CURRENT STATUS (Updated 2025-11-26):**
 
-- ✅ 28 components created (38% of total)
-- ✅ 28 components fully migrated to views (38% complete)
-- ✅ 1,958 tests passing, 2,900+ assertions
+- ✅ 29 components created (40% of total)
+- ✅ 29 components fully migrated to views (40% complete)
+- ✅ 1,983 tests passing, 3,000+ assertions
 - 🎉 **Phase 1 COMPLETE:** All 7 foundation components actively used in production (100%)
 - 🎉 **Phase 2 COMPLETE:** All 12 card components migrated and in production (100%)
 - ✅ **Phase 3 Forms: 47% complete** - 7 components with 100% migration (Field, Select, NumberWithAddon, Checkbox, Errors, FormActions, FormSection)
-- ✅ **Phase 4: In Progress (11%)** - 2 components created (StatusBadge, LineItemsTotals)
+- ✅ **Phase 4: In Progress (17%)** - 3 components created (StatusBadge, LineItemsTotals, Actions)
 - 📊 **Projected savings:** 2,500-3,500 lines
-- 📊 **Actual savings so far:** ~1,265 lines (50% of target)
-- 🎯 **Recent progress:** Invoices::LineItemsTotalsComponent - invoice totals standardized!
+- 📊 **Actual savings so far:** ~1,279 lines (51% of target)
+- 🎯 **Recent progress:** Invoices::ActionsComponent - invoice actions standardized!
 
 **RECENT ACCOMPLISHMENTS:**
 
@@ -1822,31 +1867,36 @@ For each component:
 - Full support for custom header styling (border-info, bg-info variants)
 - Help text support via parameter or slot pattern
 
-**SESSION 10 (2025-11-26 - Invoices::LineItemsTotalsComponent):**
+**SESSION 10 (2025-11-26 - Invoice Components: LineItemsTotals & Actions):**
 
-- ✅ **Invoices::LineItemsTotalsComponent created** - 40 lines Ruby, 18 lines template, 222 lines tests
-- ✅ **Comprehensive test coverage** - 19 tests covering all scenarios (currency formatting, styling, edge cases)
-- ✅ **1 file migrated** - Invoice line items card partial
-- ✅ **Multi-currency support** - USD, EUR, JPY with proper decimal handling via formatted_currency_amount helper
-- ✅ **Stimulus integration** - Data attributes for JavaScript totals calculation
-- ✅ **Phase 4 started** - First feature component in invoice components series
-- ✅ **Lines saved:** ~15 lines from invoice totals migration
-- 📊 **Component count:** 28 total (38% of goal)
-- 📊 **Lines saved cumulative:** ~1,265 (50% of target!)
+- ✅ **2 invoice components created** - LineItemsTotalsComponent + ActionsComponent
+- ✅ **Comprehensive test coverage** - 44 tests total (19 + 25), 590 lines of tests
+- ✅ **2 files migrated** - Invoice partials replaced with components
+- ✅ **Phase 4 accelerated** - 17% complete (3/18 components)
+- ✅ **Lines saved:** ~29 lines from both migrations
+- 📊 **Component count:** 29 total (40% of goal)
+- 📊 **Lines saved cumulative:** ~1,279 (51% of target!)
 
-**Key Features:**
+**Invoices::LineItemsTotalsComponent (40 lines Ruby, 18 lines template, 222 lines tests):**
+- Multi-currency support (USD, EUR, JPY) via formatted_currency_amount helper
 - Responsive layout with offset column design (col-md-6 offset-md-6)
-- Customizable wrapper and table classes for flexible styling
+- Stimulus data attributes for JavaScript totals calculation
 - Handles zero, negative, and large amounts correctly
-- Full translation support for labels
-- Border-top separation from line items section
-- Ready for composition in larger invoice components
+- Ready for composition in larger InvoiceLineItemsTableComponent
+
+**Invoices::ActionsComponent (54 lines Ruby, 36 lines template, 368 lines tests):**
+- Status-aware action visibility (hides status buttons when invoice is paid)
+- Smart disabled states (mark as sent only for drafts, mark as paid only for sent)
+- Flexible button toggles (show/hide edit, PDF, print individually)
+- Full Stimulus integration for PDF generation and printing
+- Bootstrap icon support (bi-file-pdf, bi-printer)
 
 **Impact:**
-- Invoice totals display now standardized across all invoice views
-- Consistent currency formatting using application-wide helper
-- Easy to update totals styling from single component
-- Foundation for larger InvoiceLineItemsTableComponent composition
+- Invoice display components now fully standardized
+- Consistent currency formatting and action button behavior
+- Easy to update styling and behavior from single component
+- Foundation for larger invoice composition patterns
+- Both components ready for reuse across all invoice views
 
 **SESSION 8 (2025-11-25 - Phase 2 COMPLETE!):**
 
