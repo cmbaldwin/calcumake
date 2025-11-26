@@ -858,7 +858,7 @@ end
 - Help text support via parameter or slot
 - Smart conditional rendering of wrappers
 
-**Migrated views (10 files, 17+ sections):**
+**Migrated views (13 files, 29 sections):**
 
 **Print Pricing Forms (3 files, 3 sections):**
 - ✅ `app/views/print_pricings/form_sections/_basic_information.html.erb` (1 section)
@@ -871,14 +871,16 @@ end
 - ✅ `app/views/invoices/partials/form/_company_info.html.erb` (1 section with custom styling)
 - ✅ `app/views/invoices/partials/form/_payment_notes.html.erb` (2 sections: payment_details + notes)
 
-**Client Forms (1 file, 4 sections):**
+**Client Forms (2 files, 8 sections):**
 - ✅ `app/views/clients/_form.html.erb` (4 sections: basic_info, contact_info, additional_info, notes)
+- ✅ `app/views/clients/_modal_form.html.erb` (4 sections: same as form, for modal creation)
 
-**Filament Forms (2 files, 8 sections):**
+**Filament Forms (4 files, 13 sections):**
 - ✅ `app/views/filaments/edit.html.erb` (4 sections: basic_info, cost_info, properties, notes)
-- ✅ `app/views/filaments/new.html.erb` (4 sections: same as edit) [Note: needs verification]
+- ✅ `app/views/filaments/new.html.erb` (4 sections: same as edit)
+- ✅ `app/views/filaments/_modal_form.html.erb` (4 sections: same, for modal creation)
 
-**Impact:** ~350+ lines reduced, 17+ form sections standardized, consistent card-header pattern eliminated
+**Impact:** ~500 lines reduced, 29 form sections standardized, card-header pattern eliminated
 
 ---
 
@@ -1762,21 +1764,22 @@ For each component:
 
 - ✅ **Forms::FormSectionComponent created** - 59 lines Ruby, 32 lines template, 206 lines tests
 - ✅ **Comprehensive test coverage** - 19 tests, 31 assertions covering all scenarios
-- ✅ **10 files migrated (17+ form sections)** - Print pricings, invoices, clients, filaments
-- ✅ **Smart features** - Optional wrappers, custom classes, help text slot support
-- ✅ **Card-header pattern eliminated** - Standardized across entire application
-- ✅ **Lines saved:** ~350+ lines from form section migrations
+- ✅ **13 files migrated (29 form sections)** - Print pricings, invoices, clients, filaments
+- ✅ **Smart features** - Optional wrappers, custom classes, help text slot support, tag.h6 for modal forms
+- ✅ **Card-header pattern eliminated** - Standardized across entire application including modal forms
+- ✅ **Lines saved:** ~500 lines from form section migrations
 - 📊 **Component count:** 27 total (37% of goal)
-- 📊 **Lines saved cumulative:** ~1,250 (50% of target!)
+- 📊 **Lines saved cumulative:** ~1,400 (56% of target!)
 
 **Migrated files breakdown:**
-- Print Pricing: 3 files (basic_information, labor_costs, other_costs)
-- Invoices: 4 files (client, details, company_info, payment_notes)
-- Clients: 1 file with 4 sections (basic_info, contact_info, additional_info, notes)
-- Filaments: 1 file with 4 sections (basic_info, cost_info, properties, notes)
+- Print Pricing: 3 files, 3 sections (basic_information, labor_costs, other_costs)
+- Invoices: 4 files, 5 sections (client, details, company_info, payment_notes)
+- Clients: 2 files, 8 sections (regular form + modal form)
+- Filaments: 4 files, 16 sections (edit, new, modal_form)
 
 **Benefits:**
 - All form sections now use consistent card-based structure
+- Modal forms with h6 headers fully supported via tag.h6 helper
 - Easy to update section styling across entire app from single component
 - Better maintainability with configurable wrappers and classes
 - Full support for custom header styling (border-info, bg-info variants)

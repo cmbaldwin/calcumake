@@ -11,154 +11,144 @@
       <%= render Forms::ErrorsComponent.new(model: @filament) %>
 
       <!-- Basic Information -->
-      <div class="card mb-3">
-        <div class="card-header">
-          <h6 class="mb-0"><%= t('filaments.sections.basic_info') %></h6>
-        </div>
-        <div class="card-body">
-          <div class="row g-3">
-            <%= render Forms::FieldComponent.new(
-              form: form,
-              attribute: :name,
-              type: :text,
-              label: t('filaments.fields.name'),
-              required: true,
-              wrapper_class: "col-md-6",
-              options: { placeholder: t('filaments.fields.name_placeholder') }
-            ) %>
-            <%= render Forms::FieldComponent.new(
-              form: form,
-              attribute: :brand,
-              type: :text,
-              label: t('filaments.fields.brand'),
-              wrapper_class: "col-md-6",
-              options: { placeholder: t('filaments.fields.brand_placeholder') }
-            ) %>
-            <%= render Forms::SelectFieldComponent.new(
-              form: form,
-              attribute: :material_type,
-              choices: [
-                ['PLA', 'PLA'],
-                ['ABS', 'ABS'],
-                ['PETG', 'PETG'],
-                ['TPU', 'TPU'],
-                ['ASA', 'ASA'],
-                ['HIPS', 'HIPS'],
-                ['Nylon', 'Nylon'],
-                ['PC', 'PC'],
-                ['PVA', 'PVA'],
-                ['Wood', 'Wood'],
-                ['Metal', 'Metal'],
-                ['Carbon', 'Carbon']
-              ],
-              label: t('filaments.fields.material_type'),
-              prompt: t('filaments.fields.material_type_prompt'),
-              required: true,
-              wrapper_class: "col-md-6"
-            ) %>
-            <%= render Forms::SelectFieldComponent.new(
-              form: form,
-              attribute: :diameter,
-              choices: [['1.75mm', 1.75], ['2.85mm', 2.85], ['3.00mm', 3.0]],
-              label: t('filaments.fields.diameter'),
-              required: true,
-              wrapper_class: "col-md-6"
-            ) %>
-            <%= render Forms::FieldComponent.new(
-              form: form,
-              attribute: :color,
-              type: :text,
-              label: t('filaments.fields.color'),
-              wrapper_class: "col-md-6",
-              options: { placeholder: t('filaments.fields.color_placeholder') }
-            ) %>
-            <%= render Forms::FieldComponent.new(
-              form: form,
-              attribute: :finish,
-              type: :text,
-              label: t('filaments.fields.finish'),
-              wrapper_class: "col-md-6",
-              options: { placeholder: t('filaments.fields.finish_placeholder') }
-            ) %>
-          </div>
-        </div>
-      </div>
+      <%= render Forms::FormSectionComponent.new(
+        title: tag.h6(t('filaments.sections.basic_info'), class: "mb-0"),
+        card_class: "card mb-3",
+        body_class: "row g-3"
+      ) do %>
+        <%= render Forms::FieldComponent.new(
+          form: form,
+          attribute: :name,
+          type: :text,
+          label: t('filaments.fields.name'),
+          required: true,
+          wrapper_class: "col-md-6",
+          options: { placeholder: t('filaments.fields.name_placeholder') }
+        ) %>
+        <%= render Forms::FieldComponent.new(
+          form: form,
+          attribute: :brand,
+          type: :text,
+          label: t('filaments.fields.brand'),
+          wrapper_class: "col-md-6",
+          options: { placeholder: t('filaments.fields.brand_placeholder') }
+        ) %>
+        <%= render Forms::SelectFieldComponent.new(
+          form: form,
+          attribute: :material_type,
+          choices: [
+            ['PLA', 'PLA'],
+            ['ABS', 'ABS'],
+            ['PETG', 'PETG'],
+            ['TPU', 'TPU'],
+            ['ASA', 'ASA'],
+            ['HIPS', 'HIPS'],
+            ['Nylon', 'Nylon'],
+            ['PC', 'PC'],
+            ['PVA', 'PVA'],
+            ['Wood', 'Wood'],
+            ['Metal', 'Metal'],
+            ['Carbon', 'Carbon']
+          ],
+          label: t('filaments.fields.material_type'),
+          prompt: t('filaments.fields.material_type_prompt'),
+          required: true,
+          wrapper_class: "col-md-6"
+        ) %>
+        <%= render Forms::SelectFieldComponent.new(
+          form: form,
+          attribute: :diameter,
+          choices: [['1.75mm', 1.75], ['2.85mm', 2.85], ['3.00mm', 3.0]],
+          label: t('filaments.fields.diameter'),
+          required: true,
+          wrapper_class: "col-md-6"
+        ) %>
+        <%= render Forms::FieldComponent.new(
+          form: form,
+          attribute: :color,
+          type: :text,
+          label: t('filaments.fields.color'),
+          wrapper_class: "col-md-6",
+          options: { placeholder: t('filaments.fields.color_placeholder') }
+        ) %>
+        <%= render Forms::FieldComponent.new(
+          form: form,
+          attribute: :finish,
+          type: :text,
+          label: t('filaments.fields.finish'),
+          wrapper_class: "col-md-6",
+          options: { placeholder: t('filaments.fields.finish_placeholder') }
+        ) %>
+      <% end %>
 
       <!-- Cost Information -->
-      <div class="card mb-3">
-        <div class="card-header">
-          <h6 class="mb-0"><%= t('filaments.sections.cost_info') %></h6>
-        </div>
-        <div class="card-body">
-          <div class="row g-3">
-            <%= render Forms::NumberFieldWithAddonComponent.new(
-              form: form,
-              attribute: :spool_weight,
-              label: t('filaments.fields.spool_weight'),
-              append: "g",
-              step: 0.01,
-              min: 0,
-              placeholder: t('filaments.fields.spool_weight_placeholder'),
-              wrapper_class: "col-md-4",
-              input_group_size: "sm"
-            ) %>
-            <%= render Forms::NumberFieldWithAddonComponent.new(
-              form: form,
-              attribute: :spool_price,
-              label: t('filaments.fields.spool_price'),
-              prepend: currency_symbol(current_user.default_currency),
-              step: 0.01,
-              min: 0,
-              placeholder: t('filaments.fields.spool_price_placeholder'),
-              wrapper_class: "col-md-4",
-              input_group_size: "sm"
-            ) %>
-            <%= render Forms::NumberFieldWithAddonComponent.new(
-              form: form,
-              attribute: :density,
-              label: t('filaments.fields.density'),
-              append: "g/cm³",
-              step: 0.01,
-              min: 0,
-              placeholder: t('filaments.fields.density_placeholder'),
-              wrapper_class: "col-md-4",
-              input_group_size: "sm"
-            ) %>
-          </div>
-        </div>
-      </div>
+      <%= render Forms::FormSectionComponent.new(
+        title: tag.h6(t('filaments.sections.cost_info'), class: "mb-0"),
+        card_class: "card mb-3",
+        body_class: "row g-3"
+      ) do %>
+        <%= render Forms::NumberFieldWithAddonComponent.new(
+          form: form,
+          attribute: :spool_weight,
+          label: t('filaments.fields.spool_weight'),
+          append: "g",
+          step: 0.01,
+          min: 0,
+          placeholder: t('filaments.fields.spool_weight_placeholder'),
+          wrapper_class: "col-md-4",
+          input_group_size: "sm"
+        ) %>
+        <%= render Forms::NumberFieldWithAddonComponent.new(
+          form: form,
+          attribute: :spool_price,
+          label: t('filaments.fields.spool_price'),
+          prepend: currency_symbol(current_user.default_currency),
+          step: 0.01,
+          min: 0,
+          placeholder: t('filaments.fields.spool_price_placeholder'),
+          wrapper_class: "col-md-4",
+          input_group_size: "sm"
+        ) %>
+        <%= render Forms::NumberFieldWithAddonComponent.new(
+          form: form,
+          attribute: :density,
+          label: t('filaments.fields.density'),
+          append: "g/cm³",
+          step: 0.01,
+          min: 0,
+          placeholder: t('filaments.fields.density_placeholder'),
+          wrapper_class: "col-md-4",
+          input_group_size: "sm"
+        ) %>
+      <% end %>
 
       <!-- Properties -->
-      <div class="card mb-3">
-        <div class="card-header">
-          <h6 class="mb-0"><%= t('filaments.sections.properties') %></h6>
-        </div>
-        <div class="card-body">
-          <%= render Forms::CheckboxFieldComponent.new(
-            form: form,
-            attribute: :moisture_sensitive,
-            label: t('filaments.fields.moisture_sensitive'),
-            wrapper: false
-          ) %>
-        </div>
-      </div>
+      <%= render Forms::FormSectionComponent.new(
+        title: tag.h6(t('filaments.sections.properties'), class: "mb-0"),
+        card_class: "card mb-3"
+      ) do %>
+        <%= render Forms::CheckboxFieldComponent.new(
+          form: form,
+          attribute: :moisture_sensitive,
+          label: t('filaments.fields.moisture_sensitive'),
+          wrapper: false
+        ) %>
+      <% end %>
 
       <!-- Notes -->
-      <div class="card">
-        <div class="card-header">
-          <h6 class="mb-0"><%= t('filaments.fields.notes') %></h6>
-        </div>
-        <div class="card-body">
-          <%= render Forms::FieldComponent.new(
-            form: form,
-            attribute: :notes,
-            type: :textarea,
-            label: false,
-            wrapper: false,
-            options: { rows: 3, placeholder: t('filaments.fields.notes_placeholder') }
-          ) %>
-        </div>
-      </div>
+      <%= render Forms::FormSectionComponent.new(
+        title: tag.h6(t('filaments.fields.notes'), class: "mb-0"),
+        card_class: "card"
+      ) do %>
+        <%= render Forms::FieldComponent.new(
+          form: form,
+          attribute: :notes,
+          type: :textarea,
+          label: false,
+          wrapper: false,
+          options: { rows: 3, placeholder: t('filaments.fields.notes_placeholder') }
+        ) %>
+      <% end %>
     </div>
 
     <div class="modal-footer">
