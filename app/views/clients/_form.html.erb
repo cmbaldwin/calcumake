@@ -2,103 +2,92 @@
     <%= render Forms::ErrorsComponent.new(model: @client) %>
 
     <!-- Basic Information -->
-    <div class="card mb-4">
-        <div class="card-header">
-            <h5 class="mb-0"><%= t('clients.sections.basic_info') %></h5>
-        </div>
-        <div class="card-body">
-            <div class="row g-3">
-                <%= render Forms::FieldComponent.new(
-                  form: form,
-                  attribute: :name,
-                  type: :text,
-                  label: t('clients.fields.name'),
-                  required: true,
-                  wrapper_class: "col-md-6",
-                  options: { placeholder: t('clients.fields.name_placeholder') }
-                ) %>
-                <%= render Forms::FieldComponent.new(
-                  form: form,
-                  attribute: :company_name,
-                  type: :text,
-                  label: t('clients.fields.company_name'),
-                  wrapper_class: "col-md-6",
-                  options: { placeholder: t('clients.fields.company_name_placeholder') }
-                ) %>
-            </div>
-        </div>
-    </div>
+    <%= render Forms::FormSectionComponent.new(
+      title: t('clients.sections.basic_info'),
+      card_class: "card mb-4",
+      body_class: "row g-3"
+    ) do %>
+      <%= render Forms::FieldComponent.new(
+        form: form,
+        attribute: :name,
+        type: :text,
+        label: t('clients.fields.name'),
+        required: true,
+        wrapper_class: "col-md-6",
+        options: { placeholder: t('clients.fields.name_placeholder') }
+      ) %>
+      <%= render Forms::FieldComponent.new(
+        form: form,
+        attribute: :company_name,
+        type: :text,
+        label: t('clients.fields.company_name'),
+        wrapper_class: "col-md-6",
+        options: { placeholder: t('clients.fields.company_name_placeholder') }
+      ) %>
+    <% end %>
 
     <!-- Contact Information -->
-    <div class="card mb-4">
-        <div class="card-header">
-            <h5 class="mb-0"><%= t('clients.sections.contact_info') %></h5>
-        </div>
-        <div class="card-body">
-            <div class="row g-3">
-                <%= render Forms::FieldComponent.new(
-                  form: form,
-                  attribute: :email,
-                  type: :email,
-                  label: t('clients.fields.email'),
-                  wrapper_class: "col-md-6",
-                  options: { placeholder: t('clients.fields.email_placeholder') }
-                ) %>
-                <%= render Forms::FieldComponent.new(
-                  form: form,
-                  attribute: :phone,
-                  type: :text,
-                  label: t('clients.fields.phone'),
-                  wrapper_class: "col-md-6",
-                  options: { placeholder: t('clients.fields.phone_placeholder') }
-                ) %>
-                <%= render Forms::FieldComponent.new(
-                  form: form,
-                  attribute: :address,
-                  type: :textarea,
-                  label: t('clients.fields.address'),
-                  wrapper_class: "col-12",
-                  options: { rows: 3, placeholder: t('clients.fields.address_placeholder') }
-                ) %>
-            </div>
-        </div>
-    </div>
+    <%= render Forms::FormSectionComponent.new(
+      title: t('clients.sections.contact_info'),
+      card_class: "card mb-4",
+      body_class: "row g-3"
+    ) do %>
+      <%= render Forms::FieldComponent.new(
+        form: form,
+        attribute: :email,
+        type: :email,
+        label: t('clients.fields.email'),
+        wrapper_class: "col-md-6",
+        options: { placeholder: t('clients.fields.email_placeholder') }
+      ) %>
+      <%= render Forms::FieldComponent.new(
+        form: form,
+        attribute: :phone,
+        type: :text,
+        label: t('clients.fields.phone'),
+        wrapper_class: "col-md-6",
+        options: { placeholder: t('clients.fields.phone_placeholder') }
+      ) %>
+      <%= render Forms::FieldComponent.new(
+        form: form,
+        attribute: :address,
+        type: :textarea,
+        label: t('clients.fields.address'),
+        wrapper_class: "col-12",
+        options: { rows: 3, placeholder: t('clients.fields.address_placeholder') }
+      ) %>
+    <% end %>
 
     <!-- Additional Information -->
-    <div class="card mb-4">
-        <div class="card-header">
-            <h5 class="mb-0"><%= t('clients.sections.additional_info') %></h5>
-        </div>
-        <div class="card-body">
-            <div class="row g-3">
-                <%= render Forms::FieldComponent.new(
-                  form: form,
-                  attribute: :tax_id,
-                  type: :text,
-                  label: t('clients.fields.tax_id'),
-                  wrapper_class: "col-md-6",
-                  options: { placeholder: t('clients.fields.tax_id_placeholder') }
-                ) %>
-            </div>
-        </div>
-    </div>
+    <%= render Forms::FormSectionComponent.new(
+      title: t('clients.sections.additional_info'),
+      card_class: "card mb-4",
+      body_class: "row g-3"
+    ) do %>
+      <%= render Forms::FieldComponent.new(
+        form: form,
+        attribute: :tax_id,
+        type: :text,
+        label: t('clients.fields.tax_id'),
+        wrapper_class: "col-md-6",
+        options: { placeholder: t('clients.fields.tax_id_placeholder') }
+      ) %>
+    <% end %>
 
     <!-- Notes -->
-    <div class="card mb-4">
-        <div class="card-header">
-            <h5 class="mb-0"><%= t('clients.fields.notes') %></h5>
-        </div>
-        <div class="card-body">
-            <%= render Forms::FieldComponent.new(
-              form: form,
-              attribute: :notes,
-              type: :textarea,
-              label: false,
-              wrapper: false,
-              options: { rows: 4, placeholder: t('clients.fields.notes_placeholder') }
-            ) %>
-        </div>
-    </div>
+    <%= render Forms::FormSectionComponent.new(
+      title: t('clients.fields.notes'),
+      card_class: "card mb-4"
+    ) do %>
+      <%= render Forms::FieldComponent.new(
+        form: form,
+        attribute: :notes,
+        type: :textarea,
+        label: false,
+        wrapper: false,
+        options: { rows: 4, placeholder: t('clients.fields.notes_placeholder') }
+      ) %>
+    <% end %>
 
     <!-- Form Actions -->
     <%= render Forms::FormActionsComponent.new(

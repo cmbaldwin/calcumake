@@ -1,41 +1,33 @@
-<div class="col-md-6">
-  <div class="card">
-    <div class="card-header">
-      <h5 class="mb-0"><%= t("invoices.fields.payment_details") %></h5>
-    </div>
-    <div class="card-body">
-      <%= render Forms::FieldComponent.new(
-        form: form,
-        attribute: :payment_details,
-        type: :textarea,
-        label: false,
-        wrapper: false,
-        options: { 
-          rows: 5,
-          placeholder: t("invoices.placeholders.payment_details", default: "Bank Name: Example Bank\nAccount Number: 1234567890\nRouting Number: 987654321")
-        }
-      ) %>
-    </div>
-  </div>
-</div>
+<%= render Forms::FormSectionComponent.new(
+  title: t("invoices.fields.payment_details"),
+  wrapper_class: "col-md-6"
+) do %>
+  <%= render Forms::FieldComponent.new(
+    form: form,
+    attribute: :payment_details,
+    type: :textarea,
+    label: false,
+    wrapper: false,
+    options: {
+      rows: 5,
+      placeholder: t("invoices.placeholders.payment_details", default: "Bank Name: Example Bank\nAccount Number: 1234567890\nRouting Number: 987654321")
+    }
+  ) %>
+<% end %>
 
-<div class="col-md-6">
-  <div class="card">
-    <div class="card-header">
-      <h5 class="mb-0"><%= t("invoices.fields.notes") %></h5>
-    </div>
-    <div class="card-body">
-      <%= render Forms::FieldComponent.new(
-        form: form,
-        attribute: :notes,
-        type: :textarea,
-        label: false,
-        wrapper: false,
-        options: { 
-          rows: 5,
-          placeholder: t("invoices.placeholders.notes", default: "Thank you for your business!")
-        }
-      ) %>
-    </div>
-  </div>
-</div>
+<%= render Forms::FormSectionComponent.new(
+  title: t("invoices.fields.notes"),
+  wrapper_class: "col-md-6"
+) do %>
+  <%= render Forms::FieldComponent.new(
+    form: form,
+    attribute: :notes,
+    type: :textarea,
+    label: false,
+    wrapper: false,
+    options: {
+      rows: 5,
+      placeholder: t("invoices.placeholders.notes", default: "Thank you for your business!")
+    }
+  ) %>
+<% end %>
