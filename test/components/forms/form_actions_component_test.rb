@@ -23,14 +23,14 @@ module Forms
 
       render_inline(FormActionsComponent.new(form: form))
 
-      assert_selector "input[type="submit"]", text: "Create"
+      assert_selector 'input[type="submit"]', text: "Create"
       assert_selector "input.btn.btn-primary"
     end
 
     test "renders submit button with default text for persisted record" do
       render_inline(FormActionsComponent.new(form: @form_builder))
 
-      assert_selector "input[type="submit"]", text: "Update"
+      assert_selector 'input[type="submit"]', text: "Update"
       assert_selector "input.btn.btn-primary"
     end
 
@@ -40,7 +40,7 @@ module Forms
         submit_text: "Save Changes"
       ))
 
-      assert_selector "input[type="submit"]", text: "Save Changes"
+      assert_selector 'input[type="submit"]', text: "Save Changes"
     end
 
     test "renders without cancel link when no cancel_url provided" do
@@ -155,7 +155,7 @@ module Forms
 
       render_inline(FormActionsComponent.new(form: form))
 
-      assert_selector "input[type="submit"]"
+      assert_selector 'input[type="submit"]'
     end
 
     test "handles form without object method" do
@@ -164,7 +164,7 @@ module Forms
 
       render_inline(FormActionsComponent.new(form: mock_form))
 
-      assert_selector "input[type="submit"]"
+      assert_selector 'input[type="submit"]'
 
       mock_form.verify
     end
