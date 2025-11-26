@@ -24,6 +24,9 @@
       </div>
     </div>
 
-    <%= render "invoices/partials/line_items/totals", invoice: invoice, currency: currency %>
+    <%= render Invoices::LineItemsTotalsComponent.new(
+      invoice: invoice,
+      currency: currency
+    ) %>
   </div>
 </div>
