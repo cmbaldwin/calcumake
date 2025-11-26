@@ -1,29 +1,25 @@
-<div class="col-md-6">
-  <div class="card h-100">
-    <div class="card-header">
-      <h5 class="mb-0"><%= t('print_pricing.sections.other_costs_tax') %></h5>
-    </div>
-    <div class="card-body">
-      <div class="row g-3">
-        <%= render Forms::NumberFieldWithAddonComponent.new(
-          form: f,
-          attribute: :other_costs,
-          label: t('print_pricing.fields.other_costs'),
-          prepend: currency_symbol(current_user.default_currency),
-          step: 0.01,
-          placeholder: t('print_pricing.fields.other_costs_placeholder'),
-          wrapper_class: "col-12"
-        ) %>
+<%= render Forms::FormSectionComponent.new(
+  title: t('print_pricing.sections.other_costs_tax'),
+  wrapper_class: "col-md-6",
+  card_class: "card h-100",
+  body_class: "row g-3"
+) do %>
+  <%= render Forms::NumberFieldWithAddonComponent.new(
+    form: f,
+    attribute: :other_costs,
+    label: t('print_pricing.fields.other_costs'),
+    prepend: currency_symbol(current_user.default_currency),
+    step: 0.01,
+    placeholder: t('print_pricing.fields.other_costs_placeholder'),
+    wrapper_class: "col-12"
+  ) %>
 
-        <%= render Forms::FieldComponent.new(
-          form: f,
-          attribute: :vat_percentage,
-          type: :number,
-          label: t('print_pricing.fields.vat_percentage'),
-          wrapper_class: "col-12",
-          options: { step: 0.1, placeholder: t('print_pricing.fields.vat_placeholder') }
-        ) %>
-      </div>
-    </div>
-  </div>
-</div>
+  <%= render Forms::FieldComponent.new(
+    form: f,
+    attribute: :vat_percentage,
+    type: :number,
+    label: t('print_pricing.fields.vat_percentage'),
+    wrapper_class: "col-12",
+    options: { step: 0.1, placeholder: t('print_pricing.fields.vat_placeholder') }
+  ) %>
+<% end %>

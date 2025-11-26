@@ -1,37 +1,33 @@
-<div class="card">
-    <div class="card-header">
-        <h5 class="mb-0"><%= t("invoices.fields.client") %></h5>
+<%= render Forms::FormSectionComponent.new(
+  title: t("invoices.fields.client"),
+  body_class: "row g-3"
+) do %>
+  <div class="col-md-12">
+    <%= turbo_frame_tag "client_select_frame" do %>
+      <%= render Forms::SelectFieldComponent.new(
+        form: form,
+        attribute: :client_id,
+        collection: current_user.clients.order(:name),
+        value_method: :id,
+        text_method: :display_name,
+        label: t("invoices.fields.select_client"),
+        prompt: t("invoices.fields.no_client_selected"),
+        include_blank: true,
+        wrapper: false
+      ) %>
+    <% end %>
+    <div class="form-text mt-2">
+      <%= t("invoices.fields.client_help_text") %>
+      <%= link_to new_client_path(format: :turbo_stream),
+          class: "btn btn-sm btn-outline-primary ms-2",
+          data: {
+            controller: "modal-link",
+            action: "click->modal-link#open",
+            turbo_frame: "modal_content"
+          } do %>
+        <i class="bi bi-plus-circle"></i>
+        <%= t("clients.new.title") %>
+      <% end %>
     </div>
-    <div class="card-body">
-        <div class="row g-3">
-            <div class="col-md-12">
-                <%= turbo_frame_tag "client_select_frame" do %>
-                  <%= render Forms::SelectFieldComponent.new(
-                    form: form,
-                    attribute: :client_id,
-                    collection: current_user.clients.order(:name),
-                    value_method: :id,
-                    text_method: :display_name,
-                    label: t("invoices.fields.select_client"),
-                    prompt: t("invoices.fields.no_client_selected"),
-                    include_blank: true,
-                    wrapper: false
-                  ) %>
-                <% end %>
-                <div class="form-text mt-2">
-                  <%= t("invoices.fields.client_help_text") %>
-                  <%= link_to new_client_path(format: :turbo_stream),
-                      class: "btn btn-sm btn-outline-primary ms-2",
-                      data: {
-                        controller: "modal-link",
-                        action: "click->modal-link#open",
-                        turbo_frame: "modal_content"
-                      } do %>
-                    <i class="bi bi-plus-circle"></i>
-                    <%= t("clients.new.title") %>
-                  <% end %>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+  </div>
+<% end %>
