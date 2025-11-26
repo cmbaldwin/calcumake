@@ -7,7 +7,7 @@ module Invoices
     # Basic Rendering Tests
 
     test "renders with required attributes" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
 
       render_inline(LineItemsTotalsComponent.new(
         invoice: invoice,
@@ -21,7 +21,7 @@ module Invoices
     end
 
     test "displays subtotal with formatted currency" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :subtotal, 1000.00 do
         render_inline(LineItemsTotalsComponent.new(
           invoice: invoice,
@@ -33,7 +33,7 @@ module Invoices
     end
 
     test "displays total with formatted currency" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :total, 1100.00 do
         render_inline(LineItemsTotalsComponent.new(
           invoice: invoice,
@@ -47,7 +47,7 @@ module Invoices
     # Currency Formatting Tests
 
     test "handles JPY currency (no decimals)" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :subtotal, 1000 do
         invoice.stub :total, 1100 do
           render_inline(LineItemsTotalsComponent.new(
@@ -62,7 +62,7 @@ module Invoices
     end
 
     test "handles EUR currency" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :subtotal, 1000.00 do
         invoice.stub :total, 1100.00 do
           render_inline(LineItemsTotalsComponent.new(
@@ -78,7 +78,7 @@ module Invoices
     # Custom Styling Tests
 
     test "applies default wrapper class" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
 
       render_inline(LineItemsTotalsComponent.new(
         invoice: invoice,
@@ -89,7 +89,7 @@ module Invoices
     end
 
     test "applies custom wrapper class" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
 
       render_inline(LineItemsTotalsComponent.new(
         invoice: invoice,
@@ -102,7 +102,7 @@ module Invoices
     end
 
     test "applies default table class" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
 
       render_inline(LineItemsTotalsComponent.new(
         invoice: invoice,
@@ -113,7 +113,7 @@ module Invoices
     end
 
     test "applies custom table class" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
 
       render_inline(LineItemsTotalsComponent.new(
         invoice: invoice,
@@ -127,7 +127,7 @@ module Invoices
     # Layout Tests
 
     test "renders in offset column layout" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
 
       render_inline(LineItemsTotalsComponent.new(
         invoice: invoice,
@@ -138,7 +138,7 @@ module Invoices
     end
 
     test "displays subtotal before total" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
 
       render_inline(LineItemsTotalsComponent.new(
         invoice: invoice,
@@ -155,7 +155,7 @@ module Invoices
     # Stimulus Data Attributes Tests
 
     test "includes data attributes for Stimulus targets" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
 
       render_inline(LineItemsTotalsComponent.new(
         invoice: invoice,
@@ -169,7 +169,7 @@ module Invoices
     # Edge Cases
 
     test "handles zero amounts" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :subtotal, 0.0 do
         invoice.stub :total, 0.0 do
           render_inline(LineItemsTotalsComponent.new(
@@ -184,7 +184,7 @@ module Invoices
     end
 
     test "handles negative amounts" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :subtotal, -100.00 do
         invoice.stub :total, -110.00 do
           render_inline(LineItemsTotalsComponent.new(
@@ -199,7 +199,7 @@ module Invoices
     end
 
     test "handles large amounts" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
       invoice.stub :subtotal, 1_234_567.89 do
         invoice.stub :total, 1_357_024.68 do
           render_inline(LineItemsTotalsComponent.new(
@@ -216,7 +216,7 @@ module Invoices
     # Translation Tests
 
     test "uses translations for labels" do
-      invoice = invoices(:invoice_one)
+      invoice = invoices(:one)
 
       I18n.with_locale(:en) do
         render_inline(LineItemsTotalsComponent.new(
