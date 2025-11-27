@@ -1,12 +1,8 @@
-<div class="card">
-    <div class="card-header">
-        <h5 class="mb-0"><%= t("invoices.fields.invoice_details") %></h5>
-    </div>
-    <div class="card-body">
-        <div class="row g-3">
-            <%= render "invoices/partials/form/number", form: form, invoice: invoice %>
-            <%= render "invoices/partials/form/dates", form: form %>
-            <%= render "invoices/partials/form/status_currency", form: form, invoice: invoice %>
-        </div>
-    </div>
-</div>
+<%= render Forms::FormSectionComponent.new(
+  title: t("invoices.fields.invoice_details"),
+  body_class: "row g-3"
+) do %>
+  <%= render "invoices/partials/form/number", form: form, invoice: invoice %>
+  <%= render "invoices/partials/form/dates", form: form %>
+  <%= render "invoices/partials/form/status_currency", form: form, invoice: invoice %>
+<% end %>

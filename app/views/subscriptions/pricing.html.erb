@@ -29,31 +29,28 @@
   <% end %>
 
   <%# Pricing Cards %>
-  <div id="pricing-plans" class="row mb-4">
-    <div class="col-md-4 mb-3">
-      <%= render 'subscriptions/pricing_card',
-                 plan: 'free',
-                 features: @plans[:free],
-                 current: current_user.free_plan?,
-                 usage: @usage %>
-    </div>
+  <div id="pricing-plans" class="row mb-4 justify-content-center">
+    <%= render Cards::PricingTierCardComponent.new(
+      plan: 'free',
+      features: @plans[:free],
+      current: current_user.free_plan?,
+      current_user: current_user
+    ) %>
 
-    <div class="col-md-4 mb-3">
-      <%= render 'subscriptions/pricing_card',
-                 plan: 'startup',
-                 features: @plans[:startup],
-                 current: current_user.startup_plan?,
-                 popular: true,
-                 usage: @usage %>
-    </div>
+    <%= render Cards::PricingTierCardComponent.new(
+      plan: 'startup',
+      features: @plans[:startup],
+      current: current_user.startup_plan?,
+      popular: true,
+      current_user: current_user
+    ) %>
 
-    <div class="col-md-4 mb-3">
-      <%= render 'subscriptions/pricing_card',
-                 plan: 'pro',
-                 features: @plans[:pro],
-                 current: current_user.pro_plan?,
-                 usage: @usage %>
-    </div>
+    <%= render Cards::PricingTierCardComponent.new(
+      plan: 'pro',
+      features: @plans[:pro],
+      current: current_user.pro_plan?,
+      current_user: current_user
+    ) %>
   </div>
 
   <%# Manage Subscription Section %>
