@@ -82,12 +82,10 @@ en:
         printers: 10 printer profiles
         filaments: 16 filament types
         branding: Remove CalcuMake branding
-        ads: No ads
       pro:
         title: Pro
         unlimited: Unlimited everything
         branding: Remove CalcuMake branding
-        ads: No ads
         support: Priority support
         analytics: Advanced analytics
         features: Future premium features
