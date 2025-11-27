@@ -103,6 +103,7 @@ ja:
     data_rights_header: お客様のデータに関する権利
     export_data: データのエクスポート
     delete_account: アカウントの削除
+    calculate_now: 今すぐ計算！
   actions:
     title: アクション
     save: 保存

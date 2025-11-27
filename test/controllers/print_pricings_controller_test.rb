@@ -113,6 +113,15 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to print_pricings_url
   end
 
+  test "should destroy print_pricing via turbo stream and redirect to index" do
+    assert_difference("PrintPricing.count", -1) do
+      delete print_pricing_url(@print_pricing), headers: { "Accept": "text/vnd.turbo-stream.html" }
+    end
+
+    assert_redirected_to print_pricings_url
+    assert_response :see_other
+  end
+
   test "should not access other user's print_pricing" do
     other_user = User.create!(
       email: "other@example.com",

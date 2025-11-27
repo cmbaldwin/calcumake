@@ -106,6 +106,7 @@ hi:
     data_rights_header: आपके डेटा अधिकार
     export_data: मेरा डेटा एक्सपोर्ट करें
     delete_account: मेरा अकाउंट डिलीट करें
+    calculate_now: अभी गणना करें!
   actions:
     title: क्रियाएँ
     save: सहेजें

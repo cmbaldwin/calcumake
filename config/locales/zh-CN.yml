@@ -103,6 +103,7 @@ zh-CN:
     data_rights_header: 您的数据权利
     export_data: 导出我的数据
     delete_account: 删除我的帐户
+    calculate_now: 立即计算！
   actions:
     title: 操作
     save: 保存
