@@ -26,7 +26,7 @@ module Cards
           filaments: 16,
           invoices: Float::INFINITY
         },
-        features: [ "Remove CalcuMake branding", "No ads", "Email support" ]
+        features: [ "Remove CalcuMake branding", "Email support" ]
       }
 
       @pro_plan = {
