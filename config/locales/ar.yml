@@ -104,6 +104,7 @@ ar:
     data_rights_header: حقوق بياناتك
     export_data: تصدير بياناتي
     delete_account: حذف حسابي
+    calculate_now: احسب الآن!
   actions:
     title: إجراءات
     save: حفظ

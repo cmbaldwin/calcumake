@@ -39,13 +39,9 @@
                         <%= t('nav.help') %>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="helpDropdown">
-                        <li><%= link_to t('support.nav_title'), support_path, class: "dropdown-item" %></li>
                         <% if user_signed_in? %>
                         <li><%= link_to t('nav.usage_and_subscription', default: 'Usage & Subscription'), user_profile_path, class: "dropdown-item" %></li>
                         <% end %>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
                         <li>
                             <h6 class="dropdown-header"><%= t('nav.legal_header', default: 'Legal & Privacy') %></h6>
                         </li>
@@ -69,18 +65,23 @@
                 </li>
                 <% else %>
                 <li class="nav-item">
-                    <%= link_to t('support.nav_title'), support_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
                     <%= link_to t('nav.sign_in'), new_user_session_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
                     <%= link_to t('nav.sign_up'), new_user_registration_path, class: "nav-link" %>
                 </li>
+                <li class="nav-item">
+                    <%= link_to t('nav.calculate_now'), pricing_calculator_path, class: "nav-link fw-semibold border rounded px-2" %>
+                </li>
                 <% end %>
             </ul>
 
-            <!-- Language Selector -->
+            <!-- Support Link and Language Selector -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <%= link_to t('support.nav_title'), support_path, class: "nav-link" %>
+                </li>
+            </ul>
             <div class="navbar-text">
                 <%= form_with url: switch_locale_path, method: :post, local: true, class: "d-flex" do |form| %>
                 <%= render Forms::SelectFieldComponent.new(
