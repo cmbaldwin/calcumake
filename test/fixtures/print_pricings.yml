@@ -5,9 +5,13 @@ one:
   printer: one
   job_name: Test Print 1
   vat_percentage: 10.0
+  units: 1
+  failure_rate_percentage: 5.0
 
 two:
   user: two
   printer: two
   job_name: Test Print 2
   vat_percentage: 8.0
+  units: 10
+  failure_rate_percentage: 10.0

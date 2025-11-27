@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_25_003559) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_27_023847) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -220,6 +220,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_25_003559) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.decimal "vat_percentage"
+    t.integer "units", default: 1, null: false
+    t.decimal "failure_rate_percentage", precision: 5, scale: 2, default: "5.0"
     t.index ["client_id"], name: "index_print_pricings_on_client_id"
     t.index ["printer_id"], name: "index_print_pricings_on_printer_id"
     t.index ["times_printed"], name: "index_print_pricings_on_times_printed"

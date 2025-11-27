@@ -26,6 +26,7 @@ en:
     times_printed_increase: Increase times printed
     printed_times: Printed Times
     final_price: Final Price
+    per_unit_price: '%{price} per unit (%{count} units)'
     overdue: Overdue
     confirm_delete: Are you sure you want to delete '%{name}'?
     times_printed_incremented: Times printed increased successfully
@@ -143,6 +144,10 @@ en:
       postprocessing_cost_placeholder: '20.00'
       post_cost_hour: Post-Process Cost/Hour
       post_cost_placeholder: '20.00'
+      units: Units
+      units_placeholder: '1'
+      failure_rate_percentage: Failure Rate (%)
+      failure_rate_placeholder: '5.0'
       other_costs: Other Costs
       other_costs_placeholder: '0.00'
       vat: VAT (%)
