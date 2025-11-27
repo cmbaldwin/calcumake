@@ -30,8 +30,8 @@ module Invoices
           print_pricing: print_pricing
         ))
 
-        assert_selector "input[value*='Mark as Sent']"
-        assert_selector "input[value*='Mark as Paid']"
+        assert_selector "form button", text: "Mark as Sent"
+        assert_selector "form button", text: "Mark as Paid"
       end
     end
 
@@ -45,8 +45,8 @@ module Invoices
           print_pricing: print_pricing
         ))
 
-        assert_selector "input[value*='Mark as Sent']"
-        assert_selector "input[value*='Mark as Paid']"
+        assert_selector "form button", text: "Mark as Sent"
+        assert_selector "form button", text: "Mark as Paid"
       end
     end
 
@@ -60,8 +60,8 @@ module Invoices
           print_pricing: print_pricing
         ))
 
-        refute_selector "input[value*='Mark as Sent']"
-        refute_selector "input[value*='Mark as Paid']"
+        refute_selector "form button", text: "Mark as Sent"
+        refute_selector "form button", text: "Mark as Paid"
       end
     end
 
@@ -76,8 +76,8 @@ module Invoices
           show_status_actions: false
         ))
 
-        refute_selector "input[value*='Mark as Sent']"
-        refute_selector "input[value*='Mark as Paid']"
+        refute_selector "form button", text: "Mark as Sent"
+        refute_selector "form button", text: "Mark as Paid"
       end
     end
 
@@ -93,7 +93,7 @@ module Invoices
           print_pricing: print_pricing
         ))
 
-        assert_selector "input[value*='Mark as Sent'][disabled]"
+        assert_selector "form button[disabled]", text: "Mark as Sent"
       end
     end
 
@@ -107,7 +107,7 @@ module Invoices
           print_pricing: print_pricing
         ))
 
-        refute_selector "input[value*='Mark as Sent'][disabled]"
+        refute_selector "form button[disabled]", text: "Mark as Sent"
       end
     end
 
@@ -121,7 +121,7 @@ module Invoices
           print_pricing: print_pricing
         ))
 
-        assert_selector "input[value*='Mark as Paid'][disabled]"
+        assert_selector "form button[disabled]", text: "Mark as Paid"
       end
     end
 
@@ -135,7 +135,7 @@ module Invoices
           print_pricing: print_pricing
         ))
 
-        refute_selector "input[value*='Mark as Paid'][disabled]"
+        refute_selector "form button[disabled]", text: "Mark as Paid"
       end
     end
 
@@ -303,8 +303,8 @@ module Invoices
             print_pricing: print_pricing
           ))
 
-          assert_selector "input[value*='Mark as Sent']"
-          assert_selector "input[value*='Mark as Paid']"
+          assert_selector "form button", text: "Mark as Sent"
+          assert_selector "form button", text: "Mark as Paid"
           assert_selector "a", text: /Edit/i
         end
       end
@@ -327,7 +327,7 @@ module Invoices
 
         # No buttons should be visible
         refute_selector "button"
-        refute_selector "input[type='submit']"
+        refute_selector "form button"
         refute_selector "a.btn"
       end
     end
