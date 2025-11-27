@@ -125,7 +125,7 @@ class PlanLimits
           price_currency: "JPY",
           description: "Great for small businesses and hobbyists",
           limits: STARTUP_LIMITS,
-          features: [ "Remove CalcuMake branding", "No ads", "Email support" ],
+          features: [ "Remove CalcuMake branding", "Email support" ],
           trial: false
         }
       when "pro"
@@ -139,7 +139,6 @@ class PlanLimits
           features: [
             "Unlimited everything",
             "Remove CalcuMake branding",
-            "No ads",
             "Priority support",
             "Advanced analytics",
             "Bulk import/export"
