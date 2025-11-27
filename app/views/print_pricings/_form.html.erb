@@ -16,9 +16,13 @@
 
   <!-- Form Actions -->
   <div class="col-12">
-    <div class="d-flex gap-3 justify-content-center pt-3 border-top">
-      <%= form.submit t('print_pricing.buttons.calculate_save'), class: "btn btn-primary btn-lg" %>
-      <%= link_to t('print_pricing.buttons.cancel'), print_pricings_path, class: "btn btn-outline-secondary btn-lg" %>
-    </div>
+    <%= render Forms::FormActionsComponent.new(
+      form: form,
+      submit_text: t('print_pricing.buttons.calculate_save'),
+      cancel_url: print_pricings_path,
+      submit_class: "btn btn-primary btn-lg px-4",
+      cancel_class: "btn btn-outline-secondary btn-lg px-4",
+      wrapper_class: "d-flex gap-3 justify-content-center pt-3 border-top"
+    ) %>
   </div>
 <% end %>
