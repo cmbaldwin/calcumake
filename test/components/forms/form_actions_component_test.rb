@@ -160,13 +160,13 @@ module Forms
 
     test "handles form without object method" do
       mock_form = Minitest::Mock.new
-      mock_form.expect :submit, "<input type='submit' value='Create'>".html_safe, [String]
+      def mock_form.submit(text, **options)
+        "<input type='submit' value='#{text}'>".html_safe
+      end
 
       render_inline(FormActionsComponent.new(form: mock_form))
 
       assert_selector 'input[type="submit"]'
-
-      mock_form.verify
     end
 
     private
