@@ -106,6 +106,7 @@ es:
     data_rights_header: Tus Derechos sobre los Datos
     export_data: Exportar Mis Datos
     delete_account: Eliminar Mi Cuenta
+    calculate_now: "¡Calcular Ahora!"
   actions:
     title: Acciones
     save: Guardar

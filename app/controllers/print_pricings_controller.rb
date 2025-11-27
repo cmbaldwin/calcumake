@@ -90,10 +90,9 @@ class PrintPricingsController < ApplicationController
   def destroy
     @print_pricing.destroy
     respond_to do |format|
-      format.html { redirect_to print_pricings_url, notice: "Print pricing was successfully deleted." }
+      format.html { redirect_to print_pricings_url, notice: "Print pricing was successfully deleted.", status: :see_other }
       format.turbo_stream {
-        flash.now[:notice] = "Print pricing was successfully deleted."
-        render "layouts/flash"
+        redirect_to print_pricings_url, notice: "Print pricing was successfully deleted.", status: :see_other
       }
     end
   end

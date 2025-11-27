@@ -15,10 +15,12 @@ class NavbarTest < ActionDispatch::IntegrationTest
     # Should contain help dropdown
     assert_select "a#helpDropdown", text: I18n.t("nav.help")
 
-    # Should contain dropdown menu items
-    assert_select ".dropdown-menu a[href='#{support_path}']", text: I18n.t("support.nav_title")
+    # Should contain dropdown menu items (support is now outside dropdown)
     assert_select ".dropdown-menu a[href='#{privacy_policy_path}']", text: I18n.t("legal.privacy_policy.nav_title")
     assert_select ".dropdown-menu a[href='#{user_agreement_path}']", text: I18n.t("legal.user_agreement.nav_title")
+
+    # Support link should be outside dropdown, next to locale switcher
+    assert_select "a[href='#{support_path}']", text: I18n.t("support.nav_title")
   end
 
   test "navbar shows direct support link for non-authenticated users" do
