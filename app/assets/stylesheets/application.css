@@ -2056,6 +2056,7 @@ body.has-locale-suggestion {
 }
 
 .pricing-card:hover {
+  z-index: 1;
   transform: translateY(-5px);
   box-shadow: 0 1rem 2rem rgba(139, 69, 19, 0.15);
 }
