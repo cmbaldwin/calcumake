@@ -331,6 +331,10 @@ ja:
       currency_prompt: 通貨を選択
       start_with_one_print: 1回印刷済みとして開始
       start_with_one_print_help: これを有効にすると、この価格設定が自動的に1回印刷済みとして設定されます
+      units: ユニット数
+      units_placeholder: '1'
+      failure_rate_percentage: 不良率 (%)
+      failure_rate_placeholder: '5.0'
     filament_types:
       pla: PLA
       abs: ABS
@@ -408,6 +412,7 @@ ja:
     help:
       plates_limit: プリントジョブごとに最大10個のプレートを追加できます。
       filaments_limit: プレートごとに最大5種類のフィラメントを追加できます。
+    per_unit_price: ユニットあたり%{price} (%{count}ユニット)
   printers:
     index:
       title: マイプリンター
@@ -1656,6 +1661,7 @@ ja:
       machine_cost: 機械費用
       other_costs: その他
       grand_total: 総合計
+      per_unit: ユニットあたりの価格
     export_pdf: PDFにエクスポート
     export_csv: CSVにエクスポート
     features:
@@ -1672,6 +1678,8 @@ ja:
       button: 無料トライアルを開始
       no_credit_card: クレジットカードは不要です
     quick_calculator_toggle: 簡易見積もり？ シンプル計算機をお試しください
+    units: ユニット数
+    units_help: 製造するユニット数
   articles:
     title: ブログ
     blog: ブログ

@@ -1,0 +1,36 @@
+<!-- Quick Calculator Section -->
+<section class="quick-calculator-section mb-4 bg-light rounded-3" data-controller="collapse">
+  <div class="text-center py-2">
+    <button class="btn btn-outline-secondary quick-calculator-toggle" type="button" data-action="click->collapse#toggle">
+      <i class="bi bi-calculator me-2"></i>
+      <%= t("advanced_calculator.quick_calculator_toggle") %>
+    </button>
+  </div>
+
+  <div class="collapse" data-collapse-target="content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="text-center mb-4">
+            <h1 class="h2 mb-2">
+              <i class="bi bi-calculator-fill me-2"></i>
+              <%= t("advanced_calculator.title") %>
+            </h1>
+            <p class="mb-0">
+              <%= t("advanced_calculator.subtitle") %>
+            </p>
+          </div>
+
+          <%= quick_calculator(energy_cost: 0.12) %>
+
+          <div class="text-center mt-3 mb-4">
+            <%= link_to new_user_registration_path, class: "btn btn-primary btn-lg" do %>
+              <i class="bi bi-person-plus me-2"></i>
+              <%= t("advanced_calculator.sign_up_to_save") %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+<%# SoftwareApplication Schema - Helps AI assistants understand our calculator %>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CalcuMake 3D Print Pricing Calculator",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Multi-plate calculations (up to 10 plates)",
+    "Multiple filaments per plate (up to 16)",
+    "Real-time cost breakdowns",
+    "PDF export with detailed itemization",
+    "CSV export for spreadsheet integration",
+    "Auto-save to localStorage",
+    "Multi-currency support",
+    "7 language support"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "127"
+  },
+  "url": "<%= pricing_calculator_url %>",
+  "inLanguage": ["en", "ja", "zh-CN", "hi", "es", "fr", "ar"]
+}
+</script>

@@ -1,0 +1,36 @@
+<%# HowTo Schema - Step-by-step calculator usage %>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Calculate 3D Printing Costs with CalcuMake",
+  "description": "Step-by-step guide to accurately calculate 3D printing costs including filament, electricity, labor, and machine depreciation",
+  "totalTime": "PT2M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Enter Print Details",
+      "text": "Input printing time, filament weight, and material type for each plate. You can add up to 10 plates with different settings.",
+      "url": "<%= pricing_calculator_url %>#step1"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Add Cost Factors",
+      "text": "Include electricity rates ($/kWh), labor costs ($/hour), and machine depreciation expenses. CalcuMake automatically calculates based on print time.",
+      "url": "<%= pricing_calculator_url %>#step2"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Review Breakdown",
+      "text": "See itemized cost breakdown for each plate showing filament, electricity, labor, and total costs. Compare multiple plates side-by-side.",
+      "url": "<%= pricing_calculator_url %>#step3"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Export Results",
+      "text": "Download professional PDF report or CSV file for further analysis in spreadsheet software.",
+      "url": "<%= pricing_calculator_url %>#step4"
+    }
+  ]
+}
+</script>
