@@ -21,6 +21,7 @@
           attribute: :name,
           type: :text,
           label: t('filaments.fields.name'),
+          info_popup_key: "info_popups.filaments.name",
           required: true,
           wrapper_class: "col-md-6",
           options: { placeholder: t('filaments.fields.name_placeholder') }
@@ -30,6 +31,7 @@
           attribute: :brand,
           type: :text,
           label: t('filaments.fields.brand'),
+          info_popup_key: "info_popups.filaments.brand",
           wrapper_class: "col-md-6",
           options: { placeholder: t('filaments.fields.brand_placeholder') }
         ) %>
@@ -51,6 +53,7 @@
             ['Carbon', 'Carbon']
           ],
           label: t('filaments.fields.material_type'),
+          info_popup_key: "info_popups.filaments.material_type",
           prompt: t('filaments.fields.material_type_prompt'),
           required: true,
           wrapper_class: "col-md-6"
@@ -60,6 +63,7 @@
           attribute: :diameter,
           choices: [['1.75mm', 1.75], ['2.85mm', 2.85], ['3.00mm', 3.0]],
           label: t('filaments.fields.diameter'),
+          info_popup_key: "info_popups.filaments.diameter",
           required: true,
           wrapper_class: "col-md-6"
         ) %>
@@ -68,6 +72,7 @@
           attribute: :color,
           type: :text,
           label: t('filaments.fields.color'),
+          info_popup_key: "info_popups.filaments.color",
           wrapper_class: "col-md-6",
           options: { placeholder: t('filaments.fields.color_placeholder') }
         ) %>
@@ -76,6 +81,7 @@
           attribute: :finish,
           type: :text,
           label: t('filaments.fields.finish'),
+          info_popup_key: "info_popups.filaments.finish",
           wrapper_class: "col-md-6",
           options: { placeholder: t('filaments.fields.finish_placeholder') }
         ) %>
@@ -91,6 +97,7 @@
           form: form,
           attribute: :spool_weight,
           label: t('filaments.fields.spool_weight'),
+          info_popup_key: "info_popups.filaments.spool_weight",
           append: "g",
           step: 0.01,
           min: 0,
@@ -102,6 +109,7 @@
           form: form,
           attribute: :spool_price,
           label: t('filaments.fields.spool_price'),
+          info_popup_key: "info_popups.filaments.spool_price",
           prepend: currency_symbol(current_user.default_currency),
           step: 0.01,
           min: 0,
@@ -113,6 +121,7 @@
           form: form,
           attribute: :density,
           label: t('filaments.fields.density'),
+          info_popup_key: "info_popups.filaments.density",
           append: "g/cm³",
           step: 0.01,
           min: 0,
@@ -131,6 +140,7 @@
           form: form,
           attribute: :moisture_sensitive,
           label: t('filaments.fields.moisture_sensitive'),
+          info_popup_key: "info_popups.filaments.moisture_sensitive",
           wrapper: false
         ) %>
       <% end %>

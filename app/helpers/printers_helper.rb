@@ -110,11 +110,13 @@ module PrintersHelper
     content_tag :div, class: "form-card" do
       content_tag(:h3, "Basic Information") +
       content_tag(:div, class: "field-group") do
-        content_tag(:label, "Printer Name") +
+        content_tag(:label, "Printer Name", class: "d-inline-block") +
+        render(Shared::InfoPopupComponent.new(translation_key: "info_popups.printers.name")) +
         form.text_field(:name, placeholder: "e.g., My Prusa i3 MK3S+")
       end +
       content_tag(:div, class: "field-group") do
-        content_tag(:label, "Manufacturer") +
+        content_tag(:label, "Manufacturer", class: "d-inline-block") +
+        render(Shared::InfoPopupComponent.new(translation_key: "info_popups.printers.manufacturer")) +
         form.select(:manufacturer,
           options_for_select(Printer::MANUFACTURERS.map { |m| [ m, m ] }, printer.manufacturer),
           { prompt: "Select manufacturer" })
@@ -126,7 +128,8 @@ module PrintersHelper
     content_tag :div, class: "form-card" do
       content_tag(:h3, "Technical Specifications") +
       content_tag(:div, class: "field-group") do
-        content_tag(:label, "Power Consumption (Watts)") +
+        content_tag(:label, "Power Consumption (Watts)", class: "d-inline-block") +
+        render(Shared::InfoPopupComponent.new(translation_key: "info_popups.printers.power_consumption")) +
         form.number_field(:power_consumption, step: 1, placeholder: "200") +
         content_tag(:small, "Typical range: 50W (small printers) to 500W (large printers)")
       end
@@ -137,14 +140,16 @@ module PrintersHelper
     content_tag :div, class: "form-card" do
       content_tag(:h3, "Financial Information") +
       content_tag(:div, class: "field-group currency-field") do
-        content_tag(:label, "Printer Cost") +
+        content_tag(:label, "Printer Cost", class: "d-inline-block") +
+        render(Shared::InfoPopupComponent.new(translation_key: "info_popups.printers.cost")) +
         content_tag(:div, class: "currency-input") do
           content_tag(:span, currency_symbol(current_user.default_currency), class: "currency-symbol") +
           form.number_field(:cost, step: 0.01, placeholder: "500.00")
         end
       end +
       content_tag(:div, class: "field-group") do
-        content_tag(:label, "Payoff Goal (Years)") +
+        content_tag(:label, "Payoff Goal (Years)", class: "d-inline-block") +
+        render(Shared::InfoPopupComponent.new(translation_key: "info_popups.printers.payoff_goal_years")) +
         form.number_field(:payoff_goal_years, min: 1, step: 1, placeholder: "3") +
         content_tag(:small, "How many years do you want to recoup the printer cost?")
       end
@@ -155,12 +160,14 @@ module PrintersHelper
     content_tag :div, class: "form-card" do
       content_tag(:h3, "Usage Information") +
       content_tag(:div, class: "field-group") do
-        content_tag(:label, "Daily Usage (Hours)") +
+        content_tag(:label, "Daily Usage (Hours)", class: "d-inline-block") +
+        render(Shared::InfoPopupComponent.new(translation_key: "info_popups.printers.daily_usage_hours")) +
         form.number_field(:daily_usage_hours, min: 1, step: 1, placeholder: "8") +
         content_tag(:small, "Average hours per day you plan to use this printer")
       end +
       content_tag(:div, class: "field-group") do
-        content_tag(:label, "Repair Cost Factor (%)") +
+        content_tag(:label, "Repair Cost Factor (%)", class: "d-inline-block") +
+        render(Shared::InfoPopupComponent.new(translation_key: "info_popups.printers.repair_cost_percentage")) +
         form.number_field(:repair_cost_percentage, step: 0.1, placeholder: "5.0") +
         content_tag(:small, "Additional cost factor for maintenance and repairs")
       end
