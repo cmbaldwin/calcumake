@@ -1,0 +1,43 @@
+/* Pricing Calculator Page Styles */
+
+.pricing-calculator-page .sticky-results {
+  position: sticky;
+  top: 1rem;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Header gradient */
+.calculator-bg-gradient {
+  background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
+}
+
+.calculator-header {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Quick calculator toggle button */
+.quick-calculator-toggle {
+  font-size: 1.05rem;
+}

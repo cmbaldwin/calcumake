@@ -342,6 +342,10 @@ es:
       start_with_one_print: Comenzar con 1 impresión
       start_with_one_print_help: Habilite esto para establecer automáticamente este
         precio como impreso una vez
+      units: Unidades
+      units_placeholder: '1'
+      failure_rate_percentage: Tasa de Fallo (%)
+      failure_rate_placeholder: '5.0'
     filament_types:
       pla: PLA
       abs: ABS
@@ -421,6 +425,7 @@ es:
     help:
       plates_limit: Puede añadir hasta 10 placas por trabajo de impresión.
       filaments_limit: Puede añadir hasta 5 filamentos diferentes por placa.
+    per_unit_price: "%{price} por unidad (%{count} unidades)"
   printers:
     index:
       title: Mis Impresoras
@@ -1938,6 +1943,7 @@ es:
       machine_cost: Máquina
       other_costs: Otros
       grand_total: Total General
+      per_unit: Precio por Unidad
     export_pdf: Exportar a PDF
     export_csv: Exportar a CSV
     features:
@@ -1955,6 +1961,8 @@ es:
       button: Comience la prueba gratuita
       no_credit_card: No se requiere tarjeta de crédito
     quick_calculator_toggle: "¿Estimación rápida? Pruebe la Calculadora Simple"
+    units: Unidades
+    units_help: Número de unidades a producir
   articles:
     title: Blog
     blog: Blog

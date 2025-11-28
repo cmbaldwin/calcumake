@@ -7,443 +7,92 @@
 
 <%# Enhanced Structured Data for SEO & AI Discovery %>
 <% content_for :head do %>
-  <%# SoftwareApplication Schema - Helps AI assistants understand our calculator %>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "CalcuMake 3D Print Pricing Calculator",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Web Browser",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Multi-plate calculations (up to 10 plates)",
-      "Multiple filaments per plate (up to 16)",
-      "Real-time cost breakdowns",
-      "PDF export with detailed itemization",
-      "CSV export for spreadsheet integration",
-      "Auto-save to localStorage",
-      "Multi-currency support",
-      "7 language support"
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "ratingCount": "127"
-    },
-    "url": "<%= pricing_calculator_url %>",
-    "inLanguage": ["en", "ja", "zh-CN", "hi", "es", "fr", "ar"]
-  }
-  </script>
-
-  <%# HowTo Schema - Step-by-step calculator usage %>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "How to Calculate 3D Printing Costs with CalcuMake",
-    "description": "Step-by-step guide to accurately calculate 3D printing costs including filament, electricity, labor, and machine depreciation",
-    "totalTime": "PT2M",
-    "step": [
-      {
-        "@type": "HowToStep",
-        "name": "Enter Print Details",
-        "text": "Input printing time, filament weight, and material type for each plate. You can add up to 10 plates with different settings.",
-        "url": "<%= pricing_calculator_url %>#step1"
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Add Cost Factors",
-        "text": "Include electricity rates ($/kWh), labor costs ($/hour), and machine depreciation expenses. CalcuMake automatically calculates based on print time.",
-        "url": "<%= pricing_calculator_url %>#step2"
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Review Breakdown",
-        "text": "See itemized cost breakdown for each plate showing filament, electricity, labor, and total costs. Compare multiple plates side-by-side.",
-        "url": "<%= pricing_calculator_url %>#step3"
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Export Results",
-        "text": "Download professional PDF report or CSV file for further analysis in spreadsheet software.",
-        "url": "<%= pricing_calculator_url %>#step4"
-      }
-    ]
-  }
-  </script>
-
-  <%# FAQPage Schema - Key questions for AI parsing %>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the most accurate 3D printing cost calculator?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "CalcuMake's advanced calculator supports multi-plate calculations with up to 10 plates and 16 filaments per plate, providing the most detailed cost breakdown including filament, electricity, labor, and machine depreciation. Unlike basic calculators, it handles complex multi-material prints and batch production scenarios."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do you calculate 3D printing costs?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Calculate 3D printing costs by adding: (1) Filament cost = weight (grams) × price per kg ÷ 1000, (2) Electricity = print time (hours) × printer wattage × electricity rate per kWh, (3) Labor = time × hourly rate, (4) Machine depreciation = printer cost ÷ expected lifetime prints. CalcuMake automates all these calculations."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much does 3D printing cost per hour?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "3D printing costs $0.50-$2.00 per hour for hobbyist FDM printers, including filament (~$0.30/hr), electricity (~$0.05/hr), and machine wear (~$0.15-1.65/hr depending on printer cost). Professional printers can cost $5-50/hr. Use CalcuMake to calculate exact costs for your specific setup."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I calculate costs for multiple 3D prints at once?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, CalcuMake supports multi-plate calculations, allowing you to calculate costs for up to 10 build plates simultaneously with different filaments and settings for each plate. This is perfect for batch production or comparing different print configurations."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is there a free 3D printing cost calculator?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, CalcuMake offers a free advanced 3D printing calculator with no signup required. It includes multi-plate support, PDF export, CSV export, multi-currency calculations, and 7 language support. All core features are completely free forever."
-        }
-      }
-    ]
-  }
-  </script>
+  <%= render "pages/pricing_calculator/schema_software_application" %>
+  <%= render "pages/pricing_calculator/schema_how_to" %>
+  <%= render "pages/pricing_calculator/schema_faq" %>
 <% end %>
 
-<div class="pricing-calculator-page" data-controller="advanced-calculator" data-advanced-calculator-energy-cost-value="0.12" data-advanced-calculator-currency-value="USD" data-advanced-calculator-locale-value="en-US" data-advanced-calculator-max-plates-value="10">
+<div class="pricing-calculator-page" <%= tag.attributes(calculator_data_attributes) %>>
+  <%= render "pages/pricing_calculator/quick_calculator_section" %>
 
-    <!-- Quick Calculator Section -->
-    <section class="quick-calculator-section mb-4 bg-light rounded-3" data-controller="collapse">
-        <div class="text-center py-2">
-            <button class="btn btn-outline-secondary" type="button" data-action="click->collapse#toggle" style="font-size: 1.05rem;">
-                <i class="bi bi-calculator me-2"></i>
-                <%= t('advanced_calculator.quick_calculator_toggle') %>
-            </button>
-        </div>
-
-        <div class="collapse" data-collapse-target="content">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="text-center mb-4">
-                            <h1 class="h2 mb-2">
-                                <i class="bi bi-calculator-fill me-2"></i>
-                                <%= t('advanced_calculator.title') %>
-                            </h1>
-                            <p class="mb-0">
-                                <%= t('advanced_calculator.subtitle') %>
-                            </p>
-                        </div>
-
-                        <%= quick_calculator(energy_cost: 0.12) %>
-
-                        <div class="text-center mt-3 mb-4">
-                            <%= link_to new_user_registration_path, class: "btn btn-primary btn-lg" do %>
-                            <i class="bi bi-person-plus me-2"></i>
-                            <%= t('advanced_calculator.sign_up_to_save') %>
-                            <% end %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="container">
-        <div class="row">
-            <!-- Calculator Form Section -->
-            <div class="col-lg-8">
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">
-                            <i class="bi bi-sliders me-2"></i>
-                            <%= t('advanced_calculator.input_section') %>
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <!-- Job Name -->
-                        <div class="mb-4">
-                            <label class="form-label fw-bold">
-                                <i class="bi bi-briefcase me-1"></i>
-                                <%= t('advanced_calculator.job_name') %>
-                            </label>
-                            <input type="text" class="form-control" data-advanced-calculator-target="jobName" data-action="input->advanced-calculator#calculate" placeholder="<%= t('advanced_calculator.job_name_placeholder') %>" value="My 3D Print Job">
-                        </div>
-
-                        <!-- Plates Section -->
-                        <div class="mb-4">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h6 class="mb-0 fw-bold">
-                                    <i class="bi bi-layers me-1"></i>
-                                    <%= t('advanced_calculator.plates_section') %>
-                                </h6>
-                                <button type="button" class="btn btn-success btn-sm" data-advanced-calculator-target="addPlateButton" data-action="click->advanced-calculator#addPlate">
-                                    <i class="bi bi-plus-circle me-1"></i>
-                                    <%= t('advanced_calculator.add_plate') %>
-                                </button>
-                            </div>
-
-                            <div data-advanced-calculator-target="platesContainer">
-                                <!-- Plates will be added here dynamically -->
-                            </div>
-
-                            <!-- Plate Template -->
-                            <template data-advanced-calculator-target="plateTemplate">
-                                <%= render Cards::PlateCardComponent.new(index: 0) %>
-                            </template>
-
-                            <div class="alert alert-info mt-3 mb-0">
-                                <i class="bi bi-info-circle me-2"></i>
-                                <small><%= t('advanced_calculator.plates_help') %></small>
-                            </div>
-                        </div>
-
-                        <!-- Other Costs Section -->
-                        <div class="card bg-light">
-                            <div class="card-body">
-                                <h6 class="mb-3 fw-bold">
-                                    <i class="bi bi-plus-square me-1"></i>
-                                    <%= t('advanced_calculator.other_costs') %>
-                                </h6>
-
-                                <div class="row g-3">
-                                    <div class="col-md-4">
-                                        <label class="form-label">
-                                            <%= t('advanced_calculator.failure_rate') %> (%)
-                                        </label>
-                                        <input type="number" class="form-control" name="failure_rate" data-action="input->advanced-calculator#calculate" value="5" min="0" max="100" step="1">
-                                        <small class="form-text text-muted">
-                                            <%= t('advanced_calculator.failure_rate_help') %>
-                                        </small>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="form-label">
-                                            <%= t('advanced_calculator.shipping_cost') %>
-                                        </label>
-                                        <input type="number" class="form-control" name="shipping_cost" data-action="input->advanced-calculator#calculate" value="0" min="0" step="0.01">
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="form-label">
-                                            <%= t('advanced_calculator.other_cost') %>
-                                        </label>
-                                        <input type="number" class="form-control" name="other_cost" data-action="input->advanced-calculator#calculate" value="0" min="0" step="0.01">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Action Buttons -->
-                        <div class="d-flex gap-2 mt-4 flex-wrap">
-                            <button type="button" class="btn btn-outline-secondary" data-action="click->advanced-calculator#clearStorage">
-                                <i class="bi bi-arrow-clockwise me-1"></i>
-                                <%= t('advanced_calculator.reset') %>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Features Highlight -->
-                <div class="card shadow-sm mb-4 bg-light border-0">
-                    <div class="card-body">
-                        <h6 class="fw-bold mb-3">
-                            <i class="bi bi-star-fill text-warning me-2"></i>
-                            <%= t('advanced_calculator.features.title') %>
-                        </h6>
-                        <div class="row g-2">
-                            <div class="col-md-6">
-                                <div class="d-flex align-items-start">
-                                    <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-                                    <small><%= t('advanced_calculator.features.multi_plate') %></small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex align-items-start">
-                                    <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-                                    <small><%= t('advanced_calculator.features.multi_filament') %></small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex align-items-start">
-                                    <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-                                    <small><%= t('advanced_calculator.features.auto_save') %></small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex align-items-start">
-                                    <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-                                    <small><%= t('advanced_calculator.features.pdf_csv_export') %></small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex align-items-start">
-                                    <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-                                    <small><%= t('advanced_calculator.features.real_time') %></small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex align-items-start">
-                                    <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-                                    <small><%= t('advanced_calculator.features.no_signup') %></small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="container">
+    <div class="row">
+      <!-- Calculator Form Section -->
+      <div class="col-lg-8">
+        <div class="card shadow-sm mb-4">
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">
+              <i class="bi bi-sliders me-2"></i>
+              <%= t("advanced_calculator.input_section") %>
+            </h5>
+          </div>
+          <div class="card-body">
+            <!-- Job Name -->
+            <div class="mb-4">
+              <label class="form-label fw-bold">
+                <i class="bi bi-briefcase me-1"></i>
+                <%= t("advanced_calculator.job_name") %>
+              </label>
+              <input type="text" class="form-control" data-advanced-calculator-target="jobName" data-action="input->advanced-calculator#calculate" placeholder="<%= t("advanced_calculator.job_name_placeholder") %>" value="My 3D Print Job">
             </div>
 
-            <!-- Results Section -->
-            <div class="col-lg-4">
-                <div class="sticky-top" style="top: 1rem;">
-                    <!-- Results Card -->
-                    <div class="card shadow-sm mb-4" data-advanced-calculator-target="resultsSection">
-                        <div class="card-header bg-success text-white">
-                            <h5 class="mb-0">
-                                <i class="bi bi-receipt me-2"></i>
-                                <%= t('advanced_calculator.results.title') %>
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <!-- Cost Breakdown -->
-                            <div class="mb-3 pb-3 border-bottom">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span class="text-muted">
-                                        <i class="bi bi-hourglass me-1"></i>
-                                        <%= t('advanced_calculator.results.filament_cost') %>
-                                    </span>
-                                    <strong data-advanced-calculator-target="totalFilamentCost">$0.00</strong>
-                                </div>
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span class="text-muted">
-                                        <i class="bi bi-lightning-charge me-1"></i>
-                                        <%= t('advanced_calculator.results.electricity_cost') %>
-                                    </span>
-                                    <strong data-advanced-calculator-target="totalElectricityCost">$0.00</strong>
-                                </div>
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span class="text-muted">
-                                        <i class="bi bi-person-workspace me-1"></i>
-                                        <%= t('advanced_calculator.results.labor_cost') %>
-                                    </span>
-                                    <strong data-advanced-calculator-target="totalLaborCost">$0.00</strong>
-                                </div>
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span class="text-muted">
-                                        <i class="bi bi-cpu me-1"></i>
-                                        <%= t('advanced_calculator.results.machine_cost') %>
-                                    </span>
-                                    <strong data-advanced-calculator-target="totalMachineCost">$0.00</strong>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <span class="text-muted">
-                                        <i class="bi bi-three-dots me-1"></i>
-                                        <%= t('advanced_calculator.results.other_costs') %>
-                                    </span>
-                                    <strong data-advanced-calculator-target="totalOtherCosts">$0.00</strong>
-                                </div>
-                            </div>
+            <!-- Plates Section -->
+            <div class="mb-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="mb-0 fw-bold">
+                  <i class="bi bi-layers me-1"></i>
+                  <%= t("advanced_calculator.plates_section") %>
+                </h6>
+                <button type="button" class="btn btn-success btn-sm" data-advanced-calculator-target="addPlateButton" data-action="click->advanced-calculator#addPlate">
+                  <i class="bi bi-plus-circle me-1"></i>
+                  <%= t("advanced_calculator.add_plate") %>
+                </button>
+              </div>
 
-                            <!-- Grand Total -->
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5 class="mb-0 fw-bold"><%= t('advanced_calculator.results.grand_total') %></h5>
-                                <h4 class="mb-0 text-success" data-advanced-calculator-target="grandTotal">$0.00</h4>
-                            </div>
+              <div data-advanced-calculator-target="platesContainer">
+                <!-- Plates will be added here dynamically -->
+              </div>
 
-                            <!-- Export Buttons -->
-                            <div class="d-grid gap-2">
-                                <button type="button" class="btn btn-primary" data-action="click->advanced-calculator#exportToPDF">
-                                    <i class="bi bi-file-earmark-pdf me-2"></i>
-                                    <%= t('advanced_calculator.export_pdf') %>
-                                </button>
-                                <button type="button" class="btn btn-outline-primary" data-action="click->advanced-calculator#exportToCSV">
-                                    <i class="bi bi-file-earmark-spreadsheet me-2"></i>
-                                    <%= t('advanced_calculator.export_csv') %>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+              <!-- Plate Template -->
+              <template data-advanced-calculator-target="plateTemplate">
+                <%= render Cards::PlateCardComponent.new(index: 0) %>
+              </template>
 
-                    <!-- CTA Card -->
-                    <div class="card shadow-sm border-primary">
-                        <div class="card-body text-center">
-                            <h6 class="fw-bold mb-2">
-                                <%= t('advanced_calculator.cta.title') %>
-                            </h6>
-                            <p class="small text-muted mb-3">
-                                <%= t('advanced_calculator.cta.description') %>
-                            </p>
-                            <%= link_to t('advanced_calculator.cta.button'), new_user_registration_path,
-                  class: "btn btn-primary w-100",
-                  onclick: "if(typeof trackSignupStart === 'function') trackSignupStart();" %>
-                            <div class="mt-3">
-                                <small class="text-muted">
-                                    <i class="bi bi-shield-check me-1"></i>
-                                    <%= t('advanced_calculator.cta.no_credit_card') %>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <div class="alert alert-info mt-3 mb-0">
+                <i class="bi bi-info-circle me-2"></i>
+                <small><%= t("advanced_calculator.plates_help") %></small>
+              </div>
             </div>
+
+            <!-- Other Costs Section -->
+            <%= render "pages/pricing_calculator/other_costs_section" %>
+
+            <!-- Action Buttons -->
+            <div class="d-flex gap-2 mt-4 flex-wrap">
+              <button type="button" class="btn btn-outline-secondary" data-action="click->advanced-calculator#clearStorage">
+                <i class="bi bi-arrow-clockwise me-1"></i>
+                <%= t("advanced_calculator.reset") %>
+              </button>
+            </div>
+          </div>
         </div>
+
+        <!-- Features Highlight -->
+        <%= render "pages/pricing_calculator/features_highlight" %>
+      </div>
+
+      <!-- Results Section -->
+      <div class="col-lg-4">
+        <div class="sticky-results">
+          <%= render "pages/pricing_calculator/results_section" %>
+          <%= render "pages/pricing_calculator/cta_card" %>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Hidden Export Content (for PDF generation) -->
-    <div style="display: none;" data-advanced-calculator-target="exportContent">
-        <%= render 'pages/pricing_calculator/export_template' %>
-    </div>
+  <!-- Hidden Export Content (for PDF generation) -->
+  <div class="d-none" data-advanced-calculator-target="exportContent">
+    <%= render "pages/pricing_calculator/export_template" %>
+  </div>
 </div>
-
-<!-- Add CSS animations -->
-<style>
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        to {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-    }
-
-    .bg-gradient {
-        background: linear-gradient(135deg, #c8102e 0%, #d2691e 100%);
-    }
-
-    .calculator-header {
-        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-    }
-</style>
