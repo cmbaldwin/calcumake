@@ -9,8 +9,10 @@
 #   1. Load OpenRouter API key from .env.local or Kamal secrets
 #   2. Optionally clear cache for English placeholders (if FORCE_RETRANSLATE=1)
 #   3. Sync and translate missing keys only
-#   4. Run tests
-#   5. Commit and push changes if any
+#   4. Regenerate sitemap
+#   5. Run Rails tests
+#   6. Run JavaScript tests (Jest)
+#   7. Commit and push changes if any
 
 # Redirect all output to stderr so Kamal shows it
 exec 1>&2
@@ -86,10 +88,37 @@ else
 fi
 
 # Run tests first - ensure they pass before proceeding
-echo "Running tests..."
+echo "Running Rails tests..."
 bin/rails test
 
-# Only proceed if tests passed
+# Check if Rails tests passed
+if [ $? -ne 0 ]; then
+    echo "❌ Rails tests failed. Aborting deployment."
+    exit 1
+fi
+
+echo "✅ Rails tests passed"
+
+# Run JavaScript tests (if package.json exists)
+if [ -f "package.json" ]; then
+    echo "Installing JavaScript dependencies..."
+    npm ci --prefer-offline --no-audit
+
+    echo "Running JavaScript tests..."
+    npm test
+
+    # Check if Jest tests passed
+    if [ $? -ne 0 ]; then
+        echo "❌ JavaScript tests failed. Aborting deployment."
+        exit 1
+    fi
+
+    echo "✅ JavaScript tests passed"
+else
+    echo "⚠️  No package.json found - skipping JavaScript tests"
+fi
+
+# All tests passed
 if [ $? -eq 0 ]; then
     echo "Tests passed. Checking for uncommitted changes..."
     

@@ -15,11 +15,41 @@ export default class extends Controller {
   }
 
   connect() {
+    // Initialize timer references
+    this._animationTimeout = null
+    this._calculateDebounce = null
+
     // Calculate initial values
-    this.calculate()
+    this.calculateImmediate()
   }
 
+  disconnect() {
+    // Clean up timers
+    if (this._animationTimeout) {
+      clearTimeout(this._animationTimeout)
+      this._animationTimeout = null
+    }
+    if (this._calculateDebounce) {
+      clearTimeout(this._calculateDebounce)
+      this._calculateDebounce = null
+    }
+  }
+
+  // Debounced calculate - called from input events
   calculate() {
+    if (this._calculateDebounce) {
+      clearTimeout(this._calculateDebounce)
+    }
+    this._calculateDebounce = setTimeout(() => {
+      this.calculateImmediate()
+    }, 50)
+  }
+
+  calculateImmediate() {
+    // Guard against disconnected state
+    if (!this.element || !this.element.isConnected) return
+    if (!this.hasPrintTimeTarget || !this.hasFilamentWeightTarget) return
+
     const printTime = parseFloat(this.printTimeTarget.value) || 0
     const filamentWeight = parseFloat(this.filamentWeightTarget.value) || 0
 
@@ -30,13 +60,22 @@ export default class extends Controller {
     const totalCost = filamentCost + electricityCost + laborCost
 
     // Update display with user's currency
-    this.totalCostTarget.textContent = this.formatCurrency(totalCost)
+    if (this.hasTotalCostTarget) {
+      this.totalCostTarget.textContent = this.formatCurrency(totalCost)
+    }
 
-    // Add subtle animation
-    this.resultsTarget.style.transform = "scale(1.01)"
-    setTimeout(() => {
-      this.resultsTarget.style.transform = "scale(1)"
-    }, 100)
+    // Add subtle animation (with cleanup)
+    if (this.hasResultsTarget) {
+      if (this._animationTimeout) {
+        clearTimeout(this._animationTimeout)
+      }
+      this.resultsTarget.style.transform = "scale(1.01)"
+      this._animationTimeout = setTimeout(() => {
+        if (this.hasResultsTarget) {
+          this.resultsTarget.style.transform = "scale(1)"
+        }
+      }, 100)
+    }
 
     // Store values for potential use in create action
     this.lastCalculation = {
@@ -90,9 +129,5 @@ export default class extends Controller {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
     }).format(amount)
-  }
-
-  disconnect() {
-    // Clean up any event listeners if needed
   }
 }

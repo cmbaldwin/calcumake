@@ -1680,6 +1680,8 @@ ja:
     quick_calculator_toggle: 簡易見積もり？ シンプル計算機をお試しください
     units: ユニット数
     units_help: 製造するユニット数
+    machine_settings: マシン設定
+    labor_settings: 人件費設定
   articles:
     title: ブログ
     blog: ブログ
