@@ -33,6 +33,7 @@ module Forms
       attribute:,
       label: nil,
       hint: nil,
+      info_popup_key: nil,
       prepend: nil,
       append: nil,
       required: false,
@@ -49,6 +50,7 @@ module Forms
       @attribute = attribute
       @label = label
       @hint = hint
+      @info_popup_key = info_popup_key
       @prepend = prepend
       @append = append
       @required = required
@@ -73,6 +75,14 @@ module Forms
 
     def show_hint?
       @hint.present?
+    end
+
+    def show_info_popup?
+      @info_popup_key.present?
+    end
+
+    def info_popup_key
+      @info_popup_key
     end
 
     def input_group_class

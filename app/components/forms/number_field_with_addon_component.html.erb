@@ -2,7 +2,10 @@
 <div class="<%= @wrapper_class %>">
 <% end %>
   <% if show_label? %>
-    <%= @form.label @attribute, label_text, class: "form-label" %>
+    <%= @form.label @attribute, label_text, class: "form-label d-inline-block" %>
+    <% if show_info_popup? %>
+      <%= render Shared::InfoPopupComponent.new(translation_key: info_popup_key) %>
+    <% end %>
   <% end %>
 
   <div class="<%= input_group_class %>">

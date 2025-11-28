@@ -18,7 +18,8 @@
       <div class="col-12">
         <div class="row g-2">
           <div class="col-md-3">
-            <%= f.label :printing_time_hours, t('print_pricing.fields.print_time_hours'), class: "form-label" %>
+            <%= f.label :printing_time_hours, t('print_pricing.fields.print_time_hours'), class: "form-label d-inline-block" %>
+            <%= render Shared::InfoPopupComponent.new(translation_key: "info_popups.print_pricings.plate.printing_time_hours") %>
             <%= f.number_field :printing_time_hours, min: 0, step: 1, value: f.object.printing_time_hours || 0, class: "form-control" %>
           </div>
           <div class="col-md-3">
@@ -40,7 +41,10 @@
 
         <div class="filament-dynamic-list" data-controller="dynamic-list">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h6 class="mb-0"><%= t('print_pricing.sections.filaments') %></h6>
+            <h6 class="mb-0 d-inline-block">
+              <%= t('print_pricing.sections.filaments') %>
+              <%= render Shared::InfoPopupComponent.new(translation_key: "info_popups.print_pricings.plate.filaments.add") %>
+            </h6>
             <button type="button"
                     class="btn btn-sm btn-success"
                     data-action="filament-list#add"

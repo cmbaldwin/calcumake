@@ -8,6 +8,7 @@
     form: f,
     attribute: :other_costs,
     label: t('print_pricing.fields.other_costs'),
+    info_popup_key: "info_popups.print_pricings.plate.other_costs",
     prepend: currency_symbol(current_user.default_currency),
     step: 0.01,
     placeholder: t('print_pricing.fields.other_costs_placeholder'),
@@ -19,6 +20,7 @@
     attribute: :vat_percentage,
     type: :number,
     label: t('print_pricing.fields.vat_percentage'),
+    info_popup_key: "info_popups.print_pricings.plate.vat_percentage",
     wrapper_class: "col-12",
     options: { step: 0.1, placeholder: t('print_pricing.fields.vat_placeholder') }
   ) %>

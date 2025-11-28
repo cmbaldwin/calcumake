@@ -8,6 +8,7 @@ module Forms
       type: :text,
       label: nil,
       hint: nil,
+      info_popup_key: nil,
       required: false,
       wrapper: true,
       wrapper_class: "col-12",
@@ -18,6 +19,7 @@ module Forms
       @type = type
       @label = label
       @hint = hint
+      @info_popup_key = info_popup_key
       @required = required
       @wrapper = wrapper
       @wrapper_class = wrapper_class
@@ -42,6 +44,14 @@ module Forms
 
     def show_hint?
       @hint.present?
+    end
+
+    def show_info_popup?
+      @info_popup_key.present?
+    end
+
+    def info_popup_key
+      @info_popup_key
     end
 
     private

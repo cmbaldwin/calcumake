@@ -7,6 +7,7 @@ module Forms
       attribute:,
       label: nil,
       hint: nil,
+      info_popup_key: nil,
       wrapper: true,
       wrapper_class: "col-12",
       options: {}
@@ -15,6 +16,7 @@ module Forms
       @attribute = attribute
       @label = label
       @hint = hint
+      @info_popup_key = info_popup_key
       @wrapper = wrapper
       @wrapper_class = wrapper_class
       @options = options || {}
@@ -43,6 +45,14 @@ module Forms
 
     def show_hint?
       @hint.present?
+    end
+
+    def show_info_popup?
+      @info_popup_key.present?
+    end
+
+    def info_popup_key
+      @info_popup_key
     end
 
     private

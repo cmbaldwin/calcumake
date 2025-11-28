@@ -5,7 +5,8 @@
     <!-- Filament Selection -->
     <div class="col-md-6">
       <%= turbo_frame_tag dom_id(f.object, :filament_select), data: { filament_select_frame: true } do %>
-        <%= f.label :filament_id, t('filaments.fields.filament'), class: "form-label" %>
+        <%= f.label :filament_id, t('filaments.fields.filament'), class: "form-label d-inline-block" %>
+        <%= render Shared::InfoPopupComponent.new(translation_key: "info_popups.print_pricings.plate.filaments.type") %>
         <%= f.select :filament_id,
             options_for_select(user_filaments.map do |filament|
               [
@@ -28,7 +29,8 @@
 
     <!-- Filament Weight -->
     <div class="col-md-3">
-      <%= f.label :filament_weight, t('filaments.fields.weight_used'), class: "form-label" %>
+      <%= f.label :filament_weight, t('filaments.fields.weight_used'), class: "form-label d-inline-block" %>
+      <%= render Shared::InfoPopupComponent.new(translation_key: "info_popups.print_pricings.plate.filaments.weight") %>
       <div class="input-group">
         <%= f.number_field :filament_weight,
             step: 0.1,
@@ -42,7 +44,8 @@
 
     <!-- Markup Percentage -->
     <div class="col-md-3">
-      <%= f.label :markup_percentage, t('print_pricing.fields.filament_markup'), class: "form-label" %>
+      <%= f.label :markup_percentage, t('print_pricing.fields.filament_markup'), class: "form-label d-inline-block" %>
+      <%= render Shared::InfoPopupComponent.new(translation_key: "info_popups.print_pricings.plate.filament_markup_percentage") %>
       <div class="input-group">
         <%= f.number_field :markup_percentage,
             step: 1,

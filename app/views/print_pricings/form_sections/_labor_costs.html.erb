@@ -9,6 +9,7 @@
     attribute: :prep_time_minutes,
     type: :number,
     label: t('print_pricing.fields.prep_time_minutes'),
+    info_popup_key: "info_popups.print_pricings.plate.prep_time",
     wrapper_class: "col-6",
     options: { min: 0, step: 1, placeholder: t('print_pricing.fields.prep_time_placeholder') }
   ) %>
@@ -17,6 +18,7 @@
     form: f,
     attribute: :prep_cost_per_hour,
     label: t('print_pricing.fields.prep_cost_per_hour'),
+    info_popup_key: "info_popups.print_pricings.plate.prep_cost_per_hour",
     prepend: currency_symbol(current_user.default_currency),
     step: 0.01,
     placeholder: t('print_pricing.fields.prep_cost_placeholder'),
@@ -28,6 +30,7 @@
     attribute: :postprocessing_time_minutes,
     type: :number,
     label: t('print_pricing.fields.postprocessing_time_minutes'),
+    info_popup_key: "info_popups.print_pricings.plate.postprocessing_time",
     wrapper_class: "col-6",
     options: { min: 0, step: 1, placeholder: t('print_pricing.fields.postprocessing_time_placeholder') }
   ) %>
@@ -36,6 +39,7 @@
     form: f,
     attribute: :postprocessing_cost_per_hour,
     label: t('print_pricing.fields.postprocessing_cost_per_hour'),
+    info_popup_key: "info_popups.print_pricings.plate.postprocessing_cost_per_hour",
     prepend: currency_symbol(current_user.default_currency),
     step: 0.01,
     placeholder: t('print_pricing.fields.postprocessing_cost_placeholder'),
