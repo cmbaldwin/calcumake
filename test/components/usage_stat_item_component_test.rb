@@ -31,7 +31,7 @@ class UsageStatItemComponentTest < ViewComponent::TestCase
       limit: Float::INFINITY
     ))
 
-    assert_selector "span.badge", text: I18n.t('usage_limits.unlimited')
+    assert_selector "span.badge", text: I18n.t("usage_limits.unlimited")
     assert_selector "div.text-success"
     assert_selector "i.bi-infinity"
     refute_selector "div.progress"
@@ -175,7 +175,7 @@ class UsageStatItemComponentTest < ViewComponent::TestCase
       limit: Float::INFINITY
     )
 
-    assert_equal I18n.t('usage_limits.unlimited'), component.badge_text
+    assert_equal I18n.t("usage_limits.unlimited"), component.badge_text
   end
 
   test "badge_text returns current/limit for finite" do
