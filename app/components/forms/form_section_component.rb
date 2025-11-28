@@ -30,7 +30,8 @@ module Forms
       card_class: "card",
       header_class: "card-header",
       body_class: nil,
-      help_text: nil
+      help_text: nil,
+      info_popup_key: nil
     )
       @title = title
       @wrapper_class = wrapper_class
@@ -38,6 +39,7 @@ module Forms
       @header_class = header_class
       @body_class = body_class
       @help_text = help_text
+      @info_popup_key = info_popup_key
     end
 
     def render_wrapper?
@@ -50,6 +52,14 @@ module Forms
 
     def show_help?
       @help_text.present? || help?
+    end
+
+    def show_info_popup?
+      @info_popup_key.present?
+    end
+
+    def info_popup_key
+      @info_popup_key
     end
   end
 end

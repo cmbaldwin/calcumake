@@ -1,5 +1,6 @@
 <%= render Forms::FormSectionComponent.new(
   title: t("invoices.fields.payment_details"),
+  info_popup_key: "info_popups.invoices.payment_details",
   wrapper_class: "col-md-6"
 ) do %>
   <%= render Forms::FieldComponent.new(
@@ -17,6 +18,7 @@
 
 <%= render Forms::FormSectionComponent.new(
   title: t("invoices.fields.notes"),
+  info_popup_key: "info_popups.invoices.notes",
   wrapper_class: "col-md-6"
 ) do %>
   <%= render Forms::FieldComponent.new(

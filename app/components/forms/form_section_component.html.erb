@@ -3,7 +3,10 @@
 <% end %>
   <div class="<%= @card_class %>">
     <div class="<%= @header_class %>">
-      <h5 class="mb-0"><%= @title %></h5>
+      <h5 class="mb-0 d-inline-block"><%= @title %></h5>
+      <% if show_info_popup? %>
+        <%= render Shared::InfoPopupComponent.new(translation_key: info_popup_key) %>
+      <% end %>
     </div>
     <div class="card-body">
       <% if body_wrapper_class %>

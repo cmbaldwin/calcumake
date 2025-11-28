@@ -3,6 +3,7 @@
   attribute: :status,
   choices: invoice_status_options(invoice.status),
   label: t("invoices.fields.status"),
+  info_popup_key: "info_popups.invoices.status",
   wrapper_class: "col-md-6"
 ) %>
 
@@ -11,6 +12,7 @@
   attribute: :currency,
   choices: currency_options,
   label: t("invoices.fields.currency"),
+  info_popup_key: "info_popups.invoices.currency",
   prompt: "Select currency",
   hint: t("invoices.fields.currency_help"),
   wrapper_class: "col-md-6",

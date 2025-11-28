@@ -39,6 +39,7 @@ module Forms
       text_method: nil,
       label: nil,
       hint: nil,
+      info_popup_key: nil,
       prompt: nil,
       include_blank: false,
       required: false,
@@ -55,6 +56,7 @@ module Forms
       @text_method = text_method
       @label = label
       @hint = hint
+      @info_popup_key = info_popup_key
       @prompt = prompt
       @include_blank = include_blank
       @required = required
@@ -93,6 +95,14 @@ module Forms
 
     def using_collection?
       @collection.present?
+    end
+
+    def show_info_popup?
+      @info_popup_key.present?
+    end
+
+    def info_popup_key
+      @info_popup_key
     end
 
     private
