@@ -1,7 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
-import { jsPDF } from "jspdf"
+import { CalculatorMixin } from "./mixins/calculator_mixin"
+import { StorageMixin } from "./mixins/storage_mixin"
+import { ExportMixin } from "./mixins/export_mixin"
 
-// Connects to data-controller="advanced-calculator"
+// Advanced 3D Print Pricing Calculator
+// Uses mixins for separation of concerns:
+// - CalculatorMixin: Cost calculations
+// - StorageMixin: LocalStorage persistence
+// - ExportMixin: PDF and CSV exports
 export default class extends Controller {
   static targets = [
     "jobName",
@@ -34,18 +40,21 @@ export default class extends Controller {
   connect() {
     console.log("Advanced calculator connected")
 
-    // Load from localStorage if available
+    // Mix in shared functionality
+    Object.assign(this.constructor.prototype, CalculatorMixin)
+    Object.assign(this.constructor.prototype, StorageMixin)
+    Object.assign(this.constructor.prototype, ExportMixin)
+
+    // Load saved data
     this.loadFromStorage()
 
-    // If no plates exist, add first plate
+    // Initialize with first plate if none exist
     if (this.getPlates().length === 0) {
       this.addPlate()
     }
 
-    // Calculate initial totals
+    // Calculate and auto-save
     this.calculate()
-
-    // Set up auto-save
     this.setupAutoSave()
   }
 
@@ -55,12 +64,9 @@ export default class extends Controller {
     }
   }
 
-  setupAutoSave() {
-    // Auto-save to localStorage every 10 seconds
-    this.autoSaveInterval = setInterval(() => {
-      this.saveToStorage()
-    }, 10000)
-  }
+  // ==========================================
+  // Plate Management
+  // ==========================================
 
   addPlate(event = null) {
     if (event) event.preventDefault()
@@ -89,7 +95,6 @@ export default class extends Controller {
     this.updateAddPlateButton()
 
     // Add first filament to new plate
-    const addFilamentBtn = plateDiv.querySelector('[data-action*="addFilament"]')
     this.addFilamentToPlate(plateDiv)
 
     // Recalculate
@@ -111,6 +116,33 @@ export default class extends Controller {
     this.updateAddPlateButton()
     this.calculate()
   }
+
+  updatePlateIndices(plateDiv, index) {
+    // Update data attribute
+    plateDiv.setAttribute('data-plate-index', index)
+
+    // Update all input names and IDs within this plate
+    const inputs = plateDiv.querySelectorAll('input, select, textarea')
+    inputs.forEach(input => {
+      if (input.name) {
+        input.name = input.name.replace(/\[plates\]\[\d+\]/, `[plates][${index}]`)
+      }
+      if (input.id) {
+        input.id = input.id.replace(/_plates_\d+_/, `_plates_${index}_`)
+      }
+    })
+  }
+
+  updateAddPlateButton() {
+    if (this.hasAddPlateButtonTarget) {
+      const plates = this.getPlates()
+      this.addPlateButtonTarget.disabled = plates.length >= this.maxPlatesValue
+    }
+  }
+
+  // ==========================================
+  // Filament Management
+  // ==========================================
 
   addFilament(event) {
     if (event) event.preventDefault()
@@ -155,107 +187,9 @@ export default class extends Controller {
     this.calculate()
   }
 
-  updatePlateIndices(plateDiv, index) {
-    // Update data attribute
-    plateDiv.setAttribute('data-plate-index', index)
-
-    // Update all input names and IDs within this plate
-    const inputs = plateDiv.querySelectorAll('input, select, textarea')
-    inputs.forEach(input => {
-      if (input.name) {
-        input.name = input.name.replace(/\[plates\]\[\d+\]/, `[plates][${index}]`)
-      }
-      if (input.id) {
-        input.id = input.id.replace(/_plates_\d+_/, `_plates_${index}_`)
-      }
-    })
-  }
-
-  calculate() {
-    const plates = this.getPlates()
-
-    let totalFilamentCost = 0
-    let totalElectricityCost = 0
-    let totalLaborCost = 0
-    let totalMachineCost = 0
-
-    plates.forEach(plate => {
-      const plateData = this.getPlateData(plate)
-
-      // Filament costs
-      totalFilamentCost += this.calculateFilamentCost(plateData)
-
-      // Electricity cost
-      totalElectricityCost += this.calculateElectricityCost(plateData)
-
-      // Labor cost
-      totalLaborCost += this.calculateLaborCost(plateData)
-
-      // Machine cost (depreciation)
-      totalMachineCost += this.calculateMachineCost(plateData)
-    })
-
-    // Other costs
-    const failureRate = parseFloat(this.hasFailureRateTarget ? this.failureRateTarget.value : (this.element.querySelector('[name="failure_rate"]')?.value || 0))
-    const shippingCost = parseFloat(this.hasShippingCostTarget ? this.shippingCostTarget.value : (this.element.querySelector('[name="shipping_cost"]')?.value || 0))
-    const otherCost = parseFloat(this.hasOtherCostTarget ? this.otherCostTarget.value : (this.element.querySelector('[name="other_cost"]')?.value || 0))
-    const units = parseInt(this.hasUnitsTarget ? this.unitsTarget.value : (this.element.querySelector('[name="units"]')?.value || 1))
-
-    const totalOtherCosts = shippingCost + otherCost
-
-    // Calculate subtotal before failure rate
-    const subtotal = totalFilamentCost + totalElectricityCost + totalLaborCost + totalMachineCost + totalOtherCosts
-
-    // Apply failure rate
-    const failureCost = subtotal * (failureRate / 100)
-
-    // Grand total
-    const grandTotal = subtotal + failureCost
-
-    // Per unit price
-    const perUnitPrice = units > 1 ? grandTotal / units : 0
-
-    // Update display
-    if (this.hasTotalFilamentCostTarget) {
-      this.totalFilamentCostTarget.textContent = this.formatCurrency(totalFilamentCost)
-    }
-    if (this.hasTotalElectricityCostTarget) {
-      this.totalElectricityCostTarget.textContent = this.formatCurrency(totalElectricityCost)
-    }
-    if (this.hasTotalLaborCostTarget) {
-      this.totalLaborCostTarget.textContent = this.formatCurrency(totalLaborCost)
-    }
-    if (this.hasTotalMachineCostTarget) {
-      this.totalMachineCostTarget.textContent = this.formatCurrency(totalMachineCost)
-    }
-    if (this.hasTotalOtherCostsTarget) {
-      this.totalOtherCostsTarget.textContent = this.formatCurrency(totalOtherCosts + failureCost)
-    }
-    if (this.hasGrandTotalTarget) {
-      this.grandTotalTarget.textContent = this.formatCurrency(grandTotal)
-    }
-
-    // Update per-unit price display
-    if (this.hasPerUnitPriceTarget && this.hasPerUnitSectionTarget) {
-      if (units > 1) {
-        this.perUnitPriceTarget.textContent = this.formatCurrency(perUnitPrice)
-        this.perUnitSectionTarget.style.display = 'flex'
-      } else {
-        this.perUnitSectionTarget.style.display = 'none'
-      }
-    }
-
-    // Animate results
-    if (this.hasResultsSectionTarget) {
-      this.resultsSectionTarget.style.transform = "scale(1.01)"
-      setTimeout(() => {
-        this.resultsSectionTarget.style.transform = "scale(1)"
-      }, 150)
-    }
-
-    // Auto-save to storage
-    this.saveToStorage()
-  }
+  // ==========================================
+  // Data Access Methods
+  // ==========================================
 
   getPlates() {
     return Array.from(this.platesContainerTarget.querySelectorAll('[data-plate-index]'))
@@ -292,252 +226,10 @@ export default class extends Controller {
     }
   }
 
-  calculateFilamentCost(plateData) {
-    return plateData.filaments.reduce((total, filament) => {
-      const weightKg = filament.weight / 1000
-      return total + (weightKg * filament.pricePerKg)
-    }, 0)
-  }
-
-  calculateElectricityCost(plateData) {
-    const powerKw = plateData.powerConsumption / 1000
-    return plateData.printTime * powerKw * this.energyCostValue
-  }
-
-  calculateLaborCost(plateData) {
-    const prepCost = plateData.prepTime * plateData.prepRate
-    const postCost = plateData.postTime * plateData.postRate
-    return prepCost + postCost
-  }
-
-  calculateMachineCost(plateData) {
-    // Calculate hourly machine cost based on payoff period
-    const totalHoursPerYear = 365 * 8 // Assume 8 hours/day usage
-    const totalHoursPayoff = totalHoursPerYear * plateData.payoffYears
-    const costPerHour = plateData.machineCost / totalHoursPayoff
-    return plateData.printTime * costPerHour
-  }
-
-  updateAddPlateButton() {
-    if (this.hasAddPlateButtonTarget) {
-      const plates = this.getPlates()
-      this.addPlateButtonTarget.disabled = plates.length >= this.maxPlatesValue
-    }
-  }
-
-  // Local Storage Methods
-  saveToStorage() {
-    const data = {
-      jobName: this.hasJobNameTarget ? this.jobNameTarget.value : '',
-      plates: this.getPlates().map(plate => this.getPlateDataForStorage(plate)),
-      failureRate: parseFloat(this.element.querySelector('[name="failure_rate"]')?.value || 0),
-      shippingCost: parseFloat(this.element.querySelector('[name="shipping_cost"]')?.value || 0),
-      otherCost: parseFloat(this.element.querySelector('[name="other_cost"]')?.value || 0),
-      timestamp: new Date().toISOString()
-    }
-
-    try {
-      localStorage.setItem('calcumake_advanced_calculator', JSON.stringify(data))
-    } catch (e) {
-      console.error("Failed to save to localStorage:", e)
-    }
-  }
-
-  loadFromStorage() {
-    try {
-      const saved = localStorage.getItem('calcumake_advanced_calculator')
-      if (!saved) return
-
-      const data = JSON.parse(saved)
-
-      // Restore job name
-      if (this.hasJobNameTarget && data.jobName) {
-        this.jobNameTarget.value = data.jobName
-      }
-
-      // Restore other fields
-      if (data.failureRate !== undefined) {
-        const failureField = this.element.querySelector('[name="failure_rate"]')
-        if (failureField) failureField.value = data.failureRate
-      }
-      if (data.shippingCost !== undefined) {
-        const shippingField = this.element.querySelector('[name="shipping_cost"]')
-        if (shippingField) shippingField.value = data.shippingCost
-      }
-      if (data.otherCost !== undefined) {
-        const otherField = this.element.querySelector('[name="other_cost"]')
-        if (otherField) otherField.value = data.otherCost
-      }
-
-      // Note: Plates will be restored after they're added in connect()
-      // This is a simplified version - full implementation would restore all plate data
-
-    } catch (e) {
-      console.error("Failed to load from localStorage:", e)
-    }
-  }
-
-  getPlateDataForStorage(plateDiv) {
-    const plateData = this.getPlateData(plateDiv)
-    return {
-      ...plateData,
-      filaments: plateData.filaments
-    }
-  }
-
-  clearStorage() {
-    if (confirm("Are you sure you want to clear all saved data?")) {
-      localStorage.removeItem('calcumake_advanced_calculator')
-      window.location.reload()
-    }
-  }
-
-  // Export Methods
-  async exportToPDF(event) {
-    event.preventDefault()
-
-    try {
-      const pdf = new jsPDF({
-        orientation: 'portrait',
-        unit: 'mm',
-        format: 'a4'
-      })
-
-      const content = this.exportContentTarget
-
-      // Temporarily show content if hidden
-      const wasHidden = content.style.display === 'none'
-      if (wasHidden) {
-        content.style.display = 'block'
-      }
-
-      // Use html2canvas to capture content
-      const html2canvas = await import('html2canvas')
-      const canvas = await html2canvas.default(content, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: '#ffffff',
-        logging: false
-      })
-
-      if (wasHidden) {
-        content.style.display = 'none'
-      }
-
-      // Calculate dimensions
-      const imgWidth = 210 // A4 width
-      const pageHeight = 295 // A4 height
-      const imgHeight = (canvas.height * imgWidth) / canvas.width
-      let heightLeft = imgHeight
-      let position = 0
-
-      // Add image to PDF
-      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight)
-      heightLeft -= pageHeight
-
-      // Add additional pages if needed
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight
-        pdf.addPage()
-        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight)
-        heightLeft -= pageHeight
-      }
-
-      // Generate filename
-      const jobName = this.hasJobNameTarget ? this.jobNameTarget.value : 'calculation'
-      const timestamp = new Date().toISOString().slice(0, 10)
-      const filename = `${jobName.replace(/\s+/g, '_')}-${timestamp}.pdf`
-
-      pdf.save(filename)
-
-      this.showToast("PDF exported successfully!")
-
-    } catch (error) {
-      console.error("Error exporting PDF:", error)
-      alert("Error exporting PDF. Please try again.")
-    }
-  }
-
-  exportToCSV(event) {
-    event.preventDefault()
-
-    try {
-      const plates = this.getPlates()
-      const rows = []
-
-      // Header row
-      rows.push([
-        'Job Name',
-        'Plate #',
-        'Print Time (hrs)',
-        'Filament Weight (g)',
-        'Filament Cost',
-        'Electricity Cost',
-        'Labor Cost',
-        'Machine Cost',
-        'Total'
-      ])
-
-      const jobName = this.hasJobNameTarget ? this.jobNameTarget.value : 'Untitled'
-
-      // Data rows
-      plates.forEach((plate, index) => {
-        const plateData = this.getPlateData(plate)
-        const filamentCost = this.calculateFilamentCost(plateData)
-        const electricityCost = this.calculateElectricityCost(plateData)
-        const laborCost = this.calculateLaborCost(plateData)
-        const machineCost = this.calculateMachineCost(plateData)
-        const totalWeight = plateData.filaments.reduce((sum, f) => sum + f.weight, 0)
-        const plateTotal = filamentCost + electricityCost + laborCost + machineCost
-
-        rows.push([
-          jobName,
-          `Plate ${index + 1}`,
-          plateData.printTime,
-          totalWeight,
-          filamentCost.toFixed(2),
-          electricityCost.toFixed(2),
-          laborCost.toFixed(2),
-          machineCost.toFixed(2),
-          plateTotal.toFixed(2)
-        ])
-      })
-
-      // Summary row
-      const grandTotal = this.hasGrandTotalTarget ?
-        parseFloat(this.grandTotalTarget.textContent.replace(/[^0-9.-]+/g, '')) : 0
-
-      rows.push([])
-      rows.push(['Grand Total', '', '', '', '', '', '', '', grandTotal.toFixed(2)])
-
-      // Convert to CSV
-      const csv = rows.map(row =>
-        row.map(cell => `"${cell}"`).join(',')
-      ).join('\n')
-
-      // Download
-      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
-      const link = document.createElement('a')
-      const url = URL.createObjectURL(blob)
-      const timestamp = new Date().toISOString().slice(0, 10)
-      const filename = `${jobName.replace(/\s+/g, '_')}-${timestamp}.csv`
-
-      link.setAttribute('href', url)
-      link.setAttribute('download', filename)
-      link.style.visibility = 'hidden'
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-
-      this.showToast("CSV exported successfully!")
-
-    } catch (error) {
-      console.error("Error exporting CSV:", error)
-      alert("Error exporting CSV. Please try again.")
-    }
-  }
-
+  // ==========================================
   // Utility Methods
+  // ==========================================
+
   formatCurrency(amount) {
     return new Intl.NumberFormat(this.localeValue, {
       style: 'currency',
@@ -546,30 +238,9 @@ export default class extends Controller {
       maximumFractionDigits: 2
     }).format(amount)
   }
-
-  showToast(message) {
-    // Simple toast notification
-    const toast = document.createElement('div')
-    toast.className = 'toast-notification'
-    toast.textContent = message
-    toast.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #28a745;
-      color: white;
-      padding: 1rem 1.5rem;
-      border-radius: 0.375rem;
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
-      z-index: 9999;
-      animation: slideIn 0.3s ease-out;
-    `
-
-    document.body.appendChild(toast)
-
-    setTimeout(() => {
-      toast.style.animation = 'slideOut 0.3s ease-out'
-      setTimeout(() => toast.remove(), 300)
-    }, 3000)
-  }
 }
+
+// Note: Calculation, storage, and export methods are provided by mixins
+// - calculate(), calculateFilamentCost(), etc. → CalculatorMixin
+// - saveToStorage(), loadFromStorage(), etc. → StorageMixin
+// - exportToPDF(), exportToCSV(), showToast() → ExportMixin
