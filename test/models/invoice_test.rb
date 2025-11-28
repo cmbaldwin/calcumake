@@ -261,7 +261,8 @@ class InvoiceTest < ActiveSupport::TestCase
     if @print_pricing.total_electricity_cost > 0
       electricity_item = invoice.invoice_line_items.find { |item| item.line_item_type == "electricity" }
       assert electricity_item.present?, "Should include electricity cost"
-      assert_equal @print_pricing.total_electricity_cost, electricity_item.unit_price
+      # Use in_delta to account for failure rate calculations
+      assert_in_delta @print_pricing.total_electricity_cost, electricity_item.unit_price, 0.01
     end
   end
 

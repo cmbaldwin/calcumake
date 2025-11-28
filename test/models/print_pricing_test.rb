@@ -77,9 +77,11 @@ class PrintPricingTest < ActiveSupport::TestCase
   test "should calculate total_filament_cost correctly" do
     # Base cost: 50g * $0.025/g = $1.25
     # With default 20% markup: $1.25 * 1.2 = $1.50
+    # With default 5% failure rate: $1.50 * 1.05 = $1.575
     base_cost = 50.0 * @filament.cost_per_gram
     markup_multiplier = 1 + (20.0 / 100.0) # Default markup_percentage is 20%
-    expected_cost = base_cost * markup_multiplier
+    failure_multiplier = 1 + (5.0 / 100.0) # Default failure_rate_percentage is 5%
+    expected_cost = base_cost * markup_multiplier * failure_multiplier
     assert_in_delta expected_cost, @print_pricing.total_filament_cost, 0.01
   end
 
@@ -110,7 +112,8 @@ class PrintPricingTest < ActiveSupport::TestCase
     daily_depreciation = 1000.0 / total_days
     hourly_depreciation = daily_depreciation / 8
     repair_factor = 1.05
-    expected_cost = hourly_depreciation * (150 / 60) * repair_factor
+    failure_multiplier = 1 + (5.0 / 100.0) # Default failure_rate_percentage is 5%
+    expected_cost = hourly_depreciation * (150 / 60) * repair_factor * failure_multiplier
 
     assert_in_delta expected_cost, @print_pricing.total_machine_upkeep_cost, 0.01
   end
