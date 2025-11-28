@@ -13,6 +13,8 @@ en:
     plate: "Plate"
     plates_help: "Add up to 10 build plates. Each plate can have multiple filaments and custom settings."
     other_costs: "Additional Costs"
+    units: "Units"
+    units_help: "Number of units to produce"
     failure_rate: "Failure Rate"
     failure_rate_help: "Percentage to account for failed prints"
     shipping_cost: "Shipping Cost"
@@ -44,6 +46,7 @@ en:
       machine_cost: "Machine"
       other_costs: "Other"
       grand_total: "Grand Total"
+      per_unit: "Per Unit Price"
 
     export_pdf: "Export to PDF"
     export_csv: "Export to CSV"

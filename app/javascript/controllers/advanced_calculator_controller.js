@@ -13,9 +13,15 @@ export default class extends Controller {
     "totalMachineCost",
     "totalOtherCosts",
     "grandTotal",
+    "perUnitPrice",
+    "perUnitSection",
     "resultsSection",
     "addPlateButton",
-    "exportContent"
+    "exportContent",
+    "units",
+    "failureRate",
+    "shippingCost",
+    "otherCost"
   ]
 
   static values = {
@@ -190,9 +196,10 @@ export default class extends Controller {
     })
 
     // Other costs
-    const failureRate = parseFloat(this.element.querySelector('[name="failure_rate"]')?.value || 0)
-    const shippingCost = parseFloat(this.element.querySelector('[name="shipping_cost"]')?.value || 0)
-    const otherCost = parseFloat(this.element.querySelector('[name="other_cost"]')?.value || 0)
+    const failureRate = parseFloat(this.hasFailureRateTarget ? this.failureRateTarget.value : (this.element.querySelector('[name="failure_rate"]')?.value || 0))
+    const shippingCost = parseFloat(this.hasShippingCostTarget ? this.shippingCostTarget.value : (this.element.querySelector('[name="shipping_cost"]')?.value || 0))
+    const otherCost = parseFloat(this.hasOtherCostTarget ? this.otherCostTarget.value : (this.element.querySelector('[name="other_cost"]')?.value || 0))
+    const units = parseInt(this.hasUnitsTarget ? this.unitsTarget.value : (this.element.querySelector('[name="units"]')?.value || 1))
 
     const totalOtherCosts = shippingCost + otherCost
 
@@ -204,6 +211,9 @@ export default class extends Controller {
 
     // Grand total
     const grandTotal = subtotal + failureCost
+
+    // Per unit price
+    const perUnitPrice = units > 1 ? grandTotal / units : 0
 
     // Update display
     if (this.hasTotalFilamentCostTarget) {
@@ -223,6 +233,16 @@ export default class extends Controller {
     }
     if (this.hasGrandTotalTarget) {
       this.grandTotalTarget.textContent = this.formatCurrency(grandTotal)
+    }
+
+    // Update per-unit price display
+    if (this.hasPerUnitPriceTarget && this.hasPerUnitSectionTarget) {
+      if (units > 1) {
+        this.perUnitPriceTarget.textContent = this.formatCurrency(perUnitPrice)
+        this.perUnitSectionTarget.style.display = 'flex'
+      } else {
+        this.perUnitSectionTarget.style.display = 'none'
+      }
     }
 
     // Animate results

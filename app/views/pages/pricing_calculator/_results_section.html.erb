@@ -1,0 +1,75 @@
+<!-- Results Card -->
+<div class="card shadow-sm mb-4" data-advanced-calculator-target="resultsSection">
+  <div class="card-header bg-success text-white">
+    <h5 class="mb-0">
+      <i class="bi bi-receipt me-2"></i>
+      <%= t("advanced_calculator.results.title") %>
+    </h5>
+  </div>
+  <div class="card-body">
+    <!-- Cost Breakdown -->
+    <div class="mb-3 pb-3 border-bottom">
+      <div class="d-flex justify-content-between mb-2">
+        <span class="text-muted">
+          <i class="bi bi-hourglass me-1"></i>
+          <%= t("advanced_calculator.results.filament_cost") %>
+        </span>
+        <strong data-advanced-calculator-target="totalFilamentCost">$0.00</strong>
+      </div>
+      <div class="d-flex justify-content-between mb-2">
+        <span class="text-muted">
+          <i class="bi bi-lightning-charge me-1"></i>
+          <%= t("advanced_calculator.results.electricity_cost") %>
+        </span>
+        <strong data-advanced-calculator-target="totalElectricityCost">$0.00</strong>
+      </div>
+      <div class="d-flex justify-content-between mb-2">
+        <span class="text-muted">
+          <i class="bi bi-person-workspace me-1"></i>
+          <%= t("advanced_calculator.results.labor_cost") %>
+        </span>
+        <strong data-advanced-calculator-target="totalLaborCost">$0.00</strong>
+      </div>
+      <div class="d-flex justify-content-between mb-2">
+        <span class="text-muted">
+          <i class="bi bi-cpu me-1"></i>
+          <%= t("advanced_calculator.results.machine_cost") %>
+        </span>
+        <strong data-advanced-calculator-target="totalMachineCost">$0.00</strong>
+      </div>
+      <div class="d-flex justify-content-between">
+        <span class="text-muted">
+          <i class="bi bi-three-dots me-1"></i>
+          <%= t("advanced_calculator.results.other_costs") %>
+        </span>
+        <strong data-advanced-calculator-target="totalOtherCosts">$0.00</strong>
+      </div>
+    </div>
+
+    <!-- Grand Total -->
+    <div class="mb-3">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="mb-0 fw-bold"><%= t("advanced_calculator.results.grand_total") %></h5>
+        <h4 class="mb-0 text-success" data-advanced-calculator-target="grandTotal">$0.00</h4>
+      </div>
+
+      <!-- Per Unit Price (shown when units > 1) -->
+      <div class="d-flex justify-content-between align-items-center" data-advanced-calculator-target="perUnitSection" style="display: none !important;">
+        <small class="text-muted"><%= t("advanced_calculator.results.per_unit") %></small>
+        <small class="fw-bold text-info" data-advanced-calculator-target="perUnitPrice">$0.00</small>
+      </div>
+    </div>
+
+    <!-- Export Buttons -->
+    <div class="d-grid gap-2">
+      <button type="button" class="btn btn-primary" data-action="click->advanced-calculator#exportToPDF">
+        <i class="bi bi-file-earmark-pdf me-2"></i>
+        <%= t("advanced_calculator.export_pdf") %>
+      </button>
+      <button type="button" class="btn btn-outline-primary" data-action="click->advanced-calculator#exportToCSV">
+        <i class="bi bi-file-earmark-spreadsheet me-2"></i>
+        <%= t("advanced_calculator.export_csv") %>
+      </button>
+    </div>
+  </div>
+</div>
