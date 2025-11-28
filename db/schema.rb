@@ -206,6 +206,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_27_023847) do
   create_table "print_pricings", force: :cascade do |t|
     t.bigint "client_id"
     t.datetime "created_at", null: false
+    t.decimal "failure_rate_percentage", precision: 5, scale: 2, default: "5.0"
     t.decimal "final_price"
     t.string "job_name"
     t.decimal "listing_cost_percentage", precision: 5, scale: 2
@@ -217,11 +218,10 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_27_023847) do
     t.integer "prep_time_minutes"
     t.bigint "printer_id"
     t.integer "times_printed", default: 0, null: false
+    t.integer "units", default: 1, null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.decimal "vat_percentage"
-    t.integer "units", default: 1, null: false
-    t.decimal "failure_rate_percentage", precision: 5, scale: 2, default: "5.0"
     t.index ["client_id"], name: "index_print_pricings_on_client_id"
     t.index ["printer_id"], name: "index_print_pricings_on_printer_id"
     t.index ["times_printed"], name: "index_print_pricings_on_times_printed"
