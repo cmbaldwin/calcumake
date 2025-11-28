@@ -1,16 +1,14 @@
 import { Controller } from "@hotwired/stimulus"
 import { CalculatorMixin } from "controllers/mixins/calculator_mixin"
-import { StorageMixin } from "controllers/mixins/storage_mixin"
 import { ExportMixin } from "controllers/mixins/export_mixin"
 
 // Apply mixins to a base class
 const MixedController = class extends Controller { }
-Object.assign(MixedController.prototype, CalculatorMixin, StorageMixin, ExportMixin)
+Object.assign(MixedController.prototype, CalculatorMixin, ExportMixin)
 
 // Advanced 3D Print Pricing Calculator
 // Uses mixins for separation of concerns:
 // - CalculatorMixin: Cost calculations
-// - StorageMixin: LocalStorage persistence
 // - ExportMixin: PDF and CSV exports
 export default class extends MixedController {
   static targets = [
@@ -59,9 +57,6 @@ export default class extends MixedController {
 
     // Initialize debounce timer reference
     this.calculateDebounceTimer = null
-
-    // Load saved data
-    this.loadFromStorage()
 
     // Initialize with first plate if none exist
     if (this.getPlates().length === 0) {
