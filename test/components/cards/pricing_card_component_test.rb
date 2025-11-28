@@ -204,4 +204,34 @@ class Cards::PricingCardComponentTest < ViewComponent::TestCase
     # Check that links have data-turbo-frame="_top"
     assert_selector "a[data-turbo-frame='_top']", minimum: 3
   end
+
+  test "shows per-unit price when units is greater than 1" do
+    @pricing.update!(units: 5)
+    render_inline(Cards::PricingCardComponent.new(pricing: @pricing))
+
+    assert_selector "small.text-muted", text: /\/unit/
+  end
+
+  test "does not show per-unit price when units is 1" do
+    @pricing.update!(units: 1)
+    render_inline(Cards::PricingCardComponent.new(pricing: @pricing))
+
+    refute_selector "small.text-muted", text: /\/unit/
+  end
+
+  test "does not show per-unit price when units is exactly 1" do
+    @pricing.update!(units: 1)
+    component = Cards::PricingCardComponent.new(pricing: @pricing)
+
+    # Verify the method returns false
+    assert_not component.send(:show_per_unit_price?)
+  end
+
+  test "formatted per-unit price includes currency and per unit text" do
+    @pricing.update!(units: 10)
+    render_inline(Cards::PricingCardComponent.new(pricing: @pricing))
+
+    # Should show currency code and /unit suffix
+    assert_selector "small.text-muted", text: /#{@pricing.default_currency}.*\/unit/
+  end
 end

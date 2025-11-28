@@ -48,6 +48,15 @@ class Cards::PricingCardComponent < ViewComponent::Base
     "#{pricing.default_currency} #{format_currency(pricing.final_price, pricing.default_currency)}"
   end
 
+  def show_per_unit_price?
+    pricing.units && pricing.units > 1
+  end
+
+  def formatted_per_unit_price
+    return nil unless show_per_unit_price?
+    "#{pricing.default_currency} #{format_currency(pricing.per_unit_price, pricing.default_currency)}/unit"
+  end
+
   def format_currency(amount, currency)
     helpers.number_to_currency(amount, unit: "", precision: 2)
   end
