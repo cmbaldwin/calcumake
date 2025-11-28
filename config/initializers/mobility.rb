@@ -57,7 +57,7 @@ Mobility.configure do
     # Or uncomment this line to include but disable by default, and only enable
     # per model by passing +dirty: true+ to +translates+.
     # dirty false
-    
+
     # Column Fallback
     #
     # Uncomment line below to fallback to original column. You can pass
@@ -107,7 +107,7 @@ Mobility.configure do
     #
     # Define accessor methods for all supported locales
     # This allows accessing translations via article.title_en, article.title_ja, etc.
-    locale_accessors [:en, :ja, :"zh-CN", :hi, :es, :fr, :ar]
+    locale_accessors [ :en, :ja, :"zh-CN", :hi, :es, :fr, :ar ]
 
     # Attribute Methods
     #

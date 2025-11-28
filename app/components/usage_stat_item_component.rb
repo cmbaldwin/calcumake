@@ -23,7 +23,7 @@ class UsageStatItemComponent < ViewComponent::Base
   end
 
   def badge_text
-    unlimited? ? I18n.t('usage_limits.unlimited') : "#{@current}/#{@limit}"
+    unlimited? ? I18n.t("usage_limits.unlimited") : "#{@current}/#{@limit}"
   end
 
   def resource_label

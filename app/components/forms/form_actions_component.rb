@@ -32,14 +32,14 @@ module Forms
 
     def default_submit_text
       if form_object&.persisted?
-        I18n.t('actions.update', default: 'Update')
+        I18n.t("actions.update", default: "Update")
       else
-        I18n.t('actions.create', default: 'Create')
+        I18n.t("actions.create", default: "Create")
       end
     end
 
     def default_cancel_text
-      I18n.t('actions.cancel', default: 'Cancel')
+      I18n.t("actions.cancel", default: "Cancel")
     end
 
     def resolved_submit_text
