@@ -9,6 +9,8 @@ class PrintPricing < ApplicationRecord
 
   validates :job_name, presence: true
   validates :times_printed, numericality: { greater_than_or_equal_to: 0, only_integer: true }
+  validates :units, numericality: { greater_than: 0, only_integer: true }
+  validates :failure_rate_percentage, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }, allow_nil: true
   validates :listing_cost_percentage, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }, allow_nil: true
   validates :payment_processing_cost_percentage, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }, allow_nil: true
   validate :must_have_at_least_one_plate
@@ -27,7 +29,7 @@ class PrintPricing < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    [ "created_at", "final_price", "id", "id_value", "job_name", "other_costs", "postprocessing_cost_per_hour", "postprocessing_time_minutes", "prep_cost_per_hour", "prep_time_minutes", "printer_id", "times_printed", "updated_at", "user_id", "vat_percentage" ]
+    [ "created_at", "failure_rate_percentage", "final_price", "id", "id_value", "job_name", "other_costs", "postprocessing_cost_per_hour", "postprocessing_time_minutes", "prep_cost_per_hour", "prep_time_minutes", "printer_id", "times_printed", "units", "updated_at", "user_id", "vat_percentage" ]
   end
 
   def self.ransackable_associations(auth_object = nil)
@@ -39,12 +41,14 @@ class PrintPricing < ApplicationRecord
   end
 
   def total_filament_cost
-    plates.sum(&:total_filament_cost)
+    base_cost = plates.sum(&:total_filament_cost)
+    apply_failure_rate(base_cost)
   end
 
   def total_electricity_cost
     return 0 unless printer&.power_consumption && default_energy_cost_per_kwh
-    (printer.power_consumption * total_printing_time_minutes / 60 / 1000) * default_energy_cost_per_kwh
+    base_cost = (printer.power_consumption * total_printing_time_minutes / 60 / 1000) * default_energy_cost_per_kwh
+    apply_failure_rate(base_cost)
   end
 
   def total_labor_cost
@@ -63,9 +67,9 @@ class PrintPricing < ApplicationRecord
     hourly_depreciation = daily_depreciation / printer.daily_usage_hours
 
     repair_cost_factor = 1 + (printer.repair_cost_percentage || 0) / 100
-    depreciation_cost = hourly_depreciation * (total_printing_time_minutes / 60) * repair_cost_factor
+    base_cost = hourly_depreciation * (total_printing_time_minutes / 60) * repair_cost_factor
 
-    depreciation_cost
+    apply_failure_rate(base_cost)
   end
 
   def total_listing_cost
@@ -96,7 +100,17 @@ class PrintPricing < ApplicationRecord
     update!(times_printed: new_count)
   end
 
+  def per_unit_price
+    return 0 if units.nil? || units.zero?
+    final_price / units
+  end
+
   private
+
+  def apply_failure_rate(cost)
+    return cost if failure_rate_percentage.nil? || failure_rate_percentage.zero?
+    cost * (1 + failure_rate_percentage / 100)
+  end
 
   def calculate_final_price
     subtotal = calculate_subtotal

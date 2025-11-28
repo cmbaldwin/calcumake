@@ -142,8 +142,8 @@ module Forms
       ))
 
       html = page.native.to_html
-      submit_index = html.index('<input')
-      cancel_index = html.index('<a')
+      submit_index = html.index("<input")
+      cancel_index = html.index("<a")
 
       assert submit_index < cancel_index, "Submit button should appear before cancel link"
     end
