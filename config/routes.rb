@@ -43,7 +43,9 @@ Rails.application.routes.draw do
 
   resources :printers
 
-  resource :user_profile, only: [ :show, :edit, :update, :destroy ], path: "profile"
+  resource :user_profile, only: [ :show, :edit, :update, :destroy ], path: "profile" do
+    patch :toggle_info_popups
+  end
 
   # Subscription management
   resources :subscriptions, only: [] do

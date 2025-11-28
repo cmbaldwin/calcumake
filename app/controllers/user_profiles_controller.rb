@@ -27,6 +27,16 @@ class UserProfilesController < ApplicationController
     redirect_to root_path, notice: I18n.t("profile.delete_account.success")
   end
 
+  def toggle_info_popups
+    @user = current_user
+
+    if @user.update(info_popups_enabled: params.dig(:user, :info_popups_enabled))
+      head :ok
+    else
+      head :unprocessable_entity
+    end
+  end
+
   private
 
   def user_params

@@ -1,0 +1,95 @@
+en:
+  info_popups:
+    toggle:
+      enable: "Enable help tooltips"
+      disable: "Disable help tooltips"
+      on: "Help: On"
+      off: "Help: Off"
+
+    # Print Pricings help tooltips
+    print_pricings:
+      job_name: "A descriptive name for this print job to help you identify it later"
+      printer: "Select which 3D printer you'll use for this job. This affects electricity cost calculations."
+      plates: "Number of build plates in this print job (1-10). Each plate can have different settings."
+
+      plate:
+        printing_time_hours: "Total time this plate takes to print, in hours. This affects electricity and machine costs."
+        filament_weight: "Total weight of filament used for this plate, in grams"
+        filament: "The type of filament material used for this plate"
+        filament_cost_per_gram: "Cost per gram for this filament type. This is automatically filled from your filament library."
+        prep_time: "Time spent preparing this plate before printing (cleaning, leveling, etc.)"
+        prep_cost_per_hour: "Hourly rate for preparation work"
+        postprocessing_time: "Time spent on post-processing after printing (cleaning, sanding, painting, etc.)"
+        postprocessing_cost_per_hour: "Hourly rate for post-processing work"
+        other_costs: "Any additional costs for this plate (packaging, shipping, special materials, etc.)"
+        vat_percentage: "Value Added Tax percentage to apply to this plate"
+        listing_cost_percentage: "Percentage to add for marketplace listing fees (Etsy, eBay, etc.)"
+        payment_processing_cost_percentage: "Percentage to add for payment processing fees (PayPal, Stripe, etc.)"
+        filament_markup_percentage: "Markup percentage to apply to filament costs for profit margin"
+
+        filaments:
+          add: "Add another filament type to this plate. You can mix up to 16 different filaments per plate."
+          weight: "Weight of this specific filament used on this plate, in grams"
+          type: "The specific filament material and brand"
+          cost_per_gram: "Cost per gram for this filament. Auto-filled from your filament library."
+
+    # Invoice help tooltips
+    invoices:
+      client: "The customer or business this invoice is for. Select from your client list or create a new one."
+      status: "Current status of this invoice: Draft, Sent, Paid, or Cancelled"
+      issue_date: "Date this invoice was created or issued to the client"
+      due_date: "Payment deadline for this invoice"
+      invoice_number: "Unique identifier for this invoice. Auto-generated if left blank."
+      notes: "Additional information or payment instructions for the client"
+
+      line_item:
+        description: "What this line item is for (e.g., '3D Printed Parts', 'Design Fee', 'Shipping')"
+        quantity: "Number of units or items"
+        unit_price: "Price per single unit"
+        category: "Type of charge: Product, Service, Shipping, Tax, Discount, or Other"
+
+    # Printer help tooltips
+    printers:
+      name: "A friendly name to identify this printer (e.g., 'Prusa MK4', 'Ender 3 Pro')"
+      power_consumption_watts: "How much power this printer uses when running, in watts. Check your printer's specifications."
+      initial_cost: "What you paid for this printer. Used to calculate machine payoff and depreciation."
+
+    # Filament help tooltips
+    filaments:
+      name: "Descriptive name for this filament (e.g., 'PLA Red', 'PETG Black', 'TPU Flexible')"
+      color: "Color of this filament"
+      material_type: "Type of filament material (PLA, PETG, ABS, TPU, etc.)"
+      cost_per_gram: "How much this filament costs per gram. Used in pricing calculations."
+      total_weight: "Total weight of the spool in grams (optional, for inventory tracking)"
+      remaining_weight: "How much filament is left on this spool in grams (optional)"
+
+    # Client help tooltips
+    clients:
+      name: "Client or company name"
+      email: "Email address for invoices and communications"
+      phone: "Phone number (optional)"
+      address: "Billing or shipping address (optional)"
+      notes: "Any special notes about this client (payment terms, preferences, etc.)"
+
+    # Profile help tooltips
+    profile:
+      currency: "Your preferred currency for pricing and invoices. All costs will be displayed in this currency."
+      energy_cost_per_kwh: "How much you pay per kilowatt-hour for electricity. Check your utility bill."
+      company_name: "Your business name as it appears on invoices"
+      company_address: "Your business address for invoices"
+      company_email: "Contact email for your business"
+      company_phone: "Contact phone number for your business"
+      payment_details: "Payment instructions for clients (bank account, PayPal, Venmo, etc.)"
+      invoice_notes: "Default notes that appear on all invoices (payment terms, thank you message, etc.)"
+      company_logo: "Your business logo. Appears on invoices and reports."
+
+      defaults:
+        prep_time: "Default preparation time for new plates. Can be overridden per plate."
+        prep_cost_per_hour: "Default hourly rate for prep work. Can be overridden per plate."
+        postprocessing_time: "Default post-processing time for new plates. Can be overridden per plate."
+        postprocessing_cost_per_hour: "Default hourly rate for post-processing. Can be overridden per plate."
+        other_costs: "Default additional costs for new plates. Can be overridden per plate."
+        vat_percentage: "Default VAT/sales tax percentage. Can be overridden per plate."
+        listing_cost_percentage: "Default marketplace listing fee percentage. Can be overridden per plate."
+        payment_processing_cost_percentage: "Default payment processing fee percentage. Can be overridden per plate."
+        filament_markup_percentage: "Default filament markup for profit. Can be overridden per plate."

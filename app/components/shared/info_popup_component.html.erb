@@ -1,0 +1,12 @@
+<span class="<%= css_classes %>"
+      data-controller="info-popup"
+      data-info-popup-content-value="<%= tooltip_content %>"
+      data-info-popup-position-value="<%= @position %>"
+      data-bs-toggle="tooltip"
+      data-bs-placement="<%= @position %>"
+      data-bs-title="<%= tooltip_content %>"
+      role="button"
+      tabindex="0"
+      <%= tag.attributes(html_attrs) %>>
+  <i class="bi bi-info-circle text-muted <%= icon_size_class %>"></i>
+</span>
