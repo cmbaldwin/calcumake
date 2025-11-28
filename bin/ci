@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+# Run all CI checks locally before pushing
+
+set -e
+
+echo "🔍 Running CI checks locally..."
+echo ""
+
+# Track if any checks fail
+FAILED=0
+
+# Security Scan - Ruby
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "🛡️  Security Scan (Ruby - Brakeman)"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+if bin/brakeman --no-pager; then
+  echo "✅ Brakeman passed"
+else
+  echo "❌ Brakeman failed"
+  FAILED=1
+fi
+echo ""
+
+# Security Scan - JavaScript
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "🛡️  Security Scan (JavaScript - Importmap)"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+if bin/importmap audit; then
+  echo "✅ Importmap audit passed"
+else
+  echo "❌ Importmap audit failed"
+  FAILED=1
+fi
+echo ""
+
+# Linting
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "🎨 Code Style (Rubocop)"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+if bin/rubocop; then
+  echo "✅ Rubocop passed"
+else
+  echo "❌ Rubocop failed"
+  FAILED=1
+fi
+echo ""
+
+# JavaScript Tests (if package.json exists)
+if [ -f "package.json" ]; then
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo "🧪 JavaScript Tests (Jest)"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  if npm test; then
+    echo "✅ Jest tests passed"
+  else
+    echo "❌ Jest tests failed"
+    FAILED=1
+  fi
+  echo ""
+fi
+
+# Rails Tests
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "🧪 Rails Tests (Minitest)"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+if bin/rails test; then
+  echo "✅ Rails tests passed"
+else
+  echo "❌ Rails tests failed"
+  FAILED=1
+fi
+echo ""
+
+# System Tests
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "🌐 System Tests (Capybara)"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+if bin/rails test:system; then
+  echo "✅ System tests passed"
+else
+  echo "❌ System tests failed"
+  FAILED=1
+fi
+echo ""
+
+# Final Summary
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+if [ $FAILED -eq 0 ]; then
+  echo "✅ All CI checks passed! Safe to push."
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  exit 0
+else
+  echo "❌ Some CI checks failed. Fix issues before pushing."
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  exit 1
+fi

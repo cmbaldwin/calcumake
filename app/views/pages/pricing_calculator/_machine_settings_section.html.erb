@@ -1,0 +1,74 @@
+<!-- Machine & Labor Settings Section (Global) -->
+<div class="card bg-light mb-4">
+    <div class="card-body">
+        <h6 class="mb-3 fw-bold">
+            <i class="bi bi-gear me-1"></i>
+            <%= t("advanced_calculator.machine_settings") %>
+        </h6>
+
+        <div class="row g-3">
+            <!-- Power Consumption -->
+            <div class="col-md-4">
+                <label class="form-label">
+                    <%= t("advanced_calculator.plate_fields.power_consumption") %> (W)
+                </label>
+                <input type="number" class="form-control" name="power_consumption" data-advanced-calculator-target="powerConsumption" data-action="input->advanced-calculator#calculate" value="200" min="1" step="1">
+            </div>
+
+            <!-- Machine Cost -->
+            <div class="col-md-4">
+                <label class="form-label">
+                    <%= t("advanced_calculator.plate_fields.machine_cost") %>
+                </label>
+                <input type="number" class="form-control" name="machine_cost" data-advanced-calculator-target="machineCost" data-action="input->advanced-calculator#calculate" value="500" min="0" step="1">
+            </div>
+
+            <!-- Payoff Period -->
+            <div class="col-md-4">
+                <label class="form-label">
+                    <%= t("advanced_calculator.plate_fields.payoff_years") %>
+                </label>
+                <input type="number" class="form-control" name="payoff_years" data-advanced-calculator-target="payoffYears" data-action="input->advanced-calculator#calculate" value="3" min="0.5" step="0.5">
+            </div>
+        </div>
+
+        <h6 class="mb-3 mt-4 fw-bold">
+            <i class="bi bi-person-workspace me-1"></i>
+            <%= t("advanced_calculator.labor_settings") %>
+        </h6>
+
+        <div class="row g-3">
+            <!-- Prep Time -->
+            <div class="col-md-6">
+                <label class="form-label">
+                    <%= t("advanced_calculator.plate_fields.prep_time") %> (hrs)
+                </label>
+                <input type="number" class="form-control" name="prep_time" data-advanced-calculator-target="prepTime" data-action="input->advanced-calculator#calculate" value="0.25" min="0" step="0.05">
+            </div>
+
+            <!-- Prep Rate -->
+            <div class="col-md-6">
+                <label class="form-label">
+                    <%= t("advanced_calculator.plate_fields.prep_rate") %> ($/hr)
+                </label>
+                <input type="number" class="form-control" name="prep_rate" data-advanced-calculator-target="prepRate" data-action="input->advanced-calculator#calculate" value="20" min="0" step="0.5">
+            </div>
+
+            <!-- Post-Processing Time -->
+            <div class="col-md-6">
+                <label class="form-label">
+                    <%= t("advanced_calculator.plate_fields.post_time") %> (hrs)
+                </label>
+                <input type="number" class="form-control" name="post_time" data-advanced-calculator-target="postTime" data-action="input->advanced-calculator#calculate" value="0.25" min="0" step="0.05">
+            </div>
+
+            <!-- Post Rate -->
+            <div class="col-md-6">
+                <label class="form-label">
+                    <%= t("advanced_calculator.plate_fields.post_rate") %> ($/hr)
+                </label>
+                <input type="number" class="form-control" name="post_rate" data-advanced-calculator-target="postRate" data-action="input->advanced-calculator#calculate" value="20" min="0" step="0.5">
+            </div>
+        </div>
+    </div>
+</div>

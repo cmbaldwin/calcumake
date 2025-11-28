@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["content"]
 
   connect() {
-    console.log('Modal controller connected')
     // Initialize Bootstrap modal
     this.modal = new bootstrap.Modal(this.element, {
       backdrop: true,

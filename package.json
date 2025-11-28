@@ -1,0 +1,31 @@
+{
+  "name": "calcumake",
+  "version": "1.0.0",
+  "description": "CalcuMake - 3D Print Pricing Calculator",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testMatch": [
+      "**/test/javascript/**/*.test.js"
+    ],
+    "moduleNameMapper": {
+      "^controllers/(.*)$": "<rootDir>/app/javascript/controllers/$1"
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "@hotwired/stimulus": "^3.2.2",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}

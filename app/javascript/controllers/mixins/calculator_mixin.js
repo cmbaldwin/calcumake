@@ -1,34 +1,45 @@
 // Calculator Mixin - Cost calculation logic
 export const CalculatorMixin = {
-  calculate() {
+  calculateImmediate() {
+    // Guard against being called when disconnected
+    if (!this.element || !this.element.isConnected) return
+
     const plates = this.getPlates()
+    if (!plates || plates.length === 0) return
+
+    // Get global settings (shared across all plates)
+    const globalSettings = this.getGlobalSettings()
 
     let totalFilamentCost = 0
     let totalElectricityCost = 0
-    let totalLaborCost = 0
-    let totalMachineCost = 0
+    let totalPrintTime = 0
 
     plates.forEach(plate => {
       const plateData = this.getPlateData(plate)
+      if (!plateData) return // Skip invalid plate data
 
-      // Filament costs
+      // Filament costs (per plate)
       totalFilamentCost += this.calculateFilamentCost(plateData)
 
-      // Electricity cost
-      totalElectricityCost += this.calculateElectricityCost(plateData)
-
-      // Labor cost
-      totalLaborCost += this.calculateLaborCost(plateData)
-
-      // Machine cost (depreciation)
-      totalMachineCost += this.calculateMachineCost(plateData)
+      // Accumulate print time for electricity and machine costs
+      totalPrintTime += plateData.printTime || 0
     })
+
+    // Calculate electricity cost using total print time and global power settings
+    totalElectricityCost = this.calculateElectricityCost(totalPrintTime, globalSettings)
+
+    // Calculate labor cost (once per job, not per plate)
+    const totalLaborCost = this.calculateLaborCost(globalSettings)
+
+    // Calculate machine cost using total print time
+    const totalMachineCost = this.calculateMachineCost(totalPrintTime, globalSettings)
 
     // Other costs
     const failureRate = parseFloat(this.hasFailureRateTarget ? this.failureRateTarget.value : (this.element.querySelector('[name="failure_rate"]')?.value || 0))
     const shippingCost = parseFloat(this.hasShippingCostTarget ? this.shippingCostTarget.value : (this.element.querySelector('[name="shipping_cost"]')?.value || 0))
     const otherCost = parseFloat(this.hasOtherCostTarget ? this.otherCostTarget.value : (this.element.querySelector('[name="other_cost"]')?.value || 0))
-    const units = parseInt(this.hasUnitsTarget ? this.unitsTarget.value : (this.element.querySelector('[name="units"]')?.value || 1))
+    // Ensure units is at least 1
+    const units = Math.max(1, parseInt(this.hasUnitsTarget ? this.unitsTarget.value : (this.element.querySelector('[name="units"]')?.value || 1)) || 1)
 
     const totalOtherCosts = shippingCost + otherCost
 
@@ -41,8 +52,8 @@ export const CalculatorMixin = {
     // Grand total
     const grandTotal = subtotal + failureCost
 
-    // Per unit price
-    const perUnitPrice = units > 1 ? grandTotal / units : 0
+    // Per unit price (always calculate, display only when units > 1)
+    const perUnitPrice = grandTotal / units
 
     // Update display
     if (this.hasTotalFilamentCostTarget) {
@@ -65,54 +76,72 @@ export const CalculatorMixin = {
     }
 
     // Update per-unit price display
-    if (this.hasPerUnitPriceTarget && this.hasPerUnitSectionTarget) {
-      if (units > 1) {
-        this.perUnitPriceTarget.textContent = this.formatCurrency(perUnitPrice)
-        this.perUnitSectionTarget.style.display = 'flex'
-      } else {
-        this.perUnitSectionTarget.style.display = 'none'
-      }
+    if (this.hasPerUnitPriceTarget) {
+      this.perUnitPriceTarget.textContent = this.formatCurrency(perUnitPrice)
+    }
+    if (this.hasPerUnitSectionTarget) {
+      // Show per-unit section when units > 1
+      this.perUnitSectionTarget.style.display = units > 1 ? 'flex' : 'none'
     }
 
-    // Animate results
-    if (this.hasResultsSectionTarget) {
+    // Animate results (only if not already animating)
+    if (this.hasResultsSectionTarget && !this.isAnimating) {
+      this.isAnimating = true
       this.resultsSectionTarget.style.transform = "scale(1.01)"
-      setTimeout(() => {
-        this.resultsSectionTarget.style.transform = "scale(1)"
+      this._animationTimeout = setTimeout(() => {
+        if (this.hasResultsSectionTarget) {
+          this.resultsSectionTarget.style.transform = "scale(1)"
+        }
+        this.isAnimating = false
       }, 150)
     }
+  },
 
-    // Save to storage after calculating
-    this.saveToStorage()
+  // Debounced calculate - called from input events
+  calculate() {
+    // Guard against being called when disconnected
+    if (!this.element || !this.element.isConnected) return
+
+    if (this.calculateDebounceTimer) {
+      clearTimeout(this.calculateDebounceTimer)
+    }
+    this.calculateDebounceTimer = setTimeout(() => {
+      // Double-check we're still connected before calculating
+      if (this.element && this.element.isConnected) {
+        this.calculateImmediate()
+      }
+    }, 100)
   },
 
   calculateFilamentCost(plateData) {
+    if (!plateData?.filaments || !Array.isArray(plateData.filaments)) return 0
     return plateData.filaments.reduce((total, filament) => {
-      const weightKg = filament.weight / 1000
-      return total + (weightKg * filament.pricePerKg)
+      const weightKg = (filament?.weight || 0) / 1000
+      return total + (weightKg * (filament?.pricePerKg || 0))
     }, 0)
   },
 
-  calculateElectricityCost(plateData) {
-    if (!plateData.printTime || !plateData.powerConsumption) return 0
-    const powerKw = plateData.powerConsumption / 1000
-    return plateData.printTime * powerKw * this.energyCostValue
+  calculateElectricityCost(totalPrintTime, globalSettings) {
+    if (!totalPrintTime || !globalSettings?.powerConsumption) return 0
+    const powerKw = globalSettings.powerConsumption / 1000
+    return totalPrintTime * powerKw * (this.energyCostValue || 0.12)
   },
 
-  calculateLaborCost(plateData) {
-    const prepCost = (plateData.prepTime && plateData.prepRate) ?
-      (plateData.prepTime * plateData.prepRate / 60) : 0
-    const postCost = (plateData.postTime && plateData.postRate) ?
-      (plateData.postTime * plateData.postRate / 60) : 0
+  calculateLaborCost(globalSettings) {
+    if (!globalSettings) return 0
+    const prepCost = (globalSettings.prepTime && globalSettings.prepRate) ?
+      (globalSettings.prepTime * globalSettings.prepRate) : 0
+    const postCost = (globalSettings.postTime && globalSettings.postRate) ?
+      (globalSettings.postTime * globalSettings.postRate) : 0
     return prepCost + postCost
   },
 
-  calculateMachineCost(plateData) {
-    if (!plateData.printTime || !plateData.machineCost || !plateData.payoffYears) return 0
+  calculateMachineCost(totalPrintTime, globalSettings) {
+    if (!totalPrintTime || !globalSettings?.machineCost || !globalSettings?.payoffYears) return 0
 
     const totalHoursPerYear = 365 * 8 // Assuming 8 hours/day usage
-    const totalHoursPayoff = totalHoursPerYear * plateData.payoffYears
-    const costPerHour = plateData.machineCost / totalHoursPayoff
-    return plateData.printTime * costPerHour
+    const totalHoursPayoff = totalHoursPerYear * globalSettings.payoffYears
+    const costPerHour = globalSettings.machineCost / totalHoursPayoff
+    return totalPrintTime * costPerHour
   }
 }

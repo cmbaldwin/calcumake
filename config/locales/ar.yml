@@ -335,6 +335,10 @@ ar:
       start_with_one_print: ابدأ بطباعة واحدة
       start_with_one_print_help: قم بتمكين هذا لتعيين هذا السعر تلقائيًا على أنه تمت
         طباعته مرة واحدة
+      units: الوحدات
+      units_placeholder: '1'
+      failure_rate_percentage: معدل الفشل (%)
+      failure_rate_placeholder: '5.0'
     filament_types:
       pla: PLA
       abs: ABS
@@ -412,6 +416,7 @@ ar:
     help:
       plates_limit: يمكنك إضافة ما يصل إلى 10 لوحات لكل مهمة طباعة.
       filaments_limit: يمكنك إضافة ما يصل إلى 5 فتائل مختلفة لكل لوحة.
+    per_unit_price: "%{price} لكل وحدة (%{count} وحدات)"
   printers:
     index:
       title: طابعاتي
@@ -1849,6 +1854,7 @@ ar:
       machine_cost: الآلة
       other_costs: أخرى
       grand_total: المجموع الكلي
+      per_unit: سعر الوحدة
     export_pdf: تصدير إلى PDF
     export_csv: تصدير إلى CSV
     features:
@@ -1866,6 +1872,10 @@ ar:
       button: ابدأ النسخة التجريبية المجانية
       no_credit_card: لا توجد بطاقة ائتمان مطلوبة
     quick_calculator_toggle: تقدير سريع؟ جرب الحاسبة البسيطة
+    machine_settings: إعدادات الآلة
+    labor_settings: إعدادات العمالة
+    units: الوحدات
+    units_help: عدد الوحدات المراد إنتاجها
   articles:
     title: المدونة
     blog: المدونة

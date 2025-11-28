@@ -13,6 +13,8 @@ en:
     plate: "Plate"
     plates_help: "Add up to 10 build plates. Each plate can have multiple filaments and custom settings."
     other_costs: "Additional Costs"
+    machine_settings: "Machine Settings"
+    labor_settings: "Labor Settings"
     units: "Units"
     units_help: "Number of units to produce"
     failure_rate: "Failure Rate"

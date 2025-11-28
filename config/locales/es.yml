@@ -1963,6 +1963,8 @@ es:
     quick_calculator_toggle: "¿Estimación rápida? Pruebe la Calculadora Simple"
     units: Unidades
     units_help: Número de unidades a producir
+    machine_settings: Ajustes de la Máquina
+    labor_settings: Ajustes de Mano de Obra
   articles:
     title: Blog
     blog: Blog
