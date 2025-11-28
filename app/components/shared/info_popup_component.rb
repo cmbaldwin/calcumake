@@ -29,6 +29,13 @@ module Shared
       @html_options = html_options
     end
 
+    # Skip rendering if info popups are disabled
+    # This saves render time and DOM size when popups are toggled off
+    # @return [Boolean]
+    def render?
+      helpers.info_popups_enabled?
+    end
+
     # Returns the translated tooltip content
     # @return [String]
     def tooltip_content

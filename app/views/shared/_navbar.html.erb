@@ -85,22 +85,23 @@
             <div class="navbar-text d-flex align-items-center gap-2">
                 <% if user_signed_in? %>
                 <!-- Info Popups Toggle -->
+                <% popups_enabled = info_popups_enabled? %>
                 <%= link_to "#",
-                    class: "text-decoration-none #{current_user.info_popups_enabled? ? 'text-primary' : 'text-muted'}",
+                    class: "text-decoration-none #{popups_enabled ? 'text-primary' : 'text-muted'}",
                     data: {
                       controller: "info-toggle",
-                      info_toggle_enabled_value: current_user.info_popups_enabled?,
+                      info_toggle_enabled_value: popups_enabled,
                       info_toggle_update_url_value: toggle_info_popups_user_profile_path,
                       action: "click->info-toggle#toggle",
-                      info_popups_enabled: current_user.info_popups_enabled?,
+                      info_popups_enabled: popups_enabled,
                       enable_title: t('info_popups.toggle.enable'),
                       disable_title: t('info_popups.toggle.disable'),
                       enabled_text: t('info_popups.toggle.on'),
                       disabled_text: t('info_popups.toggle.off')
                     },
-                    title: current_user.info_popups_enabled? ? t('info_popups.toggle.disable') : t('info_popups.toggle.enable') do %>
-                  <i class="bi <%= current_user.info_popups_enabled? ? 'bi-eye' : 'bi-eye-slash' %>"></i>
-                  <span class="toggle-text d-none d-lg-inline"><%= current_user.info_popups_enabled? ? t('info_popups.toggle.on') : t('info_popups.toggle.off') %></span>
+                    title: popups_enabled ? t('info_popups.toggle.disable') : t('info_popups.toggle.enable') do %>
+                  <i class="bi <%= popups_enabled ? 'bi-eye' : 'bi-eye-slash' %>"></i>
+                  <span class="toggle-text d-none d-lg-inline"><%= popups_enabled ? t('info_popups.toggle.on') : t('info_popups.toggle.off') %></span>
                 <% end %>
                 <% end %>
                 <%= form_with url: switch_locale_path, method: :post, local: true, class: "d-flex" do |form| %>

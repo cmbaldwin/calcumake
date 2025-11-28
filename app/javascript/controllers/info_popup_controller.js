@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="info-popup"
+// Progressive enhancement: CSS tooltips work by default, Bootstrap enhances on desktop
 export default class extends Controller {
   static values = {
     content: String,
@@ -14,17 +15,42 @@ export default class extends Controller {
       return
     }
 
-    // Initialize Bootstrap tooltip
+    // Only initialize Bootstrap tooltips on desktop for better UX
+    // Mobile devices use CSS-only tooltips or tap events
+    if (this.shouldUseBootstrapTooltip()) {
+      this.initializeTooltip()
+    }
+
+    // Listen for global toggle events
+    document.addEventListener("info-popups:toggled", this.handleToggle.bind(this))
+  }
+
+  // Lazy initialization of Bootstrap tooltip
+  initializeTooltip() {
+    if (this.tooltip) return // Already initialized
+
     this.tooltip = new bootstrap.Tooltip(this.element, {
       placement: this.positionValue,
       title: this.contentValue,
       trigger: "hover focus",
       html: false,
-      container: "body"
+      container: "body",
+      delay: { show: 200, hide: 0 } // Slight delay to prevent accidental triggers
     })
+  }
 
-    // Listen for global toggle events
-    document.addEventListener("info-popups:toggled", this.handleToggle.bind(this))
+  // Determine if we should use Bootstrap tooltips or CSS-only
+  shouldUseBootstrapTooltip() {
+    // Use CSS-only on mobile (better performance, less JS overhead)
+    const isMobile = window.innerWidth < 768
+    if (isMobile) return false
+
+    // Use CSS-only if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) return false
+
+    // Otherwise use Bootstrap for richer interactions
+    return true
   }
 
   disconnect() {
@@ -59,14 +85,9 @@ export default class extends Controller {
 
     if (enabled) {
       this.element.style.display = ""
-      if (!this.tooltip) {
-        this.tooltip = new bootstrap.Tooltip(this.element, {
-          placement: this.positionValue,
-          title: this.contentValue,
-          trigger: "hover focus",
-          html: false,
-          container: "body"
-        })
+      // Only initialize Bootstrap tooltip if conditions are met
+      if (this.shouldUseBootstrapTooltip()) {
+        this.initializeTooltip()
       }
     } else {
       if (this.tooltip) {
@@ -78,3 +99,4 @@ export default class extends Controller {
     }
   }
 }
+

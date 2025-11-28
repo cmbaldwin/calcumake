@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
 
+  # Memoized helper for info popups enabled state
+  # Prevents multiple DB queries per request
+  helper_method :info_popups_enabled?
+
   def switch_locale
     locale = params[:locale]
     if I18n.available_locales.include?(locale.to_sym)
@@ -45,6 +49,19 @@ class ApplicationController < ActionController::Base
       session[:locale] = I18n.locale.to_s if I18n.locale != I18n.default_locale
     else
       I18n.locale = I18n.default_locale
+    end
+  end
+
+  # Memoized check for info popups enabled state
+  # Caches the result for the duration of the request
+  # Returns: Boolean - true if user has info popups enabled, false otherwise
+  def info_popups_enabled?
+    return @info_popups_enabled if defined?(@info_popups_enabled)
+
+    @info_popups_enabled = if user_signed_in?
+      current_user.info_popups_enabled?
+    else
+      true # Default to enabled for non-authenticated users
     end
   end
 end
