@@ -146,13 +146,25 @@
   }
 }
 
-/* Mobile: disable CSS tooltips, rely on Bootstrap for better UX */
+/* Mobile: disable CSS tooltips, rely on Bootstrap Popovers for better UX */
 @media (max-width: 768px) {
   .info-popup-icon[data-tooltip]:hover::before,
   .info-popup-icon[data-tooltip]:focus::before,
   .info-popup-icon[data-tooltip]:hover::after,
   .info-popup-icon[data-tooltip]:focus::after {
     display: none;
+  }
+
+  /* Mobile-optimized popover styling */
+  .popover {
+    max-width: min(90vw, 300px);
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .popover-body {
+    padding: 0.75rem 1rem;
+    line-height: 1.5;
   }
 }
 

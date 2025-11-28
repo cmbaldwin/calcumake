@@ -13,6 +13,10 @@ This document outlines the systematic rollout plan for adding info popups throug
 - [x] Toggle switch in navbar (next to locale switcher)
 - [x] Translation keys in `config/locales/en/info_popups.yml`
 - [x] Component tests in `test/components/shared/info_popup_component_test.rb`
+- [x] CSS-first tooltips with progressive enhancement
+- [x] Mobile popover support (tap-to-show)
+- [x] Desktop tooltip support (hover-to-show)
+- [x] Performance optimizations (memoization, lazy loading, skip rendering)
 
 ### First Implementation
 - [x] Print Pricing form - Basic Information section
@@ -279,6 +283,73 @@ Future enhancements:
 - [ ] Keyboard shortcut to toggle all popups (e.g., Alt+H)
 - [ ] Persistent popup mode for users who need constant reference
 
+## Mobile User Experience
+
+### Adaptive Tooltip Strategy
+
+The info popup system uses different approaches for mobile vs desktop to provide optimal UX:
+
+#### Desktop Experience (≥768px)
+- **Trigger:** Hover or focus
+- **Component:** Bootstrap Tooltip
+- **Behavior:** Appears on mouse hover with 200ms delay
+- **Dismissal:** Automatic on mouse leave
+- **Visual:** Small, compact tooltip
+- **Performance:** ~1-5ms per tooltip initialization
+
+#### Mobile Experience (<768px)
+- **Trigger:** Tap/focus
+- **Component:** Bootstrap Popover
+- **Behavior:** Appears on tap, requires explicit dismissal
+- **Dismissal:** Tap outside popover or tap another element
+- **Visual:** Larger, more readable popover (90vw max-width)
+- **Performance:** ~1-5ms per popover initialization
+
+### Why Popovers on Mobile?
+
+**Mobile devices have unique constraints:**
+1. ❌ No hover state (touch-based interaction)
+2. ❌ Smaller screens need larger hit targets
+3. ❌ Tooltips can be hard to read on small screens
+4. ✅ Explicit tap-to-show is more intentional
+5. ✅ Popovers stay visible until dismissed (better for reading)
+6. ✅ Larger text size and padding for mobile readability
+
+### Mobile Popover Features
+
+**Optimized for Touch:**
+- Larger tap target (info icon)
+- Focus-based trigger (tap to show)
+- Tap-away-to-dismiss behavior
+- Responsive max-width (90vw, capped at 300px)
+- Comfortable padding (0.75rem)
+- Slightly larger font size (0.9rem)
+- Enhanced shadow for better visibility
+
+**Accessibility:**
+- Works with screen readers
+- Keyboard accessible (focus trigger)
+- Respects `prefers-reduced-motion`
+- Proper ARIA attributes from Bootstrap
+
+### Testing Mobile Experience
+
+**Manual Testing:**
+1. Open CalcuMake on mobile device or use browser dev tools (F12 → Device toolbar)
+2. Navigate to any form with info popups (e.g., New Print Pricing)
+3. Tap an info icon
+4. ✅ Popover should appear immediately
+5. ✅ Popover should be readable (not too small)
+6. ✅ Tap outside to dismiss
+7. ✅ Tap another icon to switch popovers
+
+**Browser DevTools Testing:**
+- Chrome: F12 → Toggle device toolbar (Ctrl+Shift+M)
+- Firefox: F12 → Responsive Design Mode (Ctrl+Shift+M)
+- Safari: Develop → Enter Responsive Design Mode
+- Set viewport to mobile (e.g., iPhone 12 Pro, 390x844)
+- Test tap interactions
+
 ## Performance Considerations
 
 ### Optimized Implementation ⚡
@@ -292,11 +363,12 @@ Future enhancements:
 - Fallback for users with JavaScript disabled
 - **Performance:** 0ms initialization time
 
-#### 2. **Conditional Progressive Enhancement**
-- Bootstrap tooltips only initialize on desktop (>768px width)
-- Mobile uses CSS-only tooltips for better performance
+#### 2. **Adaptive Mobile/Desktop Strategy**
+- **Mobile (<768px):** Bootstrap Popovers with tap-to-show (focus trigger)
+- **Desktop (≥768px):** Bootstrap Tooltips with hover-to-show
+- **Why different?** Mobile has no hover, needs explicit tap interaction
 - Respects `prefers-reduced-motion` accessibility setting
-- **Performance:** 200ms delay on hover prevents accidental triggers
+- **Performance:** 200ms delay on desktop hover prevents accidental triggers
 
 #### 3. **Request-Level Memoization**
 - `info_popups_enabled?` helper method caches user preference
@@ -318,13 +390,17 @@ Future enhancements:
 
 ### Performance Benchmarks
 
-| Page Type | Popups | Toggled OFF | CSS-Only | Bootstrap Enhanced |
-|-----------|--------|-------------|----------|-------------------|
-| **Small form** | 5-10 | ~0ms | ~0ms | ~10-50ms |
-| **Medium form** | 15-25 | ~0ms | ~0ms | ~30-125ms |
-| **Large form** | 30-50 | ~0ms | ~0ms | ~60-250ms |
+| Page Type | Popups | Toggled OFF | Mobile (Popover) | Desktop (Tooltip) |
+|-----------|--------|-------------|------------------|-------------------|
+| **Small form** | 5-10 | ~0ms | ~5-50ms | ~10-50ms |
+| **Medium form** | 15-25 | ~0ms | ~15-125ms | ~30-125ms |
+| **Large form** | 30-50 | ~0ms | ~30-250ms | ~60-250ms |
 
-**Key Insight:** CSS-only tooltips are nearly instant (~0ms), while Bootstrap adds 1-5ms per tooltip.
+**Key Insights:**
+- Mobile popovers: Similar overhead to desktop tooltips (~1-5ms each)
+- Desktop tooltips: Includes 200ms hover delay for better UX
+- Toggled OFF: Zero overhead regardless of device
+- Lazy initialization: Only creates instances when first needed
 
 ### Memory Impact
 
