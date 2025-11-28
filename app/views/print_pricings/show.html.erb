@@ -29,16 +29,18 @@
     <div class="card-header">
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
             <h3 class="mb-0 h5"><%= t('print_pricing.cost_summary') %></h3>
-            <div class="d-flex flex-column align-items-end gap-1">
+            <div class="d-flex flex-column align-items-end gap-2">
                 <%= render Shared::BadgeComponent.new(
                   text: "#{@print_pricing.default_currency} #{format_currency(@print_pricing.final_price, @print_pricing.default_currency)}",
                   variant: "success",
                   size: "lg"
                 ) %>
                 <% if @print_pricing.units && @print_pricing.units > 1 %>
-                    <small class="text-muted">
-                        <%= t('print_pricing.per_unit_price', price: format_currency_with_symbol(@print_pricing.per_unit_price, @print_pricing.default_currency), count: @print_pricing.units) %>
-                    </small>
+                    <%= render Shared::BadgeComponent.new(
+                      text: t('print_pricing.per_unit_price', price: format_currency_with_symbol(@print_pricing.per_unit_price, @print_pricing.default_currency), count: @print_pricing.units),
+                      variant: "info",
+                      html_options: { class: "fs-6" }
+                    ) %>
                 <% end %>
             </div>
         </div>
