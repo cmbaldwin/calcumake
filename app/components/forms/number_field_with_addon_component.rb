@@ -76,7 +76,7 @@ module Forms
     end
 
     def input_group_class
-      classes = ["input-group"]
+      classes = [ "input-group" ]
       classes << "input-group-#{@input_group_size}" if @input_group_size
       classes.join(" ")
     end

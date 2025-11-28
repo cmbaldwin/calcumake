@@ -51,7 +51,7 @@ class Article < ApplicationRecord
 
   # Cache key for fragment caching
   def cache_key_with_locale
-    [cache_key_with_version, I18n.locale].join("/")
+    [ cache_key_with_version, I18n.locale ].join("/")
   end
 
   private

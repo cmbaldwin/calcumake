@@ -97,14 +97,25 @@ module PrintPricingsHelper
     sections = []
 
     # Basic costs
+    print_info_items = [
+      [ "Currency", content_tag(:span, pricing.default_currency, class: "badge badge-currency") ],
+      [ "Total Printing Time", format_print_time(pricing) ],
+      [ "Number of Plates", pricing.plates.count.to_s ],
+      [ "Times Printed", pricing.times_printed.to_s ]
+    ]
+
+    if pricing.units && pricing.units > 1
+      print_info_items << [ "Units", pricing.units.to_s ]
+      print_info_items << [ "Per Unit Price", format_currency_with_symbol(pricing.per_unit_price, pricing.default_currency) ]
+    end
+
+    if pricing.failure_rate_percentage && pricing.failure_rate_percentage > 0
+      print_info_items << [ "Failure Rate", "#{pricing.failure_rate_percentage}%" ]
+    end
+
     sections << {
       title: "Print Information",
-      items: [
-        [ "Currency", content_tag(:span, pricing.default_currency, class: "badge badge-currency") ],
-        [ "Total Printing Time", format_print_time(pricing) ],
-        [ "Number of Plates", pricing.plates.count.to_s ],
-        [ "Times Printed", pricing.times_printed.to_s ]
-      ]
+      items: print_info_items
     }
 
     # Plates information
