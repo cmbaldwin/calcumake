@@ -51,7 +51,14 @@
 
                 <!-- Final Price -->
                 <div class="col-lg-2 text-center">
-                    <%= render Shared::BadgeComponent.new(text: formatted_price, variant: :success, html_options: { class: "fs-6" }) %>
+                    <div class="d-flex flex-column align-items-center gap-1">
+                        <%= render Shared::BadgeComponent.new(text: formatted_price, variant: :success, html_options: { class: "fs-6" }) %>
+                        <% if show_per_unit_price? %>
+                            <small class="text-muted" style="font-size: 0.75rem; line-height: 1.2;">
+                                <%= formatted_per_unit_price %>
+                            </small>
+                        <% end %>
+                    </div>
                 </div>
 
                 <!-- Actions Dropdown -->
