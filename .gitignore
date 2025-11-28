@@ -67,6 +67,9 @@ yarn-debug.log*
 # Ignore simplecov generated coverage
 coverage.data
 
+# Ignore Jest cache
+/.jest-cache/
+
 # Ignore RubyMine
 /.idea
 

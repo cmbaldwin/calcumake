@@ -12,15 +12,44 @@ export default class extends Controller {
   }
 
   connect() {
+    // Initialize timer references
+    this._animationTimeout = null
+    this._calculateDebounce = null
+
     // Calculate initial values
-    this.calculate()
+    this.calculateImmediate()
   }
 
+  disconnect() {
+    // Clean up timers
+    if (this._animationTimeout) {
+      clearTimeout(this._animationTimeout)
+      this._animationTimeout = null
+    }
+    if (this._calculateDebounce) {
+      clearTimeout(this._calculateDebounce)
+      this._calculateDebounce = null
+    }
+  }
+
+  // Debounced calculate - called from input events
   calculate() {
-    const printTime = parseFloat(this.printTimeTarget.value) || 0
-    const filamentWeight = parseFloat(this.filamentWeightTarget.value) || 0
-    const filamentPrice = parseFloat(this.filamentPriceTarget.value) || 0
-    const laborRate = parseFloat(this.laborRateTarget.value) || 0
+    if (this._calculateDebounce) {
+      clearTimeout(this._calculateDebounce)
+    }
+    this._calculateDebounce = setTimeout(() => {
+      this.calculateImmediate()
+    }, 50)
+  }
+
+  calculateImmediate() {
+    // Guard against disconnected state
+    if (!this.element || !this.element.isConnected) return
+
+    const printTime = parseFloat(this.printTimeTarget?.value) || 0
+    const filamentWeight = parseFloat(this.filamentWeightTarget?.value) || 0
+    const filamentPrice = parseFloat(this.filamentPriceTarget?.value) || 0
+    const laborRate = parseFloat(this.laborRateTarget?.value) || 0
 
     // Calculate costs
     const filamentCost = this.calculateFilamentCost(filamentWeight, filamentPrice)
@@ -29,16 +58,31 @@ export default class extends Controller {
     const totalCost = filamentCost + electricityCost + laborCost
 
     // Update display
-    this.filamentCostTarget.textContent = this.formatCurrency(filamentCost)
-    this.electricityCostTarget.textContent = this.formatCurrency(electricityCost)
-    this.laborCostTarget.textContent = this.formatCurrency(laborCost)
-    this.totalCostTarget.textContent = this.formatCurrency(totalCost)
+    if (this.hasFilamentCostTarget) {
+      this.filamentCostTarget.textContent = this.formatCurrency(filamentCost)
+    }
+    if (this.hasElectricityCostTarget) {
+      this.electricityCostTarget.textContent = this.formatCurrency(electricityCost)
+    }
+    if (this.hasLaborCostTarget) {
+      this.laborCostTarget.textContent = this.formatCurrency(laborCost)
+    }
+    if (this.hasTotalCostTarget) {
+      this.totalCostTarget.textContent = this.formatCurrency(totalCost)
+    }
 
-    // Add animation effect
-    this.resultsTarget.style.transform = "scale(1.02)"
-    setTimeout(() => {
-      this.resultsTarget.style.transform = "scale(1)"
-    }, 150)
+    // Add animation effect (with cleanup)
+    if (this.hasResultsTarget) {
+      if (this._animationTimeout) {
+        clearTimeout(this._animationTimeout)
+      }
+      this.resultsTarget.style.transform = "scale(1.02)"
+      this._animationTimeout = setTimeout(() => {
+        if (this.hasResultsTarget) {
+          this.resultsTarget.style.transform = "scale(1)"
+        }
+      }, 150)
+    }
   }
 
   calculateFilamentCost(weightGrams, pricePerKg) {

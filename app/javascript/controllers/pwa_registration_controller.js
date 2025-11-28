@@ -12,10 +12,10 @@ export default class extends Controller {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register(this.serviceWorkerPathValue)
         .then((registration) => {
-          console.log('Service Worker registered with scope:', registration.scope)
+          // console.log('Service Worker registered with scope:', registration.scope)
         })
         .catch((error) => {
-          console.error('Service Worker registration failed:', error)
+          // console.error('Service Worker registration failed:', error)
         })
     }
   }

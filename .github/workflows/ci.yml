@@ -53,6 +53,32 @@ jobs:
       - name: Lint code for consistent style
         run: bin/rubocop -f github
 
+  test_js:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run JavaScript tests
+        run: npm test
+
+      - name: Upload coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: js-coverage
+          path: coverage/
+          if-no-files-found: ignore
+
   test:
     runs-on: ubuntu-latest
 

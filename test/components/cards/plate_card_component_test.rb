@@ -36,43 +36,26 @@ class Cards::PlateCardComponentTest < ViewComponent::TestCase
   end
 
   # Print Settings Fields
-  test "renders all 8 print setting fields" do
+  test "renders print time field" do
     render_inline(Cards::PlateCardComponent.new(index: 0))
 
-    # Check all field names are present
+    # Only print_time is per-plate now (other settings are global)
     assert_selector "input[name='plates[0][print_time]']"
-    assert_selector "input[name='plates[0][power_consumption]']"
-    assert_selector "input[name='plates[0][machine_cost]']"
-    assert_selector "input[name='plates[0][payoff_years]']"
-    assert_selector "input[name='plates[0][prep_time]']"
-    assert_selector "input[name='plates[0][post_time]']"
-    assert_selector "input[name='plates[0][prep_rate]']"
-    assert_selector "input[name='plates[0][post_rate]']"
   end
 
   test "renders fields with correct default values" do
     render_inline(Cards::PlateCardComponent.new(index: 0))
 
     assert_selector "input[name='plates[0][print_time]'][value='2.5']"
-    assert_selector "input[name='plates[0][power_consumption]'][value='200']"
-    assert_selector "input[name='plates[0][machine_cost]'][value='500']"
-    assert_selector "input[name='plates[0][payoff_years]'][value='3']"
-    assert_selector "input[name='plates[0][prep_time]'][value='0.25']"
-    assert_selector "input[name='plates[0][post_time]'][value='0.25']"
-    assert_selector "input[name='plates[0][prep_rate]'][value='20']"
-    assert_selector "input[name='plates[0][post_rate]'][value='20']"
   end
 
   test "renders fields with custom default values" do
     render_inline(Cards::PlateCardComponent.new(
       index: 0,
-      defaults: { print_time: 5.0, machine_cost: 1000 }
+      defaults: { print_time: 5.0 }
     ))
 
     assert_selector "input[name='plates[0][print_time]'][value='5.0']"
-    assert_selector "input[name='plates[0][machine_cost]'][value='1000']"
-    # Other fields should still use defaults
-    assert_selector "input[name='plates[0][power_consumption]'][value='200']"
   end
 
   test "renders fields with correct input attributes" do
@@ -80,35 +63,21 @@ class Cards::PlateCardComponentTest < ViewComponent::TestCase
 
     # Print time field
     assert_selector "input[name='plates[0][print_time]'][type='number'][min='0.1'][step='0.1']"
-
-    # Power consumption field
-    assert_selector "input[name='plates[0][power_consumption]'][type='number'][min='1'][step='1']"
-
-    # Prep time field
-    assert_selector "input[name='plates[0][prep_time]'][type='number'][min='0'][step='0.05']"
   end
 
   test "renders fields with Stimulus data-action" do
     render_inline(Cards::PlateCardComponent.new(index: 0))
 
-    # All fields should have the calculate action
+    # Print time field should have the calculate action
     assert_selector "input[name='plates[0][print_time]'][data-action='input->advanced-calculator#calculate']"
-    assert_selector "input[name='plates[0][machine_cost]'][data-action='input->advanced-calculator#calculate']"
   end
 
   # Field Layout
-  test "renders first row fields with col-md-4" do
+  test "renders print time field with col-md-6" do
     render_inline(Cards::PlateCardComponent.new(index: 0))
 
-    # First 4 fields should be col-md-4
-    assert_selector ".col-md-4", count: 4
-  end
-
-  test "renders second row fields with col-md-6" do
-    render_inline(Cards::PlateCardComponent.new(index: 0))
-
-    # Last 4 fields should be col-md-6
-    assert_selector ".col-md-6", count: 4
+    # Print time should be in col-md-6
+    assert_selector ".col-md-6"
   end
 
   # Filaments Section
@@ -188,7 +157,6 @@ class Cards::PlateCardComponentTest < ViewComponent::TestCase
     render_inline(Cards::PlateCardComponent.new(index: 3))
 
     assert_selector "input[name='plates[3][print_time]']"
-    assert_selector "input[name='plates[3][machine_cost]']"
   end
 
   test "plate index affects filament template names" do
@@ -211,31 +179,19 @@ class Cards::PlateCardComponentTest < ViewComponent::TestCase
     component = Cards::PlateCardComponent.new(index: 0)
     defaults = component.default_values
 
+    # Only print_time and filament defaults are per-plate now
     assert_equal 2.5, defaults[:print_time]
-    assert_equal 200, defaults[:power_consumption]
-    assert_equal 500, defaults[:machine_cost]
-    assert_equal 3, defaults[:payoff_years]
-    assert_equal 0.25, defaults[:prep_time]
-    assert_equal 0.25, defaults[:post_time]
-    assert_equal 20, defaults[:prep_rate]
-    assert_equal 20, defaults[:post_rate]
     assert_equal 45, defaults[:filament_weight]
     assert_equal 25, defaults[:filament_price]
   end
 
-  test "field_config returns configuration for all fields" do
+  test "field_config returns configuration for print time" do
     component = Cards::PlateCardComponent.new(index: 0)
     config = component.field_config
 
-    assert_equal 8, config.keys.length
+    # Only print_time is per-plate now
+    assert_equal 1, config.keys.length
     assert config.key?(:print_time)
-    assert config.key?(:power_consumption)
-    assert config.key?(:machine_cost)
-    assert config.key?(:payoff_years)
-    assert config.key?(:prep_time)
-    assert config.key?(:post_time)
-    assert config.key?(:prep_rate)
-    assert config.key?(:post_rate)
   end
 
   test "field_config includes correct attributes" do

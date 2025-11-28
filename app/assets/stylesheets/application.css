@@ -9,6 +9,9 @@
 /* Import Bootstrap Icons from CDN */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
 
+/* Import page-specific styles */
+@import url("pricing_calculator.css");
+
 /* Bootstrap 5 Custom Color Variables */
 :root {
   /* Moab Desert-inspired color palette */

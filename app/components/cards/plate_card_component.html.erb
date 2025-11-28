@@ -11,22 +11,21 @@
     </button>
   </div>
   <div class="card-body">
-    <!-- Print Settings -->
+    <!-- Print Time (only per-plate setting, other settings are global) -->
     <div class="row g-3 mb-3">
-      <% field_config.each do |field_name, config| %>
-        <div class="col-md-<%= [:print_time, :power_consumption, :machine_cost, :payoff_years].include?(field_name) ? '4' : '6' %>">
-          <label class="form-label">
-            <%= t(config[:label]) %> <%= config[:unit] %>
-          </label>
-          <input type="number"
-                 class="form-control"
-                 name="plates[<%= @index %>][<%= field_name %>]"
-                 data-action="input->advanced-calculator#calculate"
-                 value="<%= @defaults[field_name] %>"
-                 min="<%= config[:min] %>"
-                 step="<%= config[:step] %>">
-        </div>
-      <% end %>
+      <div class="col-md-6">
+        <label class="form-label">
+          <i class="bi bi-clock me-1"></i>
+          <%= t('advanced_calculator.plate_fields.print_time') %> (hrs)
+        </label>
+        <input type="number"
+               class="form-control"
+               name="plates[<%= @index %>][print_time]"
+               data-action="input->advanced-calculator#calculate"
+               value="<%= @defaults[:print_time] %>"
+               min="0.1"
+               step="0.1">
+      </div>
     </div>
 
     <!-- Filaments Section -->

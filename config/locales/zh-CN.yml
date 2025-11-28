@@ -331,6 +331,10 @@ zh-CN:
       currency_prompt: 选择货币
       start_with_one_print: 从打印 1 次开始
       start_with_one_print_help: 启用此选项可自动将此定价设置为已打印一次
+      units: 单位数量
+      units_placeholder: '1'
+      failure_rate_percentage: 失败率 (%)
+      failure_rate_placeholder: '5.0'
     filament_types:
       pla: PLA
       abs: ABS
@@ -408,6 +412,7 @@ zh-CN:
     help:
       plates_limit: 每个打印作业最多可以添加 10 个板。
       filaments_limit: 每个板最多可以添加 5 种不同的耗材。
+    per_unit_price: 单价 %{price} (共 %{count} 件)
   printers:
     index:
       title: 我的打印机
@@ -1657,6 +1662,7 @@ zh-CN:
       machine_cost: 机器
       other_costs: 其他
       grand_total: 总计
+      per_unit: 单件价格
     export_pdf: 导出为 PDF
     export_csv: 导出为 CSV
     features:
@@ -1673,6 +1679,10 @@ zh-CN:
       button: 开始免费试用
       no_credit_card: 无需信用卡
     quick_calculator_toggle: 快速估算？试试简易计算器
+    machine_settings: 机器设置
+    labor_settings: 人工设置
+    units: 单位数量
+    units_help: 要生产的单位数量
   articles:
     title: 博客
     blog: 博客

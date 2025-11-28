@@ -8,7 +8,9 @@
 ## Development Commands
 - `bin/setup` - Complete setup
 - `bin/dev` - Development server
-- `bin/rails test` - Run tests
+- `bin/ci` - Run all CI checks locally (security, linting, tests) - **RUN BEFORE PUSHING**
+- `bin/rails test` - Run Rails tests (1,068 tests in ~3.5s)
+- `npm test` - Run JavaScript tests (20 tests in ~0.3s)
 - `bin/rubocop` - Style checking
 - `bin/brakeman` - Security scan
 - `bin/sync-translations` - Sync and auto-translate missing keys (uses OpenRouter API if key available)
@@ -639,9 +641,88 @@ Devise with confirmable and omniauthable modules. OAuth providers: Google, GitHu
 - **Kamal** with Docker
 - **Hetzner S3** for file storage
 - Hooks in `.kamal/hooks/` (no file extensions)
+- **Pre-build hook** runs Rails tests + Jest tests before deployment (blocks deployment on failure)
 
 ## Testing
-Minitest with Turbo Stream tests. Test both HTML and turbo_stream formats.
+
+**Hybrid Testing Strategy** for maximum speed:
+
+### Test Frameworks
+- **Minitest** (Rails) - Unit/integration tests (1,068 tests in ~3.5s)
+- **Jest** (JavaScript) - Unit tests for Stimulus mixins (20 tests in ~0.3s)
+- **Capybara** (System) - End-to-end browser tests (slower, use sparingly)
+
+### Running Tests
+
+**Before Every Push:**
+```bash
+bin/ci  # Runs all CI checks: security, linting, Rails tests, Jest tests
+```
+
+**Individual Test Suites:**
+```bash
+bin/rails test           # Rails tests only (~3.5s)
+npm test                 # JavaScript tests only (~0.3s)
+npm run test:watch       # Watch mode for JS tests
+bin/rails test:system    # System tests (slow)
+```
+
+### JavaScript Testing (Jest)
+
+CalcuMake uses **Jest for JavaScript unit tests** with no build step in production:
+- Tests run locally and in CI
+- NOT deployed to production (dev dependency only)
+- Importmaps serve JS files directly in production
+
+**What's Tested:**
+- `calculator_mixin.js` - Cost calculation formulas
+- `storage_mixin.js` - localStorage operations
+- Pure functions only (DOM manipulation tested in system tests)
+
+**Example Test:**
+```javascript
+import { CalculatorMixin } from 'controllers/mixins/calculator_mixin.js'
+
+test('calculateFilamentCost sums multiple filaments', () => {
+  const mockController = Object.assign({}, CalculatorMixin)
+  const plateData = {
+    filaments: [
+      { weight: 100, pricePerKg: 25 },
+      { weight: 50, pricePerKg: 30 }
+    ]
+  }
+
+  const cost = mockController.calculateFilamentCost(plateData)
+
+  expect(cost).toBeCloseTo(4.0) // (100/1000 * 25) + (50/1000 * 30)
+})
+```
+
+### Test Organization
+
+```
+test/
+├── components/       # ViewComponent tests (Minitest)
+├── controllers/      # Controller tests (Minitest)
+├── helpers/          # Helper tests (Minitest)
+├── javascript/       # JavaScript tests (Jest)
+│   └── controllers/
+│       └── mixins/
+├── models/           # Model tests (Minitest)
+└── system/           # System tests (Capybara)
+```
+
+### CI/CD
+- **GitHub Actions** runs all tests on every push (parallel jobs)
+- **Kamal pre-build hook** runs all tests before deployment (blocks on failure)
+- No Node.js required in production (importmaps only)
+
+**Deployment Safety:** Tests run in 3 places:
+1. **Locally** - `bin/ci` before pushing
+2. **GitHub Actions** - On every push/PR
+3. **Pre-deployment** - Kamal pre-build hook before Docker build
+
+**See [docs/TESTING_GUIDE.md](docs/TESTING_GUIDE.md) for comprehensive testing documentation.**
 
 ## Design Standards
 **Moab Desert Theme** - Compact design system inspired by Utah's natural landscapes:

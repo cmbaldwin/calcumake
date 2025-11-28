@@ -338,6 +338,10 @@ hi:
       start_with_one_print: 1 बार प्रिंट के साथ शुरू करें
       start_with_one_print_help: इस मूल्य निर्धारण को स्वचालित रूप से एक बार मुद्रित
         के रूप में सेट करने के लिए इसे सक्षम करें
+      units: इकाइयाँ
+      units_placeholder: '1'
+      failure_rate_percentage: विफलता दर (%)
+      failure_rate_placeholder: '5.0'
     filament_types:
       pla: PLA
       abs: ABS
@@ -416,6 +420,7 @@ hi:
     help:
       plates_limit: आप प्रति प्रिंट जॉब में अधिकतम 10 प्लेटें जोड़ सकते हैं।
       filaments_limit: आप प्रति प्लेट में अधिकतम 5 विभिन्न फिलामेंट जोड़ सकते हैं।
+    per_unit_price: प्रति यूनिट %{price} (%{count} इकाइयाँ)
   printers:
     index:
       title: मेरे प्रिंटर
@@ -1942,6 +1947,7 @@ hi:
       machine_cost: मशीन
       other_costs: अन्य
       grand_total: कुल योग
+      per_unit: प्रति यूनिट मूल्य
     export_pdf: PDF में एक्सपोर्ट करें
     export_csv: CSV में एक्सपोर्ट करें
     features:
@@ -1959,6 +1965,10 @@ hi:
       button: मुफ्त परीक्षण शुरू करें
       no_credit_card: किसी क्रेडिट कार्ड की आवश्यकता नहीं है
     quick_calculator_toggle: त्वरित अनुमान? सरल कैलकुलेटर आज़माएं
+    machine_settings: मशीन सेटिंग्स
+    labor_settings: श्रम सेटिंग्स
+    units: इकाइयाँ
+    units_help: उत्पादित करने के लिए इकाइयों की संख्या
   articles:
     title: ब्लॉग
     blog: ब्लॉग

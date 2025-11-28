@@ -1,14 +1,18 @@
 import { Controller } from "@hotwired/stimulus"
-import { CalculatorMixin } from "./mixins/calculator_mixin"
-import { StorageMixin } from "./mixins/storage_mixin"
-import { ExportMixin } from "./mixins/export_mixin"
+import { CalculatorMixin } from "controllers/mixins/calculator_mixin"
+import { StorageMixin } from "controllers/mixins/storage_mixin"
+import { ExportMixin } from "controllers/mixins/export_mixin"
+
+// Apply mixins to a base class
+const MixedController = class extends Controller { }
+Object.assign(MixedController.prototype, CalculatorMixin, StorageMixin, ExportMixin)
 
 // Advanced 3D Print Pricing Calculator
 // Uses mixins for separation of concerns:
 // - CalculatorMixin: Cost calculations
 // - StorageMixin: LocalStorage persistence
 // - ExportMixin: PDF and CSV exports
-export default class extends Controller {
+export default class extends MixedController {
   static targets = [
     "jobName",
     "platesContainer",
@@ -27,7 +31,15 @@ export default class extends Controller {
     "units",
     "failureRate",
     "shippingCost",
-    "otherCost"
+    "otherCost",
+    // Global machine/labor settings
+    "powerConsumption",
+    "machineCost",
+    "payoffYears",
+    "prepTime",
+    "postTime",
+    "prepRate",
+    "postRate"
   ]
 
   static values = {
@@ -38,12 +50,15 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("Advanced calculator connected")
+    // Prevent multiple rapid connections (development hot-reload issue)
+    if (this._isConnecting) return
+    this._isConnecting = true
 
-    // Mix in shared functionality
-    Object.assign(this.constructor.prototype, CalculatorMixin)
-    Object.assign(this.constructor.prototype, StorageMixin)
-    Object.assign(this.constructor.prototype, ExportMixin)
+    // Clear any existing timers from previous connection
+    this.cleanup()
+
+    // Initialize debounce timer reference
+    this.calculateDebounceTimer = null
 
     // Load saved data
     this.loadFromStorage()
@@ -53,14 +68,27 @@ export default class extends Controller {
       this.addPlate()
     }
 
-    // Calculate and auto-save
-    this.calculate()
-    this.setupAutoSave()
+    // Calculate initial values
+    this.calculateImmediate()
+
+    // Mark connection complete
+    this._isConnecting = false
   }
 
   disconnect() {
-    if (this.autoSaveInterval) {
-      clearInterval(this.autoSaveInterval)
+    this.cleanup()
+    this._isConnecting = false
+  }
+
+  cleanup() {
+    if (this.calculateDebounceTimer) {
+      clearTimeout(this.calculateDebounceTimer)
+      this.calculateDebounceTimer = null
+    }
+    // Clear any animation timeouts
+    if (this._animationTimeout) {
+      clearTimeout(this._animationTimeout)
+      this._animationTimeout = null
     }
   }
 
@@ -84,6 +112,12 @@ export default class extends Controller {
     const plateIndex = plates.length
     const plateDiv = clone.querySelector('[data-plate-index]')
     plateDiv.setAttribute('data-plate-index', plateIndex)
+
+    // Update the visible plate number (index + 1)
+    const plateIndexSpan = plateDiv.querySelector('.plate-index')
+    if (plateIndexSpan) {
+      plateIndexSpan.textContent = plateIndex + 1
+    }
 
     // Update all IDs and names with unique index
     this.updatePlateIndices(plateDiv, plateIndex)
@@ -192,21 +226,20 @@ export default class extends Controller {
   // ==========================================
 
   getPlates() {
+    if (!this.hasPlatesContainerTarget) return []
     return Array.from(this.platesContainerTarget.querySelectorAll('[data-plate-index]'))
   }
 
   getPlateData(plateDiv) {
+    if (!plateDiv) return null
+
+    // Only print time is per-plate now
     const printTime = parseFloat(plateDiv.querySelector('[name*="print_time"]')?.value || 0)
-    const prepTime = parseFloat(plateDiv.querySelector('[name*="prep_time"]')?.value || 0)
-    const postTime = parseFloat(plateDiv.querySelector('[name*="post_time"]')?.value || 0)
-    const powerConsumption = parseFloat(plateDiv.querySelector('[name*="power_consumption"]')?.value || 200)
-    const machineCost = parseFloat(plateDiv.querySelector('[name*="machine_cost"]')?.value || 500)
-    const payoffYears = parseFloat(plateDiv.querySelector('[name*="payoff_years"]')?.value || 3)
-    const prepRate = parseFloat(plateDiv.querySelector('[name*="prep_rate"]')?.value || 20)
-    const postRate = parseFloat(plateDiv.querySelector('[name*="post_rate"]')?.value || 20)
 
     // Get filaments for this plate
     const filamentsContainer = plateDiv.querySelector('[data-filaments-container]')
+    if (!filamentsContainer) return null
+
     const filamentDivs = filamentsContainer.querySelectorAll('[data-filament-index]')
     const filaments = Array.from(filamentDivs).map(filDiv => ({
       weight: parseFloat(filDiv.querySelector('[name*="filament_weight"]')?.value || 0),
@@ -215,14 +248,20 @@ export default class extends Controller {
 
     return {
       printTime,
-      prepTime,
-      postTime,
-      powerConsumption,
-      machineCost,
-      payoffYears,
-      prepRate,
-      postRate,
       filaments
+    }
+  }
+
+  // Get global machine/labor settings (shared across all plates)
+  getGlobalSettings() {
+    return {
+      powerConsumption: parseFloat(this.hasPowerConsumptionTarget ? this.powerConsumptionTarget.value : 200),
+      machineCost: parseFloat(this.hasMachineCostTarget ? this.machineCostTarget.value : 500),
+      payoffYears: parseFloat(this.hasPayoffYearsTarget ? this.payoffYearsTarget.value : 3),
+      prepTime: parseFloat(this.hasPrepTimeTarget ? this.prepTimeTarget.value : 0.25),
+      postTime: parseFloat(this.hasPostTimeTarget ? this.postTimeTarget.value : 0.25),
+      prepRate: parseFloat(this.hasPrepRateTarget ? this.prepRateTarget.value : 20),
+      postRate: parseFloat(this.hasPostRateTarget ? this.postRateTarget.value : 20)
     }
   }
 
@@ -240,7 +279,5 @@ export default class extends Controller {
   }
 }
 
-// Note: Calculation, storage, and export methods are provided by mixins
-// - calculate(), calculateFilamentCost(), etc. → CalculatorMixin
-// - saveToStorage(), loadFromStorage(), etc. → StorageMixin
-// - exportToPDF(), exportToCSV(), showToast() → ExportMixin
+// Note: Mixin methods (calculate, saveToStorage, exportToPDF, etc.) are
+// inherited from MixedController which has them applied at module load time
