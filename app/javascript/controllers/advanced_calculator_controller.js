@@ -2,15 +2,24 @@ import { Controller } from "@hotwired/stimulus"
 import { CalculatorMixin } from "controllers/mixins/calculator_mixin"
 import { ExportMixin } from "controllers/mixins/export_mixin"
 
-// Apply mixins to a base class
-const MixedController = class extends Controller { }
-Object.assign(MixedController.prototype, CalculatorMixin, ExportMixin)
+// Helper function to apply mixins to a controller
+// Based on: https://betterstimulus.com/architecture/mixins
+function use(controller, ...mixins) {
+  mixins.forEach(mixin => {
+    Object.getOwnPropertyNames(mixin).forEach(name => {
+      if (name !== 'constructor') {
+        controller.prototype[name] = mixin[name]
+      }
+    })
+  })
+  return controller
+}
 
 // Advanced 3D Print Pricing Calculator
 // Uses mixins for separation of concerns:
 // - CalculatorMixin: Cost calculations
 // - ExportMixin: PDF and CSV exports
-export default class extends MixedController {
+export default class extends use(Controller, CalculatorMixin, ExportMixin) {
   static targets = [
     "jobName",
     "platesContainer",
