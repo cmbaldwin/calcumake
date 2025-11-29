@@ -1,4 +1,16 @@
-// Storage Mixin - LocalStorage persistence
+/**
+ * Storage Mixin - LocalStorage persistence for calculator state
+ *
+ * Provides methods to save and restore calculator data to/from localStorage.
+ * Stores job name, plates, global settings, and other costs.
+ * Key: 'calcumake_advanced_calculator'
+ *
+ * @mixin StorageMixin
+ * @requires jobNameTarget - Input field for job name
+ * @requires getPlates() - Must be provided by host controller
+ * @requires getPlateData() - Must be provided by host controller
+ * @requires getGlobalSettings() - Must be provided by host controller
+ */
 export const StorageMixin = {
   setupAutoSave() {
     // Auto-save is now disabled - was causing page freezes

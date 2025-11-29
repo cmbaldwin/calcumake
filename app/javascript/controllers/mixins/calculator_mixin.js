@@ -1,5 +1,21 @@
-// Calculator Mixin - Cost calculation logic
+/**
+ * Calculator Mixin - Cost calculation logic for 3D print pricing
+ *
+ * Provides calculation methods for filament, electricity, labor, and machine costs.
+ * Used by advanced calculator, demo calculator, and quick calculator controllers.
+ *
+ * @mixin CalculatorMixin
+ * @requires getPlates() - Must be provided by host controller
+ * @requires getPlateData() - Must be provided by host controller
+ * @requires getGlobalSettings() - Must be provided by host controller
+ * @requires formatCurrency() - Must be provided by host controller
+ */
 export const CalculatorMixin = {
+  /**
+   * Immediately calculates and updates all cost displays
+   * Aggregates costs across all plates and applies global settings
+   * @returns {void}
+   */
   calculateImmediate() {
     // Guard against being called when disconnected
     if (!this.element || !this.element.isConnected) return
@@ -97,7 +113,11 @@ export const CalculatorMixin = {
     }
   },
 
-  // Debounced calculate - called from input events
+  /**
+   * Debounced calculation triggered by input events
+   * Waits 100ms after last input before calculating
+   * @returns {void}
+   */
   calculate() {
     // Guard against being called when disconnected
     if (!this.element || !this.element.isConnected) return

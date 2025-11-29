@@ -1,15 +1,38 @@
 import { Controller } from "@hotwired/stimulus"
 import { CalculatorMixin } from "controllers/mixins/calculator_mixin"
 import { ExportMixin } from "controllers/mixins/export_mixin"
+import { StorageMixin } from "controllers/mixins/storage_mixin"
+
+// Constants
+const MAX_FILAMENTS_PER_PLATE = 16
+const CALCULATION_DEBOUNCE_MS = 100
+const ANIMATION_DURATION_MS = 150
 
 // Apply mixins to a base class
 const MixedController = class extends Controller { }
-Object.assign(MixedController.prototype, CalculatorMixin, ExportMixin)
+Object.assign(MixedController.prototype, CalculatorMixin, ExportMixin, StorageMixin)
 
-// Advanced 3D Print Pricing Calculator
-// Uses mixins for separation of concerns:
-// - CalculatorMixin: Cost calculations
-// - ExportMixin: PDF and CSV exports
+/**
+ * Advanced 3D Print Pricing Calculator Controller
+ *
+ * Multi-plate pricing calculator with real-time cost calculations and export functionality.
+ * Uses mixin pattern for separation of concerns:
+ * - CalculatorMixin: Filament, electricity, labor, and machine cost calculations
+ * - ExportMixin: PDF and CSV export with html2canvas + jsPDF
+ * - StorageMixin: LocalStorage persistence for auto-save functionality
+ *
+ * Features:
+ * - Supports up to 10 plates per job
+ * - Up to 16 filaments per plate
+ * - Real-time cost breakdown
+ * - Per-unit pricing calculations
+ * - Debounced calculation (100ms)
+ *
+ * @extends {Controller}
+ * @mixes CalculatorMixin
+ * @mixes ExportMixin
+ * @mixes StorageMixin
+ */
 export default class extends MixedController {
   static targets = [
     "jobName",
@@ -183,8 +206,8 @@ export default class extends MixedController {
     const filamentsContainer = plateDiv.querySelector('[data-filaments-container]')
     const filaments = filamentsContainer.querySelectorAll('[data-filament-index]')
 
-    if (filaments.length >= 16) {
-      alert("Maximum 16 filaments per plate allowed")
+    if (filaments.length >= MAX_FILAMENTS_PER_PLATE) {
+      alert(`Maximum ${MAX_FILAMENTS_PER_PLATE} filaments per plate allowed`)
       return
     }
 

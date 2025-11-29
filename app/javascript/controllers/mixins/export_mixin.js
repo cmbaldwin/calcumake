@@ -1,4 +1,16 @@
-// Export Mixin - PDF and CSV export functionality
+/**
+ * Export Mixin - PDF and CSV export functionality
+ *
+ * Provides methods to export calculation results to PDF and CSV formats.
+ * Uses jsPDF and html2canvas for PDF generation.
+ *
+ * @mixin ExportMixin
+ * @requires exportContentTarget - Turbo Frame target containing export template
+ * @requires jobNameTarget - Input field for job name
+ * @requires grandTotalTarget - Element displaying grand total
+ * @requires getPlates() - Must be provided by host controller
+ * @requires getPlateData() - Must be provided by host controller
+ */
 import { jsPDF } from "jspdf"
 
 export const ExportMixin = {
