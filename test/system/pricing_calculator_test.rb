@@ -323,7 +323,7 @@ class PricingCalculatorTest < ApplicationSystemTestCase
     # Grand total should be greater than 0
     grand_total_text = find("[data-advanced-calculator-target='grandTotal']").text
     # Remove currency symbol and convert to float
-    grand_total = grand_total_text.gsub(/[^\d.]/, '').to_f
+    grand_total = grand_total_text.gsub(/[^\d.]/, "").to_f
     assert grand_total > 0, "Grand total should be greater than 0"
   end
 

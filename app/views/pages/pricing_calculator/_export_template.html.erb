@@ -21,8 +21,8 @@
         <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6; font-weight: bold;">
           Job Name:
         </td>
-        <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6;" id="export-job-name">
-          -
+        <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6;">
+          <span data-export-job-name></span>
         </td>
       </tr>
       <tr>
@@ -57,7 +57,7 @@
           <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6;">
             Filament Cost
           </td>
-          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" id="export-filament-cost">
+          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" data-export-filament-cost>
             $0.00
           </td>
         </tr>
@@ -65,7 +65,7 @@
           <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6;">
             Electricity Cost
           </td>
-          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" id="export-electricity-cost">
+          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" data-export-electricity-cost>
             $0.00
           </td>
         </tr>
@@ -73,7 +73,7 @@
           <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6;">
             Labor Cost
           </td>
-          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" id="export-labor-cost">
+          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" data-export-labor-cost>
             $0.00
           </td>
         </tr>
@@ -81,7 +81,7 @@
           <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6;">
             Machine Cost
           </td>
-          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" id="export-machine-cost">
+          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" data-export-machine-cost>
             $0.00
           </td>
         </tr>
@@ -89,7 +89,7 @@
           <td style="padding: 0.5rem; border-bottom: 1px solid #dee2e6;">
             Other Costs
           </td>
-          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" id="export-other-costs">
+          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid #dee2e6;" data-export-other-costs>
             $0.00
           </td>
         </tr>
@@ -97,7 +97,7 @@
           <td style="padding: 0.75rem; border-top: 2px solid #dee2e6;">
             GRAND TOTAL
           </td>
-          <td style="padding: 0.75rem; text-align: right; border-top: 2px solid #dee2e6; color: #28a745;" id="export-grand-total">
+          <td style="padding: 0.75rem; text-align: right; border-top: 2px solid #dee2e6; color: #28a745;" data-export-grand-total>
             $0.00
           </td>
         </tr>
@@ -115,46 +115,3 @@
     </p>
   </div>
 </div>
-
-<script>
-  // Populate export template with current values
-  document.addEventListener('DOMContentLoaded', function() {
-    const controller = document.querySelector('[data-controller="advanced-calculator"]')
-    if (!controller) return
-
-    const observer = new MutationObserver(function() {
-      updateExportContent()
-    })
-
-    observer.observe(controller, {
-      subtree: true,
-      characterData: true,
-      childList: true
-    })
-
-    function updateExportContent() {
-      // Update job name
-      const jobName = controller.querySelector('[data-advanced-calculator-target="jobName"]')?.value || 'Untitled'
-      const exportJobName = document.getElementById('export-job-name')
-      if (exportJobName) exportJobName.textContent = jobName
-
-      // Update costs
-      const filamentCost = controller.querySelector('[data-advanced-calculator-target="totalFilamentCost"]')?.textContent || '$0.00'
-      const electricityCost = controller.querySelector('[data-advanced-calculator-target="totalElectricityCost"]')?.textContent || '$0.00'
-      const laborCost = controller.querySelector('[data-advanced-calculator-target="totalLaborCost"]')?.textContent || '$0.00'
-      const machineCost = controller.querySelector('[data-advanced-calculator-target="totalMachineCost"]')?.textContent || '$0.00'
-      const otherCosts = controller.querySelector('[data-advanced-calculator-target="totalOtherCosts"]')?.textContent || '$0.00'
-      const grandTotal = controller.querySelector('[data-advanced-calculator-target="grandTotal"]')?.textContent || '$0.00'
-
-      document.getElementById('export-filament-cost').textContent = filamentCost
-      document.getElementById('export-electricity-cost').textContent = electricityCost
-      document.getElementById('export-labor-cost').textContent = laborCost
-      document.getElementById('export-machine-cost').textContent = machineCost
-      document.getElementById('export-other-costs').textContent = otherCosts
-      document.getElementById('export-grand-total').textContent = grandTotal
-    }
-
-    // Initial update
-    setTimeout(updateExportContent, 500)
-  })
-</script>
