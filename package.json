@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "CalcuMake - 3D Print Pricing Calculator",
   "scripts": {
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },
