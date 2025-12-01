@@ -1,0 +1,54 @@
+#!/bin/bash
+# Kamal post-deploy hook
+#
+# After successful deployment, update the 'production' branch to match
+# what was just deployed (current HEAD on master).
+
+# Redirect all output to stderr so Kamal shows it
+exec 1>&2
+
+# Enable verbose output
+set -x
+
+echo "🎉 Deployment successful! Updating production branch..."
+
+# Get the current commit that was just deployed
+DEPLOYED_COMMIT=$(git rev-parse HEAD)
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+echo "Deployed commit: $DEPLOYED_COMMIT"
+echo "Current branch: $CURRENT_BRANCH"
+
+# Fetch latest to ensure we're up to date
+git fetch origin
+
+# Check if production branch exists locally
+if git show-ref --verify --quiet refs/heads/production; then
+    echo "Production branch exists locally"
+else
+    # Check if it exists remotely
+    if git show-ref --verify --quiet refs/remotes/origin/production; then
+        echo "Production branch exists remotely, checking out..."
+        git checkout -b production origin/production
+        git checkout "$CURRENT_BRANCH"
+    else
+        echo "Production branch doesn't exist, will be created"
+    fi
+fi
+
+# Update production branch to point to the deployed commit
+if git show-ref --verify --quiet refs/heads/production; then
+    # Branch exists, force update it
+    echo "Updating production branch to $DEPLOYED_COMMIT..."
+    git branch -f production "$DEPLOYED_COMMIT"
+else
+    # Create new production branch
+    echo "Creating production branch at $DEPLOYED_COMMIT..."
+    git branch production "$DEPLOYED_COMMIT"
+fi
+
+# Push production branch to remote (force push is safe here since it's a deployment marker)
+echo "Pushing production branch to remote..."
+git push origin production --force
+
+echo "✅ Production branch updated to match deployed commit: $DEPLOYED_COMMIT"
