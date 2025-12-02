@@ -9,14 +9,17 @@
 - `bin/setup` - Complete setup
 - `bin/dev` - Development server
 - `bin/ci` - Run all CI checks locally (security, linting, tests) - **RUN BEFORE PUSHING**
-- `bin/rails test` - Run Rails tests (1,068 tests in ~3.5s)
-- `npm test` - Run JavaScript tests (20 tests in ~0.3s)
+- `bin/rails test` - Run Rails tests (1,075 tests in ~3.5s)
+- `npm test` - Run JavaScript tests
 - `bin/rubocop` - Style checking
 - `bin/brakeman` - Security scan
 - `bin/sync-translations` - Sync and auto-translate missing keys (uses OpenRouter API if key available)
 - `bin/translate-locales` - Direct automated translation via OpenRouter API (requires OPENROUTER_TRANSLATION_KEY)
 - `bin/force-retranslate` - Clear cache for English placeholder values to force re-translation
 - `bin/check-translations` - Scan code for missing translation keys and hardcoded strings
+
+## Git & PR Merge Policy
+**IMPORTANT**: When merging PRs, use `gh pr merge <number> --merge` to preserve commit history and keep branch references. Do NOT use `--squash` or `--delete-branch` unless explicitly requested. This maintains valuable context for understanding how features were built and makes it easier to reference past work.
 
 ## Core Architecture
 
