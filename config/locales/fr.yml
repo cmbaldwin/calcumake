@@ -1290,6 +1290,7 @@ fr:
       round_all_up_help: Arrondir tous les montants pour une marge de sécurité
       round_all_up: Arrondir tout
     made_with_calcumake: Créé avec CalcuMake
+    tax_included: Taxe incluse (%{percentage}%)
   filaments:
     index:
       title: Mes Filaments

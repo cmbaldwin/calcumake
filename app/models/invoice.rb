@@ -43,20 +43,29 @@ class Invoice < ApplicationRecord
     subtotal
   end
 
+  def tax_amount
+    return 0 unless user&.default_vat_percentage.present?
+    subtotal * (user.default_vat_percentage / 100.0)
+  end
+
+  def tax_percentage
+    user&.default_vat_percentage || 0
+  end
+
   def overdue?
     due_date.present? && due_date < Date.current && status != "paid"
   end
 
   def mark_as_sent!
-    update(status: "sent")
+    update_column(:status, "sent")
   end
 
   def mark_as_paid!
-    update(status: "paid")
+    update_column(:status, "paid")
   end
 
   def mark_as_cancelled!
-    update(status: "cancelled")
+    update_column(:status, "cancelled")
   end
 
   def build_default_line_items
