@@ -1220,6 +1220,7 @@ ar:
       round_all_up_help: تقريب جميع المبالغ لزيادة الاحتياط
       round_all_up: تقريب الكل
     made_with_calcumake: صنع بواسطة CalcuMake
+    tax_included: الضريبة مشمولة (%{percentage}%)
   filaments:
     index:
       title: خيوطي

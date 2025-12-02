@@ -1289,6 +1289,7 @@ hi:
       round_all_up_help: बफर के लिए सभी राशियों को पूर्णांक करें
       round_all_up: सभी को पूर्णांक करें
     made_with_calcumake: CalcuMake के साथ निर्मित
+    tax_included: कर शामिल है (%{percentage}%)
   filaments:
     index:
       title: मेरे फिलामेंट्स

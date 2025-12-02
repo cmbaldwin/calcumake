@@ -1096,6 +1096,7 @@ zh-CN:
       round_all_up_help: 将所有金额向上舍入以留出缓冲
       round_all_up: 全部向上舍入
     made_with_calcumake: 使用 CalcuMake 制作
+    tax_included: 已含税 (%{percentage}%)
   filaments:
     index:
       title: 我的线材
