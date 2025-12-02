@@ -1096,6 +1096,7 @@ ja:
       round_all_up_help: バッファのためにすべての金額を切り上げます
       round_all_up: すべて切り上げ
     made_with_calcumake: CalcuMakeで作成
+    tax_included: 税込み (%{percentage}%)
   filaments:
     index:
       title: マイフィラメント

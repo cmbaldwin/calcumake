@@ -1273,6 +1273,7 @@ es:
       round_all_up_help: Redondear todos los importes para obtener un margen
       round_all_up: Redondear todo
     made_with_calcumake: Hecho con CalcuMake
+    tax_included: Impuestos incluidos (%{percentage}%)
   filaments:
     index:
       title: Mis Filamentos

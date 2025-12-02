@@ -37,8 +37,9 @@ en:
     no_company_info: No company information set. Please update your profile to add
       company details.
     edit_company_info: Edit Company Info in Profile
+    tax_included: Tax included (%{percentage}%)
     status:
-      draft: Draft
+      draft: Quote
       sent: Sent
       paid: Paid
       cancelled: Cancelled
