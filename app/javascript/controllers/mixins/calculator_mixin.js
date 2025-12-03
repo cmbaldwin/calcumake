@@ -119,10 +119,14 @@ export const useCalculator = controller => {
 
     calculateLaborCost(globalSettings) {
       if (!globalSettings) return 0
+      // Convert minutes to hours (prepTime and postTime are now in minutes)
+      const prepHours = globalSettings.prepTime / 60
+      const postHours = globalSettings.postTime / 60
+
       const prepCost = (globalSettings.prepTime && globalSettings.prepRate) ?
-        (globalSettings.prepTime * globalSettings.prepRate) : 0
+        (prepHours * globalSettings.prepRate) : 0
       const postCost = (globalSettings.postTime && globalSettings.postRate) ?
-        (globalSettings.postTime * globalSettings.postRate) : 0
+        (postHours * globalSettings.postRate) : 0
       return prepCost + postCost
     },
 

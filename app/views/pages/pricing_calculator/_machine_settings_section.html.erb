@@ -41,9 +41,9 @@
             <!-- Prep Time -->
             <div class="col-md-6">
                 <label class="form-label">
-                    <%= t("advanced_calculator.plate_fields.prep_time") %> (hrs)
+                    <%= t("advanced_calculator.plate_fields.prep_time") %> (mins)
                 </label>
-                <input type="number" class="form-control" name="prep_time" data-advanced-calculator-target="prepTime" data-action="input->advanced-calculator#calculate" value="0.25" min="0" step="0.05">
+                <input type="number" class="form-control" name="prep_time" data-advanced-calculator-target="prepTime" data-action="input->advanced-calculator#calculate" value="15" min="0" step="1">
             </div>
 
             <!-- Prep Rate -->
@@ -57,9 +57,9 @@
             <!-- Post-Processing Time -->
             <div class="col-md-6">
                 <label class="form-label">
-                    <%= t("advanced_calculator.plate_fields.post_time") %> (hrs)
+                    <%= t("advanced_calculator.plate_fields.post_time") %> (mins)
                 </label>
-                <input type="number" class="form-control" name="post_time" data-advanced-calculator-target="postTime" data-action="input->advanced-calculator#calculate" value="0.25" min="0" step="0.05">
+                <input type="number" class="form-control" name="post_time" data-advanced-calculator-target="postTime" data-action="input->advanced-calculator#calculate" value="15" min="0" step="1">
             </div>
 
             <!-- Post Rate -->

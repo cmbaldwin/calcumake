@@ -151,15 +151,15 @@ describe('Calculator Mixin', () => {
       const controller = createMockController()
 
       const globalSettings = {
-        prepTime: 0.25,  // 0.25 hours
-        postTime: 0.5,   // 0.5 hours
+        prepTime: 15,    // 15 minutes
+        postTime: 30,    // 30 minutes
         prepRate: 20,    // $20/hour
         postRate: 25     // $25/hour
       }
 
       const cost = controller.calculateLaborCost(globalSettings)
 
-      // (0.25 * 20) + (0.5 * 25) = 5 + 12.5 = 17.5
+      // (15/60 * 20) + (30/60 * 25) = 5 + 12.5 = 17.5
       expect(cost).toBeCloseTo(17.5)
     })
 
@@ -182,15 +182,15 @@ describe('Calculator Mixin', () => {
       const controller = createMockController()
 
       const globalSettings = {
-        prepTime: 1,  // 1 hour
-        postTime: 1,  // 1 hour
+        prepTime: 60,  // 60 minutes = 1 hour
+        postTime: 60,  // 60 minutes = 1 hour
         prepRate: 50,
         postRate: 75
       }
 
       const cost = controller.calculateLaborCost(globalSettings)
 
-      expect(cost).toBeCloseTo(125) // (1 * 50) + (1 * 75) = 50 + 75
+      expect(cost).toBeCloseTo(125) // (60/60 * 50) + (60/60 * 75) = 50 + 75
     })
 
     test('handles missing labor settings', () => {
