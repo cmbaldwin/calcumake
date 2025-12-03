@@ -239,8 +239,8 @@ export default class extends Controller {
       powerConsumption: parseFloat(this.hasPowerConsumptionTarget ? this.powerConsumptionTarget.value : 200),
       machineCost: parseFloat(this.hasMachineCostTarget ? this.machineCostTarget.value : 500),
       payoffYears: parseFloat(this.hasPayoffYearsTarget ? this.payoffYearsTarget.value : 3),
-      prepTime: parseFloat(this.hasPrepTimeTarget ? this.prepTimeTarget.value : 0.25),
-      postTime: parseFloat(this.hasPostTimeTarget ? this.postTimeTarget.value : 0.25),
+      prepTime: parseFloat(this.hasPrepTimeTarget ? this.prepTimeTarget.value : 15), // minutes
+      postTime: parseFloat(this.hasPostTimeTarget ? this.postTimeTarget.value : 15), // minutes
       prepRate: parseFloat(this.hasPrepRateTarget ? this.prepRateTarget.value : 20),
       postRate: parseFloat(this.hasPostRateTarget ? this.postRateTarget.value : 20)
     }
