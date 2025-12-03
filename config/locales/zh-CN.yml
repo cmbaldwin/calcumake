@@ -1304,7 +1304,7 @@ zh-CN:
         invoices: 每月5张发票
         branding: 发票上带有CalcuMake品牌
       startup:
-        title: Startup
+        title: 启动
         badge: 最受欢迎
         calculations: 每月50次计算
         printers: 10个打印机配置文件
@@ -1312,7 +1312,7 @@ zh-CN:
         branding: 移除CalcuMake品牌
         ads: 无广告
       pro:
-        title: Pro
+        title: 专业版
         unlimited: 所有功能无限制
         branding: 移除CalcuMake品牌
         ads: 无广告
