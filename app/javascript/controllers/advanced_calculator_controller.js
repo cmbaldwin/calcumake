@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
-import { useCalculator } from "./mixins/calculator_mixin.js"
-import { useStorage } from "./mixins/storage_mixin.js"
-import { useExport } from "./mixins/export_mixin.js"
+import { useCalculator } from "controllers/mixins/calculator_mixin"
+import { useStorage } from "controllers/mixins/storage_mixin"
+import { useExport } from "controllers/mixins/export_mixin"
 
 // Advanced 3D Print Pricing Calculator
 // Uses mixins for separation of concerns:
