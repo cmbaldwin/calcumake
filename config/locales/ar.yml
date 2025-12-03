@@ -1898,3 +1898,74 @@ ar:
     structured_data:
       organization: CalcuMake
       publisher: مدونة CalcuMake
+  "\"nav":
+    brand": '"CalcuMake",'
+  "\"common":
+    percentage": '"%",'
+  "\"date":
+    formats:
+      month_day_year": '"%B %d, %Y",'
+  "\"time":
+    formats:
+      month_day_year": '"%B %d, %Y",'
+  "\"print_pricing":
+    fields:
+      filament_weight_placeholder": '"36",'
+      spool_price_placeholder": '"25.00",'
+      spool_weight_placeholder": '"1000",'
+      markup_placeholder": '"20",'
+      prep_time_placeholder": '"30",'
+      prep_cost_placeholder": '"20.00",'
+      post_time_placeholder": '"30",'
+      postprocessing_time_placeholder": '"30",'
+      postprocessing_cost_placeholder": '"20.00",'
+      post_cost_placeholder": '"20.00",'
+      other_costs_placeholder": '"0.00",'
+      vat_placeholder": '"10",'
+      power_consumption_placeholder": '"200",'
+      energy_cost_placeholder": '"0.12",'
+      printer_cost_placeholder": '"500.00",'
+      payoff_goal_placeholder": '"3",'
+      daily_usage_placeholder": '"8",'
+      repair_cost_placeholder": '"5",'
+      units_placeholder": '"1",'
+      failure_rate_placeholder": '"5.0",'
+    filament_types:
+      pla": '"PLA",'
+      abs": '"ABS",'
+      petg": '"PETG",'
+      tpu": '"TPU",'
+      asa": '"ASA",'
+  "\"printers":
+    fields:
+      power_consumption_placeholder": '"200",'
+      cost_placeholder": '"500.00",'
+      payoff_goal_placeholder": '"3",'
+      daily_usage_placeholder": '"8",'
+      repair_factor_placeholder": '"5.0",'
+  "\"profile":
+    fields:
+      energy_cost_placeholder": '"0.120",'
+      company_email_placeholder": '"billing@example.com",'
+      company_phone_placeholder": '"+1 (555) 123-4567",'
+      company_address_placeholder": '"123 Main Street\nCity, State 12345\nCountry",'
+  "\"clients":
+    fields:
+      name_placeholder": '"John Doe",'
+      company_name_placeholder": '"Acme Corporation",'
+      email_placeholder": '"john@example.com",'
+      phone_placeholder": '"+1 (555) 123-4567",'
+      address_placeholder": '"123 Main Street\nCity, State 12345",'
+      tax_id_placeholder": '"12-3456789",'
+  "\"legal":
+    commerce_disclosure:
+      business_operator:
+        corporate_number": '"6140001137045",'
+      business_address:
+        postal_code": '"〒678-0215",'
+        address_ja": '"兵庫県赤穂市御崎151-2",'
+        address_en": '"151-2 Misaki, Ako City, Hyogo Prefecture 678-0215, Japan",'
+      contact:
+        email": '"cody@moab.jp",'
+      questions:
+        email": '"cody@moab.jp",'
