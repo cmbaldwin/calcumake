@@ -6,6 +6,40 @@
             <%= t("advanced_calculator.machine_settings") %>
         </h6>
 
+        <!-- Print Technology Toggle -->
+        <div class="mb-3">
+            <label class="form-label fw-bold">
+                <i class="bi bi-layers-fill me-1"></i>
+                Print Technology
+            </label>
+            <div class="btn-group w-100" role="group" data-print-technology-toggle>
+                <input type="radio" class="btn-check" name="print_technology" id="tech_fdm" value="fdm" checked data-action="change->advanced-calculator#switchPrintTechnology">
+                <label class="btn btn-outline-primary" for="tech_fdm">
+                    <i class="bi bi-box me-1"></i>
+                    FDM (Filament)
+                </label>
+
+                <input type="radio" class="btn-check" name="print_technology" id="tech_resin" value="resin" data-action="change->advanced-calculator#switchPrintTechnology">
+                <label class="btn btn-outline-primary" for="tech_resin">
+                    <i class="bi bi-droplet-fill me-1"></i>
+                    Resin (SLA/DLP)
+                </label>
+            </div>
+            <small class="form-text text-muted">Choose your printer technology - this will update all plates below</small>
+        </div>
+
+        <!-- Printer Profile Selector -->
+        <div class="mb-3">
+            <label class="form-label">
+                <i class="bi bi-printer me-1"></i>
+                Printer Profile (Optional)
+            </label>
+            <select class="form-select" data-printer-profile-selector data-action="change->advanced-calculator#loadPrinterProfile">
+                <option value="">-- Select a Common Printer --</option>
+            </select>
+            <small class="form-text text-muted">Select a printer to auto-fill machine settings</small>
+        </div>
+
         <div class="row g-3">
             <!-- Power Consumption -->
             <div class="col-md-4">
