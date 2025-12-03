@@ -31,10 +31,10 @@ en:
       power_consumption: "Power Consumption"
       machine_cost: "Machine Cost"
       payoff_years: "Payoff Period (years)"
-      prep_time: "Prep Time"
-      post_time: "Post-Processing Time"
-      prep_rate: "Prep Rate"
-      post_rate: "Post Rate"
+      prep_time: "Prep Time (mins)"
+      post_time: "Post-Processing Time (mins)"
+      prep_rate: "Prep Rate ($/hr)"
+      post_rate: "Post Rate ($/hr)"
 
     filament_fields:
       weight: "Weight"

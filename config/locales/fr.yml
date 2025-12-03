@@ -677,8 +677,8 @@ fr:
     description: Calcul professionnel des coûts d'impression 3D et gestion de projet
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - Tous droits réservés"
   support:
-    title: Support
-    nav_title: Support
+    title: Assistance
+    nav_title: Assistance
     contact_us: Nous contacter
     description: Besoin d'aide avec CalcuMake ? Vous avez une question ou une suggestion
       ? Nous sommes là pour vous aider !
