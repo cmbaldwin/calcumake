@@ -104,11 +104,22 @@ export const useCalculator = controller => {
 
     // Individual calculation methods
     calculateFilamentCost(plateData) {
-      if (!plateData?.filaments || !Array.isArray(plateData.filaments)) return 0
-      return plateData.filaments.reduce((total, filament) => {
-        const weightKg = (filament?.weight || 0) / 1000
-        return total + (weightKg * (filament?.pricePerKg || 0))
-      }, 0)
+      // Handle FDM (filament) plates
+      if (plateData?.technology === 'fdm' || (!plateData?.technology && plateData?.filaments)) {
+        if (!plateData?.filaments || !Array.isArray(plateData.filaments)) return 0
+        return plateData.filaments.reduce((total, filament) => {
+          const weightKg = (filament?.weight || 0) / 1000
+          return total + (weightKg * (filament?.pricePerKg || 0))
+        }, 0)
+      }
+
+      // Handle Resin plates
+      if (plateData?.technology === 'resin' && plateData?.resin) {
+        const volumeLiters = (plateData.resin.volume || 0) / 1000
+        return volumeLiters * (plateData.resin.pricePerLiter || 0)
+      }
+
+      return 0
     },
 
     calculateElectricityCost(totalPrintTime, globalSettings) {
