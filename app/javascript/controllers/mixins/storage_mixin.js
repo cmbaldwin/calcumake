@@ -237,6 +237,11 @@ export const useStorage = controller => {
 
     // Restore individual plate data
     restorePlateData(plateDiv, plateData) {
+      if (!plateDiv) {
+        console.error('plateDiv is undefined in restorePlateData')
+        return
+      }
+
       // Restore print time
       const printTimeField = plateDiv.querySelector('[name*="print_time"]')
       if (printTimeField && plateData.printTime !== undefined) {
