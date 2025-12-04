@@ -1,13 +1,28 @@
 // Export Mixin - PDF and CSV export functionality
 // Following Better Stimulus pattern: https://betterstimulus.com/architecture/mixins
 
+import { usePDF } from 'controllers/mixins/pdf_mixin'
+
 export const useExport = controller => {
+  // Apply PDF mixin first
+  usePDF(controller)
+
   Object.assign(controller, {
     updateExportTemplate() {
       // Update job name in export template
       const jobName = this.hasJobNameTarget ? this.jobNameTarget.value : 'Untitled'
       const exportJobName = this.exportContentTarget.querySelector('[data-export-job-name]')
       if (exportJobName) exportJobName.textContent = jobName
+
+      // Detect current technology and update material label (only if element exists)
+      let currentTech = 'fdm'
+      if (this.element) {
+        const techInput = this.element.querySelector('input[name="print_technology"]:checked')
+        currentTech = techInput?.value || 'fdm'
+      }
+      const materialLabel = currentTech === 'resin' ? 'Resin Cost' : 'Filament Cost'
+      const exportMaterialLabel = this.exportContentTarget.querySelector('[data-export-material-label]')
+      if (exportMaterialLabel) exportMaterialLabel.textContent = materialLabel
 
       // Update cost values in export template
       const costs = {
@@ -29,15 +44,6 @@ export const useExport = controller => {
       event.preventDefault()
 
       try {
-        // Lazy load jsPDF to avoid Jest import issues
-        const { jsPDF } = await import('jspdf')
-
-        const pdf = new jsPDF({
-          orientation: 'portrait',
-          unit: 'mm',
-          format: 'a4'
-        })
-
         const content = this.exportContentTarget
 
         // Populate export template with current values
@@ -50,45 +56,24 @@ export const useExport = controller => {
           content.classList.remove('d-none')
         }
 
-        // Use html2canvas to capture content
-        const html2canvas = await import('html2canvas')
-        const canvas = await html2canvas.default(content, {
+        // Generate filename
+        const jobName = this.hasJobNameTarget ? this.jobNameTarget.value : 'calculation'
+        const timestamp = new Date().toISOString().slice(0, 10)
+        const filename = `${jobName.replace(/\s+/g, '_')}-${timestamp}.pdf`
+
+        // Use the PDF mixin to generate compressed PDF
+        await this.createCompressedPDF(content, {
+          filename: filename,
+          orientation: 'portrait',
+          quality: 0.92,
           scale: 2,
-          useCORS: true,
-          backgroundColor: '#ffffff',
-          logging: false
+          multiPage: true
         })
 
         if (wasHidden) {
           content.style.display = 'none'
           content.classList.add('d-none')
         }
-
-        // Calculate dimensions
-        const imgWidth = 210 // A4 width in mm
-        const pageHeight = 295 // A4 height in mm
-        const imgHeight = (canvas.height * imgWidth) / canvas.width
-        let heightLeft = imgHeight
-        let position = 0
-
-        // Add image to PDF
-        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight)
-        heightLeft -= pageHeight
-
-        // Add additional pages if needed
-        while (heightLeft >= 0) {
-          position = heightLeft - imgHeight
-          pdf.addPage()
-          pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight)
-          heightLeft -= pageHeight
-        }
-
-        // Generate filename
-        const jobName = this.hasJobNameTarget ? this.jobNameTarget.value : 'calculation'
-        const timestamp = new Date().toISOString().slice(0, 10)
-        const filename = `${jobName.replace(/\s+/g, '_')}-${timestamp}.pdf`
-
-        pdf.save(filename)
 
         this.showToast("PDF exported successfully!")
 
@@ -106,13 +91,22 @@ export const useExport = controller => {
         const globalSettings = this.getGlobalSettings()
         const rows = []
 
-        // Header row
+        // Detect current technology from the toggle (safely)
+        let currentTech = 'fdm'
+        if (this.element) {
+          const techInput = this.element.querySelector('input[name="print_technology"]:checked')
+          currentTech = techInput?.value || 'fdm'
+        }
+        const materialColumn = currentTech === 'resin' ? 'Resin Volume (mL)' : 'Filament Weight (g)'
+        const costColumn = currentTech === 'resin' ? 'Resin Cost' : 'Filament Cost'
+
+        // Header row with dynamic material columns
         rows.push([
           'Job Name',
           'Plate #',
           'Print Time (hrs)',
-          'Filament Weight (g)',
-          'Filament Cost',
+          materialColumn,
+          costColumn,
           'Electricity Cost',
           'Labor Cost',
           'Machine Cost',
@@ -132,19 +126,27 @@ export const useExport = controller => {
         const totalLaborCost = this.calculateLaborCost(globalSettings)
         const totalMachineCost = this.calculateMachineCost(totalPrintTime, globalSettings)
 
-        // Data rows
+        // Data rows - handle both FDM and Resin
         plates.forEach((plate, index) => {
           const plateData = this.getPlateData(plate)
-          const filamentCost = this.calculateFilamentCost(plateData)
-          const totalWeight = plateData.filaments.reduce((sum, f) => sum + f.weight, 0)
-          const plateTotal = filamentCost
+          const materialCost = this.calculateFilamentCost(plateData)
+
+          // Get material amount based on technology
+          let materialAmount = 0
+          if (plateData.technology === 'resin' && plateData.resin) {
+            materialAmount = plateData.resin.volume || 0
+          } else if (plateData.filaments && Array.isArray(plateData.filaments)) {
+            materialAmount = plateData.filaments.reduce((sum, f) => sum + (f.weight || 0), 0)
+          }
+
+          const plateTotal = materialCost
 
           rows.push([
             jobName,
             `Plate ${index + 1}`,
             plateData.printTime,
-            totalWeight,
-            filamentCost.toFixed(2),
+            materialAmount,
+            materialCost.toFixed(2),
             '', // Electricity cost shown in summary
             '', // Labor cost shown in summary
             '', // Machine cost shown in summary

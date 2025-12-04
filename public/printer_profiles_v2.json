@@ -1,0 +1,262 @@
+[
+  {
+    "manufacturer": "Creality",
+    "model": "Ender 3 V3 SE",
+    "power_consumption_peak_watts": 350,
+    "power_consumption_avg_watts": 125,
+    "cost_usd": 199,
+    "category": "Budget FDM",
+    "technology": "fdm",
+    "source": "Creality official specs, ThePhonograph.net review"
+  },
+  {
+    "manufacturer": "Bambu Lab",
+    "model": "A1 Mini Combo",
+    "power_consumption_peak_watts": 120,
+    "power_consumption_avg_watts": 57,
+    "cost_usd": 329,
+    "category": "Budget FDM",
+    "technology": "fdm",
+    "source": "Bambu Lab Wiki FAQ, 3DPrintBeginner review"
+  },
+  {
+    "manufacturer": "Elegoo",
+    "model": "Centauri Carbon",
+    "power_consumption_peak_watts": 350,
+    "power_consumption_avg_watts": 110,
+    "cost_usd": 279,
+    "category": "Budget FDM",
+    "technology": "fdm",
+    "source": "Estimated based on similar class printers - needs verification"
+  },
+  {
+    "manufacturer": "Creality",
+    "model": "Ender 3 V3 KE",
+    "power_consumption_peak_watts": 350,
+    "power_consumption_avg_watts": 120,
+    "cost_usd": 279,
+    "category": "Budget FDM",
+    "technology": "fdm",
+    "source": "Estimated based on Ender 3 series specs"
+  },
+  {
+    "manufacturer": "Anycubic",
+    "model": "Kobra 2 Neo",
+    "power_consumption_peak_watts": 350,
+    "power_consumption_avg_watts": 100,
+    "cost_usd": 179,
+    "category": "Budget FDM",
+    "technology": "fdm",
+    "source": "Estimated based on similar class printers - needs verification"
+  },
+  {
+    "manufacturer": "Elegoo",
+    "model": "Mars 5",
+    "power_consumption_peak_watts": 70,
+    "power_consumption_avg_watts": 50,
+    "cost_usd": 179,
+    "category": "Budget Resin",
+    "technology": "resin",
+    "source": "Estimated based on Mars series specs - needs verification"
+  },
+  {
+    "manufacturer": "Elegoo",
+    "model": "Saturn 3 Ultra",
+    "power_consumption_peak_watts": 120,
+    "power_consumption_avg_watts": 80,
+    "cost_usd": 284,
+    "category": "Budget Resin",
+    "technology": "resin",
+    "source": "Estimated based on Saturn series specs - needs verification"
+  },
+  {
+    "manufacturer": "Bambu Lab",
+    "model": "P1S Combo",
+    "power_consumption_peak_watts": 850,
+    "power_consumption_avg_watts": 100,
+    "cost_usd": 549,
+    "category": "Mid-Range FDM",
+    "technology": "fdm",
+    "source": "Bambu Lab Community Forum - measured 850W peak, 30-70W during PLA printing"
+  },
+  {
+    "manufacturer": "Creality",
+    "model": "K2 Pro",
+    "power_consumption_peak_watts": 1300,
+    "power_consumption_avg_watts": 350,
+    "cost_usd": 849,
+    "category": "Mid-Range FDM",
+    "technology": "fdm",
+    "source": "ThePhonograph.net review - 1300W peak spikes, 70-350W typical during printing"
+  },
+  {
+    "manufacturer": "Creality",
+    "model": "K2 Plus",
+    "power_consumption_peak_watts": 1200,
+    "power_consumption_avg_watts": 400,
+    "cost_usd": 999,
+    "category": "Mid-Range FDM",
+    "technology": "fdm",
+    "source": "3DJake - 800W AC heating system, user reports ~1200W peak"
+  },
+  {
+    "manufacturer": "Qidi Tech",
+    "model": "Plus 4",
+    "power_consumption_peak_watts": 850,
+    "power_consumption_avg_watts": 450,
+    "cost_usd": 699,
+    "category": "Mid-Range FDM",
+    "technology": "fdm",
+    "source": "Fabreeko - 450W power plus 400W chamber heating"
+  },
+  {
+    "manufacturer": "Anycubic",
+    "model": "Photon Mono M7 Max",
+    "power_consumption_peak_watts": 150,
+    "power_consumption_avg_watts": 100,
+    "cost_usd": 699,
+    "category": "Mid-Range Resin",
+    "technology": "resin",
+    "source": "Estimated based on large resin printer class - needs verification"
+  },
+  {
+    "manufacturer": "Elegoo",
+    "model": "Saturn 4 Ultra 16K",
+    "power_consumption_peak_watts": 150,
+    "power_consumption_avg_watts": 100,
+    "cost_usd": 465,
+    "category": "Mid-Range Resin",
+    "technology": "resin",
+    "source": "Estimated based on Saturn series - needs verification"
+  },
+  {
+    "manufacturer": "Prusa",
+    "model": "i3 MK4 Kit",
+    "power_consumption_peak_watts": 240,
+    "power_consumption_avg_watts": 100,
+    "cost_usd": 899,
+    "category": "Mid-Range FDM",
+    "technology": "fdm",
+    "source": "Prusa FAQ - 80W PLA, 120W ABS average; 240W PSU rated"
+  },
+  {
+    "manufacturer": "Prusa",
+    "model": "i3 MK4 Assembled",
+    "power_consumption_peak_watts": 240,
+    "power_consumption_avg_watts": 100,
+    "cost_usd": 1099,
+    "category": "Premium FDM",
+    "technology": "fdm",
+    "source": "Prusa FAQ - 80W PLA, 120W ABS average; 240W PSU rated"
+  },
+  {
+    "manufacturer": "Prusa",
+    "model": "CORE One",
+    "power_consumption_peak_watts": 240,
+    "power_consumption_avg_watts": 120,
+    "cost_usd": 1199,
+    "category": "Premium FDM",
+    "technology": "fdm",
+    "source": "3D Printing Industry - $1199 assembled, same PSU as MK4"
+  },
+  {
+    "manufacturer": "Bambu Lab",
+    "model": "X1 Carbon Combo",
+    "power_consumption_peak_watts": 850,
+    "power_consumption_avg_watts": 135,
+    "cost_usd": 1449,
+    "category": "Premium FDM",
+    "technology": "fdm",
+    "source": "3DPrintBeginner review - 850W heating, 103-135W printing"
+  },
+  {
+    "manufacturer": "Bambu Lab",
+    "model": "H2D",
+    "power_consumption_peak_watts": 1000,
+    "power_consumption_avg_watts": 300,
+    "cost_usd": 1899,
+    "category": "Premium FDM",
+    "technology": "fdm",
+    "source": "3DWithUs - $1899 base price; estimated power based on heated chamber"
+  },
+  {
+    "manufacturer": "Prusa",
+    "model": "XL Single Toolhead",
+    "power_consumption_peak_watts": 720,
+    "power_consumption_avg_watts": 250,
+    "cost_usd": 1999,
+    "category": "Premium FDM",
+    "technology": "fdm",
+    "source": "Tom's Hardware - $1999 semi-assembled; segmented bed increases power"
+  },
+  {
+    "manufacturer": "Snapmaker",
+    "model": "Artisan (3-in-1)",
+    "power_consumption_peak_watts": 500,
+    "power_consumption_avg_watts": 250,
+    "cost_usd": 2599,
+    "category": "Premium FDM",
+    "technology": "fdm",
+    "source": "Estimated based on multi-function design - needs verification"
+  },
+  {
+    "manufacturer": "Formlabs",
+    "model": "Form 4 Basic",
+    "power_consumption_peak_watts": 250,
+    "power_consumption_avg_watts": 100,
+    "cost_usd": 4499,
+    "category": "Professional Resin",
+    "technology": "resin",
+    "source": "bunnie's blog teardown - 27W standby, 250W peak, ~100W avg printing"
+  },
+  {
+    "manufacturer": "Ultimaker",
+    "model": "S7",
+    "power_consumption_peak_watts": 500,
+    "power_consumption_avg_watts": 250,
+    "cost_usd": 8299,
+    "category": "Professional FDM",
+    "technology": "fdm",
+    "source": "Aniwaa - $8299; estimated 500W based on dual extrusion professional class"
+  },
+  {
+    "manufacturer": "Raise3D",
+    "model": "Pro3",
+    "power_consumption_peak_watts": 600,
+    "power_consumption_avg_watts": 350,
+    "cost_usd": 5499,
+    "category": "Professional FDM",
+    "technology": "fdm",
+    "source": "Estimated based on professional dual extrusion class - needs verification"
+  },
+  {
+    "manufacturer": "Stratasys",
+    "model": "F170",
+    "power_consumption_peak_watts": 1500,
+    "power_consumption_avg_watts": 800,
+    "cost_usd": 17000,
+    "category": "Industrial FDM",
+    "technology": "fdm",
+    "source": "Estimated based on industrial heated chamber design - needs verification"
+  },
+  {
+    "manufacturer": "Formlabs",
+    "model": "Form 3L",
+    "power_consumption_peak_watts": 500,
+    "power_consumption_avg_watts": 300,
+    "cost_usd": 999,
+    "category": "Industrial Resin",
+    "technology": "resin",
+    "source": "Estimated based on large format SLA - needs verification"
+  },
+  {
+    "manufacturer": "3D Systems",
+    "model": "Figure 4 Standalone",
+    "power_consumption_peak_watts": 600,
+    "power_consumption_avg_watts": 400,
+    "cost_usd": 21900,
+    "category": "Industrial Resin",
+    "technology": "resin",
+    "source": "Estimated based on industrial DLP class - needs verification"
+  }
+]
