@@ -162,13 +162,26 @@ export const useStorage = controller => {
 
         // Load the default or last-used calculation
         const calculationId = this.getCurrentCalculationId()
-        this.loadCalculation(calculationId)
+        const loaded = this.loadCalculation(calculationId)
+
+        // If no data was loaded, ensure we have at least one plate
+        if (!loaded) {
+          const plates = this.getPlates()
+          if (plates.length === 0) {
+            this.addPlate()
+          }
+        }
 
         // Update calculation selector UI
         this.updateCalculationSelector()
 
       } catch (e) {
         console.error("Failed to load from localStorage:", e)
+        // Ensure we have at least one plate even if loading failed
+        const plates = this.getPlates()
+        if (plates.length === 0) {
+          this.addPlate()
+        }
       }
     },
 

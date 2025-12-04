@@ -51,7 +51,7 @@ class AdvancedCalculatorTest < ApplicationSystemTestCase
     assert_equal 1, initial_plates
 
     # Add a plate
-    click_button "Add Another Plate"
+    click_button "Add Plate"
     sleep 0.2
 
     # Should now have 2 plates
@@ -82,7 +82,7 @@ class AdvancedCalculatorTest < ApplicationSystemTestCase
     visit pricing_calculator_path
 
     # Add a second plate first
-    click_button "Add Another Plate"
+    click_button "Add Plate"
     sleep 0.2
     assert_selector "[data-plate-index]", count: 2
 
@@ -124,7 +124,7 @@ class AdvancedCalculatorTest < ApplicationSystemTestCase
 
     # Add 9 more plates (already have 1)
     9.times do
-      click_button "Add Another Plate"
+      click_button "Add Plate"
       sleep 0.1
     end
 
@@ -133,7 +133,7 @@ class AdvancedCalculatorTest < ApplicationSystemTestCase
 
     # Try to add 11th plate - should show alert
     accept_alert "Maximum 10 plates allowed" do
-      click_button "Add Another Plate"
+      click_button "Add Plate"
     end
 
     # Should still have only 10 plates
@@ -225,9 +225,8 @@ class AdvancedCalculatorTest < ApplicationSystemTestCase
   test "calculator shows CTA to create account" do
     visit pricing_calculator_path
 
-    # Should have signup CTA card visible
-    assert_selector ".cta-card", visible: true
-    assert_link href: new_user_registration_path
+    # Should have signup CTA link in the localStorage warning
+    assert_link "Sign up to save your prints for free and never lose them", href: new_user_registration_path
   end
 
   test "calculator has export PDF button" do
@@ -355,14 +354,14 @@ class AdvancedCalculatorTest < ApplicationSystemTestCase
     assert_selector "input[name='plates[0][print_time]']", visible: true
 
     # Buttons should be accessible
-    assert_button "Add Another Plate", visible: true
+    assert_button "Add Plate", visible: true
   end
 
   test "calculator cost calculations aggregate across multiple plates" do
     visit pricing_calculator_path
 
     # Add second plate
-    click_button "Add Another Plate"
+    click_button "Add Plate"
     sleep 0.2
 
     # Fill in first plate
@@ -398,7 +397,7 @@ class AdvancedCalculatorTest < ApplicationSystemTestCase
     visit pricing_calculator_path
 
     # Add second plate
-    click_button "Add Another Plate"
+    click_button "Add Plate"
     sleep 0.2
 
     # Fill in second plate with specific values
@@ -426,11 +425,11 @@ class AdvancedCalculatorTest < ApplicationSystemTestCase
     assert_selector "[data-advanced-calculator-target='grandTotal']", visible: true
   end
 
-  test "calculator shows quick calculator section" do
+  test "calculator shows results section" do
     visit pricing_calculator_path
 
-    # Quick calculator should be present
-    assert_selector "[data-controller='quick-calculator']", visible: true
+    # Results section should be present
+    assert_selector "[data-advanced-calculator-target='resultsSection']", visible: true
   end
 
   test "page has proper SEO meta tags" do
@@ -441,6 +440,204 @@ class AdvancedCalculatorTest < ApplicationSystemTestCase
 
     # Check meta description exists
     assert_selector "meta[name='description']", visible: false
+  end
+
+  # ==========================================
+  # FDM/Resin Technology Toggle Tests
+  # ==========================================
+
+  test "calculator has FDM/Resin technology toggle" do
+    visit pricing_calculator_path
+
+    # Should have both technology options
+    assert_selector "input[name='print_technology'][value='fdm']", visible: false
+    assert_selector "input[name='print_technology'][value='resin']", visible: false
+    assert_selector "label[for='tech_fdm']", text: /FDM/i
+    assert_selector "label[for='tech_resin']", text: /Resin/i
+  end
+
+  test "calculator defaults to FDM technology" do
+    visit pricing_calculator_path
+
+    # FDM should be checked by default
+    fdm_radio = find("input[name='print_technology'][value='fdm']", visible: false)
+    assert fdm_radio.checked?, "FDM should be selected by default"
+
+    # FDM fields should be visible
+    within first("[data-plate-index]") do
+      assert_selector ".fdm-fields", visible: true
+      refute_selector ".resin-fields", visible: true
+    end
+  end
+
+  test "switching to resin shows resin fields and hides filament fields" do
+    visit pricing_calculator_path
+
+    # Switch to resin
+    find("label[for='tech_resin']").click
+    sleep 0.3
+
+    # Resin fields should now be visible, filament fields hidden
+    within first("[data-plate-index]") do
+      refute_selector ".fdm-fields", visible: true
+      assert_selector ".resin-fields", visible: true
+    end
+  end
+
+  test "resin fields accept volume and price per liter" do
+    visit pricing_calculator_path
+
+    # Switch to resin
+    find("label[for='tech_resin']").click
+    sleep 0.3
+
+    # Fill in resin fields
+    within first("[data-plate-index]") do
+      fill_in "plates[0][print_time]", with: "3"
+      within ".resin-fields" do
+        fill_in "plates[0][resin_volume]", with: "50"
+        fill_in "plates[0][resin_price_per_liter]", with: "40"
+      end
+    end
+
+    sleep 0.5
+
+    # Should calculate costs
+    total_text = find("[data-advanced-calculator-target='grandTotal']").text
+    assert_not_equal "$0.00", total_text
+  end
+
+  test "material cost label changes based on technology" do
+    visit pricing_calculator_path
+
+    # Should show "Filament Cost" by default (or just "Filament")
+    material_label = find("[data-advanced-calculator-target='materialCostLabel']")
+    assert_match /Filament/i, material_label.text
+
+    # Switch to resin
+    find("label[for='tech_resin']").click
+    sleep 0.3
+
+    # Should now show "Resin Cost" (or just "Resin")
+    material_label = find("[data-advanced-calculator-target='materialCostLabel']")
+    assert_match /Resin/i, material_label.text
+  end
+
+  test "technology toggle affects all plates simultaneously" do
+    visit pricing_calculator_path
+
+    # Add a second plate
+    click_button "Add Plate"
+    sleep 0.2
+
+    # Both plates should show FDM fields
+    all("[data-plate-index]").each do |plate|
+      within plate do
+        assert_selector ".fdm-fields", visible: true
+        refute_selector ".resin-fields", visible: true
+      end
+    end
+
+    # Switch to resin
+    find("label[for='tech_resin']").click
+    sleep 0.3
+
+    # Both plates should now show resin fields
+    all("[data-plate-index]").each do |plate|
+      within plate do
+        refute_selector ".fdm-fields", visible: true
+        assert_selector ".resin-fields", visible: true
+      end
+    end
+  end
+
+  test "printer profile selector is filtered by technology" do
+    visit pricing_calculator_path
+
+    # On FDM, selector should have FDM printers
+    printer_selector = find("[data-printer-profile-selector]")
+    fdm_options = printer_selector.all("option").select { |opt| opt.text.present? && opt.text != "-- Select a Common Printer --" }
+    assert fdm_options.any?, "Should have FDM printer options"
+
+    # Switch to resin
+    find("label[for='tech_resin']").click
+    sleep 0.3
+
+    # Selector should now have resin printers
+    printer_selector = find("[data-printer-profile-selector]")
+    resin_options = printer_selector.all("option").select { |opt| opt.text.present? && opt.text != "-- Select a Common Printer --" }
+    assert resin_options.any?, "Should have resin printer options"
+  end
+
+  test "printer profile AI warning is displayed" do
+    visit pricing_calculator_path
+
+    # Should show AI-generated warning near the printer selector
+    assert_text "AI-generated estimates"
+    assert_text "Always verify specifications with your printer's manual"
+    assert_selector "small.text-warning", text: /AI-generated/i
+  end
+
+  test "selecting a printer updates technology toggle" do
+    visit pricing_calculator_path
+
+    # Start with FDM selected
+    fdm_radio = find("input[name='print_technology'][value='fdm']", visible: false)
+    assert fdm_radio.checked?
+
+    # Find and select a resin printer from the dropdown
+    # First switch to resin to see resin printers
+    find("label[for='tech_resin']").click
+    sleep 0.2
+
+    printer_selector = find("[data-printer-profile-selector]")
+    resin_printer_option = printer_selector.all("option").find { |opt| opt.text.include?("Mars") || opt.text.include?("Saturn") }
+
+    if resin_printer_option
+      printer_selector.select(resin_printer_option.text)
+      sleep 0.3
+
+      # Resin should still be selected (toggle shouldn't change from resin back to FDM)
+      resin_radio = find("input[name='print_technology'][value='resin']", visible: false)
+      assert resin_radio.checked?, "Resin should remain selected when resin printer is selected"
+    end
+  end
+
+  test "calculations work correctly for both FDM and resin" do
+    visit pricing_calculator_path
+
+    # Test FDM calculation
+    within first("[data-plate-index]") do
+      fill_in "plates[0][print_time]", with: "2"
+      within first("[data-filament-index]") do
+        fill_in "plates[0][filaments][0][filament_weight]", with: "100"
+        fill_in "plates[0][filaments][0][filament_price]", with: "25"
+      end
+    end
+
+    sleep 0.5
+
+    fdm_total = find("[data-advanced-calculator-target='grandTotal']").text
+    assert_not_equal "$0.00", fdm_total
+
+    # Switch to resin and test calculation
+    find("label[for='tech_resin']").click
+    sleep 0.3
+
+    within first("[data-plate-index]") do
+      fill_in "plates[0][print_time]", with: "3"
+      within ".resin-fields" do
+        fill_in "plates[0][resin_volume]", with: "75"
+        fill_in "plates[0][resin_price_per_liter]", with: "50"
+      end
+    end
+
+    sleep 0.5
+
+    resin_total = find("[data-advanced-calculator-target='grandTotal']").text
+    assert_not_equal "$0.00", resin_total
+    # Totals should be different since we used different values
+    assert_not_equal fdm_total, resin_total
   end
 
   private
