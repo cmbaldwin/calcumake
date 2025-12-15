@@ -122,11 +122,12 @@ RailsAdmin.config do |config|
         field :excerpt do
           help "Short excerpt for article listings (optional)"
         end
-      end
 
-      # Rich text content field
-      field :content, :action_text do
-        help "Article content with rich text editor"
+        # Rich text content field
+        field :content do
+          partial 'form_action_text'
+          help "Article content with rich text editor"
+        end
       end
 
       # SEO fields
