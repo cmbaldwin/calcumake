@@ -21,6 +21,7 @@ en:
     sign_in: Sign in
     sign_up: Sign up
     language: Language
+    blog: Blog
   actions:
     title: Actions
     save: Save

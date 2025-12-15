@@ -105,6 +105,7 @@ ar:
     export_data: تصدير بياناتي
     delete_account: حذف حسابي
     calculate_now: احسب الآن!
+    blog: مدونة
   actions:
     title: إجراءات
     save: حفظ

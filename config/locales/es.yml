@@ -107,6 +107,7 @@ es:
     export_data: Exportar Mis Datos
     delete_account: Eliminar Mi Cuenta
     calculate_now: "¡Calcular Ahora!"
+    blog: Blog
   actions:
     title: Acciones
     save: Guardar
