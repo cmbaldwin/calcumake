@@ -104,6 +104,7 @@ ja:
     export_data: データのエクスポート
     delete_account: アカウントの削除
     calculate_now: 今すぐ計算！
+    blog: ブログ
   actions:
     title: アクション
     save: 保存

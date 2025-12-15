@@ -107,6 +107,7 @@ hi:
     export_data: मेरा डेटा एक्सपोर्ट करें
     delete_account: मेरा अकाउंट डिलीट करें
     calculate_now: अभी गणना करें!
+    blog: ब्लॉग
   actions:
     title: क्रियाएँ
     save: सहेजें

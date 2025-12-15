@@ -9,6 +9,7 @@ module Forms
       hint: nil,
       wrapper: true,
       wrapper_class: "col-12",
+      form_check_class: nil,
       options: {}
     )
       @form = form
@@ -17,6 +18,7 @@ module Forms
       @hint = hint
       @wrapper = wrapper
       @wrapper_class = wrapper_class
+      @custom_form_check_class = form_check_class
       @options = options || {}
     end
 
@@ -32,13 +34,13 @@ module Forms
     def checkbox_options
       opts = @options.dup
       # Extract form-check wrapper classes (like form-switch)
-      @form_check_class = opts.delete(:class) if opts[:class].to_s.include?("form-switch")
+      @extracted_form_check_class = opts.delete(:class) if opts[:class].to_s.include?("form-switch")
       opts[:class] = merge_classes("form-check-input", opts[:class])
       opts
     end
 
     def form_check_class
-      merge_classes("form-check", @form_check_class)
+      merge_classes("form-check", @custom_form_check_class, @extracted_form_check_class)
     end
 
     def show_hint?
