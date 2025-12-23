@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+# ⚠️  IMPORTANT: When updating to Rails 8.1.2+, remove the minitest pin below! ⚠️
+# Rails 8.1.2 will include minitest 6.0 compatibility (PR #56207 merged Dec 19, 2025)
 gem "rails", "~> 8.1.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
@@ -113,6 +115,11 @@ group :test do
   # Controller testing helpers for assigns and assert_template
   gem "rails-controller-testing"
 
-  # Pin minitest to 5.x until Rails 8.1.x is compatible with 6.x
+  # ⚠️⚠️⚠️ REMOVE THIS PIN WHEN UPDATING TO RAILS 8.1.2+ ⚠️⚠️⚠️
+  # Pin minitest to 5.x until Rails 8.1.2 is released
+  # Minitest 6.0.0 changed the run() method signature, breaking Rails 8.1.0-8.1.1
+  # Fix merged to rails/rails 8-1-stable on Dec 19, 2025 (PR #56207)
+  # When Rails 8.1.2 is released, remove this line to use minitest 6.x
+  # See: https://github.com/rails/rails/pull/56207
   gem "minitest", "~> 5.0"
 end
