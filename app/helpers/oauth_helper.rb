@@ -1,4 +1,4 @@
-module OauthHelper
+module OAuthHelper
   # Configure Devise OmniAuth with all available providers
   # Only configures providers that have credentials set in environment/secrets
   def self.configure_devise_omniauth(config)
