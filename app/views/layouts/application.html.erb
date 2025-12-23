@@ -5,6 +5,18 @@
     <title><%= meta_title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
+    <%# Preconnect to external domains for faster resource loading %>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://esm.sh" crossorigin>
+    <link rel="dns-prefetch" href="https://esm.sh">
+    <% if Rails.env.production? %>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+    <% end %>
+
     <%# PWA Meta Tags %>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -12,7 +24,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#0d6efd">
 
-    <%# Google Analytics (GA4) %>
+    <%# Google Analytics (GA4) - deferred initialization for better performance %>
     <% if Rails.env.production? %>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SBESSBTQRQ"></script>
@@ -22,8 +34,27 @@
         function gtag() {
             dataLayer.push(arguments);
         }
-        gtag('js', new Date());
-        gtag('config', 'G-SBESSBTQRQ');
+
+        // Defer GA config until after page load for better performance
+        if (document.readyState === 'complete') {
+            gtag('js', new Date());
+            gtag('config', 'G-SBESSBTQRQ');
+        } else {
+            window.addEventListener('load', function() {
+                // Use requestIdleCallback if available, otherwise setTimeout
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(function() {
+                        gtag('js', new Date());
+                        gtag('config', 'G-SBESSBTQRQ');
+                    });
+                } else {
+                    setTimeout(function() {
+                        gtag('js', new Date());
+                        gtag('config', 'G-SBESSBTQRQ');
+                    }, 0);
+                }
+            });
+        }
 
         // Track landing page conversions
         function trackSignupStart() {
@@ -82,9 +113,22 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-    <%# Bootstrap 5 with custom styling %>
+    <%# Bootstrap CSS - loaded directly for parallel loading (not via @import) %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <%# Bootstrap Icons - loaded async with font-display swap for better performance %>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" crossorigin="anonymous"></noscript>
+
+    <%# Application CSS with custom styling %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "pricing_calculator", "data-turbo-track": "reload" %>
+
+    <%# Lexxy CSS - only load for authenticated users who need rich text editing %>
+    <% if user_signed_in? %>
     <%= stylesheet_link_tag "lexxy", "data-turbo-track": "reload" %>
+    <% end %>
+
     <%= javascript_importmap_tags %>
 
 </head>
