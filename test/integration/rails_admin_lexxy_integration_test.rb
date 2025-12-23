@@ -127,7 +127,7 @@ class RailsAdminLexxyIntegrationTest < ActionDispatch::IntegrationTest
     # Article content field should use custom partial
     assert_includes initializer_content, 'config.model "Article"',
                     "Article model must be configured in Rails Admin"
-    assert_includes initializer_content, "partial 'form_action_text'",
+    assert_includes initializer_content, 'partial "form_action_text"',
                     "Article content field must use custom Action Text partial"
   end
 
