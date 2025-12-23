@@ -125,7 +125,7 @@ RailsAdmin.config do |config|
 
         # Rich text content field
         field :content do
-          partial 'form_action_text'
+          partial "form_action_text"
           help "Article content with rich text editor"
         end
       end

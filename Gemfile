@@ -112,4 +112,7 @@ group :test do
 
   # Controller testing helpers for assigns and assert_template
   gem "rails-controller-testing"
+
+  # Pin minitest to 5.x until Rails 8.1.x is compatible with 6.x
+  gem "minitest", "~> 5.0"
 end
