@@ -43,7 +43,7 @@ module Shared
         microsoft_svg
       when "facebook"
         facebook_svg
-      when "yahoojp", "yahoo japan", "yahoo! japan"
+      when "yahoojp", "yahoojapan"
         yahoo_japan_svg
       when "line"
         line_svg
@@ -55,7 +55,8 @@ module Shared
     private
 
     def normalized_provider
-      @provider.tr(" ", "")
+      # Remove spaces and punctuation, convert to lowercase
+      @provider.downcase.gsub(/[^a-z]/, "")
     end
 
     def google_svg
