@@ -39,14 +39,8 @@
            data-filament-list-dynamic-list-outlet=".filament-dynamic-list">
 
         <div class="filament-dynamic-list" data-controller="dynamic-list">
-          <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="mb-3">
             <h6 class="mb-0"><%= t('print_pricing.sections.filaments') %></h6>
-            <button type="button"
-                    class="btn btn-sm btn-success"
-                    data-action="filament-list#add"
-                    data-dynamic-list-target="addButton">
-              + <%= t('filaments.buttons.add_filament') %>
-            </button>
           </div>
 
           <div data-filament-list-target="container" data-dynamic-list-target="container">
@@ -62,8 +56,16 @@
             <% end %>
           </template>
 
-          <div class="form-text mt-2">
-            <%= t('print_pricing.help.filaments_limit') %>
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <div class="form-text mb-0">
+              <%= t('print_pricing.help.filaments_limit') %>
+            </div>
+            <button type="button"
+                    class="btn btn-sm btn-success"
+                    data-action="filament-list#add"
+                    data-dynamic-list-target="addButton">
+              + <%= t('filaments.buttons.add_filament') %>
+            </button>
           </div>
         </div>
       </div>

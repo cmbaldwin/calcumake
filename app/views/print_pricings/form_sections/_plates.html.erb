@@ -1,10 +1,7 @@
 <div class="col-12" data-controller="nested-form" data-nested-form-max-items-value="10" data-nested-form-dynamic-list-outlet=".plate-dynamic-list">
     <div class="card plate-dynamic-list" data-controller="dynamic-list">
-        <div class="card-header d-flex justify-content-between align-items-center">
+        <div class="card-header">
             <h5 class="mb-0"><%= t('print_pricing.sections.plates') %></h5>
-            <button type="button" class="btn btn-sm btn-success" data-action="nested-form#add" data-dynamic-list-target="addButton">
-                + <%= t('print_pricing.buttons.add_plate') %>
-            </button>
         </div>
         <div class="card-body">
             <div data-nested-form-target="container" data-dynamic-list-target="container">
@@ -20,8 +17,13 @@
                 <% end %>
             </template>
 
-            <div class="form-text mt-2">
-                <%= t('print_pricing.help.plates_limit') %>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+                <div class="form-text mb-0">
+                    <%= t('print_pricing.help.plates_limit') %>
+                </div>
+                <button type="button" class="btn btn-sm btn-success" data-action="nested-form#add" data-dynamic-list-target="addButton">
+                    + <%= t('print_pricing.buttons.add_plate') %>
+                </button>
             </div>
         </div>
     </div>
