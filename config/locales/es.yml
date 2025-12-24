@@ -292,7 +292,6 @@ es:
       select_printer: Seleccionar Impresora
       select_printer_prompt: Seleccione una impresora
       no_printer_help: "¿No tiene una impresora registrada?"
-      add_printer_link: Añadir una nueva impresora
       print_time_hours: Horas
       print_time_minutes: Minutos
       filament_weight: Peso del Filamento (g)
@@ -347,6 +346,7 @@ es:
       units_placeholder: '1'
       failure_rate_percentage: Tasa de Fallo (%)
       failure_rate_placeholder: '5.0'
+      add_printer_link: Registrar una nueva impresora
     filament_types:
       pla: PLA
       abs: ABS
@@ -1343,10 +1343,10 @@ es:
       not_set: No establecido
       total_cost: Costo Total
       no_filament_registered: "¿No hay filamento registrado?"
-      add_new_filament: Agregar Nuevo Filamento
       bed_temperature: Temperatura de la Cama
       max_print_speed: Velocidad Máxima de Impresión
       storage_temp: Temperatura de Almacenamiento
+      add_new_filament: Registrar Nuevo Filamento
     properties:
       moisture_sensitive: Sensible a la Humedad
     buttons:

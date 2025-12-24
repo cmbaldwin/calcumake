@@ -288,7 +288,6 @@ hi:
       select_printer: प्रिंटर का चयन करें
       select_printer_prompt: एक प्रिंटर का चयन करें
       no_printer_help: क्या आपके पास कोई प्रिंटर पंजीकृत नहीं है?
-      add_printer_link: एक नया प्रिंटर जोड़ें
       print_time_hours: घंटे
       print_time_minutes: मिनट
       filament_weight: फिलामेंट वजन (g)
@@ -343,6 +342,7 @@ hi:
       units_placeholder: '1'
       failure_rate_percentage: विफलता दर (%)
       failure_rate_placeholder: '5.0'
+      add_printer_link: एक नया प्रिंटर रजिस्टर करें
     filament_types:
       pla: PLA
       abs: ABS
@@ -426,12 +426,12 @@ hi:
     index:
       title: मेरे प्रिंटर
       subtitle: अपने 3डी प्रिंटर और उनके विनिर्देशों का प्रबंधन करें
-      add_new: नया प्रिंटर जोड़ें
       empty_state:
         title: अभी तक कोई प्रिंटर पंजीकृत नहीं है
         description: प्रिंटिंग लागत की सटीक गणना शुरू करने के लिए अपना पहला 3डी प्रिंटर
           जोड़ें।
         add_first: अपना पहला प्रिंटर जोड़ें
+      add_new: नया प्रिंटर रजिस्टर करें
     card:
       power_consumption: बिजली की खपत
       cost: लागत
@@ -443,8 +443,8 @@ hi:
       hours: घंटे
       years: वर्ष
     new:
-      title: नया प्रिंटर जोड़ें
       subtitle: सटीक लागत गणना के लिए अपने 3D प्रिंटर विनिर्देशों को पंजीकृत करें
+      title: नया प्रिंटर रजिस्टर करें
     edit:
       title: प्रिंटर संपादित करें
       subtitle: अपने 3D प्रिंटर विनिर्देशों को अपडेट करें
@@ -1359,10 +1359,10 @@ hi:
       not_set: निर्धारित नहीं
       total_cost: कुल लागत
       no_filament_registered: कोई फिलामेंट पंजीकृत नहीं है?
-      add_new_filament: नया फिलामेंट जोड़ें
       bed_temperature: बेड का तापमान
       max_print_speed: अधिकतम प्रिंट गति
       storage_temp: भंडारण तापमान
+      add_new_filament: नया फिलामेंट रजिस्टर करें
     properties:
       moisture_sensitive: नमी के प्रति संवेदनशील
     buttons:

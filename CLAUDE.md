@@ -478,6 +478,12 @@ config/locales/
 
 ### Automated Translation System
 
+**CRITICAL TRANSLATION WORKFLOW**: When changing existing translation text:
+1. **ONLY edit the English file** in `config/locales/en/` or `config/locales/devise.en.yml`
+2. **DELETE the key-value pair** from ALL non-English locale files (ja.yml, es.yml, fr.yml, ar.yml, hi.yml, zh-CN.yml)
+3. **DO NOT manually re-translate** - the automated system will handle it on next deployment
+4. The pre-build hook will detect missing keys and automatically translate them
+
 **Development Workflow** (Local):
 1. Add new keys to files in `config/locales/en/` or `config/locales/devise.en.yml`
 2. Run `bin/sync-translations` (requires API key for automated translation)

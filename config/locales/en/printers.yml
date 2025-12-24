@@ -4,7 +4,7 @@ en:
     index:
       title: My Printers
       subtitle: Manage your 3D printers and their specifications
-      add_new: Add New Printer
+      add_new: Register New Printer
       empty_state:
         title: No printers registered yet
         description: Add your first 3D printer to start calculating printing costs
@@ -21,7 +21,7 @@ en:
       hours: hours
       years: years
     new:
-      title: Add New Printer
+      title: Register New Printer
       subtitle: Register your 3D printer specifications for accurate cost calculations
     edit:
       title: Edit Printer

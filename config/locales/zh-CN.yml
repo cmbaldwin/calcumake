@@ -282,7 +282,6 @@ zh-CN:
       select_printer: 选择打印机
       select_printer_prompt: 选择一台打印机
       no_printer_help: 没有注册打印机？
-      add_printer_link: 添加新打印机
       print_time_hours: 小时
       print_time_minutes: 分钟
       filament_weight: 耗材重量 (g)
@@ -336,6 +335,7 @@ zh-CN:
       units_placeholder: '1'
       failure_rate_percentage: 失败率 (%)
       failure_rate_placeholder: '5.0'
+      add_printer_link: 注册新打印机
     filament_types:
       pla: PLA
       abs: ABS
@@ -418,11 +418,11 @@ zh-CN:
     index:
       title: 我的打印机
       subtitle: 管理您的 3D 打印机及其规格
-      add_new: 添加新打印机
       empty_state:
         title: 尚未注册打印机
         description: 添加您的第一台 3D 打印机以开始准确计算打印成本。
         add_first: 添加您的第一台打印机
+      add_new: 注册新打印机
     card:
       power_consumption: 功耗
       cost: 成本
@@ -434,8 +434,8 @@ zh-CN:
       hours: 小时
       years: 年
     new:
-      title: 添加新打印机
       subtitle: 注册您的 3D 打印机规格，以进行准确的成本计算
+      title: 注册新打印机
     edit:
       title: 编辑打印机
       subtitle: 更新您的 3D 打印机规格
@@ -1164,10 +1164,10 @@ zh-CN:
       not_set: 未设置
       total_cost: 总成本
       no_filament_registered: 没有注册线材？
-      add_new_filament: 添加新线材
       bed_temperature: 热床温度
       max_print_speed: 最大打印速度
       storage_temp: 存储温度
+      add_new_filament: 注册新线材
     properties:
       moisture_sensitive: 对湿度敏感
     buttons:

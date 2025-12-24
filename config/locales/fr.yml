@@ -292,7 +292,6 @@ fr:
       select_printer: Sélectionner une imprimante
       select_printer_prompt: Sélectionner une imprimante
       no_printer_help: Vous n'avez pas d'imprimante enregistrée ?
-      add_printer_link: Ajouter une nouvelle imprimante
       print_time_hours: Heures
       print_time_minutes: Minutes
       filament_weight: Poids du filament (g)
@@ -347,6 +346,7 @@ fr:
       units_placeholder: '1'
       failure_rate_percentage: Taux d'échec (%)
       failure_rate_placeholder: '5.0'
+      add_printer_link: Enregistrer une nouvelle imprimante
     filament_types:
       pla: PLA
       abs: ABS
@@ -432,12 +432,12 @@ fr:
     index:
       title: Mes imprimantes
       subtitle: Gérez vos imprimantes 3D et leurs spécifications
-      add_new: Ajouter une nouvelle imprimante
       empty_state:
         title: Aucune imprimante enregistrée pour le moment
         description: Ajoutez votre première imprimante 3D pour commencer à calculer
           les coûts d'impression avec précision.
         add_first: Ajouter votre première imprimante
+      add_new: Enregistrer une nouvelle imprimante
     card:
       power_consumption: Consommation électrique
       cost: Coût
@@ -449,9 +449,9 @@ fr:
       hours: heures
       years: années
     new:
-      title: Ajouter une nouvelle imprimante
       subtitle: Enregistrez les spécifications de votre imprimante 3D pour des calculs
         de coûts précis
+      title: Enregistrer une nouvelle imprimante
     edit:
       title: Modifier l'imprimante
       subtitle: Mettez à jour les spécifications de votre imprimante 3D
@@ -1360,10 +1360,10 @@ fr:
       not_set: Non défini
       total_cost: Coût total
       no_filament_registered: Aucun filament enregistré ?
-      add_new_filament: Ajouter un nouveau filament
       bed_temperature: Température du plateau
       max_print_speed: Vitesse d'impression maximale
       storage_temp: Température de stockage
+      add_new_filament: Enregistrer un nouveau filament
     properties:
       moisture_sensitive: Sensible à l'humidité
     buttons:

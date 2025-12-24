@@ -56,15 +56,6 @@
       </div>
     </div>
 
-    <!-- Remove Button -->
-    <div class="col-md-2">
-      <button type="button"
-              class="btn btn-sm btn-outline-danger w-100"
-              data-action="filament-list#remove">
-        <%= t('actions.delete') %>
-      </button>
-    </div>
-
     <!-- Filament Info Display -->
     <div class="col-12">
       <div class="row g-2 text-muted small">
@@ -99,16 +90,23 @@
 
     <!-- Quick Actions -->
     <div class="col-12">
-      <div class="d-flex gap-2 align-items-center">
-        <small class="text-muted"><%= t('filaments.fields.no_filament_registered') %></small>
-        <%= link_to t('filaments.fields.add_new_filament'),
-            new_filament_path(format: :turbo_stream),
-            class: "btn btn-sm btn-outline-primary",
-            data: { 
-              controller: "modal-link",
-              action: "click->modal-link#open",
-              turbo_frame: "modal_content"
-            } %>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex gap-2 align-items-center">
+          <small class="text-muted"><%= t('filaments.fields.no_filament_registered') %></small>
+          <%= link_to t('filaments.fields.add_new_filament'),
+              new_filament_path(format: :turbo_stream),
+              class: "btn btn-sm btn-outline-primary",
+              data: {
+                controller: "modal-link",
+                action: "click->modal-link#open",
+                turbo_frame: "modal_content"
+              } %>
+        </div>
+        <button type="button"
+                class="btn btn-sm btn-outline-danger"
+                data-action="filament-list#remove">
+          <%= t('actions.delete') %>
+        </button>
       </div>
     </div>
   </div>

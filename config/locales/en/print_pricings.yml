@@ -115,7 +115,7 @@ en:
       select_printer: Select Printer
       select_printer_prompt: Select a printer
       no_printer_help: Don't have a printer registered?
-      add_printer_link: Add a new printer
+      add_printer_link: Register a new printer
       print_time_hours: Hours
       print_time_minutes: Minutes
       filament_weight: Filament Weight (g)
