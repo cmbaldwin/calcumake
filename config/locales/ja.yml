@@ -282,7 +282,6 @@ ja:
       select_printer: プリンターを選択
       select_printer_prompt: プリンターを選択してください
       no_printer_help: プリンターが登録されていませんか？
-      add_printer_link: 新しいプリンターを追加
       print_time_hours: 時間
       print_time_minutes: 分
       filament_weight: フィラメント重量（g）
@@ -336,6 +335,7 @@ ja:
       units_placeholder: '1'
       failure_rate_percentage: 不良率 (%)
       failure_rate_placeholder: '5.0'
+      add_printer_link: 新しいプリンターを登録
     filament_types:
       pla: PLA
       abs: ABS
@@ -418,11 +418,11 @@ ja:
     index:
       title: マイプリンター
       subtitle: 3Dプリンターとその仕様を管理します
-      add_new: 新しいプリンターを追加
       empty_state:
         title: まだプリンターが登録されていません
         description: 最初の3Dプリンターを追加して、印刷コストを正確に計算しましょう。
         add_first: 最初のプリンターを追加
+      add_new: 新しいプリンターを登録
     card:
       power_consumption: 消費電力
       cost: コスト
@@ -434,8 +434,8 @@ ja:
       hours: 時間
       years: 年
     new:
-      title: 新しいプリンターを追加
       subtitle: 正確なコスト計算のために3Dプリンターの仕様を登録してください
+      title: 新しいプリンターを登録
     edit:
       title: プリンターを編集
       subtitle: 3Dプリンターの仕様を更新してください
@@ -1164,10 +1164,10 @@ ja:
       not_set: 未設定
       total_cost: 合計コスト
       no_filament_registered: フィラメントが登録されていませんか？
-      add_new_filament: 新しいフィラメントを追加
       bed_temperature: ベッド温度
       max_print_speed: 最大印刷速度
       storage_temp: 保管温度
+      add_new_filament: 新しいフィラメントを登録
     properties:
       moisture_sensitive: 湿気に敏感
     buttons:

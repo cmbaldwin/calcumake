@@ -285,7 +285,6 @@ ar:
       select_printer: اختر طابعة
       select_printer_prompt: اختر طابعة
       no_printer_help: ليس لديك طابعة مسجلة؟
-      add_printer_link: إضافة طابعة جديدة
       print_time_hours: ساعات
       print_time_minutes: دقائق
       filament_weight: وزن الفتيل (جم)
@@ -340,6 +339,7 @@ ar:
       units_placeholder: '1'
       failure_rate_percentage: معدل الفشل (%)
       failure_rate_placeholder: '5.0'
+      add_printer_link: تسجيل طابعة جديدة
     filament_types:
       pla: PLA
       abs: ABS
@@ -422,11 +422,11 @@ ar:
     index:
       title: طابعاتي
       subtitle: إدارة طابعاتك ثلاثية الأبعاد ومواصفاتها
-      add_new: إضافة طابعة جديدة
       empty_state:
         title: لم يتم تسجيل أي طابعات حتى الآن
         description: أضف طابعتك ثلاثية الأبعاد الأولى لبدء حساب تكاليف الطباعة بدقة.
         add_first: أضف طابعتك الأولى
+      add_new: تسجيل طابعة جديدة
     card:
       power_consumption: استهلاك الطاقة
       cost: التكلفة
@@ -438,8 +438,8 @@ ar:
       hours: ساعات
       years: سنوات
     new:
-      title: إضافة طابعة جديدة
       subtitle: سجل مواصفات طابعتك ثلاثية الأبعاد لحسابات التكلفة الدقيقة
+      title: تسجيل طابعة جديدة
     edit:
       title: تعديل الطابعة
       subtitle: تحديث مواصفات طابعتك ثلاثية الأبعاد
@@ -1288,10 +1288,10 @@ ar:
       not_set: غير مُعيَّن
       total_cost: التكلفة الإجمالية
       no_filament_registered: لم يتم تسجيل أي فتيل؟
-      add_new_filament: إضافة فتيل جديد
       bed_temperature: درجة حرارة السرير
       max_print_speed: أقصى سرعة طباعة
       storage_temp: درجة حرارة التخزين
+      add_new_filament: تسجيل خامة جديدة
     properties:
       moisture_sensitive: حساس للرطوبة
     buttons:

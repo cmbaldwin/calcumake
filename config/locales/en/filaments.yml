@@ -67,7 +67,7 @@ en:
       not_set: Not set
       total_cost: Total Cost
       no_filament_registered: No filament registered?
-      add_new_filament: Add New Filament
+      add_new_filament: Register New Filament
       bed_temperature: Bed Temperature
       max_print_speed: Max Print Speed
       storage_temp: Storage Temperature
