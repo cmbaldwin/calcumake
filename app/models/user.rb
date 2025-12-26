@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :clients, dependent: :destroy
   has_many :usage_trackings, dependent: :destroy
   has_many :user_consents, dependent: :destroy
+  has_many :api_tokens, dependent: :destroy
   has_one_attached :company_logo
 
   validates :default_currency, presence: true
