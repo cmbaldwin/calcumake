@@ -1,0 +1,51 @@
+en:
+  api_tokens:
+    title: "API Tokens"
+    description: "Manage your API tokens for programmatic access to CalcuMake."
+    new: "Create New Token"
+    new_description: "Create a new API token for authenticating with the CalcuMake API."
+    empty: "No API tokens yet. Create one to start using the API."
+    copy: "Copy"
+    revoke: "Revoke"
+    create: "Create Token"
+    revoke_confirm: "Are you sure you want to revoke this token? This action cannot be undone and will immediately invalidate the token."
+    created_success: "API token created successfully. Make sure to copy it now - you won't be able to see it again!"
+    revoked_success: "API token has been revoked."
+
+    status:
+      active: "Active"
+      expired: "Expired"
+      revoked: "Revoked"
+
+    expires_on: "Expires %{date}"
+    expired_on: "Expired %{date}"
+    never_expires: "Never expires"
+    last_used: "Last used %{time} ago"
+    never_used: "Never used"
+    created: "Created %{date}"
+
+    expiration:
+      30_days: "30 days"
+      90_days: "90 days"
+      1_year: "1 year"
+      never: "Never expires"
+
+    fields:
+      name: "Token Name"
+      name_hint: "A descriptive name to help you identify this token."
+      name_placeholder: "e.g., Production API, Test Integration"
+      expiration: "Expiration"
+      expiration_hint: "When should this token expire? Shorter periods are more secure."
+
+    reveal:
+      title: "Your New API Token"
+      warning: "Copy this token now!"
+      warning_detail: "For security reasons, this token will only be shown once. Store it securely - you won't be able to see it again."
+      your_token: "Your Token"
+      auto_hide_notice: "This token will be hidden automatically in 60 seconds for security."
+
+    api:
+      title: "API Access"
+      description: "Use your API tokens to access CalcuMake programmatically."
+      documentation: "View API Documentation"
+      manage: "Manage Tokens"
