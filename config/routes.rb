@@ -1,4 +1,54 @@
 Rails.application.routes.draw do
+  # API Token management (Web UI)
+  resources :api_tokens, only: %i[index new create destroy]
+
+  # API Routes - Versioned, JSON-only
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      # Health check for load balancers
+      get :health, to: "health#show"
+
+      # Public endpoints (no authentication)
+      post :calculator, to: "calculator#create"
+
+      # Authenticated endpoints
+      resource :me, controller: "users", only: %i[show update] do
+        get :export, action: :export_data
+        get :usage, action: :usage_stats
+      end
+
+      resources :api_tokens, only: %i[index create destroy]
+
+      resources :print_pricings do
+        member do
+          post :duplicate
+          patch :increment_times_printed
+          patch :decrement_times_printed
+        end
+        resources :plates, shallow: true, only: %i[index show]
+        resources :invoices, shallow: true do
+          member do
+            patch :mark_as_sent
+            patch :mark_as_paid
+            patch :mark_as_cancelled
+          end
+        end
+      end
+
+      resources :printers
+      resources :filaments do
+        member do
+          post :duplicate
+        end
+      end
+      resources :clients
+
+      resources :invoices, only: [:index] do
+        resources :line_items, controller: "invoice_line_items", shallow: true
+      end
+    end
+  end
+
   # GDPR Compliance routes
   resources :user_consents, only: [ :create ]
   get "cookie-policy", to: "privacy#cookie_policy", as: :cookie_policy

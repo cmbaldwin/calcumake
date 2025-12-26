@@ -1,0 +1,37 @@
+<div class="card border-warning mb-3" data-controller="api-token" data-api-token-revealed-value="true">
+  <div class="card-header bg-warning text-dark">
+    <i class="bi bi-exclamation-triangle me-2"></i>
+    <strong><%= t("api_tokens.reveal.title") %></strong>
+  </div>
+
+  <div class="card-body" data-api-token-target="revealSection">
+    <div class="alert alert-danger mb-3">
+      <i class="bi bi-shield-exclamation me-2"></i>
+      <strong><%= t("api_tokens.reveal.warning") %></strong>
+      <p class="mb-0 mt-2"><%= t("api_tokens.reveal.warning_detail") %></p>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-bold"><%= t("api_tokens.reveal.your_token") %></label>
+      <div class="input-group">
+        <code class="form-control bg-light user-select-all font-monospace"
+              data-api-token-target="tokenDisplay"
+              style="word-break: break-all;">
+          <%= @plain_token %>
+        </code>
+        <button type="button"
+                class="btn btn-outline-primary"
+                data-api-token-target="copyButton"
+                data-action="click->api-token#copy">
+          <i class="bi bi-clipboard"></i>
+          <%= t("api_tokens.copy") %>
+        </button>
+      </div>
+    </div>
+
+    <div class="alert alert-info mb-0">
+      <i class="bi bi-info-circle me-2"></i>
+      <%= t("api_tokens.reveal.auto_hide_notice") %>
+    </div>
+  </div>
+</div>

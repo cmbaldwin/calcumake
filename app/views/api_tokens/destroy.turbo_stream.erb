@@ -1,0 +1,12 @@
+<%# Replace the token card with updated version showing revoked status %>
+<%= turbo_stream.replace dom_id(@api_token) do %>
+  <%= render ApiTokens::TokenCardComponent.new(token: @api_token) %>
+<% end %>
+
+<%# Show a flash notice %>
+<%= turbo_stream.update "flash" do %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= t("api_tokens.revoked_success") %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
