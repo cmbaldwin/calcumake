@@ -1,0 +1,30 @@
+<%= form_with model: @token, url: api_tokens_path, data: { turbo_frame: "api_tokens_list" } do |form| %>
+  <%= render Forms::ErrorsComponent.new(model: @token) %>
+
+  <div class="row g-3">
+    <%= render Forms::FieldComponent.new(
+      form: form,
+      attribute: :name,
+      type: :text,
+      label: t("api_tokens.fields.name"),
+      hint: t("api_tokens.fields.name_hint"),
+      wrapper_class: "col-md-6",
+      options: { placeholder: t("api_tokens.fields.name_placeholder"), autofocus: true }
+    ) %>
+
+    <%= render Forms::SelectFieldComponent.new(
+      form: form,
+      attribute: :expiration,
+      choices: expiration_options,
+      label: t("api_tokens.fields.expiration"),
+      hint: t("api_tokens.fields.expiration_hint"),
+      wrapper_class: "col-md-6",
+      select_options: { selected: ApiToken::DEFAULT_EXPIRATION }
+    ) %>
+  </div>
+
+  <div class="mt-4">
+    <%= form.submit t("api_tokens.create"), class: "btn btn-primary" %>
+    <%= link_to t("actions.cancel"), user_profile_path(anchor: "api-tokens"), class: "btn btn-outline-secondary ms-2" %>
+  </div>
+<% end %>
