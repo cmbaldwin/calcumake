@@ -10,4 +10,7 @@ class LegalController < ApplicationController
 
   def commerce_disclosure
   end
+
+  def api_documentation
+  end
 end

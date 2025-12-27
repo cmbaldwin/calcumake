@@ -164,6 +164,7 @@ Rails.application.routes.draw do
   get "user-agreement", to: "legal#user_agreement", as: :user_agreement
   get "support", to: "legal#support", as: :support
   get "commerce-disclosure", to: "legal#commerce_disclosure", as: :commerce_disclosure
+  get "api-documentation", to: "legal#api_documentation", as: :api_documentation
 
   # ---------------------------------------------------------------------------
   # Public Pages & Marketing
