@@ -230,6 +230,99 @@ end
 article3.save!
 puts "  ✅ Created: '#{article3.title_en}'"
 
+# Article 4: December 2025 Feature Update
+article4 = Article.find_or_initialize_by(slug_en: "december-2025-feature-update-printer-profiles-technology-sync")
+article4.assign_attributes(
+  author: "CalcuMake Team",
+  published_at: Time.current,
+  featured: true
+)
+
+I18n.with_locale(:en) do
+  article4.title = "December 2025 Update: Printer Profiles Database & Smart Technology Sync"
+  article4.slug = "december-2025-feature-update-printer-profiles-technology-sync"
+  article4.excerpt = "We've added a searchable printer profiles database with 26+ pre-loaded printers, plus smart technology synchronization that automatically locks plate settings to match your selected printer."
+  article4.meta_description = "CalcuMake December 2025 update: Searchable printer profiles database, auto-fill printer specs, and smart FDM/Resin technology sync for accurate print pricing."
+  article4.meta_keywords = "calcu make update, printer profiles, 3d printer database, fdm resin sync, print pricing features"
+  article4.content = <<~HTML
+    <h2>What's New in December 2025</h2>
+    <p>We're excited to announce two major features that make CalcuMake even easier to use: a searchable printer profiles database and smart technology synchronization. These updates save you time during setup and ensure your cost calculations are always accurate.</p>
+
+    <h2>🔍 Searchable Printer Profiles Database</h2>
+    <p>Setting up a new printer just got a lot faster. Instead of manually entering specifications, you can now search our database of 26+ popular 3D printers.</p>
+
+    <h3>How It Works</h3>
+    <ol>
+      <li>When adding a new printer, look for the "Start from a known printer" search box</li>
+      <li>Type any part of the manufacturer or model name (e.g., "bambu" or "prusa")</li>
+      <li>Select your printer from the dropdown</li>
+      <li>Watch as the form auto-fills with accurate specifications</li>
+    </ol>
+
+    <h3>Pre-Loaded Printers Include</h3>
+    <ul>
+      <li><strong>Bambu Lab</strong>: A1, A1 Mini, P1P, P1S, P1S Combo, X1 Carbon, X1E</li>
+      <li><strong>Prusa</strong>: MK4, MK4S, MINI+, XL (Single/Multi), CORE One</li>
+      <li><strong>Creality</strong>: Ender 3 V3, K1, K1 Max, K1C</li>
+      <li><strong>Elegoo</strong>: Neptune 4, Neptune 4 Pro, Mars 4 Ultra, Saturn 3</li>
+      <li><strong>Anycubic</strong>: Kobra 3, Photon Mono M5s</li>
+      <li>And more being added regularly!</li>
+    </ul>
+
+    <h3>Auto-Filled Specifications</h3>
+    <p>Each profile includes:</p>
+    <ul>
+      <li>Printer name and manufacturer</li>
+      <li>Material technology (FDM or Resin)</li>
+      <li>Average power consumption in watts</li>
+      <li>Approximate retail price in your currency</li>
+    </ul>
+
+    <p>You can always edit any field after selection - the profiles are just a starting point to save you time.</p>
+
+    <h2>🔗 Smart Technology Synchronization</h2>
+    <p>This feature ensures your print pricing calculations are always consistent with your printer's capabilities.</p>
+
+    <h3>The Problem We Solved</h3>
+    <p>Previously, you could accidentally create a print job with resin settings on an FDM printer (or vice versa). This led to incorrect cost calculations and confusion.</p>
+
+    <h3>How It Works Now</h3>
+    <p>When you select a printer in the print pricing form:</p>
+    <ol>
+      <li>All plates automatically switch to that printer's technology (FDM or Resin)</li>
+      <li>The technology toggle becomes locked - you can see it but can't change it</li>
+      <li>Any new plates you add will also use the correct technology</li>
+      <li>If you change printers, all plates update automatically</li>
+    </ol>
+
+    <h3>Visual Indicators</h3>
+    <p>The technology buttons (FDM/Resin) appear slightly dimmed when locked, with a 70% opacity. This visual cue tells you that the setting is controlled by your printer selection.</p>
+
+    <h3>Flexibility When Needed</h3>
+    <p>If you clear the printer selection (select the blank prompt option), the technology toggles become editable again. This is useful if you're doing calculations before deciding which printer to use.</p>
+
+    <h2>🛠️ Technical Improvements</h2>
+    <p>Behind the scenes, we've also made improvements to form handling:</p>
+    <ul>
+      <li><strong>Smarter form submission</strong>: Hidden fields for the "wrong" technology are now filtered out, preventing validation errors</li>
+      <li><strong>Better resin support</strong>: Fixed issues where resin print jobs could fail to save</li>
+      <li><strong>Cleaner UI</strong>: Improved styling for the printer profile search clear button</li>
+    </ul>
+
+    <h2>Coming Soon: AI-Powered Profile Updates</h2>
+    <p>We're building a weekly job that uses AI to discover and add new printer models as they're released. This means our database will stay current with the latest printers from all major manufacturers.</p>
+
+    <h2>Try It Now</h2>
+    <p>These features are available to all CalcuMake users immediately. Head to <a href="/printers/new">Add New Printer</a> to try the searchable profiles, or <a href="/print_pricings/new">create a new print calculation</a> to experience the technology sync.</p>
+
+    <p>Have a printer model you'd like us to add? <a href="/support">Contact us</a> and we'll include it in our next update!</p>
+  HTML
+  article4.translation_notice = false
+end
+
+article4.save!
+puts "  ✅ Created: '#{article4.title_en}'"
+
 puts "🎉 Seeded #{Article.count} blog articles!"
 puts ""
 puts "Next steps:"
