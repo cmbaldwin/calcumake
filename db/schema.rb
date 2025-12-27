@@ -52,6 +52,24 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_26_230924) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "api_tokens", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.inet "created_from_ip"
+    t.datetime "expires_at"
+    t.datetime "last_used_at"
+    t.string "name", null: false
+    t.datetime "revoked_at"
+    t.string "token_digest", null: false
+    t.string "token_hint", null: false
+    t.datetime "updated_at", null: false
+    t.string "user_agent"
+    t.bigint "user_id", null: false
+    t.index ["expires_at"], name: "index_api_tokens_on_expires_at", where: "(expires_at IS NOT NULL)"
+    t.index ["token_digest"], name: "index_api_tokens_on_token_digest", unique: true
+    t.index ["user_id", "created_at"], name: "index_api_tokens_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_api_tokens_on_user_id"
+  end
+
   create_table "article_translations", force: :cascade do |t|
     t.bigint "article_id", null: false
     t.datetime "created_at", null: false
@@ -370,6 +388,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_26_230924) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "api_tokens", "users", on_delete: :cascade
   add_foreign_key "article_translations", "articles"
   add_foreign_key "clients", "users"
   add_foreign_key "filaments", "users"

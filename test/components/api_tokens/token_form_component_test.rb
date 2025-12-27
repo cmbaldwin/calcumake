@@ -4,6 +4,8 @@ require "test_helper"
 
 module ApiTokens
   class TokenFormComponentTest < ViewComponent::TestCase
+    include Rails.application.routes.url_helpers
+
     setup do
       @user = users(:one)
       @token = @user.api_tokens.build
@@ -48,27 +50,19 @@ module ApiTokens
       assert_selector "a[href*='profile']", text: /Cancel/i
     end
 
-    test "expiration_options returns correct format" do
-      component = TokenFormComponent.new(token: @token)
-      options = component.expiration_options
+    test "expiration select has correct number of options" do
+      render_inline(TokenFormComponent.new(token: @token))
 
-      assert_kind_of Array, options
-      assert_equal 4, options.length
-
-      # Each option should be [label, value]
-      options.each do |option|
-        assert_kind_of Array, option
-        assert_equal 2, option.length
-      end
+      # Should have 4 options for 30_days, 90_days, 1_year, never
+      assert_selector "select[name='api_token[expiration]'] option", count: 4
     end
 
-    test "expiration_options includes all EXPIRATION_OPTIONS keys" do
-      component = TokenFormComponent.new(token: @token)
-      options = component.expiration_options
-      values = options.map(&:last)
+    test "expiration select includes all expiration values" do
+      render_inline(TokenFormComponent.new(token: @token))
 
+      # Check that all expected values are present as option values
       ApiToken::EXPIRATION_OPTIONS.keys.each do |key|
-        assert_includes values, key
+        assert_selector "select[name='api_token[expiration]'] option[value='#{key}']"
       end
     end
 
