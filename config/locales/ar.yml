@@ -138,6 +138,7 @@ ar:
     print: طباعة
     more: المزيد
     search: بحث
+    back_to_profile: العودة إلى الملف الشخصي
   flash:
     success: نجاح
     error: خطأ
@@ -2105,3 +2106,187 @@ ar:
       update_resin: تحديث راتنج
       add: إضافة راتنج
     confirm_delete: هل أنت متأكد أنك تريد حذف %{name}؟ لا يمكن التراجع عن هذا الإجراء.
+  api_documentation:
+    title: توثيق واجهة برمجة التطبيقات
+    nav_title: توثيق واجهة برمجة التطبيقات
+    meta:
+      description: مرجع كامل لواجهة CalcuMake REST API. قم بإدارة أسعار الطباعة والطابعات
+        والخيوط والعملاء برمجيًا باستخدام واجهة برمجة التطبيقات الشاملة الخاصة بنا.
+      keywords: API, REST, التوثيق, الطباعة ثلاثية الأبعاد, CalcuMake, التكامل, مطور
+    hero:
+      title: توثيق واجهة CalcuMake API
+      subtitle: قم ببناء عمليات تكامل قوية لسير عمل الطباعة ثلاثية الأبعاد باستخدام
+        واجهة REST API الشاملة الخاصة بنا
+      cta: احصل على رمز API الخاص بك
+    toc:
+      title: جدول المحتويات
+    getting_started:
+      title: البدء
+      description: واجهة CalcuMake API هي واجهة RESTful API تستخدم JSON للطلبات والاستجابات.
+        يتم ترقيم جميع نقاط نهاية API وتتطلب مصادقة عبر رموز Bearer.
+      base_url_title: عنوان URL الأساسي
+      quick_example_title: مثال سريع
+      quick_example_description: إليك مثال بسيط للتحقق من حالة سلامة API (لا يلزم
+        المصادقة)
+    authentication:
+      title: المصادقة
+      description: تتطلب جميع نقاط نهاية API (باستثناء نقاط النهاية العامة مثل فحص
+        السلامة) مصادقة باستخدام رموز Bearer.
+      create_token_notice_html: لإنشاء رمز API، قم بزيارة %{link}.
+      api_tokens_page: صفحة رموز API
+      bearer_format_title: تنسيق رمز Bearer
+      bearer_format_description: قم بتضمين رمز API الخاص بك في رأس Authorization لكل
+        طلب
+      example_title: مثال على طلب مصادق
+    endpoints:
+      print_pricings:
+        title: تسعير الطباعة
+        description: إدارة حسابات تسعير الطباعة لمشاريع الطباعة ثلاثية الأبعاد الخاصة
+          بك.
+        list:
+          description: استرجاع جميع حسابات تسعير الطباعة للمستخدم المصادق عليه
+        create:
+          description: إنشاء حساب جديد لتسعير الطباعة
+        show:
+          description: استرجاع حساب معين لتسعير الطباعة بواسطة المعرف
+        update:
+          description: تحديث حساب موجود لتسعير الطباعة
+        destroy:
+          description: حذف حساب تسعير الطباعة
+      printers:
+        title: طابعات
+        description: إدارة الطابعات ثلاثية الأبعاد في المخزون الخاص بك.
+        list:
+          description: قائمة بجميع الطابعات
+        create:
+          description: إنشاء طابعة جديدة
+        show:
+          description: الحصول على طابعة معينة
+        update:
+          description: تحديث طابعة
+        destroy:
+          description: حذف طابعة
+      filaments:
+        title: خيوط
+        description: إدارة مواد الخيوط لطباعة FDM/FFF.
+        list:
+          description: قائمة بجميع الخيوط
+        create:
+          description: إنشاء خيط جديد
+        show:
+          description: الحصول على خيط معين
+        update:
+          description: تحديث خيط
+        destroy:
+          description: حذف خيط
+        duplicate:
+          description: تكرار خيط موجود
+      resins:
+        title: راتنجات
+        description: إدارة مواد الراتنج لطباعة SLA/DLP/LCD.
+        list:
+          description: قائمة بجميع الراتنجات
+        create:
+          description: إنشاء راتنج جديد
+        show:
+          description: الحصول على راتنج معين
+        update:
+          description: تحديث راتنج
+        destroy:
+          description: حذف راتنج
+        duplicate:
+          description: تكرار راتنج موجود
+      clients:
+        title: العملاء
+        description: إدارة عملائك وزبائنك.
+        list:
+          description: عرض قائمة بجميع العملاء
+        create:
+          description: إنشاء عميل جديد
+        show:
+          description: الحصول على عميل محدد
+        update:
+          description: تحديث عميل
+        destroy:
+          description: حذف عميل
+    response_format:
+      title: تنسيق الاستجابة
+      description: تتبع جميع استجابات واجهة برمجة التطبيقات (API) بنية JSON متسقة
+        تستند إلى اتفاقيات JSON:API.
+      success_title: استجابة ناجحة (مورد واحد)
+      collection_title: استجابة المجموعة
+    errors:
+      title: معالجة الأخطاء
+      description: عند حدوث خطأ، تُرجع واجهة برمجة التطبيقات (API) رمز حالة HTTP مناسبًا
+        مع استجابة خطأ JSON.
+      status_codes_title: رموز حالة HTTP
+      status_code: رمز الحالة
+      meaning: المعنى
+      format_title: تنسيق استجابة الخطأ
+      codes:
+        '200': موافق - تم تنفيذ الطلب بنجاح
+        '201': تم الإنشاء - تم إنشاء المورد بنجاح
+        '400': طلب غير صالح - تنسيق طلب غير صالح
+        '401': غير مصرح به - يلزم المصادقة أو الرمز المميز غير صالح
+        '403': ممنوع - تمت المصادقة ولكن غير مصرح به لهذا المورد
+        '404': غير موجود - المورد غير موجود
+        '422': كيان غير قابل للمعالجة - أخطاء التحقق من الصحة
+        '500': خطأ في الخادم الداخلي - حدث خطأ في الخادم
+    common:
+      parameters: المعلمات
+      parameter: المعلمة
+      type: النوع
+      description: الوصف
+      page_param: رقم الصفحة للترقيم (الافتراضي 1)
+      example_request: مثال على الطلب
+      example_response: مثال على الاستجابة
+      request_body: نص الطلب
+      method: الطريقة
+      endpoint: نقطة النهاية
+  api_tokens:
+    title: رموز API
+    description: إدارة رموز API الخاصة بك للوصول البرمجي إلى CalcuMake.
+    new: إنشاء رمز جديد
+    new_description: إنشاء رمز API جديد للمصادقة مع واجهة برمجة تطبيقات CalcuMake.
+    empty: لا توجد رموز API حتى الآن. قم بإنشاء واحد لبدء استخدام واجهة برمجة التطبيقات.
+    copy: نسخ
+    revoke: إبطال
+    create: إنشاء رمز
+    revoke_confirm: هل أنت متأكد أنك تريد إبطال هذا الرمز؟ لا يمكن التراجع عن هذا
+      الإجراء وسيؤدي إلى إبطال الرمز على الفور.
+    created_success: تم إنشاء رمز API بنجاح. تأكد من نسخه الآن - لن تتمكن من رؤيته
+      مرة أخرى!
+    revoked_success: تم إبطال رمز API.
+    status:
+      active: نشط
+      expired: منتهي الصلاحية
+      revoked: مبطل
+    expires_on: تنتهي صلاحيته في %{date}
+    expired_on: انتهت صلاحيته في %{date}
+    never_expires: لا تنتهي صلاحيته أبدًا
+    last_used: آخر استخدام قبل %{time}
+    never_used: لم يتم استخدامه مطلقًا
+    created: تم إنشاؤه في %{date}
+    expiration:
+      30_days: 30 يومًا
+      90_days: 90 يومًا
+      1_year: سنة واحدة
+      never: لا تنتهي صلاحيته أبدًا
+    fields:
+      name: اسم الرمز
+      name_hint: اسم وصفي لمساعدتك في تحديد هذا الرمز.
+      name_placeholder: 'مثال: واجهة برمجة تطبيقات الإنتاج، تكامل الاختبار'
+      expiration: انتهاء الصلاحية
+      expiration_hint: متى يجب أن تنتهي صلاحية هذا الرمز؟ الفترات الأقصر أكثر أمانًا.
+    reveal:
+      title: رمز API الجديد الخاص بك
+      warning: انسخ هذا الرمز الآن!
+      warning_detail: لأسباب أمنية، سيتم عرض هذا الرمز مرة واحدة فقط. قم بتخزينه بشكل
+        آمن - لن تتمكن من رؤيته مرة أخرى.
+      your_token: الرمز الخاص بك
+      auto_hide_notice: سيتم إخفاء هذا الرمز تلقائيًا في غضون 60 ثانية لأسباب أمنية.
+    api:
+      title: الوصول إلى واجهة برمجة التطبيقات
+      description: استخدم رموز API الخاصة بك للوصول إلى CalcuMake برمجيًا.
+      documentation: عرض وثائق API
+      manage: إدارة الرموز

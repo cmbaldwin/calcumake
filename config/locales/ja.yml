@@ -137,6 +137,7 @@ ja:
     print: 印刷
     more: もっと見る
     search: 検索
+    back_to_profile: プロフィールに戻る
   flash:
     success: 成功
     error: エラー
@@ -1838,3 +1839,175 @@ ja:
       update_resin: レジンを更新
       add: レジンを追加
     confirm_delete: "%{name}を削除してもよろしいですか？この操作は元に戻せません。"
+  api_documentation:
+    title: APIドキュメント
+    nav_title: APIドキュメント
+    meta:
+      description: CalcuMake REST APIの完全なリファレンスです。包括的なAPIを使用して、印刷価格、プリンター、フィラメント、クライアントをプログラムで管理します。
+      keywords: API, REST, ドキュメント, 3Dプリンティング, CalcuMake, 統合, 開発者
+    hero:
+      title: CalcuMake APIドキュメント
+      subtitle: 包括的なREST APIを使用して、強力な3D印刷ワークフロー統合を構築します
+      cta: APIトークンを取得
+    toc:
+      title: 目次
+    getting_started:
+      title: はじめに
+      description: CalcuMake APIは、リクエストとレスポンスにJSONを使用するRESTful APIです。すべてのAPIエンドポイントはバージョン管理されており、Bearerトークンによる認証が必要です。
+      base_url_title: ベースURL
+      quick_example_title: クイック例
+      quick_example_description: APIのヘルスステータスを確認する簡単な例です（認証は不要です）
+    authentication:
+      title: 認証
+      description: すべてのAPIエンドポイント（ヘルスチェックなどのパブリックエンドポイントを除く）は、Bearerトークンを使用した認証が必要です。
+      create_token_notice_html: APIトークンを作成するには、%{link}にアクセスしてください。
+      api_tokens_page: APIトークンページ
+      bearer_format_title: Bearerトークン形式
+      bearer_format_description: すべてのリクエストのAuthorizationヘッダーにAPIトークンを含めます
+      example_title: 認証済みリクエストの例
+    endpoints:
+      print_pricings:
+        title: 印刷価格
+        description: 3D印刷プロジェクトの印刷価格計算を管理します。
+        list:
+          description: 認証済みユーザーのすべての印刷価格計算を取得します
+        create:
+          description: 新しい印刷価格計算を作成します
+        show:
+          description: IDで特定の印刷価格計算を取得します
+        update:
+          description: 既存の印刷価格計算を更新します
+        destroy:
+          description: 印刷価格計算を削除します
+      printers:
+        title: プリンター
+        description: 在庫の3Dプリンターを管理します。
+        list:
+          description: すべてのプリンターをリスト表示します
+        create:
+          description: 新しいプリンターを作成します
+        show:
+          description: 特定のプリンターを取得します
+        update:
+          description: プリンターを更新します
+        destroy:
+          description: プリンターを削除します
+      filaments:
+        title: フィラメント
+        description: FDM/FFF印刷用のフィラメント材料を管理します。
+        list:
+          description: すべてのフィラメントをリスト表示します
+        create:
+          description: 新しいフィラメントを作成します
+        show:
+          description: 特定のフィラメントを取得します
+        update:
+          description: フィラメントを更新します
+        destroy:
+          description: フィラメントを削除します
+        duplicate:
+          description: 既存のフィラメントを複製します
+      resins:
+        title: レジン
+        description: SLA/DLP/LCD印刷用のレジン材料を管理します。
+        list:
+          description: すべてのレジンをリスト表示します
+        create:
+          description: 新しいレジンを作成します
+        show:
+          description: 特定のレジンを取得します
+        update:
+          description: レジンを更新します
+        destroy:
+          description: レジンを削除します
+        duplicate:
+          description: 既存のレジンを複製します
+      clients:
+        title: クライアント
+        description: 顧客とクライアントを管理します。
+        list:
+          description: すべてのクライアントをリスト表示します
+        create:
+          description: 新しいクライアントを作成します
+        show:
+          description: 特定のクライアントを取得します
+        update:
+          description: クライアントを更新します
+        destroy:
+          description: クライアントを削除します
+    response_format:
+      title: レスポンス形式
+      description: すべてのAPIレスポンスは、JSON:APIの規約に基づいた一貫したJSON構造に従います。
+      success_title: 成功レスポンス (単一リソース)
+      collection_title: コレクションレスポンス
+    errors:
+      title: エラー処理
+      description: エラーが発生した場合、APIは適切なHTTPステータスコードとJSONエラーレスポンスを返します。
+      status_codes_title: HTTPステータスコード
+      status_code: ステータスコード
+      meaning: 意味
+      format_title: エラーレスポンス形式
+      codes:
+        '200': OK - リクエストは成功しました
+        '201': Created - リソースは正常に作成されました
+        '400': Bad Request - 無効なリクエスト形式
+        '401': Unauthorized - 認証が必要です、またはトークンが無効です
+        '403': Forbidden - 認証されていますが、このリソースへのアクセスは許可されていません
+        '404': Not Found - リソースが存在しません
+        '422': Unprocessable Entity - バリデーションエラー
+        '500': Internal Server Error - サーバーエラーが発生しました
+    common:
+      parameters: パラメータ
+      parameter: パラメータ
+      type: タイプ
+      description: 説明
+      page_param: ページネーションのページ番号 (デフォルトは1)
+      example_request: リクエスト例
+      example_response: レスポンス例
+      request_body: リクエストボディ
+      method: メソッド
+      endpoint: エンドポイント
+  api_tokens:
+    title: APIトークン
+    description: CalcuMakeへのプログラムによるアクセス用のAPIトークンを管理します。
+    new: 新しいトークンを作成
+    new_description: CalcuMake APIで認証するための新しいAPIトークンを作成します。
+    empty: APIトークンはまだありません。APIの使用を開始するには、トークンを作成してください。
+    copy: コピー
+    revoke: 失効
+    create: トークンを作成
+    revoke_confirm: このトークンを失効させてもよろしいですか？ この操作は元に戻すことができず、トークンは直ちに無効になります。
+    created_success: APIトークンが正常に作成されました。今すぐコピーしてください - 再度表示することはできません！
+    revoked_success: APIトークンは失効しました。
+    status:
+      active: アクティブ
+      expired: 期限切れ
+      revoked: 失効済み
+    expires_on: '有効期限: %{date}'
+    expired_on: '有効期限切れ: %{date}'
+    never_expires: 有効期限なし
+    last_used: '最終使用: %{time} 前'
+    never_used: 未使用
+    created: '作成日: %{date}'
+    expiration:
+      30_days: 30日間
+      90_days: 90日間
+      1_year: 1年間
+      never: 有効期限なし
+    fields:
+      name: トークン名
+      name_hint: このトークンを識別するための説明的な名前。
+      name_placeholder: 例：本番API、テスト統合
+      expiration: 有効期限
+      expiration_hint: このトークンの有効期限はいつにしますか？短い期間の方が安全です。
+    reveal:
+      title: 新しいAPIトークン
+      warning: 今すぐこのトークンをコピーしてください！
+      warning_detail: セキュリティ上の理由から、このトークンは一度しか表示されません。安全に保管してください。二度と表示することはできません。
+      your_token: あなたのトークン
+      auto_hide_notice: セキュリティのため、このトークンは60秒後に自動的に非表示になります。
+    api:
+      title: APIアクセス
+      description: APIトークンを使用して、CalcuMakeにプログラムでアクセスします。
+      documentation: APIドキュメントを表示
+      manage: トークンを管理
