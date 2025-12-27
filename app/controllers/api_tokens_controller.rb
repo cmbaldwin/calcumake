@@ -6,6 +6,12 @@ class ApiTokensController < ApplicationController
 
   def index
     @api_tokens = current_user.api_tokens.order(created_at: :desc)
+
+    # Check if we need to display a newly created token
+    if session[:new_api_token_id] && session[:new_api_token_plain]
+      @newly_created_token = @api_tokens.find_by(id: session.delete(:new_api_token_id))
+      @plain_token = session.delete(:new_api_token_plain)
+    end
   end
 
   def new
@@ -21,12 +27,11 @@ class ApiTokensController < ApplicationController
     set_expiration
 
     if @api_token.save
-      @plain_token = @api_token.plain_token
+      # Store the plain token in session for one-time display
+      session[:new_api_token_id] = @api_token.id
+      session[:new_api_token_plain] = @api_token.plain_token
 
-      respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to user_profile_path(anchor: "api-tokens"), notice: t("api_tokens.created_success") }
-      end
+      redirect_to api_tokens_path, notice: t("api_tokens.created_success")
     else
       render :new, status: :unprocessable_entity
     end
