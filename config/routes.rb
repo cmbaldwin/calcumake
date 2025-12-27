@@ -41,7 +41,16 @@ Rails.application.routes.draw do
           post :duplicate
         end
       end
+      resources :resins do
+        member do
+          post :duplicate
+        end
+      end
       resources :clients
+      resources :printer_profiles, only: [:index]
+
+      # Combined materials library
+      resources :materials, only: [:index]
 
       resources :invoices, only: [:index] do
         resources :line_items, controller: "invoice_line_items", shallow: true
