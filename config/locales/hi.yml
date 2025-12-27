@@ -140,6 +140,7 @@ hi:
     print: प्रिंट
     more: और
     search: खोजें
+    back_to_profile: प्रोफ़ाइल पर वापस जाएँ
   flash:
     success: सफलता
     error: त्रुटि
@@ -2133,3 +2134,193 @@ hi:
       add: रेज़िन जोड़ें
     confirm_delete: क्या आप वाकई %{name} को हटाना चाहते हैं? इस कार्रवाई को पूर्ववत
       नहीं किया जा सकता है.
+  api_documentation:
+    title: एपीआई दस्तावेज़
+    nav_title: एपीआई दस्तावेज़
+    meta:
+      description: CalcuMake REST API के लिए संपूर्ण संदर्भ। हमारी व्यापक API के साथ
+        प्रोग्रामेटिक रूप से प्रिंट मूल्य निर्धारण, प्रिंटर, फिलामेंट और क्लाइंट प्रबंधित
+        करें।
+      keywords: API, REST, दस्तावेज़, 3D प्रिंटिंग, CalcuMake, एकीकरण, डेवलपर
+    hero:
+      title: CalcuMake API दस्तावेज़
+      subtitle: हमारे व्यापक REST API के साथ शक्तिशाली 3D प्रिंटिंग वर्कफ़्लो एकीकरण
+        बनाएं
+      cta: अपना API टोकन प्राप्त करें
+    toc:
+      title: विषय सूची
+    getting_started:
+      title: शुरू करना
+      description: CalcuMake API एक RESTful API है जो अनुरोधों और प्रतिक्रियाओं के
+        लिए JSON का उपयोग करता है। सभी API एंडपॉइंट संस्करणित हैं और बेयरर टोकन के
+        माध्यम से प्रमाणीकरण की आवश्यकता होती है।
+      base_url_title: बेस यूआरएल
+      quick_example_title: त्वरित उदाहरण
+      quick_example_description: API स्वास्थ्य स्थिति की जांच करने के लिए यहां एक
+        सरल उदाहरण दिया गया है (किसी प्रमाणीकरण की आवश्यकता नहीं है)
+    authentication:
+      title: प्रमाणीकरण
+      description: सभी API एंडपॉइंट (स्वास्थ्य जांच जैसे सार्वजनिक एंडपॉइंट को छोड़कर)
+        को बेयरर टोकन का उपयोग करके प्रमाणीकरण की आवश्यकता होती है।
+      create_token_notice_html: API टोकन बनाने के लिए, %{link} पर जाएं।
+      api_tokens_page: API टोकन पृष्ठ
+      bearer_format_title: बेयरर टोकन प्रारूप
+      bearer_format_description: प्रत्येक अनुरोध के Authorization हेडर में अपना API
+        टोकन शामिल करें
+      example_title: प्रमाणित अनुरोध उदाहरण
+    endpoints:
+      print_pricings:
+        title: प्रिंट मूल्य निर्धारण
+        description: अपनी 3D प्रिंटिंग परियोजनाओं के लिए प्रिंट मूल्य निर्धारण गणना
+          प्रबंधित करें।
+        list:
+          description: प्रमाणित उपयोगकर्ता के लिए सभी प्रिंट मूल्य निर्धारण गणना पुनर्प्राप्त
+            करें
+        create:
+          description: एक नई प्रिंट मूल्य निर्धारण गणना बनाएं
+        show:
+          description: आईडी द्वारा एक विशिष्ट प्रिंट मूल्य निर्धारण गणना पुनर्प्राप्त
+            करें
+        update:
+          description: मौजूदा प्रिंट मूल्य निर्धारण गणना अपडेट करें
+        destroy:
+          description: एक प्रिंट मूल्य निर्धारण गणना हटाएं
+      printers:
+        title: प्रिंटर
+        description: अपनी इन्वेंट्री में 3D प्रिंटर प्रबंधित करें।
+        list:
+          description: सभी प्रिंटर सूचीबद्ध करें
+        create:
+          description: एक नया प्रिंटर बनाएं
+        show:
+          description: एक विशिष्ट प्रिंटर प्राप्त करें
+        update:
+          description: एक प्रिंटर अपडेट करें
+        destroy:
+          description: एक प्रिंटर हटाएं
+      filaments:
+        title: फिलामेंट्स
+        description: FDM/FFF प्रिंटिंग के लिए फिलामेंट सामग्री प्रबंधित करें।
+        list:
+          description: सभी फिलामेंट सूचीबद्ध करें
+        create:
+          description: एक नया फिलामेंट बनाएं
+        show:
+          description: एक विशिष्ट फिलामेंट प्राप्त करें
+        update:
+          description: एक फिलामेंट अपडेट करें
+        destroy:
+          description: एक फिलामेंट हटाएं
+        duplicate:
+          description: मौजूदा फिलामेंट को डुप्लिकेट करें
+      resins:
+        title: रेजिन
+        description: SLA/DLP/LCD प्रिंटिंग के लिए रेजिन सामग्री प्रबंधित करें।
+        list:
+          description: सभी रेजिन सूचीबद्ध करें
+        create:
+          description: एक नया रेजिन बनाएं
+        show:
+          description: एक विशिष्ट रेजिन प्राप्त करें
+        update:
+          description: एक रेजिन अपडेट करें
+        destroy:
+          description: एक रेजिन हटाएं
+        duplicate:
+          description: मौजूदा रेजिन को डुप्लिकेट करें
+      clients:
+        title: क्लाइंट
+        description: अपने ग्राहकों और क्लाइंट को प्रबंधित करें।
+        list:
+          description: सभी क्लाइंट की सूची बनाएं
+        create:
+          description: एक नया क्लाइंट बनाएं
+        show:
+          description: एक विशिष्ट क्लाइंट प्राप्त करें
+        update:
+          description: एक क्लाइंट को अपडेट करें
+        destroy:
+          description: एक क्लाइंट को हटाएं
+    response_format:
+      title: प्रतिक्रिया प्रारूप
+      description: सभी API प्रतिक्रियाएं JSON:API सम्मेलनों के आधार पर एक सुसंगत JSON
+        संरचना का पालन करती हैं।
+      success_title: सफल प्रतिक्रिया (एकल संसाधन)
+      collection_title: संग्रह प्रतिक्रिया
+    errors:
+      title: त्रुटि प्रबंधन
+      description: जब कोई त्रुटि होती है, तो API एक उपयुक्त HTTP स्थिति कोड और एक
+        JSON त्रुटि प्रतिक्रिया लौटाता है।
+      status_codes_title: HTTP स्थिति कोड
+      status_code: स्थिति कोड
+      meaning: अर्थ
+      format_title: त्रुटि प्रतिक्रिया प्रारूप
+      codes:
+        '200': ठीक है - अनुरोध सफल रहा
+        '201': निर्मित - संसाधन सफलतापूर्वक बनाया गया
+        '400': खराब अनुरोध - अमान्य अनुरोध प्रारूप
+        '401': अनधिकृत - प्रमाणीकरण आवश्यक या टोकन अमान्य
+        '403': निषिद्ध - प्रमाणित लेकिन इस संसाधन के लिए अधिकृत नहीं
+        '404': नहीं मिला - संसाधन मौजूद नहीं है
+        '422': अनुप्रयोज्य इकाई - सत्यापन त्रुटियां
+        '500': आंतरिक सर्वर त्रुटि - सर्वर त्रुटि हुई
+    common:
+      parameters: पैरामीटर
+      parameter: पैरामीटर
+      type: प्रकार
+      description: विवरण
+      page_param: पृष्ठांकन के लिए पृष्ठ संख्या (डिफ़ॉल्ट 1)
+      example_request: उदाहरण अनुरोध
+      example_response: उदाहरण प्रतिक्रिया
+      request_body: अनुरोध बॉडी
+      method: विधि
+      endpoint: एंडपॉइंट
+  api_tokens:
+    title: API टोकन
+    description: CalcuMake तक प्रोग्रामेटिक पहुंच के लिए अपने API टोकन प्रबंधित करें।
+    new: नया टोकन बनाएं
+    new_description: CalcuMake API के साथ प्रमाणीकरण के लिए एक नया API टोकन बनाएं।
+    empty: अभी तक कोई API टोकन नहीं है. API का उपयोग शुरू करने के लिए एक बनाएं।
+    copy: कॉपी करें
+    revoke: निरस्त करें
+    create: टोकन बनाएं
+    revoke_confirm: क्या आप वाकई इस टोकन को निरस्त करना चाहते हैं? इस कार्रवाई को
+      पूर्ववत नहीं किया जा सकता है और यह तुरंत टोकन को अमान्य कर देगा।
+    created_success: API टोकन सफलतापूर्वक बनाया गया. इसे अभी कॉपी करना सुनिश्चित करें
+      - आप इसे फिर से नहीं देख पाएंगे!
+    revoked_success: API टोकन निरस्त कर दिया गया है।
+    status:
+      active: सक्रिय
+      expired: समाप्त
+      revoked: निरस्त
+    expires_on: "%{date} को समाप्त होता है"
+    expired_on: समाप्त %{date} को
+    never_expires: कभी समाप्त नहीं होता
+    last_used: पिछली बार %{time} पहले उपयोग किया गया
+    never_used: कभी उपयोग नहीं किया गया
+    created: बनाया गया %{date} को
+    expiration:
+      30_days: 30 दिन
+      90_days: 90 दिन
+      1_year: 1 वर्ष
+      never: कभी समाप्त नहीं होता
+    fields:
+      name: टोकन का नाम
+      name_hint: इस टोकन को पहचानने में आपकी मदद करने के लिए एक वर्णनात्मक नाम।
+      name_placeholder: जैसे, प्रोडक्शन API, टेस्ट इंटीग्रेशन
+      expiration: समाप्ति
+      expiration_hint: यह टोकन कब समाप्त होना चाहिए? छोटी अवधि अधिक सुरक्षित होती
+        है।
+    reveal:
+      title: आपका नया API टोकन
+      warning: इस टोकन को अभी कॉपी करें!
+      warning_detail: सुरक्षा कारणों से, यह टोकन केवल एक बार दिखाया जाएगा। इसे सुरक्षित
+        रूप से स्टोर करें - आप इसे फिर से नहीं देख पाएंगे।
+      your_token: आपका टोकन
+      auto_hide_notice: सुरक्षा के लिए यह टोकन 60 सेकंड में अपने आप छिप जाएगा।
+    api:
+      title: API एक्सेस
+      description: CalcuMake को प्रोग्रामेटिक रूप से एक्सेस करने के लिए अपने API टोकन
+        का उपयोग करें।
+      documentation: API दस्तावेज़ देखें
+      manage: टोकन प्रबंधित करें

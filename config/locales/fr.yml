@@ -140,6 +140,7 @@ fr:
     print: Imprimer
     more: Plus
     search: Rechercher
+    back_to_profile: Retour au profil
   flash:
     success: Succès
     error: Erreur
@@ -2160,3 +2161,194 @@ fr:
       add: Ajouter une résine
     confirm_delete: Êtes-vous sûr de vouloir supprimer %{name} ? Cette action est
       irréversible.
+  api_documentation:
+    title: Documentation de l'API
+    nav_title: Documentation de l'API
+    meta:
+      description: Référence complète de l'API REST CalcuMake. Gérez les prix d'impression,
+        les imprimantes, les filaments et les clients de manière programmatique grâce
+        à notre API complète.
+      keywords: API, REST, documentation, impression 3D, CalcuMake, intégration, développeur
+    hero:
+      title: Documentation de l'API CalcuMake
+      subtitle: Créez des intégrations de flux de travail d'impression 3D puissantes
+        grâce à notre API REST complète
+      cta: Obtenez votre jeton API
+    toc:
+      title: Table des matières
+    getting_started:
+      title: Premiers pas
+      description: L'API CalcuMake est une API RESTful qui utilise JSON pour les requêtes
+        et les réponses. Tous les points de terminaison de l'API sont versionnés et
+        nécessitent une authentification via des jetons Bearer.
+      base_url_title: URL de base
+      quick_example_title: Exemple rapide
+      quick_example_description: Voici un exemple simple pour vérifier l'état de santé
+        de l'API (aucune authentification n'est requise)
+    authentication:
+      title: Authentification
+      description: Tous les points de terminaison de l'API (à l'exception des points
+        de terminaison publics comme la vérification de l'état de santé) nécessitent
+        une authentification à l'aide de jetons Bearer.
+      create_token_notice_html: Pour créer un jeton API, consultez la %{link}.
+      api_tokens_page: page des jetons API
+      bearer_format_title: Format du jeton Bearer
+      bearer_format_description: Incluez votre jeton API dans l'en-tête Authorization
+        de chaque requête
+      example_title: Exemple de requête authentifiée
+    endpoints:
+      print_pricings:
+        title: Prix d'impression
+        description: Gérez les calculs de prix d'impression pour vos projets d'impression
+          3D.
+        list:
+          description: Récupérer tous les calculs de prix d'impression pour l'utilisateur
+            authentifié
+        create:
+          description: Créer un nouveau calcul de prix d'impression
+        show:
+          description: Récupérer un calcul de prix d'impression spécifique par ID
+        update:
+          description: Mettre à jour un calcul de prix d'impression existant
+        destroy:
+          description: Supprimer un calcul de prix d'impression
+      printers:
+        title: Imprimantes
+        description: Gérez les imprimantes 3D dans votre inventaire.
+        list:
+          description: Lister toutes les imprimantes
+        create:
+          description: Créer une nouvelle imprimante
+        show:
+          description: Obtenir une imprimante spécifique
+        update:
+          description: Mettre à jour une imprimante
+        destroy:
+          description: Supprimer une imprimante
+      filaments:
+        title: Filaments
+        description: Gérez les matériaux de filament pour l'impression FDM/FFF.
+        list:
+          description: Lister tous les filaments
+        create:
+          description: Créer un nouveau filament
+        show:
+          description: Obtenir un filament spécifique
+        update:
+          description: Mettre à jour un filament
+        destroy:
+          description: Supprimer un filament
+        duplicate:
+          description: Dupliquer un filament existant
+      resins:
+        title: Résines
+        description: Gérez les matériaux de résine pour l'impression SLA/DLP/LCD.
+        list:
+          description: Lister toutes les résines
+        create:
+          description: Créer une nouvelle résine
+        show:
+          description: Obtenir une résine spécifique
+        update:
+          description: Mettre à jour une résine
+        destroy:
+          description: Supprimer une résine
+        duplicate:
+          description: Dupliquer une résine existante
+      clients:
+        title: Clients
+        description: Gérez vos clients et clientes.
+        list:
+          description: Lister tous les clients
+        create:
+          description: Créer un nouveau client
+        show:
+          description: Obtenir un client spécifique
+        update:
+          description: Mettre à jour un client
+        destroy:
+          description: Supprimer un client
+    response_format:
+      title: Format de réponse
+      description: Toutes les réponses de l'API suivent une structure JSON cohérente
+        basée sur les conventions JSON:API.
+      success_title: Réponse réussie (ressource unique)
+      collection_title: Réponse de collection
+    errors:
+      title: Gestion des erreurs
+      description: Lorsqu'une erreur se produit, l'API renvoie un code d'état HTTP
+        approprié ainsi qu'une réponse d'erreur JSON.
+      status_codes_title: Codes d'état HTTP
+      status_code: Code d'état
+      meaning: Signification
+      format_title: Format de la réponse d'erreur
+      codes:
+        '200': OK - Requête réussie
+        '201': Créé - Ressource créée avec succès
+        '400': Mauvaise requête - Format de requête non valide
+        '401': Non autorisé - Authentification requise ou jeton non valide
+        '403': Interdit - Authentifié mais non autorisé pour cette ressource
+        '404': Non trouvé - La ressource n'existe pas
+        '422': Entité non traitable - Erreurs de validation
+        '500': Erreur interne du serveur - Une erreur de serveur s'est produite
+    common:
+      parameters: Paramètres
+      parameter: Paramètre
+      type: Type
+      description: Description
+      page_param: Numéro de page pour la pagination (par défaut 1)
+      example_request: Exemple de requête
+      example_response: Exemple de réponse
+      request_body: Corps de la requête
+      method: Méthode
+      endpoint: Point de terminaison
+  api_tokens:
+    title: Jetons API
+    description: Gérez vos jetons API pour un accès programmatique à CalcuMake.
+    new: Créer un nouveau jeton
+    new_description: Créer un nouveau jeton API pour s'authentifier auprès de l'API
+      CalcuMake.
+    empty: Aucun jeton API pour le moment. Créez-en un pour commencer à utiliser l'API.
+    copy: Copier
+    revoke: Révoquer
+    create: Créer un jeton
+    revoke_confirm: Êtes-vous sûr de vouloir révoquer ce jeton ? Cette action est
+      irréversible et invalidera immédiatement le jeton.
+    created_success: Jeton API créé avec succès. Assurez-vous de le copier maintenant
+      - vous ne pourrez plus le revoir !
+    revoked_success: Le jeton API a été révoqué.
+    status:
+      active: Actif
+      expired: Expiré
+      revoked: Révoqué
+    expires_on: Expire le %{date}
+    expired_on: Expiré le %{date}
+    never_expires: N'expire jamais
+    last_used: Dernière utilisation il y a %{time}
+    never_used: Jamais utilisé
+    created: Créé le %{date}
+    expiration:
+      30_days: 30 jours
+      90_days: 90 jours
+      1_year: 1 an
+      never: N'expire jamais
+    fields:
+      name: Nom du jeton
+      name_hint: Un nom descriptif pour vous aider à identifier ce jeton.
+      name_placeholder: p. ex., API de production, Intégration de test
+      expiration: Expiration
+      expiration_hint: Quand ce jeton doit-il expirer ? Les périodes plus courtes
+        sont plus sûres.
+    reveal:
+      title: Votre nouveau jeton API
+      warning: Copiez ce jeton maintenant !
+      warning_detail: Pour des raisons de sécurité, ce jeton ne sera affiché qu'une
+        seule fois. Stockez-le en lieu sûr - vous ne pourrez plus le revoir.
+      your_token: Votre jeton
+      auto_hide_notice: Ce jeton sera masqué automatiquement dans 60 secondes pour
+        des raisons de sécurité.
+    api:
+      title: Accès API
+      description: Utilisez vos jetons API pour accéder à CalcuMake par programmation.
+      documentation: Voir la documentation de l'API
+      manage: Gérer les jetons

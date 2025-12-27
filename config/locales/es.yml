@@ -140,6 +140,7 @@ es:
     print: Imprimir
     more: Más
     search: Buscar
+    back_to_profile: Volver al Perfil
   flash:
     success: Éxito
     error: Error
@@ -2129,3 +2130,192 @@ es:
       add: Añadir Resina
     confirm_delete: "¿Está seguro de que desea eliminar %{name}? Esta acción no se
       puede deshacer."
+  api_documentation:
+    title: Documentación de la API
+    nav_title: Documentación de la API
+    meta:
+      description: Referencia completa para la API REST de CalcuMake. Administre los
+        precios de impresión, las impresoras, los filamentos y los clientes de forma
+        programática con nuestra completa API.
+      keywords: API, REST, documentación, impresión 3D, CalcuMake, integración, desarrollador
+    hero:
+      title: Documentación de la API de CalcuMake
+      subtitle: Cree potentes integraciones de flujo de trabajo de impresión 3D con
+        nuestra completa API REST
+      cta: Obtenga su token de API
+    toc:
+      title: Tabla de contenido
+    getting_started:
+      title: Empezando
+      description: La API de CalcuMake es una API RESTful que utiliza JSON para las
+        solicitudes y respuestas. Todos los endpoints de la API están versionados
+        y requieren autenticación mediante tokens Bearer.
+      base_url_title: URL base
+      quick_example_title: Ejemplo rápido
+      quick_example_description: Aquí hay un ejemplo simple para verificar el estado
+        de salud de la API (no se requiere autenticación)
+    authentication:
+      title: Autenticación
+      description: Todos los endpoints de la API (excepto los endpoints públicos como
+        la verificación de estado) requieren autenticación mediante tokens Bearer.
+      create_token_notice_html: Para crear un token de API, visite la %{link}.
+      api_tokens_page: Página de tokens de API
+      bearer_format_title: Formato de token Bearer
+      bearer_format_description: Incluya su token de API en el encabezado de autorización
+        de cada solicitud
+      example_title: Ejemplo de solicitud autenticada
+    endpoints:
+      print_pricings:
+        title: Precios de impresión
+        description: Administre los cálculos de precios de impresión para sus proyectos
+          de impresión 3D.
+        list:
+          description: Recupere todos los cálculos de precios de impresión para el
+            usuario autenticado
+        create:
+          description: Cree un nuevo cálculo de precio de impresión
+        show:
+          description: Recupere un cálculo de precio de impresión específico por ID
+        update:
+          description: Actualice un cálculo de precio de impresión existente
+        destroy:
+          description: Elimine un cálculo de precio de impresión
+      printers:
+        title: Impresoras
+        description: Administre las impresoras 3D en su inventario.
+        list:
+          description: Liste todas las impresoras
+        create:
+          description: Cree una nueva impresora
+        show:
+          description: Obtenga una impresora específica
+        update:
+          description: Actualice una impresora
+        destroy:
+          description: Elimine una impresora
+      filaments:
+        title: Filamentos
+        description: Administre los materiales de filamento para la impresión FDM/FFF.
+        list:
+          description: Liste todos los filamentos
+        create:
+          description: Cree un nuevo filamento
+        show:
+          description: Obtenga un filamento específico
+        update:
+          description: Actualice un filamento
+        destroy:
+          description: Elimine un filamento
+        duplicate:
+          description: Duplique un filamento existente
+      resins:
+        title: Resinas
+        description: Administre los materiales de resina para la impresión SLA/DLP/LCD.
+        list:
+          description: Liste todas las resinas
+        create:
+          description: Cree una nueva resina
+        show:
+          description: Obtenga una resina específica
+        update:
+          description: Actualice una resina
+        destroy:
+          description: Elimine una resina
+        duplicate:
+          description: Duplique una resina existente
+      clients:
+        title: Clientes
+        description: Administre sus clientes.
+        list:
+          description: Listar todos los clientes
+        create:
+          description: Crear un nuevo cliente
+        show:
+          description: Obtener un cliente específico
+        update:
+          description: Actualizar un cliente
+        destroy:
+          description: Eliminar un cliente
+    response_format:
+      title: Formato de Respuesta
+      description: Todas las respuestas de la API siguen una estructura JSON consistente
+        basada en las convenciones de JSON:API.
+      success_title: Respuesta Exitosa (Recurso Único)
+      collection_title: Respuesta de Colección
+    errors:
+      title: Manejo de Errores
+      description: Cuando ocurre un error, la API devuelve un código de estado HTTP
+        apropiado junto con una respuesta de error JSON.
+      status_codes_title: Códigos de Estado HTTP
+      status_code: Código de Estado
+      meaning: Significado
+      format_title: Formato de Respuesta de Error
+      codes:
+        '200': OK - Solicitud exitosa
+        '201': Created - Recurso creado exitosamente
+        '400': Bad Request - Formato de solicitud inválido
+        '401': Unauthorized - Autenticación requerida o token inválido
+        '403': Forbidden - Autenticado pero no autorizado para este recurso
+        '404': Not Found - El recurso no existe
+        '422': Unprocessable Entity - Errores de validación
+        '500': Internal Server Error - Ocurrió un error del servidor
+    common:
+      parameters: Parámetros
+      parameter: Parámetro
+      type: Tipo
+      description: Descripción
+      page_param: Número de página para la paginación (predeterminado 1)
+      example_request: Ejemplo de Solicitud
+      example_response: Ejemplo de Respuesta
+      request_body: Cuerpo de la Solicitud
+      method: Método
+      endpoint: Endpoint
+  api_tokens:
+    title: Tokens de API
+    description: Administre sus tokens de API para el acceso programático a CalcuMake.
+    new: Crear Nuevo Token
+    new_description: Cree un nuevo token de API para autenticarse con la API de CalcuMake.
+    empty: Aún no hay tokens de API. Cree uno para comenzar a usar la API.
+    copy: Copiar
+    revoke: Revocar
+    create: Crear Token
+    revoke_confirm: "¿Está seguro de que desea revocar este token? Esta acción no
+      se puede deshacer e invalidará inmediatamente el token."
+    created_success: Token de API creado exitosamente. Asegúrese de copiarlo ahora,
+      ¡no podrá verlo de nuevo!
+    revoked_success: El token de API ha sido revocado.
+    status:
+      active: Activo
+      expired: Expirado
+      revoked: Revocado
+    expires_on: Expira el %{date}
+    expired_on: Expiró el %{date}
+    never_expires: Nunca expira
+    last_used: Usado por última vez hace %{time}
+    never_used: Nunca usado
+    created: Creado el %{date}
+    expiration:
+      30_days: 30 días
+      90_days: 90 días
+      1_year: 1 año
+      never: Nunca expira
+    fields:
+      name: Nombre del Token
+      name_hint: Un nombre descriptivo para ayudarle a identificar este token.
+      name_placeholder: p. ej., API de Producción, Integración de Prueba
+      expiration: Expiración
+      expiration_hint: "¿Cuándo debería expirar este token? Los períodos más cortos
+        son más seguros."
+    reveal:
+      title: Su Nuevo Token de API
+      warning: "¡Copie este token ahora!"
+      warning_detail: Por razones de seguridad, este token solo se mostrará una vez.
+        Guárdelo de forma segura; no podrá volver a verlo.
+      your_token: Su Token
+      auto_hide_notice: Este token se ocultará automáticamente en 60 segundos por
+        seguridad.
+    api:
+      title: Acceso API
+      description: Utilice sus tokens de API para acceder a CalcuMake mediante programación.
+      documentation: Ver la Documentación de la API
+      manage: Administrar Tokens
