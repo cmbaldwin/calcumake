@@ -1,0 +1,17 @@
+<%# Show the one-time token reveal at the top %>
+<%= turbo_stream.prepend "api_tokens_list" do %>
+  <%= render ApiTokens::TokenRevealComponent.new(token: @api_token, plain_token: @plain_token) %>
+<% end %>
+
+<%# Add the new token card after the reveal %>
+<%= turbo_stream.append "api_tokens_list" do %>
+  <%= render ApiTokens::TokenCardComponent.new(token: @api_token) %>
+<% end %>
+
+<%# Show a flash notice %>
+<%= turbo_stream.update "flash" do %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= t("api_tokens.created_success") %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
