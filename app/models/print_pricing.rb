@@ -107,6 +107,7 @@ class PrintPricing < ApplicationRecord
 
   def per_unit_price
     return 0 if units.nil? || units.zero?
+    return 0 if final_price.nil?
     final_price / units
   end
 

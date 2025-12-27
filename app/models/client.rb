@@ -5,6 +5,10 @@ class Client < ApplicationRecord
 
   validates :name, presence: true
 
+  scope :search, ->(q) {
+    where("name ILIKE :q OR company_name ILIKE :q OR email ILIKE :q", q: "%#{q}%")
+  }
+
   def self.ransackable_attributes(auth_object = nil)
     [ "name", "company_name", "email", "phone", "address", "tax_id", "notes", "created_at", "updated_at" ]
   end
