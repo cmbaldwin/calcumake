@@ -1,4 +1,4 @@
-<%= form_with model: @token, url: api_tokens_path, data: { turbo_frame: "api_tokens_list" } do |form| %>
+<%= form_with model: @token, url: api_tokens_path do |form| %>
   <%= render Forms::ErrorsComponent.new(model: @token) %>
 
   <div class="row g-3">
@@ -25,6 +25,6 @@
 
   <div class="mt-4">
     <%= form.submit t("api_tokens.create"), class: "btn btn-primary" %>
-    <%= link_to t("actions.cancel"), user_profile_path(anchor: "api-tokens"), class: "btn btn-outline-secondary ms-2" %>
+    <%= link_to t("actions.cancel"), api_tokens_path, class: "btn btn-outline-secondary ms-2" %>
   </div>
 <% end %>

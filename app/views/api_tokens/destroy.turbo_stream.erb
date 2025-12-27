@@ -3,10 +3,20 @@
   <%= render ApiTokens::TokenCardComponent.new(token: @api_token) %>
 <% end %>
 
-<%# Show a flash notice %>
-<%= turbo_stream.update "flash" do %>
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <%= t("api_tokens.revoked_success") %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<%# Show a toast message %>
+<%= turbo_stream.append "flash" do %>
+  <div
+    class="toast-message toast-notice"
+    data-controller="toast"
+    data-toast-auto-dismiss-value="5000"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="toast-content">
+      <span class="toast-icon">✓</span>
+      <span class="toast-text"><%= t("api_tokens.revoked_success") %></span>
+      <button type="button" class="toast-close" data-action="click->toast#close" aria-label="Close">×</button>
+    </div>
   </div>
 <% end %>
