@@ -1,24 +1,25 @@
 Rails.application.routes.draw do
-  # API Token management (Web UI)
-  resources :api_tokens, only: %i[index new create destroy]
-
-  # API Routes - Versioned, JSON-only
+  # =============================================================================
+  # API ROUTES - RESTful JSON API (v1)
+  # =============================================================================
+  # All API routes are versioned, JSON-only, and require Bearer token authentication
+  # (except public endpoints: health, calculator)
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      # Health check for load balancers
-      get :health, to: "health#show"
-
       # Public endpoints (no authentication)
-      post :calculator, to: "calculator#create"
+      get :health, to: "health#show"                      # Load balancer health check
+      post :calculator, to: "calculator#create"           # Public pricing calculator
 
-      # Authenticated endpoints
+      # User endpoints
       resource :me, controller: "users", only: %i[show update] do
-        get :export, action: :export_data
-        get :usage, action: :usage_stats
+        get :export, action: :export_data                # GDPR data export
+        get :usage, action: :usage_stats                 # Usage statistics
       end
 
+      # API token management (for API access)
       resources :api_tokens, only: %i[index create destroy]
 
+      # Print pricing calculations
       resources :print_pricings do
         member do
           post :duplicate
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
         end
       end
 
+      # Resources
       resources :printers
       resources :filaments do
         member do
@@ -47,40 +49,25 @@ Rails.application.routes.draw do
         end
       end
       resources :clients
-      resources :printer_profiles, only: [:index]
+      resources :printer_profiles, only: [ :index ]
 
-      # Combined materials library
-      resources :materials, only: [:index]
+      # Combined materials library (filaments + resins)
+      resources :materials, only: [ :index ]
 
-      resources :invoices, only: [:index] do
+      # Invoices (top-level and nested)
+      resources :invoices, only: [ :index ] do
         resources :line_items, controller: "invoice_line_items", shallow: true
       end
     end
   end
 
-  # GDPR Compliance routes
-  resources :user_consents, only: [ :create ]
-  get "cookie-policy", to: "privacy#cookie_policy", as: :cookie_policy
-  get "terms-of-service", to: "privacy#terms_of_service", as: :terms_of_service
-  get "data-export", to: "privacy#data_export", as: :data_export
-  post "data-deletion", to: "privacy#data_deletion", as: :data_deletion
-  get "data-deletion", to: "privacy#data_deletion"
-  resources :clients
-  resources :filaments do
-    member do
-      post :duplicate
-    end
-  end
-  resources :resins do
-    member do
-      post :duplicate
-    end
-  end
+  # =============================================================================
+  # WEB APPLICATION ROUTES
+  # =============================================================================
 
-  # Combined materials library (filaments + resins)
-  resources :materials, only: [ :index ]
-
-  mount RailsAdmin::Engine => "/admin", as: "rails_admin"
+  # ---------------------------------------------------------------------------
+  # Authentication & User Management
+  # ---------------------------------------------------------------------------
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   # OAuth profile completion (for providers that don't provide email)
@@ -91,6 +78,20 @@ Rails.application.routes.draw do
     end
   end
 
+  # User profile management
+  resource :user_profile, only: [ :show, :edit, :update, :destroy ], path: "profile"
+
+  # API Token management (Web UI for creating/managing tokens)
+  resources :api_tokens, only: %i[index new create destroy]
+
+  # Admin dashboard (requires admin: true)
+  mount RailsAdmin::Engine => "/admin", as: "rails_admin"
+
+  # ---------------------------------------------------------------------------
+  # Core Application Resources (Web UI)
+  # ---------------------------------------------------------------------------
+
+  # Print pricing calculations
   resources :print_pricings do
     member do
       patch :increment_times_printed
@@ -106,15 +107,30 @@ Rails.application.routes.draw do
     end
   end
 
-  # Standalone invoices route for global invoice management
+  # Invoices (standalone for global invoice list)
   resources :invoices, only: [ :index ]
 
+  # Resources
   resources :printers
   resources :printer_profiles, only: [ :index ]
+  resources :clients
+  resources :filaments do
+    member do
+      post :duplicate
+    end
+  end
+  resources :resins do
+    member do
+      post :duplicate
+    end
+  end
 
-  resource :user_profile, only: [ :show, :edit, :update, :destroy ], path: "profile"
+  # Combined materials library (filaments + resins)
+  resources :materials, only: [ :index ]
 
-  # Subscription management
+  # ---------------------------------------------------------------------------
+  # Subscription & Billing
+  # ---------------------------------------------------------------------------
   resources :subscriptions, only: [] do
     collection do
       get :pricing
@@ -128,19 +144,30 @@ Rails.application.routes.draw do
     end
   end
 
-  # Stripe webhooks
+  # Stripe webhooks (checkout.session.completed, customer.subscription.*, etc.)
   post "webhooks/stripe", to: "webhooks/stripe#create"
 
-  # Legal pages
+  # ---------------------------------------------------------------------------
+  # GDPR & Privacy Compliance
+  # ---------------------------------------------------------------------------
+  resources :user_consents, only: [ :create ]
+  get "cookie-policy", to: "privacy#cookie_policy", as: :cookie_policy
+  get "terms-of-service", to: "privacy#terms_of_service", as: :terms_of_service
+  get "data-export", to: "privacy#data_export", as: :data_export
+  post "data-deletion", to: "privacy#data_deletion", as: :data_deletion  # POST to process
+  get "data-deletion", to: "privacy#data_deletion"                     # GET for display form
+
+  # ---------------------------------------------------------------------------
+  # Legal Pages
+  # ---------------------------------------------------------------------------
   get "privacy-policy", to: "legal#privacy_policy", as: :privacy_policy
   get "user-agreement", to: "legal#user_agreement", as: :user_agreement
   get "support", to: "legal#support", as: :support
   get "commerce-disclosure", to: "legal#commerce_disclosure", as: :commerce_disclosure
 
-  # Locale switching
-  post "switch_locale", to: "application#switch_locale"
-
-  # Landing page and pricing calculator
+  # ---------------------------------------------------------------------------
+  # Public Pages & Marketing
+  # ---------------------------------------------------------------------------
   get "landing", to: "pages#landing", as: :landing
   get "3d-print-pricing-calculator", to: "pages#pricing_calculator", as: :pricing_calculator
 
@@ -150,14 +177,20 @@ Rails.application.routes.draw do
     get "blog/:slug", to: "articles#show", as: :article
   end
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # ---------------------------------------------------------------------------
+  # Internationalization
+  # ---------------------------------------------------------------------------
+  post "switch_locale", to: "application#switch_locale"
+
+  # ---------------------------------------------------------------------------
+  # System Routes
+  # ---------------------------------------------------------------------------
   root "pages#landing"
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # Health check for load balancers and uptime monitors
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
+  # PWA manifest and service worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 end

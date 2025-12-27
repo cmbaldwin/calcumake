@@ -9,8 +9,8 @@
 - `bin/setup` - Complete setup
 - `bin/dev` - Development server
 - `bin/ci` - Run all CI checks locally (security, linting, tests) - **RUN BEFORE PUSHING**
-- `bin/rails test` - Run Rails tests (1,075 tests in ~3.5s)
-- `npm test` - Run JavaScript tests
+- `bin/rails test` - Run Rails tests (1,496 tests in ~4.5s)
+- `npm test` - Run JavaScript tests (20 tests in ~0.3s)
 - `bin/rubocop` - Style checking
 - `bin/brakeman` - Security scan
 - `bin/sync-translations` - Sync and auto-translate missing keys (uses OpenRouter API if key available)
@@ -41,6 +41,30 @@
   - CSV export for spreadsheet compatibility
   - Auto-save to localStorage every 10 seconds
   - Strategic CTAs to drive account creation
+
+### RESTful API (v1)
+**JSON:API compliant REST API** for programmatic access to all core resources.
+
+**Authentication**: Bearer token authentication with SHA-256 hashed tokens
+- Tokens created via web UI (`/api_tokens`) or API endpoint
+- Header format: `Authorization: Bearer YOUR_TOKEN`
+- Expiration options: 30, 60, 90 days, or never
+
+**Endpoints** (`/api/v1`):
+- **Public**: `/health`, `/calculator` (no auth)
+- **User**: `/me` (profile, usage stats, GDPR export)
+- **Resources**: `/printers`, `/filaments`, `/resins`, `/clients`, `/print_pricings`, `/invoices`
+- **API Tokens**: `/api_tokens` (create, list, delete)
+
+**Testing**: 234 comprehensive tests covering all endpoints, authorization, validation, error handling
+
+**Example**:
+```bash
+curl https://calcumake.com/api/v1/printers \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+See PR #82 or `test/controllers/api/v1/` for complete API documentation.
 
 ### Multi-Plate System
 Each PrintPricing contains 1-10 plates. Use `build` → `save!` pattern:
@@ -799,8 +823,16 @@ When additional context is needed for historical decisions or completed features
 *Reference documentation only when specific context is required.*
 ## Recent Updates
 
+### 2025-01-27: RESTful API Launch (PR #82) ✅
+- **JSON:API compliant REST API** - versioned (`/api/v1`) with comprehensive endpoints
+- **Bearer token authentication** - SHA-256 hashed tokens with expiration options
+- **234 comprehensive tests** - full coverage for all API endpoints (printers, filaments, resins, clients, print_pricings, invoices, users)
+- **Full CRUD operations** - create, read, update, delete for all resources
+- **Public endpoints** - health check and pricing calculator (no auth required)
+- **User management** - profile updates, usage stats, GDPR data export via API
+- **All tests passing**: 1,496 runs, 3,698 assertions, 0 failures, 0 errors
+
 ### 2025-11-18: Production-Ready & Revenue-Enabled ✅
-- **All tests passing**: 425 runs, 1,457 assertions, 0 failures, 0 errors
 - **Advanced calculator launched**: `/3d-print-pricing-calculator` - full-featured SPA with PDF/CSV export
 - **Multi-plate support**: Up to 10 plates with 16 filaments each, real-time calculations
 - **Export functionality**: Professional PDF generation with jsPDF, CSV export for spreadsheets

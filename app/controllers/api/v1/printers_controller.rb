@@ -93,7 +93,6 @@ module Api
           attributes: {
             name: printer.name,
             manufacturer: printer.manufacturer,
-            model: printer.model,
             material_technology: printer.material_technology,
             power_consumption: printer.power_consumption,
             cost: printer.cost&.to_f,
@@ -103,7 +102,6 @@ module Api
             date_added: printer.date_added&.iso8601,
             paid_off: printer.paid_off?,
             months_to_payoff: printer.months_to_payoff,
-            notes: printer.notes,
             created_at: printer.created_at.iso8601,
             updated_at: printer.updated_at.iso8601
           },
