@@ -145,11 +145,12 @@ class ApiTokensControllerTest < ActionDispatch::IntegrationTest
   test "should record client info on create" do
     post api_tokens_url, params: {
       api_token: { name: "Client Info Token" }
-    }
+    }, headers: { "User-Agent" => "Test Browser/1.0" }
 
     token = ApiToken.last
-    assert token.created_from_ip.present?
-    assert token.user_agent.present?
+    assert token.created_from_ip.present?, "Expected created_from_ip to be present"
+    assert token.user_agent.present?, "Expected user_agent to be present"
+    assert_equal "Test Browser/1.0", token.user_agent
   end
 
   test "should not create api_token with blank name" do
@@ -215,9 +216,10 @@ class ApiTokensControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not destroy other user token" do
-    assert_raises(ActiveRecord::RecordNotFound) do
-      delete api_token_url(@other_user_token)
-    end
+    # The controller scopes by current_user so other user's token won't be found
+    # This should raise RecordNotFound which Rails converts to 404
+    delete api_token_url(@other_user_token)
+    assert_response :not_found
   end
 
   # Destroy with turbo_stream tests

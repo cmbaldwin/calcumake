@@ -78,8 +78,7 @@ module Api
       def client_params
         params.require(:client).permit(
           :name, :email, :phone, :company_name,
-          :address, :city, :state, :postal_code, :country,
-          :notes
+          :address, :tax_id, :notes
         )
       end
 
@@ -93,10 +92,7 @@ module Api
             phone: client.phone,
             company_name: client.company_name,
             address: client.address,
-            city: client.city,
-            state: client.state,
-            postal_code: client.postal_code,
-            country: client.country,
+            tax_id: client.tax_id,
             notes: client.notes,
             created_at: client.created_at.iso8601,
             updated_at: client.updated_at.iso8601
