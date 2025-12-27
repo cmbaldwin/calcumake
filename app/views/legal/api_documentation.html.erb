@@ -1,0 +1,777 @@
+<% content_for :title, t('api_documentation.title') %>
+<% content_for :meta_description, t('api_documentation.meta.description') %>
+<% content_for :meta_keywords, t('api_documentation.meta.keywords') %>
+<% content_for :api_docs_page, true %>
+
+<div class="api-documentation">
+  <!-- Hero Section -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card bg-primary text-white">
+        <div class="card-body text-center py-5">
+          <h1 class="display-4 mb-3"><%= t('api_documentation.hero.title') %></h1>
+          <p class="lead mb-4"><%= t('api_documentation.hero.subtitle') %></p>
+          <% if user_signed_in? %>
+            <%= link_to t('api_documentation.hero.cta'), new_api_token_path, class: "btn btn-light btn-lg" %>
+          <% else %>
+            <%= link_to t('api_documentation.hero.cta'), new_user_registration_path, class: "btn btn-light btn-lg" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Sidebar Navigation -->
+    <div class="col-lg-3 d-none d-lg-block">
+      <div class="api-docs-sidebar">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="mb-0"><%= t('api_documentation.toc.title') %></h5>
+          </div>
+          <div class="list-group list-group-flush">
+            <%= link_to "#getting-started", class: "list-group-item list-group-item-action" do %>
+              <i class="bi bi-rocket-takeoff me-2"></i><%= t('api_documentation.getting_started.title') %>
+            <% end %>
+            <%= link_to "#authentication", class: "list-group-item list-group-item-action" do %>
+              <i class="bi bi-shield-lock me-2"></i><%= t('api_documentation.authentication.title') %>
+            <% end %>
+            <%= link_to "#print-pricings", class: "list-group-item list-group-item-action" do %>
+              <i class="bi bi-calculator me-2"></i><%= t('api_documentation.endpoints.print_pricings.title') %>
+            <% end %>
+            <%= link_to "#printers", class: "list-group-item list-group-item-action" do %>
+              <i class="bi bi-printer me-2"></i><%= t('api_documentation.endpoints.printers.title') %>
+            <% end %>
+            <%= link_to "#filaments", class: "list-group-item list-group-item-action" do %>
+              <i class="bi bi-wind me-2"></i><%= t('api_documentation.endpoints.filaments.title') %>
+            <% end %>
+            <%= link_to "#resins", class: "list-group-item list-group-item-action" do %>
+              <i class="bi bi-droplet me-2"></i><%= t('api_documentation.endpoints.resins.title') %>
+            <% end %>
+            <%= link_to "#clients", class: "list-group-item list-group-item-action" do %>
+              <i class="bi bi-people me-2"></i><%= t('api_documentation.endpoints.clients.title') %>
+            <% end %>
+            <%= link_to "#response-format", class: "list-group-item list-group-item-action" do %>
+              <i class="bi bi-code-square me-2"></i><%= t('api_documentation.response_format.title') %>
+            <% end %>
+            <%= link_to "#errors", class: "list-group-item list-group-item-action" do %>
+              <i class="bi bi-exclamation-triangle me-2"></i><%= t('api_documentation.errors.title') %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-lg-9">
+      <!-- Getting Started -->
+      <section id="getting-started" class="mb-5">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="h3 mb-0"><%= t('api_documentation.getting_started.title') %></h2>
+          </div>
+          <div class="card-body">
+            <p><%= t('api_documentation.getting_started.description') %></p>
+
+            <h4 class="mt-4"><%= t('api_documentation.getting_started.base_url_title') %></h4>
+            <div class="card bg-light">
+              <div class="card-body">
+                <code>https://calcumake.com/api/v1</code>
+              </div>
+            </div>
+
+            <h4 class="mt-4"><%= t('api_documentation.getting_started.quick_example_title') %></h4>
+            <p><%= t('api_documentation.getting_started.quick_example_description') %></p>
+
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#example-curl" type="button">cURL</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#example-js" type="button">JavaScript</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#example-ruby" type="button">Ruby</button>
+              </li>
+            </ul>
+
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="example-curl">
+                <div class="position-relative">
+                  <pre><code class="language-bash">curl https://calcumake.com/api/v1/health \
+  -H "Content-Type: application/json"</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="example-js">
+                <div class="position-relative">
+                  <pre><code class="language-javascript">const response = await fetch('https://calcumake.com/api/v1/health', {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+const data = await response.json();
+console.log(data);</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="example-ruby">
+                <div class="position-relative">
+                  <pre><code class="language-ruby">require 'net/http'
+require 'json'
+
+uri = URI('https://calcumake.com/api/v1/health')
+response = Net::HTTP.get_response(uri)
+data = JSON.parse(response.body)
+puts data</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Authentication -->
+      <section id="authentication" class="mb-5">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="h3 mb-0"><%= t('api_documentation.authentication.title') %></h2>
+          </div>
+          <div class="card-body">
+            <p><%= t('api_documentation.authentication.description') %></p>
+
+            <div class="alert alert-info">
+              <i class="bi bi-info-circle me-2"></i>
+              <%= t('api_documentation.authentication.create_token_notice_html',
+                    link: link_to(t('api_documentation.authentication.api_tokens_page'),
+                                 user_signed_in? ? new_api_token_path : new_user_registration_path)) %>
+            </div>
+
+            <h4 class="mt-4"><%= t('api_documentation.authentication.bearer_format_title') %></h4>
+            <p><%= t('api_documentation.authentication.bearer_format_description') %></p>
+
+            <div class="card bg-light">
+              <div class="card-body">
+                <code>Authorization: Bearer YOUR_API_TOKEN</code>
+              </div>
+            </div>
+
+            <h4 class="mt-4"><%= t('api_documentation.authentication.example_title') %></h4>
+
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#auth-curl" type="button">cURL</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#auth-js" type="button">JavaScript</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#auth-ruby" type="button">Ruby</button>
+              </li>
+            </ul>
+
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="auth-curl">
+                <pre><code class="language-bash">curl https://calcumake.com/api/v1/print_pricings \
+  -H "Authorization: Bearer YOUR_API_TOKEN" \
+  -H "Content-Type: application/json"</code></pre>
+              </div>
+              <div class="tab-pane fade" id="auth-js">
+                <pre><code class="language-javascript">const response = await fetch('https://calcumake.com/api/v1/print_pricings', {
+  headers: {
+    'Authorization': 'Bearer YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  }
+});
+const data = await response.json();</code></pre>
+              </div>
+              <div class="tab-pane fade" id="auth-ruby">
+                <pre><code class="language-ruby">require 'net/http'
+require 'json'
+
+uri = URI('https://calcumake.com/api/v1/print_pricings')
+req = Net::HTTP::Get.new(uri)
+req['Authorization'] = 'Bearer YOUR_API_TOKEN'
+req['Content-Type'] = 'application/json'
+
+response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+  http.request(req)
+end
+
+data = JSON.parse(response.body)</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Print Pricings Endpoints -->
+      <section id="print-pricings" class="mb-5">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="h3 mb-0">
+              <i class="bi bi-calculator me-2"></i>
+              <%= t('api_documentation.endpoints.print_pricings.title') %>
+            </h2>
+          </div>
+          <div class="card-body">
+            <p><%= t('api_documentation.endpoints.print_pricings.description') %></p>
+
+            <!-- List Print Pricings -->
+            <div class="api-endpoint mb-4">
+              <h4>
+                <span class="badge bg-success">GET</span>
+                <code>/api/v1/print_pricings</code>
+              </h4>
+              <p><%= t('api_documentation.endpoints.print_pricings.list.description') %></p>
+
+              <h5 class="mt-3"><%= t('api_documentation.common.parameters') %></h5>
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th><%= t('api_documentation.common.parameter') %></th>
+                    <th><%= t('api_documentation.common.type') %></th>
+                    <th><%= t('api_documentation.common.description') %></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>page</code></td>
+                    <td>integer</td>
+                    <td><%= t('api_documentation.common.page_param') %></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h5 class="mt-3"><%= t('api_documentation.common.example_request') %></h5>
+              <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#pp-list-curl" type="button">cURL</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pp-list-js" type="button">JavaScript</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pp-list-ruby" type="button">Ruby</button>
+                </li>
+              </ul>
+
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="pp-list-curl">
+                  <pre><code class="language-bash">curl https://calcumake.com/api/v1/print_pricings \
+  -H "Authorization: Bearer YOUR_API_TOKEN"</code></pre>
+                </div>
+                <div class="tab-pane fade" id="pp-list-js">
+                  <pre><code class="language-javascript">const response = await fetch('https://calcumake.com/api/v1/print_pricings', {
+  headers: {
+    'Authorization': 'Bearer YOUR_API_TOKEN'
+  }
+});
+const data = await response.json();</code></pre>
+                </div>
+                <div class="tab-pane fade" id="pp-list-ruby">
+                  <pre><code class="language-ruby">uri = URI('https://calcumake.com/api/v1/print_pricings')
+req = Net::HTTP::Get.new(uri)
+req['Authorization'] = 'Bearer YOUR_API_TOKEN'
+
+response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+  http.request(req)
+end</code></pre>
+                </div>
+              </div>
+
+              <h5 class="mt-3"><%= t('api_documentation.common.example_response') %></h5>
+              <pre><code class="language-json">{
+  "data": [
+    {
+      "id": "123",
+      "type": "print_pricing",
+      "attributes": {
+        "job_name": "Sample Project",
+        "created_at": "2025-01-15T10:30:00Z",
+        "updated_at": "2025-01-15T10:30:00Z"
+      },
+      "relationships": {
+        "printer": { "data": { "type": "printer", "id": "45" } },
+        "client": { "data": { "type": "client", "id": "67" } },
+        "plates": { "data": [{ "type": "plate", "id": "89" }] }
+      }
+    }
+  ],
+  "meta": {
+    "total_count": 42
+  }
+}</code></pre>
+            </div>
+
+            <!-- Create Print Pricing -->
+            <div class="api-endpoint mb-4">
+              <h4>
+                <span class="badge bg-primary">POST</span>
+                <code>/api/v1/print_pricings</code>
+              </h4>
+              <p><%= t('api_documentation.endpoints.print_pricings.create.description') %></p>
+
+              <h5 class="mt-3"><%= t('api_documentation.common.request_body') %></h5>
+              <pre><code class="language-json">{
+  "print_pricing": {
+    "job_name": "New Project",
+    "printer_id": 45,
+    "client_id": 67,
+    "plates_attributes": [
+      {
+        "printing_time_hours": 2.5,
+        "filament_weight": 50.0
+      }
+    ]
+  }
+}</code></pre>
+            </div>
+
+            <!-- Get Print Pricing -->
+            <div class="api-endpoint mb-4">
+              <h4>
+                <span class="badge bg-success">GET</span>
+                <code>/api/v1/print_pricings/:id</code>
+              </h4>
+              <p><%= t('api_documentation.endpoints.print_pricings.show.description') %></p>
+            </div>
+
+            <!-- Update Print Pricing -->
+            <div class="api-endpoint mb-4">
+              <h4>
+                <span class="badge bg-warning text-dark">PATCH</span>
+                <code>/api/v1/print_pricings/:id</code>
+              </h4>
+              <p><%= t('api_documentation.endpoints.print_pricings.update.description') %></p>
+            </div>
+
+            <!-- Delete Print Pricing -->
+            <div class="api-endpoint mb-4">
+              <h4>
+                <span class="badge bg-danger">DELETE</span>
+                <code>/api/v1/print_pricings/:id</code>
+              </h4>
+              <p><%= t('api_documentation.endpoints.print_pricings.destroy.description') %></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Printers Endpoints -->
+      <section id="printers" class="mb-5">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="h3 mb-0">
+              <i class="bi bi-printer me-2"></i>
+              <%= t('api_documentation.endpoints.printers.title') %>
+            </h2>
+          </div>
+          <div class="card-body">
+            <p><%= t('api_documentation.endpoints.printers.description') %></p>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th><%= t('api_documentation.common.method') %></th>
+                    <th><%= t('api_documentation.common.endpoint') %></th>
+                    <th><%= t('api_documentation.common.description') %></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="badge bg-success">GET</span></td>
+                    <td><code>/api/v1/printers</code></td>
+                    <td><%= t('api_documentation.endpoints.printers.list.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-primary">POST</span></td>
+                    <td><code>/api/v1/printers</code></td>
+                    <td><%= t('api_documentation.endpoints.printers.create.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-success">GET</span></td>
+                    <td><code>/api/v1/printers/:id</code></td>
+                    <td><%= t('api_documentation.endpoints.printers.show.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-warning text-dark">PATCH</span></td>
+                    <td><code>/api/v1/printers/:id</code></td>
+                    <td><%= t('api_documentation.endpoints.printers.update.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-danger">DELETE</span></td>
+                    <td><code>/api/v1/printers/:id</code></td>
+                    <td><%= t('api_documentation.endpoints.printers.destroy.description') %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filaments Endpoints -->
+      <section id="filaments" class="mb-5">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="h3 mb-0">
+              <i class="bi bi-wind me-2"></i>
+              <%= t('api_documentation.endpoints.filaments.title') %>
+            </h2>
+          </div>
+          <div class="card-body">
+            <p><%= t('api_documentation.endpoints.filaments.description') %></p>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th><%= t('api_documentation.common.method') %></th>
+                    <th><%= t('api_documentation.common.endpoint') %></th>
+                    <th><%= t('api_documentation.common.description') %></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="badge bg-success">GET</span></td>
+                    <td><code>/api/v1/filaments</code></td>
+                    <td><%= t('api_documentation.endpoints.filaments.list.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-primary">POST</span></td>
+                    <td><code>/api/v1/filaments</code></td>
+                    <td><%= t('api_documentation.endpoints.filaments.create.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-success">GET</span></td>
+                    <td><code>/api/v1/filaments/:id</code></td>
+                    <td><%= t('api_documentation.endpoints.filaments.show.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-warning text-dark">PATCH</span></td>
+                    <td><code>/api/v1/filaments/:id</code></td>
+                    <td><%= t('api_documentation.endpoints.filaments.update.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-danger">DELETE</span></td>
+                    <td><code>/api/v1/filaments/:id</code></td>
+                    <td><%= t('api_documentation.endpoints.filaments.destroy.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-primary">POST</span></td>
+                    <td><code>/api/v1/filaments/:id/duplicate</code></td>
+                    <td><%= t('api_documentation.endpoints.filaments.duplicate.description') %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resins Endpoints -->
+      <section id="resins" class="mb-5">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="h3 mb-0">
+              <i class="bi bi-droplet me-2"></i>
+              <%= t('api_documentation.endpoints.resins.title') %>
+            </h2>
+          </div>
+          <div class="card-body">
+            <p><%= t('api_documentation.endpoints.resins.description') %></p>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th><%= t('api_documentation.common.method') %></th>
+                    <th><%= t('api_documentation.common.endpoint') %></th>
+                    <th><%= t('api_documentation.common.description') %></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="badge bg-success">GET</span></td>
+                    <td><code>/api/v1/resins</code></td>
+                    <td><%= t('api_documentation.endpoints.resins.list.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-primary">POST</span></td>
+                    <td><code>/api/v1/resins</code></td>
+                    <td><%= t('api_documentation.endpoints.resins.create.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-success">GET</span></td>
+                    <td><code>/api/v1/resins/:id</code></td>
+                    <td><%= t('api_documentation.endpoints.resins.show.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-warning text-dark">PATCH</span></td>
+                    <td><code>/api/v1/resins/:id</code></td>
+                    <td><%= t('api_documentation.endpoints.resins.update.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-danger">DELETE</span></td>
+                    <td><code>/api/v1/resins/:id</code></td>
+                    <td><%= t('api_documentation.endpoints.resins.destroy.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-primary">POST</span></td>
+                    <td><code>/api/v1/resins/:id/duplicate</code></td>
+                    <td><%= t('api_documentation.endpoints.resins.duplicate.description') %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Clients Endpoints -->
+      <section id="clients" class="mb-5">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="h3 mb-0">
+              <i class="bi bi-people me-2"></i>
+              <%= t('api_documentation.endpoints.clients.title') %>
+            </h2>
+          </div>
+          <div class="card-body">
+            <p><%= t('api_documentation.endpoints.clients.description') %></p>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th><%= t('api_documentation.common.method') %></th>
+                    <th><%= t('api_documentation.common.endpoint') %></th>
+                    <th><%= t('api_documentation.common.description') %></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="badge bg-success">GET</span></td>
+                    <td><code>/api/v1/clients</code></td>
+                    <td><%= t('api_documentation.endpoints.clients.list.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-primary">POST</span></td>
+                    <td><code>/api/v1/clients</code></td>
+                    <td><%= t('api_documentation.endpoints.clients.create.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-success">GET</span></td>
+                    <td><code>/api/v1/clients/:id</code></td>
+                    <td><%= t('api_documentation.endpoints.clients.show.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-warning text-dark">PATCH</span></td>
+                    <td><code>/api/v1/clients/:id</code></td>
+                    <td><%= t('api_documentation.endpoints.clients.update.description') %></td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-danger">DELETE</span></td>
+                    <td><code>/api/v1/clients/:id</code></td>
+                    <td><%= t('api_documentation.endpoints.clients.destroy.description') %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Response Format -->
+      <section id="response-format" class="mb-5">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="h3 mb-0"><%= t('api_documentation.response_format.title') %></h2>
+          </div>
+          <div class="card-body">
+            <p><%= t('api_documentation.response_format.description') %></p>
+
+            <h4 class="mt-4"><%= t('api_documentation.response_format.success_title') %></h4>
+            <pre><code class="language-json">{
+  "data": {
+    "id": "123",
+    "type": "resource_type",
+    "attributes": {
+      "field1": "value1",
+      "field2": "value2"
+    },
+    "relationships": {
+      "related_resource": {
+        "data": { "type": "related_type", "id": "456" }
+      }
+    }
+  }
+}</code></pre>
+
+            <h4 class="mt-4"><%= t('api_documentation.response_format.collection_title') %></h4>
+            <pre><code class="language-json">{
+  "data": [
+    { "id": "1", "type": "resource", "attributes": {...} },
+    { "id": "2", "type": "resource", "attributes": {...} }
+  ],
+  "meta": {
+    "total_count": 42
+  }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Error Handling -->
+      <section id="errors" class="mb-5">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="h3 mb-0"><%= t('api_documentation.errors.title') %></h2>
+          </div>
+          <div class="card-body">
+            <p><%= t('api_documentation.errors.description') %></p>
+
+            <h4 class="mt-4"><%= t('api_documentation.errors.status_codes_title') %></h4>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th><%= t('api_documentation.errors.status_code') %></th>
+                  <th><%= t('api_documentation.errors.meaning') %></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>200</code></td>
+                  <td><%= t('api_documentation.errors.codes.200') %></td>
+                </tr>
+                <tr>
+                  <td><code>201</code></td>
+                  <td><%= t('api_documentation.errors.codes.201') %></td>
+                </tr>
+                <tr>
+                  <td><code>400</code></td>
+                  <td><%= t('api_documentation.errors.codes.400') %></td>
+                </tr>
+                <tr>
+                  <td><code>401</code></td>
+                  <td><%= t('api_documentation.errors.codes.401') %></td>
+                </tr>
+                <tr>
+                  <td><code>403</code></td>
+                  <td><%= t('api_documentation.errors.codes.403') %></td>
+                </tr>
+                <tr>
+                  <td><code>404</code></td>
+                  <td><%= t('api_documentation.errors.codes.404') %></td>
+                </tr>
+                <tr>
+                  <td><code>422</code></td>
+                  <td><%= t('api_documentation.errors.codes.422') %></td>
+                </tr>
+                <tr>
+                  <td><code>500</code></td>
+                  <td><%= t('api_documentation.errors.codes.500') %></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 class="mt-4"><%= t('api_documentation.errors.format_title') %></h4>
+            <pre><code class="language-json">{
+  "errors": [
+    {
+      "status": "422",
+      "title": "Validation failed",
+      "detail": "Job name can't be blank"
+    }
+  ]
+}</code></pre>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- Prism.js for syntax highlighting (loaded from CDN) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-ruby.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+
+<style>
+  .api-docs-sidebar {
+    position: sticky;
+    top: 80px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .api-endpoint {
+    border-left: 4px solid var(--bs-primary);
+    padding-left: 1rem;
+  }
+
+  .api-endpoint h4 {
+    margin-bottom: 0.5rem;
+  }
+
+  .api-endpoint .badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  pre {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  pre code {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  code {
+    background-color: #f8f9fa;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .tab-content {
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 0.25rem 0.25rem;
+  }
+
+  .tab-content .tab-pane {
+    padding: 0;
+  }
+
+  .tab-content pre {
+    margin: 0;
+    border: none;
+    border-radius: 0 0 0.25rem 0.25rem;
+  }
+
+  .nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+
+  .nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #f8f9fa;
+    border-color: #dee2e6 #dee2e6 #f8f9fa;
+  }
+</style>

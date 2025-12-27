@@ -1,0 +1,142 @@
+---
+en:
+  api_documentation:
+    title: API Documentation
+    nav_title: API Documentation
+    meta:
+      description: Complete reference for the CalcuMake REST API. Manage print pricings, printers, filaments, and clients programmatically with our comprehensive API.
+      keywords: API, REST, documentation, 3D printing, CalcuMake, integration, developer
+
+    hero:
+      title: CalcuMake API Documentation
+      subtitle: Build powerful 3D printing workflow integrations with our comprehensive REST API
+      cta: Get Your API Token
+
+    toc:
+      title: Table of Contents
+
+    getting_started:
+      title: Getting Started
+      description: The CalcuMake API is a RESTful API that uses JSON for requests and responses. All API endpoints are versioned and require authentication via Bearer tokens.
+      base_url_title: Base URL
+      quick_example_title: Quick Example
+      quick_example_description: Here's a simple example to check the API health status (no authentication required)
+
+    authentication:
+      title: Authentication
+      description: All API endpoints (except public endpoints like health check) require authentication using Bearer tokens.
+      create_token_notice_html: To create an API token, visit the %{link}.
+      api_tokens_page: API Tokens page
+      bearer_format_title: Bearer Token Format
+      bearer_format_description: Include your API token in the Authorization header of every request
+      example_title: Authenticated Request Example
+
+    endpoints:
+      print_pricings:
+        title: Print Pricings
+        description: Manage print pricing calculations for your 3D printing projects.
+        list:
+          description: Retrieve all print pricing calculations for the authenticated user
+        create:
+          description: Create a new print pricing calculation
+        show:
+          description: Retrieve a specific print pricing calculation by ID
+        update:
+          description: Update an existing print pricing calculation
+        destroy:
+          description: Delete a print pricing calculation
+
+      printers:
+        title: Printers
+        description: Manage 3D printers in your inventory.
+        list:
+          description: List all printers
+        create:
+          description: Create a new printer
+        show:
+          description: Get a specific printer
+        update:
+          description: Update a printer
+        destroy:
+          description: Delete a printer
+
+      filaments:
+        title: Filaments
+        description: Manage filament materials for FDM/FFF printing.
+        list:
+          description: List all filaments
+        create:
+          description: Create a new filament
+        show:
+          description: Get a specific filament
+        update:
+          description: Update a filament
+        destroy:
+          description: Delete a filament
+        duplicate:
+          description: Duplicate an existing filament
+
+      resins:
+        title: Resins
+        description: Manage resin materials for SLA/DLP/LCD printing.
+        list:
+          description: List all resins
+        create:
+          description: Create a new resin
+        show:
+          description: Get a specific resin
+        update:
+          description: Update a resin
+        destroy:
+          description: Delete a resin
+        duplicate:
+          description: Duplicate an existing resin
+
+      clients:
+        title: Clients
+        description: Manage your customers and clients.
+        list:
+          description: List all clients
+        create:
+          description: Create a new client
+        show:
+          description: Get a specific client
+        update:
+          description: Update a client
+        destroy:
+          description: Delete a client
+
+    response_format:
+      title: Response Format
+      description: All API responses follow a consistent JSON structure based on JSON:API conventions.
+      success_title: Successful Response (Single Resource)
+      collection_title: Collection Response
+
+    errors:
+      title: Error Handling
+      description: When an error occurs, the API returns an appropriate HTTP status code along with a JSON error response.
+      status_codes_title: HTTP Status Codes
+      status_code: Status Code
+      meaning: Meaning
+      format_title: Error Response Format
+      codes:
+        '200': OK - Request succeeded
+        '201': Created - Resource successfully created
+        '400': Bad Request - Invalid request format
+        '401': Unauthorized - Authentication required or token invalid
+        '403': Forbidden - Authenticated but not authorized for this resource
+        '404': Not Found - Resource does not exist
+        '422': Unprocessable Entity - Validation errors
+        '500': Internal Server Error - Server error occurred
+
+    common:
+      parameters: Parameters
+      parameter: Parameter
+      type: Type
+      description: Description
+      page_param: Page number for pagination (default 1)
+      example_request: Example Request
+      example_response: Example Response
+      request_body: Request Body
+      method: Method
+      endpoint: Endpoint

@@ -205,4 +205,62 @@ class LegalControllerTest < ActionDispatch::IntegrationTest
     assert_not_includes response.body, "[TBD", "Must not contain bracket placeholders like [TBD]"
     assert_not_includes response.body, "[Contact", "Must not contain bracket placeholders like [Contact Info]"
   end
+
+  # API Documentation Tests
+  test "should get api_documentation" do
+    get api_documentation_path
+    assert_response :success
+    assert_includes response.body, I18n.t("api_documentation.title")
+  end
+
+  test "api_documentation should have correct meta title" do
+    get api_documentation_path
+    assert_response :success
+    assert_select "title", I18n.t("api_documentation.title")
+  end
+
+  test "api_documentation should have endpoint sections" do
+    get api_documentation_path
+    assert_response :success
+    assert_includes response.body, I18n.t("api_documentation.endpoints.print_pricings.title")
+    assert_includes response.body, I18n.t("api_documentation.endpoints.printers.title")
+    assert_includes response.body, I18n.t("api_documentation.endpoints.filaments.title")
+    assert_includes response.body, I18n.t("api_documentation.endpoints.resins.title")
+    assert_includes response.body, I18n.t("api_documentation.endpoints.clients.title")
+  end
+
+  test "api_documentation should include authentication section" do
+    get api_documentation_path
+    assert_response :success
+    assert_includes response.body, I18n.t("api_documentation.authentication.title")
+    assert_includes response.body, "Authorization: Bearer"
+  end
+
+  test "api_documentation should include code examples" do
+    get api_documentation_path
+    assert_response :success
+    assert_match /curl/i, response.body
+    assert_includes response.body, "https://calcumake.com/api/v1"
+  end
+
+  test "api_documentation should include getting started section" do
+    get api_documentation_path
+    assert_response :success
+    assert_includes response.body, I18n.t("api_documentation.getting_started.title")
+    assert_includes response.body, "https://calcumake.com/api/v1"
+  end
+
+  test "api_documentation should include response format section" do
+    get api_documentation_path
+    assert_response :success
+    assert_includes response.body, I18n.t("api_documentation.response_format.title")
+  end
+
+  test "api_documentation should include error handling section" do
+    get api_documentation_path
+    assert_response :success
+    assert_includes response.body, I18n.t("api_documentation.errors.title")
+    assert_includes response.body, "401"
+    assert_includes response.body, "404"
+  end
 end

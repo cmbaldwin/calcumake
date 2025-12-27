@@ -65,6 +65,13 @@
                         <li><%= link_to t('legal.privacy_policy.nav_title'), privacy_policy_path, class: "dropdown-item" %></li>
                         <li><%= link_to t('legal.user_agreement.nav_title'), user_agreement_path, class: "dropdown-item" %></li>
                         <li><%= link_to t('legal.commerce_disclosure.nav_title'), commerce_disclosure_path, class: "dropdown-item" %></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <h6 class="dropdown-header"><%= t('nav.developer_header', default: 'Developer') %></h6>
+                        </li>
+                        <li><%= link_to t('api_documentation.nav_title'), api_documentation_path, class: "dropdown-item" %></li>
                         <% if user_signed_in? %>
                         <li>
                             <hr class="dropdown-divider">
