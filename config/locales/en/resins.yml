@@ -1,0 +1,91 @@
+en:
+  models:
+    resin: "Resin"
+  resins:
+    index:
+      title: "Resin Library"
+      subtitle: "Manage your resin collection for accurate SLA/DLP cost calculations"
+      add_new: "Add New Resin"
+      search_placeholder: "Search resins..."
+      all_types: "All Resin Types"
+      clear_search: "Clear Search"
+      no_results:
+        title: "No Resins Found"
+        description: "No resins match your search criteria. Try adjusting your filters."
+      empty_state:
+        title: "No Resins Yet"
+        description: "Add your first resin to start tracking SLA/DLP print costs accurately."
+        add_first: "Add Your First Resin"
+    new:
+      title: "Add New Resin"
+      subtitle: "Enter your resin details for accurate cost calculations"
+    edit:
+      title: "Edit Resin"
+      subtitle: "Update your resin information"
+    show:
+      no_cost_info: "Cost information not available. Add bottle price and volume to see cost per mL."
+      usage_history: "Usage History"
+      times_used: "Times Used"
+      total_volume_used: "Total Volume Used"
+      recent_prints: "Recent Prints"
+      not_used_yet: "This resin hasn't been used in any prints yet."
+      create_first_print: "Create First Print"
+      new_print_with_resin: "New Print"
+    sections:
+      basic_info: "Basic Information"
+      cost_info: "Cost Information"
+      technical_specs: "Technical Specifications"
+      properties: "Properties"
+    fields:
+      name: "Name"
+      name_placeholder: "e.g., Standard Gray"
+      brand: "Brand"
+      brand_placeholder: "e.g., Elegoo, Anycubic"
+      resin_type: "Resin Type"
+      resin_type_prompt: "Select resin type..."
+      color: "Color"
+      color_placeholder: "e.g., Gray, Clear, Black"
+      bottle_volume_ml: "Bottle Volume"
+      bottle_volume_ml_placeholder: "e.g., 1000"
+      bottle_price: "Bottle Price"
+      bottle_price_placeholder: "e.g., 25.00"
+      cost_per_ml: "Cost per mL"
+      resin: "Resin"
+      select_resin: "Select a resin..."
+      volume_used: "Volume (mL)"
+      selected: "Selected"
+      none_selected: "None selected"
+      not_set: "Not set"
+      total_cost: "Total Cost"
+      no_resin_registered: "Don't have a resin registered?"
+      add_new_resin: "Add new resin"
+      layer_height_range: "Layer Height Range"
+      layer_height_min: "Min Layer Height"
+      layer_height_min_placeholder: "e.g., 0.025"
+      layer_height_max: "Max Layer Height"
+      layer_height_max_placeholder: "e.g., 0.100"
+      exposure_time_seconds: "Exposure Time"
+      exposure_time_seconds_placeholder: "e.g., 8"
+      cure_time_seconds: "Cure Time"
+      cure_time_seconds_placeholder: "e.g., 120"
+      needs_wash: "Requires Washing"
+      notes: "Notes"
+      notes_placeholder: "Add any additional notes about this resin..."
+    properties:
+      needs_wash: "Requires Washing"
+    buttons:
+      add_resin: "Add Resin"
+      update_resin: "Update Resin"
+      add: "Add Resin"
+    confirm_delete: "Are you sure you want to delete %{name}? This action cannot be undone."
+  activerecord:
+    errors:
+      models:
+        resin:
+          attributes:
+            layer_height_max:
+              layer_height_range: "must be greater than minimum layer height"
+        plate:
+          attributes:
+            base:
+              no_resins: "Resin plates must have at least one resin"

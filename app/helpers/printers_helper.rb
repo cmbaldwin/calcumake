@@ -106,18 +106,76 @@ module PrintersHelper
     end
   end
 
-  def printer_form_basic_information(form, printer)
-    content_tag :div, class: "form-card" do
-      content_tag(:h3, "Basic Information") +
+  def printer_form_profile_selector
+    profiles = PrinterProfile.order(:manufacturer, :model).map do |p|
+      {
+        id: p.id,
+        manufacturer: p.manufacturer,
+        model: p.model,
+        display_name: p.display_name,
+        category: p.category,
+        technology: p.technology,
+        power_consumption_avg_watts: p.power_consumption_avg_watts,
+        cost_usd: p.cost_usd&.to_f
+      }
+    end
+
+    content_tag :div, class: "form-card mb-3",
+                data: {
+                  controller: "printer-profile-select printer-form-autofill",
+                  printer_profile_select_profiles_value: profiles.to_json,
+                  action: "printer-profile-select:selected->printer-form-autofill#populate printer-profile-select:cleared->printer-form-autofill#clear"
+                } do
+      content_tag(:h3, t("printers.form.select_profile")) +
       content_tag(:div, class: "field-group") do
-        content_tag(:label, "Printer Name") +
-        form.text_field(:name, placeholder: "e.g., My Prusa i3 MK3S+")
+        content_tag(:div, class: "position-relative") do
+          tag.input(
+            type: "text",
+            class: "form-control pe-5",
+            placeholder: t("printers.form.profile_search_placeholder"),
+            autocomplete: "off",
+            data: {
+              printer_profile_select_target: "input",
+              action: "input->printer-profile-select#filter focus->printer-profile-select#focus blur->printer-profile-select#blur keydown->printer-profile-select#keydown"
+            }
+          ) +
+          content_tag(:button, type: "button", class: "profile-search-clear d-none",
+            data: { printer_profile_select_target: "clear", action: "click->printer-profile-select#clear" }) do
+            content_tag(:i, "", class: "bi bi-x-circle-fill")
+          end +
+          content_tag(:div, class: "dropdown-menu w-100 printer-profile-dropdown", data: { printer_profile_select_target: "dropdown" }) do
+            content_tag(:div, "", data: { printer_profile_select_target: "list" })
+          end
+        end
+      end +
+      content_tag(:small, t("printers.form.profile_help"), class: "form-text text-muted")
+    end
+  end
+
+  def printer_form_basic_information(form, printer)
+    content_tag :div, class: "form-card", data: { printer_form_autofill_target: "formCard" } do
+      content_tag(:h3, t("printers.form.basic_information")) +
+      content_tag(:div, class: "field-group") do
+        content_tag(:label, t("printers.form.name")) +
+        form.text_field(:name, placeholder: t("printers.form.name_placeholder"), data: { printer_form_autofill_target: "name" })
       end +
       content_tag(:div, class: "field-group") do
-        content_tag(:label, "Manufacturer") +
+        content_tag(:label, t("printers.form.manufacturer")) +
         form.select(:manufacturer,
           options_for_select(Printer::MANUFACTURERS.map { |m| [ m, m ] }, printer.manufacturer),
-          { prompt: "Select manufacturer" })
+          { prompt: t("printers.form.select_manufacturer") },
+          { data: { printer_form_autofill_target: "manufacturer" } })
+      end +
+      content_tag(:div, class: "field-group") do
+        content_tag(:label, t("printers.form.material_technology")) +
+        form.select(:material_technology,
+          options_for_select([
+            [ t("printers.form.technology_fdm"), "fdm" ],
+            [ t("printers.form.technology_resin"), "resin" ]
+          ], printer.material_technology || "fdm"),
+          {},
+          { class: "form-select", data: { technology_select: true, printer_form_autofill_target: "technology" } }) +
+        content_tag(:small, t("printers.form.technology_help"))
       end
     end
   end
@@ -127,7 +185,7 @@ module PrintersHelper
       content_tag(:h3, "Technical Specifications") +
       content_tag(:div, class: "field-group") do
         content_tag(:label, "Power Consumption (Watts)") +
-        form.number_field(:power_consumption, step: 1, placeholder: "200") +
+        form.number_field(:power_consumption, step: 1, placeholder: "200", data: { printer_form_autofill_target: "powerConsumption" }) +
         content_tag(:small, "Typical range: 50W (small printers) to 500W (large printers)")
       end
     end
@@ -140,7 +198,7 @@ module PrintersHelper
         content_tag(:label, "Printer Cost") +
         content_tag(:div, class: "currency-input") do
           content_tag(:span, currency_symbol(current_user.default_currency), class: "currency-symbol") +
-          form.number_field(:cost, step: 0.01, placeholder: "500.00")
+          form.number_field(:cost, step: 0.01, placeholder: "500.00", data: { printer_form_autofill_target: "cost" })
         end
       end +
       content_tag(:div, class: "field-group") do

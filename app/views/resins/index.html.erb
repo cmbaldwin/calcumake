@@ -1,0 +1,75 @@
+<!-- Hero Section -->
+<div class="text-center mb-5">
+    <h3 class="display-5 fw-bold text-primary mb-3"><%= t('resins.index.title') %></h3>
+    <p class="lead text-muted mb-4"><%= t('resins.index.subtitle') %></p>
+    <%= link_to t('resins.index.add_new'), new_resin_path, class: "btn btn-primary btn-lg" %>
+</div>
+
+<!-- Search and Filter Section with Typehead -->
+<% if @resins.any? || params[:q].present? %>
+<div class="card mb-4" data-controller="search" data-search-url-value="<%= resins_path %>">
+    <div class="card-body">
+        <%= search_form_for @q, url: resins_path,
+            html: {
+              class: "row g-3",
+              data: {
+                turbo_frame: :resin_results,
+                search_target: "form"
+              }
+            } do |form| %>
+            <div class="col-md-6">
+                <%= form.search_field :name_or_brand_or_color_cont,
+                    placeholder: t('resins.index.search_placeholder'),
+                    class: "form-control",
+                    data: {
+                      search_target: "input",
+                      action: "input->search#search"
+                    } %>
+            </div>
+            <%= render Forms::SelectFieldComponent.new(
+              form: form,
+              attribute: :resin_type_eq,
+              choices: [[t('resins.index.all_types'), '']] + @resin_types.map { |t| [t, t] },
+              label: false,
+              wrapper_class: "col-md-6",
+              html_options: {
+                data: { action: "change->search#search" }
+              },
+              select_options: { selected: params.dig(:q, :resin_type_eq) }
+            ) %>
+        <% end %>
+    </div>
+</div>
+<% end %>
+
+<%= turbo_frame_tag :resin_results do %>
+    <% if @resins.any? %>
+        <div class="row g-4">
+            <% @resins.each do |resin| %>
+                <%= render Cards::ResinCardComponent.new(resin: resin, current_user: current_user) %>
+            <% end %>
+        </div>
+    <% elsif @q.present? %>
+        <!-- No Search Results -->
+        <div class="text-center py-5">
+            <div class="card border-0 bg-light">
+                <div class="card-body py-5">
+                    <h3 class="text-muted mb-3"><%= t('resins.index.no_results.title') %></h3>
+                    <p class="text-muted mb-4"><%= t('resins.index.no_results.description', query: @q) %></p>
+                    <%= link_to t('resins.index.clear_search'), resins_path, class: "btn btn-secondary" %>
+                </div>
+            </div>
+        </div>
+    <% else %>
+        <!-- Empty State -->
+        <div class="text-center py-5">
+            <div class="card border-0 bg-light">
+                <div class="card-body py-5">
+                    <h3 class="text-muted mb-3"><%= t('resins.index.empty_state.title') %></h3>
+                    <p class="text-muted mb-4"><%= t('resins.index.empty_state.description') %></p>
+                    <%= link_to t('resins.index.empty_state.add_first'), new_resin_path, class: "btn btn-primary" %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+<% end %>

@@ -347,4 +347,105 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_content
     assert_select "li", text: /Cannot use the same filament multiple times on the same plate/
   end
+
+  # Resin technology tests
+  test "should create print_pricing with resin plate" do
+    resin_printer = printers(:resin_printer)
+    resin = resins(:one)
+
+    assert_difference("PrintPricing.count") do
+      assert_difference("Plate.count") do
+        assert_difference("PlateResin.count") do
+          post print_pricings_url, params: {
+            print_pricing: {
+              job_name: "Resin Test Job",
+              printer_id: resin_printer.id,
+              plates_attributes: {
+                "0" => {
+                  printing_time_hours: 4,
+                  printing_time_minutes: 30,
+                  material_technology: "resin",
+                  plate_resins_attributes: {
+                    "0" => {
+                      resin_id: resin.id,
+                      resin_volume_ml: 75.0,
+                      markup_percentage: 25.0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        end
+      end
+    end
+
+    assert_redirected_to print_pricing_url(PrintPricing.last)
+    created_pricing = PrintPricing.last
+    assert_equal "Resin Test Job", created_pricing.job_name
+    assert created_pricing.plates.first.resin?
+    assert_equal 75.0, created_pricing.plates.first.plate_resins.first.resin_volume_ml
+  end
+
+  test "should duplicate print pricing with resin plates" do
+    # First create a resin print pricing
+    resin_printer = printers(:resin_printer)
+    resin = resins(:one)
+
+    resin_pricing = @user.print_pricings.build(
+      job_name: "Original Resin Print",
+      printer: resin_printer
+    )
+    plate = resin_pricing.plates.build(
+      printing_time_hours: 3,
+      printing_time_minutes: 0,
+      material_technology: :resin
+    )
+    plate.plate_resins.build(
+      resin: resin,
+      resin_volume_ml: 100.0,
+      markup_percentage: 30.0
+    )
+    resin_pricing.save!
+
+    original_count = PrintPricing.count
+    original_plate_count = Plate.count
+    original_plate_resin_count = PlateResin.count
+
+    post duplicate_print_pricing_url(resin_pricing)
+
+    assert_redirected_to print_pricing_url(PrintPricing.last)
+    assert_equal original_count + 1, PrintPricing.count
+    assert_equal original_plate_count + 1, Plate.count
+    assert_equal original_plate_resin_count + 1, PlateResin.count
+
+    duplicated_pricing = PrintPricing.last
+    assert_equal "#{resin_pricing.job_name} (Copy)", duplicated_pricing.job_name
+    assert duplicated_pricing.plates.first.resin?
+    assert_equal 100.0, duplicated_pricing.plates.first.plate_resins.first.resin_volume_ml
+    assert_equal 30.0, duplicated_pricing.plates.first.plate_resins.first.markup_percentage
+  end
+
+  test "should not create resin plate without resin" do
+    resin_printer = printers(:resin_printer)
+
+    assert_no_difference("PrintPricing.count") do
+      post print_pricings_url, params: {
+        print_pricing: {
+          job_name: "Invalid Resin Job",
+          printer_id: resin_printer.id,
+          plates_attributes: {
+            "0" => {
+              printing_time_hours: 2,
+              printing_time_minutes: 0,
+              material_technology: "resin"
+              # No plate_resins_attributes - should fail validation
+            }
+          }
+        }
+      }
+    end
+
+    assert_response :unprocessable_content
+  end
 end

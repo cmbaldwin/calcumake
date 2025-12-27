@@ -2,6 +2,9 @@ class Printer < ApplicationRecord
   belongs_to :user, touch: true
   has_many :print_pricings, dependent: :destroy
 
+  # Material technology enum (matches Plate model)
+  enum :material_technology, { fdm: "fdm", resin: "resin" }, default: :fdm
+
   MANUFACTURERS = [
     "Prusa",
     "Bambu Lab",

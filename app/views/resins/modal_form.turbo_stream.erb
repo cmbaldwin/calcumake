@@ -1,0 +1,4 @@
+<%# Load resin form into modal frame - the frameLoaded event will auto-open the modal %>
+<%= turbo_stream.update "modal_content" do %>
+  <%= render "resins/modal_form" %>
+<% end %>

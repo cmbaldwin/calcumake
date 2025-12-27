@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_27_023847) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_26_230924) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -194,12 +194,26 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_27_023847) do
     t.index ["plate_id"], name: "index_plate_filaments_on_plate_id"
   end
 
+  create_table "plate_resins", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.decimal "markup_percentage", precision: 5, scale: 2, default: "20.0"
+    t.bigint "plate_id", null: false
+    t.bigint "resin_id", null: false
+    t.decimal "resin_volume_ml", precision: 10, scale: 2, null: false
+    t.datetime "updated_at", null: false
+    t.index ["plate_id", "resin_id"], name: "index_plate_resins_on_plate_id_and_resin_id", unique: true
+    t.index ["plate_id"], name: "index_plate_resins_on_plate_id"
+    t.index ["resin_id"], name: "index_plate_resins_on_resin_id"
+  end
+
   create_table "plates", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.string "material_technology", default: "fdm", null: false
     t.bigint "print_pricing_id", null: false
     t.integer "printing_time_hours"
     t.integer "printing_time_minutes"
     t.datetime "updated_at", null: false
+    t.index ["material_technology"], name: "index_plates_on_material_technology"
     t.index ["print_pricing_id"], name: "index_plates_on_print_pricing_id"
   end
 
@@ -228,19 +242,59 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_27_023847) do
     t.index ["user_id"], name: "index_print_pricings_on_user_id"
   end
 
+  create_table "printer_profiles", force: :cascade do |t|
+    t.string "category"
+    t.decimal "cost_usd", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "last_verified_at"
+    t.string "manufacturer", null: false
+    t.string "model", null: false
+    t.integer "power_consumption_avg_watts"
+    t.integer "power_consumption_peak_watts"
+    t.text "source"
+    t.string "technology", default: "fdm", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "verified", default: false
+    t.index ["category"], name: "index_printer_profiles_on_category"
+    t.index ["manufacturer", "model"], name: "index_printer_profiles_on_manufacturer_and_model", unique: true
+    t.index ["technology"], name: "index_printer_profiles_on_technology"
+  end
+
   create_table "printers", force: :cascade do |t|
     t.decimal "cost", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.integer "daily_usage_hours", default: 8
     t.datetime "date_added", default: -> { "CURRENT_TIMESTAMP" }
     t.string "manufacturer"
+    t.string "material_technology", default: "fdm", null: false
     t.string "name", null: false
     t.integer "payoff_goal_years"
     t.decimal "power_consumption", precision: 8, scale: 2
     t.decimal "repair_cost_percentage", precision: 8, scale: 2, default: "0.0"
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.index ["material_technology"], name: "index_printers_on_material_technology"
     t.index ["user_id"], name: "index_printers_on_user_id"
+  end
+
+  create_table "resins", force: :cascade do |t|
+    t.decimal "bottle_price", precision: 10, scale: 2
+    t.decimal "bottle_volume_ml", precision: 10, scale: 2
+    t.string "brand"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.integer "cure_time_seconds"
+    t.integer "exposure_time_seconds"
+    t.decimal "layer_height_max", precision: 4, scale: 3
+    t.decimal "layer_height_min", precision: 4, scale: 3
+    t.string "name", null: false
+    t.boolean "needs_wash", default: true
+    t.text "notes"
+    t.string "resin_type", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id", "name"], name: "index_resins_on_user_id_and_name", unique: true
+    t.index ["user_id"], name: "index_resins_on_user_id"
   end
 
   create_table "usage_trackings", force: :cascade do |t|
@@ -325,11 +379,14 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_27_023847) do
   add_foreign_key "invoices", "users"
   add_foreign_key "plate_filaments", "filaments"
   add_foreign_key "plate_filaments", "plates"
+  add_foreign_key "plate_resins", "plates"
+  add_foreign_key "plate_resins", "resins"
   add_foreign_key "plates", "print_pricings"
   add_foreign_key "print_pricings", "clients"
   add_foreign_key "print_pricings", "printers"
   add_foreign_key "print_pricings", "users"
   add_foreign_key "printers", "users"
+  add_foreign_key "resins", "users"
   add_foreign_key "usage_trackings", "users"
   add_foreign_key "user_consents", "users"
 end

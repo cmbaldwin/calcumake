@@ -22,8 +22,25 @@
                 <li class="nav-item">
                     <%= link_to t('nav.my_printers'), printers_path, class: "nav-link" %>
                 </li>
-                <li class="nav-item">
-                    <%= link_to t('nav.my_filaments'), filaments_path, class: "nav-link" %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="materialsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <%= t('nav.materials') %>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="materialsDropdown">
+                        <li><%= link_to t('nav.all_materials'), materials_path, class: "dropdown-item" %></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <h6 class="dropdown-header"><%= t('nav.filaments_header') %></h6>
+                        </li>
+                        <li><%= link_to t('nav.my_filaments'), filaments_path, class: "dropdown-item" %></li>
+                        <li><%= link_to t('nav.add_filament'), new_filament_path, class: "dropdown-item" %></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <h6 class="dropdown-header"><%= t('nav.resins_header') %></h6>
+                        </li>
+                        <li><%= link_to t('nav.my_resins'), resins_path, class: "dropdown-item" %></li>
+                        <li><%= link_to t('nav.add_resin'), new_resin_path, class: "dropdown-item" %></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <%= link_to t('nav.invoices'), invoices_path, class: "nav-link" %>

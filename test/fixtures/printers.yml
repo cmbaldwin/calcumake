@@ -4,6 +4,7 @@ one:
   user: one
   name: Test Printer 1
   manufacturer: Prusa
+  material_technology: fdm
   power_consumption: 200.0
   cost: 500.0
   payoff_goal_years: 3
@@ -15,9 +16,22 @@ two:
   user: two
   name: Test Printer 2
   manufacturer: Bambu Lab
+  material_technology: fdm
   power_consumption: 250.0
   cost: 800.0
   payoff_goal_years: 2
   daily_usage_hours: 6
   repair_cost_percentage: 3.0
+  date_added: 2025-09-08 13:19:42
+
+resin_printer:
+  user: one
+  name: Resin Printer
+  manufacturer: Elegoo
+  material_technology: resin
+  power_consumption: 120.0
+  cost: 300.0
+  payoff_goal_years: 2
+  daily_usage_hours: 4
+  repair_cost_percentage: 5.0
   date_added: 2025-09-08 13:19:42

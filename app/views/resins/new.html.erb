@@ -1,0 +1,167 @@
+<!-- Page Header -->
+<div class="text-center mb-5">
+    <h3 class="display-5 fw-bold text-primary mb-3"><%= t('resins.new.title') %></h3>
+    <p class="lead text-muted"><%= t('resins.new.subtitle') %></p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <%= form_with model: @resin, local: true, class: "needs-validation", novalidate: true do |form| %>
+            <%= render Forms::ErrorsComponent.new(model: @resin) %>
+
+            <!-- Basic Information -->
+            <%= render Forms::FormSectionComponent.new(
+              title: t('resins.sections.basic_info'),
+              card_class: "card mb-4",
+              body_class: "row g-3"
+            ) do %>
+              <%= render Forms::FieldComponent.new(
+                form: form,
+                attribute: :name,
+                type: :text,
+                label: t('resins.fields.name'),
+                required: true,
+                wrapper_class: "col-md-6",
+                options: { placeholder: t('resins.fields.name_placeholder') }
+              ) %>
+              <%= render Forms::FieldComponent.new(
+                form: form,
+                attribute: :brand,
+                type: :text,
+                label: t('resins.fields.brand'),
+                wrapper_class: "col-md-6",
+                options: { placeholder: t('resins.fields.brand_placeholder') }
+              ) %>
+              <%= render Forms::SelectFieldComponent.new(
+                form: form,
+                attribute: :resin_type,
+                choices: Resin::RESIN_TYPES.map { |t| [t, t] },
+                label: t('resins.fields.resin_type'),
+                prompt: t('resins.fields.resin_type_prompt'),
+                required: true,
+                wrapper_class: "col-md-6"
+              ) %>
+              <%= render Forms::FieldComponent.new(
+                form: form,
+                attribute: :color,
+                type: :text,
+                label: t('resins.fields.color'),
+                wrapper_class: "col-md-6",
+                options: { placeholder: t('resins.fields.color_placeholder') }
+              ) %>
+            <% end %>
+
+            <!-- Cost Information -->
+            <%= render Forms::FormSectionComponent.new(
+              title: t('resins.sections.cost_info'),
+              card_class: "card mb-4",
+              body_class: "row g-3"
+            ) do %>
+              <%= render Forms::NumberFieldWithAddonComponent.new(
+                form: form,
+                attribute: :bottle_volume_ml,
+                label: t('resins.fields.bottle_volume_ml'),
+                append: "mL",
+                step: 0.01,
+                min: 0,
+                placeholder: t('resins.fields.bottle_volume_ml_placeholder'),
+                wrapper_class: "col-md-6"
+              ) %>
+              <%= render Forms::NumberFieldWithAddonComponent.new(
+                form: form,
+                attribute: :bottle_price,
+                label: t('resins.fields.bottle_price'),
+                prepend: currency_symbol(current_user.default_currency),
+                step: 0.01,
+                min: 0,
+                placeholder: t('resins.fields.bottle_price_placeholder'),
+                wrapper_class: "col-md-6"
+              ) %>
+            <% end %>
+
+            <!-- Technical Specifications -->
+            <%= render Forms::FormSectionComponent.new(
+              title: t('resins.sections.technical_specs'),
+              card_class: "card mb-4",
+              body_class: "row g-3"
+            ) do %>
+              <%= render Forms::NumberFieldWithAddonComponent.new(
+                form: form,
+                attribute: :layer_height_min,
+                label: t('resins.fields.layer_height_min'),
+                append: "mm",
+                step: 0.001,
+                min: 0,
+                placeholder: t('resins.fields.layer_height_min_placeholder'),
+                wrapper_class: "col-md-6"
+              ) %>
+              <%= render Forms::NumberFieldWithAddonComponent.new(
+                form: form,
+                attribute: :layer_height_max,
+                label: t('resins.fields.layer_height_max'),
+                append: "mm",
+                step: 0.001,
+                min: 0,
+                placeholder: t('resins.fields.layer_height_max_placeholder'),
+                wrapper_class: "col-md-6"
+              ) %>
+              <%= render Forms::NumberFieldWithAddonComponent.new(
+                form: form,
+                attribute: :exposure_time_seconds,
+                label: t('resins.fields.exposure_time_seconds'),
+                append: "s",
+                step: 1,
+                min: 0,
+                placeholder: t('resins.fields.exposure_time_seconds_placeholder'),
+                wrapper_class: "col-md-6"
+              ) %>
+              <%= render Forms::NumberFieldWithAddonComponent.new(
+                form: form,
+                attribute: :cure_time_seconds,
+                label: t('resins.fields.cure_time_seconds'),
+                append: "s",
+                step: 1,
+                min: 0,
+                placeholder: t('resins.fields.cure_time_seconds_placeholder'),
+                wrapper_class: "col-md-6"
+              ) %>
+            <% end %>
+
+            <!-- Properties -->
+            <%= render Forms::FormSectionComponent.new(
+              title: t('resins.sections.properties'),
+              card_class: "card mb-4",
+              body_class: "row g-3"
+            ) do %>
+              <%= render Forms::CheckboxFieldComponent.new(
+                form: form,
+                attribute: :needs_wash,
+                label: t('resins.fields.needs_wash'),
+                wrapper_class: "col-md-6"
+              ) %>
+            <% end %>
+
+            <!-- Notes -->
+            <%= render Forms::FormSectionComponent.new(
+              title: t('resins.fields.notes'),
+              card_class: "card mb-4"
+            ) do %>
+              <%= render Forms::FieldComponent.new(
+                form: form,
+                attribute: :notes,
+                type: :textarea,
+                label: false,
+                wrapper: false,
+                options: { rows: 4, placeholder: t('resins.fields.notes_placeholder') }
+              ) %>
+            <% end %>
+
+            <!-- Form Actions -->
+            <%= render Forms::FormActionsComponent.new(
+              form: form,
+              submit_text: t('resins.buttons.add_resin'),
+              cancel_url: resins_path
+            ) %>
+        <% end %>
+    </div>
+</div>

@@ -79,6 +79,7 @@ es:
               no_filaments: Debe tener al menos un filamento
               duplicate_filaments: No se puede usar el mismo filamento varias veces
                 en una placa
+              no_resins: Las placas de resina deben tener al menos una resina
         print_pricing:
           attributes:
             base:
@@ -86,6 +87,10 @@ es:
               too_many_plates: No puede tener más de 10 placas
               duplicate_filaments_on_plate: No se puede usar el mismo filamento varias
                 veces en la misma placa
+        resin:
+          attributes:
+            layer_height_max:
+              layer_height_range: debe ser mayor que la altura mínima de capa
   nav:
     brand: CalcuMake
     print_pricings: Mis Precios
@@ -108,6 +113,14 @@ es:
     delete_account: Eliminar Mi Cuenta
     calculate_now: "¡Calcular Ahora!"
     blog: Blog
+    materials: Materiales
+    my_materials: Mis Materiales
+    all_materials: Todos los Materiales
+    filaments_header: Filamentos (FDM)
+    add_filament: Añadir Filamento
+    resins_header: Resinas (SLA/DLP)
+    my_resins: Mis Resinas
+    add_resin: Añadir Resina
   actions:
     title: Acciones
     save: Guardar
@@ -147,6 +160,8 @@ es:
     printer_plural: Impresoras
     filament_plural: Filamentos
     invoice_plural: Facturas
+    resin: Resina
+    resin_plural: Resinas
   common:
     created: Creado
     currency: Moneda
@@ -286,6 +301,7 @@ es:
       plates: Platos
       plate: Plato
       filaments: Filamentos
+      resins: Resinas
     fields:
       job_name: Nombre del Trabajo
       job_name_placeholder: p. ej., Modelo en Miniatura
@@ -347,6 +363,8 @@ es:
       failure_rate_percentage: Tasa de Fallo (%)
       failure_rate_placeholder: '5.0'
       add_printer_link: Registrar una nueva impresora
+      resin_markup: Margen de Resina (%)
+      material_technology: Tecnología de Impresión
     filament_types:
       pla: PLA
       abs: ABS
@@ -426,7 +444,11 @@ es:
     help:
       plates_limit: Puede añadir hasta 10 placas por trabajo de impresión.
       filaments_limit: Puede añadir hasta 5 filamentos diferentes por placa.
+      resins_limit: Puedes añadir hasta 5 resinas diferentes por placa.
     per_unit_price: "%{price} por unidad (%{count} unidades)"
+    technology:
+      fdm: FDM (Filamento)
+      resin: SLA/DLP (Resina)
   printers:
     index:
       title: Mis Impresoras
@@ -499,6 +521,20 @@ es:
       add_printer: Añadir impresora
       update_printer: Actualizar Impresora
       cancel: Cancelar
+    form:
+      basic_information: Información Básica
+      name: Nombre de la Impresora
+      name_placeholder: p. ej., Mi Prusa i3 MK3S+
+      manufacturer: Fabricante
+      select_manufacturer: Seleccionar fabricante
+      material_technology: Tecnología de Impresión
+      technology_fdm: FDM (Filamento)
+      technology_resin: SLA/DLP (Resina)
+      technology_help: Selecciona la tecnología de impresión que utiliza esta impresora
+      select_profile: Comenzar desde una impresora conocida (opcional)
+      profile_search_placeholder: Buscar por fabricante o modelo...
+      profile_help: Selecciona una impresora para pre-rellenar las especificaciones,
+        o introdúcelas manualmente a continuación
   profile:
     show:
       title: Perfil de Usuario
@@ -1989,3 +2025,107 @@ es:
     structured_data:
       organization: CalcuMake
       publisher: Blog de CalcuMake
+  materials:
+    index:
+      title: Biblioteca de Materiales
+      subtitle: Administra tus filamentos y resinas en un solo lugar
+      search_placeholder: Buscar por nombre, marca o color...
+      add_filament: Añadir Filamento
+      add_resin: Añadir Resina
+      filaments_only: Solo Filamentos
+      resins_only: Solo Resinas
+      filaments_section: Filamentos (FDM)
+      resins_section: Resinas (SLA/DLP)
+      view_all: Ver Todos
+      no_results:
+        title: No se Encontraron Materiales
+        description: No hay materiales que coincidan con tus criterios de búsqueda.
+      clear_search: Borrar Búsqueda
+      empty_state:
+        title: Aún no hay Materiales
+        description: Comienza a construir tu biblioteca de materiales añadiendo filamentos
+          o resinas.
+      add_first_filament: Añadir Primer Filamento
+      add_first_resin: Añadir Primera Resina
+  resins:
+    index:
+      title: Biblioteca de Resinas
+      subtitle: Administra tu colección de resinas para cálculos de costes SLA/DLP
+        precisos
+      add_new: Añadir Nueva Resina
+      search_placeholder: Buscar resinas...
+      all_types: Todos los tipos de resina
+      clear_search: Borrar búsqueda
+      no_results:
+        title: No se encontraron resinas
+        description: Ninguna resina coincide con sus criterios de búsqueda. Intente
+          ajustar sus filtros.
+      empty_state:
+        title: Aún no hay resinas
+        description: Agregue su primera resina para comenzar a rastrear los costos
+          de impresión SLA/DLP con precisión.
+        add_first: Agregar su primera resina
+    new:
+      title: Agregar nueva resina
+      subtitle: Ingrese los detalles de su resina para cálculos de costos precisos
+    edit:
+      title: Editar resina
+      subtitle: Actualice la información de su resina
+    show:
+      no_cost_info: Información de costos no disponible. Agregue el precio y el volumen
+        de la botella para ver el costo por mL.
+      usage_history: Historial de uso
+      times_used: Veces usado
+      total_volume_used: Volumen total usado
+      recent_prints: Impresiones recientes
+      not_used_yet: Esta resina aún no se ha utilizado en ninguna impresión.
+      create_first_print: Crear la primera impresión
+      new_print_with_resin: Nueva impresión
+    sections:
+      basic_info: Información básica
+      cost_info: Información de costos
+      technical_specs: Especificaciones técnicas
+      properties: Propiedades
+    fields:
+      name: Nombre
+      name_placeholder: p. ej., Gris estándar
+      brand: Marca
+      brand_placeholder: p. ej., Elegoo, Anycubic
+      resin_type: Tipo de resina
+      resin_type_prompt: Seleccionar tipo de resina...
+      color: Color
+      color_placeholder: p. ej., Gris, Transparente, Negro
+      bottle_volume_ml: Volumen de la botella
+      bottle_volume_ml_placeholder: p. ej., 1000
+      bottle_price: Precio de la botella
+      bottle_price_placeholder: p. ej., 25.00
+      cost_per_ml: Costo por mL
+      resin: Resina
+      select_resin: Seleccionar una resina...
+      volume_used: Volumen (mL)
+      selected: Seleccionado
+      none_selected: Ninguno seleccionado
+      not_set: No establecido
+      total_cost: Costo total
+      no_resin_registered: "¿No tiene una resina registrada?"
+      add_new_resin: Agregar nueva resina
+      layer_height_range: Rango de altura de capa
+      layer_height_min: Altura mínima de capa
+      layer_height_min_placeholder: p. ej., 0.025
+      layer_height_max: Altura máxima de capa
+      layer_height_max_placeholder: p. ej., 0.100
+      exposure_time_seconds: Tiempo de Exposición
+      exposure_time_seconds_placeholder: p. ej., 8
+      cure_time_seconds: Tiempo de Curado
+      cure_time_seconds_placeholder: p. ej., 120
+      needs_wash: Requiere Lavado
+      notes: Notas
+      notes_placeholder: Añade notas adicionales sobre esta resina...
+    properties:
+      needs_wash: Requiere Lavado
+    buttons:
+      add_resin: Añadir Resina
+      update_resin: Actualizar Resina
+      add: Añadir Resina
+    confirm_delete: "¿Está seguro de que desea eliminar %{name}? Esta acción no se
+      puede deshacer."

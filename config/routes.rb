@@ -12,6 +12,15 @@ Rails.application.routes.draw do
       post :duplicate
     end
   end
+  resources :resins do
+    member do
+      post :duplicate
+    end
+  end
+
+  # Combined materials library (filaments + resins)
+  resources :materials, only: [ :index ]
+
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
@@ -42,6 +51,7 @@ Rails.application.routes.draw do
   resources :invoices, only: [ :index ]
 
   resources :printers
+  resources :printer_profiles, only: [ :index ]
 
   resource :user_profile, only: [ :show, :edit, :update, :destroy ], path: "profile"
 

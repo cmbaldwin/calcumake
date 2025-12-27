@@ -1,0 +1,112 @@
+<%# Local variable: single_resin - when true, this is the only resin for the plate (no delete button) %>
+<% single_resin = local_assigns.fetch(:single_resin, false) %>
+
+<div class="<%= single_resin ? '' : 'border rounded p-3 mb-3' %>" data-resin-item>
+  <%= f.hidden_field :_destroy %>
+
+  <div class="row g-3 align-items-end">
+    <!-- Resin Selection -->
+    <div class="col-md-6">
+      <%= turbo_frame_tag dom_id(f.object, :resin_select), data: { resin_select_frame: true } do %>
+        <%= f.label :resin_id, t('resins.fields.resin'), class: "form-label" %>
+        <%= f.select :resin_id,
+            options_for_select(user_resins.map do |resin|
+              [
+                resin.display_name,
+                resin.id,
+                {
+                  'data-cost-per-ml' => resin.cost_per_ml,
+                  'data-resin-type' => resin.resin_type
+                }
+              ]
+            end, f.object.resin_id),
+            { prompt: t('resins.fields.select_resin') },
+            { class: "form-select" } %>
+      <% end %>
+    </div>
+
+    <!-- Resin Volume -->
+    <div class="col-md-3">
+      <%= f.label :resin_volume_ml, t('resins.fields.volume_used'), class: "form-label" %>
+      <div class="input-group">
+        <%= f.number_field :resin_volume_ml,
+            step: 0.1,
+            min: 0.1,
+            placeholder: "50.0",
+            class: "form-control" %>
+        <span class="input-group-text">mL</span>
+      </div>
+    </div>
+
+    <!-- Markup Percentage -->
+    <div class="col-md-3">
+      <%= f.label :markup_percentage, t('print_pricing.fields.resin_markup'), class: "form-label" %>
+      <div class="input-group">
+        <%= f.number_field :markup_percentage,
+            step: 1,
+            min: 0,
+            max: 500,
+            placeholder: "20",
+            value: f.object.markup_percentage || 20,
+            class: "form-control" %>
+        <span class="input-group-text">%</span>
+      </div>
+    </div>
+
+    <!-- Resin Info Display -->
+    <div class="col-12">
+      <div class="row g-2 text-muted small">
+        <div class="col-md-4">
+          <strong><%= t('resins.fields.selected') %>:</strong>
+          <span data-resin-name>
+            <%= f.object.resin&.display_name || t('resins.fields.none_selected') %>
+          </span>
+        </div>
+        <div class="col-md-4">
+          <strong><%= t('resins.fields.cost_per_ml') %>:</strong>
+          <span data-resin-cost>
+            <% if f.object.resin&.cost_per_ml && f.object.resin.cost_per_ml > 0 %>
+              <%= currency_symbol(current_user.default_currency) %><%= "%.3f" % f.object.resin.cost_per_ml %>/mL
+            <% else %>
+              <%= t('resins.fields.not_set') %>
+            <% end %>
+          </span>
+        </div>
+        <div class="col-md-4">
+          <strong><%= t('resins.fields.total_cost') %>:</strong>
+          <span data-total-cost>
+            <% if f.object.total_cost && f.object.total_cost > 0 %>
+              <%= currency_symbol(current_user.default_currency) %><%= "%.2f" % f.object.total_cost %>
+            <% else %>
+              <%= currency_symbol(current_user.default_currency) %>0.00
+            <% end %>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex gap-2 align-items-center">
+          <small class="text-muted"><%= t('resins.fields.no_resin_registered') %></small>
+          <%= link_to t('resins.fields.add_new_resin'),
+              new_resin_path(format: :turbo_stream),
+              class: "btn btn-sm btn-outline-primary",
+              data: {
+                controller: "modal-link",
+                action: "click->modal-link#open",
+                turbo_frame: "modal_content"
+              } %>
+        </div>
+        <% unless single_resin %>
+          <button type="button"
+                  class="btn btn-sm btn-outline-danger"
+                  data-action="resin-list#remove">
+            <%= t('actions.delete') %>
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<%# Success response for resin creation from modal %>
+<%# Update all resin select dropdowns with new resin %>
+<%= turbo_stream.append "modal" do %>
+  <script>
+    // Update all resin select dropdowns on the page
+    const resinFrames = document.querySelectorAll('[data-resin-select-frame]');
+    const newResin = {
+      id: <%= @resin.id %>,
+      name: "<%= j @resin.display_name %>",
+      costPerMl: <%= @resin.cost_per_ml || 0 %>,
+      resinType: "<%= j @resin.resin_type.to_s %>"
+    };
+
+    console.log('Found', resinFrames.length, 'resin select frames');
+
+    resinFrames.forEach(frame => {
+      const select = frame.querySelector('select');
+      if (select) {
+        console.log('Updating select:', select.id);
+
+        // Create new option
+        const option = document.createElement('option');
+        option.value = newResin.id;
+        option.textContent = newResin.name;
+        option.dataset.costPerMl = newResin.costPerMl;
+        option.dataset.resinType = newResin.resinType;
+        option.selected = true;
+
+        // Add option to select
+        select.appendChild(option);
+
+        // Trigger change event to update calculations
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    });
+
+    // Close modal
+    const modalElement = document.getElementById('modal');
+    const modalInstance = bootstrap.Modal.getInstance(modalElement);
+    if (modalInstance) {
+      modalInstance.hide();
+    }
+  </script>
+<% end %>
+
+<%# Clear modal content %>
+<%= turbo_stream.update "modal_content", "" %>
+
+<%# Show success notification %>
+<%= turbo_stream.prepend "flash" do %>
+  <%= render "layouts/flash_message", type: :notice, message: flash.now[:notice] %>
+<% end %>

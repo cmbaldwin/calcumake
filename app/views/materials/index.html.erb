@@ -1,0 +1,124 @@
+<!-- Hero Section -->
+<div class="text-center mb-5">
+    <h3 class="display-5 fw-bold text-primary mb-3"><%= t('materials.index.title') %></h3>
+    <p class="lead text-muted mb-4"><%= t('materials.index.subtitle') %></p>
+    <div class="d-flex justify-content-center gap-3">
+      <%= link_to new_filament_path, class: "btn btn-primary btn-lg" do %>
+        <i class="bi bi-plus-circle me-1"></i> <%= t('materials.index.add_filament') %>
+      <% end %>
+      <%= link_to new_resin_path, class: "btn btn-outline-primary btn-lg" do %>
+        <i class="bi bi-plus-circle me-1"></i> <%= t('materials.index.add_resin') %>
+      <% end %>
+    </div>
+</div>
+
+<!-- Search and Filter Section -->
+<% if @filaments.any? || @resins.any? || params[:q].present? %>
+<div class="card mb-4" data-controller="search" data-search-url-value="<%= materials_path %>">
+    <div class="card-body">
+        <%= search_form_for @filament_q, url: materials_path,
+            html: {
+              class: "row g-3",
+              data: {
+                turbo_frame: :material_results,
+                search_target: "form"
+              }
+            } do |form| %>
+            <div class="col-md-8">
+                <%= form.search_field :name_or_brand_or_color_cont,
+                    placeholder: t('materials.index.search_placeholder'),
+                    class: "form-control",
+                    data: {
+                      search_target: "input",
+                      action: "input->search#search"
+                    } %>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex gap-2">
+                    <%= link_to filaments_path, class: "btn btn-outline-secondary flex-fill" do %>
+                      <i class="bi bi-funnel me-1"></i> <%= t('materials.index.filaments_only') %>
+                    <% end %>
+                    <%= link_to resins_path, class: "btn btn-outline-secondary flex-fill" do %>
+                      <i class="bi bi-droplet me-1"></i> <%= t('materials.index.resins_only') %>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+<% end %>
+
+<%= turbo_frame_tag :material_results do %>
+    <% if @filaments.any? || @resins.any? %>
+        <!-- Filaments Section -->
+        <% if @filaments.any? %>
+        <div class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0">
+                    <i class="bi bi-funnel text-primary me-2"></i>
+                    <%= t('materials.index.filaments_section') %>
+                    <span class="badge bg-secondary ms-2"><%= @filaments.count %></span>
+                </h4>
+                <%= link_to filaments_path, class: "btn btn-sm btn-outline-primary" do %>
+                    <%= t('materials.index.view_all') %> <i class="bi bi-arrow-right ms-1"></i>
+                <% end %>
+            </div>
+            <div class="row g-4">
+                <% @filaments.each do |filament| %>
+                    <%= render Cards::FilamentCardComponent.new(filament: filament, current_user: current_user) %>
+                <% end %>
+            </div>
+        </div>
+        <% end %>
+
+        <!-- Resins Section -->
+        <% if @resins.any? %>
+        <div class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0">
+                    <i class="bi bi-droplet text-warning me-2"></i>
+                    <%= t('materials.index.resins_section') %>
+                    <span class="badge bg-secondary ms-2"><%= @resins.count %></span>
+                </h4>
+                <%= link_to resins_path, class: "btn btn-sm btn-outline-primary" do %>
+                    <%= t('materials.index.view_all') %> <i class="bi bi-arrow-right ms-1"></i>
+                <% end %>
+            </div>
+            <div class="row g-4">
+                <% @resins.each do |resin| %>
+                    <%= render Cards::ResinCardComponent.new(resin: resin, current_user: current_user) %>
+                <% end %>
+            </div>
+        </div>
+        <% end %>
+    <% elsif params[:q].present? %>
+        <!-- No Search Results -->
+        <div class="text-center py-5">
+            <div class="card border-0 bg-light">
+                <div class="card-body py-5">
+                    <h3 class="text-muted mb-3"><%= t('materials.index.no_results.title') %></h3>
+                    <p class="text-muted mb-4"><%= t('materials.index.no_results.description') %></p>
+                    <%= link_to t('materials.index.clear_search'), materials_path, class: "btn btn-secondary" %>
+                </div>
+            </div>
+        </div>
+    <% else %>
+        <!-- Empty State -->
+        <div class="text-center py-5">
+            <div class="card border-0 bg-light">
+                <div class="card-body py-5">
+                    <h3 class="text-muted mb-3"><%= t('materials.index.empty_state.title') %></h3>
+                    <p class="text-muted mb-4"><%= t('materials.index.empty_state.description') %></p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <%= link_to new_filament_path, class: "btn btn-primary" do %>
+                            <i class="bi bi-plus-circle me-1"></i> <%= t('materials.index.add_first_filament') %>
+                        <% end %>
+                        <%= link_to new_resin_path, class: "btn btn-outline-primary" do %>
+                            <i class="bi bi-plus-circle me-1"></i> <%= t('materials.index.add_first_resin') %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+<% end %>

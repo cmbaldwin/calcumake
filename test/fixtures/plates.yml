@@ -4,8 +4,10 @@ one:
   print_pricing: one
   printing_time_hours: 2
   printing_time_minutes: 30
+  material_technology: fdm
 
 two:
   print_pricing: two
   printing_time_hours: 1
   printing_time_minutes: 45
+  material_technology: fdm

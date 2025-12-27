@@ -70,3 +70,16 @@ en:
       add_printer: Add Printer
       update_printer: Update Printer
       cancel: Cancel
+    form:
+      basic_information: Basic Information
+      name: Printer Name
+      name_placeholder: e.g., My Prusa i3 MK3S+
+      manufacturer: Manufacturer
+      select_manufacturer: Select manufacturer
+      material_technology: Print Technology
+      technology_fdm: FDM (Filament)
+      technology_resin: SLA/DLP (Resin)
+      technology_help: Select the printing technology this printer uses
+      select_profile: Start from a known printer (optional)
+      profile_search_placeholder: Search by manufacturer or model...
+      profile_help: Select a printer to pre-fill specifications, or enter manually below
