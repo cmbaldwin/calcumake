@@ -10,12 +10,10 @@ class AuthenticationTest < ApplicationSystemTestCase
 
     click_button "Sign up"
 
-    # Should redirect to home page after successful signup
-    assert_current_path "/"
-    # Should be signed in (check for sign out link in navbar)
-    assert_text "Sign out"
-    # Flash message may appear in toast - check for its presence
-    assert_text "Welcome! You have signed up successfully."
+    # With email confirmation enabled, redirects to print_pricings instead of root
+    assert_current_path print_pricings_path
+    # Should see confirmation message
+    assert_text "confirmation link has been sent"
   end
 
   test "user can sign in successfully" do
@@ -23,7 +21,8 @@ class AuthenticationTest < ApplicationSystemTestCase
       email: "testuser@example.com",
       password: "password123",
       default_currency: "USD",
-      default_energy_cost_per_kwh: 0.12
+      default_energy_cost_per_kwh: 0.12,
+      confirmed_at: Time.current  # Confirm user
     )
 
     visit new_user_session_path
@@ -31,7 +30,7 @@ class AuthenticationTest < ApplicationSystemTestCase
     fill_in "Email", with: "testuser@example.com"
     fill_in "Password", with: "password123"
 
-    click_button "Log in"
+    click_button "Sign in"  # Changed from "Log in"
 
     assert_current_path root_path
     assert_text "Sign out"  # Verify user is signed in
@@ -42,7 +41,8 @@ class AuthenticationTest < ApplicationSystemTestCase
       email: "testuser@example.com",
       password: "password123",
       default_currency: "USD",
-      default_energy_cost_per_kwh: 0.12
+      default_energy_cost_per_kwh: 0.12,
+      confirmed_at: Time.current
     )
 
     # Sign in through the UI
@@ -93,7 +93,7 @@ class AuthenticationTest < ApplicationSystemTestCase
     fill_in "Email", with: "nonexistent@example.com"
     fill_in "Password", with: "wrongpassword"
 
-    click_button "Log in"
+    click_button "Sign in"  # Changed from "Log in"
 
     # Should stay on sign in page
     assert_current_path new_user_session_path
