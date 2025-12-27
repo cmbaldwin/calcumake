@@ -1,0 +1,14 @@
+<% content_for :body_class, "api-tokens-page" %>
+
+<div class="container py-4">
+  <div class="mb-4">
+    <h1 class="h3 mb-1"><%= t("api_tokens.new") %></h1>
+    <p class="text-muted mb-0"><%= t("api_tokens.new_description") %></p>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <%= render ApiTokens::TokenFormComponent.new(token: @api_token) %>
+    </div>
+  </div>
+</div>
