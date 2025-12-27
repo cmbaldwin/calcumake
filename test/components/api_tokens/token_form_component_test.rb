@@ -47,7 +47,7 @@ module ApiTokens
     test "renders cancel link" do
       render_inline(TokenFormComponent.new(token: @token))
 
-      assert_selector "a[href*='profile']", text: /Cancel/i
+      assert_selector "a[href='#{api_tokens_path}']", text: /Cancel/i
     end
 
     test "expiration select has correct number of options" do
@@ -66,10 +66,11 @@ module ApiTokens
       end
     end
 
-    test "form includes turbo frame attribute" do
+    test "form does not include turbo frame attribute" do
       render_inline(TokenFormComponent.new(token: @token))
 
-      assert_selector "form[data-turbo-frame='api_tokens_list']"
+      # Form should NOT have turbo-frame attribute since we're using redirect flow
+      assert_no_selector "form[data-turbo-frame='api_tokens_list']"
     end
 
     test "name field has autofocus" do
