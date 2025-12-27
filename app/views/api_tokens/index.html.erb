@@ -12,6 +12,11 @@
     <% end %>
   </div>
 
+  <%# Show the newly created token reveal if present %>
+  <% if @newly_created_token && @plain_token %>
+    <%= render ApiTokens::TokenRevealComponent.new(token: @newly_created_token, plain_token: @plain_token) %>
+  <% end %>
+
   <%= turbo_frame_tag "api_tokens_list" do %>
     <% if @api_tokens.any? %>
       <% @api_tokens.each do |token| %>

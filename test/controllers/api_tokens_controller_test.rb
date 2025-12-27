@@ -87,7 +87,7 @@ class ApiTokensControllerTest < ActionDispatch::IntegrationTest
         api_token: { name: "New Test Token", expiration: "90_days" }
       }
     end
-    assert_redirected_to user_profile_path(anchor: "api-tokens")
+    assert_redirected_to api_tokens_path
     assert_match(/API token created successfully/i, flash[:notice])
   end
 
@@ -171,33 +171,21 @@ class ApiTokensControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
   end
 
-  # Create with turbo_stream tests
-  test "should create api_token via turbo_stream" do
-    assert_difference("ApiToken.count") do
-      post api_tokens_url, params: {
-        api_token: { name: "Turbo Token", expiration: "90_days" }
-      }, as: :turbo_stream
-    end
-
-    assert_response :success
-    assert_match(/turbo-stream/, response.body)
-  end
-
-  test "should show token reveal component on turbo_stream create" do
+  # Creation flow stores token in session for one-time display
+  test "should store plain token in session on create" do
     post api_tokens_url, params: {
-      api_token: { name: "Reveal Token" }
-    }, as: :turbo_stream
+      api_token: { name: "Session Token" }
+    }
 
-    assert_response :success
-    # Should show the token reveal component with the plain token
-    assert_match(/cm_/, response.body) # Token prefix
-    assert_match(/Copy this token now/i, response.body)
+    assert session[:new_api_token_plain].present?
+    assert session[:new_api_token_plain].start_with?("cm_")
+    assert session[:new_api_token_id].present?
   end
 
-  test "should render errors in form on turbo_stream create failure" do
+  test "should render errors in form on create failure" do
     post api_tokens_url, params: {
       api_token: { name: "" }
-    }, as: :turbo_stream
+    }
 
     assert_response :unprocessable_entity
     assert_match(/can&#39;t be blank|is required/i, response.body)
