@@ -74,7 +74,6 @@ export default class extends Controller {
         this.showSuggestionBanner(suggestedLocale)
       }
     } catch (error) {
-      console.log('Locale detection failed:', error)
       // Silently fail - locale suggestion is not critical
     }
   }
@@ -104,7 +103,6 @@ export default class extends Controller {
         return this.constructor.countryToLocaleMap[countryCode]
       }
     } catch (error) {
-      console.log('Geographic detection failed:', error)
       return null
     }
   }

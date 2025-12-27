@@ -8,7 +8,6 @@ export default class extends Controller {
   connect() {
     // Apply PDF mixin
     usePDF(this)
-    console.log("PDF Generator controller connected")
   }
 
   async generatePDF() {
@@ -32,9 +31,6 @@ export default class extends Controller {
         orientation: 'portrait',
         multiPage: true
       })
-
-      console.log(`PDF generated successfully: ${finalFilename}`)
-
     } catch (error) {
       console.error("Error generating PDF:", error)
       alert("Error generating PDF. Please try again or use the browser's print function.")
