@@ -18,7 +18,6 @@ export default class extends Controller {
     }
 
     this.boundHandleAppInstalled = () => {
-      console.log('CalcuMake has been installed')
       if (this.hasButtonTarget) {
         this.buttonTarget.style.display = 'none'
       }
@@ -58,12 +57,7 @@ export default class extends Controller {
     this.deferredPrompt.prompt()
 
     // Wait for the user to respond to the prompt
-    this.deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt')
-      } else {
-        console.log('User dismissed the install prompt')
-      }
+    this.deferredPrompt.userChoice.then(() => {
       this.deferredPrompt = null
     })
   }
