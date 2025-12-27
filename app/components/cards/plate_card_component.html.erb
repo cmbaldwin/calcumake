@@ -28,8 +28,8 @@
       </div>
     </div>
 
-    <!-- Filaments Section -->
-    <div class="filaments-section">
+    <!-- Filaments Section (FDM) -->
+    <div class="filaments-section fdm-fields">
       <div class="d-flex justify-content-between align-items-center mb-2">
         <label class="form-label fw-bold mb-0">
           <i class="bi bi-palette me-1"></i>
@@ -87,6 +87,48 @@
       <small class="text-muted">
         <i class="bi bi-info-circle me-1"></i>
         <%= t('advanced_calculator.filaments_help') %>
+      </small>
+    </div>
+
+    <!-- Resin Section (Resin) -->
+    <div class="resin-section resin-fields d-none">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <label class="form-label fw-bold mb-0">
+          <i class="bi bi-droplet-fill me-1"></i>
+          Resin Material
+        </label>
+      </div>
+
+      <div class="row g-2 mb-2">
+        <div class="col-md-6">
+          <label class="form-label small">
+            Resin Volume (mL)
+          </label>
+          <input type="number"
+                 class="form-control form-control-sm"
+                 name="plates[<%= @index %>][resin_volume]"
+                 data-action="input->advanced-calculator#calculate"
+                 value="50"
+                 min="0.1"
+                 step="0.1">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label small">
+            Price per Liter
+          </label>
+          <input type="number"
+                 class="form-control form-control-sm"
+                 name="plates[<%= @index %>][resin_price_per_liter]"
+                 data-action="input->advanced-calculator#calculate"
+                 value="50"
+                 min="0"
+                 step="0.1">
+        </div>
+      </div>
+
+      <small class="text-muted">
+        <i class="bi bi-info-circle me-1"></i>
+        Enter the total volume of resin used for this plate and the price per liter
       </small>
     </div>
   </div>

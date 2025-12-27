@@ -77,6 +77,7 @@ ar:
             base:
               no_filaments: يجب أن تحتوي على فتيل واحد على الأقل
               duplicate_filaments: لا يمكن استخدام نفس الفتيل عدة مرات على لوحة واحدة
+              no_resins: يجب أن تحتوي ألواح الراتنج على راتنج واحد على الأقل
         print_pricing:
           attributes:
             base:
@@ -84,6 +85,10 @@ ar:
               too_many_plates: لا يمكن أن تحتوي على أكثر من 10 لوحات
               duplicate_filaments_on_plate: لا يمكن استخدام نفس الفتيل عدة مرات على
                 نفس اللوحة
+        resin:
+          attributes:
+            layer_height_max:
+              layer_height_range: يجب أن يكون أكبر من الحد الأدنى لارتفاع الطبقة
   nav:
     brand: CalcuMake
     print_pricings: تسعيراتي
@@ -105,6 +110,15 @@ ar:
     export_data: تصدير بياناتي
     delete_account: حذف حسابي
     calculate_now: احسب الآن!
+    blog: مدونة
+    materials: المواد
+    my_materials: موادي
+    all_materials: كل المواد
+    filaments_header: خيوط (FDM)
+    add_filament: إضافة خيط
+    resins_header: راتنجات (SLA/DLP)
+    my_resins: راتنجاتي
+    add_resin: إضافة راتنج
   actions:
     title: إجراءات
     save: حفظ
@@ -144,6 +158,8 @@ ar:
     printer_plural: طابعات
     filament_plural: خيوط الطابعة
     invoice_plural: فواتير
+    resin: راتنج
+    resin_plural: راتنجات
   common:
     created: تم الإنشاء
     currency: العملة
@@ -278,13 +294,13 @@ ar:
       plates: اللوحات
       plate: لوحة
       filaments: الفتائل
+      resins: الراتنجات
     fields:
       job_name: اسم المهمة
       job_name_placeholder: 'مثال: نموذج مصغر'
       select_printer: اختر طابعة
       select_printer_prompt: اختر طابعة
       no_printer_help: ليس لديك طابعة مسجلة؟
-      add_printer_link: إضافة طابعة جديدة
       print_time_hours: ساعات
       print_time_minutes: دقائق
       filament_weight: وزن الفتيل (جم)
@@ -339,6 +355,9 @@ ar:
       units_placeholder: '1'
       failure_rate_percentage: معدل الفشل (%)
       failure_rate_placeholder: '5.0'
+      add_printer_link: تسجيل طابعة جديدة
+      resin_markup: هامش ربح الراتنج (%)
+      material_technology: تقنية الطباعة
     filament_types:
       pla: PLA
       abs: ABS
@@ -416,16 +435,20 @@ ar:
     help:
       plates_limit: يمكنك إضافة ما يصل إلى 10 لوحات لكل مهمة طباعة.
       filaments_limit: يمكنك إضافة ما يصل إلى 5 فتائل مختلفة لكل لوحة.
+      resins_limit: يمكنك إضافة ما يصل إلى 5 راتنجات مختلفة لكل لوحة.
     per_unit_price: "%{price} لكل وحدة (%{count} وحدات)"
+    technology:
+      fdm: FDM (خيط)
+      resin: SLA/DLP (راتنج)
   printers:
     index:
       title: طابعاتي
       subtitle: إدارة طابعاتك ثلاثية الأبعاد ومواصفاتها
-      add_new: إضافة طابعة جديدة
       empty_state:
         title: لم يتم تسجيل أي طابعات حتى الآن
         description: أضف طابعتك ثلاثية الأبعاد الأولى لبدء حساب تكاليف الطباعة بدقة.
         add_first: أضف طابعتك الأولى
+      add_new: تسجيل طابعة جديدة
     card:
       power_consumption: استهلاك الطاقة
       cost: التكلفة
@@ -437,8 +460,8 @@ ar:
       hours: ساعات
       years: سنوات
     new:
-      title: إضافة طابعة جديدة
       subtitle: سجل مواصفات طابعتك ثلاثية الأبعاد لحسابات التكلفة الدقيقة
+      title: تسجيل طابعة جديدة
     edit:
       title: تعديل الطابعة
       subtitle: تحديث مواصفات طابعتك ثلاثية الأبعاد
@@ -486,6 +509,19 @@ ar:
       add_printer: إضافة طابعة
       update_printer: تحديث الطابعة
       cancel: إلغاء
+    form:
+      basic_information: معلومات أساسية
+      name: اسم الطابعة
+      name_placeholder: 'مثال: My Prusa i3 MK3S+'
+      manufacturer: الشركة المصنعة
+      select_manufacturer: اختر الشركة المصنعة
+      material_technology: تقنية الطباعة
+      technology_fdm: FDM (خيط)
+      technology_resin: SLA/DLP (راتنج)
+      technology_help: حدد تقنية الطباعة التي تستخدمها هذه الطابعة
+      select_profile: ابدأ من طابعة معروفة (اختياري)
+      profile_search_placeholder: البحث عن طريق الشركة المصنعة أو النموذج...
+      profile_help: حدد طابعة لملء المواصفات مسبقًا، أو أدخلها يدويًا أدناه
   profile:
     show:
       title: الملف الشخصي للمستخدم
@@ -1220,6 +1256,7 @@ ar:
       round_all_up_help: تقريب جميع المبالغ لزيادة الاحتياط
       round_all_up: تقريب الكل
     made_with_calcumake: صنع بواسطة CalcuMake
+    tax_included: الضريبة مشمولة (%{percentage}%)
   filaments:
     index:
       title: خيوطي
@@ -1286,10 +1323,10 @@ ar:
       not_set: غير مُعيَّن
       total_cost: التكلفة الإجمالية
       no_filament_registered: لم يتم تسجيل أي فتيل؟
-      add_new_filament: إضافة فتيل جديد
       bed_temperature: درجة حرارة السرير
       max_print_speed: أقصى سرعة طباعة
       storage_temp: درجة حرارة التخزين
+      add_new_filament: تسجيل خامة جديدة
     properties:
       moisture_sensitive: حساس للرطوبة
     buttons:
@@ -1897,3 +1934,174 @@ ar:
     structured_data:
       organization: CalcuMake
       publisher: مدونة CalcuMake
+  "\"nav":
+    brand": '"CalcuMake",'
+  "\"common":
+    percentage": '"%",'
+  "\"date":
+    formats:
+      month_day_year": '"%B %d, %Y",'
+  "\"time":
+    formats:
+      month_day_year": '"%B %d, %Y",'
+  "\"print_pricing":
+    fields:
+      filament_weight_placeholder": '"36",'
+      spool_price_placeholder": '"25.00",'
+      spool_weight_placeholder": '"1000",'
+      markup_placeholder": '"20",'
+      prep_time_placeholder": '"30",'
+      prep_cost_placeholder": '"20.00",'
+      post_time_placeholder": '"30",'
+      postprocessing_time_placeholder": '"30",'
+      postprocessing_cost_placeholder": '"20.00",'
+      post_cost_placeholder": '"20.00",'
+      other_costs_placeholder": '"0.00",'
+      vat_placeholder": '"10",'
+      power_consumption_placeholder": '"200",'
+      energy_cost_placeholder": '"0.12",'
+      printer_cost_placeholder": '"500.00",'
+      payoff_goal_placeholder": '"3",'
+      daily_usage_placeholder": '"8",'
+      repair_cost_placeholder": '"5",'
+      units_placeholder": '"1",'
+      failure_rate_placeholder": '"5.0",'
+    filament_types:
+      pla": '"PLA",'
+      abs": '"ABS",'
+      petg": '"PETG",'
+      tpu": '"TPU",'
+      asa": '"ASA",'
+  "\"printers":
+    fields:
+      power_consumption_placeholder": '"200",'
+      cost_placeholder": '"500.00",'
+      payoff_goal_placeholder": '"3",'
+      daily_usage_placeholder": '"8",'
+      repair_factor_placeholder": '"5.0",'
+  "\"profile":
+    fields:
+      energy_cost_placeholder": '"0.120",'
+      company_email_placeholder": '"billing@example.com",'
+      company_phone_placeholder": '"+1 (555) 123-4567",'
+      company_address_placeholder": '"123 Main Street\nCity, State 12345\nCountry",'
+  "\"clients":
+    fields:
+      name_placeholder": '"John Doe",'
+      company_name_placeholder": '"Acme Corporation",'
+      email_placeholder": '"john@example.com",'
+      phone_placeholder": '"+1 (555) 123-4567",'
+      address_placeholder": '"123 Main Street\nCity, State 12345",'
+      tax_id_placeholder": '"12-3456789",'
+  "\"legal":
+    commerce_disclosure:
+      business_operator:
+        corporate_number": '"6140001137045",'
+      business_address:
+        postal_code": '"〒678-0215",'
+        address_ja": '"兵庫県赤穂市御崎151-2",'
+        address_en": '"151-2 Misaki, Ako City, Hyogo Prefecture 678-0215, Japan",'
+      contact:
+        email": '"cody@moab.jp",'
+      questions:
+        email": '"cody@moab.jp",'
+  materials:
+    index:
+      title: مكتبة المواد
+      subtitle: إدارة خيوطك وراتنجاتك في مكان واحد
+      search_placeholder: البحث بالاسم أو العلامة التجارية أو اللون...
+      add_filament: إضافة خيط
+      add_resin: إضافة راتنج
+      filaments_only: خيوط فقط
+      resins_only: راتنجات فقط
+      filaments_section: خيوط (FDM)
+      resins_section: راتنجات (SLA/DLP)
+      view_all: عرض الكل
+      no_results:
+        title: لم يتم العثور على مواد
+        description: لا توجد مواد تطابق معايير البحث الخاصة بك.
+      clear_search: مسح البحث
+      empty_state:
+        title: لا توجد مواد حتى الآن
+        description: ابدأ في بناء مكتبة المواد الخاصة بك عن طريق إضافة خيوط أو راتنجات.
+      add_first_filament: إضافة أول خيط
+      add_first_resin: إضافة أول راتنج
+  resins:
+    index:
+      title: مكتبة الراتنج
+      subtitle: إدارة مجموعة الراتنج الخاصة بك لحسابات دقيقة لتكلفة SLA/DLP
+      add_new: إضافة راتنج جديد
+      search_placeholder: ابحث عن الراتنجات...
+      all_types: جميع أنواع الراتنج
+      clear_search: مسح البحث
+      no_results:
+        title: لم يتم العثور على راتنجات
+        description: لا توجد راتنجات تطابق معايير البحث الخاصة بك. حاول تعديل عوامل
+          التصفية.
+      empty_state:
+        title: لا توجد راتنجات بعد
+        description: أضف أول راتنج لك لبدء تتبع تكاليف طباعة SLA/DLP بدقة.
+        add_first: أضف أول راتنج لك
+    new:
+      title: إضافة راتنج جديد
+      subtitle: أدخل تفاصيل الراتنج الخاص بك لحسابات التكلفة الدقيقة
+    edit:
+      title: تعديل الراتنج
+      subtitle: تحديث معلومات الراتنج الخاص بك
+    show:
+      no_cost_info: معلومات التكلفة غير متوفرة. أضف سعر الزجاجة وحجمها لرؤية التكلفة
+        لكل مل.
+      usage_history: سجل الاستخدام
+      times_used: عدد مرات الاستخدام
+      total_volume_used: إجمالي الحجم المستخدم
+      recent_prints: المطبوعات الحديثة
+      not_used_yet: لم يتم استخدام هذا الراتنج في أي مطبوعات حتى الآن.
+      create_first_print: إنشاء أول طباعة
+      new_print_with_resin: طباعة جديدة
+    sections:
+      basic_info: معلومات أساسية
+      cost_info: معلومات التكلفة
+      technical_specs: المواصفات الفنية
+      properties: الخصائص
+    fields:
+      name: الاسم
+      name_placeholder: مثل، رمادي قياسي
+      brand: العلامة التجارية
+      brand_placeholder: مثل، Elegoo، Anycubic
+      resin_type: نوع الراتنج
+      resin_type_prompt: اختر نوع الراتنج...
+      color: اللون
+      color_placeholder: مثل، رمادي، شفاف، أسود
+      bottle_volume_ml: حجم الزجاجة
+      bottle_volume_ml_placeholder: مثل، 1000
+      bottle_price: سعر الزجاجة
+      bottle_price_placeholder: مثل، 25.00
+      cost_per_ml: التكلفة لكل مل
+      resin: الراتنج
+      select_resin: اختر راتنجًا...
+      volume_used: الحجم (مل)
+      selected: محدد
+      none_selected: لم يتم تحديد أي شيء
+      not_set: غير معين
+      total_cost: التكلفة الإجمالية
+      no_resin_registered: ليس لديك راتنج مسجل؟
+      add_new_resin: أضف راتنجًا جديدًا
+      layer_height_range: نطاق ارتفاع الطبقة
+      layer_height_min: أقل ارتفاع للطبقة
+      layer_height_min_placeholder: مثل، 0.025
+      layer_height_max: أقصى ارتفاع للطبقة
+      layer_height_max_placeholder: 'مثال: 0.100'
+      exposure_time_seconds: وقت التعريض
+      exposure_time_seconds_placeholder: 'مثال: 8'
+      cure_time_seconds: وقت المعالجة
+      cure_time_seconds_placeholder: 'مثال: 120'
+      needs_wash: يتطلب غسلاً
+      notes: ملاحظات
+      notes_placeholder: أضف أي ملاحظات إضافية حول هذا الراتنج...
+    properties:
+      needs_wash: يتطلب غسلاً
+    buttons:
+      add_resin: إضافة راتنج
+      update_resin: تحديث راتنج
+      add: إضافة راتنج
+    confirm_delete: هل أنت متأكد أنك تريد حذف %{name}؟ لا يمكن التراجع عن هذا الإجراء.

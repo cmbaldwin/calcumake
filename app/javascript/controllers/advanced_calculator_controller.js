@@ -1,39 +1,15 @@
 import { Controller } from "@hotwired/stimulus"
-import { CalculatorMixin } from "controllers/mixins/calculator_mixin"
-import { ExportMixin } from "controllers/mixins/export_mixin"
-import { StorageMixin } from "controllers/mixins/storage_mixin"
+import { useCalculator } from "controllers/mixins/calculator_mixin"
+import { useStorage } from "controllers/mixins/storage_mixin"
+import { useExport } from "controllers/mixins/export_mixin"
 
-// Constants
-const MAX_FILAMENTS_PER_PLATE = 16
-const CALCULATION_DEBOUNCE_MS = 100
-const ANIMATION_DURATION_MS = 150
-
-// Apply mixins to a base class
-const MixedController = class extends Controller { }
-Object.assign(MixedController.prototype, CalculatorMixin, ExportMixin, StorageMixin)
-
-/**
- * Advanced 3D Print Pricing Calculator Controller
- *
- * Multi-plate pricing calculator with real-time cost calculations and export functionality.
- * Uses mixin pattern for separation of concerns:
- * - CalculatorMixin: Filament, electricity, labor, and machine cost calculations
- * - ExportMixin: PDF and CSV export with html2canvas + jsPDF
- * - StorageMixin: LocalStorage persistence for auto-save functionality
- *
- * Features:
- * - Supports up to 10 plates per job
- * - Up to 16 filaments per plate
- * - Real-time cost breakdown
- * - Per-unit pricing calculations
- * - Debounced calculation (100ms)
- *
- * @extends {Controller}
- * @mixes CalculatorMixin
- * @mixes ExportMixin
- * @mixes StorageMixin
- */
-export default class extends MixedController {
+// Advanced 3D Print Pricing Calculator
+// Uses mixins for separation of concerns:
+// - useCalculator: Cost calculations
+// - useStorage: LocalStorage persistence
+// - useExport: PDF and CSV exports
+// Pattern: https://betterstimulus.com/architecture/mixins
+export default class extends Controller {
   static targets = [
     "jobName",
     "platesContainer",
@@ -53,6 +29,7 @@ export default class extends MixedController {
     "failureRate",
     "shippingCost",
     "otherCost",
+    "materialCostLabel",
     // Global machine/labor settings
     "powerConsumption",
     "machineCost",
@@ -71,42 +48,32 @@ export default class extends MixedController {
   }
 
   connect() {
-    // Prevent multiple rapid connections (development hot-reload issue)
-    if (this._isConnecting) return
-    this._isConnecting = true
+    console.log("Advanced calculator connected")
 
-    // Clear any existing timers from previous connection
-    this.cleanup()
+    // Apply mixins following Better Stimulus pattern
+    useCalculator(this)
+    useStorage(this)
+    useExport(this)
 
-    // Initialize debounce timer reference
-    this.calculateDebounceTimer = null
+    // Load printer profiles
+    this.loadPrinterProfiles()
 
-    // Initialize with first plate if none exist
-    if (this.getPlates().length === 0) {
-      this.addPlate()
-    }
+    // Load saved data
+    this.loadFromStorage()
 
     // Calculate initial values
-    this.calculateImmediate()
+    this.calculate()
 
-    // Mark connection complete
-    this._isConnecting = false
+    // Setup auto-save
+    this.setupAutoSave()
   }
 
   disconnect() {
-    this.cleanup()
-    this._isConnecting = false
-  }
-
-  cleanup() {
-    if (this.calculateDebounceTimer) {
-      clearTimeout(this.calculateDebounceTimer)
-      this.calculateDebounceTimer = null
+    if (this.autoSaveInterval) {
+      clearInterval(this.autoSaveInterval)
     }
-    // Clear any animation timeouts
     if (this._animationTimeout) {
       clearTimeout(this._animationTimeout)
-      this._animationTimeout = null
     }
   }
 
@@ -206,8 +173,8 @@ export default class extends MixedController {
     const filamentsContainer = plateDiv.querySelector('[data-filaments-container]')
     const filaments = filamentsContainer.querySelectorAll('[data-filament-index]')
 
-    if (filaments.length >= MAX_FILAMENTS_PER_PLATE) {
-      alert(`Maximum ${MAX_FILAMENTS_PER_PLATE} filaments per plate allowed`)
+    if (filaments.length >= 16) {
+      alert("Maximum 16 filaments per plate allowed")
       return
     }
 
@@ -254,19 +221,39 @@ export default class extends MixedController {
     // Only print time is per-plate now
     const printTime = parseFloat(plateDiv.querySelector('[name*="print_time"]')?.value || 0)
 
-    // Get filaments for this plate
-    const filamentsContainer = plateDiv.querySelector('[data-filaments-container]')
-    if (!filamentsContainer) return null
+    // Detect which technology is active based on visible fields
+    const fdmFields = plateDiv.querySelector('.fdm-fields')
+    const resinFields = plateDiv.querySelector('.resin-fields')
+    const isFdm = fdmFields && !fdmFields.classList.contains('d-none')
+    const isResin = resinFields && !resinFields.classList.contains('d-none')
 
-    const filamentDivs = filamentsContainer.querySelectorAll('[data-filament-index]')
-    const filaments = Array.from(filamentDivs).map(filDiv => ({
-      weight: parseFloat(filDiv.querySelector('[name*="filament_weight"]')?.value || 0),
-      pricePerKg: parseFloat(filDiv.querySelector('[name*="filament_price"]')?.value || 25)
-    }))
+    // Get filaments for FDM plates
+    let filaments = []
+    if (isFdm) {
+      const filamentsContainer = plateDiv.querySelector('[data-filaments-container]')
+      if (filamentsContainer) {
+        const filamentDivs = filamentsContainer.querySelectorAll('[data-filament-index]')
+        filaments = Array.from(filamentDivs).map(filDiv => ({
+          weight: parseFloat(filDiv.querySelector('[name*="filament_weight"]')?.value || 0),
+          pricePerKg: parseFloat(filDiv.querySelector('[name*="filament_price"]')?.value || 25)
+        }))
+      }
+    }
+
+    // Get resin data for Resin plates
+    let resinData = null
+    if (isResin) {
+      resinData = {
+        volume: parseFloat(plateDiv.querySelector('[name*="resin_volume"]')?.value || 0),
+        pricePerLiter: parseFloat(plateDiv.querySelector('[name*="resin_price_per_liter"]')?.value || 0)
+      }
+    }
 
     return {
       printTime,
-      filaments
+      technology: isFdm ? 'fdm' : 'resin',
+      filaments,
+      resin: resinData
     }
   }
 
@@ -276,8 +263,8 @@ export default class extends MixedController {
       powerConsumption: parseFloat(this.hasPowerConsumptionTarget ? this.powerConsumptionTarget.value : 200),
       machineCost: parseFloat(this.hasMachineCostTarget ? this.machineCostTarget.value : 500),
       payoffYears: parseFloat(this.hasPayoffYearsTarget ? this.payoffYearsTarget.value : 3),
-      prepTime: parseFloat(this.hasPrepTimeTarget ? this.prepTimeTarget.value : 0.25),
-      postTime: parseFloat(this.hasPostTimeTarget ? this.postTimeTarget.value : 0.25),
+      prepTime: parseFloat(this.hasPrepTimeTarget ? this.prepTimeTarget.value : 15), // minutes
+      postTime: parseFloat(this.hasPostTimeTarget ? this.postTimeTarget.value : 15), // minutes
       prepRate: parseFloat(this.hasPrepRateTarget ? this.prepRateTarget.value : 20),
       postRate: parseFloat(this.hasPostRateTarget ? this.postRateTarget.value : 20)
     }
@@ -295,7 +282,146 @@ export default class extends MixedController {
       maximumFractionDigits: 2
     }).format(amount)
   }
-}
 
-// Note: Mixin methods (calculate, saveToStorage, exportToPDF, etc.) are
-// inherited from MixedController which has them applied at module load time
+  // ==========================================
+  // Printer Profile Methods
+  // ==========================================
+
+  async loadPrinterProfiles() {
+    try {
+      const response = await fetch('/printer_profiles.json')
+      const profiles = await response.json()
+      this.printerProfiles = profiles
+
+      // Initial load with FDM profiles (default technology)
+      this.updatePrinterProfileSelector('fdm')
+    } catch (error) {
+      console.error('Failed to load printer profiles:', error)
+    }
+  }
+
+  switchPrintTechnology(event) {
+    const technology = event.target.value
+    this.updatePrinterProfileSelector(technology)
+    this.updatePlateFieldsForTechnology(technology)
+  }
+
+  updatePrinterProfileSelector(technology) {
+    const selector = this.element.querySelector('[data-printer-profile-selector]')
+    if (!selector || !this.printerProfiles || !technology) return
+
+    // Clear existing options except the first one
+    selector.innerHTML = '<option value="">-- Select a Common Printer --</option>'
+
+    // Filter profiles by technology
+    const filteredProfiles = this.printerProfiles.filter(p => p.technology === technology)
+
+    // Group by category
+    const groupedProfiles = this.groupProfilesByCategory(filteredProfiles)
+
+    Object.entries(groupedProfiles).forEach(([category, printers]) => {
+      const optgroup = document.createElement('optgroup')
+      optgroup.label = category
+
+      printers.forEach(printer => {
+        const option = document.createElement('option')
+        option.value = JSON.stringify({
+          power_consumption: printer.power_consumption,
+          cost: printer.cost,
+          technology: printer.technology
+        })
+        option.textContent = `${printer.manufacturer} ${printer.model} (${printer.power_consumption}W, $${printer.cost})`
+        optgroup.appendChild(option)
+      })
+
+      selector.appendChild(optgroup)
+    })
+  }
+
+  updatePlateFieldsForTechnology(technology) {
+    // Get all plates
+    const plates = this.getPlates()
+
+    plates.forEach(plate => {
+      const fdmFields = plate.querySelector('.fdm-fields')
+      const resinFields = plate.querySelector('.resin-fields')
+
+      if (technology === 'fdm') {
+        // Show FDM (filament) fields
+        if (fdmFields) fdmFields.classList.remove('d-none')
+        if (resinFields) resinFields.classList.add('d-none')
+      } else if (technology === 'resin') {
+        // Show Resin fields
+        if (fdmFields) fdmFields.classList.add('d-none')
+        if (resinFields) resinFields.classList.remove('d-none')
+      }
+    })
+
+    // Update the material cost label in the results section
+    if (this.hasMaterialCostLabelTarget) {
+      this.materialCostLabelTarget.textContent = technology === 'resin' ? 'Resin Cost' : 'Filament Cost'
+    }
+  }
+
+  groupProfilesByCategory(profiles) {
+    return profiles.reduce((groups, printer) => {
+      const category = printer.category || 'Other'
+      if (!groups[category]) {
+        groups[category] = []
+      }
+      groups[category].push(printer)
+      return groups
+    }, {})
+  }
+
+  loadPrinterProfile(event) {
+    const selector = event.target
+    const value = selector.value
+
+    if (!value) return
+
+    try {
+      const profile = JSON.parse(value)
+
+      // Update machine settings with profile values
+      if (this.hasPowerConsumptionTarget) {
+        this.powerConsumptionTarget.value = profile.power_consumption
+      }
+
+      if (this.hasMachineCostTarget) {
+        this.machineCostTarget.value = profile.cost
+      }
+
+      // Auto-update technology toggle based on printer
+      if (profile.technology) {
+        const techToggle = this.element.querySelector(`input[name="print_technology"][value="${profile.technology}"]`)
+        if (techToggle) {
+          techToggle.checked = true
+          // Update plate fields for the new technology
+          this.updatePlateFieldsForTechnology(profile.technology)
+        }
+      }
+
+      // Recalculate with new values
+      this.calculate()
+
+      // Show confirmation message
+      const notification = document.createElement('div')
+      notification.className = 'alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3'
+      notification.style.zIndex = '9999'
+      notification.innerHTML = `
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <i class="bi bi-check-circle me-2"></i>
+        Printer profile loaded successfully!
+      `
+      document.body.appendChild(notification)
+
+      setTimeout(() => {
+        notification.remove()
+      }, 3000)
+
+    } catch (error) {
+      console.error('Failed to load printer profile:', error)
+    }
+  }
+}

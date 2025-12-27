@@ -8,13 +8,22 @@
     <%= f.text_field :job_name, class: "form-control", placeholder: t('print_pricing.fields.job_name_placeholder') %>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-6" data-controller="printer-technology-sync">
     <%= turbo_frame_tag "printer_select_frame" do %>
       <%= f.label :printer_id, t('print_pricing.fields.select_printer'), class: "form-label" %>
       <%= f.select :printer_id,
-          options_from_collection_for_select(current_user.printers, :id, :name, f.object.printer_id),
+          options_for_select(
+            current_user.printers.map { |p| [p.name, p.id, { 'data-technology' => p.material_technology }] },
+            f.object.printer_id
+          ),
           { prompt: t('print_pricing.fields.select_printer_prompt') },
-          { class: "form-select" } %>
+          {
+            class: "form-select",
+            data: {
+              printer_technology_sync_target: "select",
+              action: "change->printer-technology-sync#printerChanged"
+            }
+          } %>
     <% end %>
     <div class="form-text mt-2">
       <%= t('print_pricing.fields.no_printer_help') %>

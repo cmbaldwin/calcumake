@@ -77,12 +77,17 @@ ja:
             base:
               no_filaments: 少なくとも1つのフィラメントが必要です
               duplicate_filaments: 同じフィラメントを1つのプレートで複数回使用することはできません
+              no_resins: レジンプレートには少なくとも1つのレジンが必要です
         print_pricing:
           attributes:
             base:
               no_plates: 少なくとも1つのプレートが必要です
               too_many_plates: 10個以上のプレートを持つことはできません
               duplicate_filaments_on_plate: 同じフィラメントを同じプレートで複数回使用することはできません
+        resin:
+          attributes:
+            layer_height_max:
+              layer_height_range: 最大レイヤー高さは、最小レイヤー高さより大きくなければなりません
   nav:
     brand: CalcuMake
     print_pricings: 価格設定
@@ -104,6 +109,15 @@ ja:
     export_data: データのエクスポート
     delete_account: アカウントの削除
     calculate_now: 今すぐ計算！
+    blog: ブログ
+    materials: マテリアル
+    my_materials: 自分のマテリアル
+    all_materials: すべてのマテリアル
+    filaments_header: フィラメント (FDM)
+    add_filament: フィラメントを追加
+    resins_header: レジン (SLA/DLP)
+    my_resins: 自分のレジン
+    add_resin: レジンを追加
   actions:
     title: アクション
     save: 保存
@@ -143,6 +157,8 @@ ja:
     printer_plural: プリンター
     filament_plural: フィラメント
     invoice_plural: 請求書
+    resin: レジン
+    resin_plural: レジン
   common:
     created: 作成日
     currency: 通貨
@@ -275,13 +291,13 @@ ja:
       plates: プレート
       plate: プレート
       filaments: フィラメント
+      resins: レジン
     fields:
       job_name: ジョブ名
       job_name_placeholder: 例：ミニチュアモデル
       select_printer: プリンターを選択
       select_printer_prompt: プリンターを選択してください
       no_printer_help: プリンターが登録されていませんか？
-      add_printer_link: 新しいプリンターを追加
       print_time_hours: 時間
       print_time_minutes: 分
       filament_weight: フィラメント重量（g）
@@ -335,6 +351,9 @@ ja:
       units_placeholder: '1'
       failure_rate_percentage: 不良率 (%)
       failure_rate_placeholder: '5.0'
+      add_printer_link: 新しいプリンターを登録
+      resin_markup: レジンマークアップ (%)
+      material_technology: 印刷技術
     filament_types:
       pla: PLA
       abs: ABS
@@ -412,16 +431,20 @@ ja:
     help:
       plates_limit: プリントジョブごとに最大10個のプレートを追加できます。
       filaments_limit: プレートごとに最大5種類のフィラメントを追加できます。
+      resins_limit: 1つのプレートにつき最大5種類のレジンを追加できます。
     per_unit_price: ユニットあたり%{price} (%{count}ユニット)
+    technology:
+      fdm: FDM (フィラメント)
+      resin: SLA/DLP (レジン)
   printers:
     index:
       title: マイプリンター
       subtitle: 3Dプリンターとその仕様を管理します
-      add_new: 新しいプリンターを追加
       empty_state:
         title: まだプリンターが登録されていません
         description: 最初の3Dプリンターを追加して、印刷コストを正確に計算しましょう。
         add_first: 最初のプリンターを追加
+      add_new: 新しいプリンターを登録
     card:
       power_consumption: 消費電力
       cost: コスト
@@ -433,8 +456,8 @@ ja:
       hours: 時間
       years: 年
     new:
-      title: 新しいプリンターを追加
       subtitle: 正確なコスト計算のために3Dプリンターの仕様を登録してください
+      title: 新しいプリンターを登録
     edit:
       title: プリンターを編集
       subtitle: 3Dプリンターの仕様を更新してください
@@ -480,6 +503,19 @@ ja:
       add_printer: プリンターを追加
       update_printer: プリンターを更新
       cancel: キャンセル
+    form:
+      basic_information: 基本情報
+      name: プリンター名
+      name_placeholder: 例：My Prusa i3 MK3S+
+      manufacturer: メーカー
+      select_manufacturer: メーカーを選択
+      material_technology: 印刷技術
+      technology_fdm: FDM (フィラメント)
+      technology_resin: SLA/DLP (レジン)
+      technology_help: このプリンターが使用する印刷技術を選択してください
+      select_profile: 既知のプリンターから開始 (オプション)
+      profile_search_placeholder: メーカーまたはモデルで検索...
+      profile_help: プリンターを選択して仕様を事前に入力するか、以下に手動で入力してください
   profile:
     show:
       title: ユーザープロフィール
@@ -1096,6 +1132,7 @@ ja:
       round_all_up_help: バッファのためにすべての金額を切り上げます
       round_all_up: すべて切り上げ
     made_with_calcumake: CalcuMakeで作成
+    tax_included: 税込み (%{percentage}%)
   filaments:
     index:
       title: マイフィラメント
@@ -1162,10 +1199,10 @@ ja:
       not_set: 未設定
       total_cost: 合計コスト
       no_filament_registered: フィラメントが登録されていませんか？
-      add_new_filament: 新しいフィラメントを追加
       bed_temperature: ベッド温度
       max_print_speed: 最大印刷速度
       storage_temp: 保管温度
+      add_new_filament: 新しいフィラメントを登録
     properties:
       moisture_sensitive: 湿気に敏感
     buttons:
@@ -1703,3 +1740,101 @@ ja:
     structured_data:
       organization: CalcuMake
       publisher: CalcuMake ブログ
+  materials:
+    index:
+      title: マテリアルライブラリ
+      subtitle: フィラメントとレジンを一元管理
+      search_placeholder: 名前、ブランド、または色で検索...
+      add_filament: フィラメントを追加
+      add_resin: レジンを追加
+      filaments_only: フィラメントのみ
+      resins_only: レジンのみ
+      filaments_section: フィラメント (FDM)
+      resins_section: レジン (SLA/DLP)
+      view_all: すべて表示
+      no_results:
+        title: マテリアルが見つかりません
+        description: 検索条件に一致するマテリアルはありません。
+      clear_search: 検索をクリア
+      empty_state:
+        title: マテリアルはまだありません
+        description: フィラメントまたはレジンを追加して、マテリアルライブラリを構築しましょう。
+      add_first_filament: 最初のフィラメントを追加
+      add_first_resin: 最初のレジンを追加
+  resins:
+    index:
+      title: レジンライブラリ
+      subtitle: 正確なSLA/DLPコスト計算のために、レジンコレクションを管理します
+      add_new: 新しいレジンを追加
+      search_placeholder: 樹脂を検索...
+      all_types: すべての樹脂タイプ
+      clear_search: 検索をクリア
+      no_results:
+        title: 樹脂が見つかりません
+        description: 検索条件に一致する樹脂はありません。フィルターを調整してみてください。
+      empty_state:
+        title: 樹脂はまだありません
+        description: 最初の樹脂を追加して、SLA/DLPプリントのコストを正確に追跡しましょう。
+        add_first: 最初の樹脂を追加
+    new:
+      title: 新しい樹脂を追加
+      subtitle: 正確なコスト計算のために、樹脂の詳細を入力してください
+    edit:
+      title: 樹脂を編集
+      subtitle: 樹脂の情報を更新してください
+    show:
+      no_cost_info: コスト情報はありません。ボトル価格と容量を追加して、mLあたりのコストを確認してください。
+      usage_history: 使用履歴
+      times_used: 使用回数
+      total_volume_used: 総使用量
+      recent_prints: 最近のプリント
+      not_used_yet: この樹脂はまだどのプリントにも使用されていません。
+      create_first_print: 最初のプリントを作成
+      new_print_with_resin: 新しいプリント
+    sections:
+      basic_info: 基本情報
+      cost_info: コスト情報
+      technical_specs: 技術仕様
+      properties: プロパティ
+    fields:
+      name: 名前
+      name_placeholder: 例：スタンダードグレー
+      brand: ブランド
+      brand_placeholder: 例：Elegoo、Anycubic
+      resin_type: 樹脂タイプ
+      resin_type_prompt: 樹脂タイプを選択...
+      color: 色
+      color_placeholder: 例：グレー、クリア、ブラック
+      bottle_volume_ml: ボトル容量
+      bottle_volume_ml_placeholder: 例：1000
+      bottle_price: ボトル価格
+      bottle_price_placeholder: 例：25.00
+      cost_per_ml: mLあたりのコスト
+      resin: 樹脂
+      select_resin: 樹脂を選択...
+      volume_used: 使用量 (mL)
+      selected: 選択済み
+      none_selected: 未選択
+      not_set: 未設定
+      total_cost: 合計コスト
+      no_resin_registered: 樹脂が登録されていませんか？
+      add_new_resin: 新しい樹脂を追加
+      layer_height_range: レイヤー高さ範囲
+      layer_height_min: 最小レイヤー高さ
+      layer_height_min_placeholder: 例：0.025
+      layer_height_max: 最大レイヤー高さ
+      layer_height_max_placeholder: 例：0.100
+      exposure_time_seconds: 露光時間
+      exposure_time_seconds_placeholder: 例：8
+      cure_time_seconds: 硬化時間
+      cure_time_seconds_placeholder: 例：120
+      needs_wash: 洗浄が必要
+      notes: 備考
+      notes_placeholder: このレジンに関する追加の備考を追加...
+    properties:
+      needs_wash: 洗浄が必要
+    buttons:
+      add_resin: レジンを追加
+      update_resin: レジンを更新
+      add: レジンを追加
+    confirm_delete: "%{name}を削除してもよろしいですか？この操作は元に戻せません。"

@@ -121,13 +121,18 @@ class PrintPricingsController < ApplicationController
     @new_print_pricing.job_name = "#{@print_pricing.job_name} (Copy)"
     @new_print_pricing.times_printed = 0
 
-    # Duplicate all plates and their filaments
+    # Duplicate all plates and their filaments/resins
     @print_pricing.plates.each do |plate|
       new_plate = @new_print_pricing.plates.build(plate.attributes.except("id", "print_pricing_id", "created_at", "updated_at"))
 
       # Duplicate plate filaments
       plate.plate_filaments.each do |plate_filament|
         new_plate.plate_filaments.build(plate_filament.attributes.except("id", "plate_id", "created_at", "updated_at"))
+      end
+
+      # Duplicate plate resins
+      plate.plate_resins.each do |plate_resin|
+        new_plate.plate_resins.build(plate_resin.attributes.except("id", "plate_id", "created_at", "updated_at"))
       end
     end
 
@@ -159,16 +164,44 @@ class PrintPricingsController < ApplicationController
   end
 
   def print_pricing_params
-    params.require(:print_pricing).permit(
+    permitted = params.require(:print_pricing).permit(
       :job_name, :prep_time_minutes, :prep_cost_per_hour,
       :postprocessing_time_minutes, :postprocessing_cost_per_hour,
       :other_costs, :vat_percentage, :printer_id, :times_printed,
+      :units, :failure_rate_percentage,
       plates_attributes: [
-        :id, :printing_time_hours, :printing_time_minutes, :_destroy,
+        :id, :printing_time_hours, :printing_time_minutes, :material_technology, :_destroy,
         plate_filaments_attributes: [
           :id, :filament_id, :filament_weight, :markup_percentage, :_destroy
+        ],
+        plate_resins_attributes: [
+          :id, :resin_id, :resin_volume_ml, :markup_percentage, :_destroy
         ]
       ]
     )
+
+    # Filter out mismatched nested attributes based on material_technology
+    filter_plate_material_attributes!(permitted)
+    permitted
+  end
+
+  # Remove plate_filaments for resin plates and plate_resins for FDM plates
+  # This handles the case where hidden form fields still submit empty values
+  def filter_plate_material_attributes!(permitted_params)
+    return unless permitted_params[:plates_attributes]
+
+    permitted_params[:plates_attributes].each do |_key, plate_attrs|
+      next unless plate_attrs.is_a?(ActionController::Parameters) || plate_attrs.is_a?(Hash)
+
+      technology = plate_attrs[:material_technology]
+
+      if technology == "resin"
+        # For resin plates, remove all plate_filaments
+        plate_attrs.delete(:plate_filaments_attributes)
+      elsif technology == "fdm" || technology.blank?
+        # For FDM plates (or default), remove all plate_resins
+        plate_attrs.delete(:plate_resins_attributes)
+      end
+    end
   end
 end

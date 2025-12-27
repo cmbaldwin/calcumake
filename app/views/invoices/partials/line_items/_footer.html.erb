@@ -2,6 +2,12 @@
   <td colspan="3" class="text-end"><strong><%= t('print_pricing.subtotal') %>:</strong></td>
   <td class="text-end"><strong><%= formatted_currency_amount(invoice.subtotal, invoice.currency) %></strong></td>
 </tr>
+<% if invoice.tax_percentage > 0 %>
+<tr>
+  <td colspan="3" class="text-end"><span class="text-muted"><%= t('invoices.tax_included', percentage: invoice.tax_percentage) %></span></td>
+  <td class="text-end text-muted"><%= formatted_currency_amount(invoice.tax_amount, invoice.currency) %></td>
+</tr>
+<% end %>
 <tr class="table-primary">
   <td colspan="3" class="text-end"><strong><%= t('print_pricing.total') %>:</strong></td>
   <td class="text-end"><strong><%= formatted_currency_amount(invoice.total, invoice.currency) %></strong></td>

@@ -79,6 +79,7 @@ hi:
               no_filaments: कम से कम एक फिलामेंट होना चाहिए
               duplicate_filaments: एक प्लेट पर एक ही फिलामेंट को कई बार इस्तेमाल नहीं
                 किया जा सकता
+              no_resins: रेज़िन प्लेट में कम से कम एक रेज़िन होना चाहिए
         print_pricing:
           attributes:
             base:
@@ -86,6 +87,10 @@ hi:
               too_many_plates: 10 से अधिक प्लेटें नहीं हो सकतीं
               duplicate_filaments_on_plate: एक ही प्लेट पर एक ही फिलामेंट को कई बार
                 इस्तेमाल नहीं किया जा सकता
+        resin:
+          attributes:
+            layer_height_max:
+              layer_height_range: न्यूनतम लेयर ऊंचाई से अधिक होना चाहिए
   nav:
     brand: CalcuMake
     print_pricings: मेरी कीमतें
@@ -107,6 +112,15 @@ hi:
     export_data: मेरा डेटा एक्सपोर्ट करें
     delete_account: मेरा अकाउंट डिलीट करें
     calculate_now: अभी गणना करें!
+    blog: ब्लॉग
+    materials: सामग्री
+    my_materials: मेरी सामग्री
+    all_materials: सभी सामग्री
+    filaments_header: फिलामेंट्स (FDM)
+    add_filament: फिलामेंट जोड़ें
+    resins_header: रेज़िन (SLA/DLP)
+    my_resins: मेरे रेज़िन
+    add_resin: रेज़िन जोड़ें
   actions:
     title: क्रियाएँ
     save: सहेजें
@@ -146,6 +160,8 @@ hi:
     printer_plural: प्रिंटर
     filament_plural: फिलामेंट्स
     invoice_plural: इनवॉइस
+    resin: रेज़िन
+    resin_plural: रेज़िन
   common:
     created: निर्मित
     currency: मुद्रा
@@ -281,13 +297,13 @@ hi:
       plates: प्लेटें
       plate: प्लेट
       filaments: फिलामेंट्स
+      resins: रेज़िन
     fields:
       job_name: जॉब का नाम
       job_name_placeholder: जैसे, लघु मॉडल
       select_printer: प्रिंटर का चयन करें
       select_printer_prompt: एक प्रिंटर का चयन करें
       no_printer_help: क्या आपके पास कोई प्रिंटर पंजीकृत नहीं है?
-      add_printer_link: एक नया प्रिंटर जोड़ें
       print_time_hours: घंटे
       print_time_minutes: मिनट
       filament_weight: फिलामेंट वजन (g)
@@ -342,6 +358,9 @@ hi:
       units_placeholder: '1'
       failure_rate_percentage: विफलता दर (%)
       failure_rate_placeholder: '5.0'
+      add_printer_link: एक नया प्रिंटर रजिस्टर करें
+      resin_markup: रेज़िन मार्कअप (%)
+      material_technology: प्रिंट प्रौद्योगिकी
     filament_types:
       pla: PLA
       abs: ABS
@@ -420,17 +439,21 @@ hi:
     help:
       plates_limit: आप प्रति प्रिंट जॉब में अधिकतम 10 प्लेटें जोड़ सकते हैं।
       filaments_limit: आप प्रति प्लेट में अधिकतम 5 विभिन्न फिलामेंट जोड़ सकते हैं।
+      resins_limit: आप प्रति प्लेट 5 अलग-अलग रेज़िन तक जोड़ सकते हैं।
     per_unit_price: प्रति यूनिट %{price} (%{count} इकाइयाँ)
+    technology:
+      fdm: FDM (फिलामेंट)
+      resin: SLA/DLP (रेज़िन)
   printers:
     index:
       title: मेरे प्रिंटर
       subtitle: अपने 3डी प्रिंटर और उनके विनिर्देशों का प्रबंधन करें
-      add_new: नया प्रिंटर जोड़ें
       empty_state:
         title: अभी तक कोई प्रिंटर पंजीकृत नहीं है
         description: प्रिंटिंग लागत की सटीक गणना शुरू करने के लिए अपना पहला 3डी प्रिंटर
           जोड़ें।
         add_first: अपना पहला प्रिंटर जोड़ें
+      add_new: नया प्रिंटर रजिस्टर करें
     card:
       power_consumption: बिजली की खपत
       cost: लागत
@@ -442,8 +465,8 @@ hi:
       hours: घंटे
       years: वर्ष
     new:
-      title: नया प्रिंटर जोड़ें
       subtitle: सटीक लागत गणना के लिए अपने 3D प्रिंटर विनिर्देशों को पंजीकृत करें
+      title: नया प्रिंटर रजिस्टर करें
     edit:
       title: प्रिंटर संपादित करें
       subtitle: अपने 3D प्रिंटर विनिर्देशों को अपडेट करें
@@ -492,6 +515,20 @@ hi:
       add_printer: प्रिंटर जोड़ें
       update_printer: प्रिंटर अपडेट करें
       cancel: रद्द करें
+    form:
+      basic_information: बुनियादी जानकारी
+      name: प्रिंटर का नाम
+      name_placeholder: जैसे, मेरा Prusa i3 MK3S+
+      manufacturer: निर्माता
+      select_manufacturer: निर्माता का चयन करें
+      material_technology: प्रिंट प्रौद्योगिकी
+      technology_fdm: FDM (फिलामेंट)
+      technology_resin: SLA/DLP (रेज़िन)
+      technology_help: चयन करें कि यह प्रिंटर किस प्रिंटिंग तकनीक का उपयोग करता है
+      select_profile: ज्ञात प्रिंटर से शुरू करें (वैकल्पिक)
+      profile_search_placeholder: निर्माता या मॉडल द्वारा खोजें...
+      profile_help: विशिष्टताओं को पहले से भरने के लिए एक प्रिंटर का चयन करें, या
+        नीचे मैन्युअल रूप से दर्ज करें
   profile:
     show:
       title: उपयोगकर्ता प्रोफाइल
@@ -1289,6 +1326,7 @@ hi:
       round_all_up_help: बफर के लिए सभी राशियों को पूर्णांक करें
       round_all_up: सभी को पूर्णांक करें
     made_with_calcumake: CalcuMake के साथ निर्मित
+    tax_included: कर शामिल है (%{percentage}%)
   filaments:
     index:
       title: मेरे फिलामेंट्स
@@ -1357,10 +1395,10 @@ hi:
       not_set: निर्धारित नहीं
       total_cost: कुल लागत
       no_filament_registered: कोई फिलामेंट पंजीकृत नहीं है?
-      add_new_filament: नया फिलामेंट जोड़ें
       bed_temperature: बेड का तापमान
       max_print_speed: अधिकतम प्रिंट गति
       storage_temp: भंडारण तापमान
+      add_new_filament: नया फिलामेंट रजिस्टर करें
     properties:
       moisture_sensitive: नमी के प्रति संवेदनशील
     buttons:
@@ -1992,3 +2030,106 @@ hi:
     structured_data:
       organization: CalcuMake
       publisher: CalcuMake ब्लॉग
+  materials:
+    index:
+      title: सामग्री पुस्तकालय
+      subtitle: अपने फिलामेंट्स और रेज़िन को एक ही स्थान पर प्रबंधित करें
+      search_placeholder: नाम, ब्रांड या रंग से खोजें...
+      add_filament: फिलामेंट जोड़ें
+      add_resin: रेज़िन जोड़ें
+      filaments_only: केवल फिलामेंट्स
+      resins_only: केवल रेज़िन
+      filaments_section: फिलामेंट्स (FDM)
+      resins_section: रेज़िन (SLA/DLP)
+      view_all: सभी देखें
+      no_results:
+        title: कोई सामग्री नहीं मिली
+        description: आपकी खोज के मानदंडों से कोई सामग्री मेल नहीं खाती।
+      clear_search: खोज साफ़ करें
+      empty_state:
+        title: अभी तक कोई सामग्री नहीं है
+        description: फिलामेंट्स या रेज़िन जोड़कर अपनी सामग्री पुस्तकालय का निर्माण
+          शुरू करें।
+      add_first_filament: पहला फिलामेंट जोड़ें
+      add_first_resin: पहला रेज़िन जोड़ें
+  resins:
+    index:
+      title: रेज़िन पुस्तकालय
+      subtitle: सटीक SLA/DLP लागत गणना के लिए अपने रेज़िन संग्रह का प्रबंधन करें
+      add_new: नया रेज़िन जोड़ें
+      search_placeholder: रेसिन खोजें...
+      all_types: सभी रेसिन प्रकार
+      clear_search: खोज साफ़ करें
+      no_results:
+        title: कोई रेसिन नहीं मिला
+        description: आपकी खोज मापदंड से कोई रेसिन मेल नहीं खाता. अपने फ़िल्टर समायोजित
+          करने का प्रयास करें.
+      empty_state:
+        title: अभी तक कोई रेसिन नहीं
+        description: SLA/DLP प्रिंट लागत को सटीक रूप से ट्रैक करना शुरू करने के लिए
+          अपना पहला रेसिन जोड़ें.
+        add_first: अपना पहला रेसिन जोड़ें
+    new:
+      title: नया रेसिन जोड़ें
+      subtitle: सटीक लागत गणना के लिए अपना रेसिन विवरण दर्ज करें
+    edit:
+      title: रेसिन संपादित करें
+      subtitle: अपनी रेसिन जानकारी अपडेट करें
+    show:
+      no_cost_info: लागत जानकारी उपलब्ध नहीं है. mL प्रति लागत देखने के लिए बोतल की
+        कीमत और मात्रा जोड़ें.
+      usage_history: उपयोग इतिहास
+      times_used: कितनी बार उपयोग किया गया
+      total_volume_used: उपयोग की गई कुल मात्रा
+      recent_prints: हाल के प्रिंट
+      not_used_yet: इस रेसिन का उपयोग अभी तक किसी भी प्रिंट में नहीं किया गया है.
+      create_first_print: पहला प्रिंट बनाएं
+      new_print_with_resin: नया प्रिंट
+    sections:
+      basic_info: बुनियादी जानकारी
+      cost_info: लागत जानकारी
+      technical_specs: तकनीकी विनिर्देश
+      properties: गुण
+    fields:
+      name: नाम
+      name_placeholder: उदाहरण के लिए, स्टैंडर्ड ग्रे
+      brand: ब्रांड
+      brand_placeholder: उदाहरण के लिए, Elegoo, Anycubic
+      resin_type: रेसिन प्रकार
+      resin_type_prompt: रेसिन प्रकार चुनें...
+      color: रंग
+      color_placeholder: उदाहरण के लिए, ग्रे, क्लियर, ब्लैक
+      bottle_volume_ml: बोतल की मात्रा
+      bottle_volume_ml_placeholder: उदाहरण के लिए, 1000
+      bottle_price: बोतल की कीमत
+      bottle_price_placeholder: उदाहरण के लिए, 25.00
+      cost_per_ml: mL प्रति लागत
+      resin: रेसिन
+      select_resin: एक रेसिन चुनें...
+      volume_used: मात्रा (mL)
+      selected: चयनित
+      none_selected: कोई चयनित नहीं
+      not_set: निर्धारित नहीं
+      total_cost: कुल लागत
+      no_resin_registered: क्या आपके पास कोई रेसिन पंजीकृत नहीं है?
+      add_new_resin: नया रेसिन जोड़ें
+      layer_height_range: लेयर ऊंचाई रेंज
+      layer_height_min: न्यूनतम लेयर ऊंचाई
+      layer_height_min_placeholder: उदाहरण के लिए, 0.025
+      layer_height_max: अधिकतम लेयर ऊंचाई
+      layer_height_max_placeholder: उदाहरण के लिए, 0.100
+      exposure_time_seconds: एक्सपोजर टाइम
+      exposure_time_seconds_placeholder: उदाहरण के लिए, 8
+      cure_time_seconds: क्योर टाइम
+      cure_time_seconds_placeholder: उदाहरण के लिए, 120
+      needs_wash: धोने की आवश्यकता है
+      notes: नोट्स
+      notes_placeholder: इस रेज़िन के बारे में कोई अतिरिक्त नोट्स जोड़ें...
+    properties:
+      needs_wash: धोने की आवश्यकता है
+    buttons:
+      add_resin: रेज़िन जोड़ें
+      update_resin: रेज़िन अपडेट करें
+      add: रेज़िन जोड़ें
+    confirm_delete: क्या आप वाकई %{name} को हटाना चाहते हैं? इस कार्रवाई को पूर्ववत
+      नहीं किया जा सकता है.

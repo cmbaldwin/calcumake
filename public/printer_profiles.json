@@ -1,0 +1,202 @@
+[
+  {
+    "manufacturer": "Creality",
+    "model": "Ender 3 V3 SE",
+    "power_consumption": 100,
+    "cost": 199,
+    "category": "Budget FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Bambu Lab",
+    "model": "A1 Mini Combo",
+    "power_consumption": 95,
+    "cost": 329,
+    "category": "Budget FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Elegoo",
+    "model": "Centauri Carbon",
+    "power_consumption": 110,
+    "cost": 279,
+    "category": "Budget FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Creality",
+    "model": "Ender 3 V3 KE",
+    "power_consumption": 120,
+    "cost": 279,
+    "category": "Budget FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Anycubic",
+    "model": "Kobra 2 Neo",
+    "power_consumption": 100,
+    "cost": 179,
+    "category": "Budget FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Elegoo",
+    "model": "Mars 5",
+    "power_consumption": 70,
+    "cost": 179,
+    "category": "Budget Resin",
+    "technology": "resin"
+  },
+  {
+    "manufacturer": "Elegoo",
+    "model": "Saturn 3 Ultra",
+    "power_consumption": 100,
+    "cost": 284,
+    "category": "Budget Resin",
+    "technology": "resin"
+  },
+  {
+    "manufacturer": "Bambu Lab",
+    "model": "P1S Combo",
+    "power_consumption": 140,
+    "cost": 549,
+    "category": "Mid-Range FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Creality",
+    "model": "K2 Pro",
+    "power_consumption": 180,
+    "cost": 799,
+    "category": "Mid-Range FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Qidi Tech",
+    "model": "Plus 4",
+    "power_consumption": 180,
+    "cost": 699,
+    "category": "Mid-Range FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Anycubic",
+    "model": "Photon Mono M7 Max",
+    "power_consumption": 120,
+    "cost": 699,
+    "category": "Mid-Range Resin",
+    "technology": "resin"
+  },
+  {
+    "manufacturer": "Elegoo",
+    "model": "Saturn 4 Ultra 16K",
+    "power_consumption": 120,
+    "cost": 465,
+    "category": "Mid-Range Resin",
+    "technology": "resin"
+  },
+  {
+    "manufacturer": "Prusa",
+    "model": "i3 MK4 Kit",
+    "power_consumption": 120,
+    "cost": 899,
+    "category": "Mid-Range FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Prusa",
+    "model": "i3 MK4 Assembled",
+    "power_consumption": 120,
+    "cost": 1099,
+    "category": "Premium FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Prusa",
+    "model": "CORE One",
+    "power_consumption": 150,
+    "cost": 1299,
+    "category": "Premium FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Bambu Lab",
+    "model": "X1 Carbon Combo",
+    "power_consumption": 150,
+    "cost": 1449,
+    "category": "Premium FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Bambu Lab",
+    "model": "H2D",
+    "power_consumption": 220,
+    "cost": 1749,
+    "category": "Premium FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Prusa",
+    "model": "XL Single Toolhead",
+    "power_consumption": 235,
+    "cost": 1999,
+    "category": "Premium FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Snapmaker",
+    "model": "Artisan (3-in-1)",
+    "power_consumption": 250,
+    "cost": 2599,
+    "category": "Premium FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Formlabs",
+    "model": "Form 4 Basic",
+    "power_consumption": 200,
+    "cost": 3499,
+    "category": "Professional Resin",
+    "technology": "resin"
+  },
+  {
+    "manufacturer": "Ultimaker",
+    "model": "S7",
+    "power_consumption": 500,
+    "cost": 5999,
+    "category": "Professional FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Raise3D",
+    "model": "Pro3",
+    "power_consumption": 380,
+    "cost": 5499,
+    "category": "Professional FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Stratasys",
+    "model": "F170",
+    "power_consumption": 1200,
+    "cost": 17000,
+    "category": "Industrial FDM",
+    "technology": "fdm"
+  },
+  {
+    "manufacturer": "Formlabs",
+    "model": "Form 3L",
+    "power_consumption": 450,
+    "cost": 9999,
+    "category": "Industrial Resin",
+    "technology": "resin"
+  },
+  {
+    "manufacturer": "3D Systems",
+    "model": "Figure 4 Standalone",
+    "power_consumption": 400,
+    "cost": 21900,
+    "category": "Industrial Resin",
+    "technology": "resin"
+  }
+]

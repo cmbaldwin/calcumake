@@ -12,79 +12,109 @@
 <%= render "pages/pricing_calculator/schema_faq" %>
 <% end %>
 
-<div class="pricing-calculator-page" <%= tag.attributes(calculator_data_attributes) %>>
-    <%= render "pages/pricing_calculator/quick_calculator_section" %>
+<div class="pricing-calculator-page container" <%= tag.attributes(calculator_data_attributes) %>>
 
-    <div class="container">
-        <div class="row">
-            <!-- Calculator Form Section -->
-            <div class="col-lg-8">
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">
-                            <i class="bi bi-sliders me-2"></i>
-                            <%= t("advanced_calculator.input_section") %>
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <!-- Job Name -->
-                        <div class="mb-4">
-                            <label class="form-label fw-bold">
-                                <i class="bi bi-briefcase me-1"></i>
-                                <%= t("advanced_calculator.job_name") %>
-                            </label>
-                            <input type="text" class="form-control" data-advanced-calculator-target="jobName" data-action="input->advanced-calculator#calculate" placeholder="<%= t("advanced_calculator.job_name_placeholder") %>" value="My 3D Print Job">
-                        </div>
-
-                        <!-- Machine & Labor Settings -->
-                        <%= render "pages/pricing_calculator/machine_settings_section" %>
-
-                        <!-- Plates Section -->
-                        <div class="mb-4">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h6 class="mb-0 fw-bold">
-                                    <i class="bi bi-layers me-1"></i>
-                                    <%= t("advanced_calculator.plates_section") %>
-                                </h6>
-                                <button type="button" class="btn btn-success btn-sm" data-advanced-calculator-target="addPlateButton" data-action="click->advanced-calculator#addPlate">
-                                    <i class="bi bi-plus-circle me-1"></i>
-                                    <%= t("advanced_calculator.add_plate") %>
-                                </button>
-                            </div>
-
-                            <div class="alert alert-info my-3 mb-0">
-                                <i class="bi bi-info-circle me-2"></i>
-                                <small><%= t("advanced_calculator.plates_help") %></small>
-                            </div>
-
-                            <div data-advanced-calculator-target="platesContainer">
-                                <!-- Plates will be added here dynamically -->
-                            </div>
-
-                            <!-- Plate Template -->
-                            <template data-advanced-calculator-target="plateTemplate">
-                                <%= render Cards::PlateCardComponent.new(index: 0) %>
-                            </template>
-                        </div>
-
-                        <!-- Other Costs Section -->
-                        <%= render "pages/pricing_calculator/other_costs_section" %>
-                    </div>
+    <div class="row">
+        <!-- Calculator Form Section -->
+        <div class="col-lg-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-sliders me-2"></i>
+                        <%= t("advanced_calculator.input_section") %>
+                    </h5>
                 </div>
+                <div class="card-body">
+                    <!-- Saved Calculations Selector -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">
+                            <i class="bi bi-folder2-open me-1"></i>
+                            Saved Calculations
+                        </label>
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <select class="form-select" data-calculation-selector data-action="change->advanced-calculator#switchCalculation">
+                                    <option value="default">Default Calculation</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="btn-group w-100" role="group">
+                                    <button type="button" class="btn btn-outline-primary" data-action="click->advanced-calculator#saveCalculationAs" title="Save as new calculation">
+                                        <i class="bi bi-save me-1"></i>
+                                        Save As
+                                    </button>
+                                    <button type="button" class="btn btn-outline-danger" data-action="click->advanced-calculator#deleteCalculation" title="Delete current calculation">
+                                        <i class="bi bi-trash me-1"></i>
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <small class="form-text text-muted d-block mt-1">
+                            <i class="bi bi-info-circle me-1"></i>
+                            Calculations are stored locally on your device and may be lost if you clear browser data.
+                            <%= link_to "Sign up to save your prints for free and never lose them", new_user_registration_path, class: "text-decoration-none" %>.
+                        </small>
+                    </div>
 
-                <!-- Features Highlight -->
-                <%= render "pages/pricing_calculator/features_highlight" %>
+                    <!-- Job Name -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">
+                            <i class="bi bi-briefcase me-1"></i>
+                            <%= t("advanced_calculator.job_name") %>
+                        </label>
+                        <input type="text" class="form-control" data-advanced-calculator-target="jobName" data-action="input->advanced-calculator#calculate" placeholder="<%= t("advanced_calculator.job_name_placeholder") %>" value="My 3D Print Job">
+                    </div>
+
+                    <!-- Machine & Labor Settings -->
+                    <%= render "pages/pricing_calculator/machine_settings_section" %>
+
+                    <!-- Plates Section -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="mb-1 fw-bold">
+                                <i class="bi bi-layers me-1"></i>
+                                <%= t("advanced_calculator.plates_section") %>
+                            </h6>
+                            <button type="button" class="btn btn-success btn-sm" data-advanced-calculator-target="addPlateButton" data-action="click->advanced-calculator#addPlate">
+                                <i class="bi bi-plus-circle me-1"></i>
+                                <%= t("advanced_calculator.add_plate") %>
+                            </button>
+                        </div>
+
+                        <div class="alert alert-info my-3 mb-2">
+                            <i class="bi bi-info-circle me-2"></i>
+                            <small><%= t("advanced_calculator.plates_help") %></small>
+                        </div>
+
+                        <div data-advanced-calculator-target="platesContainer">
+                            <!-- Plates will be added here dynamically -->
+                        </div>
+
+                        <!-- Plate Template -->
+                        <template data-advanced-calculator-target="plateTemplate">
+                            <%= render Cards::PlateCardComponent.new(index: 0) %>
+                        </template>
+                    </div>
+
+                    <!-- Other Costs Section -->
+                    <%= render "pages/pricing_calculator/other_costs_section" %>
+                </div>
             </div>
 
-            <!-- Results Section -->
-            <div class="col-lg-4">
-                <div class="sticky-results">
-                    <%= render "pages/pricing_calculator/results_section" %>
-                    <%= render "pages/pricing_calculator/cta_card" %>
-                </div>
+            <!-- Features Highlight -->
+            <%= render "pages/pricing_calculator/features_highlight" %>
+        </div>
+
+        <!-- Results Section -->
+        <div class="col-lg-4">
+            <div class="sticky-results">
+                <%= render "pages/pricing_calculator/results_section" %>
+                <%= render "pages/pricing_calculator/cta_card" %>
             </div>
         </div>
     </div>
+
 
     <!-- Hidden Export Content (for PDF generation) -->
     <div class="d-none" data-advanced-calculator-target="exportContent">

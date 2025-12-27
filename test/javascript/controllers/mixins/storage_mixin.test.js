@@ -2,199 +2,414 @@
  * @jest-environment jsdom
  */
 
-import { StorageMixin } from '../../../../app/javascript/controllers/mixins/storage_mixin.js'
+import { useStorage } from '../../../../app/javascript/controllers/mixins/storage_mixin.js'
 
-describe('StorageMixin', () => {
+describe('Storage Mixin', () => {
+  // Helper to create a mock controller with the mixin applied
+  function createMockController(props = {}) {
+    const controller = {
+      element: document.createElement('div'),
+      hasJobNameTarget: false,
+      getPlates: jest.fn(() => []),
+      getPlateData: jest.fn((plate) => ({
+        printTime: 2.5,
+        filaments: [{ weight: 100, pricePerKg: 25 }]
+      })),
+      getGlobalSettings: jest.fn(() => ({
+        powerConsumption: 200,
+        machineCost: 500,
+        payoffYears: 3,
+        prepTime: 15,
+        postTime: 15,
+        prepRate: 20,
+        postRate: 20
+      })),
+      calculate: jest.fn(),
+      addPlate: jest.fn(),
+      addFilamentToPlate: jest.fn(),
+      restoreGlobalSettings: jest.fn(),
+      restorePlates: jest.fn(),
+      restorePlateData: jest.fn(),
+      ...props
+    }
+    useStorage(controller)
+    return controller
+  }
+
   beforeEach(() => {
     // Clear localStorage before each test
     localStorage.clear()
     jest.clearAllMocks()
-
-    // Mock window.confirm and window.location.reload
-    global.confirm = jest.fn(() => true)
-    delete global.window.location
-    global.window.location = { reload: jest.fn() }
-  })
-
-  afterEach(() => {
-    jest.restoreAllMocks()
   })
 
   describe('saveToStorage', () => {
-    test('saves basic calculator data to localStorage', () => {
-      const mockElement = document.createElement('div')
-      mockElement.innerHTML = `
-        <input name="failure_rate" value="10" />
-        <input name="shipping_cost" value="25.50" />
-        <input name="other_cost" value="10.00" />
-        <input name="units" value="5" />
-      `
-      // Add to document so isConnected returns true
-      document.body.appendChild(mockElement)
+    test('saves calculator data to localStorage', () => {
+      const jobNameTarget = document.createElement('input')
+      jobNameTarget.value = 'Test Job'
 
-      const mockController = Object.assign({
-        element: mockElement,
+      const controller = createMockController({
         hasJobNameTarget: true,
-        jobNameTarget: { value: 'Test Job' },
-        hasUnitsTarget: false,
-        hasFailureRateTarget: false,
-        hasShippingCostTarget: false,
-        hasOtherCostTarget: false,
-        getPlates: () => [{}], // Return at least one plate
-        getPlateDataForStorage: jest.fn(() => ({})),
-        getGlobalSettings: () => ({
-          powerConsumption: 200,
-          machineCost: 500,
-          payoffYears: 3,
-          prepTime: 0.25,
-          postTime: 0.25,
-          prepRate: 20,
-          postRate: 20
-        })
-      }, StorageMixin)
+        jobNameTarget,
+        getPlates: jest.fn(() => [document.createElement('div')])
+      })
 
-      mockController.saveToStorage()
+      // Add required input fields to the element
+      const failureRateInput = document.createElement('input')
+      failureRateInput.name = 'failure_rate'
+      failureRateInput.value = '5'
+      controller.element.appendChild(failureRateInput)
 
-      const saved = localStorage.getItem('calcumake_advanced_calculator')
-      expect(saved).not.toBeNull()
+      const shippingInput = document.createElement('input')
+      shippingInput.name = 'shipping_cost'
+      shippingInput.value = '10.50'
+      controller.element.appendChild(shippingInput)
 
-      const data = JSON.parse(saved)
-      expect(data.jobName).toBe('Test Job')
-      expect(data.failureRate).toBe(10)
-      expect(data.shippingCost).toBe(25.50)
-      expect(data.otherCost).toBe(10.00)
-      expect(data.units).toBe(5)
+      const otherInput = document.createElement('input')
+      otherInput.name = 'other_cost'
+      otherInput.value = '7.25'
+      controller.element.appendChild(otherInput)
 
-      // Cleanup
-      document.body.removeChild(mockElement)
+      const unitsInput = document.createElement('input')
+      unitsInput.name = 'units'
+      unitsInput.value = '5'
+      controller.element.appendChild(unitsInput)
+
+      controller.saveToStorage()
+
+      const allCalculations = JSON.parse(localStorage.getItem('calcumake_calculations'))
+
+      expect(allCalculations).toBeDefined()
+      expect(allCalculations.default).toBeDefined()
+      expect(allCalculations.default.jobName).toBe('Test Job')
+      expect(allCalculations.default.failureRate).toBe(5)
+      expect(allCalculations.default.shippingCost).toBe(10.50)
+      expect(allCalculations.default.otherCost).toBe(7.25)
+      expect(allCalculations.default.units).toBe(5)
+      expect(allCalculations.default.plates).toHaveLength(1)
+      expect(allCalculations.default.timestamp).toBeDefined()
+      expect(allCalculations.default.globalSettings).toBeDefined()
     })
 
-    test('handles missing form fields gracefully', () => {
-      const mockElement = document.createElement('div')
-      // Add to document so isConnected returns true
-      document.body.appendChild(mockElement)
+    test('handles missing job name target', () => {
+      const controller = createMockController({
+        hasJobNameTarget: false
+      })
 
-      const mockController = Object.assign({
-        element: mockElement,
-        hasJobNameTarget: false,
-        hasUnitsTarget: false,
-        hasFailureRateTarget: false,
-        hasShippingCostTarget: false,
-        hasOtherCostTarget: false,
-        getPlates: () => [{}], // Return at least one plate
-        getPlateDataForStorage: jest.fn(() => ({})),
-        getGlobalSettings: () => ({})
-      }, StorageMixin)
+      expect(() => controller.saveToStorage()).not.toThrow()
 
-      mockController.saveToStorage()
+      const allCalculations = JSON.parse(localStorage.getItem('calcumake_calculations'))
+      expect(allCalculations.default.jobName).toBe('')
+    })
 
-      const saved = localStorage.getItem('calcumake_advanced_calculator')
-      const data = JSON.parse(saved)
+    test('handles localStorage errors gracefully', () => {
+      const controller = createMockController()
 
-      expect(data.jobName).toBe('')
-      expect(data.failureRate).toBe(0)
-      expect(data.units).toBe(1)
+      // Mock localStorage to throw an error
+      const setItemSpy = jest.spyOn(Storage.prototype, 'setItem')
+      setItemSpy.mockImplementation(() => {
+        throw new Error('Quota exceeded')
+      })
 
-      // Cleanup
-      document.body.removeChild(mockElement)
+      // Should not throw
+      expect(() => controller.saveToStorage()).not.toThrow()
+
+      setItemSpy.mockRestore()
     })
   })
 
-  describe('clearStorage', () => {
-    test('removes data from localStorage when confirmed', () => {
-      localStorage.setItem('calcumake_advanced_calculator', '{"jobName":"Test"}')
+  describe('loadFromStorage', () => {
+    test('migrates legacy single calculation to new format', () => {
+      const legacyData = {
+        jobName: 'Legacy Job',
+        plates: [],
+        failureRate: 3,
+        shippingCost: 15.00,
+        otherCost: 5.50,
+        units: 10,
+        timestamp: new Date().toISOString()
+      }
 
-      const mockController = Object.assign({}, StorageMixin)
+      localStorage.setItem('calcumake_advanced_calculator', JSON.stringify(legacyData))
 
-      mockController.clearStorage()
+      const controller = createMockController({
+        loadCalculation: jest.fn(() => true)
+      })
 
+      controller.loadFromStorage()
+
+      // Legacy data should be removed
       expect(localStorage.getItem('calcumake_advanced_calculator')).toBeNull()
-      expect(global.window.location.reload).toHaveBeenCalled()
+
+      // New format should exist
+      const allCalculations = JSON.parse(localStorage.getItem('calcumake_calculations'))
+      expect(allCalculations.default).toBeDefined()
+      expect(allCalculations.default.jobName).toBe('Legacy Job')
     })
 
-    test('does not clear storage when user cancels', () => {
-      // Mock confirm to return false
-      global.confirm = jest.fn(() => false)
+    test('handles missing localStorage data', () => {
+      const controller = createMockController()
 
-      localStorage.setItem('calcumake_advanced_calculator', '{"jobName":"Test"}')
+      expect(() => controller.loadFromStorage()).not.toThrow()
+    })
 
-      const mockController = Object.assign({}, StorageMixin)
+    test('handles invalid JSON in localStorage', () => {
+      localStorage.setItem('calcumake_advanced_calculator', 'invalid json {')
 
-      mockController.clearStorage()
+      const controller = createMockController()
 
-      // Storage should NOT be cleared
-      expect(localStorage.getItem('calcumake_advanced_calculator')).not.toBeNull()
-      expect(global.window.location.reload).not.toHaveBeenCalled()
+      expect(() => controller.loadFromStorage()).not.toThrow()
+    })
+  })
+
+  describe('loadCalculation', () => {
+    test('loads specific calculation by ID', () => {
+      const allCalculations = {
+        'test_123': {
+          id: 'test_123',
+          name: 'Test Calculation',
+          jobName: 'Test Job',
+          plates: [],  // Empty plates to avoid DOM errors
+          globalSettings: { powerConsumption: 200 },
+          failureRate: 5,
+          shippingCost: 10,
+          otherCost: 5,
+          units: 3,
+          timestamp: new Date().toISOString()
+        }
+      }
+
+      localStorage.setItem('calcumake_calculations', JSON.stringify(allCalculations))
+
+      const jobNameTarget = document.createElement('input')
+
+      const controller = createMockController({
+        hasJobNameTarget: true,
+        jobNameTarget
+      })
+
+      // Add input fields to element
+      const failureRateInput = document.createElement('input')
+      failureRateInput.name = 'failure_rate'
+      controller.element.appendChild(failureRateInput)
+
+      const shippingInput = document.createElement('input')
+      shippingInput.name = 'shipping_cost'
+      controller.element.appendChild(shippingInput)
+
+      const otherInput = document.createElement('input')
+      otherInput.name = 'other_cost'
+      controller.element.appendChild(otherInput)
+
+      const unitsInput = document.createElement('input')
+      unitsInput.name = 'units'
+      controller.element.appendChild(unitsInput)
+
+      const result = controller.loadCalculation('test_123')
+
+      expect(result).toBe(true)
+      expect(jobNameTarget.value).toBe('Test Job')
+      expect(failureRateInput.value).toBe('5')
+      expect(shippingInput.value).toBe('10')
+      expect(otherInput.value).toBe('5')
+      expect(unitsInput.value).toBe('3')
+    })
+
+    test('returns false for non-existent calculation', () => {
+      const controller = createMockController()
+
+      const result = controller.loadCalculation('non_existent')
+
+      expect(result).toBe(false)
+    })
+  })
+
+  describe('saveCalculationAs', () => {
+    test('saves calculation with new name', () => {
+      window.prompt = jest.fn(() => 'New Calculation')
+
+      const jobNameTarget = document.createElement('input')
+      jobNameTarget.value = 'New Calculation'
+
+      const controller = createMockController({
+        hasJobNameTarget: true,
+        jobNameTarget
+      })
+
+      controller.saveCalculationAs()
+
+      const allCalculations = JSON.parse(localStorage.getItem('calcumake_calculations'))
+      const calcIds = Object.keys(allCalculations)
+
+      expect(calcIds.length).toBe(1)
+      expect(calcIds[0]).toContain('new_calculation_')
+      expect(allCalculations[calcIds[0]].name).toBe('New Calculation')
+    })
+
+    test('saves with untitled name if job name is empty', () => {
+      const controller = createMockController({
+        hasJobNameTarget: false
+      })
+
+      controller.saveCalculationAs()
+
+      const allCalculations = JSON.parse(localStorage.getItem('calcumake_calculations'))
+      const calcIds = Object.keys(allCalculations)
+
+      expect(calcIds.length).toBe(1)
+      expect(calcIds[0]).toContain('untitled_calculation_')
+      // When no job name, the ID is used as the name
+      expect(allCalculations[calcIds[0]].name).toContain('untitled_calculation_')
+    })
+  })
+
+  describe('deleteCalculation', () => {
+    test('deletes calculation and reloads', () => {
+      const allCalculations = {
+        'default': { id: 'default', name: 'Default', plates: [], globalSettings: {} },
+        'test_123': { id: 'test_123', name: 'Test', plates: [], globalSettings: {} }
+      }
+
+      localStorage.setItem('calcumake_calculations', JSON.stringify(allCalculations))
+
+      window.confirm = jest.fn(() => true)
+      delete window.location
+      window.location = { reload: jest.fn() }
+
+      const controller = createMockController()
+
+      controller.setCurrentCalculationId('test_123')
+
+      controller.deleteCalculation()
+
+      const updatedCalculations = JSON.parse(localStorage.getItem('calcumake_calculations'))
+      expect(updatedCalculations.test_123).toBeUndefined()
+      expect(updatedCalculations.default).toBeDefined()
+      expect(window.location.reload).toHaveBeenCalled()
+      expect(window.confirm).toHaveBeenCalledWith('Are you sure you want to delete "Test"?')
+    })
+
+    test('does not delete if user cancels', () => {
+      const allCalculations = {
+        'test_123': { id: 'test_123', name: 'Test', plates: [], globalSettings: {} }
+      }
+
+      localStorage.setItem('calcumake_calculations', JSON.stringify(allCalculations))
+
+      window.confirm = jest.fn(() => false)
+
+      const controller = createMockController()
+      controller.setCurrentCalculationId('test_123')
+
+      controller.deleteCalculation()
+
+      const updatedCalculations = JSON.parse(localStorage.getItem('calcumake_calculations'))
+      expect(updatedCalculations.test_123).toBeDefined()
+    })
+
+    test('shows alert if no calculation to delete', () => {
+      window.alert = jest.fn()
+
+      const controller = createMockController()
+      controller.setCurrentCalculationId('non_existent')
+
+      controller.deleteCalculation()
+
+      expect(window.alert).toHaveBeenCalledWith("No calculation to delete.")
     })
   })
 
   describe('setupAutoSave', () => {
-    test('is disabled and does nothing', () => {
-      // Auto-save was disabled to prevent page freezes
-      // This test verifies the method exists but doesn't set up an interval
-      const mockController = Object.assign({
-        autoSaveInterval: null
-      }, StorageMixin)
-
-      mockController.setupAutoSave()
-
-      // Auto-save should NOT set up an interval anymore
-      expect(mockController.autoSaveInterval).toBeNull()
-    })
-
-    test('can be cleared', () => {
+    test('sets up auto-save interval', () => {
       jest.useFakeTimers()
 
-      const mockController = Object.assign({
-        autoSaveInterval: null
-      }, StorageMixin)
+      const controller = createMockController()
+      const saveToStorageSpy = jest.spyOn(controller, 'saveToStorage')
 
-      mockController.setupAutoSave()
-      const intervalId = mockController.autoSaveInterval
+      controller.setupAutoSave()
 
-      // Clear the interval
-      clearInterval(intervalId)
-      mockController.autoSaveInterval = null
+      expect(controller.autoSaveInterval).toBeDefined()
 
-      // Manually check that interval is cleared
-      expect(mockController.autoSaveInterval).toBeNull()
+      // Fast-forward 10 seconds
+      jest.advanceTimersByTime(10000)
 
+      expect(saveToStorageSpy).toHaveBeenCalledTimes(1)
+
+      // Fast-forward another 10 seconds
+      jest.advanceTimersByTime(10000)
+
+      expect(saveToStorageSpy).toHaveBeenCalledTimes(2)
+
+      clearInterval(controller.autoSaveInterval)
       jest.useRealTimers()
+    })
+  })
+
+  describe('clearStorage', () => {
+    test('clears all calculations when confirmed', () => {
+      localStorage.setItem('calcumake_calculations', JSON.stringify({ test: 'data' }))
+      localStorage.setItem('calcumake_advanced_calculator', JSON.stringify({ legacy: 'data' }))
+
+      const controller = createMockController()
+
+      // Mock window.confirm to return true
+      window.confirm = jest.fn(() => true)
+      // Mock window.location.reload
+      delete window.location
+      window.location = { reload: jest.fn() }
+
+      controller.clearStorage()
+
+      expect(window.confirm).toHaveBeenCalledWith('Are you sure you want to clear ALL saved calculations? This cannot be undone.')
+      expect(localStorage.getItem('calcumake_calculations')).toBeNull()
+      expect(localStorage.getItem('calcumake_advanced_calculator')).toBeNull()
+      expect(window.location.reload).toHaveBeenCalled()
+    })
+
+    test('does not clear storage when canceled', () => {
+      localStorage.setItem('calcumake_calculations', JSON.stringify({ test: 'data' }))
+
+      const controller = createMockController()
+
+      // Mock window.confirm to return false
+      window.confirm = jest.fn(() => false)
+
+      controller.clearStorage()
+
+      expect(window.confirm).toHaveBeenCalled()
+      expect(localStorage.getItem('calcumake_calculations')).not.toBeNull()
     })
   })
 
   describe('getPlateDataForStorage', () => {
     test('returns plate data with filaments', () => {
-      const mockPlateDiv = document.createElement('div')
-      mockPlateDiv.innerHTML = `
-        <div data-filaments-container>
-          <div data-filament-index="0">
-            <input name="plates[0][filaments][0][filament_weight]" value="100" />
-            <input name="plates[0][filaments][0][filament_price]" value="25" />
-          </div>
-        </div>
-      `
-
-      const mockController = Object.assign({
+      const plateDiv = document.createElement('div')
+      const controller = createMockController({
         getPlateData: jest.fn(() => ({
-          printTime: 2.5,
-          powerConsumption: 200,
-          machineCost: 500,
-          payoffYears: 3,
-          prepTime: 15,
-          postTime: 30,
-          prepRate: 20,
-          postRate: 25,
-          filaments: [{ weight: 100, pricePerKg: 25 }]
+          printTime: 3.5,
+          filaments: [
+            { weight: 150, pricePerKg: 30 },
+            { weight: 75, pricePerKg: 25 }
+          ]
         }))
-      }, StorageMixin)
+      })
 
-      const plateData = mockController.getPlateDataForStorage(mockPlateDiv)
+      const plateData = controller.getPlateDataForStorage(plateDiv)
 
-      expect(plateData).toHaveProperty('printTime', 2.5)
-      expect(plateData).toHaveProperty('filaments')
-      expect(plateData.filaments[0]).toHaveProperty('weight', 100)
-      expect(plateData.filaments[0]).toHaveProperty('pricePerKg', 25)
+      expect(plateData.printTime).toBe(3.5)
+      expect(plateData.filaments).toHaveLength(2)
+      expect(plateData.filaments[0].weight).toBe(150)
+      expect(controller.getPlateData).toHaveBeenCalledWith(plateDiv)
+    })
+  })
+
+  describe('generateCalculationId', () => {
+    test('generates unique ID from name', () => {
+      const controller = createMockController()
+
+      const id = controller.generateCalculationId('Test Calculation')
+
+      expect(id).toContain('test_calculation_')
+      expect(id.length).toBeGreaterThan('test_calculation_'.length)
     })
   })
 })

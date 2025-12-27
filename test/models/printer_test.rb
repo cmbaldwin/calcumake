@@ -88,4 +88,24 @@ class PrinterTest < ActiveSupport::TestCase
     assert_respond_to @printer, :user
     assert_equal @user, @printer.user
   end
+
+  # Material technology enum tests
+  test "should default to fdm technology" do
+    printer = Printer.new
+    assert printer.fdm?
+    assert_equal "fdm", printer.material_technology
+  end
+
+  test "should allow setting resin technology" do
+    @printer.material_technology = :resin
+    assert @printer.resin?
+  end
+
+  test "should persist material_technology" do
+    @printer.material_technology = :resin
+    @printer.save!
+    @printer.reload
+    assert @printer.resin?
+    assert_equal "resin", @printer.material_technology
+  end
 end

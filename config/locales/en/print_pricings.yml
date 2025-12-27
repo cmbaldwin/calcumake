@@ -109,13 +109,14 @@ en:
       plates: Plates
       plate: Plate
       filaments: Filaments
+      resins: Resins
     fields:
       job_name: Job Name
       job_name_placeholder: e.g., Miniature Model
       select_printer: Select Printer
       select_printer_prompt: Select a printer
       no_printer_help: Don't have a printer registered?
-      add_printer_link: Add a new printer
+      add_printer_link: Register a new printer
       print_time_hours: Hours
       print_time_minutes: Minutes
       filament_weight: Filament Weight (g)
@@ -130,6 +131,8 @@ en:
       markup_placeholder: '20'
       markup_percentage: Markup Percentage
       filament_markup: Filament Markup (%)
+      resin_markup: Resin Markup (%)
+      material_technology: Print Technology
       prep_time: Prep Time (min)
       prep_time_placeholder: '30'
       prep_time_minutes: Prep Time (minutes)
@@ -245,9 +248,13 @@ en:
         back_to_all: "← Back to All Pricings"
         create_new: Create New Pricing
         confirm_delete: Are you sure you want to delete '%{name}'?
+    technology:
+      fdm: FDM (Filament)
+      resin: SLA/DLP (Resin)
     help:
       plates_limit: You can add up to 10 plates per print job.
       filaments_limit: You can add up to 5 different filaments per plate.
+      resins_limit: You can add up to 5 different resins per plate.
   print_pricings:
     form:
       filament_weight: Filament Weight

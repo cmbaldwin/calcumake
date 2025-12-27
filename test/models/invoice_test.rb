@@ -305,4 +305,122 @@ class InvoiceTest < ActiveSupport::TestCase
     # Verify line items were created
     assert invoice.invoice_line_items.any?, "Should create line items"
   end
+
+  # Tax calculation tests
+  test "tax_amount returns 0 when user has no vat percentage" do
+    @user.default_vat_percentage = nil
+    @user.save!
+    @invoice.save!
+
+    @invoice.invoice_line_items.create!(
+      description: "Item 1",
+      quantity: 1,
+      unit_price: 100.00,
+      line_item_type: "custom",
+      order_position: 0
+    )
+
+    assert_equal 0, @invoice.tax_amount
+  end
+
+  test "tax_amount calculates correctly with vat percentage" do
+    @user.default_vat_percentage = 10.0
+    @user.save!
+    @invoice.save!
+
+    @invoice.invoice_line_items.create!(
+      description: "Item 1",
+      quantity: 1,
+      unit_price: 100.00,
+      line_item_type: "custom",
+      order_position: 0
+    )
+
+    assert_equal 10.0, @invoice.tax_amount
+  end
+
+  test "tax_amount calculates correctly with japanese consumption tax" do
+    @user.default_vat_percentage = 10.0 # Japan's consumption tax
+    @user.save!
+    @invoice.save!
+
+    @invoice.invoice_line_items.create!(
+      description: "Item 1",
+      quantity: 1,
+      unit_price: 50.00,
+      line_item_type: "custom",
+      order_position: 0
+    )
+
+    @invoice.invoice_line_items.create!(
+      description: "Item 2",
+      quantity: 2,
+      unit_price: 25.00,
+      line_item_type: "custom",
+      order_position: 1
+    )
+
+    # Subtotal: 100.00
+    # Tax (10%): 10.00
+    assert_equal 100.0, @invoice.subtotal
+    assert_equal 10.0, @invoice.tax_amount
+  end
+
+  test "tax_percentage returns user's default vat percentage" do
+    @user.default_vat_percentage = 8.0
+    @user.save!
+    @invoice.save!
+
+    assert_equal 8.0, @invoice.tax_percentage
+  end
+
+  test "tax_percentage returns 0 when user has no vat percentage" do
+    @user.default_vat_percentage = nil
+    @user.save!
+    @invoice.save!
+
+    assert_equal 0, @invoice.tax_percentage
+  end
+
+  # Status change tests with edge cases
+  test "mark_as_sent! works even with NULL reference_id" do
+    # Simulate an invoice with NULL reference_id (edge case)
+    @invoice.save!
+    @invoice.update_column(:reference_id, nil)
+    @invoice.reload
+
+    # Should still be able to mark as sent despite NULL reference_id
+    assert_nothing_raised do
+      @invoice.mark_as_sent!
+    end
+
+    @invoice.reload
+    assert_equal "sent", @invoice.status
+  end
+
+  test "mark_as_paid! works even with NULL reference_id" do
+    @invoice.save!
+    @invoice.update_column(:reference_id, nil)
+    @invoice.reload
+
+    assert_nothing_raised do
+      @invoice.mark_as_paid!
+    end
+
+    @invoice.reload
+    assert_equal "paid", @invoice.status
+  end
+
+  test "mark_as_cancelled! works even with NULL reference_id" do
+    @invoice.save!
+    @invoice.update_column(:reference_id, nil)
+    @invoice.reload
+
+    assert_nothing_raised do
+      @invoice.mark_as_cancelled!
+    end
+
+    @invoice.reload
+    assert_equal "cancelled", @invoice.status
+  end
 end

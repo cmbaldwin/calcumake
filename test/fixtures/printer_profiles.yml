@@ -1,0 +1,37 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+bambu_p1s:
+  manufacturer: Bambu Lab
+  model: P1S Combo
+  category: Mid-Range FDM
+  technology: fdm
+  power_consumption_peak_watts: 850
+  power_consumption_avg_watts: 100
+  cost_usd: 549.00
+  source: Bambu Lab Wiki FAQ
+  verified: true
+  last_verified_at: <%= 1.day.ago %>
+
+elegoo_mars:
+  manufacturer: Elegoo
+  model: Mars 5
+  category: Budget Resin
+  technology: resin
+  power_consumption_peak_watts: 70
+  power_consumption_avg_watts: 50
+  cost_usd: 179.00
+  source: Elegoo official specs
+  verified: false
+  last_verified_at: <%= nil %>
+
+prusa_mk4:
+  manufacturer: Prusa
+  model: i3 MK4 Kit
+  category: Mid-Range FDM
+  technology: fdm
+  power_consumption_peak_watts: 240
+  power_consumption_avg_watts: 100
+  cost_usd: 899.00
+  source: Prusa FAQ
+  verified: true
+  last_verified_at: <%= 1.week.ago %>

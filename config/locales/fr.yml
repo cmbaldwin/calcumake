@@ -79,6 +79,7 @@ fr:
               no_filaments: Doit avoir au moins un filament
               duplicate_filaments: Impossible d'utiliser le même filament plusieurs
                 fois sur une même plaque
+              no_resins: Les plaques de résine doivent contenir au moins une résine
         print_pricing:
           attributes:
             base:
@@ -86,6 +87,10 @@ fr:
               too_many_plates: Impossible d'avoir plus de 10 plaques
               duplicate_filaments_on_plate: Impossible d'utiliser le même filament
                 plusieurs fois sur la même plaque
+        resin:
+          attributes:
+            layer_height_max:
+              layer_height_range: doit être supérieur à la hauteur de couche minimale
   nav:
     brand: CalcuMake
     print_pricings: Mes Tarifications
@@ -107,6 +112,15 @@ fr:
     export_data: Exporter mes données
     delete_account: Supprimer mon compte
     calculate_now: Calculer maintenant !
+    blog: Blog
+    materials: Matériaux
+    my_materials: Mes matériaux
+    all_materials: Tous les matériaux
+    filaments_header: Filaments (FDM)
+    add_filament: Ajouter un filament
+    resins_header: Résines (SLA/DLP)
+    my_resins: Mes résines
+    add_resin: Ajouter une résine
   actions:
     title: Actions
     save: Enregistrer
@@ -146,6 +160,8 @@ fr:
     printer_plural: Imprimantes
     filament_plural: Filaments
     invoice_plural: Factures
+    resin: Résine
+    resin_plural: Résines
   common:
     created: Créé
     currency: Devise
@@ -285,13 +301,13 @@ fr:
       plates: Plateaux
       plate: Plateau
       filaments: Filaments
+      resins: Résines
     fields:
       job_name: Nom de la tâche
       job_name_placeholder: p. ex., Modèle miniature
       select_printer: Sélectionner une imprimante
       select_printer_prompt: Sélectionner une imprimante
       no_printer_help: Vous n'avez pas d'imprimante enregistrée ?
-      add_printer_link: Ajouter une nouvelle imprimante
       print_time_hours: Heures
       print_time_minutes: Minutes
       filament_weight: Poids du filament (g)
@@ -346,6 +362,9 @@ fr:
       units_placeholder: '1'
       failure_rate_percentage: Taux d'échec (%)
       failure_rate_placeholder: '5.0'
+      add_printer_link: Enregistrer une nouvelle imprimante
+      resin_markup: Marge sur la résine (%)
+      material_technology: Technologie d'impression
     filament_types:
       pla: PLA
       abs: ABS
@@ -426,17 +445,21 @@ fr:
     help:
       plates_limit: Vous pouvez ajouter jusqu'à 10 plaques par tâche d'impression.
       filaments_limit: Vous pouvez ajouter jusqu'à 5 filaments différents par plaque.
+      resins_limit: Vous pouvez ajouter jusqu'à 5 résines différentes par plaque.
     per_unit_price: "%{price} par unité (%{count} unités)"
+    technology:
+      fdm: FDM (Filament)
+      resin: SLA/DLP (Résine)
   printers:
     index:
       title: Mes imprimantes
       subtitle: Gérez vos imprimantes 3D et leurs spécifications
-      add_new: Ajouter une nouvelle imprimante
       empty_state:
         title: Aucune imprimante enregistrée pour le moment
         description: Ajoutez votre première imprimante 3D pour commencer à calculer
           les coûts d'impression avec précision.
         add_first: Ajouter votre première imprimante
+      add_new: Enregistrer une nouvelle imprimante
     card:
       power_consumption: Consommation électrique
       cost: Coût
@@ -448,9 +471,9 @@ fr:
       hours: heures
       years: années
     new:
-      title: Ajouter une nouvelle imprimante
       subtitle: Enregistrez les spécifications de votre imprimante 3D pour des calculs
         de coûts précis
+      title: Enregistrer une nouvelle imprimante
     edit:
       title: Modifier l'imprimante
       subtitle: Mettez à jour les spécifications de votre imprimante 3D
@@ -502,6 +525,21 @@ fr:
       add_printer: Ajouter une imprimante
       update_printer: Mettre à jour l'imprimante
       cancel: Annuler
+    form:
+      basic_information: Informations de base
+      name: Nom de l'imprimante
+      name_placeholder: p. ex., Ma Prusa i3 MK3S+
+      manufacturer: Fabricant
+      select_manufacturer: Sélectionner un fabricant
+      material_technology: Technologie d'impression
+      technology_fdm: FDM (Filament)
+      technology_resin: SLA/DLP (Résine)
+      technology_help: Sélectionnez la technologie d'impression utilisée par cette
+        imprimante
+      select_profile: Partir d'une imprimante connue (facultatif)
+      profile_search_placeholder: Rechercher par fabricant ou modèle...
+      profile_help: Sélectionnez une imprimante pour pré-remplir les spécifications,
+        ou entrez-les manuellement ci-dessous
   profile:
     show:
       title: Profil utilisateur
@@ -677,8 +715,8 @@ fr:
     description: Calcul professionnel des coûts d'impression 3D et gestion de projet
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - Tous droits réservés"
   support:
-    title: Support
-    nav_title: Support
+    title: Assistance
+    nav_title: Assistance
     contact_us: Nous contacter
     description: Besoin d'aide avec CalcuMake ? Vous avez une question ou une suggestion
       ? Nous sommes là pour vous aider !
@@ -1290,6 +1328,7 @@ fr:
       round_all_up_help: Arrondir tous les montants pour une marge de sécurité
       round_all_up: Arrondir tout
     made_with_calcumake: Créé avec CalcuMake
+    tax_included: Taxe incluse (%{percentage}%)
   filaments:
     index:
       title: Mes Filaments
@@ -1358,10 +1397,10 @@ fr:
       not_set: Non défini
       total_cost: Coût total
       no_filament_registered: Aucun filament enregistré ?
-      add_new_filament: Ajouter un nouveau filament
       bed_temperature: Température du plateau
       max_print_speed: Vitesse d'impression maximale
       storage_temp: Température de stockage
+      add_new_filament: Enregistrer un nouveau filament
     properties:
       moisture_sensitive: Sensible à l'humidité
     buttons:
@@ -2017,3 +2056,107 @@ fr:
     structured_data:
       organization: CalcuMake
       publisher: Blog CalcuMake
+  materials:
+    index:
+      title: Bibliothèque de matériaux
+      subtitle: Gérez vos filaments et résines en un seul endroit
+      search_placeholder: Rechercher par nom, marque ou couleur...
+      add_filament: Ajouter un filament
+      add_resin: Ajouter une résine
+      filaments_only: Filaments uniquement
+      resins_only: Résines uniquement
+      filaments_section: Filaments (FDM)
+      resins_section: Résines (SLA/DLP)
+      view_all: Tout afficher
+      no_results:
+        title: Aucun matériau trouvé
+        description: Aucun matériau ne correspond à vos critères de recherche.
+      clear_search: Effacer la recherche
+      empty_state:
+        title: Pas encore de matériaux
+        description: Commencez à construire votre bibliothèque de matériaux en ajoutant
+          des filaments ou des résines.
+      add_first_filament: Ajouter un premier filament
+      add_first_resin: Ajouter une première résine
+  resins:
+    index:
+      title: Bibliothèque de résines
+      subtitle: Gérez votre collection de résines pour des calculs de coûts SLA/DLP
+        précis
+      add_new: Ajouter une nouvelle résine
+      search_placeholder: Rechercher des résines...
+      all_types: Tous les types de résine
+      clear_search: Effacer la recherche
+      no_results:
+        title: Aucune résine trouvée
+        description: Aucune résine ne correspond à vos critères de recherche. Essayez
+          d'ajuster vos filtres.
+      empty_state:
+        title: Aucune résine pour le moment
+        description: Ajoutez votre première résine pour commencer à suivre avec précision
+          les coûts d'impression SLA/DLP.
+        add_first: Ajouter votre première résine
+    new:
+      title: Ajouter une nouvelle résine
+      subtitle: Entrez les détails de votre résine pour des calculs de coûts précis
+    edit:
+      title: Modifier la résine
+      subtitle: Mettre à jour les informations de votre résine
+    show:
+      no_cost_info: Informations sur les coûts non disponibles. Ajoutez le prix et
+        le volume de la bouteille pour voir le coût par mL.
+      usage_history: Historique d'utilisation
+      times_used: Nombre d'utilisations
+      total_volume_used: Volume total utilisé
+      recent_prints: Impressions récentes
+      not_used_yet: Cette résine n'a pas encore été utilisée dans des impressions.
+      create_first_print: Créer la première impression
+      new_print_with_resin: Nouvelle impression
+    sections:
+      basic_info: Informations de base
+      cost_info: Informations sur les coûts
+      technical_specs: Spécifications techniques
+      properties: Propriétés
+    fields:
+      name: Nom
+      name_placeholder: p. ex., Gris standard
+      brand: Marque
+      brand_placeholder: p. ex., Elegoo, Anycubic
+      resin_type: Type de résine
+      resin_type_prompt: Sélectionner le type de résine...
+      color: Couleur
+      color_placeholder: p. ex., Gris, Transparent, Noir
+      bottle_volume_ml: Volume de la bouteille
+      bottle_volume_ml_placeholder: p. ex., 1000
+      bottle_price: Prix de la bouteille
+      bottle_price_placeholder: p. ex., 25.00
+      cost_per_ml: Coût par mL
+      resin: Résine
+      select_resin: Sélectionner une résine...
+      volume_used: Volume (mL)
+      selected: Sélectionné
+      none_selected: Aucun sélectionné
+      not_set: Non défini
+      total_cost: Coût total
+      no_resin_registered: Vous n'avez pas de résine enregistrée ?
+      add_new_resin: Ajouter une nouvelle résine
+      layer_height_range: Plage de hauteur de couche
+      layer_height_min: Hauteur de couche minimale
+      layer_height_min_placeholder: p. ex., 0.025
+      layer_height_max: Hauteur de couche maximale
+      layer_height_max_placeholder: p. ex., 0,100
+      exposure_time_seconds: Temps d'exposition
+      exposure_time_seconds_placeholder: p. ex., 8
+      cure_time_seconds: Temps de polymérisation
+      cure_time_seconds_placeholder: p. ex., 120
+      needs_wash: Nécessite un lavage
+      notes: Remarques
+      notes_placeholder: Ajouter des remarques supplémentaires sur cette résine...
+    properties:
+      needs_wash: Nécessite un lavage
+    buttons:
+      add_resin: Ajouter une résine
+      update_resin: Mettre à jour la résine
+      add: Ajouter une résine
+    confirm_delete: Êtes-vous sûr de vouloir supprimer %{name} ? Cette action est
+      irréversible.

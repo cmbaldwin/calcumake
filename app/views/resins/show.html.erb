@@ -1,0 +1,206 @@
+<!-- Page Header -->
+<div class="d-flex justify-content-between align-items-start mb-4">
+  <div>
+    <h1 class="h2 text-primary mb-2"><%= @resin.name %></h1>
+    <div class="d-flex gap-2 mb-3">
+      <%= render Shared::BadgeComponent.new(text: @resin.resin_type, variant: "info", size: "lg") %>
+      <% if @resin.color.present? %>
+        <%= render Shared::BadgeComponent.new(text: @resin.color, variant: "secondary", size: "lg") %>
+      <% end %>
+      <% if @resin.brand.present? %>
+        <%= render Shared::BadgeComponent.new(text: @resin.brand, variant: "primary", size: "lg") %>
+      <% end %>
+    </div>
+  </div>
+  <div class="d-flex gap-2">
+    <%= link_to t('actions.edit'), edit_resin_path(@resin), class: "btn btn-primary" %>
+    <%= link_to t('actions.back'), resins_path, class: "btn btn-outline-secondary" %>
+  </div>
+</div>
+
+<!-- Properties Row -->
+<div class="row g-2 mb-4">
+  <% if @resin.needs_wash? %>
+    <div class="col-auto">
+      <%= render Shared::BadgeComponent.new(
+        text: t('resins.properties.needs_wash'),
+        variant: "warning",
+        html_options: { class: "text-dark" }
+      ) %>
+    </div>
+  <% end %>
+</div>
+
+<div class="row g-4">
+  <!-- Basic Properties -->
+  <div class="col-lg-6">
+    <div class="card h-100">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('resins.sections.basic_info') %></h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-12">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('resins.fields.layer_height_range') %></label>
+              <div class="fw-bold"><%= @resin.layer_height_range %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cost Information -->
+  <div class="col-lg-6">
+    <div class="card h-100">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('resins.sections.cost_info') %></h5>
+      </div>
+      <div class="card-body">
+        <% if @resin.bottle_price.present? && @resin.bottle_volume_ml.present? %>
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('resins.fields.bottle_price') %></label>
+              <div class="fw-bold"><%= currency_symbol(current_user.default_currency) %><%= @resin.bottle_price %></div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('resins.fields.bottle_volume_ml') %></label>
+              <div class="fw-bold"><%= @resin.bottle_volume_ml %>mL</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('resins.fields.cost_per_ml') %></label>
+              <div class="fw-bold fs-5 text-primary">
+                <%= currency_symbol(current_user.default_currency) %><%= "%.4f" % @resin.cost_per_ml %>/mL
+              </div>
+            </div>
+          </div>
+        </div>
+        <% else %>
+        <div class="text-muted">
+          <em><%= t('resins.show.no_cost_info') %></em>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Technical Specifications -->
+  <div class="col-lg-6">
+    <div class="card h-100">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('resins.sections.technical_specs') %></h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <% if @resin.exposure_time_seconds.present? %>
+          <div class="col-6">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('resins.fields.exposure_time_seconds') %></label>
+              <div class="fw-bold"><%= @resin.exposure_time_seconds %>s</div>
+            </div>
+          </div>
+          <% end %>
+          <% if @resin.cure_time_seconds.present? %>
+          <div class="col-6">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('resins.fields.cure_time_seconds') %></label>
+              <div class="fw-bold"><%= @resin.cure_time_seconds %>s</div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Usage History -->
+  <div class="col-lg-6">
+    <div class="card h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0"><%= t('resins.show.usage_history') %></h5>
+        <%= link_to t('resins.show.new_print_with_resin'),
+            new_print_pricing_path,
+            class: "btn btn-sm btn-outline-primary" %>
+      </div>
+      <div class="card-body">
+        <% if @resin.plates.any? %>
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('resins.show.times_used') %></label>
+              <div class="fw-bold fs-5 text-success"><%= @resin.plates.count %></div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="spec-item">
+              <label class="form-label text-muted mb-1"><%= t('resins.show.total_volume_used') %></label>
+              <div class="fw-bold fs-5 text-primary">
+                <%= @resin.plate_resins.sum(:resin_volume_ml) %>mL
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-3">
+
+        <h6 class="mb-2"><%= t('resins.show.recent_prints') %></h6>
+        <% @resin.plates.includes(:print_pricing).limit(5).each do |plate| %>
+        <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+          <div>
+            <%= link_to plate.print_pricing.job_name,
+                plate.print_pricing,
+                class: "text-decoration-none" %>
+            <small class="text-muted d-block">
+              <%= plate.plate_resins.where(resin: @resin).sum(:resin_volume_ml) %>mL used
+            </small>
+          </div>
+          <small class="text-muted">
+            <%= time_ago_in_words(plate.created_at) %> ago
+          </small>
+        </div>
+        <% end %>
+        <% else %>
+        <div class="text-center py-4">
+          <div class="text-muted mb-3">
+            <em><%= t('resins.show.not_used_yet') %></em>
+          </div>
+          <%= link_to t('resins.show.create_first_print'),
+              new_print_pricing_path,
+              class: "btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <% if @resin.notes.present? %>
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('resins.fields.notes') %></h5>
+      </div>
+      <div class="card-body">
+        <p class="mb-0"><%= simple_format(@resin.notes) %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<!-- Actions -->
+<div class="d-flex justify-content-center gap-3 mt-5 pt-4 border-top">
+  <%= link_to t('actions.edit'), edit_resin_path(@resin), class: "btn btn-primary" %>
+  <%= link_to t('actions.delete'),
+      @resin,
+      method: :delete,
+      confirm: t('resins.confirm_delete', name: @resin.name),
+      class: "btn btn-outline-danger" %>
+  <%= link_to t('actions.back'), resins_path, class: "btn btn-outline-secondary" %>
+</div>

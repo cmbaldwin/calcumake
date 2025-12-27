@@ -4,38 +4,72 @@
 <head>
     <title><%= meta_title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    
+
+    <%# Preconnect to external domains for faster resource loading %>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://esm.sh" crossorigin>
+    <link rel="dns-prefetch" href="https://esm.sh">
+    <% if Rails.env.production? %>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+    <% end %>
+
     <%# PWA Meta Tags %>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="CalcuMake">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#0d6efd">
-    
-    <%# Google Analytics (GA4) %>
+
+    <%# Google Analytics (GA4) - deferred initialization for better performance %>
     <% if Rails.env.production? %>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SBESSBTQRQ"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SBESSBTQRQ');
+        window.dataLayer = window.dataLayer || [];
 
-      // Track landing page conversions
-      function trackSignupStart() {
-        gtag('event', 'signup_start', {
-          event_category: 'engagement',
-          event_label: 'landing_page'
-        });
-      }
+        function gtag() {
+            dataLayer.push(arguments);
+        }
 
-      function trackDemoView() {
-        gtag('event', 'demo_view', {
-          event_category: 'engagement',
-          event_label: 'landing_page'
-        });
-      }
+        // Defer GA config until after page load for better performance
+        if (document.readyState === 'complete') {
+            gtag('js', new Date());
+            gtag('config', 'G-SBESSBTQRQ');
+        } else {
+            window.addEventListener('load', function() {
+                // Use requestIdleCallback if available, otherwise setTimeout
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(function() {
+                        gtag('js', new Date());
+                        gtag('config', 'G-SBESSBTQRQ');
+                    });
+                } else {
+                    setTimeout(function() {
+                        gtag('js', new Date());
+                        gtag('config', 'G-SBESSBTQRQ');
+                    }, 0);
+                }
+            });
+        }
+
+        // Track landing page conversions
+        function trackSignupStart() {
+            gtag('event', 'signup_start', {
+                event_category: 'engagement',
+                event_label: 'landing_page'
+            });
+        }
+
+        function trackDemoView() {
+            gtag('event', 'demo_view', {
+                event_category: 'engagement',
+                event_label: 'landing_page'
+            });
+        }
     </script>
     <% end %>
 
@@ -44,10 +78,10 @@
 
     <%# SEO Meta Tags %>
     <%= meta_tags %>
-    
+
     <%# Multi-language SEO - hreflang tags for international discovery %>
     <% I18n.available_locales.each do |locale| %>
-      <link rel="alternate" hreflang="<%= locale %>" href="<%= url_for(locale: locale, only_path: false) %>" />
+    <link rel="alternate" hreflang="<%= locale %>" href="<%= url_for(locale: locale, only_path: false) %>" />
     <% end %>
     <link rel="alternate" hreflang="x-default" href="<%= url_for(locale: :en, only_path: false) %>" />
 
@@ -55,16 +89,16 @@
 
     <%# Structured Data %>
     <script type="application/ld+json">
-      <%= structured_data_organization.html_safe %>
+        <%= structured_data_organization.html_safe %>
     </script>
     <script type="application/ld+json">
-      <%= structured_data_web_application.html_safe %>
+        <%= structured_data_web_application.html_safe %>
     </script>
     <script type="application/ld+json">
-      <%= structured_data_calculator.html_safe %>
+        <%= structured_data_calculator.html_safe %>
     </script>
     <script type="application/ld+json">
-      <%= structured_data_faq.html_safe %>
+        <%= structured_data_faq.html_safe %>
     </script>
     <%= yield :structured_data %>
 
@@ -79,11 +113,23 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-    <%# Bootstrap 5 with custom styling %>
+    <%# Bootstrap CSS - loaded directly for parallel loading (not via @import) %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <%# Bootstrap Icons - loaded async with preload for better performance %>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"></noscript>
+
+    <%# Custom application styles %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <%# Lexxy CSS - only load for authenticated users %>
+    <% if user_signed_in? %>
     <%= stylesheet_link_tag "lexxy", "data-turbo-track": "reload" %>
+    <% end %>
+
     <%= javascript_importmap_tags %>
-    
+
 </head>
 
 <body class="<%= content_for(:body_class) %>" data-controller="pwa-registration" data-pwa-registration-service-worker-path-value="<%= pwa_service_worker_path %>">
@@ -95,7 +141,7 @@
     <%= render "shared/navbar" %>
 
     <!-- Main Content Container -->
-    <div class="container my-4">
+    <div class="container my-4 mx-auto">
         <main>
             <%= yield %>
         </main>

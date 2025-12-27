@@ -1,13 +1,10 @@
 /*
- * Bootstrap 5 with custom color scheme for 3D Print Calculator
+ * Custom color scheme for 3D Print Calculator
  * Using Bootstrap's CSS custom properties for theming
+ *
+ * Note: Bootstrap CSS and Bootstrap Icons are loaded directly in the layout
+ * for better performance (no render-blocking @import)
  */
-
-/* Import Bootstrap 5 from CDN */
-@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css");
-
-/* Import Bootstrap Icons from CDN */
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
 
 /* Import page-specific styles */
 @import url("pricing_calculator.css");
@@ -2321,4 +2318,90 @@ html {
 .modal-dialog-scrollable .modal-body {
   overflow-y: auto;
   max-height: calc(100vh - 210px);
+}
+
+/* Printer Profile Searchable Dropdown */
+.printer-profile-dropdown {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.printer-profile-dropdown .dropdown-header {
+  background-color: var(--moab-cream);
+  color: var(--moab-shadow);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1rem;
+  margin-top: 0.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.printer-profile-dropdown .dropdown-header:first-child {
+  margin-top: 0;
+}
+
+.printer-profile-dropdown .dropdown-item {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.printer-profile-dropdown .dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.printer-profile-dropdown .dropdown-item:hover,
+.printer-profile-dropdown .dropdown-item.active {
+  background-color: rgba(200, 16, 46, 0.1);
+}
+
+.printer-profile-dropdown .dropdown-item .fw-medium {
+  font-weight: 500;
+}
+
+.printer-profile-dropdown .dropdown-item small {
+  font-size: 0.75rem;
+}
+
+/* Printer profile search clear button */
+.profile-search-clear {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  color: var(--bs-secondary);
+  cursor: pointer;
+  transition: color 0.15s ease-in-out;
+  line-height: 1;
+}
+
+.profile-search-clear:hover {
+  color: var(--bs-danger);
+}
+
+.profile-search-clear i {
+  font-size: 1rem;
+}
+
+/* Autofill highlight animation */
+.autofill-highlight {
+  animation: autofillPulse 1.5s ease-out;
+}
+
+@keyframes autofillPulse {
+  0% {
+    background-color: rgba(156, 175, 136, 0.4);
+    box-shadow: 0 0 0 3px rgba(156, 175, 136, 0.3);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: none;
+  }
 }

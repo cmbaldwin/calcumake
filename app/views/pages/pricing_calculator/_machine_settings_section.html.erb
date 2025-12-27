@@ -6,6 +6,44 @@
             <%= t("advanced_calculator.machine_settings") %>
         </h6>
 
+        <!-- Print Technology Toggle -->
+        <div class="mb-3">
+            <label class="form-label fw-bold">
+                <i class="bi bi-layers-fill me-1"></i>
+                Print Technology
+            </label>
+            <div class="btn-group w-100" role="group" data-print-technology-toggle>
+                <input type="radio" class="btn-check" name="print_technology" id="tech_fdm" value="fdm" checked data-action="change->advanced-calculator#switchPrintTechnology">
+                <label class="btn btn-outline-primary" for="tech_fdm">
+                    <i class="bi bi-box me-1"></i>
+                    FDM (Filament)
+                </label>
+
+                <input type="radio" class="btn-check" name="print_technology" id="tech_resin" value="resin" data-action="change->advanced-calculator#switchPrintTechnology">
+                <label class="btn btn-outline-primary" for="tech_resin">
+                    <i class="bi bi-droplet-fill me-1"></i>
+                    Resin (SLA/DLP)
+                </label>
+            </div>
+            <small class="form-text text-muted">Choose your printer technology - this will update all plates below</small>
+        </div>
+
+        <!-- Printer Profile Selector -->
+        <div class="mb-3">
+            <label class="form-label">
+                <i class="bi bi-printer me-1"></i>
+                Printer Profile (Optional)
+            </label>
+            <select class="form-select" data-printer-profile-selector data-action="change->advanced-calculator#loadPrinterProfile">
+                <option value="">-- Select a Common Printer --</option>
+            </select>
+            <small class="form-text text-muted d-block">Select a printer to auto-fill machine settings</small>
+            <small class="form-text text-warning">
+                <i class="bi bi-exclamation-triangle me-1"></i>
+                Printer profiles are AI-generated estimates based on web research. Always verify specifications with your printer's manual.
+            </small>
+        </div>
+
         <div class="row g-3">
             <!-- Power Consumption -->
             <div class="col-md-4">
@@ -41,15 +79,15 @@
             <!-- Prep Time -->
             <div class="col-md-6">
                 <label class="form-label">
-                    <%= t("advanced_calculator.plate_fields.prep_time") %> (hrs)
+                    <%= t("advanced_calculator.plate_fields.prep_time") %>
                 </label>
-                <input type="number" class="form-control" name="prep_time" data-advanced-calculator-target="prepTime" data-action="input->advanced-calculator#calculate" value="0.25" min="0" step="0.05">
+                <input type="number" class="form-control" name="prep_time" data-advanced-calculator-target="prepTime" data-action="input->advanced-calculator#calculate" value="15" min="0" step="1">
             </div>
 
             <!-- Prep Rate -->
             <div class="col-md-6">
                 <label class="form-label">
-                    <%= t("advanced_calculator.plate_fields.prep_rate") %> ($/hr)
+                    <%= t("advanced_calculator.plate_fields.prep_rate") %>
                 </label>
                 <input type="number" class="form-control" name="prep_rate" data-advanced-calculator-target="prepRate" data-action="input->advanced-calculator#calculate" value="20" min="0" step="0.5">
             </div>
@@ -57,15 +95,15 @@
             <!-- Post-Processing Time -->
             <div class="col-md-6">
                 <label class="form-label">
-                    <%= t("advanced_calculator.plate_fields.post_time") %> (hrs)
+                    <%= t("advanced_calculator.plate_fields.post_time") %>
                 </label>
-                <input type="number" class="form-control" name="post_time" data-advanced-calculator-target="postTime" data-action="input->advanced-calculator#calculate" value="0.25" min="0" step="0.05">
+                <input type="number" class="form-control" name="post_time" data-advanced-calculator-target="postTime" data-action="input->advanced-calculator#calculate" value="15" min="0" step="1">
             </div>
 
             <!-- Post Rate -->
             <div class="col-md-6">
                 <label class="form-label">
-                    <%= t("advanced_calculator.plate_fields.post_rate") %> ($/hr)
+                    <%= t("advanced_calculator.plate_fields.post_rate") %>
                 </label>
                 <input type="number" class="form-control" name="post_rate" data-advanced-calculator-target="postRate" data-action="input->advanced-calculator#calculate" value="20" min="0" step="0.5">
             </div>

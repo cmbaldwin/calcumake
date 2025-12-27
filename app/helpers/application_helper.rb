@@ -62,10 +62,10 @@ module ApplicationHelper
 
   # Get list of OAuth providers configured for display in views
   def oauth_providers_for_view
-    enabled_providers = OauthHelper.enabled_providers
+    enabled_providers = OAuthHelper.enabled_providers
     enabled_providers.map do |provider|
       {
-        name: OauthHelper.provider_name(provider),
+        name: OAuthHelper.provider_name(provider),
         path: user_oauth_path(provider)
       }
     end
