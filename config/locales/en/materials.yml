@@ -1,0 +1,25 @@
+en:
+  materials:
+    index:
+      title: "Materials Library"
+      subtitle: "Manage your filaments and resins in one place"
+      search_placeholder: "Search by name, brand, or color..."
+      add_filament: "Add Filament"
+      add_resin: "Add Resin"
+      filaments_only: "Filaments Only"
+      resins_only: "Resins Only"
+      filaments_section: "Filaments (FDM)"
+      resins_section: "Resins (SLA/DLP)"
+      view_all: "View All"
+      no_results:
+        title: "No Materials Found"
+        description: "No materials match your search criteria."
+      clear_search: "Clear Search"
+      empty_state:
+        title: "No Materials Yet"
+        description: "Start building your materials library by adding filaments or resins."
+      add_first_filament: "Add First Filament"
+      add_first_resin: "Add First Resin"
+  nav:
+    materials: "Materials"
+    my_materials: "My Materials"

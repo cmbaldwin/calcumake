@@ -40,9 +40,14 @@ class PrintPricing < ApplicationRecord
     plates.sum(&:total_printing_time_minutes)
   end
 
-  def total_filament_cost
-    base_cost = plates.sum(&:total_filament_cost)
+  def total_material_cost
+    base_cost = plates.sum(&:total_material_cost)
     apply_failure_rate(base_cost)
+  end
+
+  # Alias for backward compatibility
+  def total_filament_cost
+    total_material_cost
   end
 
   def total_electricity_cost
@@ -83,7 +88,7 @@ class PrintPricing < ApplicationRecord
   end
 
   def calculate_subtotal
-    total_filament_cost + total_electricity_cost + total_labor_cost +
+    total_material_cost + total_electricity_cost + total_labor_cost +
     total_machine_upkeep_cost + (other_costs || 0)
   end
 

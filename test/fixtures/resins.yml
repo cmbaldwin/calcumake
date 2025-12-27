@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  name: Standard Gray
+  brand: Elegoo
+  resin_type: Standard
+  bottle_volume_ml: 1000.0
+  bottle_price: 25.00
+  color: Gray
+  cure_time_seconds: 120
+  layer_height_min: 0.025
+  layer_height_max: 0.100
+  exposure_time_seconds: 8
+  needs_wash: true
+  notes: Good all-purpose resin
+
+two:
+  user: two
+  name: ABS-Like Pro
+  brand: Anycubic
+  resin_type: ABS-Like
+  bottle_volume_ml: 500.0
+  bottle_price: 30.00
+  color: Black
+  cure_time_seconds: 180
+  layer_height_min: 0.050
+  layer_height_max: 0.100
+  exposure_time_seconds: 10
+  needs_wash: true
+  notes: High durability resin

@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :printers, dependent: :destroy
   has_many :invoices, dependent: :destroy
   has_many :filaments, dependent: :destroy
+  has_many :resins, dependent: :destroy
   has_many :clients, dependent: :destroy
   has_many :usage_trackings, dependent: :destroy
   has_many :user_consents, dependent: :destroy
@@ -240,6 +241,7 @@ class User < ApplicationRecord
         print_pricings: print_pricings.count,
         printers: printers.count,
         filaments: filaments.count,
+        resins: resins.count,
         invoices: invoices.count,
         clients: clients.count
       }

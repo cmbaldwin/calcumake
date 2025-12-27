@@ -10,6 +10,8 @@
     <div class="modal-body">
       <%= printer_form_error_messages(@printer) %>
 
+      <%= printer_form_profile_selector %>
+
       <div class="form-grid">
         <%= printer_form_basic_information(form, @printer) %>
         <%= printer_form_technical_specs(form) %>

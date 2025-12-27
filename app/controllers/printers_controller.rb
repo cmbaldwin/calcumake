@@ -90,7 +90,7 @@ class PrintersController < ApplicationController
 
   def printer_params
     params.require(:printer).permit(
-      :name, :manufacturer, :power_consumption, :cost, :payoff_goal_years,
+      :name, :manufacturer, :material_technology, :power_consumption, :cost, :payoff_goal_years,
       :daily_usage_hours, :investment_return_years, :repair_cost_percentage
     )
   end

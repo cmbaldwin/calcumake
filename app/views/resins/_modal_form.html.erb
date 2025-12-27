@@ -1,0 +1,119 @@
+<%= turbo_frame_tag "modal_content" do %>
+  <div class="modal-header">
+    <h5 class="modal-title"><%= t('resins.new.title') %></h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+
+  <%= form_with model: @resin,
+                data: { turbo_frame: "_top" },
+                html: { class: "needs-validation", novalidate: true } do |form| %>
+    <div class="modal-body">
+      <%= render Forms::ErrorsComponent.new(model: @resin) %>
+
+      <!-- Basic Information -->
+      <%= render Forms::FormSectionComponent.new(
+        title: tag.h6(t('resins.sections.basic_info'), class: "mb-0"),
+        card_class: "card mb-3",
+        body_class: "row g-3"
+      ) do %>
+        <%= render Forms::FieldComponent.new(
+          form: form,
+          attribute: :name,
+          type: :text,
+          label: t('resins.fields.name'),
+          required: true,
+          wrapper_class: "col-md-6",
+          options: { placeholder: t('resins.fields.name_placeholder') }
+        ) %>
+        <%= render Forms::FieldComponent.new(
+          form: form,
+          attribute: :brand,
+          type: :text,
+          label: t('resins.fields.brand'),
+          wrapper_class: "col-md-6",
+          options: { placeholder: t('resins.fields.brand_placeholder') }
+        ) %>
+        <%= render Forms::SelectFieldComponent.new(
+          form: form,
+          attribute: :resin_type,
+          choices: Resin::RESIN_TYPES.map { |t| [t, t] },
+          label: t('resins.fields.resin_type'),
+          prompt: t('resins.fields.resin_type_prompt'),
+          required: true,
+          wrapper_class: "col-md-6"
+        ) %>
+        <%= render Forms::FieldComponent.new(
+          form: form,
+          attribute: :color,
+          type: :text,
+          label: t('resins.fields.color'),
+          wrapper_class: "col-md-6",
+          options: { placeholder: t('resins.fields.color_placeholder') }
+        ) %>
+      <% end %>
+
+      <!-- Cost Information -->
+      <%= render Forms::FormSectionComponent.new(
+        title: tag.h6(t('resins.sections.cost_info'), class: "mb-0"),
+        card_class: "card mb-3",
+        body_class: "row g-3"
+      ) do %>
+        <%= render Forms::NumberFieldWithAddonComponent.new(
+          form: form,
+          attribute: :bottle_volume_ml,
+          label: t('resins.fields.bottle_volume_ml'),
+          append: "mL",
+          step: 0.01,
+          min: 0,
+          placeholder: t('resins.fields.bottle_volume_ml_placeholder'),
+          wrapper_class: "col-md-6",
+          input_group_size: "sm"
+        ) %>
+        <%= render Forms::NumberFieldWithAddonComponent.new(
+          form: form,
+          attribute: :bottle_price,
+          label: t('resins.fields.bottle_price'),
+          prepend: currency_symbol(current_user.default_currency),
+          step: 0.01,
+          min: 0,
+          placeholder: t('resins.fields.bottle_price_placeholder'),
+          wrapper_class: "col-md-6",
+          input_group_size: "sm"
+        ) %>
+      <% end %>
+
+      <!-- Properties -->
+      <%= render Forms::FormSectionComponent.new(
+        title: tag.h6(t('resins.sections.properties'), class: "mb-0"),
+        card_class: "card mb-3"
+      ) do %>
+        <%= render Forms::CheckboxFieldComponent.new(
+          form: form,
+          attribute: :needs_wash,
+          label: t('resins.fields.needs_wash'),
+          wrapper: false
+        ) %>
+      <% end %>
+
+      <!-- Notes -->
+      <%= render Forms::FormSectionComponent.new(
+        title: tag.h6(t('resins.fields.notes'), class: "mb-0"),
+        card_class: "card"
+      ) do %>
+        <%= render Forms::FieldComponent.new(
+          form: form,
+          attribute: :notes,
+          type: :textarea,
+          label: false,
+          wrapper: false,
+          options: { rows: 3, placeholder: t('resins.fields.notes_placeholder') }
+        ) %>
+      <% end %>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t('actions.cancel') %></button>
+      <%= form.submit t('resins.buttons.add_resin'), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+<% end %>
