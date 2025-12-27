@@ -34,14 +34,11 @@ export default class extends Controller {
 
   // Handle custom open-modal event from anywhere
   handleOpenModal(event) {
-    console.log('Received open-modal event', event)
     this.openWithLoading()
   }
 
   // Open the modal and show loading spinner
   openWithLoading(event) {
-    console.log('Opening modal with loading spinner')
-
     // Prevent default if called from a click event
     if (event && event.preventDefault) {
       event.preventDefault()
@@ -65,7 +62,6 @@ export default class extends Controller {
 
     // Open the modal immediately
     this.modal.show()
-    console.log('Modal opened with loading state')
   }
 
   // Close the modal
@@ -87,15 +83,11 @@ export default class extends Controller {
 
   // Handle Turbo form submission
   handleSubmit(event) {
-    console.log('Form submitted', event.detail)
     const { success } = event.detail
 
     // Close modal on successful submission
     if (success) {
-      console.log('Form successful, closing modal')
       this.close()
-    } else {
-      console.log('Form had errors, keeping modal open')
     }
   }
 }

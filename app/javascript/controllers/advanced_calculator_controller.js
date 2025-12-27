@@ -48,8 +48,6 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("Advanced calculator connected")
-
     // Apply mixins following Better Stimulus pattern
     useCalculator(this)
     useStorage(this)
