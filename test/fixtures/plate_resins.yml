@@ -1,0 +1,5 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# Note: These fixtures are for resin plate tests only
+# By default, plates are FDM with plate_filaments associations
+# Resin plates would be configured specifically in tests

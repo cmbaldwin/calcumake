@@ -1,4 +1,6 @@
-<div class="nested-form-item card mb-3" data-nested-form-target="item" data-plate data-plate-id="<%= f.object.object_id %>">
+<div class="nested-form-item card mb-3" data-nested-form-target="item" data-plate data-plate-id="<%= f.object.object_id %>"
+     data-controller="plate-technology"
+     data-plate-technology-current-value="<%= f.object.material_technology || 'fdm' %>">
   <div class="card-header d-flex justify-content-between align-items-center">
     <h6 class="mb-0">
       <%= t('print_pricing.sections.plate') %>
@@ -12,8 +14,30 @@
   </div>
   <div class="card-body">
     <%= f.hidden_field :_destroy %>
+    <%= f.hidden_field :material_technology, data: { plate_technology_target: "hiddenField" } %>
 
     <div class="row g-3">
+      <!-- Technology Toggle -->
+      <div class="col-12">
+        <label class="form-label"><%= t('print_pricing.fields.material_technology') %></label>
+        <div class="btn-group w-100" role="group" aria-label="<%= t('print_pricing.fields.material_technology') %>">
+          <button type="button"
+                  class="btn <%= f.object.fdm? || f.object.material_technology.nil? ? 'btn-primary active' : 'btn-outline-secondary' %>"
+                  data-action="click->plate-technology#setTechnology"
+                  data-technology="fdm"
+                  data-plate-technology-target="toggleButton">
+            <i class="bi bi-funnel me-1"></i> <%= t('print_pricing.technology.fdm') %>
+          </button>
+          <button type="button"
+                  class="btn <%= f.object.resin? ? 'btn-primary active' : 'btn-outline-secondary' %>"
+                  data-action="click->plate-technology#setTechnology"
+                  data-technology="resin"
+                  data-plate-technology-target="toggleButton">
+            <i class="bi bi-droplet me-1"></i> <%= t('print_pricing.technology.resin') %>
+          </button>
+        </div>
+      </div>
+
       <!-- Print Time -->
       <div class="col-12">
         <div class="row g-2">
@@ -28,8 +52,10 @@
         </div>
       </div>
 
-      <!-- Filaments Section -->
-      <div class="col-12" data-controller="filament-list"
+      <!-- Filaments Section (FDM) -->
+      <div class="col-12" data-plate-technology-target="fdmFields"
+           style="<%= f.object.resin? ? 'display: none;' : '' %>"
+           data-controller="filament-list"
            data-plate-filament-container="<%= f.object.object_id %>"
            data-filament-list-max-items-value="16"
            data-filament-list-min-items-value="1"
@@ -68,6 +94,23 @@
             </button>
           </div>
         </div>
+      </div>
+
+      <!-- Resin Section (SLA/DLP) - Single resin per plate -->
+      <div class="col-12" data-plate-technology-target="resinFields"
+           style="<%= f.object.fdm? || f.object.material_technology.nil? ? 'display: none;' : '' %>">
+        <div class="mb-3">
+          <h6 class="mb-0"><%= t('print_pricing.sections.resins') %></h6>
+        </div>
+
+        <%# Build a single plate_resin if none exists %>
+        <% if f.object.plate_resins.empty? %>
+          <% f.object.plate_resins.build %>
+        <% end %>
+
+        <%= f.fields_for :plate_resins do |pr_form| %>
+          <%= render 'print_pricings/plate_resin_fields', f: pr_form, user_resins: current_user.resins, single_resin: true %>
+        <% end %>
       </div>
     </div>
   </div>

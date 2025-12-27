@@ -7,7 +7,14 @@ en:
     my_pricings: My Pricings
     new_pricing: New Pricing
     my_printers: My Printers
+    materials: Materials
+    all_materials: All Materials
+    filaments_header: Filaments (FDM)
     my_filaments: My Filaments
+    add_filament: Add Filament
+    resins_header: Resins (SLA/DLP)
+    my_resins: My Resins
+    add_resin: Add Resin
     clients: My Clients
     invoices: Invoices
     profile: Profile
@@ -60,6 +67,8 @@ en:
     print_pricing_plural: Print Pricings
     printer_plural: Printers
     filament_plural: Filaments
+    resin: Resin
+    resin_plural: Resins
     invoice_plural: Invoices
   common:
     created: Created

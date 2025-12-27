@@ -3,6 +3,33 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
 # ============================================================================
+# Printer Profiles - Reference Data
+# ============================================================================
+# Load printer profiles from JSON for users to select from when creating printers
+
+puts "🖨️  Seeding printer profiles..."
+
+json_path = Rails.root.join("public/printer_profiles_v2.json")
+if File.exist?(json_path)
+  profiles = JSON.parse(File.read(json_path))
+  created_count = 0
+  profiles.each do |p|
+    PrinterProfile.find_or_create_by!(manufacturer: p["manufacturer"], model: p["model"]) do |pp|
+      pp.category = p["category"]
+      pp.technology = p["technology"]
+      pp.power_consumption_peak_watts = p["power_consumption_peak_watts"]
+      pp.power_consumption_avg_watts = p["power_consumption_avg_watts"]
+      pp.cost_usd = p["cost_usd"]
+      pp.source = p["source"]
+      created_count += 1
+    end
+  end
+  puts "  ✅ Loaded #{PrinterProfile.count} printer profiles (#{created_count} new)"
+else
+  puts "  ⚠️  No printer_profiles_v2.json found, skipping"
+end
+
+# ============================================================================
 # Blog Articles - Example Content
 # ============================================================================
 #
