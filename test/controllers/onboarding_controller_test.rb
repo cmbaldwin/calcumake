@@ -50,12 +50,12 @@ class OnboardingControllerTest < ActionDispatch::IntegrationTest
     @new_user.update!(onboarding_current_step: 2)
 
     patch onboarding_path(step: "company"), params: {
-      user: { company_name: "Test Company" }
+      user: { default_company_name: "Test Company" }
     }
 
     assert_redirected_to onboarding_path(step: "printer")
     @new_user.reload
-    assert_equal "Test Company", @new_user.company_name
+    assert_equal "Test Company", @new_user.default_company_name
     assert_equal 3, @new_user.onboarding_current_step
   end
 
@@ -156,6 +156,6 @@ class OnboardingControllerTest < ActionDispatch::IntegrationTest
     )
 
     get root_path
-    assert_response :success # Not redirected
+    assert_redirected_to print_pricings_path # Authenticated users redirected to app, not onboarding
   end
 end
