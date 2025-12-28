@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_26_230924) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_28_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -366,6 +366,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_26_230924) do
     t.string "encrypted_password", default: "", null: false
     t.string "locale"
     t.integer "next_invoice_number"
+    t.datetime "onboarding_completed_at"
+    t.integer "onboarding_current_step", default: 0
     t.string "plan", default: "free", null: false
     t.datetime "plan_expires_at"
     t.string "provider"
@@ -380,6 +382,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_26_230924) do
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["onboarding_completed_at"], name: "index_users_on_onboarding_completed_at"
     t.index ["plan"], name: "index_users_on_plan"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["stripe_customer_id"], name: "index_users_on_stripe_customer_id", unique: true, where: "(stripe_customer_id IS NOT NULL)"

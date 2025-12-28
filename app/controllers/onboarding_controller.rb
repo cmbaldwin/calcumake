@@ -116,6 +116,9 @@ class OnboardingController < ApplicationController
   def create_filaments
     filament_types = params[:filament_types] || []
 
+    # Reject blank values
+    filament_types = filament_types.reject(&:blank?)
+
     if filament_types.empty?
       @step = "filament"
       flash.now[:alert] = t("onboarding.filament.select_required")
@@ -124,8 +127,6 @@ class OnboardingController < ApplicationController
     end
 
     filament_types.each do |filament_type|
-      next if filament_type.blank?
-
       preset = Filament::STARTER_PRESETS[filament_type]
       next unless preset
 
@@ -144,6 +145,6 @@ class OnboardingController < ApplicationController
   end
 
   def company_params
-    params.require(:user).permit(:company_name, :company_logo)
+    params.require(:user).permit(:default_company_name, :company_logo)
   end
 end
