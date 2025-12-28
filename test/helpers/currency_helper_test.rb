@@ -45,7 +45,7 @@ class CurrencyHelperTest < ActionView::TestCase
     assert_equal "500.00", usd_samples[:printer_cost]
 
     jpy_samples = currency_sample_values("JPY")
-    assert_equal "3000", jpy_samples[:spool_price]
-    assert_equal "60000", jpy_samples[:printer_cost]
+    assert_equal "4000", jpy_samples[:spool_price]  # Updated to 2025 pricing
+    assert_equal "75000", jpy_samples[:printer_cost]  # Updated to 2025 pricing
   end
 end

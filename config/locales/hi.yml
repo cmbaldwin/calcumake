@@ -91,6 +91,13 @@ hi:
           attributes:
             layer_height_max:
               layer_height_range: न्यूनतम लेयर ऊंचाई से अधिक होना चाहिए
+    attributes:
+      user:
+        email: ईमेल
+        password: पासवर्ड
+        password_confirmation: पासवर्ड की पुष्टि
+        current_password: वर्तमान पासवर्ड
+        remember_me: मुझे याद रखें
   nav:
     brand: CalcuMake
     print_pricings: मेरी कीमतें
@@ -2324,3 +2331,78 @@ hi:
         का उपयोग करें।
       documentation: API दस्तावेज़ देखें
       manage: टोकन प्रबंधित करें
+  onboarding:
+    progress: चरण %{current} का %{total}
+    welcome_message: स्वागत है! आइए आपका खाता सेट करें।
+    welcome_oauth: "%{kind} के माध्यम से स्वागत है! आइए आपका सेटअप पूरा करें।"
+    skipped_notice: ऑनबोर्डिंग छोड़ दी गई। आप अपनी प्रोफ़ाइल में कभी भी सेटिंग्स अपडेट
+      कर सकते हैं।
+    completed_notice: सेटअप पूरा हुआ! आइए अपनी पहली मूल्य निर्धारण गणना बनाएं।
+    skip_confirm: क्या आप वाकई सेटअप छोड़ना चाहते हैं? आप इसे बाद में अपनी प्रोफ़ाइल
+      में पूरा कर सकते हैं।
+    buttons:
+      next: अगला चरण
+      skip_step: यह चरण छोड़ें
+      skip_walkthrough: सेटअप छोड़ें
+      create_printer: यह प्रिंटर जोड़ें
+      add_filaments: चयनित फिलामेंट्स जोड़ें
+      finish: गणना शुरू करें!
+    step_names:
+      welcome: स्वागत है
+      profile: अपनी डिफ़ॉल्ट सेट करें
+      company: कंपनी की जानकारी
+      printer: अपना पहला प्रिंटर जोड़ें
+      filament: स्टार्टर फिलामेंट्स जोड़ें
+      complete: आप पूरी तरह तैयार हैं!
+    welcome:
+      title: CalcuMake में आपका स्वागत है
+      subtitle: आइए कुछ त्वरित चरणों में आपका खाता सेट करें
+      description: हम आपकी प्राथमिकताओं को कॉन्फ़िगर करने, अपना प्रिंटर जोड़ने और
+        प्रिंट लागतों की सटीक गणना करने के लिए आपको तैयार करने में मदद करेंगे।
+      get_started: शुरू हो जाओ
+    profile:
+      title: अपनी डिफ़ॉल्ट सेट करें
+      subtitle: अपनी मुद्रा और ऊर्जा लागत चुनें
+      currency_label: डिफ़ॉल्ट मुद्रा
+      currency_hint: सभी मूल्य निर्धारण गणनाओं के लिए आपकी स्थानीय मुद्रा
+      energy_label: बिजली लागत (प्रति kWh)
+      energy_hint: आपकी स्थानीय बिजली दर - अपने उपयोगिता बिल की जाँच करें
+    company:
+      title: कंपनी की जानकारी
+      subtitle: 'वैकल्पिक: चालानों के लिए अपने व्यवसाय का विवरण जोड़ें'
+      skip_hint: आप इसे छोड़ सकते हैं और बाद में अपनी प्रोफ़ाइल में जोड़ सकते हैं
+      company_name_label: कंपनी का नाम
+      company_name_placeholder: MOAB Co., Ltd.
+      company_logo_label: कंपनी का लोगो
+      company_logo_hint: अपने चालानों के लिए एक लोगो अपलोड करें (वैकल्पिक)
+    printer:
+      title: अपना पहला प्रिंटर जोड़ें
+      subtitle: अपना 3D प्रिंटर मॉडल चुनें
+      or_choose_default: "— या लोकप्रिय मॉडलों में से चुनें —"
+      quick_select: 'लोकप्रिय मॉडलों में से चुनें:'
+      custom_hint: क्या आपको अपना प्रिंटर नहीं दिख रहा है? आप बाद में कस्टम प्रिंटर
+        जोड़ सकते हैं।
+      select_required: कृपया एक प्रिंटर मॉडल चुनें
+      error: प्रिंटर बनाने में असमर्थ। कृपया पुनः प्रयास करें।
+    filament:
+      title: स्टार्टर फिलामेंट्स जोड़ें
+      subtitle: उन फिलामेंट प्रकारों का चयन करें जिनका आप सबसे अधिक उपयोग करते हैं
+      select_types: 'एक या अधिक चुनें:'
+      select_required: कृपया कम से कम एक फिलामेंट प्रकार चुनें
+      types:
+        pla: सबसे आम, प्रिंट करने में आसान
+        petg: मजबूत और टिकाऊ
+        abs: उच्च तापमान प्रतिरोध
+        tpu: लचीला सामग्री
+    complete:
+      title: आप तैयार हैं!
+      subtitle: आपका खाता उपयोग के लिए तैयार है
+      summary_html: |-
+        <p class="mb-3">हमने सेट किया है:</p>
+        <ul class="list-unstyled">
+          <li class="mb-2">✓ आपकी मुद्रा और ऊर्जा प्राथमिकताएं</li>
+          <li class="mb-2">✓ आपका पहला प्रिंटर</li>
+          <li class="mb-2">✓ स्टार्टर फिलामेंट लाइब्रेरी</li>
+        </ul>
+      next_steps: क्या आप अपनी पहली प्रिंट लागत की गणना करने के लिए तैयार हैं?
+      action: पहली मूल्य निर्धारण बनाएं

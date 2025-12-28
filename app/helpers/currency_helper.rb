@@ -6,70 +6,80 @@ module CurrencyHelper
       decimals: 2,
       symbol: "$",
       locale: :en,
-      sample_values: { spool_price: "25.00", prep_cost: "20.00", energy_cost: "0.12", printer_cost: "500.00" }
+      # Energy: US average is ~$0.18/kWh (2025)
+      sample_values: { spool_price: "25.00", prep_cost: "20.00", energy_cost: "0.18", printer_cost: "500.00" }
     },
     "EUR" => {
       name: "Euro (EUR)",
       decimals: 2,
       symbol: "€",
-      locale: :fr,
-      sample_values: { spool_price: "22.50", prep_cost: "18.00", energy_cost: "0.10", printer_cost: "450.00" }
+      locale: :de, # Changed to :de (Germany) as largest EU economy
+      # Energy: EU average is ~€0.28/kWh (varies from €0.12 in Spain to €0.38 in Germany)
+      sample_values: { spool_price: "25.00", prep_cost: "20.00", energy_cost: "0.28", printer_cost: "450.00" }
     },
     "GBP" => {
       name: "British Pound (GBP)",
       decimals: 2,
       symbol: "£",
       locale: :en,
-      sample_values: { spool_price: "20.00", prep_cost: "15.00", energy_cost: "0.09", printer_cost: "400.00" }
+      # Energy: UK price cap remains high, average £0.26/kWh (2025)
+      sample_values: { spool_price: "22.00", prep_cost: "18.00", energy_cost: "0.26", printer_cost: "400.00" }
     },
     "JPY" => {
       name: "Japanese Yen (¥)",
       decimals: 0,
       symbol: "¥",
       locale: :ja,
-      sample_values: { spool_price: "3000", prep_cost: "2500", energy_cost: "15", printer_cost: "60000" }
+      # Energy: Japan average is ¥38/kWh (2025)
+      sample_values: { spool_price: "4000", prep_cost: "3000", energy_cost: "38", printer_cost: "75000" }
     },
     "CAD" => {
       name: "Canadian Dollar (CAD)",
       decimals: 2,
       symbol: "C$",
       locale: :en,
-      sample_values: { spool_price: "30.00", prep_cost: "25.00", energy_cost: "0.15", printer_cost: "650.00" }
+      # Energy: Canada average is C$0.16/kWh (2025)
+      sample_values: { spool_price: "35.00", prep_cost: "25.00", energy_cost: "0.16", printer_cost: "680.00" }
     },
     "AUD" => {
       name: "Australian Dollar (AUD)",
       decimals: 2,
       symbol: "A$",
       locale: :en,
-      sample_values: { spool_price: "35.00", prep_cost: "28.00", energy_cost: "0.18", printer_cost: "700.00" }
+      # Energy: Australia average is A$0.32/kWh (2025)
+      sample_values: { spool_price: "40.00", prep_cost: "30.00", energy_cost: "0.32", printer_cost: "750.00" }
     },
     "CNY" => {
       name: "Chinese Yuan (CNY)",
       decimals: 2,
       symbol: "¥",
       locale: :'zh-CN',
-      sample_values: { spool_price: "160.00", prep_cost: "130.00", energy_cost: "0.80", printer_cost: "3200.00" }
+      # Energy: China residential rate is ¥0.60/kWh (2025)
+      sample_values: { spool_price: "150.00", prep_cost: "130.00", energy_cost: "0.60", printer_cost: "3500.00" }
     },
     "INR" => {
       name: "Indian Rupee (INR)",
       decimals: 2,
       symbol: "₹",
       locale: :hi,
-      sample_values: { spool_price: "2000.00", prep_cost: "1600.00", energy_cost: "10.00", printer_cost: "40000.00" }
+      # Energy: India average is ₹8.50/kWh (2025)
+      sample_values: { spool_price: "2200.00", prep_cost: "1800.00", energy_cost: "8.50", printer_cost: "45000.00" }
     },
     "ARS" => {
       name: "Argentine Peso (ARS)",
       decimals: 2,
       symbol: "$",
       locale: :es,
-      sample_values: { spool_price: "8000.00", prep_cost: "6500.00", energy_cost: "40.00", printer_cost: "160000.00" }
+      # Energy: Argentina ~120 ARS/kWh due to inflation (2025)
+      sample_values: { spool_price: "35000.00", prep_cost: "28000.00", energy_cost: "120.00", printer_cost: "750000.00" }
     },
     "SAR" => {
       name: "Saudi Riyal (SAR)",
       decimals: 2,
       symbol: "﷼",
       locale: :ar,
-      sample_values: { spool_price: "95.00", prep_cost: "75.00", energy_cost: "0.45", printer_cost: "1900.00" }
+      # Energy: Residential rate is 0.18 SAR (18 Halalah) for first 6000kWh
+      sample_values: { spool_price: "100.00", prep_cost: "80.00", energy_cost: "0.18", printer_cost: "2000.00" }
     }
   }.freeze
 
@@ -112,5 +122,21 @@ module CurrencyHelper
 
   def currency_sample_values(currency_code)
     CURRENCY_CONFIGS.dig(currency_code, :sample_values) || CURRENCY_CONFIGS["USD"][:sample_values]
+  end
+
+  # Convert USD amount to specified currency and format for display
+  def convert_and_format_currency(usd_amount, to_currency)
+    return number_to_currency(usd_amount, unit: "$") if to_currency == "USD"
+
+    converted = CurrencyConverter.convert(usd_amount, from: "USD", to: to_currency)
+
+    if converted
+      symbol = currency_symbol(to_currency)
+      formatted = format_currency(converted, to_currency)
+      "#{symbol}#{formatted}"
+    else
+      # Fallback to USD if conversion fails
+      number_to_currency(usd_amount, unit: "$")
+    end
   end
 end

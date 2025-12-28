@@ -49,6 +49,7 @@ en:
     printer:
       title: "Add Your First Printer"
       subtitle: "Select your 3D printer model"
+      or_choose_default: "— Or choose from popular models —"
       quick_select: "Choose from popular models:"
       custom_hint: "Don't see your printer? You can add custom printers later."
       select_required: "Please select a printer model"

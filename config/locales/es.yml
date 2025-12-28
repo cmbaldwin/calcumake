@@ -91,6 +91,13 @@ es:
           attributes:
             layer_height_max:
               layer_height_range: debe ser mayor que la altura mínima de capa
+    attributes:
+      user:
+        email: Correo electrónico
+        password: Contraseña
+        password_confirmation: Confirmación de contraseña
+        current_password: Contraseña actual
+        remember_me: Recordarme
   nav:
     brand: CalcuMake
     print_pricings: Mis Precios
@@ -2319,3 +2326,79 @@ es:
       description: Utilice sus tokens de API para acceder a CalcuMake mediante programación.
       documentation: Ver la Documentación de la API
       manage: Administrar Tokens
+  onboarding:
+    progress: Paso %{current} de %{total}
+    welcome_message: "¡Bienvenido! Vamos a configurar tu cuenta."
+    welcome_oauth: "¡Bienvenido a través de %{kind}! Completemos tu configuración."
+    skipped_notice: Configuración inicial omitida. Puedes actualizar la configuración
+      en cualquier momento en tu perfil.
+    completed_notice: "¡Configuración completa! Vamos a crear tu primer cálculo de
+      precios."
+    skip_confirm: "¿Estás seguro de que quieres omitir la configuración? Puedes completarla
+      más tarde en tu perfil."
+    buttons:
+      next: Siguiente Paso
+      skip_step: Omitir Este Paso
+      skip_walkthrough: Omitir Configuración
+      create_printer: Añadir Esta Impresora
+      add_filaments: Añadir Filamentos Seleccionados
+      finish: "¡Empezar a Calcular!"
+    step_names:
+      welcome: Bienvenido
+      profile: Establecer Tus Valores Predeterminados
+      company: Información de la Empresa
+      printer: Añade Tu Primera Impresora
+      filament: Añadir Filamentos Iniciales
+      complete: "¡Todo Listo!"
+    welcome:
+      title: Bienvenido a CalcuMake
+      subtitle: Vamos a configurar tu cuenta en unos pocos pasos rápidos
+      description: Te ayudaremos a configurar tus preferencias, añadir tu impresora
+        y prepararte para calcular los costes de impresión con precisión.
+      get_started: Empezar
+    profile:
+      title: Establecer Tus Valores Predeterminados
+      subtitle: Elige tu moneda y el coste de la energía
+      currency_label: Moneda Predeterminada
+      currency_hint: Tu moneda local para todos los cálculos de precios
+      energy_label: Coste de Electricidad (por kWh)
+      energy_hint: Tu tarifa eléctrica local - consulta tu factura de servicios públicos
+    company:
+      title: Información de la Empresa
+      subtitle: 'Opcional: Añade los datos de tu empresa para las facturas'
+      skip_hint: Puedes omitir esto y añadirlo más tarde en tu perfil
+      company_name_label: Nombre de la Empresa
+      company_name_placeholder: MOAB Co., Ltd.
+      company_logo_label: Logotipo de la Empresa
+      company_logo_hint: Sube un logotipo para tus facturas (opcional)
+    printer:
+      title: Añade Tu Primera Impresora
+      subtitle: Selecciona el modelo de tu impresora 3D
+      or_choose_default: "— O elige entre modelos populares —"
+      quick_select: 'Elige entre modelos populares:'
+      custom_hint: "¿No ves tu impresora? Puedes añadir impresoras personalizadas
+        más tarde."
+      select_required: Por favor, selecciona un modelo de impresora
+      error: No se puede crear la impresora. Por favor, inténtalo de nuevo.
+    filament:
+      title: Añadir Filamentos Iniciales
+      subtitle: Selecciona los tipos de filamento que más utilizas
+      select_types: 'Elige uno o más:'
+      select_required: Por favor, selecciona al menos un tipo de filamento
+      types:
+        pla: Más común, fácil de imprimir
+        petg: Fuerte y duradero
+        abs: Alta resistencia a la temperatura
+        tpu: Material flexible
+    complete:
+      title: "¡Todo listo!"
+      subtitle: Su cuenta está lista para usar
+      summary_html: |-
+        <p class="mb-3">Hemos configurado:</p>
+        <ul class="list-unstyled">
+          <li class="mb-2">✓ Sus preferencias de moneda y energía</li>
+          <li class="mb-2">✓ Su primera impresora</li>
+          <li class="mb-2">✓ Biblioteca de filamentos inicial</li>
+        </ul>
+      next_steps: "¿Listo para calcular el costo de su primera impresión?"
+      action: Crear primer precio

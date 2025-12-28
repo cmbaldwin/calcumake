@@ -8,6 +8,7 @@
 
 /* Import page-specific styles */
 @import url("pricing_calculator.css");
+@import url("onboarding.css");
 
 /* Bootstrap 5 Custom Color Variables */
 :root {

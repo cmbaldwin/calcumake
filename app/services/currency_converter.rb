@@ -1,6 +1,9 @@
 # Service for converting currencies using Frankfurter API (European Central Bank)
 # Caches exchange rates for 24 hours to minimize API calls
 # API: https://www.frankfurter.app/
+require 'net/http'
+require 'openssl'
+
 class CurrencyConverter
   CACHE_EXPIRY = 24.hours
   API_URL = "https://api.frankfurter.app"
@@ -55,15 +58,58 @@ class CurrencyConverter
     # @return [Float, nil] Exchange rate or nil if fetch fails
     def fetch_rate_from_api(from, to)
       uri = URI("#{API_URL}/latest?from=#{from}&to=#{to}")
-      response = Net::HTTP.get_response(uri)
+
+      # Configure HTTP client with SSL options
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      http.open_timeout = 5
+      http.read_timeout = 5
+
+      # In development, be more lenient with SSL verification
+      if Rails.env.development?
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      end
+
+      request = Net::HTTP::Get.new(uri.request_uri)
+      response = http.request(request)
 
       return nil unless response.is_a?(Net::HTTPSuccess)
 
       data = JSON.parse(response.body)
       data.dig("rates", to)&.to_f
-    rescue JSON::ParserError, SocketError, Timeout::Error => e
+    rescue JSON::ParserError, SocketError, Timeout::Error, OpenSSL::SSL::SSLError => e
       Rails.logger.error "CurrencyConverter API error: #{e.message}"
-      nil
+
+      # Use fallback rates in development if API fails
+      fallback_rate(from, to)
+    end
+
+    # Fallback exchange rates for development when API is unavailable
+    # Rates are approximate and updated periodically
+    # @param from [String] Source currency code
+    # @param to [String] Target currency code
+    # @return [Float, nil] Exchange rate or nil if pair not in fallback table
+    def fallback_rate(from, to)
+      # Only use fallback in development/test
+      return nil unless Rails.env.development? || Rails.env.test?
+
+      # Approximate rates as of December 2025
+      fallback_rates = {
+        "USD" => { "JPY" => 156.0, "EUR" => 0.92, "GBP" => 0.79, "CAD" => 1.35, "AUD" => 1.48 },
+        "JPY" => { "USD" => 0.0064, "EUR" => 0.0059, "GBP" => 0.0051, "CAD" => 0.0087, "AUD" => 0.0095 },
+        "EUR" => { "USD" => 1.09, "JPY" => 170.0, "GBP" => 0.86, "CAD" => 1.47, "AUD" => 1.61 },
+        "GBP" => { "USD" => 1.27, "JPY" => 197.0, "EUR" => 1.16, "CAD" => 1.71, "AUD" => 1.87 },
+        "CAD" => { "USD" => 0.74, "JPY" => 115.0, "EUR" => 0.68, "GBP" => 0.58, "AUD" => 1.10 },
+        "AUD" => { "USD" => 0.68, "JPY" => 105.0, "EUR" => 0.62, "GBP" => 0.53, "CAD" => 0.91 }
+      }
+
+      rate = fallback_rates.dig(from, to)
+
+      if rate
+        Rails.logger.warn "CurrencyConverter: Using fallback rate for #{from} -> #{to}: #{rate}"
+      end
+
+      rate
     end
   end
 end

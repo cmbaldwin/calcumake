@@ -10,35 +10,31 @@
                 html: { data: { turbo: false } } do |form| %>
 
     <div class="row justify-content-center">
-      <div class="col-md-10 col-lg-8">
-        <div class="filament-checkboxes">
-          <h5 class="mb-3"><%= t("onboarding.filament.select_types") %></h5>
-          <div class="row g-3">
-            <% Filament::STARTER_PRESETS.each do |filament_type, preset| %>
-              <div class="col-md-6 col-lg-3">
-                <div class="filament-checkbox-card">
-                  <div class="form-check">
+      <div class="col-md-10 col-lg-9">
+        <h5 class="mb-3 text-center"><%= t("onboarding.filament.select_types") %></h5>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+          <% Filament::STARTER_PRESETS.each do |filament_type, preset| %>
+            <div class="col">
+              <label class="card filament-checkbox-card h-100" for="filament_type_<%= filament_type %>">
+                <div class="card-body text-center p-3">
+                  <div class="form-check d-flex justify-content-center mb-2">
                     <%= check_box_tag "filament_types[]",
                                       filament_type,
                                       filament_type == "PLA",
                                       id: "filament_type_#{filament_type}",
                                       class: "form-check-input" %>
-                    <%= label_tag "filament_type_#{filament_type}", class: "form-check-label w-100" do %>
-                      <div class="text-center py-3">
-                        <strong class="d-block mb-2"><%= filament_type %></strong>
-                        <small class="text-muted d-block">
-                          <%= t("onboarding.filament.types.#{filament_type.downcase}") %>
-                        </small>
-                        <small class="text-muted d-block mt-1">
-                          <%= number_to_currency(preset[:spool_price], unit: "$") %>/<%= preset[:spool_weight] %>g
-                        </small>
-                      </div>
-                    <% end %>
                   </div>
+                  <strong class="d-block mb-2"><%= filament_type %></strong>
+                  <small class="text-muted d-block">
+                    <%= t("onboarding.filament.types.#{filament_type.downcase}") %>
+                  </small>
+                  <small class="text-muted d-block mt-1">
+                    <%= convert_and_format_currency(preset[:spool_price], current_user.default_currency || "USD") %>/<%= preset[:spool_weight] %>g
+                  </small>
                 </div>
-              </div>
-            <% end %>
-          </div>
+              </label>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
