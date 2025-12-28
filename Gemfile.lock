@@ -572,6 +572,7 @@ DEPENDENCIES
   ransack
   resend
   rubocop-rails-omakase
+  rubyzip
   selenium-webdriver
   sitemap_generator
   solid_cable
