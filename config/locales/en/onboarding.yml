@@ -51,6 +51,7 @@ en:
       subtitle: "Select your 3D printer model"
       quick_select: "Choose from popular models:"
       custom_hint: "Don't see your printer? You can add custom printers later."
+      add_custom: "Add Custom Printer"
       select_required: "Please select a printer model"
       error: "Unable to create printer. Please try again."
 
