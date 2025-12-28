@@ -241,4 +241,80 @@ class PrintPricingTest < ActiveSupport::TestCase
 
     assert_in_delta expected_cost, @print_pricing.total_filament_cost, 0.01
   end
+
+  # 3MF Import Tests
+  test "should allow 3MF file attachment" do
+    assert_respond_to @print_pricing, :three_mf_file
+  end
+
+  test "should have 3MF status helper methods" do
+    assert_respond_to @print_pricing, :three_mf_processing?
+    assert_respond_to @print_pricing, :three_mf_completed?
+    assert_respond_to @print_pricing, :three_mf_failed?
+  end
+
+  test "three_mf_processing? should return true when status is processing" do
+    @print_pricing.save!
+    @print_pricing.update_column(:three_mf_import_status, "processing")
+    assert @print_pricing.three_mf_processing?
+  end
+
+  test "three_mf_completed? should return true when status is completed" do
+    @print_pricing.save!
+    @print_pricing.update_column(:three_mf_import_status, "completed")
+    assert @print_pricing.three_mf_completed?
+  end
+
+  test "three_mf_failed? should return true when status is failed" do
+    @print_pricing.save!
+    @print_pricing.update_column(:three_mf_import_status, "failed")
+    assert @print_pricing.three_mf_failed?
+  end
+
+  test "should validate 3MF file format" do
+    @print_pricing.save!
+
+    # Attach an invalid file type
+    @print_pricing.three_mf_file.attach(
+      io: StringIO.new("invalid content"),
+      filename: "test.pdf",
+      content_type: "application/pdf"
+    )
+
+    assert_not @print_pricing.valid?
+    assert_includes @print_pricing.errors[:three_mf_file], "Must be a valid 3MF file"
+  end
+
+  test "should accept valid 3MF file content types" do
+    @print_pricing.save!
+
+    valid_content_types = [
+      "application/x-3mf",
+      "application/vnd.ms-package.3dmanufacturing-3dmodel+xml",
+      "application/zip"
+    ]
+
+    valid_content_types.each do |content_type|
+      @print_pricing.three_mf_file.purge if @print_pricing.three_mf_file.attached?
+      @print_pricing.three_mf_file.attach(
+        io: StringIO.new("fake content"),
+        filename: "test.3mf",
+        content_type: content_type
+      )
+
+      assert @print_pricing.valid?, "Should accept #{content_type}"
+    end
+  end
+
+  test "should accept 3MF file with .3mf extension regardless of content type" do
+    @print_pricing.save!
+
+    @print_pricing.three_mf_file.attach(
+      io: StringIO.new("fake content"),
+      filename: "test.3mf",
+      content_type: "application/octet-stream"
+    )
+
+    assert @print_pricing.valid?
+  end
 end

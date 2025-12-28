@@ -85,3 +85,5 @@ en:
               too_many_plates: Cannot have more than 10 plates
               duplicate_filaments_on_plate: Cannot use the same filament multiple
                 times on the same plate
+            three_mf_file:
+              invalid_format: Must be a valid 3MF file

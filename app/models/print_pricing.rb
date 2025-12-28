@@ -4,6 +4,7 @@ class PrintPricing < ApplicationRecord
   belongs_to :client, optional: true
   has_many :plates, dependent: :destroy
   has_many :invoices, dependent: :destroy
+  has_one_attached :three_mf_file
 
   accepts_nested_attributes_for :plates, allow_destroy: true, reject_if: :all_blank
 
@@ -15,8 +16,10 @@ class PrintPricing < ApplicationRecord
   validates :payment_processing_cost_percentage, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }, allow_nil: true
   validate :must_have_at_least_one_plate
   validate :cannot_have_more_than_ten_plates
+  validate :three_mf_file_format
 
   before_save :calculate_final_price
+  after_commit :process_three_mf_file, if: :three_mf_file_attached_and_pending?
 
   include CurrencyHelper
 
@@ -111,7 +114,28 @@ class PrintPricing < ApplicationRecord
     final_price / units
   end
 
+  def three_mf_file_attached_and_pending?
+    three_mf_file.attached? && (three_mf_import_status.nil? || three_mf_import_status == "pending")
+  end
+
+  def three_mf_processing?
+    three_mf_import_status == "processing"
+  end
+
+  def three_mf_completed?
+    three_mf_import_status == "completed"
+  end
+
+  def three_mf_failed?
+    three_mf_import_status == "failed"
+  end
+
   private
+
+  def process_three_mf_file
+    update_column(:three_mf_import_status, "pending")
+    Process3mfFileJob.perform_later(id)
+  end
 
   def apply_failure_rate(cost)
     return cost if failure_rate_percentage.nil? || failure_rate_percentage.zero?
@@ -136,6 +160,15 @@ class PrintPricing < ApplicationRecord
   def cannot_have_more_than_ten_plates
     if plates.reject(&:marked_for_destruction?).size > 10
       errors.add(:base, :too_many_plates)
+    end
+  end
+
+  def three_mf_file_format
+    return unless three_mf_file.attached?
+
+    unless three_mf_file.content_type.in?([ "application/x-3mf", "application/vnd.ms-package.3dmanufacturing-3dmodel+xml", "application/zip" ]) ||
+           three_mf_file.filename.to_s.ends_with?(".3mf")
+      errors.add(:three_mf_file, :invalid_format)
     end
   end
 end

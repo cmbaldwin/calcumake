@@ -63,6 +63,9 @@ gem "lexxy", "~> 0.1.20.beta"
 # Translations for models (better than built-in i18n for rich text)
 gem "mobility", "~> 1.2"
 
+# ZIP file handling for 3MF imports
+gem "rubyzip"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 

@@ -255,6 +255,19 @@ en:
       plates_limit: You can add up to 10 plates per print job.
       filaments_limit: You can add up to 5 different filaments per plate.
       resins_limit: You can add up to 5 different resins per plate.
+    three_mf:
+      import_title: Import from 3MF File
+      file_label: Upload 3MF File
+      help_text: Upload a 3MF file from your slicer (PrusaSlicer, Cura, etc.) to automatically import print time and filament weight. The file will be processed in the background.
+      status:
+        pending: Pending
+        processing: Processing...
+        completed: Import Successful
+        failed: Import Failed
+      messages:
+        import_started: 3MF file is being processed
+        import_completed: 3MF file imported successfully
+        import_failed: Failed to import 3MF file
   print_pricings:
     form:
       filament_weight: Filament Weight

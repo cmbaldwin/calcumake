@@ -168,7 +168,7 @@ class PrintPricingsController < ApplicationController
       :job_name, :prep_time_minutes, :prep_cost_per_hour,
       :postprocessing_time_minutes, :postprocessing_cost_per_hour,
       :other_costs, :vat_percentage, :printer_id, :times_printed,
-      :units, :failure_rate_percentage,
+      :units, :failure_rate_percentage, :three_mf_file,
       plates_attributes: [
         :id, :printing_time_hours, :printing_time_minutes, :material_technology, :_destroy,
         plate_filaments_attributes: [

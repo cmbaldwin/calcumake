@@ -40,6 +40,78 @@
     </div>
   </div>
 
+  <!-- 3MF File Import -->
+  <%# TODO: After merging master, refactor to Forms::FileUploadFieldComponent
+      following the ViewComponent pattern. See docs/3MF_UPLOAD_COMPONENT_REFACTOR.md %>
+  <div class="col-12">
+    <div class="card bg-light">
+      <div class="card-body">
+        <h6 class="card-title mb-3">
+          <i class="bi bi-file-earmark-zip"></i>
+          <%= t('print_pricing.three_mf.import_title') %>
+        </h6>
+
+        <%= f.label :three_mf_file, t('print_pricing.three_mf.file_label'), class: "form-label" %>
+        <%= f.file_field :three_mf_file,
+            class: "form-control",
+            accept: ".3mf",
+            data: {
+              controller: "three-mf-upload",
+              action: "change->three-mf-upload#handleFileSelect"
+            } %>
+
+        <div class="form-text mt-2">
+          <%= t('print_pricing.three_mf.help_text') %>
+        </div>
+
+        <% if f.object.three_mf_file.attached? %>
+          <div class="mt-3 p-2 border rounded bg-white" id="three-mf-status">
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-file-earmark-check text-success"></i>
+              <span class="flex-grow-1">
+                <strong><%= f.object.three_mf_file.filename %></strong>
+                <small class="text-muted d-block">
+                  <%= number_to_human_size(f.object.three_mf_file.byte_size) %>
+                </small>
+              </span>
+
+              <% if f.object.three_mf_processing? %>
+                <%= render Shared::BadgeComponent.new(
+                  text: t('print_pricing.three_mf.status.processing'),
+                  variant: "info"
+                ) do %>
+                  <span class="spinner-border spinner-border-sm me-1"></span>
+                <% end %>
+              <% elsif f.object.three_mf_completed? %>
+                <%= render Shared::BadgeComponent.new(
+                  text: t('print_pricing.three_mf.status.completed'),
+                  variant: "success",
+                  icon: "check-circle"
+                ) %>
+              <% elsif f.object.three_mf_failed? %>
+                <%= render Shared::BadgeComponent.new(
+                  text: t('print_pricing.three_mf.status.failed'),
+                  variant: "danger",
+                  icon: "exclamation-circle"
+                ) %>
+              <% end %>
+            </div>
+
+            <% if f.object.three_mf_failed? && f.object.three_mf_import_error.present? %>
+              <%= render Shared::AlertComponent.new(
+                variant: "danger",
+                dismissible: false,
+                html_options: { class: "mt-2 mb-0 small" }
+              ) do %>
+                <%= f.object.three_mf_import_error %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
   <% if f.object.new_record? %>
     <%= render Forms::CheckboxFieldComponent.new(
       form: f,
