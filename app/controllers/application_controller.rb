@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::ParameterMissing, with: :handle_parameter_missing
 
   before_action :set_locale
+  before_action :check_onboarding_needed
 
   def switch_locale
     locale = params[:locale]
@@ -29,6 +30,16 @@ class ApplicationController < ActionController::Base
       format.json { render json: { error: "Missing required parameter: #{exception.param}" }, status: :bad_request }
       format.html { redirect_back fallback_location: root_path, alert: "Missing required information. Please try again." }
     end
+  end
+
+  def check_onboarding_needed
+    return unless user_signed_in?
+    return if controller_name == "onboarding"
+    return if devise_controller?
+    return if current_user.onboarding_completed?
+    return unless current_user.needs_onboarding?
+
+    redirect_to onboarding_path, notice: t("onboarding.welcome_message")
   end
 
   def set_locale

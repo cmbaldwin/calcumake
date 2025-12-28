@@ -1,0 +1,15 @@
+<% content_for :body_class, "onboarding-page" %>
+
+<div class="container onboarding-container"
+     data-controller="onboarding-wizard"
+     data-onboarding-wizard-current-step-value="<%= @step %>"
+     data-onboarding-wizard-total-steps-value="6">
+
+  <%= render "onboarding/progress_bar", current_step: @step %>
+
+  <div class="onboarding-content">
+    <%= render "onboarding/steps/#{@step}" %>
+  </div>
+
+  <%= render "onboarding/step_navigation", step: @step %>
+</div>

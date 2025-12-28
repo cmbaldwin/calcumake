@@ -1,0 +1,40 @@
+<div class="onboarding-step">
+  <div class="text-center mb-4">
+    <h2 class="display-6 fw-bold"><%= t("onboarding.profile.title") %></h2>
+    <p class="lead text-muted"><%= t("onboarding.profile.subtitle") %></p>
+  </div>
+
+  <%= form_with model: current_user,
+                url: onboarding_path(step: "profile"),
+                method: :patch,
+                local: false,
+                html: { class: "onboarding-form", data: { turbo: false } } do |form| %>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="mb-4">
+          <%= form.label :default_currency, t("onboarding.profile.currency_label"), class: "form-label fw-bold" %>
+          <%= form.select :default_currency,
+                          options_for_select(currency_options, current_user.default_currency),
+                          {},
+                          class: "form-select form-select-lg" %>
+          <div class="form-text"><%= t("onboarding.profile.currency_hint") %></div>
+        </div>
+
+        <div class="mb-4">
+          <%= form.label :default_energy_cost_per_kwh, t("onboarding.profile.energy_label"), class: "form-label fw-bold" %>
+          <%= form.number_field :default_energy_cost_per_kwh,
+                                step: 0.001,
+                                min: 0.001,
+                                placeholder: "0.120",
+                                class: "form-control form-control-lg" %>
+          <div class="form-text"><%= t("onboarding.profile.energy_hint") %></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <%= form.submit t("onboarding.buttons.next"), class: "btn btn-primary btn-lg px-5" %>
+    </div>
+  <% end %>
+</div>
