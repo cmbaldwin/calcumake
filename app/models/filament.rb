@@ -5,6 +5,53 @@ class Filament < ApplicationRecord
   has_many :plate_filaments, dependent: :destroy
   has_many :plates, through: :plate_filaments
 
+  STARTER_PRESETS = {
+    "PLA" => {
+      material_type: "PLA",
+      diameter: 1.75,
+      spool_weight: 1000,
+      spool_price: 25,
+      density: 1.24,
+      print_temperature_min: 190,
+      print_temperature_max: 220,
+      heated_bed_temperature: 60,
+      print_speed_max: 60
+    },
+    "PETG" => {
+      material_type: "PETG",
+      diameter: 1.75,
+      spool_weight: 1000,
+      spool_price: 30,
+      density: 1.27,
+      print_temperature_min: 220,
+      print_temperature_max: 250,
+      heated_bed_temperature: 80,
+      print_speed_max: 50
+    },
+    "ABS" => {
+      material_type: "ABS",
+      diameter: 1.75,
+      spool_weight: 1000,
+      spool_price: 28,
+      density: 1.04,
+      print_temperature_min: 230,
+      print_temperature_max: 260,
+      heated_bed_temperature: 100,
+      print_speed_max: 60
+    },
+    "TPU" => {
+      material_type: "TPU",
+      diameter: 1.75,
+      spool_weight: 1000,
+      spool_price: 35,
+      density: 1.21,
+      print_temperature_min: 210,
+      print_temperature_max: 230,
+      heated_bed_temperature: 40,
+      print_speed_max: 30
+    }
+  }.freeze
+
   validates :name, presence: true, uniqueness: { scope: :user_id }
   validates :material_type, presence: true, inclusion: { in: %w[PLA ABS PETG TPU ASA HIPS Nylon PC PVA Wood Metal Carbon] }
   validates :diameter, presence: true, inclusion: { in: [ 1.75, 2.85, 3.0 ] }
