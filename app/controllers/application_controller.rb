@@ -18,6 +18,13 @@ class ApplicationController < ActionController::Base
     redirect_back(fallback_location: root_path)
   end
 
+  protected
+
+  # Redirect users to dashboard after sign in
+  def after_sign_in_path_for(resource)
+    dashboard_path
+  end
+
   private
 
   def handle_parameter_missing(exception)
