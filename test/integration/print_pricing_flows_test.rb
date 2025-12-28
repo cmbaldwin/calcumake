@@ -20,9 +20,13 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
       }
     }
 
-    assert_redirected_to root_path
+    # Mark onboarding as completed for test flow
+    new_user = User.find_by(email: "newuser@example.com")
+    new_user.update!(onboarding_completed_at: 1.hour.ago)
+
+    # New users are redirected to dashboard (which redirects to print_pricings)
+    assert_redirected_to dashboard_path
     follow_redirect!
-    # Authenticated users are redirected from landing to print_pricings_path
     assert_redirected_to print_pricings_path
     follow_redirect!
     assert_response :success
@@ -103,10 +107,7 @@ class PrintPricingFlowsTest < ActionDispatch::IntegrationTest
     )
 
     # Test accessing index page
-    get root_path
-    # Authenticated users are redirected from landing to print_pricings_path
-    assert_redirected_to print_pricings_path
-    follow_redirect!
+    get print_pricings_path
     assert_response :success
     assert_select "h3.display-5", text: /My Print Calculations/
 
