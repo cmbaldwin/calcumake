@@ -5,6 +5,8 @@ one:
   default_energy_cost_per_kwh: 0.12
   locale: en
   next_invoice_number: 3
+  onboarding_completed_at: <%= 1.day.ago %>
+  created_at: <%= 2.days.ago %>
 
 two:
   email: user2@example.com
@@ -13,6 +15,8 @@ two:
   default_energy_cost_per_kwh: 0.10
   locale: es
   next_invoice_number: 3
+  onboarding_completed_at: <%= 1.day.ago %>
+  created_at: <%= 2.days.ago %>
 
 oauth_google:
   email: googleuser@gmail.com
@@ -23,6 +27,8 @@ oauth_google:
   next_invoice_number: 3
   provider: google_oauth2
   uid: "google_123456789"
+  onboarding_completed_at: <%= 1.day.ago %>
+  created_at: <%= 2.days.ago %>
 
 oauth_github:
   email: githubuser@example.com
@@ -33,6 +39,8 @@ oauth_github:
   next_invoice_number: 3
   provider: github
   uid: "github_987654321"
+  onboarding_completed_at: <%= 1.day.ago %>
+  created_at: <%= 2.days.ago %>
 
 oauth_microsoft:
   email: msuser@outlook.com
@@ -43,6 +51,8 @@ oauth_microsoft:
   next_invoice_number: 3
   provider: microsoft_graph
   uid: "ms_555666777"
+  onboarding_completed_at: <%= 1.day.ago %>
+  created_at: <%= 2.days.ago %>
 
 oauth_facebook:
   email: facebookuser@example.com
@@ -53,6 +63,8 @@ oauth_facebook:
   next_invoice_number: 3
   provider: facebook
   uid: "facebook_888999000"
+  onboarding_completed_at: <%= 1.day.ago %>
+  created_at: <%= 2.days.ago %>
 
 oauth_yahoojp:
   email: yahoojpuser@yahoo.co.jp
@@ -63,3 +75,5 @@ oauth_yahoojp:
   next_invoice_number: 3
   provider: yahoojp
   uid: "yahoojp_111222333"
+  onboarding_completed_at: <%= 1.day.ago %>
+  created_at: <%= 2.days.ago %>

@@ -310,7 +310,9 @@ class PrintPricingsControllerTest < ActionDispatch::IntegrationTest
       password: "password123",
       default_currency: "USD",
       default_energy_cost_per_kwh: 0.12,
-      next_invoice_number: 1
+      next_invoice_number: 1,
+      onboarding_completed_at: 1.day.ago,
+      created_at: 2.days.ago
     )
     sign_in other_user
 
