@@ -82,7 +82,7 @@ Rails.application.routes.draw do
   resource :user_profile, only: [ :show, :edit, :update, :destroy ], path: "profile"
 
   # Onboarding walkthrough for new users
-  resource :onboarding, only: [ :show, :update ] do
+  resource :onboarding, only: [ :show, :update ], controller: "onboarding" do
     post :skip_step
     post :skip_walkthrough
     post :complete
