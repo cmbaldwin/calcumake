@@ -1,0 +1,51 @@
+<div class="onboarding-step" data-controller="onboarding-printer-select">
+  <div class="text-center mb-4">
+    <h2 class="display-6 fw-bold"><%= t("onboarding.printer.title") %></h2>
+    <p class="lead text-muted"><%= t("onboarding.printer.subtitle") %></p>
+  </div>
+
+  <%= form_with url: onboarding_path(step: "printer"),
+                method: :patch,
+                local: false,
+                html: { data: { turbo: false } } do |form| %>
+
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8">
+        <div class="common-printers mb-4">
+          <h5 class="mb-3"><%= t("onboarding.printer.quick_select") %></h5>
+          <div class="row g-3">
+            <% Printer::COMMON_DEFAULTS.each do |model, defaults| %>
+              <div class="col-md-6 col-lg-4">
+                <div class="card printer-quick-select h-100"
+                     data-action="click->onboarding-printer-select#selectPrinter"
+                     data-printer-model="<%= model %>"
+                     data-printer-manufacturer="<%= defaults[:manufacturer] %>">
+                  <div class="card-body text-center">
+                    <h6 class="card-title mb-1"><%= model %></h6>
+                    <small class="text-muted d-block"><%= defaults[:manufacturer] %></small>
+                    <small class="text-muted d-block mt-2">
+                      <%= number_to_currency(defaults[:cost], unit: "$") %>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <p class="text-muted small mt-3 text-center">
+            <%= t("onboarding.printer.custom_hint") %>
+          </p>
+        </div>
+
+        <%= form.hidden_field :printer_model, value: "",
+                              data: { "onboarding-printer-select-target": "printerModel" } %>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <%= form.submit t("onboarding.buttons.create_printer"),
+                      class: "btn btn-primary btn-lg px-5",
+                      data: { "onboarding-printer-select-target": "submit" },
+                      disabled: true %>
+    </div>
+  <% end %>
+</div>

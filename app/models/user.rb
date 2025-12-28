@@ -255,6 +255,19 @@ class User < ApplicationRecord
     Rails.cache.delete_matched("user/#{id}/usage_stats/*")
   end
 
+  # Onboarding methods
+  def onboarding_completed?
+    onboarding_completed_at.present?
+  end
+
+  def needs_onboarding?
+    !onboarding_completed? && created_at > 1.hour.ago
+  end
+
+  def onboarding_step_name
+    OnboardingController::STEPS[onboarding_current_step || 0]
+  end
+
   private
 
   def set_default_locale
