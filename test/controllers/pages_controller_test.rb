@@ -48,12 +48,12 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_includes @response.body, "Start Calculating Free"
   end
 
-  test "landing page redirects authenticated users" do
+  test "landing page shows for authenticated users" do
     user = users(:one)
     sign_in user
 
     get root_path
-    assert_redirected_to print_pricings_path
+    assert_response :success # Landing page no longer auto-redirects
   end
 
   test "pricing calculator page should show advanced calculator" do
