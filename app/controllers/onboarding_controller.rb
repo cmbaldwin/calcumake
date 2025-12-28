@@ -29,12 +29,12 @@ class OnboardingController < ApplicationController
 
   def skip_walkthrough
     complete_onboarding
-    redirect_to print_pricings_path, notice: t("onboarding.skipped_notice")
+    redirect_to dashboard_path, notice: t("onboarding.skipped_notice")
   end
 
   def complete
     complete_onboarding
-    redirect_to new_print_pricing_path, notice: t("onboarding.completed_notice")
+    redirect_to dashboard_path, notice: t("onboarding.completed_notice")
   end
 
   private
