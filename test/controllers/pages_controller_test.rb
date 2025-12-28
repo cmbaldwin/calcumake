@@ -8,10 +8,10 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_includes @response.body, "3D printing"
   end
 
-  test "should get landing page directly" do
+  test "should redirect landing path to root" do
     get landing_path
-    assert_response :success
-    assert_includes @response.body, "CalcuMake"
+    assert_response :redirect
+    assert_redirected_to root_path
   end
 
   test "landing page should include locale suggestion banner" do
