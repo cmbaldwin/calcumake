@@ -31,9 +31,15 @@
               </div>
             <% end %>
           </div>
-          <p class="text-muted small mt-3 text-center">
+        </div>
+
+        <div class="text-center mb-4">
+          <p class="text-muted small mb-3">
             <%= t("onboarding.printer.custom_hint") %>
           </p>
+          <a href="<%= new_printer_path %>" class="btn btn-outline-secondary btn-sm" data-turbo="false">
+            <%= t("onboarding.printer.add_custom") %>
+          </a>
         </div>
 
         <%= form.hidden_field :printer_model, value: "",
