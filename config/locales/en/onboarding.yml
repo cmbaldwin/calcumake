@@ -1,0 +1,79 @@
+en:
+  onboarding:
+    progress: "Step %{current} of %{total}"
+    welcome_message: "Welcome! Let's get your account set up."
+    welcome_oauth: "Welcome via %{kind}! Let's complete your setup."
+    skipped_notice: "Onboarding skipped. You can update settings anytime in your profile."
+    completed_notice: "Setup complete! Let's create your first pricing calculation."
+    skip_confirm: "Are you sure you want to skip the setup? You can complete this later in your profile."
+
+    buttons:
+      next: "Next Step"
+      skip_step: "Skip This Step"
+      skip_walkthrough: "Skip Setup"
+      create_printer: "Add This Printer"
+      add_filaments: "Add Selected Filaments"
+      finish: "Start Calculating!"
+
+    step_names:
+      welcome: "Welcome"
+      profile: "Set Your Defaults"
+      company: "Company Information"
+      printer: "Add Your First Printer"
+      filament: "Add Starter Filaments"
+      complete: "You're All Set!"
+
+    welcome:
+      title: "Welcome to CalcuMake"
+      subtitle: "Let's set up your account in just a few quick steps"
+      description: "We'll help you configure your preferences, add your printer, and get you ready to calculate print costs accurately."
+      get_started: "Get Started"
+
+    profile:
+      title: "Set Your Defaults"
+      subtitle: "Choose your currency and energy cost"
+      currency_label: "Default Currency"
+      currency_hint: "Your local currency for all pricing calculations"
+      energy_label: "Electricity Cost (per kWh)"
+      energy_hint: "Your local electricity rate - check your utility bill"
+
+    company:
+      title: "Company Information"
+      subtitle: "Optional: Add your business details for invoices"
+      skip_hint: "You can skip this and add it later in your profile"
+      company_name_label: "Company Name"
+      company_name_placeholder: "MOAB Co., Ltd."
+      company_logo_label: "Company Logo"
+      company_logo_hint: "Upload a logo for your invoices (optional)"
+
+    printer:
+      title: "Add Your First Printer"
+      subtitle: "Select your 3D printer model"
+      quick_select: "Choose from popular models:"
+      custom_hint: "Don't see your printer? You can add custom printers later."
+      select_required: "Please select a printer model"
+      error: "Unable to create printer. Please try again."
+
+    filament:
+      title: "Add Starter Filaments"
+      subtitle: "Select the filament types you use most"
+      select_types: "Choose one or more:"
+      select_required: "Please select at least one filament type"
+      types:
+        pla: "Most common, easy to print"
+        petg: "Strong and durable"
+        abs: "High temperature resistance"
+        tpu: "Flexible material"
+
+    complete:
+      title: "You're All Set!"
+      subtitle: "Your account is ready to use"
+      summary_html: |
+        <p class="mb-3">We've set up:</p>
+        <ul class="list-unstyled">
+          <li class="mb-2">✓ Your currency and energy preferences</li>
+          <li class="mb-2">✓ Your first printer</li>
+          <li class="mb-2">✓ Starter filament library</li>
+        </ul>
+      next_steps: "Ready to calculate your first print cost?"
+      action: "Create First Pricing"

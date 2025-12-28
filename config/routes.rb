@@ -81,6 +81,13 @@ Rails.application.routes.draw do
   # User profile management
   resource :user_profile, only: [ :show, :edit, :update, :destroy ], path: "profile"
 
+  # Onboarding walkthrough for new users
+  resource :onboarding, only: [ :show, :update ] do
+    post :skip_step
+    post :skip_walkthrough
+    post :complete
+  end
+
   # API Token management (Web UI for creating/managing tokens)
   resources :api_tokens, only: %i[index new create destroy]
 

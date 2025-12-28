@@ -1,0 +1,50 @@
+<div class="onboarding-step">
+  <div class="text-center mb-4">
+    <h2 class="display-6 fw-bold"><%= t("onboarding.filament.title") %></h2>
+    <p class="lead text-muted"><%= t("onboarding.filament.subtitle") %></p>
+  </div>
+
+  <%= form_with url: onboarding_path(step: "filament"),
+                method: :patch,
+                local: false,
+                html: { data: { turbo: false } } do |form| %>
+
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8">
+        <div class="filament-checkboxes">
+          <h5 class="mb-3"><%= t("onboarding.filament.select_types") %></h5>
+          <div class="row g-3">
+            <% Filament::STARTER_PRESETS.each do |filament_type, preset| %>
+              <div class="col-md-6 col-lg-3">
+                <div class="filament-checkbox-card">
+                  <div class="form-check">
+                    <%= check_box_tag "filament_types[]",
+                                      filament_type,
+                                      filament_type == "PLA",
+                                      id: "filament_type_#{filament_type}",
+                                      class: "form-check-input" %>
+                    <%= label_tag "filament_type_#{filament_type}", class: "form-check-label w-100" do %>
+                      <div class="text-center py-3">
+                        <strong class="d-block mb-2"><%= filament_type %></strong>
+                        <small class="text-muted d-block">
+                          <%= t("onboarding.filament.types.#{filament_type.downcase}") %>
+                        </small>
+                        <small class="text-muted d-block mt-1">
+                          <%= number_to_currency(preset[:spool_price], unit: "$") %>/<%= preset[:spool_weight] %>g
+                        </small>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <%= form.submit t("onboarding.buttons.add_filaments"), class: "btn btn-primary btn-lg px-5" %>
+    </div>
+  <% end %>
+</div>
