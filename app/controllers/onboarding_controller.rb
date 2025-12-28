@@ -1,6 +1,6 @@
 class OnboardingController < ApplicationController
   before_action :authenticate_user!
-  before_action :redirect_if_completed, except: [:complete, :skip_walkthrough]
+  before_action :redirect_if_completed, except: [ :complete, :skip_walkthrough ]
 
   STEPS = %w[welcome profile company printer filament complete].freeze
 
@@ -84,14 +84,32 @@ class OnboardingController < ApplicationController
 
   def create_printer
     printer_model = params[:printer_model]
-    defaults = Printer::COMMON_DEFAULTS[printer_model]
+    printer_profile_id = params[:printer_profile_id]
 
+    # Handle printer profile selection
+    if printer_profile_id.present?
+      profile = PrinterProfile.find_by(id: printer_profile_id)
+      if profile
+        printer = create_printer_from_profile(profile)
+        if printer.save
+          advance_to_next_step
+          redirect_to onboarding_path(step: current_step_name)
+          return
+        end
+      end
+    end
+
+    # Handle preset model selection
+    defaults = Printer::COMMON_DEFAULTS[printer_model]
     if defaults
+      # Convert USD cost to user's currency
+      converted_cost = convert_to_user_currency(defaults[:cost])
+
       printer = current_user.printers.build(
         name: printer_model,
         manufacturer: defaults[:manufacturer],
         power_consumption: defaults[:power_consumption],
-        cost: defaults[:cost],
+        cost: converted_cost,
         daily_usage_hours: defaults[:daily_usage_hours],
         payoff_goal_years: defaults[:payoff_goal_years],
         material_technology: defaults[:material_technology],
@@ -113,6 +131,22 @@ class OnboardingController < ApplicationController
     end
   end
 
+  def create_printer_from_profile(profile)
+    # Convert USD cost to user's currency
+    converted_cost = convert_to_user_currency(profile.cost_usd || 500)
+
+    current_user.printers.build(
+      name: profile.display_name,
+      manufacturer: profile.manufacturer,
+      power_consumption: profile.power_consumption_avg_watts || 200,
+      cost: converted_cost,
+      daily_usage_hours: 8,
+      payoff_goal_years: 2,
+      material_technology: profile.technology || "fdm",
+      repair_cost_percentage: 0
+    )
+  end
+
   def create_filaments
     filament_types = params[:filament_types] || []
 
@@ -130,9 +164,12 @@ class OnboardingController < ApplicationController
       preset = Filament::STARTER_PRESETS[filament_type]
       next unless preset
 
+      # Convert USD spool_price to user's currency
+      converted_price = convert_to_user_currency(preset[:spool_price])
+
       current_user.filaments.create!(
         name: filament_type,
-        **preset
+        **preset.merge(spool_price: converted_price)
       )
     end
 
@@ -146,5 +183,16 @@ class OnboardingController < ApplicationController
 
   def company_params
     params.require(:user).permit(:default_company_name, :company_logo)
+  end
+
+  def convert_to_user_currency(usd_amount)
+    user_currency = current_user.default_currency || "USD"
+    return usd_amount if user_currency == "USD"
+
+    # Convert USD to user's currency
+    converted = CurrencyConverter.convert(usd_amount, from: "USD", to: user_currency)
+
+    # If conversion fails, return original USD amount as fallback
+    converted || usd_amount
   end
 end

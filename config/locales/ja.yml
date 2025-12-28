@@ -88,6 +88,13 @@ ja:
           attributes:
             layer_height_max:
               layer_height_range: 最大レイヤー高さは、最小レイヤー高さより大きくなければなりません
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワードの確認
+        current_password: 現在のパスワード
+        remember_me: ログイン情報を記憶する
   nav:
     brand: CalcuMake
     print_pricings: 価格設定
@@ -2011,3 +2018,74 @@ ja:
       description: APIトークンを使用して、CalcuMakeにプログラムでアクセスします。
       documentation: APIドキュメントを表示
       manage: トークンを管理
+  onboarding:
+    progress: ステップ %{current} / %{total}
+    welcome_message: ようこそ！アカウントを設定しましょう。
+    welcome_oauth: "%{kind}経由でようこそ！設定を完了しましょう。"
+    skipped_notice: オンボーディングをスキップしました。設定はいつでもプロフィールで更新できます。
+    completed_notice: 設定完了！最初の価格計算を作成しましょう。
+    skip_confirm: 本当にセットアップをスキップしますか？これは後であなたのプロフィールで完了できます。
+    buttons:
+      next: 次のステップ
+      skip_step: このステップをスキップ
+      skip_walkthrough: セットアップをスキップ
+      create_printer: このプリンターを追加
+      add_filaments: 選択したフィラメントを追加
+      finish: 計算を開始！
+    step_names:
+      welcome: ようこそ
+      profile: デフォルトを設定
+      company: 会社情報
+      printer: 最初のプリンターを追加
+      filament: スターターフィラメントを追加
+      complete: 完了！
+    welcome:
+      title: CalcuMakeへようこそ
+      subtitle: いくつかの簡単なステップでアカウントを設定しましょう
+      description: お客様の設定を構成し、プリンターを追加し、正確な印刷コストを計算する準備を支援します。
+      get_started: 始めましょう
+    profile:
+      title: デフォルトを設定
+      subtitle: 通貨とエネルギーコストを選択してください
+      currency_label: デフォルト通貨
+      currency_hint: すべての価格計算に使用する現地通貨
+      energy_label: 電気料金（1 kWhあたり）
+      energy_hint: お住まいの地域の電気料金 - 電気料金明細書を確認してください
+    company:
+      title: 会社情報
+      subtitle: オプション：請求書に会社の詳細を追加します
+      skip_hint: これはスキップして、後でプロフィールに追加できます
+      company_name_label: 会社名
+      company_name_placeholder: 株式会社MOAB
+      company_logo_label: 会社ロゴ
+      company_logo_hint: 請求書用のロゴをアップロードします（オプション）
+    printer:
+      title: 最初のプリンターを追加
+      subtitle: 3Dプリンターのモデルを選択してください
+      or_choose_default: "— または、一般的なモデルから選択 —"
+      quick_select: '一般的なモデルから選択:'
+      custom_hint: プリンターが見つかりませんか？カスタムプリンターは後で追加できます。
+      select_required: プリンターモデルを選択してください
+      error: プリンターを作成できません。もう一度お試しください。
+    filament:
+      title: スターターフィラメントを追加
+      subtitle: 最もよく使用するフィラメントの種類を選択してください
+      select_types: '1つ以上選択してください:'
+      select_required: 少なくとも1つのフィラメントタイプを選択してください
+      types:
+        pla: 最も一般的で、印刷しやすい
+        petg: 丈夫で耐久性がある
+        abs: 高い耐熱性
+        tpu: 柔軟な素材
+    complete:
+      title: 準備完了！
+      subtitle: アカウントを使用する準備ができました
+      summary_html: |-
+        <p class="mb-3">以下の設定が完了しました:</p>
+        <ul class="list-unstyled">
+          <li class="mb-2">✓ 通貨とエネルギーの設定</li>
+          <li class="mb-2">✓ 最初のプリンター</li>
+          <li class="mb-2">✓ スターターフィラメントライブラリ</li>
+        </ul>
+      next_steps: 最初のプリントコストを計算してみませんか？
+      action: 最初の価格を作成

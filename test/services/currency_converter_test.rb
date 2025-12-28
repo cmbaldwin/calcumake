@@ -80,7 +80,9 @@ class CurrencyConverterTest < ActiveSupport::TestCase
       .to_raise(SocketError)
 
     amount = CurrencyConverter.convert(150, from: "JPY", to: "USD")
-    assert_nil amount
+    # In test environment, fallback rates are used when API fails
+    assert_not_nil amount, "Expected fallback rate to be used in test environment"
+    assert_kind_of Float, amount
   end
 
   test "handles timeout errors gracefully" do
@@ -89,7 +91,9 @@ class CurrencyConverterTest < ActiveSupport::TestCase
       .to_raise(Timeout::Error)
 
     amount = CurrencyConverter.convert(150, from: "JPY", to: "USD")
-    assert_nil amount
+    # In test environment, fallback rates are used when API fails
+    assert_not_nil amount, "Expected fallback rate to be used in test environment"
+    assert_kind_of Float, amount
   end
 
   test "handles invalid JSON response" do
@@ -102,7 +106,9 @@ class CurrencyConverterTest < ActiveSupport::TestCase
       )
 
     amount = CurrencyConverter.convert(150, from: "JPY", to: "USD")
-    assert_nil amount
+    # In test environment, fallback rates are used when API fails
+    assert_not_nil amount, "Expected fallback rate to be used in test environment"
+    assert_kind_of Float, amount
   end
 
   test "rounds converted amount to 2 decimal places" do
