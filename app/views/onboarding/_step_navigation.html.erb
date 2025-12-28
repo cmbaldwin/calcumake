@@ -1,0 +1,32 @@
+<%
+  steps = OnboardingController::STEPS
+  step_index = steps.index(step) || 0
+  show_skip_button = !%w[welcome complete].include?(step)
+%>
+
+<div class="step-navigation">
+  <% if show_skip_button %>
+    <div class="skip-actions">
+      <%= button_to t("onboarding.buttons.skip_step"),
+                    skip_step_onboarding_path,
+                    method: :post,
+                    class: "btn btn-outline-secondary btn-sm",
+                    form: { data: { turbo: false } } %>
+
+      <%= button_to t("onboarding.buttons.skip_walkthrough"),
+                    skip_walkthrough_onboarding_path,
+                    method: :post,
+                    class: "btn btn-link btn-sm text-muted",
+                    form: {
+                      data: {
+                        turbo_confirm: t("onboarding.skip_confirm"),
+                        turbo: false
+                      }
+                    } %>
+    </div>
+  <% end %>
+
+  <div class="step-info text-center text-muted small">
+    <%= t("onboarding.step_names.#{step}") %>
+  </div>
+</div>
