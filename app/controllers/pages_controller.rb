@@ -6,9 +6,7 @@ class PagesController < ApplicationController
   # Note: Public pages don't require authentication in this app
 
   def landing
-    # Redirect authenticated users to the main app
-    redirect_to print_pricings_path if user_signed_in?
-
+    # Public landing page - no auto-redirect for authenticated users
     # Set SEO data for landing page
     @page_title = "CalcuMake - 3D Print Cost Calculator & Project Management"
     @meta_description = "Make 3D printing profitable with accurate cost calculations. Multi-currency support, printer management, and instant invoicing. Start free - no credit card required."
@@ -16,6 +14,11 @@ class PagesController < ApplicationController
 
     # Generate structured data for SEO (pricing fetched from Stripe API if available)
     @structured_data = landing_page_structured_data
+  end
+
+  def dashboard
+    # Authenticated user dashboard - redirects to print pricings index
+    redirect_to print_pricings_path
   end
 
   def pricing_calculator

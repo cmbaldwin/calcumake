@@ -125,18 +125,18 @@ class OnboardingControllerTest < ActionDispatch::IntegrationTest
   test "should allow skipping entire walkthrough" do
     post skip_walkthrough_onboarding_path
 
-    assert_redirected_to print_pricings_path
+    assert_redirected_to dashboard_path
     @new_user.reload
     assert_not_nil @new_user.onboarding_completed_at
     assert @new_user.onboarding_completed?
   end
 
-  test "should complete onboarding and redirect to new pricing" do
+  test "should complete onboarding and redirect to dashboard" do
     @new_user.update!(onboarding_current_step: 5)
 
     post complete_onboarding_path
 
-    assert_redirected_to new_print_pricing_path
+    assert_redirected_to dashboard_path
     @new_user.reload
     assert_not_nil @new_user.onboarding_completed_at
     assert @new_user.onboarding_completed?
@@ -156,6 +156,6 @@ class OnboardingControllerTest < ActionDispatch::IntegrationTest
     )
 
     get root_path
-    assert_redirected_to print_pricings_path # Authenticated users redirected to app, not onboarding
+    assert_response :success # Landing page no longer auto-redirects authenticated users
   end
 end
