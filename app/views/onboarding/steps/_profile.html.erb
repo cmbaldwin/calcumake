@@ -8,7 +8,7 @@
                 url: onboarding_path(step: "profile"),
                 method: :patch,
                 local: false,
-                html: { class: "onboarding-form", data: { turbo: false } } do |form| %>
+                html: { class: "onboarding-form", data: { turbo: false, controller: "currency-selector" } } do |form| %>
 
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6">
@@ -17,18 +17,30 @@
           <%= form.select :default_currency,
                           options_for_select(currency_options, current_user.default_currency),
                           {},
-                          class: "form-select form-select-lg" %>
+                          class: "form-select form-select-lg",
+                          data: {
+                            currency_selector_target: "currencySelect",
+                            action: "change->currency-selector#updateCurrencyDisplay"
+                          } %>
           <div class="form-text"><%= t("onboarding.profile.currency_hint") %></div>
         </div>
 
         <div class="mb-4">
-          <%= form.label :default_energy_cost_per_kwh, t("onboarding.profile.energy_label"), class: "form-label fw-bold" %>
-          <%= form.number_field :default_energy_cost_per_kwh,
-                                step: 0.001,
-                                min: 0.001,
-                                placeholder: "0.120",
-                                class: "form-control form-control-lg" %>
+          <div class="d-flex align-items-center gap-2">
+            <%= form.label :default_energy_cost_per_kwh, t("onboarding.profile.energy_label"), class: "form-label fw-bold mb-0" %>
+            <span class="badge bg-secondary" data-currency-selector-target="currencySymbol">$</span>
+          </div>
+          <div class="input-group input-group-lg mt-2">
+            <%= form.number_field :default_energy_cost_per_kwh,
+                                  step: 0.001,
+                                  min: 0.001,
+                                  placeholder: "0.120",
+                                  class: "form-control",
+                                  data: { currency_selector_target: "energyInput" } %>
+            <span class="input-group-text">per kWh</span>
+          </div>
           <div class="form-text"><%= t("onboarding.profile.energy_hint") %></div>
+          <div data-currency-selector-target="suggestion"></div>
         </div>
       </div>
     </div>

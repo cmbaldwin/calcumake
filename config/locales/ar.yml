@@ -89,6 +89,13 @@ ar:
           attributes:
             layer_height_max:
               layer_height_range: يجب أن يكون أكبر من الحد الأدنى لارتفاع الطبقة
+    attributes:
+      user:
+        email: البريد الإلكتروني
+        password: كلمة المرور
+        password_confirmation: تأكيد كلمة المرور
+        current_password: كلمة المرور الحالية
+        remember_me: تذكرني
   nav:
     brand: CalcuMake
     print_pricings: تسعيراتي
@@ -2290,3 +2297,76 @@ ar:
       description: استخدم رموز API الخاصة بك للوصول إلى CalcuMake برمجيًا.
       documentation: عرض وثائق API
       manage: إدارة الرموز
+  onboarding:
+    progress: الخطوة %{current} من %{total}
+    welcome_message: مرحباً! لنقم بإعداد حسابك.
+    welcome_oauth: مرحباً عبر %{kind}! لنكمل إعدادك.
+    skipped_notice: تم تخطي الإعداد. يمكنك تحديث الإعدادات في أي وقت في ملفك الشخصي.
+    completed_notice: اكتمل الإعداد! لنقم بإنشاء أول عملية حساب تسعير.
+    skip_confirm: هل أنت متأكد أنك تريد تخطي الإعداد؟ يمكنك إكماله لاحقًا في ملفك
+      الشخصي.
+    buttons:
+      next: الخطوة التالية
+      skip_step: تخطي هذه الخطوة
+      skip_walkthrough: تخطي الإعداد
+      create_printer: إضافة هذه الطابعة
+      add_filaments: إضافة الخيوط المحددة
+      finish: ابدأ الحساب!
+    step_names:
+      welcome: مرحباً
+      profile: اضبط إعداداتك الافتراضية
+      company: معلومات الشركة
+      printer: أضف طابعتك الأولى
+      filament: أضف خيوط البداية
+      complete: أنت الآن جاهز!
+    welcome:
+      title: مرحباً بك في CalcuMake
+      subtitle: لنقم بإعداد حسابك في بضع خطوات سريعة
+      description: سنساعدك في تكوين تفضيلاتك وإضافة طابعتك وتجهيزك لحساب تكاليف الطباعة
+        بدقة.
+      get_started: ابدأ
+    profile:
+      title: اضبط إعداداتك الافتراضية
+      subtitle: اختر عملتك وتكلفة الطاقة
+      currency_label: العملة الافتراضية
+      currency_hint: عملتك المحلية لجميع حسابات التسعير
+      energy_label: تكلفة الكهرباء (لكل كيلوواط/ساعة)
+      energy_hint: سعر الكهرباء المحلي - تحقق من فاتورة الخدمات الخاصة بك
+    company:
+      title: معلومات الشركة
+      subtitle: 'اختياري: أضف تفاصيل عملك للفواتير'
+      skip_hint: يمكنك تخطي هذا وإضافته لاحقًا في ملفك الشخصي
+      company_name_label: اسم الشركة
+      company_name_placeholder: MOAB Co., Ltd.
+      company_logo_label: شعار الشركة
+      company_logo_hint: قم بتحميل شعار لفواتيرك (اختياري)
+    printer:
+      title: أضف طابعتك الأولى
+      subtitle: حدد نموذج طابعة 3D الخاصة بك
+      or_choose_default: "— أو اختر من النماذج الشائعة —"
+      quick_select: 'اختر من النماذج الشائعة:'
+      custom_hint: ألا ترى طابعتك؟ يمكنك إضافة طابعات مخصصة لاحقًا.
+      select_required: الرجاء تحديد نموذج طابعة
+      error: غير قادر على إنشاء الطابعة. يرجى المحاولة مرة أخرى.
+    filament:
+      title: أضف خيوط البداية
+      subtitle: حدد أنواع الخيوط التي تستخدمها غالبًا
+      select_types: 'اختر واحدًا أو أكثر:'
+      select_required: الرجاء تحديد نوع خيط واحد على الأقل
+      types:
+        pla: الأكثر شيوعًا، سهل الطباعة
+        petg: قوي ومتين
+        abs: مقاومة عالية للحرارة
+        tpu: مادة مرنة
+    complete:
+      title: أنت جاهز تمامًا!
+      subtitle: حسابك جاهز للاستخدام
+      summary_html: |-
+        <p class="mb-3">لقد قمنا بإعداد:</p>
+        <ul class="list-unstyled">
+          <li class="mb-2">✓ تفضيلات العملة والطاقة الخاصة بك</li>
+          <li class="mb-2">✓ طابعتك الأولى</li>
+          <li class="mb-2">✓ مكتبة خيوط البدء</li>
+        </ul>
+      next_steps: هل أنت مستعد لحساب تكلفة الطباعة الأولى؟
+      action: إنشاء التسعير الأول

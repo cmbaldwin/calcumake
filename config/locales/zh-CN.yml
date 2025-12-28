@@ -88,6 +88,13 @@ zh-CN:
           attributes:
             layer_height_max:
               layer_height_range: 必须大于最小层高
+    attributes:
+      user:
+        email: 电子邮件
+        password: 密码
+        password_confirmation: 密码确认
+        current_password: 当前密码
+        remember_me: 记住我
   nav:
     brand: CalcuMake
     print_pricings: 我的定价
@@ -2013,3 +2020,74 @@ zh-CN:
       description: 使用您的 API 令牌以编程方式访问 CalcuMake。
       documentation: 查看 API 文档
       manage: 管理令牌
+  onboarding:
+    progress: 步骤 %{current} / %{total}
+    welcome_message: 欢迎！让我们设置您的帐户。
+    welcome_oauth: 欢迎通过 %{kind}！让我们完成您的设置。
+    skipped_notice: 已跳过新手引导。您可以随时在您的个人资料中更新设置。
+    completed_notice: 设置完成！让我们创建您的第一个定价计算。
+    skip_confirm: 您确定要跳过设置吗？您可以稍后在您的个人资料中完成此操作。
+    buttons:
+      next: 下一步
+      skip_step: 跳过此步骤
+      skip_walkthrough: 跳过设置
+      create_printer: 添加此打印机
+      add_filaments: 添加所选耗材
+      finish: 开始计算！
+    step_names:
+      welcome: 欢迎
+      profile: 设置您的默认值
+      company: 公司信息
+      printer: 添加您的第一台打印机
+      filament: 添加入门耗材
+      complete: 一切就绪！
+    welcome:
+      title: 欢迎使用 CalcuMake
+      subtitle: 让我们通过几个快速步骤设置您的帐户
+      description: 我们将帮助您配置您的偏好设置，添加您的打印机，并让您准备好准确地计算打印成本。
+      get_started: 开始
+    profile:
+      title: 设置您的默认值
+      subtitle: 选择您的货币和能源成本
+      currency_label: 默认货币
+      currency_hint: 您用于所有定价计算的本地货币
+      energy_label: 电力成本（每千瓦时）
+      energy_hint: 您当地的电费 - 查看您的水电费账单
+    company:
+      title: 公司信息
+      subtitle: 可选：添加您的业务详细信息以用于发票
+      skip_hint: 您可以跳过此步骤，稍后在您的个人资料中添加
+      company_name_label: 公司名称
+      company_name_placeholder: MOAB Co., Ltd.
+      company_logo_label: 公司标志
+      company_logo_hint: 上传您的发票徽标（可选）
+    printer:
+      title: 添加您的第一台打印机
+      subtitle: 选择您的 3D 打印机型号
+      or_choose_default: "— 或从常用型号中选择 —"
+      quick_select: 从常用型号中选择：
+      custom_hint: 没有看到您的打印机？您可以稍后添加自定义打印机。
+      select_required: 请选择一个打印机型号
+      error: 无法创建打印机。请重试。
+    filament:
+      title: 添加入门耗材
+      subtitle: 选择您最常用的耗材类型
+      select_types: 选择一个或多个：
+      select_required: 请至少选择一种耗材类型
+      types:
+        pla: 最常见，易于打印
+        petg: 坚固耐用
+        abs: 耐高温
+        tpu: 柔性材料
+    complete:
+      title: 一切就绪！
+      subtitle: 您的帐户已准备就绪
+      summary_html: |-
+        <p class="mb-3">我们已设置：</p>
+        <ul class="list-unstyled">
+          <li class="mb-2">✓ 您的货币和能源偏好</li>
+          <li class="mb-2">✓ 您的第一台打印机</li>
+          <li class="mb-2">✓ 启动器线材库</li>
+        </ul>
+      next_steps: 准备好计算您的第一个打印成本了吗？
+      action: 创建首个定价

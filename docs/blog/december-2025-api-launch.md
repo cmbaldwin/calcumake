@@ -1,7 +1,7 @@
 # January 2025 Update: REST API Launch & Developer Tools
 
 **Author:** CalcuMake Team
-**Published:** January 15, 2025
+**Published:** December 27, 2025
 **Featured:** Yes
 
 ---
