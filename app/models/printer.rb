@@ -27,6 +27,57 @@ class Printer < ApplicationRecord
     "Other"
   ].freeze
 
+  COMMON_DEFAULTS = {
+    "Prusa i3 MK4" => {
+      manufacturer: "Prusa",
+      power_consumption: 120,
+      cost: 799,
+      daily_usage_hours: 8,
+      payoff_goal_years: 2,
+      material_technology: "fdm"
+    },
+    "Bambu Lab P1P" => {
+      manufacturer: "Bambu Lab",
+      power_consumption: 350,
+      cost: 699,
+      daily_usage_hours: 8,
+      payoff_goal_years: 2,
+      material_technology: "fdm"
+    },
+    "Bambu Lab X1 Carbon" => {
+      manufacturer: "Bambu Lab",
+      power_consumption: 500,
+      cost: 1199,
+      daily_usage_hours: 8,
+      payoff_goal_years: 2,
+      material_technology: "fdm"
+    },
+    "Creality Ender 3 V3" => {
+      manufacturer: "Creality",
+      power_consumption: 270,
+      cost: 249,
+      daily_usage_hours: 8,
+      payoff_goal_years: 1,
+      material_technology: "fdm"
+    },
+    "Prusa Mini+" => {
+      manufacturer: "Prusa",
+      power_consumption: 75,
+      cost: 459,
+      daily_usage_hours: 8,
+      payoff_goal_years: 1,
+      material_technology: "fdm"
+    },
+    "Anycubic Kobra 2" => {
+      manufacturer: "Anycubic",
+      power_consumption: 300,
+      cost: 299,
+      daily_usage_hours: 8,
+      payoff_goal_years: 1,
+      material_technology: "fdm"
+    }
+  }.freeze
+
   validates :name, presence: true
   validates :power_consumption, :cost, :payoff_goal_years, :daily_usage_hours, presence: true
   validates :power_consumption, :cost, numericality: { greater_than: 0 }

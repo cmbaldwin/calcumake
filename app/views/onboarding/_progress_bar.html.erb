@@ -1,0 +1,22 @@
+<%
+  steps = OnboardingController::STEPS
+  step_index = steps.index(current_step) || 0
+  progress_percentage = (step_index.to_f / (steps.length - 1) * 100).round
+%>
+
+<div class="onboarding-progress mb-4">
+  <div class="progress" style="height: 8px;">
+    <div class="progress-bar bg-primary"
+         role="progressbar"
+         style="width: <%= progress_percentage %>%"
+         aria-valuenow="<%= step_index %>"
+         aria-valuemin="0"
+         aria-valuemax="<%= steps.length - 1 %>">
+    </div>
+  </div>
+  <div class="text-center mt-2">
+    <small class="text-muted">
+      <%= t("onboarding.progress", current: step_index + 1, total: steps.length) %>
+    </small>
+  </div>
+</div>

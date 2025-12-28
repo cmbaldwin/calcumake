@@ -1,0 +1,13 @@
+<div class="onboarding-step text-center">
+  <div class="mb-5">
+    <h1 class="display-4 fw-bold mb-3"><%= t("onboarding.welcome.title") %></h1>
+    <p class="lead text-muted mb-4"><%= t("onboarding.welcome.subtitle") %></p>
+    <p class="text-muted"><%= t("onboarding.welcome.description") %></p>
+  </div>
+
+  <%= button_to t("onboarding.welcome.get_started"),
+                skip_step_onboarding_path,
+                method: :post,
+                class: "btn btn-primary btn-lg px-5",
+                form: { data: { turbo: false } } %>
+</div>
