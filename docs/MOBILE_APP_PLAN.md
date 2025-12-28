@@ -882,6 +882,21 @@ Since you're reusing existing views, you get **100% feature parity immediately**
 
 ## Appendix: Key Resources
 
+### Implementation Reference Guide
+
+**📖 [HOTWIRE_NATIVE_GUIDE.md](./HOTWIRE_NATIVE_GUIDE.md)** - Comprehensive technical guide covering:
+- Complete Android setup (Kotlin, Gradle, MainActivity)
+- Complete iOS setup (Swift, Xcode, SceneDelegate)
+- Path Configuration patterns and examples
+- Bridge Components architecture and implementation
+- Native Screens for progressive enhancement
+- App Configuration options (both platforms)
+- Web app modifications for mobile
+- Testing and deployment strategies
+- Troubleshooting common issues
+
+**This is your primary implementation reference** - use it alongside the official documentation.
+
 ### Official Documentation
 - [Hotwire Native Docs](https://native.hotwired.dev/)
 - [iOS Getting Started](https://native.hotwired.dev/ios/getting-started)
@@ -892,6 +907,7 @@ Since you're reusing existing views, you get **100% feature parity immediately**
 ### GitHub Repositories
 - [hotwired/hotwire-native-ios](https://github.com/hotwired/hotwire-native-ios) - iOS framework (v1.2.2)
 - [hotwired/hotwire-native-android](https://github.com/hotwired/hotwire-native-android) - Android framework (v1.2.4)
+- [hotwired/hotwire-native-bridge](https://github.com/hotwired/hotwire-native-bridge) - JavaScript bridge
 
 ### Learning Resources
 - [37signals Announcement](https://dev.37signals.com/announcing-hotwire-native/)
