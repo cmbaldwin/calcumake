@@ -121,5 +121,5 @@ group :test do
   # Fix merged to rails/rails 8-1-stable on Dec 19, 2025 (PR #56207)
   # When Rails 8.1.2 is released, remove this line to use minitest 6.x
   # See: https://github.com/rails/rails/pull/56207
-  gem "minitest", "~> 5.0"
+  gem "minitest", "~> 6.0"
 end
