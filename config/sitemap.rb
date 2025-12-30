@@ -1,5 +1,5 @@
 SitemapGenerator::Sitemap.default_host = "https://calcumake.com"
-SitemapGenerator::Sitemap.create_index = true
+SitemapGenerator::Sitemap.create_index = false  # No index needed for small sites (<50k URLs)
 SitemapGenerator::Sitemap.compress = false
 
 SitemapGenerator::Sitemap.create do
