@@ -49,6 +49,7 @@ gem "rails_admin"
 
 # SEO and sitemap
 gem "sitemap_generator"
+gem "cgi", "~> 0.4.1"  # Required for sitemap_generator in Ruby 4.0+
 
 # Search functionality
 gem "ransack"
