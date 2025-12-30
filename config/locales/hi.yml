@@ -1514,6 +1514,7 @@ hi:
       preview_print_time: प्रिंट का समय
       preview_total_cost: कुल लागत
       preview_cost_breakdown: बिजली + फिलामेंट + श्रम
+      cta_dashboard: डैशबोर्ड पर जाएँ
     problem:
       headline: क्या आप 3D प्रिंट के लिए मूल्य निर्धारण की गणना करने में समय बर्बाद
         कर रहे हैं?

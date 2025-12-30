@@ -1296,6 +1296,7 @@ zh-CN:
       preview_print_time: 打印时间
       preview_total_cost: 总成本
       preview_cost_breakdown: 电力 + 线材 + 人工
+      cta_dashboard: 前往仪表盘
     problem:
       headline: 您是否在浪费时间计算 3D 打印的定价？
       manual_errors: 手动计算错误

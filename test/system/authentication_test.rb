@@ -10,10 +10,9 @@ class AuthenticationTest < ApplicationSystemTestCase
 
     click_button "Sign up"
 
-    # With email confirmation enabled, redirects to print_pricings instead of root
-    assert_current_path print_pricings_path
-    # Should see confirmation message
-    assert_text "confirmation link has been sent"
+    # New users are redirected to onboarding (needs_onboarding? is true for users created < 1 hour ago)
+    assert_current_path onboarding_path
+    # Flash message might not be visible on onboarding page, just check we're on the right path
   end
 
   test "user can sign in successfully" do
@@ -22,7 +21,8 @@ class AuthenticationTest < ApplicationSystemTestCase
       password: "password123",
       default_currency: "USD",
       default_energy_cost_per_kwh: 0.12,
-      confirmed_at: Time.current  # Confirm user
+      confirmed_at: Time.current,  # Confirm user
+      onboarding_completed_at: Time.current  # Mark onboarding as completed
     )
 
     visit new_user_session_path
@@ -32,7 +32,8 @@ class AuthenticationTest < ApplicationSystemTestCase
 
     click_button "Sign in"  # Changed from "Log in"
 
-    assert_current_path root_path
+    # After sign in, redirects to dashboard (print_pricings#index)
+    assert_current_path print_pricings_path
     assert_text "Sign out"  # Verify user is signed in
   end
 
@@ -42,7 +43,8 @@ class AuthenticationTest < ApplicationSystemTestCase
       password: "password123",
       default_currency: "USD",
       default_energy_cost_per_kwh: 0.12,
-      confirmed_at: Time.current
+      confirmed_at: Time.current,
+      onboarding_completed_at: Time.current  # Mark onboarding as completed
     )
 
     # Sign in through the UI

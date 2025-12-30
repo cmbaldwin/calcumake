@@ -1522,6 +1522,7 @@ fr:
       preview_print_time: Temps d'impression
       preview_total_cost: Coût total
       preview_cost_breakdown: Électricité + Filament + Main d'œuvre
+      cta_dashboard: Accéder au tableau de bord
     problem:
       headline: Perdez-vous du temps à calculer le prix des impressions 3D ?
       manual_errors: Erreurs de calcul manuel
