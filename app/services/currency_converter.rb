@@ -1,8 +1,8 @@
 # Service for converting currencies using Frankfurter API (European Central Bank)
 # Caches exchange rates for 24 hours to minimize API calls
 # API: https://www.frankfurter.app/
-require 'net/http'
-require 'openssl'
+require "net/http"
+require "openssl"
 
 class CurrencyConverter
   CACHE_EXPIRY = 24.hours
