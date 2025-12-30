@@ -50,7 +50,7 @@ class SitemapTest < ActiveSupport::TestCase
       system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
     end
 
-    sitemap_content = File.read(Rails.root.join("public", "sitemap1.xml"))
+    sitemap_content = File.read(Rails.root.join("public", "sitemap.xml"))
 
     # Check for required pages
     assert_includes sitemap_content, "https://calcumake.com/3d-print-pricing-calculator",
@@ -67,7 +67,7 @@ class SitemapTest < ActiveSupport::TestCase
       system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
     end
 
-    sitemap_content = File.read(Rails.root.join("public", "sitemap1.xml"))
+    sitemap_content = File.read(Rails.root.join("public", "sitemap.xml"))
 
     # Extract all URLs
     urls = sitemap_content.scan(%r{<loc>(.*?)</loc>}).flatten
@@ -84,7 +84,7 @@ class SitemapTest < ActiveSupport::TestCase
       system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
     end
 
-    sitemap_content = File.read(Rails.root.join("public", "sitemap1.xml"))
+    sitemap_content = File.read(Rails.root.join("public", "sitemap.xml"))
 
     # Check for blog pages in different locales
     expected_blog_urls = [
@@ -108,7 +108,7 @@ class SitemapTest < ActiveSupport::TestCase
       system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
     end
 
-    sitemap_content = File.read(Rails.root.join("public", "sitemap1.xml"))
+    sitemap_content = File.read(Rails.root.join("public", "sitemap.xml"))
 
     # Check that at least one published article is included (fixtures create test articles)
     assert_match %r{/blog/[^<]+</loc>}, sitemap_content,
@@ -127,7 +127,7 @@ class SitemapTest < ActiveSupport::TestCase
       system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
     end
 
-    sitemap_content = File.read(Rails.root.join("public", "sitemap1.xml"))
+    sitemap_content = File.read(Rails.root.join("public", "sitemap.xml"))
 
     assert_not_includes sitemap_content, "/#{unpublished.slug}",
                         "Sitemap should not include unpublished articles"
@@ -140,7 +140,7 @@ class SitemapTest < ActiveSupport::TestCase
       system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
     end
 
-    sitemap_content = File.read(Rails.root.join("public", "sitemap1.xml"))
+    sitemap_content = File.read(Rails.root.join("public", "sitemap.xml"))
 
     # Extract all URLs
     urls = sitemap_content.scan(%r{<loc>(.*?)</loc>}).flatten
@@ -157,7 +157,7 @@ class SitemapTest < ActiveSupport::TestCase
       system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
     end
 
-    sitemap_content = File.read(Rails.root.join("public", "sitemap1.xml"))
+    sitemap_content = File.read(Rails.root.join("public", "sitemap.xml"))
 
     # These should be blocked by robots.txt and not in sitemap
     assert_not_includes sitemap_content, "/sign_in",
@@ -171,7 +171,7 @@ class SitemapTest < ActiveSupport::TestCase
       system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
     end
 
-    sitemap_path = Rails.root.join("public", "sitemap1.xml")
+    sitemap_path = Rails.root.join("public", "sitemap.xml")
 
     # Use xmllint to validate if available, otherwise just check XML parsing
     if system("which xmllint > /dev/null 2>&1")
