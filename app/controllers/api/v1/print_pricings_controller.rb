@@ -7,7 +7,7 @@ module Api
 
       def index
         @print_pricings = current_user.print_pricings
-          .includes(:printer, :client, plates: [:plate_filaments, :filaments, :plate_resins, :resins])
+          .includes(:printer, :client, plates: [ :plate_filaments, :filaments, :plate_resins, :resins ])
           .order(created_at: :desc)
 
         # Apply search filter
@@ -135,7 +135,7 @@ module Api
 
       def set_print_pricing
         @print_pricing = current_user.print_pricings
-          .includes(plates: [:plate_filaments, :filaments, :plate_resins, :resins])
+          .includes(plates: [ :plate_filaments, :filaments, :plate_resins, :resins ])
           .find(params[:id])
       end
 
@@ -148,8 +148,8 @@ module Api
           :listing_cost_percentage, :payment_processing_cost_percentage,
           plates_attributes: [
             :id, :_destroy, :printing_time_hours, :printing_time_minutes, :material_technology,
-            plate_filaments_attributes: [:id, :_destroy, :filament_id, :filament_weight, :markup_percentage],
-            plate_resins_attributes: [:id, :_destroy, :resin_id, :resin_volume_ml, :markup_percentage]
+            plate_filaments_attributes: [ :id, :_destroy, :filament_id, :filament_weight, :markup_percentage ],
+            plate_resins_attributes: [ :id, :_destroy, :resin_id, :resin_volume_ml, :markup_percentage ]
           ]
         )
       end
