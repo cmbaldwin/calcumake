@@ -3,7 +3,7 @@
 module Api
   module V1
     class HealthController < BaseController
-      skip_before_action :authenticate_api_token!, only: [:show]
+      skip_before_action :authenticate_api_token!, only: [ :show ]
 
       def show
         render json: {

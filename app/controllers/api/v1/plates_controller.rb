@@ -4,7 +4,7 @@ module Api
   module V1
     class PlatesController < BaseController
       before_action :set_print_pricing
-      before_action :set_plate, only: [:show]
+      before_action :set_plate, only: [ :show ]
 
       def index
         @plates = @print_pricing.plates
