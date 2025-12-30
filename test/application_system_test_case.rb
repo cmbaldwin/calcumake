@@ -9,6 +9,6 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     visit new_user_session_path
     fill_in "Email", with: user.email
     fill_in "Password", with: "password123"  # Use the known test password
-    click_button "Log in"
+    click_button I18n.t('nav.sign_in')  # Use translation key instead of hardcoded text
   end
 end
