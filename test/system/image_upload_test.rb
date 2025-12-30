@@ -23,8 +23,8 @@ class ImageUploadTest < ApplicationSystemTestCase
     visit user_profile_url
 
     within '[data-controller="image-upload"]' do
-      # Should show placeholder icon and text
-      assert_selector ".placeholder-icon", visible: true
+      # Should show placeholder - check for the data target attribute which is the parent
+      assert_selector '[data-image-upload-target="placeholder"]', visible: true
       assert_text "Drag & drop"
     end
   end

@@ -1296,6 +1296,7 @@ ja:
       preview_print_time: 印刷時間
       preview_total_cost: 合計コスト
       preview_cost_breakdown: 電気代 + フィラメント代 + 人件費
+      cta_dashboard: ダッシュボードへ移動
     problem:
       headline: 3Dプリントの価格計算に時間を浪費していませんか？
       manual_errors: 手動計算によるエラー
