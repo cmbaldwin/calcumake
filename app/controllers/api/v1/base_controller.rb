@@ -23,12 +23,12 @@ module Api
         return if @current_user.present?
 
         render json: {
-          errors: [{
+          errors: [ {
             status: "401",
             code: "unauthorized",
             title: "Unauthorized",
             detail: "Invalid or missing API token"
-          }]
+          } ]
         }, status: :unauthorized
       end
 
@@ -57,12 +57,12 @@ module Api
 
       def not_found
         render json: {
-          errors: [{
+          errors: [ {
             status: "404",
             code: "not_found",
             title: "Not Found",
             detail: "The requested resource could not be found"
-          }]
+          } ]
         }, status: :not_found
       end
 
@@ -82,12 +82,12 @@ module Api
 
       def bad_request(exception)
         render json: {
-          errors: [{
+          errors: [ {
             status: "400",
             code: "bad_request",
             title: "Bad Request",
             detail: "Missing required parameter: #{exception.param}"
-          }]
+          } ]
         }, status: :bad_request
       end
 
