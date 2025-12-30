@@ -119,6 +119,48 @@ def find_line_number(content, search_term)
   0
 end
 
+def generate_detailed_report(issues, en_keys, target_keys)
+  report = []
+  report << "=" * 80
+  report << "CalcuMake Translation Report"
+  report << "Generated: #{Time.now}"
+  report << "=" * 80
+  report << ""
+
+  report << "Summary:"
+  report << "  Total issues: #{issues.count}"
+  report << "  English keys: #{en_keys.count}"
+  TARGET_LOCALES.each do |locale|
+    missing = issues.select { |i| i[:type] == :missing_translation && i[:locale] == locale }.count
+    report << "  #{locale}: #{target_keys[locale].count} keys (#{missing} missing)"
+  end
+  report << ""
+
+  # Detailed breakdown
+  report << "=" * 80
+  report << "Detailed Issues"
+  report << "=" * 80
+  report << ""
+
+  issues.group_by { |i| i[:type] }.each do |type, type_issues|
+    report << "#{type.to_s.upcase.gsub('_', ' ')} (#{type_issues.count}):"
+    report << "-" * 80
+
+    type_issues.each do |issue|
+      report << "File: #{issue[:file]}"
+      report << "Line: #{issue[:line]}" if issue[:line]
+      report << "Key: #{issue[:key]}" if issue[:key]
+      report << "Locale: #{issue[:locale]}" if issue[:locale]
+      report << "English: #{issue[:english]}" if issue[:english]
+      report << "Content: #{issue[:content]}" if issue[:content]
+      report << ""
+    end
+    report << ""
+  end
+
+  report.join("\n")
+end
+
 puts "=" * 80
 puts "CalcuMake Translation Checker"
 puts "=" * 80
