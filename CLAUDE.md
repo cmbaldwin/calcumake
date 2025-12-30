@@ -745,6 +745,33 @@ test/
 └── system/           # System tests (Capybara)
 ```
 
+### Test Best Practices
+
+**CRITICAL: Use I18n Translation Keys, Never Hardcoded Text**
+
+System tests (Capybara) must use translation keys instead of hardcoded English text to remain language-agnostic:
+
+```ruby
+# ❌ BAD - Hardcoded text breaks when translations change
+click_button "Log in"
+expect(page).to have_content "Welcome back"
+
+# ✅ GOOD - Use translation keys
+click_button I18n.t('nav.sign_in')
+expect(page).to have_content I18n.t('dashboard.welcome')
+```
+
+**Why This Matters:**
+- Tests break when translation values change, even if functionality is correct
+- Makes tests fail in non-English locales
+- Couples tests to specific UI copy instead of functionality
+- Prevents translation mismatches (e.g., expecting "Log in" when button says "Sign in")
+
+**Application:**
+- System test helpers (e.g., `sign_in`, `fill_form`)
+- Capybara assertions (`have_content`, `have_button`, `click_button`)
+- Link and button finding (`click_link`, `find_link`)
+
 ### CI/CD
 - **GitHub Actions** runs all tests on every push (parallel jobs)
 - **Kamal pre-build hook** runs all tests before deployment (blocks on failure)
