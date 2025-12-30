@@ -4,7 +4,7 @@ require "open-uri"
 
 # Service class for importing filaments from various sources using LLM
 class FilamentImporter
-  VALID_MATERIAL_TYPES = %w[PLA ABS PETG TPU ASA HIPS Nylon PC PVA Wood Metal Carbon].freeze
+  VALID_MATERIAL_TYPES = %w[PLA ABS PETG TPU ASA HIPS Nylon PC PVA Wood Metal Carbon Resin].freeze
   VALID_DIAMETERS = [ 1.75, 2.85, 3.0 ].freeze
 
   attr_reader :user, :source_type, :source_content, :errors

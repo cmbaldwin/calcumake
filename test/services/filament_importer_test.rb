@@ -143,7 +143,7 @@ class FilamentImporterTest < ActiveSupport::TestCase
 
   # Constants validation
   test "should have correct valid material types" do
-    expected = %w[PLA ABS PETG TPU ASA HIPS Nylon PC PVA Wood Metal Carbon]
+    expected = %w[PLA ABS PETG TPU ASA HIPS Nylon PC PVA Wood Metal Carbon Resin]
     assert_equal expected, FilamentImporter::VALID_MATERIAL_TYPES
   end
 
