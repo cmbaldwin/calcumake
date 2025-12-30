@@ -116,6 +116,7 @@ jobs:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
           # REDIS_URL: redis://localhost:6379/0
+          DISABLE_BOOTSNAP: 1  # Temporarily disabled due to errno 0 race condition with Ruby 3.4.5 - will re-enable after Ruby 4.0 upgrade testing
         run: bin/rails db:test:prepare test test:system
 
       - name: Keep screenshots from failed system tests
