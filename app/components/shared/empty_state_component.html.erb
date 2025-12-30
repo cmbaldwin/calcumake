@@ -1,0 +1,16 @@
+<div class="<%= wrapper_classes %>">
+  <div class="card border-0 bg-light">
+    <div class="card-body py-5">
+      <% if has_icon? %>
+        <%= render Shared::IconComponent.new(name: icon, size: "3rem", html_options: { class: "text-muted mb-3" }) %>
+      <% end %>
+      <h3 class="text-muted mb-3"><%= title %></h3>
+      <% if description.present? %>
+        <p class="text-muted mb-4"><%= description %></p>
+      <% end %>
+      <% if has_action? %>
+        <%= link_to action_text, action_url, class: action_button_class %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -51,24 +51,18 @@
             <% end %>
         </div>
     <% else %>
-        <!-- Empty State or No Results -->
-        <div class="text-center py-5">
-            <div class="card border-0 bg-light">
-                <div class="card-body py-5">
-                    <% if params.dig(:q, :job_name_cont).present? %>
-                        <h3 class="text-muted mb-3"><%= t('print_pricing.index.no_results.title') %></h3>
-                        <p class="text-muted mb-4">
-                            <%= t('print_pricing.index.no_results.description', query: params.dig(:q, :job_name_cont)) %>
-                        </p>
-                    <% else %>
-                        <h3 class="text-muted mb-3"><%= t('print_pricing.index.empty_state.title') %></h3>
-                        <p class="text-muted mb-4">
-                            <%= t('print_pricing.index.empty_state.description') %>
-                        </p>
-                        <%= link_to t('print_pricing.index.create_new'), new_print_pricing_path, class: "btn btn-primary" %>
-                    <% end %>
-                </div>
-            </div>
-        </div>
+        <% if params.dig(:q, :job_name_cont).present? %>
+            <%= render Shared::EmptyStateComponent.new(
+              title: t('print_pricing.index.no_results.title'),
+              description: t('print_pricing.index.no_results.description', query: params.dig(:q, :job_name_cont))
+            ) %>
+        <% else %>
+            <%= render Shared::EmptyStateComponent.new(
+              title: t('print_pricing.index.empty_state.title'),
+              description: t('print_pricing.index.empty_state.description'),
+              action_text: t('print_pricing.index.create_new'),
+              action_url: new_print_pricing_path
+            ) %>
+        <% end %>
     <% end %>
 <% end %>

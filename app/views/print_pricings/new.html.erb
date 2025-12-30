@@ -1,9 +1,8 @@
 <% content_for :body_class, "pricing-form-page" %>
 
-<!-- Calculator Header -->
-<div class="text-center mb-4">
-  <h1 class="display-5 fw-bold text-primary mb-2"><%= t('print_pricing.calculator.title') %></h1>
-  <p class="lead text-muted"><%= t('print_pricing.calculator.subtitle') %></p>
-</div>
+<%= render Shared::PageHeaderComponent.new(
+  title: t('print_pricing.calculator.title'),
+  subtitle: t('print_pricing.calculator.subtitle')
+) %>
 
 <%= render 'form', print_pricing: @print_pricing %>
