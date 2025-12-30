@@ -39,26 +39,19 @@
             <% end %>
         </div>
     <% elsif @q.present? %>
-        <!-- No Search Results -->
-        <div class="text-center py-5">
-            <div class="card border-0 bg-light">
-                <div class="card-body py-5">
-                    <h3 class="text-muted mb-3"><%= t('clients.index.no_results.title') %></h3>
-                    <p class="text-muted mb-4"><%= t('clients.index.no_results.description') %></p>
-                    <%= link_to t('clients.index.clear_search'), clients_path, class: "btn btn-secondary" %>
-                </div>
-            </div>
-        </div>
+        <%= render Shared::EmptyStateComponent.new(
+          title: t('clients.index.no_results.title'),
+          description: t('clients.index.no_results.description'),
+          action_text: t('clients.index.clear_search'),
+          action_url: clients_path,
+          action_variant: "secondary"
+        ) %>
     <% else %>
-        <!-- Empty State -->
-        <div class="text-center py-5">
-            <div class="card border-0 bg-light">
-                <div class="card-body py-5">
-                    <h3 class="text-muted mb-3"><%= t('clients.index.empty_state.title') %></h3>
-                    <p class="text-muted mb-4"><%= t('clients.index.empty_state.description') %></p>
-                    <%= link_to t('clients.index.empty_state.add_first'), new_client_path, class: "btn btn-primary" %>
-                </div>
-            </div>
-        </div>
+        <%= render Shared::EmptyStateComponent.new(
+          title: t('clients.index.empty_state.title'),
+          description: t('clients.index.empty_state.description'),
+          action_text: t('clients.index.empty_state.add_first'),
+          action_url: new_client_path
+        ) %>
     <% end %>
 <% end %>
