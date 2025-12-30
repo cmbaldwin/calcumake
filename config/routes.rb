@@ -176,9 +176,6 @@ Rails.application.routes.draw do
   # ---------------------------------------------------------------------------
   # Public Pages & Marketing
   # ---------------------------------------------------------------------------
-  # Redirect /landing to root for SEO consolidation (avoid duplicate content)
-  # Google Search Console flagged this as "Duplicate, Google chose different canonical"
-  get "landing", to: redirect("/", status: 301), as: :landing
   get "dashboard", to: "pages#dashboard", as: :dashboard
   get "3d-print-pricing-calculator", to: "pages#pricing_calculator", as: :pricing_calculator
 
