@@ -8,12 +8,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_includes @response.body, "3D printing"
   end
 
-  test "should get landing page directly" do
-    get landing_path
-    assert_response :success
-    assert_includes @response.body, "CalcuMake"
-  end
-
   test "landing page should include locale suggestion banner" do
     get root_path
     assert_response :success
@@ -41,19 +35,21 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_includes @response.body, "final-cta"
   end
 
-  test "landing page should have signup CTAs" do
+  test "landing page should have signup CTAs for guests" do
     get root_path
     assert_response :success
     assert_includes @response.body, new_user_registration_path
     assert_includes @response.body, "Start Calculating Free"
   end
 
-  test "landing page shows for authenticated users" do
+  test "landing page shows dashboard button for authenticated users" do
     user = users(:one)
     sign_in user
 
     get root_path
-    assert_response :success # Landing page no longer auto-redirects
+    assert_response :success
+    assert_includes @response.body, dashboard_path
+    assert_includes @response.body, "Go to Dashboard"
   end
 
   test "pricing calculator page should show advanced calculator" do

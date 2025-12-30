@@ -155,3 +155,11 @@ Existing users can update their currency preferences and electricity costs in [P
 **Questions or feedback?** We'd love to hear how these improvements are working for you. Reach out to us at [GitHub Issues](https://github.com/anthropics/claude-code/issues) or through the in-app feedback form.
 
 _CalcuMake is built by makers, for makers. Every update is designed to save you time and improve your pricing accuracy._
+
+---
+
+## SEO Metadata
+
+**Meta Description:** CalcuMake December 2025 update: Intelligent currency selection with auto-filled regional electricity costs, automatic equipment price conversion, updated 2025 energy rates for 10 currencies, and comprehensive multi-currency testing.
+
+**Meta Keywords:** calcumake update, multi-currency support, currency conversion, electricity cost calculator, regional pricing, 3d print cost calculator, international pricing, energy rates 2025, jpy eur gbp usd conversion
