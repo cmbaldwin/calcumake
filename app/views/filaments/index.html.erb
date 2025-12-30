@@ -50,27 +50,20 @@
             <% end %>
         </div>
     <% elsif @q.present? %>
-        <!-- No Search Results -->
-        <div class="text-center py-5">
-            <div class="card border-0 bg-light">
-                <div class="card-body py-5">
-                    <h3 class="text-muted mb-3"><%= t('filaments.index.no_results.title') %></h3>
-                    <p class="text-muted mb-4"><%= t('filaments.index.no_results.description', query: @q) %></p>
-                    <%= link_to t('filaments.index.clear_search'), filaments_path, class: "btn btn-secondary" %>
-                </div>
-            </div>
-        </div>
+        <%= render Shared::EmptyStateComponent.new(
+          title: t('filaments.index.no_results.title'),
+          description: t('filaments.index.no_results.description', query: @q),
+          action_text: t('filaments.index.clear_search'),
+          action_url: filaments_path,
+          action_variant: "secondary"
+        ) %>
     <% else %>
-        <!-- Empty State -->
-        <div class="text-center py-5">
-            <div class="card border-0 bg-light">
-                <div class="card-body py-5">
-                    <h3 class="text-muted mb-3"><%= t('filaments.index.empty_state.title') %></h3>
-                    <p class="text-muted mb-4"><%= t('filaments.index.empty_state.description') %></p>
-                    <%= link_to t('filaments.index.empty_state.add_first'), new_filament_path, class: "btn btn-primary" %>
-                </div>
-            </div>
-        </div>
+        <%= render Shared::EmptyStateComponent.new(
+          title: t('filaments.index.empty_state.title'),
+          description: t('filaments.index.empty_state.description'),
+          action_text: t('filaments.index.empty_state.add_first'),
+          action_url: new_filament_path
+        ) %>
     <% end %>
 <% end %>
 
