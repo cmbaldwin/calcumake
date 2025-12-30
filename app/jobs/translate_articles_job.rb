@@ -58,12 +58,13 @@ class TranslateArticlesJob < ApplicationJob
         # Check if translation actually exists in the translations table
         # Mobility returns the fallback value, so we need to check the backend directly
         title_translation = article.title_backend.read(locale, fallback: false)
-
-        # For Action Text content, check if it exists in the target locale
+        
+        # For Action Text content, we need to check if locale-specific content exists
+        # Action Text stores content per locale, so just check if content exists in target locale
         content_exists = I18n.with_locale(locale) do
-          article.content.body.present? && article.content.body.to_s != article.content(:en).body.to_s
+          article.content.body.present?
         end
-
+        
         title_translation.blank? || !content_exists
       end
     end
