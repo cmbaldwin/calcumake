@@ -1439,6 +1439,7 @@ ar:
       preview_print_time: وقت الطباعة
       preview_total_cost: التكلفة الإجمالية
       preview_cost_breakdown: كهرباء + فتيل + عمل
+      cta_dashboard: الذهاب إلى لوحة التحكم
     problem:
       headline: هل تضيع وقتك في حساب أسعار الطباعة ثلاثية الأبعاد؟
       manual_errors: أخطاء الحساب اليدوي

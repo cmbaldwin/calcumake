@@ -1501,6 +1501,7 @@ es:
       preview_print_time: Tiempo de Impresión
       preview_total_cost: Costo Total
       preview_cost_breakdown: Electricidad + Filamento + Mano de Obra
+      cta_dashboard: Ir al Panel de Control
     problem:
       headline: "¿Está perdiendo tiempo calculando los precios de las impresiones
         3D?"

@@ -103,6 +103,6 @@ class InvoiceFormTest < ApplicationSystemTestCase
 
     # Should see validation errors (Rails HTML5 validation or server-side)
     # This test validates the form submission works correctly
-    assert_current_path new_print_pricing_invoice_path(@print_pricing), "Should stay on new page with errors"
+    assert_current_path new_print_pricing_invoice_path(@print_pricing)
   end
 end
