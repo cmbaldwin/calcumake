@@ -53,7 +53,7 @@ class Filament < ApplicationRecord
   }.freeze
 
   validates :name, presence: true, uniqueness: { scope: :user_id }
-  validates :material_type, presence: true, inclusion: { in: %w[PLA ABS PETG TPU ASA HIPS Nylon PC PVA Wood Metal Carbon] }
+  validates :material_type, presence: true, inclusion: { in: %w[PLA ABS PETG TPU ASA HIPS Nylon PC PVA Wood Metal Carbon Resin] }
   validates :diameter, presence: true, inclusion: { in: [ 1.75, 2.85, 3.0 ] }
   validates :spool_weight, :spool_price, numericality: { greater_than: 0 }, allow_blank: true
   validates :print_temperature_min, :print_temperature_max, :heated_bed_temperature,
