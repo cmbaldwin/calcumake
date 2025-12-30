@@ -176,7 +176,6 @@ Rails.application.routes.draw do
   # ---------------------------------------------------------------------------
   # Public Pages & Marketing
   # ---------------------------------------------------------------------------
-  get "landing", to: "pages#landing", as: :landing
   get "dashboard", to: "pages#dashboard", as: :dashboard
   get "3d-print-pricing-calculator", to: "pages#pricing_calculator", as: :pricing_calculator
 
