@@ -18,3 +18,12 @@ production:
     class: UpdatePrinterProfilesJob
     queue: default
     schedule: every Sunday at 3am
+
+  translate_articles:
+    class: TranslateArticlesJob
+    queue: default
+    schedule: every day at 2am
+
+  refresh_sitemap:
+    command: "system('bin/rails sitemap:refresh:no_ping')"
+    schedule: every day at 4am
