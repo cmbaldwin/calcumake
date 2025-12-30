@@ -14,6 +14,7 @@ class ThreeMfParser
     validate_file!
     extract_metadata
     extract_model_data
+    detect_material_technology
     @metadata
   rescue => e
     raise ParseError, "Failed to parse 3MF file: #{e.message}"
@@ -82,6 +83,8 @@ class ThreeMfParser
     extract_prusa_metadata(doc, namespaces)
     # Try to extract Cura-specific metadata
     extract_cura_metadata(doc, namespaces)
+    # Try to extract resin slicer metadata
+    extract_resin_metadata(doc, namespaces)
   end
 
   def find_main_model_entry(zip_file)
@@ -103,6 +106,25 @@ class ThreeMfParser
       "material_type",
       "layer_height",
       "nozzle_diameter"
+    ].each do |field|
+      extract_metadata_field(doc, namespaces, field)
+    end
+  end
+
+  def extract_resin_metadata(doc, namespaces)
+    # Resin slicers (Chitubox, Lychee Slicer, etc.) store resin-specific metadata
+    # Look for common resin metadata fields
+    [
+      "resin_volume",
+      "resin_type",
+      "resin_material",
+      "material_volume",
+      "volume_ml",
+      "exposure_time",
+      "layer_height",
+      "bottom_layers",
+      "lift_height",
+      "lift_speed"
     ].each do |field|
       extract_metadata_field(doc, namespaces, field)
     end
@@ -136,12 +158,25 @@ class ThreeMfParser
       @metadata[:print_time] = parse_time_value(value)
     when "total_filament_used", "filament_used", "filament_weight", "material_weight"
       @metadata[:filament_weight] = parse_weight_value(value)
-    when "material_type", "material"
-      @metadata[:material_type] = value.strip
+    when "resin_volume", "material_volume", "volume_ml"
+      @metadata[:resin_volume_ml] = parse_volume_value(value)
+    when "material_type", "material", "resin_type", "resin_material"
+      # Store as both material_type and resin_type for compatibility
+      material = value.strip
+      @metadata[:material_type] = material
+      @metadata[:resin_type] = material if name.downcase.include?("resin")
     when "layer_height"
       @metadata[:layer_height] = value.to_f
     when "nozzle_diameter"
       @metadata[:nozzle_diameter] = value.to_f
+    when "exposure_time"
+      @metadata[:exposure_time] = value.to_f
+    when "bottom_layers"
+      @metadata[:bottom_layers] = value.to_i
+    when "lift_height"
+      @metadata[:lift_height] = value.to_f
+    when "lift_speed"
+      @metadata[:lift_speed] = value.to_f
     else
       # Store unknown metadata for potential future use
       @metadata[name.to_sym] = value
@@ -200,6 +235,56 @@ class ThreeMfParser
     end
 
     nil
+  end
+
+  def parse_volume_value(value)
+    # Volume can be in various formats:
+    # - Milliliters: "50.5ml"
+    # - Liters: "0.05l"
+    # - Just number: "50.5"
+    return nil unless value.present?
+
+    value = value.to_s.strip
+
+    # Remove common units and convert to milliliters
+    if value =~ /(\d+\.?\d*)\s*l/i
+      return $1.to_f * 1000
+    elsif value =~ /(\d+\.?\d*)\s*ml/i
+      return $1.to_f
+    elsif value =~ /^(\d+\.?\d*)$/
+      # Assume milliliters if no unit
+      return $1.to_f
+    end
+
+    nil
+  end
+
+  def detect_material_technology
+    # Detect whether this is FDM or resin based on extracted metadata
+    # Resin indicators: resin_volume_ml, exposure_time, bottom_layers, lift_height
+    # FDM indicators: filament_weight, nozzle_diameter, extrusion_width
+
+    resin_indicators = [
+      @metadata[:resin_volume_ml].present?,
+      @metadata[:exposure_time].present?,
+      @metadata[:bottom_layers].present?,
+      @metadata[:lift_height].present?,
+      @metadata[:lift_speed].present?,
+      @metadata[:resin_type].present?
+    ].count(true)
+
+    fdm_indicators = [
+      @metadata[:filament_weight].present?,
+      @metadata[:nozzle_diameter].present?
+    ].count(true)
+
+    # If we have more resin indicators, it's a resin print
+    # Otherwise default to FDM
+    if resin_indicators > fdm_indicators && resin_indicators > 0
+      @metadata[:material_technology] = "resin"
+    else
+      @metadata[:material_technology] = "fdm"
+    end
   end
 
   def extract_model_data

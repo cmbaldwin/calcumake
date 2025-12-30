@@ -258,4 +258,127 @@ class ThreeMfParserTest < ActiveSupport::TestCase
     # Should not crash, just skip the invalid value
     assert_nil metadata[:filament_weight]
   end
+
+  # Resin-specific tests
+  test "should extract resin volume in milliliters" do
+    create_3mf_file("resin_volume" => "25.5ml")
+    parser = ThreeMfParser.new(@temp_file.path)
+    metadata = parser.parse
+
+    assert_equal 25.5, metadata[:resin_volume_ml]
+  end
+
+  test "should extract resin volume in liters" do
+    create_3mf_file("resin_volume" => "0.05l")
+    parser = ThreeMfParser.new(@temp_file.path)
+    metadata = parser.parse
+
+    assert_equal 50.0, metadata[:resin_volume_ml]
+  end
+
+  test "should extract resin volume without unit" do
+    create_3mf_file("material_volume" => "30.0")
+    parser = ThreeMfParser.new(@temp_file.path)
+    metadata = parser.parse
+
+    assert_equal 30.0, metadata[:resin_volume_ml]
+  end
+
+  test "should extract resin type" do
+    create_3mf_file("resin_type" => "ABS-Like")
+    parser = ThreeMfParser.new(@temp_file.path)
+    metadata = parser.parse
+
+    assert_equal "ABS-Like", metadata[:material_type]
+    assert_equal "ABS-Like", metadata[:resin_type]
+  end
+
+  test "should extract exposure time" do
+    create_3mf_file("exposure_time" => "2.5")
+    parser = ThreeMfParser.new(@temp_file.path)
+    metadata = parser.parse
+
+    assert_equal 2.5, metadata[:exposure_time]
+  end
+
+  test "should extract bottom layers" do
+    create_3mf_file("bottom_layers" => "5")
+    parser = ThreeMfParser.new(@temp_file.path)
+    metadata = parser.parse
+
+    assert_equal 5, metadata[:bottom_layers]
+  end
+
+  test "should extract lift height and speed" do
+    create_3mf_file(
+      "lift_height" => "5.0",
+      "lift_speed" => "60.0"
+    )
+    parser = ThreeMfParser.new(@temp_file.path)
+    metadata = parser.parse
+
+    assert_equal 5.0, metadata[:lift_height]
+    assert_equal 60.0, metadata[:lift_speed]
+  end
+
+  test "should detect FDM material technology from filament data" do
+    create_3mf_file(
+      "filament_weight" => "50.0g",
+      "nozzle_diameter" => "0.4"
+    )
+    parser = ThreeMfParser.new(@temp_file.path)
+    metadata = parser.parse
+
+    assert_equal "fdm", metadata[:material_technology]
+  end
+
+  test "should detect resin material technology from resin data" do
+    create_3mf_file(
+      "resin_volume" => "25.0ml",
+      "exposure_time" => "2.5",
+      "bottom_layers" => "5"
+    )
+    parser = ThreeMfParser.new(@temp_file.path)
+    metadata = parser.parse
+
+    assert_equal "resin", metadata[:material_technology]
+  end
+
+  test "should default to FDM when no clear indicators" do
+    create_3mf_file("layer_height" => "0.2")
+    parser = ThreeMfParser.new(@temp_file.path)
+    metadata = parser.parse
+
+    assert_equal "fdm", metadata[:material_technology]
+  end
+
+  test "should extract multiple resin metadata fields" do
+    create_3mf_file(
+      "print_time" => "7200",
+      "resin_volume" => "35.5ml",
+      "resin_type" => "Tough",
+      "exposure_time" => "3.0",
+      "bottom_layers" => "6",
+      "layer_height" => "0.05"
+    )
+    parser = ThreeMfParser.new(@temp_file.path)
+    metadata = parser.parse
+
+    assert_equal 120.0, metadata[:print_time]
+    assert_equal 35.5, metadata[:resin_volume_ml]
+    assert_equal "Tough", metadata[:resin_type]
+    assert_equal 3.0, metadata[:exposure_time]
+    assert_equal 6, metadata[:bottom_layers]
+    assert_equal 0.05, metadata[:layer_height]
+    assert_equal "resin", metadata[:material_technology]
+  end
+
+  test "should handle malformed volume values" do
+    create_3mf_file("resin_volume" => "not_a_number")
+    parser = ThreeMfParser.new(@temp_file.path)
+    metadata = parser.parse
+
+    # Should not crash, just skip the invalid value
+    assert_nil metadata[:resin_volume_ml]
+  end
 end

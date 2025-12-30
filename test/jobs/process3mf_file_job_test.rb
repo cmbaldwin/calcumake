@@ -294,4 +294,166 @@ class Process3mfFileJobTest < ActiveSupport::TestCase
     empty_file.close
     empty_file.unlink
   end
+
+  # Resin-specific tests
+  test "should detect and apply resin material technology" do
+    # Create a resin for the user
+    resin = @user.resins.create!(
+      name: "Test Resin",
+      resin_type: "Standard",
+      bottle_price: 30.0,
+      bottle_volume_ml: 1000.0
+    )
+
+    # Create 3MF with resin metadata
+    resin_file = create_3mf_file(
+      "print_time" => "7200", # 2 hours
+      "resin_volume" => "35.5ml",
+      "resin_type" => "Standard",
+      "exposure_time" => "2.5",
+      "bottom_layers" => "5"
+    )
+
+    @print_pricing.three_mf_file.purge
+    @print_pricing.three_mf_file.attach(
+      io: File.open(resin_file.path),
+      filename: "resin_test.3mf",
+      content_type: "application/x-3mf"
+    )
+
+    perform_enqueued_jobs do
+      Process3mfFileJob.perform_later(@print_pricing.id)
+    end
+
+    @print_pricing.reload
+    plate = @print_pricing.plates.first
+
+    # Check material technology was set to resin
+    assert_equal "resin", plate.material_technology
+    # Check print time was applied
+    assert_equal 2, plate.printing_time_hours
+    assert_equal 0, plate.printing_time_minutes
+
+    resin_file.close
+    resin_file.unlink
+  end
+
+  test "should extract and apply resin volume from 3MF file" do
+    # Create a resin for the user
+    resin = @user.resins.create!(
+      name: "Test Resin",
+      resin_type: "Standard",
+      bottle_price: 30.0,
+      bottle_volume_ml: 1000.0
+    )
+
+    # Create 3MF with resin metadata
+    resin_file = create_3mf_file(
+      "print_time" => "3600",
+      "resin_volume" => "25.5ml",
+      "resin_type" => "Standard",
+      "exposure_time" => "2.0"
+    )
+
+    @print_pricing.three_mf_file.purge
+    @print_pricing.three_mf_file.attach(
+      io: File.open(resin_file.path),
+      filename: "resin_volume_test.3mf",
+      content_type: "application/x-3mf"
+    )
+
+    perform_enqueued_jobs do
+      Process3mfFileJob.perform_later(@print_pricing.id)
+    end
+
+    @print_pricing.reload
+    plate_resin = @print_pricing.plates.first.plate_resins.first
+
+    assert_equal 25.5, plate_resin.resin_volume_ml
+    assert_equal resin.id, plate_resin.resin_id
+
+    resin_file.close
+    resin_file.unlink
+  end
+
+  test "should find matching resin by type" do
+    # Create an ABS-Like resin
+    abs_resin = @user.resins.create!(
+      name: "Tough Resin",
+      resin_type: "ABS-Like",
+      bottle_price: 35.0,
+      bottle_volume_ml: 1000.0
+    )
+
+    # Create 3MF with ABS-Like resin
+    resin_file = create_3mf_file(
+      "print_time" => "3600",
+      "resin_volume" => "30.0ml",
+      "resin_type" => "ABS-Like",
+      "exposure_time" => "2.5"
+    )
+
+    @print_pricing.three_mf_file.purge
+    @print_pricing.three_mf_file.attach(
+      io: File.open(resin_file.path),
+      filename: "abs_resin_test.3mf",
+      content_type: "application/x-3mf"
+    )
+
+    perform_enqueued_jobs do
+      Process3mfFileJob.perform_later(@print_pricing.id)
+    end
+
+    @print_pricing.reload
+    plate_resin = @print_pricing.plates.first.plate_resins.first
+
+    assert_equal abs_resin.id, plate_resin.resin_id
+    assert_equal 30.0, plate_resin.resin_volume_ml
+
+    resin_file.close
+    resin_file.unlink
+  end
+
+  test "should handle missing resin gracefully" do
+    # Create 3MF with resin type that doesn't exist
+    resin_file = create_3mf_file(
+      "print_time" => "3600",
+      "resin_volume" => "25.0ml",
+      "resin_type" => "Flexible",
+      "exposure_time" => "2.0"
+    )
+
+    @print_pricing.three_mf_file.purge
+    @print_pricing.three_mf_file.attach(
+      io: File.open(resin_file.path),
+      filename: "missing_resin_test.3mf",
+      content_type: "application/x-3mf"
+    )
+
+    perform_enqueued_jobs do
+      Process3mfFileJob.perform_later(@print_pricing.id)
+    end
+
+    @print_pricing.reload
+    # Should still complete successfully
+    assert_equal "completed", @print_pricing.three_mf_import_status
+    # Material technology should be set to resin
+    assert_equal "resin", @print_pricing.plates.first.material_technology
+
+    resin_file.close
+    resin_file.unlink
+  end
+
+  test "should default to FDM for filament-based 3MF files" do
+    # The existing setup already has filament data
+    perform_enqueued_jobs do
+      Process3mfFileJob.perform_later(@print_pricing.id)
+    end
+
+    @print_pricing.reload
+    plate = @print_pricing.plates.first
+
+    # Should default to FDM material technology
+    assert_equal "fdm", plate.material_technology
+  end
 end

@@ -2,7 +2,11 @@
 
 ## Overview
 
-The 3MF Import feature allows users to upload 3MF files (3D Manufacturing Format) from slicer software like PrusaSlicer, Cura, or other compatible tools. The system automatically extracts print time, filament weight, and material information from these files to populate PrintPricing records.
+The 3MF Import feature allows users to upload 3MF files (3D Manufacturing Format) from slicer software like PrusaSlicer, Cura, Chitubox, Lychee Slicer, or other compatible tools. The system automatically extracts print time, material data (filament weight or resin volume), and material type from these files to populate PrintPricing records.
+
+**Supports both FDM and Resin printing technologies:**
+- **FDM (Filament)**: Extracts filament weight, nozzle diameter, material type
+- **Resin**: Extracts resin volume, exposure time, bottom layers, lift height/speed
 
 ## Architecture
 
@@ -39,12 +43,14 @@ after_commit callback triggers Process3mfFileJob
    ↓
 Job downloads file to temp location
    ↓
-ThreeMfParser extracts metadata
+ThreeMfParser extracts metadata & detects material technology (FDM/Resin)
    ↓
 Job updates Plate records with:
+   - material_technology (fdm or resin)
    - printing_time_hours
    - printing_time_minutes
-   - filament_weight (via PlateFilament)
+   - For FDM: filament_weight (via PlateFilament)
+   - For Resin: resin_volume_ml (via PlateResin)
    ↓
 Status updated to 'completed' or 'failed'
 ```
@@ -53,24 +59,40 @@ Status updated to 'completed' or 'failed'
 
 The parser attempts to extract the following from 3MF files:
 
-### Print Settings
+### Common Print Settings
 - **Print Time**: Extracted from various formats (seconds, HH:MM:SS, human readable)
+- **Layer Height**: Layer thickness in millimeters
+- **Material Technology**: Auto-detected as FDM or Resin based on metadata indicators
+
+### FDM-Specific Fields
 - **Filament Weight**: Parsed from grams, kilograms, or raw numbers
 - **Material Type**: PLA, ABS, PETG, TPU, etc.
+- **Nozzle Diameter**: Extruder nozzle size
+
+### Resin-Specific Fields
+- **Resin Volume**: Parsed from milliliters, liters, or raw numbers
+- **Resin Type**: Standard, ABS-Like, Flexible, Tough, etc.
+- **Exposure Time**: Layer exposure time in seconds
+- **Bottom Layers**: Number of base/bottom layers
+- **Lift Height**: Z-axis lift distance after layer exposure
+- **Lift Speed**: Z-axis lift speed in mm/min
 
 ### Slicer-Specific Fields
 
-**PrusaSlicer**:
-- `estimated_printing_time`
-- `total_filament_used`
-- `material_type`
+**FDM Slicers (PrusaSlicer, Cura)**:
+- `estimated_printing_time`, `print_time`, `time`
+- `total_filament_used`, `filament_used`, `filament_weight`, `material_weight`
+- `material_type`, `material`
 - `layer_height`
 - `nozzle_diameter`
 
-**Cura**:
-- `time`
-- `material`
-- `material_weight`
+**Resin Slicers (Chitubox, Lychee Slicer)**:
+- `resin_volume`, `material_volume`, `volume_ml`
+- `resin_type`, `resin_material`
+- `exposure_time`
+- `bottom_layers`
+- `lift_height`
+- `lift_speed`
 
 ### Mesh Data
 - Vertex count

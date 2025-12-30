@@ -60,6 +60,10 @@ class Process3mfFileJob < ApplicationJob
     # Create or update the first plate with extracted data
     plate = print_pricing.plates.first || print_pricing.plates.build
 
+    # Set material technology based on detected type
+    material_tech = metadata[:material_technology] || "fdm"
+    plate.material_technology = material_tech
+
     # Apply print time if available
     if metadata[:print_time].present?
       total_minutes = metadata[:print_time].to_f
@@ -70,8 +74,10 @@ class Process3mfFileJob < ApplicationJob
     # Save the plate first to ensure it exists
     plate.save! if plate.new_record?
 
-    # Apply filament weight if available
-    if metadata[:filament_weight].present?
+    # Apply material data based on technology type
+    if material_tech == "resin" && metadata[:resin_volume_ml].present?
+      apply_resin_data(plate, metadata)
+    elsif metadata[:filament_weight].present?
       apply_filament_data(plate, metadata)
     end
 
@@ -108,6 +114,35 @@ class Process3mfFileJob < ApplicationJob
     user.filaments.find_by("material_type ILIKE ?", "%#{material_type}%") ||
     user.filaments.where(material_type: material_type.upcase).first ||
     user.filaments.first # Fall back to first available filament
+  end
+
+  def apply_resin_data(plate, metadata)
+    volume = metadata[:resin_volume_ml].to_f
+    resin_type = metadata[:resin_type] || metadata[:material_type] || "Standard"
+
+    # Try to find an existing resin of this type for the user
+    resin = find_or_suggest_resin(plate.user, resin_type)
+
+    if resin
+      # Create or update the plate resin
+      plate_resin = plate.plate_resins.first || plate.plate_resins.build
+      plate_resin.resin = resin
+      plate_resin.resin_volume_ml = volume
+      plate_resin.save!
+    else
+      # If no matching resin found, log a warning
+      Rails.logger.warn("No matching resin found for resin type: #{resin_type}")
+    end
+  end
+
+  def find_or_suggest_resin(user, resin_type)
+    # Try to find a resin matching the resin type
+    # Check for exact match first
+    user.resins.find_by("resin_type ILIKE ?", "%#{resin_type}%") ||
+    user.resins.where(resin_type: resin_type).first ||
+    # Try to match on name
+    user.resins.find_by("name ILIKE ?", "%#{resin_type}%") ||
+    user.resins.first # Fall back to first available resin
   end
 
   def broadcast_completion(print_pricing)
