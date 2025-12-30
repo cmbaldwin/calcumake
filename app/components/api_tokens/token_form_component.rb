@@ -8,7 +8,7 @@ module ApiTokens
 
     def expiration_options
       ApiToken::EXPIRATION_OPTIONS.keys.map do |key|
-        [t("api_tokens.expiration.#{key}"), key]
+        [ t("api_tokens.expiration.#{key}"), key ]
       end
     end
   end

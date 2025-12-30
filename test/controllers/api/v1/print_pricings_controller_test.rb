@@ -178,14 +178,14 @@ module Api
           print_pricing: {
             job_name: "Test",
             printer_id: @printer.id,
-            plates_attributes: [{
+            plates_attributes: [ {
               printing_time_hours: 1,
               printing_time_minutes: 0,
               material_technology: "fdm",
               plate_filaments_attributes: [
                 { filament_id: @filament.id, filament_weight: 25.0 }
               ]
-            }]
+            } ]
           }
         }, headers: auth_headers
 
@@ -216,14 +216,14 @@ module Api
           print_pricing: {
             job_name: "My Job",
             printer_id: @printer.id,
-            plates_attributes: [{
+            plates_attributes: [ {
               printing_time_hours: 1,
               printing_time_minutes: 0,
               material_technology: "fdm",
               plate_filaments_attributes: [
                 { filament_id: @filament.id, filament_weight: 25.0 }
               ]
-            }]
+            } ]
           }
         }, headers: auth_headers
 
