@@ -7,11 +7,12 @@ SitemapGenerator::Sitemap.create do
 
   # Public tools - high value for SEO and lead generation
   add pricing_calculator_path, priority: 1.0, changefreq: "weekly"
-  add landing_path, priority: 1.0, changefreq: "weekly"
+  # Note: /landing is NOT included - root_path already points to the landing page
+  # Including both creates duplicate content issues in Google Search Console
   add commerce_disclosure_path, priority: 0.6, changefreq: "yearly"
 
-  add new_user_session_path, priority: 0.8, changefreq: "monthly"
-  add new_user_registration_path, priority: 0.8, changefreq: "monthly"
+  # Note: Auth pages (sign_in, sign_up) are NOT included - they're blocked by robots.txt
+  # Including blocked pages in sitemap sends contradictory signals to crawlers
 
   add support_path, priority: 0.9, changefreq: "monthly"
   add privacy_policy_path, priority: 0.7, changefreq: "yearly"
