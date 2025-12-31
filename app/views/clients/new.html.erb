@@ -1,8 +1,7 @@
-<!-- Page Header -->
-<div class="text-center mb-5">
-    <h3 class="display-5 fw-bold text-primary mb-3"><%= t('clients.new.title') %></h3>
-    <p class="lead text-muted"><%= t('clients.new.subtitle') %></p>
-</div>
+<%= render Shared::PageHeaderComponent.new(
+  title: t('clients.new.title'),
+  subtitle: t('clients.new.subtitle')
+) %>
 
 <div class="row justify-content-center">
     <div class="col-lg-8">
