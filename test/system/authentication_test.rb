@@ -4,9 +4,19 @@ class AuthenticationTest < ApplicationSystemTestCase
   test "user can sign up successfully" do
     visit new_user_registration_path
 
-    fill_in "Email", with: "newuser@example.com"
-    fill_in "Password", with: "password123"
-    fill_in "Password confirmation", with: "password123"
+    # Fill in form fields with explicit waits and ensure form is ready
+    fill_in "user_email", with: "newuser@example.com"
+    fill_in "user_password", with: "password123"
+
+    # Ensure password is filled before moving to confirmation
+    password_field = find_field("user_password")
+    assert_equal "password123", password_field.value
+
+    fill_in "user_password_confirmation", with: "password123"
+
+    # Ensure confirmation is filled before submitting
+    confirmation_field = find_field("user_password_confirmation")
+    assert_equal "password123", confirmation_field.value
 
     click_button "Sign up"
 
@@ -27,14 +37,21 @@ class AuthenticationTest < ApplicationSystemTestCase
 
     visit new_user_session_path
 
-    fill_in "Email", with: "testuser@example.com"
-    fill_in "Password", with: "password123"
+    # Fill in fields and verify they're set before submitting
+    fill_in "user_email", with: "testuser@example.com"
+    email_field = find_field("user_email")
+    assert_equal "testuser@example.com", email_field.value
+
+    fill_in "user_password", with: "password123"
+    password_field = find_field("user_password")
+    assert_equal "password123", password_field.value
 
     click_button "Sign in"  # Changed from "Log in"
 
     # After sign in, redirects to dashboard (print_pricings#index)
     assert_current_path print_pricings_path
-    assert_text "Sign out"  # Verify user is signed in
+    # Verify user is signed in - check for dashboard content instead of nav link
+    assert_text I18n.t("print_pricing.index.title")
   end
 
   test "user can sign out successfully" do
@@ -50,16 +67,24 @@ class AuthenticationTest < ApplicationSystemTestCase
     # Sign in through the UI
     sign_in user
 
-    # Verify user is signed in by checking navbar content
-    assert_text "Sign out"
+    # Verify user is signed in by checking we're on the dashboard
+    assert_current_path print_pricings_path
 
-    # Click sign out
-    click_link "Sign out"
+    # Find and click the sign out link using translation key
+    # The link might be in a dropdown, so we use accept_confirm to handle any JS confirmations
+    sign_out_link = find_link(I18n.t("nav.sign_out"), visible: :all)
+    sign_out_link.click
 
-    # After sign out, should be redirected to sign in page or public page
-    # Check that we're no longer signed in by looking for sign in link
-    assert_text "Sign in"
-    assert_no_text "Sign out"
+    # Wait for the sign out to complete by checking we're no longer on the dashboard
+    assert_no_current_path print_pricings_path, wait: 5
+
+    # Verify we're redirected to public page or sign-in
+    assert [ root_path, new_user_session_path ].include?(current_path),
+           "Expected to be redirected to root or sign-in, but was on #{current_path}"
+
+    # Verify we can't access protected pages - should redirect to sign-in
+    visit print_pricings_path
+    assert_current_path new_user_session_path
   end
 
   test "user cannot access protected pages when not signed in" do
