@@ -1,10 +1,9 @@
 <% content_for :body_class, "profile-page" %>
 
-<!-- Header -->
-<div class="text-center mb-4">
-    <h1 class="display-5 fw-bold text-primary mb-2"><%= t('profile.show.title') %></h1>
-    <p class="lead text-muted"><%= t('profile.show.subtitle') %></p>
-</div>
+<%= render Shared::PageHeaderComponent.new(
+  title: t('profile.show.title'),
+  subtitle: t('profile.show.subtitle')
+) %>
 
 <!-- Usage Dashboard Widget -->
 <%= render 'shared/usage_dashboard_widget' %>

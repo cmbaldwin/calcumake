@@ -1,0 +1,9 @@
+<div class="<%= wrapper_classes %>">
+  <h3 class="<%= title_classes %>"><%= title %></h3>
+  <% if has_subtitle? %>
+    <p class="<%= subtitle_classes %>"><%= subtitle %></p>
+  <% end %>
+  <% if has_action? %>
+    <%= link_to action_text, action_url, class: action_button_class %>
+  <% end %>
+</div>
