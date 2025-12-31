@@ -290,6 +290,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_25_003559) do
     t.decimal "default_vat_percentage", precision: 5, scale: 2, default: "20.0"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.boolean "info_popups_enabled", default: true, null: false
     t.string "locale"
     t.integer "next_invoice_number"
     t.string "plan", default: "free", null: false
