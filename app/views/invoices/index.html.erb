@@ -111,23 +111,17 @@
             <% end %>
         </div>
     <% else %>
-        <div class="text-center py-5">
-            <div class="card border-0 bg-light">
-                <div class="card-body py-5">
-                    <% if params[:q].present? %>
-                        <h3 class="text-muted mb-3"><%= t('invoices.index.no_results.title') %></h3>
-                        <p class="text-muted mb-4">
-                            <%= t('invoices.index.no_results.description', query: params.dig(:q, :print_pricing_job_name_cont)) %>
-                        </p>
-                    <% else %>
-                        <h3 class="text-muted mb-3"><%= t('invoices.index.empty_state.title') %></h3>
-                        <p class="text-muted mb-4">
-                            <%= t('invoices.index.empty_state.description') %>
-                        </p>
-                    <% end %>
-                </div>
-            </div>
-        </div>
+        <% if params[:q].present? %>
+            <%= render Shared::EmptyStateComponent.new(
+              title: t('invoices.index.no_results.title'),
+              description: t('invoices.index.no_results.description', query: params.dig(:q, :print_pricing_job_name_cont))
+            ) %>
+        <% else %>
+            <%= render Shared::EmptyStateComponent.new(
+              title: t('invoices.index.empty_state.title'),
+              description: t('invoices.index.empty_state.description')
+            ) %>
+        <% end %>
     <% end %>
 
 <% if @nested_view %>
