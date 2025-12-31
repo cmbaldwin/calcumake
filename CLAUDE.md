@@ -21,6 +21,8 @@
 - `bin/check-translations` - Scan code for missing translation keys and hardcoded strings
 - `bin/rails sitemap:refresh:no_ping` - Regenerate sitemap with current articles and routes
 
+**Note:** In production, both `TranslateArticlesJob` (2am UTC) and `refresh_sitemap` (4am UTC) run automatically via SolidQueue scheduled jobs.
+
 ## Git & PR Merge Policy
 
 **IMPORTANT**: When merging PRs, use `gh pr merge <number> --merge` to preserve commit history and keep branch references. Do NOT use `--squash` or `--delete-branch` unless explicitly requested. This maintains valuable context for understanding how features were built and makes it easier to reference past work.
@@ -992,6 +994,16 @@ When additional context is needed for historical decisions or completed features
 _Reference documentation only when specific context is required._
 
 ## Recent Updates
+
+### 2025-12-30: Production Job Fixes ✅
+
+- **Fixed `bin/check-translations`** - Resolved NoMethodError by moving method definition before usage
+- **Fixed sitemap generation permissions** - Added `public` directory to `chown` in Dockerfile so `rails` user can write sitemap files
+- **Verified scheduled jobs** - Both jobs now working correctly in production:
+  - `TranslateArticlesJob` - Runs daily at 2:00 AM UTC (auto-translates blog articles)
+  - `refresh_sitemap` - Runs daily at 4:00 AM UTC (regenerates sitemap.xml)
+- **Sitemap status** - Successfully generating with all 4 published articles across 7 locales (41 total URLs)
+- **Article translations** - 2 articles need translations (will be handled by next scheduled run)
 
 ### 2025-01-27: RESTful API Launch (PR #82) ✅
 

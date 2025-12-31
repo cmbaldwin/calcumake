@@ -128,10 +128,13 @@ bin/rubocop              # Style checking (auto-fix: -A)
 bin/brakeman             # Security scanning
 
 # Translations
-bin/sync-translations         # Auto-translate missing keys
-bin/translate-locales        # Full translation via API
-bin/check-translations       # Find hardcoded strings
-bin/merge-locale-yml         # Semantic YAML merge for conflicts
+bin/sync-translations            # Auto-translate missing keys
+bin/translate-locales           # Full translation via API
+bin/check-translations          # Find hardcoded strings
+bin/merge-locale-yml            # Semantic YAML merge for conflicts
+
+# Sitemap & SEO
+bin/rails sitemap:refresh:no_ping   # Regenerate sitemap (auto-runs daily at 4am UTC)
 
 # Database
 bin/rails db:migrate          # Run pending migrations
