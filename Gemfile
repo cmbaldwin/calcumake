@@ -3,7 +3,7 @@ source "https://rubygems.org"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 # ⚠️  IMPORTANT: When updating to Rails 8.1.2+, remove the minitest pin below! ⚠️
 # Rails 8.1.2 will include minitest 6.0 compatibility (PR #56207 merged Dec 19, 2025)
-gem "rails", "~> 8.1.1"
+gem "rails", "~> 8.1.2"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use postgresql as the database for Active Record
