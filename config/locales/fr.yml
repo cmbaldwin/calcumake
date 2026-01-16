@@ -1713,15 +1713,6 @@ fr:
     invalid_plan: Plan d'abonnement non valide
     no_subscription: Aucun abonnement actif trouvé
     cancel_scheduled: Annulation de l'abonnement planifiée
-    features:
-      calculations: Calculs d'impression
-      printers: Imprimantes
-      filaments: Filaments
-      invoices: Factures
-      unlimited_calculations: Calculs d'impression illimités
-      unlimited_printers: Imprimantes illimitées
-      unlimited_filaments: Filaments illimités
-      unlimited_invoices: Factures illimitées
     upgrade_now: Mettre à niveau maintenant
     your_plan: Votre Abonnement
     upgrade_to_plan: Passer à l'abonnement %{plan}
@@ -1806,6 +1797,15 @@ fr:
       reset_answer: Les limites d'utilisation ne sont pas réinitialisées mensuellement.
         Elles représentent le nombre total d'éléments que vous pouvez avoir dans votre
         compte en même temps. Supprimez des éléments pour libérer de l'espace.
+    features:
+      calculations: "%{count} Calculs d'impression par mois"
+      unlimited_calculations: Calculs d'impression illimités
+      printers: "%{count} Imprimantes au total"
+      unlimited_printers: Imprimantes illimitées
+      filaments: "%{count} Filaments par mois"
+      unlimited_filaments: Filaments illimités
+      invoices: "%{count} Factures par mois"
+      unlimited_invoices: Factures illimitées
   gdpr:
     cookie_consent:
       title: Consentement aux cookies

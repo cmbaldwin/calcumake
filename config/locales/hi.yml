@@ -1696,15 +1696,6 @@ hi:
     invalid_plan: अमान्य सदस्यता योजना
     no_subscription: कोई सक्रिय सदस्यता नहीं मिली
     cancel_scheduled: सदस्यता रद्द करने का समय निर्धारित है
-    features:
-      calculations: प्रिंट गणनाएँ
-      printers: प्रिंटर
-      filaments: फिलामेंट्स
-      invoices: चालान
-      unlimited_calculations: असीमित प्रिंट गणनाएँ
-      unlimited_printers: असीमित प्रिंटर
-      unlimited_filaments: असीमित फिलामेंट्स
-      unlimited_invoices: असीमित चालान
     upgrade_now: अभी अपग्रेड करें
     your_plan: आपकी योजना
     upgrade_to_plan: "%{plan} में अपग्रेड करें"
@@ -1786,6 +1777,15 @@ hi:
       reset_answer: उपयोग सीमाएं मासिक रूप से रीसेट नहीं होती हैं। वे आपके खाते में
         एक बार में हो सकने वाले आइटम की कुल संख्या का प्रतिनिधित्व करते हैं। जगह खाली
         करने के लिए आइटम हटाएं।
+    features:
+      calculations: प्रति माह %{count} प्रिंट गणनाएँ
+      unlimited_calculations: असीमित प्रिंट गणनाएँ
+      printers: कुल %{count} प्रिंटर
+      unlimited_printers: असीमित प्रिंटर
+      filaments: प्रति माह %{count} फिलामेंट्स
+      unlimited_filaments: असीमित फिलामेंट्स
+      invoices: प्रति माह %{count} इनवॉइस
+      unlimited_invoices: असीमित इनवॉइस
   gdpr:
     cookie_consent:
       title: कुकी सहमति
