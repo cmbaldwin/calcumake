@@ -218,13 +218,28 @@ def translate_batch(keys_hash, target_language, client, cache_file)
     exit 1
   end
 
-  # Merge with cached translations
-  all_translations = cached_translations.merge(translations)
+  # Validate translations BEFORE caching
+  validated_translations = {}
+  translations.each do |key, value|
+    original = keys_to_translate[key]
+    if validate_translation(key, original, value)
+      validated_translations[key] = value
+    else
+      puts "   ❌ CRITICAL: Translation validation failed for key: #{key}"
+      puts "      Original: #{original}"
+      puts "      Translated: #{value}"
+      puts "   Refusing to cache invalid translation. Please check API response."
+      exit 1
+    end
+  end
 
-  # Update cache
+  # Merge with cached translations
+  all_translations = cached_translations.merge(validated_translations)
+
+  # Update cache with validated translations only
   File.write(cache_file, JSON.pretty_generate(all_translations))
 
-  puts "   ✅ Translated #{translations.size} keys (#{cached_translations.size} from cache)"
+  puts "   ✅ Translated #{validated_translations.size} keys (#{cached_translations.size} from cache)"
   all_translations
 end
 
@@ -297,6 +312,18 @@ begin
       puts "✅ API key valid, proceeding with translations"
     else
       puts "💰 Credits: #{remaining_credits.round(4)} remaining (#{total_credits.round(4)} total, #{used_credits.round(4)} used)"
+
+      # Check for negative credits (account in debt)
+      if remaining_credits < -0.01  # Allow tiny floating point errors
+        puts "❌ ERROR: Account has NEGATIVE credits (#{remaining_credits.round(4)})!"
+        puts "   Your account was in debt and may have generated invalid translations."
+        puts "   Please add credits to your OpenRouter account to resume service."
+        puts "   Visit: https://openrouter.ai/credits"
+        puts ""
+        puts "⚠️  IMPORTANT: Clear your translation cache after adding credits:"
+        puts "   rm -rf tmp/translation_cache/*.json"
+        exit 1
+      end
 
       if remaining_credits <= 0
         puts "❌ ERROR: No credits remaining!"
@@ -391,19 +418,10 @@ TARGET_LOCALES.each do |locale|
 
     next unless translations
 
-    # Apply translations with validation
+    # Apply translations (already validated in translate_batch)
     translations.each do |key, value|
-      if validate_translation(key, batch_hash[key], value)
-        set_nested_key(target_data[locale] ||= {}, key, value)
-        total_translations += 1
-      else
-        # Validation failed - this is a critical error
-        puts "      ❌ CRITICAL: Translation validation failed for key: #{key}"
-        puts "         Original: #{batch_hash[key]}"
-        puts "         Translated: #{value}"
-        puts "      This is unacceptable - translations must preserve variables correctly"
-        exit 1
-      end
+      set_nested_key(target_data[locale] ||= {}, key, value)
+      total_translations += 1
     end
 
     # Small delay between batches to avoid rate limiting

@@ -23,13 +23,13 @@ en:
     plans:
       subtitle: Choose the plan that works best for you
     features:
-      calculations: Print Calculations
+      calculations: "%{count} Print Calculations per month"
       unlimited_calculations: Unlimited Print Calculations
-      printers: Printers
+      printers: "%{count} Printers total"
       unlimited_printers: Unlimited Printers
-      filaments: Filaments
+      filaments: "%{count} Filaments per month"
       unlimited_filaments: Unlimited Filaments
-      invoices: Invoices
+      invoices: "%{count} Invoices per month"
       unlimited_invoices: Unlimited Invoices
     upgrade_now: Upgrade Now
     most_popular: Most Popular

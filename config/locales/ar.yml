@@ -659,8 +659,8 @@ ar:
       phone_placeholder: "+1 (555) 123-4567"
       address: العنوان
       address_placeholder: |-
-        123 Main Street
-        City, State 12345
+        123 شارع رئيسي
+        المدينة، الولاية 12345
       tax_id: الرقم الضريبي / رقم ضريبة القيمة المضافة
       tax_id_placeholder: 12-3456789
       notes: ملاحظات
@@ -1616,15 +1616,6 @@ ar:
     invalid_plan: خطة اشتراك غير صالحة
     no_subscription: لم يتم العثور على اشتراك نشط
     cancel_scheduled: تم جدولة إلغاء الاشتراك
-    features:
-      calculations: حسابات الطباعة
-      printers: الطابعات
-      filaments: خيوط الطباعة (Filaments)
-      invoices: الفواتير
-      unlimited_calculations: حسابات طباعة غير محدودة
-      unlimited_printers: طابعات غير محدودة
-      unlimited_filaments: خيوط طباعة غير محدودة
-      unlimited_invoices: فواتير غير محدودة
     upgrade_now: ترقية الآن
     your_plan: خطتك
     upgrade_to_plan: الترقية إلى %{plan}
@@ -1703,6 +1694,15 @@ ar:
       reset_answer: لا يتم إعادة تعيين حدود الاستخدام شهريًا. إنها تمثل العدد الإجمالي
         للعناصر التي يمكنك الاحتفاظ بها في حسابك في وقت واحد. احذف العناصر لتحرير
         مساحة.
+    features:
+      calculations: "%{count} عملية حساب طباعة شهريًا"
+      unlimited_calculations: عدد غير محدود من عمليات حساب الطباعة
+      printers: "%{count} طابعة إجمالاً"
+      unlimited_printers: عدد غير محدود من الطابعات
+      filaments: "%{count} خيوط طباعة شهريًا"
+      unlimited_filaments: عدد غير محدود من خيوط الطباعة
+      invoices: "%{count} فاتورة شهريًا"
+      unlimited_invoices: عدد غير محدود من الفواتير
   gdpr:
     cookie_consent:
       title: الموافقة على استخدام ملفات تعريف الارتباط

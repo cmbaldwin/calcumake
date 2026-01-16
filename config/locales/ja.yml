@@ -238,7 +238,7 @@ ja:
     invoice: 請求書
     invoice_number: 請求書番号
     invoice_date: 請求書発行日
-    from: From
+    from: から
     3d_printing_services: 3Dプリントサービス
     job_details: ジョブ詳細
     filament_type: フィラメントの種類
@@ -1453,15 +1453,6 @@ ja:
     invalid_plan: 無効なサブスクリプションプラン
     no_subscription: 有効なサブスクリプションが見つかりません
     cancel_scheduled: サブスクリプションのキャンセルがスケジュールされました
-    features:
-      calculations: プリント計算
-      printers: プリンター
-      filaments: フィラメント
-      invoices: 請求書
-      unlimited_calculations: 無制限のプリント計算
-      unlimited_printers: 無制限のプリンター
-      unlimited_filaments: 無制限のフィラメント
-      unlimited_invoices: 無制限の請求書
     upgrade_now: 今すぐアップグレード
     your_plan: 現在のプラン
     upgrade_to_plan: "%{plan}にアップグレード"
@@ -1529,6 +1520,15 @@ ja:
       data_answer: データが削除されることはありません。 無料プランの制限を超えた場合は、アップグレードするか、新しいアイテムを追加するために一部のアイテムを削除する必要があります。
       reset_question: 使用制限はいつリセットされますか？
       reset_answer: 使用制限は毎月リセットされません。 それらは、アカウントに一度に持つことができるアイテムの総数を表します。 スペースを空けるには、アイテムを削除してください。
+    features:
+      calculations: 月あたり%{count}回のプリント計算
+      unlimited_calculations: 無制限のプリント計算
+      printers: 合計%{count}台のプリンター
+      unlimited_printers: 無制限のプリンター
+      filaments: 月あたり%{count}個のフィラメント
+      unlimited_filaments: 無制限のフィラメント
+      invoices: 月あたり%{count}件の請求書
+      unlimited_invoices: 無制限の請求書
   gdpr:
     cookie_consent:
       title: Cookieの同意
