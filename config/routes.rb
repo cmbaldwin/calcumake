@@ -33,6 +33,14 @@ Rails.application.routes.draw do
   get "about", to: "pages#about", as: :about
   get "markdown", to: "pages#markdown_index", as: :markdown_index
 
+  # Blog
+  get "blog", to: "blog_posts#index", as: :blog_posts
+  get "blog/:slug", to: "blog_posts#show", as: :blog_post
+
+  # API Documentation
+  get "api-docs", to: "api_documents#index", as: :api_documents
+  get "api-docs/:version/:slug", to: "api_documents#show", as: :api_document
+
   # Legal pages
   get "privacy-policy", to: "legal#privacy_policy", as: :privacy_policy
   get "user-agreement", to: "legal#user_agreement", as: :user_agreement

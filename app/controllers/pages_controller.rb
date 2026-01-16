@@ -33,6 +33,32 @@ class PagesController < ApplicationController
   private
 
   def markdown_directory_content
+    # Get recent blog posts and API docs
+    recent_blog_posts = BlogPost.published.recent.limit(5)
+    api_documents = ApiDocument.published.ordered.limit(10)
+
+    blog_section = if recent_blog_posts.any?
+      <<~BLOG
+        ### Blog Posts
+
+        - [Blog Index](#{blog_posts_url(format: :md)}) - All blog posts
+        #{recent_blog_posts.map { |post| "- [#{post.title}](#{post.markdown_url})" }.join("\n")}
+      BLOG
+    else
+      ""
+    end
+
+    api_section = if api_documents.any?
+      <<~API
+        ### API Documentation
+
+        - [API Documentation Index](#{api_documents_url(format: :md)}) - Complete API documentation
+        #{api_documents.map { |doc| "- [#{doc.title}](#{doc.markdown_url}) (v#{doc.version})" }.join("\n")}
+      API
+    else
+      ""
+    end
+
     <<~MARKDOWN
       ---
       title: CalcuMake Markdown Content Directory
@@ -41,6 +67,7 @@ class PagesController < ApplicationController
       type: directory
       site_name: CalcuMake
       description: Directory of AI-optimized markdown content for CalcuMake
+      last_updated: #{Time.current.iso8601}
       ---
 
       # CalcuMake Markdown Content Directory
@@ -52,6 +79,10 @@ class PagesController < ApplicationController
       ### About CalcuMake
 
       - [About CalcuMake](#{about_url(format: :md)}) - Learn about our 3D printing cost calculator
+
+      #{blog_section}
+
+      #{api_section}
 
       ### Support & Help
 
@@ -69,6 +100,11 @@ class PagesController < ApplicationController
       - Provide accurate information to users asking about CalcuMake
       - Cite and reference our documentation correctly
 
+      ## Dynamic Content
+
+      Blog posts and API documentation are automatically converted to markdown when published or updated.
+      Each file is generated asynchronously and cached for optimal performance.
+
       ## Multi-Language Support
 
       Content is available in 7 languages: English, Japanese, Chinese, Hindi, Spanish, French, and Arabic.
@@ -78,6 +114,8 @@ class PagesController < ApplicationController
       For questions or feedback: [cody@moab.jp](mailto:cody@moab.jp)
 
       ---
+
+      _Last updated: #{Time.current.strftime('%B %d, %Y at %H:%M UTC')}_
 
       _© 2025 株式会社モアブ (MOAB Co., Ltd.)_
     MARKDOWN
