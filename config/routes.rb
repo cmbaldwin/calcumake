@@ -29,6 +29,10 @@ Rails.application.routes.draw do
 
   resource :user_profile, only: [ :show, :edit, :update, :destroy ], path: "profile"
 
+  # Public pages
+  get "about", to: "pages#about", as: :about
+  get "markdown", to: "pages#markdown_index", as: :markdown_index
+
   # Legal pages
   get "privacy-policy", to: "legal#privacy_policy", as: :privacy_policy
   get "user-agreement", to: "legal#user_agreement", as: :user_agreement

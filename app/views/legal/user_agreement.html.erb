@@ -1,4 +1,7 @@
 <% content_for :title, t('legal.user_agreement.title') %>
+<% content_for :markdown_alternate_links do %>
+  <%= markdown_alternate_links('/user-agreement', include_locales: false) %>
+<% end %>
 
 <div class="row justify-content-center">
   <div class="col-lg-8">

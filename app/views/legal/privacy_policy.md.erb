@@ -1,0 +1,92 @@
+---
+title: <%= t('legal.privacy_policy.title') %>
+url: <%= privacy_policy_url %>
+canonical_url: <%= privacy_policy_url(format: :html) %>
+language: <%= I18n.locale %>
+alternate_languages:
+<% I18n.available_locales.reject { |l| l == I18n.locale }.each do |locale| -%>
+  <%= locale %>: <%= privacy_policy_url(locale: locale, format: :md) %>
+<% end -%>
+last_updated: <%= Date.current.to_s %>
+type: legal_document
+site_name: CalcuMake
+description: <%= t('legal.privacy_policy.description', default: 'Privacy policy for CalcuMake') %>
+keywords:
+  - privacy
+  - data protection
+  - GDPR
+  - 3D printing
+  - CalcuMake
+---
+
+<%= markdown_language_navigation('/privacy-policy') %>
+
+# <%= t('legal.privacy_policy.title') %>
+
+_Last updated: <%= Date.current.strftime("%B %d, %Y") %>_
+
+## <%= t('legal.privacy_policy.information_we_collect.title') %>
+
+<%= t('legal.privacy_policy.information_we_collect.content') %>
+
+### <%= t('legal.privacy_policy.information_we_collect.account_info.title') %>
+
+- <%= t('legal.privacy_policy.information_we_collect.account_info.email') %>
+- <%= t('legal.privacy_policy.information_we_collect.account_info.preferences') %>
+- <%= t('legal.privacy_policy.information_we_collect.account_info.usage_data') %>
+
+### <%= t('legal.privacy_policy.information_we_collect.project_data.title') %>
+
+- <%= t('legal.privacy_policy.information_we_collect.project_data.pricing_calculations') %>
+- <%= t('legal.privacy_policy.information_we_collect.project_data.printer_specifications') %>
+- <%= t('legal.privacy_policy.information_we_collect.project_data.project_metadata') %>
+
+## <%= t('legal.privacy_policy.how_we_use_info.title') %>
+
+- <%= t('legal.privacy_policy.how_we_use_info.provide_service') %>
+- <%= t('legal.privacy_policy.how_we_use_info.improve_features') %>
+- <%= t('legal.privacy_policy.how_we_use_info.customer_support') %>
+- <%= t('legal.privacy_policy.how_we_use_info.security') %>
+
+## <%= t('legal.privacy_policy.data_sharing.title') %>
+
+<%= t('legal.privacy_policy.data_sharing.content') %>
+
+- <%= t('legal.privacy_policy.data_sharing.legal_requirements') %>
+- <%= t('legal.privacy_policy.data_sharing.service_providers') %>
+- <%= t('legal.privacy_policy.data_sharing.business_transfer') %>
+
+## <%= t('legal.privacy_policy.advertising.title') %>
+
+<%= t('legal.privacy_policy.advertising.content') %>
+
+<%= t('legal.privacy_policy.advertising.google_adsense') %>
+
+<%= t('legal.privacy_policy.advertising.opt_out') %> [<%= t('legal.privacy_policy.advertising.google_ad_settings') %>](https://www.google.com/settings/ads)
+
+## <%= t('legal.privacy_policy.data_security.title') %>
+
+<%= t('legal.privacy_policy.data_security.content') %>
+
+## <%= t('legal.privacy_policy.your_rights.title') %>
+
+- <%= t('legal.privacy_policy.your_rights.access') %>
+- <%= t('legal.privacy_policy.your_rights.correction') %>
+- <%= t('legal.privacy_policy.your_rights.deletion') %>
+- <%= t('legal.privacy_policy.your_rights.portability') %>
+
+## <%= t('legal.privacy_policy.cookies.title') %>
+
+<%= t('legal.privacy_policy.cookies.content') %>
+
+## <%= t('legal.privacy_policy.changes.title') %>
+
+<%= t('legal.privacy_policy.changes.content') %>
+
+## <%= t('legal.privacy_policy.contact.title') %>
+
+<%= t('legal.privacy_policy.contact.content') %>
+
+---
+
+_© 2025 株式会社モアブ (MOAB Co., Ltd.)_

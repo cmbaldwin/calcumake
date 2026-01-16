@@ -16,9 +16,36 @@ Disallow: /users/password
 
 # Allow specific important pages
 Allow: /
+Allow: /about
 Allow: /support
 Allow: /privacy-policy
 Allow: /user-agreement
 
+# Allow markdown versions for AI crawlers
+Allow: /about.md
+Allow: /support.md
+Allow: /privacy-policy.md
+Allow: /user-agreement.md
+
 # Sitemap location
 Sitemap: https://calcumake.com/sitemap.xml
+
+# Specific rules for AI crawlers (GPTBot, Claude-Web, etc.)
+# These crawlers are allowed to access markdown content
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Google-Extended
+Allow: /

@@ -29,6 +29,9 @@ gem "rails_admin"
 # SEO and sitemap
 gem "sitemap_generator"
 
+# Markdown rendering for AI-optimized content
+gem "kramdown"
+
 # Search functionality
 gem "ransack"
 

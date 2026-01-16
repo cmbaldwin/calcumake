@@ -1,0 +1,106 @@
+---
+title: <%= t('pages.about.title') %>
+url: <%= about_url %>
+canonical_url: <%= about_url(format: :html) %>
+language: <%= I18n.locale %>
+alternate_languages:
+<% I18n.available_locales.reject { |l| l == I18n.locale }.each do |locale| -%>
+  <%= locale %>: <%= about_url(locale: locale, format: :md) %>
+<% end -%>
+last_updated: <%= Date.current.to_s %>
+type: about_page
+site_name: CalcuMake
+description: <%= t('pages.about.description') %>
+keywords:
+  - CalcuMake
+  - 3D printing
+  - cost calculator
+  - project management
+  - free software
+  - invoice generator
+  - filament tracker
+---
+
+<%= markdown_language_navigation('/about') %>
+
+# <%= t('pages.about.title') %>
+
+## <%= t('pages.about.intro.heading') %>
+
+<%= t('pages.about.intro.content') %>
+
+---
+
+## <%= t('pages.about.features.heading') %>
+
+### <%= t('pages.about.features.multi_plate.title') %>
+
+<%= t('pages.about.features.multi_plate.description') %>
+
+### <%= t('pages.about.features.cost_tracking.title') %>
+
+<%= t('pages.about.features.cost_tracking.description') %>
+
+### <%= t('pages.about.features.multi_currency.title') %>
+
+<%= t('pages.about.features.multi_currency.description') %>
+
+### <%= t('pages.about.features.invoice.title') %>
+
+<%= t('pages.about.features.invoice.description') %>
+
+### <%= t('pages.about.features.printer_management.title') %>
+
+<%= t('pages.about.features.printer_management.description') %>
+
+### <%= t('pages.about.features.filament_library.title') %>
+
+<%= t('pages.about.features.filament_library.description') %>
+
+---
+
+## <%= t('pages.about.how_it_works.heading') %>
+
+### 1. <%= t('pages.about.how_it_works.step1.title') %>
+
+<%= t('pages.about.how_it_works.step1.description') %>
+
+### 2. <%= t('pages.about.how_it_works.step2.title') %>
+
+<%= t('pages.about.how_it_works.step2.description') %>
+
+### 3. <%= t('pages.about.how_it_works.step3.title') %>
+
+<%= t('pages.about.how_it_works.step3.description') %>
+
+### 4. <%= t('pages.about.how_it_works.step4.title') %>
+
+<%= t('pages.about.how_it_works.step4.description') %>
+
+---
+
+## <%= t('pages.about.technology.heading') %>
+
+<%= t('pages.about.technology.content') %>
+
+---
+
+## <%= t('pages.about.pricing.heading') %>
+
+**<%= t('pages.about.pricing.content') %>**
+
+---
+
+## <%= t('pages.about.company.heading') %>
+
+<%= t('pages.about.company.content') %>
+
+### <%= t('pages.about.contact.heading') %>
+
+<%= t('pages.about.contact.content') %>
+
+**<%= t('pages.about.contact.email') %>**
+
+---
+
+_© 2025 株式会社モアブ (MOAB Co., Ltd.)_

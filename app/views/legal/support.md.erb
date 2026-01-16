@@ -1,0 +1,72 @@
+---
+title: <%= t('support.title') %>
+url: <%= support_url %>
+canonical_url: <%= support_url(format: :html) %>
+language: <%= I18n.locale %>
+alternate_languages:
+<% I18n.available_locales.reject { |l| l == I18n.locale }.each do |locale| -%>
+  <%= locale %>: <%= support_url(locale: locale, format: :md) %>
+<% end -%>
+last_updated: <%= Date.current.to_s %>
+type: support_page
+site_name: CalcuMake
+description: <%= t('support.description', default: 'Support and frequently asked questions for CalcuMake') %>
+keywords:
+  - support
+  - help
+  - FAQ
+  - customer service
+  - 3D printing
+  - CalcuMake
+---
+
+<%= markdown_language_navigation('/support') %>
+
+# <%= t('support.title') %>
+
+## <%= t('support.contact_us') %>
+
+<%= t('support.description') %>
+
+### <%= t('support.email_label') %>
+
+**Email:** [cody@moab.jp](mailto:cody@moab.jp)
+
+<%= t('support.response_time') %>
+
+---
+
+## <%= t('support.faq.title') %>
+
+### <%= t('support.faq.delete_account.question') %>
+
+<%= t('support.faq.delete_account.answer') %>
+
+1. <%= t('support.faq.delete_account.step1') %>
+2. <%= t('support.faq.delete_account.step2') %>
+3. <%= t('support.faq.delete_account.step3') %>
+4. <%= t('support.faq.delete_account.step4') %>
+5. <%= t('support.faq.delete_account.step5') %>
+
+**⚠️ <%= t('support.faq.delete_account.warning_title') %>**
+
+<%= t('support.faq.delete_account.warning_message') %>
+
+### <%= t('support.faq.data_recovery.question') %>
+
+<%= t('support.faq.data_recovery.answer') %>
+
+### <%= t('support.faq.what_deleted.question') %>
+
+<%= t('support.faq.what_deleted.intro') %>
+
+- <%= t('support.faq.what_deleted.item1') %>
+- <%= t('support.faq.what_deleted.item2') %>
+- <%= t('support.faq.what_deleted.item3') %>
+- <%= t('support.faq.what_deleted.item4') %>
+- <%= t('support.faq.what_deleted.item5') %>
+- <%= t('support.faq.what_deleted.item6') %>
+
+---
+
+_© 2025 株式会社モアブ (MOAB Co., Ltd.)_

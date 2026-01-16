@@ -1,0 +1,184 @@
+<% content_for :title, t('pages.about.title') %>
+<% content_for :markdown_alternate_links do %>
+  <%= markdown_alternate_links('/about', include_locales: false) %>
+<% end %>
+
+<div class="row justify-content-center">
+  <div class="col-lg-10">
+    <!-- Hero Section -->
+    <div class="card mb-4">
+      <div class="card-body text-center py-5">
+        <h1 class="display-4 mb-3"><%= t('pages.about.title') %></h1>
+        <p class="lead text-muted"><%= t('pages.about.intro.content') %></p>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h2 class="h3 mb-0"><%= t('pages.about.features.heading') %></h2>
+      </div>
+      <div class="card-body">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="feature-item">
+              <h4><%= t('pages.about.features.multi_plate.title') %></h4>
+              <p class="text-muted"><%= t('pages.about.features.multi_plate.description') %></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="feature-item">
+              <h4><%= t('pages.about.features.cost_tracking.title') %></h4>
+              <p class="text-muted"><%= t('pages.about.features.cost_tracking.description') %></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="feature-item">
+              <h4><%= t('pages.about.features.multi_currency.title') %></h4>
+              <p class="text-muted"><%= t('pages.about.features.multi_currency.description') %></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="feature-item">
+              <h4><%= t('pages.about.features.invoice.title') %></h4>
+              <p class="text-muted"><%= t('pages.about.features.invoice.description') %></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="feature-item">
+              <h4><%= t('pages.about.features.printer_management.title') %></h4>
+              <p class="text-muted"><%= t('pages.about.features.printer_management.description') %></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="feature-item">
+              <h4><%= t('pages.about.features.filament_library.title') %></h4>
+              <p class="text-muted"><%= t('pages.about.features.filament_library.description') %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h2 class="h3 mb-0"><%= t('pages.about.how_it_works.heading') %></h2>
+      </div>
+      <div class="card-body">
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="text-center">
+              <div class="step-number mb-3">1</div>
+              <h5><%= t('pages.about.how_it_works.step1.title') %></h5>
+              <p class="text-muted small"><%= t('pages.about.how_it_works.step1.description') %></p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="text-center">
+              <div class="step-number mb-3">2</div>
+              <h5><%= t('pages.about.how_it_works.step2.title') %></h5>
+              <p class="text-muted small"><%= t('pages.about.how_it_works.step2.description') %></p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="text-center">
+              <div class="step-number mb-3">3</div>
+              <h5><%= t('pages.about.how_it_works.step3.title') %></h5>
+              <p class="text-muted small"><%= t('pages.about.how_it_works.step3.description') %></p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="text-center">
+              <div class="step-number mb-3">4</div>
+              <h5><%= t('pages.about.how_it_works.step4.title') %></h5>
+              <p class="text-muted small"><%= t('pages.about.how_it_works.step4.description') %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Technology Section -->
+      <div class="col-md-6">
+        <div class="card h-100">
+          <div class="card-header">
+            <h3 class="h4 mb-0"><%= t('pages.about.technology.heading') %></h3>
+          </div>
+          <div class="card-body">
+            <p><%= t('pages.about.technology.content') %></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing Section -->
+      <div class="col-md-6">
+        <div class="card h-100 border-primary">
+          <div class="card-header bg-primary text-white">
+            <h3 class="h4 mb-0"><%= t('pages.about.pricing.heading') %></h3>
+          </div>
+          <div class="card-body">
+            <p class="mb-0"><strong><%= t('pages.about.pricing.content') %></strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Company Info Section -->
+    <div class="card mt-4">
+      <div class="card-header">
+        <h3 class="h4 mb-0"><%= t('pages.about.company.heading') %></h3>
+      </div>
+      <div class="card-body">
+        <p><%= t('pages.about.company.content') %></p>
+
+        <div class="mt-4 p-4 bg-light rounded">
+          <h5><%= t('pages.about.contact.heading') %></h5>
+          <p class="mb-2"><%= t('pages.about.contact.content') %></p>
+          <p class="mb-0">
+            <strong><%= t('pages.about.contact.email') %></strong>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="card mt-4 bg-primary text-white">
+      <div class="card-body text-center py-4">
+        <h3 class="mb-3">Ready to Get Started?</h3>
+        <% if user_signed_in? %>
+          <%= link_to "Go to Dashboard", root_path, class: "btn btn-light btn-lg" %>
+        <% else %>
+          <%= link_to "Sign Up Free", new_user_registration_path, class: "btn btn-light btn-lg" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .feature-item {
+    padding: 1.5rem;
+    border-left: 3px solid var(--bs-primary);
+    background: #f8f9fa;
+    height: 100%;
+  }
+
+  .feature-item h4 {
+    color: var(--bs-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background: var(--bs-primary);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto;
+  }
+</style>

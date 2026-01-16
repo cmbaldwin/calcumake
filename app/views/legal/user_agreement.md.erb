@@ -1,0 +1,101 @@
+---
+title: <%= t('legal.user_agreement.title') %>
+url: <%= user_agreement_url %>
+canonical_url: <%= user_agreement_url(format: :html) %>
+language: <%= I18n.locale %>
+alternate_languages:
+<% I18n.available_locales.reject { |l| l == I18n.locale }.each do |locale| -%>
+  <%= locale %>: <%= user_agreement_url(locale: locale, format: :md) %>
+<% end -%>
+last_updated: <%= Date.current.to_s %>
+type: legal_document
+site_name: CalcuMake
+description: <%= t('legal.user_agreement.description', default: 'Terms of service and user agreement for CalcuMake') %>
+keywords:
+  - terms of service
+  - user agreement
+  - terms and conditions
+  - 3D printing
+  - CalcuMake
+---
+
+<%= markdown_language_navigation('/user-agreement') %>
+
+# <%= t('legal.user_agreement.title') %>
+
+_Last updated: <%= Date.current.strftime("%B %d, %Y") %>_
+
+## <%= t('legal.user_agreement.acceptance.title') %>
+
+<%= t('legal.user_agreement.acceptance.content') %>
+
+## <%= t('legal.user_agreement.description.title') %>
+
+<%= t('legal.user_agreement.description.content') %>
+
+- <%= t('legal.user_agreement.description.cost_calculations') %>
+- <%= t('legal.user_agreement.description.project_management') %>
+- <%= t('legal.user_agreement.description.invoice_generation') %>
+- <%= t('legal.user_agreement.description.printer_tracking') %>
+
+## <%= t('legal.user_agreement.user_accounts.title') %>
+
+<%= t('legal.user_agreement.user_accounts.content') %>
+
+- <%= t('legal.user_agreement.user_accounts.accurate_info') %>
+- <%= t('legal.user_agreement.user_accounts.secure_credentials') %>
+- <%= t('legal.user_agreement.user_accounts.responsible_use') %>
+- <%= t('legal.user_agreement.user_accounts.notify_breaches') %>
+
+## <%= t('legal.user_agreement.acceptable_use.title') %>
+
+<%= t('legal.user_agreement.acceptable_use.content') %>
+
+- <%= t('legal.user_agreement.acceptable_use.lawful_purposes') %>
+- <%= t('legal.user_agreement.acceptable_use.respect_rights') %>
+- <%= t('legal.user_agreement.acceptable_use.no_harmful_content') %>
+- <%= t('legal.user_agreement.acceptable_use.no_interference') %>
+- <%= t('legal.user_agreement.acceptable_use.no_unauthorized_access') %>
+
+## <%= t('legal.user_agreement.data_accuracy.title') %>
+
+<%= t('legal.user_agreement.data_accuracy.content') %>
+
+## <%= t('legal.user_agreement.intellectual_property.title') %>
+
+<%= t('legal.user_agreement.intellectual_property.our_content') %>
+
+<%= t('legal.user_agreement.intellectual_property.your_content') %>
+
+## <%= t('legal.user_agreement.disclaimers.title') %>
+
+**<%= t('legal.user_agreement.disclaimers.important') %>**
+
+- <%= t('legal.user_agreement.disclaimers.calculations_estimates') %>
+- <%= t('legal.user_agreement.disclaimers.verify_accuracy') %>
+- <%= t('legal.user_agreement.disclaimers.no_guarantee') %>
+- <%= t('legal.user_agreement.disclaimers.as_is_basis') %>
+
+## <%= t('legal.user_agreement.limitation_liability.title') %>
+
+<%= t('legal.user_agreement.limitation_liability.content') %>
+
+## <%= t('legal.user_agreement.termination.title') %>
+
+<%= t('legal.user_agreement.termination.content') %>
+
+## <%= t('legal.user_agreement.governing_law.title') %>
+
+<%= t('legal.user_agreement.governing_law.content') %>
+
+## <%= t('legal.user_agreement.changes.title') %>
+
+<%= t('legal.user_agreement.changes.content') %>
+
+## <%= t('legal.user_agreement.contact.title') %>
+
+<%= t('legal.user_agreement.contact.content') %>
+
+---
+
+_© 2025 株式会社モアブ (MOAB Co., Ltd.)_

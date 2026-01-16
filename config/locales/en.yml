@@ -558,6 +558,61 @@ en:
   footer:
     description: Professional 3D printing cost calculation and project management
     copyright: "© %{year} 株式会社モアブ (MOAB Co., Ltd.) - All rights reserved"
+  pages:
+    about:
+      title: About CalcuMake
+      description: Learn about CalcuMake - Free 3D printing cost calculator and project management tool
+      nav_title: About
+      intro:
+        heading: Professional 3D Printing Cost Calculation
+        content: CalcuMake is a free, comprehensive tool for managing your 3D printing projects. Calculate costs accurately, track materials, manage multiple printers, and generate professional invoices.
+      features:
+        heading: Key Features
+        multi_plate:
+          title: Multi-Plate Calculations
+          description: Plan and price jobs with up to 10 build plates. Perfect for batch production and complex projects.
+        cost_tracking:
+          title: Accurate Cost Tracking
+          description: Track filament costs, electricity usage, printer wear, and time investment for precise pricing.
+        multi_currency:
+          title: Multi-Currency Support
+          description: Work in your preferred currency with support for USD, EUR, JPY, GBP, CNY, CAD, and AUD.
+        invoice:
+          title: Professional Invoicing
+          description: Generate detailed invoices with automatic numbering, status tracking, and PDF export.
+        printer_management:
+          title: Printer Management
+          description: Track multiple printers with payoff calculations and energy consumption monitoring.
+        filament_library:
+          title: Filament Library
+          description: Maintain a database of your filament inventory with material properties and cost per gram.
+      how_it_works:
+        heading: How It Works
+        step1:
+          title: Add Your Printers
+          description: Register your 3D printers with power consumption and hourly rate details.
+        step2:
+          title: Create Filament Profiles
+          description: Build your filament library with material types, costs, and printing parameters.
+        step3:
+          title: Calculate Project Costs
+          description: Input print time and material usage to get accurate cost breakdowns across multiple plates.
+        step4:
+          title: Generate Invoices
+          description: Create professional invoices for clients with detailed cost itemization.
+      technology:
+        heading: Technology
+        content: Built with Ruby on Rails 8, featuring a modern, responsive interface with Turbo and Stimulus. Progressive Web App (PWA) capabilities for mobile access.
+      pricing:
+        heading: Pricing
+        content: CalcuMake is completely free to use. No subscriptions, no hidden fees, no credit card required.
+      company:
+        heading: About Us
+        content: Developed by 株式会社モアブ (MOAB Co., Ltd.), CalcuMake was created to help 3D printing professionals and hobbyists accurately price their work and manage projects efficiently.
+      contact:
+        heading: Get in Touch
+        content: Have questions or feedback?
+        email: Contact us at cody@moab.jp
   support:
     title: Support
     nav_title: Support
