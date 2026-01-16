@@ -577,9 +577,9 @@ zh-CN:
         Country
       payment_details: 付款详情
       payment_details_placeholder: |-
-        Bank: Example Bank
-        Account Number: 123456789
-        Routing Number: 987654321
+        银行: Example Bank
+        账号: 123456789
+        路由号码: 987654321
         SWIFT/BIC: EXAMPUS33
       payment_details_help: 发票的银行帐户或付款信息
       invoice_notes: 默认发票备注
@@ -1453,15 +1453,6 @@ zh-CN:
     invalid_plan: 无效的订阅计划
     no_subscription: 未找到有效的订阅
     cancel_scheduled: 订阅取消已安排
-    features:
-      calculations: 打印计算
-      printers: 打印机
-      filaments: 线材
-      invoices: 发票
-      unlimited_calculations: 无限打印计算
-      unlimited_printers: 无限打印机
-      unlimited_filaments: 无限线材
-      unlimited_invoices: 无限发票
     upgrade_now: 立即升级
     your_plan: 您的套餐
     upgrade_to_plan: 升级到 %{plan}
@@ -1528,6 +1519,15 @@ zh-CN:
       data_answer: 您的数据永远不会被删除。如果您超出免费套餐的限制，您需要升级或删除一些项目才能添加新项目。
       reset_question: 使用限制何时重置？
       reset_answer: 使用限制不会每月重置。它们代表您可以同时在您的帐户中拥有的项目总数。删除项目以释放空间。
+    features:
+      calculations: 每月 %{count} 次打印计算
+      unlimited_calculations: 无限打印计算
+      printers: 总共 %{count} 台打印机
+      unlimited_printers: 无限打印机
+      filaments: 每月 %{count} 个线材
+      unlimited_filaments: 无限线材
+      invoices: 每月 %{count} 张发票
+      unlimited_invoices: 无限发票
   gdpr:
     cookie_consent:
       title: Cookie 同意声明
