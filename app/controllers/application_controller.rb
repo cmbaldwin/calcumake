@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
   before_action :check_onboarding_needed
+  before_action :prepare_exception_notifier
 
   def switch_locale
     locale = params[:locale]
@@ -64,5 +65,21 @@ class ApplicationController < ActionController::Base
     else
       I18n.locale = I18n.default_locale
     end
+  end
+
+  # Prepare exception notifier with context about the current request and user
+  # This data will be included in error notifications for easier debugging
+  def prepare_exception_notifier
+    return unless user_signed_in?
+
+    request.env["exception_notifier.exception_data"] = {
+      current_user: current_user.email,
+      user_id: current_user.id,
+      user_created_at: current_user.created_at,
+      subscription_plan: current_user.subscription_plan,
+      locale: I18n.locale,
+      referer: request.referer,
+      user_agent: request.user_agent
+    }
   end
 end

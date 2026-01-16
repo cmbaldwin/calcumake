@@ -28,6 +28,9 @@ gem "devise"
 # Email service
 gem "resend"
 
+# Error monitoring and notifications
+gem "exception_notification"
+
 # OAuth providers
 gem "omniauth"
 gem "omniauth-google-oauth2"

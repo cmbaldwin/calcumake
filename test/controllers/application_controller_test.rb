@@ -88,4 +88,26 @@ class ApplicationControllerTest < ActionDispatch::IntegrationTest
     get new_user_session_path
     assert_equal "hi", I18n.locale.to_s
   end
+
+  # Exception notification context tests
+  test "sets exception notifier context for authenticated users" do
+    user = users(:one)
+    sign_in user
+
+    get dashboard_path
+
+    exception_data = @request.env["exception_notifier.exception_data"]
+    assert_not_nil exception_data, "Exception notifier data should be set"
+    assert_equal user.email, exception_data[:current_user]
+    assert_equal user.id, exception_data[:user_id]
+    assert_equal user.subscription_plan, exception_data[:subscription_plan]
+    assert_not_nil exception_data[:locale]
+  end
+
+  test "does not set exception notifier context for unauthenticated users" do
+    get new_user_session_path
+
+    exception_data = @request.env["exception_notifier.exception_data"]
+    assert_nil exception_data, "Exception notifier data should not be set for unauthenticated users"
+  end
 end
