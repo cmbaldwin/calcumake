@@ -44,7 +44,7 @@ ExceptionNotification.configure do |config|
     config.add_notifier :email, {
       email_prefix: "[CalcuMake ERROR] ",
       sender_address: %("CalcuMake Errors" <noreply@calcumake.com>),
-      exception_recipients: %w[dev@moab.co.jp],
+      exception_recipients: %w[cody@moab.jp],
       delivery_method: :smtp,
       smtp_settings: {
         address: "smtp.resend.com",
@@ -56,19 +56,4 @@ ExceptionNotification.configure do |config|
       }
     }
   end
-
-  # Slack notifier configuration (Phase 2 - optional)
-  # Uncomment when EXCEPTION_NOTIFICATION_SLACK_WEBHOOK is configured in Kamal secrets
-  # if Rails.env.production? && ENV["EXCEPTION_NOTIFICATION_SLACK_WEBHOOK"].present?
-  #   config.add_notifier :slack, {
-  #     webhook_url: ENV["EXCEPTION_NOTIFICATION_SLACK_WEBHOOK"],
-  #     channel: "#calcumake-errors",
-  #     username: "CalcuMake Error Bot",
-  #     additional_fields: [
-  #       { title: "User", value: ->(exception, opts) { opts[:env]["exception_notifier.exception_data"][:current_user] } },
-  #       { title: "Environment", value: Rails.env },
-  #       { title: "Server", value: Socket.gethostname }
-  #     ]
-  #   }
-  # end
 end

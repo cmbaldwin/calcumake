@@ -8,10 +8,10 @@
 
 ## Executive Summary
 
-Implement the `exception_notification` gem to provide real-time alerts when errors occur in production. The system will support multiple notification channels (email, Slack) with intelligent error grouping, filtering, and contextual information.
+Implement the `exception_notification` gem to provide real-time email alerts when errors occur in production. The system uses intelligent error grouping, filtering, and contextual information to keep developers informed without overwhelming them.
 
 **Benefits**:
-- Immediate awareness of production issues
+- Immediate awareness of production issues via email
 - Reduced mean time to detection (MTTD)
 - Context-rich error reports with user data, request info, and stack traces
 - Intelligent error grouping to reduce notification fatigue
@@ -28,12 +28,12 @@ Implement the `exception_notification` gem to provide real-time alerts when erro
 - **Requirements**: Ruby 3.2+, Rails 7.1+ (CalcuMake uses Ruby 3.3+ and Rails 8.1.1 ✅)
 - **Status**: Mature, stable gem with 15+ years of production use
 
-### Supported Notification Channels
+### Notification Channel
 
-1. **Email** (via Resend SMTP - already configured)
-2. **Slack** (recommended for team notifications)
-3. **Webhook** (for custom integrations like PagerDuty, Datadog)
-4. **Custom notifiers** (extensible for future needs)
+**Email** (via Resend SMTP - already configured)
+- Direct email alerts to cody@moab.jp
+- No additional integrations or webhooks needed
+- Simple, reliable notification delivery
 
 ---
 
@@ -74,7 +74,7 @@ Implement the `exception_notification` gem to provide real-time alerts when erro
      config.add_notifier :email, {
        email_prefix: "[CalcuMake ERROR] ",
        sender_address: %{"CalcuMake Errors" <noreply@calcumake.com>},
-       exception_recipients: %w{dev@moab.co.jp},
+       exception_recipients: %w{cody@moab.jp},
        delivery_method: :smtp,
        smtp_settings: {
          address: "smtp.resend.com",
@@ -134,9 +134,9 @@ Implement the `exception_notification` gem to provide real-time alerts when erro
 
 ---
 
-### Phase 2: Slack Integration (Recommended)
+### Phase 2: Slack Integration (Not Implemented)
 
-**Goal**: Add Slack notifications for real-time team awareness
+**Status**: Not needed - email-only notification is sufficient
 
 **Tasks**:
 
@@ -427,7 +427,7 @@ end
    ```
 
 2. **Verify notifications received**
-   - [ ] Email received at dev@moab.co.jp
+   - [ ] Email received at cody@moab.jp
    - [ ] Slack message in #calcumake-errors (if configured)
    - [ ] Notification includes user context
    - [ ] Stack trace is complete and readable
@@ -652,7 +652,7 @@ If exception_notification causes issues:
 Before implementing, consider:
 
 1. **Notification Recipients**: Who should receive error alerts?
-   - Suggested: `dev@moab.co.jp` for now, expand later
+   - Suggested: `cody@moab.jp` for now, expand later
 
 2. **Slack Channel**: Create `#calcumake-errors` or use existing `#engineering`?
    - Recommended: Dedicated channel to avoid noise
