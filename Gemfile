@@ -49,7 +49,7 @@ gem "rails_admin"
 
 # SEO and sitemap
 gem "sitemap_generator"
-gem "cgi", "~> 0.4.1"  # Required for sitemap_generator in Ruby 4.0+
+gem "cgi", "~> 0.5.1"  # Required for sitemap_generator in Ruby 4.0+
 
 # Search functionality
 gem "ransack"
@@ -58,7 +58,7 @@ gem "ransack"
 gem "view_component"
 
 # Rich text editor (Lexxy)
-gem "lexxy", "~> 0.1.20.beta"
+gem "lexxy", "~> 0.7.0.beta"
 
 # Translations for models (better than built-in i18n for rich text)
 gem "mobility", "~> 1.2"
