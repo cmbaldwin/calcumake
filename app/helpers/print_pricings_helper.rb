@@ -206,6 +206,38 @@ module PrintPricingsHelper
     end
   end
 
+  def revenue_chart_data(analytics)
+    {
+      labels: analytics.revenue_by_day.keys.map { |date| date.strftime("%b %d") },
+      datasets: [
+        {
+          label: "Revenue",
+          data: analytics.revenue_by_day.values,
+          borderColor: "rgb(200, 16, 46)", # Primary red color
+          backgroundColor: "rgba(200, 16, 46, 0.1)",
+          tension: 0.3,
+          fill: true
+        }
+      ]
+    }
+  end
+
+  def prints_chart_data(analytics)
+    {
+      labels: analytics.prints_by_day.keys.map { |date| date.strftime("%b %d") },
+      datasets: [
+        {
+          label: "Prints",
+          data: analytics.prints_by_day.values,
+          borderColor: "rgb(75, 192, 192)",
+          backgroundColor: "rgba(75, 192, 192, 0.1)",
+          tension: 0.3,
+          fill: true
+        }
+      ]
+    }
+  end
+
   private
 
   def has_labor_costs?(pricing)

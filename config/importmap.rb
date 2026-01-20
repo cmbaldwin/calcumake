@@ -12,5 +12,6 @@ pin "bootstrap", to: "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/boots
 # Lazy-load heavy libraries only when needed (not on initial page load)
 pin "jspdf", to: "https://esm.sh/jspdf@3.0.3", preload: false
 pin "html2canvas", to: "https://esm.sh/html2canvas@1.4.1", preload: false
+pin "chart.js", to: "https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js", preload: false
 pin "lexxy", to: "lexxy.js", preload: false
 pin "@rails/activestorage", to: "activestorage.esm.js"

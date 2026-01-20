@@ -10,6 +10,14 @@ class PrintPricingsController < ApplicationController
     @print_pricings = @q.result
                         .includes(:plates, :printer, :client)
                         .order(created_at: :desc)
+
+    # Calculate analytics with trends if date range is provided
+    if params.dig(:q, :created_at_gteq).present? || params.dig(:q, :created_at_lteq).present?
+      start_date = params.dig(:q, :created_at_gteq)&.to_date
+      end_date = params.dig(:q, :created_at_lteq)&.to_date || Date.current
+
+      @analytics = Analytics::OverviewStats.new(current_user, start_date: start_date, end_date: end_date)
+    end
   end
 
   def show

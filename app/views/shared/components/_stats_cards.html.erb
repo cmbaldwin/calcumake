@@ -1,8 +1,10 @@
+<% analytics = defined?(@analytics) ? @analytics : nil %>
 <div id="stats_cards_content" class="row g-3 mb-4">
   <%= render(Shared::StatsCardComponent.new(
     value: print_pricings.count,
     label: t('print_pricing.index.total_calculations'),
-    color: "success"
+    color: "success",
+    trend: analytics&.calculations_trend
   )) %>
 
   <%= render(Shared::StatsCardComponent.new(
@@ -20,13 +22,15 @@
   <%= render(Shared::StatsCardComponent.new(
     value: format_currency_with_symbol(total_estimated_sales(print_pricings), current_user&.default_currency || 'USD'),
     label: t('print_pricing.index.total_estimated_sales'),
-    color: "primary"
+    color: "primary",
+    trend: analytics&.revenue_trend
   )) %>
 
   <%= render(Shared::StatsCardComponent.new(
     value: format_currency_with_symbol(total_estimated_profit(print_pricings), current_user&.default_currency || 'USD'),
     label: t('print_pricing.index.total_estimated_profit'),
     color: "dark",
-    col_class: "col-12 col-lg"
+    col_class: "col-12 col-lg",
+    trend: analytics&.profit_trend
   )) %>
 </div>

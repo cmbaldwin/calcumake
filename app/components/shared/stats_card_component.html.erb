@@ -3,6 +3,12 @@
     <div class="card-body text-center">
       <h2 class="display-6 fw-bold mb-2"><%= @value %></h2>
       <p class="mb-0"><%= @label %></p>
+      <% if show_trend? %>
+        <small class="d-block mt-2 <%= trend_class %>">
+          <span class="fw-bold"><%= trend_icon %> <%= number_to_percentage(@trend.abs, precision: 1) %></span>
+          <span class="text-white-50"><%= t('analytics.trends.vs_previous') %></span>
+        </small>
+      <% end %>
     </div>
   </div>
 </div>

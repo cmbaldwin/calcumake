@@ -1,0 +1,49 @@
+<div class="card mb-4" data-controller="date-range-filter">
+  <div class="card-body">
+    <h6 class="card-title mb-3"><%= t("analytics.filters.date_range") %></h6>
+
+    <!-- Preset Buttons -->
+    <div class="btn-group flex-wrap mb-3" role="group" aria-label="<%= t("analytics.filters.presets") %>">
+      <% presets.each do |preset| %>
+        <button type="button"
+                class="btn btn-sm btn-outline-primary"
+                data-preset="<%= preset[:value] %>"
+                data-date-range-filter-target="preset"
+                data-action="click->date-range-filter#selectPreset">
+          <%= preset[:label] %>
+        </button>
+      <% end %>
+    </div>
+
+    <!-- Custom Date Inputs -->
+    <div class="row g-2 mb-3">
+      <div class="col-md-6">
+        <label class="form-label small"><%= t("analytics.filters.start_date") %></label>
+        <%= @form.search_field :created_at_gteq,
+            type: "date",
+            class: "form-control form-control-sm",
+            data: {
+              date_range_filter_target: "startDate",
+              action: "change->date-range-filter#submit"
+            } %>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label small"><%= t("analytics.filters.end_date") %></label>
+        <%= @form.search_field :created_at_lteq,
+            type: "date",
+            class: "form-control form-control-sm",
+            data: {
+              date_range_filter_target: "endDate",
+              action: "change->date-range-filter#submit"
+            } %>
+      </div>
+    </div>
+
+    <!-- Clear Button -->
+    <button type="button"
+            class="btn btn-sm btn-outline-secondary"
+            data-action="click->date-range-filter#clearFilter">
+      <%= t("analytics.filters.clear") %>
+    </button>
+  </div>
+</div>

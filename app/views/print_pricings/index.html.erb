@@ -34,6 +34,9 @@
               search_target: "input",
               action: "input->search#search"
             } %>
+
+        <!-- Date Range Filter -->
+        <%= render Shared::DateRangeFilterComponent.new(form: form) %>
     <% end %>
 </div>
 
@@ -43,6 +46,26 @@
             <div id="stats_cards_content">
                 <%= render "shared/components/stats_cards", print_pricings: @print_pricings %>
             </div>
+        <% end %>
+
+        <!-- Analytics Charts (only shown when date filter is active) -->
+        <% if defined?(@analytics) && @analytics %>
+          <div class="row g-3 mb-4">
+            <div class="col-12 col-lg-6">
+              <%= render Analytics::ChartComponent.new(
+                title: "Revenue Over Time",
+                chart_data: revenue_chart_data(@analytics),
+                chart_type: "line"
+              ) %>
+            </div>
+            <div class="col-12 col-lg-6">
+              <%= render Analytics::ChartComponent.new(
+                title: "Print Volume Over Time",
+                chart_data: prints_chart_data(@analytics),
+                chart_type: "line"
+              ) %>
+            </div>
+          </div>
         <% end %>
 
         <div class="row g-3">

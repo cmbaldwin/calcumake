@@ -40,5 +40,58 @@ module Shared
 
       assert_selector "h2", text: "100h"
     end
+
+    test "shows positive trend in green with up arrow" do
+      render_inline(Shared::StatsCardComponent.new(
+        value: "$1,500",
+        label: "Revenue",
+        trend: 25.5
+      ))
+
+      assert_selector ".text-success", text: /↑/
+      assert_selector "small", text: /25.5%/
+    end
+
+    test "shows negative trend in red with down arrow" do
+      render_inline(Shared::StatsCardComponent.new(
+        value: "$800",
+        label: "Revenue",
+        trend: -15.2
+      ))
+
+      assert_selector ".text-danger", text: /↓/
+      assert_selector "small", text: /15.2%/
+    end
+
+    test "shows zero trend in muted with right arrow" do
+      render_inline(Shared::StatsCardComponent.new(
+        value: "$1,000",
+        label: "Revenue",
+        trend: 0
+      ))
+
+      assert_selector ".text-muted", text: /→/
+      assert_selector "small", text: /0.0%/
+    end
+
+    test "does not show trend when nil" do
+      render_inline(Shared::StatsCardComponent.new(
+        value: "$1,000",
+        label: "Revenue",
+        trend: nil
+      ))
+
+      assert_no_selector "small"
+    end
+
+    test "displays trend comparison text" do
+      render_inline(Shared::StatsCardComponent.new(
+        value: "$1,200",
+        label: "Revenue",
+        trend: 10.5
+      ))
+
+      assert_selector "small .text-white-50", text: I18n.t("analytics.trends.vs_previous")
+    end
   end
 end

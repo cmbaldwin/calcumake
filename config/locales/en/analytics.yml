@@ -1,0 +1,26 @@
+---
+en:
+  analytics:
+    title: Analytics
+    pro_plan_required: Advanced analytics are available for Pro plan users only.
+
+    filters:
+      date_range: Date Range
+      presets: Preset Ranges
+      last_7_days: Last 7 Days
+      last_30_days: Last 30 Days
+      last_90_days: Last 90 Days
+      this_month: This Month
+      last_month: Last Month
+      this_year: This Year
+      start_date: Start Date
+      end_date: End Date
+      clear: Clear Filter
+      all_time: All Time
+      custom: Custom Range
+
+    trends:
+      vs_previous: vs previous period
+      increase: increase
+      decrease: decrease
+      no_change: no change
