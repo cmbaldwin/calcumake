@@ -48,6 +48,20 @@
                 <li class="nav-item">
                     <%= link_to t('nav.clients'), clients_path, class: "nav-link" %>
                 </li>
+                <% if current_user.pro? || current_user.admin? %>
+                <li class="nav-item">
+                    <%= link_to analytics_path, class: "nav-link" do %>
+                        <%= t('nav.analytics') %>
+                    <% end %>
+                </li>
+                <% else %>
+                <li class="nav-item">
+                    <%= link_to analytics_path, class: "nav-link" do %>
+                        <%= t('nav.analytics') %>
+                        <span class="badge bg-warning text-dark ms-1" style="font-size: 0.7rem;">Pro</span>
+                    <% end %>
+                </li>
+                <% end %>
                 <li class="nav-item">
                     <%= link_to t('nav.profile'), user_profile_path, class: "nav-link" %>
                 </li>
