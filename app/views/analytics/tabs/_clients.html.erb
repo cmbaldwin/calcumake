@@ -1,0 +1,175 @@
+<!-- Client Activity Overview -->
+<div class="row g-3 mb-4">
+  <% activity = client_analytics.client_activity_summary %>
+  <div class="col-12 col-md-3">
+    <div class="card bg-primary text-white h-100">
+      <div class="card-body text-center">
+        <h2 class="display-6 fw-bold mb-2"><%= activity[:total_clients] %></h2>
+        <p class="mb-0"><%= t("analytics.clients.total_clients") %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-3">
+    <div class="card bg-success text-white h-100">
+      <div class="card-body text-center">
+        <h2 class="display-6 fw-bold mb-2"><%= activity[:active_clients] %></h2>
+        <p class="mb-0"><%= t("analytics.clients.active_clients") %></p>
+        <small class="text-white-50 mt-2 d-block">
+          <%= number_to_percentage(activity[:activity_rate], precision: 1) %> <%= t("analytics.clients.activity_rate") %>
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-3">
+    <div class="card bg-info text-white h-100">
+      <div class="card-body text-center">
+        <h2 class="display-6 fw-bold mb-2">
+          <%= number_to_currency(client_analytics.average_order_value, unit: currency_symbol(current_user.default_currency), precision: 0) %>
+        </h2>
+        <p class="mb-0"><%= t("analytics.clients.avg_order_value") %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-3">
+    <% concentration = client_analytics.revenue_concentration %>
+    <div class="card bg-warning text-dark h-100">
+      <div class="card-body text-center">
+        <h2 class="display-6 fw-bold mb-2"><%= number_to_percentage(concentration[:concentration_percentage], precision: 0) %></h2>
+        <p class="mb-0"><%= t("analytics.clients.revenue_concentration") %></p>
+        <small class="text-muted mt-2 d-block">
+          <%= t("analytics.clients.from_top_20") %>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Top Clients by Revenue -->
+<div class="card mb-4">
+  <div class="card-header">
+    <h5 class="mb-0"><%= t("analytics.clients.top_by_revenue") %></h5>
+  </div>
+  <div class="card-body">
+    <% top_revenue = client_analytics.top_clients_by_revenue %>
+    <% if top_revenue.any? %>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th><%= t("analytics.clients.client_name") %></th>
+              <th class="text-end"><%= t("analytics.clients.revenue") %></th>
+              <th class="text-end"><%= t("analytics.clients.jobs") %></th>
+              <th class="text-end"><%= t("analytics.clients.prints") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% top_revenue.each_with_index do |stat, index| %>
+              <tr>
+                <td><strong>#<%= index + 1 %></strong></td>
+                <td>
+                  <%= link_to stat[:client].name, edit_client_path(stat[:client]), class: "text-decoration-none" %>
+                  <% if stat[:client].company_name.present? %>
+                    <br><small class="text-muted"><%= stat[:client].company_name %></small>
+                  <% end %>
+                </td>
+                <td class="text-end">
+                  <strong><%= number_to_currency(stat[:revenue], unit: currency_symbol(current_user.default_currency), precision: 0) %></strong>
+                </td>
+                <td class="text-end"><%= stat[:job_count] %></td>
+                <td class="text-end"><%= stat[:total_prints] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p class="text-muted mb-0"><%= t("analytics.clients.no_revenue_data") %></p>
+    <% end %>
+  </div>
+</div>
+
+<!-- Top Clients by Profitability -->
+<div class="card mb-4">
+  <div class="card-header">
+    <h5 class="mb-0"><%= t("analytics.clients.top_by_profit") %></h5>
+  </div>
+  <div class="card-body">
+    <% top_profit = client_analytics.top_clients_by_profit %>
+    <% if top_profit.any? %>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th><%= t("analytics.clients.client_name") %></th>
+              <th class="text-end"><%= t("analytics.clients.profit") %></th>
+              <th class="text-end"><%= t("analytics.clients.profit_margin") %></th>
+              <th class="text-end"><%= t("analytics.clients.jobs") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% top_profit.each_with_index do |stat, index| %>
+              <tr>
+                <td><strong>#<%= index + 1 %></strong></td>
+                <td>
+                  <%= link_to stat[:client].name, edit_client_path(stat[:client]), class: "text-decoration-none" %>
+                  <% if stat[:client].company_name.present? %>
+                    <br><small class="text-muted"><%= stat[:client].company_name %></small>
+                  <% end %>
+                </td>
+                <td class="text-end">
+                  <strong><%= number_to_currency(stat[:profit], unit: currency_symbol(current_user.default_currency), precision: 0) %></strong>
+                </td>
+                <td class="text-end">
+                  <span class="badge <%= stat[:profit_margin] >= 30 ? 'bg-success' : stat[:profit_margin] >= 15 ? 'bg-warning' : 'bg-danger' %>">
+                    <%= number_to_percentage(stat[:profit_margin], precision: 1) %>
+                  </span>
+                </td>
+                <td class="text-end"><%= stat[:job_count] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p class="text-muted mb-0"><%= t("analytics.clients.no_profit_data") %></p>
+    <% end %>
+  </div>
+</div>
+
+<!-- At-Risk Clients -->
+<% at_risk = client_analytics.at_risk_clients(days_threshold: 60) %>
+<% if at_risk.any? %>
+  <div class="card">
+    <div class="card-header bg-warning">
+      <h5 class="mb-0"><%= t("analytics.clients.at_risk_clients") %></h5>
+    </div>
+    <div class="card-body">
+      <p class="text-muted">
+        <%= t("analytics.clients.at_risk_description") %>
+      </p>
+      <div class="list-group">
+        <% at_risk.take(10).each do |client| %>
+          <% last_order = client.print_pricings.maximum(:created_at) %>
+          <%= link_to edit_client_path(client), class: "list-group-item list-group-item-action" do %>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <strong><%= client.name %></strong>
+                <% if client.company_name.present? %>
+                  <br><small class="text-muted"><%= client.company_name %></small>
+                <% end %>
+              </div>
+              <small class="text-muted">
+                <%= t("analytics.clients.last_order") %>: <%= time_ago_in_words(last_order) %> ago
+              </small>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

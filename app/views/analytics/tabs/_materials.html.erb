@@ -1,0 +1,179 @@
+<!-- Material Costs Overview -->
+<% costs = material_analytics.total_material_costs %>
+<div class="row g-3 mb-4">
+  <div class="col-12 col-md-4">
+    <div class="card bg-primary text-white h-100">
+      <div class="card-body text-center">
+        <h2 class="display-6 fw-bold mb-2">
+          <%= number_to_currency(costs[:total_cost], unit: currency_symbol(current_user.default_currency), precision: 0) %>
+        </h2>
+        <p class="mb-0"><%= t("analytics.materials.total_material_cost") %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-4">
+    <div class="card bg-info text-white h-100">
+      <div class="card-body text-center">
+        <h2 class="display-6 fw-bold mb-2">
+          <%= number_to_currency(material_analytics.average_material_cost_per_print, unit: currency_symbol(current_user.default_currency)) %>
+        </h2>
+        <p class="mb-0"><%= t("analytics.materials.avg_cost_per_print") %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-4">
+    <% tech_split = material_analytics.technology_usage_split %>
+    <div class="card bg-success text-white h-100">
+      <div class="card-body text-center">
+        <h2 class="display-6 fw-bold mb-2">
+          <%= tech_split[:fdm_percentage] %>% / <%= tech_split[:resin_percentage] %>%
+        </h2>
+        <p class="mb-0"><%= t("analytics.materials.fdm_resin_split") %></p>
+        <small class="text-white-50 mt-2 d-block">
+          <%= t("analytics.materials.fdm_vs_resin") %>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Material Cost Breakdown -->
+<div class="row g-3 mb-4">
+  <div class="col-12 col-md-6">
+    <div class="card h-100">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t("analytics.materials.cost_breakdown") %></h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="text-center p-3 bg-light rounded">
+              <h4 class="mb-1">
+                <%= number_to_currency(costs[:filament_cost], unit: currency_symbol(current_user.default_currency), precision: 0) %>
+              </h4>
+              <small class="text-muted"><%= t("analytics.materials.filament_cost") %></small>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="text-center p-3 bg-light rounded">
+              <h4 class="mb-1">
+                <%= number_to_currency(costs[:resin_cost], unit: currency_symbol(current_user.default_currency), precision: 0) %>
+              </h4>
+              <small class="text-muted"><%= t("analytics.materials.resin_cost") %></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <div class="card bg-danger text-white h-100">
+      <div class="card-header">
+        <h6 class="mb-0"><%= t("analytics.materials.failure_cost") %></h6>
+      </div>
+      <div class="card-body text-center d-flex flex-column justify-content-center">
+        <h2 class="display-6 fw-bold mb-2">
+          <%= number_to_currency(material_analytics.estimated_failure_cost, unit: currency_symbol(current_user.default_currency), precision: 0) %>
+        </h2>
+        <p class="mb-0"><%= t("analytics.materials.wasted_on_failures") %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Top Filaments by Usage -->
+<div class="card mb-4">
+  <div class="card-header">
+    <h5 class="mb-0"><%= t("analytics.materials.top_filaments") %></h5>
+  </div>
+  <div class="card-body">
+    <% top_filaments = material_analytics.top_filaments_by_usage %>
+    <% if top_filaments.any? %>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th><%= t("analytics.materials.filament_name") %></th>
+              <th class="text-end"><%= t("analytics.materials.weight_used") %></th>
+              <th class="text-end"><%= t("analytics.materials.cost") %></th>
+              <th class="text-end"><%= t("analytics.materials.prints") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% top_filaments.each_with_index do |stat, index| %>
+              <tr>
+                <td><strong>#<%= index + 1 %></strong></td>
+                <td>
+                  <%= stat[:filament].display_name %>
+                  <br>
+                  <small class="text-muted">
+                    <%= stat[:filament].manufacturer %> - <%= stat[:filament].color %>
+                  </small>
+                </td>
+                <td class="text-end">
+                  <strong><%= stat[:weight_grams].round(1) %>g</strong>
+                </td>
+                <td class="text-end">
+                  <%= number_to_currency(stat[:cost], unit: currency_symbol(current_user.default_currency), precision: 0) %>
+                </td>
+                <td class="text-end"><%= stat[:print_count] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p class="text-muted mb-0"><%= t("analytics.materials.no_filament_data") %></p>
+    <% end %>
+  </div>
+</div>
+
+<!-- Top Resins by Usage -->
+<% top_resins = material_analytics.top_resins_by_usage %>
+<% if top_resins.any? %>
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0"><%= t("analytics.materials.top_resins") %></h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th><%= t("analytics.materials.resin_name") %></th>
+              <th class="text-end"><%= t("analytics.materials.volume_used") %></th>
+              <th class="text-end"><%= t("analytics.materials.cost") %></th>
+              <th class="text-end"><%= t("analytics.materials.prints") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% top_resins.each_with_index do |stat, index| %>
+              <tr>
+                <td><strong>#<%= index + 1 %></strong></td>
+                <td>
+                  <%= stat[:resin].name %>
+                  <br>
+                  <small class="text-muted">
+                    <%= stat[:resin].manufacturer %> - <%= stat[:resin].color %>
+                  </small>
+                </td>
+                <td class="text-end">
+                  <strong><%= stat[:volume_ml].round(1) %>ml</strong>
+                </td>
+                <td class="text-end">
+                  <%= number_to_currency(stat[:cost], unit: currency_symbol(current_user.default_currency), precision: 0) %>
+                </td>
+                <td class="text-end"><%= stat[:print_count] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>

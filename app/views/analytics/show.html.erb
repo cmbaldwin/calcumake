@@ -1,0 +1,103 @@
+<div class="container py-5">
+  <!-- Header -->
+  <div class="mb-5 text-center">
+    <h1 class="display-4 fw-bold text-primary mb-3">
+      <%= t('analytics.title') %>
+    </h1>
+    <p class="lead text-muted">
+      <%= t('analytics.subtitle') %>
+    </p>
+  </div>
+
+  <!-- Date Range Filter (Global) -->
+  <div class="row justify-content-center mb-4">
+    <div class="col-12 col-lg-8">
+      <%= form_with url: analytics_path, method: :get, data: { turbo_frame: "analytics_content" } do |form| %>
+        <%= hidden_field_tag :tab, @active_tab %>
+
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-title mb-3"><%= t("analytics.filters.date_range") %></h6>
+
+            <!-- Preset Buttons -->
+            <div class="btn-group flex-wrap mb-3" role="group">
+              <%= link_to t("analytics.filters.last_7_days"),
+                  analytics_path(tab: @active_tab, start_date: 7.days.ago.to_date, end_date: Date.current),
+                  class: "btn btn-sm btn-outline-primary",
+                  data: { turbo_frame: "analytics_content" } %>
+              <%= link_to t("analytics.filters.last_30_days"),
+                  analytics_path(tab: @active_tab, start_date: 30.days.ago.to_date, end_date: Date.current),
+                  class: "btn btn-sm btn-outline-primary",
+                  data: { turbo_frame: "analytics_content" } %>
+              <%= link_to t("analytics.filters.last_90_days"),
+                  analytics_path(tab: @active_tab, start_date: 90.days.ago.to_date, end_date: Date.current),
+                  class: "btn btn-sm btn-outline-primary",
+                  data: { turbo_frame: "analytics_content" } %>
+              <%= link_to t("analytics.filters.this_year"),
+                  analytics_path(tab: @active_tab, start_date: Date.current.beginning_of_year, end_date: Date.current),
+                  class: "btn btn-sm btn-outline-primary",
+                  data: { turbo_frame: "analytics_content" } %>
+            </div>
+
+            <!-- Custom Date Inputs -->
+            <div class="row g-2">
+              <div class="col-md-5">
+                <label class="form-label small"><%= t("analytics.filters.start_date") %></label>
+                <%= form.date_field :start_date, value: @start_date, class: "form-control form-control-sm" %>
+              </div>
+              <div class="col-md-5">
+                <label class="form-label small"><%= t("analytics.filters.end_date") %></label>
+                <%= form.date_field :end_date, value: @end_date, class: "form-control form-control-sm" %>
+              </div>
+              <div class="col-md-2 d-flex align-items-end">
+                <%= form.submit t("analytics.filters.apply"), class: "btn btn-primary btn-sm w-100" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Navigation Tabs -->
+  <ul class="nav nav-tabs mb-4" role="tablist">
+    <li class="nav-item">
+      <%= link_to t("analytics.tabs.overview"),
+          analytics_path(tab: "overview", start_date: @start_date, end_date: @end_date),
+          class: "nav-link #{'active' if @active_tab == 'overview'}",
+          data: { turbo_frame: "analytics_content" } %>
+    </li>
+    <li class="nav-item">
+      <%= link_to t("analytics.tabs.printers"),
+          analytics_path(tab: "printers", start_date: @start_date, end_date: @end_date),
+          class: "nav-link #{'active' if @active_tab == 'printers'}",
+          data: { turbo_frame: "analytics_content" } %>
+    </li>
+    <li class="nav-item">
+      <%= link_to t("analytics.tabs.clients"),
+          analytics_path(tab: "clients", start_date: @start_date, end_date: @end_date),
+          class: "nav-link #{'active' if @active_tab == 'clients'}",
+          data: { turbo_frame: "analytics_content" } %>
+    </li>
+    <li class="nav-item">
+      <%= link_to t("analytics.tabs.materials"),
+          analytics_path(tab: "materials", start_date: @start_date, end_date: @end_date),
+          class: "nav-link #{'active' if @active_tab == 'materials'}",
+          data: { turbo_frame: "analytics_content" } %>
+    </li>
+  </ul>
+
+  <!-- Tab Content -->
+  <%= turbo_frame_tag "analytics_content" do %>
+    <% case @active_tab %>
+    <% when "overview" %>
+      <%= render "analytics/tabs/overview", analytics: @analytics %>
+    <% when "printers" %>
+      <%= render "analytics/tabs/printers", printer_analytics: @printer_analytics %>
+    <% when "clients" %>
+      <%= render "analytics/tabs/clients", client_analytics: @client_analytics %>
+    <% when "materials" %>
+      <%= render "analytics/tabs/materials", material_analytics: @material_analytics %>
+    <% end %>
+  <% end %>
+</div>

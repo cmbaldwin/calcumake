@@ -1,0 +1,116 @@
+<!-- Key Metrics Cards -->
+<div class="row g-3 mb-4">
+  <%= render(Shared::StatsCardComponent.new(
+    value: number_to_currency(analytics.total_revenue, unit: currency_symbol(current_user.default_currency), precision: 0),
+    label: t("analytics.overview.total_revenue"),
+    color: "primary",
+    trend: analytics.revenue_trend
+  )) %>
+
+  <%= render(Shared::StatsCardComponent.new(
+    value: analytics.total_prints,
+    label: t("analytics.overview.total_prints"),
+    color: "success",
+    trend: analytics.prints_trend
+  )) %>
+
+  <%= render(Shared::StatsCardComponent.new(
+    value: analytics.total_calculations,
+    label: t("analytics.overview.total_calculations"),
+    color: "info",
+    trend: analytics.calculations_trend
+  )) %>
+
+  <%= render(Shared::StatsCardComponent.new(
+    value: number_to_currency(analytics.total_profit, unit: currency_symbol(current_user.default_currency), precision: 0),
+    label: t("analytics.overview.total_profit"),
+    color: "dark",
+    trend: analytics.profit_trend
+  )) %>
+</div>
+
+<!-- Charts -->
+<div class="row g-3 mb-4">
+  <div class="col-12 col-lg-6">
+    <%= render Analytics::ChartComponent.new(
+      title: t("analytics.overview.revenue_over_time"),
+      chart_data: revenue_chart_data(analytics),
+      chart_type: "line"
+    ) %>
+  </div>
+
+  <div class="col-12 col-lg-6">
+    <%= render Analytics::ChartComponent.new(
+      title: t("analytics.overview.prints_over_time"),
+      chart_data: prints_chart_data(analytics),
+      chart_type: "line"
+    ) %>
+  </div>
+</div>
+
+<!-- Summary Cards -->
+<div class="row g-3">
+  <div class="col-12 col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t("analytics.overview.period_summary") %></h5>
+      </div>
+      <div class="card-body">
+        <dl class="row mb-0">
+          <dt class="col-sm-6"><%= t("analytics.overview.date_range") %></dt>
+          <dd class="col-sm-6"><%= "#{@start_date.strftime('%b %d, %Y')} - #{@end_date.strftime('%b %d, %Y')}" %></dd>
+
+          <dt class="col-sm-6"><%= t("analytics.overview.days_in_period") %></dt>
+          <dd class="col-sm-6"><%= (@end_date - @start_date).to_i + 1 %> days</dd>
+
+          <dt class="col-sm-6"><%= t("analytics.overview.avg_revenue_per_day") %></dt>
+          <dd class="col-sm-6">
+            <% days = (@end_date - @start_date).to_i + 1 %>
+            <%= number_to_currency(analytics.total_revenue / days, unit: currency_symbol(current_user.default_currency)) %>
+          </dd>
+
+          <dt class="col-sm-6"><%= t("analytics.overview.avg_prints_per_day") %></dt>
+          <dd class="col-sm-6">
+            <% days = (@end_date - @start_date).to_i + 1 %>
+            <%= (analytics.total_prints.to_f / days).round(1) %>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0"><%= t("analytics.overview.performance_indicators") %></h5>
+      </div>
+      <div class="card-body">
+        <dl class="row mb-0">
+          <dt class="col-sm-6"><%= t("analytics.overview.avg_job_value") %></dt>
+          <dd class="col-sm-6">
+            <% avg_value = analytics.total_calculations > 0 ? analytics.total_revenue / analytics.total_calculations : 0 %>
+            <%= number_to_currency(avg_value, unit: currency_symbol(current_user.default_currency)) %>
+          </dd>
+
+          <dt class="col-sm-6"><%= t("analytics.overview.profit_margin") %></dt>
+          <dd class="col-sm-6">
+            <% margin = analytics.total_revenue > 0 ? (analytics.total_profit / analytics.total_revenue.to_f * 100).round(1) : 0 %>
+            <%= number_to_percentage(margin, precision: 1) %>
+          </dd>
+
+          <dt class="col-sm-6"><%= t("analytics.overview.prints_per_job") %></dt>
+          <dd class="col-sm-6">
+            <% avg_prints = analytics.total_calculations > 0 ? (analytics.total_prints.to_f / analytics.total_calculations).round(1) : 0 %>
+            <%= avg_prints %>
+          </dd>
+
+          <dt class="col-sm-6"><%= t("analytics.overview.revenue_per_print") %></dt>
+          <dd class="col-sm-6">
+            <% rev_per_print = analytics.total_prints > 0 ? analytics.total_revenue / analytics.total_prints : 0 %>
+            <%= number_to_currency(rev_per_print, unit: currency_symbol(current_user.default_currency)) %>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>

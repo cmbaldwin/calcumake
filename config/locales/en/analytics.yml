@@ -2,6 +2,7 @@
 en:
   analytics:
     title: Analytics
+    subtitle: Comprehensive business intelligence for your 3D printing operations
     pro_plan_required: Advanced analytics are available for Pro plan users only.
 
     filters:
@@ -15,6 +16,7 @@ en:
       this_year: This Year
       start_date: Start Date
       end_date: End Date
+      apply: Apply
       clear: Clear Filter
       all_time: All Time
       custom: Custom Range
@@ -24,3 +26,94 @@ en:
       increase: increase
       decrease: decrease
       no_change: no change
+
+    tabs:
+      overview: Overview
+      printers: Printers
+      clients: Clients
+      materials: Materials
+
+    overview:
+      total_revenue: Total Revenue
+      total_prints: Total Prints
+      total_calculations: Total Calculations
+      total_profit: Total Profit
+      revenue_over_time: Revenue Over Time
+      prints_over_time: Print Volume Over Time
+      period_summary: Period Summary
+      date_range: Date Range
+      days_in_period: Days in Period
+      avg_revenue_per_day: Avg Revenue/Day
+      avg_prints_per_day: Avg Prints/Day
+      performance_indicators: Performance Indicators
+      avg_job_value: Avg Job Value
+      profit_margin: Profit Margin
+      prints_per_job: Prints per Job
+      revenue_per_print: Revenue per Print
+
+    printers:
+      avg_utilization: Average Utilization
+      target_utilization: "Target: %{target}"
+      most_used_printer: Most Used Printer
+      total_printers: Total Printers
+      active_printers:
+        one: "%{count} active"
+        other: "%{count} active"
+      usage_by_printer: Usage by Printer
+      printer_name: Printer
+      print_time: Print Time
+      total_prints: Prints
+      utilization: Utilization
+      revenue: Revenue
+      no_data: No printer usage data for this period
+      roi_progress: ROI Progress
+      paid_off: Paid Off
+      months_remaining:
+        one: "%{count} month remaining"
+        other: "%{count} months remaining"
+      no_roi_data: No ROI data available
+      cost_per_print: Cost Per Print
+      per_print: per print
+      no_cost_data: No cost data available
+
+    clients:
+      total_clients: Total Clients
+      active_clients: Active Clients
+      activity_rate: active
+      avg_order_value: Avg Order Value
+      revenue_concentration: Revenue Concentration
+      from_top_20: from top 20% clients
+      top_by_revenue: Top Clients by Revenue
+      top_by_profit: Top Clients by Profitability
+      client_name: Client
+      revenue: Revenue
+      jobs: Jobs
+      prints: Prints
+      profit: Profit
+      profit_margin: Margin
+      no_revenue_data: No revenue data for this period
+      no_profit_data: No profit data for this period
+      at_risk_clients: At-Risk Clients
+      at_risk_description: Clients who haven't placed an order in the last 60 days
+      last_order: Last order
+
+    materials:
+      total_material_cost: Total Material Cost
+      avg_cost_per_print: Avg Cost per Print
+      fdm_resin_split: FDM/Resin Split
+      fdm_vs_resin: FDM vs Resin
+      cost_breakdown: Cost Breakdown
+      filament_cost: Filament
+      resin_cost: Resin
+      failure_cost: Estimated Failure Cost
+      wasted_on_failures: Wasted on failed prints
+      top_filaments: Top Filaments by Usage
+      top_resins: Top Resins by Usage
+      filament_name: Filament
+      resin_name: Resin
+      weight_used: Weight Used
+      volume_used: Volume Used
+      cost: Cost
+      prints: Prints
+      no_filament_data: No filament usage data for this period
+      no_resin_data: No resin usage data for this period

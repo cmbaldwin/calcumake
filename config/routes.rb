@@ -136,6 +136,11 @@ Rails.application.routes.draw do
   resources :materials, only: [ :index ]
 
   # ---------------------------------------------------------------------------
+  # Analytics (Pro Plan Feature)
+  # ---------------------------------------------------------------------------
+  resource :analytics, only: [ :show ], controller: "analytics"
+
+  # ---------------------------------------------------------------------------
   # Subscription & Billing
   # ---------------------------------------------------------------------------
   resources :subscriptions, only: [] do

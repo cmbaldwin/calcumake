@@ -1,0 +1,157 @@
+<!-- Printer Utilization Overview -->
+<div class="row g-3 mb-4">
+  <div class="col-12 col-md-4">
+    <div class="card bg-primary text-white h-100">
+      <div class="card-body text-center">
+        <h2 class="display-6 fw-bold mb-2"><%= number_to_percentage(printer_analytics.average_utilization_rate, precision: 1) %></h2>
+        <p class="mb-0"><%= t("analytics.printers.avg_utilization") %></p>
+        <small class="text-white-50 mt-2 d-block">
+          <%= t("analytics.printers.target_utilization", target: "80%") %>
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-4">
+    <div class="card bg-success text-white h-100">
+      <div class="card-body text-center">
+        <h2 class="display-6 fw-bold mb-2"><%= printer_analytics.most_used_printer&.dig(:printer)&.name || "N/A" %></h2>
+        <p class="mb-0"><%= t("analytics.printers.most_used_printer") %></p>
+        <% if printer_analytics.most_used_printer %>
+          <small class="text-white-50 mt-2 d-block">
+            <%= printer_analytics.most_used_printer[:total_print_time_hours] %>h total
+          </small>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-4">
+    <div class="card bg-info text-white h-100">
+      <div class="card-body text-center">
+        <h2 class="display-6 fw-bold mb-2"><%= current_user.printers.count %></h2>
+        <p class="mb-0"><%= t("analytics.printers.total_printers") %></p>
+        <% active_printers = printer_analytics.printer_usage_stats.count { |s| s[:total_prints] > 0 } %>
+        <small class="text-white-50 mt-2 d-block">
+          <%= t("analytics.printers.active_printers", count: active_printers) %>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Printer Usage Table -->
+<div class="card mb-4">
+  <div class="card-header">
+    <h5 class="mb-0"><%= t("analytics.printers.usage_by_printer") %></h5>
+  </div>
+  <div class="card-body">
+    <% if printer_analytics.printer_usage_stats.any? %>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th><%= t("analytics.printers.printer_name") %></th>
+              <th class="text-end"><%= t("analytics.printers.print_time") %></th>
+              <th class="text-end"><%= t("analytics.printers.total_prints") %></th>
+              <th class="text-end"><%= t("analytics.printers.utilization") %></th>
+              <th class="text-end"><%= t("analytics.printers.revenue") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% printer_analytics.printer_usage_stats.each do |stat| %>
+              <tr>
+                <td>
+                  <strong><%= stat[:printer].name %></strong>
+                  <br>
+                  <small class="text-muted"><%= stat[:printer].manufacturer %></small>
+                </td>
+                <td class="text-end"><%= stat[:total_print_time_hours] %>h</td>
+                <td class="text-end"><%= stat[:total_prints] %></td>
+                <td class="text-end">
+                  <% utilization = stat[:utilization_rate] %>
+                  <span class="badge <%= utilization >= 80 ? 'bg-success' : utilization >= 50 ? 'bg-warning' : 'bg-danger' %>">
+                    <%= number_to_percentage(utilization, precision: 1) %>
+                  </span>
+                </td>
+                <td class="text-end">
+                  <%= number_to_currency(stat[:revenue], unit: currency_symbol(current_user.default_currency), precision: 0) %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p class="text-muted mb-0"><%= t("analytics.printers.no_data") %></p>
+    <% end %>
+  </div>
+</div>
+
+<!-- ROI Progress -->
+<div class="card mb-4">
+  <div class="card-header">
+    <h5 class="mb-0"><%= t("analytics.printers.roi_progress") %></h5>
+  </div>
+  <div class="card-body">
+    <% if printer_analytics.roi_progress.any? %>
+      <% printer_analytics.roi_progress.each do |roi| %>
+        <div class="mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <strong><%= roi[:printer].name %></strong>
+            <span class="badge <%= roi[:paid_off] ? 'bg-success' : 'bg-primary' %>">
+              <%= roi[:paid_off] ? t("analytics.printers.paid_off") : "#{roi[:progress_percentage]}%" %>
+            </span>
+          </div>
+          <div class="progress" style="height: 25px;">
+            <div class="progress-bar <%= roi[:paid_off] ? 'bg-success' : 'bg-primary' %>"
+                 role="progressbar"
+                 style="width: <%= roi[:progress_percentage] %>%"
+                 aria-valuenow="<%= roi[:progress_percentage] %>"
+                 aria-valuemin="0"
+                 aria-valuemax="100">
+              <%= roi[:progress_percentage] %>%
+            </div>
+          </div>
+          <% unless roi[:paid_off] %>
+            <small class="text-muted">
+              <%= t("analytics.printers.months_remaining", count: roi[:months_to_payoff]) %>
+            </small>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-muted mb-0"><%= t("analytics.printers.no_roi_data") %></p>
+    <% end %>
+  </div>
+</div>
+
+<!-- Cost Per Print -->
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0"><%= t("analytics.printers.cost_per_print") %></h5>
+  </div>
+  <div class="card-body">
+    <% if printer_analytics.cost_per_print_by_printer.any? %>
+      <div class="row g-3">
+        <% printer_analytics.cost_per_print_by_printer.each do |stat| %>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h6 class="text-muted mb-2"><%= stat[:printer].name %></h6>
+                <h3 class="mb-1">
+                  <%= number_to_currency(stat[:cost_per_print], unit: currency_symbol(current_user.default_currency)) %>
+                </h3>
+                <small class="text-muted">
+                  <%= t("analytics.printers.per_print") %> (<%= stat[:total_prints] %> prints)
+                </small>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-muted mb-0"><%= t("analytics.printers.no_cost_data") %></p>
+    <% end %>
+  </div>
+</div>
