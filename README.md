@@ -380,14 +380,12 @@ This maintains branch references and context for future development.
 - **Counter caches** - eliminate COUNT(*) queries
 - **Eager loading** - prevent N+1 queries
 
-## License & Copyright
+## License
 
-© 2025 株式会社モアブ (MOAB Co., Ltd.)
-
-All rights reserved.
+This project is open source. [Please choose a license to insert here].
 
 ---
 
 **Live Site**: https://calcumake.com
 **Support**: support@calcumake.com
-**Status**: Production-ready, revenue-enabled ✅
+**Status**: Production-ready
