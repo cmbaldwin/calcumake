@@ -1,0 +1,86 @@
+# Name of your application. Used to uniquely configure containers.
+service: calcumake
+
+# Name of the container image.
+image: moab/calcumake
+
+# SSH
+ssh:
+  user: root
+
+# Deploy to these servers.
+servers:
+  web:
+  - 0.0.0.0
+  # job:
+  #   hosts:
+  #     - 0.0.0.0
+  #   cmd: bin/rails solid_queue:start
+
+  # Health check and deployment configuration
+  deploy_timeout: 120
+  drain_timeout: 30
+
+# Enable SSL auto certification via Let's Encrypt and allow for multiple apps on a single web server.
+proxy:
+  ssl:
+    certificate_pem: <%= ENV['CLOUDFLARE_SSL_CERT_PEM'] %>
+    private_key_pem: <%= ENV['CLOUDFLARE_SSL_KEY_PEM'] %>
+  host: calcumake.com
+  forward_headers: true
+
+# Registry credentials for AWS.
+registry:
+  username: AWS
+  password:
+  - AWS_ECR_PASSWORD
+  server: 000000000000.dkr.ecr.REGION.amazonaws.com
+
+# Inject ENV variables into containers (secrets come from .kamal/secrets).
+env:
+  secret:
+  - RAILS_MASTER_KEY
+  - POSTGRES_PASSWORD
+  - CLOUDFLARE_SSL_CERT_PEM
+  - CLOUDFLARE_SSL_KEY_PEM
+  - STAIPE_SECRET_KEY
+  # ... full list of secrets
+  clear:
+    SOLID_QUEUE_IN_PUMA: true
+    JOB_CONCURRENCY: 1
+    WEB_CONCURRENCY: 1
+    DB_HOST: calcumake-db
+    DB_PORT: 5432
+    POSTGRES_USER: calcumake
+    POSTGRES_DB: calcumake_production
+
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"
+
+volumes:
+- "calcumake_storage:/rails/storage"
+
+asset_path: /rails/public/assets
+
+builder:
+  arch: amd64
+  # remote: ssh://deepslate-deploy
+
+  accessories:
+  db:
+    image: postgres:16
+    host: 0.0.0.0
+    port: "127.0.0.1:5434:5432"
+    env:
+      clear:
+        POSTGRES_DB: calcumake_production
+        POSTGRES_USER: calcumake
+      secret:
+      - POSTGRES_PASSWORD
+    volumes:
+    - calcumake_postgres_data:/var/lib/postgresql/data
+    files:
+    - db/production_setup.sql:/docker-entrypoint-initdb.d/setup.sql
