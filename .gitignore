@@ -100,3 +100,5 @@ coverage.data
 /db/solid_queue.sqlite3
 # Translation cache
 /tmp/translation_cache/
+__pycache__/
+*.pyc
