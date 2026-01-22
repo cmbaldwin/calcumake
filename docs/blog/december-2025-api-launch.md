@@ -319,7 +319,7 @@ Have questions about the API or need assistance integrating CalcuMake into your 
 
 - **[Read the Documentation](/api-documentation)** - Comprehensive reference
 - **[Contact Support](/support)** - Email us at cody@moab.jp
-- **[Report Issues](https://github.com/cmbaldwin/moab-printing/issues)** - GitHub Issues
+- **[Report Issues](https://github.com/cmbaldwin/calcumake/issues)** - GitHub Issues
 
 We're excited to see what you build with the CalcuMake API!
 
