@@ -58,7 +58,7 @@ gem "ransack"
 gem "view_component"
 
 # Rich text editor (Lexxy)
-gem "lexxy", "~> 0.1.20.beta"
+gem "lexxy", "~> 0.7.3.beta"
 
 # Translations for models (better than built-in i18n for rich text)
 gem "mobility", "~> 1.2"
