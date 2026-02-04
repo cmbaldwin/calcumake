@@ -21,6 +21,59 @@
 - `bin/check-translations` - Scan code for missing translation keys and hardcoded strings
 - `bin/rails sitemap:refresh:no_ping` - Regenerate sitemap with current articles and routes
 
+### Documentation Search (qmd)
+
+**qmd** is a semantic documentation search tool that enables Claude Code to efficiently search project documentation using vector embeddings. This is particularly valuable for large documentation sets where manual searching or file reading would be slow.
+
+**Why Use qmd:**
+
+- **Instant semantic search**: Find relevant documentation by meaning, not just keywords
+- **Reduced context usage**: Search across 53+ docs without loading them all into context
+- **Project-specific**: Collection isolated to CalcuMake (named `calcumake`)
+- **Background indexing**: Vector embeddings pre-built for fast searches
+
+**Setup** (already completed for CalcuMake):
+
+```bash
+# Install qmd globally (one-time)
+bun install -g https://github.com/tobi/qmd
+
+# Add CalcuMake documentation collection
+qmd collection add /path/to/calcumake/docs --name calcumake --mask "**/*.md"
+
+# Build vector embeddings for semantic search
+qmd embed
+```
+
+**Usage in Claude Code:**
+
+- Use `/qmd` skill when available in Claude Code
+- Ask Claude to "search the docs for X" and it will automatically use qmd
+- Claude will invoke qmd automatically when documentation context would be helpful
+
+**Manual Search** (command line):
+
+```bash
+qmd search "turbo frames" --collection calcumake --limit 5
+```
+
+**Maintenance:**
+
+When documentation changes significantly, rebuild embeddings:
+
+```bash
+qmd embed --force
+```
+
+**Current Status:**
+
+- **Collection**: `calcumake` (project-specific name)
+- **Indexed files**: 53 markdown files from `docs/`
+- **Embeddings**: 194/225 chunks successfully embedded (86% success rate)
+- **Model**: embeddinggemma (local, fast, free)
+
+**Note:** Some embedding failures (UNIQUE constraint errors) are expected when using qmd across multiple projects - qmd uses a global vector database and content-based deduplication. These errors don't affect search quality.
+
 **Note:** In production, both `TranslateArticlesJob` (2am UTC) and `refresh_sitemap` (4am UTC) run automatically via SolidQueue scheduled jobs.
 
 ## Git & PR Merge Policy
