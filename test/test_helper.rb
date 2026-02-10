@@ -1,3 +1,15 @@
+if ENV["COVERAGE"] == "true"
+  require "simplecov"
+
+  SimpleCov.command_name("rails-#{Process.pid}")
+  SimpleCov.minimum_coverage line: ENV.fetch("MINIMUM_COVERAGE", "60").to_i
+  SimpleCov.start "rails" do
+    add_filter "/test/"
+    add_filter "/config/"
+    add_filter "/db/"
+  end
+end
+
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
@@ -9,7 +21,9 @@ WebMock.disable_net_connect!(allow_localhost: true)
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
-    parallelize(workers: :number_of_processors)
+    parallel_workers = ENV.fetch("PARALLEL_WORKERS", "number_of_processors")
+    parallel_workers = parallel_workers == "number_of_processors" ? :number_of_processors : parallel_workers.to_i
+    parallelize(workers: parallel_workers)
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all

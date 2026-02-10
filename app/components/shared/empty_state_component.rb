@@ -25,7 +25,7 @@ module Shared
     attr_reader :title, :description, :action_text, :action_url, :action_variant, :icon, :html_options
 
     def wrapper_classes
-      classes = ["text-center", "py-5"]
+      classes = [ "text-center", "py-5" ]
       classes << html_options[:class] if html_options[:class].present?
       classes.join(" ")
     end

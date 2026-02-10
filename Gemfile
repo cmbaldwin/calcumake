@@ -116,6 +116,9 @@ group :test do
   # Controller testing helpers for assigns and assert_template
   gem "rails-controller-testing"
 
+  # Ruby test coverage reports and minimum coverage gates in CI
+  gem "simplecov", require: false
+
   # ⚠️⚠️⚠️ REMOVE THIS PIN WHEN UPDATING TO RAILS 8.1.2+ ⚠️⚠️⚠️
   # Pin minitest to 5.x until Rails 8.1.2 is released
   # Minitest 6.0.0 changed the run() method signature, breaking Rails 8.1.0-8.1.1

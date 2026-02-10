@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+OUTPUT_FILE="$(mktemp)"
+trap 'rm -f "$OUTPUT_FILE"' EXIT
+
+bin/rails db:test:prepare
+bin/rails test test/system/smoke "$@" | tee "$OUTPUT_FILE"
+
+SUMMARY_LINE="$(grep -E '^[0-9]+ runs, [0-9]+ assertions, [0-9]+ failures, [0-9]+ errors, [0-9]+ skips$' "$OUTPUT_FILE" | tail -n 1 || true)"
+
+if [[ -z "$SUMMARY_LINE" ]]; then
+  echo "Unable to parse smoke test summary."
+  exit 1
+fi
+
+SKIPS="$(echo "$SUMMARY_LINE" | sed -E 's/.* ([0-9]+) skips$/\1/')"
+
+if [[ "$SKIPS" != "0" ]]; then
+  echo "Smoke tests must not be skipped. Found $SKIPS skips."
+  exit 1
+fi
