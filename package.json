@@ -12,8 +12,19 @@
     "testMatch": [
       "**/test/javascript/**/*.test.js"
     ],
+    "collectCoverageFrom": [
+      "app/javascript/controllers/mixins/*.js"
+    ],
     "moduleNameMapper": {
       "^controllers/(.*)$": "<rootDir>/app/javascript/controllers/$1"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 40,
+        "functions": 65,
+        "lines": 50,
+        "statements": 50
+      }
     },
     "coveragePathIgnorePatterns": [
       "/node_modules/",

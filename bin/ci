@@ -59,29 +59,43 @@ if [ -f "package.json" ]; then
   echo ""
 fi
 
-# Rails Tests
+# Rails Tests (core minitest)
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "🧪 Rails Tests (Minitest)"
+echo "🧪 Rails Tests (Core Minitest)"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-if bin/rails test; then
-  echo "✅ Rails tests passed"
+if COVERAGE=true MINIMUM_COVERAGE=60 bin/rails test; then
+  echo "✅ Core Minitest passed"
 else
-  echo "❌ Rails tests failed"
+  echo "❌ Core Minitest failed"
   FAILED=1
 fi
 echo ""
 
-# System Tests
+# User-first smoke browser flow
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "🌐 System Tests (Capybara)"
+echo "🌐 System Smoke Tests (User-First Browser Flow)"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-if bin/rails test:system; then
-  echo "✅ System tests passed"
+if bin/test-smoke; then
+  echo "✅ System smoke tests passed"
 else
-  echo "❌ System tests failed"
+  echo "❌ System smoke tests failed"
   FAILED=1
 fi
 echo ""
+
+# Full E2E browser suite (nightly/default-off for local speed)
+if [ "${FULL_E2E:-0}" = "1" ]; then
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo "🌙 Full E2E Browser Suite"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  if bin/test-system-full; then
+    echo "✅ Full E2E browser suite passed"
+  else
+    echo "❌ Full E2E browser suite failed"
+    FAILED=1
+  fi
+  echo ""
+fi
 
 # Final Summary
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

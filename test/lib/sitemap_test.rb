@@ -1,9 +1,10 @@
 require "test_helper"
+require "zlib"
 
 class SitemapTest < ActiveSupport::TestCase
   def setup
     # Clear any existing sitemap files
-    FileUtils.rm_f(Rails.root.join("public", "sitemap*.xml"))
+    FileUtils.rm_f(Dir[Rails.root.join("public", "sitemap*.xml*")])
 
     # Create test articles with translations
     @english_article = Article.create!(
@@ -26,7 +27,7 @@ class SitemapTest < ActiveSupport::TestCase
 
   def teardown
     @english_article.destroy if @english_article.persisted?
-    FileUtils.rm_f(Rails.root.join("public", "sitemap*.xml"))
+    FileUtils.rm_f(Dir[Rails.root.join("public", "sitemap*.xml*")])
   end
 
   test "sitemap generation succeeds" do
@@ -40,17 +41,14 @@ class SitemapTest < ActiveSupport::TestCase
     end
 
     # Verify sitemap files were created
-    assert File.exist?(Rails.root.join("public", "sitemap.xml")),
-           "sitemap.xml should be created"
+    assert sitemap_exists?,
+           "sitemap.xml or sitemap.xml.gz should be created"
   end
 
   test "sitemap includes required static pages" do
-    # Generate full sitemap
-    silence_stream($stdout) do
-      system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
-    end
+    generate_sitemap!
 
-    sitemap_content = File.read(Rails.root.join("public", "sitemap.xml"))
+    sitemap_content = read_sitemap_content
 
     # Check for required pages
     assert_includes sitemap_content, "https://calcumake.com/3d-print-pricing-calculator",
@@ -62,12 +60,9 @@ class SitemapTest < ActiveSupport::TestCase
   end
 
   test "sitemap does not have duplicate root URLs" do
-    # Generate sitemap
-    silence_stream($stdout) do
-      system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
-    end
+    generate_sitemap!
 
-    sitemap_content = File.read(Rails.root.join("public", "sitemap.xml"))
+    sitemap_content = read_sitemap_content
 
     # Extract all URLs
     urls = sitemap_content.scan(%r{<loc>(.*?)</loc>}).flatten
@@ -80,11 +75,9 @@ class SitemapTest < ActiveSupport::TestCase
   end
 
   test "sitemap includes all blog locale pages" do
-    silence_stream($stdout) do
-      system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
-    end
+    generate_sitemap!
 
-    sitemap_content = File.read(Rails.root.join("public", "sitemap.xml"))
+    sitemap_content = read_sitemap_content
 
     # Check for blog pages in different locales
     expected_blog_urls = [
@@ -104,11 +97,9 @@ class SitemapTest < ActiveSupport::TestCase
   end
 
   test "sitemap includes published articles" do
-    silence_stream($stdout) do
-      system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
-    end
+    generate_sitemap!
 
-    sitemap_content = File.read(Rails.root.join("public", "sitemap.xml"))
+    sitemap_content = read_sitemap_content
 
     # Check that at least one published article is included (fixtures create test articles)
     assert_match %r{/blog/[^<]+</loc>}, sitemap_content,
@@ -123,11 +114,9 @@ class SitemapTest < ActiveSupport::TestCase
       published_at: nil
     )
 
-    silence_stream($stdout) do
-      system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
-    end
+    generate_sitemap!
 
-    sitemap_content = File.read(Rails.root.join("public", "sitemap.xml"))
+    sitemap_content = read_sitemap_content
 
     assert_not_includes sitemap_content, "/#{unpublished.slug}",
                         "Sitemap should not include unpublished articles"
@@ -136,11 +125,9 @@ class SitemapTest < ActiveSupport::TestCase
   end
 
   test "all sitemap URLs are unique" do
-    silence_stream($stdout) do
-      system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
-    end
+    generate_sitemap!
 
-    sitemap_content = File.read(Rails.root.join("public", "sitemap.xml"))
+    sitemap_content = read_sitemap_content
 
     # Extract all URLs
     urls = sitemap_content.scan(%r{<loc>(.*?)</loc>}).flatten
@@ -153,11 +140,9 @@ class SitemapTest < ActiveSupport::TestCase
   end
 
   test "sitemap does not include auth pages" do
-    silence_stream($stdout) do
-      system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
-    end
+    generate_sitemap!
 
-    sitemap_content = File.read(Rails.root.join("public", "sitemap.xml"))
+    sitemap_content = read_sitemap_content
 
     # These should be blocked by robots.txt and not in sitemap
     assert_not_includes sitemap_content, "/sign_in",
@@ -167,26 +152,45 @@ class SitemapTest < ActiveSupport::TestCase
   end
 
   test "sitemap has valid XML structure" do
-    silence_stream($stdout) do
-      system("cd #{Rails.root} && bin/rails sitemap:refresh:no_ping")
-    end
-
-    sitemap_path = Rails.root.join("public", "sitemap.xml")
+    generate_sitemap!
+    sitemap_content = read_sitemap_content
 
     # Use xmllint to validate if available, otherwise just check XML parsing
-    if system("which xmllint > /dev/null 2>&1")
-      assert system("xmllint --noout #{sitemap_path} 2>/dev/null"),
-             "Sitemap XML should be valid"
-    else
-      # Fallback: just ensure it can be parsed
-      assert_nothing_raised do
-        require "rexml/document"
-        REXML::Document.new(File.read(sitemap_path))
-      end
+    assert_nothing_raised do
+      require "rexml/document"
+      REXML::Document.new(sitemap_content)
     end
   end
 
   private
+
+  def sitemap_path
+    Rails.root.join("public", "sitemap.xml")
+  end
+
+  def sitemap_gzip_path
+    Rails.root.join("public", "sitemap.xml.gz")
+  end
+
+  def sitemap_exists?
+    File.exist?(sitemap_path) || File.exist?(sitemap_gzip_path)
+  end
+
+  def read_sitemap_content
+    if File.exist?(sitemap_path)
+      File.read(sitemap_path)
+    elsif File.exist?(sitemap_gzip_path)
+      Zlib::GzipReader.open(sitemap_gzip_path, &:read)
+    else
+      flunk "Expected #{sitemap_path} or #{sitemap_gzip_path} to exist"
+    end
+  end
+
+  def generate_sitemap!
+    silence_stream($stdout) do
+      load Rails.root.join("config", "sitemap.rb")
+    end
+  end
 
   def silence_stream(stream)
     old_stream = stream.dup

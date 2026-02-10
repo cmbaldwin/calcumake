@@ -3,7 +3,12 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [ master, main ]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   scan_ruby:
@@ -80,6 +85,7 @@ jobs:
           if-no-files-found: ignore
 
   test:
+    name: test_core
     runs-on: ubuntu-latest
 
     services:
@@ -100,7 +106,7 @@ jobs:
 
     steps:
       - name: Install packages
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config google-chrome-stable
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -115,9 +121,54 @@ jobs:
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
+          COVERAGE: "true"
+          MINIMUM_COVERAGE: "60"
           # REDIS_URL: redis://localhost:6379/0
           DISABLE_BOOTSNAP: 1  # Temporarily disabled due to errno 0 race condition with Ruby 3.4.5 - will re-enable after Ruby 4.0 upgrade testing
-        run: bin/rails db:test:prepare test test:system
+        run: bin/rails db:test:prepare test
+
+      - name: Upload coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ruby-coverage
+          path: coverage/
+          if-no-files-found: ignore
+
+  system_smoke:
+    name: system_smoke
+    runs-on: ubuntu-latest
+    needs: test
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Install packages
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config google-chrome-stable
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Run system smoke tests
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432
+          DISABLE_BOOTSNAP: 1
+        run: bin/test-smoke
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4
