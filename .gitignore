@@ -102,3 +102,6 @@ coverage.data
 /tmp/translation_cache/
 __pycache__/
 *.pyc
+
+# Generated ops analytics artifacts
+/analytics/
