@@ -1,0 +1,65 @@
+<%
+  assistant_context = local_assigns[:assistant_context] || "app"
+  assistant_onboarding_step = local_assigns[:assistant_onboarding_step]
+  assistant_guided = local_assigns[:assistant_guided] == true
+%>
+
+<div
+  class="setup-assistant-widget"
+  data-controller="setup-assistant"
+  data-setup-assistant-message-url-value="<%= message_setup_assistant_path %>"
+  data-setup-assistant-context-value="<%= assistant_context %>"
+  data-setup-assistant-onboarding-step-value="<%= assistant_onboarding_step %>"
+  data-setup-assistant-guided-value="<%= assistant_guided %>"
+  data-setup-assistant-welcome-value="<%= t('setup_assistant.welcome') %>"
+  data-setup-assistant-guided-welcome-value="<%= t('setup_assistant.guided_welcome') %>"
+  data-setup-assistant-ready-hint-value="<%= t('setup_assistant.onboarding_ready') %>"
+  data-setup-assistant-error-value="<%= t('setup_assistant.errors.unavailable') %>">
+  <button type="button"
+          class="btn btn-primary setup-assistant-toggle"
+          data-action="setup-assistant#toggle"
+          data-setup-assistant-target="toggleButton"
+          aria-label="<%= t('setup_assistant.label') %>">
+    <i class="bi bi-chat-dots-fill me-1"></i>
+    <span><%= t("setup_assistant.label") %></span>
+  </button>
+
+  <section class="setup-assistant-panel d-none"
+           data-setup-assistant-target="panel"
+           aria-live="polite">
+    <div class="setup-assistant-header">
+      <div>
+        <h6 class="mb-0"><%= t("setup_assistant.title") %></h6>
+        <small class="text-muted"><%= t("setup_assistant.subtitle") %></small>
+      </div>
+      <button type="button"
+              class="btn btn-sm btn-outline-secondary"
+              data-action="setup-assistant#toggle">
+        <%= t("setup_assistant.close") %>
+      </button>
+    </div>
+
+    <div class="setup-assistant-messages"
+         data-setup-assistant-target="messages"></div>
+
+    <p class="setup-assistant-status text-muted small mb-2"
+       data-setup-assistant-target="status"></p>
+
+    <form data-action="submit->setup-assistant#send">
+      <div class="mb-2">
+        <textarea
+          class="form-control"
+          rows="2"
+          data-setup-assistant-target="input"
+          placeholder="<%= t('setup_assistant.placeholder') %>"></textarea>
+      </div>
+      <div class="d-grid">
+        <button type="submit"
+                class="btn btn-primary btn-sm"
+                data-setup-assistant-target="sendButton">
+          <%= t("setup_assistant.send") %>
+        </button>
+      </div>
+    </form>
+  </section>
+</div>

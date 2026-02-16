@@ -1,0 +1,37 @@
+en:
+  setup_assistant:
+    label: "Setup Assistant"
+    title: "CalcuMake Assistant"
+    subtitle: "Add printers, filaments, resins, and preferences by chat."
+    placeholder: "Try: Add a Prusa i3 MK4 and PLA filament"
+    send: "Send"
+    close: "Close"
+    welcome: "Hi! I can help with setup tasks like adding printers, filaments, resins, or updating your defaults."
+    guided_welcome: "Guided mode is active. Tell me what to set up and I will add it for you."
+    onboarding_ready: "This step looks complete. You can click Next Step when you are ready."
+    fallback_reply: "I can help with setup. Tell me what to add or update."
+    action_summary: "Changes I made:"
+    action_ignored: "I ignored that action."
+    updated_preferences: "Updated your profile defaults."
+    no_changes: "No profile fields were provided to update."
+    invalid_currency: "Currency %{currency} is not supported in this workspace."
+    not_in_onboarding: "You are not in onboarding right now."
+    completed_onboarding: "Onboarding marked as complete."
+    created:
+      printer: "Created printer %{name}."
+      filament: "Created filament %{name}."
+      resin: "Created resin %{name}."
+    already_exists:
+      printer: "Printer %{name} already exists."
+      filament: "Filament %{name} already exists."
+      resin: "Resin %{name} already exists."
+    missing:
+      printer_name: "Please provide a printer name."
+      printer_preset: "I could not find preset model %{model}."
+      filament_material: "Please provide a filament material type."
+      resin_name: "Please provide a resin name."
+      resin_type: "Please provide a resin type."
+    errors:
+      blank_message: "Type a message so I can help."
+      message_too_long: "Please keep each message under %{max} characters."
+      unavailable: "The assistant is temporarily unavailable. Please use the standard form and try again."

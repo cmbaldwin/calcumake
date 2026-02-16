@@ -1,0 +1,22 @@
+<%= render Forms::FormSectionComponent.new(
+  title: t("print_pricing.three_mf.import_title"),
+  wrapper_class: "col-12",
+  body_class: "row g-3"
+) do %>
+  <% if f.object.persisted? && (f.object.three_mf_file.attached? || f.object.three_mf_import_status.present?) %>
+    <!-- Show status for existing record with attached file or import status -->
+    <div class="col-12">
+      <%= render "print_pricings/three_mf_status", print_pricing: f.object %>
+    </div>
+  <% end %>
+
+  <div class="col-12">
+    <%= f.label :three_mf_file, t("print_pricing.three_mf.file_label"), class: "form-label" %>
+    <%= f.file_field :three_mf_file,
+        accept: ".3mf",
+        class: "form-control" %>
+    <div class="form-text">
+      <%= t("print_pricing.three_mf.help_text") %>
+    </div>
+  </div>
+<% end %>
