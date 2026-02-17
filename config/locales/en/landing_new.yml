@@ -1,0 +1,32 @@
+---
+en:
+  landing_new:
+    tagline: "Know your costs before you print."
+    upload_cta: "Drop STL or 3MF file here"
+    upload_button: "Upload File"
+    chat_placeholder: "Ask me about 3D printing costs..."
+    chat_empty: "Please enter a message."
+    chat_unavailable: "AI assistant is temporarily unavailable. Try our calculator instead."
+    chat_error: "Something went wrong. Please try again."
+    chat_rate_limited: "Message limit reached. Sign up for more."
+    learn_more: "Learn more"
+    full_calculator: "Open Full Calculator"
+    sign_up_save: "Sign Up to Save"
+    or_drag_drop: "or drag & drop"
+    file_too_large: "File too large. Maximum size is %{max_size}MB."
+    unsupported_format: "Please upload an STL or 3MF file."
+    processing: "Analyzing..."
+    results:
+      title: "Analysis Results"
+      dimensions: "Dimensions"
+      triangles: "Triangles"
+      estimated_weight: "Est. Weight"
+      estimated_cost: "Est. Filament Cost"
+      format: "Format"
+      disclaimer: "Rough estimate based on bounding box. Use full calculator for precision."
+    models:
+      boat: "Boat Hull"
+      vase: "Vase"
+      gear: "Gear"
+      cube: "Cube"
+      organic: "Organic"

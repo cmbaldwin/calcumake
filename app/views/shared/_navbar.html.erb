@@ -109,6 +109,25 @@
                     <%= link_to t('support.nav_title'), support_path, class: "nav-link" %>
                 </li>
             </ul>
+            <%# Theme & Font Size Toggle %>
+            <div class="theme-toggle navbar-nav me-2">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle py-1 px-2" href="#" id="themeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-circle-half" data-theme-target="themeIcon"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="themeDropdown">
+                        <li><span class="theme-section-label"><%= t('nav.theme.title') %></span></li>
+                        <li><a class="dropdown-item" href="#" data-theme="light" data-action="click->theme#setTheme"><i class="bi bi-sun"></i> <%= t('nav.theme.light') %></a></li>
+                        <li><a class="dropdown-item" href="#" data-theme="dark" data-action="click->theme#setTheme"><i class="bi bi-moon-stars"></i> <%= t('nav.theme.dark') %></a></li>
+                        <li><a class="dropdown-item" href="#" data-theme="auto" data-action="click->theme#setTheme"><i class="bi bi-circle-half"></i> <%= t('nav.theme.auto') %></a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><span class="theme-section-label"><%= t('nav.font_size.title') %></span></li>
+                        <li><a class="dropdown-item" href="#" data-font-size="small" data-action="click->theme#setFontSize"><i class="bi bi-type"></i> <%= t('nav.font_size.small') %></a></li>
+                        <li><a class="dropdown-item" href="#" data-font-size="medium" data-action="click->theme#setFontSize"><i class="bi bi-type-h3"></i> <%= t('nav.font_size.medium') %></a></li>
+                        <li><a class="dropdown-item" href="#" data-font-size="large" data-action="click->theme#setFontSize"><i class="bi bi-type-h1"></i> <%= t('nav.font_size.large') %></a></li>
+                    </ul>
+                </li>
+            </div>
             <div class="navbar-text">
                 <%= form_with url: switch_locale_path, method: :post, local: true, class: "d-flex" do |form| %>
                 <%= render Forms::SelectFieldComponent.new(

@@ -177,7 +177,9 @@ Rails.application.routes.draw do
   # Public Pages & Marketing
   # ---------------------------------------------------------------------------
   get "dashboard", to: "pages#dashboard", as: :dashboard
+  get "about", to: "pages#about", as: :about
   get "3d-print-pricing-calculator", to: "pages#pricing_calculator", as: :pricing_calculator
+  post "ai-chat", to: "ai_chat#create", as: :ai_chat
 
   # Blog routes with locale support
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
