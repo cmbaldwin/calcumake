@@ -39,11 +39,9 @@ module Api
             model: profile.model,
             technology: profile.technology,
             category: profile.category,
-            build_volume_x: profile.build_volume_x,
-            build_volume_y: profile.build_volume_y,
-            build_volume_z: profile.build_volume_z,
-            power_consumption: profile.power_consumption,
-            price_usd: profile.price_usd&.to_f,
+            power_consumption_avg_watts: profile.power_consumption_avg_watts,
+            power_consumption_peak_watts: profile.power_consumption_peak_watts,
+            cost_usd: profile.cost_usd&.to_f,
             display_name: profile.display_name,
             full_display_name: profile.full_display_name
           }
