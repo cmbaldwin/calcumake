@@ -81,6 +81,11 @@ Rails.application.routes.draw do
   # User profile management
   resource :user_profile, only: [ :show, :edit, :update, :destroy ], path: "profile"
 
+  # AI Setup Assistant
+  resource :setup_assistant, only: [], controller: "setup_assistant" do
+    post :message
+  end
+
   # Onboarding walkthrough for new users
   resource :onboarding, only: [ :show, :update ], controller: "onboarding" do
     post :skip_step

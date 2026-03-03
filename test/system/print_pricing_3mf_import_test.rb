@@ -26,13 +26,13 @@ class PrintPricing3mfImportTest < ApplicationSystemTestCase
     visit new_print_pricing_path
 
     # Should see 3MF import section
-    assert_selector "h5", text: I18n.t('print_pricing.three_mf.import_title')
+    assert_selector "h5", text: I18n.t("print_pricing.three_mf.import_title")
 
     # Should have file input
     assert_selector "input[type='file'][accept='.3mf']"
 
     # Should have help text
-    assert_text I18n.t('print_pricing.three_mf.help_text')
+    assert_text I18n.t("print_pricing.three_mf.help_text")
   end
 
   test "user can upload 3MF file when creating print pricing" do
@@ -106,13 +106,13 @@ class PrintPricing3mfImportTest < ApplicationSystemTestCase
     visit edit_print_pricing_path(print_pricing)
 
     # Should see file attachment status
-    assert_selector ".alert", text: I18n.t('print_pricing.three_mf.status.pending')
+    assert_selector ".alert", text: I18n.t("print_pricing.three_mf.status.pending")
 
     # Should see file size (human readable)
     assert_text "KB" # Human-readable size
 
     # Should have download button
-    assert_link I18n.t('print_pricing.three_mf.download')
+    assert_link I18n.t("print_pricing.three_mf.download")
   end
 
   test "shows completed status after successful import" do
@@ -145,7 +145,7 @@ class PrintPricing3mfImportTest < ApplicationSystemTestCase
 
     # Should see success status
     assert_selector ".alert-success",
-                    text: I18n.t('print_pricing.three_mf.status.completed')
+                    text: I18n.t("print_pricing.three_mf.status.completed")
     assert_selector "i.bi-check-circle-fill"
   end
 
@@ -178,7 +178,7 @@ class PrintPricing3mfImportTest < ApplicationSystemTestCase
 
     # Should see error status
     assert_selector ".alert-danger",
-                    text: I18n.t('print_pricing.three_mf.status.failed')
+                    text: I18n.t("print_pricing.three_mf.status.failed")
     assert_selector "i.bi-x-circle-fill"
     assert_text "Invalid 3MF file format"
   end
@@ -209,7 +209,7 @@ class PrintPricing3mfImportTest < ApplicationSystemTestCase
 
     # Should see processing status
     assert_selector ".alert-info",
-                    text: I18n.t('print_pricing.three_mf.status.processing')
+                    text: I18n.t("print_pricing.three_mf.status.processing")
     assert_selector ".spinner-border"
   end
 end
