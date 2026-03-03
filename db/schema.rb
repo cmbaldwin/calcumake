@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_28_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_13_032409) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -249,6 +249,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_28_120000) do
     t.decimal "prep_cost_per_hour"
     t.integer "prep_time_minutes"
     t.bigint "printer_id"
+    t.text "three_mf_import_error"
+    t.string "three_mf_import_status"
     t.integer "times_printed", default: 0, null: false
     t.integer "units", default: 1, null: false
     t.datetime "updated_at", null: false
@@ -256,6 +258,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_28_120000) do
     t.decimal "vat_percentage"
     t.index ["client_id"], name: "index_print_pricings_on_client_id"
     t.index ["printer_id"], name: "index_print_pricings_on_printer_id"
+    t.index ["three_mf_import_status"], name: "index_print_pricings_on_three_mf_import_status"
     t.index ["times_printed"], name: "index_print_pricings_on_times_printed"
     t.index ["user_id"], name: "index_print_pricings_on_user_id"
   end

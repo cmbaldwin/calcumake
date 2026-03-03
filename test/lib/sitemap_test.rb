@@ -2,6 +2,9 @@ require "test_helper"
 require "zlib"
 
 class SitemapTest < ActiveSupport::TestCase
+  # Sitemap tests write to shared public/ directory — not safe for parallel execution
+  parallelize(workers: 1)
+
   def setup
     # Clear any existing sitemap files
     FileUtils.rm_f(Dir[Rails.root.join("public", "sitemap*.xml*")])

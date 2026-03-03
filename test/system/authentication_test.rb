@@ -127,4 +127,43 @@ class AuthenticationTest < ApplicationSystemTestCase
     # Flash error message should be visible (may be in toast or flash div)
     assert_text "Invalid Email or password."
   end
+
+  # US-002: Cookie consent banner must not block sign-up submission
+  test "sign-up submit is clickable with cookie consent banner visible" do
+    visit new_user_registration_path
+
+    # Cookie consent banner should appear (no cookie set in fresh test session)
+    assert_selector "[data-cookie-consent-target='banner']:not(.d-none)", wait: 3
+
+    # Sign-up form should still be interactable despite the banner
+    fill_in "user_email", with: "consent-test@example.com"
+    fill_in "user_password", with: "password123"
+    fill_in "user_password_confirmation", with: "password123"
+
+    # Submit button must be clickable (not blocked by banner overlay)
+    click_button I18n.t("nav.sign_up")
+
+    # Should proceed (either to onboarding or show validation — not stuck on form)
+    assert_no_current_path new_user_registration_path, wait: 5
+  end
+
+  # US-003: Sign-up validation feedback must be visibly detectable
+  test "invalid sign-up shows visible validation errors" do
+    visit new_user_registration_path
+
+    # Submit with invalid data: short password, mismatched confirmation
+    fill_in "user_email", with: "validation-test@example.com"
+    fill_in "user_password", with: "short"
+    fill_in "user_password_confirmation", with: "different"
+
+    click_button I18n.t("nav.sign_up")
+
+    # Should show error explanation with validation messages
+    assert_selector "#error_explanation", wait: 5
+
+    # Error list should contain specific validation messages
+    within("#error_explanation") do
+      assert_selector "li", minimum: 1
+    end
+  end
 end

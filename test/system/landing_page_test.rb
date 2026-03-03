@@ -93,6 +93,37 @@ class LandingPageTest < ApplicationSystemTestCase
     assert_selector "h1"  # Just check that h1 exists
   end
 
+  # US-004: Mobile nav toggle exposes Sign Up and Calculator CTAs
+  test "mobile nav toggle reveals sign-up and calculator links" do
+    resize_to_mobile
+    visit root_path
+
+    # Navbar toggler should be visible on mobile
+    assert_selector ".navbar-toggler", visible: true
+
+    # CTAs should be hidden in collapsed navbar
+    assert_no_selector ".navbar-collapse.show"
+
+    # Click hamburger toggle
+    find(".navbar-toggler").click
+
+    # Navbar should expand
+    assert_selector ".navbar-collapse.show", wait: 3
+
+    # Sign Up and Calculator links should now be reachable
+    within(".navbar-collapse.show") do
+      sign_up_link = find_link(I18n.t("nav.sign_up"))
+      assert sign_up_link, "Sign Up link should be visible in mobile nav"
+
+      calculator_link = find_link(I18n.t("nav.calculate_now"))
+      assert calculator_link, "Calculator link should be visible in mobile nav"
+    end
+
+    # Verify Sign Up link navigates correctly
+    click_link I18n.t("nav.sign_up")
+    assert_current_path new_user_registration_path
+  end
+
   private
 
   def resize_to_mobile

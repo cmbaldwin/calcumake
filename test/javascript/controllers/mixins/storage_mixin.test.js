@@ -152,6 +152,20 @@ describe('Storage Mixin', () => {
       expect(() => controller.loadFromStorage()).not.toThrow()
     })
 
+    test('first visit with empty localStorage does not produce warnings', () => {
+      const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
+      const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+
+      const controller = createMockController()
+      controller.loadFromStorage()
+
+      expect(warnSpy).not.toHaveBeenCalled()
+      expect(errorSpy).not.toHaveBeenCalled()
+
+      warnSpy.mockRestore()
+      errorSpy.mockRestore()
+    })
+
     test('handles invalid JSON in localStorage', () => {
       localStorage.setItem('calcumake_advanced_calculator', 'invalid json {')
 

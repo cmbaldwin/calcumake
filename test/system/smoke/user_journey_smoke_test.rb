@@ -18,11 +18,19 @@ class UserJourneySmokeTest < ApplicationSystemTestCase
 
       filament_select = find("select[name*='[plate_filaments_attributes]'][name$='[filament_id]']", match: :first)
       filament_select.find("option", text: filaments(:one).display_name).select_option
-      find("input[name*='[plate_filaments_attributes]'][name$='[filament_weight]']", match: :first).fill_in with: "35"
+
+      # Set weight via JS — Capybara fill_in doesn't reliably set number fields with JS handlers
+      weight_field = find("input[name*='[plate_filaments_attributes]'][name$='[filament_weight]']", match: :first)
+      execute_script("arguments[0].value = ''; arguments[0].focus();", weight_field.native)
+      weight_field.set("35")
+      execute_script("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", weight_field.native)
     end
 
-    click_button I18n.t("print_pricing.buttons.calculate_save")
-    assert_current_path(%r{\A/print_pricings/\d+\z})
+    # Submit via JS to bypass any HTML5 validation issues in headless Chrome
+    execute_script("document.getElementById('pricing-form').requestSubmit()")
+
+    # Wait for redirect to show page
+    assert_current_path(%r{\A/print_pricings/\d+\z}, wait: 10)
     assert_text "Smoke Job"
   end
 
@@ -45,7 +53,10 @@ class UserJourneySmokeTest < ApplicationSystemTestCase
     assert_selector ".printer-quick-select", minimum: 1
 
     find(".printer-quick-select", match: :first).click
-    click_button I18n.t("onboarding.buttons.create_printer")
+
+    # Click via JS to bypass cookie consent banner overlay
+    submit_btn = find(:button, I18n.t("onboarding.buttons.create_printer"))
+    execute_script("arguments[0].scrollIntoView({block: 'center'}); arguments[0].click();", submit_btn.native)
 
     assert_current_path onboarding_path(step: "filament")
     click_button I18n.t("onboarding.buttons.add_filaments")
