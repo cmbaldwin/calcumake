@@ -10,6 +10,8 @@ pin "@popperjs/core", to: "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/di
 pin "bootstrap", to: "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.esm.min.js"
 
 # Lazy-load heavy libraries only when needed (not on initial page load)
+pin "three", to: "https://esm.sh/three@0.170.0", preload: false
+pin "three/addons/loaders/STLLoader", to: "https://esm.sh/three@0.170.0/examples/jsm/loaders/STLLoader.js", preload: false
 pin "jspdf", to: "https://esm.sh/jspdf@3.0.3", preload: false
 pin "html2canvas", to: "https://esm.sh/html2canvas@1.4.1", preload: false
 pin "lexxy", to: "lexxy.js", preload: false

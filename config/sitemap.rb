@@ -7,6 +7,7 @@ SitemapGenerator::Sitemap.create do
 
   # Public tools - high value for SEO and lead generation
   add pricing_calculator_path, priority: 1.0, changefreq: "weekly"
+  add about_path, priority: 0.9, changefreq: "monthly"
   # Note: /landing is NOT included - root_path already points to the landing page
   # Including both creates duplicate content issues in Google Search Console
   add commerce_disclosure_path, priority: 0.6, changefreq: "yearly"

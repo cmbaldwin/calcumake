@@ -2,7 +2,18 @@
 en:
   nav:
     brand: CalcuMake
+    about: About
     calculate_now: Calculate Now!
+    theme:
+      title: Theme
+      light: Light
+      dark: Dark
+      auto: Auto
+    font_size:
+      title: Text Size
+      small: Small
+      medium: Medium
+      large: Large
     print_pricings: My Pricings
     my_pricings: My Pricings
     new_pricing: New Pricing

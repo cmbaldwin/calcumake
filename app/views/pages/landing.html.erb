@@ -1,25 +1,88 @@
-<%# Landing page for CalcuMake - conversion optimized for 3D printing enthusiasts %>
-
-<%# Override page title and meta tags for SEO %>
+<%# AI-first minimal landing page %>
 <% content_for :title, @page_title %>
 <% content_for :meta_description, @meta_description %>
 <% content_for :meta_keywords, @meta_keywords %>
+<% content_for :body_class, "minimal-landing" %>
 
-<%# Add landing page specific structured data %>
 <% content_for :structured_data do %>
 <script type="application/ld+json">
     <%= @structured_data.to_json.html_safe %>
 </script>
 <% end %>
 
-<%# Include locale suggestion banner at the top %>
-<%= render 'shared/locale_suggestion_banner' %>
+<div class="minimal-landing-page"
+     data-controller="landing-3d landing-upload landing-chat"
+     data-landing-chat-url-value="<%= ai_chat_path %>">
 
-<div class="landing-page">
-    <%= render 'pages/landing/hero' %>
-    <%= render 'pages/landing/problem' %>
-    <%= render 'pages/landing/features' %>
-    <%= render 'pages/landing/pricing' %>
-    <%= render 'pages/landing/faq' %>
-    <%= render 'pages/landing/final_cta' %>
+  <%# Logo / Wordmark %>
+  <header class="minimal-header">
+    <h1 class="calcumake-wordmark">calcumake</h1>
+    <p class="minimal-tagline"><%= t('landing_new.tagline') %></p>
+  </header>
+
+  <%# 3D Wireframe Viewer %>
+  <section class="model-viewer">
+    <canvas data-landing-3d-target="renderCanvas"></canvas>
+    <div class="model-label" data-landing-3d-target="modelLabel"></div>
+  </section>
+
+  <%# Upload + Chat Input Area %>
+  <section class="interaction-area">
+    <%# File Upload %>
+    <div class="upload-zone"
+         data-landing-upload-target="dropZone"
+         data-action="dragover->landing-upload#dragover dragleave->landing-upload#dragleave drop->landing-upload#drop">
+      <label class="upload-button" for="stl_upload">
+        <i class="bi bi-cloud-arrow-up"></i>
+        <span><%= t('landing_new.upload_cta') %></span>
+        <input type="file" id="stl_upload" accept=".stl,.3mf"
+               data-landing-upload-target="fileInput"
+               data-action="change->landing-upload#fileSelected"
+               class="visually-hidden">
+      </label>
+    </div>
+
+    <%# Upload Results (hidden until file processed) %>
+    <div data-landing-upload-target="results" style="display:none;">
+      <div class="upload-results">
+        <div class="results-card">
+          <h3 data-landing-upload-target="fileName"></h3>
+          <div class="results-grid" data-landing-upload-target="resultsGrid"></div>
+          <p class="results-disclaimer"><%= t('landing_new.results.disclaimer') %></p>
+          <div class="results-actions">
+            <%= link_to t('landing_new.full_calculator'), pricing_calculator_path, class: "btn btn-primary" %>
+            <%= link_to t('landing_new.sign_up_save'), new_user_registration_path, class: "btn btn-outline-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%# AI Chat Input %>
+    <div class="chat-input-area">
+      <form data-action="submit->landing-chat#submit" data-landing-chat-target="form">
+        <div class="chat-input-wrapper">
+          <input type="text" name="message"
+                 placeholder="<%= t('landing_new.chat_placeholder') %>"
+                 autocomplete="off"
+                 data-landing-chat-target="input"
+                 class="chat-input">
+          <button type="submit" class="chat-submit" data-landing-chat-target="submitButton">
+            <i class="bi bi-arrow-up-circle-fill"></i>
+          </button>
+        </div>
+      </form>
+      <div class="chat-response" data-landing-chat-target="response" style="display:none;"></div>
+    </div>
+  </section>
+
+  <%# Subtle footer links %>
+  <footer class="minimal-footer">
+    <%= link_to t('landing_new.learn_more'), about_path %>
+    <span class="separator">&middot;</span>
+    <%= link_to t('nav.sign_in'), new_user_session_path %>
+    <span class="separator">&middot;</span>
+    <%= link_to t('nav.sign_up'), new_user_registration_path %>
+    <span class="separator">&middot;</span>
+    <%= link_to t('nav.blog'), blog_path %>
+  </footer>
 </div>

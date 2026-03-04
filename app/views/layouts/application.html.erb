@@ -1,9 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html data-controller="theme" data-theme="auto" data-font-size="small">
 
 <head>
     <title><%= meta_title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <%# Apply theme before paint to prevent flash of wrong theme %>
+    <script>
+    (function(){
+      var t=localStorage.getItem('calcumake-theme')||'auto';
+      var f=localStorage.getItem('calcumake-font-size')||'small';
+      document.documentElement.setAttribute('data-theme',t);
+      document.documentElement.setAttribute('data-font-size',f);
+    })();
+    </script>
 
     <%# Preconnect to external domains for faster resource loading %>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
