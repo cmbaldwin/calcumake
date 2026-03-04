@@ -1,0 +1,9 @@
+"Job Name","Plate #","Print Time (hrs)","Resin Volume (mL)","Resin Cost","Electricity Cost","Labor Cost","Machine Cost","Total"
+"My 3D Print Job","Plate 1","2.5","50","2.50","","","","2.50"
+"My 3D Print Job","Plate 2","2.5","50","2.50","","","","2.50"
+
+"","","","Electricity Cost","0.12","","","",""
+"","","","Labor Cost","10.00","","","",""
+"","","","Machine Cost","0.29","","","",""
+
+"Grand Total","","","","","","","","14.47"

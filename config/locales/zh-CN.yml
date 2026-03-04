@@ -2092,3 +2092,39 @@ zh-CN:
         </ul>
       next_steps: 准备好计算您的第一个打印成本了吗？
       action: 创建首个定价
+  setup_assistant:
+    label: 设置助手
+    title: CalcuMake 助手
+    subtitle: 通过聊天添加打印机、线材、树脂和偏好设置。
+    placeholder: 尝试：添加一台 Prusa i3 MK4 和 PLA 线材
+    send: 发送
+    close: 关闭
+    welcome: 您好！我可以帮助您完成设置任务，例如添加打印机、线材、树脂或更新您的默认设置。
+    guided_welcome: 引导模式已激活。告诉我您要设置什么，我会为您添加。
+    onboarding_ready: 此步骤看起来已完成。 准备就绪后，您可以单击“下一步”。
+    fallback_reply: 我可以帮助您进行设置。 告诉我您要添加或更新什么。
+    action_summary: 我所做的更改：
+    action_ignored: 我忽略了该操作。
+    updated_preferences: 已更新您的个人资料默认设置。
+    no_changes: 未提供任何个人资料字段以进行更新。
+    invalid_currency: 工作区不支持货币 %{currency}。
+    not_in_onboarding: 您现在未处于引导流程中。
+    completed_onboarding: 引导流程已标记为完成。
+    created:
+      printer: 已创建打印机 %{name}。
+      filament: 已创建线材 %{name}。
+      resin: 已创建树脂 %{name}。
+    already_exists:
+      printer: 打印机 %{name} 已经存在。
+      filament: 线材 %{name} 已经存在。
+      resin: 树脂 %{name} 已经存在。
+    missing:
+      printer_name: 请提供打印机名称。
+      printer_preset: 我找不到预设模型 %{model}。
+      filament_material: 请提供线材材料类型。
+      resin_name: 请提供树脂名称。
+      resin_type: 请提供树脂类型。
+    errors:
+      blank_message: 请键入消息，以便我可以提供帮助。
+      message_too_long: 请将每条消息保持在 %{max} 个字符以下。
+      unavailable: 助手暂时不可用。 请使用标准表格，然后重试。

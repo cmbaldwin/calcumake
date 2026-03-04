@@ -1,0 +1,345 @@
+- generic [ref=e305]:
+  - navigation [ref=e306]:
+    - generic [ref=e307]:
+      - link "CalcuMake CalcuMake" [ref=e308] [cursor=pointer]:
+        - /url: /
+        - img "CalcuMake" [ref=e309]
+        - generic [ref=e310]: CalcuMake
+      - generic [ref=e311]:
+        - list [ref=e312]:
+          - listitem [ref=e313]:
+            - link "Sign in" [ref=e314] [cursor=pointer]:
+              - /url: /users/sign_in
+          - listitem [ref=e315]:
+            - link "Sign up" [ref=e316] [cursor=pointer]:
+              - /url: /users/sign_up
+          - listitem [ref=e317]:
+            - link "Calculate Now!" [ref=e318] [cursor=pointer]:
+              - /url: /3d-print-pricing-calculator
+        - list [ref=e319]:
+          - listitem [ref=e320]:
+            - link "Blog" [ref=e321] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e322]:
+            - link "Support" [ref=e323] [cursor=pointer]:
+              - /url: /support
+        - combobox "Language" [ref=e326]:
+          - option "English" [selected]
+          - option "日本語"
+          - option "简体中文"
+          - option "हिंदी"
+          - option "Español"
+          - option "Français"
+          - option "العربية"
+  - main [ref=e328]:
+    - generic [ref=e330]:
+      - generic [ref=e331]:
+        - generic [ref=e332]:
+          - heading " Calculator Settings" [level=5] [ref=e334]:
+            - generic [ref=e335]: 
+            - text: Calculator Settings
+          - generic [ref=e336]:
+            - generic [ref=e337]:
+              - generic [ref=e338]:
+                - generic [ref=e339]: 
+                - text: Saved Calculations
+              - generic [ref=e340]:
+                - combobox " Saved Calculations" [ref=e342]:
+                  - option "My 3D Print Job" [selected]
+                - group [ref=e344]:
+                  - button " Save As" [ref=e345] [cursor=pointer]:
+                    - generic [ref=e346]: 
+                    - text: Save As
+                  - button " Delete" [ref=e347] [cursor=pointer]:
+                    - generic [ref=e348]: 
+                    - text: Delete
+              - generic [ref=e349]:
+                - generic [ref=e350]: 
+                - text: Calculations are stored locally on your device and may be lost if you clear browser data.
+                - link "Sign up to save your prints for free and never lose them" [ref=e351] [cursor=pointer]:
+                  - /url: /users/sign_up
+                - text: .
+            - generic [ref=e352]:
+              - generic [ref=e353]:
+                - generic [ref=e354]: 
+                - text: Job Name
+              - textbox " Job Name" [ref=e355]:
+                - /placeholder: Enter project name...
+                - text: My 3D Print Job
+            - generic [ref=e357]:
+              - heading " Machine Settings" [level=6] [ref=e358]:
+                - generic [ref=e359]: 
+                - text: Machine Settings
+              - generic [ref=e360]:
+                - paragraph [ref=e361]:
+                  - generic [ref=e362]: 
+                  - text: Print Technology
+                - group [ref=e363]:
+                  - radio " FDM (Filament)" [checked]
+                  - generic [ref=e364] [cursor=pointer]:
+                    - generic [ref=e365]: 
+                    - text: FDM (Filament)
+                  - radio " Resin (SLA/DLP)"
+                  - generic [ref=e366] [cursor=pointer]:
+                    - generic [ref=e367]: 
+                    - text: Resin (SLA/DLP)
+                - text: Choose your printer technology - this will update all plates below
+              - generic [ref=e368]:
+                - generic [ref=e369]:
+                  - generic [ref=e370]: 
+                  - text: Printer Profile (Optional)
+                - combobox " Printer Profile (Optional)" [ref=e371]:
+                  - option "-- Select a Common Printer --" [selected]
+                  - option "Creality Ender 3 V3 SE (100W, $199)"
+                  - option "Bambu Lab A1 Mini Combo (95W, $329)"
+                  - option "Elegoo Centauri Carbon (110W, $279)"
+                  - option "Creality Ender 3 V3 KE (120W, $279)"
+                  - option "Anycubic Kobra 2 Neo (100W, $179)"
+                  - option "Bambu Lab P1S Combo (140W, $549)"
+                  - option "Creality K2 Pro (180W, $799)"
+                  - option "Qidi Tech Plus 4 (180W, $699)"
+                  - option "Prusa i3 MK4 Kit (120W, $899)"
+                  - option "Prusa i3 MK4 Assembled (120W, $1099)"
+                  - option "Prusa CORE One (150W, $1299)"
+                  - option "Bambu Lab X1 Carbon Combo (150W, $1449)"
+                  - option "Bambu Lab H2D (220W, $1749)"
+                  - option "Prusa XL Single Toolhead (235W, $1999)"
+                  - option "Snapmaker Artisan (3-in-1) (250W, $2599)"
+                  - option "Ultimaker S7 (500W, $5999)"
+                  - option "Raise3D Pro3 (380W, $5499)"
+                  - option "Stratasys F170 (1200W, $17000)"
+                - generic [ref=e372]: Select a printer to auto-fill machine settings
+                - generic [ref=e373]:
+                  - generic [ref=e374]: 
+                  - text: Printer profiles are AI-generated estimates based on web research. Always verify specifications with your printer's manual.
+              - generic [ref=e375]:
+                - generic [ref=e376]:
+                  - generic [ref=e377]: Power Consumption (W)
+                  - spinbutton "Power Consumption (W)" [ref=e378]: "200"
+                - generic [ref=e379]:
+                  - generic [ref=e380]: Machine Cost
+                  - spinbutton "Machine Cost" [ref=e381]: "500"
+                - generic [ref=e382]:
+                  - generic [ref=e383]: Payoff Period (years)
+                  - spinbutton "Payoff Period (years)" [ref=e384]: "3"
+              - heading " Labor Settings" [level=6] [ref=e385]:
+                - generic [ref=e386]: 
+                - text: Labor Settings
+              - generic [ref=e387]:
+                - generic [ref=e388]:
+                  - generic [ref=e389]: Prep Time (mins)
+                  - spinbutton "Prep Time (mins)" [ref=e390]: "15"
+                - generic [ref=e391]:
+                  - generic [ref=e392]: Prep Rate ($/hr)
+                  - spinbutton "Prep Rate ($/hr)" [ref=e393]: "20"
+                - generic [ref=e394]:
+                  - generic [ref=e395]: Post-Processing Time (mins)
+                  - spinbutton "Post-Processing Time (mins)" [ref=e396]: "15"
+                - generic [ref=e397]:
+                  - generic [ref=e398]: Post Rate ($/hr)
+                  - spinbutton "Post Rate ($/hr)" [ref=e399]: "20"
+            - generic [ref=e400]:
+              - generic [ref=e401]:
+                - heading " Build Plates" [level=6] [ref=e402]:
+                  - generic [ref=e403]: 
+                  - text: Build Plates
+                - button " Add Plate" [active] [ref=e404] [cursor=pointer]:
+                  - generic [ref=e405]: 
+                  - text: Add Plate
+              - generic [ref=e406]:
+                - generic [ref=e407]: 
+                - text: Add up to 10 build plates. Each plate can have multiple filaments and custom settings.
+              - generic [ref=e408]:
+                - generic [ref=e409]:
+                  - generic [ref=e410]:
+                    - strong [ref=e411]:
+                      - generic [ref=e412]: 
+                      - generic [ref=e413]: Plate 1
+                    - button "Remove plate" [ref=e414] [cursor=pointer]:
+                      - generic [ref=e415]: 
+                  - generic [ref=e416]:
+                    - generic [ref=e418]:
+                      - generic [ref=e419]:
+                        - generic [ref=e420]: 
+                        - text: Print Time (hrs)
+                      - spinbutton " Print Time (hrs)" [ref=e421]: "2.5"
+                    - generic [ref=e422]:
+                      - generic [ref=e423]:
+                        - paragraph [ref=e424]:
+                          - generic [ref=e425]: 
+                          - text: Filaments
+                        - button " Add Filament" [ref=e426] [cursor=pointer]:
+                          - generic [ref=e427]: 
+                          - text: Add Filament
+                      - generic [ref=e429]:
+                        - generic [ref=e430]:
+                          - generic [ref=e431]: Weight (g)
+                          - spinbutton "Weight (g) Weight (g)" [ref=e560]: "45"
+                        - generic [ref=e433]:
+                          - generic [ref=e434]: Price per kg
+                          - spinbutton "Price per kg Price per kg" [ref=e561]: "25"
+                        - button "Remove filament" [ref=e437] [cursor=pointer]:
+                          - generic [ref=e438]: 
+                      - generic [ref=e439]:
+                        - generic [ref=e440]: 
+                        - text: Add up to 16 filaments per plate. Mix different materials and colors.
+                    - text:  
+                - generic [ref=e562]:
+                  - generic [ref=e563]:
+                    - strong [ref=e564]:
+                      - generic [ref=e565]: 
+                      - generic [ref=e566]: Plate 2
+                    - button "Remove plate" [ref=e567] [cursor=pointer]:
+                      - generic [ref=e568]: 
+                  - generic [ref=e569]:
+                    - generic [ref=e571]:
+                      - generic [ref=e572]:
+                        - generic [ref=e573]: 
+                        - text: Print Time (hrs)
+                      - spinbutton " Print Time (hrs)" [ref=e574]: "2.5"
+                    - generic [ref=e575]:
+                      - generic [ref=e576]:
+                        - paragraph [ref=e577]:
+                          - generic [ref=e578]: 
+                          - text: Filaments
+                        - button " Add Filament" [ref=e579] [cursor=pointer]:
+                          - generic [ref=e580]: 
+                          - text: Add Filament
+                      - generic [ref=e582]:
+                        - generic [ref=e583]:
+                          - generic [ref=e584]: Weight (g)
+                          - spinbutton [ref=e585]: "45"
+                        - generic [ref=e586]:
+                          - generic [ref=e587]: Price per kg
+                          - spinbutton [ref=e588]: "25"
+                        - button "Remove filament" [ref=e590] [cursor=pointer]:
+                          - generic [ref=e591]: 
+                      - generic [ref=e592]:
+                        - generic [ref=e593]: 
+                        - text: Add up to 16 filaments per plate. Mix different materials and colors.
+                    - text:  
+            - generic [ref=e442]:
+              - heading " Additional Costs" [level=6] [ref=e443]:
+                - generic [ref=e444]: 
+                - text: Additional Costs
+              - generic [ref=e445]:
+                - generic [ref=e446]:
+                  - generic [ref=e447]: Units
+                  - spinbutton "Units" [ref=e448]: "1"
+                  - text: Number of units to produce
+                - generic [ref=e449]:
+                  - generic [ref=e450]: Failure Rate (%)
+                  - spinbutton "Failure Rate (%)" [ref=e451]: "5"
+                  - text: Percentage to account for failed prints
+                - generic [ref=e452]:
+                  - generic [ref=e453]: Shipping Cost
+                  - spinbutton "Shipping Cost" [ref=e454]: "0"
+                - generic [ref=e455]:
+                  - generic [ref=e456]: Other Costs
+                  - spinbutton "Other Costs" [ref=e457]: "0"
+        - generic [ref=e459]:
+          - heading " Why CalcuMake?" [level=6] [ref=e460]:
+            - generic [ref=e461]: 
+            - text: Why CalcuMake?
+          - generic [ref=e462]:
+            - generic [ref=e464]:
+              - generic [ref=e465]: 
+              - generic [ref=e466]: Support for up to 10 build plates
+            - generic [ref=e468]:
+              - generic [ref=e469]: 
+              - generic [ref=e470]: Mix up to 16 filaments per plate
+            - generic [ref=e472]:
+              - generic [ref=e473]: 
+              - generic [ref=e474]: Auto-save to browser (no data loss)
+            - generic [ref=e476]:
+              - generic [ref=e477]: 
+              - generic [ref=e478]: Export to PDF or CSV instantly
+            - generic [ref=e480]:
+              - generic [ref=e481]: 
+              - generic [ref=e482]: Real-time cost calculations
+            - generic [ref=e484]:
+              - generic [ref=e485]: 
+              - generic [ref=e486]: No signup required to use
+      - generic [ref=e488]:
+        - generic [ref=e489]:
+          - heading " Cost Summary" [level=5] [ref=e491]:
+            - generic [ref=e492]: 
+            - text: Cost Summary
+          - generic [ref=e493]:
+            - generic [ref=e494]:
+              - generic [ref=e495]:
+                - generic [ref=e496]:
+                  - generic [ref=e497]: 
+                  - text: Filament
+                - strong [ref=e498]: $2.25
+              - generic [ref=e499]:
+                - generic [ref=e500]:
+                  - generic [ref=e501]: 
+                  - text: Electricity
+                - strong [ref=e502]: $0.12
+              - generic [ref=e503]:
+                - generic [ref=e504]:
+                  - generic [ref=e505]: 
+                  - text: Labor
+                - strong [ref=e506]: $10.00
+              - generic [ref=e507]:
+                - generic [ref=e508]:
+                  - generic [ref=e509]: 
+                  - text: Machine
+                - strong [ref=e510]: $0.29
+              - generic [ref=e511]:
+                - generic [ref=e512]:
+                  - generic [ref=e513]: 
+                  - text: Other
+                - strong [ref=e514]: $0.63
+            - generic [ref=e515]:
+              - generic [ref=e516]:
+                - heading "Grand Total" [level=5] [ref=e517]
+                - heading "$13.29" [level=4] [ref=e594]
+              - generic [ref=e519]:
+                - generic [ref=e520]: Per Unit Price
+                - generic [ref=e521]: $13.29
+            - generic [ref=e522]:
+              - button " Export to PDF" [ref=e523] [cursor=pointer]:
+                - generic [ref=e524]: 
+                - text: Export to PDF
+              - button " Export to CSV" [ref=e525] [cursor=pointer]:
+                - generic [ref=e526]: 
+                - text: Export to CSV
+        - generic [ref=e528]:
+          - heading "Want to Save Your Projects?" [level=6] [ref=e529]
+          - paragraph [ref=e530]: Create a free account to save unlimited calculations, manage printers, create invoices, and more.
+          - link "Start Free Trial" [ref=e531] [cursor=pointer]:
+            - /url: /users/sign_up
+          - generic [ref=e533]:
+            - generic [ref=e534]: 
+            - text: No credit card required
+  - contentinfo [ref=e535]:
+    - generic [ref=e536]:
+      - paragraph [ref=e538]: © 2026 株式会社モアブ (MOAB Co., Ltd.)
+      - generic [ref=e540]:
+        - link "Support" [ref=e541] [cursor=pointer]:
+          - /url: /support
+        - generic [ref=e542]: "|"
+        - link "Privacy Policy" [ref=e543] [cursor=pointer]:
+          - /url: /privacy-policy
+        - generic [ref=e544]: "|"
+        - link "Terms of Service" [ref=e545] [cursor=pointer]:
+          - /url: /user-agreement
+        - generic [ref=e546]: "|"
+        - link "Commerce Disclosure" [ref=e547] [cursor=pointer]:
+          - /url: /commerce-disclosure
+  - generic [ref=e550]:
+    - generic [ref=e551]:
+      - heading "Cookie Consent" [level=5] [ref=e552]
+      - paragraph [ref=e553]:
+        - text: We use cookies to improve your experience. By continuing to use this site, you agree to our
+        - link "Cookie Policy" [ref=e554] [cursor=pointer]:
+          - /url: /cookie-policy
+        - text: . Read our
+        - link "Privacy Policy" [ref=e555] [cursor=pointer]:
+          - /url: /privacy-policy
+        - text: .
+    - generic [ref=e557]:
+      - button "Reject" [ref=e558] [cursor=pointer]
+      - button "Accept" [ref=e559] [cursor=pointer]

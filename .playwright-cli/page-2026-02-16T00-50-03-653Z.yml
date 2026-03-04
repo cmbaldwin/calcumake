@@ -1,0 +1,298 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "CalcuMake CalcuMake" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "CalcuMake" [ref=e5]
+        - generic [ref=e6]: CalcuMake
+      - generic [ref=e7]:
+        - list [ref=e8]:
+          - listitem [ref=e9]:
+            - link "Sign in" [ref=e10] [cursor=pointer]:
+              - /url: /users/sign_in
+          - listitem [ref=e11]:
+            - link "Sign up" [ref=e12] [cursor=pointer]:
+              - /url: /users/sign_up
+          - listitem [ref=e13]:
+            - link "Calculate Now!" [ref=e14] [cursor=pointer]:
+              - /url: /3d-print-pricing-calculator
+        - list [ref=e15]:
+          - listitem [ref=e16]:
+            - link "Blog" [ref=e17] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e18]:
+            - link "Support" [ref=e19] [cursor=pointer]:
+              - /url: /support
+        - combobox "Language" [ref=e22]:
+          - option "English" [selected]
+          - option "日本語"
+          - option "简体中文"
+          - option "हिंदी"
+          - option "Español"
+          - option "Français"
+          - option "العربية"
+  - main [ref=e24]:
+    - generic [ref=e295]:
+      - generic [ref=e297]:
+        - generic [ref=e298]: 
+        - generic [ref=e299]:
+          - strong [ref=e300]: 別の地域からアクセスしているようです。
+          - text: より良い体験のために日本語に切り替えますか？
+          - generic [ref=e301]: 現在Englishで表示しています
+      - generic [ref=e302]:
+        - button "言語を切り替える" [ref=e303] [cursor=pointer]
+        - button "Stay in English" [ref=e304] [cursor=pointer]
+    - generic [ref=e25]:
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - heading "More creating, less calculating" [level=1] [ref=e30]
+          - paragraph [ref=e31]: Skip the spreadsheets and tedious calculations. Handle pricing automatically so you can focus on the fun part.
+          - generic [ref=e32]:
+            - link "Start Calculating Free" [ref=e33] [cursor=pointer]:
+              - /url: /users/sign_up
+            - link "Try Calculator Free" [ref=e34] [cursor=pointer]:
+              - /url: /3d-print-pricing-calculator
+          - generic [ref=e36]:
+            - generic [ref=e37]: 
+            - text: No credit card required - start with full Startup features for 30 days
+        - generic [ref=e41]:
+          - heading " Quick Cost Preview" [level=5] [ref=e42]:
+            - generic [ref=e43]: 
+            - text: Quick Cost Preview
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e46]: Filament Weight
+              - generic [ref=e47]: 45.2g
+            - generic [ref=e48]:
+              - generic [ref=e49]: Print Time
+              - generic [ref=e50]: 2.5h
+          - generic [ref=e51]:
+            - strong [ref=e52]: "Total Cost: $3.47"
+            - generic [ref=e53]: Electricity + Filament + Labor
+      - generic [ref=e58]:
+        - heading "Are you wasting time calculating pricing for 3D prints?" [level=2] [ref=e59]
+        - generic [ref=e60]:
+          - generic [ref=e63]:
+            - generic [ref=e64]: 
+            - heading "Manual Calculation Errors" [level=5] [ref=e65]
+            - paragraph [ref=e66]: Spreadsheets and mental math lead to costly mistakes and undercharging.
+          - generic [ref=e69]:
+            - generic [ref=e70]: 
+            - heading "Forgotten Electricity Costs" [level=5] [ref=e71]
+            - paragraph [ref=e72]: Power consumption can add 20-40% to your actual costs but is often ignored.
+          - generic [ref=e75]:
+            - generic [ref=e76]: 
+            - heading "Inconsistent Pricing" [level=5] [ref=e77]
+            - paragraph [ref=e78]: Different calculations for similar jobs confuse customers and hurt profits.
+          - generic [ref=e81]:
+            - generic [ref=e82]: 
+            - heading "Time Wasted on Spreadsheets" [level=5] [ref=e83]
+            - paragraph [ref=e84]: Hours spent on manual calculations instead of growing your printing business.
+      - generic [ref=e87]:
+        - generic [ref=e89]:
+          - heading "Professional Tools for Serious Makers" [level=2] [ref=e90]
+          - paragraph [ref=e91]: Everything you need to price accurately and manage your 3D printing projects like a pro.
+        - generic [ref=e92]:
+          - generic [ref=e96]:
+            - generic [ref=e98]: 
+            - heading "Accurate Cost Calculation" [level=4] [ref=e99]
+            - paragraph [ref=e100]: Get precise costs every time with comprehensive calculation including all hidden expenses.
+            - list [ref=e101]:
+              - listitem [ref=e102]:
+                - generic [ref=e103]: 
+                - text: Filament weight + spool cost
+              - listitem [ref=e104]:
+                - generic [ref=e105]: 
+                - text: Electricity consumption tracking
+              - listitem [ref=e106]:
+                - generic [ref=e107]: 
+                - text: Labor time (prep + post-processing)
+              - listitem [ref=e108]:
+                - generic [ref=e109]: 
+                - text: Machine depreciation
+          - generic [ref=e113]:
+            - generic [ref=e115]: 
+            - heading "Multi-Printer Management" [level=4] [ref=e116]
+            - paragraph [ref=e117]: Track different printer specifications and monitor your return on investment across your entire fleet.
+            - list [ref=e118]:
+              - listitem [ref=e119]:
+                - generic [ref=e120]: 
+                - text: Individual power consumption tracking
+              - listitem [ref=e121]:
+                - generic [ref=e122]: 
+                - text: ROI tracking per printer
+              - listitem [ref=e123]:
+                - generic [ref=e124]: 
+                - text: Organized print job management
+          - generic [ref=e128]:
+            - generic [ref=e130]: 
+            - heading "Professional Invoicing" [level=4] [ref=e131]
+            - paragraph [ref=e132]: Generate professional PDF invoices with your company branding and multi-currency support.
+            - list [ref=e133]:
+              - listitem [ref=e134]:
+                - generic [ref=e135]: 
+                - text: Auto-generated PDF invoices
+              - listitem [ref=e136]:
+                - generic [ref=e137]: 
+                - text: Custom company branding
+              - listitem [ref=e138]:
+                - generic [ref=e139]: 
+                - text: Multi-currency support
+          - generic [ref=e143]:
+            - generic [ref=e145]: 
+            - heading "Project Organization" [level=4] [ref=e146]
+            - paragraph [ref=e147]: Keep your print jobs organized with powerful search, filtering, and project management tools.
+            - list [ref=e148]:
+              - listitem [ref=e149]:
+                - generic [ref=e150]: 
+                - text: Search and filter print jobs
+              - listitem [ref=e151]:
+                - generic [ref=e152]: 
+                - text: Duplicate similar projects
+              - listitem [ref=e153]:
+                - generic [ref=e154]: 
+                - text: Complete print history tracking
+      - generic [ref=e157]:
+        - generic [ref=e159]:
+          - heading "Simple, Transparent Pricing" [level=2] [ref=e160]
+          - paragraph [ref=e161]: Choose the plan that fits your printing volume. Upgrade or downgrade anytime.
+        - generic [ref=e162]:
+          - generic [ref=e165]:
+            - heading "Free" [level=3] [ref=e166]
+            - generic [ref=e167]: $0
+            - list [ref=e168]:
+              - listitem [ref=e169]:
+                - generic [ref=e170]: 
+                - text: 5 Print Calculations per month
+              - listitem [ref=e171]:
+                - generic [ref=e172]: 
+                - text: 1 Printers total
+              - listitem [ref=e173]:
+                - generic [ref=e174]: 
+                - text: 4 Filaments per month
+              - listitem [ref=e175]:
+                - generic [ref=e176]: 
+                - text: 5 Invoices per month
+              - listitem [ref=e177]:
+                - generic [ref=e178]: 
+                - text: CalcuMake branding on invoices
+            - link "Get Started Free" [ref=e180] [cursor=pointer]:
+              - /url: /users/sign_up
+          - generic [ref=e183]:
+            - generic [ref=e184]: Most Popular
+            - heading "Startup" [level=3] [ref=e185]
+            - generic [ref=e186]:
+              - generic [ref=e187]: ¥150 (~$0.98)
+              - text: /month
+            - list [ref=e188]:
+              - listitem [ref=e189]:
+                - generic [ref=e190]: 
+                - text: 50 Print Calculations per month
+              - listitem [ref=e191]:
+                - generic [ref=e192]: 
+                - text: 10 Printers total
+              - listitem [ref=e193]:
+                - generic [ref=e194]: 
+                - text: 16 Filaments per month
+              - listitem [ref=e195]:
+                - generic [ref=e196]: 
+                - text: Unlimited Invoices
+              - listitem [ref=e197]:
+                - generic [ref=e198]: 
+                - text: Remove CalcuMake branding
+            - link "Get Started Free" [ref=e200] [cursor=pointer]:
+              - /url: /users/sign_up
+          - generic [ref=e203]:
+            - heading "Pro" [level=3] [ref=e204]
+            - generic [ref=e205]:
+              - generic [ref=e206]: ¥1,500 (~$9.78)
+              - text: /month
+            - list [ref=e207]:
+              - listitem [ref=e208]:
+                - generic [ref=e209]: 
+                - text: Unlimited Print Calculations
+              - listitem [ref=e210]:
+                - generic [ref=e211]: 
+                - text: Unlimited Printers
+              - listitem [ref=e212]:
+                - generic [ref=e213]: 
+                - text: Unlimited Filaments
+              - listitem [ref=e214]:
+                - generic [ref=e215]: 
+                - text: Unlimited Invoices
+              - listitem [ref=e216]:
+                - generic [ref=e217]: 
+                - text: Unlimited everything
+              - listitem [ref=e218]:
+                - generic [ref=e219]: 
+                - text: Remove CalcuMake branding
+              - listitem [ref=e220]:
+                - generic [ref=e221]: 
+                - text: Priority support
+              - listitem [ref=e222]:
+                - generic [ref=e223]: 
+                - text: Advanced analytics
+              - listitem [ref=e224]:
+                - generic [ref=e225]: 
+                - text: Future premium features
+            - link "Get Started Free" [ref=e227] [cursor=pointer]:
+              - /url: /users/sign_up
+        - generic [ref=e230]:
+          - paragraph [ref=e231]:
+            - generic [ref=e232]: 
+            - text: No credit card required - start with full Startup features for 30 days
+          - paragraph [ref=e233]:
+            - generic [ref=e234]: 
+            - text: Cancel anytime
+          - paragraph [ref=e235]:
+            - generic [ref=e236]: 
+            - text: Your data stays private
+      - generic [ref=e241]:
+        - heading "Frequently Asked Questions" [level=2] [ref=e242]
+        - generic [ref=e243]:
+          - generic [ref=e244]:
+            - heading "How accurate are the calculations?" [level=3] [ref=e245]:
+              - button "How accurate are the calculations?" [ref=e246] [cursor=pointer]
+            - generic [ref=e248]: CalcuMake uses simple formulas and accounts for all cost factors including filament, electricity, labor time, and machine depreciation.
+          - heading "What currencies does CalcuMake support?" [level=3] [ref=e250]:
+            - button "What currencies does CalcuMake support?" [ref=e251] [cursor=pointer]
+          - heading "Does CalcuMake support my 3D printer?" [level=3] [ref=e253]:
+            - button "Does CalcuMake support my 3D printer?" [ref=e254] [cursor=pointer]
+          - heading "How do electricity costs work?" [level=3] [ref=e256]:
+            - button "How do electricity costs work?" [ref=e257] [cursor=pointer]
+          - heading "Can I customize my invoices?" [level=3] [ref=e259]:
+            - button "Can I customize my invoices?" [ref=e260] [cursor=pointer]
+      - generic [ref=e264]:
+        - heading "Ready to stop losing money on 3D prints?" [level=2] [ref=e265]
+        - paragraph [ref=e266]: Join thousands of at least one other maker (me!) who trusts CalcuMake for accurate pricing and professional project management. You've already read everything so far, you might as well sign up — it's free, check it out!
+        - link "Start Your Free Trial" [ref=e267] [cursor=pointer]:
+          - /url: /users/sign_up
+  - contentinfo [ref=e268]:
+    - generic [ref=e269]:
+      - paragraph [ref=e271]: © 2026 株式会社モアブ (MOAB Co., Ltd.)
+      - generic [ref=e273]:
+        - link "Support" [ref=e274] [cursor=pointer]:
+          - /url: /support
+        - generic [ref=e275]: "|"
+        - link "Privacy Policy" [ref=e276] [cursor=pointer]:
+          - /url: /privacy-policy
+        - generic [ref=e277]: "|"
+        - link "Terms of Service" [ref=e278] [cursor=pointer]:
+          - /url: /user-agreement
+        - generic [ref=e279]: "|"
+        - link "Commerce Disclosure" [ref=e280] [cursor=pointer]:
+          - /url: /commerce-disclosure
+  - generic [ref=e283]:
+    - generic [ref=e284]:
+      - heading "Cookie Consent" [level=5] [ref=e285]
+      - paragraph [ref=e286]:
+        - text: We use cookies to improve your experience. By continuing to use this site, you agree to our
+        - link "Cookie Policy" [ref=e287] [cursor=pointer]:
+          - /url: /cookie-policy
+        - text: . Read our
+        - link "Privacy Policy" [ref=e288] [cursor=pointer]:
+          - /url: /privacy-policy
+        - text: .
+    - generic [ref=e290]:
+      - button "Reject" [ref=e291] [cursor=pointer]
+      - button "Accept" [ref=e292] [cursor=pointer]

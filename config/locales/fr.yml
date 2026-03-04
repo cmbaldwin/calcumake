@@ -2437,3 +2437,47 @@ fr:
         </ul>
       next_steps: Prêt à calculer le coût de votre première impression ?
       action: Créer un premier prix
+  setup_assistant:
+    label: Assistant de configuration
+    title: Assistant CalcuMake
+    subtitle: Ajoutez des imprimantes, des filaments, des résines et des préférences
+      par chat.
+    placeholder: 'Essayez : Ajouter une Prusa i3 MK4 et un filament PLA'
+    send: Envoyer
+    close: Fermer
+    welcome: Bonjour ! Je peux vous aider avec les tâches de configuration telles
+      que l’ajout d’imprimantes, de filaments, de résines ou la mise à jour de vos
+      paramètres par défaut.
+    guided_welcome: Le mode guidé est actif. Dites-moi ce que vous voulez configurer
+      et je l’ajouterai pour vous.
+    onboarding_ready: Cette étape semble terminée. Vous pouvez cliquer sur Étape suivante
+      lorsque vous êtes prêt.
+    fallback_reply: Je peux vous aider avec la configuration. Dites-moi ce qu’il faut
+      ajouter ou mettre à jour.
+    action_summary: 'Modifications que j’ai apportées :'
+    action_ignored: J’ai ignoré cette action.
+    updated_preferences: Paramètres par défaut de votre profil mis à jour.
+    no_changes: Aucun champ de profil n’a été fourni pour la mise à jour.
+    invalid_currency: La devise %{currency} n’est pas prise en charge dans cet espace
+      de travail.
+    not_in_onboarding: Vous n’êtes pas en phase d’intégration pour le moment.
+    completed_onboarding: Intégration marquée comme terminée.
+    created:
+      printer: Imprimante %{name} créée.
+      filament: Filament %{name} créé.
+      resin: Résine %{name} créée.
+    already_exists:
+      printer: L’imprimante %{name} existe déjà.
+      filament: Le filament %{name} existe déjà.
+      resin: La résine %{name} existe déjà.
+    missing:
+      printer_name: Veuillez fournir un nom d’imprimante.
+      printer_preset: Je n’ai pas trouvé le modèle prédéfini %{model}.
+      filament_material: Veuillez fournir un type de matériau de filament.
+      resin_name: Veuillez fournir un nom de résine.
+      resin_type: Veuillez fournir un type de résine.
+    errors:
+      blank_message: Tapez un message pour que je puisse vous aider.
+      message_too_long: Veuillez limiter chaque message à moins de %{max} caractères.
+      unavailable: L’assistant est temporairement indisponible. Veuillez utiliser
+        le formulaire standard et réessayer.

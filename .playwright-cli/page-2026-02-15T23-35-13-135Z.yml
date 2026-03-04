@@ -1,0 +1,62 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "KeyRogue home" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - img "KeyRogue" [ref=e5]
+      - generic [ref=e6]: KeyRogue
+    - generic [ref=e7]:
+      - link "Sign In" [ref=e8] [cursor=pointer]:
+        - /url: /users/sign_in
+      - link "Sign Up" [ref=e9] [cursor=pointer]:
+        - /url: /users/sign_up
+  - generic [ref=e10]:
+    - banner [ref=e11]:
+      - img "KeyRogue" [ref=e12]
+      - paragraph [ref=e13]: Type your way through the dungeon
+    - main [ref=e14]:
+      - button "New Game" [ref=e16] [cursor=pointer]
+      - generic [ref=e17]:
+        - heading "Active Games" [level=2] [ref=e18]
+        - list [ref=e19]:
+          - listitem [ref=e20]:
+            - link "AIFSZF" [ref=e21] [cursor=pointer]:
+              - /url: /games/38
+            - generic [ref=e22]: 1/1
+          - listitem [ref=e23]:
+            - link "L4YSKL" [ref=e24] [cursor=pointer]:
+              - /url: /games/30
+            - generic [ref=e25]: 1/1
+          - listitem [ref=e26]:
+            - link "3RBRCC" [ref=e27] [cursor=pointer]:
+              - /url: /games/31
+            - generic [ref=e28]: 1/1
+          - listitem [ref=e29]:
+            - link "EECD1E" [ref=e30] [cursor=pointer]:
+              - /url: /games/32
+            - generic [ref=e31]: 1/1
+          - listitem [ref=e32]:
+            - link "QE1ONB" [ref=e33] [cursor=pointer]:
+              - /url: /games/33
+            - generic [ref=e34]: 1/1
+          - listitem [ref=e35]:
+            - link "TMDAEN" [ref=e36] [cursor=pointer]:
+              - /url: /games/34
+            - generic [ref=e37]: 1/1
+          - listitem [ref=e38]:
+            - link "PRQJ8Y" [ref=e39] [cursor=pointer]:
+              - /url: /games/35
+            - generic [ref=e40]: 1/1
+          - listitem [ref=e41]:
+            - link "ZVAYWA" [ref=e42] [cursor=pointer]:
+              - /url: /games/24
+            - generic [ref=e43]: 1/1
+          - listitem [ref=e44]:
+            - link "9W1L4E" [ref=e45] [cursor=pointer]:
+              - /url: /games/37
+            - generic [ref=e46]: 1/1
+          - listitem [ref=e47]:
+            - link "M64TZM" [ref=e48] [cursor=pointer]:
+              - /url: /games/25
+            - generic [ref=e49]: 1/1
+    - contentinfo [ref=e50]:
+      - paragraph [ref=e51]: "Playing as: Guest 18"

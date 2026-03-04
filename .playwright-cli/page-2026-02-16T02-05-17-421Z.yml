@@ -1,0 +1,76 @@
+- generic [active] [ref=e155]:
+  - navigation [ref=e156]:
+    - generic [ref=e157]:
+      - link "CalcuMake CalcuMake" [ref=e158] [cursor=pointer]:
+        - /url: /
+        - img "CalcuMake" [ref=e159]
+        - generic [ref=e160]: CalcuMake
+      - generic [ref=e161]:
+        - list [ref=e162]:
+          - listitem [ref=e163]:
+            - link "Sign in" [ref=e164] [cursor=pointer]:
+              - /url: /users/sign_in
+          - listitem [ref=e165]:
+            - link "Sign up" [ref=e166] [cursor=pointer]:
+              - /url: /users/sign_up
+          - listitem [ref=e167]:
+            - link "Calculate Now!" [ref=e168] [cursor=pointer]:
+              - /url: /3d-print-pricing-calculator
+        - list [ref=e169]:
+          - listitem [ref=e170]:
+            - link "Blog" [ref=e171] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e172]:
+            - link "Support" [ref=e173] [cursor=pointer]:
+              - /url: /support
+        - combobox "Language" [ref=e176]:
+          - option "English" [selected]
+          - option "日本語"
+          - option "简体中文"
+          - option "हिंदी"
+          - option "Español"
+          - option "Français"
+          - option "العربية"
+  - main [ref=e178]:
+    - generic [ref=e180]:
+      - generic [ref=e181]:
+        - heading "Support" [level=1] [ref=e183]
+        - generic [ref=e184]:
+          - generic [ref=e186]: 
+          - heading "Contact Us" [level=3] [ref=e187]
+          - paragraph [ref=e188]: Need help with CalcuMake? Have a question or suggestion? We're here to help!
+          - generic [ref=e190]:
+            - heading "Email Support" [level=5] [ref=e191]
+            - link " cody@moab.jp" [ref=e192] [cursor=pointer]:
+              - /url: mailto:cody@moab.jp
+              - generic [ref=e193]: 
+              - text: cody@moab.jp
+          - paragraph [ref=e195]: We typically respond within 24-48 hours
+          - generic [ref=e198]:
+            - heading "Billing and Subscription Support" [level=5] [ref=e199]
+            - paragraph [ref=e200]: For billing inquiries, subscription changes, refund requests, or payment issues, please contact us with your account email.
+            - paragraph [ref=e201]: Pro and Enterprise tier subscribers receive priority support response times.
+      - generic [ref=e202]:
+        - heading "Frequently Asked Questions" [level=2] [ref=e204]
+        - generic [ref=e206]:
+          - heading "How do I delete my account?" [level=3] [ref=e208]:
+            - button "How do I delete my account?" [ref=e209] [cursor=pointer]
+          - heading "Can I recover my account after deletion?" [level=3] [ref=e211]:
+            - button "Can I recover my account after deletion?" [ref=e212] [cursor=pointer]
+          - heading "What data gets deleted when I delete my account?" [level=3] [ref=e214]:
+            - button "What data gets deleted when I delete my account?" [ref=e215] [cursor=pointer]
+  - contentinfo [ref=e216]:
+    - generic [ref=e217]:
+      - paragraph [ref=e219]: © 2026 株式会社モアブ (MOAB Co., Ltd.)
+      - generic [ref=e221]:
+        - link "Support" [ref=e222] [cursor=pointer]:
+          - /url: /support
+        - generic [ref=e223]: "|"
+        - link "Privacy Policy" [ref=e224] [cursor=pointer]:
+          - /url: /privacy-policy
+        - generic [ref=e225]: "|"
+        - link "Terms of Service" [ref=e226] [cursor=pointer]:
+          - /url: /user-agreement
+        - generic [ref=e227]: "|"
+        - link "Commerce Disclosure" [ref=e228] [cursor=pointer]:
+          - /url: /commerce-disclosure

@@ -1,0 +1,129 @@
+{
+  "productName": "CalcuMake UX Stability Program (Public Funnel + Calculator)",
+  "version": "2026.02.16",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Establish warning and funnel baseline before changes",
+      "description": "As an engineer, I want reproducible desktop/mobile baseline evidence for public funnel and calculator warnings so fixes are measurable and non-regressive.",
+      "acceptanceCriteria": [
+        "Capture baseline flow for /, /3d-print-pricing-calculator, /users/sign_up, /blog, /support on desktop and mobile.",
+        "Record current warning baseline (including storage default warning and CSS preload warning) and expected post-fix target.",
+        "Document baseline in implementation notes used by subsequent stories."
+      ],
+      "priority": 1,
+      "passes": false
+    },
+    {
+      "id": "US-002",
+      "title": "Prevent cookie consent from blocking sign-up submission",
+      "description": "As an anonymous visitor, I want sign-up controls to remain clickable even when cookie consent is visible so I can complete account creation without UI blockers.",
+      "acceptanceCriteria": [
+        "Add a failing system test first proving sign-up submit is clickable with consent banner present.",
+        "Implement cookie banner layout/interaction fix so no pointer interception occurs on /users/sign_up.",
+        "Desktop and mobile sign-up submission path is passable with banner active.",
+        "Smoke suite remains deterministic and skip-free."
+      ],
+      "priority": 1,
+      "passes": false
+    },
+    {
+      "id": "US-003",
+      "title": "Guarantee visible sign-up validation feedback",
+      "description": "As a visitor submitting invalid sign-up data, I want clear feedback so I understand what to fix.",
+      "acceptanceCriteria": [
+        "Add failing system test for invalid email/password/password confirmation flow.",
+        "Validation outcome is visibly detectable in UI and asserted in tests.",
+        "No regression to existing auth links or page navigation."
+      ],
+      "priority": 1,
+      "passes": false
+    },
+    {
+      "id": "US-004",
+      "title": "Keep mobile funnel navigation and CTA reachability reliable",
+      "description": "As a mobile visitor, I want to open nav and reach Sign up/Calculator CTAs quickly so the top-of-funnel path is frictionless.",
+      "acceptanceCriteria": [
+        "Add failing mobile system/smoke test covering navbar toggle and CTA path to /users/sign_up and /3d-print-pricing-calculator.",
+        "Mobile nav renders actionable auth and calculator links without overlap/regression.",
+        "No hardcoded English selectors in system tests; use translation-safe selectors where applicable."
+      ],
+      "priority": 1,
+      "passes": false
+    },
+    {
+      "id": "US-005",
+      "title": "Initialize calculator defaults without warning noise",
+      "description": "As a first-time calculator user, I want default state to load cleanly so the app feels stable and trustworthy.",
+      "acceptanceCriteria": [
+        "Add failing Jest tests for empty localStorage initialization path in storage mixin.",
+        "Calculator first load creates/uses canonical default state without warning-level logs for expected empty state.",
+        "Public calculator remains fully interactive after initialization change."
+      ],
+      "priority": 1,
+      "passes": false
+    },
+    {
+      "id": "US-006",
+      "title": "Migrate legacy or partial calculator storage safely",
+      "description": "As a returning user with older saved payloads, I want my saved calculations to load or recover safely so existing data is not lost unexpectedly.",
+      "acceptanceCriteria": [
+        "Add failing Jest tests for partial/legacy/corrupt payloads.",
+        "Implement deterministic migration/reset behavior with explicit rules.",
+        "Retain warnings only for truly malformed payloads, not expected first-time usage.",
+        "Export flows (PDF/CSV) remain functional after storage changes."
+      ],
+      "priority": 2,
+      "passes": false
+    },
+    {
+      "id": "US-007",
+      "title": "Make locale suggestion non-blocking on mobile",
+      "description": "As a mobile visitor, I want locale suggestions to assist me without overpowering the primary CTA area.",
+      "acceptanceCriteria": [
+        "Add failing mobile system test asserting primary CTA remains quickly reachable with locale suggestion present.",
+        "Locale suggestion visual priority is reduced for mobile while preserving switch/stay actions.",
+        "Dismiss/stay choice persists and is verifiable by test."
+      ],
+      "priority": 2,
+      "passes": false
+    },
+    {
+      "id": "US-008",
+      "title": "Eliminate avoidable public-page CSS preload warnings",
+      "description": "As a maintainer, I want clean console output on public pages so warning channels highlight real regressions.",
+      "acceptanceCriteria": [
+        "Audit and correct preload usage for application stylesheet in layout/head.",
+        "Add test coverage (view/integration/system as appropriate) for intended asset-loading behavior.",
+        "Known preload warning is absent on /, /blog, /support, /users/sign_up, and calculator under normal load."
+      ],
+      "priority": 2,
+      "passes": false
+    },
+    {
+      "id": "US-009",
+      "title": "Preserve calculator and funnel functionality after UX fixes",
+      "description": "As a product owner, I want UX hardening changes to avoid breaking existing calculator outputs and conversion routes.",
+      "acceptanceCriteria": [
+        "Public calculator smoke journey remains deterministic and passing.",
+        "Auth routes, blog, and support navigation continue working in desktop/mobile flows.",
+        "No new console errors introduced in critical anonymous flows."
+      ],
+      "priority": 2,
+      "passes": false
+    },
+    {
+      "id": "US-010",
+      "title": "Enforce CLAUDE.md-aligned quality gates before merge",
+      "description": "As the team, we want all UX program changes to be test-driven and CI-clean so release risk stays low.",
+      "acceptanceCriteria": [
+        "Each story is implemented test-first (failing test before behavior change).",
+        "Run targeted suites (`npm test`, smoke/system, rails tests) during development.",
+        "Run `bin/ci` as final pre-merge gate and achieve passing status.",
+        "Smoke tests remain skip-free and deterministic per project testing plan."
+      ],
+      "priority": 1,
+      "passes": false
+    }
+  ]
+}

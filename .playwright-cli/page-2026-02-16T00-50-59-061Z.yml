@@ -1,0 +1,101 @@
+- generic [ref=e634]:
+  - navigation [ref=e635]:
+    - generic [ref=e636]:
+      - link "CalcuMake CalcuMake" [ref=e637] [cursor=pointer]:
+        - /url: /
+        - img "CalcuMake" [ref=e638]
+        - generic [ref=e639]: CalcuMake
+      - generic [ref=e640]:
+        - list [ref=e641]:
+          - listitem [ref=e642]:
+            - link "Sign in" [ref=e643] [cursor=pointer]:
+              - /url: /users/sign_in
+          - listitem [ref=e644]:
+            - link "Sign up" [ref=e645] [cursor=pointer]:
+              - /url: /users/sign_up
+          - listitem [ref=e646]:
+            - link "Calculate Now!" [ref=e647] [cursor=pointer]:
+              - /url: /3d-print-pricing-calculator
+        - list [ref=e648]:
+          - listitem [ref=e649]:
+            - link "Blog" [ref=e650] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e651]:
+            - link "Support" [ref=e652] [cursor=pointer]:
+              - /url: /support
+        - combobox "Language" [ref=e655]:
+          - option "English" [selected]
+          - option "日本語"
+          - option "简体中文"
+          - option "हिंदी"
+          - option "Español"
+          - option "Français"
+          - option "العربية"
+  - main [ref=e657]:
+    - generic [ref=e658]:
+      - heading "Sign up" [level=2] [ref=e659]
+      - group "Sign in with social accounts" [ref=e660]:
+        - generic [ref=e661]: Sign in with social accounts
+        - generic [ref=e662]:
+          - button "Sign in with Google" [ref=e664] [cursor=pointer]:
+            - img [ref=e665]
+            - generic [ref=e670]: Sign in with Google
+          - button "Sign in with GitHub" [ref=e672] [cursor=pointer]:
+            - img [ref=e673]
+            - generic [ref=e675]: Sign in with GitHub
+          - button "Sign in with Microsoft" [ref=e677] [cursor=pointer]:
+            - img [ref=e678]
+            - generic [ref=e680]: Sign in with Microsoft
+          - button "Sign in with Facebook" [ref=e682] [cursor=pointer]:
+            - img [ref=e683]
+            - generic [ref=e685]: Sign in with Facebook
+          - button "Sign in with Yahoo! JAPAN" [ref=e687] [cursor=pointer]:
+            - img [ref=e688]
+            - generic [ref=e690]: Sign in with Yahoo! JAPAN
+          - button "Sign in with LINE" [ref=e692] [cursor=pointer]:
+            - img [ref=e693]
+            - generic [ref=e695]: Sign in with LINE
+        - separator "Alternative signin method" [ref=e697]: or sign in with email
+      - generic [ref=e698]:
+        - generic [ref=e699]:
+          - generic [ref=e700]: Email
+          - textbox "Email" [active] [ref=e701]
+        - generic [ref=e702]:
+          - generic [ref=e703]: Password
+          - emphasis [ref=e704]: (6 characters minimum)
+          - textbox "Password" [ref=e705]
+        - generic [ref=e706]:
+          - generic [ref=e707]: Password confirmation
+          - textbox "Password confirmation" [ref=e708]
+        - button "Sign up" [ref=e710] [cursor=pointer]
+      - link "Log in" [ref=e711] [cursor=pointer]:
+        - /url: /users/sign_in
+  - contentinfo [ref=e712]:
+    - generic [ref=e713]:
+      - paragraph [ref=e715]: © 2026 株式会社モアブ (MOAB Co., Ltd.)
+      - generic [ref=e717]:
+        - link "Support" [ref=e718] [cursor=pointer]:
+          - /url: /support
+        - generic [ref=e719]: "|"
+        - link "Privacy Policy" [ref=e720] [cursor=pointer]:
+          - /url: /privacy-policy
+        - generic [ref=e721]: "|"
+        - link "Terms of Service" [ref=e722] [cursor=pointer]:
+          - /url: /user-agreement
+        - generic [ref=e723]: "|"
+        - link "Commerce Disclosure" [ref=e724] [cursor=pointer]:
+          - /url: /commerce-disclosure
+  - generic [ref=e727]:
+    - generic [ref=e728]:
+      - heading "Cookie Consent" [level=5] [ref=e729]
+      - paragraph [ref=e730]:
+        - text: We use cookies to improve your experience. By continuing to use this site, you agree to our
+        - link "Cookie Policy" [ref=e731] [cursor=pointer]:
+          - /url: /cookie-policy
+        - text: . Read our
+        - link "Privacy Policy" [ref=e732] [cursor=pointer]:
+          - /url: /privacy-policy
+        - text: .
+    - generic [ref=e734]:
+      - button "Reject" [ref=e735] [cursor=pointer]
+      - button "Accept" [ref=e736] [cursor=pointer]

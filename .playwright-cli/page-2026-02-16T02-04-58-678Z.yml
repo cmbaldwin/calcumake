@@ -1,0 +1,65 @@
+- generic [active] [ref=e104]:
+  - navigation [ref=e105]:
+    - generic [ref=e106]:
+      - link "CalcuMake CalcuMake" [ref=e107] [cursor=pointer]:
+        - /url: /
+        - img "CalcuMake" [ref=e108]
+        - generic [ref=e109]: CalcuMake
+      - generic [ref=e110]:
+        - list [ref=e111]:
+          - listitem [ref=e112]:
+            - link "Sign in" [ref=e113] [cursor=pointer]:
+              - /url: /users/sign_in
+          - listitem [ref=e114]:
+            - link "Sign up" [ref=e115] [cursor=pointer]:
+              - /url: /users/sign_up
+          - listitem [ref=e116]:
+            - link "Calculate Now!" [ref=e117] [cursor=pointer]:
+              - /url: /3d-print-pricing-calculator
+        - list [ref=e118]:
+          - listitem [ref=e119]:
+            - link "Blog" [ref=e120] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e121]:
+            - link "Support" [ref=e122] [cursor=pointer]:
+              - /url: /support
+        - combobox "Language" [ref=e125]:
+          - option "English" [selected]
+          - option "日本語"
+          - option "简体中文"
+          - option "हिंदी"
+          - option "Español"
+          - option "Français"
+          - option "العربية"
+  - main [ref=e127]:
+    - generic [ref=e128]:
+      - generic [ref=e129]:
+        - heading "Blog" [level=1] [ref=e130]
+        - paragraph [ref=e131]: Read our latest articles about 3D printing, pricing, and manufacturing.
+      - article [ref=e134]:
+        - generic [ref=e135]:
+          - heading "Test Article for Translation" [level=2] [ref=e136]:
+            - link "Test Article for Translation" [ref=e137] [cursor=pointer]:
+              - /url: /en/blog/test-article-translation
+          - generic [ref=e138]:
+            - text: by Test Author •
+            - time [ref=e139]: December 30, 2025 03:48
+            - text: • 1 min read
+          - paragraph [ref=e140]: This is a test article to verify our automated translation system works correctly.
+          - link "Read more →" [ref=e141] [cursor=pointer]:
+            - /url: /en/blog/test-article-translation
+  - contentinfo [ref=e142]:
+    - generic [ref=e143]:
+      - paragraph [ref=e145]: © 2026 株式会社モアブ (MOAB Co., Ltd.)
+      - generic [ref=e147]:
+        - link "Support" [ref=e148] [cursor=pointer]:
+          - /url: /support
+        - generic [ref=e149]: "|"
+        - link "Privacy Policy" [ref=e150] [cursor=pointer]:
+          - /url: /privacy-policy
+        - generic [ref=e151]: "|"
+        - link "Terms of Service" [ref=e152] [cursor=pointer]:
+          - /url: /user-agreement
+        - generic [ref=e153]: "|"
+        - link "Commerce Disclosure" [ref=e154] [cursor=pointer]:
+          - /url: /commerce-disclosure

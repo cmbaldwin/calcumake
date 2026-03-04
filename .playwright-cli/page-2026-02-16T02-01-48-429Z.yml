@@ -1,0 +1,87 @@
+- generic [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "CalcuMake CalcuMake" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "CalcuMake" [ref=e5]
+        - generic [ref=e6]: CalcuMake
+      - generic [ref=e7]:
+        - list [ref=e8]:
+          - listitem [ref=e9]:
+            - link "Sign in" [ref=e10] [cursor=pointer]:
+              - /url: /users/sign_in
+          - listitem [ref=e11]:
+            - link "Sign up" [ref=e12] [cursor=pointer]:
+              - /url: /users/sign_up
+          - listitem [ref=e13]:
+            - link "Calculate Now!" [ref=e14] [cursor=pointer]:
+              - /url: /3d-print-pricing-calculator
+        - list [ref=e15]:
+          - listitem [ref=e16]:
+            - link "Blog" [ref=e17] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e18]:
+            - link "Support" [ref=e19] [cursor=pointer]:
+              - /url: /support
+        - combobox "Language" [ref=e22]:
+          - option "English" [selected]
+          - option "日本語"
+          - option "简体中文"
+          - option "हिंदी"
+          - option "Español"
+          - option "Français"
+          - option "العربية"
+  - main [ref=e24]:
+    - generic [ref=e25]:
+      - heading "Sign up" [level=2] [ref=e26]
+      - group "Sign in with social accounts" [ref=e27]:
+        - generic [ref=e28]: Sign in with social accounts
+        - generic [ref=e29]:
+          - button "Sign in with Google" [ref=e31] [cursor=pointer]:
+            - img [ref=e32]
+            - generic [ref=e37]: Sign in with Google
+          - button "Sign in with GitHub" [ref=e39] [cursor=pointer]:
+            - img [ref=e40]
+            - generic [ref=e42]: Sign in with GitHub
+          - button "Sign in with Microsoft" [ref=e44] [cursor=pointer]:
+            - img [ref=e45]
+            - generic [ref=e47]: Sign in with Microsoft
+          - button "Sign in with Facebook" [ref=e49] [cursor=pointer]:
+            - img [ref=e50]
+            - generic [ref=e52]: Sign in with Facebook
+          - button "Sign in with Yahoo! JAPAN" [ref=e54] [cursor=pointer]:
+            - img [ref=e55]
+            - generic [ref=e57]: Sign in with Yahoo! JAPAN
+          - button "Sign in with LINE" [ref=e59] [cursor=pointer]:
+            - img [ref=e60]
+            - generic [ref=e62]: Sign in with LINE
+        - separator "Alternative signin method" [ref=e64]: or sign in with email
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - generic [ref=e67]: Email
+          - textbox "Email" [active] [ref=e68]: invalid-email
+        - generic [ref=e69]:
+          - generic [ref=e70]: Password
+          - emphasis [ref=e71]: (6 characters minimum)
+          - textbox "Password" [ref=e72]: "123"
+        - generic [ref=e73]:
+          - generic [ref=e74]: Password confirmation
+          - textbox "Password confirmation" [ref=e75]: "1234"
+        - button "Sign up" [ref=e77] [cursor=pointer]
+      - link "Log in" [ref=e78] [cursor=pointer]:
+        - /url: /users/sign_in
+  - contentinfo [ref=e79]:
+    - generic [ref=e80]:
+      - paragraph [ref=e82]: © 2026 株式会社モアブ (MOAB Co., Ltd.)
+      - generic [ref=e84]:
+        - link "Support" [ref=e85] [cursor=pointer]:
+          - /url: /support
+        - generic [ref=e86]: "|"
+        - link "Privacy Policy" [ref=e87] [cursor=pointer]:
+          - /url: /privacy-policy
+        - generic [ref=e88]: "|"
+        - link "Terms of Service" [ref=e89] [cursor=pointer]:
+          - /url: /user-agreement
+        - generic [ref=e90]: "|"
+        - link "Commerce Disclosure" [ref=e91] [cursor=pointer]:
+          - /url: /commerce-disclosure

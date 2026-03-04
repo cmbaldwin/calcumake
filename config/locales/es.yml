@@ -2403,3 +2403,44 @@ es:
         </ul>
       next_steps: "¿Listo para calcular el costo de su primera impresión?"
       action: Crear primer precio
+  setup_assistant:
+    label: Asistente de configuración
+    title: Asistente de CalcuMake
+    subtitle: Añade impresoras, filamentos, resinas y preferencias mediante chat.
+    placeholder: 'Ejemplo: Añade una Prusa i3 MK4 y filamento PLA'
+    send: Enviar
+    close: Cerrar
+    welcome: "¡Hola! Puedo ayudarte con tareas de configuración como añadir impresoras,
+      filamentos, resinas o actualizar tus valores predeterminados."
+    guided_welcome: El modo guiado está activo. Dime qué quieres configurar y lo añadiré
+      por ti.
+    onboarding_ready: Este paso parece completo. Puedes hacer clic en Siguiente paso
+      cuando estés listo.
+    fallback_reply: Puedo ayudarte con la configuración. Dime qué quieres añadir o
+      actualizar.
+    action_summary: 'Cambios que he realizado:'
+    action_ignored: He ignorado esa acción.
+    updated_preferences: Se han actualizado los valores predeterminados de tu perfil.
+    no_changes: No se proporcionaron campos de perfil para actualizar.
+    invalid_currency: La moneda %{currency} no es compatible en este espacio de trabajo.
+    not_in_onboarding: No estás en la incorporación en este momento.
+    completed_onboarding: Incorporación marcada como completa.
+    created:
+      printer: Impresora %{name} creada.
+      filament: Filamento %{name} creado.
+      resin: Resina %{name} creada.
+    already_exists:
+      printer: La impresora %{name} ya existe.
+      filament: El filamento %{name} ya existe.
+      resin: La resina %{name} ya existe.
+    missing:
+      printer_name: Por favor, proporciona un nombre para la impresora.
+      printer_preset: No pude encontrar el modelo preestablecido %{model}.
+      filament_material: Por favor, proporciona un tipo de material de filamento.
+      resin_name: Por favor, proporciona un nombre para la resina.
+      resin_type: Por favor, proporciona un tipo de resina.
+    errors:
+      blank_message: Escribe un mensaje para que pueda ayudarte.
+      message_too_long: Por favor, mantén cada mensaje por debajo de %{max} caracteres.
+      unavailable: El asistente no está disponible temporalmente. Por favor, utiliza
+        el formulario estándar e inténtalo de nuevo.

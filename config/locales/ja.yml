@@ -2090,3 +2090,39 @@ ja:
         </ul>
       next_steps: 最初のプリントコストを計算してみませんか？
       action: 最初の価格を作成
+  setup_assistant:
+    label: セットアップアシスタント
+    title: CalcuMakeアシスタント
+    subtitle: プリンター、フィラメント、レジン、および設定をチャットで追加します。
+    placeholder: 例：Prusa i3 MK4とPLAフィラメントを追加
+    send: 送信
+    close: 閉じる
+    welcome: こんにちは！プリンター、フィラメント、レジンを追加したり、デフォルトを更新したりするなどのセットアップタスクをお手伝いします。
+    guided_welcome: ガイド付きモードが有効です。設定したい内容を教えてください。追加します。
+    onboarding_ready: このステップは完了したようです。準備ができたら「次のステップ」をクリックしてください。
+    fallback_reply: セットアップをお手伝いします。追加または更新する内容を教えてください。
+    action_summary: 変更点：
+    action_ignored: そのアクションは無視しました。
+    updated_preferences: プロファイルのデフォルトを更新しました。
+    no_changes: 更新するプロファイルフィールドが提供されていませんでした。
+    invalid_currency: 通貨%{currency}はこのワークスペースではサポートされていません。
+    not_in_onboarding: 現在、オンボーディングに参加していません。
+    completed_onboarding: オンボーディングを完了としてマークしました。
+    created:
+      printer: プリンター%{name}を作成しました。
+      filament: フィラメント%{name}を作成しました。
+      resin: レジン%{name}を作成しました。
+    already_exists:
+      printer: プリンター%{name}はすでに存在します。
+      filament: フィラメント%{name}はすでに存在します。
+      resin: レジン%{name}はすでに存在します。
+    missing:
+      printer_name: プリンター名を指定してください。
+      printer_preset: プリセットモデル%{model}が見つかりませんでした。
+      filament_material: フィラメントの材質タイプを指定してください。
+      resin_name: レジン名を指定してください。
+      resin_type: レジンタイプを指定してください。
+    errors:
+      blank_message: メッセージを入力して、サポートさせてください。
+      message_too_long: 各メッセージを%{max}文字未満にしてください。
+      unavailable: アシスタントは一時的に利用できません。標準フォームを使用し、後でもう一度お試しください。
