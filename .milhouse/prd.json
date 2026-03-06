@@ -12,7 +12,7 @@
         "Document baseline in implementation notes used by subsequent stories."
       ],
       "priority": 1,
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-002",
