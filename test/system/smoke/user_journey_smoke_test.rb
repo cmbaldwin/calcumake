@@ -54,9 +54,7 @@ class UserJourneySmokeTest < ApplicationSystemTestCase
 
     find(".printer-quick-select", match: :first).click
 
-    # Click via JS to bypass cookie consent banner overlay
-    submit_btn = find(:button, I18n.t("onboarding.buttons.create_printer"))
-    execute_script("arguments[0].scrollIntoView({block: 'center'}); arguments[0].click();", submit_btn.native)
+    click_button I18n.t("onboarding.buttons.create_printer")
 
     assert_current_path onboarding_path(step: "filament")
     click_button I18n.t("onboarding.buttons.add_filaments")
