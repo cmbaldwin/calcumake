@@ -128,23 +128,15 @@ class AuthenticationTest < ApplicationSystemTestCase
     assert_text "Invalid Email or password."
   end
 
-  # US-002: Cookie consent banner must not block sign-up submission
-  test "sign-up submit is clickable with cookie consent banner visible" do
-    visit new_user_registration_path
+  # US-002: Cookie consent banner must not block sign-up submission (desktop)
+  test "desktop sign-up submit is clickable with cookie consent banner visible" do
+    verify_signup_submission_with_cookie_banner
+  end
 
-    # Cookie consent banner should appear (no cookie set in fresh test session)
-    assert_selector "[data-cookie-consent-target='banner']:not(.d-none)", wait: 3
-
-    # Sign-up form should still be interactable despite the banner
-    fill_in "user_email", with: "consent-test@example.com"
-    fill_in "user_password", with: "password123"
-    fill_in "user_password_confirmation", with: "password123"
-
-    # Submit button must be clickable (not blocked by banner overlay)
-    click_button I18n.t("nav.sign_up")
-
-    # Should proceed (either to onboarding or show validation — not stuck on form)
-    assert_no_current_path new_user_registration_path, wait: 5
+  # US-002: Cookie consent banner must not block sign-up submission (mobile)
+  test "mobile sign-up submit is clickable with cookie consent banner visible" do
+    page.driver.browser.manage.window.resize_to(375, 667)
+    verify_signup_submission_with_cookie_banner
   end
 
   # US-003: Sign-up validation feedback must be visibly detectable
@@ -165,5 +157,22 @@ class AuthenticationTest < ApplicationSystemTestCase
     within("#error_explanation") do
       assert_selector "li", minimum: 1
     end
+  end
+
+  private
+
+  def verify_signup_submission_with_cookie_banner
+    visit new_user_registration_path
+
+    # Cookie consent banner should appear (no cookie set in fresh test session)
+    assert_selector "[data-cookie-consent-target='banner']:not(.d-none)", wait: 3
+
+    fill_in "user_email", with: "consent-test@example.com"
+    fill_in "user_password", with: "password123"
+    fill_in "user_password_confirmation", with: "password123"
+
+    # Submit button must be clickable (not blocked by banner overlay)
+    click_button I18n.t("nav.sign_up")
+    assert_no_current_path new_user_registration_path, wait: 5
   end
 end

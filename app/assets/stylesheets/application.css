@@ -87,6 +87,11 @@ body {
 /* Cookie consent banner - reduce padding */
 .cookie-consent-banner {
   padding: 0.75rem 1rem !important;
+  pointer-events: none;
+}
+
+.cookie-consent-banner .cookie-consent-content {
+  pointer-events: auto;
 }
 
 .cookie-consent-banner h5 {
