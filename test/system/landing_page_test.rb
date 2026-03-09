@@ -124,9 +124,4 @@ class LandingPageTest < ApplicationSystemTestCase
     assert_current_path new_user_registration_path
   end
 
-  private
-
-  def resize_to_mobile
-    page.driver.browser.manage.window.resize_to(375, 667)
-  end
 end
