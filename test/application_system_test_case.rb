@@ -5,6 +5,10 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   private
 
+  def resize_to_mobile
+    page.driver.browser.manage.window.resize_to(375, 667)
+  end
+
   def sign_in(user)
     visit new_user_session_path
 
