@@ -151,19 +151,23 @@ class AuthenticationTest < ApplicationSystemTestCase
   test "invalid sign-up shows visible validation errors" do
     visit new_user_registration_path
 
-    # Submit with invalid data: short password, mismatched confirmation
-    fill_in "user_email", with: "validation-test@example.com"
+    # Submit with invalid data: missing email, short password, mismatched confirmation
+    fill_in "user_email", with: ""
     fill_in "user_password", with: "short"
     fill_in "user_password_confirmation", with: "different"
 
     click_button I18n.t("nav.sign_up")
 
-    # Should show error explanation with validation messages
+    # Should stay on registration page and show visible validation feedback
+    assert_current_path new_user_registration_path
     assert_selector "#error_explanation", wait: 5
+    assert_selector "#error_explanation.alert.alert-danger[role='alert']"
 
-    # Error list should contain specific validation messages
+    # Error list should include feedback for email, password, and password confirmation
     within("#error_explanation") do
-      assert_selector "li", minimum: 1
+      assert_text I18n.t("activerecord.attributes.user.email")
+      assert_text I18n.t("activerecord.attributes.user.password")
+      assert_text I18n.t("activerecord.attributes.user.password_confirmation")
     end
   end
 end
