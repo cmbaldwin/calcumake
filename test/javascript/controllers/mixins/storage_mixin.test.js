@@ -426,4 +426,145 @@ describe('Storage Mixin', () => {
       expect(id.length).toBeGreaterThan('test_calculation_'.length)
     })
   })
+
+  // US-006: Migrate legacy or partial calculator storage safely
+  describe('migrateLegacyData', () => {
+    test('method exists on controller after mixin applied', () => {
+      const controller = createMockController()
+      expect(typeof controller.migrateLegacyData).toBe('function')
+    })
+
+    test('migrates well-formed legacy data without warnings or errors', () => {
+      const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
+      const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+
+      const controller = createMockController()
+      const legacyJson = JSON.stringify({
+        jobName: 'Old Job',
+        plates: [],
+        failureRate: 2,
+        shippingCost: 5,
+        otherCost: 3,
+        units: 2,
+        timestamp: new Date().toISOString()
+      })
+
+      controller.migrateLegacyData(legacyJson)
+
+      expect(warnSpy).not.toHaveBeenCalled()
+      expect(errorSpy).not.toHaveBeenCalled()
+
+      warnSpy.mockRestore()
+      errorSpy.mockRestore()
+    })
+
+    test('migrates legacy data with missing optional fields without throwing', () => {
+      const controller = createMockController()
+      // Partial payload — missing plates, units, etc.
+      const partialJson = JSON.stringify({ jobName: 'Partial' })
+
+      expect(() => controller.migrateLegacyData(partialJson)).not.toThrow()
+
+      const allCalculations = JSON.parse(localStorage.getItem('calcumake_calculations'))
+      expect(allCalculations.default).toBeDefined()
+      expect(allCalculations.default.name).toBe('Partial')
+    })
+
+    test('handles corrupt/malformed JSON with console.warn (not error) and no throw', () => {
+      const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
+      const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+
+      const controller = createMockController()
+
+      expect(() => controller.migrateLegacyData('not valid json {')).not.toThrow()
+
+      // Malformed payload should warn, not hard error
+      expect(warnSpy).toHaveBeenCalledTimes(1)
+      expect(errorSpy).not.toHaveBeenCalled()
+
+      warnSpy.mockRestore()
+      errorSpy.mockRestore()
+    })
+
+    test('legacy data with null values migrates deterministically', () => {
+      const controller = createMockController()
+      const nullFieldsJson = JSON.stringify({
+        jobName: null,
+        plates: null,
+        failureRate: null,
+        units: null
+      })
+
+      expect(() => controller.migrateLegacyData(nullFieldsJson)).not.toThrow()
+
+      const allCalculations = JSON.parse(localStorage.getItem('calcumake_calculations'))
+      expect(allCalculations.default).toBeDefined()
+      // Name falls back to 'Default Calculation' when jobName is null
+      expect(allCalculations.default.name).toBe('Default Calculation')
+    })
+  })
+
+  describe('getAllSavedCalculations with partial/corrupt stored data', () => {
+    test('returns empty object for corrupt calcumake_calculations JSON', () => {
+      localStorage.setItem('calcumake_calculations', 'broken {json')
+
+      const controller = createMockController()
+      const result = controller.getAllSavedCalculations()
+
+      expect(result).toEqual({})
+    })
+
+    test('returns empty object for null-valued stored key', () => {
+      localStorage.setItem('calcumake_calculations', 'null')
+
+      const controller = createMockController()
+      const result = controller.getAllSavedCalculations()
+
+      expect(result).toEqual({})
+    })
+
+    test('returns stored calculations when data is valid', () => {
+      const data = { calc_1: { id: 'calc_1', name: 'Calc 1' } }
+      localStorage.setItem('calcumake_calculations', JSON.stringify(data))
+
+      const controller = createMockController()
+      const result = controller.getAllSavedCalculations()
+
+      expect(result.calc_1).toBeDefined()
+      expect(result.calc_1.name).toBe('Calc 1')
+    })
+  })
+
+  describe('loadFromStorage with partial stored calculation', () => {
+    test('loads partial calculation without throwing', () => {
+      // Stored calculation missing plates and globalSettings
+      const partialCalc = {
+        'default': {
+          id: 'default',
+          name: 'Partial',
+          jobName: 'Partial Job',
+          // no plates, no globalSettings, no costs
+        }
+      }
+      localStorage.setItem('calcumake_calculations', JSON.stringify(partialCalc))
+
+      const controller = createMockController()
+      expect(() => controller.loadFromStorage()).not.toThrow()
+    })
+
+    test('does not warn for expected missing fields on first load', () => {
+      const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
+
+      const partialCalc = {
+        'default': { id: 'default', name: 'Minimal', jobName: '' }
+      }
+      localStorage.setItem('calcumake_calculations', JSON.stringify(partialCalc))
+
+      const controller = createMockController()
+      controller.loadFromStorage()
+
+      expect(warnSpy).not.toHaveBeenCalled()
+      warnSpy.mockRestore()
+    })
+  })
 })

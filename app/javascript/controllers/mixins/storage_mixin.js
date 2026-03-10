@@ -22,7 +22,11 @@ export const useStorage = controller => {
     getAllSavedCalculations() {
       try {
         const saved = localStorage.getItem('calcumake_calculations')
-        return saved ? JSON.parse(saved) : {}
+        if (!saved) return {}
+        const parsed = JSON.parse(saved)
+        // Guard against null or non-object (e.g. stored literal "null")
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {}
+        return parsed
       } catch (e) {
         console.error("Failed to load calculations from localStorage:", e)
         return {}
@@ -188,6 +192,13 @@ export const useStorage = controller => {
     migrateLegacyData(legacyJson) {
       try {
         const legacyData = JSON.parse(legacyJson)
+
+        // Treat non-object results as malformed
+        if (!legacyData || typeof legacyData !== 'object' || Array.isArray(legacyData)) {
+          console.warn("Skipping legacy migration: unexpected payload type")
+          return
+        }
+
         const allCalculations = this.getAllSavedCalculations()
 
         allCalculations['default'] = {
@@ -198,7 +209,8 @@ export const useStorage = controller => {
 
         localStorage.setItem('calcumake_calculations', JSON.stringify(allCalculations))
       } catch (e) {
-        console.error("Failed to migrate legacy data:", e)
+        // Warn (not error) for parse failures — expected for corrupt/partial legacy data
+        console.warn("Failed to migrate legacy data — payload may be corrupt:", e.message)
       }
     },
 
