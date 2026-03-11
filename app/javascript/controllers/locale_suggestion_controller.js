@@ -164,10 +164,16 @@ export default class extends Controller {
     setTimeout(() => {
       this.bannerTarget.style.opacity = '1'
       this.bannerTarget.style.transform = 'translateY(0)'
+      // Mark body so page content shifts down below the banner (US-007)
+      document.body.classList.add('has-locale-suggestion')
     }, 100)
   }
 
   switchToLocale(locale) {
+    // Persist user's locale choice so banner does not reappear (US-007)
+    localStorage.setItem(this.dismissedKeyValue, 'true')
+    document.body.classList.remove('has-locale-suggestion')
+
     // Create and submit form to switch locale
     const form = document.createElement('form')
     form.method = 'POST'
@@ -196,8 +202,11 @@ export default class extends Controller {
   }
 
   dismiss() {
-    // Store dismissal in localStorage
+    // Persist dismissal choice in localStorage so banner does not reappear (US-007)
     localStorage.setItem(this.dismissedKeyValue, 'true')
+
+    // Remove body class so page content padding is restored
+    document.body.classList.remove('has-locale-suggestion')
 
     // Hide banner with animation
     this.bannerTarget.style.opacity = '0'
