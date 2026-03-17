@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    action_text-trix (2.1.16)
+    action_text-trix (2.1.17)
       railties
     actioncable (8.1.2)
       actionpack (= 8.1.2)
@@ -186,7 +186,7 @@ GEM
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
     jmespath (1.6.2)
-    json (2.18.1)
+    json (2.19.1)
     jwt (2.10.2)
       base64
     kamal (2.10.1)
@@ -213,7 +213,7 @@ GEM
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
     language_server-protocol (3.17.0.5)
-    lexxy (0.7.6.beta)
+    lexxy (0.8.2.beta)
       rails (>= 8.0.2)
     lint_roller (1.1.0)
     logger (1.7.0)
@@ -497,7 +497,7 @@ GEM
     thruster (0.1.18-aarch64-linux)
     thruster (0.1.18-arm64-darwin)
     thruster (0.1.18-x86_64-linux)
-    timeout (0.6.0)
+    timeout (0.6.1)
     tsort (0.2.0)
     turbo-rails (2.0.23)
       actionpack (>= 7.1.0)
@@ -559,7 +559,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
-  lexxy (~> 0.7.0.beta)
+  lexxy (~> 0.8.2.beta)
   minitest (~> 5.0)
   mobility (~> 1.2)
   omniauth
