@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       get :health, to: "health#show"                      # Load balancer health check
       post :calculator, to: "calculator#create"           # Public pricing calculator
 
+      # MCP (Model Context Protocol) endpoint - paid users only
+      # JSON-RPC 2.0 over HTTP. Let AI agents perform any action a paid user can.
+      post :mcp, to: "mcp#create"
+
       # User endpoints
       resource :me, controller: "users", only: %i[show update] do
         get :export, action: :export_data                # GDPR data export
