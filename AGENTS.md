@@ -9,17 +9,22 @@
 ## Development Commands
 
 - `bin/setup` - Complete setup
-- `bin/dev` - Development server
+- `bin/dev` - Development server (runs Rails + Stripe webhook forwarding via foreman)
 - `bin/ci` - Run all CI checks locally (security, linting, tests) - **RUN BEFORE PUSHING**
-- `bin/rails test` - Run Rails tests (1,496 tests in ~4.5s)
-- `npm test` - Run JavaScript tests (20 tests in ~0.3s)
+- `bin/rails test` - Run Rails tests (~1,500+ tests in ~4.5s)
+- `bin/test-smoke` - Run fast smoke system tests (fails on any skipped tests)
+- `bin/test-system-full` - Run full system test suite (slower, Capybara/Selenium)
+- `npm test` - Run JavaScript tests (Jest, ~20 tests in ~0.3s)
 - `bin/rubocop` - Style checking
 - `bin/brakeman` - Security scan
 - `bin/sync-translations` - Sync and auto-translate missing keys (uses OpenRouter API if key available)
 - `bin/translate-locales` - Direct automated translation via OpenRouter API (requires OPENROUTER_TRANSLATION_KEY)
+- `bin/translate-articles` - Translate blog articles via OpenRouter
 - `bin/force-retranslate` - Clear cache for English placeholder values to force re-translation
 - `bin/check-translations` - Scan code for missing translation keys and hardcoded strings
+- `bin/merge-locale-yml` - Semantic YAML merge for locale file conflicts
 - `bin/rails sitemap:refresh:no_ping` - Regenerate sitemap with current articles and routes
+- `bin/stripe-listen` - Forward Stripe webhooks to local server for testing
 
 ### Documentation Search (qmd)
 
@@ -87,10 +92,16 @@ qmd embed --force
 - **User**: Currency/energy defaults, company info, logo, confirmable, omniauthable
 - **Client**: Customer management (searchable via Ransack)
 - **Printer**: Power consumption, payoff tracking
-- **PrintPricing**: Job calculations (1-10 plates), linked to clients
-- **Plate**: Individual build plates with time/material specs
+- **PrinterProfile**: Pre-populated printer specs library (synced weekly)
+- **PrintPricing**: Job calculations (1-10 plates), linked to clients; supports 3MF import
+- **Plate**: Individual build plates with time/material specs (FDM + resin via `PlateFilament` / `PlateResin`)
+- **Filament** / **Resin**: Material library entries with pricing
 - **Invoice**: Auto-numbered, status tracking, client integration
 - **InvoiceLineItem**: Categorized cost breakdowns
+- **Article**: Blog posts with Mobility translations (auto-translated daily)
+- **ApiToken**: SHA-256 hashed Bearer tokens for REST API access
+- **UsageTracking**: Per-user usage counters for plan limits
+- **UserConsent**: GDPR/cookie consent tracking
 
 ### Public Features
 
@@ -102,6 +113,26 @@ qmd embed --force
   - CSV export for spreadsheet compatibility
   - Auto-save to localStorage every 10 seconds
   - Strategic CTAs to drive account creation
+
+### AI Setup Assistant
+
+Conversational onboarding assistant powered by OpenRouter (Gemini 2.0 Flash Lite).
+
+- **Service**: `app/services/ai/setup_assistant.rb` - LLM-driven planner that returns structured actions
+- **Controller**: `SetupAssistantController#message` (POST `/setup_assistant/message`)
+- **Capabilities**: `create_printer`, `create_filament`, `create_resin`, `update_user_preferences`, `complete_onboarding`
+- **Safety**: Enforces `MAX_MESSAGE_LENGTH` (1200), `MAX_ACTIONS` (3), `MAX_HISTORY_ITEMS` (8), whitelisted action types
+- **Integration**: Used during `/onboarding` walkthrough and in-app setup flows
+
+### 3MF Import
+
+Parse 3MF files (Bambu Studio, PrusaSlicer, etc.) to auto-populate PrintPricing data.
+
+- **Parser**: `app/services/three_mf_parser.rb` - Extracts metadata from 3MF zip archives via Nokogiri
+- **Job**: `Process3mfFileJob` - Background processing with retry logic (`MAX_PARSE_RETRIES = 3`)
+- **Flow**: User uploads 3MF via print pricing form → ActiveStorage → background parse → populate plates/filaments
+- **Status tracking**: `import_status` column (processing / completed / failed)
+- **Tests**: `test/system/print_pricing_3mf_import_test.rb`, `test/services/three_mf_parser_test.rb`
 
 ### RESTful API (v1)
 
@@ -120,7 +151,7 @@ qmd embed --force
 - **Resources**: `/printers`, `/filaments`, `/resins`, `/clients`, `/print_pricings`, `/invoices`
 - **API Tokens**: `/api_tokens` (create, list, delete)
 
-**Testing**: 234 comprehensive tests covering all endpoints, authorization, validation, error handling
+**Testing**: Comprehensive tests covering all endpoints, authorization, validation, error handling (`test/controllers/api/v1/`)
 
 **Example**:
 
@@ -254,7 +285,7 @@ CalcuMake uses multi-layer caching for optimal performance:
 - **Cloudflare CDN**: Static assets and page caching
 - **Browser Caching**: Long-term asset storage
 
-See [docs/CACHING_STRATEGY.md](docs/CACHING_STRATEGY.md) for comprehensive guide.
+See [docs/archive/CACHING_STRATEGY.md](docs/archive/CACHING_STRATEGY.md) for comprehensive guide.
 
 ### Critical Caching Patterns
 
@@ -644,7 +675,7 @@ config/locales/
 - Set locally for testing: `export OPENROUTER_TRANSLATION_KEY='your-key'`
 - Automatically available in deployment via Kamal secrets
 
-**Merging Translation Conflicts**: When merging branches with locale file conflicts, use `bin/merge-locale-yml` for semantic YAML merging (see `docs/TRANSLATION_MERGE_WORKFLOW.md` for full workflow).
+**Merging Translation Conflicts**: When merging branches with locale file conflicts, use `bin/merge-locale-yml` for semantic YAML merging (see `docs/archive/TRANSLATION_MERGE_WORKFLOW.md` for full workflow).
 
 ## Blog & Content Management
 
@@ -814,7 +845,7 @@ rails dev:cache
 # Logs show: "Read fragment views/..." or "Write fragment views/..."
 ```
 
-**Reference:** See `docs/CACHING_STRATEGY.md` for comprehensive implementation guide.
+**Reference:** See `docs/archive/CACHING_STRATEGY.md` for comprehensive implementation guide.
 
 ## Authentication
 
@@ -965,7 +996,12 @@ expect(page).to have_content I18n.t('dashboard.welcome')
 2. **GitHub Actions** - On every push/PR
 3. **Pre-deployment** - Kamal pre-build hook before Docker build
 
-**See [docs/TESTING_GUIDE.md](docs/TESTING_GUIDE.md) for comprehensive testing documentation.**
+**Smoke vs Full System Tests:**
+
+- `bin/test-smoke` - Fast-running smoke tests in `test/system/smoke/` (fails if any skips occur)
+- `bin/test-system-full` - Full Capybara/Selenium suite for pre-release validation
+
+**See [docs/archive/TESTING_GUIDE.md](docs/archive/TESTING_GUIDE.md) and [docs/TESTING_AUTOMATION_EXECUTION_PLAN.md](docs/TESTING_AUTOMATION_EXECUTION_PLAN.md) for comprehensive testing documentation.**
 
 ## Design Standards
 
@@ -996,6 +1032,14 @@ expect(page).to have_content I18n.t('dashboard.welcome')
 - `app/models/article.rb` - Blog article model with Mobility translations
 - `app/jobs/translate_articles_job.rb` - Automated article translation job (daily at 2am)
 - `app/jobs/update_printer_profiles_job.rb` - Printer profile sync job (weekly)
+- `app/jobs/process3mf_file_job.rb` - 3MF file parsing and metadata extraction
+- `app/services/ai/setup_assistant.rb` - OpenRouter-backed onboarding assistant
+- `app/services/three_mf_parser.rb` - 3MF archive parser (zip + Nokogiri)
+- `app/services/plan_limits.rb` - Subscription tier usage enforcement
+- `app/services/currency_converter.rb` - Multi-currency conversion
+- `app/controllers/setup_assistant_controller.rb` - AI assistant endpoint
+- `app/controllers/onboarding_controller.rb` - New user walkthrough
+- `app/controllers/user_consents_controller.rb` - GDPR/cookie consent
 - `app/helpers/oauth_helper.rb` - OAuth provider configuration
 - `app/helpers/application_helper.rb` - OAuth buttons and icons for views
 - `app/views/devise/shared/_oauth_buttons.html.erb` - OAuth login buttons partial
@@ -1022,31 +1066,57 @@ expect(page).to have_content I18n.t('dashboard.welcome')
 
 ## Documentation Context Reference
 
-### Active Documentation
+Most detailed feature docs live in `docs/` (active plans) or `docs/archive/` (historical context). Prefer semantic search via `qmd` when available.
 
-**Performance & Caching:** `docs/CACHING_STRATEGY.md` | `docs/CACHING_PHASE_1_PLAN.md` - Multi-layer caching architecture and implementation guide
-**ViewComponents:** `docs/VIEWCOMPONENT_RESEARCH.md` | `docs/VIEWCOMPONENT_MIGRATION_ROADMAP.md` - Component architecture and migration plan
-**PR Merge Strategy:** `docs/PR_MERGE_STRATEGY.md` - Systematic testing and production deployment plan
-**OAuth Setup:** `docs/OAUTH_SETUP_GUIDE.md`
-**Stripe Integration:** `docs/STRIPE_SETUP.md`
-**Landing Page:** `docs/LANDING_PAGE_PLAN.md`
-**Turbo Framework:** `docs/TURBO_REFERENCE.md` | `docs/TURBO_CHEATSHEET.md`
-**Modal Pattern:** `docs/MODAL_IMPLEMENTATION.md` - Complete guide for custom event-based modal system
-**Translation System:** `docs/AUTOMATED_TRANSLATION_SYSTEM.md` - OpenRouter API automated translations
-**Translation Workflow:** `docs/TRANSLATION_MERGE_WORKFLOW.md` - Locale file merging and sync procedures
-**Caching Strategy:** `docs/CACHING_STRATEGY.md` - Comprehensive multi-layer caching implementation guide
+### Active Documentation (`docs/`)
 
-### Historical Context (Archive)
+- **3MF Import:** `docs/3MF_IMPORT_PRD.md`, `docs/3MF_IMPORT_IMPLEMENTATION_PLAN.md` - 3MF file parsing feature
+- **AI Ops:** `docs/AI_OPS_USAGE_AND_ARCHIVE_PLAN.md` - OpenRouter usage tracking + archival plan
+- **Testing Automation:** `docs/TESTING_AUTOMATION_EXECUTION_PLAN.md` - Smoke/system test strategy
+- **Security Audit:** `docs/SECURITY_AUDIT_PUBLIC_REPO.md` - Public repo security review
+- **UX Stability P1:** `docs/plans/2026-03-02-ux-stability-p1-design.md` - Current P1 story design
+- **Turbo Reference:** `docs/reference/TURBO_REFERENCE.md`, `docs/reference/TURBO_CHEATSHEET.md`
+- **Hotwire Native:** `docs/reference/HOTWIRE_NATIVE_GUIDE.md`
 
-When additional context is needed for historical decisions or completed features:
+### Historical Context (`docs/archive/`)
 
-- **Monetization & Legal:** `docs/archive/2025-11-05-monetization-legal-compliance-report.md` - Complete legal compliance analysis for paid plans, privacy policies, and subscription system
-- **Feature Status:** `docs/archive/MONETIZATION_UPDATE_SUMMARY.md`, `docs/archive/TRANSLATION_STATUS.md` - Historical implementation records
-- **Future Plans:** `docs/archive/ADSENSE_PREPARATION.md` - Prepared but not implemented features
+When additional context is needed for completed features or historical decisions:
+
+- **Caching:** `CACHING_STRATEGY.md`, `CACHING_PHASE_1_PLAN.md`
+- **ViewComponents:** `VIEWCOMPONENT_RESEARCH_REPORT.md`, `VIEWCOMPONENT_MIGRATION_PLAN.md`, `VIEWCOMPONENT_CLEANUP_REPORT.md`
+- **API:** `API_DESIGN.md`
+- **Modal Pattern:** `MODAL_IMPLEMENTATION.md`
+- **Translations:** `AUTOMATED_TRANSLATION_SYSTEM.md`, `TRANSLATION_MERGE_WORKFLOW.md`
+- **OAuth:** `OAUTH_SETUP_GUIDE.md`
+- **Stripe:** `STRIPE_PRODUCTION_WEBHOOK_SETUP.md`
+- **Blog:** `BLOG_IMPLEMENTATION_PLAN.md`, `BLOG_SYSTEM.md`
+- **Testing:** `TESTING_GUIDE.md`, `TEST_COVERAGE_REPORT.md`
+- **Monetization & Legal:** `2025-11-05-monetization-legal-compliance-report.md`
 
 _Reference documentation only when specific context is required._
 
 ## Recent Updates
+
+### 2026-04: UX Stability P1 Stories ✅
+
+- **Implemented Priority 1 stories** (US-001 through US-005, US-010) from `.milhouse/prd.json` v2026.02.16
+- **Plan**: `docs/plans/2026-03-02-ux-stability-p1-design.md`
+- **Focus areas**: Cookie consent unblocking sign-up, sign-up validation feedback, auth stability, baseline warnings capture
+- **Test-first development** per US-010 guidelines
+- **Dependency housekeeping**: Bulk `bundle update`, merged `actions/upload-artifact` 4→7
+
+### 2026-03: AI Setup Assistant & 3MF Import ✅
+
+- **AI Setup Assistant** - Conversational onboarding powered by OpenRouter (Gemini 2.0 Flash Lite)
+  - `app/services/ai/setup_assistant.rb` - LLM planner with whitelisted action types
+  - `SetupAssistantController#message` endpoint with history/length limits
+  - Integrated into onboarding walkthrough
+- **3MF Import** - Parse Bambu Studio / PrusaSlicer project files
+  - `app/services/three_mf_parser.rb` - Zip + Nokogiri XML parser
+  - `Process3mfFileJob` - Background processing with retry logic
+  - `test/system/print_pricing_3mf_import_test.rb` - End-to-end test coverage
+- **Testing automation** - New `bin/test-smoke` / `bin/test-system-full` split, smoke tests fail on skips
+- **Repository open sourced** - README transitioned, security audit completed
 
 ### 2025-12-30: Production Job Fixes ✅
 
