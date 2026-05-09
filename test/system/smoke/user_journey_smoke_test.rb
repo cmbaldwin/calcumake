@@ -19,11 +19,17 @@ class UserJourneySmokeTest < ApplicationSystemTestCase
       filament_select = find("select[name*='[plate_filaments_attributes]'][name$='[filament_id]']", match: :first)
       filament_select.find("option", text: filaments(:one).display_name).select_option
 
-      # Set weight via JS — Capybara fill_in doesn't reliably set number fields with JS handlers
+      # Set weight purely via JS — Capybara `.set` doesn't reliably persist values on
+      # number fields wired to Stimulus `input` actions in headless Chrome.
       weight_field = find("input[name*='[plate_filaments_attributes]'][name$='[filament_weight]']", match: :first)
-      execute_script("arguments[0].value = ''; arguments[0].focus();", weight_field.native)
-      weight_field.set("35")
-      execute_script("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", weight_field.native)
+      execute_script(<<~JS, weight_field.native)
+        const el = arguments[0];
+        const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+        setter.call(el, '35');
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+        el.dispatchEvent(new Event('change', { bubbles: true }));
+      JS
+      assert_equal "35", weight_field.value, "weight field should hold 35 before submit"
     end
 
     # Submit via JS to bypass any HTML5 validation issues in headless Chrome
