@@ -27,6 +27,12 @@ jobs:
       - name: Install packages
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config google-chrome-stable
 
+      - name: Remove pre-installed chromedriver
+        # Pre-installed chromedriver on ubuntu-latest can lag behind Chrome's
+        # version, causing Selenium failures. Let Selenium Manager auto-download
+        # the matching version instead.
+        run: sudo rm -f /usr/bin/chromedriver /usr/local/bin/chromedriver
+
       - name: Checkout code
         uses: actions/checkout@v4
 
