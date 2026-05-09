@@ -1,9 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-# ⚠️  IMPORTANT: When updating to Rails 8.1.2+, remove the minitest pin below! ⚠️
-# Rails 8.1.2 will include minitest 6.0 compatibility (PR #56207 merged Dec 19, 2025)
-gem "rails", "~> 8.1.1"
+gem "rails", "~> 8.1.3"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use postgresql as the database for Active Record
@@ -119,11 +117,6 @@ group :test do
   # Ruby test coverage reports and minimum coverage gates in CI
   gem "simplecov", require: false
 
-  # ⚠️⚠️⚠️ REMOVE THIS PIN WHEN UPDATING TO RAILS 8.1.2+ ⚠️⚠️⚠️
-  # Pin minitest to 5.x until Rails 8.1.2 is released
-  # Minitest 6.0.0 changed the run() method signature, breaking Rails 8.1.0-8.1.1
-  # Fix merged to rails/rails 8-1-stable on Dec 19, 2025 (PR #56207)
-  # When Rails 8.1.2 is released, remove this line to use minitest 6.x
-  # See: https://github.com/rails/rails/pull/56207
-  gem "minitest", "~> 5.0"
+  # Minitest::Mock was extracted from minitest core in 6.0
+  gem "minitest-mock"
 end
