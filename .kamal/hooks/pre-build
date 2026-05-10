@@ -175,3 +175,14 @@ else
     echo "Tests failed. Aborting deployment."
     exit 1
 fi
+
+# Refresh ECR login and reset buildx builder right before Docker build starts.
+# The pre-build hook runs tests/translations which can take several minutes,
+# leaving the ECR token stale by push time. The buildx docker-container driver
+# also caches credentials in its own daemon, so we reset it here.
+echo "Refreshing ECR credentials and resetting buildx builder..."
+DYLD_LIBRARY_PATH="/opt/homebrew/opt/expat/lib" \
+  aws ecr get-login-password --region ap-southeast-2 --profile default \
+  | docker login --username AWS --password-stdin 000000000000.dkr.ecr.ap-southeast-2.amazonaws.com
+docker buildx rm kamal-local-docker-container 2>/dev/null || true
+echo "✅ ECR credentials refreshed"
