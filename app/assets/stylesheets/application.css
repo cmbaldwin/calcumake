@@ -1907,29 +1907,54 @@ body.has-locale-suggestion {
   padding-top: 70px;
 }
 
-/* Mobile responsive adjustments */
+/* Mobile responsive adjustments - US-007: compact banner so primary CTA remains reachable */
 @media (max-width: 768px) {
+  /* Compact mode: collapse to a single slim bar on mobile */
   .locale-suggestion-banner {
-    padding: 1rem 0;
+    padding: 0.35rem 0.5rem;
+    max-height: 60px;
+    overflow: hidden;
   }
 
+  /* Hide the multi-line suggestion text; show only the action buttons */
   .locale-suggestion-banner .suggestion-text {
-    font-size: 0.85rem;
-    margin-bottom: 0.5rem;
+    display: none;
   }
 
-  .locale-suggestion-banner .btn {
-    padding: 0.35rem 0.8rem;
-    font-size: 0.8rem;
-    margin-bottom: 0.25rem;
+  /* Collapse row so buttons sit inline on one line */
+  .locale-suggestion-banner .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .locale-suggestion-banner .row {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  /* Globe icon replaces the full text on mobile */
+  .locale-suggestion-banner .col-md-8 {
+    flex: 0 0 auto;
+    width: auto;
+    padding: 0;
   }
 
   .locale-suggestion-banner .col-md-4 {
-    text-align: left !important;
+    flex: 1 1 auto;
+    text-align: right !important;
+    padding: 0;
+    margin-top: 0 !important;
+  }
+
+  .locale-suggestion-banner .btn {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    margin-bottom: 0;
+    margin-left: 0.25rem;
   }
 
   body.has-locale-suggestion {
-    padding-top: 90px;
+    padding-top: 60px;
   }
 }
 
