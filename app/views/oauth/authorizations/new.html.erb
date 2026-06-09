@@ -1,0 +1,55 @@
+<% content_for :title, "Authorize MCP Access — CalcuMake" %>
+
+<div class="container" style="max-width: 500px; margin: 4rem auto;">
+  <div class="card shadow-sm">
+    <div class="card-body p-4">
+
+      <div class="text-center mb-4">
+        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔌</div>
+        <h1 class="h4 mb-1">Authorize MCP Access</h1>
+        <p class="text-muted small mb-0">
+          An AI agent or application is requesting access to your CalcuMake data.
+        </p>
+      </div>
+
+      <div class="alert alert-light border mb-4 small">
+        <div class="fw-semibold mb-1">Application:</div>
+        <div class="text-muted"><%= h params[:client_id] %></div>
+        <div class="fw-semibold mb-1 mt-2">Account:</div>
+        <div class="text-muted"><%= current_user.email %></div>
+        <div class="fw-semibold mb-1 mt-2">Permissions requested:</div>
+        <ul class="mb-0 ps-3 text-muted">
+          <li>Read and manage your printers</li>
+          <li>Read and manage your filaments</li>
+          <li>Read and manage your clients</li>
+          <li>Read your print pricing jobs</li>
+          <li>Read public printer profiles</li>
+        </ul>
+      </div>
+
+      <%= form_with url: oauth_authorize_path, method: :post, local: true do |f| %>
+        <div class="d-flex gap-2">
+          <%= f.hidden_field :approved, value: "false", id: "approved_field" %>
+
+          <button type="submit"
+                  class="btn btn-danger flex-fill"
+                  onclick="document.getElementById('approved_field').value='false'">
+            Deny
+          </button>
+
+          <button type="submit"
+                  class="btn btn-primary flex-fill"
+                  onclick="document.getElementById('approved_field').value='true'">
+            Allow Access
+          </button>
+        </div>
+      <% end %>
+
+      <p class="text-muted text-center mt-3 small mb-0">
+        You can revoke access at any time from
+        <%= link_to "API Tokens", api_tokens_path %>.
+      </p>
+
+    </div>
+  </div>
+</div>

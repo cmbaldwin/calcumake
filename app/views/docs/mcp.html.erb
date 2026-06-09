@@ -1,0 +1,23 @@
+<% content_for :title, "MCP Server Documentation — CalcuMake" %>
+
+<div class="container py-5" style="max-width: 860px;">
+
+  <div class="d-flex justify-content-between align-items-start mb-4">
+    <div>
+      <h1 class="h2 mb-1">CalcuMake MCP Server</h1>
+      <p class="text-muted mb-0">Model Context Protocol — connect AI agents to your 3D print data</p>
+    </div>
+    <div class="d-flex gap-2">
+      <%= link_to "Raw Markdown", docs_mcp_markdown_path, class: "btn btn-sm btn-outline-secondary", target: "_blank" %>
+      <%= link_to "JSON Schema", mcp_schema_path, class: "btn btn-sm btn-outline-secondary", target: "_blank" %>
+    </div>
+  </div>
+
+  <%# Render the Markdown as preformatted HTML — consider adding a Markdown gem for richer rendering %>
+  <div class="card">
+    <div class="card-body">
+      <pre class="mb-0" style="white-space: pre-wrap; font-family: inherit; font-size: 0.9rem;"><%= h @markdown_content %></pre>
+    </div>
+  </div>
+
+</div>

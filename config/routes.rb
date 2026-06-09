@@ -1,5 +1,29 @@
 Rails.application.routes.draw do
   # =============================================================================
+  # MCP (Model Context Protocol) Server — AI agent integration
+  # =============================================================================
+  # Spec: https://modelcontextprotocol.io  |  Docs: /docs/mcp  |  Schema: /mcp/schema
+  post "mcp",        to: "mcp#handle",  as: :mcp
+  get  "mcp/schema", to: "mcp#schema",  as: :mcp_schema
+
+  # OAuth 2.1 Authorization Server (issues Bearer tokens for MCP clients)
+  # Discovery: /.well-known/oauth-authorization-server
+  scope :oauth do
+    get  "authorize", to: "oauth/authorizations#new",    as: :oauth_authorize
+    post "authorize", to: "oauth/authorizations#create"
+    post "token",     to: "oauth/tokens#create",         as: :oauth_token
+    post "revoke",    to: "oauth/tokens#revoke",         as: :oauth_revoke
+  end
+
+  # RFC 8414 / RFC 9728 well-known discovery endpoints
+  get ".well-known/oauth-protected-resource",   to: "well_known#oauth_protected_resource"
+  get ".well-known/oauth-authorization-server", to: "well_known#oauth_authorization_server"
+
+  # MCP documentation (HTML + raw Markdown for AI agents)
+  get "docs/mcp",          to: "docs#mcp",          as: :docs_mcp
+  get "docs/mcp/markdown", to: "docs#mcp_markdown",  as: :docs_mcp_markdown
+
+  # =============================================================================
   # API ROUTES - RESTful JSON API (v1)
   # =============================================================================
   # All API routes are versioned, JSON-only, and require Bearer token authentication
