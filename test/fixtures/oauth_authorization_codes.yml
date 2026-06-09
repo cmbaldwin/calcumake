@@ -1,0 +1,52 @@
+# == Schema Information
+#
+# Table: oauth_authorization_codes
+#
+#  id                   :bigint   not null, primary key
+#  user_id              :bigint   not null
+#  code                 :string   not null
+#  code_challenge       :string
+#  code_challenge_method :string  default("S256")
+#  redirect_uri         :string   not null
+#  client_id            :string   not null
+#  scope                :string   default("mcp")
+#  state                :string
+#  expires_at           :datetime not null
+#  used_at              :datetime
+#  created_at           :datetime not null
+#  updated_at           :datetime not null
+#
+
+active_code:
+  user_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+  code: "test_active_code_abcdefgh1234567890abcdef"
+  code_challenge: <%= Base64.urlsafe_encode64(Digest::SHA256.digest("test_verifier_s256_value_abcdefghij"), padding: false) %>
+  code_challenge_method: "S256"
+  redirect_uri: "https://example.com/callback"
+  client_id: "mcp"
+  scope: "mcp"
+  state: "random_state_123"
+  expires_at: <%= 10.minutes.from_now %>
+  created_at: <%= 1.minute.ago %>
+  updated_at: <%= 1.minute.ago %>
+
+expired_code:
+  user_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+  code: "test_expired_code_abcdefgh1234567890abcde"
+  redirect_uri: "https://example.com/callback"
+  client_id: "mcp"
+  scope: "mcp"
+  expires_at: <%= 5.minutes.ago %>
+  created_at: <%= 10.minutes.ago %>
+  updated_at: <%= 10.minutes.ago %>
+
+used_code:
+  user_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+  code: "test_used_code_abcdefgh1234567890abcdefg"
+  redirect_uri: "https://example.com/callback"
+  client_id: "mcp"
+  scope: "mcp"
+  expires_at: <%= 10.minutes.from_now %>
+  used_at: <%= 1.minute.ago %>
+  created_at: <%= 2.minutes.ago %>
+  updated_at: <%= 1.minute.ago %>

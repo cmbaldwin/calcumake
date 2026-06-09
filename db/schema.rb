@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_13_032409) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_09_100000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -198,6 +198,23 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_13_032409) do
     t.text "value"
     t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_text_translations_on_translatable_attribute"
     t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_text_translations_on_keys", unique: true
+  end
+
+  create_table "oauth_authorization_codes", force: :cascade do |t|
+    t.string "client_id", null: false
+    t.string "code", null: false
+    t.string "code_challenge"
+    t.string "code_challenge_method", default: "S256"
+    t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.string "redirect_uri", null: false
+    t.string "scope", default: "mcp"
+    t.string "state"
+    t.datetime "updated_at", null: false
+    t.datetime "used_at"
+    t.bigint "user_id", null: false
+    t.index ["code"], name: "index_oauth_authorization_codes_on_code", unique: true
+    t.index ["user_id"], name: "index_oauth_authorization_codes_on_user_id"
   end
 
   create_table "plate_filaments", force: :cascade do |t|
@@ -402,6 +419,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_13_032409) do
   add_foreign_key "invoices", "clients"
   add_foreign_key "invoices", "print_pricings"
   add_foreign_key "invoices", "users"
+  add_foreign_key "oauth_authorization_codes", "users"
   add_foreign_key "plate_filaments", "filaments"
   add_foreign_key "plate_filaments", "plates"
   add_foreign_key "plate_resins", "plates"
