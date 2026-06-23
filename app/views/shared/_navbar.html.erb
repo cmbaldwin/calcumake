@@ -6,11 +6,11 @@
         <span><%= t('nav.brand') %></span>
         <% end %>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-testid="mobile-nav-toggle" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNav" data-testid="mobile-nav-menu">
             <ul class="navbar-nav me-auto">
                 <% if user_signed_in? %>
                 <li class="nav-item">
@@ -92,10 +92,10 @@
                     <%= link_to t('nav.sign_in'), new_user_session_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to t('nav.sign_up'), new_user_registration_path, class: "nav-link" %>
+                    <%= link_to t('nav.sign_up'), new_user_registration_path, class: "nav-link", data: { testid: "nav-sign-up-link" } %>
                 </li>
                 <li class="nav-item ms-2 d-flex align-items-center">
-                    <%= link_to t('nav.calculate_now'), pricing_calculator_path, class: "nav-link fw-semibold border rounded px-2 py-1" %>
+                    <%= link_to t('nav.calculate_now'), pricing_calculator_path, class: "nav-link fw-semibold border rounded px-2 py-1", data: { testid: "nav-calculator-link" } %>
                 </li>
                 <% end %>
             </ul>
