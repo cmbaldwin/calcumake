@@ -25,7 +25,7 @@
         "Smoke suite remains deterministic and skip-free."
       ],
       "priority": 1,
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-003",
