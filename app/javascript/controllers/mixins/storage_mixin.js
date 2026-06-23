@@ -148,6 +148,12 @@ export const useStorage = controller => {
       }
     },
 
+    // Initialize calculator to a clean canonical default state (no warnings)
+    initializeDefaultState() {
+      this._currentCalculationId = 'default'
+      this.addPlate()
+    },
+
     // Load from storage (default calculation or last used)
     loadFromStorage() {
       try {
@@ -163,12 +169,9 @@ export const useStorage = controller => {
         const calculationId = this.getCurrentCalculationId()
         const loaded = this.loadCalculation(calculationId)
 
-        // If no data was loaded, ensure we have at least one plate
+        // If no data was loaded, use canonical default state (no warning noise)
         if (!loaded) {
-          const plates = this.getPlates()
-          if (plates.length === 0) {
-            this.addPlate()
-          }
+          this.initializeDefaultState()
         }
 
         // Update calculation selector UI

@@ -426,4 +426,90 @@ describe('Storage Mixin', () => {
       expect(id.length).toBeGreaterThan('test_calculation_'.length)
     })
   })
+
+  // US-005: Initialize calculator defaults without warning noise
+  describe('initializeDefaultState', () => {
+    test('method exists on controller after mixin applied', () => {
+      const controller = createMockController()
+      expect(typeof controller.initializeDefaultState).toBe('function')
+    })
+
+    test('calls addPlate to set up initial plate', () => {
+      const controller = createMockController()
+      controller.initializeDefaultState()
+      expect(controller.addPlate).toHaveBeenCalledTimes(1)
+    })
+
+    test('does not log any warnings or errors during initialization', () => {
+      const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
+      const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+
+      const controller = createMockController()
+      controller.initializeDefaultState()
+
+      expect(warnSpy).not.toHaveBeenCalled()
+      expect(errorSpy).not.toHaveBeenCalled()
+
+      warnSpy.mockRestore()
+      errorSpy.mockRestore()
+    })
+
+    test('sets current calculation ID to default', () => {
+      const controller = createMockController()
+      controller.initializeDefaultState()
+      expect(controller.getCurrentCalculationId()).toBe('default')
+    })
+  })
+
+  describe('loadFromStorage with empty localStorage uses initializeDefaultState', () => {
+    test('calls initializeDefaultState when no stored data exists', () => {
+      const controller = createMockController()
+      const initSpy = jest.spyOn(controller, 'initializeDefaultState')
+
+      controller.loadFromStorage()
+
+      expect(initSpy).toHaveBeenCalledTimes(1)
+    })
+
+    test('does not call initializeDefaultState when stored data exists', () => {
+      const allCalculations = {
+        'default': {
+          id: 'default',
+          name: 'Default Calculation',
+          jobName: 'Test',
+          plates: [],
+          globalSettings: {},
+          failureRate: 0,
+          shippingCost: 0,
+          otherCost: 0,
+          units: 1,
+          timestamp: new Date().toISOString()
+        }
+      }
+      localStorage.setItem('calcumake_calculations', JSON.stringify(allCalculations))
+
+      const controller = createMockController({
+        loadCalculation: jest.fn(() => true)
+      })
+      const initSpy = jest.spyOn(controller, 'initializeDefaultState')
+
+      controller.loadFromStorage()
+
+      expect(initSpy).not.toHaveBeenCalled()
+    })
+
+    test('first-time user: no warnings or errors during loadFromStorage', () => {
+      const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
+      const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+
+      const controller = createMockController()
+      controller.loadFromStorage()
+
+      expect(warnSpy).not.toHaveBeenCalled()
+      expect(errorSpy).not.toHaveBeenCalled()
+
+      warnSpy.mockRestore()
+      errorSpy.mockRestore()
+    })
+  })
 })
